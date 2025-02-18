@@ -14,9 +14,6 @@
 /**
  * This is the class intializing and handling the pile.
  *
- * NOTE: This may be cleaner with creating tile as an inner class. Please communicate with
- * person implementing tiles, to figure this out.
- *
  * TODO: Please implement pile functionality
  */
 

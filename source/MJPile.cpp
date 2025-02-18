@@ -7,4 +7,8 @@
 
 #include "MJPile.h"
 
-/** TODO: Please implement pile functionality **/
+/**
+ * This is the class intializing and handling the pile.
+ *
+ * TODO: Please implement pile functionality
+ */
