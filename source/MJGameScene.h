@@ -11,6 +11,7 @@
 #include <vector>
 #include <unordered_set>
 #include "MJInputController.h"
+#include "MJTileSet.h"
 
 /**
  * This class is the primary gameplay controller for our game
@@ -33,6 +34,7 @@ protected:
     /** TODO: Initialize new class objects such as tile, pile, etc.
      * Remember, please use shared pointers for disposable objects to make our lives easier!
      */
+    std::shared_ptr<TileSet> _tileSet;
     
 public:
 #pragma mark -

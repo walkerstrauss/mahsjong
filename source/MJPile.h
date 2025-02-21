@@ -9,7 +9,7 @@
 #define __MJ_PILE_H__
 
 #include <cugl/cugl.h>
-#include "MJTile.h"
+#include "MJTileSet.h"
 
 /**
  * This is the class intializing and handling the pile.

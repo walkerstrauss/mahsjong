@@ -13,14 +13,14 @@
 		237077232D6506CA00EB4A18 /* MJInputController.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 237077212D6506C700EB4A18 /* MJInputController.cpp */; };
 		2370772A2D650CA100EB4A18 /* MJMainMenu.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 237077292D650C9D00EB4A18 /* MJMainMenu.cpp */; };
 		2370772B2D650CA100EB4A18 /* MJMainMenu.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 237077292D650C9D00EB4A18 /* MJMainMenu.cpp */; };
-		2370772E2D650DAE00EB4A18 /* MJTile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2370772D2D650DAC00EB4A18 /* MJTile.cpp */; };
-		2370772F2D650DAE00EB4A18 /* MJTile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2370772D2D650DAC00EB4A18 /* MJTile.cpp */; };
 		237077322D650EB300EB4A18 /* MJPile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 237077312D650EB100EB4A18 /* MJPile.cpp */; };
 		237077332D650EB300EB4A18 /* MJPile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 237077312D650EB100EB4A18 /* MJPile.cpp */; };
 		237077362D650FCC00EB4A18 /* MJPlayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 237077352D650FCA00EB4A18 /* MJPlayer.cpp */; };
 		237077372D650FCC00EB4A18 /* MJPlayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 237077352D650FCA00EB4A18 /* MJPlayer.cpp */; };
 		2370773E2D65122100EB4A18 /* MJScoreManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2370773D2D65122000EB4A18 /* MJScoreManager.cpp */; };
 		2370773F2D65122100EB4A18 /* MJScoreManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2370773D2D65122000EB4A18 /* MJScoreManager.cpp */; };
+		23F98DB92D690D1D0010C7E9 /* MJTileSet.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 23F98DB82D690D1B0010C7E9 /* MJTileSet.cpp */; };
+		23F98DBA2D690D1D0010C7E9 /* MJTileSet.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 23F98DB82D690D1B0010C7E9 /* MJTileSet.cpp */; };
 		AB084F9D0E7DEE813F658313 /* textures in Resources */ = {isa = PBXBuildFile; fileRef = AACD441E407C552AECEE9B33 /* textures */; };
 		ABBCECE05884D7F0EED5F50D /* json in Resources */ = {isa = PBXBuildFile; fileRef = AA1BA6EDE03659A8C6BB7FDA /* json */; };
 		AC10714DD914A0EC4CEC5CF1 /* textures in Resources */ = {isa = PBXBuildFile; fileRef = AACD441E407C552AECEE9B33 /* textures */; };
@@ -154,14 +154,14 @@
 		237077212D6506C700EB4A18 /* MJInputController.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = MJInputController.cpp; sourceTree = "<group>"; };
 		237077282D650C8D00EB4A18 /* MJMainMenu.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MJMainMenu.h; sourceTree = "<group>"; };
 		237077292D650C9D00EB4A18 /* MJMainMenu.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = MJMainMenu.cpp; sourceTree = "<group>"; };
-		2370772C2D650DA700EB4A18 /* MJTile.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MJTile.h; sourceTree = "<group>"; };
-		2370772D2D650DAC00EB4A18 /* MJTile.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = MJTile.cpp; sourceTree = "<group>"; };
 		237077302D650E9B00EB4A18 /* MJPile.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MJPile.h; sourceTree = "<group>"; };
 		237077312D650EB100EB4A18 /* MJPile.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = MJPile.cpp; sourceTree = "<group>"; };
 		237077342D650FC300EB4A18 /* MJPlayer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MJPlayer.h; sourceTree = "<group>"; };
 		237077352D650FCA00EB4A18 /* MJPlayer.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = MJPlayer.cpp; sourceTree = "<group>"; };
 		2370773C2D65120200EB4A18 /* MJScoreManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MJScoreManager.h; sourceTree = "<group>"; };
 		2370773D2D65122000EB4A18 /* MJScoreManager.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = MJScoreManager.cpp; sourceTree = "<group>"; };
+		23F98DAB2D690D110010C7E9 /* MJTileSet.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MJTileSet.h; sourceTree = "<group>"; };
+		23F98DB82D690D1B0010C7E9 /* MJTileSet.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = MJTileSet.cpp; sourceTree = "<group>"; };
 		AA1BA6EDE03659A8C6BB7FDA /* json */ = {isa = PBXFileReference; lastKnownFileType = folder; path = json; sourceTree = "<group>"; };
 		AACD441E407C552AECEE9B33 /* textures */ = {isa = PBXFileReference; lastKnownFileType = folder; path = textures; sourceTree = "<group>"; };
 		BA74D663E7C15A3342E7A1F8 /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
@@ -294,14 +294,14 @@
 		EB0F3C9827FB9DCB0037CC66 /* Source */ = {
 			isa = PBXGroup;
 			children = (
+				23F98DB82D690D1B0010C7E9 /* MJTileSet.cpp */,
+				23F98DAB2D690D110010C7E9 /* MJTileSet.h */,
 				2370773D2D65122000EB4A18 /* MJScoreManager.cpp */,
 				2370773C2D65120200EB4A18 /* MJScoreManager.h */,
 				237077352D650FCA00EB4A18 /* MJPlayer.cpp */,
 				237077342D650FC300EB4A18 /* MJPlayer.h */,
 				237077312D650EB100EB4A18 /* MJPile.cpp */,
 				237077302D650E9B00EB4A18 /* MJPile.h */,
-				2370772D2D650DAC00EB4A18 /* MJTile.cpp */,
-				2370772C2D650DA700EB4A18 /* MJTile.h */,
 				237077292D650C9D00EB4A18 /* MJMainMenu.cpp */,
 				237077282D650C8D00EB4A18 /* MJMainMenu.h */,
 				237077212D6506C700EB4A18 /* MJInputController.cpp */,
@@ -612,9 +612,9 @@
 				2370772B2D650CA100EB4A18 /* MJMainMenu.cpp in Sources */,
 				2370773F2D65122100EB4A18 /* MJScoreManager.cpp in Sources */,
 				237077322D650EB300EB4A18 /* MJPile.cpp in Sources */,
+				23F98DB92D690D1D0010C7E9 /* MJTileSet.cpp in Sources */,
 				237077232D6506CA00EB4A18 /* MJInputController.cpp in Sources */,
 				2370771A2D64F94300EB4A18 /* MJGameScene.cpp in Sources */,
-				2370772F2D650DAE00EB4A18 /* MJTile.cpp in Sources */,
 				BB5C8CA112190EFFEFC9965B /* MJApp.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -628,9 +628,9 @@
 				2370772A2D650CA100EB4A18 /* MJMainMenu.cpp in Sources */,
 				2370773E2D65122100EB4A18 /* MJScoreManager.cpp in Sources */,
 				237077332D650EB300EB4A18 /* MJPile.cpp in Sources */,
+				23F98DBA2D690D1D0010C7E9 /* MJTileSet.cpp in Sources */,
 				237077222D6506CA00EB4A18 /* MJInputController.cpp in Sources */,
 				237077192D64F94300EB4A18 /* MJGameScene.cpp in Sources */,
-				2370772E2D650DAE00EB4A18 /* MJTile.cpp in Sources */,
 				BCC826CF5B7E93B69AA61EC6 /* MJApp.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
