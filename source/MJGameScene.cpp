@@ -50,6 +50,7 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets){
      * TODO: Please intialize objects and their textures
      */
     _tileSet = std::make_shared<TileSet>();
+    _tileSet->setTexture(assets->get<Texture>("tile"));
     
     return true;
 }
@@ -100,6 +101,7 @@ void GameScene::render(){
      */
     const std::shared_ptr<Texture> temp = Texture::getBlank();
     _batch->draw(temp, Color4("white"), Rect(Vec2::ZERO,getSize()));
+    _tileSet->draw(_batch, getSize());
     
     _batch->end(); 
 }

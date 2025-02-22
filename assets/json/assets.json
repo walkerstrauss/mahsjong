@@ -1,3 +1,7 @@
 {
-    
+    "textures": {
+        "tile": {
+            "file": "textures/test_texture.png"
+        }
+    }
 }
