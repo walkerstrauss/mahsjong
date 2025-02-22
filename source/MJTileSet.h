@@ -183,7 +183,7 @@ public:
                     return "bamboo";
                     break;
                 case Tile::Suit::DOT:
-                    return "dots";
+                    return "dot";
                     break;
                 case Tile::Suit::CRAK:
                     return "crak";
