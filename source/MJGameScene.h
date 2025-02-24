@@ -12,6 +12,7 @@
 #include <unordered_set>
 #include "MJInputController.h"
 #include "MJTileSet.h"
+#include "MJPile.h"
 
 /**
  * This class is the primary gameplay controller for our game
@@ -35,6 +36,7 @@ protected:
      * Remember, please use shared pointers for disposable objects to make our lives easier!
      */
     std::shared_ptr<TileSet> _tileSet;
+    std::shared_ptr<Pile> _pile;
     
 public:
 #pragma mark -
@@ -68,6 +70,8 @@ public:
      * The method called to update the game mode
      */
     void update(float timestep) override;
+
+    void pairs(float dt);
     
     /**
      * Draws all this scene to the scene's SpriteBatch.
