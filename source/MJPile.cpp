@@ -143,12 +143,7 @@ std::vector<std::shared_ptr<TileSet::Tile>> Pile::pairTile() {
 
     TileSet::Tile _tile1 = *_pile[x][y];
     TileSet::Tile _tile2 = *_pile[X][Y];
-    CULog("Tile1 Suit: %s\n", _tile1.toStringSuit());
-    CULog("Tile1 Rank: %s\n\n", _tile1.toStringRank());
-
-    CULog("Tile2 Suit: %s\n", _tile2.toStringSuit());
-    CULog("Tile2 Rank: %s\n\n", _tile2.toStringRank());
-
+    
     if (_tile1.getRank() == _tile2.getRank() && _tile1.getSuit() == _tile2.getSuit()) { //Valid pair?
         CULog("VALID!\n");
         _draw.push_back(_pile[x][y]);

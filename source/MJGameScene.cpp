@@ -50,6 +50,7 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets) {
     * Setting up objects and textures
     * TODO: Please intialize objects and their textures
     */
+    _tileSet = std::make_shared<TileSet>();
     _tileSet->setAllTileTexture(assets);
     _pile = std::make_shared<Pile>(); //Init our pile
     _pile->initPile(5, _tileSet);
@@ -98,7 +99,7 @@ void GameScene::pairs(float dt) {
 
     if (_input.didRelease() && !_input.isDown()) { //Did we click?
         cugl::Vec2 prev = _input.getPosition(); //Get our mouse posistion
-        cugl::Vec2 mousePos = cugl::Scene::screenToWorldCoords(cugl::Vec3::Vec3(prev));
+        cugl::Vec2 mousePos = cugl::Scene::screenToWorldCoords(cugl::Vec3(prev));
 
         for (int i = 0; i < _pile->getPileSize(); i++) {//Loop through our pile
             for (int j = 0; j < _pile->getPileSize(); j++) {
