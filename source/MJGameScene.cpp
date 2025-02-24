@@ -50,9 +50,7 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets) {
     * Setting up objects and textures
     * TODO: Please intialize objects and their textures
     */
-    _tileSet = std::make_shared<TileSet>();
-    _tileSet->setTexture(assets->get<Texture>("tile"));
-
+    _tileSet->setAllTileTexture(assets);
     _pile = std::make_shared<Pile>(); //Init our pile
     _pile->initPile(5, _tileSet);
 
