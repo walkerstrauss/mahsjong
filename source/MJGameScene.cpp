@@ -59,6 +59,10 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets) {
     _player->getHand().init(_tileSet);
     _player->getHand().updateTilePositions();
     
+    std::string msg = strtool::format("Score: %d", _player->_totalScore);
+    _text = TextLayout::allocWithText(msg, assets->get<Font>("pixel32"));
+    _text->layout();
+    
 
     _tileSet->setAllTileTexture(assets);
     _pile = std::make_shared<Pile>(); //Init our pile
@@ -66,7 +70,7 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets) {
 
     _input.init(); //Init the input controller
     
-    // Initalize grandma tile label
+    // Initialize grandma tile label
     _gmaLabelTexture = assets->get<Texture>("grandma text");
     if (!_gmaLabelTexture){
         CULog("missing gma text");
@@ -115,6 +119,9 @@ void GameScene::update(float timestep) {
         cugl::Vec2 mousePos = cugl::Scene::screenToWorldCoords(cugl::Vec3(prev));
         _pile->pairs(mousePos);
     }
+    
+    _text->setText(strtool::format("Score: %d", _player->_totalScore));
+    _text->layout();
 }
 
 /**
@@ -140,6 +147,10 @@ void GameScene::render() {
     _batch->draw(temp, Color4("white"), Rect(Vec2::ZERO, getSize()));
     _tileSet->draw(_batch, getSize());
 
+    _batch->setColor(Color4::GREEN);
+    _batch->drawText(_text,Vec2(getSize().width - _text->getBounds().size.width - 10,
+                                getSize().height-_text->getBounds().size.height));
+    
     if (_pile->getVisibleSize() == 0 && _tileSet->deck.size() != 14) { //Only update pile if we still have tiles from deck
         _pile->createPile();
     }

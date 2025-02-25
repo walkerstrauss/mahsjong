@@ -45,6 +45,9 @@ protected:
     /** Reference to texture for gma text*/
     std::shared_ptr<cugl::graphics::Texture> _gmaLabelTexture;
     
+    std::shared_ptr<cugl::graphics::TextLayout> _text;
+
+    
 public:
 #pragma mark -
 #pragma mark Constructors

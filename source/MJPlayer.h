@@ -136,10 +136,12 @@ class Player {
 private:
     
     Hand _hand;
-    int _totalScore = 0;
     int _turnsLeft = 5;
     
 public:
+    
+    int _totalScore = 0;
+
     
     Player(){};
     

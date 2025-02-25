@@ -114,5 +114,11 @@
         "grandma text":{
             "file": "textures/grandma-text.png"
         }
+    },
+    "fonts": {
+        "pixel32": {
+            "file":     "LightPixel7.ttf",
+            "size":     32
+        }
     }
 }
