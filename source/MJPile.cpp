@@ -70,8 +70,8 @@ bool Pile::createPile() {
     cugl::Size screenSize = cugl::Application::get()->getDisplaySize();
 
     // to bring tiles closer together and shifting up.
-    float spacingFactor = 0.9;
-    float spacingFactorX = 0.7f;
+    float spacingFactor = 0.9f;
+    float spacingFactorX = 0.85f;
     float yShift = 100.0f;
     
     
@@ -186,15 +186,15 @@ void Pile::pairs(const cugl::Vec2 mousePos) {
                 continue;
             }
             std::shared_ptr<TileSet::Tile> _tile = _pile[i][j]; //Collect tile
+//
+//            cugl::Size _size = _tile->getTileTexture()->getSize(); //Get tile posistion on pile UPDATE IF WE CHANGE HOW IT IS DRAWN
+//            float scale = _tile->_scale;
+//            float x = _tile->pos.x;
+//            float y = _tile->pos.y;
+//            float halfWidth = (_size.width * scale) / 2;
+//            float halfHeight = (_size.height * scale) / 2;
 
-            cugl::Size _size = _tile->getTileTexture()->getSize(); //Get tile posistion on pile UPDATE IF WE CHANGE HOW IT IS DRAWN
-            float scale = _tile->_scale;
-            float x = _tile->pos.x;
-            float y = _tile->pos.y;
-            float halfWidth = (_size.width * scale) / 2;
-            float halfHeight = (_size.height * scale) / 2;
-
-            if (mousePos.x >= x - halfWidth && mousePos.x <= x + halfWidth && mousePos.y >= y - halfHeight && mousePos.y <= y + halfHeight) {
+            if (_tile->tileRect.contains(mousePos)) {
                 int index = 0;
                 for (const auto& it : _pairs) { //Checks whether the tile we selected is already selected. if it is deselect
                     if (_tile->toString() == it->toString() && _tile->_id == it->_id) {

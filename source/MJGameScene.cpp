@@ -77,11 +77,6 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets) {
         _tileSet->gmaTexture = _gmaLabelTexture;
     }
     
-    // from the MJPlayer.
-    _hand = &_player->getHand();
-    _hand->init(_tileSet);
-    _hand->updateTilePositions();
-    
     return true;
 }
 

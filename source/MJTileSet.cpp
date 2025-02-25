@@ -144,9 +144,17 @@ void TileSet::draw(const std::shared_ptr<cugl::graphics::SpriteBatch>& batch, cu
         trans.scale(curr._scale);
         trans.translate(pos);
         
-        Vec2 rectOrigin(pos - (curr.getTileTexture()->getSize() * curr._scale)/2);
-        it->tileRect = cugl::Rect(rectOrigin, curr.getTileTexture()->getSize() * curr._scale);
+        Size textureSize(350.0, 415.0);
+        Vec2 rectOrigin(pos - (textureSize * curr._scale)/2);
+        it->tileRect = cugl::Rect(rectOrigin, textureSize * curr._scale);
 
+//        batch->setColor(Color4("red"));
+//        batch->fill(it->tileRect);
+        
+//        if(curr.inHand){
+//            CULog("%s", curr.pos.toString().c_str());
+//        }
+        
         batch->draw(curr.getTileTexture(), origin, trans);
     }
     for (const auto& it : grandmaTiles){

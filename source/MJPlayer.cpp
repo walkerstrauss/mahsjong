@@ -30,6 +30,7 @@ bool Hand::init(std::shared_ptr<TileSet>& tileSet){
         drawnTile->_scale = 0.2;
         _tiles.push_back(drawnTile);
     }
+    
     return true;
 }
 
@@ -360,35 +361,18 @@ std::vector<std::shared_ptr<TileSet::Tile>> Hand::getSortedTiles(const std::vect
 
 void Hand::updateTilePositions(){
     
-  float startX = 128.0f;
-  float endX = 896.0f;
-  float tileSpacing = (endX-startX) / 13;
+  float startX = 140.0f;
+  float endX = 936.0f;
+  float tileSpacing = (endX-startX) / 13 + 15;
   float yPos = 100.0f;
 
 //  CULog("Updating tile positions...");
   for (size_t i = 0; i < _tiles.size(); i++){
     cugl::Vec2 newPos(startX + i * tileSpacing, yPos);
-    _tiles[i]->pos = newPos;
+      _tiles[i]->pos = newPos;
 //    CULog("Tile %zu set to position (%f, %f)", i, newPos.x, newPos.y);
-
-  }
-    
-}
-
-
-void Hand::draw(const std::shared_ptr<cugl::graphics::SpriteBatch>& batch){
-  for (const auto& tile : _tiles){
-    if (tile){
-      cugl::Vec2 pos = tile->pos;
-      Vec2 origin = tile->getTileTexture()->getSize()/2;
-      Affine2 transform;
-      transform.translate(pos);
-      transform.scale(tile->_scale);
-      batch->draw(tile->getTileTexture(), origin, transform);
-    }
   }
 }
-
 
 /**
  Checks if there is a Jack in the selected set.
