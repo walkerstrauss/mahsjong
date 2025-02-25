@@ -36,7 +36,7 @@ public:
 	std::shared_ptr<TileSet> _tileSet;
 
 	//Stores the location of our pair in the pile
-	std::vector<cugl::Vec2> _pairs;
+    std::vector<std::shared_ptr<TileSet::Tile>> _pairs;
     
     //Stores the next index to add to the pile
     int index = 14;
