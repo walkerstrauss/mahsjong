@@ -384,11 +384,7 @@ void Hand::draw(const std::shared_ptr<cugl::graphics::SpriteBatch>& batch){
         transform.scale(tile->_scale);
         transform.translate(pos);
         if (tile->getTileTexture()){
-            CULog(tile->getTileTexture()->getName().c_str());
-            CULog("drawing tile");
-            batch->draw(tile->getTileTexture(), Vec2::ZERO, transform);
+            batch->draw(tile->getTileTexture(), origin, transform);
         }
-        transform.translate(-pos);
-        transform.scale(1/tile->_scale);
     }
 }

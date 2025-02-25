@@ -52,7 +52,7 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets) {
     */
     _tileSet = std::make_shared<TileSet>();
 
-    _tileSet->setTexture(assets->get<Texture>("tile"));
+//    _tileSet->setTexture(assets->get<Texture>("tile"));
     
     
     _player = std::make_shared<Player>();
@@ -175,8 +175,6 @@ void GameScene::render() {
     _player->getHand().draw(_batch);
     
 //    _tileSet->draw(_batch, getSize());
-    
-    _batch->end(); 
     _batch->draw(temp, Color4("white"), Rect(Vec2::ZERO, getSize()));
     _tileSet->draw(_batch, getSize());
 

@@ -40,14 +40,14 @@ TileSet::Tile::Tile(const TileSet::Tile::Rank r, const TileSet::Tile::Suit s){
 /**
  * Sets the texture for all tiles in deck
  */
-void TileSet::setTexture(const std::shared_ptr<cugl::graphics::Texture>& value){
-    Size size = value->getSize();
-    _center = Vec2(size.width/2, size.height/2);
-    
-    for(const auto& it : deck){
-        it->setTileTexture(value);
-    }
-}
+//void TileSet::setTexture(const std::shared_ptr<cugl::graphics::Texture>& value){
+//    Size size = value->getSize();
+//    _center = Vec2(size.width/2, size.height/2);
+//    
+//    for(const auto& it : deck){
+//        it->setTexture(value);
+//    }
+//}
 
 /**
  * Initializes the **STARTING** representation of the deck.
