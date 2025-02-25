@@ -44,7 +44,7 @@ public:
         /**
          * Fields for drawing a tile
          */
-        std::shared_ptr<cugl::graphics::Texture> _texture; //Change this to SpriteSheet
+        std::shared_ptr<cugl::graphics::Texture> _texture;
         
     public:
         Tile::Rank _rank;
@@ -113,7 +113,7 @@ public:
         /**
          * Randomly generates a rank
          *
-         * Returns a TIle::Rank
+         * Returns a Tile::Rank
          */
         static Tile::Rank randomNumber() {
             cugl::Random rd;
@@ -198,10 +198,10 @@ public:
             return toStringRank() + " of " + toStringSuit();
         }
         
-        void setTileTexture(const std::shared_ptr<cugl::graphics::Texture>& value){
+        void setTexture(const std::shared_ptr<cugl::graphics::Texture>& value){
             _texture = value;
         }
-        
+                
         std::shared_ptr<cugl::graphics::Texture> getTileTexture(){
             return _texture;
         }
@@ -216,6 +216,8 @@ public:
     
     /** Grandma's favorite tiles */
     std::vector<std::shared_ptr<Tile>> grandmaTiles;
+    /** Reference to texture for grandma tile text */
+    std::shared_ptr<cugl::graphics::Texture> gmaTexture;
     
     /**
      * **VERSION 2 **
@@ -324,8 +326,9 @@ public:
     /**
      * Sets the texture for all tiles in deck
      */
-    void setTexture(const std::shared_ptr<cugl::graphics::Texture>& value);
-    
+     * Setting textures for all tiles in **STARTING** deck
+     */
+    void setAllTileTexture(const std::shared_ptr<cugl::AssetManager>& assets);
     
     /**
      * Draws an individual tile

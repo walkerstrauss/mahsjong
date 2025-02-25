@@ -17,6 +17,12 @@
 #include "MJPile.h"
 #include "MJScoreManager.h"
 
+#include <vector>
+#include <iostream>
+
+
+#include "MJTileSet.h"
+
 /**
  * This is the class intializing all player features and interactions
  *
@@ -104,7 +110,6 @@ public:
     
     /**
      Checks if the given set of tiles "selectedTiles" is valid under the game's set of rules.
-     
      @param setTiles - the tiles to check.
      @return true if the tiles form a VALID set, and false otherwise.
      */
@@ -135,8 +140,6 @@ public:
      Counts the total number of selected tiles.
      */
     int countSelectedTiles();
-
-    
     /**
      Confirms if a set isStraight.
      */
@@ -164,14 +167,13 @@ public:
     // functions for scoring: TODO: not completed. -remove from here once they are completed in the ScoreManager. 
     
     bool hasJack(std::vector<std::shared_ptr<TileSet::Tile>> selectedTiles);
-
 };
 
 class Player {
 private:
     
     Hand _hand;
-    
+  
 public:
     
     int _totalScore = 0;

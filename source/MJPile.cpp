@@ -50,12 +50,8 @@ int Pile::getVisibleSize() {
 /*
 *   Creates a new pile given the size, with tiles drawn from deck
 */
-bool Pile::initPile(int size, std::shared_ptr<TileSet> tileSet) {
-    
+bool Pile::initPile(int size, std::shared_ptr<TileSet> tileSet) {    
     _tileSet = tileSet;
-    
-
-
     _pileSize = size; //initiate our pile sizes
     _pile.clear(); //Make sure pile is empty
     _draw.clear();
@@ -67,37 +63,34 @@ bool Pile::initPile(int size, std::shared_ptr<TileSet> tileSet) {
 
 bool Pile::createPile() {
     _pile.clear();
-    int count = 0;
-    for (const auto& it : _tileSet->deck) {
-        count++;
-    }
-    CULog("%d\n", count);
-
-    if (!_tileSet->deck.empty()) {
-        _tileSet->shuffle(); //Shuffle deck
-    }
-
+    //if (!_tileSet->deck.empty()) {
+    //    _tileSet->shuffle(); //Shuffle deck
+    //}
     for (int i = 0; i < _pileSize; i++) { //collect from the deck size^2 tiles and add to the pile
         std::vector<std::shared_ptr<TileSet::Tile>> row; //Row to collect tiles
-
         for (int j = 0; j < _pileSize; j++) {
             
-            if (_tileSet->deck.empty()) { //If our deck is empty, set the rest of the _pile to be empty
+            if (_tileSet->deck.size() <= index) { //If our deck is empty, set the rest of the _pile to be empty (deck.empty() instead?)
                 row.push_back(nullptr);
                 continue;
             }
-            _tileSet->deck.back()->_scale = 0.2; //Set the scale of tile for the pile
-            row.push_back(_tileSet->deck.back()); //Add from deck to pile
-            _tileSet->deck.pop_back(); //remove from deck
+            
+            std::shared_ptr<TileSet::Tile> tile = _tileSet->deck[index];
+            cugl::Size _size = tile->getTileTexture()->getSize();
+            
+            tile->_scale = 0.2;
+            tile->inPile = true;
+
+            float x = j * (_size.width * tile->_scale) + (_size.width * tile->_scale / 2);
+            float y = i * (_size.height * tile->_scale) + (_size.height * tile->_scale / 2);
+            
+            tile->pos = cugl::Vec2(x, y);
+            
+            row.push_back(_tileSet->deck[index]);
+            index += 1;
         }
         _pile.push_back(row); //add tile from deck to pile
     }
-
-    int count2 = 0;
-    for (const auto& it : _tileSet->deck) {
-        count2++;
-    }
-    CULog("%d\n", count2);
     return true;
 }
 
@@ -109,10 +102,9 @@ std::vector<std::shared_ptr<TileSet::Tile>> Pile::tilesDrawn(int number_of_tiles
     _draw.clear(); //We should not be re-drawing tiles from previous plays
 
     for (int x = 0; x < number_of_tiles; x++) { //Collect number_of_tiles from pile, remove from pile and add to draw
-        
         if (_pile.empty() || getVisibleSize() == 0) { //If pile ran out of tiles
 
-            if (_tileSet->deck.empty()) { //If we have nothing in our deck, return what we have
+            if (_tileSet->deck.size() == 14) { //If we have nothing in our deck, return what we have
                 return _draw;
             }
             Pile::createPile(); //Otherwise remake the pile
@@ -144,57 +136,68 @@ std::vector<std::shared_ptr<TileSet::Tile>> Pile::pairTile() {
     TileSet::Tile _tile1 = *_pile[x][y];
     TileSet::Tile _tile2 = *_pile[X][Y];
     
-
     if (_tile1.getRank() == _tile2.getRank() && _tile1.getSuit() == _tile2.getSuit()) { //Valid pair?
-        _draw.push_back(std::make_shared<TileSet::Tile>(_tile1));
-        _draw.push_back(std::make_shared<TileSet::Tile>(_tile2));
+        CULog("VALID!\n");
+        _draw.push_back(_pile[x][y]);
+        _draw.push_back(_pile[X][Y]);
 
         //Remove tiles from pile
         _pile[x][y] = nullptr;
         _pile[X][Y] = nullptr;
     }
+    else {
+        CULog("NAW!\n");
+    }
     return _draw;
 }
 
 /*
-* Draws the pile, displaying a tile, or an empty spot if the tile is no longer visible
+* Used in update, determines when Player selects pairs
 */
-void Pile::draw(const std::shared_ptr<cugl::graphics::SpriteBatch>& batch, cugl::Size size, cugl::Vec2 position) {
 
-    for (int i = 0; i < _pileSize; i++) {
-        for (int j = 0; j < _pileSize; j++) {
-            if (_pile[i][j] == nullptr) {
+void Pile::pairs(const cugl::Vec2 mousePos) {
+    for (int i = 0; i < getPileSize(); i++) {//Loop through our pile
+        for (int j = 0; j < getPileSize(); j++) {
+
+            if (_pile[i][j] == nullptr) { //If no longer in pile
                 continue;
             }
-            TileSet::Tile _tile = *_pile[i][j];
+            TileSet::Tile _tile = *_pile[i][j]; //Collect tile
 
-            //Check pairs
-            bool check = false;
-            for (const auto& it : _pairs) {
-                if (it.x == i && it.y == j) {
-                    check = true;
-                }
-            }
-            if (check) {
-                continue;
-            }
-
-
-            cugl::Size _size = _tile.getTileTexture()->getSize();
-            
+            cugl::Size _size = _tile.getTileTexture()->getSize(); //Get tile posistion on pile UPDATE IF WE CHANGE HOW IT IS DRAWN
             float scale = _tile._scale;
-            cugl::Vec2 origin(_size.width / 2, _size.height / 2);
-
-            //Places tiles bottom left corner of screen
-            float x = j * (_size.width*scale + 1.0f) + (_size.width*scale / 2);
-            float y = i * (_size.height*scale + 1.0f) + (_size.height*scale / 2);
+            float x = j * (_size.width * scale + 1.0f) + (_size.width * scale / 2);
+            float y = i * (_size.height * scale + 1.0f) + (_size.height * scale / 2);
             cugl::Vec2 pos(x, y);
+            float halfWidth = (_size.width * scale) / 2;
+            float halfHeight = (_size.height * scale) / 2;
 
-            cugl::Affine2 trans;
-            trans.scale(scale);
-            trans.translate(pos);
-     
-            batch->draw(_tile.getTileTexture(), origin, trans);
+            if (mousePos.x >= pos.x - halfWidth && mousePos.x <= pos.x + halfWidth && mousePos.y >= pos.y - halfHeight && mousePos.y <= pos.y + halfHeight) { //If mouse clicked tile
+                CULog("on tile");
+                
+                int index = 0;
+                for (const auto& it : _pairs) { //Checks whether the tile we selected is already selected. if it is deselect
+                    if (it.x == i && it.y == j) {
+                        _tile._scale = 0.2;
+                        _pairs.erase(_pairs.begin() + index);
+
+                        return; //If it is already in the pairs, remove it from pairs
+                    }
+                    index += 1;
+                }
+
+                if (_pairs.size() >= 2) { //Do we have a pair selected?
+                    pairTile();
+                    _pairs.clear();
+                }
+                else { //Add path to tile from pile
+                    cugl::Vec2 pilePos(i, j);
+                    _pairs.push_back(pilePos);
+                    _tile._scale = 0.3;
+                }
+                return;
+            }
         }
     }
+
 }

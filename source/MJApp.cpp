@@ -73,8 +73,10 @@ void MahsJongApp::update(float timestep) {
         _loading.update(0.01f);
     } else if (!_loaded) {
         _loading.dispose(); // Disables the input listeners in this mode
-        _gameplay.init(_assets);
+        _assets->loadDirectory("json/assets.json");
         _gameplay.setSpriteBatch(_batch);
+        _gameplay.init(_assets);
+        
         _loaded = true;
     } else {
         _gameplay.update(timestep);

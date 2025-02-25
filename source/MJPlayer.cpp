@@ -3,13 +3,10 @@
 //  Mahsjong
 //
 //  Created by Patrick Choo on 2/18/25.
-//  Modified by Mariia Tiulchenko on 2/24/25.
 
 #include "MJPlayer.h"
 
-
 using namespace cugl;
-
 
 /**
  * This is the class intializing all player features and interactions
@@ -17,7 +14,6 @@ using namespace cugl;
  * TODO: Please implement all player interactions
  *
  */
-
 
 Hand::Hand(Player* player) {
     _player = player;
@@ -27,28 +23,15 @@ Hand::Hand(Player* player) {
  initializes the hand with 14 cards
  */
 bool Hand::init(std::shared_ptr<TileSet>& tileSet){
-    
-    //tileSet.shuffle();
-    
     // draw from the deck
     for(int i = 0; i<14; i++){
         std::shared_ptr<TileSet::Tile> drawnTile = tileSet->deck[i]; // gets the reference to the pointer.
         drawnTile->inHand = true;
+        drawnTile->_scale = 0.2;
         _tiles.push_back(drawnTile);
     }
     return true;
 }
-
-
-
-
-/**
- Returns the number of tiles are currently in the hand.
- */
-int Hand::getTileCount() const {
-    return  static_cast<int>(_tiles.size());
-}
-
 
 /**
  This draws from the pile.
@@ -152,7 +135,6 @@ bool Hand::makeSet(){
     
     // adds sets to the set of selected sets.
     _selectedSets.push_back(_selectedTiles);
-    
     _selectedTiles.clear(); // ??? I'm not sure if I should clear it here.
     
     return true;
@@ -205,15 +187,13 @@ bool Hand::playSet(){
         }
     
     _selectedSets.clear();
-    
-    
+        
     //count the score for the turn.
     ScoreManager scoreManager(_playedSets);
     _score = scoreManager.calculateScore();
     
     //update the total score for the level. 
     _player->_totalScore+=_score;
-    
     return true;
 }
 
@@ -238,8 +218,7 @@ bool Hand::isSetValid(const std::vector<std::shared_ptr<TileSet::Tile>>& selecte
                 return false;
             }
         }
-    }
-    
+    }    
     // NOT a straight and NOT of the same kind.
     if(!isStraight(selectedTiles) && !isOfaKind(selectedTiles)){
         return false;
@@ -293,9 +272,7 @@ bool Hand::isStraight(const std::vector<std::shared_ptr<TileSet::Tile>>& selecte
     
     // check if the selectedTiles are consequitive.
     int numGaps = 0;
-    
     for(int i = 0; i<sortedTiles.size() - 1; ++i){
-        
         std::shared_ptr<TileSet::Tile> tileA = sortedTiles[i];
         std::shared_ptr<TileSet::Tile> tileC = sortedTiles[i+1];
         
@@ -322,7 +299,6 @@ bool Hand::isStraight(const std::vector<std::shared_ptr<TileSet::Tile>>& selecte
 /**
  Checks if a set is "of a kind".
  */
-
 bool Hand::isOfaKind(const std::vector<std::shared_ptr<TileSet::Tile>>& selectedTiles){
     
     // the base tile.
@@ -382,8 +358,6 @@ std::vector<std::shared_ptr<TileSet::Tile>> Hand::getSortedTiles(const std::vect
     return sortedTiles;
 }
 
-
-
 void Hand::updateTilePositions(){
     
   float startX = 128.0f;
@@ -426,7 +400,6 @@ bool Hand::hasJack(std::vector<std::shared_ptr<TileSet::Tile>> selectedTiles){
     }
     return false;
 }
-
 
 
 

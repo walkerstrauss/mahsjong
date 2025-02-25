@@ -17,6 +17,7 @@
 #include "MJPile.h"
 #include "MJScoreManager.h"
 
+
 /**
  * This class is the primary gameplay controller for our game
  *
@@ -39,6 +40,15 @@ protected:
      * Remember, please use shared pointers for disposable objects to make our lives easier!
      */
     std::shared_ptr<TileSet> _tileSet;
+    /** Reference to player */
+    std::shared_ptr<Player> _player;
+    /** Reference to tile pile */
+    std::shared_ptr<Pile> _pile;
+    /** Reference to texture for gma text*/
+    std::shared_ptr<cugl::graphics::Texture> _gmaLabelTexture;
+    
+    std::shared_ptr<cugl::graphics::TextLayout> _text;
+
     
     std::shared_ptr<Player> _player;
     
@@ -79,6 +89,8 @@ public:
      * The method called to update the game mode
      */
     void update(float timestep) override;
+
+    void pairs(float dt);
     
     /**
      * Draws all this scene to the scene's SpriteBatch.

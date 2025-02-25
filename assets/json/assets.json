@@ -1,3 +1,124 @@
 {
-    
+    "textures": {
+        "one of dot": {
+            "file": "textures/one_of_dot.png"
+        },
+        "one of bamboo": {
+            "file": "textures/one_of_bamboo.png"
+        },
+        "one of crak": {
+            "file": "textures/one_of_crak.png"
+        },
+        "two of dot": {
+            "file": "textures/two_of_dot.png"
+        },
+        "two of bamboo": {
+            "file": "textures/two_of_bamboo.png"
+        },
+        "two of crak": {
+            "file": "textures/two_of_crak.png"
+        },
+        "three of dot": {
+            "file": "textures/three_of_dot.png"
+        },
+        "three of bamboo": {
+            "file": "textures/three_of_bamboo.png"
+        },
+        "three of crak": {
+            "file": "textures/three_of_crak.png"
+        },
+        "four of dot": {
+            "file": "textures/four_of_dot.png"
+        },
+        "four of bamboo": {
+            "file": "textures/four_of_bamboo.png"
+        },
+        "four of crak": {
+            "file": "textures/four_of_crak.png"
+        },
+        "five of dot": {
+            "file": "textures/five_of_dot.png"
+        },
+        "five of bamboo": {
+            "file": "textures/five_of_bamboo.png"
+        },
+        "five of crak": {
+            "file": "textures/five_of_crak.png"
+        },
+        "six of dot": {
+            "file": "textures/six_of_dot.png"
+        },
+        "six of bamboo": {
+            "file": "textures/six_of_bamboo.png"
+        },
+        "six of crak": {
+            "file": "textures/six_of_crak.png"
+        },
+        "seven of dot": {
+            "file": "textures/seven_of_dot.png"
+        },
+        "seven of bamboo": {
+            "file": "textures/seven_of_bamboo.png"
+        },
+        "seven of crak": {
+            "file": "textures/seven_of_crak.png"
+        },
+        "eight of dot": {
+            "file": "textures/eight_of_dot.png"
+        },
+        "eight of bamboo": {
+            "file": "textures/eight_of_bamboo.png"
+        },
+        "eight of crak": {
+            "file": "textures/eight_of_crak.png"
+        },
+        "nine of dot": {
+            "file": "textures/nine_of_dot.png"
+        },
+        "nine of bamboo": {
+            "file": "textures/nine_of_bamboo.png"
+        },
+        "nine of crak": {
+            "file": "textures/nine_of_crak.png"
+        },
+        "one of wild suit": {
+            "file": "textures/wild_1.png"
+        },
+        "two of wild suit": {
+            "file": "textures/wild_2.png"
+        },
+        "three of wild suit": {
+            "file": "textures/wild_3.png"
+        },
+        "four of wild suit": {
+            "file": "textures/wild_4.png"
+        },
+        "five of wild suit": {
+            "file": "textures/wild_5.png"
+        },
+        "six of wild suit": {
+            "file": "textures/wild_6.png"
+        },
+        "seven of wild suit": {
+            "file": "textures/wild_7.png"
+        },
+        "eight of wild suit": {
+            "file": "textures/wild_8.png"
+        },
+        "nine of wild suit" : {
+            "file": "textures/wild_9.png"
+        },
+        "wild rank of wild suit": {
+            "file": "textures/wild_rank_wild_suit.png"
+        },
+        "grandma text":{
+            "file": "textures/grandma-text.png"
+        }
+    },
+    "fonts": {
+        "pixel32": {
+            "file":     "LightPixel7.ttf",
+            "size":     32
+        }
+    }
 }
