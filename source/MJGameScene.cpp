@@ -59,11 +59,30 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets) {
     _player->getHand().init(_tileSet);
     _player->getHand().updateTilePositions();
     
+    std::string msg = strtool::format("Score: %d", _player->_totalScore);
+    _text = TextLayout::allocWithText(msg, assets->get<Font>("pixel32"));
+    _text->layout();
     _tileSet->setAllTileTexture(assets);
     _pile = std::make_shared<Pile>(); //Init our pile
     _pile->initPile(5, _tileSet);
 
     _input.init(); //Init the input controller
+    
+    // Initialize grandma tile label
+    _gmaLabelTexture = assets->get<Texture>("grandma text");
+    if (!_gmaLabelTexture){
+        CULog("missing gma text");
+        return false;
+    } else {
+        _tileSet->gmaTexture = _gmaLabelTexture;
+    }
+    
+    // from the MJPlayer.
+    _player = std::make_shared<Player>();
+    _hand = &_player->getHand();
+    _hand->init(_tileSet);
+    _hand->updateTilePositions();
+    
     return true;
 }
 
@@ -103,6 +122,9 @@ void GameScene::update(float timestep) {
         cugl::Vec2 mousePos = cugl::Scene::screenToWorldCoords(cugl::Vec3(prev));
         _pile->pairs(mousePos);
     }
+    
+    _text->setText(strtool::format("Score: %d", _player->_totalScore));
+    _text->layout();
 }
 
 /**
@@ -123,20 +145,17 @@ void GameScene::render() {
     const std::shared_ptr<Texture> temp = Texture::getBlank();
     _batch->draw(temp, Color4("white"), Rect(Vec2::ZERO,getSize()));
 //    _player->getHand().draw(_batch);
-    
 //    _tileSet->draw(_batch, getSize());
     _batch->draw(temp, Color4("white"), Rect(Vec2::ZERO, getSize()));
     _tileSet->draw(_batch, getSize());
 
+    _batch->setColor(Color4::GREEN);
+    _batch->drawText(_text,Vec2(getSize().width - _text->getBounds().size.width - 10,
+                                getSize().height-_text->getBounds().size.height));
+    
     if (_pile->getVisibleSize() == 0 && _tileSet->deck.size() != 14) { //Only update pile if we still have tiles from deck
         _pile->createPile();
     }
 
     _batch->end();
 }
-
-
-
-
-
-

@@ -72,7 +72,7 @@ public:
         cugl::Vec2 pos;
         float _scale;
 
-    public: 
+    public:
         /**
          * Allocates a tile by setting its number and suit
          *
@@ -218,6 +218,8 @@ public:
     
     /** Grandma's favorite tiles */
     std::vector<std::shared_ptr<Tile>> grandmaTiles;
+    /** Reference to texture for grandma tile text */
+    std::shared_ptr<cugl::graphics::Texture> gmaTexture;
     
     /**
      * **VERSION 2 **
@@ -321,10 +323,10 @@ public:
         wildTiles.erase(wildTiles.begin());
         
         return currTile;
-    }
+    };
     
     /**
-     * Setting textures for all tiles in **STARTING** deck
+     * Sets the texture for all tiles in deck
      */
     void setAllTileTexture(const std::shared_ptr<cugl::AssetManager>& assets);
     
