@@ -195,8 +195,6 @@ public:
             _hand.reset();
         }
     }
-    
-    
 };
 
 

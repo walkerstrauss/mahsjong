@@ -109,12 +109,6 @@ bool ScoreManager::canBePrev(const std::vector<std::shared_ptr<TileSet::Tile>>& 
     return result;
 }
 
-
-
-
-
-
-
 std::vector<std::vector<std::shared_ptr<TileSet::Tile>>> ScoreManager::makeKind(const std::vector<std::shared_ptr<TileSet::Tile>>& curr) {
     
     std::vector<std::vector<std::shared_ptr<TileSet::Tile>>> value;

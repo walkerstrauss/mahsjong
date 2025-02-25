@@ -43,6 +43,8 @@ protected:
     std::shared_ptr<Player> _player;
     
     Hand* _hand; // pointer to the hand.
+    
+    
         
     
 public:
@@ -91,9 +93,6 @@ public:
      * Rests the status of the game so we can play again.
      */
     void reset() override;
-    
-    
-    void testScore();
     
 };
 

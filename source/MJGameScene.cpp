@@ -89,9 +89,7 @@ void GameScene::update(float timestep){
     _input.readInput();
     
     _player->getHand().updateTilePositions();
-    
-    
-    testScore();
+
 }
 
 /**
@@ -117,58 +115,4 @@ void GameScene::render(){
     _batch->end(); 
 }
 
-
-void GameScene::testScore(){
-    
-    // Create some sample tile sets to simulate played hands
-    std::vector<std::shared_ptr<TileSet::Tile>> set1 = {
-        
-        std::make_shared<TileSet::Tile>(TileSet::Tile::Rank::FIVE, TileSet::Tile::Suit::BAMBOO),
-        std::make_shared<TileSet::Tile>(TileSet::Tile::Rank::THREE, TileSet::Tile::Suit::BAMBOO),
-        std::make_shared<TileSet::Tile>(TileSet::Tile::Rank::FOUR, TileSet::Tile::Suit::BAMBOO)
-        
-    }; // Valid consecutive set
-    
-    
-    std::vector<std::shared_ptr<TileSet::Tile>> set2 = {
-        std::make_shared<TileSet::Tile>(TileSet::Tile::Rank::SEVEN, TileSet::Tile::Suit::DOT),
-        std::make_shared<TileSet::Tile>(TileSet::Tile::Rank::SEVEN, TileSet::Tile::Suit::DOT),
-        std::make_shared<TileSet::Tile>(TileSet::Tile::Rank::SEVEN, TileSet::Tile::Suit::DOT),
-        std::make_shared<TileSet::Tile>(TileSet::Tile::Rank::SEVEN, TileSet::Tile::Suit::DOT)
-    }; // A valid set of a kind
-    
-    
-    std::vector<std::shared_ptr<TileSet::Tile>> duplicateSet = {
-        
-        std::make_shared<TileSet::Tile>(TileSet::Tile::Rank::SEVEN, TileSet::Tile::Suit::BAMBOO),
-        std::make_shared<TileSet::Tile>(TileSet::Tile::Rank::SIX, TileSet::Tile::Suit::BAMBOO),
-        std::make_shared<TileSet::Tile>(TileSet::Tile::Rank::EIGHT, TileSet::Tile::Suit::BAMBOO)
-    }; // Duplicate of set1
-
-    
-    
-    std::vector<std::vector<std::shared_ptr<TileSet::Tile>>> played_sets;
-    
-    played_sets.push_back(set1);
-    played_sets.push_back(set2);
-    played_sets.push_back(duplicateSet);
-    
-    
-    ScoreManager scoreManager(played_sets);
-    
-    
-    int result = scoreManager.calculateScore();
-    
-    CULog("the score %d", result);
-    assert(result==20);
-    
-    
-    
-    
-    
-    
-    
-
-    
-}
 

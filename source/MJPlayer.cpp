@@ -384,7 +384,6 @@ std::vector<std::shared_ptr<TileSet::Tile>> Hand::getSortedTiles(const std::vect
 
 
 
-
 void Hand::updateTilePositions(){
     
   float startX = 128.0f;
@@ -413,7 +412,6 @@ void Hand::draw(const std::shared_ptr<cugl::graphics::SpriteBatch>& batch){
     }
   }
 }
-
 
 
 /**
