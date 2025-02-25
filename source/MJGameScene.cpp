@@ -118,9 +118,13 @@ void GameScene::update(float timestep) {
         _pile->pairs(mousePos);
     }
     if(_input.getKeyPressed() == KeyCode::P && _input.getKeyDown()){
-        CULog("play");
+        _player->getHand().playSet();
     } else if (_input.getKeyPressed() == KeyCode::D && _input.getKeyDown()){
-        CULog("discard");
+        for (auto& tile : _player->getHand()._selectedTiles){
+            _player->getHand().discard(tile);
+        }
+    } else if (_input.getKeyPressed() == KeyCode::S && _input.getKeyDown()){
+        _player->getHand().makeSet();
     }
     
     _text->setText(strtool::format("Score: %d", _player->_totalScore));
