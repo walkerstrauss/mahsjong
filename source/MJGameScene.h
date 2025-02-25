@@ -12,6 +12,7 @@
 #include <unordered_set>
 #include "MJInputController.h"
 #include "MJTileSet.h"
+#include "MJPlayer.h"
 
 /**
  * This class is the primary gameplay controller for our game
@@ -35,6 +36,8 @@ protected:
      * Remember, please use shared pointers for disposable objects to make our lives easier!
      */
     std::shared_ptr<TileSet> _tileSet;
+    /** Reference to player */
+    std::shared_ptr<Player> _player;
     
 public:
 #pragma mark -

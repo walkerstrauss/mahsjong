@@ -52,6 +52,11 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets){
     _tileSet = std::make_shared<TileSet>();
     _tileSet->setTexture(assets->get<Texture>("tile"));
     
+    
+    _player = std::make_shared<Player>();
+    _player->getHand().init(_tileSet);
+    _player->getHand().updateTilePositions();
+    
     return true;
 }
 
@@ -82,6 +87,8 @@ void GameScene::reset(){
 void GameScene::update(float timestep){
     //Reading input
     _input.readInput();
+    
+    _player->getHand().updateTilePositions();
 }
 
 /**
@@ -101,7 +108,9 @@ void GameScene::render(){
      */
     const std::shared_ptr<Texture> temp = Texture::getBlank();
     _batch->draw(temp, Color4("white"), Rect(Vec2::ZERO,getSize()));
-    _tileSet->draw(_batch, getSize());
+    _player->getHand().draw(_batch);
+    
+//    _tileSet->draw(_batch, getSize());
     
     _batch->end(); 
 }

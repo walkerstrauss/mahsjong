@@ -34,7 +34,7 @@ TileSet::Tile::Tile(const TileSet::Tile::Rank r, const TileSet::Tile::Suit s){
     played = false;
     
 //    pos = Vec2(200, 200); Setting up drawing example, set when in hand and pile sets
-//    _scale = 0.2;
+    _scale = 0.4;
 }
 
 /**
