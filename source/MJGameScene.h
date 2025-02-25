@@ -13,6 +13,10 @@
 #include "MJInputController.h"
 #include "MJTileSet.h"
 
+#include "MJPlayer.h"
+#include "MJPile.h"
+#include "MJScoreManager.h"
+
 /**
  * This class is the primary gameplay controller for our game
  *
@@ -35,6 +39,11 @@ protected:
      * Remember, please use shared pointers for disposable objects to make our lives easier!
      */
     std::shared_ptr<TileSet> _tileSet;
+    
+    std::shared_ptr<Player> _player;
+    
+    Hand* _hand; // pointer to the hand.
+        
     
 public:
 #pragma mark -
@@ -82,6 +91,10 @@ public:
      * Rests the status of the game so we can play again.
      */
     void reset() override;
+    
+    
+    void testScore();
+    
 };
 
 #endif /* __SG_GAME_SCENE_H__ */

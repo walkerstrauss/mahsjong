@@ -44,9 +44,6 @@ public:
         /**
          * Fields for drawing a tile
          */
-        float _scale; // Don't need to consider rn, only for animation
-        int _length;
-        int _width;
         std::shared_ptr<cugl::graphics::Texture> _texture; //Change this to SpriteSheet
         
     public:
@@ -69,8 +66,11 @@ public:
         bool selected; // For when the player clicks on tile
         bool selectedInSet; // For when the player selects this tile in a valid set
         bool played; // For when the player plays card
+        
+        cugl::Vec2 pos;
+        float _scale;
 
-    public: 
+    public:
         /**
          * Allocates a tile by setting its number and suit
          *
@@ -121,11 +121,6 @@ public:
             int randRank = static_cast<int>(rd.getOpenUint64(1, 11));
             return static_cast<Tile::Rank>(randRank);
         };
-        
-        /**
-         * Sets the texture for a tile
-         */
-        void setTexture(const std::shared_ptr<cugl::graphics::Texture>& value);
         
         /**
          * Animates the tiles one frame at a time
@@ -202,6 +197,14 @@ public:
         std::string toString() const {
             return toStringRank() + " of " + toStringSuit();
         }
+        
+        void setTileTexture(const std::shared_ptr<cugl::graphics::Texture>& value){
+            _texture = value;
+        }
+        
+        std::shared_ptr<cugl::graphics::Texture> getTileTexture(){
+            return _texture;
+        }
     };
 
     
@@ -223,6 +226,8 @@ public:
     int wildCount; //Use this when assigning id's to wild tiles
     int tileCount;
     
+    cugl::Vec2 _center; //Center of a tile
+
     /**
      * Initializes the **STARTING** representation of the deck.
      *
@@ -243,7 +248,7 @@ public:
     }
     
     /**
-     * Prints the currnet deck
+     * Prints the current deck
      */
     void printDeck(){
         for(const auto& it : deck){
@@ -315,6 +320,17 @@ public:
         
         return currTile;
     }
+    
+    /**
+     * Sets the texture for all tiles in deck
+     */
+    void setTexture(const std::shared_ptr<cugl::graphics::Texture>& value);
+    
+    
+    /**
+     * Draws an individual tile
+     */
+    void draw(const std::shared_ptr<cugl::graphics::SpriteBatch>& batch, cugl::Size size);
 };
 
 #endif /* __MJ_TILESET_H__ */
