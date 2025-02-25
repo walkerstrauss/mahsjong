@@ -57,6 +57,8 @@ public:
          * Can be in hand, in pile, or in discarded pile
          */
         bool inPile;
+        cugl::Vec2 pileCoord;
+        
         bool inHand;
         bool discarded;
         

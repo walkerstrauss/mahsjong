@@ -62,8 +62,6 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets) {
     std::string msg = strtool::format("Score: %d", _player->_totalScore);
     _text = TextLayout::allocWithText(msg, assets->get<Font>("pixel32"));
     _text->layout();
-    
-
     _tileSet->setAllTileTexture(assets);
     _pile = std::make_shared<Pile>(); //Init our pile
     _pile->initPile(5, _tileSet);
@@ -120,7 +118,6 @@ void GameScene::update(float timestep) {
     
     //If there was a click we check if it was on a tile in the pile
     if(_input.didRelease() && !_input.isDown()){
-        CULog("pressed");
         cugl::Vec2 prev = _input.getPosition(); //Get our mouse posistion
         cugl::Vec2 mousePos = cugl::Scene::screenToWorldCoords(cugl::Vec3(prev));
         _pile->pairs(mousePos);

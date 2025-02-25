@@ -66,6 +66,15 @@ bool Pile::createPile() {
     //if (!_tileSet->deck.empty()) {
     //    _tileSet->shuffle(); //Shuffle deck
     //}
+    
+    cugl::Size screenSize = cugl::Application::get()->getDisplaySize();
+
+    // to bring tiles closer together and shifting up.
+    float spacingFactor = 0.9;
+    float spacingFactorX = 0.7f;
+    float yShift = 100.0f;
+    
+    
     for (int i = 0; i < _pileSize; i++) { //collect from the deck size^2 tiles and add to the pile
         std::vector<std::shared_ptr<TileSet::Tile>> row; //Row to collect tiles
         for (int j = 0; j < _pileSize; j++) {
@@ -81,10 +90,14 @@ bool Pile::createPile() {
             tile->_scale = 0.2;
             tile->inPile = true;
 
-            float x = j * (_size.width * tile->_scale) + (_size.width * tile->_scale / 2);
+            float x = j * (_size.width * tile->_scale * spacingFactorX) + (_size.width * tile->_scale / 2);
             float y = i * (_size.height * tile->_scale) + (_size.height * tile->_scale / 2);
             
-            tile->pos = cugl::Vec2(x, y);
+            float pileWidth = _pileSize * (_size.width * tile->_scale * spacingFactorX);
+            float pileHeight = _pileSize * (_size.height * tile->_scale);
+            cugl::Vec2 pileOffset((screenSize.width - pileWidth) / 2, (screenSize.height - pileHeight) / 2 + yShift);
+            
+            tile->pos = cugl::Vec2(x * spacingFactor, y * spacingFactor) + pileOffset;
             
             row.push_back(_tileSet->deck[index]);
             index += 1;
@@ -128,25 +141,36 @@ std::vector<std::shared_ptr<TileSet::Tile>> Pile::tilesDrawn(int number_of_tiles
 */
 std::vector<std::shared_ptr<TileSet::Tile>> Pile::pairTile() {
     _draw.clear(); //Clear the vector we are returning
-    int x = _pairs[0].x; //Get the pairs posistion in the pile
-    int y = _pairs[0].y;
-    int X = _pairs[1].x;
-    int Y = _pairs[1].y;
+    int x = _pairs[0]->pileCoord.x; //Get the pairs posistion in the pile
+    int y = _pairs[0]->pileCoord.y;
+    int X = _pairs[1]->pileCoord.x;
+    int Y = _pairs[1]->pileCoord.y;
 
-    TileSet::Tile _tile1 = *_pile[x][y];
-    TileSet::Tile _tile2 = *_pile[X][Y];
+    std::shared_ptr<TileSet::Tile> _tile1 = _pile[x][y];
+    std::shared_ptr<TileSet::Tile> _tile2 = _pile[X][Y];
     
-    if (_tile1.getRank() == _tile2.getRank() && _tile1.getSuit() == _tile2.getSuit()) { //Valid pair?
+    if (_tile1->getRank() == _tile2->getRank() && _tile1->getSuit() == _tile2->getSuit()) { //Valid pair?
         CULog("VALID!\n");
-        _draw.push_back(_pile[x][y]);
-        _draw.push_back(_pile[X][Y]);
+        _draw.push_back(_tile1);
+        _draw.push_back(_tile2);
+        
+        _tile1->inHand = true;
+        _tile2->inHand = true;
+        _tile1->inPile = false;
+        _tile2->inPile = false;
+        
+        _tile1->_scale = 0;
+        _tile2->_scale = 0;
 
         //Remove tiles from pile
         _pile[x][y] = nullptr;
         _pile[X][Y] = nullptr;
     }
     else {
+        _tile1->_scale = 0.2;
+        _tile2->_scale = 0.2;
         CULog("NAW!\n");
+        
     }
     return _draw;
 }
@@ -158,27 +182,24 @@ std::vector<std::shared_ptr<TileSet::Tile>> Pile::pairTile() {
 void Pile::pairs(const cugl::Vec2 mousePos) {
     for (int i = 0; i < getPileSize(); i++) {//Loop through our pile
         for (int j = 0; j < getPileSize(); j++) {
-
             if (_pile[i][j] == nullptr) { //If no longer in pile
                 continue;
             }
-            TileSet::Tile _tile = *_pile[i][j]; //Collect tile
+            std::shared_ptr<TileSet::Tile> _tile = _pile[i][j]; //Collect tile
 
-            cugl::Size _size = _tile.getTileTexture()->getSize(); //Get tile posistion on pile UPDATE IF WE CHANGE HOW IT IS DRAWN
-            float scale = _tile._scale;
-            float x = j * (_size.width * scale + 1.0f) + (_size.width * scale / 2);
-            float y = i * (_size.height * scale + 1.0f) + (_size.height * scale / 2);
-            cugl::Vec2 pos(x, y);
+            cugl::Size _size = _tile->getTileTexture()->getSize(); //Get tile posistion on pile UPDATE IF WE CHANGE HOW IT IS DRAWN
+            float scale = _tile->_scale;
+            float x = _tile->pos.x;
+            float y = _tile->pos.y;
             float halfWidth = (_size.width * scale) / 2;
             float halfHeight = (_size.height * scale) / 2;
 
-            if (mousePos.x >= pos.x - halfWidth && mousePos.x <= pos.x + halfWidth && mousePos.y >= pos.y - halfHeight && mousePos.y <= pos.y + halfHeight) { //If mouse clicked tile
-                CULog("on tile");
-                
+            if (mousePos.x >= x - halfWidth && mousePos.x <= x + halfWidth && mousePos.y >= y - halfHeight && mousePos.y <= y + halfHeight) {
                 int index = 0;
                 for (const auto& it : _pairs) { //Checks whether the tile we selected is already selected. if it is deselect
-                    if (it.x == i && it.y == j) {
-                        _tile._scale = 0.2;
+                    if (_tile->toString() == it->toString() && _tile->_id == it->_id) {
+                        _tile->_scale = 0.2;
+                        _tile->pileCoord = cugl::Vec2();
                         _pairs.erase(_pairs.begin() + index);
 
                         return; //If it is already in the pairs, remove it from pairs
@@ -186,18 +207,21 @@ void Pile::pairs(const cugl::Vec2 mousePos) {
                     index += 1;
                 }
 
-                if (_pairs.size() >= 2) { //Do we have a pair selected?
-                    pairTile();
-                    _pairs.clear();
+                if (_pairs.size() < 2) { //Do we have a pair selected?
+                    _tile->_scale = 0.25;
+                    _tile->pileCoord = cugl::Vec2(i, j);
+                    _pairs.push_back(_tile);
+                    
+                    if(_pairs.size() == 2){
+                        pairTile();
+                        _pairs[0]->pileCoord = cugl::Vec2();
+                        _pairs[1]->pileCoord = cugl::Vec2();
+                        _pairs.clear();
+                    }
+                    
                 }
-                else { //Add path to tile from pile
-                    cugl::Vec2 pilePos(i, j);
-                    _pairs.push_back(pilePos);
-                    _tile._scale = 0.3;
-                }
-                return;
             }
         }
     }
-
 }
+
