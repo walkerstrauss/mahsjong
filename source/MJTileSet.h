@@ -69,7 +69,9 @@ public:
         
         cugl::Vec2 pos;
         float _scale;
-
+        
+        cugl::Rect tileRect;
+        
     public:
         /**
          * Allocates a tile by setting its number and suit

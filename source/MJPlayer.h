@@ -140,6 +140,8 @@ public:
      Counts the total number of selected tiles.
      */
     int countSelectedTiles();
+    
+    void clickedTile(const cugl::Vec2 mousePos);
     /**
      Confirms if a set isStraight.
      */
