@@ -37,6 +37,9 @@ public:
 
 	//Stores the location of our pair in the pile
 	std::vector<cugl::Vec2> _pairs;
+    
+    //Stores the next index to add to the pile
+    int index = 14;
 
 public:
 

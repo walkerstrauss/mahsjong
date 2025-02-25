@@ -131,6 +131,7 @@ void GameScene::pairs(float dt) {
                     int index = 0;
                     for (const auto& it : _pile->_pairs) { //Checks whether the tile we selected is already selected. if it is deselect
                         if (it.x == i && it.y == j) {
+                            _tile._scale = 0.2;
                             _pile->_pairs.erase(_pile->_pairs.begin() + index);
 
                             return; //If it is already in the pairs, remove it from pairs
@@ -145,6 +146,7 @@ void GameScene::pairs(float dt) {
                     else { //Add path to tile from pile
                         cugl::Vec2 pilePos(i, j);
                         _pile->_pairs.push_back(pilePos);
+                        _tile._scale = 0.3;
                     }
                     return;
                 }
@@ -171,14 +173,12 @@ void GameScene::render() {
     */
     const std::shared_ptr<Texture> temp = Texture::getBlank();
     _batch->draw(temp, Color4("white"), Rect(Vec2::ZERO,getSize()));
-    _player->getHand().draw(_batch);
+//    _player->getHand().draw(_batch);
     
 //    _tileSet->draw(_batch, getSize());
     _batch->draw(temp, Color4("white"), Rect(Vec2::ZERO, getSize()));
     _tileSet->draw(_batch, getSize());
 
-    Vec2 pos(getSize().width, getSize().height);
-    _pile->draw(_batch, getSize(), pos); //Draw the pile
     if (_pile->getVisibleSize() == 0 && _tileSet->deck.size() != 14) { //Only update pile if we still have tiles from deck
         _pile->createPile();
     }

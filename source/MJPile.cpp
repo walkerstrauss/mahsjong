@@ -51,10 +51,7 @@ int Pile::getVisibleSize() {
 *   Creates a new pile given the size, with tiles drawn from deck
 */
 bool Pile::initPile(int size, std::shared_ptr<TileSet> tileSet) {
-
     _tileSet = tileSet;
-
-
 
     _pileSize = size; //initiate our pile sizes
     _pile.clear(); //Make sure pile is empty
@@ -72,21 +69,27 @@ bool Pile::createPile() {
     //}
     for (int i = 0; i < _pileSize; i++) { //collect from the deck size^2 tiles and add to the pile
         std::vector<std::shared_ptr<TileSet::Tile>> row; //Row to collect tiles
-
         for (int j = 0; j < _pileSize; j++) {
-
-            if (_tileSet->deck.size() == 14) { //If our deck is empty, set the rest of the _pile to be empty (deck.empty() instead?)
+            
+            if (_tileSet->deck.size() <= index) { //If our deck is empty, set the rest of the _pile to be empty (deck.empty() instead?)
                 row.push_back(nullptr);
                 continue;
             }
+            
+            std::shared_ptr<TileSet::Tile> tile = _tileSet->deck[index];
+            cugl::Size _size = tile->getTileTexture()->getSize();
+            
+            tile->_scale = 0.2;
+            tile->inPile = true;
 
-            _tileSet->deck[14]->_scale = 0.2;
-            row.push_back(_tileSet->deck[14]);
-            _tileSet->deck.erase(_tileSet->deck.begin() + 14);
-
-            //_tileSet->deck.back()->_scale = 0.2; //Set the scale of tile for the pile
-            //row.push_back(_tileSet->deck.back()); //Add from deck to pile
-            //_tileSet->deck.pop_back(); //remove from deck
+            float x = j * (_size.width * tile->_scale + 1.0f) + (_size.width * tile->_scale / 2);
+            float y = i * (_size.height * tile->_scale + 1.0f) + (_size.height * tile->_scale / 2);
+            
+            tile->pos = cugl::Vec2(x, y);
+            CULog("%s", tile->pos.toString().c_str());
+            
+            row.push_back(_tileSet->deck[index]);
+            index += 1;
         }
         _pile.push_back(row); //add tile from deck to pile
     }
@@ -151,50 +154,46 @@ std::vector<std::shared_ptr<TileSet::Tile>> Pile::pairTile() {
     return _draw;
 }
 
-/*
-* Draws the pile, displaying a tile, or an empty spot if the tile is no longer visible
-*/
-void Pile::draw(const std::shared_ptr<cugl::graphics::SpriteBatch>& batch, cugl::Size size, cugl::Vec2 position) {
-
-    for (int i = 0; i < _pileSize; i++) {
-        for (int j = 0; j < _pileSize; j++) {
-            if (_pile[i][j] == nullptr) {
-                continue;
-            }
-            TileSet::Tile _tile = *_pile[i][j];
-
-            //Check pairs
-            bool check = false;
-            for (const auto& it : _pairs) {
-                if (it.x == i && it.y == j) {
-                    check = true;
-                }
-            }
-            if (check) {
-                continue;
-            }
-
-
-
-
-            cugl::Size _size = _tile.getTileTexture()->getSize();
-
-            float scale = _tile._scale;
-            cugl::Vec2 origin(_size.width / 2, _size.height / 2);
-
-            //Places tiles bottom left corner of screen
-            float x = j * (_size.width * scale + 1.0f) + (_size.width * scale / 2);
-            float y = i * (_size.height * scale + 1.0f) + (_size.height * scale / 2);
-            cugl::Vec2 pos(x, y);
-
-            cugl::Affine2 trans;
-            trans.scale(scale);
-            trans.translate(pos);
-
-            batch->draw(_tile.getTileTexture(), origin, trans);
-        }
-    }
-}
+///*
+//* Draws the pile, displaying a tile, or an empty spot if the tile is no longer visible
+//*/
+//void Pile::draw(const std::shared_ptr<cugl::graphics::SpriteBatch>& batch, cugl::Size size, cugl::Vec2 position) {
+//
+//    for (int i = 0; i < _pileSize; i++) {
+//        for (int j = 0; j < _pileSize; j++) {
+//            if (_pile[i][j] == nullptr) {
+//                continue;
+//            }
+//            TileSet::Tile _tile = *_pile[i][j];
+//
+//            //Check pairs
+//            bool check = false;
+//            for (const auto& it : _pairs) {
+//                if (it.x == i && it.y == j) {
+//                    check = true;
+//                }
+//            }
+//            if (check) {
+//                continue;
+//            }
+//
+//
+//
+//
+//            cugl::Size _size = _tile.getTileTexture()->getSize();
+//
+//            float scale = _tile._scale;
+//            cugl::Vec2 origin(_size.width / 2, _size.height / 2);
+//
+//            //Places tiles bottom left corner of screen
+//            float x = j * (_size.width * scale + 1.0f) + (_size.width * scale / 2);
+//            float y = i * (_size.height * scale + 1.0f) + (_size.height * scale / 2);
+//            cugl::Vec2 pos(x, y);
+//
+//            batch->draw(_tile.getTileTexture(), origin, trans);
+//        }
+//    }
+//}
 
 
 

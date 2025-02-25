@@ -365,13 +365,13 @@ void Hand::updateTilePositions(){
     
     float yPos = 100.0f;
     
-    CULog("Updating tile positions...");
+//    CULog("Updating tile positions...");
     
     for (size_t i = 0; i < _tiles.size(); i++){
         Vec2 newPos(startX + i * tileSpacing, yPos);
         _tiles[i]->pos = newPos;
         
-        CULog("Tile %zu set to position (%f, %f)", i, newPos.x, newPos.y);
+//        CULog("Tile %zu set to position (%f, %f)", i, newPos.x, newPos.y);
     }
 }
 
