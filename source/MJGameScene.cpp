@@ -78,7 +78,6 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets) {
     }
     
     // from the MJPlayer.
-    _player = std::make_shared<Player>();
     _hand = &_player->getHand();
     _hand->init(_tileSet);
     _hand->updateTilePositions();
@@ -122,6 +121,11 @@ void GameScene::update(float timestep) {
         cugl::Vec2 mousePos = cugl::Scene::screenToWorldCoords(cugl::Vec3(prev));
         _player->getHand().clickedTile(mousePos);
         _pile->pairs(mousePos);
+    }
+    if(_input.getKeyPressed() == KeyCode::P && _input.getKeyDown()){
+        CULog("play");
+    } else if (_input.getKeyPressed() == KeyCode::D && _input.getKeyDown()){
+        CULog("discard");
     }
     
     _text->setText(strtool::format("Score: %d", _player->_totalScore));

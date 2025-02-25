@@ -29,13 +29,22 @@ protected:
     /** Whether there was an active button/touch press last frame*/
     bool _prevDown;
 
-protected:
     /** The key for the mouse listeners */
     Uint32 _mouseKey;
+    /** The key for the keyboard listeners */
+    Uint32 _keyboardKey;
     /** The mouse position (for mice-based interfaces) */
     cugl::Vec2 _mousePos;
     /** Whether the (left) mouse button is down */
     bool _mouseDown;
+    /** Whether there is a key down */
+    bool _keyDown;
+    /** Whether a key was pressed last frame */
+    bool _prevKeyDown;
+    /** Key pressed */
+    cugl::KeyCode _keyPressed;
+    /** Previous key presesd */
+    cugl::KeyCode _prevKeyPressed;
     
 #pragma mark Input Control
 public:
@@ -150,6 +159,22 @@ public:
         return _currDown;
     }
     
+    cugl::KeyCode getKeyPressed() const {
+        return _keyPressed;
+    }
+    
+    bool getKeyDown() {
+        return _keyDown;
+    }
+    
+    bool getPrevKeyDown() {
+        return _prevKeyDown;
+    }
+    
+    cugl::KeyCode getPrevKeyPressed() const {
+        return _prevKeyPressed;
+    }
+    
     /** Reads input from player and converts the result into game logic */
     void readInput();
     
@@ -190,6 +215,12 @@ private:
      * @param focus     Whether this device has focus (UNUSED)
      */
     void motionCB(const cugl::MouseEvent& event, const cugl::Vec2 previous, bool focus);
+
+#pragma mark Keyboard Callbacks
+    
+    void keyUpCB(const cugl::KeyEvent& event, bool focus);
+    
+    void keyDownCB(const cugl::KeyEvent& event, bool focus);
 };
 
 #endif /* __MJ_INPUT_CONTROLLER_H__ */
