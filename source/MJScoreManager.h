@@ -31,19 +31,23 @@ public:
 
     int calculateScore();
 
+    void unWildHand(std::vector<std::vector<std::shared_ptr<TileSet::Tile>>> playedHand);
+
     bool isAlreadyPlayed(const std::vector<std::vector<int>>& already_played, const std::vector<int>& vectorized_set);
 
     bool isConsecutive(const std::vector<std::vector<int>>& already_played, const std::vector<int>& vectorized_set);
 
     bool canBePrev(const std::vector<std::shared_ptr<TileSet::Tile>>& prev,const std::vector<std::shared_ptr<TileSet::Tile>>& curr);
 
-    std::vector<std::vector<std::shared_ptr<TileSet::Tile>>> makeKind(const std::vector<std::shared_ptr<TileSet::Tile>>& curr);
+    std::vector<std::shared_ptr<TileSet::Tile>> makeKind(const std::vector<std::shared_ptr<TileSet::Tile>>& curr);
 
-    std::vector<std::vector<std::shared_ptr<TileSet::Tile>>> makeStraight(const std::vector<std::shared_ptr<TileSet::Tile>>& curr);
+    std::vector<std::shared_ptr<TileSet::Tile>> makeStraight(const std::vector<std::shared_ptr<TileSet::Tile>>& curr);
 
     bool canBeKind(const std::vector<std::shared_ptr<TileSet::Tile>>& curr);
 
-    bool hasWilds(const std::vector<std::shared_ptr<TileSet::Tile>>& curr);
+    std::vector<std::shared_ptr<TileSet::Tile>> makeKnownSuits(const std::vector<std::shared_ptr<TileSet::Tile>>& curr);
+
+    int numJacks(const std::vector<std::shared_ptr<TileSet::Tile>>& curr);
 
 };
 
