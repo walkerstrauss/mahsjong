@@ -32,7 +32,7 @@ TileSet::Tile::Tile(const TileSet::Tile::Rank r, const TileSet::Tile::Suit s){
     selected = false;
     selectedInSet = false;
     played = false;
-    
+
 //    pos = Vec2(200, 200); Setting up drawing example, set when in hand and pile sets
     _scale = 0.4;
 }
@@ -105,6 +105,16 @@ void TileSet::generateGrandmaTiles() {
             
             grandmaTiles.push_back(newTile);
         }
+    }
+}
+
+void TileSet::setAllTileTexture(const std::shared_ptr<cugl::AssetManager>& assets){
+    if(deck.size() == 0){
+        CULog("Deck is empty");
+    }
+    for(const auto& it : deck){
+        std::string currTileTexture = it->toString();
+        it->setTexture(assets->get<Texture>(currTileTexture));
     }
 }
 

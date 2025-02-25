@@ -75,6 +75,7 @@ void InputController::dispose() {
  * Updates the input controller for the latest frame.
  */
 void InputController::update() {
+    _prevDown = _currDown;
     _currDown = _mouseDown;
     
     _prevPos = _currPos;
