@@ -95,7 +95,6 @@ void GameScene::reset() {
 void GameScene::update(float timestep) {
     //Reading input
     _input.readInput();
-    
     _player->getHand().updateTilePositions();
     pairs(timestep);
 }

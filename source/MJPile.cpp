@@ -67,17 +67,9 @@ bool Pile::initPile(int size, std::shared_ptr<TileSet> tileSet) {
 
 bool Pile::createPile() {
     _pile.clear();
-    int count = 0;
-    int index = 14; 
-    for (const auto& it : _tileSet->deck) {
-        count++;
-    }
-    CULog("%d\n", count);
-
     //if (!_tileSet->deck.empty()) {
     //    _tileSet->shuffle(); //Shuffle deck
     //}
-
     for (int i = 0; i < _pileSize; i++) { //collect from the deck size^2 tiles and add to the pile
         std::vector<std::shared_ptr<TileSet::Tile>> row; //Row to collect tiles
 
@@ -98,12 +90,6 @@ bool Pile::createPile() {
         }
         _pile.push_back(row); //add tile from deck to pile
     }
-
-    int count2 = 0;
-    for (const auto& it : _tileSet->deck) {
-        count2++;
-    }
-    CULog("%d\n", count2);
     return true;
 }
 

@@ -27,6 +27,7 @@ bool Hand::init(std::shared_ptr<TileSet>& tileSet){
     for(int i = 0; i<14; i++){
         std::shared_ptr<TileSet::Tile> drawnTile = tileSet->deck[i]; // gets the reference to the pointer.
         drawnTile->inHand = true;
+        drawnTile->_scale = 0.2;
         _tiles.push_back(drawnTile);
     }
     
