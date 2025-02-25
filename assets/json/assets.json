@@ -110,20 +110,23 @@
         },
         "wild rank of wild suit": {
             "file": "textures/wild_rank_wild_suit.png"
+        },
+        "grandma text":{
+            "file": "textures/grandma-text.png"
         }
     },
     "fonts":{
         "default":{
             "file": "fonts/_PixelifySans-VariableFont_wght.ttf",
-            "size": 32;
+            "size": 32
         },
         "semi-bold":{
             "file": "fonts/_PixelifySans-SemiBold.ttf",
-            "size": 32;
+            "size": 32
         },
         "bold":{
             "file": "fonts/_PixelifySans-Bold.ttf",
-            "size": 32;
+            "size": 32
         }
     }
 }
