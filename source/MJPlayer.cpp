@@ -364,9 +364,13 @@ void Hand::updateTilePositions(){
   float endX = 896.0f;
   float tileSpacing = (endX-startX) / 13;
   float yPos = 100.0f;
+
+//  CULog("Updating tile positions...");
   for (size_t i = 0; i < _tiles.size(); i++){
     cugl::Vec2 newPos(startX + i * tileSpacing, yPos);
     _tiles[i]->pos = newPos;
+//    CULog("Tile %zu set to position (%f, %f)", i, newPos.x, newPos.y);
+
   }
     
 }
@@ -399,5 +403,17 @@ bool Hand::hasJack(std::vector<std::shared_ptr<TileSet::Tile>> selectedTiles){
     return false;
 }
 
-
+void Hand::clickedTile(Vec2 mousePos) {
+    for (const auto& tile : _tiles) {
+        if (tile) {
+            if (tile->tileRect.contains(mousePos)) {
+                if (tile->selected) {
+                    tile->selected = false;
+                } else {
+                    tile->selected = true;
+                }
+            }
+        }
+    }
+}
 

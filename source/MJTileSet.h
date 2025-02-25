@@ -57,6 +57,8 @@ public:
          * Can be in hand, in pile, or in discarded pile
          */
         bool inPile;
+        cugl::Vec2 pileCoord;
+        
         bool inHand;
         bool discarded;
         
@@ -69,7 +71,9 @@ public:
         
         cugl::Vec2 pos;
         float _scale;
-
+        
+        cugl::Rect tileRect;
+        
     public:
         /**
          * Allocates a tile by setting its number and suit
