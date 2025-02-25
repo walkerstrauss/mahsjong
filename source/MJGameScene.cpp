@@ -120,6 +120,7 @@ void GameScene::update(float timestep) {
     if(_input.didRelease() && !_input.isDown()){
         cugl::Vec2 prev = _input.getPosition(); //Get our mouse posistion
         cugl::Vec2 mousePos = cugl::Scene::screenToWorldCoords(cugl::Vec3(prev));
+        _player->getHand().clickedTile(mousePos);
         _pile->pairs(mousePos);
     }
     
