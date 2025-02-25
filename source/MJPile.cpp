@@ -67,6 +67,15 @@ bool Pile::createPile() {
     //if (!_tileSet->deck.empty()) {
     //    _tileSet->shuffle(); //Shuffle deck
     //}
+    
+    cugl::Size screenSize = cugl::Application::get()->getDisplaySize();
+
+    // to bring tiles closer together and shifting up.
+    float spacingFactor = 0.9;
+    float spacingFactorX = 0.7f;
+    float yShift = 100.0f;
+    
+    
     for (int i = 0; i < _pileSize; i++) { //collect from the deck size^2 tiles and add to the pile
         std::vector<std::shared_ptr<TileSet::Tile>> row; //Row to collect tiles
         for (int j = 0; j < _pileSize; j++) {
@@ -82,10 +91,14 @@ bool Pile::createPile() {
             tile->_scale = 0.2;
             tile->inPile = true;
 
-            float x = j * (_size.width * tile->_scale) + (_size.width * tile->_scale / 2);
+            float x = j * (_size.width * tile->_scale * spacingFactorX) + (_size.width * tile->_scale / 2);
             float y = i * (_size.height * tile->_scale) + (_size.height * tile->_scale / 2);
             
-            tile->pos = cugl::Vec2(x, y);
+            float pileWidth = _pileSize * (_size.width * tile->_scale * spacingFactorX);
+            float pileHeight = _pileSize * (_size.height * tile->_scale);
+            cugl::Vec2 pileOffset((screenSize.width - pileWidth) / 2, (screenSize.height - pileHeight) / 2 + yShift);
+            
+            tile->pos = cugl::Vec2(x * spacingFactor, y * spacingFactor) + pileOffset;
             
             row.push_back(_tileSet->deck[index]);
             index += 1;
