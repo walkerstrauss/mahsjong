@@ -68,27 +68,33 @@ bool Pile::initPile(int size, std::shared_ptr<TileSet> tileSet) {
 bool Pile::createPile() {
     _pile.clear();
     int count = 0;
+    int index = 14; 
     for (const auto& it : _tileSet->deck) {
         count++;
     }
     CULog("%d\n", count);
 
-    if (!_tileSet->deck.empty()) {
-        _tileSet->shuffle(); //Shuffle deck
-    }
+    //if (!_tileSet->deck.empty()) {
+    //    _tileSet->shuffle(); //Shuffle deck
+    //}
 
     for (int i = 0; i < _pileSize; i++) { //collect from the deck size^2 tiles and add to the pile
         std::vector<std::shared_ptr<TileSet::Tile>> row; //Row to collect tiles
 
         for (int j = 0; j < _pileSize; j++) {
 
-            if (_tileSet->deck.empty()) { //If our deck is empty, set the rest of the _pile to be empty
+            if (_tileSet->deck.size() == 14) { //If our deck is empty, set the rest of the _pile to be empty (deck.empty() instead?)
                 row.push_back(nullptr);
                 continue;
             }
-            _tileSet->deck.back()->_scale = 0.2; //Set the scale of tile for the pile
-            row.push_back(_tileSet->deck.back()); //Add from deck to pile
-            _tileSet->deck.pop_back(); //remove from deck
+
+            _tileSet->deck[14]->_scale = 0.2;
+            row.push_back(_tileSet->deck[14]);
+            _tileSet->deck.erase(_tileSet->deck.begin() + 14);
+
+            //_tileSet->deck.back()->_scale = 0.2; //Set the scale of tile for the pile
+            //row.push_back(_tileSet->deck.back()); //Add from deck to pile
+            //_tileSet->deck.pop_back(); //remove from deck
         }
         _pile.push_back(row); //add tile from deck to pile
     }
@@ -112,7 +118,7 @@ std::vector<std::shared_ptr<TileSet::Tile>> Pile::tilesDrawn(int number_of_tiles
 
         if (_pile.empty() || getVisibleSize() == 0) { //If pile ran out of tiles
 
-            if (_tileSet->deck.empty()) { //If we have nothing in our deck, return what we have
+            if (_tileSet->deck.size() == 14) { //If we have nothing in our deck, return what we have
                 return _draw;
             }
             Pile::createPile(); //Otherwise remake the pile

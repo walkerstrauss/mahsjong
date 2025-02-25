@@ -120,7 +120,7 @@ void GameScene::pairs(float dt) {
                 if (mousePos.x >= pos.x - halfWidth && mousePos.x <= pos.x + halfWidth && mousePos.y >= pos.y - halfHeight && mousePos.y <= pos.y + halfHeight) { //If mouse clicked tile
                     
                     int index = 0;
-                    for (const auto& it : _pile->_pairs) {
+                    for (const auto& it : _pile->_pairs) { //Checks whether the tile we selected is already selected. if it is deselect
                         if (it.x == i && it.y == j) {
                             _pile->_pairs.erase(_pile->_pairs.begin() + index);
 
@@ -167,7 +167,7 @@ void GameScene::render() {
 
     Vec2 pos(getSize().width, getSize().height);
     _pile->draw(_batch, getSize(), pos); //Draw the pile
-    if (_pile->getVisibleSize() == 0 && !_tileSet->deck.empty()) { //Only update pile if we still have tiles from deck
+    if (_pile->getVisibleSize() == 0 && _tileSet->deck.size() != 14) { //Only update pile if we still have tiles from deck
         _pile->createPile();
     }
 
