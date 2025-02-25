@@ -82,11 +82,10 @@ bool Pile::createPile() {
             tile->_scale = 0.2;
             tile->inPile = true;
 
-            float x = j * (_size.width * tile->_scale + 1.0f) + (_size.width * tile->_scale / 2);
-            float y = i * (_size.height * tile->_scale + 1.0f) + (_size.height * tile->_scale / 2);
+            float x = j * (_size.width * tile->_scale) + (_size.width * tile->_scale / 2);
+            float y = i * (_size.height * tile->_scale) + (_size.height * tile->_scale / 2);
             
             tile->pos = cugl::Vec2(x, y);
-            CULog("%s", tile->pos.toString().c_str());
             
             row.push_back(_tileSet->deck[index]);
             index += 1;
@@ -154,46 +153,57 @@ std::vector<std::shared_ptr<TileSet::Tile>> Pile::pairTile() {
     return _draw;
 }
 
-///*
-//* Draws the pile, displaying a tile, or an empty spot if the tile is no longer visible
-//*/
-//void Pile::draw(const std::shared_ptr<cugl::graphics::SpriteBatch>& batch, cugl::Size size, cugl::Vec2 position) {
-//
-//    for (int i = 0; i < _pileSize; i++) {
-//        for (int j = 0; j < _pileSize; j++) {
-//            if (_pile[i][j] == nullptr) {
-//                continue;
-//            }
-//            TileSet::Tile _tile = *_pile[i][j];
-//
-//            //Check pairs
-//            bool check = false;
-//            for (const auto& it : _pairs) {
-//                if (it.x == i && it.y == j) {
-//                    check = true;
-//                }
-//            }
-//            if (check) {
-//                continue;
-//            }
-//
-//
-//
-//
-//            cugl::Size _size = _tile.getTileTexture()->getSize();
-//
-//            float scale = _tile._scale;
-//            cugl::Vec2 origin(_size.width / 2, _size.height / 2);
-//
-//            //Places tiles bottom left corner of screen
-//            float x = j * (_size.width * scale + 1.0f) + (_size.width * scale / 2);
-//            float y = i * (_size.height * scale + 1.0f) + (_size.height * scale / 2);
-//            cugl::Vec2 pos(x, y);
-//
-//            batch->draw(_tile.getTileTexture(), origin, trans);
-//        }
-//    }
-//}
+/*
+* Used in update, determines when Player selects pairs
+*/
+
+void Pile::pairs(const cugl::Vec2 mousePos) {
+    for (int i = 0; i < getPileSize(); i++) {//Loop through our pile
+        for (int j = 0; j < getPileSize(); j++) {
+
+            if (_pile[i][j] == nullptr) { //If no longer in pile
+                continue;
+            }
+            TileSet::Tile _tile = *_pile[i][j]; //Collect tile
+
+            cugl::Size _size = _tile.getTileTexture()->getSize(); //Get tile posistion on pile UPDATE IF WE CHANGE HOW IT IS DRAWN
+            float scale = _tile._scale;
+            float x = j * (_size.width * scale + 1.0f) + (_size.width * scale / 2);
+            float y = i * (_size.height * scale + 1.0f) + (_size.height * scale / 2);
+            cugl::Vec2 pos(x, y);
+            float halfWidth = (_size.width * scale) / 2;
+            float halfHeight = (_size.height * scale) / 2;
+
+            if (mousePos.x >= pos.x - halfWidth && mousePos.x <= pos.x + halfWidth && mousePos.y >= pos.y - halfHeight && mousePos.y <= pos.y + halfHeight) { //If mouse clicked tile
+                CULog("on tile");
+                
+                int index = 0;
+                for (const auto& it : _pairs) { //Checks whether the tile we selected is already selected. if it is deselect
+                    if (it.x == i && it.y == j) {
+                        _tile._scale = 0.2;
+                        _pairs.erase(_pairs.begin() + index);
+
+                        return; //If it is already in the pairs, remove it from pairs
+                    }
+                    index += 1;
+                }
+
+                if (_pairs.size() >= 2) { //Do we have a pair selected?
+                    pairTile();
+                    _pairs.clear();
+                }
+                else { //Add path to tile from pile
+                    cugl::Vec2 pilePos(i, j);
+                    _pairs.push_back(pilePos);
+                    _tile._scale = 0.3;
+                }
+                return;
+            }
+        }
+    }
+
+}
+
 
 
 

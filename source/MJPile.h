@@ -62,6 +62,9 @@ public:
 
 	//Draws the pile
 	void draw(const std::shared_ptr<cugl::graphics::SpriteBatch>& batch, cugl::Size size, cugl::Vec2 position);
+    
+    //Checks if a pair was made
+    void pairs(const cugl::Vec2 mousePos);
 
 };
 
