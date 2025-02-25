@@ -163,6 +163,3 @@ void TileSet::draw(const std::shared_ptr<cugl::graphics::SpriteBatch>& batch, cu
 }
 
 
-
-
-

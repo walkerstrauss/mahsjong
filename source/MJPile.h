@@ -20,7 +20,6 @@
 
 class Pile {
 private:
-
 	//Number of possible tiles in pile
 	int _pileSize;
 
@@ -65,7 +64,6 @@ public:
     
     //Checks if a pair was made
     void pairs(const cugl::Vec2 mousePos);
-
 };
 
 #endif /* __MJ_PILE_H__ */

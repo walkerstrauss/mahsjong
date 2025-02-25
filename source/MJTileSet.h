@@ -70,7 +70,7 @@ public:
         cugl::Vec2 pos;
         float _scale;
 
-    public: 
+    public:
         /**
          * Allocates a tile by setting its number and suit
          *
@@ -324,6 +324,8 @@ public:
     }
     
     /**
+     * Sets the texture for all tiles in deck
+     */
      * Setting textures for all tiles in **STARTING** deck
      */
     void setAllTileTexture(const std::shared_ptr<cugl::AssetManager>& assets);

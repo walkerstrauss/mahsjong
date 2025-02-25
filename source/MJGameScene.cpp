@@ -79,6 +79,12 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets) {
         _tileSet->gmaTexture = _gmaLabelTexture;
     }
     
+    // from the MJPlayer.
+    _player = std::make_shared<Player>();
+    _hand = &_player->getHand();
+    _hand->init(_tileSet);
+    _hand->updateTilePositions();
+    
     return true;
 }
 
@@ -142,7 +148,6 @@ void GameScene::render() {
     const std::shared_ptr<Texture> temp = Texture::getBlank();
     _batch->draw(temp, Color4("white"), Rect(Vec2::ZERO,getSize()));
 //    _player->getHand().draw(_batch);
-    
 //    _tileSet->draw(_batch, getSize());
     _batch->draw(temp, Color4("white"), Rect(Vec2::ZERO, getSize()));
     _tileSet->draw(_batch, getSize());
@@ -157,9 +162,3 @@ void GameScene::render() {
 
     _batch->end();
 }
-
-
-
-
-
-

@@ -50,9 +50,8 @@ int Pile::getVisibleSize() {
 /*
 *   Creates a new pile given the size, with tiles drawn from deck
 */
-bool Pile::initPile(int size, std::shared_ptr<TileSet> tileSet) {
+bool Pile::initPile(int size, std::shared_ptr<TileSet> tileSet) {    
     _tileSet = tileSet;
-
     _pileSize = size; //initiate our pile sizes
     _pile.clear(); //Make sure pile is empty
     _draw.clear();
@@ -103,7 +102,6 @@ std::vector<std::shared_ptr<TileSet::Tile>> Pile::tilesDrawn(int number_of_tiles
     _draw.clear(); //We should not be re-drawing tiles from previous plays
 
     for (int x = 0; x < number_of_tiles; x++) { //Collect number_of_tiles from pile, remove from pile and add to draw
-
         if (_pile.empty() || getVisibleSize() == 0) { //If pile ran out of tiles
 
             if (_tileSet->deck.size() == 14) { //If we have nothing in our deck, return what we have
@@ -203,10 +201,3 @@ void Pile::pairs(const cugl::Vec2 mousePos) {
     }
 
 }
-
-
-
-
-
-
-
