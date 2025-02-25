@@ -48,9 +48,6 @@ protected:
     std::shared_ptr<cugl::graphics::Texture> _gmaLabelTexture;
     
     std::shared_ptr<cugl::graphics::TextLayout> _text;
-
-    
-    std::shared_ptr<Player> _player;
     
     Hand* _hand; // pointer to the hand.
     

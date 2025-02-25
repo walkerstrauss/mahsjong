@@ -321,12 +321,10 @@ public:
         wildTiles.erase(wildTiles.begin());
         
         return currTile;
-    }
+    };
     
     /**
      * Sets the texture for all tiles in deck
-     */
-     * Setting textures for all tiles in **STARTING** deck
      */
     void setAllTileTexture(const std::shared_ptr<cugl::AssetManager>& assets);
     
