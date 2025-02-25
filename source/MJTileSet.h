@@ -216,6 +216,8 @@ public:
     
     /** Grandma's favorite tiles */
     std::vector<std::shared_ptr<Tile>> grandmaTiles;
+    /** Reference to texture for grandma tile text */
+    std::shared_ptr<cugl::graphics::Texture> gmaTexture;
     
     /**
      * **VERSION 2 **

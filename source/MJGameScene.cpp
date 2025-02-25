@@ -71,6 +71,8 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets) {
     if (!_gmaLabelTexture){
         CULog("missing gma text");
         return false;
+    } else {
+        _tileSet->gmaTexture = _gmaLabelTexture;
     }
     
     return true;
@@ -141,7 +143,6 @@ void GameScene::render() {
     if (_pile->getVisibleSize() == 0 && _tileSet->deck.size() != 14) { //Only update pile if we still have tiles from deck
         _pile->createPile();
     }
-    _batch->draw(_gmaLabelTexture, Vec2(50.0f, 650.0f), Affine2::ZERO);
 
     _batch->end();
 }
