@@ -12,6 +12,8 @@
 #include <unordered_set>
 #include "MJInputController.h"
 #include "MJTileSet.h"
+
+#include "MJPlayer.h"
 #include "MJPile.h"
 
 /**
@@ -36,6 +38,9 @@ protected:
      * Remember, please use shared pointers for disposable objects to make our lives easier!
      */
     std::shared_ptr<TileSet> _tileSet;
+    /** Reference to player */
+    std::shared_ptr<Player> _player;
+    /** Reference to tile pile */
     std::shared_ptr<Pile> _pile;
     
 public:

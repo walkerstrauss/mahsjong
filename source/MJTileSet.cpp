@@ -32,6 +32,21 @@ TileSet::Tile::Tile(const TileSet::Tile::Rank r, const TileSet::Tile::Suit s){
     selected = false;
     selectedInSet = false;
     played = false;
+
+//    pos = Vec2(200, 200); Setting up drawing example, set when in hand and pile sets
+    _scale = 0.4;
+}
+
+/**
+ * Sets the texture for all tiles in deck
+ */
+void TileSet::setTexture(const std::shared_ptr<cugl::graphics::Texture>& value){
+    Size size = value->getSize();
+    _center = Vec2(size.width/2, size.height/2);
+    
+    for(const auto& it : deck){
+        it->setTileTexture(value);
+    }
 }
 
 /**
