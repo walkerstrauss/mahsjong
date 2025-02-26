@@ -111,11 +111,17 @@ void GameScene::update(float timestep) {
     _player->getHand().updateTilePositions();
     
     //If there was a click we check if it was on a tile in the pile
-    if(_input.didRelease() && !_input.isDown()){
+    if((_input.didRelease() && !_input.isDown())){
         cugl::Vec2 prev = _input.getPosition(); //Get our mouse posistion
         cugl::Vec2 mousePos = cugl::Scene::screenToWorldCoords(cugl::Vec3(prev));
         _player->getHand().clickedTile(mousePos);
-        _pile->pairs(mousePos);
+        _pile->pairs(mousePos, _player);
+    }
+    if(_pile->_pairs.size() == 2 && _player->getHand()._selectedTiles.size() == 2){
+//        CULog("here");
+        cugl::Vec2 prev = _input.getPosition(); //Get our mouse posistion
+        cugl::Vec2 mousePos = cugl::Scene::screenToWorldCoords(cugl::Vec3(prev));
+        _pile->pairs(mousePos, _player);
     }
     if(_input.getKeyPressed() == KeyCode::P && _input.getKeyDown()){
         _player->getHand().playSet();

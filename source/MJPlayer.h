@@ -19,10 +19,6 @@
 
 #include <vector>
 #include <iostream>
-
-
-#include "MJTileSet.h"
-
 /**
  * This is the class intializing all player features and interactions
  *
