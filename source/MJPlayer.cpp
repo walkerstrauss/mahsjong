@@ -393,8 +393,13 @@ void Hand::clickedTile(Vec2 mousePos) {
             if (tile->tileRect.contains(mousePos)) {
                 if (tile->selected) {
                     tile->selected = false;
+                    auto it = std::find(_selectedTiles.begin(), _selectedTiles.end(), tile);
+                    if (it != _selectedTiles.end()) {
+                        _selectedTiles.erase(it);
+                    }
                 } else {
                     tile->selected = true;
+                    _selectedTiles.push_back(tile);
                 }
             }
         }
