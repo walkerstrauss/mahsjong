@@ -73,7 +73,7 @@ bool Pile::createPile() {
     // to bring tiles closer together and shifting up.
     float spacingFactor = 0.9f;
     float spacingFactorX = 0.85f;
-    float yShift = 100.0f;
+    float yShift = 50.0f;
     
     
     for (int i = 0; i < _pileSize; i++) { //collect from the deck size^2 tiles and add to the pile

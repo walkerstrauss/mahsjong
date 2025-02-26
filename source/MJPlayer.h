@@ -182,7 +182,6 @@ public:
 public:
     
     Player() : _hand(this) {}
-    
     /**
      Gets the player's hand.
      */

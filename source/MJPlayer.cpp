@@ -113,24 +113,19 @@ int Hand::countSelectedTiles() {
  TODO: how am I gonna select multiple sets? This function selects a single set and adds to a set of selectedSets. do I unselect immediately?
  */
 bool Hand::makeSet(){
-    
-    // check if each individual set is valid
+    CULog("%d", isSetValid(_selectedTiles));
+    CULog("how many tiles are in the set %lu", _selectedTiles.size());
     if(!isSetValid(_selectedTiles)){
-        
-        // if set is not valid -- empty the set of selected tiles.
-        _selectedTiles.clear();
         return false;
     }
     
-    // marks tiles as selected and selectedInSet
     for (auto& tile : _selectedTiles) {
         tile->selected = true;
         tile->selectedInSet = true;
     }
     
-    // adds sets to the set of selected sets.
     _selectedSets.push_back(_selectedTiles);
-    _selectedTiles.clear(); // ??? I'm not sure if I should clear it here.
+    _selectedTiles.clear();
     
     return true;
 }
@@ -146,6 +141,7 @@ bool Hand::makeSet(){
 bool Hand::playSet(){
     
     // check if there is at least one set.
+    CULog("checking when we play how big the set is: %lu", _selectedSets.size());
     if (_selectedSets.empty()) {
            return false;
        }
@@ -201,7 +197,6 @@ bool Hand::isSetValid(const std::vector<std::shared_ptr<TileSet::Tile>>& selecte
     // check if the size of the set is valid.
     // only pairs, 3 or 4-tile sets.
     if(selectedTiles.size() < 2 || selectedTiles.size() > 4){
-        
         return false;
     }
     
@@ -266,26 +261,24 @@ bool Hand::isStraight(const std::vector<std::shared_ptr<TileSet::Tile>>& selecte
     
     
     // check if the selectedTiles are consequitive.
-    int numGaps = 0;
-    for(int i = 0; i<sortedTiles.size() - 1; ++i){
-        std::shared_ptr<TileSet::Tile> tileA = sortedTiles[i];
-        std::shared_ptr<TileSet::Tile> tileC = sortedTiles[i+1];
-        
-        // should not count the wild tiles.
-        if (tileC->getRank() == TileSet::Tile::Rank::WILD_RANK) {
-            
-            break;
+        int numGaps = 0;
+        for(int i = 0; i<sortedTiles.size() - 1; ++i){
+            std::shared_ptr<TileSet::Tile> tileA = sortedTiles[i];
+            std::shared_ptr<TileSet::Tile> tileC = sortedTiles[i+1];
+            // should not count the wild tiles.
+            if (tileC->getRank() == TileSet::Tile::Rank::WILD_RANK) {
+                break;
+                }
+            int gap = static_cast<int>(tileC->getRank()) - static_cast<int>(tileA->getRank());
+            if (gap != 1) {
+                return false;
             }
-        
-        int gap = static_cast<int>(tileC->getRank()) - static_cast<int>(tileA->getRank()) - 1;
-        numGaps = numGaps + gap;
-
-    }
-    
-    // if the number of gaps in bigger than the number of wild tiles -- fail.
-    if(numGaps > wildTiles){
-        return false;
-    }
+            //numGaps = numGaps + gap;
+        }
+        // if the number of gaps in bigger than the number of wild tiles -- fail.
+        //if(numGaps > wildTiles){
+        //    return false;
+        //}
     
     return true;
 }
@@ -358,7 +351,7 @@ void Hand::updateTilePositions(){
   float startX = 140.0f;
   float endX = 936.0f;
   float tileSpacing = (endX-startX) / 13 + 15;
-  float yPos = 100.0f;
+  float yPos = 60.0f;
 
 //  CULog("Updating tile positions...");
   for (size_t i = 0; i < _tiles.size(); i++){

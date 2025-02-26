@@ -124,11 +124,11 @@ void GameScene::update(float timestep) {
         _pile->pairs(mousePos, _player);
     }
     if(_input.getKeyPressed() == KeyCode::P && _input.getKeyDown()){
-        CULog("%lu", _player->getHand()._selectedTiles.size());
         _player->getHand().playSet();
         if(_player->getHand()._tiles.size() < 14){
             _player->getHand().drawFromPile(_pile);
         }
+        
     } else if (_input.getKeyPressed() == KeyCode::D && _input.getKeyDown()){
         if(_player->getHand()._selectedTiles.size() >= 1 && _player->getHand()._selectedTiles.size() <= 4){
             if (!_player->discarding){
@@ -151,9 +151,13 @@ void GameScene::update(float timestep) {
             _player->getHand()._selectedTiles.clear();
         }
     } else if (_input.getKeyPressed() == KeyCode::S && _input.getKeyDown()){
-            _player->getHand().makeSet();
-        }
-        
+            if(!_player->getHand().makeSet()){
+                for(const auto& it : _player->getHand()._selectedTiles){
+                    it->selected = false;
+                }
+                _player->getHand()._selectedTiles.clear();
+                };
+    }
         _text->setText(strtool::format("Score: %d", _player->_totalScore));
         _text->layout();
     }
@@ -175,6 +179,7 @@ void GameScene::render() {
     */
     const std::shared_ptr<Texture> temp = Texture::getBlank();
     _batch->draw(temp, Color4(141,235,207,100), Rect(Vec2::ZERO,getSize()));
+    _batch->draw(temp,Color4(37,41,88,255),Rect(Vec2(0.0f,620),Vec2(getSize())));
 //    _player->getHand().draw(_batch);
 //    _tileSet->draw(_batch, getSize());
     _tileSet->draw(_batch, getSize());
