@@ -180,6 +180,7 @@ public:
     
     int _totalScore = 0;
     int _turnsLeft = 5;
+    bool discarding = false;
 
     
 public:

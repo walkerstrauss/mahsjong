@@ -57,7 +57,7 @@ void LevelScene::render(){
         _batch = graphics::SpriteBatch::alloc();
     }
     _batch->begin(getCamera()->getCombined());
-    _player->getHand().draw(_batch);
+//    _player->getHand().draw(_batch);
     _batch->end();
     
 }

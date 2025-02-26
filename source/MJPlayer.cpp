@@ -41,12 +41,12 @@ bool Hand::init(std::shared_ptr<TileSet>& tileSet){
 void Hand::drawFromPile(std::shared_ptr<Pile>& pile){
     
     // prevent from going over 14 tiles in a hand
-    if(_tiles.size() >= 14){
+    if(_tiles.size() > 14){
          return;
      }
 
     // drawing from the pile.
-    std::vector<std::shared_ptr<TileSet::Tile>>  drawnTiles = pile->tilesDrawn(static_cast<int>(14) - static_cast<int>(_tiles.size()));
+    std::vector<std::shared_ptr<TileSet::Tile>> drawnTiles = pile->tilesDrawn(static_cast<int>(14) - static_cast<int>(_tiles.size()));
     CULog("How many tiles I need %d", static_cast<int>(14) - static_cast<int>(_tiles.size()));
     CULog("How many tiles I draw %zu", drawnTiles.size());
     
@@ -56,7 +56,6 @@ void Hand::drawFromPile(std::shared_ptr<Pile>& pile){
     }
     
     for(auto& tile : drawnTiles){
-        
         tile->inHand = true;
         _tiles.push_back(tile);
     }

@@ -120,9 +120,15 @@ void GameScene::update(float timestep) {
     if(_input.getKeyPressed() == KeyCode::P && _input.getKeyDown()){
         _player->getHand().playSet();
     } else if (_input.getKeyPressed() == KeyCode::D && _input.getKeyDown()){
-        for (auto& tile : _player->getHand()._selectedTiles){
-            _player->getHand().discard(tile);
+        if (!_player->discarding){
+            for (auto& tile : _player->getHand()._selectedTiles){
+                _player->getHand().discard(tile);
+            }
+            _player->getHand().drawFromPile(_pile);
+            _player->discarding = true;
         }
+        
+        
     } else if (_input.getKeyPressed() == KeyCode::S && _input.getKeyDown()){
         _player->getHand().makeSet();
     }
