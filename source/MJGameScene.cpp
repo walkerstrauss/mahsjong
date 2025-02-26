@@ -120,22 +120,33 @@ void GameScene::update(float timestep) {
     if(_input.getKeyPressed() == KeyCode::P && _input.getKeyDown()){
         _player->getHand().playSet();
     } else if (_input.getKeyPressed() == KeyCode::D && _input.getKeyDown()){
-        if (!_player->discarding){
-            for (auto& tile : _player->getHand()._selectedTiles){
-                _player->getHand().discard(tile);
+        if(_player->getHand()._selectedTiles.size() >= 1 && _player->getHand()._selectedTiles.size() <= 4){
+            if (!_player->discarding){
+                _player->discarding = true;
+                for (auto& tile : _player->getHand()._selectedTiles){
+                    _player->getHand().discard(tile);
+                    tile->selected = false;
+                    tile->inHand = false;
+                    tile->inPile = false;
+                }
+                _player->getHand()._selectedTiles.clear();
+                _player->getHand().drawFromPile(_pile);
+                _player->discarding = false;
             }
-            _player->getHand().drawFromPile(_pile);
-            _player->discarding = true;
+        }
+        else{
+            for (auto& tile : _player->getHand()._selectedTiles){
+                tile->selected = false;
+            }
+            _player->getHand()._selectedTiles.clear();
+        }
+    } else if (_input.getKeyPressed() == KeyCode::S && _input.getKeyDown()){
+            _player->getHand().makeSet();
         }
         
-        
-    } else if (_input.getKeyPressed() == KeyCode::S && _input.getKeyDown()){
-        _player->getHand().makeSet();
+        _text->setText(strtool::format("Score: %d", _player->_totalScore));
+        _text->layout();
     }
-    
-    _text->setText(strtool::format("Score: %d", _player->_totalScore));
-    _text->layout();
-}
 
 /**
  * Draws all this to the scene's SpriteBatch.
@@ -153,10 +164,9 @@ void GameScene::render() {
     * TODO: Please fix with appropriate background texture
     */
     const std::shared_ptr<Texture> temp = Texture::getBlank();
-    _batch->draw(temp, Color4("white"), Rect(Vec2::ZERO,getSize()));
+    _batch->draw(temp, Color4(141,235,207,100), Rect(Vec2::ZERO,getSize()));
 //    _player->getHand().draw(_batch);
 //    _tileSet->draw(_batch, getSize());
-    _batch->draw(temp, Color4("white"), Rect(Vec2::ZERO, getSize()));
     _tileSet->draw(_batch, getSize());
 
     _batch->setColor(Color4::GREEN);

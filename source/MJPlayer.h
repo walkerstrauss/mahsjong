@@ -91,7 +91,7 @@ public:
      
      returns true if the discard was sucessful, and false otherwise.
      */
-    bool discard(std::shared_ptr<TileSet::Tile> tile);
+    void discard(std::shared_ptr<TileSet::Tile> tile);
     
 
     /**

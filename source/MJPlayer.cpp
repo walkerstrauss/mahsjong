@@ -69,11 +69,11 @@ void Hand::drawFromPile(std::shared_ptr<Pile>& pile){
  
  TODO: should I rewrite it to discard selected sets of tiles, instead of individual tiles?
  */
-bool Hand::discard(std::shared_ptr<TileSet::Tile> tile){
+void Hand::discard(std::shared_ptr<TileSet::Tile> tile){
     
     // can discard up to 5 tiles per turn
-    if(!tile || _discardCount >= 5){
-        return false;
+    if(!tile || _selectedTiles.size() >= 5){
+        CULog("Cannot discard more than 5 tiles or invalid tiles");
     }
     
     // iterate over the set of tiles, and erase one.
@@ -86,16 +86,11 @@ bool Hand::discard(std::shared_ptr<TileSet::Tile> tile){
             
             _tiles.erase(it);
             _discardCount++;
-            
-            return true;
-            
+                        
         } else {
-            
             ++it;
         }
     }
-    
-    return false;
 }
 
 

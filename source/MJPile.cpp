@@ -123,7 +123,11 @@ std::vector<std::shared_ptr<TileSet::Tile>> Pile::tilesDrawn(int number_of_tiles
         } else {
             for (int i = 0; i < _pileSize; i++) { //Find the first available non null tile in pile and add to draw
                 for (int j = 0; j < _pileSize; j++) {
-                    if (_pile[i][j] != nullptr) {
+                    if (_pile[i][j] != nullptr && _draw.size() < number_of_tiles) {
+                        _pile[i][j]->inPile = false;
+                        _pile[i][j]->inPile = true;
+                        _pile[i][j]->selected = false;
+
                         _draw.push_back(_pile[i][j]);
                         _pile[i][j] = nullptr;
                     }
