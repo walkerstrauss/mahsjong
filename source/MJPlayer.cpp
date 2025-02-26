@@ -185,6 +185,7 @@ bool Hand::playSet(){
     
     //update the total score for the level. 
     _player->_totalScore+=_score;
+    _playedSets.clear();
     return true;
 }
 
