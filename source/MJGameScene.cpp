@@ -124,7 +124,11 @@ void GameScene::update(float timestep) {
         _pile->pairs(mousePos, _player);
     }
     if(_input.getKeyPressed() == KeyCode::P && _input.getKeyDown()){
+        CULog("%lu", _player->getHand()._selectedTiles.size());
         _player->getHand().playSet();
+        if(_player->getHand()._tiles.size() < 14){
+            _player->getHand().drawFromPile(_pile);
+        }
     } else if (_input.getKeyPressed() == KeyCode::D && _input.getKeyDown()){
         if(_player->getHand()._selectedTiles.size() >= 1 && _player->getHand()._selectedTiles.size() <= 4){
             if (!_player->discarding){
