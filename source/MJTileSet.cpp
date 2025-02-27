@@ -32,22 +32,7 @@ TileSet::Tile::Tile(const TileSet::Tile::Rank r, const TileSet::Tile::Suit s){
     selected = false;
     selectedInSet = false;
     played = false;
-
-//    pos = Vec2(200, 200); Setting up drawing example, set when in hand and pile sets
-//    _scale = 0.4;
 }
-
-/**
- * Sets the texture for all tiles in deck
- */
-//void TileSet::setTexture(const std::shared_ptr<cugl::graphics::Texture>& value){
-//    Size size = value->getSize();
-//    _center = Vec2(size.width/2, size.height/2);
-//    
-//    for(const auto& it : deck){
-//        it->setTexture(value);
-//    }
-//}
 
 /**
  * Initializes the **STARTING** representation of the deck.
@@ -147,13 +132,6 @@ void TileSet::draw(const std::shared_ptr<cugl::graphics::SpriteBatch>& batch, cu
         Size textureSize(350.0, 415.0);
         Vec2 rectOrigin(pos - (textureSize * curr._scale)/2);
         it->tileRect = cugl::Rect(rectOrigin, textureSize * curr._scale);
-
-//        batch->setColor(Color4("red"));
-//        batch->fill(it->tileRect);
-        
-//        if(curr.inHand){
-//            CULog("%s", curr.pos.toString().c_str());
-//        }
         
         batch->draw(curr.getTileTexture(), origin, trans);
     }
