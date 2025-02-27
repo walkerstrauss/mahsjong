@@ -122,12 +122,21 @@ void GameScene::update(float timestep) {
         cugl::Vec2 mousePos = cugl::Scene::screenToWorldCoords(cugl::Vec3(prev));
         _pile->pairs(mousePos, _player);
     }
-    
-    // Handle keyboard input
-    if(_input.getKeyPressed() == KeyCode::P && _input.getKeyDown()) {
-        _player->getHand().playSet();
-        // Play selected sets
+    if(_input.getKeyPressed() == KeyCode::P && _input.getKeyDown()){
+        _player->getHand().playSet(_tileSet);
+
         if(_player->getHand()._tiles.size() < 14){
+            while(_player->getHand().grandmaToAdd > 0){
+                std::shared_ptr<TileSet::Tile> wildTile = _tileSet->generateWildTile();
+                wildTile->setWildTexture(_assets);
+                wildTile->inHand = true;
+                wildTile->_scale = 0.2;
+                
+                _tileSet->deck.push_back(wildTile);
+                
+                _player->getHand()._tiles.push_back(wildTile);
+                _player->getHand().grandmaToAdd -= 1;
+            }
             _player->getHand().drawFromPile(_pile);
         }
     } else if (_input.getKeyPressed() == KeyCode::D && _input.getKeyDown()){

@@ -41,6 +41,8 @@ TileSet::Tile::Tile(const TileSet::Tile::Rank r, const TileSet::Tile::Suit s){
  * the pile and hand by iterating through the tileSet
  */
 TileSet::TileSet(){
+    rdTileSet.init();
+
     for(int i = 1; i < 4; i++){
         TileSet::Tile::Suit currSuit = static_cast<TileSet::Tile::Suit>(i);
         for(int j = 1; j < 10; j++){
@@ -111,6 +113,11 @@ void TileSet::setAllTileTexture(const std::shared_ptr<cugl::AssetManager>& asset
         std::string currTileTexture = it->toString();
         it->setTexture(assets->get<Texture>(currTileTexture));
     }
+}
+
+void TileSet::Tile::setWildTexture(const std::shared_ptr<cugl::AssetManager>& assets){
+    std::string currTileTexture = (this)->toString();
+    this->setTexture(assets->get<Texture>(currTileTexture));
 }
 
 void TileSet::draw(const std::shared_ptr<cugl::graphics::SpriteBatch>& batch, cugl::Size size){
