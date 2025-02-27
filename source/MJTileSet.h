@@ -103,30 +103,6 @@ public:
         Tile::Suit getSuit() const { return _suit; }
         
         /**
-         * Randomly generates a suit with type Tile::Suit
-         *
-         * Returns suit with type Tile::Suit
-         */
-        static Tile::Suit randomSuit() {
-            cugl::Random rd;
-            rd.init();
-            int randSuit = static_cast<int>(rd.getOpenUint64(0, 4));
-            return static_cast<Tile::Suit>(randSuit);
-        };
-        
-        /**
-         * Randomly generates a rank
-         *
-         * Returns a Tile::Rank
-         */
-        static Tile::Rank randomNumber() {
-            cugl::Random rd;
-            rd.init();
-            int randRank = static_cast<int>(rd.getOpenUint64(1, 11));
-            return static_cast<Tile::Rank>(randRank);
-        };
-        
-        /**
          * Animates the tiles one frame at a time
          *
          * **NOT NECCESSARY FOR DIGITAL PROTOTYPE**
@@ -225,6 +201,8 @@ public:
     /** Reference to texture for grandma tile text */
     std::shared_ptr<cugl::graphics::Texture> gmaTexture;
     
+    cugl::Random rdTileSet;
+    
     /**
      * **VERSION 2 **
      * Wild tile set to draw from
@@ -250,9 +228,8 @@ public:
      * **ALWAYS SHUFFLE BEFORE READING FROM DECK**
      */
     void shuffle() {
-        cugl::Random rd;
-        rd.init();
-        rd.shuffle(deck);
+        rdTileSet.init();
+        rdTileSet.shuffle(deck);
     }
     
     /**
@@ -281,14 +258,12 @@ public:
      * Generates a random wild tile after scoring a grandma tile
      */
     std::shared_ptr<TileSet::Tile> generateWildTile() {
-        cugl::Random rd;
-        rd.init();
-        int rank = static_cast<int>(rd.getOpenUint64(1, 11));
+        rdTileSet.init();
+        int rank = static_cast<int>(rdTileSet.getOpenUint64(1, 11));
         
         std::shared_ptr<Tile> wildTile = std::make_shared<Tile>(static_cast<Tile::Rank>(rank), Tile::Suit::WILD_SUIT);
         wildTile->_id = wildCount;
         wildCount += 1;
-        
         return wildTile;
     }
     
@@ -319,9 +294,8 @@ public:
             throw std::runtime_error("no wild tiles!");
         }
         
-        cugl::Random rd;
-        rd.init();
-        rd.shuffle(wildTiles);
+        rdTileSet.init();
+        rdTileSet.shuffle(wildTiles);
 
         std::shared_ptr<Tile> currTile = wildTiles.front();
         wildTiles.erase(wildTiles.begin());
@@ -338,6 +312,26 @@ public:
      * Draws an individual tile
      */
     void draw(const std::shared_ptr<cugl::graphics::SpriteBatch>& batch, cugl::Size size);
+    
+    /**
+     * Randomly generates a suit with type Tile::Suit
+     *
+     * Returns suit with type Tile::Suit
+     */
+    Tile::Suit randomSuit() {
+        int randSuit = static_cast<int>(rdTileSet.getOpenUint64(0, 4));
+        return static_cast<TileSet::Tile::Suit>(randSuit);
+    };
+    
+    /**
+     * Randomly generates a rank
+     *
+     * Returns a Tile::Rank
+     */
+    Tile::Rank randomNumber() {
+        int randRank = static_cast<int>(rdTileSet.getOpenUint64(1, 11));
+        return static_cast<TileSet::Tile::Rank>(randRank);
+    };
 };
 
 #endif /* __MJ_TILESET_H__ */
