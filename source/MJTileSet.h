@@ -205,6 +205,8 @@ public:
         void setTexture(const std::shared_ptr<cugl::graphics::Texture>& value){
             _texture = value;
         }
+        
+        void setWildTexture(const std::shared_ptr<cugl::AssetManager>& assets);
                 
         std::shared_ptr<cugl::graphics::Texture> getTileTexture(){
             return _texture;

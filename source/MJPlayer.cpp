@@ -47,8 +47,8 @@ void Hand::drawFromPile(std::shared_ptr<Pile>& pile){
 
     // drawing from the pile.
     std::vector<std::shared_ptr<TileSet::Tile>> drawnTiles = pile->tilesDrawn(static_cast<int>(14) - static_cast<int>(_tiles.size()));
-    CULog("How many tiles I need %d", static_cast<int>(14) - static_cast<int>(_tiles.size()));
-    CULog("How many tiles I draw %zu", drawnTiles.size());
+//    CULog("How many tiles I need %d", static_cast<int>(14) - static_cast<int>(_tiles.size()));
+//    CULog("How many tiles I draw %zu", drawnTiles.size());
     
     // if you draw more tiles than you need -- return.
     if(drawnTiles.size() != static_cast<int>(14) - static_cast<int>(_tiles.size())){
@@ -113,8 +113,8 @@ int Hand::countSelectedTiles() {
  TODO: how am I gonna select multiple sets? This function selects a single set and adds to a set of selectedSets. do I unselect immediately?
  */
 bool Hand::makeSet(){
-    CULog("%d", isSetValid(_selectedTiles));
-    CULog("how many tiles are in the set %lu", _selectedTiles.size());
+//    CULog("%d", isSetValid(_selectedTiles));
+//    CULog("how many tiles are in the set %lu", _selectedTiles.size());
     if(!isSetValid(_selectedTiles)){
         return false;
     }
@@ -138,10 +138,10 @@ bool Hand::makeSet(){
  Unselects the tiles.
  Records the score in global variable _score. 
  */
-bool Hand::playSet(){
+bool Hand::playSet(const std::shared_ptr<TileSet>& tileSet){
     
     // check if there is at least one set.
-    CULog("checking when we play how big the set is: %lu", _selectedSets.size());
+//    CULog("checking when we play how big the set is: %lu", _selectedSets.size());
     if (_selectedSets.empty()) {
            return false;
        }
@@ -157,6 +157,12 @@ bool Hand::playSet(){
                 (*it)->played = true;
                 (*it)->inHand = false;
                 (*it)->discarded = false; // because it was played, not discarded.
+                
+                for(const auto& gTile : tileSet->grandmaTiles){
+                    if((*it)->toString() == (*gTile).toString()){
+                        grandmaToAdd += 1;
+                    }
+                }
                 
                 playedSet.push_back(*it);
                 it = _tiles.erase(it);
@@ -262,7 +268,6 @@ bool Hand::isStraight(const std::vector<std::shared_ptr<TileSet::Tile>>& selecte
     
     
     // check if the selectedTiles are consequitive.
-        int numGaps = 0;
         for(int i = 0; i<sortedTiles.size() - 1; ++i){
             std::shared_ptr<TileSet::Tile> tileA = sortedTiles[i];
             std::shared_ptr<TileSet::Tile> tileC = sortedTiles[i+1];

@@ -124,8 +124,21 @@ void GameScene::update(float timestep) {
         _pile->pairs(mousePos, _player);
     }
     if(_input.getKeyPressed() == KeyCode::P && _input.getKeyDown()){
-        _player->getHand().playSet();
+        _player->getHand().playSet(_tileSet);
         if(_player->getHand()._tiles.size() < 14){
+            while(_player->getHand().grandmaToAdd > 0){
+                CULog("Here");
+                std::shared_ptr<TileSet::Tile> wildTile = _tileSet->generateWildTile();
+                wildTile->setWildTexture(_assets);
+                wildTile->inHand = true;
+                wildTile->_scale = 0.2;
+                
+                _tileSet->deck.push_back(wildTile);
+                
+                _player->getHand()._tiles.push_back(wildTile);
+                CULog("%lu", _player->getHand()._tiles.size());
+                _player->getHand().grandmaToAdd -= 1;
+            }
             _player->getHand().drawFromPile(_pile);
         }
         

@@ -128,6 +128,11 @@ void TileSet::setAllTileTexture(const std::shared_ptr<cugl::AssetManager>& asset
     }
 }
 
+void TileSet::Tile::setWildTexture(const std::shared_ptr<cugl::AssetManager>& assets){
+    std::string currTileTexture = (this)->toString();
+    this->setTexture(assets->get<Texture>(currTileTexture));
+}
+
 void TileSet::draw(const std::shared_ptr<cugl::graphics::SpriteBatch>& batch, cugl::Size size){
     for(const auto& it : deck){
         Tile curr = (*it);
