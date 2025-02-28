@@ -3,7 +3,7 @@
 //  Mahsjong
 //
 //  Created by Patrick Choo on 2/18/25.
-//  Modified by Mariia Tiulchenko on 2/22/25.
+//
 
 #ifndef __MJ_MAIN_MENU_H__
 #define __MJ_MAIN_MENU_H__
@@ -11,186 +11,214 @@
 #include <cugl/cugl.h>
 #include <vector>
 #include <iostream>
-
-
 #include "MJTileSet.h"
 #include "MJPile.h"
 #include "MJScoreManager.h"
 
-#include <vector>
-#include <iostream>
 /**
- * This is the class intializing all player features and interactions
- *
- * Note: Since many attributes of this game fall under the same object, we combine
- * the player, scoring, and hand into one class. SUBJECT TO CHANGE, PLEASE
- * CHANGE TO WHATEVER IS MOST CONVENIENT FOR YOU
- *
- * TODO: Please implement all player interactions
- *
+ *This class represents a player in the game
  */
-
-//TODO: change the HAND to be a subclass of the player.
-
 class Player;
 
+/**
+ * This class represents a player's hand
+ */
 class Hand{
     
 private:
-    
-    // score for a turn
+    // Field to keep track of score per turn
     int _score = 0;
-    
-    // number of tiles to discard at once;
+    // Tracks number of cards discarded
     int _discardCount = 0;
-    
-    // numeber of discards per turn;
+    // How many times the player can discard per turn
     int _discardsTurn = 0;
-    
-    // pointer to the player that owns this hand.
+    // Player whose hand this is
     Player* _player;
     
 public:
-
-    
-    // dynamic container of the hand tiles.
+    // The tiles in our hand
     std::vector<std::shared_ptr<TileSet::Tile>> _tiles;
-    
-    // dynamic container of the played sets.
+    // The sets we have made from our hand this turn
     std::vector<std::vector<std::shared_ptr<TileSet::Tile>>> _playedSets;
-    
-    // set of sets of tiles which are selected on-line.
+    // Contains all sets we have made from our hand this turn
     std::vector<std::vector<std::shared_ptr<TileSet::Tile>>> _selectedSets;
-    
-    // set of selected tiles on-line.
+    // Holds all tiles that are selected in our hand
     std::vector<std::shared_ptr<TileSet::Tile>> _selectedTiles;
-    
-    
-public:
-    
-    Hand(Player* player);
-    
-    bool init(std::shared_ptr<TileSet>& tileSet);
-    
-    
-    int getTileCount() const;
-    
+    // Keeps track of which grandma tile we are checking
     int grandmaToAdd;
     
+#pragma mark -
+#pragma mark Constructors
     /**
-     Draws tiles from the pile.
-     @param a pile.
+     * Creates a new hand for the player
+     *
+     * @param player    the player whose hand we are initilaizing
+     */
+    Hand(Player* player);
+    
+    /**
+     * Initializes a new player hand by pulling 14 tiles from the game tileset
+     *
+     * @param tileSet   the tileset to draw from
+     */
+    bool init(std::shared_ptr<TileSet>& tileSet);
+    
+#pragma mark -
+#pragma mark Gameplay Handling
+    /**
+     * Returns the number of tiles in our name
+     */
+    size_t getTileCount() const {
+        return _tiles.size();
+    }
+    
+    /**
+     * Draws how ever many cards we need from the pile
+     *
+     * @param pile      the pile to draw to our hand from
      */
     void drawFromPile(std::shared_ptr<Pile>& pile);
     
     /**
-     Discards a tile from the hand.
-     If there are numerous tiles of the same type -- remove the first occurance. ???
-     
-     returns true if the discard was sucessful, and false otherwise.
+     * Discards a single specified tile from our hand
+     *
+     * @param tile      the tile to discard from out hand
      */
     void discard(std::shared_ptr<TileSet::Tile> tile);
     
-
     /**
-     Player constructs a set to play
-     It must be a valid set.
-     
+     * Method to make a set from your hand and add it to selected sets
+     *
+     * @returns true if successfully made VALID set, and false otherwise
      */
     bool makeSet();
     
     /**
-     Plays a set (from 2 to 4 cards).
-     
-     @return true if a set was played sucessfully and false otherwise.
+     * Method to play a set from your hand (of 2 to 4 cards)
+     *
+     * @return true if a set was played sucessfully and false otherwise.
      */
     bool playSet(const std::shared_ptr<TileSet>& tileSet);
     
     /**
-     Checks if the given set of tiles "selectedTiles" is valid under the game's set of rules.
-     @param setTiles - the tiles to check.
-     @return true if the tiles form a VALID set, and false otherwise.
+     * Checks if the given set of tiles "selectedTiles" is valid under the game's set of rules.
+     *
+     * @param setTiles      the tiles to check.
+     * @return true if the tiles form a VALID set, and false otherwise.
      */
     bool isSetValid(const std::vector<std::shared_ptr<TileSet::Tile>>& selectedTiles);
     
     /**
-     @Return the global variable _playedSets.
+     * Method to get all played sets from hand
+     *
+     * @return a vector of tiles containing the played sets
      */
     const std::vector<std::vector<std::shared_ptr<TileSet::Tile>>>& getPlayedSets() const{
         return _playedSets;
     }
 
     /**
-     TODO: implement this.
+     * Method to rearrange set in your selected sets before playing
      */
     void rearangeSet();
     
     /**
-     Resets for a new turn.
+     * Resets the hand fields to handle a new turn.
      */
     void reset(){
-        
         _discardCount = 0;
         _discardsTurn = 0;
     }
     
     /**
-     Counts the total number of selected tiles.
+     * Counts the total number of selected tiles.
      */
     int countSelectedTiles();
     
-    void clickedTile(const cugl::Vec2 mousePos);
     /**
-     Confirms if a set isStraight.
+     * Handles selection of tiles using information from input event
+     *
+     * @param mousePos      the position of the mouse in this frame
+     */
+    void clickedTile(const cugl::Vec2 mousePos);
+    
+    /**
+     * Confirms if a set isStraight.
+     *
+     * @param selectedTiles     the tiles to be checked for a straight
      */
     bool isStraight(const std::vector<std::shared_ptr<TileSet::Tile>>& selectedTiles);
     
     /**
-     Confirms if a set if of a kind.
+     * Confirms if a set if of a kind.
+     *
+     * @param selectedTiles     the tiles to be checked for a three/four of a kind
      */
     bool isOfaKind(const std::vector<std::shared_ptr<TileSet::Tile>>& selectedTiles);
     
     /**
-     Sorts tiles by Rank in ascending order.
-     @param a vector of selected tiles.
-     @return a vector of tiles.
-     
+     * Method to sort the tiles by Rank in ascending order.
+     *
+     * @param selectedTiles     a vector of selected tiles.
+     * @return a vector of tiles sorted by Rank
      */
     std::vector<std::shared_ptr<TileSet::Tile>> getSortedTiles(const std::vector<std::shared_ptr<TileSet::Tile>>& selectedTiles);
     
-    
+    /**
+     * Updates the position of all tiles in the hand for drawing to the screen and selection detection
+     */
     void updateTilePositions();
     
+    /**
+     * Method to draw the tiles in our hand to the screen (no longer used)
+     *
+     * @param batch     the SpriteBatch to draw the tiles in our hand to
+     */
     void draw(const std::shared_ptr<cugl::graphics::SpriteBatch>& batch);
     
-    
-    // functions for scoring: TODO: not completed. -remove from here once they are completed in the ScoreManager. 
-    
+    /**
+     * Method to check if selected tiles contain a wild card (jack)
+     *
+     * @param selectedTiles     the tiles to be checked for a wild card
+     */
     bool hasJack(std::vector<std::shared_ptr<TileSet::Tile>> selectedTiles);
 };
 
+// Player as subclass of hand for handling individual turns for the player
 class Player {
 private:
-    
+    // The player's hand
     Hand _hand;
   
 public:
-    
+    // The current total score of the player
     int _totalScore = 0;
+    // The number of turns remaining
     int _turnsLeft = 5;
+    // Whether or not we are currently discarding
     bool discarding = false;
 
+#pragma mark -
+#pragma mark Constructors
     
-public:
-    
-    Player() : _hand(this) {}
     /**
-     Gets the player's hand.
+     * Constructs a new player with this hand object
+     */
+    Player() : _hand(this) {}
+    
+#pragma mark -
+#pragma mark Gameplay Handling
+    
+    /**
+     * Gets the player's hand.
      */
     Hand& getHand(){
         return _hand;
     }
     
+    /**
+     * Method to end the player's turn
+     */
     void endTurn(){
         if(_turnsLeft > 0){
             _turnsLeft--;
@@ -198,8 +226,6 @@ public:
         }
     }
 };
-
-
 
 #endif /* __MJ_Player_H__ */
 

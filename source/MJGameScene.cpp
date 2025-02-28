@@ -4,10 +4,10 @@
 //
 //  Created by Patrick Choo on 2/18/25.
 //
+
 #include <cugl/cugl.h>
 #include <iostream>
 #include <sstream>
-
 #include "MJGameScene.h"
 
 using namespace cugl;

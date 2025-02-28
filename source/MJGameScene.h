@@ -7,12 +7,12 @@
 
 #ifndef __MJ_GAME_SCENE_H__
 #define __MJ_GAME_SCENE_H__
+
 #include <cugl/cugl.h>
 #include <vector>
 #include <unordered_set>
 #include "MJInputController.h"
 #include "MJTileSet.h"
-
 #include "MJPlayer.h"
 #include "MJPile.h"
 #include "MJScoreManager.h"

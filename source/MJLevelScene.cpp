@@ -21,9 +21,18 @@ using namespace std;
 
 #define SCENE_HEIGHT 720
 
+/**
+ * This class represents a single level in the game
+ */
 #pragma mark -
 #pragma mark Constructors
 
+/**
+ * Initializes a new level with given asset manager and player
+ *
+ * @param assets    the asset manager for the level
+ * @param player    the player for the game
+ */
 bool LevelScene::init(const std::shared_ptr<AssetManager>& assets, const std::shared_ptr<Player> player){
     if (assets == nullptr){
         return false;
@@ -40,6 +49,9 @@ bool LevelScene::init(const std::shared_ptr<AssetManager>& assets, const std::sh
     return true;
 }
 
+/**
+ * Disposes of all resources for the level
+ */
 void LevelScene::dispose(){
     _player = nullptr;
     _assets = nullptr;
@@ -48,25 +60,20 @@ void LevelScene::dispose(){
 #pragma mark -
 #pragma mark Gameplay Handling
 
+/**
+ * Method to update the level scene
+ */
 void LevelScene::update(float timestep){
     _player->getHand().updateTilePositions();
 }
 
+/**
+ * Method to draw the level to the screen
+ */
 void LevelScene::render(){
     if (!_batch){
         _batch = graphics::SpriteBatch::alloc();
     }
     _batch->begin(getCamera()->getCombined());
-//    _player->getHand().draw(_batch);
     _batch->end();
-    
 }
-
-void LevelScene::discard(){
-    return;
-}
-
-void LevelScene::play(){
-    return;
-}
-
