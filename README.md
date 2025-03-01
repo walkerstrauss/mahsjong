@@ -8,7 +8,6 @@ Reach 20 points before you run out of turns! For each turn you there are three a
 - Consecutive suits (two or more that are strictly ascending from one set to another) -> rescore the second set <br>
 - Mahjong Set (four 3 sets and a pair OR three 4 sets and a pair) -> rescore each set according to its position in played hand (first set * 1, second set * 2, ...)
 <!-- -->
-<br/><br>
 For each turn, you are allowed to play up to 14 tiles that are all apart of a valid mahjong set. You are allowed up to 5 turns and 3 discards with a limit of 5 tiles per discard. If you reach 20 points you win! If you do not reach 20 points by 5 hands, you lose.
 #### Playing on Windows
 The application will build but there is a nullptr error that only occurs when making pairs on a Windows device. 
