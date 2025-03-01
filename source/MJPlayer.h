@@ -16,7 +16,7 @@
 #include "MJScoreManager.h"
 
 /**
- *This class represents a player in the game
+ * This class represents a player in the game
  */
 class Player;
 

@@ -7,17 +7,24 @@
 
 #ifndef __MJ_TILESET_H__
 #define __MJ_TILESET_H__
-
 #include <cugl/cugl.h>
 #include <random>
 
+/**
+ * A class representing all of the tiles in the player's tileset as the game progresses
+ */
 class TileSet {
 public:
+    /**
+     * A class representing a single tile
+     */
     class Tile {
+    private:
+        /** This tile's texture */
+        std::shared_ptr<cugl::graphics::Texture> _texture;
     public:
-        /**
-         * An enum class representing the suit that each tile can possibly have
-         */
+        
+        /** An enum to represent tile suits */
         enum class Suit : int {
             WILD_SUIT,
             BAMBOO,
@@ -25,6 +32,7 @@ public:
             CRAK
         };
         
+        /** An enum to represent tile rank (1-9 + 10 for wild tiles) */
         enum class Rank : int {
             ONE = 1,
             TWO = 2,
@@ -38,43 +46,35 @@ public:
             WILD_RANK = 10
         };
         
-    #pragma mark Tile
-        
-    private:
-        /**
-         * Fields for drawing a tile
-         */
-        std::shared_ptr<cugl::graphics::Texture> _texture;
-        
-    public:
+        /** The tile's rank */
         Tile::Rank _rank;
+        /** The tile's suit */
         Tile::Suit _suit;
-        int _id; // Differentiating duplicate copies of a card from one another; gma's tiles have an _id of -1
-        
-        /**
-         * Fields representing the state of where the current tile is
-         *
-         * Can be in hand, in pile, or in discarded pile
-         */
+        /** Id for differentiating duplicate copies of a card from one another – gma's tiles have an _id of -1 */
+        int _id;
+        /** Whether or not the tile is in the pile */
         bool inPile;
+        /** The position of the tile (row, col) in the pile */
         cugl::Vec2 pileCoord;
-        
+        /** Whether or not the tile is in the player's hand */
         bool inHand;
+        /** Boolean flag for if this tile has been discarded */
         bool discarded;
-        
-        /**
-         * Fields representing the current state of play the tile is in
-         */
-        bool selected; // For when the player clicks on tile
-        bool selectedInSet; // For when the player selects this tile in a valid set
-        bool played; // For when the player plays card
-        
+        /** Whether the player has selected the tile */
+        bool selected;
+        /** Whether the player has selected the tile and it is in a set */
+        bool selectedInSet;
+        /** True if this tile has been played, false otherwise */
+        bool played;
+        /** The tile's position (updated in player and pile methods) */
         cugl::Vec2 pos;
-        float _scale;
-        
+        /** The rectangle representing the tile's position used for selection handling */
         cugl::Rect tileRect;
-        
-    public:
+        /** The scale of the tile */
+        float _scale;
+    
+#pragma mark -
+#pragma mark Tile Constructors
         /**
          * Allocates a tile by setting its number and suit
          *
@@ -85,32 +85,33 @@ public:
          */
         Tile(const Tile::Rank r, const Tile::Suit s);
         
-        
+#pragma mark -
+#pragma mark Tile Gameplay Handling
         /**
-         * Getter for accessing a tile's rank.
+         * Getter for accessing a tile's rank. Tiles with a wild rank returns WILD_RANK
          *
-         * Returns the associated rank for the tile it was called from.
-         * Tiles with a wild rank returns WILD_RANK
+         * @return the associated rank for the tile it was called from.
          */
         Tile::Rank getRank() const { return _rank; }
         
         /**
-         * Getter for accessing a tile's suit.
+         * Getter for accessing a tile's suit. Tiles with a wild suit return WILD_SUIT
          *
-         * Returns the associated suit for the tile it was called from.
-         * Tiles with a wild suit return WILD_SUIT
+         * @return the associated suit for the tile it was called from.
          */
         Tile::Suit getSuit() const { return _suit; }
-        
+
         /**
-         * Animates the tiles one frame at a time
+         * Method to update the tiles
          *
-         * **NOT NECCESSARY FOR DIGITAL PROTOTYPE**
+         * @param timestep      the time since the last update
          */
-        void update(cugl::Size size);
+        void update(float timestep);
         
         /**
          * Returns a string representation for the current tile's rank
+         *
+         * @return a string representing the tile's rank
          */
         std::string toStringRank() const {
             switch(_rank) {
@@ -151,6 +152,8 @@ public:
         
         /**
          * Returns a string representation for the current tile's suit
+         *
+         * @return a string representing the tile's suit
          */
         std::string toStringSuit() const{
             switch(_suit){
@@ -173,29 +176,42 @@ public:
         
         /**
          * Returns the string form of the current tile
+         *
+         * @return a string representing the rank and suit of the tile
          */
         std::string toString() const {
             return toStringRank() + " of " + toStringSuit();
         }
         
+        /**
+         * Sets the texture of this tile
+         *
+         * @param value     the texture to assign to this tile
+         */
         void setTexture(const std::shared_ptr<cugl::graphics::Texture>& value){
             _texture = value;
         }
         
+        /**
+         * Sets the texture of a wild tile
+         *
+         * @param assets    the asset manager to get the texture from
+         */
         void setWildTexture(const std::shared_ptr<cugl::AssetManager>& assets);
                 
+        /**
+         * Method to get the tile texture
+         *
+         * @return the texture of the current tile
+         */
         std::shared_ptr<cugl::graphics::Texture> getTileTexture(){
             return _texture;
         }
     };
-
-    
-#pragma mark The Set
     
 public:
     /** Deck with all of the tiles */
     std::vector<std::shared_ptr<Tile>> deck;
-    
     /** Grandma's favorite tiles */
     std::vector<std::shared_ptr<Tile>> grandmaTiles;
     /** Reference to texture for grandma tile text */
@@ -203,17 +219,19 @@ public:
     
     cugl::Random rdTileSet;
     
-    /**
-     * **VERSION 2 **
-     * Wild tile set to draw from
-     */
+    
+     /** Wild tile set to draw from */
     std::vector<std::shared_ptr<Tile>> wildTiles;
-    
-    int wildCount; //Use this when assigning id's to wild tiles
+    /** Number of wild tiles we have initilalized */
+    int wildCount;
+    /** Number of tiles we have initialized */
     int tileCount;
-    
-    cugl::Vec2 _center; //Center of a tile
+    /** The center of a tile */
+    cugl::Vec2 _center;
 
+#pragma mark -
+#pragma mark Tileset Constructors
+    
     /**
      * Initializes the **STARTING** representation of the deck.
      *
@@ -221,6 +239,9 @@ public:
      * the pile and hand by iterating through the tileSet
      */
     TileSet();
+    
+#pragma mark -
+#pragma mark Tilset Gameplay Handling
     
     /**
      * Shuffles the tileSet for random assignment
@@ -246,16 +267,19 @@ public:
      */
     void generateGrandmaTiles();
     
+    /**
+     * Prints Grandma's favorite tiles to the log
+     */
     void printGrandmaTiles() {
         for(const auto& it : grandmaTiles){
             CULog("%s", it->toString().c_str());
         }
     }
-
     
     /**
-     * **VERSION 1**
      * Generates a random wild tile after scoring a grandma tile
+     *
+     * @return a randomly generated tile
      */
     std::shared_ptr<TileSet::Tile> generateWildTile() {
         rdTileSet.init();
@@ -268,7 +292,6 @@ public:
     }
     
     /**
-     * **VERSION 2**
      * Generates a set of wild tiles
      */
     void generateWildSet() {
@@ -284,8 +307,6 @@ public:
     }
     
     /**
-     * **VERSION 2**
-     *
      * Picks a random tile from the wild tiles set by shuffling then choosing the first element.
      * Removes the chosen wild tile from wild tile set.
      */

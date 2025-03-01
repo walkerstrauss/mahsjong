@@ -11,7 +11,8 @@ using namespace cugl;
 using namespace cugl::graphics;
 using namespace cugl::audio;
 
-#pragma mark Tile
+#pragma mark -
+#pragma mark Tile Constructors
 
 /**
  * Allocates a tile by setting its number and suit
@@ -34,6 +35,8 @@ TileSet::Tile::Tile(const TileSet::Tile::Rank r, const TileSet::Tile::Suit s){
     played = false;
 }
 
+#pragma mark -
+#pragma mark Tileset Constructors
 /**
  * Initializes the **STARTING** representation of the deck.
  *
@@ -42,7 +45,6 @@ TileSet::Tile::Tile(const TileSet::Tile::Rank r, const TileSet::Tile::Suit s){
  */
 TileSet::TileSet(){
     rdTileSet.init();
-
     for(int i = 1; i < 4; i++){
         TileSet::Tile::Suit currSuit = static_cast<TileSet::Tile::Suit>(i);
         for(int j = 1; j < 10; j++){
@@ -59,16 +61,17 @@ TileSet::TileSet(){
     wildCount = 0;
 }
 
+#pragma mark -
+#pragma mark Tileset Gameplay Handling
+
 /**
  * Generates 3 random unique grandma tiles
  */
 void TileSet::generateGrandmaTiles() {
     cugl::Random rd;
     rd.init();
-    
     std::vector<int> ranks;
     std::vector<int> suits;
-    
     float startX = 108.0f;
     float startY = 675.0f;
     float spacing = 60.0f;
@@ -84,7 +87,6 @@ void TileSet::generateGrandmaTiles() {
                 break;
             }
         }
-
         if (!exists) {
             ranks.push_back(rank);
             suits.push_back(suit);
@@ -113,11 +115,6 @@ void TileSet::setAllTileTexture(const std::shared_ptr<cugl::AssetManager>& asset
         std::string currTileTexture = it->toString();
         it->setTexture(assets->get<Texture>(currTileTexture));
     }
-}
-
-void TileSet::Tile::setWildTexture(const std::shared_ptr<cugl::AssetManager>& assets){
-    std::string currTileTexture = (this)->toString();
-    this->setTexture(assets->get<Texture>(currTileTexture));
 }
 
 void TileSet::draw(const std::shared_ptr<cugl::graphics::SpriteBatch>& batch, cugl::Size size){
@@ -159,6 +156,14 @@ void TileSet::draw(const std::shared_ptr<cugl::graphics::SpriteBatch>& batch, cu
     trans.translate(pos);
     
     batch->draw(gmaTexture, origin, trans);
+}
+
+#pragma mark -
+#pragma mark Tile Gameplay Handling
+
+void TileSet::Tile::setWildTexture(const std::shared_ptr<cugl::AssetManager>& assets){
+    std::string currTileTexture = (this)->toString();
+    this->setTexture(assets->get<Texture>(currTileTexture));
 }
 
 
