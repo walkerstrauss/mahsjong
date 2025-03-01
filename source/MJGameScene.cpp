@@ -38,6 +38,10 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets) {
         return false;
     }
 
+    // Game Win and Lose bool
+    _gameWin = false;
+    _gameLose = false;
+
     // Start up the input handler
     _assets = assets;
 
@@ -62,6 +66,10 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets) {
     std::string msg = strtool::format("Score: %d", _player->_totalScore);
     _text = TextLayout::allocWithText(msg, assets->get<Font>("pixel32"));
     _text->layout();
+    _win = TextLayout::allocWithText("You Won!\nReset with R", assets->get<Font>("pixel32"));
+    _win->layout();
+    _lose = TextLayout::allocWithText("You Lost!\nReset with R", assets->get<Font>("pixel32"));
+    _lose->layout();
     _tileSet->setAllTileTexture(assets);
     _pile = std::make_shared<Pile>(); //Init our pile
     _pile->initPile(5, _tileSet);
@@ -94,6 +102,9 @@ void GameScene::dispose() {
  * TODO: Please dispose or reset all of the objects you implement in this method when game is over
  */
 void GameScene::reset() {
+    _gameLose = false;
+    _gameWin = false;
+    init(_assets);
     return;
 }
 
@@ -108,6 +119,15 @@ void GameScene::update(float timestep) {
     //Reading input
     _input.readInput();
     _input.update();
+    if (_input.getKeyPressed() == KeyCode::R && _input.getKeyDown()) {
+        reset();
+    }
+
+    //Win or lose?
+    if (_gameLose || _gameWin) {
+        return;
+    }
+
     _player->getHand().updateTilePositions();
     
     //If there was a click we check if it was on a tile in the pile
@@ -171,6 +191,15 @@ void GameScene::update(float timestep) {
     }
         _text->setText(strtool::format("Score: %d", _player->_totalScore));
         _text->layout();
+
+        //Win or Lose
+        if (_player->_totalScore >= 20) {
+            _gameWin = true;
+        }
+        else if (_player->_turnsLeft <= 0 && _gameWin != true) {
+            _gameLose = true;
+        }
+
     }
 
 /**
@@ -202,6 +231,24 @@ void GameScene::render() {
     if (_pile->getVisibleSize() == 0 && _tileSet->deck.size() != 14) { //Only update pile if we still have tiles from deck
         _pile->createPile();
     }
+
+    if (_gameWin) {
+        _batch->setColor(Color4::BLUE);
+        Affine2 trans;
+        trans.scale(4);
+        trans.translate(getSize().width / 2 - 2 * _win->getBounds().size.width, getSize().height / 2 - _win->getBounds().size.height);
+        _batch->drawText(_win, trans);
+    }
+    else if (_gameLose) {
+        _batch->setColor(Color4::RED);
+        //_batch->drawText(_lose, Vec2((getSize().width) / 2 - _lose->getBounds().size.height, getSize().height / 2));
+        Affine2 trans;
+        trans.scale(4);
+        trans.translate(getSize().width / 2 - 2 * _lose->getBounds().size.width, getSize().height / 2 - _lose->getBounds().size.height);
+        _batch->drawText(_lose, trans);
+
+    }
+
 
     _batch->end();
 }

@@ -184,7 +184,7 @@ bool Hand::playSet(const std::shared_ptr<TileSet>& tileSet){
         }
     
     _selectedSets.clear();
-        
+    
     //count the score for the turn.
     ScoreManager scoreManager(_playedSets);
     _score = scoreManager.calculateScore();
@@ -192,6 +192,7 @@ bool Hand::playSet(const std::shared_ptr<TileSet>& tileSet){
     //update the total score for the level. 
     _player->_totalScore+=_score;
     _playedSets.clear();
+    _player->endTurn();
     return true;
 }
 

@@ -51,7 +51,10 @@ protected:
     
     Hand* _hand; // pointer to the hand.
     
-    
+    std::shared_ptr<cugl::graphics::TextLayout> _win;
+    std::shared_ptr<cugl::graphics::TextLayout> _lose;
+    bool _gameWin;
+    bool _gameLose;
         
     
 public:
