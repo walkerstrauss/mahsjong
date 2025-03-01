@@ -51,7 +51,7 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets) {
     
     // Initialize tile set
     _tileSet = std::make_shared<TileSet>();
-    _tileSet->shuffle();
+//    _tileSet->shuffle();
     
     // Initialize the player
     _player = std::make_shared<Player>();
@@ -65,8 +65,7 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets) {
     _win->layout();
     _lose = TextLayout::allocWithText("You Lost!\nReset with R", assets->get<Font>("pixel32"));
     _lose->layout();
-    _scoreText = TextLayout::allocWithText(msg, assets->get<Font>("pixel32"));
-    _scoreText->layout();
+
     _tileSet->setAllTileTexture(assets);
     _pile = std::make_shared<Pile>(); //Init our pile
     _pile->initPile(5, _tileSet);
@@ -196,16 +195,8 @@ void GameScene::update(float timestep) {
         else if (_player->_turnsLeft <= 0 && _gameWin != true) {
             _gameLose = true;
         }
-
-        // Select a set
-        if(!_player->getHand().makeSet()){
-            for(const auto& it : _player->getHand()._selectedTiles){
-                it->selected = false;
-            }
-            _player->getHand()._selectedTiles.clear();
-        };
     }
-}
+
 
 /**
  * Draws all this to the scene's SpriteBatch.
@@ -227,7 +218,7 @@ void GameScene::render() {
     
     // Draw score
     _batch->setColor(Color4::GREEN);
-    _batch->drawText(_scoreText,Vec2(getSize().width - _scoreText->getBounds().size.width - 10, getSize().height-_scoreText->getBounds().size.height));
+    _batch->drawText(_text,Vec2(getSize().width - _text->getBounds().size.width - 10, getSize().height-_text->getBounds().size.height));
     
     // Check if we need to flip over next layer of the pile
     if (_pile->getVisibleSize() == 0 && _tileSet->deck.size() != 14) { //Only update pile if we still have tiles from deck
