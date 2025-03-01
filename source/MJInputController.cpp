@@ -49,6 +49,16 @@ bool InputController::init() {
         });
         _active = true;
     }
+    Keyboard* keys = Input::get<Keyboard>();
+    if (keys){
+        _keyboardKey = keys->acquireKey();
+        keys->addKeyUpListener(_keyboardKey,[=,this](const cugl::KeyEvent& event, bool focus){
+            this->keyUpCB(event,focus);
+        });
+        keys->addKeyDownListener(_keyboardKey, [=,this](const cugl::KeyEvent& event, bool focus){
+            this->keyDownCB(event,focus);
+        });
+    }
     
     return _active;
 }
@@ -80,6 +90,11 @@ void InputController::update() {
     
     _prevPos = _currPos;
     _currPos = _mousePos;
+    
+    _prevKeyDown = _keyDown;
+    if (!_keyDown) {
+        _keyPressed = KeyCode::UNKNOWN;
+    }
 }
 
 #pragma mark Mouse Callbacks
@@ -132,11 +147,23 @@ void InputController::motionCB(const cugl::MouseEvent& event, const Vec2 previou
     }
 }
 
+void InputController::keyUpCB(const cugl::KeyEvent& event, bool focus){
+    if (event.keycode == _keyPressed){
+        _keyDown = false;
+        _keyPressed = KeyCode::UNKNOWN;
+    }
+    
+}
+
+void InputController::keyDownCB(const cugl::KeyEvent& event, bool focus){
+    _keyDown = true;
+    _keyPressed = event.keycode;
+}
+
 /**
  * Reads the input for this player and converts the result into game logic
  *
  * TODO: Please add additional input logic as seen necessary
  */
-
 void InputController::readInput(){
 }

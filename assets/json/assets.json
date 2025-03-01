@@ -80,6 +80,45 @@
         },
         "nine of crak": {
             "file": "textures/nine_of_crak.png"
+        },
+        "one of wild suit": {
+            "file": "textures/wild_1.png"
+        },
+        "two of wild suit": {
+            "file": "textures/wild_2.png"
+        },
+        "three of wild suit": {
+            "file": "textures/wild_3.png"
+        },
+        "four of wild suit": {
+            "file": "textures/wild_4.png"
+        },
+        "five of wild suit": {
+            "file": "textures/wild_5.png"
+        },
+        "six of wild suit": {
+            "file": "textures/wild_6.png"
+        },
+        "seven of wild suit": {
+            "file": "textures/wild_7.png"
+        },
+        "eight of wild suit": {
+            "file": "textures/wild_8.png"
+        },
+        "nine of wild suit" : {
+            "file": "textures/wild_9.png"
+        },
+        "wild rank of wild suit": {
+            "file": "textures/wild_rank_wild_suit.png"
+        },
+        "grandma text":{
+            "file": "textures/grandma-text.png"
+        }
+    },
+    "fonts": {
+        "pixel32": {
+            "file":     "LightPixel7.ttf",
+            "size":     32
         }
     }
 }

@@ -18,9 +18,9 @@
  * TODO: Please implement pile functionality
  */
 
+class Player;
 class Pile {
 private:
-
 	//Number of possible tiles in pile
 	int _pileSize;
 
@@ -36,7 +36,10 @@ public:
 	std::shared_ptr<TileSet> _tileSet;
 
 	//Stores the location of our pair in the pile
-	std::vector<cugl::Vec2> _pairs;
+    std::vector<std::shared_ptr<TileSet::Tile>> _pairs;
+    
+    //Stores the next index to add to the pile
+    int index = 14;
 
 public:
 
@@ -55,11 +58,13 @@ public:
 	std::vector<std::shared_ptr<TileSet::Tile>> tilesDrawn(int number_of_tiles);
 
 	//Return a vector of tiles that were selected as a pair
-	std::vector<std::shared_ptr<TileSet::Tile>> pairTile();
+	std::vector<std::shared_ptr<TileSet::Tile>> pairTile(const std::shared_ptr<Player>& player);
 
 	//Draws the pile
 	void draw(const std::shared_ptr<cugl::graphics::SpriteBatch>& batch, cugl::Size size, cugl::Vec2 position);
-
+    
+    //Checks if a pair was made
+    void pairs(const cugl::Vec2 mousePos, const std::shared_ptr<Player>& player);
 };
 
 #endif /* __MJ_PILE_H__ */

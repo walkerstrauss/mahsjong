@@ -11,7 +11,8 @@ using namespace cugl;
 using namespace cugl::graphics;
 using namespace cugl::audio;
 
-#pragma mark Tile
+#pragma mark -
+#pragma mark Tile Constructors
 
 /**
  * Allocates a tile by setting its number and suit
@@ -32,23 +33,10 @@ TileSet::Tile::Tile(const TileSet::Tile::Rank r, const TileSet::Tile::Suit s){
     selected = false;
     selectedInSet = false;
     played = false;
-
-//    pos = Vec2(200, 200); Setting up drawing example, set when in hand and pile sets
-    _scale = 0.4;
 }
 
-/**
- * Sets the texture for all tiles in deck
- */
-//void TileSet::setTexture(const std::shared_ptr<cugl::graphics::Texture>& value){
-//    Size size = value->getSize();
-//    _center = Vec2(size.width/2, size.height/2);
-//    
-//    for(const auto& it : deck){
-//        it->setTexture(value);
-//    }
-//}
-
+#pragma mark -
+#pragma mark Tileset Constructors
 /**
  * Initializes the **STARTING** representation of the deck.
  *
@@ -56,6 +44,7 @@ TileSet::Tile::Tile(const TileSet::Tile::Rank r, const TileSet::Tile::Suit s){
  * the pile and hand by iterating through the tileSet
  */
 TileSet::TileSet(){
+    rdTileSet.init();
     for(int i = 1; i < 4; i++){
         TileSet::Tile::Suit currSuit = static_cast<TileSet::Tile::Suit>(i);
         for(int j = 1; j < 10; j++){
@@ -68,9 +57,12 @@ TileSet::TileSet(){
             }
         }
     }
-    
+    generateGrandmaTiles();
     wildCount = 0;
 }
+
+#pragma mark -
+#pragma mark Tileset Gameplay Handling
 
 /**
  * Generates 3 random unique grandma tiles
@@ -78,9 +70,11 @@ TileSet::TileSet(){
 void TileSet::generateGrandmaTiles() {
     cugl::Random rd;
     rd.init();
-    
     std::vector<int> ranks;
     std::vector<int> suits;
+    float startX = 108.0f;
+    float startY = 675.0f;
+    float spacing = 60.0f;
 
     while (ranks.size() < 3) {
         int rank = static_cast<int>(rd.getOpenUint64(1, 9));
@@ -93,7 +87,6 @@ void TileSet::generateGrandmaTiles() {
                 break;
             }
         }
-
         if (!exists) {
             ranks.push_back(rank);
             suits.push_back(suit);
@@ -103,6 +96,8 @@ void TileSet::generateGrandmaTiles() {
                 static_cast<TileSet::Tile::Suit>(suit)
             );
             
+            newTile->pos = Vec2(startX + ranks.size() * spacing, startY);
+            newTile->_scale = 0.2f;
             grandmaTiles.push_back(newTile);
         }
     }
@@ -116,26 +111,59 @@ void TileSet::setAllTileTexture(const std::shared_ptr<cugl::AssetManager>& asset
         std::string currTileTexture = it->toString();
         it->setTexture(assets->get<Texture>(currTileTexture));
     }
+    for(const auto& it: grandmaTiles){
+        std::string currTileTexture = it->toString();
+        it->setTexture(assets->get<Texture>(currTileTexture));
+    }
 }
 
 void TileSet::draw(const std::shared_ptr<cugl::graphics::SpriteBatch>& batch, cugl::Size size){
     for(const auto& it : deck){
         Tile curr = (*it);
-        if(curr.discarded){
+        if(!curr.inHand && !curr.inPile){
             continue;
         }
         Vec2 pos = curr.pos;
-        Vec2 origin = _center;
+        if(it->selected){
+            pos.y = curr.pos.y + 10;
+        }
+        Vec2 origin = Vec2(curr.getTileTexture()->getSize().width/2, curr.getTileTexture()->getSize().height/2);
         
         Affine2 trans;
-        trans.translate(pos);
         trans.scale(curr._scale);
+        trans.translate(pos);
+        
+        Size textureSize(350.0, 415.0);
+        Vec2 rectOrigin(pos - (textureSize * curr._scale)/2);
+        it->tileRect = cugl::Rect(rectOrigin, textureSize * curr._scale);
         
         batch->draw(curr.getTileTexture(), origin, trans);
     }
+    for (const auto& it : grandmaTiles){
+        Tile curr = (*it);
+        Vec2 pos = curr.pos;
+        Vec2 origin = Vec2(curr.getTileTexture()->getSize().width/2, curr.getTileTexture()->getSize().height/2);
+        Affine2 trans;
+        trans.scale(curr._scale);
+        trans.translate(pos);
+        
+        batch->draw(curr.getTileTexture(), origin, trans);
+    }
+    Vec2 pos = Vec2(70.0f,675.0f);
+    Vec2 origin = Vec2(gmaTexture->getSize().width/2,gmaTexture->getSize().height/2);
+    Affine2 trans;
+    trans.scale(0.7);
+    trans.translate(pos);
+    
+    batch->draw(gmaTexture, origin, trans);
 }
 
+#pragma mark -
+#pragma mark Tile Gameplay Handling
 
-
+void TileSet::Tile::setWildTexture(const std::shared_ptr<cugl::AssetManager>& assets){
+    std::string currTileTexture = (this)->toString();
+    this->setTexture(assets->get<Texture>(currTileTexture));
+}
 
 
