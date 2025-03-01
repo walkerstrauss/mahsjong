@@ -4,10 +4,10 @@
 //
 //  Created by Patrick Choo on 2/18/25.
 //
+
 #include <cugl/cugl.h>
 #include <iostream>
 #include <sstream>
-
 #include "MJGameScene.h"
 
 using namespace cugl;
@@ -22,13 +22,17 @@ using namespace std;
 // PLEASE ADJUST AS SEEN FIT
 #define SCENE_HEIGHT 720
 
-
 #pragma mark -
 #pragma mark Constructors
 /**
  * Initializes the controller contents, and starts the game
+ *
+ * The constructor does not allocate any objects or memory. This allows
+ * us to have a non-pointer reference to this controller, reducing our memory
+ * allocation. Instead, allocation happens in this method
+ *
+ * @param assets    the asset manager for the game
  */
-
 bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets) {
     // Initialize the scene to a locked height
     if (assets == nullptr) {
@@ -44,21 +48,12 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets) {
 
     // Start up the input handler
     _assets = assets;
-
-    /**
-    * Setting up the background image and constant values
-    * TODO: Please edit scene background and constants as seen fit
-    */
-
-    /**
-    * Setting up objects and textures
-    * TODO: Please intialize objects and their textures
-    */
+    
+    // Initialize tile set
     _tileSet = std::make_shared<TileSet>();
-
-//    _tileSet->setTexture(assets->get<Texture>("tile"));
+    _tileSet->shuffle();
     
-    
+    // Initialize the player
     _player = std::make_shared<Player>();
     _player->getHand().init(_tileSet);
     _player->getHand().updateTilePositions();
@@ -70,6 +65,8 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets) {
     _win->layout();
     _lose = TextLayout::allocWithText("You Lost!\nReset with R", assets->get<Font>("pixel32"));
     _lose->layout();
+    _scoreText = TextLayout::allocWithText(msg, assets->get<Font>("pixel32"));
+    _scoreText->layout();
     _tileSet->setAllTileTexture(assets);
     _pile = std::make_shared<Pile>(); //Init our pile
     _pile->initPile(5, _tileSet);
@@ -78,7 +75,7 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets) {
     
     // Initialize grandma tile label
     _gmaLabelTexture = assets->get<Texture>("grandma text");
-    if (!_gmaLabelTexture){
+    if (!_gmaLabelTexture) {
         CULog("missing gma text");
         return false;
     } else {
@@ -88,6 +85,9 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets) {
     return true;
 }
 
+/**
+ * Disposes of all (non-static) resources allocated to this mode.
+ */
 void GameScene::dispose() {
     if (_active) {
         removeAllChildren();
@@ -99,7 +99,6 @@ void GameScene::dispose() {
 #pragma mark Gameplay Handling
 /**
  * Resets the status of the game so that we can play again
- * TODO: Please dispose or reset all of the objects you implement in this method when game is over
  */
 void GameScene::reset() {
     _gameLose = false;
@@ -112,8 +111,6 @@ void GameScene::reset() {
  * The method to update the game mode
  *
  * @param timestep The amount of time (in seconds) since the last frame
- *
- * TODO: Please implement any gameplay associated with updates
  */
 void GameScene::update(float timestep) {
     //Reading input
@@ -127,7 +124,6 @@ void GameScene::update(float timestep) {
     if (_gameLose || _gameWin) {
         return;
     }
-
     _player->getHand().updateTilePositions();
     
     //If there was a click we check if it was on a tile in the pile
@@ -137,14 +133,16 @@ void GameScene::update(float timestep) {
         _player->getHand().clickedTile(mousePos);
         _pile->pairs(mousePos, _player);
     }
+    
+    // See if we selected a pile tile and/or made a pair
     if(_pile->_pairs.size() == 2 && _player->getHand()._selectedTiles.size() == 2){
-//        CULog("here");
         cugl::Vec2 prev = _input.getPosition(); //Get our mouse posistion
         cugl::Vec2 mousePos = cugl::Scene::screenToWorldCoords(cugl::Vec3(prev));
         _pile->pairs(mousePos, _player);
     }
     if(_input.getKeyPressed() == KeyCode::P && _input.getKeyDown()){
         _player->getHand().playSet(_tileSet);
+
         if(_player->getHand()._tiles.size() < 14){
             while(_player->getHand().grandmaToAdd > 0){
                 std::shared_ptr<TileSet::Tile> wildTile = _tileSet->generateWildTile();
@@ -159,12 +157,12 @@ void GameScene::update(float timestep) {
             }
             _player->getHand().drawFromPile(_pile);
         }
-        
     } else if (_input.getKeyPressed() == KeyCode::D && _input.getKeyDown()){
-        if(_player->getHand()._selectedTiles.size() >= 1 && _player->getHand()._selectedTiles.size() <= 4){
+        // Discard selected cards (up to 4)
+        if (_player->getHand()._selectedTiles.size() >= 1 && _player->getHand()._selectedTiles.size() <= 4) {
             if (!_player->discarding){
                 _player->discarding = true;
-                for (auto& tile : _player->getHand()._selectedTiles){
+                for (auto& tile : _player->getHand()._selectedTiles) {
                     _player->getHand().discard(tile);
                     tile->selected = false;
                     tile->inHand = false;
@@ -174,9 +172,8 @@ void GameScene::update(float timestep) {
                 _player->getHand().drawFromPile(_pile);
                 _player->discarding = false;
             }
-        }
-        else{
-            for (auto& tile : _player->getHand()._selectedTiles){
+        } else {
+            for (auto& tile : _player->getHand()._selectedTiles) {
                 tile->selected = false;
             }
             _player->getHand()._selectedTiles.clear();
@@ -200,34 +197,39 @@ void GameScene::update(float timestep) {
             _gameLose = true;
         }
 
+        // Select a set
+        if(!_player->getHand().makeSet()){
+            for(const auto& it : _player->getHand()._selectedTiles){
+                it->selected = false;
+            }
+            _player->getHand()._selectedTiles.clear();
+        };
     }
+}
 
 /**
  * Draws all this to the scene's SpriteBatch.
  */
-
 void GameScene::render() {
     /**
     * This is the temporary view of our camera. Not supposed to do this.
     * TODO: Please edit camera view appropriately
     */
     _batch->begin(getCamera()->getCombined());
-
-    /**
-    * This is just a temporary texture to test we are in our game
-    * TODO: Please fix with appropriate background texture
-    */
     const std::shared_ptr<Texture> temp = Texture::getBlank();
+    
+    // Draw background and top section
     _batch->draw(temp, Color4(141,235,207,100), Rect(Vec2::ZERO,getSize()));
     _batch->draw(temp,Color4(37,41,88,255),Rect(Vec2(0.0f,620),Vec2(getSize())));
-//    _player->getHand().draw(_batch);
-//    _tileSet->draw(_batch, getSize());
-    _tileSet->draw(_batch, getSize());
-
-    _batch->setColor(Color4::GREEN);
-    _batch->drawText(_text,Vec2(getSize().width - _text->getBounds().size.width - 10,
-                                getSize().height-_text->getBounds().size.height));
     
+    // Draw all tiles in hand, pile and grandma tiles
+    _tileSet->draw(_batch, getSize());
+    
+    // Draw score
+    _batch->setColor(Color4::GREEN);
+    _batch->drawText(_scoreText,Vec2(getSize().width - _scoreText->getBounds().size.width - 10, getSize().height-_scoreText->getBounds().size.height));
+    
+    // Check if we need to flip over next layer of the pile
     if (_pile->getVisibleSize() == 0 && _tileSet->deck.size() != 14) { //Only update pile if we still have tiles from deck
         _pile->createPile();
     }
@@ -248,7 +250,5 @@ void GameScene::render() {
         _batch->drawText(_lose, trans);
 
     }
-
-
     _batch->end();
 }

@@ -10,16 +10,26 @@
 
 /**
  * This is the class handling all scoring in regards to player sets
+ */
+#pragma mark -
+#pragma mark Constructors
+/**
+ * Initializes ScoreManager object handles sets that players play
  *
- * TODO: Please implement scoring functionality
- *
+ * @param played_sets  The vector of tile sets played by the player
  */
 ScoreManager::ScoreManager(const std::vector<std::vector<std::shared_ptr<TileSet::Tile>>>& played_sets) {
     _playedHand = played_sets;
 }
 
+#pragma mark -
+#pragma mark Gameplay Handling
+/**
+ * Method to calculate the score of the played sets
+ *
+ * @return the total score from all the played set
+ */
 int ScoreManager::calculateScore() {
-    //ScoreManager::unWildHand(_playedHand);
     int score = 0;
     std::vector<std::vector<int>> already_played;
     for (const auto& tileSet : _playedHand) {
@@ -47,15 +57,20 @@ int ScoreManager::calculateScore() {
         //double scores set if already played
         if (isAlreadyPlayed(already_played, vectorized_set)) {
             score += tileSet.size();
-        }
-        else {
+        } else {
             already_played.push_back(vectorized_set);
         }
     }
-
     return score;
 }
 
+/**
+ * Method to check if this set has already been played
+ *
+ * @param already_played    vector of sets already played
+ * @param vectorized_set    vector representing the set
+ * @return true if set has already been played, false otherwise
+ */
 bool ScoreManager::isAlreadyPlayed(const std::vector<std::vector<int>>& already_played, const std::vector<int>& vectorized_set) {
     for (const auto& vec : already_played) {
         if (vectorized_set == vec) {
@@ -65,6 +80,11 @@ bool ScoreManager::isAlreadyPlayed(const std::vector<std::vector<int>>& already_
     return false;
 }
 
+/**
+ * Method to convert current played hand to set made up of non-wild tiles
+ *
+ * @param playedHand    the hand played
+ */
 void ScoreManager::unWildHand(std::vector<std::vector<std::shared_ptr<TileSet::Tile>>> playedHand) {
     std::vector<std::vector<std::shared_ptr<TileSet::Tile>>> new_hand;
     std::vector<std::shared_ptr<TileSet::Tile>> new_set;
@@ -101,6 +121,13 @@ void ScoreManager::unWildHand(std::vector<std::vector<std::shared_ptr<TileSet::T
     return;
 }
 
+/**
+ * Method to check if a vector of tiles is consecutive
+ *
+ * @param already_played    vector of sets already played
+ * @param vectorized_set    vector representing the set
+ * @return true if these tiles are consecutive, and false otherwise
+ */
 bool ScoreManager::isConsecutive(const std::vector<std::vector<int>>& already_played, const std::vector<int>& vectorized_set) {
     int length = vectorized_set.size() - 1;
     std::vector<int> before;
@@ -119,6 +146,13 @@ bool ScoreManager::isConsecutive(const std::vector<std::vector<int>>& already_pl
     return false;
 }
 
+/**
+ * Method to check if this set can be the previous set using wild tiles
+ *
+ * @param prev the vector of tiles representing previous set
+ * @param curr the vector of tiles representing current set
+ * @return true if the current set can be the previous set, and false otherwise
+ */
 bool ScoreManager::canBePrev(const std::vector<std::shared_ptr<TileSet::Tile>>& prev, const std::vector<std::shared_ptr<TileSet::Tile>>& curr) {
     bool result = false;
     //previous set, lacking any wild tiles, can easily be vectorized to compare with
@@ -145,20 +179,44 @@ bool ScoreManager::canBePrev(const std::vector<std::shared_ptr<TileSet::Tile>>& 
     return result;
 }
 
+/**
+ * Makes a three or four of a kind from the vector of tiles
+ *
+ * @param curr the vector of tiles representing current set
+ * @return vector of tiles representing a three or four of a kind
+ */
 std::vector<std::shared_ptr<TileSet::Tile>> ScoreManager::makeKind(const std::vector<std::shared_ptr<TileSet::Tile>>& curr) {
     std::vector<std::shared_ptr<TileSet::Tile>> result = makeKnownSuits(curr);
     return result;
 }
 
+/**
+ * Makes a straight from the vector of tiles
+ *
+ * @param curr the vector of tiles representing current set
+ * @return vector of tiles representing a straight
+ */
 std::vector<std::shared_ptr<TileSet::Tile>> ScoreManager::makeStraight(const std::vector<std::shared_ptr<TileSet::Tile>>& curr) {
     std::vector<std::shared_ptr<TileSet::Tile>> result = makeKnownSuits(curr);
     return result;
 }
 
+/**
+ * Method to check if these tiles can be a three or four of a kind
+ *
+ * @param curr   vector of tiles representing current set being scored
+ * @return true if these tiles can be a three or four of a kind, and false otherwise
+ */
 bool ScoreManager::canBeKind(const std::vector<std::shared_ptr<TileSet::Tile>>& curr) {
     return false;
 }
 
+/**
+ * Method that makes known suits for scoring
+ *
+ * @param curr the current set of tiles to score
+ * @return a vector of tiles
+ */
 std::vector<std::shared_ptr<TileSet::Tile>> ScoreManager::makeKnownSuits(const std::vector<std::shared_ptr<TileSet::Tile>>& curr) {
     std::vector<std::shared_ptr<TileSet::Tile>> result;
     TileSet::Tile::Suit suit = TileSet::Tile::Suit::WILD_SUIT;
@@ -178,6 +236,12 @@ std::vector<std::shared_ptr<TileSet::Tile>> ScoreManager::makeKnownSuits(const s
     return result;
 }
 
+/**
+ * Method that returns the number of jacks in the current set
+ *
+ * @param curr  the current vector of tiles being scored
+ * @return the number of jacks in this vector of tiles
+ */
 int ScoreManager::numJacks(const std::vector<std::shared_ptr<TileSet::Tile>>& curr) {
     int tally = 0;
     for (const auto& tile : curr) {

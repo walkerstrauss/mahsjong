@@ -10,6 +10,9 @@
 #include "MJPlayer.h"
 #include <cugl/cugl.h>
 
+/**
+ * This class represents a single level in the game
+ */
 class LevelScene : public cugl::scene2::Scene2 {
 protected:
     /** Asset manager for this game mode */
@@ -27,8 +30,17 @@ public:
      */
     LevelScene() : cugl::scene2::Scene2() {}
     
+    /**
+     * Disposes of all resources for the level
+     */
     void dispose() override;
     
+    /**
+     * Initializes a new level with given asset manager and player
+     *
+     * @param assets    the asset manager for the level
+     * @param player    the player for the game
+     */
     bool init(const std::shared_ptr<cugl::AssetManager>& assets, const std::shared_ptr<Player> player);
 
 #pragma mark -
@@ -38,11 +50,10 @@ public:
      */
     void update(float timestep) override;
     
+    /**
+     * Method to draw the level to the screen
+     */
     void render() override;
-    
-    void discard();
-    
-    void play();
 };
 
 #endif /* __SG_LEVEL_SCENE_H__ */
