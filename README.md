@@ -1,8 +1,8 @@
 # Mah's Jong
 ## 607 Games: Walker Strauss, Patrick Choo, Keqing Jiang, Luna Lu, Tian Jin, Tina Lu, Aiden Keck, Mariia Tiulchenko, Alexander Balako
 
-### Goal 
-#### Reach 20 points before you run out of turns. During each turn you have three actions that you can do: make pairs, discard, or play sets. In order to score points you must play a set/sets of mahjong from your hand. The sets are as follows: three of a kind, a straight with three tiles, and a four of a kind. In each hand you play, you can play up to 14 tiles as long as each tile belongs to a valid set. Points are scored according to the number of tiles played as well as any combo points that are scored along with them. There are currently two combos: 
+#### Goal 
+##### Reach 20 points before you run out of turns. During each turn you have three actions that you can do: make pairs, discard, or play sets. In order to score points you must play a set/sets of mahjong from your hand. The sets are as follows: three of a kind, a straight with three tiles, and a four of a kind. In each hand you play, you can play up to 14 tiles as long as each tile belongs to a valid set. Points are scored according to the number of tiles played as well as any combo points that are scored along with them. There are currently two combos: 
 #### Playing on Windows
 ##### The application will build but there is a nullptr error that only occurs when making pairs on a Windows device. 
 ### Controls
