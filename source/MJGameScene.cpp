@@ -162,15 +162,12 @@ void GameScene::update(float timestep) {
         }
     } else if (_input.getKeyPressed() == KeyCode::S && _input.getKeyDown()){
         // Select a set
-            if(!_player->getHand().makeSet()){
-                for(const auto& it : _player->getHand()._selectedTiles){
-                    it->selected = false;
-                }
-                _player->getHand()._selectedTiles.clear();
-            };
-    } else if (_input.getKeyPressed() == KeyCode::R && _input.getKeyDown()) {
-        // Reset the game
-        reset();
+        if(!_player->getHand().makeSet()){
+            for(const auto& it : _player->getHand()._selectedTiles){
+                it->selected = false;
+            }
+            _player->getHand()._selectedTiles.clear();
+        };
     }
     
     // Update score text
