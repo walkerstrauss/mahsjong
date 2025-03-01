@@ -11,7 +11,8 @@ using namespace cugl;
 using namespace cugl::graphics;
 using namespace cugl::audio;
 
-#pragma mark Tile
+#pragma mark -
+#pragma mark Tile Constructors
 
 /**
  * Allocates a tile by setting its number and suit
@@ -32,23 +33,10 @@ TileSet::Tile::Tile(const TileSet::Tile::Rank r, const TileSet::Tile::Suit s){
     selected = false;
     selectedInSet = false;
     played = false;
-
-//    pos = Vec2(200, 200); Setting up drawing example, set when in hand and pile sets
-//    _scale = 0.4;
 }
 
-/**
- * Sets the texture for all tiles in deck
- */
-//void TileSet::setTexture(const std::shared_ptr<cugl::graphics::Texture>& value){
-//    Size size = value->getSize();
-//    _center = Vec2(size.width/2, size.height/2);
-//    
-//    for(const auto& it : deck){
-//        it->setTexture(value);
-//    }
-//}
-
+#pragma mark -
+#pragma mark Tileset Constructors
 /**
  * Initializes the **STARTING** representation of the deck.
  *
@@ -57,7 +45,6 @@ TileSet::Tile::Tile(const TileSet::Tile::Rank r, const TileSet::Tile::Suit s){
  */
 TileSet::TileSet(){
     rdTileSet.init();
-
     for(int i = 1; i < 4; i++){
         TileSet::Tile::Suit currSuit = static_cast<TileSet::Tile::Suit>(i);
         for(int j = 1; j < 10; j++){
@@ -74,16 +61,17 @@ TileSet::TileSet(){
     wildCount = 0;
 }
 
+#pragma mark -
+#pragma mark Tileset Gameplay Handling
+
 /**
  * Generates 3 random unique grandma tiles
  */
 void TileSet::generateGrandmaTiles() {
     cugl::Random rd;
     rd.init();
-    
     std::vector<int> ranks;
     std::vector<int> suits;
-    
     float startX = 108.0f;
     float startY = 675.0f;
     float spacing = 60.0f;
@@ -99,7 +87,6 @@ void TileSet::generateGrandmaTiles() {
                 break;
             }
         }
-
         if (!exists) {
             ranks.push_back(rank);
             suits.push_back(suit);
@@ -130,11 +117,6 @@ void TileSet::setAllTileTexture(const std::shared_ptr<cugl::AssetManager>& asset
     }
 }
 
-void TileSet::Tile::setWildTexture(const std::shared_ptr<cugl::AssetManager>& assets){
-    std::string currTileTexture = (this)->toString();
-    this->setTexture(assets->get<Texture>(currTileTexture));
-}
-
 void TileSet::draw(const std::shared_ptr<cugl::graphics::SpriteBatch>& batch, cugl::Size size){
     for(const auto& it : deck){
         Tile curr = (*it);
@@ -154,13 +136,6 @@ void TileSet::draw(const std::shared_ptr<cugl::graphics::SpriteBatch>& batch, cu
         Size textureSize(350.0, 415.0);
         Vec2 rectOrigin(pos - (textureSize * curr._scale)/2);
         it->tileRect = cugl::Rect(rectOrigin, textureSize * curr._scale);
-
-//        batch->setColor(Color4("red"));
-//        batch->fill(it->tileRect);
-        
-//        if(curr.inHand){
-//            CULog("%s", curr.pos.toString().c_str());
-//        }
         
         batch->draw(curr.getTileTexture(), origin, trans);
     }
@@ -181,6 +156,14 @@ void TileSet::draw(const std::shared_ptr<cugl::graphics::SpriteBatch>& batch, cu
     trans.translate(pos);
     
     batch->draw(gmaTexture, origin, trans);
+}
+
+#pragma mark -
+#pragma mark Tile Gameplay Handling
+
+void TileSet::Tile::setWildTexture(const std::shared_ptr<cugl::AssetManager>& assets){
+    std::string currTileTexture = (this)->toString();
+    this->setTexture(assets->get<Texture>(currTileTexture));
 }
 
 

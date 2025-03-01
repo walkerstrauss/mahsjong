@@ -3,29 +3,36 @@
 //  Mahsjong
 //
 //  Created by Patrick Choo on 2/18/25.
+//
 
 #include "MJPlayer.h"
 
 using namespace cugl;
 
 /**
- * This is the class intializing all player features and interactions
- *
- * TODO: Please implement all player interactions
- *
+ * This class represents a player's hand
  */
+#pragma mark -
+#pragma mark Constructors
 
+/**
+ * Creates a new hand for the player
+ *
+ * @param player    the player whose hand we are initilaizing
+ */
 Hand::Hand(Player* player) {
     _player = player;
 }
 
 /**
- initializes the hand with 14 cards
+ * Initializes a new player hand by pulling 14 tiles from the game tileset
+ *
+ * @param tileSet   the tileset to draw from
  */
 bool Hand::init(std::shared_ptr<TileSet>& tileSet){
     // draw from the deck
     for(int i = 0; i<14; i++){
-        std::shared_ptr<TileSet::Tile> drawnTile = tileSet->deck[i]; // gets the reference to the pointer.
+        std::shared_ptr<TileSet::Tile> drawnTile = tileSet->deck[i];
         drawnTile->inHand = true;
         drawnTile->_scale = 0.2;
         _tiles.push_back(drawnTile);
@@ -34,69 +41,58 @@ bool Hand::init(std::shared_ptr<TileSet>& tileSet){
     return true;
 }
 
+#pragma mark -
+#pragma mark Gameplay Handling
+
 /**
- This draws from the pile.
- It updates the global attributes inHand and _tiles.
+ * Draws how ever many cards we need from the pile
+ *
+ * @param pile      the pile to draw to our hand from
  */
 void Hand::drawFromPile(std::shared_ptr<Pile>& pile){
-    
-    // prevent from going over 14 tiles in a hand
     if(_tiles.size() > 14){
-         return;
+         return; // Never draw if hand is full
      }
 
-    // drawing from the pile.
     std::vector<std::shared_ptr<TileSet::Tile>> drawnTiles = pile->tilesDrawn(static_cast<int>(14) - static_cast<int>(_tiles.size()));
-//    CULog("How many tiles I need %d", static_cast<int>(14) - static_cast<int>(_tiles.size()));
-//    CULog("How many tiles I draw %zu", drawnTiles.size());
     
-    // if you draw more tiles than you need -- return.
     if(drawnTiles.size() != static_cast<int>(14) - static_cast<int>(_tiles.size())){
-        return;
+        return; // Stop drawing when your hand is full
     }
     
     for(auto& tile : drawnTiles){
         tile->inHand = true;
-        _tiles.push_back(tile);
+        _tiles.push_back(tile); // Add drawn tiles to hand
     }
  }
 
 /**
- A discard method which allows to discard up to 5 tiles per turn.
- 
- TODO: does not track the number of discard per level.
- TODO: is not responible for discarding cards when drawing from pile.
- 
- TODO: should I rewrite it to discard selected sets of tiles, instead of individual tiles?
+ * Discards a single specified tile from our hand
+ *
+ * @param tile      the tile to discard from out hand
  */
 void Hand::discard(std::shared_ptr<TileSet::Tile> tile){
     
-    // can discard up to 5 tiles per turn
     if(!tile || _selectedTiles.size() >= 5){
         CULog("Cannot discard more than 5 tiles or invalid tiles");
     }
     
-    // iterate over the set of tiles, and erase one.
     auto it = _tiles.begin();
     while(it != _tiles.end()){
         if (*it == tile) {
-            
+            // if we find the tile, discard it
             (*it)->discarded = true;
             (*it)->inHand = false;
-            
             _tiles.erase(it);
             _discardCount++;
-                        
         } else {
             ++it;
         }
     }
 }
 
-
 /**
- Counts the number of selected tiles.
- Is a helper function.
+ * Counts the total number of selected tiles.
  */
 int Hand::countSelectedTiles() {
     int totalTiles = 0;
@@ -106,15 +102,12 @@ int Hand::countSelectedTiles() {
     return totalTiles;
 }
 
-
 /**
- Method which confirms that A set (singular set) is valid, and marks it as selected and selectedInSet.
- 
- TODO: how am I gonna select multiple sets? This function selects a single set and adds to a set of selectedSets. do I unselect immediately?
+ * Method to make a set from your hand and add it to selected sets
+ *
+ * @returns true if successfully made VALID set, and false otherwise
  */
 bool Hand::makeSet(){
-//    CULog("%d", isSetValid(_selectedTiles));
-//    CULog("how many tiles are in the set %lu", _selectedTiles.size());
     if(!isSetValid(_selectedTiles)){
         return false;
     }
@@ -130,28 +123,20 @@ bool Hand::makeSet(){
     return true;
 }
 
-
 /**
- Method which confirms if the sets to play exist.
- Discards played tiles
- Moves them to _playedSet and marks as played.
- Unselects the tiles.
- Records the score in global variable _score. 
+ * Method to play a set from your hand (of 2 to 4 cards)
+ *
+ * @return true if a set was played sucessfully and false otherwise.
  */
 bool Hand::playSet(const std::shared_ptr<TileSet>& tileSet){
-    
-    // check if there is at least one set.
-//    CULog("checking when we play how big the set is: %lu", _selectedSets.size());
     if (_selectedSets.empty()) {
            return false;
        }
-    
-    // remove tiles from the hand using a while loop
+
     for (const auto& set : _selectedSets) {
-        
         std::vector<std::shared_ptr<TileSet::Tile>> playedSet;
-        
         auto it = _tiles.begin();
+        
         while (it != _tiles.end()) {
             if (std::find(set.begin(), set.end(), *it) != set.end()) {
                 (*it)->played = true;
@@ -163,7 +148,6 @@ bool Hand::playSet(const std::shared_ptr<TileSet>& tileSet){
                         grandmaToAdd += 1;
                     }
                 }
-                
                 playedSet.push_back(*it);
                 it = _tiles.erase(it);
             } else {
@@ -171,8 +155,7 @@ bool Hand::playSet(const std::shared_ptr<TileSet>& tileSet){
             }
         }
         
-        // Move tiles to the playedSet
-        _playedSets.push_back(playedSet);
+        _playedSets.push_back(playedSet); // Move tiles to the playedSet
     }
     
     // Clear the selected tiles and unselect them.
@@ -182,22 +165,21 @@ bool Hand::playSet(const std::shared_ptr<TileSet>& tileSet){
                 tile->selectedInSet = false;
             }
         }
-    
     _selectedSets.clear();
         
-    //count the score for the turn.
     ScoreManager scoreManager(_playedSets);
-    _score = scoreManager.calculateScore();
+    _score = scoreManager.calculateScore(); // count the score for the turn
     
-    //update the total score for the level. 
-    _player->_totalScore+=_score;
+    _player->_totalScore+=_score; // update level score
     _playedSets.clear();
     return true;
 }
 
 /**
- Confirms if each individual set is valid.
- TODO: should selectedTiles be a global attribute defined in header?
+ * Checks if the given set of tiles "selectedTiles" is valid under the game's set of rules.
+ *
+ * @param setTiles      the tiles to check.
+ * @return true if the tiles form a VALID set, and false otherwise.
  */
 bool Hand::isSetValid(const std::vector<std::shared_ptr<TileSet::Tile>>& selectedTiles){
     
@@ -224,10 +206,10 @@ bool Hand::isSetValid(const std::vector<std::shared_ptr<TileSet::Tile>>& selecte
     return true;
 }
 
-
-
 /**
- Checks if a set if straight.
+ * Confirms if a set isStraight.
+ *
+ * @param selectedTiles     the tiles to be checked for a straight
  */
 bool Hand::isStraight(const std::vector<std::shared_ptr<TileSet::Tile>>& selectedTiles){
     
@@ -279,30 +261,24 @@ bool Hand::isStraight(const std::vector<std::shared_ptr<TileSet::Tile>>& selecte
             if (gap != 1) {
                 return false;
             }
-            //numGaps = numGaps + gap;
         }
-        // if the number of gaps in bigger than the number of wild tiles -- fail.
-        //if(numGaps > wildTiles){
-        //    return false;
-        //}
-    
+
     return true;
 }
 
-
 /**
- Checks if a set is "of a kind".
+ * Confirms if a set if of a kind.
+ *
+ * @param selectedTiles     the tiles to be checked for a three/four of a kind
  */
 bool Hand::isOfaKind(const std::vector<std::shared_ptr<TileSet::Tile>>& selectedTiles){
-    
-    // the base tile.
     std::shared_ptr<TileSet::Tile> tileA = selectedTiles[0];
     
-    // iterate over all tiles minus the first tile.
+    // iterate over all tiles besides the first tile.
     for(int j=1; j<selectedTiles.size(); ++j){
         
         std::shared_ptr<TileSet::Tile> tileB = selectedTiles[j];
-            
+        
         // Not the same SUIT.
         if(tileA->getSuit() != tileB->getSuit()){
             // Neither is wild SUIT.
@@ -333,42 +309,40 @@ bool Hand::isOfaKind(const std::vector<std::shared_ptr<TileSet::Tile>>& selected
             }
         }
     }
-        
     return true;
-
 }
 
 /**
- Creates a copy of selectedTiles and sorts it.
+ * Method to sort the tiles by Rank in ascending order.
+ *
+ * @param selectedTiles     a vector of selected tiles.
+ * @return a vector of tiles sorted by Rank
  */
 std::vector<std::shared_ptr<TileSet::Tile>> Hand::getSortedTiles(const std::vector<std::shared_ptr<TileSet::Tile>>& selectedTiles) {
-    // creates a copy of the selectedTiles.
-    std::vector<std::shared_ptr<TileSet::Tile>> sortedTiles = selectedTiles;
+    std::vector<std::shared_ptr<TileSet::Tile>> sortedTiles = selectedTiles; // creates a copy of the selectedTiles
     
     std::sort(sortedTiles.begin(), sortedTiles.end(),
               [](const std::shared_ptr<TileSet::Tile>& a,
                  const std::shared_ptr<TileSet::Tile>& b) { return a->getRank() < b->getRank();});
-    
     return sortedTiles;
 }
 
 void Hand::updateTilePositions(){
+  float startX = 140.0f; // Starting x position for hand tile positioning
+  float endX = 936.0f; // Ending x position for hand tile positioning
+  float tileSpacing = (endX-startX) / 13 + 15; // Spacing in x direction between tiles
+  float yPos = 60.0f; // Height of hand tiles on the screen
     
-  float startX = 140.0f;
-  float endX = 936.0f;
-  float tileSpacing = (endX-startX) / 13 + 15;
-  float yPos = 60.0f;
-
-//  CULog("Updating tile positions...");
   for (size_t i = 0; i < _tiles.size(); i++){
     cugl::Vec2 newPos(startX + i * tileSpacing, yPos);
       _tiles[i]->pos = newPos;
-//    CULog("Tile %zu set to position (%f, %f)", i, newPos.x, newPos.y);
   }
 }
 
 /**
- Checks if there is a Jack in the selected set.
+ * Method to check if selected tiles contain a wild card (jack)
+ *
+ * @param selectedTiles     the tiles to be checked for a wild card
  */
 bool Hand::hasJack(std::vector<std::shared_ptr<TileSet::Tile>> selectedTiles){
     for(std::shared_ptr<TileSet::Tile>& tile : selectedTiles){
@@ -380,6 +354,11 @@ bool Hand::hasJack(std::vector<std::shared_ptr<TileSet::Tile>> selectedTiles){
     return false;
 }
 
+/**
+ * Handles selection of tiles using information from input event
+ *
+ * @param mousePos      the position of the mouse in this frame
+ */
 void Hand::clickedTile(Vec2 mousePos) {
     for (const auto& tile : _tiles) {
         if (tile) {

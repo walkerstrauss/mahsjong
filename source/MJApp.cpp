@@ -15,6 +15,12 @@ using namespace cugl::scene2;
 #pragma mark -
 #pragma mark Gameplay Control
 
+/**
+ * The method called after OpenGL is initialized, but before the application
+ *
+ * This is the method in which all user-defined program initialization should take place.
+ * You should not create a new init() method.
+ */
 void MahsJongApp::onStartup() {
     _assets = AssetManager::alloc();
     _batch = SpriteBatch::alloc();
@@ -29,12 +35,6 @@ void MahsJongApp::onStartup() {
     _assets->attach<Font>(FontLoader::alloc()->getHook());
     _assets->attach<JsonValue>(JsonLoader::alloc()->getHook());
     
-    /**
-     * Currently this is the default loading screen taken from the labs. The json limits us in the
-     * design of a loading screen; hence, we may need to make a new file for loading.
-     * 
-     * TODO: Implement new loading screen either in new file or json
-     */
     // Needed for loading screen
     _assets->attach<scene2::SceneNode>(Scene2Loader::alloc()->getHook());
     _assets->loadDirectory("json/loading.json");
@@ -42,11 +42,6 @@ void MahsJongApp::onStartup() {
     
     // Create a "loading" screen
     _loaded = false;
-        
-    /**
-     * Assets json is currently empty because we have no assets yet!
-     * TODO: Add assets to json as seen necessary. You must also add the file to the textures folder
-     */
     _loading.init(_assets, "json/assets.json");
      _loading.start();
     
@@ -54,7 +49,13 @@ void MahsJongApp::onStartup() {
     Application::onStartup(); //YOU MUST END with call to parent
 };
 
-
+/**
+ * The method called when the application is ready to quit.
+ *
+ * This is the method to dispose of all resources allocated by this
+ * application. As a rule of thumb, everything created in onStartup() should
+ * be deleted here
+ */
 void MahsJongApp::onShutdown() {
     _loading.dispose();
     _gameplay.dispose();
@@ -68,6 +69,7 @@ void MahsJongApp::onShutdown() {
     Application::onShutdown(); // YOU MUST END with call to parent 
 }
 
+/** Method to update the application data */
 void MahsJongApp::update(float timestep) {
     if(!_loaded && _loading.isActive()) {
         _loading.update(0.01f);
@@ -83,6 +85,7 @@ void MahsJongApp::update(float timestep) {
     }
 }
 
+/** The method called to draw the appplication to the screen */
 void MahsJongApp::draw(){
     if (!_loaded){
         _loading.render();
