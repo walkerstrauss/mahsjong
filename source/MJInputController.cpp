@@ -97,6 +97,7 @@ void InputController::update() {
     }
 }
 
+#pragma mark -
 #pragma mark Mouse Callbacks
 /**
  * Call back to execute when a mouse button is first pressed.
@@ -145,19 +146,6 @@ void InputController::motionCB(const cugl::MouseEvent& event, const Vec2 previou
     if (_mouseDown) {
         _mousePos = event.position;
     }
-}
-
-void InputController::keyUpCB(const cugl::KeyEvent& event, bool focus){
-    if (event.keycode == _keyPressed){
-        _keyDown = false;
-        _keyPressed = KeyCode::UNKNOWN;
-    }
-    
-}
-
-void InputController::keyDownCB(const cugl::KeyEvent& event, bool focus){
-    _keyDown = true;
-    _keyPressed = event.keycode;
 }
 
 /**

@@ -159,18 +159,39 @@ public:
         return _currDown;
     }
     
+    /**
+     * Method to get the Keycode for the key pressed
+     *
+     * @return the keycode for the pressed key
+     */
     cugl::KeyCode getKeyPressed() const {
         return _keyPressed;
     }
     
+    /**
+     * Method that returns whether or not there is a key down this frame
+     *
+     * @return true if there is a key down this frame, and false otherwise
+     */
     bool getKeyDown() {
         return _keyDown;
     }
     
+    /**
+     * Method that returns whether or not there was a key down last frame
+     *
+     * @return true if there was a key down last frame, and false otherwise
+     */
     bool getPrevKeyDown() {
         return _prevKeyDown;
     }
     
+    /**
+     * Method to get the keycode of the key pressed last frame. UNKNOWN if
+     * no key was pressed last frame.
+     *
+     * @return the keycode of the key presesed last frame
+     */
     cugl::KeyCode getPrevKeyPressed() const {
         return _prevKeyPressed;
     }
@@ -178,6 +199,7 @@ public:
     /** Reads input from player and converts the result into game logic */
     void readInput();
     
+#pragma mark -
 #pragma mark Mouse Callbacks
 private:
     /**
@@ -217,10 +239,33 @@ private:
     void motionCB(const cugl::MouseEvent& event, const cugl::Vec2 previous, bool focus);
 
 #pragma mark Keyboard Callbacks
+    /**
+     * Call back to execute when a key is first released
+     *
+     * This function records a release of any key
+     *
+     * @param event     The event with the keyboard information
+     * @param focus     Whether this device has focus
+     */
+    void keyUpCB(const cugl::KeyEvent& event, bool focus) {
+        if (event.keycode == _keyPressed){
+            _keyDown = false;
+            _keyPressed = cugl::KeyCode::UNKNOWN;
+        }
+    };
     
-    void keyUpCB(const cugl::KeyEvent& event, bool focus);
-    
-    void keyDownCB(const cugl::KeyEvent& event, bool focus);
+    /**
+     * Call back to execute when a key is first pressed
+     *
+     * This function records a pressing of any key
+     *
+     * @param event     The event with the keyboard information
+     * @param focus     Whether this device has focus
+     */
+    void keyDownCB(const cugl::KeyEvent& event, bool focus) {
+        _keyDown = true;
+        _keyPressed = event.keycode;
+    };
 };
 
 #endif /* __MJ_INPUT_CONTROLLER_H__ */
