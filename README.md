@@ -1,2 +1,14 @@
 # Mah's Jong
 ## 607 Games: Walker Strauss, Patrick Choo, Keqing Jiang, Luna Lu, Tian Jin, Tina Lu, Aiden Keck, Mariia Tiulchenko, Alexander Balako
+
+### Known Errors
+#### Playing on Windows
+The application will build but there is a nullptr error that only occurs when making pairs on a Windows device. 
+### Controls
+#### Mouse Controls
+Make pile pairs: In the pile, click two of the same tile to form a pair. Once the pair is selected, you must click two tiles in your hand to discard. (note: no discarding once you make pairs from the pile)
+Select tiles: In your hand, select and deselect tiles by clicking on them.
+#### Keyboard Controls
+Discard: Press D to discard up to 5 selected cards (note: you cannot discard after making pile pairs or make pairs after discarding)
+Make set: Press S to select a set to be played (will not select if invalid)
+Play sets: Press P to play all selected sets (will only play sets that have been made by pressing S)
