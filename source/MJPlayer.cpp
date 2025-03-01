@@ -73,7 +73,7 @@ void Hand::drawFromPile(std::shared_ptr<Pile>& pile){
  */
 void Hand::discard(std::shared_ptr<TileSet::Tile> tile){
     
-    if(!tile || _selectedTiles.size() >= 5){
+    if(!tile || _selectedTiles.size() > 5){
         CULog("Cannot discard more than 5 tiles or invalid tiles");
     }
     
