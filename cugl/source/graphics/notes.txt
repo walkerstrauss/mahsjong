@@ -1,1 +1,0 @@
-Apparently RenderTarget allows (and fails) on non-color textures. This confuses students
