@@ -4,9 +4,9 @@
 ### Goal:
 Reach 20 points before you run out of turns! For each turn you there are three actions you may perform: discard, make pairs, or play sets. In order to score points, you must play sets from your hand. Sets can look like the following: three of a kind, straight with three tiles, and four of a kind. Each set is worth exactly the number of tiles in it; however, some sets may activate combo points. The scoring looks like the following: 
 <br/><br/>
-- Same set (same tiles in two or more sets) -> rescore the first set <br>
-- Consecutive suits (two or more that are strictly ascending from one set to another) -> rescore the second set <br>
-- Mahjong Set (four 3 sets and a pair OR three 4 sets and a pair) -> rescore each set according to its position in played hand (first set * 1, second set * 2, ...) \n
+* Same set (same tiles in two or more sets) -> rescore the first set <br>
+* Consecutive suits (two or more that are strictly ascending from one set to another) -> rescore the second set <br>
+* Mahjong Set (four 3 sets and a pair OR three 4 sets and a pair) -> rescore each set according to its position in played hand (first set * 1, second set * 2, ...) \n
 \n
 For each turn, you are allowed to play up to 14 tiles that are all apart of a valid mahjong set. You are allowed up to 5 turns and 3 discards with a limit of 5 tiles per discard. If you reach 20 points you win! If you do not reach 20 points by 5 hands, you lose.
 #### Playing on Windows
