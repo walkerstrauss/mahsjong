@@ -18,9 +18,9 @@ For each turn, you are allowed to play up to 14 tiles, assuming they are all apa
 Make pile pairs: In the pile, click two of the same tile to form a pair. Once the pair is selected, you must click two tiles in your hand to discard. (note: no discarding once you make pairs from the pile)
 Select tiles: In your hand, select and deselect tiles by clicking on them.
 #### Keyboard Controls
-Discard: Press D to discard up to 5 selected cards (note: you cannot discard after making pile pairs or make pairs after discarding)
-Make set: Press S to select a set to be played (will not select if invalid)
-Play sets: Press P to play all selected sets (will only play sets that have been made by pressing S)
+Discard: Press D to discard up to 5 selected cards (note: you cannot discard after making pile pairs or make pairs after discarding) <br>
+Make set: Press S to select a set to be played (will not select if invalid) <br>
+Play sets: Press P to play all selected sets (will only play sets that have been made by pressing S) <br>
 
 ###### Note: We are currently pivoting games; hence, some features we have discussesd in our write-ups may not reflect this prototype
 ###### Note: The application will build but there is a nullptr error that only occurs when making pairs on a Windows device. 
