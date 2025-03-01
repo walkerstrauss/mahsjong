@@ -38,10 +38,15 @@ protected:
     std::shared_ptr<Pile> _pile;
     /** Reference to texture for gma text*/
     std::shared_ptr<cugl::graphics::Texture> _gmaLabelTexture;
-    /** Text for displaying score*/
-    std::shared_ptr<cugl::graphics::TextLayout> _scoreText;
-    /** Reference to the player hand */
-    Hand* _hand;
+  
+    std::shared_ptr<cugl::graphics::TextLayout> _text;
+    
+    Hand* _hand; // pointer to the hand.
+    
+    std::shared_ptr<cugl::graphics::TextLayout> _win;
+    std::shared_ptr<cugl::graphics::TextLayout> _lose;
+    bool _gameWin;
+    bool _gameLose;
         
 public:
 #pragma mark -

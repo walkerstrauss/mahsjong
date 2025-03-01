@@ -222,7 +222,6 @@ public:
     void endTurn(){
         if(_turnsLeft > 0){
             _turnsLeft--;
-            _hand.reset();
         }
     }
 };
