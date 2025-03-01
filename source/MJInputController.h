@@ -168,14 +168,30 @@ public:
         return _keyPressed;
     }
     
+    /**
+     * Method that returns whether or not there is a key down this frame
+     *
+     * @return true if there is a key down this frame, and false otherwise
+     */
     bool getKeyDown() {
         return _keyDown;
     }
     
+    /**
+     * Method that returns whether or not there was a key down last frame
+     *
+     * @return true if there was a key down last frame, and false otherwise
+     */
     bool getPrevKeyDown() {
         return _prevKeyDown;
     }
     
+    /**
+     * Method to get the keycode of the key pressed last frame. UNKNOWN if
+     * no key was pressed last frame.
+     *
+     * @return the keycode of the key presesed last frame
+     */
     cugl::KeyCode getPrevKeyPressed() const {
         return _prevKeyPressed;
     }
@@ -183,6 +199,7 @@ public:
     /** Reads input from player and converts the result into game logic */
     void readInput();
     
+#pragma mark -
 #pragma mark Mouse Callbacks
 private:
     /**

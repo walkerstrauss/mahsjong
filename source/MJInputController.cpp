@@ -97,6 +97,7 @@ void InputController::update() {
     }
 }
 
+#pragma mark -
 #pragma mark Mouse Callbacks
 /**
  * Call back to execute when a mouse button is first pressed.
