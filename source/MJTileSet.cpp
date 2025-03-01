@@ -103,6 +103,9 @@ void TileSet::generateGrandmaTiles() {
     }
 }
 
+/**
+ * Sets the texture for all tiles in deck
+ */
 void TileSet::setAllTileTexture(const std::shared_ptr<cugl::AssetManager>& assets){
     if(deck.size() == 0){
         CULog("Deck is empty");
@@ -117,6 +120,9 @@ void TileSet::setAllTileTexture(const std::shared_ptr<cugl::AssetManager>& asset
     }
 }
 
+/**
+ * Draws the tiles in the tileset to the screen
+ */
 void TileSet::draw(const std::shared_ptr<cugl::graphics::SpriteBatch>& batch, cugl::Size size){
     for(const auto& it : deck){
         Tile curr = (*it);
@@ -161,6 +167,11 @@ void TileSet::draw(const std::shared_ptr<cugl::graphics::SpriteBatch>& batch, cu
 #pragma mark -
 #pragma mark Tile Gameplay Handling
 
+/**
+ * Sets the texture of a wild tile
+ *
+ * @param assets    the asset manager to get the texture from
+ */
 void TileSet::Tile::setWildTexture(const std::shared_ptr<cugl::AssetManager>& assets){
     std::string currTileTexture = (this)->toString();
     this->setTexture(assets->get<Texture>(currTileTexture));

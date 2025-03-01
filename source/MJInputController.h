@@ -159,6 +159,11 @@ public:
         return _currDown;
     }
     
+    /**
+     * Method to get the Keycode for the key pressed
+     *
+     * @return the keycode for the pressed key
+     */
     cugl::KeyCode getKeyPressed() const {
         return _keyPressed;
     }
@@ -217,10 +222,33 @@ private:
     void motionCB(const cugl::MouseEvent& event, const cugl::Vec2 previous, bool focus);
 
 #pragma mark Keyboard Callbacks
+    /**
+     * Call back to execute when a key is first released
+     *
+     * This function records a release of any key
+     *
+     * @param event     The event with the keyboard information
+     * @param focus     Whether this device has focus
+     */
+    void keyUpCB(const cugl::KeyEvent& event, bool focus) {
+        if (event.keycode == _keyPressed){
+            _keyDown = false;
+            _keyPressed = cugl::KeyCode::UNKNOWN;
+        }
+    };
     
-    void keyUpCB(const cugl::KeyEvent& event, bool focus);
-    
-    void keyDownCB(const cugl::KeyEvent& event, bool focus);
+    /**
+     * Call back to execute when a key is first pressed
+     *
+     * This function records a pressing of any key
+     *
+     * @param event     The event with the keyboard information
+     * @param focus     Whether this device has focus
+     */
+    void keyDownCB(const cugl::KeyEvent& event, bool focus) {
+        _keyDown = true;
+        _keyPressed = event.keycode;
+    };
 };
 
 #endif /* __MJ_INPUT_CONTROLLER_H__ */

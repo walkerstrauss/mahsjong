@@ -22,8 +22,8 @@ public:
     private:
         /** This tile's texture */
         std::shared_ptr<cugl::graphics::Texture> _texture;
-    public:
         
+    public:
         /** An enum to represent tile suits */
         enum class Suit : int {
             WILD_SUIT,
@@ -219,7 +219,6 @@ public:
     
     cugl::Random rdTileSet;
     
-    
      /** Wild tile set to draw from */
     std::vector<std::shared_ptr<Tile>> wildTiles;
     /** Number of wild tiles we have initilalized */
@@ -241,7 +240,7 @@ public:
     TileSet();
     
 #pragma mark -
-#pragma mark Tilset Gameplay Handling
+#pragma mark Tileset Gameplay Handling
     
     /**
      * Shuffles the tileSet for random assignment
@@ -330,7 +329,7 @@ public:
     void setAllTileTexture(const std::shared_ptr<cugl::AssetManager>& assets);
     
     /**
-     * Draws an individual tile
+     * Draws the tiles in the tileset to the screen
      */
     void draw(const std::shared_ptr<cugl::graphics::SpriteBatch>& batch, cugl::Size size);
     

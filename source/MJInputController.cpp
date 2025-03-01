@@ -147,19 +147,6 @@ void InputController::motionCB(const cugl::MouseEvent& event, const Vec2 previou
     }
 }
 
-void InputController::keyUpCB(const cugl::KeyEvent& event, bool focus){
-    if (event.keycode == _keyPressed){
-        _keyDown = false;
-        _keyPressed = KeyCode::UNKNOWN;
-    }
-    
-}
-
-void InputController::keyDownCB(const cugl::KeyEvent& event, bool focus){
-    _keyDown = true;
-    _keyPressed = event.keycode;
-}
-
 /**
  * Reads the input for this player and converts the result into game logic
  *
