@@ -117,9 +117,19 @@
     },
     "fonts": {
         "pixel32": {
-            "file":     "LightPixel7.ttf",
+            "file":     "fonts/LightPixel7.ttf",
             "size":     32
+        },
+        "gyparody": {
+            "file":     "fonts/gyparody-hv.ttf",
+            "size":     48
         }
+    },
+    "widgets": {
+        "colorbutton" : "widgets/colorbutton.json",
+        "textbutton" : "widgets/textbutton.json",
+        "textfield" : "widgets/textfield.json",
+        "labelbox" : "widgets/labelbox.json"
     },
     "scene2s" : {
         "menu": {
