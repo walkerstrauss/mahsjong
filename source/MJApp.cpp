@@ -35,7 +35,6 @@ void MahsJongApp::onStartup() {
     _assets->attach<Font>(FontLoader::alloc()->getHook());
     _assets->attach<JsonValue>(JsonLoader::alloc()->getHook());
     _assets->attach<WidgetValue>(WidgetLoader::alloc()->getHook());
-    _assets->attach<Button>(WidgetLoader::alloc()->getHook());
     
     // Needed for loading screen
     _sceneLoader = Scene2Loader::alloc();
@@ -78,7 +77,9 @@ void MahsJongApp::update(float timestep) {
         _loading.update(0.01f);
     } else if (!_loaded) {
         _loading.dispose(); // Disables the input listeners in this mode
+        _assets->attach<Button>(Scene2Loader::alloc()->getHook());
         _assets->loadDirectory("json/assets.json");
+        
         
         _matchScene = std::make_shared<scene2::Scene2>();
         if (!_matchScene->init()) {
@@ -104,8 +105,20 @@ void MahsJongApp::update(float timestep) {
         _matchScene->setSpriteBatch(_batch);
         _matchScene->setActive(true);
         
-        // All buttons need to be buttons not nodes
-        auto discardNode = node->getChildByName("discard");
+        _discardBtn = std::dynamic_pointer_cast<Button>(childNode->getChildByName("discard"));
+        CULog(_discardBtn->getName().c_str());
+        if (_discardBtn){
+            _discardBtn->addListener([this](const std::string& name, bool down){
+                CULog("pressed");
+                if (!down){
+                    CULog("discard");
+                    // Handle discard
+                }
+            });
+        } else {
+            CULog("no discard");
+        }
+        _discardBtn->activate();
         _loaded = true;
     } else {
 //        _gameplay.update(timestep);
