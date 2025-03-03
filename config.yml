@@ -15,6 +15,7 @@ sources:                            # The list of the source code files
 modules:                            # Modules to use other than core, graphics
     - audio
     - scene2
+    - netcode
 
 # This must be one of portrait, landscape, portrait-flipped, landscape-flipped,
 targets:                        # The target platforms to build for

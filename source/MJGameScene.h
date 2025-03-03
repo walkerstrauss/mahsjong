@@ -17,6 +17,11 @@
 #include "MJPile.h"
 #include "MJScoreManager.h"
 
+using namespace cugl;
+using namespace cugl::scene2;
+using namespace cugl::netcode;
+using namespace std;
+
 /**
  * This class is the primary gameplay controller for our game
  *
@@ -26,6 +31,8 @@ class GameScene: public cugl::scene2::Scene2{
 protected:
     /** Asset manager for this game mode */
     std::shared_ptr<cugl::AssetManager> _assets;
+    /** The network connection (as made by this scene) */
+    std::shared_ptr<cugl::netcode::NetcodeConnection> _network;
     /** Input controller for player input*/
     InputController _input;
     /** JSON with all of our constants*/
@@ -47,6 +54,12 @@ protected:
     std::shared_ptr<cugl::graphics::TextLayout> _lose;
     bool _gameWin;
     bool _gameLose;
+    
+    /** Whether this player is the host */
+    bool _ishost;
+
+    /** Whether we quit the game */
+    bool _quit;
         
 public:
 #pragma mark -
@@ -74,6 +87,42 @@ public:
      * @param assets    the asset manager for the game
      */
     bool init(const std::shared_ptr<cugl::AssetManager>& assets);
+    
+    /**
+     * Returns the network connection (as made by this scene)
+     *
+     * This value will be reset every time the scene is made active.
+     *
+     * @return the network connection (as made by this scene)
+     */
+    void setConnection(const std::shared_ptr<cugl::netcode::NetcodeConnection>& network) {
+        _network = network;
+    }
+    /**
+     * Sets whether the player is host.
+     *
+     * We may need to have gameplay specific code for host.
+     *
+     * @param host  Whether the player is host.
+     */
+    void setHost(bool host)  { _ishost = host; }
+    
+    /**
+     * Returns true if the player quits the game.
+     *
+     * @return true if the player quits the game.
+     */
+    bool didQuit() const { return _quit; }
+    
+    /**
+     * Disconnects this scene from the network controller.
+     *
+     * Technically, this method does not actually disconnect the network controller.
+     * Since the network controller is a smart pointer, it is only fully disconnected
+     * when ALL scenes have been disconnected.
+     */
+    void disconnect() { _network = nullptr; }
+    
     
 #pragma mark -
 #pragma mark Gameplay Handling
