@@ -34,9 +34,12 @@ void MahsJongApp::onStartup() {
     _assets->attach<Sound>(SoundLoader::alloc()->getHook());
     _assets->attach<Font>(FontLoader::alloc()->getHook());
     _assets->attach<JsonValue>(JsonLoader::alloc()->getHook());
+    _assets->attach<WidgetValue>(WidgetLoader::alloc()->getHook());
+    _assets->attach<Button>(WidgetLoader::alloc()->getHook());
     
     // Needed for loading screen
-    _assets->attach<scene2::SceneNode>(Scene2Loader::alloc()->getHook());
+    _sceneLoader = Scene2Loader::alloc();
+    _assets->attach<scene2::SceneNode>(_sceneLoader->getHook());
     _assets->loadDirectory("json/loading.json");
     _loading.setSpriteBatch(_batch);
     
@@ -76,12 +79,37 @@ void MahsJongApp::update(float timestep) {
     } else if (!_loaded) {
         _loading.dispose(); // Disables the input listeners in this mode
         _assets->loadDirectory("json/assets.json");
-        _gameplay.setSpriteBatch(_batch);
-        _gameplay.init(_assets);
         
+        _matchScene = std::make_shared<scene2::Scene2>();
+        if (!_matchScene->init()) {
+            std::cerr << "Scene2 initialization failed!" << std::endl;
+            // Handle failure (return, break, or handle error state)
+        }
+        std::shared_ptr<scene2::SceneNode> node = _assets->get<scene2::SceneNode>("matchscene");
+        node->setVisible(true);
+        auto texture = _assets->get<Texture>("background_gameplay");
+        if (texture == nullptr) {
+            CULog("Failed to load background texture!");
+        } else {
+            CULog("Background texture loaded successfully.");
+        }
+        std::shared_ptr<scene2::SceneNode> childNode = node->getChild(0);
+        if (childNode) {
+            // Now you can manipulate or render the child node
+            CULog("Child node position: (%f, %f)", childNode->getPosition().x, childNode->getPosition().y);
+        }
+        node->doLayout();
+        _matchScene->addChild(node);
+        CULog("Scenenode position: (%f, %f)", node->getPosition().x, node->getPosition().y);
+        _matchScene->setSpriteBatch(_batch);
+        _matchScene->setActive(true);
+        
+        // All buttons need to be buttons not nodes
+        auto discardNode = node->getChildByName("discard");
         _loaded = true;
     } else {
-        _gameplay.update(timestep);
+//        _gameplay.update(timestep);
+        return;
     }
 }
 
@@ -90,7 +118,7 @@ void MahsJongApp::draw(){
     if (!_loaded){
         _loading.render();
     } else {
-        _gameplay.render();
+        _matchScene->render();
     }
 }
 

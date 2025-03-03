@@ -1,0 +1,463 @@
+{
+    "variables": {},
+    "contents": {
+        "type": "Node",
+        "format": {
+            "type": "Anchored"
+        },
+        "data": {
+            "anchor": [
+                0,
+                0
+            ],
+            "size": [
+                1024,
+                576
+            ],
+            "angle": 0,
+            "position": [
+                0,
+                0
+            ],
+            "visible": true
+        },
+        "children": {
+            "background_menu": {
+                "type": "Image",
+                "data": {
+                    "texture": "background_menu",
+                    "anchor": [
+                        0,
+                        1
+                    ],
+                    "size": [
+                        1024,
+                        576
+                    ],
+                    "angle": 0,
+                    "position": [
+                        0,
+                        0
+                    ],
+                    "visible": true
+                },
+                "layout": {
+                    "x_anchor": "fill",
+                    "y_anchor": "fill",
+                    "absolute": false,
+                    "x_offset": 0,
+                    "y_offset": 0
+                }
+            },
+            "notification_box2": {
+                "type": "Image",
+                "data": {
+                    "texture": "notification_box2",
+                    "anchor": [
+                        0,
+                        0
+                    ],
+                    "size": [
+                        710,
+                        554
+                    ],
+                    "angle": 0,
+                    "position": [
+                        182,
+                        59
+                    ],
+                    "visible": true
+                },
+                "layout": {
+                    "x_anchor": "left",
+                    "y_anchor": "bottom",
+                    "absolute": false,
+                    "x_offset": 0.228,
+                    "y_offset": 0.18
+                }
+            },
+            "yellow_dragon_left": {
+                "type": "Image",
+                "data": {
+                    "texture": "yellow_dragon_left",
+                    "anchor": [
+                        0,
+                        1
+                    ],
+                    "size": [
+                        100,
+                        100
+                    ],
+                    "angle": 0,
+                    "position": [
+                        335,
+                        416
+                    ],
+                    "visible": true
+                },
+                "layout": {
+                    "x_anchor": "left",
+                    "y_anchor": "top",
+                    "absolute": false,
+                    "x_offset": 0.28,
+                    "y_offset": -0.1
+                }
+            },
+            "yellow_dragon_right": {
+                "type": "Image",
+                "data": {
+                    "texture": "yellow_dragon_right",
+                    "anchor": [
+                        0,
+                        1
+                    ],
+                    "size": [
+                        100,
+                        100
+                    ],
+                    "angle": 0,
+                    "position": [
+                        688,
+                        416
+                    ],
+                    "visible": true
+                },
+                "layout": {
+                    "x_anchor": "left",
+                    "y_anchor": "top",
+                    "absolute": false,
+                    "x_offset": 0.67,
+                    "y_offset": -0.1
+                }
+            },
+            "Setting_logo": {
+                "type": "Node",
+                "format": {
+                    "type": "Anchored"
+                },
+                "data": {
+                    "anchor": [
+                        0,
+                        1
+                    ],
+                    "size": [
+                        287,
+                        53
+                    ],
+                    "angle": 0,
+                    "position": [
+                        368,
+                        442
+                    ],
+                    "visible": true
+                },
+                "children": {
+                    "Setting_logo_image": {
+                        "type": "Image",
+                        "data": {
+                            "texture": "Setting_logo_image",
+                            "anchor": [
+                                0,
+                                0
+                            ],
+                            "size": [
+                                287,
+                                53
+                            ],
+                            "angle": 0,
+                            "position": [
+                                0,
+                                0
+                            ],
+                            "visible": true
+                        },
+                        "layout": {
+                            "x_anchor": "left",
+                            "y_anchor": "bottom",
+                            "absolute": false,
+                            "x_offset": 0,
+                            "y_offset": 0
+                        }
+                    }
+                },
+                "layout": {
+                    "x_anchor": "left",
+                    "y_anchor": "top",
+                    "absolute": false,
+                    "x_offset": 0.40,
+                    "y_offset": -0.14
+                }
+            },
+            "button_sound": {
+                "type": "Widget",
+                "format": {
+                    "type": "Anchored"
+                },
+                "data": {
+                    "key": "settingbutton_name",
+                    "variables": {
+                        "text": "Sound",
+                        "size": [ 143, 29 ]
+                    }
+                },
+                "layout": {
+                    "x_anchor": "left",
+                    "y_anchor": "top",
+                    "absolute": false,
+                    "x_offset": 0.32,
+                    "y_offset": -0.7
+                }
+            },
+            "button_music": {
+                "type": "Widget",
+                "format": {
+                    "type": "Anchored"
+                },
+                "data": {
+                    "key": "settingbutton_name",
+                    "variables": {
+                        "text": "Music",
+                        "size": [ 143, 29 ]
+                    }
+                },
+                "layout": {
+                    "x_anchor": "left",
+                    "y_anchor": "top",
+                    "absolute": false,
+                    "x_offset": 0.32,
+                    "y_offset": -0.55
+                }
+            },
+            "button_notification": {
+                "type": "Widget",
+                "format": {
+                    "type": "Anchored"
+                },
+                "data": {
+                    "key": "settingbutton_name",
+                    "variables": {
+                        "text": "Notification",
+                        "size": [ 143, 29 ]
+                    }
+                },
+                "layout": {
+                    "x_anchor": "left",
+                    "y_anchor": "top",
+                    "absolute": false,
+                    "x_offset": 0.32,
+                    "y_offset": -0.4
+                }
+            },
+            "on_sound": {
+                "type": "Widget",
+                "format": {
+                    "type": "Anchored"
+                },
+                "data": {
+                    "key": "settingbutton_onoff",
+                    "variables": {
+                        "text": "ON",
+                        "size": [ 143, 29 ]
+                    }
+                },
+                "layout": {
+                    "x_anchor": "left",
+                    "y_anchor": "top",
+                    "absolute": false,
+                    "x_offset": 0.58,
+                    "y_offset": -0.7
+                }
+            },
+            "on_music": {
+                "type": "Widget",
+                "format": {
+                    "type": "Anchored"
+                },
+                "data": {
+                    "key": "settingbutton_onoff",
+                    "variables": {
+                        "text": "ON",
+                        "size": [ 143, 29 ]
+                    }
+                },
+                "layout": {
+                    "x_anchor": "left",
+                    "y_anchor": "top",
+                    "absolute": false,
+                    "x_offset": 0.58,
+                    "y_offset": -0.55
+                }
+            },
+            "on_notification": {
+                "type": "Widget",
+                "format": {
+                    "type": "Anchored"
+                },
+                "data": {
+                    "key": "settingbutton_onoff",
+                    "variables": {
+                        "text": "ON",
+                        "size": [ 143, 29 ]
+                    }
+                },
+                "layout": {
+                    "x_anchor": "left",
+                    "y_anchor": "top",
+                    "absolute": false,
+                    "x_offset": 0.58,
+                    "y_offset": -0.4
+                }
+            },
+            "off_sound": {
+                "type": "Widget",
+                "format": {
+                    "type": "Anchored"
+                },
+                "data": {
+                    "key": "settingbutton_onoff",
+                    "variables": {
+                        "text": "OFF",
+                        "size": [ 143, 29 ]
+                    }
+                },
+                "layout": {
+                    "x_anchor": "left",
+                    "y_anchor": "top",
+                    "absolute": false,
+                    "x_offset": 0.64,
+                    "y_offset": -0.4
+                }
+            },
+            "off_music": {
+                "type": "Widget",
+                "format": {
+                    "type": "Anchored"
+                },
+                "data": {
+                    "key": "settingbutton_onoff",
+                    "variables": {
+                        "text": "OFF",
+                        "size": [ 143, 29 ]
+                    }
+                },
+                "layout": {
+                    "x_anchor": "left",
+                    "y_anchor": "top",
+                    "absolute": false,
+                    "x_offset": 0.64,
+                    "y_offset": -0.55
+                }
+            },
+            "off_notification": {
+                "type": "Widget",
+                "format": {
+                    "type": "Anchored"
+                },
+                "data": {
+                    "key": "settingbutton_onoff",
+                    "variables": {
+                        "text": "OFF",
+                        "size": [ 143, 29 ]
+                    }
+                },
+                "layout": {
+                    "x_anchor": "left",
+                    "y_anchor": "top",
+                    "absolute": false,
+                    "x_offset": 0.64,
+                    "y_offset": -0.7
+                }
+            },
+            "button_cancel": {
+                "type": "Button",
+                "format": {
+                    "type": "Anchored"
+                },
+                "data": {
+                    "anchor": [
+                        0,
+                        1
+                    ],
+                    "size": [
+                        60,
+                        60
+                    ],
+                    "angle": 0,
+                    "position": [
+                        440,
+                        440
+                    ],
+                    "visible": true,
+                    "upnode": "up"
+                },
+                "children": {
+                    "up": {
+                        "type": "Node",
+                        "format": {
+                            "type": "Anchored"
+                        },
+                        "data": {
+                            "anchor": [
+                                0,
+                                1
+                            ],
+                            "size": [
+                                60,
+                                60
+                            ],
+                            "angle": 0,
+                            "position": [
+                                0,
+                                0
+                            ],
+                            "visible": true
+                        },
+                        "children": {
+                            "cancel": {
+                                "type": "Image",
+                                "data": {
+                                    "texture": "cancel",
+                                    "anchor": [
+                                        0.5,
+                                        0.5
+                                    ],
+                                    "size": [
+                                        60,
+                                        60
+                                    ],
+                                    "angle": 0,
+                                    "position": [
+                                        0,
+                                        0
+                                    ],
+                                    "visible": true
+                                },
+                                "layout": {
+                                    "x_anchor": "left",
+                                    "y_anchor": "bottom",
+                                    "absolute": false,
+                                    "x_offset": 0.5,
+                                    "y_offset": 0.5
+                                }
+                            }
+                        },
+                        "layout": {
+                            "x_anchor": "left",
+                            "y_anchor": "top",
+                            "absolute": false,
+                            "x_offset": 0,
+                            "y_offset": 0
+                        }
+                    }
+                },
+                "layout": {
+                    "x_anchor": "left",
+                    "y_anchor": "top",
+                    "absolute": false,
+                    "x_offset": 0.73,
+                    "y_offset": -0.04
+                }
+            }
+        }
+    }
+}

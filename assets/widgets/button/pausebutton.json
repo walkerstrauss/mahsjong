@@ -1,0 +1,156 @@
+{
+    "variables": {
+        "text": ["children", "up", "children", "Continue","data","text"],
+        "texture": ["children", "up", "children", "continue_pause", "data", "texture"],
+        "size": ["children", "up", "data", "size"]
+    },
+    "contents": {
+        "type": "Button",
+        "format": {
+            "type": "Anchored"
+        },
+        "data": {
+            "anchor": [
+                0,
+                0
+            ],
+            "size": [
+                247,
+                61
+            ],
+            "angle": 0,
+            "position": [
+                0,
+                0
+            ],
+            "visible": true,
+            "upnode": "up"
+        },
+        "children": {
+            "up": {
+                "type": "Node",
+                "format": {
+                    "type": "Anchored"
+                },
+                "data": {
+                    "anchor": [
+                        0,
+                        1
+                    ],
+                    "size": [
+                        247,
+                        61
+                    ],
+                    "angle": 0,
+                    "position": [
+                        0,
+                        0
+                    ],
+                    "visible": true
+                },
+                "children": {
+                    "button_w_icon1": {
+                        "type": "Image",
+                        "data": {
+                            "texture": "button_w_icon1",
+                            "anchor": [
+                                0,
+                                1
+                            ],
+                            "size": [
+                                238,
+                                61
+                            ],
+                            "angle": 0,
+                            "position": [
+                                0,
+                                0
+                            ],
+                            "visible": true
+                        },
+                        "layout": {
+                            "x_anchor": "left",
+                            "y_anchor": "top",
+                            "absolute": false,
+                            "x_offset": 0,
+                            "y_offset": 0
+                        }
+                    },
+                    "continue_icons": {
+                        "type": "Image",
+                        "data": {
+                            "texture": "continue_pause",
+                            "anchor": [
+                                0,
+                                1
+                            ],
+                            "size": [
+                                60,
+                                60
+                            ],
+                            "angle": 0,
+                            "position": [
+                                60,
+                                1
+                            ],
+                            "visible": true
+                        },
+                        "layout": {
+                            "x_anchor": "left",
+                            "y_anchor": "bottom",
+                            "absolute": false,
+                            "x_offset": 0,
+                            "y_offset": 1
+                        }
+                    },
+                    "Continue": {
+                        "type": "Label",
+                        "data": {
+                            "anchor": [
+                                0,
+                                1
+                            ],
+                            "size": [
+                                238,
+                                61
+                            ],
+                            "position": [
+                                0,
+                                0
+                            ],
+                            "angle": 0,
+                            "visible": true,
+                            "font": "pixelify sansSemibold32",
+                            "text": "Continue",
+                            "foreground": "#006d3fff",
+                            "background": "#00000000",
+                            "padding": [
+                                0,
+                                0,
+                                0,
+                                0
+                            ],
+                            "valign": "middle",
+                            "halign": "center"
+                        },
+                        "children": {},
+                        "layout": {
+                            "x_anchor": "left",
+                            "y_anchor": "top",
+                            "absolute": false,
+                            "x_offset": 0.1,
+                            "y_offset": 0
+                        }
+                    }
+                },
+                "layout": {
+                    "x_anchor": "left",
+                    "y_anchor": "top",
+                    "absolute": false,
+                    "x_offset": -0.4,
+                    "y_offset": 0
+                }
+            }
+        }
+    }
+}

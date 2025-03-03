@@ -1,0 +1,327 @@
+{
+    "variables": { "size": [ "data", "size" ] },
+    "contents": {
+        "type": "Node",
+        "format": {
+            "type": "Float",
+            "x_alignment": "left",
+            "y_alignment": "middle",
+            "orientation": "horizontal"
+        },
+        "data": {
+            "anchor": [
+                0,
+                0
+            ],
+            "size": [
+                300,
+                127
+            ],
+            "angle": 0,
+            "position": [
+                715,
+                128
+            ],
+            "visible": true
+        },
+        "children": {
+            "buttondtile1": {
+                "type": "Widget",
+                "format": {
+                    "type": "Anchored"
+                },
+                "data": {
+                    "key": "gameplayDisplaytileButton",
+                    "variables": {
+                        "size": [
+                            50,
+                            58
+                        ]
+                    }
+                    },
+                    "layout": {
+                        "priority": 0,
+                        "padding": [
+                            0,
+                            0,
+                            0,
+                            0
+                        ]
+                    }
+                },
+            "buttondtile1_1": {
+                "type": "Widget",
+                "format": {
+                    "type": "Anchored"
+                },
+                "data": {
+                    "key": "gameplayDisplaytileButton",
+                    "variables": {
+                        "size": [
+                            50,
+                            58
+                        ]
+                    }
+                    },
+
+                    "layout": {
+                        "priority": 1,
+                        "padding": [
+                            0,
+                            0,
+                            0,
+                            0
+                        ]
+                    }
+                },
+            "buttondtile1_2": {
+                "type": "Widget",
+                "format": {
+                    "type": "Anchored"
+                },
+                "data": {
+                    "key": "gameplayDisplaytileButton",
+                    "variables": {
+                        "size": [
+                            50,
+                            58
+                        ]
+                    }
+                },
+
+                "layout": {
+                    "priority": 2,
+                    "padding": [
+                        0,
+                        0,
+                        0,
+                        0
+                    ]
+                }
+            },
+            "buttondtile1_3": {
+                "type": "Widget",
+                "format": {
+                    "type": "Anchored"
+                },
+                "data": {
+                    "key": "gameplayDisplaytileButton",
+                    "variables": {
+                        "size": [
+                            50,
+                            58
+                        ]
+                    }
+                },
+
+                "layout": {
+                    "priority": 3,
+                    "padding": [
+                        0,
+                        0,
+                        0,
+                        0
+                    ]
+                }
+            },
+            "buttondtile1_4": {
+                "type": "Widget",
+                "format": {
+                    "type": "Anchored"
+                },
+                "data": {
+                    "key": "gameplayDisplaytileButton",
+                    "variables": {
+                        "size": [
+                            50,
+                            58
+                        ]
+                    }
+                },
+
+                "layout": {
+                    "priority": 4,
+                    "padding": [
+                        0,
+                        0,
+                        0,
+                        0
+                    ]
+                }
+            },
+            "buttondtile1_5": {
+                "type": "Widget",
+                "format": {
+                    "type": "Anchored"
+                },
+                "data": {
+                    "key": "gameplayDisplaytileButton",
+                    "variables": {
+                        "size": [
+                            50,
+                            58
+                        ]
+                    }
+                },
+
+                "layout": {
+                    "priority": 5,
+                    "padding": [
+                        0,
+                        0,
+                        0,
+                        0
+                    ]
+                }
+            },
+            "buttondtile1_6": {
+                "type": "Widget",
+                "format": {
+                    "type": "Anchored"
+                },
+                "data": {
+                    "key": "gameplayDisplaytileButton",
+                    "variables": {
+                        "size": [
+                            50,
+                            58
+                        ]
+                    }
+                },
+
+                "layout": {
+                    "priority": 6,
+                    "padding": [
+                        0,
+                        0,
+                        0,
+                        0
+                    ]
+                }
+            },
+            "buttondtile1_7": {
+                "type": "Widget",
+                "format": {
+                    "type": "Anchored"
+                },
+                "data": {
+                    "key": "gameplayDisplaytileButton",
+                    "variables": {
+                        "size": [
+                            50,
+                            58
+                        ]
+                    }
+                },
+
+                "layout": {
+                    "priority": 7,
+                    "padding": [
+                        0,
+                        0,
+                        0,
+                        0
+                    ]
+                }
+            },
+            "buttondtile1_8": {
+                "type": "Widget",
+                "format": {
+                    "type": "Anchored"
+                },
+                "data": {
+                    "key": "gameplayDisplaytileButton",
+                    "variables": {
+                        "size": [
+                            50,
+                            58
+                        ]
+                    }
+                },
+                "layout": {
+                    "priority": 8,
+                    "padding": [
+                        0,
+                        0,
+                        0,
+                        0
+                    ]
+                }
+            },
+            "buttondtile1_9": {
+                "type": "Widget",
+                "format": {
+                    "type": "Anchored"
+                },
+                "data": {
+                    "key": "gameplayDisplaytileButton",
+                    "variables": {
+                        "size": [
+                            50,
+                            58
+                        ]
+                    }
+                },
+
+                "layout": {
+                    "priority": 9,
+                    "padding": [
+                        0,
+                        0,
+                        0,
+                        0
+                    ]
+                }
+            },
+            "buttondtile1_10": {
+                "type": "Widget",
+                "format": {
+                    "type": "Anchored"
+                },
+                "data": {
+                    "key": "gameplayDisplaytileButton",
+                    "variables": {
+                        "size": [
+                            50,
+                            58
+                        ]
+                    }
+                },
+
+                "layout": {
+                    "priority": 10,
+                    "padding": [
+                        0,
+                        0,
+                        0,
+                        0
+                    ]
+                }
+            },
+            "buttondtile1_11": {
+                "type": "Widget",
+                "format": {
+                    "type": "Anchored"
+                },
+                "data": {
+                    "key": "gameplayDisplaytileButton",
+                    "variables": {
+                        "size": [
+                            50,
+                            58
+                        ]
+                    }
+                },
+                "layout": {
+                    "priority": 11,
+                    "padding": [
+                        0,
+                        0,
+                        0,
+                        0
+                    ]
+                }
+            }
+            }
+    }
+}

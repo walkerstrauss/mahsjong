@@ -1,0 +1,235 @@
+{
+    "variables": {},
+    "contents": {
+      "type": "Node",
+      "format": {
+        "type": "Anchored"
+      },
+      "data": {
+        "anchor": [0, 0],
+        "size": [1024, 576],
+        "angle": 0,
+        "position": [0, 0],
+        "visible": true
+      },
+      "children": {
+        "background_menu": {
+          "type": "Image",
+          "data": {
+            "texture": "background_score_defeat",
+            "anchor": [0.5, 0.5],
+            "size": [1024, 576],
+            "angle": 0,
+            "position": [0, 0],
+            "visible": true
+          },
+          "layout": {
+            "x_anchor": "fill",
+            "y_anchor": "fill",
+            "absolute": false,
+            "x_offset": 0,
+            "y_offset": 0
+          }
+        },
+        "Defeated_logo": {
+          "type": "Node",
+          "format": {
+            "type": "Anchored"
+          },
+          "data": {
+            "anchor": [0.5, 1],
+            "size": [366.97, 65],
+            "angle": 0,
+            "position": [329, 464],
+            "visible": true
+          },
+          "children": {
+            "Defeated_logo_image": {
+              "type": "Image",
+              "data": {
+                "texture": "Defeated_logo_image",
+                "anchor": [0, 0],
+                "size": [366.97, 65],
+                "angle": 0,
+                "position": [0, 0],
+                "visible": true
+              },
+              "layout": {
+                "x_anchor": "left",
+                "y_anchor": "bottom",
+                "absolute": false,
+                "x_offset": 0,
+                "y_offset": 0
+              }
+            }
+          },
+          "layout": {
+            "x_anchor": "center",
+            "y_anchor": "top",
+            "absolute": false,
+            "x_offset": 0,
+            "y_offset": -0.08
+          }
+        },
+        "grandma_cry": {
+          "type": "Node",
+          "format": {
+            "type": "Anchored"
+          },
+          "data": {
+            "anchor": [0, 1],
+            "size": [315, 315],
+            "angle": 0,
+            "position": [30, 41],
+            "visible": true
+          },
+          "children": {
+            "grandma_cry_image": {
+              "type": "Image",
+              "data": {
+                "texture": "grandma_cry_image",
+                "anchor": [0, 1],
+                "size": [315, 315],
+                "angle": 0,
+                "position": [0, 0],
+                "visible": true
+              },
+              "layout": {
+                "x_anchor": "left",
+                "y_anchor": "top",
+                "absolute": false,
+                "x_offset": 0,
+                "y_offset": 0
+              }
+            }
+          },
+          "layout": {
+            "x_anchor": "left",
+            "y_anchor": "top",
+            "absolute": false,
+            "x_offset": 0.03,
+            "y_offset": -0.38
+          }
+        },
+        "setting": {
+            "type": "Widget",
+            "format": {
+            "type": "Anchored"
+            },
+            "data": {
+            "key": "settingbutton",
+            "variables": {
+                "size": [
+                60,
+                60
+                ]
+            }
+            },
+            "layout": {
+                "x_anchor": "left",
+                "y_anchor": "top",
+                "absolute": false,
+                "x_offset": 0.93,
+                "y_offset": -0.1
+            }
+        },
+        "menu": {
+          "type": "Node",
+          "format": {
+            "type": "Anchored"
+          },
+          "data": {
+            "anchor": [0, 1],
+            "size": [271, 61],
+            "angle": 0,
+            "position": [715, 37],
+            "visible": true
+          },
+          "children": {
+            "button_main": {
+              "type": "Widget",
+              "format": {
+                "type": "Anchored"
+            },
+              "data": {
+                "key": "scorebutton_main",
+                "variables": {
+                  "text": "Main",
+                  "size": [135, 61]
+                }
+              },
+              "layout": {
+                "x_anchor": "left",
+                "y_anchor": "top",
+                "absolute": false,
+                "x_offset": 0,
+                "y_offset": 0.5
+              }
+            },
+            "button_replay": {
+              "type": "Widget",
+              "format": {
+                "type": "Anchored"
+                },
+              "data": {
+                "key": "scorebutton_main",
+                "variables": {
+                  "text": "Replay",
+                  "size": [135, 61]
+                }
+              },
+              "layout": {
+                "x_anchor": "left",
+                "y_anchor": "top",
+                "absolute": false,
+                "x_offset": 0.9,
+                "y_offset": 0.5
+              }
+            }
+          },
+          "layout": {
+            "x_anchor": "left",
+            "y_anchor": "top",
+            "absolute": false,
+            "x_offset": 0.7,
+            "y_offset": -0.80
+          }
+        },
+        "score-hand": {
+            "type": "Widget",
+            "data": {
+              "key": "playhand"
+            },
+            "layout": {
+              "x_anchor": "center",
+              "y_anchor": "top",
+              "absolute": false,
+              "x_offset": 0,
+              "y_offset": -0.25
+            }
+        },
+        "button_point": {
+            "type": "Widget",
+            "format": {
+                "type": "Anchored"
+            },
+            "data": {
+                "key": "scorepointbutton",
+                "variables": {
+                    "text": "Points",
+                    "text2": "-9",
+                    "size": [314,
+                    61]
+                }
+            },
+            "layout": {
+                "x_anchor": "center",
+                "y_anchor": "top",
+                "absolute": false,
+                "x_offset": 0,
+                "y_offset": -0.55
+            }
+        }
+      }
+    }
+  }

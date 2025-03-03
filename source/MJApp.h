@@ -25,7 +25,12 @@ protected:
     GameScene _gameplay;
     /** Whether or not we finished loading all assets*/
     bool _loaded;
-    
+    /** Scene2 object for match scene */
+    std::shared_ptr<cugl::scene2::Scene2> _matchScene;
+    /** Scene loader reference */
+    std::shared_ptr<cugl::scene2::Scene2Loader> _sceneLoader;
+    /** Button to discard*/
+    std::shared_ptr<cugl::scene2::Button> _discardBtn;
 public:
 #pragma mark -
 #pragma mark Constructors
