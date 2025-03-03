@@ -43,6 +43,7 @@ void MahsJongApp::onStartup() {
     //Create a "loading" screen
     _scene = State::LOAD;
     _loading.init(_assets, "json/assets.json");
+    _loading.setSpriteBatch(_batch);
     
     _loading.start();
     AudioEngine::start();

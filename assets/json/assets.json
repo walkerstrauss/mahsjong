@@ -771,5 +771,8 @@
                 }
             }
         }
+    },
+    "jsons": {
+        "server": "json/server.json"
     }
 }
