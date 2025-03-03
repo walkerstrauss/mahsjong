@@ -1,0 +1,378 @@
+{
+    "variables": { "size": [ "data", "size" ] },
+    "contents": {
+        "type": "Node",
+        "format": {
+            "type": "Float",
+            "x_alignment": "left",
+            "y_alignment": "middle",
+            "orientation": "horizontal"
+        },
+        "data": {
+            "anchor": [
+                0,
+                0
+            ],
+            "size": [
+                715,
+                50
+            ],
+            "angle": 0,
+            "position": [
+                155,
+                511
+            ],
+            "visible": true
+        },
+        "children": {
+            "button£ºotile1": {
+                "type": "Widget",
+                "format": {
+                    "type": "Anchored"
+                },
+                "data": {
+                    "key": "opponentHandtile",
+                    "variables": {
+                        "size": [
+                            50,
+                            50
+                        ]
+                    }
+                    },
+
+                    "layout": {
+                        "priority": 0,
+                        "padding": [
+                            10,
+                            0,
+                            0,
+                            0
+                        ]
+                    }
+                },
+            "button£ºotile1_1": {
+                "type": "Widget",
+                "format": {
+                    "type": "Anchored"
+                },
+                "data": {
+                    "key": "opponentHandtile",
+                    "variables": {
+                        "size": [
+                            50,
+                            50
+                        ]
+                    }
+                },
+
+                "layout": {
+                    "priority": 1,
+                    "padding": [
+                        0,
+                        0,
+                        0,
+                        0
+                    ]
+                }
+            },
+            "button£ºotile1_2": {
+                "type": "Widget",
+                "format": {
+                    "type": "Anchored"
+                },
+                "data": {
+                    "key": "opponentHandtile",
+                    "variables": {
+                        "size": [
+                            50,
+                            50
+                        ]
+                    }
+                },
+
+                "layout": {
+                    "priority": 2,
+                    "padding": [
+                        0,
+                        0,
+                        0,
+                        0
+                    ]
+                }
+            },
+            "button£ºotile1_3": {
+                "type": "Widget",
+                "format": {
+                    "type": "Anchored"
+                },
+                "data": {
+                    "key": "opponentHandtile",
+                    "variables": {
+                        "size": [
+                            50,
+                            50
+                        ]
+                    }
+                },
+
+                "layout": {
+                    "priority": 3,
+                    "padding": [
+                        0,
+                        0,
+                        0,
+                        0
+                    ]
+                }
+            },
+            "button£ºotile1_4": {
+                "type": "Widget",
+                "format": {
+                    "type": "Anchored"
+                },
+                "data": {
+                    "key": "opponentHandtile",
+                    "variables": {
+                        "size": [
+                            50,
+                            50
+                        ]
+                    }
+                },
+
+                "layout": {
+                    "priority": 4,
+                    "padding": [
+                        0,
+                        0,
+                        0,
+                        0
+                    ]
+                }
+            },
+            "button£ºotile1_5": {
+                "type": "Widget",
+                "format": {
+                    "type": "Anchored"
+                },
+                "data": {
+                    "key": "opponentHandtile",
+                    "variables": {
+                        "size": [
+                            50,
+                            50
+                        ]
+                    }
+                },
+
+                "layout": {
+                    "priority": 5,
+                    "padding": [
+                        0,
+                        0,
+                        0,
+                        0
+                    ]
+                }
+            },
+            "button£ºotile1_6": {
+                "type": "Widget",
+                "format": {
+                    "type": "Anchored"
+                },
+                "data": {
+                    "key": "opponentHandtile",
+                    "variables": {
+                        "size": [
+                            50,
+                            50
+                        ]
+                    }
+                },
+
+                "layout": {
+                    "priority": 6,
+                    "padding": [
+                        0,
+                        0,
+                        0,
+                        0
+                    ]
+                }
+            },
+            "button£ºotile1_7": {
+                "type": "Widget",
+                "format": {
+                    "type": "Anchored"
+                },
+                "data": {
+                    "key": "opponentHandtile",
+                    "variables": {
+                        "size": [
+                            50,
+                            50
+                        ]
+                    }
+                },
+
+                "layout": {
+                    "priority": 7,
+                    "padding": [
+                        0,
+                        0,
+                        0,
+                        0
+                    ]
+                }
+            },
+            "button£ºotile1_8": {
+                "type": "Widget",
+                "format": {
+                    "type": "Anchored"
+                },
+                "data": {
+                    "key": "opponentHandtile",
+                    "variables": {
+                        "size": [
+                            50,
+                            50
+                        ]
+                    }
+                },
+
+                "layout": {
+                    "priority": 8,
+                    "padding": [
+                        0,
+                        0,
+                        0,
+                        0
+                    ]
+                }
+            },
+            "button£ºotile1_9": {
+                "type": "Widget",
+                "format": {
+                    "type": "Anchored"
+                },
+                "data": {
+                    "key": "opponentHandtile",
+                    "variables": {
+                        "size": [
+                            50,
+                            50
+                        ]
+                    }
+                },
+                "layout": {
+                    "priority": 9,
+                    "padding": [
+                        0,
+                        0,
+                        0,
+                        0
+                    ]
+                }
+            },
+            "button£ºotile1_10": {
+                "type": "Widget",
+                "format": {
+                    "type": "Anchored"
+                },
+                "data": {
+                    "key": "opponentHandtile",
+                    "variables": {
+                        "size": [
+                            50,
+                            50
+                        ]
+                    }
+                },
+                "layout": {
+                    "priority": 10,
+                    "padding": [
+                        0,
+                        0,
+                        0,
+                        0
+                    ]
+                }
+            },
+            "button£ºotile1_11": {
+                "type": "Widget",
+                "format": {
+                    "type": "Anchored"
+                },
+                "data": {
+                    "key": "opponentHandtile",
+                    "variables": {
+                        "size": [
+                            50,
+                            50
+                        ]
+                    }
+                },
+
+                "layout": {
+                    "priority": 11,
+                    "padding": [
+                        0,
+                        0,
+                        0,
+                        0
+                    ]
+                }
+            },
+            "button£ºotile1_12": {
+                "type": "Widget",
+                "format": {
+                    "type": "Anchored"
+                },
+                "data": {
+                    "key": "opponentHandtile",
+                    "variables": {
+                        "size": [
+                            50,
+                            50
+                        ]
+                    }
+                },
+
+                "layout": {
+                    "priority": 12,
+                    "padding": [
+                        0,
+                        0,
+                        0,
+                        0
+                    ]
+                }
+            },
+            "button£ºotile1_13": {
+                "type": "Widget",
+                "format": {
+                    "type": "Anchored"
+                },
+                "data": {
+                    "key": "opponentHandtile",
+                    "variables": {
+                        "size": [
+                            50,
+                            50
+                        ]
+                    }
+                },
+
+                "layout": {
+                    "priority": 13,
+                    "padding": [
+                        0,
+                        0,
+                        10,
+                        0
+                    ]
+                }
+            }
+        }
+    }
+}
