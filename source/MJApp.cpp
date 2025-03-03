@@ -12,6 +12,7 @@ using namespace cugl::graphics;
 using namespace cugl::audio;
 using namespace cugl::scene2;
 
+
 #pragma mark -
 #pragma mark Gameplay Control
 
@@ -28,24 +29,24 @@ void MahsJongApp::onStartup() {
     
     // Start-up basic input (DESKTOP ONLY)
     Input::activate<Mouse>();
+    Input::get<Mouse>()->setPointerAwareness(Mouse::PointerAwareness::DRAG);
     Input::activate<Keyboard>();
     
     _assets->attach<Texture>(TextureLoader::alloc()->getHook());
     _assets->attach<Sound>(SoundLoader::alloc()->getHook());
     _assets->attach<Font>(FontLoader::alloc()->getHook());
     _assets->attach<JsonValue>(JsonLoader::alloc()->getHook());
-    
-    // Needed for loading screen
+    _assets->attach<WidgetValue>(WidgetLoader::alloc()->getHook());
     _assets->attach<scene2::SceneNode>(Scene2Loader::alloc()->getHook());
     _assets->loadDirectory("json/loading.json");
-    _loading.setSpriteBatch(_batch);
-    
-    // Create a "loading" screen
-    _loaded = false;
+
+    //Create a "loading" screen
+    _scene = State::LOAD;
     _loading.init(_assets, "json/assets.json");
-     _loading.start();
     
+    _loading.start();
     AudioEngine::start();
+    netcode::NetworkLayer::start(netcode::NetworkLayer::Log::INFO);
     Application::onStartup(); //YOU MUST END with call to parent
 };
 
@@ -59,38 +60,220 @@ void MahsJongApp::onStartup() {
 void MahsJongApp::onShutdown() {
     _loading.dispose();
     _gameplay.dispose();
+    _hostgame.dispose();
+    _joingame.dispose();
     _assets = nullptr;
     _batch = nullptr;
     
     Input::deactivate<Keyboard>();
     Input::deactivate<Mouse>();
+    Input::deactivate<TextInput>();
+    netcode::NetworkLayer::stop();
+    
     
     AudioEngine::stop();
     Application::onShutdown(); // YOU MUST END with call to parent 
 }
 
-/** Method to update the application data */
+/**
+ * The method called to update the application data.
+ *
+ * This is your core loop and should be replaced with your custom implementation.
+ * This method should contain any code that is not an OpenGL call.
+ *
+ * When overriding this method, you do not need to call the parent method
+ * at all. The default implmentation does nothing.
+ *
+ * @param timestep  The amount of time (in seconds) since the last frame
+ */
 void MahsJongApp::update(float timestep) {
-    if(!_loaded && _loading.isActive()) {
-        _loading.update(0.01f);
-    } else if (!_loaded) {
-        _loading.dispose(); // Disables the input listeners in this mode
-        _assets->loadDirectory("json/assets.json");
-        _gameplay.setSpriteBatch(_batch);
-        _gameplay.init(_assets);
-        
-        _loaded = true;
-    } else {
-        _gameplay.update(timestep);
+    // Normally we would make things cleaner than all these if statements.
+    // But the logic is
+    switch (_scene) {
+        case LOAD:
+            updateLoadingScene(timestep);
+            break;
+        case MENU:
+            updateMenuScene(timestep);
+            break;
+        case HOST:
+            updateHostScene(timestep);
+            break;
+        case CLIENT:
+            updateClientScene(timestep);
+            break;
+        case GAME:
+            updateGameScene(timestep);
+            break;
     }
 }
 
-/** The method called to draw the appplication to the screen */
-void MahsJongApp::draw(){
-    if (!_loaded){
-        _loading.render();
-    } else {
-        _gameplay.render();
-    }
+
+/**
+* The method called to draw the application to the screen.
+*
+* This is your core loop and should be replaced with your custom implementation.
+* This method should OpenGL and related drawing calls.
+*
+* When overriding this method, you do not need to call the parent method
+* at all. The default implmentation does nothing.
+*/
+void MahsJongApp::draw() {
+   switch (_scene) {
+       case LOAD:
+           _loading.render();
+           break;
+       case MENU:
+           _mainmenu.render();
+           break;
+       case HOST:
+           _hostgame.render();
+           break;
+       case CLIENT:
+           _joingame.render();
+           break;
+       case GAME:
+           _gameplay.render();
+           break;
+   }
 }
+
+/**
+* Inidividualized update method for the loading scene.
+*
+* This method keeps the primary {@link #update} from being a mess of switch
+* statements. It also handles the transition logic from the loading scene.
+*
+* @param timestep  The amount of time (in seconds) since the last frame
+*/
+void MahsJongApp::updateLoadingScene(float timestep) {
+   if (_loading.isActive()) {
+       _loading.update(timestep);
+   } else {
+       _loading.dispose(); // Permanently disables the input listeners in this mode
+       _mainmenu.init(_assets);
+       _mainmenu.setSpriteBatch(_batch);
+       _hostgame.init(_assets);
+       _hostgame.setSpriteBatch(_batch);
+       _joingame.init(_assets);
+       _joingame.setSpriteBatch(_batch);
+       _gameplay.init(_assets);
+       _gameplay.setSpriteBatch(_batch);
+
+       _mainmenu.setActive(true);
+       _scene = State::MENU;
+   }
+}
+
+
+/**
+* Inidividualized update method for the menu scene.
+*
+* This method keeps the primary {@link #update} from being a mess of switch
+* statements. It also handles the transition logic from the menu scene.
+*
+* @param timestep  The amount of time (in seconds) since the last frame
+*/
+void MahsJongApp::updateMenuScene(float timestep) {
+   _mainmenu.update(timestep);
+   switch (_mainmenu.getChoice()) {
+       case MenuScene::Choice::HOST:
+           _mainmenu.setActive(false);
+           _hostgame.setActive(true);
+           _scene = State::HOST;
+           break;
+       case MenuScene::Choice::JOIN:
+           _mainmenu.setActive(false);
+           _joingame.setActive(true);
+           _scene = State::CLIENT;
+           break;
+       case MenuScene::Choice::NONE:
+           // DO NOTHING
+           break;
+   }
+}
+
+/**
+* Inidividualized update method for the host scene.
+*
+* This method keeps the primary {@link #update} from being a mess of switch
+* statements. It also handles the transition logic from the host scene.
+*
+* @param timestep  The amount of time (in seconds) since the last frame
+*/
+void MahsJongApp::updateHostScene(float timestep) {
+   _hostgame.update(timestep);
+   switch (_hostgame.getStatus()) {
+       case HostScene::Status::ABORT:
+           _hostgame.setActive(false);
+           _mainmenu.setActive(true);
+           _scene = State::MENU;
+           break;
+       case HostScene::Status::START:
+           _hostgame.setActive(false);
+           _gameplay.setActive(true);
+           _scene = State::GAME;
+           // Transfer connection ownership
+           _gameplay.setConnection(_hostgame.getConnection());
+           _hostgame.disconnect();
+           _gameplay.setHost(true);
+           break;
+       case HostScene::Status::WAIT:
+       case HostScene::Status::IDLE:
+           // DO NOTHING
+           break;
+   }
+}
+
+/**
+* Inidividualized update method for the client scene.
+*
+* This method keeps the primary {@link #update} from being a mess of switch
+* statements. It also handles the transition logic from the client scene.
+*
+* @param timestep  The amount of time (in seconds) since the last frame
+*/
+void MahsJongApp::updateClientScene(float timestep) {
+   _joingame.update(timestep);
+   switch (_joingame.getStatus()) {
+       case ClientScene::Status::ABORT:
+           _joingame.setActive(false);
+           _mainmenu.setActive(true);
+           _scene = State::MENU;
+           break;
+       case ClientScene::Status::START:
+           _joingame.setActive(false);
+           _gameplay.setActive(true);
+           _scene = State::GAME;
+           // Transfer connection ownership
+           _gameplay.setConnection(_joingame.getConnection());
+           _joingame.disconnect();
+           _gameplay.setHost(false);
+           break;
+       case ClientScene::Status::WAIT:
+       case ClientScene::Status::IDLE:
+       case ClientScene::Status::JOIN:
+           // DO NOTHING
+           break;
+   }
+}
+
+/**
+* Inidividualized update method for the game scene.
+*
+* This method keeps the primary {@link #update} from being a mess of switch
+* statements. It also handles the transition logic from the game scene.
+*
+* @param timestep  The amount of time (in seconds) since the last frame
+*/
+void MahsJongApp::updateGameScene(float timestep) {
+   _gameplay.update(timestep);
+   if (_gameplay.didQuit()) {
+       _gameplay.setActive(false);
+       _mainmenu.setActive(true);
+       _gameplay.disconnect();
+       _scene = State::MENU;
+   }
+}
+
 
