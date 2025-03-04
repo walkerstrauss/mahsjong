@@ -179,13 +179,17 @@
             "size":     16
         },
         "sansBold24": {
-            "file":     "fonts/_PixelifySans-SemiBold.ttf",
+            "file":     "fonts/LightPixel7.ttf",
             "size":     24
-            },
+        },
         "sansBold32": {
-            "file":     "fonts/_PixelifySans-SemiBold.ttf",
+            "file":     "fonts/LightPixel7.ttf",
             "size":     32
-            }
+        },
+        "gyparody": {
+            "file":     "fonts/gyparody-hv.ttf",
+            "size": 32
+        }
     },
     "scene2s":{
         "matchscene":{
