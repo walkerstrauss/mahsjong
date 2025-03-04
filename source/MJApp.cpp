@@ -104,7 +104,7 @@ void MahsJongApp::update(float timestep) {
             updateClientScene(timestep);
             break;
         case GAME:
-            updateGameScene(timestep)
+            updateGameScene(timestep);
             break;
     }
 
