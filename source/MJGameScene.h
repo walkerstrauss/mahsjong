@@ -37,6 +37,8 @@ protected:
     InputController _input;
     /** JSON with all of our constants*/
     std::shared_ptr<cugl::JsonValue> _constants;
+    /** Scene2 object for match scene */
+    std::shared_ptr<cugl::scene2::Scene2> _matchScene;
     /** TileSet for the game */
     std::shared_ptr<TileSet> _tileSet;
     /** Reference to player */
@@ -60,6 +62,10 @@ protected:
 
     /** Whether we quit the game */
     bool _quit;
+    /** Button for discarding */
+    std::shared_ptr<cugl::scene2::Button> _discardBtn;
+    /** Key for discard button listener */
+    Uint32 _discardBtnKey;
         
 public:
 #pragma mark -

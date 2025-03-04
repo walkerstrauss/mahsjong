@@ -120,7 +120,7 @@
                             ],
                             "angle": 0,
                             "visible": true,
-                            "font": "pixelify sansSemibold32",
+                            "font": "sansBold32",
                             "text": "Continue",
                             "foreground": "#006d3fff",
                             "background": "#00000000",

@@ -18,7 +18,7 @@ using namespace std;
 #pragma mark Level Layout
 
 /** Regardless of logo, lock the height to this */
-#define SCENE_HEIGHT  720
+#define SCENE_HEIGHT  700
 
 
 #pragma mark -
@@ -48,16 +48,18 @@ bool MenuScene::init(const std::shared_ptr<cugl::AssetManager>& assets) {
     // Start up the input handler
     _assets = assets;
     
-    Size dimen = getSize();
-    // Acquire the scene built by the asset loader and resize it the scene
-    std::shared_ptr<scene2::SceneNode> scene = _assets->get<scene2::SceneNode>("menu");
-    scene->setContentSize(dimen);
-    scene->doLayout(); // Repositions the HUD
+    std::shared_ptr<scene2::SceneNode> scene = _assets->get<scene2::SceneNode>("home");
+    scene->setContentSize(scene->getSize());
+    scene->doLayout();
     _choice = Choice::NONE;
-    _hostbutton = std::dynamic_pointer_cast<scene2::Button>(_assets->get<scene2::SceneNode>("menu.host"));
-    _joinbutton = std::dynamic_pointer_cast<scene2::Button>(_assets->get<scene2::SceneNode>("menu.join"));
     
-    // Program the buttons
+     std::shared_ptr<scene2::SceneNode> hostNode = _assets->get<scene2::SceneNode>("menu.host");
+     std::shared_ptr<scene2::SceneNode> joinNode = _assets->get<scene2::SceneNode>("menu.join");
+    hostNode->getParent()->removeChild(hostNode);
+    joinNode->getParent()->removeChild(joinNode);
+    _hostbutton = std::dynamic_pointer_cast<scene2::Button>(hostNode);
+    _joinbutton = std::dynamic_pointer_cast<scene2::Button>(joinNode);
+//    // Program the buttons
     _hostbutton->addListener([this](const std::string& name, bool down) {
         if (down) {
             _choice = Choice::HOST;
@@ -68,7 +70,9 @@ bool MenuScene::init(const std::shared_ptr<cugl::AssetManager>& assets) {
             _choice = Choice::JOIN;
         }
     });
-
+    
+    scene->addChild(_hostbutton);
+    scene->addChild(_joinbutton);
     addChild(scene);
     setActive(false);
     return true;

@@ -37,10 +37,39 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets) {
     // Initialize the scene to a locked height
     if (assets == nullptr) {
         return false;
-    }
-    else if (!Scene2::initWithHint(Size(0, SCENE_HEIGHT))) {
+    } else if (!Scene2::init()) {
+        std::cerr << "Scene2 initialization failed!" << std::endl;
         return false;
     }
+    _assets = assets;
+    std::shared_ptr<scene2::SceneNode> node = _assets->get<scene2::SceneNode>("matchscene");
+    node->doLayout();
+    addChild(node);
+    
+    CULog("Scenenode position: (%f, %f)", node->getPosition().x, node->getPosition().y);
+    // All buttons need to be buttons not nodes
+    std::shared_ptr<scene2::SceneNode> childNode = node->getChild(0);
+    _discardBtn = std::dynamic_pointer_cast<scene2::Button>(childNode->getChild(1));
+    _discardBtnKey = _discardBtn->addListener([this](const std::string& name, bool down){
+        if (_player && !down){
+            if (_player->getHand()._selectedTiles.size() >= 1 && _player->getHand()._selectedTiles.size() <= 4) {
+                if (!_player->discarding){
+                    _player->discarding = true;
+                    for (auto& tile : _player->getHand()._selectedTiles) {
+                        _player->getHand().discard(tile);
+                        tile->selected = false;
+                        tile->inHand = false;
+                        tile->inPile = false;
+                    }
+                    _player->getHand()._selectedTiles.clear();
+                    _player->getHand().drawFromPile(_pile);
+                    _player->discarding = false;
+                }
+            }
+        } else {
+            CULog("not valid discard because no player or not released");
+        }
+    });
 
     // Game Win and Lose bool
     _gameWin = false;

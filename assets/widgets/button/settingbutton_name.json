@@ -119,7 +119,7 @@
                             ],
                             "angle": 0,
                             "visible": true,
-                            "font": "pixelify sansSemibold24",
+                            "font": "sansBold24",
                             "text": "Notification",
                             "foreground": "#006d3fff",
                             "background": "#00000000",

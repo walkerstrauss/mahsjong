@@ -89,43 +89,25 @@ void MahsJongApp::onShutdown() {
  * @param timestep  The amount of time (in seconds) since the last frame
  */
 void MahsJongApp::update(float timestep) {
-    if(!_loaded && _loading.isActive()) {
-        _loading.update(0.01f);
-    } else if (!_loaded) {
-        _loading.dispose(); // Disables the input listeners in this mode
-        _assets->loadDirectory("json/assets.json");
-        
-        _matchScene = std::make_shared<scene2::Scene2>();
-        if (!_matchScene->init()) {
-            std::cerr << "Scene2 initialization failed!" << std::endl;
-            // Handle failure (return, break, or handle error state)
-        }
-        std::shared_ptr<scene2::SceneNode> node = _assets->get<scene2::SceneNode>("matchscene");
-        node->setVisible(true);
-        auto texture = _assets->get<Texture>("background_gameplay");
-        if (texture == nullptr) {
-            CULog("Failed to load background texture!");
-        } else {
-            CULog("Background texture loaded successfully.");
-        }
-        std::shared_ptr<scene2::SceneNode> childNode = node->getChild(0);
-        if (childNode) {
-            // Now you can manipulate or render the child node
-            CULog("Child node position: (%f, %f)", childNode->getPosition().x, childNode->getPosition().y);
-        }
-        node->doLayout();
-        _matchScene->addChild(node);
-        CULog("Scenenode position: (%f, %f)", node->getPosition().x, node->getPosition().y);
-        _matchScene->setSpriteBatch(_batch);
-        _matchScene->setActive(true);
-        
-        // All buttons need to be buttons not nodes
-        auto discardNode = node->getChildByName("discard");
-        _loaded = true;
-    } else {
-//        _gameplay.update(timestep);
-        return;
+    switch (_scene) {
+        case LOAD:
+            updateLoadingScene(timestep);
+            break;
+        case MENU:
+            _assets->loadDirectory("json/assets.json");
+            updateMenuScene(timestep);
+            break;
+        case HOST:
+            updateHostScene(timestep);
+            break;
+        case CLIENT:
+            updateClientScene(timestep);
+            break;
+        case GAME:
+            updateGameScene(timestep)
+            break;
     }
+
 }
 
 /**
@@ -290,7 +272,7 @@ void MahsJongApp::updateGameScene(float timestep) {
    if (_gameplay.didQuit()) {
        _gameplay.setActive(false);
        _mainmenu.setActive(true);
-       _gameplay.disconnect();
+//       _gameplay.disconnect(); // We don't have this method yet
        _scene = State::MENU;
    }
 }
