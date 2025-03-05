@@ -196,11 +196,14 @@ void ClientScene::update(float timestep) {
  */
 bool ClientScene::connect(const std::string room) {
     // THIS IS WRONG. FIX ME
-    std::string hexRoomCode = dec2hex(room);
-    _network = cugl::netcode::NetcodeConnection::alloc(_config, hexRoomCode);
-    _network->open();
-    checkConnection();
-    return _network->getState() == NetcodeConnection::State::CONNECTED;
+    if(!room.empty()){
+        std::string hexRoomCode = dec2hex(room);
+        _network = cugl::netcode::NetcodeConnection::alloc(_config, hexRoomCode);
+        _network->open();
+        checkConnection();
+        return _network->getState() == NetcodeConnection::State::CONNECTED;
+    }
+    return false;
 }
 
 /**
