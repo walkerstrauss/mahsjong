@@ -41,17 +41,19 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets) {
         std::cerr << "Scene2 initialization failed!" << std::endl;
         return false;
     }
+    _paused = false;
     _assets = assets;
-    std::shared_ptr<scene2::SceneNode> node = _assets->get<scene2::SceneNode>("matchscene");
-    node->doLayout();
-    addChild(node);
+    _matchScene = _assets->get<scene2::SceneNode>("matchscene");
+    _matchScene->doLayout();
+    _pauseScene = _assets->get<scene2::SceneNode>("pause");
+   
+    std::shared_ptr<scene2::SceneNode> childNode = _matchScene->getChild(0);
+    _discardBtn = std::dynamic_pointer_cast<scene2::Button>(childNode->getChild(6));
+    _pauseBtn = std::dynamic_pointer_cast<scene2::Button>(childNode->getChild(1));
+    _continueBtn = std::dynamic_pointer_cast<scene2::Button>(_pauseScene->getChild(0)->getChild(2));
     
-    CULog("Scenenode position: (%f, %f)", node->getPosition().x, node->getPosition().y);
-    // All buttons need to be buttons not nodes
-    std::shared_ptr<scene2::SceneNode> childNode = node->getChild(0);
-    _discardBtn = std::dynamic_pointer_cast<scene2::Button>(childNode->getChild(1));
     _discardBtnKey = _discardBtn->addListener([this](const std::string& name, bool down){
-        if (_player && !down){
+        if (!down){
             if (_player->getHand()._selectedTiles.size() >= 1 && _player->getHand()._selectedTiles.size() <= 4) {
                 if (!_player->discarding){
                     _player->discarding = true;
@@ -66,18 +68,36 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets) {
                     _player->discarding = false;
                 }
             }
-        } else {
-            CULog("not valid discard because no player or not released");
         }
     });
-
+    _pauseBtnKey = _pauseBtn->addListener([this](const std::string& name, bool down){
+        if (!down){
+            _matchScene->setVisible(false);
+            _pauseScene->setVisible(true);
+            _paused = true;
+            _continueBtn->activate();
+        }
+    });
+    
+    _continueBtnKey = _continueBtn->addListener([this](const std::string& name, bool down){
+        if (!down){
+            _matchScene->setVisible(true);
+            _pauseScene->setVisible(false);
+            _paused = false;
+        }
+    });
+    _discardBtn->activate();
+    _pauseBtn->activate();
+    
+    _matchScene->setVisible(true);
+    addChild(_matchScene);
+    addChild(_pauseScene);
+    _pauseScene->setVisible(false);
+    setActive(true);
     // Game Win and Lose bool
     _gameWin = false;
     _gameLose = false;
 
-    // Start up the input handler
-    _assets = assets;
-    
     // Initialize tile set
     _tileSet = std::make_shared<TileSet>();
     _tileSet->shuffle();
@@ -148,6 +168,9 @@ void GameScene::update(float timestep) {
         reset();
     }
 
+    if (!_batch){
+        CULog("no batch");
+    }
     //Win or lose?
     if (_gameLose || _gameWin) {
         return;
@@ -236,12 +259,16 @@ void GameScene::render() {
     * TODO: Please edit camera view appropriately
     */
     _batch->begin(getCamera()->getCombined());
-    const std::shared_ptr<Texture> temp = Texture::getBlank();
-    
+//    const std::shared_ptr<Texture> temp = Texture::getBlank();
     // Draw background and top section
-    _batch->draw(temp, Color4(141,235,207,100), Rect(Vec2::ZERO,getSize()));
-    _batch->draw(temp,Color4(37,41,88,255),Rect(Vec2(0.0f,620),Vec2(getSize())));
-    
+//    _batch->draw(temp, Color4(141,235,207,100), Rect(Vec2::ZERO,getSize()));
+//    _batch->draw(temp,Color4(37,41,88,255),Rect(Vec2(0.0f,620),Vec2(getSize())));
+    if (_paused){
+        _pauseScene->render(_batch);
+        _batch->end();
+        return;
+    }
+    _matchScene->render(_batch);
     // Draw all tiles in hand, pile and grandma tiles
     _tileSet->draw(_batch, getSize());
     
