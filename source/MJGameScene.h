@@ -38,7 +38,9 @@ protected:
     /** JSON with all of our constants*/
     std::shared_ptr<cugl::JsonValue> _constants;
     /** Scene2 object for match scene */
-    std::shared_ptr<cugl::scene2::Scene2> _matchScene;
+    std::shared_ptr<cugl::scene2::SceneNode> _matchScene;
+    /** Scene2 object for the pause scene */
+    std::shared_ptr<cugl::scene2::SceneNode> _pauseScene;
     /** TileSet for the game */
     std::shared_ptr<TileSet> _tileSet;
     /** Reference to player */
@@ -59,13 +61,22 @@ protected:
     
     /** Whether this player is the host */
     bool _ishost;
-
+    /** Whether we paused the game **/
+    bool _paused;
     /** Whether we quit the game */
     bool _quit;
     /** Button for discarding */
     std::shared_ptr<cugl::scene2::Button> _discardBtn;
+    /** Button for pausing */
+    std::shared_ptr<cugl::scene2::Button> _pauseBtn;
+    /** Button for continuing*/
+    std::shared_ptr<cugl::scene2::Button> _continueBtn;
     /** Key for discard button listener */
     Uint32 _discardBtnKey;
+    /** Key for pause button listener */
+    Uint32 _pauseBtnKey;
+    /** Key for continue button */
+    Uint32 _continueBtnKey;
         
 public:
 #pragma mark -

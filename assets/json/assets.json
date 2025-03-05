@@ -213,7 +213,10 @@
                         "type":"Anchored"
                     },
                     "data":{
-                        "key":"gameplayscene"
+                        "key":"gameplayscene",
+                        "variables":{
+                            "size":[1280,720]
+                        }
                     }
                 }
             }
@@ -232,7 +235,47 @@
                     "data":{
                         "key":"home",
                         "variables":{
-                            "size":[1024,576]
+                            "size":[1280,720]
+                        }
+                    }
+                }
+            }
+        },
+        "pause":{
+            "type":"Node",
+            "format":{
+                "type":"Anchored"
+            },
+            "children":{
+                "pausescene":{
+                    "type":"Widget",
+                    "format":{
+                        "type":"Anchored"
+                    },
+                    "data":{
+                        "key":"pausescene",
+                        "variables":{
+                            "size":[1280,720]
+                        }
+                    }
+                }
+            }
+        },
+        "settings":{
+            "type":"Node",
+            "format":{
+                "type":"Anchored"
+            },
+            "children":{
+                "settingscene":{
+                    "type":"Widget",
+                    "format":{
+                        "type":"Anchored"
+                    },
+                    "data":{
+                        "key":"settingscene",
+                        "variables":{
+                            "size":[1280,720]
                         }
                     }
                 }
