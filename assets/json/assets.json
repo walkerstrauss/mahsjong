@@ -204,23 +204,23 @@
     },
     "fonts": {
         "pixel32": {
-            "file":     "LightPixel7.ttf",
+            "file":     "fonts/LightPixel7.ttf",
             "size":     32
         },
         "pixel32_small": {
-            "file":     "LightPixel7.ttf",
+            "file":     "fonts/LightPixel7.ttf",
             "size":     16
         },
         "sansBold24": {
-            "file":     "LightPixel7.ttf",
+            "file":     "fonts/LightPixel7.ttf",
             "size":     24
         },
         "sansBold32": {
-            "file":     "LightPixel7.ttf",
+            "file":     "fonts/LightPixel7.ttf",
             "size":     32
         },
         "gyparody": {
-            "file":     "LightPixel7.ttf",
+            "file":     "fonts/LightPixel7.ttf",
             "size": 32
         }
     },

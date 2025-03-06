@@ -27,9 +27,13 @@ void MahsJongApp::onStartup() {
     _batch = SpriteBatch::alloc();
     auto cam = OrthographicCamera::alloc(getDisplaySize());
     
-    // Start-up basic input (DESKTOP ONLY)
+#ifdef CU_TOUCH_SCREEN
+    Input::activate<Touchscreen>();
+#else
     Input::activate<Mouse>();
     Input::get<Mouse>()->setPointerAwareness(Mouse::PointerAwareness::DRAG);
+
+#endif
     Input::activate<Keyboard>();
     Input::activate<TextInput>();
     

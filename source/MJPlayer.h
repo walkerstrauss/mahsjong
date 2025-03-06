@@ -77,7 +77,7 @@ public:
      *
      * @param pile      the pile to draw to our hand from
      */
-    void drawFromPile(std::shared_ptr<Pile>& pile);
+    void drawFromPile(std::shared_ptr<Pile>& pile, int number);
     
     /**
      * Discards a single specified tile from our hand
