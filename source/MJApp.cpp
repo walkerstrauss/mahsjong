@@ -165,6 +165,7 @@ void MahsJongApp::updateLoadingScene(float timestep) {
        _joingame.setSpriteBatch(_batch);
        _gameplay.init(_assets);
        _gameplay.setSpriteBatch(_batch);
+       _networkController.addObserver(_gameplay);
 
        _mainmenu.setActive(true);
        _scene = State::MENU;
@@ -273,12 +274,15 @@ void MahsJongApp::updateClientScene(float timestep) {
 * @param timestep  The amount of time (in seconds) since the last frame
 */
 void MahsJongApp::updateGameScene(float timestep) {
-   _gameplay.update(timestep);
+    _gameplay.update(timestep);
+    _networkController.update(timestep);
+    
    if (_gameplay.didQuit()) {
        _gameplay.setActive(false);
        _mainmenu.setActive(true);
 //       _gameplay.disconnect(); // We don't have this method yet
        _scene = State::MENU;
+       _networkController.disconnect();
    }
 }
 

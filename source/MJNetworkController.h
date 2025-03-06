@@ -9,6 +9,9 @@
 #define __MJ_NETWORK_CONTROLLER_H__
 #include <cugl/cugl.h>
 #include <vector>
+#include "MJTileSet.h"
+#include "MJPlayer.h"
+#include "MJGameScene.h"
 
 class NetworkController {
 private:
@@ -36,12 +39,21 @@ private:
      */
     bool checkConnection();
     
+    /**
+     *  Observers for reading data enqueued data
+     */
+    
+    GameScene observer;
+    
 public:
     
-    NetworkController() { };
+    NetworkController();
     
     ~NetworkController() { disconnect(); };
     
+    std::shared_ptr<cugl::netcode::NetcodeSerializer> _serializer;
+    std::shared_ptr<cugl::netcode::NetcodeDeserializer> _deserializer;
+
     /**
      * Returns the network connection
      */
@@ -61,6 +73,23 @@ public:
      */
     void disconnect() { _network = nullptr; }
     
+    /**
+     * Processes a single tile update
+     */
+    
+    void transmitSingleTile(TileSet::Tile& tile);
+    
+    /**
+     * Updating observer list
+     */
+    void addObserver(GameScene& scene){ observer = scene; }
+    
+    /**
+     * Notifying observers of changes
+     */
+    void notifyObservers(std::vector<std::string>& msg);
+    
+    void update(float timestep);
 };
 
 #endif /* __MJ_NETWORK_CONTROLLER_H__ */

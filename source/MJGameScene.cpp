@@ -300,3 +300,20 @@ void GameScene::render() {
     }
     _batch->end();
 }
+
+void GameScene::processData(std::vector<std::string> msg){
+    std::string name = msg[0];
+    std::string id = msg[1];
+    std::string selected = msg[2];
+    
+    for(const auto& tile : _player->getHand()._tiles){
+        if(tile->toString() == name && std::to_string(tile->_id) == id){
+            if(selected == "true"){
+                tile->selected = true;
+            }
+            else{
+                tile->selected = false;
+            }
+        }
+    }
+}

@@ -11,6 +11,8 @@
 #include <cugl/cugl.h>
 #include <vector>
 #include <unordered_set>
+#include <queue>
+#include <string>
 #include "MJInputController.h"
 #include "MJTileSet.h"
 #include "MJPlayer.h"
@@ -83,6 +85,11 @@ protected:
 public:
 #pragma mark -
 #pragma mark Constructors
+    /**
+     * Temp queue for incoming deserialized data packets
+     */
+    std::queue<std::vector<std::string>> dataQueue;
+    
     /**
      * Creates a new game mode with the default values
      *
@@ -161,6 +168,11 @@ public:
      * Draws all this scene to the scene's SpriteBatch.
      */
     void render() override;
+    
+    /**
+     * Processes updates from network
+     */
+    void processData(std::vector<std::string> msg);
 };
 
 #endif /* __SG_GAME_SCENE_H__ */
