@@ -9,7 +9,6 @@
 #define __MJ_NETWORK_CONTROLLER_H__
 #include <cugl/cugl.h>
 #include <vector>
-#include "MJApp.h"
 
 class NetworkController {
 private:
@@ -39,9 +38,9 @@ private:
     
 public:
     
-    NetworkController () { };
+    NetworkController() { };
     
-    ~NetworkController () { disconnect(); };
+    ~NetworkController() { disconnect(); };
     
     /**
      * Returns the network connection

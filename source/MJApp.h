@@ -36,7 +36,6 @@ protected:
     std::shared_ptr<cugl::graphics::SpriteBatch> _batch;
     /** The network interface */
 //    std::shared_ptr<cugl::netcode::NetcodeConnection> _network;
-    
     /** Controller for loading scene */
     cugl::scene2::LoadingScene _loading;
     /** The menu scene to choose what to do */
