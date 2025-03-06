@@ -140,7 +140,7 @@ public:
      *
      * @param mousePos      the position of the mouse in this frame
      */
-    void clickedTile(const cugl::Vec2 mousePos);
+    std::shared_ptr<TileSet::Tile> clickedTile(const cugl::Vec2 mousePos);
     
     /**
      * Confirms if a set isStraight.
