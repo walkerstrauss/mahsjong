@@ -15,6 +15,7 @@
 #include "MJTileSet.h"
 #include "MJPlayer.h"
 #include "MJPile.h"
+#include "MJDiscardPile.h"
 #include "MJScoreManager.h"
 
 using namespace cugl;
