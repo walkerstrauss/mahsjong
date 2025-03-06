@@ -27,9 +27,13 @@ void MahsJongApp::onStartup() {
     _batch = SpriteBatch::alloc();
     auto cam = OrthographicCamera::alloc(getDisplaySize());
     
-    // Start-up basic input (DESKTOP ONLY)
+#ifdef CU_TOUCH_SCREEN
+    Input::activate<Touchscreen>();
+#else
     Input::activate<Mouse>();
     Input::get<Mouse>()->setPointerAwareness(Mouse::PointerAwareness::DRAG);
+
+#endif
     Input::activate<Keyboard>();
     Input::activate<TextInput>();
     
@@ -50,6 +54,7 @@ void MahsJongApp::onStartup() {
     _loading.start();
     AudioEngine::start();
     netcode::NetworkLayer::start(netcode::NetworkLayer::Log::INFO);
+    _networkController = NetworkController();
     Application::onStartup(); //YOU MUST END with call to parent
 };
 
@@ -108,7 +113,6 @@ void MahsJongApp::update(float timestep) {
             updateGameScene(timestep);
             break;
     }
-
 }
 
 /**
@@ -216,7 +220,7 @@ void MahsJongApp::updateHostScene(float timestep) {
            _gameplay.setActive(true);
            _scene = State::GAME;
            // Transfer connection ownership
-           _gameplay.setConnection(_hostgame.getConnection());
+           _networkController.setConnection(_hostgame.getConnection());
            _hostgame.disconnect();
            _gameplay.setHost(true);
            break;
@@ -248,7 +252,7 @@ void MahsJongApp::updateClientScene(float timestep) {
            _gameplay.setActive(true);
            _scene = State::GAME;
            // Transfer connection ownership
-           _gameplay.setConnection(_joingame.getConnection());
+           _networkController.setConnection(_joingame.getConnection());
            _joingame.disconnect();
            _gameplay.setHost(false);
            break;

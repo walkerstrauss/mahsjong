@@ -78,6 +78,7 @@ protected:
     Uint32 _pauseBtnKey;
     /** Key for continue button */
     Uint32 _continueBtnKey;
+    
         
 public:
 #pragma mark -

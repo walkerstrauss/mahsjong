@@ -64,7 +64,7 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets) {
                         tile->inPile = false;
                     }
                     _player->getHand()._selectedTiles.clear();
-                    _player->getHand().drawFromPile(_pile);
+                    _player->getHand().drawFromPile(_pile, 1);
                     _player->discarding = false;
                 }
             }
@@ -129,6 +129,7 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets) {
     } else {
         _tileSet->gmaTexture = _gmaLabelTexture;
     }
+    _quit = false;
     
     return true;
 }
@@ -206,7 +207,7 @@ void GameScene::update(float timestep) {
                 _player->getHand()._tiles.push_back(wildTile);
                 _player->getHand().grandmaToAdd -= 1;
             }
-            _player->getHand().drawFromPile(_pile);
+            _player->getHand().drawFromPile(_pile, 1);
         }
     } else if (_input.getKeyPressed() == KeyCode::D && _input.getKeyDown()){
         // Discard selected cards (up to 4)
@@ -220,7 +221,7 @@ void GameScene::update(float timestep) {
                     tile->inPile = false;
                 }
                 _player->getHand()._selectedTiles.clear();
-                _player->getHand().drawFromPile(_pile);
+                _player->getHand().drawFromPile(_pile, 1);
                 _player->discarding = false;
             }
         } else {

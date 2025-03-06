@@ -31,7 +31,7 @@ Hand::Hand(Player* player) {
  */
 bool Hand::init(std::shared_ptr<TileSet>& tileSet){
     // draw from the deck
-    for(int i = 0; i<14; i++){
+    for(int i = 0; i < 13; i++){
         std::shared_ptr<TileSet::Tile> drawnTile = tileSet->deck[i];
         drawnTile->inHand = true;
         drawnTile->_scale = 0.2;
@@ -49,16 +49,9 @@ bool Hand::init(std::shared_ptr<TileSet>& tileSet){
  *
  * @param pile      the pile to draw to our hand from
  */
-void Hand::drawFromPile(std::shared_ptr<Pile>& pile){
-    if(_tiles.size() > 14){
-         return; // Never draw if hand is full
-     }
+void Hand::drawFromPile(std::shared_ptr<Pile>& pile, int number){
 
-    std::vector<std::shared_ptr<TileSet::Tile>> drawnTiles = pile->tilesDrawn(static_cast<int>(14) - static_cast<int>(_tiles.size()));
-    
-    if(drawnTiles.size() != static_cast<int>(14) - static_cast<int>(_tiles.size())){
-        return; // Stop drawing when your hand is full
-    }
+    std::vector<std::shared_ptr<TileSet::Tile>> drawnTiles = pile->tilesDrawn(number);
     
     for(auto& tile : drawnTiles){
         tile->inHand = true;
@@ -73,8 +66,8 @@ void Hand::drawFromPile(std::shared_ptr<Pile>& pile){
  */
 void Hand::discard(std::shared_ptr<TileSet::Tile> tile){
     
-    if(!tile || _selectedTiles.size() > 5){
-        CULog("Cannot discard more than 5 tiles or invalid tiles");
+    if(!tile || _tiles.size() - _selectedTiles.size() < 13){
+        CULog("Discarding too many tiles or invalid tiles");
     }
     
     auto it = _tiles.begin();
