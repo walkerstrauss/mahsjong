@@ -24,9 +24,10 @@ protected:
     std::vector<std::shared_ptr<TileSet::Tile>> _discardPile;
     /** One dimensional vector representing the top layer of the discard pile */
     std::vector<std::shared_ptr<TileSet::Tile>> _topTiles;
-    /** A reference to the player whose turn it is currently */
+    /** A reference to the player */
     std::shared_ptr<Player> _player;
-    
+    /** Which top tile is selected (0 for none, 1 for first, 2 for second) */
+    int _selectedTopTile;
 public:
 
 #pragma mark -
@@ -35,7 +36,7 @@ public:
     /**
      * Initializes a discard pile with default values
      */
-    bool init();
+    bool init(const std::shared_ptr<Player>& player);
 
 #pragma mark -
 #pragma mark Gameplay Handling
@@ -47,6 +48,16 @@ public:
      */
     int getSize() {
         return _size;
+    }
+    
+    /**
+     * Method to get the selected discard tile
+     *  (0 for none, 1 for first, 2 for second)
+     *
+     * @return a number representing which top tile is selected
+     */
+    int getSelectedTopTile() {
+        return _selectedTopTile;
     }
     
     /** Method to return the top tiles of the discard pile
@@ -73,6 +84,26 @@ public:
         _topTiles = tiles;
         return true;
     }
+    
+    /**
+     * Method to take a tile from the discard pile.
+     * Returns a tile for the player to add to hand and updates the dicard pile
+     *
+     * @return a tile to add to the player hand
+     */
+    std::shared_ptr<TileSet::Tile> drawTopTile();
+    
+    /**
+     * Method to update the position of the discard pile tiles
+     */
+    void updateTilePositions();
+    
+    /**
+     * Method to update the discard pile model
+     */
+    void update(float timestep);
+    
+    void render(const std::shared_ptr<cugl::graphics::SpriteBatch>& batch);
 };
 
 #endif /*__MJ_DISCARD_PILE_H__*/
