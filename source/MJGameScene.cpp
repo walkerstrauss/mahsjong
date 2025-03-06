@@ -129,6 +129,7 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets) {
     } else {
         _tileSet->gmaTexture = _gmaLabelTexture;
     }
+    _quit = false;
     
     return true;
 }

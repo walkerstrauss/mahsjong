@@ -12,6 +12,7 @@
 #include "MJMenuScene.h"
 #include "MJHostScene.h"
 #include "MJClientScene.h"
+#include "MJNetworkController.h"
 
 /**
  * This class represents the application root for the Mah's Jong game
@@ -34,7 +35,7 @@ protected:
     /** Global sprite batch for drawing */
     std::shared_ptr<cugl::graphics::SpriteBatch> _batch;
     /** The network interface */
-    std::shared_ptr<cugl::netcode::NetcodeConnection> _network;
+//    std::shared_ptr<cugl::netcode::NetcodeConnection> _network;
     
     /** Controller for loading scene */
     cugl::scene2::LoadingScene _loading;
@@ -54,6 +55,8 @@ protected:
     std::shared_ptr<cugl::scene2::Button> _discardBtn;
     /** The current active scene */
     State _scene;
+    /** The network controller */
+    NetworkController _networkController;
     
 public:
     /**
