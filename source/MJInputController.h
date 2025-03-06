@@ -29,6 +29,7 @@ protected:
     /** Whether there was an active button/touch press last frame*/
     bool _prevDown;
 
+    Uint64 _touchKey;
     /** The key for the mouse listeners */
     Uint32 _mouseKey;
     /** The key for the keyboard listeners */
@@ -37,6 +38,8 @@ protected:
     cugl::Vec2 _mousePos;
     /** Whether the (left) mouse button is down */
     bool _mouseDown;
+    /** Whether the screen is being touched */
+    bool _touchDown;
     /** Whether there is a key down */
     bool _keyDown;
     /** Whether a key was pressed last frame */
@@ -237,6 +240,13 @@ private:
      * @param focus     Whether this device has focus (UNUSED)
      */
     void motionCB(const cugl::MouseEvent& event, const cugl::Vec2 previous, bool focus);
+    
+#pragma mark Touch Callbacks
+    void touchPressCB(const cugl::TouchEvent& event, bool focus);
+    
+    void touchReleaseCB(const cugl::TouchEvent& event, bool focus);
+    
+    void dragCB(const cugl::TouchEvent& event, const cugl::Vec2 previous, bool focus);
 
 #pragma mark Keyboard Callbacks
     /**
