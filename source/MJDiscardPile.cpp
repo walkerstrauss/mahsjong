@@ -22,7 +22,7 @@ using namespace cugl::graphics;
 bool DiscardPile::init(const std::shared_ptr<Player>& player){
     // clear all vectors and set initial size to 0
     _discardPile.clear();
-    _topTiles.clear();
+    _topTile = nullptr;
     _size = 0;
     // set player
     if (!player){
@@ -31,8 +31,7 @@ bool DiscardPile::init(const std::shared_ptr<Player>& player){
     } else {
         _player = player;
     }
-    
-    //TODO: implement initializing a texture for the back of a tile for the bottom layers of the discard pile
+    // TODO: add other initialization logic as necessary -
     return true;
 }
 
@@ -40,7 +39,11 @@ bool DiscardPile::init(const std::shared_ptr<Player>& player){
  * Method to update the position of the discard pile tiles
  */
 void DiscardPile::updateTilePositions(){
-    // TODO: implement positioning logic for if the pile is size one or two (if it is one keep location if it is two then start x, end x, spacing x,
+    // TODO: implement positioning logic for if the pile is size one or two (if it is one keep location if it is two then start x, end x, spacing x, -
+    // TODO: replace this with better logic - should be based on the position specified in a Json file -
+    
+    // Set top tile position for rendering to game scene
+    _topTile->pos = cugl::Vec2(1100,600);
     return;
 }
 
@@ -51,21 +54,11 @@ void DiscardPile::updateTilePositions(){
  * @return a tile to add to the player hand
  */
 std::shared_ptr<TileSet::Tile> DiscardPile::drawTopTile(){
-    // TODO: call this method when player draws from discard pile
-    switch (getSelectedTopTile()){
-            break;
-        case 1:
-            // if one tile -> always draw this
-            return getTopTiles()[0];
-        case 2:
-            if (getTopTiles().size() < 2){
-                CULog("not of size 2");
-                return getTopTiles()[0];
-            }
-            return getTopTiles()[1];
-            break;
-        default:
-            return getTopTiles()[1];
+    // TODO: call this method when player draws from discard pile -
+    CULog("drawing from discard pile");
+    if (getTopTile() != nullptr){
+        return getTopTile();
     }
 }
+
 
