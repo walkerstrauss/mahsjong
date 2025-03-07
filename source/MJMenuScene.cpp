@@ -72,9 +72,10 @@ bool MenuScene::init(const std::shared_ptr<cugl::AssetManager>& assets) {
             _choice = Choice::JOIN;
         }
     });
-    
+    settingsbutton = std::dynamic_pointer_cast<scene2::Button>(_assets->get<scene2::SceneNode>("home.home.menu.button3"));
     scene->addChild(_hostbutton);
     scene->addChild(_joinbutton);
+    scene->setVisible(true);
     addChild(scene);
     setActive(false);
     return true;
@@ -107,12 +108,15 @@ void MenuScene::setActive(bool value) {
             _choice = NONE;
             _hostbutton->activate();
             _joinbutton->activate();
+            settingsbutton->activate();
         } else {
             _hostbutton->deactivate();
             _joinbutton->deactivate();
+            settingsbutton->deactivate();
             // If any were pressed, reset them
             _hostbutton->setDown(false);
             _joinbutton->setDown(false);
+            settingsbutton->setDown(false);
         }
     }
 }

@@ -163,4 +163,4 @@ public:
     void render() override;
 };
 
-#endif /* __SG_GAME_SCENE_H__ */
+#endif /* __MJ_GAME_SCENE_H__ */

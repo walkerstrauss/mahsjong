@@ -200,7 +200,71 @@
         },
         "left": {
             "file":  "textures/left_arrow.png"
+        },
+        "background_hc":{
+            "file":"textures/hostAndClient/background_hc.png"
+        },
+        "cat":{
+            "file":"textures/hostAndClient/cat.png"
+        },
+        "Client_view_image":{
+            "file":"textures/hostAndClient/Client_view_image.png"
+        },
+        "grandpa":{
+            "file":"textures/hostAndClient/grandpa.png"
+        },
+        "hcButton":{
+            "file":"textures/hostAndClient/hcButton.png"
+        },
+        "hctitle":{
+            "file":"textures/hostAndClient/hctitle.png"
+        },
+        "Host_view_image":{
+            "file":"textures/hostAndClient/Host_view_image.png"
+        },
+        "playerImage":{
+            "file":"textures/hostAndClient/playerImage.png"
+        },
+        "textbox":{
+            "file":"textures/hostAndClient/textbox.png"
+        },
+        "yellow_dragon_left": {
+            "file": "textures/setting/yellow_dragon_left.png"
+        },
+        "yellow_dragon_right": {
+            "file": "textures/setting/yellow_dragon_right.png"
+        },
+        "button_w_icon2": {
+            "file": "textures/setting/button_w_icon2.png"
+        },
+        "audio": {
+            "file": "textures/setting/audio.png"
+        },
+        "notification": {
+            "file": "textures/setting/notification.png"
+        },
+        "cancel": {
+            "file": "textures/setting/cancel.png"
+        },
+        "Setting_logo_image": {
+            "file": "textures/setting/Setting_logo_image.png"
+        },
+        "notification_box2":{
+            "file": "textures/setting/notification_box2.png"
+        },
+        "grandma_pixel":{
+            "file": "textures/setting/grandma_pixel.png"
+        },
+        "grandmaKnob":{
+            "file": "textures/setting/grandmaKnob.png"
+        },
+        "knob":{
+            "file": "textures/setting/knob.png"
+        },
+        "slider": {
+            "file": "textures/setting/slider.png"
         }
+        
     },
     "fonts": {
         "pixel32": {
@@ -210,6 +274,10 @@
         "pixel32_small": {
             "file":     "fonts/LightPixel7.ttf",
             "size":     16
+        },
+        "sansBold20":{
+            "file":     "fonts/LightPixel7.ttf",
+            "size":     20
         },
         "sansBold24": {
             "file":     "fonts/LightPixel7.ttf",
@@ -352,172 +420,16 @@
                 "type"        : "Anchored"
             },
             "children" : {
-                "title" : {
-                    "type"      : "Label",
-                    "data" : {
-                        "anchor"  : [0.5,1.0],
-                        "scale"    : 1.5,
-                        "font"     : "gyparody",
-                        "text"     : "Host View",
-                        "padding"  : [20, 20, 20, 20],
-                        "halign"   : "center",
-                        "valign"   : "middle"
-                    },
-                    "layout" : {
-                        "x_anchor" : "center",
-                        "y_anchor" : "top"
-                    }
-                },
-                "back" : {
-                    "type"      : "Button",
-                    "data"   : {
-                        "upnode"  : "up",
-                        "anchor":   [0.0,0.0]
-                    },
-                    "children": {
-                        "up" : {
-                            "type": "Image",
-                            "data": {
-                                "texture":  "left"
-                            }
-                        }
-                    },
-                    "layout" : {
-                        "x_anchor" : "left",
-                        "y_anchor" : "bottom",
-                        "y_offset" : 10,
-                        "x_offset" : 10,
-                        "absolute" : true
-                    }
-                },
-                "center" : {
-                    "type"      : "Node",
+                "hostscene":{
+                    "type"      : "Widget",
                     "format"    : {
-                        "type"        : "Float",
-                        "orientation" : "vertical",
-                        "x_alignment" : "center",
-                        "y_alignment" : "middle"
+                        "type"        : "Anchored"
                     },
-                    "data" : {
-                        "anchor"  : [0.5,0.0],
-                        "size" : [500,500]
-                    },
-                    "children":  {
-                        "game": {
-                            "type"   : "Node",
-                            "format" : {
-                                "type"         : "Float",
-                                "orientation" : "horizontal",
-                                "x_alignment" : "center",
-                                "y_alignment" : "middle"
-                            },
-                            "data"   : {
-                                "anchor"  : [0.5,0.5],
-                                "size": [500,100]
-                            },
-                            "children" : {
-                                "label": {
-                                    "type": "Label",
-                                    "data"   : {
-                                        "anchor"   : [0.5, 0.5],
-                                        "font"     : "gyparody",
-                                        "text"     : "Game ID:",
-                                        "padding"  : [20, 20, 40, 20],
-                                        "halign"   : "left",
-                                        "valign"   : "middle"
-                                    },
-                                    "layout" : {
-                                        "priority" : 1
-                                    }
-                                },
-                                "field": {
-                                    "type": "Widget",
-                                    "data"   : {
-                                        "key"     : "labelbox",
-                                        "variables" : {
-                                            "size": [200,100],
-                                            "text": "",
-                                            "halign": "center",
-                                            "framecolor": "#000088"
-                                        }
-                                    },
-                                    "layout" : {
-                                        "priority" : 2
-                                    }
-                                }
-                            },
-                            "layout" : {
-                                "priority" : 1,
-                                "padding"  : [0,50,0,0]
-                            }
+                    "data":{
+                        "variables": {
+                            "size": [1280,720]
                         },
-                        "players": {
-                            "type"   : "Node",
-                            "format" : {
-                                "type"         : "Float",
-                                "orientation" : "horizontal",
-                                "x_alignment" : "center",
-                                "y_alignment" : "middle"
-                            },
-                            "data"   : {
-                                "anchor"  : [0.5,0.5],
-                                "size": [700,100]
-                            },
-                            "children" : {
-                                "label": {
-                                    "type": "Label",
-                                    "data"   : {
-                                        "anchor"   : [0.5, 0.5],
-                                        "font"     : "gyparody",
-                                        "text"     : "Players:",
-                                        "padding"  : [20, 20, 20, 20],
-                                        "halign"   : "left",
-                                        "valign"   : "middle"
-                                    },
-                                    "layout" : {
-                                        "priority" : 1
-                                    }
-                                },
-                                "field": {
-                                    "type": "Widget",
-                                    "data"   : {
-                                        "key"     : "textfield",
-                                        "variables" : {
-                                            "size": [200,100],
-                                            "text": "1",
-                                            "halign": "center",
-                                            "framecolor": "#000088"
-                                        }
-                                    },
-                                    "layout" : {
-                                        "priority" : 2
-                                    }
-                                }
-                            },
-                            "layout" : {
-                                "priority" : 2,
-                                "padding"  : [0,50,0,0]
-                            }
-                        },
-                        "start": {
-                            "type"   : "Widget",
-                            "data"   : {
-                                "key"     : "textbutton",
-                                "variables" : {
-                                    "size": [400,100],
-                                    "text": "Waiting",
-                                    "color": "#000088"
-                                }
-                            },
-                            "layout" : {
-                                "priority" : 3,
-                                "padding"  : [0,50,0,0]
-                            }
-                        }
-                    },
-                    "layout" : {
-                        "x_anchor" : "center",
-                        "y_anchor" : "bottom"
+                        "key":"hostscene"
                     }
                 }
             }
@@ -528,178 +440,22 @@
                 "type"        : "Anchored"
             },
             "children" : {
-                "title" : {
-                    "type"      : "Label",
-                    "data" : {
-                        "anchor"  : [0.5,1.0],
-                        "scale"    : 1.5,
-                        "font"     : "gyparody",
-                        "text"     : "Client View",
-                        "padding"  : [20, 20, 20, 20],
-                        "halign"   : "center",
-                        "valign"   : "middle"
-                    },
-                    "layout" : {
-                        "x_anchor" : "center",
-                        "y_anchor" : "top"
-                    }
-                },
-                "back" : {
-                    "type"      : "Button",
-                    "data"   : {
-                        "upnode"  : "up",
-                        "anchor":   [0.0,0.0]
-                    },
-                    "children": {
-                        "up" : {
-                            "type": "Image",
-                            "data": {
-                                "texture":  "left"
-                            }
-                        }
-                    },
-                    "layout" : {
-                        "x_anchor" : "left",
-                        "y_anchor" : "bottom",
-                        "y_offset" : 10,
-                        "x_offset" : 10,
-                        "absolute" : true
-                    }
-                },
-                "center" : {
-                    "type"      : "Node",
+                "clientscene":{
+                    "type"      : "Widget",
                     "format"    : {
-                        "type"        : "Float",
-                        "orientation" : "vertical",
-                        "x_alignment" : "center",
-                        "y_alignment" : "middle"
+                        "type"        : "Anchored"
                     },
-                    "data" : {
-                        "anchor"  : [0.5,0.0],
-                        "size" : [500,500]
-                    },
-                    "children":  {
-                        "game": {
-                            "type"   : "Node",
-                            "format" : {
-                                "type"         : "Float",
-                                "orientation" : "horizontal",
-                                "x_alignment" : "center",
-                                "y_alignment" : "middle"
-                            },
-                            "data"   : {
-                                "anchor"  : [0.5,0.5],
-                                "size": [500,100]
-                            },
-                            "children" : {
-                                "label": {
-                                    "type": "Label",
-                                    "data"   : {
-                                        "anchor"   : [0.5, 0.5],
-                                        "font"     : "gyparody",
-                                        "text"     : "Game ID:",
-                                        "padding"  : [20, 20, 40, 20],
-                                        "halign"   : "left",
-                                        "valign"   : "middle"
-                                    },
-                                    "layout" : {
-                                        "priority" : 1
-                                    }
-                                },
-                                "field": {
-                                    "type": "Widget",
-                                    "data"   : {
-                                        "key"     : "textfield",
-                                        "variables" : {
-                                            "size": [200,100],
-                                            "text": "",
-                                            "halign": "center",
-                                            "framecolor": "#000088"
-                                        }
-                                    },
-                                    "layout" : {
-                                        "priority" : 2
-                                    }
-                                }
-                            },
-                            "layout" : {
-                                "priority" : 1,
-                                "padding"  : [0,50,0,0]
-                            }
+                    "data":{
+                        "variables": {
+                            "size": [1280,720]
                         },
-                        "players": {
-                            "type"   : "Node",
-                            "format" : {
-                                "type"         : "Float",
-                                "orientation" : "horizontal",
-                                "x_alignment" : "center",
-                                "y_alignment" : "middle"
-                            },
-                            "data"   : {
-                                "anchor"  : [0.5,0.5],
-                                "size": [700,100]
-                            },
-                            "children" : {
-                                "label": {
-                                    "type": "Label",
-                                    "data"   : {
-                                        "anchor"   : [0.5, 0.5],
-                                        "font"     : "gyparody",
-                                        "text"     : "Players:",
-                                        "padding"  : [20, 20, 20, 20],
-                                        "halign"   : "left",
-                                        "valign"   : "middle"
-                                    },
-                                    "layout" : {
-                                        "priority" : 1
-                                    }
-                                },
-                                "field": {
-                                    "type": "Widget",
-                                    "data"   : {
-                                        "key"     : "labelbox",
-                                        "variables" : {
-                                            "size": [200,100],
-                                            "text": "1",
-                                            "halign": "center",
-                                            "framecolor": "#000088"
-                                        }
-                                    },
-                                    "layout" : {
-                                        "priority" : 2
-                                    }
-                                }
-                            },
-                            "layout" : {
-                                "priority" : 2,
-                                "padding"  : [0,50,0,0]
-                            }
-                        },
-                        "start": {
-                            "type"   : "Widget",
-                            "data"   : {
-                                "key"     : "textbutton",
-                                "variables" : {
-                                    "size": [400,100],
-                                    "text": "Start Game",
-                                    "color": "#000088"
-                                }
-                            },
-                            "layout" : {
-                                "priority" : 3,
-                                "padding"  : [0,50,0,0]
-                            }
-                        }
-                    },
-                    "layout" : {
-                        "x_anchor" : "center",
-                        "y_anchor" : "bottom"
-                        }
+                        "key":"clientscene"
                     }
                 }
             }
-        },
-        "widgets": {
+        }
+    },
+    "widgets": {
             "colorbutton" : "widgets/colorbutton.json",
             "textbutton" : "widgets/textbutton.json",
             "textfield" : "widgets/textfield.json",
@@ -707,6 +463,8 @@
             "landingscene": "widgets/scene/landingscene.json",
             "landingTextbutton": "widgets/button/landingTextbutton.json",
             "home": "widgets/scene/home.json",
+            "hostscene": "widgets/scene/hostscene.json",
+            "clientscene": "widgets/scene/clientscene.json",
             "menubutton": "widgets/button/menubutton.json",
             "settingbutton": "widgets/icon/settingicon.json",
             "pausescene": "widgets/scene/pausescene.json",
@@ -724,9 +482,8 @@
             "settingscene": "widgets/scene/settingscene.json",
             "settingbutton_name": "widgets/button/settingbutton_name.json",
             "settingbutton_onoff": "widgets/button/settingbutton_onoff.json"
-        },
-        "jsons": {
-            "server": "json/server.json"
-        }
+    },
+    "jsons": {
+        "server": "json/server.json"
     }
 }

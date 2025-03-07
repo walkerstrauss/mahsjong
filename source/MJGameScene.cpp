@@ -46,6 +46,7 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets) {
     _matchScene = _assets->get<scene2::SceneNode>("matchscene");
     _matchScene->doLayout();
     _pauseScene = _assets->get<scene2::SceneNode>("pause");
+    // _pauseScene->doLayout();
    
     std::shared_ptr<scene2::SceneNode> childNode = _matchScene->getChild(0);
     _discardBtn = std::dynamic_pointer_cast<scene2::Button>(childNode->getChild(6));

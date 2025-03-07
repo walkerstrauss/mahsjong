@@ -70,6 +70,7 @@ void MahsJongApp::onShutdown() {
     _gameplay.dispose();
     _hostgame.dispose();
     _joingame.dispose();
+    _settings.dispose();
     _assets = nullptr;
     _batch = nullptr;
     
@@ -112,6 +113,9 @@ void MahsJongApp::update(float timestep) {
         case GAME:
             updateGameScene(timestep);
             break;
+        case SETTINGS:
+            _settings.update(timestep);
+            break;
     }
 }
 
@@ -141,6 +145,9 @@ void MahsJongApp::draw() {
        case GAME:
            _gameplay.render();
            break;
+       case SETTINGS:
+           _settings.render();
+           break;
    }
 }
 
@@ -159,12 +166,28 @@ void MahsJongApp::updateLoadingScene(float timestep) {
        _loading.dispose(); // Permanently disables the input listeners in this mode
        _mainmenu.init(_assets);
        _mainmenu.setSpriteBatch(_batch);
+       _mainmenu.settingsbutton->addListener([this](const std::string& name, bool down){
+           if (!down){
+               _settings.setActive(true);
+               _mainmenu.setActive(false);
+               _scene = State::SETTINGS;
+           }
+       });
        _hostgame.init(_assets);
        _hostgame.setSpriteBatch(_batch);
        _joingame.init(_assets);
        _joingame.setSpriteBatch(_batch);
        _gameplay.init(_assets);
        _gameplay.setSpriteBatch(_batch);
+       _settings.init(_assets);
+       _settings.setSpriteBatch(_batch);
+       _settings.exitKey = _settings.exitBtn->addListener([this](const std::string& name, bool down){
+           if (!down){
+               _mainmenu.setActive(true);
+               _settings.setActive(false);
+               _scene = State::MENU;
+           }
+       });
 
        _mainmenu.setActive(true);
        _scene = State::MENU;

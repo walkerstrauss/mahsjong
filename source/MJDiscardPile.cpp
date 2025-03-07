@@ -56,9 +56,7 @@ void DiscardPile::updateTilePositions(){
 std::shared_ptr<TileSet::Tile> DiscardPile::drawTopTile(){
     // TODO: call this method when player draws from discard pile -
     CULog("drawing from discard pile");
-    if (getTopTile() != nullptr){
-        return getTopTile();
-    }
+    return getTopTile();
 }
 
 
