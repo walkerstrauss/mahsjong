@@ -14,82 +14,142 @@
 #include "MJGameScene.h"
 
 class NetworkController {
-private:
-    /**
-     * The network connection
-     */
-    std::shared_ptr<cugl::netcode::NetcodeConnection> _network;
-    
-    /**
-     * Processes data sent over the network.
-     *
-     * Once connection is established, all data sent over the network consistes of
-     * byte vectors. This function is a call back function to process that data.
-     * Note that this function may be called *multiple times* per animation frame,
-     * as the messages can come from several sources.
-     */
-    void processData(const std::string source, const std::vector<std::byte>& data);
-    
-    /**
-     * Checks that the network connection is still active.
-     *
-     * Even if you are not sending messages all that often, you need to be calling
-     * this method regularly. This method is used to determine the current state
-     * of the scene.
-     */
-    bool checkConnection();
-    
-    /**
-     *  Observers for reading data enqueued data
-     */
-    
-    GameScene observer;
-    
 public:
+    /**
+     * The configuration status
+     *
+     * This is how the application knows to switch to the next scene.
+     */
+    enum Status {
+        /** Host is waiting on a connection */
+        CONNECTING,
+        
+        CONNECTED,
+        /** Host is waiting on all players to join */
+        IDLE,
+        /** Time to start the game */
+        START,
+        
+        NETERROR
+    };
+
+protected:
+    /** The asset manager for the controller. */
+    std::shared_ptr<cugl::AssetManager> _assets;
+
+    /** The network configuration */
+    cugl::netcode::NetcodeConfig _config;
+
+    /** The network connection */
+    std::shared_ptr<cugl::netcode::NetcodeConnection> _network;
+
+    Status _status;
+
+    std::string _roomid;
+
+    bool _isHost;
     
+    Uint32 _localPid;
+    
+    Uint32 _currentTurn;
+
+public:
+#pragma mark -
+#pragma mark Constructors
+    /**
+     * Creates a new NetworkController with the default values.
+     *
+     * This constructor does not allocate any objects or start the game.
+     * This allows us to use the object without a heap pointer.
+     */
     NetworkController();
-    
-    ~NetworkController() { disconnect(); };
-    
-    std::shared_ptr<cugl::netcode::NetcodeSerializer> _serializer;
-    std::shared_ptr<cugl::netcode::NetcodeDeserializer> _deserializer;
 
     /**
-     * Returns the network connection
+     * Disposes of all (non-static) resources allocated to this controller.
+     *
+     * This method is different from dispose() in that it ALSO shuts off any
+     * static resources, like the input controller.
      */
-    std::shared_ptr<cugl::netcode::NetcodeConnection> getConnection() const {
-        return _network;
+    ~NetworkController () { dispose(); }
+
+    /**
+     * Disposes of all (non-static) resources allocated to this controller.
+     */
+    void dispose();
+
+    bool init(const std::shared_ptr<cugl::AssetManager>& assets);
+
+    bool connectAsHost(std::shared_ptr<cugl::netcode::NetcodeConnection>& _hostNetwork);
+
+    bool connectAsClient(std::shared_ptr<cugl::netcode::NetcodeConnection>& _clientNetwork);
+
+    std::string getRoomID() const {
+        return _roomid;
+    }
+
+    void disconnect();
+
+    bool checkConnection();
+
+    void broadcast(const std::vector<std::byte>& data);
+
+    void processData(const std::string source, const std::vector<std::byte>& data);
+
+    void startGame();
+    
+    Uint8 getLocalPid();
+
+    Status getStatus() const {
+        return _status;
     }
     
     /**
-     * Sets the connection for the network
+     * Converts a decimal string to a hexadecimal string
+     *
+     * This function assumes that the string is a decimal number less
+     * than 65535, and therefore converts to a hexadecimal string of four
+     * characters or less (as is the case with the lobby server). We
+     * pad the hexadecimal string with leading 0s to bring it to four
+     * characters exactly.
+     *
+     * @param dec the decimal string to convert
+     *
+     * @return the hexadecimal equivalent to dec
      */
-    void setConnection(const std::shared_ptr<cugl::netcode::NetcodeConnection>& network){
-        _network = network;
+    static std::string dec2hex(const std::string dec) {
+        Uint32 value = strtool::stou32(dec);
+        if (value >= 655366) {
+            value = 0;
+        }
+        return strtool::to_hexstring(value, 4);
     }
-    
+
     /**
-     * Disconnects the network associated w/ the network controller
+     * Converts a hexadecimal string to a decimal string
+     *
+     * This function assumes that the string is 4 hexadecimal characters
+     * or less, and therefore it converts to a decimal string of five
+     * characters or less (as is the case with the lobby server). We
+     * pad the decimal string with leading 0s to bring it to 5 characters
+     * exactly.
+     *
+     * @param hex the hexadecimal string to convert
+     *
+     * @return the decimal equivalent to hex
      */
-    void disconnect() { _network = nullptr; }
-    
-    /**
-     * Processes a single tile update
-     */
-    
-    void transmitSingleTile(TileSet::Tile& tile);
-    
-    /**
-     * Updating observer list
-     */
-    void addObserver(GameScene& scene){ observer = scene; }
-    
-    /**
-     * Notifying observers of changes
-     */
-    void notifyObservers(std::vector<std::string>& msg);
-    
-    void update(float timestep);
+    static std::string hex2dec(const std::string hex) {
+        Uint32 value = strtool::stou32(hex, 0, 16);
+        std::string result = strtool::to_string(value);
+        if (result.size() < 5) {
+            size_t diff = 5 - result.size();
+            std::string alt(5, '0');
+            for (size_t ii = 0; ii < result.size(); ii++) {
+                alt[diff + ii] = result[ii];
+            }
+            result = alt;
+        }
+        return result;
+    }
 };
 
 #endif /* __MJ_NETWORK_CONTROLLER_H__ */
