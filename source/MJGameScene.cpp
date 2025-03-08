@@ -68,7 +68,7 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::sha
                     _player->getHand().drawFromPile(_pile, 1);
                     _player->discarding = false;
                     
-                    _network->notifyEndTurn();
+                    _network->endTurn();
                 }
             }
         }
@@ -169,9 +169,10 @@ void GameScene::update(float timestep) {
     _input.readInput();
     _input.update();
     
+    CULog("%d", _network->getCurrentTurn());
+
     if (_network->getCurrentTurn() != _network->getLocalPid()) {
-        CULog("not your turn!!!!");
-            return;
+        return;
         }
     
     if (_input.getKeyPressed() == KeyCode::R && _input.getKeyDown()) {
@@ -239,6 +240,7 @@ void GameScene::update(float timestep) {
             }
             _player->getHand()._selectedTiles.clear();
         }
+        
     } else if (_input.getKeyPressed() == KeyCode::S && _input.getKeyDown()){
             if(!_player->getHand().makeSet()){
                 for(const auto& it : _player->getHand()._selectedTiles){

@@ -93,8 +93,7 @@ void NetworkController::disconnect() {
     }
     _network = nullptr;
     _status = Status::IDLE;
-    _isHost = false;
-
+    
 }
 
 void NetworkController::processData(const std::string source,
@@ -107,32 +106,26 @@ void NetworkController::processData(const std::string source,
     
     if (msgType == "start game") {
         _status = START;
-    } else if (msgType == "update turn") {
-        CULog("update turn is being read");
-        _currentTurn = std::stoi(_deserializer->readString());
     } else if (msgType == "end turn") {
-        CULog("end turn is being read");
-        if (_isHost) {
-            endTurn();
-        }
+        _currentTurn = _deserializer->readUint32();
     }
 }
 
-void NetworkController::notifyEndTurn() {
-    _serializer->reset();
-    _serializer->writeString("end turn");
-    _serializer->writeString(std::to_string(_localPid));
-    broadcast(_serializer->serialize());
-    CULog("notify end turn is being sent");
-    }
+//void NetworkController::notifyEndTurn() {
+//    _serializer->reset();
+//    _serializer->writeString("end turn");
+//    _serializer->writeString(std::to_string(_localPid));
+//    broadcast(_serializer->serialize());
+//    CULog("notify end turn is being sent");
+//    }
 
 void NetworkController::endTurn() {
     if (_isHost) {
         _currentTurn = (_currentTurn == 0) ? 1 : 0;  // Toggle between 0 and 1
         
         _serializer->reset();
-        _serializer->writeString("update turn");
-        _serializer->writeString(std::to_string(_currentTurn));
+        _serializer->writeString("end turn");
+        _serializer->writeUint32(_currentTurn);
         broadcast(_serializer->serialize());
     }
 }

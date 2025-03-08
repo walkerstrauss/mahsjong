@@ -93,6 +93,7 @@ bool HostScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::sha
     _backout->addListener([this](const std::string& name, bool down) {
         if (down) {
             _backClicked = true;
+            _network->disconnect();
         }
     });
 
