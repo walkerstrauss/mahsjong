@@ -120,14 +120,12 @@ void NetworkController::processData(const std::string source,
 //    }
 
 void NetworkController::endTurn() {
-    if (_isHost) {
-        _currentTurn = (_currentTurn == 0) ? 1 : 0;  // Toggle between 0 and 1
-        
-        _serializer->reset();
-        _serializer->writeString("end turn");
-        _serializer->writeUint32(_currentTurn);
-        broadcast(_serializer->serialize());
-    }
+    _currentTurn = (_currentTurn == 0) ? 1 : 0;  // Toggle between 0 and 1
+    
+    _serializer->reset();
+    _serializer->writeString("end turn");
+    _serializer->writeUint32(_currentTurn);
+    broadcast(_serializer->serialize());
 }
 
 void NetworkController::transmitSingleTile(TileSet::Tile& tile){
