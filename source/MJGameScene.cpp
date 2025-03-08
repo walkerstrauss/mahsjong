@@ -33,7 +33,7 @@ using namespace std;
  *
  * @param assets    the asset manager for the game
  */
-bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets) {
+bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::shared_ptr<NetworkController> network) {
     // Initialize the scene to a locked height
     if (assets == nullptr) {
         return false;
@@ -43,6 +43,7 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets) {
     }
     _paused = false;
     _assets = assets;
+    _network = network;
     _matchScene = _assets->get<scene2::SceneNode>("matchscene");
     _matchScene->doLayout();
     _pauseScene = _assets->get<scene2::SceneNode>("pause");
@@ -66,6 +67,8 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets) {
                     _player->getHand()._selectedTiles.clear();
                     _player->getHand().drawFromPile(_pile, 1);
                     _player->discarding = false;
+                    
+                    _network->notifyEndTurn();
                 }
             }
         }
@@ -152,7 +155,7 @@ void GameScene::dispose() {
 void GameScene::reset() {
     _gameLose = false;
     _gameWin = false;
-    init(_assets);
+    init(_assets, _network);
     return;
 }
 
@@ -165,6 +168,12 @@ void GameScene::update(float timestep) {
     //Reading input
     _input.readInput();
     _input.update();
+    
+    if (_network->getCurrentTurn() != _network->getLocalPid()) {
+        CULog("not your turn!!!!");
+            return;
+        }
+    
     if (_input.getKeyPressed() == KeyCode::R && _input.getKeyDown()) {
         reset();
     }

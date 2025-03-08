@@ -168,7 +168,7 @@ void MahsJongApp::updateLoadingScene(float timestep) {
        _hostgame.setSpriteBatch(_batch);
        _joingame.init(_assets, _network);
        _joingame.setSpriteBatch(_batch);
-       _gameplay.init(_assets);
+       _gameplay.init(_assets, _network);
        _gameplay.setSpriteBatch(_batch);
 //       _networkController.addObserver(_gameplay);
 

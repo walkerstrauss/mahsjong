@@ -18,6 +18,7 @@ NetworkController::NetworkController() {
     _isHost = false;
     _roomid = "";
     _currentTurn = 0;
+    _localPid = -1;
     _serializer = cugl::netcode::NetcodeSerializer::alloc();
     _deserializer = cugl::netcode::NetcodeDeserializer::alloc();
 };
@@ -57,6 +58,7 @@ bool NetworkController::connectAsHost() {
     }
 
     _isHost = true;
+    _localPid = 0;
     if (_status == Status::IDLE) {
         _status = Status::CONNECTING;
         _network = cugl::netcode::NetcodeConnection::alloc(_config);
@@ -71,6 +73,7 @@ bool NetworkController::connectAsClient(std::string room) {
     }
 
     _isHost = false;
+    _localPid = 1;
     if (_status == Status::IDLE) {
         _status = Status::CONNECTING;
         _network = cugl::netcode::NetcodeConnection::alloc(_config, room);
@@ -92,30 +95,59 @@ void NetworkController::disconnect() {
 
 void NetworkController::processData(const std::string source,
                                     const std::vector<std::byte>& data){
-    static bool first = true;
-    if (_network->getHost() == source && first) {
-        CULog("received message from host");
-        _status = START;
-        first = false;
-    }
+    _deserializer->reset();
+    _deserializer->receive(data);
+    std::string msgType = _deserializer->readString();
     
+    CULog("%s", msgType.c_str());
+    
+    if (msgType == "start game") {
+        _status = START;
+    } else if (msgType == "update turn") {
+        CULog("update turn is being read");
+        _currentTurn = std::stoi(_deserializer->readString());
+    } else if (msgType == "end turn") {
+        CULog("end turn is being read");
+        if (_isHost) {
+            endTurn();
+        }
+    }
 }
 
-//void NetworkController::transmitSingleTile(TileSet::Tile& tile){
-//    std::vector<std::byte> msg;
-//    
-//    //Process tile name and id
-//    _serializer->writeString(tile.toString());
-//    _serializer->writeString(std::to_string(tile._id));
-//    if(tile.selected){
-//        _serializer->writeString("true");
-//    }
-//    else{
-//        _serializer->writeString("false");
-//    }
-//
-//    _network->broadcast(_serializer->serialize());
-//}
+void NetworkController::notifyEndTurn() {
+    _serializer->reset();
+    _serializer->writeString("end turn");
+    _serializer->writeString(std::to_string(_localPid));
+    broadcast(_serializer->serialize());
+    CULog("notify end turn is being sent");
+    }
+
+void NetworkController::endTurn() {
+    if (_isHost) {
+        _currentTurn = (_currentTurn == 0) ? 1 : 0;  // Toggle between 0 and 1
+        
+        _serializer->reset();
+        _serializer->writeString("update turn");
+        _serializer->writeString(std::to_string(_currentTurn));
+        broadcast(_serializer->serialize());
+    }
+}
+
+void NetworkController::transmitSingleTile(TileSet::Tile& tile){
+    
+    //Process tile name and id
+    _serializer->writeString(tile.toString());
+    _serializer->writeString(std::to_string(tile._id));
+    if(tile.selected){
+        _serializer->writeString("true");
+    }
+    else{
+        _serializer->writeString("false");
+    }
+
+    broadcast(_serializer->serialize());
+    
+}
 
 bool NetworkController::checkConnection() {
     NetcodeConnection::State state = _network->getState();

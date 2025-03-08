@@ -11,7 +11,6 @@
 #include <vector>
 #include "MJTileSet.h"
 #include "MJPlayer.h"
-#include "MJGameScene.h"
 
 class NetworkController {
 public:
@@ -52,6 +51,7 @@ protected:
     Uint32 _localPid;
     
     Uint32 _currentTurn;
+    
 
 public:
 #pragma mark -
@@ -99,6 +99,12 @@ public:
     }
 
     void disconnect();
+    
+    void notifyEndTurn();
+    
+    void endTurn();
+    
+    void transmitSingleTile(TileSet::Tile& tile);
 
     bool checkConnection();
 
@@ -108,7 +114,13 @@ public:
 
     void startGame();
     
-    Uint8 getLocalPid();
+    Uint32 getLocalPid() const {
+        return _localPid;
+    }
+
+    Uint32 getCurrentTurn() const {
+        return _currentTurn;
+    }
 
     Status getStatus() const {
         return _status;
@@ -128,11 +140,11 @@ public:
      * @return the hexadecimal equivalent to dec
      */
     static std::string dec2hex(const std::string dec) {
-        Uint32 value = strtool::stou32(dec);
+        Uint32 value = cugl::strtool::stou32(dec);
         if (value >= 655366) {
             value = 0;
         }
-        return strtool::to_hexstring(value, 4);
+        return cugl::strtool::to_hexstring(value, 4);
     }
 
     /**
@@ -149,8 +161,8 @@ public:
      * @return the decimal equivalent to hex
      */
     static std::string hex2dec(const std::string hex) {
-        Uint32 value = strtool::stou32(hex, 0, 16);
-        std::string result = strtool::to_string(value);
+        Uint32 value = cugl::strtool::stou32(hex, 0, 16);
+        std::string result = cugl::strtool::to_string(value);
         if (result.size() < 5) {
             size_t diff = 5 - result.size();
             std::string alt(5, '0');
