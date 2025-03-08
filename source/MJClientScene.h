@@ -44,8 +44,8 @@ protected:
     /** The network controller */
     std::shared_ptr<NetworkController> _network;
 
-    /** The network connection (as made by this scene) */
-    std::shared_ptr<cugl::netcode::NetcodeConnection> _clientNetwork;
+//    /** The network connection (as made by this scene) */
+//    std::shared_ptr<cugl::netcode::NetcodeConnection> _clientNetwork;
 
     /** The menu button for starting a game */
     std::shared_ptr<cugl::scene2::Button> _startgame;

@@ -18,8 +18,8 @@ NetworkController::NetworkController() {
     _isHost = false;
     _roomid = "";
     _currentTurn = 0;
-//    _serializer = cugl::netcode::NetcodeSerializer::alloc();
-//    _deserializer = cugl::netcode::NetcodeDeserializer::alloc();
+    _serializer = cugl::netcode::NetcodeSerializer::alloc();
+    _deserializer = cugl::netcode::NetcodeDeserializer::alloc();
 };
 
 
@@ -36,48 +36,47 @@ bool NetworkController::init(const std::shared_ptr<cugl::AssetManager>& assets) 
     
     auto json = assets->get<JsonValue>("server");
     _config.set(json);
-    _network = cugl::netcode::NetcodeConnection::alloc(_config);
-    _network->open();
-    checkConnection();
+    _status = Status::IDLE;
     
-    return _network->getState() == NetcodeConnection::State::CONNECTED;
+    return true;
 }
 
-//void NetworkController::update(float timestep){
-//    if(_network) {
-//        _network->receive([this](const std::string source,
-//                                 const std::vector<std::byte>& data) {
-//            processData(source, data);
-//        });
-//        checkConnection();
-//    }
-//}
-
-bool NetworkController::connectAsHost(std::shared_ptr<cugl::netcode::NetcodeConnection>& _hostNetwork) {
-    _isHost = true;
-    _status = Status::CONNECTING;
-    
-    _hostNetwork = NetcodeConnection::alloc(_config, _network->getRoom());
-    
-    if (!_hostNetwork) {
-        _status = Status::NETERROR;
-        CULog("ERROR: Failed to allocate network connection!");
-        return false;
+void NetworkController::update(float timestep){
+    if(_network) {
+        _network->receive([this](const std::string source,
+                                 const std::vector<std::byte>& data) {
+            processData(source, data);
+        });
+        checkConnection();
     }
-    
-    _hostNetwork->open();
-    
-    return checkConnection();
-
 }
 
-bool NetworkController::connectAsClient(std::shared_ptr<cugl::netcode::NetcodeConnection>& _clientNetwork) {
+bool NetworkController::connectAsHost() {
+    if (_status == Status::NETERROR) {
+        disconnect();
+    }
+
+    _isHost = true;
+    if (_status == Status::IDLE) {
+        _status = Status::CONNECTING;
+        _network = cugl::netcode::NetcodeConnection::alloc(_config);
+        _network->open();
+    }
+    return checkConnection();
+}
+
+bool NetworkController::connectAsClient(std::string room) {
+    if (_status == Status::NETERROR) {
+        disconnect();
+    }
+
     _isHost = false;
-    _status = Status::CONNECTING;
-    
-    _clientNetwork = NetcodeConnection::alloc(_config, _network->getRoom());
-    _clientNetwork->open();
-    
+    if (_status == Status::IDLE) {
+        _status = Status::CONNECTING;
+        _network = cugl::netcode::NetcodeConnection::alloc(_config, room);
+        _network->open();
+    }
+    _roomid = room;
     return checkConnection();
     
 }
@@ -86,22 +85,21 @@ bool NetworkController::connectAsClient(std::shared_ptr<cugl::netcode::NetcodeCo
  * Disconnects from the network.
  */
 void NetworkController::disconnect() {
-    _network = nullptr;
-    _status = IDLE;
+    if(_network && _network->isOpen()) {
+        _network->close();
+    }
 }
 
-//void NetworkController::processData(const std::string source,
-//                                    const std::vector<std::byte>& data){
-//    std::vector<std::string> msg;
-//    if(_network && data.size() > 0){
-//        _deserializer->receive(data);
-//        msg.emplace_back(std::get<std::string>(_deserializer->read()));
-//        msg.emplace_back(std::get<std::string>(_deserializer->read()));
-//        msg.emplace_back(std::get<std::string>(_deserializer->read()));
-//        
-//        notifyObservers(msg);
-//    }
-//}
+void NetworkController::processData(const std::string source,
+                                    const std::vector<std::byte>& data){
+    static bool first = true;
+    if (_network->getHost() == source && first) {
+        CULog("received message from host");
+        _status = START;
+        first = false;
+    }
+    
+}
 
 //void NetworkController::transmitSingleTile(TileSet::Tile& tile){
 //    std::vector<std::byte> msg;
@@ -122,28 +120,25 @@ void NetworkController::disconnect() {
 bool NetworkController::checkConnection() {
     NetcodeConnection::State state = _network->getState();
 
-    switch (state) {
-        case NetcodeConnection::State::CONNECTED:
-            if (_isHost && _roomid.empty()) {
-                _roomid = _network->getRoom();
-            }
-            break;
-        case NetcodeConnection::State::NEGOTIATING:
-            _status = CONNECTING;
-            break;
-        case NetcodeConnection::State::DISCONNECTED:
-        case NetcodeConnection::State::DENIED:
-        case NetcodeConnection::State::MISMATCHED:
-        case NetcodeConnection::State::INVALID:
-        case NetcodeConnection::State::FAILED:
-            disconnect();
-            _status = NETERROR;
-            return false;
-        default:
-            return false;
-            
-    };
-    
+    if (state == NetcodeConnection::State::CONNECTED) {
+        if(_status == Status::CONNECTING || _status == Status::IDLE) {
+            _status = Status::CONNECTED;
+        }
+        if (_isHost) {
+            _roomid = _network->getRoom();
+        }
+        return true;
+    } else if (state == cugl::netcode::NetcodeConnection::State::NEGOTIATING) {
+        _status = Status::CONNECTING;
+        return true;
+    } else if (state == cugl::netcode::NetcodeConnection::State::DENIED ||
+               state == cugl::netcode::NetcodeConnection::State::DISCONNECTED ||
+               state == cugl::netcode::NetcodeConnection::State::FAILED ||
+               state == cugl::netcode::NetcodeConnection::State::INVALID ||
+               state == cugl::netcode::NetcodeConnection::State::MISMATCHED) {
+        _status = Status::NETERROR;
+        return false;
+    }
     return true;
 }
 
@@ -154,13 +149,13 @@ void NetworkController::broadcast(const std::vector<std::byte>& data) {
 }
 
 void NetworkController::startGame() {
+    CULog("network starting game");
     _status = Status::START;
-    NetcodeSerializer serializer;
-    serializer.writeString("start game");
-    broadcast(serializer.serialize());
+    _serializer->writeString("start game");
+    broadcast(_serializer->serialize());
 }
 
-
+//
 //void NetworkController::notifyObservers(std::vector<std::string>& msg){
 //    observer.processData(msg);
 //}

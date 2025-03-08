@@ -42,7 +42,7 @@ protected:
     /** The network controller */
     std::shared_ptr<NetworkController> _network;
     /** The network connection for this scene **/
-    std::shared_ptr<cugl::netcode::NetcodeConnection> _hostNetwork;
+//    std::shared_ptr<cugl::netcode::NetcodeConnection> _hostNetwork;
 
     /** The menu button for starting a game */
     std::shared_ptr<cugl::scene2::Button> _startgame;
@@ -58,8 +58,8 @@ protected:
     /** Whether the back button had been pressed. */
     bool _backClicked = false;
     
-//    /** The network configuration */
-//    cugl::netcode::NetcodeConfig _config;
+    /** The network configuration */
+    cugl::netcode::NetcodeConfig _config;
     
 //    /** The current status */
 //    Status _status;

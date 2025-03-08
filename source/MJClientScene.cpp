@@ -94,12 +94,12 @@ bool ClientScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::s
     });
     
     _gameid->addExitListener([this](const std::string& name, const std::string& value) {
-        _network->connectAsClient(_clientNetwork);
+        _network->connectAsClient(dec2hex(value));
     });
 
-//    // Create the server configuration
-//    auto json = _assets->get<JsonValue>("server");
-//    _config.set(json);
+    // Create the server configuration
+    auto json = _assets->get<JsonValue>("server");
+    _config.set(json);
     
     addChild(scene);
     setActive(false);
@@ -176,8 +176,11 @@ void ClientScene::update(float timestep) {
 //            processData(source,data);
 //        });
 //        checkConnection();
-        configureStartButton();
-//    }
+    
+    configureStartButton();
+    if(_network->getStatus() == NetworkController::Status::CONNECTED){
+        _player->setText(std::to_string(_network->getNumPlayers()));
+    }
 }
 
 
@@ -264,14 +267,17 @@ void ClientScene::update(float timestep) {
  */
 void ClientScene::configureStartButton() {
     if(_network->getStatus() == NetworkController::Status::IDLE){
+        _startgame->setDown(false);
         _startgame->activate();
         updateText(_startgame,"Start Game");
     }
     else if(_network->getStatus() == NetworkController::Status::CONNECTING){
+        _startgame->setDown(false);
         _startgame->deactivate();
         updateText(_startgame, "Connecting");
     }
     else if(_network->getStatus() == NetworkController::Status::CONNECTED){
+        _startgame->setDown(false);
         _startgame->deactivate();
         updateText(_startgame, "Waiting");
     }

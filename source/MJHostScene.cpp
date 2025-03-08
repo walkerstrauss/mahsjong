@@ -102,9 +102,9 @@ bool HostScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::sha
         }
     });
     
-//    // Create the server configuration
-//    auto json = _assets->get<JsonValue>("server");
-//    _config.set(json);
+    // Create the server configuration
+    auto json = _assets->get<JsonValue>("server");
+    _config.set(json);
     
     addChild(scene);
     setActive(false);
@@ -141,10 +141,9 @@ void HostScene::setActive(bool value) {
             _backout->activate();
 //            connect();
 //            _network->disconnect();
-            _network->connectAsHost(_hostNetwork);
+            _network->connectAsHost();
             _backClicked = false;
         } else {
-            CULog("INACTIVE!!");
             _gameid->setText("");
             _startgame->deactivate();
             updateText(_startgame, "INACTIVE");
@@ -184,8 +183,6 @@ void HostScene::updateText(const std::shared_ptr<scene2::Button>& button, const 
  * @param timestep  The amount of time (in seconds) since the last frame
  */
 void HostScene::update(float timestep) {
-    CULog("Updating Host Scene...");
-    _network->checkConnection();
     if(_network->getStatus() == NetworkController::Status::CONNECTED){
         if (!_startGameClicked) {
             updateText(_startgame, "Start Game");
@@ -196,8 +193,9 @@ void HostScene::update(float timestep) {
             _startgame->deactivate();
         }
         _gameid->setText(hex2dec(_network->getRoomID()));
-//        _player->setText(std::to_string(_network->getNumPlayers()));
-    }}
+        _player->setText(std::to_string(_network->getNumPlayers()));
+    }
+}
 
 ///**
 // * Processes data sent over the network.
@@ -293,7 +291,7 @@ void HostScene::update(float timestep) {
  * players.
  */
 void HostScene::startGame() {
-    
+    CULog("host start game");
     _network->startGame();
     _startGameClicked = true;
     

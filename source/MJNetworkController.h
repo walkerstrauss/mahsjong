@@ -21,15 +21,15 @@ public:
      * This is how the application knows to switch to the next scene.
      */
     enum Status {
-        /** Host is waiting on a connection */
-        CONNECTING,
-        
-        CONNECTED,
-        /** Host is waiting on all players to join */
+        /** No connection requested */
         IDLE,
+        /** Connecting to server */
+        CONNECTING,
+        /** Connected to server */
+        CONNECTED,
         /** Time to start the game */
         START,
-        
+        /** Error in connection */
         NETERROR
     };
 
@@ -71,6 +71,9 @@ public:
      * static resources, like the input controller.
      */
     ~NetworkController () { dispose(); }
+    
+    std::shared_ptr<cugl::netcode::NetcodeSerializer> _serializer;
+    std::shared_ptr<cugl::netcode::NetcodeDeserializer> _deserializer;
 
     /**
      * Disposes of all (non-static) resources allocated to this controller.
@@ -78,10 +81,18 @@ public:
     void dispose();
 
     bool init(const std::shared_ptr<cugl::AssetManager>& assets);
+    
+    int getNumPlayers() const {
+        if (_network) {
+            return (int)(_network->getNumPlayers());
+        }
+        return 1;
+    }
+    void update(float timestep);
 
-    bool connectAsHost(std::shared_ptr<cugl::netcode::NetcodeConnection>& _hostNetwork);
+    bool connectAsHost();
 
-    bool connectAsClient(std::shared_ptr<cugl::netcode::NetcodeConnection>& _clientNetwork);
+    bool connectAsClient(std::string room);
 
     std::string getRoomID() const {
         return _roomid;
