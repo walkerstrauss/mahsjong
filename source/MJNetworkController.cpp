@@ -91,6 +91,10 @@ void NetworkController::disconnect() {
     if(_network && _network->isOpen()) {
         _network->close();
     }
+    _network = nullptr;
+    _status = Status::IDLE;
+    _isHost = false;
+
 }
 
 void NetworkController::processData(const std::string source,

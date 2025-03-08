@@ -216,23 +216,20 @@ void MahsJongApp::updateMenuScene(float timestep) {
 void MahsJongApp::updateHostScene(float timestep) {
     _hostgame.update(timestep);
     
-    switch (_network->getStatus()) {
-//        case NetworkController::Status::ABORT:
-//            _hostgame.setActive(false);
-//            _mainmenu.setActive(true);
-//            _scene = State::MENU;
-//            break;
-        case NetworkController::Status::START:
-            _hostgame.setActive(false);
-            _gameplay.setActive(true);
-            _scene = State::GAME;
-            break;
-        case NetworkController::Status::CONNECTING:
-        case NetworkController::Status::IDLE:
-        case NetworkController::Status::CONNECTED:
-            
-            // DO NOTHING
-            break;
+    if(_hostgame.getBackClicked()){
+        _scene = MENU;
+        _hostgame.setActive(false);
+        _mainmenu.setActive(true);
+    } else if (_network->getStatus() == NetworkController::Status::START) {
+        _hostgame.setActive(false);
+        _gameplay.setActive(true);
+        _scene = State::GAME;
+    } else if (_network->getStatus() == NetworkController::Status::NETERROR) {
+        _scene = MENU;
+        _network->disconnect();
+        _hostgame.setActive(false);
+        _mainmenu.setActive(true);
+        _gameplay.dispose();
     }
 }
 /**
@@ -245,24 +242,22 @@ void MahsJongApp::updateHostScene(float timestep) {
 */
 void MahsJongApp::updateClientScene(float timestep) {
     _joingame.update(timestep);
-    
-    switch (_network->getStatus()) {
-//        case NetworkController::Status::ABORT:
-//            _joingame.setActive(false);
-//            _mainmenu.setActive(true);
-//            _scene = State::MENU;
-//            break;
-        case NetworkController::Status::START:
-            _joingame.setActive(false);
-            _gameplay.setActive(true);
-            _scene = State::GAME;
 
-            break;
-        case NetworkController::Status::CONNECTING:
-        case NetworkController::Status::IDLE:
-        case NetworkController::Status::CONNECTED:
-            // DO NOTHING
-            break;
+    if(_joingame.getBackClicked()){
+        _scene = MENU;
+        _joingame.setActive(false);
+        _mainmenu.setActive(true);
+    } else if (_network->getStatus() == NetworkController::Status::START) {
+        _joingame.setActive(false);
+        _gameplay.setActive(true);
+        _scene = GAME;
+    }
+    else if (_network->getStatus() == NetworkController::Status::NETERROR) {
+        _network->disconnect();
+        _joingame.setActive(false);
+        _mainmenu.setActive(true);
+        _gameplay.dispose();
+        _scene = MENU;
     }
 }
 

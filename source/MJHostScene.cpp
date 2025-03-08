@@ -117,7 +117,6 @@ bool HostScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::sha
 void HostScene::dispose() {
     if (_active) {
         removeAllChildren();
-//        _network = nullptr;
         _active = false;
     }
 }
@@ -135,12 +134,8 @@ void HostScene::setActive(bool value) {
     if (isActive() != value) {
         Scene2::setActive(value);
         if (value) {
-            CULog("calling connectAsHost");
-//            _status = WAIT;
-//            configureStartButton();
             _backout->activate();
-//            connect();
-//            _network->disconnect();
+            _network->disconnect();
             _network->connectAsHost();
             _backClicked = false;
         } else {
@@ -148,13 +143,11 @@ void HostScene::setActive(bool value) {
             _startgame->deactivate();
             updateText(_startgame, "INACTIVE");
             _backout->deactivate();
-            // If any were pressed, reset them
             _startgame->setDown(false);
             _backout->setDown(false);
         }
     }
 }
-
 
 /**
  * Updates the text in the given button.
@@ -197,92 +190,6 @@ void HostScene::update(float timestep) {
     }
 }
 
-///**
-// * Processes data sent over the network.
-// *
-// * Once connection is established, all data sent over the network consistes of
-// * byte vectors. This function is a call back function to process that data.
-// * Note that this function may be called *multiple times* per animation frame,
-// * as the messages can come from several sources.
-// *
-// * In this lab, this method does not do all that much. Typically this is where
-// * players would communicate their names after being connected.
-// *
-// * @param source    The UUID of the sender
-// * @param data      The data received
-// */
-//void HostScene::processData(const std::string source,
-//                            const std::vector<std::byte>& data) {
-//    // No real data is handled in this scene
-//}
-//
-//
-///**
-// * Connects to the game server as specified in the assets file
-// *
-// * The {@link #init} method set the configuration data. This method simply uses
-// * this to create a new {@Link NetworkConnection}. It also immediately calls
-// * {@link #checkConnection} to determine the scene state.
-// *
-// * @return true if the connection was successful
-// */
-//bool HostScene::connect() {
-//    _network = cugl::netcode::NetcodeConnection::alloc(_config);
-//    _network -> open();
-//    checkConnection();
-//    return _network->getState() == NetcodeConnection::State::CONNECTED;
-//}
-//
-///**
-// * Checks that the network connection is still active.
-// *
-// * Even if you are not sending messages all that often, you need to be calling
-// * this method regularly. This method is used to determine the current state
-// * of the scene.
-// *
-// * @return true if the network connection is still active.
-// */
-//bool HostScene::checkConnection() {
-//    int connectState = static_cast<int>(_network->getState());
-//    
-//    if(connectState == 1){
-//        _status = WAIT;
-//    }
-//    else if(connectState == 2){
-//        if(_status == WAIT){
-//            _status = IDLE;
-//            _gameid->setText(hex2dec(_network->getRoom()));
-//        }
-//    }
-//    else if(connectState == 6 || connectState == 7 || connectState == 8 || connectState == 9){
-//        disconnect();
-//        _status = WAIT;
-//        _player->setText(std::to_string(_network->getPlayers().size()));
-//        return false;
-//    }
-//    
-//    _player->setText(std::to_string(_network->getPlayers().size()));
-//    return true;
-//}
-//
-///**
-// * Reconfigures the start button for this scene
-// *
-// * This is necessary because what the buttons do depends on the state of the
-// * networking.
-// */
-//void HostScene::configureStartButton() {
-//    if(_status == WAIT){
-//        updateText(_startgame, "Waiting");
-//        _startgame->deactivate();
-//    }
-//    else{
-//        updateText(_startgame, "Start Game");
-//        _startgame->activate();
-//    }
-//}
-
-
 /**
  * Starts the game.
  *
@@ -294,7 +201,6 @@ void HostScene::startGame() {
     CULog("host start game");
     _network->startGame();
     _startGameClicked = true;
-    
 }
 
 
