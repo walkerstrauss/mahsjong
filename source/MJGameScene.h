@@ -48,6 +48,8 @@ protected:
     std::shared_ptr<Player> _player;
     /** Reference to tile pile */
     std::shared_ptr<Pile> _pile;
+    /** Reference to the discard pile */
+    std::shared_ptr<DiscardPile> _discardPile;
     /** Reference to texture for gma text*/
     std::shared_ptr<cugl::graphics::Texture> _gmaLabelTexture;
   

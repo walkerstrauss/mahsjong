@@ -59,6 +59,7 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets) {
                 if (!_player->discarding){
                     _player->discarding = true;
                     for (auto& tile : _player->getHand()._selectedTiles) {
+                        _discardPile->addTile(tile);
                         _player->getHand().discard(tile);
                         tile->selected = false;
                         tile->inHand = false;
@@ -119,6 +120,9 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets) {
     _tileSet->setAllTileTexture(assets);
     _pile = std::make_shared<Pile>(); //Init our pile
     _pile->initPile(5, _tileSet);
+    
+    _discardPile = std::make_shared<DiscardPile>();
+    _discardPile->init(_assets);
 
     _input.init(); //Init the input controller
     
@@ -212,10 +216,14 @@ void GameScene::update(float timestep) {
         }
     } else if (_input.getKeyPressed() == KeyCode::D && _input.getKeyDown()){
         // Discard selected cards (up to 4)
-        if (_player->getHand()._selectedTiles.size() >= 1 && _player->getHand()._selectedTiles.size() <= 4) {
+        if (_player->getHand()._selectedTiles.size() > 0 && _player->getHand()._selectedTiles.size() <= 4) {
             if (!_player->discarding){
                 _player->discarding = true;
                 for (auto& tile : _player->getHand()._selectedTiles) {
+                    
+                    // Add it to the discard pile
+                    _discardPile->addTile(tile);
+                    
                     _player->getHand().discard(tile);
                     tile->selected = false;
                     tile->inHand = false;
@@ -249,8 +257,13 @@ void GameScene::update(float timestep) {
         else if (_player->_turnsLeft <= 0 && _gameWin != true) {
             _gameLose = true;
         }
+    if (_discardPile->isTileSelected(_input.getPosition())){
+        CULog("selected");
+        // TODO: add code to handle checking if we can make a set with top discard and adding to hand if we can
+        // TODO: once is added to hand, we have to make it so that they cannot do anything until they have made and shown a set with the discard tile
+        
     }
-
+}
 
 /**
  * Draws all this to the scene's SpriteBatch.
@@ -282,6 +295,9 @@ void GameScene::render() {
     if (_pile->getVisibleSize() == 0 && _tileSet->deck.size() != 14) { //Only update pile if we still have tiles from deck
         _pile->createPile();
     }
+    
+    // Render top card of discard pile
+    _discardPile->render(_batch);
 
     if (_gameWin) {
         _batch->setColor(Color4::BLUE);

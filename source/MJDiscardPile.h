@@ -26,17 +26,25 @@ protected:
     std::shared_ptr<TileSet::Tile> _topTile;
     /** A reference to the player */
     std::shared_ptr<Player> _player;
+    /** A reference to the asset manager */
+    std::shared_ptr<cugl::AssetManager> _assets;
     /** Which top tile is selected (0 for none, 1 for first, 2 for second) */
     int _selectedTopTile;
 public:
 
 #pragma mark -
 #pragma mark Constructors
-    
     /**
      * Initializes a discard pile with default values
      */
-    bool init(const std::shared_ptr<Player>& player);
+    DiscardPile() : _size(0), _selectedTopTile(0) {}
+    
+    /**
+     * Initializes the discard pile with asset manager
+     *
+     * @param assets    the asset manager for the game
+     */
+    bool init(const std::shared_ptr<cugl::AssetManager>& assets);
 
 #pragma mark -
 #pragma mark Gameplay Handling
@@ -69,21 +77,22 @@ public:
     }
     
     /**
+     * Method to check if player has selected the top tile of the discard pile
+     */
+    bool isTileSelected(const cugl::Vec2& mousePos);
+    
+    /**
      * Method to add tile to the discard pile. Moves top tile to lower layer and adds new tile
      *
      * @param tile     the tile to add to the discard (the new top tile)
      * @return true if tiles successfully added to top layer of the pile, and false otherwise
      */
     bool addTile(std::shared_ptr<TileSet::Tile> tile){
-        if (getTopTile() == nullptr) {
-            if (_discardPile.size() == 0){
-                CULog("Adding the first tile...");
-            }
-            _topTile = tile;
-        } else {
+        if (getTopTile() != nullptr) {
             _discardPile.push_back(getTopTile());
-            _topTile = tile;
         }
+        _topTile = tile;
+        _size = _discardPile.size() + 1;
         return true;
     }
     
@@ -102,9 +111,14 @@ public:
     
     /**
      * Method to update the discard pile model
+     *
+     * @param timestep The amount of time (in seconds) since the last frame
      */
     void update(float timestep);
     
+    /**
+     * Method to render the top card of the discard pile
+     */
     void render(const std::shared_ptr<cugl::graphics::SpriteBatch>& batch);
 };
 

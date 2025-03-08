@@ -165,6 +165,12 @@
         "tilesample": {
             "file": "textures/gameplay/tilesample.png"
         },
+        "tilesample 2":{
+            "file":"textures/gameplay/tilesample 2.png"
+        },
+        "button_tileset":{
+            "file":"textures/gameplay/button_tileset.png"
+        },
         "background_pause": {
             "file": "textures/pause/background_pause.png"
         },
@@ -263,8 +269,16 @@
         },
         "slider": {
             "file": "textures/setting/slider.png"
+        },
+        "back_tileset":{
+            "file": "textures/tilesetui/back_tileset.png"
+        },
+        "background_tilesetui":{
+            "file": "textures/tilesetui/background_tilesetui.png"
+        },
+        "table": {
+            "file": "textures/tilesetui/table.png"
         }
-        
     },
     "fonts": {
         "pixel32": {
@@ -286,6 +300,10 @@
         "sansBold32": {
             "file":     "fonts/LightPixel7.ttf",
             "size":     32
+        },
+        "pixelify sansBold36": {
+            "file":     "fonts/LightPixel7.ttf",
+            "size":     36
         },
         "gyparody": {
             "file":     "fonts/LightPixel7.ttf",
@@ -366,6 +384,26 @@
                     },
                     "data":{
                         "key":"settingscene",
+                        "variables":{
+                            "size":[1280,720]
+                        }
+                    }
+                }
+            }
+        },
+        "tilesetui":{
+            "type":"Node",
+            "format":{
+                "type":"Anchored"
+            },
+            "children":{
+                "tilesetscene":{
+                    "type":"Widget",
+                    "format":{
+                        "type":"Anchored"
+                    },
+                    "data":{
+                        "key":"tilesetscene",
                         "variables":{
                             "size":[1280,720]
                         }
@@ -481,7 +519,8 @@
             "scoredefeatscene": "widgets/scene/scoredefeatscene.json",
             "settingscene": "widgets/scene/settingscene.json",
             "settingbutton_name": "widgets/button/settingbutton_name.json",
-            "settingbutton_onoff": "widgets/button/settingbutton_onoff.json"
+            "settingbutton_onoff": "widgets/button/settingbutton_onoff.json",
+            "tilesetscene": "widgets/scene/tilesetscene.json"
     },
     "jsons": {
         "server": "json/server.json"
