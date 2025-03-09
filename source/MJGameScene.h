@@ -16,6 +16,7 @@
 #include "MJPlayer.h"
 #include "MJPile.h"
 #include "MJDiscardPile.h"
+#include "MJDiscardUIScene.h"
 #include "MJScoreManager.h"
 
 using namespace cugl;
@@ -42,6 +43,8 @@ protected:
     std::shared_ptr<cugl::scene2::SceneNode> _matchScene;
     /** Scene2 object for the pause scene */
     std::shared_ptr<cugl::scene2::SceneNode> _pauseScene;
+    /** Reference to the discard UI scene for the game */
+    std::shared_ptr<DiscardUIScene> _discardUIScene;
     /** TileSet for the game */
     std::shared_ptr<TileSet> _tileSet;
     /** Reference to player */
@@ -70,12 +73,16 @@ protected:
     bool _quit;
     /** Button for discarding */
     std::shared_ptr<cugl::scene2::Button> _discardBtn;
+    /** Button for transitioning to the tileset UI scene (discarded cards) */
+    std::shared_ptr<cugl::scene2::Button> _tilesetUIBtn;
     /** Button for pausing */
     std::shared_ptr<cugl::scene2::Button> _pauseBtn;
-    /** Button for continuing*/
+    /** Button for continuing (in the pause scene) */
     std::shared_ptr<cugl::scene2::Button> _continueBtn;
     /** Key for discard button listener */
     Uint32 _discardBtnKey;
+    /** Key for tileset UI button listener */
+    Uint32 _tilesetUIBtnKey;
     /** Key for pause button listener */
     Uint32 _pauseBtnKey;
     /** Key for continue button */

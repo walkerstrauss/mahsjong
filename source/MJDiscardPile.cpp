@@ -51,7 +51,6 @@ void DiscardPile::updateTilePositions(){
 bool DiscardPile::isTileSelected(const cugl::Vec2& mousePos){
     // Tile position (matches render)
     if (getTopTile() == nullptr){
-        CULog("nullptr");
         return false;
     }
     cugl::Vec2 pos(990, 520);

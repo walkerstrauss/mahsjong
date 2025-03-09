@@ -46,10 +46,11 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets) {
     _matchScene = _assets->get<scene2::SceneNode>("matchscene");
     _matchScene->doLayout();
     _pauseScene = _assets->get<scene2::SceneNode>("pause");
-    // _pauseScene->doLayout();
+    _pauseScene->doLayout();
    
     std::shared_ptr<scene2::SceneNode> childNode = _matchScene->getChild(0);
     _discardBtn = std::dynamic_pointer_cast<scene2::Button>(childNode->getChild(6));
+    _tilesetUIBtn = std::dynamic_pointer_cast<scene2::Button>(_assets->get<scene2::SceneNode>("matchscene.gameplayscene.button_tileset"));
     _pauseBtn = std::dynamic_pointer_cast<scene2::Button>(childNode->getChild(1));
     _continueBtn = std::dynamic_pointer_cast<scene2::Button>(_pauseScene->getChild(0)->getChild(2));
     
@@ -59,7 +60,11 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets) {
                 if (!_player->discarding){
                     _player->discarding = true;
                     for (auto& tile : _player->getHand()._selectedTiles) {
+                        //Add to discard pile
                         _discardPile->addTile(tile);
+                        //Add to discard UI scene
+                        _discardUIScene->incrementLabel(tile);
+                        
                         _player->getHand().discard(tile);
                         tile->selected = false;
                         tile->inHand = false;
@@ -72,6 +77,12 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets) {
             }
         }
     });
+    _tilesetUIBtnKey = _tilesetUIBtn->addListener([this](const std::string& name, bool down){
+        if (!down){
+            _discardUIScene->setActive(true);
+            _discardUIScene->backBtn->activate();
+        }
+    });
     _pauseBtnKey = _pauseBtn->addListener([this](const std::string& name, bool down){
         if (!down){
             _matchScene->setVisible(false);
@@ -80,7 +91,6 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets) {
             _continueBtn->activate();
         }
     });
-    
     _continueBtnKey = _continueBtn->addListener([this](const std::string& name, bool down){
         if (!down){
             _matchScene->setVisible(true);
@@ -90,6 +100,8 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets) {
     });
     _discardBtn->activate();
     _pauseBtn->activate();
+    _tilesetUIBtn->activate();
+    
     
     _matchScene->setVisible(true);
     addChild(_matchScene);
@@ -121,10 +133,15 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets) {
     _pile = std::make_shared<Pile>(); //Init our pile
     _pile->initPile(5, _tileSet);
     
+    // Initialize the discard pile
     _discardPile = std::make_shared<DiscardPile>();
     _discardPile->init(_assets);
+    
+    // Initialize the discard tileset UI scene
+    _discardUIScene = std::make_shared<DiscardUIScene>();
+    _discardUIScene->init(_assets);
 
-    _input.init(); //Init the input controller
+    _input.init(); //Initialize the input controller
     
     // Initialize grandma tile label
     _gmaLabelTexture = assets->get<Texture>("grandma text");
@@ -173,9 +190,9 @@ void GameScene::update(float timestep) {
     if (_input.getKeyPressed() == KeyCode::R && _input.getKeyDown()) {
         reset();
     }
-
-    if (!_batch){
-        CULog("no batch");
+    if (_discardUIScene->back){
+        _discardUIScene->setActive(false);
+        _discardUIScene->back = false;
     }
     //Win or lose?
     if (_gameLose || _gameWin) {
@@ -223,6 +240,8 @@ void GameScene::update(float timestep) {
                     
                     // Add it to the discard pile
                     _discardPile->addTile(tile);
+                    // Add it to discard UI
+                    _discardUIScene->incrementLabel(tile);
                     
                     _player->getHand().discard(tile);
                     tile->selected = false;
@@ -261,7 +280,6 @@ void GameScene::update(float timestep) {
         CULog("selected");
         // TODO: add code to handle checking if we can make a set with top discard and adding to hand if we can
         // TODO: once is added to hand, we have to make it so that they cannot do anything until they have made and shown a set with the discard tile
-        
     }
 }
 
@@ -283,7 +301,34 @@ void GameScene::render() {
         _batch->end();
         return;
     }
+    if (_discardUIScene->isActive()){
+        _discardUIScene->render(_batch);
+        _batch->end();
+        return;
+    }
+    if (_gameWin) {
+        _batch->setColor(Color4::BLUE);
+        Affine2 trans;
+        trans.scale(4);
+        trans.translate(getSize().width / 2 - 2 * _win->getBounds().size.width, getSize().height / 2 - _win->getBounds().size.height);
+        _batch->drawText(_win, trans);
+        _batch->end();
+        return;
+    }
+    if (_gameLose) {
+        _batch->setColor(Color4::RED);
+        //_batch->drawText(_lose, Vec2((getSize().width) / 2 - _lose->getBounds().size.height, getSize().height / 2));
+        Affine2 trans;
+        trans.scale(4);
+        trans.translate(getSize().width / 2 - 2 * _lose->getBounds().size.width, getSize().height / 2 - _lose->getBounds().size.height);
+        _batch->drawText(_lose, trans);
+        _batch->end();
+        return;
+    }
+    
+    // Not paused, in discard UI, won or lost. So, render match.
     _matchScene->render(_batch);
+    
     // Draw all tiles in hand, pile and grandma tiles
     _tileSet->draw(_batch, getSize());
     
@@ -298,22 +343,5 @@ void GameScene::render() {
     
     // Render top card of discard pile
     _discardPile->render(_batch);
-
-    if (_gameWin) {
-        _batch->setColor(Color4::BLUE);
-        Affine2 trans;
-        trans.scale(4);
-        trans.translate(getSize().width / 2 - 2 * _win->getBounds().size.width, getSize().height / 2 - _win->getBounds().size.height);
-        _batch->drawText(_win, trans);
-    }
-    else if (_gameLose) {
-        _batch->setColor(Color4::RED);
-        //_batch->drawText(_lose, Vec2((getSize().width) / 2 - _lose->getBounds().size.height, getSize().height / 2));
-        Affine2 trans;
-        trans.scale(4);
-        trans.translate(getSize().width / 2 - 2 * _lose->getBounds().size.width, getSize().height / 2 - _lose->getBounds().size.height);
-        _batch->drawText(_lose, trans);
-
-    }
     _batch->end();
 }
