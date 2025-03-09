@@ -1369,15 +1369,75 @@
                             127
                         ]
                     }
-                    },
-                    "layout": {
-                        "x_anchor": "left",
-                        "y_anchor": "bottom",
-                        "absolute": false,
-                        "x_offset": 0.72,
-                        "y_offset": 0.25
-                    }
+                },
+                "layout": {
+                    "x_anchor": "left",
+                    "y_anchor": "bottom",
+                    "absolute": false,
+                    "x_offset": 0.72,
+                    "y_offset": 0.25
                 }
+            },
+            "button_tileset": {
+                "type": "Button",
+                "format": {
+                    "type": "Anchored"
+                },
+                "data": {
+                    "anchor": [
+                        0,
+                        1
+                    ],
+                    "size": [
+                        67,
+                        57
+                    ],
+                    "angle": 0,
+                    "position": [
+                        15,
+                        511
+                    ],
+                    "visible": true,
+                    "upnode": "image 28"
+                },
+                "children": {
+                    "button_tileset": {
+                        "type": "Image",
+                        "data": {
+                            "texture": "button_tileset",
+                            "anchor": [
+                                0.5,
+                                0.5
+                            ],
+                            "size": [
+                                75,
+                                64
+                            ],
+                            "angle": 3.5083548023555002e-15,
+                            "position": [
+                                0,
+                                -7
+                            ],
+                            "visible": true
+                        },
+                        "layout": {
+                            "x_anchor": "left",
+                            "y_anchor": "top",
+                            "absolute": false,
+                            "x_offset": 0.56,
+                            "y_offset": -0.56
+                        }
+                    }
+                },
+                "layout": {
+                    "x_anchor": "left",
+                    "y_anchor": "top",
+                    "absolute": false,
+                    "x_offset": 0.01,
+                    "y_offset": -0.01
+                }
+            }
         }
     }
 }
+

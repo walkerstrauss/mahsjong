@@ -70,6 +70,7 @@ void MahsJongApp::onShutdown() {
     _gameplay.dispose();
     _hostgame.dispose();
     _joingame.dispose();
+    _settings.dispose();
     _assets = nullptr;
     _batch = nullptr;
     
@@ -101,7 +102,7 @@ void MahsJongApp::update(float timestep) {
             break;
         case MENU:
             _assets->loadDirectory("json/assets.json");
-            updateMenuScene(timestep);
+            updateGameScene(timestep);
             break;
         case HOST:
             updateHostScene(timestep);
@@ -111,6 +112,9 @@ void MahsJongApp::update(float timestep) {
             break;
         case GAME:
             updateGameScene(timestep);
+            break;
+        case SETTINGS:
+            _settings.update(timestep);
             break;
     }
 }
@@ -130,7 +134,7 @@ void MahsJongApp::draw() {
            _loading.render();
            break;
        case MENU:
-           _mainmenu.render();
+           _gameplay.render();
            break;
        case HOST:
            _hostgame.render();
@@ -140,6 +144,9 @@ void MahsJongApp::draw() {
            break;
        case GAME:
            _gameplay.render();
+           break;
+       case SETTINGS:
+           _settings.render();
            break;
    }
 }
@@ -159,6 +166,13 @@ void MahsJongApp::updateLoadingScene(float timestep) {
        _loading.dispose(); // Permanently disables the input listeners in this mode
        _mainmenu.init(_assets);
        _mainmenu.setSpriteBatch(_batch);
+       _mainmenu.settingsbutton->addListener([this](const std::string& name, bool down){
+           if (!down){
+               _settings.setActive(true);
+               _mainmenu.setActive(false);
+               _scene = State::SETTINGS;
+           }
+       });
        _hostgame.init(_assets);
        _hostgame.setSpriteBatch(_batch);
        _joingame.init(_assets);
@@ -166,8 +180,17 @@ void MahsJongApp::updateLoadingScene(float timestep) {
        _gameplay.init(_assets);
        _gameplay.setSpriteBatch(_batch);
        _networkController.addObserver(_gameplay);
+       _settings.init(_assets);
+       _settings.setSpriteBatch(_batch);
+       _settings.exitKey = _settings.exitBtn->addListener([this](const std::string& name, bool down){
+           if (!down){
+               _mainmenu.setActive(true);
+               _settings.setActive(false);
+               _scene = State::MENU;
+           }
+       });
 
-       _mainmenu.setActive(true);
+       _gameplay.setActive(true);
        _scene = State::MENU;
    }
 }

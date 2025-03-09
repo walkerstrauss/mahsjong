@@ -82,7 +82,7 @@
                         "data": {
                             "key": "menubutton",
                             "variables": {
-                                "text": "Match Now!",
+                                "text": "ho Game",
                                 "size": [
                                     250,
                                     89
@@ -107,7 +107,7 @@
                         "data": {
                             "key": "menubutton",
                             "variables": {
-                                "text": "Continue",
+                                "text": "Join Game",
                                 "size": [
                                     250,
                                     89
@@ -132,7 +132,7 @@
                         "data": {
                             "key": "menubutton",
                             "variables": {
-                                "text": "Tutorial",
+                                "text": "Setting",
                                 "size": [
                                     250,
                                     89
@@ -158,25 +158,6 @@
                     "absolute": false,
                     "x_offset": 0.63,
                     "y_offset": -0.25
-                }
-            },
-            "setting": {
-                "type": "Widget",
-                "format": {
-                    "type": "Anchored"
-                },
-                "data": {
-                    "key": "settingbutton",
-                    "variables": {
-                        "size": [ 60, 60 ]
-                    }
-                },
-                "layout": {
-                    "x_anchor": "left",
-                    "y_anchor": "top",
-                    "absolute": false,
-                    "x_offset": 0.93,
-                    "y_offset": -0.1
                 }
             },
             "grandma": {

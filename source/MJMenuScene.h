@@ -45,6 +45,8 @@ protected:
     Choice _choice;
     
 public:
+    /** The menu button to see the settings */
+    std::shared_ptr<cugl::scene2::Button> settingsbutton;
 #pragma mark -
 #pragma mark Constructors
     /**
