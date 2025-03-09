@@ -37,14 +37,17 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::sha
     // Initialize the scene to a locked height
     if (assets == nullptr) {
         return false;
-    } else if (!Scene2::init()) {
+    } else if (!Scene2::initWithHint(Size(0,SCENE_HEIGHT))) {
         std::cerr << "Scene2 initialization failed!" << std::endl;
         return false;
     }
     _paused = false;
     _assets = assets;
     _network = network;
+    
+    Size dimen = getSize();
     _matchScene = _assets->get<scene2::SceneNode>("matchscene");
+    _matchScene->setContentSize(dimen);
     _matchScene->doLayout();
     _pauseScene = _assets->get<scene2::SceneNode>("pause");
    

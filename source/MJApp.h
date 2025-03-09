@@ -140,15 +140,15 @@ private:
      */
     void updateClientScene(float timestep);
 
-//    /**
-//     * Inidividualized update method for the game scene.
-//     *
-//     * This method keeps the primary {@link #update} from being a mess of switch
-//     * statements. It also handles the transition logic from the game scene.
-//     *
-//     * @param timestep  The amount of time (in seconds) since the last frame
-//     */
-//    void updateGameScene(float timestep);
+    /**
+     * Individualized update method for the game scene.
+     *
+     * This method keeps the primary {@link #update} from being a mess of switch
+     * statements. It also handles the transition logic from the game scene.
+     *
+     * @param timestep  The amount of time (in seconds) since the last frame
+     */
+    void updateGameScene(float timestep);
 };
 
 #endif

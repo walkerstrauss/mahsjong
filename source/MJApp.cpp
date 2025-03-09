@@ -73,12 +73,14 @@ void MahsJongApp::onShutdown() {
     _assets = nullptr;
     _batch = nullptr;
     
-    Input::deactivate<Keyboard>();
+#ifdef CU_MOBILE
+    Input::deactivate<Touchscreen>();
+#else
     Input::deactivate<Mouse>();
+#endif
+    Input::deactivate<Keyboard>();
     Input::deactivate<TextInput>();
     netcode::NetworkLayer::stop();
-    
-    
     AudioEngine::stop();
     Application::onShutdown(); // YOU MUST END with call to parent 
 }
@@ -113,7 +115,7 @@ void MahsJongApp::update(float timestep) {
             updateClientScene(timestep);
             break;
         case GAME:
-            _gameplay.update(timestep);
+            updateGameScene(timestep);
             break;
     }
 }
@@ -160,7 +162,7 @@ void MahsJongApp::updateLoadingScene(float timestep) {
        _loading.update(timestep);
    } else {
        _loading.dispose(); // Permanently disables the input listeners in this mode
-       _network = std::make_shared<NetworkController>(); // FIX: Initialize _network
+       _network = std::make_shared<NetworkController>();
        _network->init(_assets);
        _mainmenu.init(_assets);
        _mainmenu.setSpriteBatch(_batch);
@@ -170,7 +172,6 @@ void MahsJongApp::updateLoadingScene(float timestep) {
        _joingame.setSpriteBatch(_batch);
        _gameplay.init(_assets, _network);
        _gameplay.setSpriteBatch(_batch);
-//       _networkController.addObserver(_gameplay);
 
        _mainmenu.setActive(true);
        _scene = State::MENU;
@@ -261,5 +262,22 @@ void MahsJongApp::updateClientScene(float timestep) {
     }
 }
 
+/**
+ * Inidividualized update method for the game scene.
+ *
+ * This method keeps the primary {@link #update} from being a mess of switch
+ * statements. It also handles the transition logic from the game scene.
+ *
+ * @param timestep  The amount of time (in seconds) since the last frame
+ */
+void MahsJongApp::updateGameScene(float timestep) {
+    _gameplay.update(timestep);
+    if (_gameplay.didQuit()) {
+        _gameplay.setActive(false);
+        _mainmenu.setActive(true);
+        _gameplay.disconnect();
+        _scene = State::MENU;
+    }
+}
 
 
