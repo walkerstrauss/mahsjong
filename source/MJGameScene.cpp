@@ -33,17 +33,21 @@ using namespace std;
  *
  * @param assets    the asset manager for the game
  */
-bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets) {
+bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::shared_ptr<NetworkController> network) {
     // Initialize the scene to a locked height
     if (assets == nullptr) {
         return false;
-    } else if (!Scene2::init()) {
+    } else if (!Scene2::initWithHint(Size(0,SCENE_HEIGHT))) {
         std::cerr << "Scene2 initialization failed!" << std::endl;
         return false;
     }
     _paused = false;
     _assets = assets;
+    _network = network;
+    
+    Size dimen = getSize();
     _matchScene = _assets->get<scene2::SceneNode>("matchscene");
+    _matchScene->setContentSize(dimen);
     _matchScene->doLayout();
     _pauseScene = _assets->get<scene2::SceneNode>("pause");
     _pauseScene->doLayout();
@@ -73,6 +77,8 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets) {
                     _player->getHand()._selectedTiles.clear();
                     _player->getHand().drawFromPile(_pile, 1);
                     _player->discarding = false;
+                    
+                    _network->endTurn();
                 }
             }
         }
@@ -114,7 +120,7 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets) {
 
     // Initialize tile set
     _tileSet = std::make_shared<TileSet>();
-    _tileSet->shuffle();
+//    _tileSet->shuffle();
     
     // Initialize the player
     _player = std::make_shared<Player>();
@@ -174,7 +180,7 @@ void GameScene::dispose() {
 void GameScene::reset() {
     _gameLose = false;
     _gameWin = false;
-    init(_assets);
+    init(_assets, _network);
     return;
 }
 
@@ -187,6 +193,13 @@ void GameScene::update(float timestep) {
     //Reading input
     _input.readInput();
     _input.update();
+    
+    CULog("%d", _network->getCurrentTurn());
+
+    if (_network->getCurrentTurn() != _network->getLocalPid()) {
+        return;
+        }
+    
     if (_input.getKeyPressed() == KeyCode::R && _input.getKeyDown()) {
         reset();
     }
@@ -258,6 +271,7 @@ void GameScene::update(float timestep) {
             }
             _player->getHand()._selectedTiles.clear();
         }
+        
     } else if (_input.getKeyPressed() == KeyCode::S && _input.getKeyDown()){
             if(!_player->getHand().makeSet()){
                 for(const auto& it : _player->getHand()._selectedTiles){

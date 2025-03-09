@@ -64,7 +64,7 @@ static std::string hex2dec(const std::string hex) {
  *
  * @return true if the controller is initialized properly, false otherwise.
  */
-bool HostScene::init(const std::shared_ptr<cugl::AssetManager>& assets) {
+bool HostScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::shared_ptr<NetworkController> network) {
     // Initialize the scene to a locked width
     if (assets == nullptr) {
         return false;
@@ -75,24 +75,25 @@ bool HostScene::init(const std::shared_ptr<cugl::AssetManager>& assets) {
     // Start up the input handler
     _assets = assets;
     
+    _network = network;
+    
     Size dimen = getSize();
     
     // Acquire the scene built by the asset loader and resize it the scene
     std::shared_ptr<scene2::SceneNode> scene = _assets->get<scene2::SceneNode>("host");
     scene->setContentSize(dimen);
     scene->doLayout(); // Repositions the HUD
-    
-    _startgame = std::dynamic_pointer_cast<scene2::Button>(_assets->get<scene2::SceneNode>("host.hostscene.menu.buttonmenu.button1"));
-    _backout = std::dynamic_pointer_cast<scene2::Button>(_assets->get<scene2::SceneNode>("host.hostscene.menu.buttonmenu.button2"));
-    _gameid = std::dynamic_pointer_cast<scene2::Label>(_assets->get<scene2::SceneNode>("host.hostscene.menu.gameid.title.label"));
-    _player = std::dynamic_pointer_cast<scene2::Label>(_assets->get<scene2::SceneNode>("host.hostscene.menu.player.player_textfield.label"));
-    _status = Status::WAIT;
+
+    _startgame = std::dynamic_pointer_cast<scene2::Button>(_assets->get<scene2::SceneNode>("host.center.start"));
+    _backout = std::dynamic_pointer_cast<scene2::Button>(_assets->get<scene2::SceneNode>("host.back"));
+    _gameid = std::dynamic_pointer_cast<scene2::Label>(_assets->get<scene2::SceneNode>("host.center.game.field.text"));
+    _player = std::dynamic_pointer_cast<scene2::Label>(_assets->get<scene2::SceneNode>("host.center.players.field.text"));
     
     // Program the buttons
     _backout->addListener([this](const std::string& name, bool down) {
         if (down) {
-            disconnect();
-            _status = Status::ABORT;
+            _backClicked = true;
+            _network->disconnect();
         }
     });
 
@@ -117,7 +118,6 @@ bool HostScene::init(const std::shared_ptr<cugl::AssetManager>& assets) {
 void HostScene::dispose() {
     if (_active) {
         removeAllChildren();
-        _network = nullptr;
         _active = false;
     }
 }
@@ -135,20 +135,20 @@ void HostScene::setActive(bool value) {
     if (isActive() != value) {
         Scene2::setActive(value);
         if (value) {
-            _status = WAIT;
-            configureStartButton();
             _backout->activate();
-            connect();
+            _network->disconnect();
+            _network->connectAsHost();
+            _backClicked = false;
         } else {
+            _gameid->setText("");
             _startgame->deactivate();
+            updateText(_startgame, "INACTIVE");
             _backout->deactivate();
-            // If any were pressed, reset them
             _startgame->setDown(false);
             _backout->setDown(false);
         }
     }
 }
-
 
 /**
  * Updates the text in the given button.
@@ -177,103 +177,19 @@ void HostScene::updateText(const std::shared_ptr<scene2::Button>& button, const 
  * @param timestep  The amount of time (in seconds) since the last frame
  */
 void HostScene::update(float timestep) {
-    // We have written this for you this time
-    if (_network) {
-        _network->receive([this](const std::string source,
-                                 const std::vector<std::byte>& data) {
-            processData(source,data);
-        });
-        checkConnection();
-        // Do this last for button safety
-        configureStartButton();
-    }
-}
-
-/**
- * Processes data sent over the network.
- *
- * Once connection is established, all data sent over the network consistes of
- * byte vectors. This function is a call back function to process that data.
- * Note that this function may be called *multiple times* per animation frame,
- * as the messages can come from several sources.
- *
- * In this lab, this method does not do all that much. Typically this is where
- * players would communicate their names after being connected.
- *
- * @param source    The UUID of the sender
- * @param data      The data received
- */
-void HostScene::processData(const std::string source,
-                            const std::vector<std::byte>& data) {
-    // No real data is handled in this scene
-}
-
-
-/**
- * Connects to the game server as specified in the assets file
- *
- * The {@link #init} method set the configuration data. This method simply uses
- * this to create a new {@Link NetworkConnection}. It also immediately calls
- * {@link #checkConnection} to determine the scene state.
- *
- * @return true if the connection was successful
- */
-bool HostScene::connect() {
-    _network = cugl::netcode::NetcodeConnection::alloc(_config);
-    _network -> open();
-    checkConnection();
-    return _network->getState() == NetcodeConnection::State::CONNECTED;
-}
-
-/**
- * Checks that the network connection is still active.
- *
- * Even if you are not sending messages all that often, you need to be calling
- * this method regularly. This method is used to determine the current state
- * of the scene.
- *
- * @return true if the network connection is still active.
- */
-bool HostScene::checkConnection() {
-    int connectState = static_cast<int>(_network->getState());
-    
-    if(connectState == 1){
-        _status = WAIT;
-    }
-    else if(connectState == 2){
-        if(_status == WAIT){
-            _status = IDLE;
-            _gameid->setText(hex2dec(_network->getRoom()));
+    if(_network->getStatus() == NetworkController::Status::CONNECTED){
+        if (!_startGameClicked) {
+            updateText(_startgame, "Start Game");
+            _startgame->activate();
         }
-    }
-    else if(connectState == 6 || connectState == 7 || connectState == 8 || connectState == 9){
-        disconnect();
-        _status = WAIT;
-        _player->setText(std::to_string(_network->getPlayers().size()));
-        return false;
-    }
-    
-    _player->setText(std::to_string(_network->getPlayers().size()));
-    return true;
-}
-
-/**
- * Reconfigures the start button for this scene
- *
- * This is necessary because what the buttons do depends on the state of the
- * networking.
- */
-void HostScene::configureStartButton() {
-    if(_status == WAIT){
-        updateText(_startgame, "Waiting");
-        _startgame->deactivate();
-    }
-    else{
-        updateText(_startgame, "Start Game");
-        _startgame->activate();
+        else {
+            updateText(_startgame, "Starting");
+            _startgame->deactivate();
+        }
+        _gameid->setText(hex2dec(_network->getRoomID()));
+        _player->setText(std::to_string(_network->getNumPlayers()));
     }
 }
-
 
 /**
  * Starts the game.
@@ -283,10 +199,9 @@ void HostScene::configureStartButton() {
  * players.
  */
 void HostScene::startGame() {
-    _status = Status::START;
-    // ADD YOUR CODE HERE
-    std::vector<std::byte> message{255};
-    _network->broadcast(message);
+    CULog("host start game");
+    _network->startGame();
+    _startGameClicked = true;
 }
 
 

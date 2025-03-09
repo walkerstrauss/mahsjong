@@ -54,7 +54,7 @@ void MahsJongApp::onStartup() {
     _loading.start();
     AudioEngine::start();
     netcode::NetworkLayer::start(netcode::NetworkLayer::Log::INFO);
-    _networkController = NetworkController();
+//    _network = NetworkController();
     Application::onStartup(); //YOU MUST END with call to parent
 };
 
@@ -74,12 +74,14 @@ void MahsJongApp::onShutdown() {
     _assets = nullptr;
     _batch = nullptr;
     
-    Input::deactivate<Keyboard>();
+#ifdef CU_MOBILE
+    Input::deactivate<Touchscreen>();
+#else
     Input::deactivate<Mouse>();
+#endif
+    Input::deactivate<Keyboard>();
     Input::deactivate<TextInput>();
     netcode::NetworkLayer::stop();
-    
-    
     AudioEngine::stop();
     Application::onShutdown(); // YOU MUST END with call to parent 
 }
@@ -96,6 +98,9 @@ void MahsJongApp::onShutdown() {
  * @param timestep  The amount of time (in seconds) since the last frame
  */
 void MahsJongApp::update(float timestep) {
+    if (_network) {
+        _network->update(timestep);
+    }
     switch (_scene) {
         case LOAD:
             updateLoadingScene(timestep);
@@ -164,6 +169,8 @@ void MahsJongApp::updateLoadingScene(float timestep) {
        _loading.update(timestep);
    } else {
        _loading.dispose(); // Permanently disables the input listeners in this mode
+       _network = std::make_shared<NetworkController>();
+       _network->init(_assets);
        _mainmenu.init(_assets);
        _mainmenu.setSpriteBatch(_batch);
        _mainmenu.settingsbutton->addListener([this](const std::string& name, bool down){
@@ -175,11 +182,10 @@ void MahsJongApp::updateLoadingScene(float timestep) {
        });
        _hostgame.init(_assets);
        _hostgame.setSpriteBatch(_batch);
-       _joingame.init(_assets);
+       _joingame.init(_assets, _network);
        _joingame.setSpriteBatch(_batch);
-       _gameplay.init(_assets);
+       _gameplay.init(_assets, _network);
        _gameplay.setSpriteBatch(_batch);
-       _networkController.addObserver(_gameplay);
        _settings.init(_assets);
        _settings.setSpriteBatch(_batch);
        _settings.exitKey = _settings.exitBtn->addListener([this](const std::string& name, bool down){
@@ -224,37 +230,32 @@ void MahsJongApp::updateMenuScene(float timestep) {
 }
 
 /**
-* Inidividualized update method for the host scene.
-*
-* This method keeps the primary {@link #update} from being a mess of switch
-* statements. It also handles the transition logic from the host scene.
-*
-* @param timestep  The amount of time (in seconds) since the last frame
-*/
+ * Individualized update method for the host scene.
+ *
+ * This method keeps the primary {@link #update} from being a mess of switch
+ * statements. It also handles the transition logic from the host scene.
+ *
+ * @param timestep  The amount of time (in seconds) since the last frame
+ */
 void MahsJongApp::updateHostScene(float timestep) {
-   _hostgame.update(timestep);
-   switch (_hostgame.getStatus()) {
-       case HostScene::Status::ABORT:
-           _hostgame.setActive(false);
-           _mainmenu.setActive(true);
-           _scene = State::MENU;
-           break;
-       case HostScene::Status::START:
-           _hostgame.setActive(false);
-           _gameplay.setActive(true);
-           _scene = State::GAME;
-           // Transfer connection ownership
-           _networkController.setConnection(_hostgame.getConnection());
-           _hostgame.disconnect();
-           _gameplay.setHost(true);
-           break;
-       case HostScene::Status::WAIT:
-       case HostScene::Status::IDLE:
-           // DO NOTHING
-           break;
-   }
+    _hostgame.update(timestep);
+    
+    if(_hostgame.getBackClicked()){
+        _scene = MENU;
+        _hostgame.setActive(false);
+        _mainmenu.setActive(true);
+    } else if (_network->getStatus() == NetworkController::Status::START) {
+        _hostgame.setActive(false);
+        _gameplay.setActive(true);
+        _scene = State::GAME;
+    } else if (_network->getStatus() == NetworkController::Status::NETERROR) {
+        _scene = MENU;
+        _network->disconnect();
+        _hostgame.setActive(false);
+        _mainmenu.setActive(true);
+        _gameplay.dispose();
+    }
 }
-
 /**
 * Inidividualized update method for the client scene.
 *
@@ -264,49 +265,42 @@ void MahsJongApp::updateHostScene(float timestep) {
 * @param timestep  The amount of time (in seconds) since the last frame
 */
 void MahsJongApp::updateClientScene(float timestep) {
-   _joingame.update(timestep);
-   switch (_joingame.getStatus()) {
-       case ClientScene::Status::ABORT:
-           _joingame.setActive(false);
-           _mainmenu.setActive(true);
-           _scene = State::MENU;
-           break;
-       case ClientScene::Status::START:
-           _joingame.setActive(false);
-           _gameplay.setActive(true);
-           _scene = State::GAME;
-           // Transfer connection ownership
-           _networkController.setConnection(_joingame.getConnection());
-           _joingame.disconnect();
-           _gameplay.setHost(false);
-           break;
-       case ClientScene::Status::WAIT:
-       case ClientScene::Status::IDLE:
-       case ClientScene::Status::JOIN:
-           // DO NOTHING
-           break;
-   }
+    _joingame.update(timestep);
+
+    if(_joingame.getBackClicked()){
+        _scene = MENU;
+        _joingame.setActive(false);
+        _mainmenu.setActive(true);
+    } else if (_network->getStatus() == NetworkController::Status::START) {
+        _joingame.setActive(false);
+        _gameplay.setActive(true);
+        _scene = GAME;
+    }
+    else if (_network->getStatus() == NetworkController::Status::NETERROR) {
+        _network->disconnect();
+        _joingame.setActive(false);
+        _mainmenu.setActive(true);
+        _gameplay.dispose();
+        _scene = MENU;
+    }
 }
 
 /**
-* Inidividualized update method for the game scene.
-*
-* This method keeps the primary {@link #update} from being a mess of switch
-* statements. It also handles the transition logic from the game scene.
-*
-* @param timestep  The amount of time (in seconds) since the last frame
-*/
+ * Inidividualized update method for the game scene.
+ *
+ * This method keeps the primary {@link #update} from being a mess of switch
+ * statements. It also handles the transition logic from the game scene.
+ *
+ * @param timestep  The amount of time (in seconds) since the last frame
+ */
 void MahsJongApp::updateGameScene(float timestep) {
     _gameplay.update(timestep);
-    _networkController.update(timestep);
-    
-   if (_gameplay.didQuit()) {
-       _gameplay.setActive(false);
-       _mainmenu.setActive(true);
-//       _gameplay.disconnect(); // We don't have this method yet
-       _scene = State::MENU;
-       _networkController.disconnect();
-   }
+    if (_gameplay.didQuit()) {
+        _gameplay.setActive(false);
+        _mainmenu.setActive(true);
+        _gameplay.disconnect();
+        _scene = State::MENU;
+    }
 }
 
 

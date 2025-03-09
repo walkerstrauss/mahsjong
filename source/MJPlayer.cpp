@@ -350,7 +350,7 @@ bool Hand::hasJack(std::vector<std::shared_ptr<TileSet::Tile>> selectedTiles){
  *
  * @param mousePos      the position of the mouse in this frame
  */
-void Hand::clickedTile(Vec2 mousePos) {
+std::shared_ptr<TileSet::Tile> Hand::clickedTile(Vec2 mousePos) {
     for (const auto& tile : _tiles) {
         if (tile) {
             if (tile->tileRect.contains(mousePos)) {
@@ -359,13 +359,16 @@ void Hand::clickedTile(Vec2 mousePos) {
                     auto it = std::find(_selectedTiles.begin(), _selectedTiles.end(), tile);
                     if (it != _selectedTiles.end()) {
                         _selectedTiles.erase(it);
+                        return tile;
                     }
                 } else {
                     tile->selected = true;
                     _selectedTiles.push_back(tile);
+                    return tile;
                 }
             }
         }
     }
+    return nullptr;
 }
 

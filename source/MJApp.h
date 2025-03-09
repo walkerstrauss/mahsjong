@@ -59,7 +59,7 @@ protected:
     /** The current active scene */
     State _scene;
     /** The network controller */
-    NetworkController _networkController;
+    std::shared_ptr<NetworkController> _network;
     
 public:
     /**
@@ -145,7 +145,7 @@ private:
     void updateClientScene(float timestep);
 
     /**
-     * Inidividualized update method for the game scene.
+     * Individualized update method for the game scene.
      *
      * This method keeps the primary {@link #update} from being a mess of switch
      * statements. It also handles the transition logic from the game scene.

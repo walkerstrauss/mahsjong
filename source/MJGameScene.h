@@ -20,6 +20,7 @@
 #include "MJDiscardPile.h"
 #include "MJDiscardUIScene.h"
 #include "MJScoreManager.h"
+#include "MJNetworkController.h"
 
 using namespace cugl;
 using namespace cugl::scene2;
@@ -36,7 +37,7 @@ protected:
     /** Asset manager for this game mode */
     std::shared_ptr<cugl::AssetManager> _assets;
     /** The network connection (as made by this scene) */
-    std::shared_ptr<cugl::netcode::NetcodeConnection> _network;
+    std::shared_ptr<NetworkController> _network;
     /** Input controller for player input*/
     InputController _input;
     /** JSON with all of our constants*/
@@ -121,18 +122,18 @@ public:
      *
      * @param assets    the asset manager for the game
      */
-    bool init(const std::shared_ptr<cugl::AssetManager>& assets);
+    bool init(const std::shared_ptr<cugl::AssetManager>& assets, std::shared_ptr<NetworkController> network);
     
-    /**
-     * Returns the network connection (as made by this scene)
-     *
-     * This value will be reset every time the scene is made active.
-     *
-     * @return the network connection (as made by this scene)
-     */
-    void setConnection(const std::shared_ptr<cugl::netcode::NetcodeConnection>& network) {
-        _network = network;
-    }
+//    /**
+//     * Returns the network connection (as made by this scene)
+//     *
+//     * This value will be reset every time the scene is made active.
+//     *
+//     * @return the network connection (as made by this scene)
+//     */
+//    void setConnection(const std::shared_ptr<cugl::netcode::NetcodeConnection>& network) {
+//        _network = network;
+//    }
     /**
      * Sets whether the player is host.
      *
