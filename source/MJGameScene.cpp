@@ -333,8 +333,8 @@ void GameScene::render() {
     _tileSet->draw(_batch, getSize());
     
     // Draw score
-    _batch->setColor(Color4::GREEN);
-    _batch->drawText(_text,Vec2(getSize().width - _text->getBounds().size.width - 10, getSize().height-_text->getBounds().size.height));
+//    _batch->setColor(Color4::GREEN);
+//    _batch->drawText(_text,Vec2(getSize().width - _text->getBounds().size.width - 10, getSize().height-_text->getBounds().size.height));
     
     // Check if we need to flip over next layer of the pile
     if (_pile->getVisibleSize() == 0 && _tileSet->deck.size() != 14) { //Only update pile if we still have tiles from deck
