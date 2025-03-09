@@ -29,9 +29,12 @@ bool DiscardUIScene::init(const std::shared_ptr<cugl::AssetManager>& assets){
     _tilesetui = _assets->get<scene2::SceneNode>("tilesetui");
     _tilesetui->setContentSize(_tilesetui->getSize());
     _tilesetui->doLayout();
+    _labels.resize(27);
     for (int i = 0; i < 27; i++){
         std::shared_ptr<scene2::Label> label = std::dynamic_pointer_cast<scene2::Label>(_assets->get<scene2::SceneNode>("tilesetui.tilesetscene.numbers." + std::to_string(i + 1)));
-        _labels.insert(_labels.begin(), label);
+        _labels[i] = label;
+        
+//        _labels.insert(_labels.begin(), label);
     }
     backBtn = std::dynamic_pointer_cast<scene2::Button>(_assets->get<scene2::SceneNode>("tilesetui.tilesetscene.back_tileset"));
     backBtn->addListener([this](const std::string& name, bool down) {
