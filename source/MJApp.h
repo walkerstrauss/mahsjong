@@ -12,6 +12,7 @@
 #include "MJMenuScene.h"
 #include "MJHostScene.h"
 #include "MJClientScene.h"
+#include "MJSettingScene.h"
 #include "MJNetworkController.h"
 
 /**
@@ -27,7 +28,8 @@ protected:
         MENU,
         HOST,
         CLIENT,
-        GAME
+        GAME,
+        SETTINGS
     };
     
     /** Global asset manager */
@@ -46,6 +48,8 @@ protected:
     ClientScene _joingame;
     /** The primary controller for game world */
     GameScene _gameplay;
+    /** The scene for settings */
+    SettingScene _settings;
     /** Whether or not we finished loading all assets*/
     bool _loaded;
     /** Scene loader reference */

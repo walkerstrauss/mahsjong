@@ -1,0 +1,1255 @@
+{
+    "variables": {"size":["data","size"]},
+    "contents": {
+        "type": "Node",
+        "format": {
+            "type": "Anchored"
+        },
+        "data": {
+            "anchor": [
+                0,
+                0
+            ],
+            "size": [
+                1024,
+                576
+            ],
+            "angle": 0,
+            "position": [
+                0,
+                0
+            ],
+            "visible": true
+        },
+        "children": {
+            "background_tilesetui": {
+                "type": "Image",
+                "data": {
+                    "texture": "background_tilesetui",
+                    "anchor": [
+                        0,
+                        1
+                    ],
+                    "size": [
+                        1024,
+                        576
+                    ],
+                    "angle": 0,
+                    "position": [
+                        0,
+                        0
+                    ],
+                    "visible": true
+                },
+                "layout": {
+                    "x_anchor": "fill",
+                    "y_anchor": "fill",
+                    "absolute": false,
+                    "x_offset": 0,
+                    "y_offset": 0
+                }
+            },
+            "table": {
+                "type": "Node",
+                "format": {
+                    "type": "Anchored"
+                },
+                "data": {
+                    "anchor": [
+                        0,
+                        1
+                    ],
+                    "size": [
+                        636,
+                        452
+                    ],
+                    "angle": 0,
+                    "position": [
+                        193,
+                        62
+                    ],
+                    "visible": true
+                },
+                "children": {
+                    "table": {
+                        "type": "Image",
+                        "data": {
+                            "texture": "table",
+                            "anchor": [
+                                0,
+                                1
+                            ],
+                            "size": [
+                                636,
+                                452
+                            ],
+                            "angle": 0,
+                            "position": [
+                                0,
+                                0
+                            ],
+                            "visible": true
+                        },
+                        "layout": {
+                            "x_anchor": "left",
+                            "y_anchor": "top",
+                            "absolute": false,
+                            "x_offset": 0,
+                            "y_offset": 0
+                        }
+                    }
+                },
+                "layout": {
+                    "x_anchor": "left",
+                    "y_anchor": "top",
+                    "absolute": false,
+                    "x_offset": 0.25,
+                    "y_offset": -0.11
+                }
+            },
+            "numbers": {
+                "type": "Node",
+                "format": {
+                    "type": "Anchored"
+                },
+                "data": {
+                    "anchor": [
+                        0,
+                        1
+                    ],
+                    "size": [
+                        593,
+                        324
+                    ],
+                    "angle": 0,
+                    "position": [
+                        215,
+                        80
+                    ],
+                    "visible": true
+                },
+                "children": {
+                    "1": {
+                        "type": "Label",
+                        "data": {
+                            "anchor": [
+                                0,
+                                1
+                            ],
+                            "size": [
+                                33,
+                                34
+                            ],
+                            "position": [
+                                0,
+                                290
+                            ],
+                            "angle": 0,
+                            "visible": true,
+                            "font": "pixelify sansBold36",
+                            "text": "0",
+                            "foreground": "#000000ff",
+                            "background": "#00000000",
+                            "padding": [
+                                0,
+                                0,
+                                0,
+                                0
+                            ],
+                            "valign": "middle",
+                            "halign": "center"
+                        },
+                        "children": {},
+                        "layout": {
+                            "x_anchor": "left",
+                            "y_anchor": "top",
+                            "absolute": false,
+                            "x_offset": 0,
+                            "y_offset": 0
+                        }
+                    },
+                    "2": {
+                        "type": "Label",
+                        "data": {
+                            "anchor": [
+                                0,
+                                1
+                            ],
+                            "size": [
+                                33,
+                                34
+                            ],
+                            "position": [
+                                70,
+                                290
+                            ],
+                            "angle": 0,
+                            "visible": true,
+                            "font": "pixelify sansBold36",
+                            "text": "0",
+                            "foreground": "#000000ff",
+                            "background": "#00000000",
+                            "padding": [
+                                0,
+                                0,
+                                0,
+                                0
+                            ],
+                            "valign": "middle",
+                            "halign": "center"
+                        },
+                        "children": {},
+                        "layout": {
+                            "x_anchor": "left",
+                            "y_anchor": "top",
+                            "absolute": false,
+                            "x_offset": 0.12,
+                            "y_offset": 0
+                        }
+                    },
+                    "3": {
+                        "type": "Label",
+                        "data": {
+                            "anchor": [
+                                0,
+                                1
+                            ],
+                            "size": [
+                                33,
+                                34
+                            ],
+                            "position": [
+                                140,
+                                290
+                            ],
+                            "angle": 0,
+                            "visible": true,
+                            "font": "pixelify sansBold36",
+                            "text": "0",
+                            "foreground": "#000000ff",
+                            "background": "#00000000",
+                            "padding": [
+                                0,
+                                0,
+                                0,
+                                0
+                            ],
+                            "valign": "middle",
+                            "halign": "center"
+                        },
+                        "children": {},
+                        "layout": {
+                            "x_anchor": "left",
+                            "y_anchor": "top",
+                            "absolute": false,
+                            "x_offset": 0.24,
+                            "y_offset": 0
+                        }
+                    },
+                    "4": {
+                        "type": "Label",
+                        "data": {
+                            "anchor": [
+                                0,
+                                1
+                            ],
+                            "size": [
+                                33,
+                                34
+                            ],
+                            "position": [
+                                210,
+                                290
+                            ],
+                            "angle": 0,
+                            "visible": true,
+                            "font": "pixelify sansBold36",
+                            "text": "0",
+                            "foreground": "#000000ff",
+                            "background": "#00000000",
+                            "padding": [
+                                0,
+                                0,
+                                0,
+                                0
+                            ],
+                            "valign": "middle",
+                            "halign": "center"
+                        },
+                        "children": {},
+                        "layout": {
+                            "x_anchor": "left",
+                            "y_anchor": "top",
+                            "absolute": false,
+                            "x_offset": 0.35,
+                            "y_offset": 0
+                        }
+                    },
+                    "5": {
+                        "type": "Label",
+                        "data": {
+                            "anchor": [
+                                0,
+                                1
+                            ],
+                            "size": [
+                                33,
+                                34
+                            ],
+                            "position": [
+                                280,
+                                290
+                            ],
+                            "angle": 0,
+                            "visible": true,
+                            "font": "pixelify sansBold36",
+                            "text": "0",
+                            "foreground": "#000000ff",
+                            "background": "#00000000",
+                            "padding": [
+                                0,
+                                0,
+                                0,
+                                0
+                            ],
+                            "valign": "middle",
+                            "halign": "center"
+                        },
+                        "children": {},
+                        "layout": {
+                            "x_anchor": "left",
+                            "y_anchor": "top",
+                            "absolute": false,
+                            "x_offset": 0.47,
+                            "y_offset": 0
+                        }
+                    },
+                    "6": {
+                        "type": "Label",
+                        "data": {
+                            "anchor": [
+                                0,
+                                1
+                            ],
+                            "size": [
+                                33,
+                                34
+                            ],
+                            "position": [
+                                350,
+                                290
+                            ],
+                            "angle": 0,
+                            "visible": true,
+                            "font": "pixelify sansBold36",
+                            "text": "0",
+                            "foreground": "#000000ff",
+                            "background": "#00000000",
+                            "padding": [
+                                0,
+                                0,
+                                0,
+                                0
+                            ],
+                            "valign": "middle",
+                            "halign": "center"
+                        },
+                        "children": {},
+                        "layout": {
+                            "x_anchor": "left",
+                            "y_anchor": "top",
+                            "absolute": false,
+                            "x_offset": 0.59,
+                            "y_offset": 0
+                        }
+                    },
+                    "7": {
+                        "type": "Label",
+                        "data": {
+                            "anchor": [
+                                0,
+                                1
+                            ],
+                            "size": [
+                                33,
+                                34
+                            ],
+                            "position": [
+                                420,
+                                290
+                            ],
+                            "angle": 0,
+                            "visible": true,
+                            "font": "pixelify sansBold36",
+                            "text": "0",
+                            "foreground": "#000000ff",
+                            "background": "#00000000",
+                            "padding": [
+                                0,
+                                0,
+                                0,
+                                0
+                            ],
+                            "valign": "middle",
+                            "halign": "center"
+                        },
+                        "children": {},
+                        "layout": {
+                            "x_anchor": "left",
+                            "y_anchor": "top",
+                            "absolute": false,
+                            "x_offset": 0.71,
+                            "y_offset": 0
+                        }
+                    },
+                    "8": {
+                        "type": "Label",
+                        "data": {
+                            "anchor": [
+                                0,
+                                1
+                            ],
+                            "size": [
+                                33,
+                                34
+                            ],
+                            "position": [
+                                490,
+                                290
+                            ],
+                            "angle": 0,
+                            "visible": true,
+                            "font": "pixelify sansBold36",
+                            "text": "0",
+                            "foreground": "#000000ff",
+                            "background": "#00000000",
+                            "padding": [
+                                0,
+                                0,
+                                0,
+                                0
+                            ],
+                            "valign": "middle",
+                            "halign": "center"
+                        },
+                        "children": {},
+                        "layout": {
+                            "x_anchor": "left",
+                            "y_anchor": "top",
+                            "absolute": false,
+                            "x_offset": 0.83,
+                            "y_offset": 0
+                        }
+                    },
+                    "9": {
+                        "type": "Label",
+                        "data": {
+                            "anchor": [
+                                0,
+                                1
+                            ],
+                            "size": [
+                                33,
+                                34
+                            ],
+                            "position": [
+                                560,
+                                290
+                            ],
+                            "angle": 0,
+                            "visible": true,
+                            "font": "pixelify sansBold36",
+                            "text": "0",
+                            "foreground": "#000000ff",
+                            "background": "#00000000",
+                            "padding": [
+                                0,
+                                0,
+                                0,
+                                0
+                            ],
+                            "valign": "middle",
+                            "halign": "center"
+                        },
+                        "children": {},
+                        "layout": {
+                            "x_anchor": "left",
+                            "y_anchor": "top",
+                            "absolute": false,
+                            "x_offset": 0.94,
+                            "y_offset": 0
+                        }
+                    },
+                    "10": {
+                        "type": "Label",
+                        "data": {
+                            "anchor": [
+                                0,
+                                1
+                            ],
+                            "size": [
+                                33,
+                                34
+                            ],
+                            "position": [
+                                0,
+                                145
+                            ],
+                            "angle": 0,
+                            "visible": true,
+                            "font": "pixelify sansBold36",
+                            "text": "0",
+                            "foreground": "#000000ff",
+                            "background": "#00000000",
+                            "padding": [
+                                0,
+                                0,
+                                0,
+                                0
+                            ],
+                            "valign": "middle",
+                            "halign": "center"
+                        },
+                        "children": {},
+                        "layout": {
+                            "x_anchor": "left",
+                            "y_anchor": "top",
+                            "absolute": false,
+                            "x_offset": 0,
+                            "y_offset": -0.45
+                        }
+                    },
+                    "11": {
+                        "type": "Label",
+                        "data": {
+                            "anchor": [
+                                0,
+                                1
+                            ],
+                            "size": [
+                                33,
+                                34
+                            ],
+                            "position": [
+                                70,
+                                145
+                            ],
+                            "angle": 0,
+                            "visible": true,
+                            "font": "pixelify sansBold36",
+                            "text": "0",
+                            "foreground": "#000000ff",
+                            "background": "#00000000",
+                            "padding": [
+                                0,
+                                0,
+                                0,
+                                0
+                            ],
+                            "valign": "middle",
+                            "halign": "center"
+                        },
+                        "children": {},
+                        "layout": {
+                            "x_anchor": "left",
+                            "y_anchor": "top",
+                            "absolute": false,
+                            "x_offset": 0.12,
+                            "y_offset": -0.45
+                        }
+                    },
+                    "12": {
+                        "type": "Label",
+                        "data": {
+                            "anchor": [
+                                0,
+                                1
+                            ],
+                            "size": [
+                                33,
+                                34
+                            ],
+                            "position": [
+                                140,
+                                145
+                            ],
+                            "angle": 0,
+                            "visible": true,
+                            "font": "pixelify sansBold36",
+                            "text": "0",
+                            "foreground": "#000000ff",
+                            "background": "#00000000",
+                            "padding": [
+                                0,
+                                0,
+                                0,
+                                0
+                            ],
+                            "valign": "middle",
+                            "halign": "center"
+                        },
+                        "children": {},
+                        "layout": {
+                            "x_anchor": "left",
+                            "y_anchor": "top",
+                            "absolute": false,
+                            "x_offset": 0.24,
+                            "y_offset": -0.45
+                        }
+                    },
+                    "13": {
+                        "type": "Label",
+                        "data": {
+                            "anchor": [
+                                0,
+                                1
+                            ],
+                            "size": [
+                                33,
+                                34
+                            ],
+                            "position": [
+                                210,
+                                145
+                            ],
+                            "angle": 0,
+                            "visible": true,
+                            "font": "pixelify sansBold36",
+                            "text": "0",
+                            "foreground": "#000000ff",
+                            "background": "#00000000",
+                            "padding": [
+                                0,
+                                0,
+                                0,
+                                0
+                            ],
+                            "valign": "middle",
+                            "halign": "center"
+                        },
+                        "children": {},
+                        "layout": {
+                            "x_anchor": "left",
+                            "y_anchor": "top",
+                            "absolute": false,
+                            "x_offset": 0.35,
+                            "y_offset": -0.45
+                        }
+                    },
+                    "14": {
+                        "type": "Label",
+                        "data": {
+                            "anchor": [
+                                0,
+                                1
+                            ],
+                            "size": [
+                                33,
+                                34
+                            ],
+                            "position": [
+                                280,
+                                145
+                            ],
+                            "angle": 0,
+                            "visible": true,
+                            "font": "pixelify sansBold36",
+                            "text": "0",
+                            "foreground": "#000000ff",
+                            "background": "#00000000",
+                            "padding": [
+                                0,
+                                0,
+                                0,
+                                0
+                            ],
+                            "valign": "middle",
+                            "halign": "center"
+                        },
+                        "children": {},
+                        "layout": {
+                            "x_anchor": "left",
+                            "y_anchor": "top",
+                            "absolute": false,
+                            "x_offset": 0.47,
+                            "y_offset": -0.45
+                        }
+                    },
+                    "15": {
+                        "type": "Label",
+                        "data": {
+                            "anchor": [
+                                0,
+                                1
+                            ],
+                            "size": [
+                                33,
+                                34
+                            ],
+                            "position": [
+                                350,
+                                145
+                            ],
+                            "angle": 0,
+                            "visible": true,
+                            "font": "pixelify sansBold36",
+                            "text": "0",
+                            "foreground": "#000000ff",
+                            "background": "#00000000",
+                            "padding": [
+                                0,
+                                0,
+                                0,
+                                0
+                            ],
+                            "valign": "middle",
+                            "halign": "center"
+                        },
+                        "children": {},
+                        "layout": {
+                            "x_anchor": "left",
+                            "y_anchor": "top",
+                            "absolute": false,
+                            "x_offset": 0.59,
+                            "y_offset": -0.45
+                        }
+                    },
+                    "16": {
+                        "type": "Label",
+                        "data": {
+                            "anchor": [
+                                0,
+                                1
+                            ],
+                            "size": [
+                                33,
+                                34
+                            ],
+                            "position": [
+                                420,
+                                145
+                            ],
+                            "angle": 0,
+                            "visible": true,
+                            "font": "pixelify sansBold36",
+                            "text": "0",
+                            "foreground": "#000000ff",
+                            "background": "#00000000",
+                            "padding": [
+                                0,
+                                0,
+                                0,
+                                0
+                            ],
+                            "valign": "middle",
+                            "halign": "center"
+                        },
+                        "children": {},
+                        "layout": {
+                            "x_anchor": "left",
+                            "y_anchor": "top",
+                            "absolute": false,
+                            "x_offset": 0.71,
+                            "y_offset": -0.45
+                        }
+                    },
+                    "17": {
+                        "type": "Label",
+                        "data": {
+                            "anchor": [
+                                0,
+                                1
+                            ],
+                            "size": [
+                                33,
+                                34
+                            ],
+                            "position": [
+                                490,
+                                145
+                            ],
+                            "angle": 0,
+                            "visible": true,
+                            "font": "pixelify sansBold36",
+                            "text": "0",
+                            "foreground": "#000000ff",
+                            "background": "#00000000",
+                            "padding": [
+                                0,
+                                0,
+                                0,
+                                0
+                            ],
+                            "valign": "middle",
+                            "halign": "center"
+                        },
+                        "children": {},
+                        "layout": {
+                            "x_anchor": "left",
+                            "y_anchor": "top",
+                            "absolute": false,
+                            "x_offset": 0.83,
+                            "y_offset": -0.45
+                        }
+                    },
+                    "18": {
+                        "type": "Label",
+                        "data": {
+                            "anchor": [
+                                0,
+                                1
+                            ],
+                            "size": [
+                                33,
+                                34
+                            ],
+                            "position": [
+                                560,
+                                145
+                            ],
+                            "angle": 0,
+                            "visible": true,
+                            "font": "pixelify sansBold36",
+                            "text": "0",
+                            "foreground": "#000000ff",
+                            "background": "#00000000",
+                            "padding": [
+                                0,
+                                0,
+                                0,
+                                0
+                            ],
+                            "valign": "middle",
+                            "halign": "center"
+                        },
+                        "children": {},
+                        "layout": {
+                            "x_anchor": "left",
+                            "y_anchor": "top",
+                            "absolute": false,
+                            "x_offset": 0.94,
+                            "y_offset": -0.45
+                        }
+                    },
+                    "19": {
+                        "type": "Label",
+                        "data": {
+                            "anchor": [
+                                0,
+                                1
+                            ],
+                            "size": [
+                                33,
+                                34
+                            ],
+                            "position": [
+                                0,
+                                0
+                            ],
+                            "angle": 0,
+                            "visible": true,
+                            "font": "pixelify sansBold36",
+                            "text": "0",
+                            "foreground": "#000000ff",
+                            "background": "#00000000",
+                            "padding": [
+                                0,
+                                0,
+                                0,
+                                0
+                            ],
+                            "valign": "middle",
+                            "halign": "center"
+                        },
+                        "children": {},
+                        "layout": {
+                            "x_anchor": "left",
+                            "y_anchor": "top",
+                            "absolute": false,
+                            "x_offset": 0,
+                            "y_offset": -0.9
+                        }
+                    },
+                    "20": {
+                        "type": "Label",
+                        "data": {
+                            "anchor": [
+                                0,
+                                1
+                            ],
+                            "size": [
+                                33,
+                                34
+                            ],
+                            "position": [
+                                70,
+                                0
+                            ],
+                            "angle": 0,
+                            "visible": true,
+                            "font": "pixelify sansBold36",
+                            "text": "0",
+                            "foreground": "#000000ff",
+                            "background": "#00000000",
+                            "padding": [
+                                0,
+                                0,
+                                0,
+                                0
+                            ],
+                            "valign": "middle",
+                            "halign": "center"
+                        },
+                        "children": {},
+                        "layout": {
+                            "x_anchor": "left",
+                            "y_anchor": "top",
+                            "absolute": false,
+                            "x_offset": 0.12,
+                            "y_offset": -0.9
+                        }
+                    },
+                    "21": {
+                        "type": "Label",
+                        "data": {
+                            "anchor": [
+                                0,
+                                1
+                            ],
+                            "size": [
+                                33,
+                                34
+                            ],
+                            "position": [
+                                140,
+                                0
+                            ],
+                            "angle": 0,
+                            "visible": true,
+                            "font": "pixelify sansBold36",
+                            "text": "0",
+                            "foreground": "#000000ff",
+                            "background": "#00000000",
+                            "padding": [
+                                0,
+                                0,
+                                0,
+                                0
+                            ],
+                            "valign": "middle",
+                            "halign": "center"
+                        },
+                        "children": {},
+                        "layout": {
+                            "x_anchor": "left",
+                            "y_anchor": "top",
+                            "absolute": false,
+                            "x_offset": 0.24,
+                            "y_offset": -0.9
+                        }
+                    },
+                    "22": {
+                        "type": "Label",
+                        "data": {
+                            "anchor": [
+                                0,
+                                1
+                            ],
+                            "size": [
+                                33,
+                                34
+                            ],
+                            "position": [
+                                210,
+                                0
+                            ],
+                            "angle": 0,
+                            "visible": true,
+                            "font": "pixelify sansBold36",
+                            "text": "0",
+                            "foreground": "#000000ff",
+                            "background": "#00000000",
+                            "padding": [
+                                0,
+                                0,
+                                0,
+                                0
+                            ],
+                            "valign": "middle",
+                            "halign": "center"
+                        },
+                        "children": {},
+                        "layout": {
+                            "x_anchor": "left",
+                            "y_anchor": "top",
+                            "absolute": false,
+                            "x_offset": 0.35,
+                            "y_offset": -0.9
+                        }
+                    },
+                    "23": {
+                        "type": "Label",
+                        "data": {
+                            "anchor": [
+                                0,
+                                1
+                            ],
+                            "size": [
+                                33,
+                                34
+                            ],
+                            "position": [
+                                280,
+                                0
+                            ],
+                            "angle": 0,
+                            "visible": true,
+                            "font": "pixelify sansBold36",
+                            "text": "0",
+                            "foreground": "#000000ff",
+                            "background": "#00000000",
+                            "padding": [
+                                0,
+                                0,
+                                0,
+                                0
+                            ],
+                            "valign": "middle",
+                            "halign": "center"
+                        },
+                        "children": {},
+                        "layout": {
+                            "x_anchor": "left",
+                            "y_anchor": "top",
+                            "absolute": false,
+                            "x_offset": 0.47,
+                            "y_offset": -0.9
+                        }
+                    },
+                    "24": {
+                        "type": "Label",
+                        "data": {
+                            "anchor": [
+                                0,
+                                1
+                            ],
+                            "size": [
+                                33,
+                                34
+                            ],
+                            "position": [
+                                350,
+                                0
+                            ],
+                            "angle": 0,
+                            "visible": true,
+                            "font": "pixelify sansBold36",
+                            "text": "0",
+                            "foreground": "#000000ff",
+                            "background": "#00000000",
+                            "padding": [
+                                0,
+                                0,
+                                0,
+                                0
+                            ],
+                            "valign": "middle",
+                            "halign": "center"
+                        },
+                        "children": {},
+                        "layout": {
+                            "x_anchor": "left",
+                            "y_anchor": "top",
+                            "absolute": false,
+                            "x_offset": 0.59,
+                            "y_offset": -0.9
+                        }
+                    },
+                    "25": {
+                        "type": "Label",
+                        "data": {
+                            "anchor": [
+                                0,
+                                1
+                            ],
+                            "size": [
+                                33,
+                                34
+                            ],
+                            "position": [
+                                420,
+                                0
+                            ],
+                            "angle": 0,
+                            "visible": true,
+                            "font": "pixelify sansBold36",
+                            "text": "0",
+                            "foreground": "#000000ff",
+                            "background": "#00000000",
+                            "padding": [
+                                0,
+                                0,
+                                0,
+                                0
+                            ],
+                            "valign": "middle",
+                            "halign": "center"
+                        },
+                        "children": {},
+                        "layout": {
+                            "x_anchor": "left",
+                            "y_anchor": "top",
+                            "absolute": false,
+                            "x_offset": 0.71,
+                            "y_offset": -0.9
+                        }
+                    },
+                    "26": {
+                        "type": "Label",
+                        "data": {
+                            "anchor": [
+                                0,
+                                1
+                            ],
+                            "size": [
+                                33,
+                                34
+                            ],
+                            "position": [
+                                490,
+                                0
+                            ],
+                            "angle": 0,
+                            "visible": true,
+                            "font": "pixelify sansBold36",
+                            "text": "0",
+                            "foreground": "#000000ff",
+                            "background": "#00000000",
+                            "padding": [
+                                0,
+                                0,
+                                0,
+                                0
+                            ],
+                            "valign": "middle",
+                            "halign": "center"
+                        },
+                        "children": {},
+                        "layout": {
+                            "x_anchor": "left",
+                            "y_anchor": "top",
+                            "absolute": false,
+                            "x_offset": 0.83,
+                            "y_offset": -0.9
+                        }
+                    },
+                    "27": {
+                        "type": "Label",
+                        "data": {
+                            "anchor": [
+                                0,
+                                1
+                            ],
+                            "size": [
+                                33,
+                                34
+                            ],
+                            "position": [
+                                560,
+                                0
+                            ],
+                            "angle": 0,
+                            "visible": true,
+                            "font": "pixelify sansBold36",
+                            "text": "0",
+                            "foreground": "#000000ff",
+                            "background": "#00000000",
+                            "padding": [
+                                0,
+                                0,
+                                0,
+                                0
+                            ],
+                            "valign": "middle",
+                            "halign": "center"
+                        },
+                        "children": {},
+                        "layout": {
+                            "x_anchor": "left",
+                            "y_anchor": "top",
+                            "absolute": false,
+                            "x_offset": 0.94,
+                            "y_offset": -0.9
+                        }
+                    }
+                },
+                "layout": {
+                    "x_anchor": "left",
+                    "y_anchor": "top",
+                    "absolute": false,
+                    "x_offset": 0.265,
+                    "y_offset": -0.27
+                }
+            },
+            "back_tileset": {
+                "type": "Button",
+                "format": {
+                    "type": "Anchored"
+                },
+                "data": {
+                    "anchor": [
+                        0,
+                        1
+                    ],
+                    "size": [
+                        60,
+                        60
+                    ],
+                    "angle": 0,
+                    "position": [
+                        32,
+                        484
+                    ],
+                    "visible": true,
+                    "upnode": "back_tileset"
+                },
+                "children": {
+                    "back_tileset": {
+                        "type": "Image",
+                        "data": {
+                            "texture": "back_tileset",
+                            "anchor": [
+                                0.5,
+                                0.5
+                            ],
+                            "size": [
+                                60,
+                                60
+                            ],
+                            "angle": 0,
+                            "position": [
+                                0,
+                                0
+                            ],
+                            "visible": true
+                        },
+                        "layout": {
+                            "x_anchor": "left",
+                            "y_anchor": "bottom",
+                            "absolute": false,
+                            "x_offset": 0.5,
+                            "y_offset": 0.5
+                        }
+                    }
+                },
+                "layout": {
+                    "x_anchor": "left",
+                    "y_anchor": "top",
+                    "absolute": false,
+                    "x_offset": 0.03,
+                    "y_offset": -0.06
+                }
+            }
+        }
+    }
+}
