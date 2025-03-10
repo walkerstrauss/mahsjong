@@ -196,7 +196,7 @@ void MahsJongApp::updateLoadingScene(float timestep) {
            }
        });
 
-       _gameplay.setActive(true);
+       _mainmenu.setActive(true);
        _scene = State::MENU;
    }
 }

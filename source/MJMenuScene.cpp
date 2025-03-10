@@ -49,7 +49,7 @@ bool MenuScene::init(const std::shared_ptr<cugl::AssetManager>& assets) {
     _assets = assets;
     
     std::shared_ptr<scene2::SceneNode> scene = _assets->get<scene2::SceneNode>("home");
-    scene->setContentSize(scene->getSize());
+    scene->setContentSize(Application::get()->getDisplaySize());
     scene->doLayout();
     _choice = Choice::NONE;
     
