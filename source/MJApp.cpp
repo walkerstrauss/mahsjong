@@ -107,7 +107,7 @@ void MahsJongApp::update(float timestep) {
             break;
         case MENU:
             _assets->loadDirectory("json/assets.json");
-            updateGameScene(timestep);
+            updateMenuScene(timestep);
             break;
         case HOST:
             updateHostScene(timestep);
@@ -139,7 +139,7 @@ void MahsJongApp::draw() {
            _loading.render();
            break;
        case MENU:
-           _gameplay.render();
+           _mainmenu.render();
            break;
        case HOST:
            _hostgame.render();

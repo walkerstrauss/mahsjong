@@ -59,8 +59,10 @@ bool MenuScene::init(const std::shared_ptr<cugl::AssetManager>& assets) {
     joinNode->getParent()->removeChild(joinNode);
     _hostbutton = std::dynamic_pointer_cast<scene2::Button>(hostNode);
     _joinbutton = std::dynamic_pointer_cast<scene2::Button>(joinNode);
+    
     _hostbutton->setPosition(Vec2(_hostbutton->getPosition() - Vec2(300,200)));
     _joinbutton->setPosition(Vec2(_joinbutton->getPosition() - Vec2(300,200)));
+    
 //    // Program the buttons
     _hostbutton->addListener([this](const std::string& name, bool down) {
         if (down) {
