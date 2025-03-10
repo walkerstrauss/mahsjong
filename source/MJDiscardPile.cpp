@@ -50,10 +50,10 @@ void DiscardPile::updateTilePositions(){
 
 bool DiscardPile::isTileSelected(const cugl::Vec2& mousePos){
     // Tile position (matches render)
-    if (getTopTile() == nullptr){
+    std::shared_ptr<TileSet::Tile> currTile = getTopTile();
+    if (currTile == nullptr){
         return false;
     }
-    cugl::Vec2 pos(990, 520);
 //    if(it->selected){
 //        pos.y = curr.pos.y + 10;
 //    }
@@ -69,7 +69,20 @@ bool DiscardPile::isTileSelected(const cugl::Vec2& mousePos){
 //    
 //    batch->draw(curr.getTileTexture(), origin, trans);
         // Get tile size with scaling applied
-    return getTopTile()->tileRect.contains(mousePos);
+    else if(currTile->tileRect.contains(mousePos)){
+        if(currTile->selected){
+            currTile->_scale = 0.2;
+            currTile->selected = false;
+            _selectedTopTile -= 1;
+        }
+        else{
+            currTile->_scale = 0.25;
+            currTile->selected = true;
+            _selectedTopTile += 1;
+        }
+        return true;
+    }
+    return false;
 }
 
 /**

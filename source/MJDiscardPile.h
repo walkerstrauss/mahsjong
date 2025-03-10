@@ -120,6 +120,12 @@ public:
      * Method to render the top card of the discard pile
      */
     void render(const std::shared_ptr<cugl::graphics::SpriteBatch>& batch);
+    
+    /**
+     * Removes top tile in discard pile
+     */
+    void removeTopTile(){ _topTile = nullptr; };
+
 };
 
 #endif /*__MJ_DISCARD_PILE_H__*/

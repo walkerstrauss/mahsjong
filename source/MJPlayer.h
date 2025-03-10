@@ -46,6 +46,8 @@ public:
     std::vector<std::shared_ptr<TileSet::Tile>> _selectedTiles;
     // Keeps track of which grandma tile we are checking
     int grandmaToAdd;
+    // Keeps track of current hand size
+    int _size; 
     
 #pragma mark -
 #pragma mark Constructors
@@ -197,6 +199,10 @@ public:
     int _turnsLeft = 5;
     // Whether or not we are currently discarding
     bool discarding = false;
+    // Whether or not we are in exchange and play phase
+    bool exchanging;
+    // Whether or not the player has drawn this turn
+    bool draw; 
 
 #pragma mark -
 #pragma mark Constructors

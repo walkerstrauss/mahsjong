@@ -91,6 +91,10 @@ protected:
     /** Key for continue button */
     Uint32 _continueBtnKey;
     
+    //Exchange Tiles
+    std::shared_ptr<TileSet::Tile> currDiscardTile;
+    std::shared_ptr<TileSet::Tile> currHandTile;
+    
         
 public:
 #pragma mark -

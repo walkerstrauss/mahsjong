@@ -207,6 +207,16 @@ public:
         std::shared_ptr<cugl::graphics::Texture> getTileTexture(){
             return _texture;
         }
+        
+        /**
+         * Overloading operator to directly compare two tiles
+         */
+        bool operator==(std::shared_ptr<Tile>& tile){
+            if(this->toString() == tile->toString() && this->_id == tile->_id){
+                return true;
+            }
+            return false;
+        }
     };
     
 public:

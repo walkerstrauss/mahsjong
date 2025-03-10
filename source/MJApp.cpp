@@ -71,6 +71,7 @@ void MahsJongApp::onShutdown() {
     _hostgame.dispose();
     _joingame.dispose();
     _settings.dispose();
+    _network->dispose();
     _assets = nullptr;
     _batch = nullptr;
     

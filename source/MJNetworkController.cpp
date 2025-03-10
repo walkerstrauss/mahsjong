@@ -29,6 +29,8 @@ NetworkController::NetworkController() {
  */
 void NetworkController::dispose() {
     disconnect();
+    _serializer->~NetcodeSerializer();
+    _deserializer->~NetcodeDeserializer();
     _assets = nullptr;
 }
 
