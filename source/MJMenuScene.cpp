@@ -88,6 +88,8 @@ void MenuScene::dispose() {
     if (_active) {
         removeAllChildren();
         _active = false;
+        _hostbutton = nullptr;
+        _joinbutton  = nullptr; 
     }
 }
 

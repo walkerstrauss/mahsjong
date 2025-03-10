@@ -180,7 +180,7 @@ void MahsJongApp::updateLoadingScene(float timestep) {
                _scene = State::SETTINGS;
            }
        });
-       _hostgame.init(_assets);
+       _hostgame.init(_assets, _network);
        _hostgame.setSpriteBatch(_batch);
        _joingame.init(_assets, _network);
        _joingame.setSpriteBatch(_batch);
