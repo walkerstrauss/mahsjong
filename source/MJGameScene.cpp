@@ -221,6 +221,7 @@ void GameScene::update(float timestep) {
             _player->getHand().clickedTile(mousePos);
             _discardPile->isTileSelected(mousePos);
         }
+  
         //Start turn by drawing tile to hand
         if(_input.getKeyPressed() == KeyCode::D && _input.getKeyDown()){
             if(_player->getHand()._tiles.size() >= 14 || _player->getHand()._tiles.size() <= 12){
@@ -259,7 +260,6 @@ void GameScene::update(float timestep) {
                         else{
                             it++;
                         }
-
                 }
                 _player->getHand()._size -= 2;
                 _player->getHand()._selectedTiles.clear();
