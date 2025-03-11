@@ -131,7 +131,7 @@ void TileSet::draw(const std::shared_ptr<cugl::graphics::SpriteBatch>& batch, cu
             continue;
         }
         if(it->selected && it->inHand){
-            pos.y = curr.pos.y + 10;
+            pos.y = curr.pos.y + 20;
         }
         if(it->selected && (it->inPile || it->discarded)){
             it->_scale = 0.25;

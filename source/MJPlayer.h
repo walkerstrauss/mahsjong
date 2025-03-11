@@ -68,7 +68,7 @@ public:
 #pragma mark -
 #pragma mark Gameplay Handling
     /**
-     * Returns the number of tiles in our name
+     * Returns the number of tiles in our game
      */
     size_t getTileCount() const {
         return _tiles.size();
