@@ -210,16 +210,16 @@ void GameScene::update(float timestep) {
     
     _player->getHand().updateTilePositions();
     
-    if (_network->getCurrentTurn() == _network->getLocalPid()) {
+//    if (_network->getCurrentTurn() == _network->getLocalPid()) {
         if(_input.didRelease() && !_input.isDown()){
             cugl::Vec2 prev = _input.getPosition(); //Get our mouse position
             cugl::Vec2 mousePos = cugl::Scene::screenToWorldCoords(cugl::Vec3(prev));
             _player->getHand().clickedTile(mousePos);
             _discardPile->isTileSelected(mousePos);
         }
-        if(_input.getKeyPressed() == KeyCode::D && _input.getKeyDown() && _player->draw == false){
+        if(_input.getKeyPressed() == KeyCode::D && _input.getKeyDown()){
             _player->getHand().drawFromPile(_pile, 1);  // Start turn by drawing tile to hand
-            _player->draw = true;
+            _player->canDraw = true;
         } else if (_input.getKeyPressed() == KeyCode::G && _input.getKeyDown() ){
             if (_player->getHand()._selectedTiles.size() == 3) {
                 if (_player->getHand().isSetValid(_player->getHand()._selectedTiles)) { // Selected tiles include ones in the piles...
@@ -422,7 +422,7 @@ void GameScene::update(float timestep) {
 //        // TODO: add code to handle checking if we can make a set with top discard and adding to hand if we can
 //        // TODO: once is added to hand, we have to make it so that they cannot do anything until they have made and shown a set with the discard tile
 //    }
-}
+//}
 
 /**
  * Draws all this to the scene's SpriteBatch.
