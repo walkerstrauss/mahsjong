@@ -68,7 +68,7 @@ public:
 #pragma mark -
 #pragma mark Gameplay Handling
     /**
-     * Returns the number of tiles in our name
+     * Returns the number of tiles in our game
      */
     size_t getTileCount() const {
         return _tiles.size();
@@ -91,7 +91,7 @@ public:
      *
      * @param tile      the tile to discard from out hand
      */
-    void discard(std::shared_ptr<TileSet::Tile> tile);
+    bool discard(std::shared_ptr<TileSet::Tile> tile);
     
     /**
      * Method to make a set from your hand and add it to selected sets
@@ -209,9 +209,9 @@ public:
     // Whether or not we are currently discarding
     bool discarding = false;
     // Whether or not we are in exchange and play phase
-    bool exchanging;
+    bool canExchange;
     // Whether or not the player has drawn this turn
-    bool draw; 
+    bool canDraw;
 
 #pragma mark -
 #pragma mark Constructors

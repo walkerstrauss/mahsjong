@@ -130,8 +130,14 @@ void TileSet::draw(const std::shared_ptr<cugl::graphics::SpriteBatch>& batch, cu
         if(it->played){
             continue;
         }
-        if(it->selected){
-            pos.y = curr.pos.y + 10;
+        if(it->selected && it->inHand){
+            pos.y = curr.pos.y + 20;
+        }
+        if(it->selected && (it->inPile || it->discarded)){
+            it->_scale = 0.25;
+        }
+        else{
+            it->_scale = 0.2;
         }
         Vec2 origin = Vec2(curr.getTileTexture()->getSize().width/2, curr.getTileTexture()->getSize().height/2);
         
