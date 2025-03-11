@@ -91,8 +91,9 @@ public:
         if (getTopTile() != nullptr) {
             _discardPile.push_back(_topTile);
         }
+        tile->pos = cugl::Vec2(990,520);
         _topTile = tile;
-        _size = _discardPile.size() + 1;
+        _size = static_cast<int>(_discardPile.size()) + 1;
         return true;
     }
     
@@ -119,7 +120,7 @@ public:
     /**
      * Method to render the top card of the discard pile
      */
-    void render(const std::shared_ptr<cugl::graphics::SpriteBatch>& batch);
+//    void render(const std::shared_ptr<cugl::graphics::SpriteBatch>& batch);
     
     /**
      * Removes top tile in discard pile

@@ -56,6 +56,9 @@ void Hand::drawFromPile(std::shared_ptr<Pile>& pile, int number){
     
     for(auto& tile : _drawnPile){
         tile->inHand = true;
+        tile->inPile = false;
+        tile->selected = false;
+        tile->discarded = false;
         _tiles.push_back(tile); // Add drawn tiles to hand
     }
  }
@@ -66,6 +69,9 @@ void Hand::drawFromDiscard(std::shared_ptr<TileSet::Tile> tile) {
     }
     
     tile->inHand = true;
+    tile->discarded = false;
+    tile->inPile = false;
+    tile->selected = false; 
     _tiles.push_back(tile);
 }
 
@@ -74,16 +80,14 @@ void Hand::drawFromDiscard(std::shared_ptr<TileSet::Tile> tile) {
  *
  * @param tile      the tile to discard from out hand
  */
-void Hand::discard(std::shared_ptr<TileSet::Tile> tile){
-    if(!tile || _tiles.size() - _selectedTiles.size() < 13){
-        CULog("Discarding too many tiles or invalid tiles");
-    }
+bool Hand::discard(std::shared_ptr<TileSet::Tile> tile){
     auto it = _tiles.begin();
     while(it != _tiles.end()){
         if (*it == tile) {
             // if we find the tile, discard it
             (*it)->discarded = true;
             (*it)->inHand = false;
+            (*it)->inPile = false;
             (*it)->selected = false;
 
             _tiles.erase(it);
@@ -92,6 +96,7 @@ void Hand::discard(std::shared_ptr<TileSet::Tile> tile){
             ++it;
         }
     }
+    return true;
 }
 
 /**

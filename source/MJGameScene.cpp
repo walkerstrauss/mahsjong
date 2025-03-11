@@ -60,7 +60,11 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::sha
     
     _discardBtnKey = _discardBtn->addListener([this](const std::string& name, bool down){
         if (!down){
-            if (0 < _player->getHand()._selectedTiles.size() && _player->getHand()._selectedTiles.size() <= 2) {
+            if(_player->getHand()._tiles.size() == _player->getHand()._size){
+                CULog("Cannot discard tiles, already at required hand size");
+                return;
+            }
+            if (0 < _player->getHand()._selectedTiles.size() && _player->getHand()._selectedTiles.size() < 2) {
                 if (!_player->discarding){
                     _player->discarding = true;
                     for (auto& tile : _player->getHand()._selectedTiles) {
@@ -76,7 +80,6 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::sha
                         tile->discarded = true; 
                     }
                     _player->getHand()._selectedTiles.clear();
-                    _player->getHand().drawFromPile(_pile, 1);
                     _player->discarding = false;
                     
 //                    _network->endTurn();
@@ -210,66 +213,106 @@ void GameScene::update(float timestep) {
     }
     
     _player->getHand().updateTilePositions();
+    CULog("%lu", _player->getHand()._selectedTiles.size());
     
-    if (_network->getCurrentTurn() == _network->getLocalPid()) {
+    //if (_network->getCurrentTurn() == _network->getLocalPid()) {
         if(_input.didRelease() && !_input.isDown()){
             cugl::Vec2 prev = _input.getPosition(); //Get our mouse position
             cugl::Vec2 mousePos = cugl::Scene::screenToWorldCoords(cugl::Vec3(prev));
             _player->getHand().clickedTile(mousePos);
             _discardPile->isTileSelected(mousePos);
         }
-        if(_input.getKeyPressed() == KeyCode::D && _input.getKeyDown() && _player->draw == false){
-            _player->getHand().drawFromPile(_pile, 1);  // Start turn by drawing tile to hand
+  
+        //Start turn by drawing tile to hand
+        if(_input.getKeyPressed() == KeyCode::D && _input.getKeyDown()){
+            if(_player->getHand()._tiles.size() >= 14 || _player->getHand()._tiles.size() <= 12){
+                CULog("Incorrect hand size for draw action");
+                return;
+            }
+            _player->getHand().drawFromPile(_pile, 1);
+//            _player->canDraw = false;
             
             for (auto& tile : _player->getHand()._drawnPile) {
                 tile->setTexture(_assets->get<Texture>(tile->toString()));
             }
             
-            _player->draw = true;
-            
             if (_player->getHand().isWinningHand()){
                 _gameWin = true;
+        }
+        if (_input.getKeyPressed() == KeyCode::G && _input.getKeyDown()){
+            if(_player->getHand()._selectedTiles.size() != 2){
+                CULog("Must have 2 tiles selected in hand");
+                return;
             }
-        } else if (_input.getKeyPressed() == KeyCode::G && _input.getKeyDown()
-                   && _player->draw == false // Comment this line out if you want to test.
-                   ){
-                   
-            if (_player->getHand()._selectedTiles.size() == 3) {
-                if (_player->getHand().isSetValid(_player->getHand()._selectedTiles)) { // Selected tiles include ones in the piles...
-                    _player->getHand().drawFromDiscard(_discardPile->drawTopTile());
-                    _player->draw = true;
-                    
-                    if (_player->getHand().isWinningHand()){
-                        _gameWin = true;
+            else if (!_discardPile->getTopTile()){
+                CULog("Must have a tile in the discard pile");
+                return;
+            }
+            //Temporarily add the top tile from the discard pile into selected tiles
+            std::shared_ptr<TileSet::Tile> currDiscardTile = _discardPile->getTopTile();
+            _player->getHand()._selectedTiles.push_back(currDiscardTile);
+            
+            if (_player->getHand().isSetValid(_player->getHand()._selectedTiles)) { // Selected tiles include ones in the piles...
+                for(auto const& tile : _player->getHand()._selectedTiles){
+                    if(tile == currDiscardTile){
+                        continue;
                     }
-
-                } else {
-                    CULog("Discard tile cannot make valid set");
+                    for(auto it = _player->getHand()._tiles.begin(); it != _player->getHand()._tiles.end();)
+                        if(tile == *it){
+                            it = _player->getHand()._tiles.erase(it);
+                            tile->selected = false;
+                            tile->inHand = false;
+                            tile->played = true;
+                            break;
+                        }
+                        else{
+                            it++;
+                        }
                 }
-            } else {
-                CULog("Must have 2 tiles selected in hand to check valid set");
+                _player->getHand()._size -= 2;
+                _player->getHand()._selectedTiles.clear();
+                
+                currDiscardTile->discarded = false;
+                currDiscardTile->played = true;
+                _discardPile->removeTopTile();
+            }
+            else {
+                CULog("Not a valid set");
+                for(auto const& tile : _player->getHand()._tiles){
+                    if(tile->selected){
+                        tile->selected = false;
+                    }
+                }
+                _player->getHand()._selectedTiles.clear();
             }
         }
         
-        if (_input.getKeyPressed() == KeyCode::E && _input.getKeyDown() && _player->getHand().getTileCount() > 13) {
-            if (_player->getHand().getTileCount() - _player->getHand()._selectedTiles.size() == 13) {
-                for(auto& tile: _player->getHand()._selectedTiles){
-                    _player->getHand().discard(tile);
-                    _discardPile->addTile(tile);
-                    _discardPile->updateTilePositions();
-                }
-            } else {
-                CULog("Must discard tiles until you have 13!");
+        if (_input.getKeyPressed() == KeyCode::E && _input.getKeyDown()) {
+            if(_player->canDraw || _player->canExchange){
+                CULog("Must draw from pile or discard first");
+                return;
+            }
+            if(_player->getHand()._tiles.size() - _player->getHand()._selectedTiles.size() != _player->getHand()._size){
+                CULog("Discard count must make hand equal to required size");
+                return;
+            }
+            for(auto& tile: _player->getHand()._selectedTiles){
+                _player->getHand().discard(tile);
+                _discardPile->addTile(tile);
+                _discardPile->updateTilePositions();
             }
         }
 
-        if (_input.getKeyPressed() == KeyCode::N && _input.getKeyDown() && _player->getHand().getTileCount() == 13) {
-            if (_player->getHand().getTileCount() == 13) {
-                _network->endTurn();
-
-            } else {
-                CULog("Must have 13 tiles to end turn");
+        if (_input.getKeyPressed() == KeyCode::N && _input.getKeyDown()) {
+            if(_player->canDraw && _player->canExchange){
+                CULog("Must perform a draw from pile or discard first");
+                return;
             }
+            if(_player->getHand()._tiles.size() != _player->getHand()._size){
+                CULog("Must meet hand size requirement");
+                return;
+            }
+            _network->endTurn();
         }
 
 //        else if(_input.getKeyPressed() == KeyCode::E && _input.getKeyDown()){
@@ -501,8 +544,6 @@ void GameScene::render() {
         _pile->createPile();
     }
     
-    // Render top card of discard pile
-    _discardPile->render(_batch);
     _batch->end();
 }
 

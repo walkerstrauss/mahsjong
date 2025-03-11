@@ -150,8 +150,8 @@ std::vector<std::shared_ptr<TileSet::Tile>> Pile::pairTile(const std::shared_ptr
             _tile1->inPile = false;
             _tile2->inPile = false;
             
-            _tile1->_scale = 0.2;
-            _tile2->_scale = 0.2;
+            _tile1->selected = false;
+            _tile2->selected = false;
 
             //Remove tiles from pile
             _pile[x][y] = nullptr;
@@ -163,8 +163,8 @@ std::vector<std::shared_ptr<TileSet::Tile>> Pile::pairTile(const std::shared_ptr
             tile->selected = false;
         }
         player->getHand()._selectedTiles.clear();
-        _tile1->_scale = 0.2;
-        _tile2->_scale = 0.2;
+        _tile1->selected = false;
+        _tile2->selected = false;
         CULog("NAW!\n");
     }
     return _draw;
@@ -187,16 +187,13 @@ void Pile::pairs(const cugl::Vec2 mousePos, const std::shared_ptr<Player>& playe
                 int index = 0;
                 for (const auto& it : _pairs) { //Checks whether the tile we selected is already selected. if it is deselect
                     if (_tile->toString() == it->toString() && _tile->_id == it->_id) {
-                        _tile->_scale = 0.2;
                         _tile->pileCoord = cugl::Vec2();
                         _pairs.erase(_pairs.begin() + index);
-                        
                         return; //If it is already in the pairs, remove it
                     }
                     index += 1;
                 }
                 if (_pairs.size() < 2) { //Do we have a pair selected?
-                    _tile->_scale = 0.25;
                     _tile->pileCoord = cugl::Vec2(i, j);
                     _pairs.push_back(_tile);
                 }
