@@ -121,7 +121,7 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::sha
 
     // Initialize tile set
     _tileSet = std::make_shared<TileSet>();
-//    _tileSet->shuffle();
+    _tileSet->shuffle();
     
     // Initialize the player
     _player = std::make_shared<Player>();
@@ -139,6 +139,7 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::sha
     _tileSet->setAllTileTexture(assets);
     _pile = std::make_shared<Pile>(); //Init our pile
     _pile->initPile(5, _tileSet);
+    _tileSet->setBackTextures(assets);
     
     // Initialize the discard pile
     _discardPile = std::make_shared<DiscardPile>();
@@ -219,6 +220,11 @@ void GameScene::update(float timestep) {
         }
         if(_input.getKeyPressed() == KeyCode::D && _input.getKeyDown() && _player->draw == false){
             _player->getHand().drawFromPile(_pile, 1);  // Start turn by drawing tile to hand
+            
+            for (auto& tile : _player->getHand()._drawnPile) {
+                tile->setTexture(_assets->get<Texture>(tile->toString()));
+            }
+            
             _player->draw = true;
             
             if (_player->getHand().isWinningHand()){

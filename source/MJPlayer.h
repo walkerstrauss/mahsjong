@@ -38,6 +38,8 @@ private:
 public:
     // The tiles in our hand
     std::vector<std::shared_ptr<TileSet::Tile>> _tiles;
+    // Drawn pile tiles at a given time
+    std::vector<std::shared_ptr<TileSet::Tile>> _drawnPile;
     // The sets we have made from our hand this turn
     std::vector<std::vector<std::shared_ptr<TileSet::Tile>>> _playedSets;
     // Contains all sets we have made from our hand this turn

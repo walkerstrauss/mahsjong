@@ -1,5 +1,8 @@
 {
     "textures": {
+        "facedown": {
+            "file": "textures/facedown.png"
+        },
         "one of dot": {
             "file": "textures/one_of_dot.png"
         },

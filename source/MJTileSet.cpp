@@ -121,6 +121,19 @@ void TileSet::setAllTileTexture(const std::shared_ptr<cugl::AssetManager>& asset
 }
 
 /**
+ * Sets the texture of a wild tile
+ *
+ * @param assets    the asset manager to get the texture from
+ */
+void TileSet::setBackTextures(const std::shared_ptr<cugl::AssetManager>& assets){
+    for (const auto& it : deck) {
+        if (it->inPile) {
+            it->setTexture(assets->get<Texture>("facedown"));
+        }
+    }
+}
+
+/**
  * Draws the tiles in the tileset to the screen
  */
 void TileSet::draw(const std::shared_ptr<cugl::graphics::SpriteBatch>& batch, cugl::Size size){
@@ -176,5 +189,6 @@ void TileSet::Tile::setWildTexture(const std::shared_ptr<cugl::AssetManager>& as
     std::string currTileTexture = (this)->toString();
     this->setTexture(assets->get<Texture>(currTileTexture));
 }
+
 
 

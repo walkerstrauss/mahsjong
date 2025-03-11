@@ -199,6 +199,7 @@ public:
          */
         void setWildTexture(const std::shared_ptr<cugl::AssetManager>& assets);
                 
+        
         /**
          * Method to get the tile texture
          *
@@ -338,6 +339,12 @@ public:
      */
     void setAllTileTexture(const std::shared_ptr<cugl::AssetManager>& assets);
     
+    /**
+     * Sets the texture of a facedown tile
+     *
+     * @param assets    the asset manager to get the texture from
+     */
+    void setBackTextures(const std::shared_ptr<cugl::AssetManager>& assets);
     /**
      * Draws the tiles in the tileset to the screen
      */
