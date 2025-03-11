@@ -220,10 +220,23 @@ void GameScene::update(float timestep) {
         if(_input.getKeyPressed() == KeyCode::D && _input.getKeyDown() && _player->draw == false){
             _player->getHand().drawFromPile(_pile, 1);  // Start turn by drawing tile to hand
             _player->draw = true;
-        } else if (_input.getKeyPressed() == KeyCode::G && _input.getKeyDown() ){
+            
+            if (_player->getHand().isWinningHand()){
+                _gameWin = true;
+            }
+        } else if (_input.getKeyPressed() == KeyCode::G && _input.getKeyDown()
+                   && _player->draw == false // Comment this line out if you want to test.
+                   ){
+                   
             if (_player->getHand()._selectedTiles.size() == 3) {
                 if (_player->getHand().isSetValid(_player->getHand()._selectedTiles)) { // Selected tiles include ones in the piles...
                     _player->getHand().drawFromDiscard(_discardPile->drawTopTile());
+                    _player->draw = true;
+                    
+                    if (_player->getHand().isWinningHand()){
+                        _gameWin = true;
+                    }
+
                 } else {
                     CULog("Discard tile cannot make valid set");
                 }

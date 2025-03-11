@@ -315,20 +315,95 @@ bool Hand::isOfaKind(const std::vector<std::shared_ptr<TileSet::Tile>>& selected
     return true;
 }
 
+bool Hand::isWinningHand() {
+    
+    if (_tiles.size() == 14) {
+        std::vector<std::shared_ptr<TileSet::Tile>> sortedHand = getSortedTiles(_tiles);
+        
+        std::map<std::pair<TileSet::Tile::Rank, TileSet::Tile::Suit>, int> tileCounts;
+        for (const auto& tile : sortedHand) {
+            tileCounts[{tile->getRank(), tile->getSuit()}]++;
+        }
+        
+        return onePairFourSets(tileCounts, 0, 0);
+    }
+    return false;
+}
+
+bool Hand::onePairFourSets(std::map<std::pair<TileSet::Tile::Rank, TileSet::Tile::Suit>, int>& tileCounts, int pair, int sets) {
+    
+    if (pair == 1 && sets == 4) {
+        return true;
+    }
+    
+    for (auto& [tile, count] : tileCounts) {
+        
+        if (count == 0) continue;
+        
+        // Make Pong
+        if (count >= 3) {
+            tileCounts[tile] -= 3;
+            if (onePairFourSets(tileCounts, pair, sets + 1)) {
+                return true;
+            }
+            tileCounts[tile] += 3;
+        }
+        
+        // Make Pair
+        if (count >= 2) {
+            tileCounts[tile] -= 2;
+            if (onePairFourSets(tileCounts, pair + 1, sets)) {
+                return true;
+            }
+            tileCounts[tile] += 2;
+        }
+        
+        // Make Chow
+        TileSet::Tile::Rank rank = tile.first;
+        TileSet::Tile::Suit suit = tile.second;
+        
+        if (rank <= TileSet::Tile::Rank::SEVEN) {
+            auto nextTile1 = std::make_pair(static_cast<TileSet::Tile::Rank>(static_cast<int>(rank) + 1), suit);
+            auto nextTile2 = std::make_pair(static_cast<TileSet::Tile::Rank>(static_cast<int>(rank) + 2), suit);
+            
+            if (tileCounts[nextTile1] > 0 && tileCounts[nextTile2] > 0) {
+                tileCounts[tile]--;
+                tileCounts[nextTile1]--;
+                tileCounts[nextTile2]--;
+                
+                if (onePairFourSets(tileCounts, pair, sets + 1)) {
+                    return true;
+                }
+                
+                tileCounts[tile]++;
+                tileCounts[nextTile1]++;
+                tileCounts[nextTile2]++;
+            }
+        }
+    }
+    return false;
+}
+
 /**
  * Method to sort the tiles by Rank in ascending order.
  *
  * @param selectedTiles     a vector of selected tiles.
- * @return a vector of tiles sorted by Rank
+ * @return a vector of tiles sorted by Rank and Suit
  */
 std::vector<std::shared_ptr<TileSet::Tile>> Hand::getSortedTiles(const std::vector<std::shared_ptr<TileSet::Tile>>& selectedTiles) {
     std::vector<std::shared_ptr<TileSet::Tile>> sortedTiles = selectedTiles; // creates a copy of the selectedTiles
     
     std::sort(sortedTiles.begin(), sortedTiles.end(),
-              [](const std::shared_ptr<TileSet::Tile>& a,
-                 const std::shared_ptr<TileSet::Tile>& b) { return a->getRank() < b->getRank();});
+        [](const std::shared_ptr<TileSet::Tile>& a, const std::shared_ptr<TileSet::Tile>& b) {
+            if (a->getSuit() == b->getSuit()) {
+                return a->getRank() < b->getRank(); // Sort by rank if suit is the same
+            }
+            return a->getSuit() < b->getSuit(); // Otherwise, sort by suit
+        }
+    );
     return sortedTiles;
 }
+
 
 void Hand::updateTilePositions(){
   float startX = 140.0f; // Starting x position for hand tile positioning

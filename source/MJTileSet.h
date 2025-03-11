@@ -27,9 +27,9 @@ public:
         /** An enum to represent tile suits */
         enum class Suit : int {
             WILD_SUIT,
+            CRAK,
             BAMBOO,
-            DOT,
-            CRAK
+            DOT
         };
         
         /** An enum to represent tile rank (1-9 + 10 for wild tiles) */
@@ -363,5 +363,6 @@ public:
         return static_cast<TileSet::Tile::Rank>(randRank);
     };
 };
+
 
 #endif /* __MJ_TILESET_H__ */

@@ -163,11 +163,15 @@ public:
      */
     bool isOfaKind(const std::vector<std::shared_ptr<TileSet::Tile>>& selectedTiles);
     
+    bool isWinningHand();
+    
+    bool onePairFourSets(std::map<std::pair<TileSet::Tile::Rank, TileSet::Tile::Suit>, int>& tileCounts, int pair, int sets);
+    
     /**
-     * Method to sort the tiles by Rank in ascending order.
+     * Method to sort the tiles by Rank and Suit in ascending order.
      *
      * @param selectedTiles     a vector of selected tiles.
-     * @return a vector of tiles sorted by Rank
+     * @return a vector of tiles sorted by Rank and Suit
      */
     std::vector<std::shared_ptr<TileSet::Tile>> getSortedTiles(const std::vector<std::shared_ptr<TileSet::Tile>>& selectedTiles);
     
