@@ -82,6 +82,11 @@ public:
     void drawFromPile(std::shared_ptr<Pile>& pile, int number);
     
     /**
+     * Draws the given tile from the discard pile and adds it to hand.
+     */
+    void drawFromDiscard(std::shared_ptr<TileSet::Tile> tile);
+    
+    /**
      * Discards a single specified tile from our hand
      *
      * @param tile      the tile to discard from out hand

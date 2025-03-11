@@ -93,8 +93,21 @@ bool DiscardPile::isTileSelected(const cugl::Vec2& mousePos){
  */
 std::shared_ptr<TileSet::Tile> DiscardPile::drawTopTile(){
     // TODO: call this method when player draws from discard pile -
-    CULog("drawing from discard pile");
-    return getTopTile();
+    if (!_topTile) {
+        return nullptr; // No tile to draw
+    }
+        CULog("drawing from discard pile");
+        std::shared_ptr<TileSet::Tile> topTile = _topTile;
+        
+        if (!_discardPile.empty()) {
+            _topTile = _discardPile.back(); // Move the next tile to top
+            _discardPile.pop_back(); // Remove it from the discard pile
+        } else {
+            _topTile = nullptr; // No more tiles in the pile
+        }
+    _size = _discardPile.size() + (_topTile ? 1 : 0);
+    
+    return topTile;
 }
 
 /**

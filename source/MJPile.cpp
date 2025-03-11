@@ -89,6 +89,7 @@ std::vector<std::shared_ptr<TileSet::Tile>> Pile::tilesDrawn(int number_of_tiles
     _draw.clear(); //We should not be re-drawing tiles from previous plays
 
     while(_draw.size() < number_of_tiles){
+        CULog("%zu", _draw.size());
         if (_pile.empty() || getVisibleSize() == 0) { //If pile ran out of tiles
             if (_tileSet->deck.size() == 14) { //If we have nothing in our deck, return what we have
                 return _draw;

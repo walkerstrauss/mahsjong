@@ -79,7 +79,7 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::sha
                     _player->getHand().drawFromPile(_pile, 1);
                     _player->discarding = false;
                     
-                    _network->endTurn();
+//                    _network->endTurn();
                 }
             }
         }
@@ -211,101 +211,131 @@ void GameScene::update(float timestep) {
     _player->getHand().updateTilePositions();
     
     if (_network->getCurrentTurn() == _network->getLocalPid()) {
-        if((_input.didRelease() && !_input.isDown())){
-            cugl::Vec2 prev = _input.getPosition(); //Get our mouse posistion
+        if(_input.didRelease() && !_input.isDown()){
+            cugl::Vec2 prev = _input.getPosition(); //Get our mouse position
             cugl::Vec2 mousePos = cugl::Scene::screenToWorldCoords(cugl::Vec3(prev));
             _player->getHand().clickedTile(mousePos);
             _discardPile->isTileSelected(mousePos);
         }
         if(_input.getKeyPressed() == KeyCode::D && _input.getKeyDown() && _player->draw == false){
-            if(_player->getHand()._tiles.size() >= 14){
-                CULog("Hand size too big on draw phase");
-            }
-            _player->getHand().drawFromPile(_pile, 1);
-        }
-        else if(_input.getKeyPressed() == KeyCode::E && _input.getKeyDown()){
-            //Error exchange cases
-            if(!(_player->getHand()._selectedTiles.size() == 1)){
-                CULog("Trying to exchange w/o selecting 1 tile in hand");
-                if(_player->getHand()._selectedTiles.size() > 1){
-                    for(auto& tile: _player->getHand()._selectedTiles){
-                        tile->selected = false;
-                    }
+            _player->getHand().drawFromPile(_pile, 1);  // Start turn by drawing tile to hand
+            _player->draw = true;
+        } else if (_input.getKeyPressed() == KeyCode::G && _input.getKeyDown() ){
+            if (_player->getHand()._selectedTiles.size() == 3) {
+                if (_player->getHand().isSetValid(_player->getHand()._selectedTiles)) { // Selected tiles include ones in the piles...
+                    _player->getHand().drawFromDiscard(_discardPile->drawTopTile());
+                } else {
+                    CULog("Discard tile cannot make valid set");
                 }
-                else if((_player->getHand()._selectedTiles.size() == 0)){
-                    CULog("Trying to exchange w/o selecting tiles in hand");
-                }
-            }
-            if(!(_discardPile->getTopTile()->selected == true)){
-                CULog("Trying to exchange w/o selecting a tile in discard");
-            }
-            //Start Exchanging
-            else{
-                _player->exchanging = true;
-                currDiscardTile = _discardPile->getTopTile();
-                currHandTile = _player->getHand()._selectedTiles[0];
-                
-                currHandTile->inHand = false;
-                currHandTile->discarded = true;
-                
-                for(auto it = _player->getHand()._tiles.begin(); it!= _player->getHand()._tiles.end();){
-                    if(*it == currHandTile){
-                        it = _player->getHand()._tiles.erase(it);
-                        break;
-                    } else{
-                        it++;
-                    }
-                }
-                _player->getHand()._selectedTiles.clear();
-                
-                currDiscardTile->discarded = false;
-                currDiscardTile->inHand = true;
-                _discardPile->removeTopTile();
-                
-                _player->getHand()._tiles.push_back(currDiscardTile);
-                _discardPile->addTile(currHandTile);
+            } else {
+                CULog("Must have 2 tiles selected in hand to check valid set");
             }
         }
-        //Handling playing set in exchange and play phase
-        else if(_player->exchanging){
-            if(_input.getKeyPressed() == KeyCode::P && _input.getKeyDown()){
-                if(_player->getHand().isSetValid(_player->getHand()._selectedTiles)){
-                    _player->getHand()._size -= _player->getHand()._selectedTiles.size();
-                    for(auto& inSet : _player->getHand()._selectedTiles){
-                        for(auto it = _player->getHand()._tiles.begin(); it!= _player->getHand()._tiles.end();){
-                            if(*it == inSet){
-                                it = _player->getHand()._tiles.erase(it);
-                                break;
-                            } else{
-                                it++;
-                            }
-                        }
-                    }
-                    //Clear everything once played set
-                    _player->getHand()._selectedTiles.clear();
-                    currHandTile = nullptr;
-                    currDiscardTile = nullptr;
+        
+        if (_input.getKeyPressed() == KeyCode::E && _input.getKeyDown() && _player->getHand().getTileCount() > 13) {
+            if (_player->getHand().getTileCount() - _player->getHand()._selectedTiles.size() == 13) {
+                for(auto& tile: _player->getHand()._selectedTiles){
+                    _player->getHand().discard(tile);
+                    _discardPile->addTile(tile);
+                    _discardPile->updateTilePositions();
                 }
-                else{
-                    CULog("Invalid set during exchange and play");
-                    for(auto& tile : _player->getHand()._selectedTiles){
-                        tile->selected = false;
-                    }
-                    for(auto it = _player->getHand()._tiles.begin(); it != _player->getHand()._tiles.end();){
-                        if(*it == currDiscardTile){
-                            currDiscardTile->inHand = false;
-                            currDiscardTile->discarded = true;
-                            it = _player->getHand()._tiles.erase(it);
-                        }
-                    }
-                    _player->getHand()._tiles.push_back(currHandTile);
-                    _discardPile->removeTopTile();
-                    _discardPile->addTile(currDiscardTile);
-                    _player->getHand()._selectedTiles.clear();
-                    _player->exchanging = false;
-                }
+            } else {
+                CULog("Must discard tiles until you have 13!");
             }
         }
+
+        if (_input.getKeyPressed() == KeyCode::N && _input.getKeyDown() && _player->getHand().getTileCount() == 13) {
+            if (_player->getHand().getTileCount() == 13) {
+                _network->endTurn();
+
+            } else {
+                CULog("Must have 13 tiles to end turn");
+            }
+        }
+
+//        else if(_input.getKeyPressed() == KeyCode::E && _input.getKeyDown()){
+//            //Error exchange cases
+//            if(!(_player->getHand()._selectedTiles.size() == 1)){
+//                CULog("Trying to exchange w/o selecting 1 tile in hand");
+//                if(_player->getHand()._selectedTiles.size() > 1){
+//                    for(auto& tile: _player->getHand()._selectedTiles){
+//                        tile->selected = false;
+//                    }
+//                }
+//                else if((_player->getHand()._selectedTiles.size() == 0)){
+//                    CULog("Trying to exchange w/o selecting tiles in hand");
+//                }
+//            }
+//            if(!(_discardPile->getTopTile()->selected == true)){
+//                CULog("Trying to exchange w/o selecting a tile in discard");
+//            }
+//            //Start Exchanging
+//            else{
+//                _player->exchanging = true;
+//                currDiscardTile = _discardPile->getTopTile();
+//                currHandTile = _player->getHand()._selectedTiles[0];
+//                
+//                currHandTile->inHand = false;
+//                currHandTile->discarded = true;
+//                
+//                for(auto it = _player->getHand()._tiles.begin(); it!= _player->getHand()._tiles.end();){
+//                    if(*it == currHandTile){
+//                        it = _player->getHand()._tiles.erase(it);
+//                        break;
+//                    } else{
+//                        it++;
+//                    }
+//                }
+//                _player->getHand()._selectedTiles.clear();
+//                
+//                currDiscardTile->discarded = false;
+//                currDiscardTile->inHand = true;
+//                _discardPile->removeTopTile();
+//                
+//                _player->getHand()._tiles.push_back(currDiscardTile);
+//                _discardPile->addTile(currHandTile);
+//            }
+//        }
+//        //Handling playing set in exchange and play phase
+//        else if(_player->exchanging){
+//            if(_input.getKeyPressed() == KeyCode::P && _input.getKeyDown()){
+//                if(_player->getHand().isSetValid(_player->getHand()._selectedTiles)){
+//                    _player->getHand()._size -= _player->getHand()._selectedTiles.size();
+//                    for(auto& inSet : _player->getHand()._selectedTiles){
+//                        for(auto it = _player->getHand()._tiles.begin(); it!= _player->getHand()._tiles.end();){
+//                            if(*it == inSet){
+//                                it = _player->getHand()._tiles.erase(it);
+//                                break;
+//                            } else{
+//                                it++;
+//                            }
+//                        }
+//                    }
+//                    //Clear everything once played set
+//                    _player->getHand()._selectedTiles.clear();
+//                    currHandTile = nullptr;
+//                    currDiscardTile = nullptr;
+//                }
+//                else{
+//                    CULog("Invalid set during exchange and play");
+//                    for(auto& tile : _player->getHand()._selectedTiles){
+//                        tile->selected = false;
+//                    }
+//                    for(auto it = _player->getHand()._tiles.begin(); it != _player->getHand()._tiles.end();){
+//                        if(*it == currDiscardTile){
+//                            currDiscardTile->inHand = false;
+//                            currDiscardTile->discarded = true;
+//                            it = _player->getHand()._tiles.erase(it);
+//                        }
+//                    }
+//                    _player->getHand()._tiles.push_back(currHandTile);
+//                    _discardPile->removeTopTile();
+//                    _discardPile->addTile(currDiscardTile);
+//                    _player->getHand()._selectedTiles.clear();
+//                    _player->exchanging = false;
+//                }
+//            }
+//        }
     }
     
     

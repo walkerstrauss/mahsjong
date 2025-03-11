@@ -89,7 +89,7 @@ public:
      */
     bool addTile(std::shared_ptr<TileSet::Tile> tile){
         if (getTopTile() != nullptr) {
-            _discardPile.push_back(getTopTile());
+            _discardPile.push_back(_topTile);
         }
         _topTile = tile;
         _size = _discardPile.size() + 1;

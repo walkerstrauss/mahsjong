@@ -60,6 +60,15 @@ void Hand::drawFromPile(std::shared_ptr<Pile>& pile, int number){
     }
  }
 
+void Hand::drawFromDiscard(std::shared_ptr<TileSet::Tile> tile) {
+    if (!tile) {
+        return;
+    }
+    
+    tile->inHand = true;
+    _tiles.push_back(tile);
+}
+
 /**
  * Discards a single specified tile from our hand
  *
@@ -75,8 +84,10 @@ void Hand::discard(std::shared_ptr<TileSet::Tile> tile){
             // if we find the tile, discard it
             (*it)->discarded = true;
             (*it)->inHand = false;
+            (*it)->selected = false;
+
             _tiles.erase(it);
-            _discardCount++;
+//            _discardCount++;
         } else {
             ++it;
         }
