@@ -72,7 +72,7 @@ public:
         cugl::Rect tileRect;
         /** The scale of the tile */
         float _scale;
-    
+        
 #pragma mark -
 #pragma mark Tile Constructors
         /**
@@ -150,6 +150,31 @@ public:
             }
         };
         
+        /**
+         * Returns a string representation for the current tile's suit
+         *
+         * @return a string representing the tile's suit
+         */
+        std::string toStringSuit() const{
+            switch(_suit){
+                case Tile::Suit::BAMBOO:
+                    return "bamboo";
+                    break;
+                case Tile::Suit::DOT:
+                    return "dot";
+                    break;
+                case Tile::Suit::CRAK:
+                    return "crak";
+                    break;
+                case Tile::Suit::WILD_SUIT:
+                    return "wild suit";
+                    break;
+                default:
+                    return "no valid suit";
+                    
+            }
+        }
+        
         static Tile::Rank toRank(std::string rank) {
             if (rank == "one") {
                 return Tile::Rank::ONE;
@@ -186,29 +211,11 @@ public:
             }
         }
         
-        /**
-         * Returns a string representation for the current tile's suit
-         *
-         * @return a string representing the tile's suit
-         */
-        std::string toStringSuit() const{
-            switch(_suit){
-                case Tile::Suit::BAMBOO:
-                    return "bamboo";
-                    break;
-                case Tile::Suit::DOT:
-                    return "dot";
-                    break;
-                case Tile::Suit::CRAK:
-                    return "crak";
-                    break;
-                case Tile::Suit::WILD_SUIT:
-                    return "wild suit";
-                    break;
-                default:
-                    return "no valid suit";
-                    
-            }
+        static cugl::Vec2 toVector(std::string str){
+            size_t commaPos = str.find(",");
+            float x = std::stof(str.substr(1, commaPos));
+            float y = std::stof(str.substr(commaPos + 1, str.length() - 1));
+            return cugl::Vec2(x, y);
         }
         
         /**
@@ -397,7 +404,7 @@ public:
      *
      * @Returns std::shared_ptr<cugl::JsonVaue>
      */
-    std::shared_ptr<cugl::JsonValue> toJson();
+    const std::shared_ptr<cugl::JsonValue> toJson(std::vector<std::shared_ptr<Tile>> tiles);
     
     /**
      * Randomly generates a suit with type Tile::Suit

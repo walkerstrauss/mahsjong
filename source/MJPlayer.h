@@ -59,11 +59,17 @@ public:
     Hand(Player* player);
     
     /**
-     * Initializes a new player hand by pulling 14 tiles from the game tileset
+     * Initializes a new host hand by pulling 14 tiles from the game tileset
      *
      * @param tileSet   the tileset to draw from
      */
-    bool init(std::shared_ptr<TileSet>& tileSet);
+    bool initHost(std::shared_ptr<TileSet>& tileSet);
+    
+    /**
+     * Initializes a new client hand by pulling 14 tiles from the game tileset
+     */
+    bool initClient(std::shared_ptr<TileSet>& tileSet);
+    
     
 #pragma mark -
 #pragma mark Gameplay Handling

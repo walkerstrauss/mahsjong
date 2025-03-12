@@ -123,16 +123,24 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::sha
     _gameLose = false;
 
     // Initialize tile set
-    _tileSet = std::make_shared<TileSet>();    
-//    _tileSet->shuffle();
-    _tileSet->initHostDeck();
-    _tileSet->initClientDeck(_tileSet->toJson());
-    
-    // Initialize the player
+    _tileSet = std::make_shared<TileSet>();
+    //Initialize the player
     _player = std::make_shared<Player>();
-    _player->getHand().init(_tileSet);
-    _player->getHand().updateTilePositions();
     
+    if(_network->getHostStatus()){
+        _tileSet->initHostDeck();
+        _tileSet->shuffle();
+        _network->broadcastDeck(_tileSet->toJson(_tileSet->deck));
+        _player->getHand().initHost(_tileSet);
+    }
+    else {
+        while(!_network->loadedDeck()){
+            continue;
+        }
+        _tileSet->initClientDeck(_network->getDeckJson());
+        _player->getHand().initClient(_tileSet);
+    }
+        
     std::string msg = strtool::format("Score: %d", _player->_totalScore);
     _text = TextLayout::allocWithText(msg, assets->get<Font>("pixel32"));
     _text->layout();

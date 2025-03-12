@@ -43,7 +43,7 @@ bool Pile::createPile() {
     float spacingFactor = 0.9f;
     float spacingFactorX = 0.85f;
     float yShift = 50.0f;
-    
+        
     // Iterate through the pile
     for (int i = 0; i < _pileSize; i++) {
         std::vector<std::shared_ptr<TileSet::Tile>> row;
@@ -102,6 +102,7 @@ std::vector<std::shared_ptr<TileSet::Tile>> Pile::tilesDrawn(int number_of_tiles
                         _pile[i][j]->inPile = false;
                         _pile[i][j]->inPile = true;
                         _pile[i][j]->selected = false;
+
 
                         _draw.push_back(_pile[i][j]);
                         _pile[i][j] = nullptr;

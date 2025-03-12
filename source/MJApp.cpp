@@ -185,8 +185,6 @@ void MahsJongApp::updateLoadingScene(float timestep) {
        _hostgame.setSpriteBatch(_batch);
        _joingame.init(_assets, _network);
        _joingame.setSpriteBatch(_batch);
-       _gameplay.init(_assets, _network);
-       _gameplay.setSpriteBatch(_batch);
        _settings.init(_assets);
        _settings.setSpriteBatch(_batch);
        _settings.exitKey = _settings.exitBtn->addListener([this](const std::string& name, bool down){
@@ -246,6 +244,8 @@ void MahsJongApp::updateHostScene(float timestep) {
         _hostgame.setActive(false);
         _mainmenu.setActive(true);
     } else if (_network->getStatus() == NetworkController::Status::START) {
+        _gameplay.init(_assets, _network);
+        _gameplay.setSpriteBatch(_batch);
         _hostgame.setActive(false);
         _gameplay.setActive(true);
         _scene = State::GAME;
@@ -273,6 +273,8 @@ void MahsJongApp::updateClientScene(float timestep) {
         _joingame.setActive(false);
         _mainmenu.setActive(true);
     } else if (_network->getStatus() == NetworkController::Status::START) {
+        _gameplay.init(_assets, _network);
+        _gameplay.setSpriteBatch(_batch);
         _joingame.setActive(false);
         _gameplay.setActive(true);
         _scene = GAME;

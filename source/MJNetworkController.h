@@ -52,6 +52,8 @@ protected:
     
     Uint32 _currentTurn;
     
+    std::shared_ptr<cugl::JsonValue> _deckJson;
+    
 
 public:
 #pragma mark -
@@ -113,6 +115,9 @@ public:
     void processData(const std::string source, const std::vector<std::byte>& data);
 
     void startGame();
+        
+    void broadcastDeck(const std::shared_ptr<cugl::JsonValue>& deckJson);
+
     
     Uint32 getLocalPid() const {
         return _localPid;
@@ -124,6 +129,17 @@ public:
 
     Status getStatus() const {
         return _status;
+    }
+    
+    std::shared_ptr<cugl::JsonValue> getDeckJson(){
+        return _deckJson;
+    }
+    
+    bool loadedDeck(){
+        return _deckJson != nullptr;
+    }
+    bool getHostStatus(){
+        return _isHost;
     }
     
     /**
