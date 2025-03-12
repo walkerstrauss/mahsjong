@@ -29,7 +29,26 @@ Hand::Hand(Player* player) {
  *
  * @param tileSet   the tileset to draw from
  */
-bool Hand::init(std::shared_ptr<TileSet>& tileSet){
+bool Hand::initHost(std::shared_ptr<TileSet>& tileSet){
+    _size = 13;
+    // draw from the deck
+    for(int i = 0; i < _size; i++){
+        std::shared_ptr<TileSet::Tile> drawnTile = tileSet->deck[i];
+        drawnTile->inHand = true;
+        drawnTile->_scale = 0.2;
+        
+        _tiles.push_back(drawnTile);
+    }
+    
+    return true;
+}
+
+/**
+ * Initializes a new client hand by pulling 14 tiles from the game tileset
+ *
+ * @param tileSet   the tileset to draw from
+ */
+bool Hand::initClient(std::shared_ptr<TileSet>& tileSet){
     _size = 13;
     // draw from the deck
     for(int i = 0; i < _size; i++){
@@ -322,7 +341,7 @@ bool Hand::isOfaKind(const std::vector<std::shared_ptr<TileSet::Tile>>& selected
 
 bool Hand::isWinningHand() {
     
-    if (_tiles.size() == 14) {
+    if (_tiles.size() == _size + 1) {
         std::vector<std::shared_ptr<TileSet::Tile>> sortedHand = getSortedTiles(_tiles);
         
         std::map<std::pair<TileSet::Tile::Rank, TileSet::Tile::Suit>, int> tileCounts;
@@ -337,7 +356,7 @@ bool Hand::isWinningHand() {
 
 bool Hand::onePairFourSets(std::map<std::pair<TileSet::Tile::Rank, TileSet::Tile::Suit>, int>& tileCounts, int pair, int sets) {
     
-    if (pair == 1 && sets == 4) {
+    if (pair == 1 && sets == _size / 3) {
         return true;
     }
     

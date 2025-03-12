@@ -31,7 +31,7 @@ public:
 	/** Stores the location of our pair in the pile */
     std::vector<std::shared_ptr<TileSet::Tile>> _pairs;
     /** Index of the tileset to start drawing to the pile from */
-    int index = 14;
+    int index = 26;
     
 #pragma mark -
 #pragma mark Constructors

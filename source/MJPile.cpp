@@ -104,6 +104,7 @@ std::vector<std::shared_ptr<TileSet::Tile>> Pile::tilesDrawn(int number_of_tiles
                         _pile[i][j]->inPile = true;
                         _pile[i][j]->selected = false;
 
+
                         _draw.push_back(_pile[i][j]);
                         _pile[i][j] = nullptr;
                     }
