@@ -222,14 +222,17 @@ void GameScene::update(float timestep) {
     _player->getHand().updateTilePositions();
     
     //if (_network->getCurrentTurn() == _network->getLocalPid()) {
-        if(_input.didRelease() && !_input.isDown()){
-            cugl::Vec2 prev = _input.getPosition(); //Get our mouse position
-            cugl::Vec2 mousePos = cugl::Scene::screenToWorldCoords(cugl::Vec3(prev));
-            _player->getHand().clickedTile(mousePos);
+    if(_input.didRelease() && !_input.isDown()){
+        cugl::Vec2 prev = _input.getPosition(); //Get our mouse position
+        cugl::Vec2 mousePos = cugl::Scene::screenToWorldCoords(cugl::Vec3(prev));
+        _player->getHand().clickedTile(mousePos);
+        if (_network->getCurrentTurn() == _network->getLocalPid()) {
             _discardPile->isTileSelected(mousePos);
             clickedTile(mousePos);
         }
-  
+    }
+    
+    if (_network->getCurrentTurn() == _network->getLocalPid()) {
         //Start turn by drawing tile to hand
         if(_input.getKeyPressed() == KeyCode::D && _input.getKeyDown()){
             if(_player->getHand()._tiles.size() > _player->getHand()._size){
@@ -240,7 +243,7 @@ void GameScene::update(float timestep) {
             if (_player->getHand().isWinningHand()){
                 _gameWin = true;
             }
-//            _player->canDraw = false;
+            //            _player->canDraw = false;
             
             for (auto& tile : _player->getHand()._drawnPile) {
                 tile->setTexture(_assets->get<Texture>(tile->toString()));
@@ -248,93 +251,94 @@ void GameScene::update(float timestep) {
             
             if (_player->getHand().isWinningHand()){
                 _gameWin = true;
-        }
-        if (_input.getKeyPressed() == KeyCode::G && _input.getKeyDown()){
-            if(_player->getHand()._selectedTiles.size() != 1 || _player->getHand()._selectedTiles.size() != 2){
-                CULog("Must have 1 or 2 tiles selected in hand");
-                return;
             }
-            else if (!_discardPile->getTopTile()){
-                CULog("Must have a tile in the discard pile");
-                return;
+            if (_input.getKeyPressed() == KeyCode::G && _input.getKeyDown()){
+                if(_player->getHand()._selectedTiles.size() != 1 || _player->getHand()._selectedTiles.size() != 2){
+                    CULog("Must have 1 or 2 tiles selected in hand");
+                    return;
+                }
+                else if (!_discardPile->getTopTile()){
+                    CULog("Must have a tile in the discard pile");
+                    return;
+                }
+                
+                //Temporarily add the top tile from the discard pile into selected tiles
+                std::shared_ptr<TileSet::Tile> currDiscardTile = _discardPile->getTopTile();
+                if(_player->getHand()._size == 2 && _player->getHand()._selectedTiles.size() == 1){
+                    if(_player->getHand()._selectedTiles[0]->toString() == _discardPile->getTopTile()->toString()){
+                        _gameWin = true;
+                    }
+                    else{
+                        _player->getHand()._selectedTiles[0]->selected = false;
+                    }
+                }
+                _player->getHand()._selectedTiles.push_back(currDiscardTile);
+                
+                if (_player->getHand().isSetValid(_player->getHand()._selectedTiles)) {
+                    for(auto const& tile : _player->getHand()._selectedTiles){
+                        if(tile == currDiscardTile){
+                            continue;
+                        }
+                        for(auto it = _player->getHand()._tiles.begin(); it != _player->getHand()._tiles.end();)
+                            if(tile == *it){
+                                it = _player->getHand()._tiles.erase(it);
+                                tile->selected = false;
+                                tile->inHand = false;
+                                tile->played = true;
+                                _discardUIScene->incrementLabel(tile);
+                                break;
+                            }
+                            else{
+                                it++;
+                            }
+                    }
+                    _player->getHand()._size -= 2;
+                    _player->getHand()._selectedTiles.clear();
+                    
+                    currDiscardTile->discarded = false;
+                    currDiscardTile->played = true;
+                    _discardUIScene->decrementLabel(currDiscardTile);
+                    _discardPile->removeTopTile();
+                    //                _player->canExchange = false;
+                }
+                else {
+                    CULog("Not a valid set");
+                    for(auto const& tile : _player->getHand()._tiles){
+                        if(tile->selected){
+                            tile->selected = false;
+                        }
+                    }
+                    _player->getHand()._selectedTiles.clear();
+                }
             }
             
-            //Temporarily add the top tile from the discard pile into selected tiles
-            std::shared_ptr<TileSet::Tile> currDiscardTile = _discardPile->getTopTile();
-            if(_player->getHand()._size == 2 && _player->getHand()._selectedTiles.size() == 1){
-                if(_player->getHand()._selectedTiles[0]->toString() == _discardPile->getTopTile()->toString()){
-                    _gameWin = true;
+            if (_input.getKeyPressed() == KeyCode::E && _input.getKeyDown()) {
+                if(_player->canDraw || _player->canExchange){
+                    CULog("Must draw from pile or discard first");
+                    return;
                 }
-                else{
-                    _player->getHand()._selectedTiles[0]->selected = false;
+                if(_player->getHand()._tiles.size() - _player->getHand()._selectedTiles.size() != _player->getHand()._size){
+                    CULog("Discard count must make hand equal to required size");
+                    return;
+                }
+                for(auto& tile: _player->getHand()._selectedTiles){
+                    _player->getHand().discard(tile);
+                    _discardPile->addTile(tile);
+                    _discardPile->updateTilePositions();
                 }
             }
-            _player->getHand()._selectedTiles.push_back(currDiscardTile);
-
-            if (_player->getHand().isSetValid(_player->getHand()._selectedTiles)) {
-                for(auto const& tile : _player->getHand()._selectedTiles){
-                    if(tile == currDiscardTile){
-                        continue;
-                    }
-                    for(auto it = _player->getHand()._tiles.begin(); it != _player->getHand()._tiles.end();)
-                        if(tile == *it){
-                            it = _player->getHand()._tiles.erase(it);
-                            tile->selected = false;
-                            tile->inHand = false;
-                            tile->played = true;
-                            _discardUIScene->incrementLabel(tile);
-                            break;
-                        }
-                        else{
-                            it++;
-                        }
+            
+            if (_input.getKeyPressed() == KeyCode::N && _input.getKeyDown()) {
+                if(_player->canDraw && _player->canExchange){
+                    CULog("Must perform a draw from pile or discard first");
+                    return;
                 }
-                _player->getHand()._size -= 2;
-                _player->getHand()._selectedTiles.clear();
-                
-                currDiscardTile->discarded = false;
-                currDiscardTile->played = true;
-                _discardUIScene->decrementLabel(currDiscardTile);
-                _discardPile->removeTopTile();
-//                _player->canExchange = false;
-            }
-            else {
-                CULog("Not a valid set");
-                for(auto const& tile : _player->getHand()._tiles){
-                    if(tile->selected){
-                        tile->selected = false;
-                    }
+                if(_player->getHand()._tiles.size() != _player->getHand()._size){
+                    CULog("Must meet hand size requirement");
+                    return;
                 }
-                _player->getHand()._selectedTiles.clear();
+                _network->endTurn();
             }
-        }
-        
-        if (_input.getKeyPressed() == KeyCode::E && _input.getKeyDown()) {
-            if(_player->canDraw || _player->canExchange){
-                CULog("Must draw from pile or discard first");
-                return;
-            }
-            if(_player->getHand()._tiles.size() - _player->getHand()._selectedTiles.size() != _player->getHand()._size){
-                CULog("Discard count must make hand equal to required size");
-                return;
-            }
-            for(auto& tile: _player->getHand()._selectedTiles){
-                _player->getHand().discard(tile);
-                _discardPile->addTile(tile);
-                _discardPile->updateTilePositions();
-            }
-        }
-
-        if (_input.getKeyPressed() == KeyCode::N && _input.getKeyDown()) {
-            if(_player->canDraw && _player->canExchange){
-                CULog("Must perform a draw from pile or discard first");
-                return;
-            }
-            if(_player->getHand()._tiles.size() != _player->getHand()._size){
-                CULog("Must meet hand size requirement");
-                return;
-            }
-            _network->endTurn();
         }
     }
 }

@@ -45,7 +45,6 @@ bool NetworkController::init(const std::shared_ptr<cugl::AssetManager>& assets) 
 }
 
 void NetworkController::update(float timestep){
-    CULog("updating");
     if(_network) {
         _network->receive([this](const std::string source,
                                  const std::vector<std::byte>& data) {
@@ -105,7 +104,6 @@ void NetworkController::processData(const std::string source,
     _deserializer->receive(data);
     std::string msgType = _deserializer->readString();
     
-    CULog("%s", msgType.c_str());
     if (msgType == "start game") {
         _status = START;
     }
@@ -113,9 +111,7 @@ void NetworkController::processData(const std::string source,
         _currentTurn = _deserializer->readUint32();
     }
     else if(msgType == "deck update") {
-        CULog("receiving deck update message");
         _deckJson = _deserializer->readJson();
-        CULog("%s", _deckJson->toString().c_str());
         _status = READY;
     }
 }
@@ -177,7 +173,6 @@ void NetworkController::broadcast(const std::vector<std::byte>& data) {
 }
 
 void NetworkController::startGame() {
-    CULog("network starting game");
     _serializer->reset();
     
     _status = Status::START;
