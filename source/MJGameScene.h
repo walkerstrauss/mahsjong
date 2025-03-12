@@ -74,6 +74,8 @@ protected:
     bool _paused;
     /** Whether we quit the game */
     bool _quit;
+    
+    bool loaded;
     /** Button for discarding */
     std::shared_ptr<cugl::scene2::Button> _discardBtn;
     /** Button for transitioning to the tileset UI scene (discarded cards) */

@@ -45,6 +45,7 @@ bool NetworkController::init(const std::shared_ptr<cugl::AssetManager>& assets) 
 }
 
 void NetworkController::update(float timestep){
+    CULog("updating");
     if(_network) {
         _network->receive([this](const std::string source,
                                  const std::vector<std::byte>& data) {
@@ -103,7 +104,8 @@ void NetworkController::processData(const std::string source,
     _deserializer->reset();
     _deserializer->receive(data);
     std::string msgType = _deserializer->readString();
-        
+    
+    CULog("%s", msgType.c_str());
     if (msgType == "start game") {
         _status = START;
     }
@@ -111,17 +113,11 @@ void NetworkController::processData(const std::string source,
         _currentTurn = _deserializer->readUint32();
     }
     else if(msgType == "deck update") {
+        CULog("receiving deck update message");
+        _status = READY;
         _deckJson = _deserializer->readJson();
     }
 }
-
-//void NetworkController::notifyEndTurn() {
-//    _serializer->reset();
-//    _serializer->writeString("end turn");
-//    _serializer->writeString(std::to_string(_localPid));
-//    broadcast(_serializer->serialize());
-//    CULog("notify end turn is being sent");
-//    }
 
 void NetworkController::endTurn() {
     _currentTurn = (_currentTurn == 0) ? 1 : 0;  // Toggle between 0 and 1
@@ -181,12 +177,15 @@ void NetworkController::broadcast(const std::vector<std::byte>& data) {
 
 void NetworkController::startGame() {
     CULog("network starting game");
+    _serializer->reset();
+    
     _status = Status::START;
     _serializer->writeString("start game");
     broadcast(_serializer->serialize());
 }
 
 void NetworkController::broadcastDeck(const std::shared_ptr<cugl::JsonValue>& deckJson){
+    
     _serializer->reset();
     
     _serializer->writeString("deck update");

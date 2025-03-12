@@ -26,8 +26,10 @@ public:
         CONNECTING,
         /** Connected to server */
         CONNECTED,
-        /** Time to start the game */
+        /** Host can start the game */
         START,
+        /** Ready for client to start */
+        READY,
         /** Error in connection */
         NETERROR
     };

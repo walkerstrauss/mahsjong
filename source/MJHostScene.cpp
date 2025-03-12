@@ -200,6 +200,7 @@ void HostScene::update(float timestep) {
  */
 void HostScene::startGame() {
     CULog("host start game");
+    
     _network->startGame();
     _startGameClicked = true;
 }
