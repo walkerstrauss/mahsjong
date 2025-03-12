@@ -133,18 +133,9 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::sha
         _player->getHand().initHost(_tileSet);
     }
     else {
-        while(!loaded){
-            cugl::Application::get()->schedule(
-               [this]() -> bool {
-                   _tileSet->initClientDeck(_network->getDeckJson());
-                   _player->getHand().initClient(_tileSet);
-                   loaded = true;
-                   return false; 
-               },
-               2000,
-               0
-               );
-        }
+       _tileSet->initClientDeck(_network->getDeckJson());
+       _player->getHand().initClient(_tileSet);
+       loaded = true;
     }
     std::string msg = strtool::format("Score: %d", _player->_totalScore);
     _text = TextLayout::allocWithText(msg, assets->get<Font>("pixel32"));

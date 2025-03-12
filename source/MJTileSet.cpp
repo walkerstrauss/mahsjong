@@ -66,10 +66,9 @@ void TileSet::initHostDeck(){
 void TileSet::initClientDeck(const std::shared_ptr<cugl::JsonValue>& deckJson){
     
     for(auto const& tileKey : deckJson->children()){
-        for(auto const& tileIdNum : tileKey->children()){
-            const Tile::Suit suit = Tile::toSuit(tileIdNum->getString("suit"));
-            const Tile::Rank rank = Tile::toRank(tileIdNum->getString("rank"));
-            const int id = std::stoi(tileIdNum->getString("id"));
+            const Tile::Suit suit = Tile::toSuit(tileKey->getString("suit"));
+            const Tile::Rank rank = Tile::toRank(tileKey->getString("rank"));
+            const int id = std::stoi(tileKey->getString("id"));
 //            const cugl::Vec2 pileCoord = Tile::toVector(tileIdNum->getString("pileCoord"));
 //            const bool inPile = tileIdNum->getBool("inPile");
 //            const bool inHand = tileIdNum->getBool("inhand");
@@ -95,7 +94,6 @@ void TileSet::initClientDeck(const std::shared_ptr<cugl::JsonValue>& deckJson){
             deck.emplace_back(newTile);
         }
     }
-}
 
 
 #pragma mark -
@@ -243,31 +241,24 @@ void TileSet::Tile::setWildTexture(const std::shared_ptr<cugl::AssetManager>& as
 const std::shared_ptr<cugl::JsonValue> TileSet::toJson(std::vector<std::shared_ptr<Tile>> tiles){
     std::shared_ptr<cugl::JsonValue> root  = cugl::JsonValue::allocObject();
     for (auto& tile : tiles){
+        std::string key = tile->toString() + " " + std::to_string(tile->_id);
         
-        std::shared_ptr<cugl::JsonValue> currId = cugl::JsonValue::allocObject();
+        std::shared_ptr<cugl::JsonValue> currTile = cugl::JsonValue::allocObject();
         
-        currId->appendValue("suit", tile->toStringSuit());
-        currId->appendValue("rank", tile->toStringRank());
-        currId->appendValue("id", std::to_string(tile->_id));
-        currId->appendValue("pileCoord", tile->pileCoord.toString());
-        currId->appendValue("inPile", tile->inPile);
-        currId->appendValue("inHand", tile->inHand);
-        currId->appendValue("discarded", tile->discarded);
-        currId->appendValue("selected", tile->selected);
-        currId->appendValue("selectedInSet", tile->selectedInSet);
-        currId->appendValue("played", tile->played);
-        currId->appendValue("pos", tile->pos);
-        currId->appendValue("scale", tile->_scale);
+        currTile->appendValue("suit", tile->toStringSuit());
+        currTile->appendValue("rank", tile->toStringRank());
+        currTile->appendValue("id", std::to_string(tile->_id));
+        currTile->appendValue("pileCoord", tile->pileCoord.toString());
+        currTile->appendValue("inPile", tile->inPile);
+        currTile->appendValue("inHand", tile->inHand);
+        currTile->appendValue("discarded", tile->discarded);
+        currTile->appendValue("selected", tile->selected);
+        currTile->appendValue("selectedInSet", tile->selectedInSet);
+        currTile->appendValue("played", tile->played);
+        currTile->appendValue("pos", tile->pos);
+        currTile->appendValue("scale", tile->_scale);
         
-        if(!root->get(tile->toString())){
-            std::shared_ptr<cugl::JsonValue> currTile = cugl::JsonValue::allocObject();
-            currTile->appendChild(std::to_string(tile->_id), currId);
-            root->appendChild(tile->toString(), currTile);
-            continue;
-        }
-        
-        std::shared_ptr<cugl::JsonValue> currTile = root->get(tile->toString());
-        currTile->appendChild(std::to_string(tile->_id), currId);
+        root->appendChild(key, currTile);
     }
     
     return root;

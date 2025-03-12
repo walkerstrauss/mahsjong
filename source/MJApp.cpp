@@ -243,7 +243,7 @@ void MahsJongApp::updateHostScene(float timestep) {
         _scene = MENU;
         _hostgame.setActive(false);
         _mainmenu.setActive(true);
-    } else if (_network->getStatus() == NetworkController::Status::START || _network->getStatus() == NetworkController::Status::READY) {
+    } else if (_network->getStatus() == NetworkController::Status::START) {
         _gameplay.init(_assets, _network);
         _gameplay.setSpriteBatch(_batch);
         _hostgame.setActive(false);

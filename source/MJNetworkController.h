@@ -52,6 +52,8 @@ protected:
     
     Uint32 _localPid;
     
+    Uint32 _localReady; 
+    
     Uint32 _currentTurn;
     
     std::shared_ptr<cugl::JsonValue> _deckJson;

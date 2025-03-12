@@ -114,8 +114,9 @@ void NetworkController::processData(const std::string source,
     }
     else if(msgType == "deck update") {
         CULog("receiving deck update message");
-        _status = READY;
         _deckJson = _deserializer->readJson();
+        CULog("%s", _deckJson->toString().c_str());
+        _status = READY;
     }
 }
 
