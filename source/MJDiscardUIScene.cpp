@@ -108,6 +108,28 @@ bool DiscardUIScene::incrementLabel(std::shared_ptr<TileSet::Tile> tile){
     return true;
 }
 
+/**
+ * Method to update discard UI label corresponding to tile passed as argument
+ *
+ * @param tile  the tile to decrement in the discard UI
+ * @return true if update was successful, and false otherwise
+ */
+bool DiscardUIScene::decrementLabel(std::shared_ptr<TileSet::Tile> tile){
+    // Get index of label in _labels
+    int i = getLabelIndex(tile);
+    
+    // Check if we already discarded 4 (or more) of this tile
+    if (std::stoi(_labels[i]->getText()) < 0){
+        CULog("All copies of this tile are in play");
+        return false;
+    }
+    
+    // Increment discard UI number and update label text
+    std::string text = std::to_string(std::stoi(_labels[i]->getText()) - 1);
+    _labels[i]->setText(text);
+    return true;
+}
+
 void DiscardUIScene::render(const std::shared_ptr<graphics::SpriteBatch>& batch){
     _tilesetui->render(batch);
 }

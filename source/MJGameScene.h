@@ -182,6 +182,11 @@ public:
      * Processes updates from network
      */
     void processData(std::vector<std::string> msg);
+    
+    /**
+     * Checks whether or not a tile has been clicked and sets selected status accordingly
+     */
+    void clickedTile(cugl::Vec2 mousePos);
 };
 
 #endif /* __MJ_GAME_SCENE_H__ */

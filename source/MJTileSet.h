@@ -52,10 +52,10 @@ public:
         Tile::Suit _suit;
         /** Id for differentiating duplicate copies of a card from one another – gma's tiles have an _id of -1 */
         int _id;
-        /** Whether or not the tile is in the pile */
-        bool inPile;
         /** The position of the tile (row, col) in the pile */
         cugl::Vec2 pileCoord;
+        /** Whether or not the tile is in the pile */
+        bool inPile;
         /** Whether or not the tile is in the player's hand */
         bool inHand;
         /** Boolean flag for if this tile has been discarded */
@@ -150,6 +150,42 @@ public:
             }
         };
         
+        static Tile::Rank toRank(std::string rank) {
+            if (rank == "one") {
+                return Tile::Rank::ONE;
+            } else if (rank == "two") {
+                return Tile::Rank::TWO;
+            } else if (rank == "three") {
+                return Tile::Rank::THREE;
+            } else if (rank == "four") {
+                return Tile::Rank::FOUR;
+            } else if (rank == "five") {
+                return Tile::Rank::FIVE;
+            } else if (rank == "six") {
+                return Tile::Rank::SIX;
+            } else if (rank == "seven") {
+                return Tile::Rank::SEVEN;
+            } else if (rank == "eight") {
+                return Tile::Rank::EIGHT;
+            } else if (rank == "nine") {
+                return Tile::Rank::NINE;
+            } else {
+                throw std::invalid_argument("No valid rank");
+            }
+        }
+        
+        static Tile::Suit toSuit(std::string suit) {
+            if (suit == "bamboo") {
+                return Tile::Suit::BAMBOO;
+            } else if (suit == "dot") {
+                return Tile::Suit::DOT;
+            } else if (suit == "crak") {
+                return Tile::Suit::CRAK;
+            } else {
+                throw std::invalid_argument("No valid suit");
+            }
+        }
+        
         /**
          * Returns a string representation for the current tile's suit
          *
@@ -171,6 +207,7 @@ public:
                     break;
                 default:
                     return "no valid suit";
+                    
             }
         }
         
@@ -242,12 +279,24 @@ public:
 #pragma mark Tileset Constructors
     
     /**
-     * Initializes the **STARTING** representation of the deck.
-     *
-     * When creating a new level, call shuffle to reshuffle the tileSet and create
-     * the pile and hand by iterating through the tileSet
+     * Initializes an empty deck.
      */
-    TileSet();
+    TileSet() { rdTileSet.init(); }
+    
+    /**
+     * Initializes deck to a **STARTING** representation of numbered tiles
+     *
+     * Only call if host
+     */
+    void initHostDeck();
+    
+    /**
+     * Initializes deck to a **STARTING** representation of numbered tiles
+     *
+     * Only call if client
+     */
+    void initClientDeck(const std::shared_ptr<cugl::JsonValue>& deckJson);
+    
     
 #pragma mark -
 #pragma mark Tileset Gameplay Handling
@@ -344,6 +393,13 @@ public:
     void draw(const std::shared_ptr<cugl::graphics::SpriteBatch>& batch, cugl::Size size);
     
     /**
+     * Creates a cugl::JsonValue representation of the current state of the deck
+     *
+     * @Returns std::shared_ptr<cugl::JsonVaue>
+     */
+    std::shared_ptr<cugl::JsonValue> toJson();
+    
+    /**
      * Randomly generates a suit with type Tile::Suit
      *
      * Returns suit with type Tile::Suit
@@ -363,6 +419,8 @@ public:
         return static_cast<TileSet::Tile::Rank>(randRank);
     };
 };
+
+
 
 
 #endif /* __MJ_TILESET_H__ */

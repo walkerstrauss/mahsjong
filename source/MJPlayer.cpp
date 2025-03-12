@@ -322,7 +322,7 @@ bool Hand::isOfaKind(const std::vector<std::shared_ptr<TileSet::Tile>>& selected
 
 bool Hand::isWinningHand() {
     
-    if (_tiles.size() == 14) {
+    if (_tiles.size() == _size + 1) {
         std::vector<std::shared_ptr<TileSet::Tile>> sortedHand = getSortedTiles(_tiles);
         
         std::map<std::pair<TileSet::Tile::Rank, TileSet::Tile::Suit>, int> tileCounts;
@@ -337,7 +337,7 @@ bool Hand::isWinningHand() {
 
 bool Hand::onePairFourSets(std::map<std::pair<TileSet::Tile::Rank, TileSet::Tile::Suit>, int>& tileCounts, int pair, int sets) {
     
-    if (pair == 1 && sets == 4) {
+    if (pair == 1 && sets == _size / 3) {
         return true;
     }
     
