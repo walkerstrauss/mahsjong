@@ -123,16 +123,6 @@ public:
      */
     bool init(const std::shared_ptr<cugl::AssetManager>& assets, std::shared_ptr<NetworkController> network);
     
-//    /**
-//     * Returns the network connection (as made by this scene)
-//     *
-//     * This value will be reset every time the scene is made active.
-//     *
-//     * @return the network connection (as made by this scene)
-//     */
-//    void setConnection(const std::shared_ptr<cugl::netcode::NetcodeConnection>& network) {
-//        _network = network;
-//    }
     /**
      * Sets whether the player is host.
      *
