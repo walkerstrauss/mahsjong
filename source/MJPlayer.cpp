@@ -51,11 +51,15 @@ bool Hand::initHost(std::shared_ptr<TileSet>& tileSet){
 bool Hand::initClient(std::shared_ptr<TileSet>& tileSet){
     _size = 13;
     // draw from the deck
-    for(int i = 0; i < _size; i++){
+    for(int i = 13; i < _size; i++){
         std::shared_ptr<TileSet::Tile> drawnTile = tileSet->deck[i];
         drawnTile->inHand = true;
         drawnTile->_scale = 0.2;
         _tiles.push_back(drawnTile);
+        
+        std::string tileName = drawnTile->toString() + " " + std::to_string(drawnTile->_id);
+        tileSet->tileMap.insert({tileName, drawnTile});
+        tileSet->nextTile = tileSet->deck[i + 1];
     }
     
     return true;

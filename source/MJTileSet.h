@@ -100,7 +100,7 @@ public:
          * @return the associated suit for the tile it was called from.
          */
         Tile::Suit getSuit() const { return _suit; }
-
+        
         /**
          * Method to update the tiles
          *
@@ -242,7 +242,7 @@ public:
          * @param assets    the asset manager to get the texture from
          */
         void setWildTexture(const std::shared_ptr<cugl::AssetManager>& assets);
-                
+        
         
         /**
          * Method to get the tile texture
@@ -267,13 +267,14 @@ public:
 public:
     /** Deck with all of the tiles */
     std::vector<std::shared_ptr<Tile>> deck;
+    /** Unsorted set containing tiles in the deck */
+    std::map<std::string, std::shared_ptr<Tile>> tileMap;
     /** Grandma's favorite tiles */
     std::vector<std::shared_ptr<Tile>> grandmaTiles;
     /** Reference to texture for grandma tile text */
     std::shared_ptr<cugl::graphics::Texture> gmaTexture;
-    
+    /** Random Generator */
     cugl::Random rdTileSet;
-    
      /** Wild tile set to draw from */
     std::vector<std::shared_ptr<Tile>> wildTiles;
     /** Number of wild tiles we have initilalized */
@@ -282,7 +283,11 @@ public:
     int tileCount;
     /** The center of a tile */
     cugl::Vec2 _center;
-
+    /** Pointer to next tile to be drawn */
+    std::shared_ptr<Tile> nextTile;
+    /** Set of tiles to be processed for networking */
+    std::vector<std::shared_ptr<Tile>> tilesToJson;
+    
 #pragma mark -
 #pragma mark Tileset Constructors
     
@@ -432,9 +437,12 @@ public:
         int randRank = static_cast<int>(rdTileSet.getOpenUint64(1, 11));
         return static_cast<TileSet::Tile::Rank>(randRank);
     };
+    
+    void clearTilesToJson(){
+        tilesToJson.clear();
+    }
+    
+    void setNextTile(std::shared_ptr<cugl::JsonValue>& nextTileJson);
 };
-
-
-
 
 #endif /* __MJ_TILESET_H__ */

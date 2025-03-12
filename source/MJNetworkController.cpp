@@ -114,6 +114,9 @@ void NetworkController::processData(const std::string source,
         _deckJson = _deserializer->readJson();
         _status = READY;
     }
+    else if(msgType == "next tile update"){
+        _nextTileJson = _deserializer->readJson();
+    }
 }
 
 void NetworkController::endTurn() {
@@ -180,8 +183,7 @@ void NetworkController::startGame() {
     broadcast(_serializer->serialize());
 }
 
-void NetworkController::broadcastDeck(const std::shared_ptr<cugl::JsonValue>& deckJson){
-    
+void NetworkController::broadcastDeck(const std::shared_ptr<cugl::JsonValue>& deckJson) {
     _serializer->reset();
     
     _serializer->writeString("deck update");
@@ -189,6 +191,25 @@ void NetworkController::broadcastDeck(const std::shared_ptr<cugl::JsonValue>& de
     
     broadcast(_serializer->serialize());
 }
+
+void NetworkController::broadcastNextTile(const std::shared_ptr<cugl::JsonValue>& tileJson) {
+    _serializer->reset();
+    
+    _serializer->writeString("next tile update");
+    _serializer->writeJson(tileJson);
+    
+    broadcast(_serializer->serialize());
+}
+
+void NetworkController::broadcastPileIndex(const int index){
+    _serializer->reset();
+    
+    _serializer->writeString("pile index update");
+    _serializer->writeUint32(index);
+    
+    broadcast(_serializer->serialize());
+}
+
 
 //
 //void NetworkController::notifyObservers(std::vector<std::string>& msg){

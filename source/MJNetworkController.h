@@ -56,8 +56,11 @@ protected:
     
     Uint32 _currentTurn;
     
+    Uint32 _pileIndex;
+    
     std::shared_ptr<cugl::JsonValue> _deckJson;
     
+    std::shared_ptr<cugl::JsonValue> _nextTileJson;
 
 public:
 #pragma mark -
@@ -121,7 +124,10 @@ public:
     void startGame();
         
     void broadcastDeck(const std::shared_ptr<cugl::JsonValue>& deckJson);
-
+    
+    void broadcastNextTile(const std::shared_ptr<cugl::JsonValue>& tileJson);
+    
+    void broadcastPileIndex(const int index);
     
     Uint32 getLocalPid() const {
         return _localPid;
@@ -144,6 +150,9 @@ public:
     }
     bool getHostStatus(){
         return _isHost;
+    }
+    std::shared_ptr<cugl::JsonValue> getNextTileJson(){
+        return _nextTileJson;
     }
     
     /**

@@ -233,6 +233,8 @@ void TileSet::Tile::setWildTexture(const std::shared_ptr<cugl::AssetManager>& as
     this->setTexture(assets->get<Texture>(currTileTexture));
 }
 
+
+
 /**
  * Creates a cugl::JsonValue representation of the current state of the deck
  *
@@ -264,5 +266,17 @@ const std::shared_ptr<cugl::JsonValue> TileSet::toJson(std::vector<std::shared_p
     return root;
 }
 
-
-
+void TileSet::setNextTile(std::shared_ptr<cugl::JsonValue>& nextTileJson) {
+    if(nextTileJson->children().size() > 1){
+        CULog("Invalid set next tile size");
+        return;
+    }
+    for(auto const& tileKey : nextTileJson->children()){
+        const std::string suit = tileKey->getString("suit");
+        const std::string rank = tileKey->getString("rank");
+        const std::string id = tileKey->getString("id");
+        
+        std::string key = suit + " " + rank + " " + id;
+        nextTile = tileMap[key];
+    }
+}
