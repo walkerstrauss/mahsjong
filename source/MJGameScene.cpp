@@ -53,7 +53,7 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::sha
     _pauseScene->doLayout();
    
     std::shared_ptr<scene2::SceneNode> childNode = _matchScene->getChild(0);
-    _discardBtn = std::dynamic_pointer_cast<scene2::Button>(childNode->getChild(6));
+    _discardBtn = std::dynamic_pointer_cast<scene2::Button>(childNode->getChild(4));
     _tilesetUIBtn = std::dynamic_pointer_cast<scene2::Button>(_assets->get<scene2::SceneNode>("matchscene.gameplayscene.button_tileset"));
     _pauseBtn = std::dynamic_pointer_cast<scene2::Button>(childNode->getChild(1));
     _continueBtn = std::dynamic_pointer_cast<scene2::Button>(_pauseScene->getChild(0)->getChild(2));
@@ -213,7 +213,6 @@ void GameScene::update(float timestep) {
     }
     
     _player->getHand().updateTilePositions();
-    CULog("%lu", _player->getHand()._selectedTiles.size());
     
     //if (_network->getCurrentTurn() == _network->getLocalPid()) {
         if(_input.didRelease() && !_input.isDown()){

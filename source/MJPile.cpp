@@ -40,9 +40,10 @@ bool Pile::createPile() {
     cugl::Size screenSize = cugl::Application::get()->getDisplaySize();
 
     // Variables for positioning the pile tiles for drawing
-    float spacingFactor = 0.9f;
-    float spacingFactorX = 0.85f;
-    float yShift = 50.0f;
+    float spacingFactor = 0.85f;
+    float spacingFactorX = 0.8f;
+    float xShift = 125.0f;
+    float yShift = 125.0f;
     
     // Iterate through the pile
     for (int i = 0; i < _pileSize; i++) {
@@ -64,10 +65,10 @@ bool Pile::createPile() {
             
             float pileWidth = _pileSize * (_size.width * tile->_scale * spacingFactorX);
             float pileHeight = _pileSize * (_size.height * tile->_scale);
-            cugl::Vec2 pileOffset((screenSize.width - pileWidth) / 2, (screenSize.height - pileHeight) / 2 + yShift);
+            cugl::Vec2 pileOffset((screenSize.width - pileWidth) / 2 + xShift, (screenSize.height - pileHeight) / 2 + yShift);
             
             tile->pos = cugl::Vec2(x * spacingFactor, y * spacingFactor) + pileOffset;
-            
+                        
             row.push_back(_tileSet->deck[index]);
             index += 1;
         }

@@ -140,9 +140,11 @@ void TileSet::draw(const std::shared_ptr<cugl::graphics::SpriteBatch>& batch, cu
     for(const auto& it : deck){
         Tile curr = (*it);
         Vec2 pos = curr.pos;
-        if(it->played){
+        
+        if ((pos.x == 0.0f && pos.y == 0.0f) || it->played) {
             continue;
         }
+        
         if(it->selected && it->inHand){
             pos.y = curr.pos.y + 20;
         }
