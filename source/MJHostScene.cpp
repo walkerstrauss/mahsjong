@@ -85,7 +85,7 @@ bool HostScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::sha
 
     _startgame = std::dynamic_pointer_cast<scene2::Button>(_assets->get<scene2::SceneNode>("host.hostscene.menu.buttonmenu.button1"));
     _backout = std::dynamic_pointer_cast<scene2::Button>(_assets->get<scene2::SceneNode>("host.hostscene.menu.buttonmenu.button2"));
-    _gameid = std::dynamic_pointer_cast<scene2::Label>(_assets->get<scene2::SceneNode>("host.hostscene.menu.gameid.title.label"));
+    _gameid = std::dynamic_pointer_cast<scene2::Label>(_assets->get<scene2::SceneNode>("host.hostscene.menu.gameid.gameid_textfield.gameid"));
     _player = std::dynamic_pointer_cast<scene2::Label>(_assets->get<scene2::SceneNode>("host.hostscene.menu.player.player_textfield.label"));
     
     
