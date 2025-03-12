@@ -87,19 +87,19 @@ public:
      *
      * @param pile      the pile to draw to our hand from
      */
-    void drawFromPile(std::shared_ptr<Pile>& pile, int number);
+    void drawFromPile(std::shared_ptr<Pile>& pile, int number, bool isHost);
     
     /**
      * Draws the given tile from the discard pile and adds it to hand.
      */
-    void drawFromDiscard(std::shared_ptr<TileSet::Tile> tile);
+    void drawFromDiscard(std::shared_ptr<TileSet::Tile> tile, bool isHost);
     
     /**
      * Discards a single specified tile from our hand
      *
      * @param tile      the tile to discard from out hand
      */
-    bool discard(std::shared_ptr<TileSet::Tile> tile);
+    bool discard(std::shared_ptr<TileSet::Tile> tile, bool isHost);
     
     /**
      * Method to make a set from your hand and add it to selected sets
@@ -113,7 +113,7 @@ public:
      *
      * @return true if a set was played sucessfully and false otherwise.
      */
-    bool playSet(const std::shared_ptr<TileSet>& tileSet);
+    bool playSet(const std::shared_ptr<TileSet>& tileSet, bool isHost);
     
     /**
      * Checks if the given set of tiles "selectedTiles" is valid under the game's set of rules.

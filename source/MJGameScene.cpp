@@ -73,9 +73,13 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::sha
                         //Add to discard UI scene
                         _discardUIScene->incrementLabel(tile);
                         
-                        _player->getHand().discard(tile);
+                        _player->getHand().discard(tile, _network->getHostStatus());
                         tile->selected = false;
-                        tile->inHand = false;
+                        if (_network->getHostStatus()) {
+                            tile->inHostHand = false;
+                        } else {
+                            tile->inClientHand = false;
+                        }
                         tile->inPile = false;
                         tile->discarded = true;
                     }
@@ -133,7 +137,7 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::sha
         _player->getHand().initHost(_tileSet);
     }
     else {
-        _tileSet->initClientDeck(_network->getDeckJson());
+        _tileSet->initClientDeck(_network->getDeckJson(), _network->getHostStatus());
         _player->getHand().initClient(_tileSet);
         }
     std::string msg = strtool::format("Score: %d", _player->_totalScore);
@@ -240,7 +244,7 @@ void GameScene::update(float timestep) {
                 CULog("Hand too big");
                 return;
             }
-            _player->getHand().drawFromPile(_pile, 1);
+            _player->getHand().drawFromPile(_pile, 1, _network->getHostStatus());
             if (_player->getHand().isWinningHand()){
                 _gameWin = true;
             }
@@ -285,7 +289,11 @@ void GameScene::update(float timestep) {
                         if(tile == *it){
                             it = _player->getHand()._tiles.erase(it);
                             tile->selected = false;
-                            tile->inHand = false;
+                            if (_network->getHostStatus()) {
+                                tile->inHostHand = false;
+                            } else {
+                                tile->inClientHand = false;
+                            }
                             tile->played = true;
                             _discardUIScene->incrementLabel(tile);
                             break;
@@ -324,7 +332,7 @@ void GameScene::update(float timestep) {
                 return;
             }
             for(auto& tile: _player->getHand()._selectedTiles){
-                _player->getHand().discard(tile);
+                _player->getHand().discard(tile, _network->getHostStatus());
                 _discardPile->addTile(tile);
                 _discardPile->updateTilePositions();
             }
@@ -393,7 +401,7 @@ void GameScene::render() {
     _matchScene->render(_batch);
     
     // Draw all tiles in hand, pile and grandma tiles
-    _tileSet->draw(_batch, getSize());
+    _tileSet->draw(_batch, getSize(), _network->getHostStatus());
     
     // Draw score
 //    _batch->setColor(Color4::GREEN);
@@ -426,7 +434,13 @@ void GameScene::processData(std::vector<std::string> msg){
 
 void GameScene::clickedTile(cugl::Vec2 mousePos){
     for(auto& tile : _tileSet->deck){
-        if (tile->inHand || tile->discarded || tile->played){
+        bool inHand;
+        if (_network->getHostStatus()) {
+            inHand = tile->inHostHand;
+        } else {
+            inHand = tile->inClientHand;
+        }
+        if (inHand || tile->discarded || tile->played){
             continue;
         }
         else if (tile->inPile){

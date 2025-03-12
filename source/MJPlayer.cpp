@@ -34,7 +34,7 @@ bool Hand::initHost(std::shared_ptr<TileSet>& tileSet){
     // draw from the deck
     for(int i = 0; i < _size; i++){
         std::shared_ptr<TileSet::Tile> drawnTile = tileSet->deck[i];
-        drawnTile->inHand = true;
+        drawnTile->inHostHand = true;
         drawnTile->_scale = 0.2;
         
         _tiles.push_back(drawnTile);
@@ -53,7 +53,7 @@ bool Hand::initClient(std::shared_ptr<TileSet>& tileSet){
     // draw from the deck
     for(int i = 13; i < _size; i++){
         std::shared_ptr<TileSet::Tile> drawnTile = tileSet->deck[i];
-        drawnTile->inHand = true;
+        drawnTile->inClientHand = true;
         drawnTile->_scale = 0.2;
         _tiles.push_back(drawnTile);
         
@@ -73,12 +73,17 @@ bool Hand::initClient(std::shared_ptr<TileSet>& tileSet){
  *
  * @param pile      the pile to draw to our hand from
  */
-void Hand::drawFromPile(std::shared_ptr<Pile>& pile, int number){
+void Hand::drawFromPile(std::shared_ptr<Pile>& pile, int number, bool isHost){
 
     _drawnPile = pile->tilesDrawn(number);
     
     for(auto& tile : _drawnPile){
-        tile->inHand = true;
+        if (isHost) {
+            tile->inHostHand = true;
+        } else {
+            tile->inClientHand = true;
+
+        }
         tile->inPile = false;
         tile->selected = false;
         tile->discarded = false;
@@ -86,12 +91,17 @@ void Hand::drawFromPile(std::shared_ptr<Pile>& pile, int number){
     }
  }
 
-void Hand::drawFromDiscard(std::shared_ptr<TileSet::Tile> tile) {
+void Hand::drawFromDiscard(std::shared_ptr<TileSet::Tile> tile, bool isHost) {
     if (!tile) {
         return;
     }
     
-    tile->inHand = true;
+    if (isHost) {
+        tile->inHostHand = true;
+    } else {
+        tile->inClientHand = true;
+
+    }
     tile->discarded = false;
     tile->inPile = false;
     tile->selected = false; 
@@ -103,13 +113,18 @@ void Hand::drawFromDiscard(std::shared_ptr<TileSet::Tile> tile) {
  *
  * @param tile      the tile to discard from out hand
  */
-bool Hand::discard(std::shared_ptr<TileSet::Tile> tile){
+bool Hand::discard(std::shared_ptr<TileSet::Tile> tile, bool isHost){
     auto it = _tiles.begin();
     while(it != _tiles.end()){
         if (*it == tile) {
             // if we find the tile, discard it
             (*it)->discarded = true;
-            (*it)->inHand = false;
+            if (isHost) {
+                (*it)->inHostHand = false;
+            } else {
+                (*it)->inClientHand = false;
+
+            }
             (*it)->inPile = false;
             (*it)->selected = false;
 
@@ -159,7 +174,7 @@ bool Hand::makeSet(){
  *
  * @return true if a set was played sucessfully and false otherwise.
  */
-bool Hand::playSet(const std::shared_ptr<TileSet>& tileSet){
+bool Hand::playSet(const std::shared_ptr<TileSet>& tileSet, bool isHost){
     if (_selectedSets.empty()) {
            return false;
        }
@@ -171,7 +186,12 @@ bool Hand::playSet(const std::shared_ptr<TileSet>& tileSet){
         while (it != _tiles.end()) {
             if (std::find(set.begin(), set.end(), *it) != set.end()) {
                 (*it)->played = true;
-                (*it)->inHand = false;
+                if (isHost) {
+                    (*it)->inHostHand = false;
+                } else {
+                    (*it)->inClientHand = false;
+
+                }
                 (*it)->discarded = false; // because it was played, not discarded.
                 
                 for(const auto& gTile : tileSet->grandmaTiles){

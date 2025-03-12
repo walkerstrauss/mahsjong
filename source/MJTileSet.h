@@ -56,8 +56,10 @@ public:
         cugl::Vec2 pileCoord;
         /** Whether or not the tile is in the pile */
         bool inPile;
-        /** Whether or not the tile is in the player's hand */
-        bool inHand;
+        /** Whether or not the tile is in the host's hand */
+        bool inHostHand;
+        /** Whether or not the tile is in the client's hand*/
+        bool inClientHand;
         /** Boolean flag for if this tile has been discarded */
         bool discarded;
         /** Whether the player has selected the tile */
@@ -308,7 +310,7 @@ public:
      *
      * Only call if client
      */
-    void initClientDeck(const std::shared_ptr<cugl::JsonValue>& deckJson);
+    void initClientDeck(const std::shared_ptr<cugl::JsonValue>& deckJson, bool isHost);
     
     
 #pragma mark -
@@ -409,7 +411,7 @@ public:
     /**
      * Draws the tiles in the tileset to the screen
      */
-    void draw(const std::shared_ptr<cugl::graphics::SpriteBatch>& batch, cugl::Size size);
+    void draw(const std::shared_ptr<cugl::graphics::SpriteBatch>& batch, cugl::Size size, bool isHost);
     
     /**
      * Creates a cugl::JsonValue representation of the current state of the deck

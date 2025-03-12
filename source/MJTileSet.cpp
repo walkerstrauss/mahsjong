@@ -27,7 +27,8 @@ TileSet::Tile::Tile(const TileSet::Tile::Rank r, const TileSet::Tile::Suit s){
     _suit = s;
     
     inPile = false;
-    inHand = false;
+    inHostHand = false;
+    inClientHand = false;
     discarded = false;
     
     selected = false;
@@ -63,33 +64,36 @@ void TileSet::initHostDeck(){
  *
  * Only call if clientx
  */
-void TileSet::initClientDeck(const std::shared_ptr<cugl::JsonValue>& deckJson){
+void TileSet::initClientDeck(const std::shared_ptr<cugl::JsonValue>& deckJson, bool isHost){
     
     for(auto const& tileKey : deckJson->children()){
             const Tile::Suit suit = Tile::toSuit(tileKey->getString("suit"));
             const Tile::Rank rank = Tile::toRank(tileKey->getString("rank"));
             const int id = std::stoi(tileKey->getString("id"));
-//            const cugl::Vec2 pileCoord = Tile::toVector(tileIdNum->getString("pileCoord"));
-//            const bool inPile = tileIdNum->getBool("inPile");
-//            const bool inHand = tileIdNum->getBool("inhand");
-//            const bool discarded = tileIdNum->getBool("discarded");
-//            const bool selected = tileIdNum->getBool("selected");
-//            const bool selectedInSet = tileIdNum->getBool("selectedInSet");
-//            const bool played = tileIdNum->getBool("played");
-//            const cugl::Vec2 pos = Tile::toVector(tileIdNum->getString("pos"));
-//            const float scale = tileIdNum->getFloat("scale");
+            const cugl::Vec2 pileCoord = Tile::toVector(tileKey->getString("pileCoord"));
+            const bool inPile = tileKey->getBool("inPile");
+            const bool inHostHand = tileKey->getBool("inHostHand") && isHost ?  true : false;
+            const bool inClientHand = tileKey->getBool("inClientHand") && isHost ? true : false;
+            const bool discarded = tileKey->getBool("discarded");
+            const bool selected = tileKey->getBool("selected");
+            const bool selectedInSet = tileKey->getBool("selectedInSet");
+            const bool played = tileKey->getBool("played");
+            const cugl::Vec2 pos = Tile::toVector(tileKey->getString("pos"));
+            const float scale = tileKey->getFloat("scale");
             
             std::shared_ptr<Tile> newTile = std::make_shared<Tile>(rank, suit);
             newTile->_id = id;
-//            newTile->pileCoord = pileCoord;
-//            newTile->inPile = inPile;
-//            newTile->inHand = inHand;
-//            newTile->discarded = discarded;
-//            newTile->selected = selected;
-//            newTile->selectedInSet = selectedInSet;
-//            newTile->played = played;
-//            newTile->pos = pos;
-//            newTile->_scale = scale;
+            newTile->pileCoord = pileCoord;
+            newTile->inPile = inPile;
+            newTile->inHostHand = inHostHand;
+            newTile->discarded = discarded;
+            newTile->selected = selected;
+            newTile->selectedInSet = selectedInSet;
+            newTile->played = played;
+            newTile->pos = pos;
+            newTile->_scale = scale;
+            newTile->inHostHand = inHostHand;
+            newTile->inClientHand = inClientHand;
         
             deck.emplace_back(newTile);
         }
@@ -171,7 +175,7 @@ void TileSet::setBackTextures(const std::shared_ptr<cugl::AssetManager>& assets)
 /**
  * Draws the tiles in the tileset to the screen
  */
-void TileSet::draw(const std::shared_ptr<cugl::graphics::SpriteBatch>& batch, cugl::Size size){
+void TileSet::draw(const std::shared_ptr<cugl::graphics::SpriteBatch>& batch, cugl::Size size, bool isHost){
     for(const auto& it : deck){
         Tile curr = (*it);
         Vec2 pos = curr.pos;
@@ -180,26 +184,50 @@ void TileSet::draw(const std::shared_ptr<cugl::graphics::SpriteBatch>& batch, cu
             continue;
         }
         
-        if(it->selected && it->inHand){
-            pos.y = curr.pos.y + 10;
-        }
-        if(it->selected && (it->inPile || it->discarded)){
-            it->_scale = 0.25;
-        }
-        else{
-            it->_scale = 0.2;
-        }
-        Vec2 origin = Vec2(curr.getTileTexture()->getSize().width/2, curr.getTileTexture()->getSize().height/2);
-        
-        Affine2 trans;
-        trans.scale(curr._scale);
-        trans.translate(pos);
-        
-        Size textureSize(350.0, 415.0);
-        Vec2 rectOrigin(pos - (textureSize * curr._scale)/2);
-        it->tileRect = cugl::Rect(rectOrigin, textureSize * curr._scale);
+        if (isHost){
+            if(it->selected && it->inHostHand){
+                pos.y = curr.pos.y + 10;
+            }
+            if(it->selected && (it->inPile || it->discarded)){
+                it->_scale = 0.25;
+            }
+            else{
+                it->_scale = 0.2;
+            }
+            Vec2 origin = Vec2(curr.getTileTexture()->getSize().width/2, curr.getTileTexture()->getSize().height/2);
+            
+            Affine2 trans;
+            trans.scale(curr._scale);
+            trans.translate(pos);
+            
+            Size textureSize(350.0, 415.0);
+            Vec2 rectOrigin(pos - (textureSize * curr._scale)/2);
+            it->tileRect = cugl::Rect(rectOrigin, textureSize * curr._scale);
 
-        batch->draw(curr.getTileTexture(), origin, trans);
+            batch->draw(curr.getTileTexture(), origin, trans);
+        } else {
+            if(it->selected && it->inClientHand){
+                pos.y = curr.pos.y + 10;
+            }
+            if(it->selected && (it->inPile || it->discarded)){
+                it->_scale = 0.25;
+            }
+            else{
+                it->_scale = 0.2;
+            }
+            Vec2 origin = Vec2(curr.getTileTexture()->getSize().width/2, curr.getTileTexture()->getSize().height/2);
+            
+            Affine2 trans;
+            trans.scale(curr._scale);
+            trans.translate(pos);
+            
+            Size textureSize(350.0, 415.0);
+            Vec2 rectOrigin(pos - (textureSize * curr._scale)/2);
+            it->tileRect = cugl::Rect(rectOrigin, textureSize * curr._scale);
+
+            batch->draw(curr.getTileTexture(), origin, trans);
+        }
+        
     }
 //    for (const auto& it : grandmaTiles){
 //        Tile curr = (*it);
@@ -252,7 +280,8 @@ const std::shared_ptr<cugl::JsonValue> TileSet::toJson(std::vector<std::shared_p
         currTile->appendValue("id", std::to_string(tile->_id));
         currTile->appendValue("pileCoord", tile->pileCoord.toString());
         currTile->appendValue("inPile", tile->inPile);
-        currTile->appendValue("inHand", tile->inHand);
+        currTile->appendValue("inHostHand", tile->inHostHand);
+        currTile->appendValue("inClientHand", tile->inClientHand);
         currTile->appendValue("discarded", tile->discarded);
         currTile->appendValue("selected", tile->selected);
         currTile->appendValue("selectedInSet", tile->selectedInSet);
