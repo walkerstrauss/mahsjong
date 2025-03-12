@@ -124,7 +124,6 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::sha
 
     // Initialize tile set
     _tileSet = std::make_shared<TileSet>();
-    _tileSet->shuffle();
     _player = std::make_shared<Player>();
     
     if(_network->getHostStatus()){
