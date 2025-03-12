@@ -174,13 +174,13 @@ void MahsJongApp::updateLoadingScene(float timestep) {
        _network->init(_assets);
        _mainmenu.init(_assets);
        _mainmenu.setSpriteBatch(_batch);
-       _mainmenu.settingsbutton->addListener([this](const std::string& name, bool down){
-           if (!down){
-               _settings.setActive(true);
-               _mainmenu.setActive(false);
-               _scene = State::SETTINGS;
-           }
-       });
+//       _mainmenu.settingsbutton->addListener([this](const std::string& name, bool down){
+//           if (!down){
+//               _settings.setActive(true);
+//               _mainmenu.setActive(false);
+//               _scene = State::SETTINGS;
+//           }
+//       });
        _hostgame.init(_assets, _network);
        _hostgame.setSpriteBatch(_batch);
        _joingame.init(_assets, _network);

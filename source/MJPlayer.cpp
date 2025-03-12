@@ -71,9 +71,9 @@ bool Hand::initClient(std::shared_ptr<TileSet>& tileSet){
  */
 void Hand::drawFromPile(std::shared_ptr<Pile>& pile, int number){
 
-    std::vector<std::shared_ptr<TileSet::Tile>> drawnTiles = pile->tilesDrawn(number);
+    _drawnPile = pile->tilesDrawn(number);
     
-    for(auto& tile : drawnTiles){
+    for(auto& tile : _drawnPile){
         tile->inHand = true;
         tile->inPile = false;
         tile->selected = false;

@@ -1,5 +1,8 @@
 {
     "textures": {
+        "facedown": {
+            "file": "textures/facedown.png"
+        },
         "one of dot": {
             "file": "textures/one_of_dot.png"
         },
@@ -323,7 +326,7 @@
                         "type":"Anchored"
                     },
                     "data":{
-                        "key":"gameplayscene",
+                        "key":"technical_gamescene",
                         "variables":{
                             "size":[1280,720]
                         }
@@ -508,6 +511,7 @@
             "pausescene": "widgets/scene/pausescene.json",
             "pausebutton": "widgets/button/pausebutton.json",
             "gameplayscene": "widgets/scene/gameplayscene.json",
+            "technical_gamescene": "widgets/scene/technical_gamescene.json",
             "gameplayDisplaytile": "widgets/tile/gameplayDisplaytile.json",
             "gameplayDisplaytileButton": "widgets/tile/gameplayDisplaytileButton.json",
             "playhand": "widgets/tile/playhand.json",

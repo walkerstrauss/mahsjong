@@ -53,7 +53,7 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::sha
     _pauseScene->doLayout();
    
     std::shared_ptr<scene2::SceneNode> childNode = _matchScene->getChild(0);
-    _discardBtn = std::dynamic_pointer_cast<scene2::Button>(childNode->getChild(6));
+    _discardBtn = std::dynamic_pointer_cast<scene2::Button>(childNode->getChild(3));
     _tilesetUIBtn = std::dynamic_pointer_cast<scene2::Button>(_assets->get<scene2::SceneNode>("matchscene.gameplayscene.button_tileset"));
     _pauseBtn = std::dynamic_pointer_cast<scene2::Button>(childNode->getChild(1));
     _continueBtn = std::dynamic_pointer_cast<scene2::Button>(_pauseScene->getChild(0)->getChild(2));
@@ -124,7 +124,7 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::sha
 
     // Initialize tile set
     _tileSet = std::make_shared<TileSet>();
-    //Initialize the player
+    _tileSet->shuffle();
     _player = std::make_shared<Player>();
     
     if(_network->getHostStatus()){
@@ -152,6 +152,7 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::sha
     _tileSet->setAllTileTexture(assets);
     _pile = std::make_shared<Pile>(); //Init our pile
     _pile->initPile(5, _tileSet);
+    _tileSet->setBackTextures(assets);
     
     // Initialize the discard pile
     _discardPile = std::make_shared<DiscardPile>();
@@ -244,6 +245,13 @@ void GameScene::update(float timestep) {
                 _gameWin = true;
             }
 //            _player->canDraw = false;
+            
+            for (auto& tile : _player->getHand()._drawnPile) {
+                tile->setTexture(_assets->get<Texture>(tile->toString()));
+            }
+            
+            if (_player->getHand().isWinningHand()){
+                _gameWin = true;
         }
         if (_input.getKeyPressed() == KeyCode::G && _input.getKeyDown()){
             if(_player->getHand()._selectedTiles.size() != 1 || _player->getHand()._selectedTiles.size() != 2){
@@ -333,6 +341,8 @@ void GameScene::update(float timestep) {
             _network->endTurn();
         }
     }
+}
+
 
 /**
  * Draws all this to the scene's SpriteBatch.
