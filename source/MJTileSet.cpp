@@ -183,7 +183,7 @@ void TileSet::draw(const std::shared_ptr<cugl::graphics::SpriteBatch>& batch, cu
             continue;
         }
         
-        if (isHost && (it->inHostHand || it->inPile)){
+        if (isHost && (it->inHostHand || it->inPile || it->discarded)){
             if(it->selected && it->inHostHand){
                 pos.y = curr.pos.y + 10;
             }
@@ -204,7 +204,7 @@ void TileSet::draw(const std::shared_ptr<cugl::graphics::SpriteBatch>& batch, cu
             it->tileRect = cugl::Rect(rectOrigin, textureSize * curr._scale);
 
             batch->draw(curr.getTileTexture(), origin, trans);
-        } else if (!isHost && (it->inClientHand || it->inPile)){
+        } else if (!isHost && (it->inClientHand || it->inPile || it->discarded)){
             if(it->selected && it->inClientHand){
                 pos.y = curr.pos.y + 10;
             }
@@ -273,7 +273,6 @@ const std::shared_ptr<cugl::JsonValue> TileSet::toJson(std::vector<std::shared_p
         std::string key = tile->toString() + " " + std::to_string(tile->_id);
         
         std::shared_ptr<cugl::JsonValue> currTile = cugl::JsonValue::allocObject();
-        
         currTile->appendValue("suit", tile->toStringSuit());
         currTile->appendValue("rank", tile->toStringRank());
         currTile->appendValue("id", std::to_string(tile->_id));
@@ -327,6 +326,7 @@ void TileSet::updateDeck(const std::shared_ptr<cugl::JsonValue>& deckJson) {
             (*it)->selected = tileData->getBool("selected");
             (*it)->selectedInSet = tileData->getBool("selectedInSet");
             (*it)->played = tileData->getBool("played");
+            (*it)->pos = Tile::toVector(tileData->getString("pos"));
 
         }
     }

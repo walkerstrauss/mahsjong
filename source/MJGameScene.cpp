@@ -155,7 +155,7 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::sha
     _pile->initPile(5, _tileSet);
     _pile->index += 26;
     
-    _tileSet->setBackTextures(assets);
+//    _tileSet->setBackTextures(assets);
     
     if(_network->getHostStatus()){
         _network->initGame(_tileSet->toJson(_tileSet->deck));
