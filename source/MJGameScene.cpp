@@ -74,14 +74,15 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::sha
                         _discardUIScene->incrementLabel(tile);
                         
                         _player->getHand().discard(tile, _network->getHostStatus());
-                        tile->selected = false;
-                        if (_network->getHostStatus()) {
-                            tile->inHostHand = false;
-                        } else {
-                            tile->inClientHand = false;
-                        }
-                        tile->inPile = false;
-                        tile->discarded = true;
+//                        tile->selected = false;
+//                        if (_network->getHostStatus()) {
+//                            tile->inHostHand = false;
+//                        } else {
+//                            tile->inClientHand = false;
+//                        }
+//                        tile->inPile = false;
+//                        tile->discarded = true;
+                        
                     }
                     _player->getHand()._selectedTiles.clear();
                     _player->discarding = false;
@@ -134,10 +135,11 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::sha
     if(_network->getHostStatus()){
         _tileSet->initHostDeck();
         _tileSet->shuffle();
-        _network->initGame(_tileSet->toJson(_tileSet->deck));
         _player->getHand().initHost(_tileSet);
+        _network->initGame(_tileSet->toJson(_tileSet->deck));
+
     } else {
-        _tileSet->initClientDeck(_network->getDeckJson(), _network->getHostStatus());
+        _tileSet->initClientDeck(_network->getDeckJson());
         _player->getHand().initClient(_tileSet);
         _network->initGame(_tileSet->toJson(_tileSet->deck));
         }

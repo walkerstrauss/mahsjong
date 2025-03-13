@@ -120,7 +120,6 @@ bool Hand::discard(std::shared_ptr<TileSet::Tile> tile, bool isHost){
                 (*it)->inHostHand = false;
             } else {
                 (*it)->inClientHand = false;
-
             }
             (*it)->inPile = false;
             (*it)->selected = false;

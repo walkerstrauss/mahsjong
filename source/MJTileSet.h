@@ -310,7 +310,7 @@ public:
      *
      * Only call if client
      */
-    void initClientDeck(const std::shared_ptr<cugl::JsonValue>& deckJson, bool isHost);
+    void initClientDeck(const std::shared_ptr<cugl::JsonValue>& deckJson);
     
     
 #pragma mark -

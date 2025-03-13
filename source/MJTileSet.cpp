@@ -64,7 +64,7 @@ void TileSet::initHostDeck(){
  *
  * Only call if clientx
  */
-void TileSet::initClientDeck(const std::shared_ptr<cugl::JsonValue>& deckJson, bool isHost){
+void TileSet::initClientDeck(const std::shared_ptr<cugl::JsonValue>& deckJson){
     
     for(auto const& tileKey : deckJson->children()){
             const Tile::Suit suit = Tile::toSuit(tileKey->getString("suit"));
@@ -183,14 +183,14 @@ void TileSet::draw(const std::shared_ptr<cugl::graphics::SpriteBatch>& batch, cu
             continue;
         }
         
-        if (isHost && !it->inClientHand){
+        if (isHost && (it->inHostHand || it->inPile)){
             if(it->selected && it->inHostHand){
                 pos.y = curr.pos.y + 10;
             }
             if(it->selected && (it->inPile || it->discarded)){
                 it->_scale = 0.25;
             }
-            else{
+            else if (it->inPile || it->discarded){
                 it->_scale = 0.2;
             }
             Vec2 origin = Vec2(curr.getTileTexture()->getSize().width/2, curr.getTileTexture()->getSize().height/2);
@@ -204,7 +204,9 @@ void TileSet::draw(const std::shared_ptr<cugl::graphics::SpriteBatch>& batch, cu
             it->tileRect = cugl::Rect(rectOrigin, textureSize * curr._scale);
 
             batch->draw(curr.getTileTexture(), origin, trans);
-        } else if (!isHost && !it->inHostHand){
+        } else if (!isHost && (it->inClientHand)){
+            
+            CULog("in client hand or pile! %s", it->toString().c_str());
             if(it->selected && it->inClientHand){
                 pos.y = curr.pos.y + 10;
             }
@@ -312,13 +314,13 @@ void TileSet::setNextTile(std::shared_ptr<cugl::JsonValue>& nextTileJson) {
 void TileSet::updateDeck(const std::shared_ptr<cugl::JsonValue>& deckJson) {
     // Loop through each tile in the received JSON
     for (const auto& tileData : deckJson->children()) {
-        std::string key = tileData->key();  // e.g., "Bamboo 2 1"
-
+        std::string key = tileData->key();
+        
         // Find the matching tile in the current deck
         auto it = std::find_if(deck.begin(), deck.end(), [&](std::shared_ptr<Tile> tile) {
             return tile->toString() + " " + std::to_string(tile->_id) == key;
         });
-
+        
         if (it != deck.end()) {
             (*it)->inPile = tileData->getBool("inPile");
             (*it)->inHostHand = tileData->getBool("inHostHand");

@@ -101,7 +101,6 @@ std::vector<std::shared_ptr<TileSet::Tile>> Pile::tilesDrawn(int number_of_tiles
                 for (int j = 0; j < _pileSize; j++) {
                     if (_pile[i][j] != nullptr && _draw.size() < number_of_tiles) {
                         _pile[i][j]->inPile = false;
-                        _pile[i][j]->inPile = true;
                         _pile[i][j]->selected = false;
 
 
