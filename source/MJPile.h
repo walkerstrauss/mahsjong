@@ -122,7 +122,7 @@ public:
      *
      * @param pileTile  the json representation of a tile
      */
-    void removePileTile(const std::shared_ptr<cugl::JsonValue> tileJson, bool isHost, bool isHostDraw);
+    void removePileTile(const std::shared_ptr<cugl::JsonValue> tileJson, bool isHostDraw);
 };
 
 #endif /* __MJ_PILE_H__ */
