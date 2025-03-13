@@ -424,6 +424,7 @@ void GameScene::render() {
     // Check if we need to flip over next layer of the pile
     if (_pile->getVisibleSize() == 0 && _tileSet->deck.size() != 14) { //Only update pile if we still have tiles from deck
         _pile->createPile();
+        _network->broadcastDeck(_tileSet->toJson(_tileSet->deck));
     }
     
     _batch->end();
