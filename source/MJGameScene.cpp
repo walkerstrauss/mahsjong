@@ -136,13 +136,12 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::sha
         _tileSet->initHostDeck();
         _tileSet->shuffle();
         _player->getHand().initHost(_tileSet);
-        _network->initGame(_tileSet->toJson(_tileSet->deck));
-
     } else {
         _tileSet->initClientDeck(_network->getDeckJson());
         _player->getHand().initClient(_tileSet);
-        _network->initGame(_tileSet->toJson(_tileSet->deck));
         }
+    
+
     std::string msg = strtool::format("Score: %d", _player->_totalScore);
     _text = TextLayout::allocWithText(msg, assets->get<Font>("pixel32"));
     _text->layout();
@@ -154,9 +153,16 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::sha
     _tileSet->setAllTileTexture(assets);
     _pile = std::make_shared<Pile>(); //Init our pile
     _pile->initPile(5, _tileSet);
-    _pile->index += 13;
+    _pile->index += 26;
     
     _tileSet->setBackTextures(assets);
+    
+    if(_network->getHostStatus()){
+        _network->initGame(_tileSet->toJson(_tileSet->deck));
+    } else {
+        _network->broadcastDeck(_tileSet->toJson(_tileSet->deck));
+    }
+
     
     // Initialize the discard pile
     _discardPile = std::make_shared<DiscardPile>();

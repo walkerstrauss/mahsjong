@@ -111,7 +111,6 @@ void NetworkController::processData(const std::string source,
         _currentTurn = _deserializer->readUint32();
     }
     else if (msgType == "initialize game") {
-        CULog("initialized game");
         _deckJson = _deserializer->readJson();
         _status = INGAME;
     }

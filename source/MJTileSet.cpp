@@ -204,9 +204,7 @@ void TileSet::draw(const std::shared_ptr<cugl::graphics::SpriteBatch>& batch, cu
             it->tileRect = cugl::Rect(rectOrigin, textureSize * curr._scale);
 
             batch->draw(curr.getTileTexture(), origin, trans);
-        } else if (!isHost && (it->inClientHand)){
-            
-            CULog("in client hand or pile! %s", it->toString().c_str());
+        } else if (!isHost && (it->inClientHand || it->inPile)){
             if(it->selected && it->inClientHand){
                 pos.y = curr.pos.y + 10;
             }
