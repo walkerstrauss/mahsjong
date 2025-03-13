@@ -67,6 +67,8 @@ protected:
     std::shared_ptr<cugl::JsonValue> _nextTileJson;
     
     std::shared_ptr<cugl::JsonValue> _pileTile;
+    
+    bool _isHostDraw;
 public:
 #pragma mark -
 #pragma mark Constructors
@@ -179,6 +181,10 @@ public:
     
     void resetPileTile() {
         _pileTile = nullptr;
+    }
+    
+    bool getIsHostDraw() {
+        return _isHostDraw;
     }
     
     /**

@@ -120,6 +120,7 @@ void NetworkController::processData(const std::string source,
     }
     else if (msgType == "pile tile update") {
         _pileTile = _deserializer->readJson();
+        _isHostDraw = _isHost;
         _status = PILETILEUPDATE;
     }
 }
