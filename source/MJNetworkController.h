@@ -30,6 +30,8 @@ public:
         START,
         /** Ready for client to start */
         INGAME,
+        /** Waiting for a message */
+        UPDATING,
         /** Deck changed, please update */
         DECK,
         /** Pile updated  */

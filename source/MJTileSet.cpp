@@ -179,7 +179,7 @@ void TileSet::draw(const std::shared_ptr<cugl::graphics::SpriteBatch>& batch, cu
         Tile curr = (*it);
         Vec2 pos = curr.pos;
         
-        if ((pos.x == 0.0f && pos.y == 0.0f) || it->played) {
+        if (it->played) {
             continue;
         }
         
