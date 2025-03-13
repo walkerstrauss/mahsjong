@@ -94,23 +94,16 @@ std::vector<std::shared_ptr<TileSet::Tile>> Pile::tilesDrawn(int number_of_tiles
     _draw.clear(); //We should not be re-drawing tiles from previous plays
 
     while(_draw.size() < number_of_tiles){
-        if (_pile.empty() || getVisibleSize() == 0) { //If pile ran out of tiles
-            if (_tileSet->deck.size() == 14) { //If we have nothing in our deck, return what we have
-                return _draw;
-            }
-            Pile::createPile(); //Otherwise remake the pile
-        } else {
-            for (int i = 0; i < _pileSize; i++) { //Find the first available non null tile in pile and add to draw
-                for (int j = 0; j < _pileSize; j++) {
-                    if (_pile[i][j] != nullptr && _draw.size() < number_of_tiles) {
-                        _pile[i][j]->inPile = false;
-                        _pile[i][j]->selected = false;
-                        
-                        _tileSet->tilesToJson.push_back(_pile[i][j]);
+        for (int i = 0; i < _pileSize; i++) { //Find the first available non null tile in pile and add to draw
+            for (int j = 0; j < _pileSize; j++) {
+                if (_pile[i][j] != nullptr && _draw.size() < number_of_tiles) {
+                    _pile[i][j]->inPile = false;
+                    _pile[i][j]->selected = false;
+                    
+                    _tileSet->tilesToJson.push_back(_pile[i][j]);
 
-                        _draw.push_back(_pile[i][j]);
-                        _pile[i][j] = nullptr;
-                    }
+                    _draw.push_back(_pile[i][j]);
+                    _pile[i][j] = nullptr;
                 }
             }
         }

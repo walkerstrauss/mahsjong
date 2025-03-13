@@ -189,6 +189,8 @@ public:
         return _isHostDraw;
     }
     
+    void broadcastUpdating();
+    
     /**
      * Converts a decimal string to a hexadecimal string
      *

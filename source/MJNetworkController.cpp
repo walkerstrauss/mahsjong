@@ -123,6 +123,9 @@ void NetworkController::processData(const std::string source,
         _isHostDraw = _isHost;
         _status = PILETILEUPDATE;
     }
+    else if(msgType == "updating") {
+        _status = UPDATING; 
+    }
 }
 
 void NetworkController::endTurn() {
@@ -230,6 +233,14 @@ void NetworkController::broadcastTileDrawn(const std::shared_ptr<cugl::JsonValue
     
     _serializer->writeString("pile tile update");
     _serializer->writeJson(drawnTileJson);
+    
+    broadcast(_serializer->serialize());
+}
+
+void NetworkController::broadcastUpdating(){
+    _serializer->reset();
+    
+    _serializer->writeString("updating");
     
     broadcast(_serializer->serialize());
 }
