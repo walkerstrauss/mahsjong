@@ -123,8 +123,9 @@ void NetworkController::processData(const std::string source,
         _isHostDraw = _isHost;
         _status = PILETILEUPDATE;
     }
-    else if(msgType == "updating") {
-        _status = UPDATING; 
+    else if (msgType == "next layer") {
+        _deckJson = _deserializer->readJson();
+        _status = LAYER;
     }
 }
 

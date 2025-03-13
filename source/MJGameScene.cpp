@@ -239,6 +239,12 @@ void GameScene::update(float timestep) {
         _network->setStatus(NetworkController::Status::INGAME);
     }
     
+    if (_network->getStatus() == NetworkController::Status::LAYER) {
+        _tileSet->updateDeck(_network->getDeckJson());
+        _pile->createPile();
+        _network->setStatus(NetworkController::Status::INGAME);
+    }
+    
     _player->getHand().updateTilePositions();
     
     //if (_network->getCurrentTurn() == _network->getLocalPid()) {
