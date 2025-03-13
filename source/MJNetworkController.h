@@ -32,6 +32,8 @@ public:
         INGAME,
         /** Deck changed, please update */
         DECK,
+        /** Pile updated  */
+        PILETILEUPDATE,
         /** Error in connection */
         NETERROR
     };
@@ -63,7 +65,8 @@ protected:
     std::shared_ptr<cugl::JsonValue> _deckJson;
     
     std::shared_ptr<cugl::JsonValue> _nextTileJson;
-
+    
+    std::shared_ptr<cugl::JsonValue> _pileTile;
 public:
 #pragma mark -
 #pragma mark Constructors
@@ -133,6 +136,8 @@ public:
     
     void broadcastPileIndex(const int index);
     
+    void broadcastTileDrawn(const std::shared_ptr<cugl::JsonValue>& drawnTileJson);
+    
     Uint32 getLocalPid() const {
         return _localPid;
     }
@@ -159,8 +164,21 @@ public:
     bool getHostStatus(){
         return _isHost;
     }
+    
     std::shared_ptr<cugl::JsonValue> getNextTileJson(){
         return _nextTileJson;
+    }
+    
+    std::shared_ptr<cugl::JsonValue> getPileTile() {
+        return _pileTile;
+    }
+    
+    bool isNewPileTile() {
+        return _pileTile != nullptr;
+    }
+    
+    void resetPileTile() {
+        _pileTile = nullptr;
     }
     
     /**

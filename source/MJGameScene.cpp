@@ -72,21 +72,12 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::sha
                         _discardPile->addTile(tile);
                         //Add to discard UI scene
                         _discardUIScene->incrementLabel(tile);
-                        
                         _player->getHand().discard(tile, _network->getHostStatus());
-//                        tile->selected = false;
-//                        if (_network->getHostStatus()) {
-//                            tile->inHostHand = false;
-//                        } else {
-//                            tile->inClientHand = false;
-//                        }
-//                        tile->inPile = false;
-//                        tile->discarded = true;
-                        
                     }
                     _player->getHand()._selectedTiles.clear();
                     _player->discarding = false;
                     _network->broadcastDeck(_tileSet->toJson(_tileSet->deck));
+                    _tileSet->clearTilesToJson();
                     
 //                    _network->endTurn();
                 }
@@ -239,6 +230,11 @@ void GameScene::update(float timestep) {
         _network->setStatus(NetworkController::Status::INGAME);
     }
     
+    if(_network->getStatus() == NetworkController::Status::PILETILEUPDATE) {
+        _pile->removePileTile(_network->getPileTile());
+        _network->setStatus(NetworkController::Status::INGAME);
+    }
+    
     _player->getHand().updateTilePositions();
     
     //if (_network->getCurrentTurn() == _network->getLocalPid()) {
@@ -260,6 +256,7 @@ void GameScene::update(float timestep) {
                 return;
             }
             _player->getHand().drawFromPile(_pile, 1, _network->getHostStatus());
+            _network->broadcastTileDrawn(_tileSet->toJson(_tileSet->tilesToJson));
             _network->broadcastDeck(_tileSet->toJson(_tileSet->deck));
             if (_player->getHand().isWinningHand()){
                 _gameWin = true;

@@ -119,6 +119,10 @@ void NetworkController::processData(const std::string source,
         CULog("%s", _deckJson->toString().c_str());
         _status = DECK;
     }
+    else if (msgType == "pile tile update") {
+        _pileTile = _deserializer->readJson();
+        _status = PILETILEUPDATE;
+    }
 }
 
 void NetworkController::endTurn() {
@@ -221,6 +225,14 @@ void NetworkController::broadcastPileIndex(const int index){
     broadcast(_serializer->serialize());
 }
 
+void NetworkController::broadcastTileDrawn(const std::shared_ptr<cugl::JsonValue>& drawnTileJson){
+    _serializer->reset();
+    
+    _serializer->writeString("pile tile update");
+    _serializer->writeJson(drawnTileJson);
+    
+    broadcast(_serializer->serialize());
+}
 
 //
 //void NetworkController::notifyObservers(std::vector<std::string>& msg){

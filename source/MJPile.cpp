@@ -59,6 +59,7 @@ bool Pile::createPile() {
             
             tile->_scale = 0.2;
             tile->inPile = true;
+            tile->pileCoord = cugl::Vec2(i, j);
 
             float x = j * (_size.width * tile->_scale * spacingFactorX) + (_size.width * tile->_scale / 2);
             float y = i * (_size.height * tile->_scale) + (_size.height * tile->_scale / 2);
@@ -69,6 +70,9 @@ bool Pile::createPile() {
             
             tile->pos = cugl::Vec2(x * spacingFactor, y * spacingFactor) + pileOffset;
                         
+            
+            std::string key = tile->toString() + " " + std::to_string(tile->_id);
+            _pileMap.insert({key, tile->pileCoord});
             row.push_back(_tileSet->deck[index]);
             index += 1;
         }
@@ -102,7 +106,8 @@ std::vector<std::shared_ptr<TileSet::Tile>> Pile::tilesDrawn(int number_of_tiles
                     if (_pile[i][j] != nullptr && _draw.size() < number_of_tiles) {
                         _pile[i][j]->inPile = false;
                         _pile[i][j]->selected = false;
-
+                        
+                        _tileSet->tilesToJson.push_back(_pile[i][j]);
 
                         _draw.push_back(_pile[i][j]);
                         _pile[i][j] = nullptr;
@@ -112,6 +117,21 @@ std::vector<std::shared_ptr<TileSet::Tile>> Pile::tilesDrawn(int number_of_tiles
         }
     }
     return _draw;
+}
+
+void Pile::removePileTile(const std::shared_ptr<cugl::JsonValue> tileJson){
+    for(auto const& tileKey : tileJson->children()){
+        const std::string suit = tileKey->getString("suit");
+        const std::string rank = tileKey->getString("rank");
+        const std::string id = tileKey->getString("id");
+        
+        std::string key = suit + " " + rank + " " + id;
+        int x = _pileMap[key].x;
+        int y = _pileMap[key].y;
+        
+        _pile[x][y] = nullptr;
+        _pileMap.erase(key);
+    }
 }
 
 ///**
