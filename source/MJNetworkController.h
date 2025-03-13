@@ -142,6 +142,8 @@ public:
     
     void broadcastTileDrawn(const std::shared_ptr<cugl::JsonValue>& drawnTileJson);
     
+    void broadcastPileLayer(const std::shared_ptr<cugl::JsonValue>& deckJson);
+    
     Uint32 getLocalPid() const {
         return _localPid;
     }

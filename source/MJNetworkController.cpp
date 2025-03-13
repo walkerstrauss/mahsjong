@@ -238,6 +238,15 @@ void NetworkController::broadcastTileDrawn(const std::shared_ptr<cugl::JsonValue
     broadcast(_serializer->serialize());
 }
 
+void NetworkController::broadcastPileLayer(const std::shared_ptr<cugl::JsonValue>& deckJson) {
+    _serializer->reset();
+    
+    _serializer->writeString("next layer");
+    _serializer->writeJson(deckJson);
+    
+    broadcast(_serializer->serialize());
+}
+
 void NetworkController::broadcastUpdating(){
     _serializer->reset();
     
