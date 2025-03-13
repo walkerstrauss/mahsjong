@@ -445,6 +445,8 @@ public:
     }
     
     void setNextTile(std::shared_ptr<cugl::JsonValue>& nextTileJson);
+    
+    void updateDeck(const std::shared_ptr<cugl::JsonValue>& deckJson);
 };
 
 #endif /* __MJ_TILESET_H__ */

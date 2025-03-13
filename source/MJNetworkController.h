@@ -29,7 +29,9 @@ public:
         /** Host can start the game */
         START,
         /** Ready for client to start */
-        READY,
+        INGAME,
+        /** Deck changed, please update */
+        DECK,
         /** Error in connection */
         NETERROR
     };
@@ -122,6 +124,8 @@ public:
     void processData(const std::string source, const std::vector<std::byte>& data);
 
     void startGame();
+    
+    void initGame(const std::shared_ptr<cugl::JsonValue>& deckJson);
         
     void broadcastDeck(const std::shared_ptr<cugl::JsonValue>& deckJson);
     
@@ -139,6 +143,10 @@ public:
 
     Status getStatus() const {
         return _status;
+    }
+    
+    void setStatus(Status status) {
+        _status = status;
     }
     
     std::shared_ptr<cugl::JsonValue> getDeckJson(){

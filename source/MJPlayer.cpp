@@ -50,12 +50,9 @@ bool Hand::initHost(std::shared_ptr<TileSet>& tileSet){
  */
 bool Hand::initClient(std::shared_ptr<TileSet>& tileSet){
     _size = 13;
-    CULog("deck size: %zu", tileSet->deck.size());
     // draw from the deck
     for(int i = 13; i < 26; i++){
-        CULog("here");
         std::shared_ptr<TileSet::Tile> drawnTile = tileSet->deck[i];
-        CULog("%s", drawnTile->toString().c_str());
         drawnTile->inClientHand = true;
         drawnTile->_scale = 0.2;
         _tiles.push_back(drawnTile);

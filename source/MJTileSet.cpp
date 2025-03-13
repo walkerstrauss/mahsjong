@@ -308,3 +308,33 @@ void TileSet::setNextTile(std::shared_ptr<cugl::JsonValue>& nextTileJson) {
         nextTile = tileMap[key];
     }
 }
+
+void TileSet::updateDeck(const std::shared_ptr<cugl::JsonValue>& deckJson) {
+    // Loop through each tile in the received JSON
+    for (const auto& tileData : deckJson->children()) {
+        std::string key = tileData->key();  // e.g., "Bamboo 2 1"
+
+        // Find the matching tile in the current deck
+        auto it = std::find_if(deck.begin(), deck.end(), [&](std::shared_ptr<Tile> tile) {
+            return tile->toString() + " " + std::to_string(tile->_id) == key;
+        });
+
+        if (it != deck.end()) {
+            // ✅ Update the tile's state instead of re-initializing
+            (*it)->inPile = tileData->getBool("inPile");
+            (*it)->inHostHand = tileData->getBool("inHostHand");
+            (*it)->inClientHand = tileData->getBool("inClientHand");
+            (*it)->discarded = tileData->getBool("discarded");
+            (*it)->selected = tileData->getBool("selected");
+            (*it)->selectedInSet = tileData->getBool("selectedInSet");
+            (*it)->played = tileData->getBool("played");
+
+            // ✅ Update tile position if needed
+            if ((*it)->inPile) {
+                (*it)->pos = Tile::toVector(tileData->getString("pileCoord"));
+            } else {
+                (*it)->pos = Tile::toVector(tileData->getString("pos"));
+            }
+        }
+    }
+}

@@ -133,12 +133,12 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::sha
     if(_network->getHostStatus()){
         _tileSet->initHostDeck();
         _tileSet->shuffle();
-        _network->broadcastDeck(_tileSet->toJson(_tileSet->deck));
+        _network->initGame(_tileSet->toJson(_tileSet->deck));
         _player->getHand().initHost(_tileSet);
     } else {
         _tileSet->initClientDeck(_network->getDeckJson(), _network->getHostStatus());
         _player->getHand().initClient(_tileSet);
-        _network->broadcastDeck(_tileSet->toJson(_tileSet->deck));
+        _network->initGame(_tileSet->toJson(_tileSet->deck));
         }
     std::string msg = strtool::format("Score: %d", _player->_totalScore);
     _text = TextLayout::allocWithText(msg, assets->get<Font>("pixel32"));
@@ -223,6 +223,11 @@ void GameScene::update(float timestep) {
     
     if (_gameLose || _gameWin) {
         return;
+    }
+    
+    if (_network->getStatus() == NetworkController::Status::DECK) {
+        _tileSet->updateDeck(_network->getDeckJson());
+        _network->setStatus(NetworkController::Status::INGAME);
     }
     
     _player->getHand().updateTilePositions();
