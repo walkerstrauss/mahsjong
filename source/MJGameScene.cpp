@@ -262,6 +262,9 @@ void GameScene::update(float timestep) {
             _player->getHand().drawFromPile(_pile, 1, _network->getHostStatus());
             _network->broadcastUpdating();
             _network->broadcastTileDrawn(_tileSet->toJson(_tileSet->tilesToJson));
+            if (_pile->getVisibleSize() == 0 && _tileSet->deck.size() != 14) {
+                _pile->createPile();
+            }
             _network->broadcastDeck(_tileSet->toJson(_tileSet->deck));
             if (_player->getHand().isWinningHand()){
                 _gameWin = true;
@@ -371,7 +374,6 @@ void GameScene::update(float timestep) {
 }
 
 
-
 /**
  * Draws all this to the scene's SpriteBatch.
  */
@@ -425,13 +427,6 @@ void GameScene::render() {
 //    _batch->setColor(Color4::GREEN);
 //    _batch->drawText(_text,Vec2(getSize().width - _text->getBounds().size.width - 10, getSize().height-_text->getBounds().size.height));
     
-    // Check if we need to flip over next layer of the pile
-    if(!(_network->getStatus() == NetworkController::Status::UPDATING)){
-        if (_pile->getVisibleSize() == 0 && _tileSet->deck.size() != 14) { //Only update pile if we still have tiles from deck
-            _pile->createPile();
-            _network->broadcastDeck(_tileSet->toJson(_tileSet->deck));
-        }
-    }
     _batch->end();
 }
 
