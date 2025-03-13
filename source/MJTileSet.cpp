@@ -72,8 +72,8 @@ void TileSet::initClientDeck(const std::shared_ptr<cugl::JsonValue>& deckJson, b
             const int id = std::stoi(tileKey->getString("id"));
             const cugl::Vec2 pileCoord = Tile::toVector(tileKey->getString("pileCoord"));
             const bool inPile = tileKey->getBool("inPile");
-            const bool inHostHand = tileKey->getBool("inHostHand") && isHost ?  true : false;
-            const bool inClientHand = tileKey->getBool("inClientHand") && isHost ? true : false;
+            const bool inHostHand = tileKey->getBool("inHostHand");
+            const bool inClientHand = tileKey->getBool("inClientHand");
             const bool discarded = tileKey->getBool("discarded");
             const bool selected = tileKey->getBool("selected");
             const bool selectedInSet = tileKey->getBool("selectedInSet");
@@ -85,7 +85,6 @@ void TileSet::initClientDeck(const std::shared_ptr<cugl::JsonValue>& deckJson, b
             newTile->_id = id;
             newTile->pileCoord = pileCoord;
             newTile->inPile = inPile;
-            newTile->inHostHand = inHostHand;
             newTile->discarded = discarded;
             newTile->selected = selected;
             newTile->selectedInSet = selectedInSet;
