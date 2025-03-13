@@ -232,6 +232,7 @@ void GameScene::update(float timestep) {
     
     if(_network->getStatus() == NetworkController::Status::PILETILEUPDATE) {
         _pile->removePileTile(_network->getPileTile());
+        _tileSet->clearTilesToJson();
         _network->setStatus(NetworkController::Status::INGAME);
     }
     

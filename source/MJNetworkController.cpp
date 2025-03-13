@@ -116,7 +116,6 @@ void NetworkController::processData(const std::string source,
     }
     else if (msgType == "update deck") {
         _deckJson = _deserializer->readJson();
-        CULog("%s", _deckJson->toString().c_str());
         _status = DECK;
     }
     else if (msgType == "pile tile update") {
