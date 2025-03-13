@@ -118,7 +118,7 @@ std::vector<std::shared_ptr<TileSet::Tile>> Pile::tilesDrawn(int number_of_tiles
     return _draw;
 }
 
-void Pile::removePileTile(const std::shared_ptr<cugl::JsonValue> tileJson){
+void Pile::removePileTile(const std::shared_ptr<cugl::JsonValue> tileJson, bool isHost){
     for(auto const& tileKey : tileJson->children()){
         const std::string suit = tileKey->getString("suit");
         const std::string rank = tileKey->getString("rank");
@@ -129,6 +129,14 @@ void Pile::removePileTile(const std::shared_ptr<cugl::JsonValue> tileJson){
         int y = _pileMap[key].y;
         
         _pile[x][y]->inPile = false;
+        if(isHost){
+            _pile[x][y]->inHostHand = true;
+            _pile[x][y]->inClientHand = false;
+        }
+        else{
+            _pile[x][y]->inClientHand = true;
+            _pile[x][y]->inHostHand = false;
+        }
         _pile[x][y] = nullptr;
         _pileMap.erase(key);
     }
