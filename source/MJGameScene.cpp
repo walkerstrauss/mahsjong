@@ -85,6 +85,7 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::sha
                     }
                     _player->getHand()._selectedTiles.clear();
                     _player->discarding = false;
+                    _network->broadcastDeck(_tileSet->toJson(_tileSet->deck));
                     
 //                    _network->endTurn();
                 }

@@ -183,7 +183,7 @@ void TileSet::draw(const std::shared_ptr<cugl::graphics::SpriteBatch>& batch, cu
             continue;
         }
         
-        if (isHost){
+        if (isHost && !it->inClientHand){
             if(it->selected && it->inHostHand){
                 pos.y = curr.pos.y + 10;
             }
@@ -204,7 +204,7 @@ void TileSet::draw(const std::shared_ptr<cugl::graphics::SpriteBatch>& batch, cu
             it->tileRect = cugl::Rect(rectOrigin, textureSize * curr._scale);
 
             batch->draw(curr.getTileTexture(), origin, trans);
-        } else {
+        } else if (!isHost && !it->inHostHand){
             if(it->selected && it->inClientHand){
                 pos.y = curr.pos.y + 10;
             }
@@ -320,7 +320,6 @@ void TileSet::updateDeck(const std::shared_ptr<cugl::JsonValue>& deckJson) {
         });
 
         if (it != deck.end()) {
-            // ✅ Update the tile's state instead of re-initializing
             (*it)->inPile = tileData->getBool("inPile");
             (*it)->inHostHand = tileData->getBool("inHostHand");
             (*it)->inClientHand = tileData->getBool("inClientHand");
@@ -329,12 +328,6 @@ void TileSet::updateDeck(const std::shared_ptr<cugl::JsonValue>& deckJson) {
             (*it)->selectedInSet = tileData->getBool("selectedInSet");
             (*it)->played = tileData->getBool("played");
 
-            // ✅ Update tile position if needed
-            if ((*it)->inPile) {
-                (*it)->pos = Tile::toVector(tileData->getString("pileCoord"));
-            } else {
-                (*it)->pos = Tile::toVector(tileData->getString("pos"));
-            }
         }
     }
 }
