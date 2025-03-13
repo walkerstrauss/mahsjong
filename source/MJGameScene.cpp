@@ -268,7 +268,7 @@ void GameScene::update(float timestep) {
 //            _network->broadcastUpdating();
             _network->broadcastTileDrawn(_tileSet->toJson(_tileSet->tilesToJson));
             if (_pile->getVisibleSize() == 0 && _tileSet->deck.size() != 14) {
-                _pile->createPile();
+                _network->broadcastPileLayer();
             }
             _network->broadcastDeck(_tileSet->toJson(_tileSet->deck));
             if (_player->getHand().isWinningHand()){

@@ -124,7 +124,6 @@ void NetworkController::processData(const std::string source,
         _status = PILETILEUPDATE;
     }
     else if (msgType == "next layer") {
-        _deckJson = _deserializer->readJson();
         _status = LAYER;
     }
 }
@@ -238,11 +237,10 @@ void NetworkController::broadcastTileDrawn(const std::shared_ptr<cugl::JsonValue
     broadcast(_serializer->serialize());
 }
 
-void NetworkController::broadcastPileLayer(const std::shared_ptr<cugl::JsonValue>& deckJson) {
+void NetworkController::broadcastPileLayer() {
     _serializer->reset();
     
     _serializer->writeString("next layer");
-    _serializer->writeJson(deckJson);
     
     broadcast(_serializer->serialize());
 }
