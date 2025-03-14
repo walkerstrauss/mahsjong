@@ -96,7 +96,7 @@ void TileSet::initClientDeck(const std::shared_ptr<cugl::JsonValue>& deckJson){
             newTile->inClientHand = inClientHand;
         
         
-            tileMap.insert({newTile->toString() + " " + std::to_string(newTile->_id), newTile});
+            tileMap.insert({newTile->toString() + std::to_string(newTile->_id), newTile});
             deck.emplace_back(newTile);
         }
     }

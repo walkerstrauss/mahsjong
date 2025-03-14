@@ -69,6 +69,7 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::sha
                     _player->discarding = true;
                     for (auto& tile : _player->getHand()._selectedTiles) {
                         //Add to discard pile
+                        tile->selected = false;
                         _discardPile->addTile(tile);
                         _tileSet->tilesToJson.push_back(tile);
                         _network->broadcastNewDiscard(_tileSet->toJson(_tileSet->tilesToJson));
@@ -211,6 +212,9 @@ void GameScene::reset() {
  */
 void GameScene::update(float timestep) {
     
+    if(_discardPile->getTopTile()){
+        CULog(_discardPile->getTopTile()->toString().c_str());
+    }
 //    for(auto const& tile : _player->getHand()._tiles){
 //        CULog("%s, %s", tile->toString().c_str(), tile->pos.toString().c_str());
 //    }
@@ -244,6 +248,8 @@ void GameScene::update(float timestep) {
     
     if(_discardPile->getTopTile() && _network->getStatus() == NetworkController::Status::REMOVEDISCARD){
         _discardUIScene->decrementLabel(_discardPile->getTopTile());
+        _discardPile->getTopTile()->played = true;
+        _discardPile->getTopTile()->discarded = false;
         _discardPile->removeTopTile();
         _network->setStatus(NetworkController::Status::INGAME);
     }
@@ -254,9 +260,9 @@ void GameScene::update(float timestep) {
             std::string rank = tileKey->getString("rank");
             std::string id = tileKey->getString("id");
             
-            if(!_discardPile->getTopTile() || (_discardPile->getTopTile()->toString() != rank + " " + suit && std::to_string(_discardPile->getTopTile()->_id) != id)){
-                _discardPile->addTile(_tileSet->tileMap[rank + " " + suit + " " + id]);
-                _discardUIScene->incrementLabel(_tileSet->tileMap[rank + " " + suit + " " + id]);
+            if(!_discardPile->getTopTile() || (_discardPile->getTopTile()->toString() + std::to_string(_discardPile->getTopTile()->_id)) != rank + " of " + suit + id){
+                _discardPile->addTile(_tileSet->tileMap[rank + " of " + suit + " " + id]);
+                _discardUIScene->incrementLabel(_tileSet->tileMap[rank + " of " + suit + " " + id]);
                 _network->setStatus(NetworkController::Status::INGAME);
             }
         }
@@ -317,7 +323,7 @@ void GameScene::update(float timestep) {
             _gameWin = true;
         }
         if (_input.getKeyPressed() == KeyCode::G && _input.getKeyDown()){
-            if(_player->getHand()._selectedTiles.size() != 1 || _player->getHand()._selectedTiles.size() != 2){
+            if(_player->getHand()._selectedTiles.size() != 1 && _player->getHand()._selectedTiles.size() != 2){
                 CULog("Must have 1 or 2 tiles selected in hand");
                 return;
             }
