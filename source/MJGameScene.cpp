@@ -239,10 +239,28 @@ void GameScene::update(float timestep) {
         _network->setStatus(NetworkController::Status::INGAME);
     }
     
+    std::shared_ptr<TileSet::Tile> lastTile = nullptr;
+    if (!_player->getHand()._drawnPile.empty()) {
+        lastTile = _player->getHand()._drawnPile.back();
+    }
+    
+    if(_network->getStatus() == NetworkController::Status::LAYER) {
+        _pile->createPile();
+        
+        if (lastTile) {
+            lastTile->inPile = false;
+            lastTile->inHostHand = _network->getHostStatus();
+            lastTile->inClientHand = !_network->getHostStatus();
+            _player->getHand()._tiles.push_back(lastTile); // Ensure tile remains in hand
+        }
+        
+        _network->broadcastDeck(_tileSet->toJson(_tileSet->deck));
+        _network->setStatus(NetworkController::Status::INGAME);
+    }
+    
     
     if (_pile->getVisibleSize() == 0) {
-        _pile->createPile();
-        _network->broadcastDeck(_tileSet->toJson(_tileSet->deck));
+        _network->broadcastPileLayer();
     }
     
     _player->getHand().updateTilePositions();
