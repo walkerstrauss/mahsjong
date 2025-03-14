@@ -145,7 +145,8 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::sha
 
     _tileSet->setAllTileTexture(assets);
     _pile = std::make_shared<Pile>(); //Init our pile
-    _pile->initPile(3, _tileSet);
+    _pile->initPile(5, _tileSet);
+
     
 //    _tileSet->setBackTextures(assets);
     
@@ -264,7 +265,6 @@ void GameScene::update(float timestep) {
     }
     
     if(_network->getStatus() == NetworkController::Status::LAYER) {
-        CULog("%d", _pile->index);
         _pile->createPile();
         
 //        _network->broadcastDeck(_tileSet->toJson(_tileSet->deck));
