@@ -24,6 +24,8 @@ private:
 public:
 	/** Two dimensional vector representing pile tiles */
 	std::vector<std::vector<std::shared_ptr<TileSet::Tile>>> _pile;
+    /** Map containing all tiles and their pile coordinates */
+    std::map<std::string, cugl::Vec2> _pileMap;
     /** Vector representing tiles drawn from the pile */
 	std::vector<std::shared_ptr<TileSet::Tile>> _draw;
     /** A reference the tileset in our game */
@@ -31,7 +33,7 @@ public:
 	/** Stores the location of our pair in the pile */
     std::vector<std::shared_ptr<TileSet::Tile>> _pairs;
     /** Index of the tileset to start drawing to the pile from */
-    int index = 14;
+    int index = 26;
     
 #pragma mark -
 #pragma mark Constructors
@@ -114,6 +116,13 @@ public:
      * @param player    the player for the game
      */
     void pairs(const cugl::Vec2 mousePos, const std::shared_ptr<Player>& player);
+    
+    /**
+     * Updates a singular tile within the pile
+     *
+     * @param pileTile  the json representation of a tile
+     */
+    void removePileTile(const std::shared_ptr<cugl::JsonValue> tileJson, bool isHostDraw);
 };
 
 #endif /* __MJ_PILE_H__ */

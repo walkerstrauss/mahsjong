@@ -27,9 +27,9 @@ public:
         /** An enum to represent tile suits */
         enum class Suit : int {
             WILD_SUIT,
+            CRAK,
             BAMBOO,
-            DOT,
-            CRAK
+            DOT
         };
         
         /** An enum to represent tile rank (1-9 + 10 for wild tiles) */
@@ -52,14 +52,18 @@ public:
         Tile::Suit _suit;
         /** Id for differentiating duplicate copies of a card from one another – gma's tiles have an _id of -1 */
         int _id;
-        /** Whether or not the tile is in the pile */
-        bool inPile;
         /** The position of the tile (row, col) in the pile */
         cugl::Vec2 pileCoord;
-        /** Whether or not the tile is in the player's hand */
-        bool inHand;
+        /** Whether or not the tile is in the pile */
+        bool inPile;
+        /** Whether or not the tile is in the host's hand */
+        bool inHostHand;
+        /** Whether or not the tile is in the client's hand*/
+        bool inClientHand;
         /** Boolean flag for if this tile has been discarded */
         bool discarded;
+        /** Boolean flag for it this tile is the top tile of the discard pile */
+        bool topTile;
         /** Whether the player has selected the tile */
         bool selected;
         /** Whether the player has selected the tile and it is in a set */
@@ -72,7 +76,7 @@ public:
         cugl::Rect tileRect;
         /** The scale of the tile */
         float _scale;
-    
+        
 #pragma mark -
 #pragma mark Tile Constructors
         /**
@@ -100,7 +104,7 @@ public:
          * @return the associated suit for the tile it was called from.
          */
         Tile::Suit getSuit() const { return _suit; }
-
+        
         /**
          * Method to update the tiles
          *
@@ -171,7 +175,51 @@ public:
                     break;
                 default:
                     return "no valid suit";
+                    
             }
+        }
+        
+        static Tile::Rank toRank(std::string rank) {
+            if (rank == "one") {
+                return Tile::Rank::ONE;
+            } else if (rank == "two") {
+                return Tile::Rank::TWO;
+            } else if (rank == "three") {
+                return Tile::Rank::THREE;
+            } else if (rank == "four") {
+                return Tile::Rank::FOUR;
+            } else if (rank == "five") {
+                return Tile::Rank::FIVE;
+            } else if (rank == "six") {
+                return Tile::Rank::SIX;
+            } else if (rank == "seven") {
+                return Tile::Rank::SEVEN;
+            } else if (rank == "eight") {
+                return Tile::Rank::EIGHT;
+            } else if (rank == "nine") {
+                return Tile::Rank::NINE;
+            } else {
+                throw std::invalid_argument("No valid rank");
+            }
+        }
+        
+        static Tile::Suit toSuit(std::string suit) {
+            if (suit == "bamboo") {
+                return Tile::Suit::BAMBOO;
+            } else if (suit == "dot") {
+                return Tile::Suit::DOT;
+            } else if (suit == "crak") {
+                return Tile::Suit::CRAK;
+            } else {
+                throw std::invalid_argument("No valid suit");
+            }
+        }
+        
+        static cugl::Vec2 toVector(std::string str){
+            size_t commaPos = str.find(",");
+            float x = std::stof(str.substr(1, commaPos));
+            float y = std::stof(str.substr(commaPos + 1, str.length() - 1));
+            return cugl::Vec2(x, y);
         }
         
         /**
@@ -198,7 +246,8 @@ public:
          * @param assets    the asset manager to get the texture from
          */
         void setWildTexture(const std::shared_ptr<cugl::AssetManager>& assets);
-                
+        
+        
         /**
          * Method to get the tile texture
          *
@@ -207,18 +256,29 @@ public:
         std::shared_ptr<cugl::graphics::Texture> getTileTexture(){
             return _texture;
         }
+        
+        /**
+         * Overloading operator to directly compare two tiles
+         */
+        bool operator==(std::shared_ptr<Tile>& tile){
+            if(this->toString() == tile->toString() && this->_id == tile->_id){
+                return true;
+            }
+            return false;
+        }
     };
     
 public:
     /** Deck with all of the tiles */
     std::vector<std::shared_ptr<Tile>> deck;
+    /** Unsorted set containing tiles in the deck */
+    std::map<std::string, std::shared_ptr<Tile>> tileMap;
     /** Grandma's favorite tiles */
     std::vector<std::shared_ptr<Tile>> grandmaTiles;
     /** Reference to texture for grandma tile text */
     std::shared_ptr<cugl::graphics::Texture> gmaTexture;
-    
+    /** Random Generator */
     cugl::Random rdTileSet;
-    
      /** Wild tile set to draw from */
     std::vector<std::shared_ptr<Tile>> wildTiles;
     /** Number of wild tiles we have initilalized */
@@ -227,17 +287,33 @@ public:
     int tileCount;
     /** The center of a tile */
     cugl::Vec2 _center;
-
+    /** Pointer to next tile to be drawn */
+    std::shared_ptr<Tile> nextTile;
+    /** Set of tiles to be processed for networking */
+    std::vector<std::shared_ptr<Tile>> tilesToJson;
+    
 #pragma mark -
 #pragma mark Tileset Constructors
     
     /**
-     * Initializes the **STARTING** representation of the deck.
-     *
-     * When creating a new level, call shuffle to reshuffle the tileSet and create
-     * the pile and hand by iterating through the tileSet
+     * Initializes an empty deck.
      */
-    TileSet();
+    TileSet() { rdTileSet.init(); }
+    
+    /**
+     * Initializes deck to a **STARTING** representation of numbered tiles
+     *
+     * Only call if host
+     */
+    void initHostDeck();
+    
+    /**
+     * Initializes deck to a **STARTING** representation of numbered tiles
+     *
+     * Only call if client
+     */
+    void initClientDeck(const std::shared_ptr<cugl::JsonValue>& deckJson);
+    
     
 #pragma mark -
 #pragma mark Tileset Gameplay Handling
@@ -329,9 +405,22 @@ public:
     void setAllTileTexture(const std::shared_ptr<cugl::AssetManager>& assets);
     
     /**
+     * Sets the texture of a facedown tile
+     *
+     * @param assets    the asset manager to get the texture from
+     */
+    void setBackTextures(const std::shared_ptr<cugl::AssetManager>& assets);
+    /**
      * Draws the tiles in the tileset to the screen
      */
-    void draw(const std::shared_ptr<cugl::graphics::SpriteBatch>& batch, cugl::Size size);
+    void draw(const std::shared_ptr<cugl::graphics::SpriteBatch>& batch, cugl::Size size, bool isHost);
+    
+    /**
+     * Creates a cugl::JsonValue representation of the current state of the deck
+     *
+     * @Returns std::shared_ptr<cugl::JsonVaue>
+     */
+    const std::shared_ptr<cugl::JsonValue> toJson(std::vector<std::shared_ptr<Tile>> tiles);
     
     /**
      * Randomly generates a suit with type Tile::Suit
@@ -352,6 +441,14 @@ public:
         int randRank = static_cast<int>(rdTileSet.getOpenUint64(1, 11));
         return static_cast<TileSet::Tile::Rank>(randRank);
     };
+    
+    void clearTilesToJson(){
+        tilesToJson.clear();
+    }
+    
+    void setNextTile(std::shared_ptr<cugl::JsonValue>& nextTileJson);
+    
+    void updateDeck(const std::shared_ptr<cugl::JsonValue>& deckJson);
 };
 
 #endif /* __MJ_TILESET_H__ */

@@ -29,13 +29,34 @@ Hand::Hand(Player* player) {
  *
  * @param tileSet   the tileset to draw from
  */
-bool Hand::init(std::shared_ptr<TileSet>& tileSet){
+bool Hand::initHost(std::shared_ptr<TileSet>& tileSet){
+    _size = 13;
     // draw from the deck
-    for(int i = 0; i<14; i++){
+    for(int i = 0; i < _size; i++){
         std::shared_ptr<TileSet::Tile> drawnTile = tileSet->deck[i];
-        drawnTile->inHand = true;
+        drawnTile->inHostHand = true;
+        drawnTile->_scale = 0.2;
+        
+        _tiles.push_back(drawnTile);
+    }
+    
+    return true;
+}
+
+/**
+ * Initializes a new client hand by pulling 14 tiles from the game tileset
+ *
+ * @param tileSet   the tileset to draw from
+ */
+bool Hand::initClient(std::shared_ptr<TileSet>& tileSet){
+    _size = 13;
+    // draw from the deck
+    for(int i = 13; i < 26; i++){
+        std::shared_ptr<TileSet::Tile> drawnTile = tileSet->deck[i];
+        drawnTile->inClientHand = true;
         drawnTile->_scale = 0.2;
         _tiles.push_back(drawnTile);
+    
     }
     
     return true;
@@ -49,46 +70,67 @@ bool Hand::init(std::shared_ptr<TileSet>& tileSet){
  *
  * @param pile      the pile to draw to our hand from
  */
-void Hand::drawFromPile(std::shared_ptr<Pile>& pile){
-    if(_tiles.size() > 14){
-         return; // Never draw if hand is full
-     }
+void Hand::drawFromPile(std::shared_ptr<Pile>& pile, int number, bool isHost){
 
-    std::vector<std::shared_ptr<TileSet::Tile>> drawnTiles = pile->tilesDrawn(static_cast<int>(14) - static_cast<int>(_tiles.size()));
+    _drawnPile = pile->tilesDrawn(number);
     
-    if(drawnTiles.size() != static_cast<int>(14) - static_cast<int>(_tiles.size())){
-        return; // Stop drawing when your hand is full
-    }
-    
-    for(auto& tile : drawnTiles){
-        tile->inHand = true;
+    for(auto& tile : _drawnPile){
+        if (isHost) {
+            tile->inHostHand = true;
+        } else {
+            tile->inClientHand = true;
+
+        }
+        tile->inPile = false;
+        tile->selected = false;
+        tile->discarded = false;
         _tiles.push_back(tile); // Add drawn tiles to hand
     }
  }
+
+void Hand::drawFromDiscard(std::shared_ptr<TileSet::Tile> tile, bool isHost) {
+    if (!tile) {
+        return;
+    }
+    
+    if (isHost) {
+        tile->inHostHand = true;
+    } else {
+        tile->inClientHand = true;
+
+    }
+    tile->discarded = false;
+    tile->inPile = false;
+    tile->selected = false; 
+    _tiles.push_back(tile);
+}
 
 /**
  * Discards a single specified tile from our hand
  *
  * @param tile      the tile to discard from out hand
  */
-void Hand::discard(std::shared_ptr<TileSet::Tile> tile){
-    
-    if(!tile || _selectedTiles.size() > 5){
-        CULog("Cannot discard more than 5 tiles or invalid tiles");
-    }
-    
+bool Hand::discard(std::shared_ptr<TileSet::Tile> tile, bool isHost){
     auto it = _tiles.begin();
     while(it != _tiles.end()){
         if (*it == tile) {
             // if we find the tile, discard it
             (*it)->discarded = true;
-            (*it)->inHand = false;
+            if (isHost) {
+                (*it)->inHostHand = false;
+            } else {
+                (*it)->inClientHand = false;
+            }
+            (*it)->inPile = false;
+            (*it)->selected = false;
+
             _tiles.erase(it);
-            _discardCount++;
+//            _discardCount++;
         } else {
             ++it;
         }
     }
+    return true;
 }
 
 /**
@@ -128,7 +170,7 @@ bool Hand::makeSet(){
  *
  * @return true if a set was played sucessfully and false otherwise.
  */
-bool Hand::playSet(const std::shared_ptr<TileSet>& tileSet){
+bool Hand::playSet(const std::shared_ptr<TileSet>& tileSet, bool isHost){
     if (_selectedSets.empty()) {
            return false;
        }
@@ -140,7 +182,12 @@ bool Hand::playSet(const std::shared_ptr<TileSet>& tileSet){
         while (it != _tiles.end()) {
             if (std::find(set.begin(), set.end(), *it) != set.end()) {
                 (*it)->played = true;
-                (*it)->inHand = false;
+                if (isHost) {
+                    (*it)->inHostHand = false;
+                } else {
+                    (*it)->inClientHand = false;
+
+                }
                 (*it)->discarded = false; // because it was played, not discarded.
                 
                 for(const auto& gTile : tileSet->grandmaTiles){
@@ -312,20 +359,95 @@ bool Hand::isOfaKind(const std::vector<std::shared_ptr<TileSet::Tile>>& selected
     return true;
 }
 
+bool Hand::isWinningHand() {
+    
+    if (_tiles.size() == _size + 1) {
+        std::vector<std::shared_ptr<TileSet::Tile>> sortedHand = getSortedTiles(_tiles);
+        
+        std::map<std::pair<TileSet::Tile::Rank, TileSet::Tile::Suit>, int> tileCounts;
+        for (const auto& tile : sortedHand) {
+            tileCounts[{tile->getRank(), tile->getSuit()}]++;
+        }
+        
+        return onePairFourSets(tileCounts, 0, 0);
+    }
+    return false;
+}
+
+bool Hand::onePairFourSets(std::map<std::pair<TileSet::Tile::Rank, TileSet::Tile::Suit>, int>& tileCounts, int pair, int sets) {
+    
+    if (pair == 1 && sets == _size / 3) {
+        return true;
+    }
+    
+    for (auto& [tile, count] : tileCounts) {
+        
+        if (count == 0) continue;
+        
+        // Make Pong
+        if (count >= 3) {
+            tileCounts[tile] -= 3;
+            if (onePairFourSets(tileCounts, pair, sets + 1)) {
+                return true;
+            }
+            tileCounts[tile] += 3;
+        }
+        
+        // Make Pair
+        if (count >= 2) {
+            tileCounts[tile] -= 2;
+            if (onePairFourSets(tileCounts, pair + 1, sets)) {
+                return true;
+            }
+            tileCounts[tile] += 2;
+        }
+        
+        // Make Chow
+        TileSet::Tile::Rank rank = tile.first;
+        TileSet::Tile::Suit suit = tile.second;
+        
+        if (rank <= TileSet::Tile::Rank::SEVEN) {
+            auto nextTile1 = std::make_pair(static_cast<TileSet::Tile::Rank>(static_cast<int>(rank) + 1), suit);
+            auto nextTile2 = std::make_pair(static_cast<TileSet::Tile::Rank>(static_cast<int>(rank) + 2), suit);
+            
+            if (tileCounts[nextTile1] > 0 && tileCounts[nextTile2] > 0) {
+                tileCounts[tile]--;
+                tileCounts[nextTile1]--;
+                tileCounts[nextTile2]--;
+                
+                if (onePairFourSets(tileCounts, pair, sets + 1)) {
+                    return true;
+                }
+                
+                tileCounts[tile]++;
+                tileCounts[nextTile1]++;
+                tileCounts[nextTile2]++;
+            }
+        }
+    }
+    return false;
+}
+
 /**
  * Method to sort the tiles by Rank in ascending order.
  *
  * @param selectedTiles     a vector of selected tiles.
- * @return a vector of tiles sorted by Rank
+ * @return a vector of tiles sorted by Rank and Suit
  */
 std::vector<std::shared_ptr<TileSet::Tile>> Hand::getSortedTiles(const std::vector<std::shared_ptr<TileSet::Tile>>& selectedTiles) {
     std::vector<std::shared_ptr<TileSet::Tile>> sortedTiles = selectedTiles; // creates a copy of the selectedTiles
     
     std::sort(sortedTiles.begin(), sortedTiles.end(),
-              [](const std::shared_ptr<TileSet::Tile>& a,
-                 const std::shared_ptr<TileSet::Tile>& b) { return a->getRank() < b->getRank();});
+        [](const std::shared_ptr<TileSet::Tile>& a, const std::shared_ptr<TileSet::Tile>& b) {
+            if (a->getSuit() == b->getSuit()) {
+                return a->getRank() < b->getRank(); // Sort by rank if suit is the same
+            }
+            return a->getSuit() < b->getSuit(); // Otherwise, sort by suit
+        }
+    );
     return sortedTiles;
 }
+
 
 void Hand::updateTilePositions(){
   float startX = 140.0f; // Starting x position for hand tile positioning
@@ -359,7 +481,7 @@ bool Hand::hasJack(std::vector<std::shared_ptr<TileSet::Tile>> selectedTiles){
  *
  * @param mousePos      the position of the mouse in this frame
  */
-void Hand::clickedTile(Vec2 mousePos) {
+std::shared_ptr<TileSet::Tile> Hand::clickedTile(Vec2 mousePos) {
     for (const auto& tile : _tiles) {
         if (tile) {
             if (tile->tileRect.contains(mousePos)) {
@@ -368,13 +490,16 @@ void Hand::clickedTile(Vec2 mousePos) {
                     auto it = std::find(_selectedTiles.begin(), _selectedTiles.end(), tile);
                     if (it != _selectedTiles.end()) {
                         _selectedTiles.erase(it);
+                        return tile;
                     }
                 } else {
                     tile->selected = true;
                     _selectedTiles.push_back(tile);
+                    return tile;
                 }
             }
         }
     }
+    return nullptr;
 }
 

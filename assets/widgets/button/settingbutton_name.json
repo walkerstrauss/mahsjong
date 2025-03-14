@@ -1,0 +1,155 @@
+{
+    "variables": {
+        "text": ["children", "up", "children", "Notification","data","text"],
+        "size": ["children", "up", "data", "size"]
+    },
+    "contents": {
+        "type": "Button",
+        "format": {
+            "type": "Anchored"
+        },
+        "data": {
+            "anchor": [
+                0,
+                0
+            ],
+            "size": [
+                247,
+                61
+            ],
+            "angle": 0,
+            "position": [
+                388,
+                350
+            ],
+            "visible": true,
+            "upnode": "up"
+        },
+        "children": {
+            "up": {
+                "type": "Node",
+                "format": {
+                    "type": "Anchored"
+                },
+                "data": {
+                    "anchor": [
+                        0,
+                        1
+                    ],
+                    "size": [
+                        247,
+                        61
+                    ],
+                    "angle": 0,
+                    "position": [
+                        0,
+                        0
+                    ],
+                    "visible": true
+                },
+                "children": {
+                    "button_w_icon2": {
+                        "type": "Image",
+                        "data": {
+                            "texture": "button_w_icon2",
+                            "anchor": [
+                                0,
+                                0
+                            ],
+                            "size": [
+                                238,
+                                61
+                            ],
+                            "angle": 0,
+                            "position": [
+                                9,
+                                0
+                            ],
+                            "visible": true
+                        },
+                        "layout": {
+                            "x_anchor": "left",
+                            "y_anchor": "bottom",
+                            "absolute": false,
+                            "x_offset": 0.04,
+                            "y_offset": 0
+                        }
+                    },
+                    "notification": {
+                        "type": "Image",
+                        "data": {
+                            "texture": "notification",
+                            "anchor": [
+                                0,
+                                0
+                            ],
+                            "size": [
+                                60,
+                                60
+                            ],
+                            "angle": 0,
+                            "position": [
+                                0,
+                                1
+                            ],
+                            "visible": true
+                        },
+                        "layout": {
+                            "x_anchor": "left",
+                            "y_anchor": "bottom",
+                            "absolute": false,
+                            "x_offset": 0,
+                            "y_offset": 0.02
+                        }
+                    },
+                    "Notification": {
+                        "type": "Label",
+                        "data": {
+                            "anchor": [
+                                0,
+                                1
+                            ],
+                            "size": [
+                                143,
+                                29
+                            ],
+                            "position": [
+                                67,
+                                16
+                            ],
+                            "angle": 0,
+                            "visible": true,
+                            "font": "sansBold24",
+                            "text": "Notification",
+                            "foreground": "#006d3fff",
+                            "background": "#00000000",
+                            "padding": [
+                                0,
+                                0,
+                                0,
+                                0
+                            ],
+                            "valign": "middle",
+                            "halign": "center"
+                        },
+                        "children": {},
+                        "layout": {
+                            "x_anchor": "left",
+                            "y_anchor": "top",
+                            "absolute": false,
+                            "x_offset": 0.5,
+                            "y_offset": 0.5
+                        }
+                    }
+                },
+                "layout": {
+                    "x_anchor": "left",
+                    "y_anchor": "top",
+                    "absolute": false,
+                    "x_offset": 0,
+                    "y_offset": 0
+                }
+            }
+        }
+    }
+}

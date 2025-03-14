@@ -38,6 +38,8 @@ private:
 public:
     // The tiles in our hand
     std::vector<std::shared_ptr<TileSet::Tile>> _tiles;
+    // Drawn pile tiles at a given time
+    std::vector<std::shared_ptr<TileSet::Tile>> _drawnPile;
     // The sets we have made from our hand this turn
     std::vector<std::vector<std::shared_ptr<TileSet::Tile>>> _playedSets;
     // Contains all sets we have made from our hand this turn
@@ -46,6 +48,8 @@ public:
     std::vector<std::shared_ptr<TileSet::Tile>> _selectedTiles;
     // Keeps track of which grandma tile we are checking
     int grandmaToAdd;
+    // Keeps track of current hand size
+    int _size; 
     
 #pragma mark -
 #pragma mark Constructors
@@ -57,16 +61,22 @@ public:
     Hand(Player* player);
     
     /**
-     * Initializes a new player hand by pulling 14 tiles from the game tileset
+     * Initializes a new host hand by pulling 14 tiles from the game tileset
      *
      * @param tileSet   the tileset to draw from
      */
-    bool init(std::shared_ptr<TileSet>& tileSet);
+    bool initHost(std::shared_ptr<TileSet>& tileSet);
+    
+    /**
+     * Initializes a new client hand by pulling 14 tiles from the game tileset
+     */
+    bool initClient(std::shared_ptr<TileSet>& tileSet);
+    
     
 #pragma mark -
 #pragma mark Gameplay Handling
     /**
-     * Returns the number of tiles in our name
+     * Returns the number of tiles in our game
      */
     size_t getTileCount() const {
         return _tiles.size();
@@ -77,14 +87,19 @@ public:
      *
      * @param pile      the pile to draw to our hand from
      */
-    void drawFromPile(std::shared_ptr<Pile>& pile);
+    void drawFromPile(std::shared_ptr<Pile>& pile, int number, bool isHost);
+    
+    /**
+     * Draws the given tile from the discard pile and adds it to hand.
+     */
+    void drawFromDiscard(std::shared_ptr<TileSet::Tile> tile, bool isHost);
     
     /**
      * Discards a single specified tile from our hand
      *
      * @param tile      the tile to discard from out hand
      */
-    void discard(std::shared_ptr<TileSet::Tile> tile);
+    bool discard(std::shared_ptr<TileSet::Tile> tile, bool isHost);
     
     /**
      * Method to make a set from your hand and add it to selected sets
@@ -98,7 +113,7 @@ public:
      *
      * @return true if a set was played sucessfully and false otherwise.
      */
-    bool playSet(const std::shared_ptr<TileSet>& tileSet);
+    bool playSet(const std::shared_ptr<TileSet>& tileSet, bool isHost);
     
     /**
      * Checks if the given set of tiles "selectedTiles" is valid under the game's set of rules.
@@ -140,7 +155,7 @@ public:
      *
      * @param mousePos      the position of the mouse in this frame
      */
-    void clickedTile(const cugl::Vec2 mousePos);
+    std::shared_ptr<TileSet::Tile> clickedTile(const cugl::Vec2 mousePos);
     
     /**
      * Confirms if a set isStraight.
@@ -156,11 +171,15 @@ public:
      */
     bool isOfaKind(const std::vector<std::shared_ptr<TileSet::Tile>>& selectedTiles);
     
+    bool isWinningHand();
+    
+    bool onePairFourSets(std::map<std::pair<TileSet::Tile::Rank, TileSet::Tile::Suit>, int>& tileCounts, int pair, int sets);
+    
     /**
-     * Method to sort the tiles by Rank in ascending order.
+     * Method to sort the tiles by Rank and Suit in ascending order.
      *
      * @param selectedTiles     a vector of selected tiles.
-     * @return a vector of tiles sorted by Rank
+     * @return a vector of tiles sorted by Rank and Suit
      */
     std::vector<std::shared_ptr<TileSet::Tile>> getSortedTiles(const std::vector<std::shared_ptr<TileSet::Tile>>& selectedTiles);
     
@@ -197,6 +216,10 @@ public:
     int _turnsLeft = 5;
     // Whether or not we are currently discarding
     bool discarding = false;
+    // Whether or not we are in exchange and play phase
+    bool canExchange;
+    // Whether or not the player has drawn this turn
+    bool canDraw;
 
 #pragma mark -
 #pragma mark Constructors
