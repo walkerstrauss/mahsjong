@@ -95,7 +95,7 @@ public:
             getTopTile()->topTile = false;
         }
         tile->pos = cugl::Vec2(990,520);
-        tile->topTile = false;
+        tile->topTile = true;
         _discardMap.insert({tile->toString() + " " + std::to_string(tile->_id), tile});
         _topTile = tile;
         _size = static_cast<int>(_discardPile.size()) + 1;
