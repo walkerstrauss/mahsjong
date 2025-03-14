@@ -302,7 +302,6 @@ void GameScene::update(float timestep) {
                 return;
             }
             _player->getHand().drawFromPile(_pile, 1, _network->getHostStatus());
-//            _network->broadcastUpdating();
             _network->broadcastTileDrawn(_tileSet->toJson(_tileSet->tilesToJson));
             _tileSet->clearTilesToJson();
             _network->broadcastDeck(_tileSet->toJson(_tileSet->deck));
