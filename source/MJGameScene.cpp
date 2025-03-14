@@ -240,10 +240,9 @@ void GameScene::update(float timestep) {
     }
     
     
-    if (_network->getStatus() == NetworkController::Status::LAYER && _pile->getVisibleSize() == 0) {
-        CULog("here");
+    if (_pile->getVisibleSize() == 0) {
         _pile->createPile();
-        _network->setStatus(NetworkController::Status::INGAME);
+        _network->broadcastDeck(_tileSet->toJson(_tileSet->deck));
     }
     
     _player->getHand().updateTilePositions();
@@ -269,9 +268,6 @@ void GameScene::update(float timestep) {
             _player->getHand().drawFromPile(_pile, 1, _network->getHostStatus());
 //            _network->broadcastUpdating();
             _network->broadcastTileDrawn(_tileSet->toJson(_tileSet->tilesToJson));
-            if (_pile->getVisibleSize() == 0) {
-                _pile->createPile();
-            }
             _network->broadcastDeck(_tileSet->toJson(_tileSet->deck));
             if (_player->getHand().isWinningHand()){
                 _gameWin = true;
