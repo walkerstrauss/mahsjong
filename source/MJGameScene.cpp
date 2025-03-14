@@ -143,8 +143,7 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::sha
 
     _tileSet->setAllTileTexture(assets);
     _pile = std::make_shared<Pile>(); //Init our pile
-    _pile->initPile(3, _tileSet);
-    _pile->index += 26;
+    _pile->initPile(5, _tileSet);
     
 //    _tileSet->setBackTextures(assets);
     
@@ -245,23 +244,13 @@ void GameScene::update(float timestep) {
     }
     
     if(_network->getStatus() == NetworkController::Status::LAYER) {
+        
         _pile->createPile();
         
-        if (lastTile) {
-            lastTile->inPile = false;
-            lastTile->inHostHand = _network->getHostStatus();
-            lastTile->inClientHand = !_network->getHostStatus();
-            _player->getHand()._tiles.push_back(lastTile); // Ensure tile remains in hand
-        }
-        
-        _network->broadcastDeck(_tileSet->toJson(_tileSet->deck));
+//        _network->broadcastDeck(_tileSet->toJson(_tileSet->deck));
         _network->setStatus(NetworkController::Status::INGAME);
     }
-    
-    
-    if (_pile->getVisibleSize() == 0) {
-        _network->broadcastPileLayer();
-    }
+
     
     _player->getHand().updateTilePositions();
     
@@ -291,6 +280,10 @@ void GameScene::update(float timestep) {
                 _gameWin = true;
             }
             _player->canDraw = false;
+        }
+        
+        if (_pile->getVisibleSize() == 0) {
+            _network->broadcastPileLayer();
         }
             
         for (auto& tile : _player->getHand()._drawnPile) {
