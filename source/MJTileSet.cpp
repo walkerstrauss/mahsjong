@@ -96,7 +96,7 @@ void TileSet::initClientDeck(const std::shared_ptr<cugl::JsonValue>& deckJson){
             newTile->inClientHand = inClientHand;
         
         
-            tileMap.insert({newTile->toString() + std::to_string(newTile->_id), newTile});
+            tileMap.insert({newTile->toString() + " " + std::to_string(newTile->_id), newTile});
             deck.emplace_back(newTile);
         }
     }
@@ -186,7 +186,7 @@ void TileSet::draw(const std::shared_ptr<cugl::graphics::SpriteBatch>& batch, cu
             continue;
         }
         
-        if (isHost && (it->inHostHand || it->inPile || it->discarded)){
+        if (isHost && (it->inHostHand || it->inPile || it->topTile)){
             if(it->selected && it->inHostHand){
                 pos.y = curr.pos.y + 10;
             }
@@ -207,7 +207,7 @@ void TileSet::draw(const std::shared_ptr<cugl::graphics::SpriteBatch>& batch, cu
             it->tileRect = cugl::Rect(rectOrigin, textureSize * curr._scale);
 
             batch->draw(curr.getTileTexture(), origin, trans);
-        } else if (!isHost && (it->inClientHand || it->inPile || it->discarded)){
+        } else if (!isHost && (it->inClientHand || it->inPile || it->topTile)){
             if(it->selected && it->inClientHand){
                 pos.y = curr.pos.y + 10;
             }

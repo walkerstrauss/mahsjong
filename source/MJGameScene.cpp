@@ -213,7 +213,7 @@ void GameScene::reset() {
 void GameScene::update(float timestep) {
     
     if(_discardPile->getTopTile()){
-        CULog(_discardPile->getTopTile()->toString().c_str());
+        CULog("%d", _discardPile->getTopTile()->played);
     }
 //    for(auto const& tile : _player->getHand()._tiles){
 //        CULog("%s, %s", tile->toString().c_str(), tile->pos.toString().c_str());
@@ -262,6 +262,7 @@ void GameScene::update(float timestep) {
             
             if(!_discardPile->getTopTile() || (_discardPile->getTopTile()->toString() + std::to_string(_discardPile->getTopTile()->_id)) != rank + " of " + suit + id){
                 _discardPile->addTile(_tileSet->tileMap[rank + " of " + suit + " " + id]);
+                _discardPile->updateTilePositions();
                 _discardUIScene->incrementLabel(_tileSet->tileMap[rank + " of " + suit + " " + id]);
                 _network->setStatus(NetworkController::Status::INGAME);
             }

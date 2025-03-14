@@ -92,8 +92,10 @@ public:
     bool addTile(std::shared_ptr<TileSet::Tile> tile){
         if (getTopTile() != nullptr) {
             _discardPile.push_back(_topTile);
+            getTopTile()->topTile = false;
         }
         tile->pos = cugl::Vec2(990,520);
+        tile->topTile = false;
         _discardMap.insert({tile->toString() + " " + std::to_string(tile->_id), tile});
         _topTile = tile;
         _size = static_cast<int>(_discardPile.size()) + 1;

@@ -62,6 +62,8 @@ public:
         bool inClientHand;
         /** Boolean flag for if this tile has been discarded */
         bool discarded;
+        /** Boolean flag for it this tile is the top tile of the discard pile */
+        bool topTile;
         /** Whether the player has selected the tile */
         bool selected;
         /** Whether the player has selected the tile and it is in a set */
