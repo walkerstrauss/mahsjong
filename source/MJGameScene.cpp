@@ -70,6 +70,8 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::sha
                     for (auto& tile : _player->getHand()._selectedTiles) {
                         //Add to discard pile
                         _discardPile->addTile(tile);
+                        _tileSet->tilesToJson.push_back(tile);
+                        _network->broadcastNewDiscard(_tileSet->toJson(_tileSet->tilesToJson));
                         //Add to discard UI scene
                         _discardUIScene->incrementLabel(tile);
                         _player->getHand().discard(tile, _network->getHostStatus());
@@ -144,7 +146,6 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::sha
     _tileSet->setAllTileTexture(assets);
     _pile = std::make_shared<Pile>(); //Init our pile
     _pile->initPile(3, _tileSet);
-    _pile->index += 26;
     
 //    _tileSet->setBackTextures(assets);
     
@@ -239,28 +240,35 @@ void GameScene::update(float timestep) {
         _network->setStatus(NetworkController::Status::INGAME);
     }
     
+    if(_discardPile->getTopTile() && _network->getStatus() == NetworkController::Status::REMOVEDISCARD){
+        _discardUIScene->decrementLabel(_discardPile->getTopTile());
+        _discardPile->removeTopTile();
+        _network->setStatus(NetworkController::Status::INGAME);
+    }
+    
+    if(_network->getStatus() == NetworkController::Status::NEWDISCARD){
+        std::string suit = _network->getDiscardTile()->getString("suit");
+        std::string rank = _network->getDiscardTile()->getString("rank");
+        std::string id = _network->getDiscardTile()->getString("id");
+
+        if(_discardPile->getTopTile()->toString() != rank + " " + suit && std::to_string(_discardPile->getTopTile()->_id) != id){
+            _discardPile->addTile(_tileSet->tileMap[rank + " " + suit + " " + id]);
+            _discardUIScene->incrementLabel(_tileSet->tileMap[rank + " " + suit + " " + id]);
+            _network->setStatus(NetworkController::Status::INGAME);
+        }
+    }
+    
     std::shared_ptr<TileSet::Tile> lastTile = nullptr;
     if (!_player->getHand()._drawnPile.empty()) {
         lastTile = _player->getHand()._drawnPile.back();
     }
     
     if(_network->getStatus() == NetworkController::Status::LAYER) {
+        CULog("%d", _pile->index);
         _pile->createPile();
         
-        if (lastTile) {
-            lastTile->inPile = false;
-            lastTile->inHostHand = _network->getHostStatus();
-            lastTile->inClientHand = !_network->getHostStatus();
-            _player->getHand()._tiles.push_back(lastTile); // Ensure tile remains in hand
-        }
-        
-        _network->broadcastDeck(_tileSet->toJson(_tileSet->deck));
+//        _network->broadcastDeck(_tileSet->toJson(_tileSet->deck));
         _network->setStatus(NetworkController::Status::INGAME);
-    }
-    
-    
-    if (_pile->getVisibleSize() == 0) {
-        _network->broadcastPileLayer();
     }
     
     _player->getHand().updateTilePositions();
@@ -291,6 +299,10 @@ void GameScene::update(float timestep) {
                 _gameWin = true;
             }
             _player->canDraw = false;
+        }
+        
+        if (_pile->getVisibleSize() == 0) {
+            _network->broadcastPileLayer();
         }
             
         for (auto& tile : _player->getHand()._drawnPile) {
@@ -349,6 +361,7 @@ void GameScene::update(float timestep) {
                 
                 currDiscardTile->discarded = false;
                 currDiscardTile->played = true;
+                _network->broadcastRemoveDiscard();
                 _discardUIScene->decrementLabel(currDiscardTile);
                 _discardPile->removeTopTile();
                 _player->canExchange = false;

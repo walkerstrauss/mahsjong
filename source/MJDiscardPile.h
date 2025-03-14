@@ -22,6 +22,8 @@ protected:
     int _size;
     /** One dimensional vector representing discard pile tiles (not including top tiles) */
     std::vector<std::shared_ptr<TileSet::Tile>> _discardPile;
+    /** Map continaing tiles in discard pile */
+    std::map<std::string, std::shared_ptr<TileSet::Tile>> _discardMap;
     /** One dimensional vector representing the top layer of the discard pile */
     std::shared_ptr<TileSet::Tile> _topTile;
     /** A reference to the player */
@@ -92,6 +94,7 @@ public:
             _discardPile.push_back(_topTile);
         }
         tile->pos = cugl::Vec2(990,520);
+        _discardMap.insert({tile->toString() + " " + std::to_string(tile->_id), tile});
         _topTile = tile;
         _size = static_cast<int>(_discardPile.size()) + 1;
         return true;

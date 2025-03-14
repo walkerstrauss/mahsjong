@@ -36,6 +36,10 @@ public:
         DECK,
         /** Pile updated  */
         PILETILEUPDATE,
+        /** Remove discard tile*/
+        REMOVEDISCARD,
+        /** Adding new discard tile*/
+        NEWDISCARD,
         /** Error in connection */
         NETERROR
     };
@@ -69,6 +73,8 @@ protected:
     std::shared_ptr<cugl::JsonValue> _nextTileJson;
     
     std::shared_ptr<cugl::JsonValue> _pileTile;
+    
+    std::shared_ptr<cugl::JsonValue> _discardTile;
     
     bool _isHostDraw;
 public:
@@ -144,6 +150,10 @@ public:
     
     void broadcastPileLayer();
     
+    void broadcastRemoveDiscard();
+    
+    void broadcastNewDiscard(const std::shared_ptr<cugl::JsonValue>&);
+    
     Uint32 getLocalPid() const {
         return _localPid;
     }
@@ -169,6 +179,10 @@ public:
     }
     bool getHostStatus(){
         return _isHost;
+    }
+    
+    std::shared_ptr<cugl::JsonValue> getDiscardTile(){
+        return _discardTile; 
     }
     
     std::shared_ptr<cugl::JsonValue> getNextTileJson(){

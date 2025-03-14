@@ -126,6 +126,12 @@ void NetworkController::processData(const std::string source,
     else if (msgType == "next layer") {
         _status = LAYER;
     }
+    else if (msgType == "remove discard tile"){
+        _status = REMOVEDISCARD;
+    }
+    else if (msgType == "new discard tile") {
+        _status = NEWDISCARD;
+    }
 }
 
 void NetworkController::endTurn() {
@@ -253,6 +259,22 @@ void NetworkController::broadcastUpdating(){
     broadcast(_serializer->serialize());
 }
 
+void NetworkController::broadcastRemoveDiscard(){
+    _serializer->reset();
+    
+    _serializer->writeString("remove discard tile");
+    
+    broadcast(_serializer->serialize());
+}
+
+void NetworkController::broadcastNewDiscard(const std::shared_ptr<cugl::JsonValue>& tileJson){
+    _serializer->reset();
+    
+    _serializer->writeString("new discard tile");
+    _serializer->writeJson(tileJson);
+    
+    broadcast(_serializer->serialize());
+}
 //
 //void NetworkController::notifyObservers(std::vector<std::string>& msg){
 //    observer.processData(msg);
