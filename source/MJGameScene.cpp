@@ -51,6 +51,15 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::sha
     _matchScene->doLayout();
     _pauseScene = _assets->get<scene2::SceneNode>("pause");
     _pauseScene->doLayout();
+    // Init tileset UI
+   _tilesetui = _tilesetui = _assets->get<scene2::SceneNode>("tilesetui");
+   _tilesetui->setContentSize(_tilesetui->getSize());
+   _tilesetui->doLayout();
+   _labels.resize(27);
+   for (int i = 0; i < 27; i++){
+       std::shared_ptr<scene2::Label> label = std::dynamic_pointer_cast<scene2::Label>(_assets->get<scene2::SceneNode>("tilesetui.tilesetscene.numbers." + std::to_string(i + 1)));
+       _labels[i] = label;
+   }
    
     std::shared_ptr<scene2::SceneNode> childNode = _matchScene->getChild(0);
     _discardBtn = std::dynamic_pointer_cast<scene2::Button>(childNode->getChild(3));
@@ -75,7 +84,7 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::sha
                         _network->broadcastNewDiscard(_tileSet->toJson(_tileSet->tilesToJson));
                         _tileSet->clearTilesToJson();
                         //Add to discard UI scene
-                        _discardUIScene->incrementLabel(tile);
+                        incrementLabel(tile);
                         _player->getHand().discard(tile, _network->getHostStatus());
                     }
                     _player->getHand()._selectedTiles.clear();
@@ -90,8 +99,10 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::sha
     });
     _tilesetUIBtnKey = _tilesetUIBtn->addListener([this](const std::string& name, bool down){
         if (!down){
-            _discardUIScene->setActive(true);
-            _discardUIScene->backBtn->activate();
+            _matchScene->setVisible(false);
+            _tilesetui->setVisible(true);
+            _backBtn->activate();
+            _uiopen = true;
         }
     });
     _pauseBtnKey = _pauseBtn->addListener([this](const std::string& name, bool down){
@@ -113,10 +124,11 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::sha
     _pauseBtn->activate();
     _tilesetUIBtn->activate();
     
-    
     _matchScene->setVisible(true);
     addChild(_matchScene);
     addChild(_pauseScene);
+    addChild(_tilesetui);
+    _tilesetui->setVisible(false);
     _pauseScene->setVisible(false);
     setActive(true);
     // Game Win and Lose bool
@@ -164,19 +176,18 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::sha
     _discardPile->init(_assets);
     
     // Initialize the discard tileset UI scene
-    _discardUIScene = std::make_shared<DiscardUIScene>();
-    _discardUIScene->init(_assets);
+    _backBtn = std::dynamic_pointer_cast<scene2::Button>(_assets->get<scene2::SceneNode>("tilesetui.tilesetscene.back_tileset"));
+    _backBtnKey = _backBtn->addListener([this](const std::string& name, bool down){
+        if (!down){
+            _matchScene->setVisible(true);
+            _tilesetui->setVisible(false);
+            _uiopen = false;
+        }
+    });
+
 
     _input.init(); //Initialize the input controller
     
-    // Initialize grandma tile label
-    _gmaLabelTexture = assets->get<Texture>("grandma text");
-    if (!_gmaLabelTexture) {
-        CULog("missing gma text");
-        return false;
-    } else {
-        _tileSet->gmaTexture = _gmaLabelTexture;
-    }
     _quit = false;
     
     return true;
@@ -226,11 +237,6 @@ void GameScene::update(float timestep) {
         reset();
     }
     
-    if (_discardUIScene->back){
-        _discardUIScene->setActive(false);
-        _discardUIScene->back = false;
-    }
-    
     if (_gameLose || _gameWin) {
         return;
     }
@@ -247,7 +253,7 @@ void GameScene::update(float timestep) {
     }
     
     if(_discardPile->getTopTile() && _network->getStatus() == NetworkController::Status::REMOVEDISCARD){
-        _discardUIScene->decrementLabel(_discardPile->getTopTile());
+        decrementLabel(_discardPile->getTopTile());
         _discardPile->getTopTile()->played = true;
         _discardPile->getTopTile()->discarded = false;
         _discardPile->removeTopTile();
@@ -372,7 +378,7 @@ void GameScene::update(float timestep) {
                 currDiscardTile->discarded = false;
                 currDiscardTile->played = true;
                 _network->broadcastRemoveDiscard();
-                _discardUIScene->decrementLabel(currDiscardTile);
+                decrementLabel(currDiscardTile);
                 _discardPile->removeTopTile();
                 _player->canExchange = false;
             }
@@ -436,8 +442,8 @@ void GameScene::render() {
         _batch->end();
         return;
     }
-    if (_discardUIScene->isActive()){
-        _discardUIScene->render(_batch);
+    if (_uiopen){
+        _tilesetui->render(_batch);
         _batch->end();
         return;
     }
@@ -514,3 +520,66 @@ void GameScene::clickedTile(cugl::Vec2 mousePos){
         }
     }
 }
+
+
+/**
+ * Method to get the index of this tile's associated label in the discard UI vector of labels
+ *
+ * @param tile  the tile whose label we need in _labels
+ * @return an int representing the index of this tile's discard UI label
+ */
+int GameScene::getLabelIndex(std::shared_ptr<TileSet::Tile> tile){
+    int rowIndex = 0;
+    switch (tile->getSuit()){
+        case TileSet::Tile::Suit::BAMBOO:
+            break;
+        case TileSet::Tile::Suit::CRAK:
+            rowIndex = 9;
+            break;
+        case TileSet::Tile::Suit::DOT:
+            rowIndex = 18;
+            break;
+        default:
+            break;
+    }
+    return rowIndex + (int)tile->getRank() - 1;
+}
+
+/**
+ * Method to update discard UI label corresponding to tile passed as argument
+ *
+ * @param tile  the tile to increment in the discard UI
+ * @return true if update was successful, and false otherwise
+ */
+bool GameScene::incrementLabel(std::shared_ptr<TileSet::Tile> tile){
+    // Get index of label in _labels
+    int i = getLabelIndex(tile);
+    
+    // Check if we already discarded 4 (or more) of this tile
+    if (std::stoi(_labels[i]->getText()) > 3){
+        CULog("already discarded all copies of this tile");
+        return false;
+    }
+    
+    // Increment discard UI number and update label text
+    std::string text = std::to_string(std::stoi(_labels[i]->getText()) + 1);
+    _labels[i]->setText(text);
+    return true;
+}
+
+bool GameScene::decrementLabel(std::shared_ptr<TileSet::Tile> tile){
+    // Get index of label in _labels
+    int i = getLabelIndex(tile);
+    
+    // Check if we already discarded 4 (or more) of this tile
+    if (std::stoi(_labels[i]->getText()) < 1){
+        CULog("none of this tile discarded - cannot decrement");
+        return false;
+    }
+    
+    // Increment discard UI number and update label text
+    std::string text = std::to_string(std::stoi(_labels[i]->getText()) - 1);
+    _labels[i]->setText(text);
+    return true;
+}
+
