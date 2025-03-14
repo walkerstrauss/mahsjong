@@ -130,6 +130,7 @@ void NetworkController::processData(const std::string source,
         _status = REMOVEDISCARD;
     }
     else if (msgType == "new discard tile") {
+        _discardTile = _deserializer->readJson();   
         _status = NEWDISCARD;
     }
 }

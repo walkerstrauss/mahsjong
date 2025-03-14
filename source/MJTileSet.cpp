@@ -52,6 +52,7 @@ void TileSet::initHostDeck(){
             for(int k = 0; k < 4; k++){
                 std::shared_ptr<Tile> newTile = std::make_shared<Tile>(currRank, currSuit);
                 newTile->_id = k;
+                tileMap.insert({newTile->toString() + " " + std::to_string(newTile->_id), newTile});
                 deck.emplace_back(newTile);
                 tileCount += 1;
             }
@@ -94,6 +95,8 @@ void TileSet::initClientDeck(const std::shared_ptr<cugl::JsonValue>& deckJson){
             newTile->inHostHand = inHostHand;
             newTile->inClientHand = inClientHand;
         
+        
+            tileMap.insert({newTile->toString() + " " + std::to_string(newTile->_id), newTile});
             deck.emplace_back(newTile);
         }
     }

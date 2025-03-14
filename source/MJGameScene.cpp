@@ -254,7 +254,7 @@ void GameScene::update(float timestep) {
             std::string rank = tileKey->getString("rank");
             std::string id = tileKey->getString("id");
             
-            if(_discardPile->getTopTile()->toString() != rank + " " + suit && std::to_string(_discardPile->getTopTile()->_id) != id){
+            if(!_discardPile->getTopTile() || (_discardPile->getTopTile()->toString() != rank + " " + suit && std::to_string(_discardPile->getTopTile()->_id) != id)){
                 _discardPile->addTile(_tileSet->tileMap[rank + " " + suit + " " + id]);
                 _discardUIScene->incrementLabel(_tileSet->tileMap[rank + " " + suit + " " + id]);
                 _network->setStatus(NetworkController::Status::INGAME);
