@@ -72,6 +72,7 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::sha
                         _discardPile->addTile(tile);
                         _tileSet->tilesToJson.push_back(tile);
                         _network->broadcastNewDiscard(_tileSet->toJson(_tileSet->tilesToJson));
+                        _tileSet->clearTilesToJson();
                         //Add to discard UI scene
                         _discardUIScene->incrementLabel(tile);
                         _player->getHand().discard(tile, _network->getHostStatus());
@@ -294,6 +295,7 @@ void GameScene::update(float timestep) {
             _player->getHand().drawFromPile(_pile, 1, _network->getHostStatus());
 //            _network->broadcastUpdating();
             _network->broadcastTileDrawn(_tileSet->toJson(_tileSet->tilesToJson));
+            _tileSet->clearTilesToJson();
             _network->broadcastDeck(_tileSet->toJson(_tileSet->deck));
             if (_player->getHand().isWinningHand()){
                 _gameWin = true;
