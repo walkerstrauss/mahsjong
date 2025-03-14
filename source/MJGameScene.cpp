@@ -249,14 +249,16 @@ void GameScene::update(float timestep) {
     }
     
     if(_network->getStatus() == NetworkController::Status::NEWDISCARD){
-        std::string suit = _network->getDiscardTile()->getString("suit");
-        std::string rank = _network->getDiscardTile()->getString("rank");
-        std::string id = _network->getDiscardTile()->getString("id");
-
-        if(_discardPile->getTopTile()->toString() != rank + " " + suit && std::to_string(_discardPile->getTopTile()->_id) != id){
-            _discardPile->addTile(_tileSet->tileMap[rank + " " + suit + " " + id]);
-            _discardUIScene->incrementLabel(_tileSet->tileMap[rank + " " + suit + " " + id]);
-            _network->setStatus(NetworkController::Status::INGAME);
+        for(auto const& tileKey : _network->getDiscardTile()->children()){
+            std::string suit = tileKey->getString("suit");
+            std::string rank = tileKey->getString("rank");
+            std::string id = tileKey->getString("id");
+            
+            if(_discardPile->getTopTile()->toString() != rank + " " + suit && std::to_string(_discardPile->getTopTile()->_id) != id){
+                _discardPile->addTile(_tileSet->tileMap[rank + " " + suit + " " + id]);
+                _discardUIScene->incrementLabel(_tileSet->tileMap[rank + " " + suit + " " + id]);
+                _network->setStatus(NetworkController::Status::INGAME);
+            }
         }
     }
     
