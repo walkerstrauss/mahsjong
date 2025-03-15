@@ -9,7 +9,7 @@ In order to play with another player, please have one player host and the second
 ---
 ### Controls
 #### Mouse Controls
-Select tiles: You can select any tile by clicking on them once, clicking on the same tile again deselects it
+Select tiles: You can select any tile by clicking on them once, clicking on the same tile again deselects it <br>
 Discard: When having one tile selected, click on the discard button to discard that tile <br>
 View discarded tiles: Press the two-card symbol on the top left to view discarded tiles <br>
 #### Keyboard Controls
