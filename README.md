@@ -2,26 +2,17 @@
 ### 607 Games: Walker Strauss, Patrick Choo, Keqing Jiang, Luna Lu, Tian Jin, Tina Lu, Aiden Keck, Mariia Tiulchenko, Alexander Balako
 
 ### Goal:
-Reach 20 points before you run out of turns! For each turn you there are three actions you may perform: discard, make pairs, or play sets. In order to score points, you must play sets from your hand. Sets can look like the following: three of a kind, straight with three tiles, and four of a kind. Each set is worth exactly the number of tiles in it; however, some sets may activate combo points. The scoring looks like the following: 
+This is a 1v1 strategic card game. The goal of the game is to build a full of mahjong hand before your opponent does; a full mahjong hand is defined as 4 sets of three and a pair. A set of three can consist of either a 3 of a kind or a straight, both of which most be the same suit. At the beginning of each turn, you have one of two actions: draw from the pile or draw from the discard. When you draw from the pile or the discard, you must discard a card fromn your hand in order to end your turn. In order to draw from the discard, you must be able to play a set of three with the card you drew from discard. If you are able to do so, you must "reveal" that set, and that set becomes permanent in your hand (meaning you cannot discard or use any tiles from that set to make other sets). In the future, we aim to include command tiles where they force you to take perform an actions, and action tiles where you can play at activate a powerup. 
 
-* Same set (same tiles in two or more sets) -> rescore the first set <br>
-* Consecutive suits (two or more that are strictly ascending from one set to another) -> rescore the second set <br>
-* Mahjong Set (four 3 sets and a pair OR three 4 sets and a pair) -> rescore each set according to its position in played hand (first set * 1, second set * 2, ...)
-
-In addition to scoring, you will also have the ability to gain wild tiles. If you play a hand that includes a "Grandma Tile" you will gain as many wild tiles as tiles you have played that are "Grandma Tiles". These tiles will have a rank, but can be played in combination with any suit. Wild tiles will not count as grandma tiles. 
-
-For each turn, you are allowed to play up to 14 tiles, assuming they are all apart of a valid mahjong set. You are allowed up to 5 turns and 3 discards with a limit of 5 tiles per discard. You will always have up 14 tiles during each turn; when you make a pair, you must discard two tiles in your hand, and whenever you play a set you will recover the same amount from the pile. The pile will regenerate after a layer is gone. If you reaach 20 points, you win! If you fail to reach 20 points before 5 turns, you lose!
+In order to play with another player, please have one player host and the second player enter the code that the host receives. 
 
 ---
 ### Controls
 #### Mouse Controls
-Make pile pairs: In the pile, click two of the same tile to form a pair. Once the pair is selected, you must click two tiles in your hand to discard. (note: no discarding once you make pairs from the pile)
-Select tiles: In your hand, select and deselect tiles by clicking on them.
+Select tiles: You can select any tile by clicking on them once, clicking on the same tile again deselects it
+Discard: When having one tile selected, click on the discard button to discard that tile
+View discarded tiles: Press the two-card symbol on the top left to view discarded tiles
 #### Keyboard Controls
-Discard: Press D to discard up to 5 selected cards (you cannot discard after making pile pairs or make pairs after discarding) <br>
-Make set: Press S to select a set to be played (will not select if invalid; you must select sets you want to play individually) <br>
-Play sets: Press P to play all selected sets (will only play sets that have been made by pressing S) <br>
-
-###### Note: We are currently pivoting games; hence, some features we have discussesd in our write-ups may not reflect this prototype
-###### Note: The application will build but there is a nullptr error that only occurs when making pairs on a Windows device. 
-
+Draw: Press D to draw a card from the pile <br>
+Draw from discard: Select two tiles that make a valid set with and press G to draw and play that set <br>
+End turn: Press N to end your turn, must have performed a draw and a discard <br>
