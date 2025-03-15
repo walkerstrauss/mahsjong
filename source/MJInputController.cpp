@@ -15,8 +15,14 @@ InputController::InputController() :
 _active(false),
 _currDown(false),
 _prevDown(false),
+#ifdef CU_TOUCH_SCREEN
+_touchDown(false),
+_touchKey(0)
+#else
 _mouseDown(false),
-_mouseKey(0) {
+_mouseKey(0)
+#endif
+{
 }
 
 /**
@@ -34,6 +40,22 @@ _mouseKey(0) {
  */
 
 bool InputController::init() {
+    
+#ifdef CU_TOUCH_SCREEN
+    Touchscreen* touch = Input::get<Touchscreen>();
+    if (touch) {
+        touch->addBeginListener(_touchKey, [=,this](const cugl::TouchEvent& event, bool focus) {
+            this->touchPressCB(event, focus);
+        });
+        touch->addEndListener(_touchKey, [=,this](const cugl::TouchEvent& event, bool focus) {
+            this->touchReleaseCB(event, focus);
+        });
+        touch->addMotionListener(_touchKey, [=,this](const cugl::TouchEvent& event, const Vec2 previous, bool focus) {
+            this->dragCB(event, previous, focus);
+        });
+        _active = true;
+    }
+#else
     Mouse* mouse = Input::get<Mouse>();
     if (mouse) {
         mouse->setPointerAwareness(Mouse::PointerAwareness::DRAG);
@@ -49,6 +71,8 @@ bool InputController::init() {
         });
         _active = true;
     }
+#endif
+    
     Keyboard* keys = Input::get<Keyboard>();
     if (keys){
         _keyboardKey = keys->acquireKey();
@@ -145,6 +169,29 @@ void InputController::buttonUpCB(const cugl::MouseEvent& event, Uint8 clicks, bo
 void InputController::motionCB(const cugl::MouseEvent& event, const Vec2 previous, bool focus) {
     if (_mouseDown) {
         _mousePos = event.position;
+    }
+}
+
+#pragma mark Touch Callbacks
+
+void InputController::touchPressCB(const cugl::TouchEvent& event, bool focus) {
+    if (!_touchDown && _touchKey != event.touch) {
+        _touchDown = true;
+        _touchKey = event.touch;
+        _currPos = event.position;
+        
+    }
+}
+
+void InputController::touchReleaseCB(const cugl::TouchEvent& event, bool focus) {
+    if (_touchDown && _touchKey == event.touch) {
+        _touchDown = false;
+    }
+}
+
+void InputController::dragCB(const cugl::TouchEvent& event, const Vec2 previous, bool focus) {
+    if (_touchDown) {
+        _currPos = event.position;
     }
 }
 

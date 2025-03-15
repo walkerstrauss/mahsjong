@@ -12,6 +12,7 @@ using namespace cugl::graphics;
 using namespace cugl::audio;
 using namespace cugl::scene2;
 
+
 #pragma mark -
 #pragma mark Gameplay Control
 
@@ -26,28 +27,34 @@ void MahsJongApp::onStartup() {
     _batch = SpriteBatch::alloc();
     auto cam = OrthographicCamera::alloc(getDisplaySize());
     
-    // Start-up basic input (DESKTOP ONLY)
+#ifdef CU_TOUCH_SCREEN
+    Input::activate<Touchscreen>();
+#else
     Input::activate<Mouse>();
+    Input::get<Mouse>()->setPointerAwareness(Mouse::PointerAwareness::DRAG);
+
+#endif
     Input::activate<Keyboard>();
+    Input::activate<TextInput>();
     
     _assets->attach<Texture>(TextureLoader::alloc()->getHook());
     _assets->attach<Sound>(SoundLoader::alloc()->getHook());
     _assets->attach<Font>(FontLoader::alloc()->getHook());
     _assets->attach<JsonValue>(JsonLoader::alloc()->getHook());
     _assets->attach<WidgetValue>(WidgetLoader::alloc()->getHook());
-    
-    // Needed for loading screen
-    _sceneLoader = Scene2Loader::alloc();
-    _assets->attach<scene2::SceneNode>(_sceneLoader->getHook());
+    _assets->attach<Button>(WidgetLoader::alloc()->getHook());
+    _assets->attach<scene2::SceneNode>(Scene2Loader::alloc()->getHook());
     _assets->loadDirectory("json/loading.json");
+
+    //Create a "loading" screen
+    _scene = State::LOAD;
+    _loading.init(_assets, "json/assets.json");
     _loading.setSpriteBatch(_batch);
     
-    // Create a "loading" screen
-    _loaded = false;
-    _loading.init(_assets, "json/assets.json");
-     _loading.start();
-    
+    _loading.start();
     AudioEngine::start();
+    netcode::NetworkLayer::start(netcode::NetworkLayer::Log::INFO);
+//    _network = NetworkController();
     Application::onStartup(); //YOU MUST END with call to parent
 };
 
@@ -61,77 +68,242 @@ void MahsJongApp::onStartup() {
 void MahsJongApp::onShutdown() {
     _loading.dispose();
     _gameplay.dispose();
+    _hostgame.dispose();
+    _joingame.dispose();
+    _settings.dispose();
+    _network->dispose();
     _assets = nullptr;
     _batch = nullptr;
     
-    Input::deactivate<Keyboard>();
+#ifdef CU_MOBILE
+    Input::deactivate<Touchscreen>();
+#else
     Input::deactivate<Mouse>();
-    
+#endif
+    Input::deactivate<Keyboard>();
+    Input::deactivate<TextInput>();
+    netcode::NetworkLayer::stop();
     AudioEngine::stop();
     Application::onShutdown(); // YOU MUST END with call to parent 
 }
 
-/** Method to update the application data */
+/**
+ * The method called to update the application data.
+ *
+ * This is your core loop and should be replaced with your custom implementation.
+ * This method should contain any code that is not an OpenGL call.
+ *
+ * When overriding this method, you do not need to call the parent method
+ * at all. The default implmentation does nothing.
+ *
+ * @param timestep  The amount of time (in seconds) since the last frame
+ */
 void MahsJongApp::update(float timestep) {
-    if(!_loaded && _loading.isActive()) {
-        _loading.update(0.01f);
-    } else if (!_loaded) {
-        _loading.dispose(); // Disables the input listeners in this mode
-        _assets->attach<Button>(Scene2Loader::alloc()->getHook());
-        _assets->loadDirectory("json/assets.json");
-        
-        
-        _matchScene = std::make_shared<scene2::Scene2>();
-        if (!_matchScene->init()) {
-            std::cerr << "Scene2 initialization failed!" << std::endl;
-            // Handle failure (return, break, or handle error state)
-        }
-        std::shared_ptr<scene2::SceneNode> node = _assets->get<scene2::SceneNode>("matchscene");
-        node->setVisible(true);
-        auto texture = _assets->get<Texture>("background_gameplay");
-        if (texture == nullptr) {
-            CULog("Failed to load background texture!");
-        } else {
-            CULog("Background texture loaded successfully.");
-        }
-        std::shared_ptr<scene2::SceneNode> childNode = node->getChild(0);
-        if (childNode) {
-            // Now you can manipulate or render the child node
-            CULog("Child node position: (%f, %f)", childNode->getPosition().x, childNode->getPosition().y);
-        }
-        node->doLayout();
-        _matchScene->addChild(node);
-        CULog("Scenenode position: (%f, %f)", node->getPosition().x, node->getPosition().y);
-        _matchScene->setSpriteBatch(_batch);
-        _matchScene->setActive(true);
-        
-        _discardBtn = std::dynamic_pointer_cast<Button>(childNode->getChildByName("discard"));
-        CULog(_discardBtn->getName().c_str());
-        if (_discardBtn){
-            _discardBtn->addListener([this](const std::string& name, bool down){
-                CULog("pressed");
-                if (!down){
-                    CULog("discard");
-                    // Handle discard
-                }
-            });
-        } else {
-            CULog("no discard");
-        }
-        _discardBtn->activate();
-        _loaded = true;
-    } else {
-//        _gameplay.update(timestep);
-        return;
+    if (_network) {
+        _network->update(timestep);
+    }
+    switch (_scene) {
+        case LOAD:
+            updateLoadingScene(timestep);
+            break;
+        case MENU:
+            _assets->loadDirectory("json/assets.json");
+            updateMenuScene(timestep);
+            break;
+        case HOST:
+            updateHostScene(timestep);
+            break;
+        case CLIENT:
+            updateClientScene(timestep);
+            break;
+        case GAME:
+            updateGameScene(timestep);
+            break;
+        case SETTINGS:
+            _settings.update(timestep);
+            break;
     }
 }
 
-/** The method called to draw the appplication to the screen */
-void MahsJongApp::draw(){
-    if (!_loaded){
-        _loading.render();
-    } else {
-        _matchScene->render();
+/**
+* The method called to draw the application to the screen.
+*
+* This is your core loop and should be replaced with your custom implementation.
+* This method should OpenGL and related drawing calls.
+*
+* When overriding this method, you do not need to call the parent method
+* at all. The default implmentation does nothing.
+*/
+void MahsJongApp::draw() {
+   switch (_scene) {
+       case LOAD:
+           _loading.render();
+           break;
+       case MENU:
+           _mainmenu.render();
+           break;
+       case HOST:
+           _hostgame.render();
+           break;
+       case CLIENT:
+           _joingame.render();
+           break;
+       case GAME:
+           _gameplay.render();
+           break;
+       case SETTINGS:
+           _settings.render();
+           break;
+   }
+}
+
+/**
+* Inidividualized update method for the loading scene.
+*
+* This method keeps the primary {@link #update} from being a mess of switch
+* statements. It also handles the transition logic from the loading scene.
+*
+* @param timestep  The amount of time (in seconds) since the last frame
+*/
+void MahsJongApp::updateLoadingScene(float timestep) {
+   if (_loading.isActive()) {
+       _loading.update(timestep);
+   } else {
+       _loading.dispose(); // Permanently disables the input listeners in this mode
+       _network = std::make_shared<NetworkController>();
+       _network->init(_assets);
+       _mainmenu.init(_assets);
+       _mainmenu.setSpriteBatch(_batch);
+//       _mainmenu.settingsbutton->addListener([this](const std::string& name, bool down){
+//           if (!down){
+//               _settings.setActive(true);
+//               _mainmenu.setActive(false);
+//               _scene = State::SETTINGS;
+//           }
+//       });
+       _hostgame.init(_assets, _network);
+       _hostgame.setSpriteBatch(_batch);
+       _joingame.init(_assets, _network);
+       _joingame.setSpriteBatch(_batch);
+       _settings.init(_assets);
+       _settings.setSpriteBatch(_batch);
+       _settings.exitKey = _settings.exitBtn->addListener([this](const std::string& name, bool down){
+           if (!down){
+               _mainmenu.setActive(true);
+               _settings.setActive(false);
+               _scene = State::MENU;
+           }
+       });
+
+       _mainmenu.setActive(true);
+       _scene = State::MENU;
+   }
+}
+
+
+/**
+* Inidividualized update method for the menu scene.
+*
+* This method keeps the primary {@link #update} from being a mess of switch
+* statements. It also handles the transition logic from the menu scene.
+*
+* @param timestep  The amount of time (in seconds) since the last frame
+*/
+void MahsJongApp::updateMenuScene(float timestep) {
+   _mainmenu.update(timestep);
+   switch (_mainmenu.getChoice()) {
+       case MenuScene::Choice::HOST:
+           _mainmenu.setActive(false);
+           _hostgame.setActive(true);
+           _scene = State::HOST;
+           break;
+       case MenuScene::Choice::JOIN:
+           _mainmenu.setActive(false);
+           _joingame.setActive(true);
+           _scene = State::CLIENT;
+           break;
+       case MenuScene::Choice::NONE:
+           // DO NOTHING
+           break;
+   }
+}
+
+/**
+ * Individualized update method for the host scene.
+ *
+ * This method keeps the primary {@link #update} from being a mess of switch
+ * statements. It also handles the transition logic from the host scene.
+ *
+ * @param timestep  The amount of time (in seconds) since the last frame
+ */
+void MahsJongApp::updateHostScene(float timestep) {
+    _hostgame.update(timestep);
+    
+    if(_hostgame.getBackClicked()){
+        _scene = MENU;
+        _hostgame.setActive(false);
+        _mainmenu.setActive(true);
+    } else if (_network->getStatus() == NetworkController::Status::START) {
+        _gameplay.init(_assets, _network);
+        _gameplay.setSpriteBatch(_batch);
+        _hostgame.setActive(false);
+        _gameplay.setActive(true);
+        _scene = State::GAME;
+    } else if (_network->getStatus() == NetworkController::Status::NETERROR) {
+        _scene = MENU;
+        _network->disconnect();
+        _hostgame.setActive(false);
+        _mainmenu.setActive(true);
+        _gameplay.dispose();
     }
 }
+/**
+* Inidividualized update method for the client scene.
+*
+* This method keeps the primary {@link #update} from being a mess of switch
+* statements. It also handles the transition logic from the client scene.
+*
+* @param timestep  The amount of time (in seconds) since the last frame
+*/
+void MahsJongApp::updateClientScene(float timestep) {
+    _joingame.update(timestep);
+
+    if(_joingame.getBackClicked()){
+        _scene = MENU;
+        _joingame.setActive(false);
+        _mainmenu.setActive(true);
+    } else if (_network->getStatus() == NetworkController::Status::INGAME) {
+        _gameplay.init(_assets, _network);
+        _gameplay.setSpriteBatch(_batch);
+        _joingame.setActive(false);
+        _gameplay.setActive(true);
+        _scene = GAME;
+    }
+    else if (_network->getStatus() == NetworkController::Status::NETERROR) {
+        _network->disconnect();
+        _joingame.setActive(false);
+        _mainmenu.setActive(true);
+        _gameplay.dispose();
+        _scene = MENU;
+    }
+}
+
+/**
+ * Inidividualized update method for the game scene.
+ *
+ * This method keeps the primary {@link #update} from being a mess of switch
+ * statements. It also handles the transition logic from the game scene.
+ *
+ * @param timestep  The amount of time (in seconds) since the last frame
+ */
+void MahsJongApp::updateGameScene(float timestep) {
+    _gameplay.update(timestep);
+    if (_gameplay.didQuit()) {
+        _gameplay.setActive(false);
+        _mainmenu.setActive(true);
+        _gameplay.disconnect();
+        _scene = State::MENU;
+    }
+}
+
 

@@ -1,5 +1,8 @@
 {
     "textures": {
+        "facedown": {
+            "file": "textures/facedown.png"
+        },
         "one of dot": {
             "file": "textures/one_of_dot.png"
         },
@@ -165,42 +168,150 @@
         "tilesample": {
             "file": "textures/gameplay/tilesample.png"
         },
+        "tilesample 2":{
+            "file":"textures/gameplay/tilesample 2.png"
+        },
+        "button_tileset":{
+            "file":"textures/gameplay/button_tileset.png"
+        },
         "background_pause": {
             "file": "textures/pause/background_pause.png"
+        },
+        "button_w_icon1":{
+            "file":"textures/pause/button_w_icon1.png"
+        },
+        "cancel":{
+            "file":"textures/pause/cancel.png"
+        },
+        "continue_pause":{
+            "file":"textures/pause/continue_pause.png"
+        },
+        "main_pause":{
+            "file":"textures/pause/main_pause.png"
+        },
+        "notification_box1":{
+            "file":"textures/pause/notification_box1.png"
+        },
+        "pause_logo_image":{
+            "file":"textures/pause/pause_logo_image.png"
+        },
+        "replay_pause":{
+            "file":"textures/pause/replay_pause.png"
+        },
+        "setting_pause":{
+            "file":"textures/pause/setting_pause.png"
+        },
+        "button": {
+            "file":  "textures/button.png"
+        },
+        "frame": {
+            "file":  "textures/frame.png"
+        },
+        "left": {
+            "file":  "textures/left_arrow.png"
+        },
+        "background_hc":{
+            "file":"textures/hostAndClient/background_hc.png"
+        },
+        "cat":{
+            "file":"textures/hostAndClient/cat.png"
+        },
+        "Client_view_image":{
+            "file":"textures/hostAndClient/Client_view_image.png"
+        },
+        "grandpa":{
+            "file":"textures/hostAndClient/grandpa.png"
+        },
+        "hcButton":{
+            "file":"textures/hostAndClient/hcButton.png"
+        },
+        "hctitle":{
+            "file":"textures/hostAndClient/hctitle.png"
+        },
+        "Host_view_image":{
+            "file":"textures/hostAndClient/Host_view_image.png"
+        },
+        "playerImage":{
+            "file":"textures/hostAndClient/playerImage.png"
+        },
+        "textbox":{
+            "file":"textures/hostAndClient/textbox.png"
+        },
+        "yellow_dragon_left": {
+            "file": "textures/setting/yellow_dragon_left.png"
+        },
+        "yellow_dragon_right": {
+            "file": "textures/setting/yellow_dragon_right.png"
+        },
+        "button_w_icon2": {
+            "file": "textures/setting/button_w_icon2.png"
+        },
+        "audio": {
+            "file": "textures/setting/audio.png"
+        },
+        "notification": {
+            "file": "textures/setting/notification.png"
+        },
+        "cancel": {
+            "file": "textures/setting/cancel.png"
+        },
+        "Setting_logo_image": {
+            "file": "textures/setting/Setting_logo_image.png"
+        },
+        "notification_box2":{
+            "file": "textures/setting/notification_box2.png"
+        },
+        "grandma_pixel":{
+            "file": "textures/setting/grandma_pixel.png"
+        },
+        "grandmaKnob":{
+            "file": "textures/setting/grandmaKnob.png"
+        },
+        "knob":{
+            "file": "textures/setting/knob.png"
+        },
+        "slider": {
+            "file": "textures/setting/slider.png"
+        },
+        "back_tileset":{
+            "file": "textures/tilesetui/back_tileset.png"
+        },
+        "background_tilesetui":{
+            "file": "textures/tilesetui/background_tilesetui.png"
+        },
+        "table": {
+            "file": "textures/tilesetui/table.png"
         }
     },
     "fonts": {
         "pixel32": {
-            "file":     "LightPixel7.ttf",
+            "file":     "fonts/LightPixel7.ttf",
             "size":     32
         },
         "pixel32_small": {
-            "file":     "LightPixel7.ttf",
+            "file":     "fonts/LightPixel7.ttf",
             "size":     16
+        },
+        "sansBold20":{
+            "file":     "fonts/LightPixel7.ttf",
+            "size":     20
+        },
+        "sansBold24": {
+            "file":     "fonts/LightPixel7.ttf",
+            "size":     24
+        },
+        "sansBold32": {
+            "file":     "fonts/LightPixel7.ttf",
+            "size":     32
+        },
+        "pixelify sansBold36": {
+            "file":     "fonts/LightPixel7.ttf",
+            "size":     36
+        },
+        "gyparody": {
+            "file":     "fonts/LightPixel7.ttf",
+            "size": 32
         }
-    },
-    "widgets": {
-        "landingscene": "widgets/scene/landingscene.json",
-        "landingTextbutton": "widgets/button/landingTextbutton.json",
-        "home": "widgets/scene/home.json",
-        "menubutton": "widgets/button/menubutton.json",
-        "settingbutton": "widgets/icon/settingicon.json",
-        "pausescene": "widgets/scene/pausescene.json",
-        "pausebutton": "widgets/button/pausebutton.json",
-        "gameplayscene": "widgets/scene/gameplayscene.json",
-        "gameplayDisplaytile": "widgets/tile/gameplayDisplaytile.json",
-        "gameplayDisplaytileButton": "widgets/tile/gameplayDisplaytileButton.json",
-        "playhand": "widgets/tile/playhand.json",
-        "opponentHand": "widgets/tile/opponentHand.json",
-        "opponentHandtile": "widgets/tile/opponentHandtile.json",
-        "scorewinscene": "widgets/scene/scorewinscene.json",
-        "scorebutton_main": "widgets/button/scorebutton_main.json",
-        "scorepointbutton": "widgets/button/scorepointbutton.json",
-        "scoredefeatscene": "widgets/scene/scoredefeatscene.json",
-        "settingscene": "widgets/scene/settingscene.json",
-        "settingbutton_name": "widgets/button/settingbutton_name.json",
-        "settingbutton_onoff": "widgets/button/settingbutton_onoff.json"
-
     },
     "scene2s":{
         "matchscene":{
@@ -215,10 +326,207 @@
                         "type":"Anchored"
                     },
                     "data":{
-                        "key":"gameplayscene"
+                        "key":"technical_gamescene",
+                        "variables":{
+                            "size":[1280,720]
+                        }
+                    }
+                }
+            }
+        },
+        "home":{
+            "type":"Node",
+            "format":{
+                "type":"Anchored"
+            },
+            "children":{
+                "home":{
+                    "type":"Widget",
+                    "format":{
+                        "type":"Anchored"
+                    },
+                    "data":{
+                        "key":"home",
+                        "variables":{
+                            "size":[1280,720]
+                        }
+                    }
+                }
+            }
+        },
+        "pause":{
+            "type":"Node",
+            "format":{
+                "type":"Anchored"
+            },
+            "children":{
+                "pausescene":{
+                    "type":"Widget",
+                    "format":{
+                        "type":"Anchored"
+                    },
+                    "data":{
+                        "key":"pausescene",
+                        "variables":{
+                            "size":[1280,720]
+                        }
+                    }
+                }
+            }
+        },
+        "settings":{
+            "type":"Node",
+            "format":{
+                "type":"Anchored"
+            },
+            "children":{
+                "settingscene":{
+                    "type":"Widget",
+                    "format":{
+                        "type":"Anchored"
+                    },
+                    "data":{
+                        "key":"settingscene",
+                        "variables":{
+                            "size":[1280,720]
+                        }
+                    }
+                }
+            }
+        },
+        "tilesetui":{
+            "type":"Node",
+            "format":{
+                "type":"Anchored"
+            },
+            "children":{
+                "tilesetscene":{
+                    "type":"Widget",
+                    "format":{
+                        "type":"Anchored"
+                    },
+                    "data":{
+                        "key":"tilesetscene",
+                        "variables":{
+                            "size":[1280,720]
+                        }
+                    }
+                }
+            }
+        },
+        "menu": {
+            "type"      : "Node",
+            "format"    : {
+                "type"        : "Float",
+                "orientation" : "vertical",
+                "x_alignment" : "center",
+                "y_alignment" : "middle"
+            },
+            "children":  {
+                "host": {
+                    "type"   : "Widget",
+                    "data"   : {
+                        "key"     : "textbutton",
+                        "variables" : {
+                            "size": [300,100],
+                            "text": "Host Game",
+                            "color": "#000088"
+                        }
+                    },
+                    "layout" : {
+                        "priority" : 1,
+                        "padding"  : [0,0,60,150]
+                    }
+                },
+                "join": {
+                    "type"   : "Widget",
+                    "data"   : {
+                        "key"     : "textbutton",
+                        "variables" : {
+                            "size": [300,100],
+                            "text": "Join Game",
+                            "color": "#000088"
+                        }
+                    },
+                    "layout" : {
+                        "priority" : 1,
+                        "padding"  : [0,0,60,0]
+                    }
+                }
+            }
+        },
+        "host": {
+            "type"      : "Node",
+            "format"    : {
+                "type"        : "Anchored"
+            },
+            "children" : {
+                "hostscene":{
+                    "type"      : "Widget",
+                    "format"    : {
+                        "type"        : "Anchored"
+                    },
+                    "data":{
+                        "variables": {
+                            "size": [1280,720]
+                        },
+                        "key":"hostscene"
+                    }
+                }
+            }
+        },
+        "client": {
+            "type"      : "Node",
+            "format"    : {
+                "type"        : "Anchored"
+            },
+            "children" : {
+                "clientscene":{
+                    "type"      : "Widget",
+                    "format"    : {
+                        "type"        : "Anchored"
+                    },
+                    "data":{
+                        "variables": {
+                            "size": [1280,720]
+                        },
+                        "key":"clientscene"
                     }
                 }
             }
         }
+    },
+    "widgets": {
+            "colorbutton" : "widgets/colorbutton.json",
+            "textbutton" : "widgets/textbutton.json",
+            "textfield" : "widgets/textfield.json",
+            "labelbox" : "widgets/labelbox.json",
+            "landingscene": "widgets/scene/landingscene.json",
+            "landingTextbutton": "widgets/button/landingTextbutton.json",
+            "home": "widgets/scene/home.json",
+            "hostscene": "widgets/scene/hostscene.json",
+            "clientscene": "widgets/scene/clientscene.json",
+            "menubutton": "widgets/button/menubutton.json",
+            "settingbutton": "widgets/icon/settingicon.json",
+            "pausescene": "widgets/scene/pausescene.json",
+            "pausebutton": "widgets/button/pausebutton.json",
+            "gameplayscene": "widgets/scene/gameplayscene.json",
+            "technical_gamescene": "widgets/scene/technical_gamescene.json",
+            "gameplayDisplaytile": "widgets/tile/gameplayDisplaytile.json",
+            "gameplayDisplaytileButton": "widgets/tile/gameplayDisplaytileButton.json",
+            "playhand": "widgets/tile/playhand.json",
+            "opponentHand": "widgets/tile/opponentHand.json",
+            "opponentHandtile": "widgets/tile/opponentHandtile.json",
+            "scorewinscene": "widgets/scene/scorewinscene.json",
+            "scorebutton_main": "widgets/button/scorebutton_main.json",
+            "scorepointbutton": "widgets/button/scorepointbutton.json",
+            "scoredefeatscene": "widgets/scene/scoredefeatscene.json",
+            "settingscene": "widgets/scene/settingscene.json",
+            "settingbutton_name": "widgets/button/settingbutton_name.json",
+            "settingbutton_onoff": "widgets/button/settingbutton_onoff.json",
+            "tilesetscene": "widgets/scene/tilesetscene.json"
+    },
+    "jsons": {
+        "server": "json/server.json"
     }
 }
