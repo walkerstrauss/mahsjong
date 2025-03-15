@@ -10,8 +10,8 @@ In order to play with another player, please have one player host and the second
 ### Controls
 #### Mouse Controls
 Select tiles: You can select any tile by clicking on them once, clicking on the same tile again deselects it
-Discard: When having one tile selected, click on the discard button to discard that tile
-View discarded tiles: Press the two-card symbol on the top left to view discarded tiles
+Discard: When having one tile selected, click on the discard button to discard that tile <br>
+View discarded tiles: Press the two-card symbol on the top left to view discarded tiles <br>
 #### Keyboard Controls
 Draw: Press D to draw a card from the pile <br>
 Draw from discard: Select two tiles that make a valid set with and press G to draw and play that set <br>
