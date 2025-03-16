@@ -133,25 +133,6 @@
                     "y_offset": -0.58
                 }
             },
-            "button_replay": {
-                "type": "Widget",
-                "format": {
-                    "type": "Anchored"
-                },
-                "data": {
-                    "key": "pausebutton",
-                    "variables": {
-                        "text": "Replay"
-                    }
-                },
-                "layout": {
-                    "x_anchor": "left",
-                    "y_anchor": "top",
-                    "absolute": false,
-                    "x_offset": 0.5,
-                    "y_offset": -0.7
-                }
-            },
             "pause_logo": {
                 "type": "Node",
                 "format": {

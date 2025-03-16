@@ -146,6 +146,7 @@ void HostScene::setActive(bool value) {
             _backout->deactivate();
             _startgame->setDown(false);
             _backout->setDown(false);
+            _startGameClicked = false;
         }
     }
 }

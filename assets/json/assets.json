@@ -494,6 +494,46 @@
                     }
                 }
             }
+        },
+        "winscene": {
+            "type"      : "Node",
+            "format"    : {
+                "type"        : "Anchored"
+            },
+            "children" : {
+                "clientscene":{
+                    "type"      : "Widget",
+                    "format"    : {
+                        "type"        : "Anchored"
+                    },
+                    "data":{
+                        "variables": {
+                            "size": [1280,720]
+                        },
+                        "key":"scorewinscene"
+                    }
+                }
+            }
+        },
+        "losescene": {
+            "type"      : "Node",
+            "format"    : {
+                "type"        : "Anchored"
+            },
+            "children" : {
+                "clientscene":{
+                    "type"      : "Widget",
+                    "format"    : {
+                        "type"        : "Anchored"
+                    },
+                    "data":{
+                        "variables": {
+                            "size": [1280,720]
+                        },
+                        "key":"scoredefeatscene"
+                    }
+                }
+            }
         }
     },
     "widgets": {

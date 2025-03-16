@@ -71,6 +71,7 @@ void MahsJongApp::onShutdown() {
     _hostgame.dispose();
     _joingame.dispose();
     _settings.dispose();
+    _pause.dispose();
     _network->dispose();
     _assets = nullptr;
     _batch = nullptr;
@@ -120,7 +121,16 @@ void MahsJongApp::update(float timestep) {
             updateGameScene(timestep);
             break;
         case SETTINGS:
-            _settings.update(timestep);
+            updateSettingScene(timestep);
+            break;
+        case PAUSE:
+            updatePauseScene(timestep);
+            break;
+        case OVER:
+            updateGameOverScene(timestep);
+            break;
+        case TILESETUI:
+            // Update tileset UI
             break;
     }
 }
@@ -154,6 +164,15 @@ void MahsJongApp::draw() {
        case SETTINGS:
            _settings.render();
            break;
+       case PAUSE:
+           _pause.render();
+           break;
+       case OVER:
+           _gameover.render();
+           break;
+       case TILESETUI:
+           _tilesetui.render();
+           break;
    }
 }
 
@@ -174,27 +193,18 @@ void MahsJongApp::updateLoadingScene(float timestep) {
        _network->init(_assets);
        _mainmenu.init(_assets);
        _mainmenu.setSpriteBatch(_batch);
-//       _mainmenu.settingsbutton->addListener([this](const std::string& name, bool down){
-//           if (!down){
-//               _settings.setActive(true);
-//               _mainmenu.setActive(false);
-//               _scene = State::SETTINGS;
-//           }
-//       });
        _hostgame.init(_assets, _network);
        _hostgame.setSpriteBatch(_batch);
        _joingame.init(_assets, _network);
        _joingame.setSpriteBatch(_batch);
        _settings.init(_assets);
        _settings.setSpriteBatch(_batch);
-       _settings.exitKey = _settings.exitBtn->addListener([this](const std::string& name, bool down){
-           if (!down){
-               _mainmenu.setActive(true);
-               _settings.setActive(false);
-               _scene = State::MENU;
-           }
-       });
-
+       _pause.init(_assets);
+       _pause.setSpriteBatch(_batch);
+       _gameover.init(_assets);
+       _gameover.setSpriteBatch(_batch);
+       _tilesetui.init(_assets);
+       _tilesetui.setSpriteBatch(_batch);
        _mainmenu.setActive(true);
        _scene = State::MENU;
    }
@@ -221,6 +231,12 @@ void MahsJongApp::updateMenuScene(float timestep) {
            _mainmenu.setActive(false);
            _joingame.setActive(true);
            _scene = State::CLIENT;
+           break;
+       case MenuScene::Choice::SETTING:
+           _mainmenu.setActive(false);
+           _settings.setActive(true);
+           _settings.scene = SettingScene::PrevScene::MAIN;
+           _scene = State::SETTINGS;
            break;
        case MenuScene::Choice::NONE:
            // DO NOTHING
@@ -303,7 +319,108 @@ void MahsJongApp::updateGameScene(float timestep) {
         _mainmenu.setActive(true);
         _gameplay.disconnect();
         _scene = State::MENU;
+        return;
+    }
+    switch (_gameplay.getChoice()){
+        case GameScene::Choice::PAUSE:
+            _gameplay.setActive(false);
+            _pause.setActive(true);
+            _scene = State::PAUSE;
+            break;
+        case GameScene::Choice::TILESET:
+            _gameplay.setActive(false);
+            _tilesetui.setActive(true);
+            _scene = State::TILESETUI;
+            break;
+        case GameScene::Choice::SETS:
+            // Add logic for transitioning to sets scene
+            break;
+        case GameScene::Choice::NONE:
+            // Do nothing
+            break;
     }
 }
 
+/**
+ * Individualized update method for the setting scene
+ *
+ * @param timestep  The amount of time (in seconds) since the last frame
+ */
+void MahsJongApp::updateSettingScene(float timestep){
+    _settings.update(timestep);
+    switch (_settings.choice){
+        case SettingScene::Choice::MENU:
+            _settings.setActive(false);
+            _mainmenu.setActive(true);
+            _scene = State::MENU;
+            break;
+        case SettingScene::Choice::PAUSE:
+            _settings.setActive(false);
+            _pause.setActive(true);
+            _scene = State::PAUSE;
+            break;
+        case SettingScene::Choice::MUSICON:
+            // TODO: Handle turning game music on
+            break;
+        case SettingScene::Choice::MUSICOFF:
+            // TODO: Handle turning game music off
+            break;
+        case SettingScene::Choice::SOUNDON:
+            // TODO: Handle turning game sound on
+            break;
+        case SettingScene::Choice::SOUNDOFF:
+            // TODO: Handling turning game sound off
+            break;
+        case SettingScene::Choice::NONE:
+            // Do nothing
+            break;
+    }
+}
+
+/**
+ * Individualized update method for the pause scene
+ *
+ * @param timestep  The amount of time (in seconds) since the last frame
+ */
+void MahsJongApp::updatePauseScene(float timestep) {
+    _pause.update(timestep);
+    switch (_pause.choice){
+        case PauseScene::Choice::MENU:
+            _pause.setActive(false);
+            _mainmenu.setActive(true);
+            _network->disconnect();
+            _scene = State::MENU;
+            _gameplay.dispose();
+            break;
+        case PauseScene::Choice::SETTINGS:
+            _pause.setActive(false);
+            _settings.setActive(true);
+            _settings.scene = SettingScene::PrevScene::PAUSED;
+            _scene = State::SETTINGS;
+            break;
+        case PauseScene::Choice::CONTINUE:
+            _pause.setActive(false);
+            _gameplay.setActive(true);
+            _scene = State::GAME;
+            break;
+        case PauseScene::Choice::NONE:
+            // Do nothing
+            break;
+    }
+}
+
+/**
+ * Individualized update method for the game over scene
+ *
+ * @param timestep  The amount of time (in seconds) since the last frame
+ */
+void MahsJongApp::updateGameOverScene(float timestep) {
+    _gameover.update(timestep);
+    if (_gameover.choice == GameOverScene::Choice::MENU){
+        
+    } else if (_gameover.choice == GameOverScene::Choice::NONE){
+        // Do nothing
+        return;
+    }
+}
 

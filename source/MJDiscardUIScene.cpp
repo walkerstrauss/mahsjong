@@ -23,12 +23,15 @@ using namespace std;
 bool DiscardUIScene::init(const std::shared_ptr<cugl::AssetManager>& assets){
     if (!assets){
         return false;
+    } else if (!Scene::initWithHint(0,700)){
+        return false;
     }
     back = false;
     _assets = assets;
     _tilesetui = _assets->get<scene2::SceneNode>("tilesetui");
-    _tilesetui->setContentSize(_tilesetui->getSize());
+    _tilesetui->setContentSize(Application::get()->getDisplaySize());
     _tilesetui->doLayout();
+    choice = Choice::NONE;
     _labels.resize(27);
     for (int i = 0; i < 27; i++){
         std::shared_ptr<scene2::Label> label = std::dynamic_pointer_cast<scene2::Label>(_assets->get<scene2::SceneNode>("tilesetui.tilesetscene.numbers." + std::to_string(i + 1)));
@@ -38,10 +41,10 @@ bool DiscardUIScene::init(const std::shared_ptr<cugl::AssetManager>& assets){
     backBtn->addListener([this](const std::string& name, bool down) {
         if (!down) {  // Trigger on button release
             CULog("Back button pressed!");
+            choice = Choice::CONTINUE;
         }
     });
     
-    setActive(false);
     addChild(_tilesetui);
     return true;
 }
@@ -63,6 +66,18 @@ void DiscardUIScene::update(float timestep){
     return;
 }
 
+void DiscardUIScene::setActive(bool value){
+    if (isActive() != value){
+        Scene2::setActive(value);
+        if (value){
+            _tilesetui->setVisible(true);
+            backBtn->activate();
+        } else {
+            _tilesetui->setVisible(false);
+            backBtn->deactivate();
+        }
+    }
+}
 /**
  * Method to get the index of this tile's associated label in the discard UI vector of labels
  *
@@ -128,8 +143,4 @@ bool DiscardUIScene::decrementLabel(std::shared_ptr<TileSet::Tile> tile){
     std::string text = std::to_string(std::stoi(_labels[i]->getText()) - 1);
     _labels[i]->setText(text);
     return true;
-}
-
-void DiscardUIScene::render(const std::shared_ptr<graphics::SpriteBatch>& batch){
-    _tilesetui->render(batch);
 }

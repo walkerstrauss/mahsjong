@@ -31,7 +31,9 @@ public:
         /** User wants to host a game */
         HOST,
         /** User wants to join a game */
-        JOIN
+        JOIN,
+        /** User wants to go to settings */
+        SETTING
     };
 
 protected:

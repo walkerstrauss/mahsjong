@@ -166,7 +166,7 @@
                 "y_offset": 0.5
               }
             },
-            "button_next": {
+            "button_quit": {
               "type": "Widget",
               "format": {
                 "type": "Anchored"
@@ -174,7 +174,7 @@
               "data": {
                 "key": "scorebutton_main",
                 "variables": {
-                  "text": "Next",
+                  "text": "Quit",
                   "size": [135, 61]
                 }
               },

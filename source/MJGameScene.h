@@ -33,7 +33,19 @@ using namespace std;
  * This world should contain all objects, assets, and input controller. Please start
  * including any and all objects and classes that will build our game */
 class GameScene: public cugl::scene2::Scene2{
+public:
+    /**
+     * Enum representing the player's choice when in the
+     * game scene for app transitioning scenes logic
+     */
+    enum Choice {
+        NONE,
+        PAUSE,
+        TILESET,
+        SETS
+    };
 protected:
+    Choice _choice;
     /** Asset manager for this game mode */
     std::shared_ptr<cugl::AssetManager> _assets;
     /** The network connection (as made by this scene) */
@@ -178,6 +190,12 @@ public:
 #pragma mark -
 #pragma mark Gameplay Handling
     /**
+     * Returns choice of this game scene
+     */
+    Choice getChoice(){
+        return _choice;
+    }
+    /**
      * Rests the status of the game so we can play again.
      */
     void reset() override;
@@ -193,6 +211,8 @@ public:
      * Draws all this scene to the scene's SpriteBatch.
      */
     void render() override;
+    
+    void setActive(bool value) override;
     
     /**
      * Processes updates from network

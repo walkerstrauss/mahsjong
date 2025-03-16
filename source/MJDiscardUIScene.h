@@ -21,6 +21,12 @@ using namespace std;
  * This is the class responsible for drawing the discard UI to the game scene
  */
 class DiscardUIScene : public cugl::scene2::Scene2 {
+public:
+    enum Choice {
+        CONTINUE,
+        NONE
+    };
+    
 protected:
     /** Asset manager for this game mode */
     std::shared_ptr<cugl::AssetManager> _assets;
@@ -36,6 +42,8 @@ public:
     Uint32 backBtnKey;
     /** Whether we should transition back to the gamescene */
     bool back;
+    /** Field representing our choice from the tileset UI scene */
+    Choice choice;
     
 #pragma mark -
 #pragma mark Constructors
@@ -59,6 +67,8 @@ public:
      * Method to reset the discard UI scene
      */
     void reset() override;
+    
+    virtual void setActive(bool value) override;
     
     /**
      * The method called to update the discard UI scene
@@ -100,10 +110,7 @@ public:
      */
     std::vector<std::shared_ptr<TileSet::Tile>> selectTile(cugl::Vec2& currPos);
     
-    /**
-     * Draws this scene and its children to the scene's SpriteBatch.
-     */
-    void render(const std::shared_ptr<cugl::graphics::SpriteBatch>& batch);
+    
 };
 
 #endif /*__MJ_DISCARD_UI_SCENE_H__*/

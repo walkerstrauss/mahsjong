@@ -44,28 +44,16 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::sha
     _paused = false;
     _assets = assets;
     _network = network;
+    _choice = Choice::NONE;
     
     Size dimen = getSize();
     _matchScene = _assets->get<scene2::SceneNode>("matchscene");
     _matchScene->setContentSize(dimen);
     _matchScene->doLayout();
-    _pauseScene = _assets->get<scene2::SceneNode>("pause");
-    _pauseScene->doLayout();
-    // Init tileset UI
-   _tilesetui = _tilesetui = _assets->get<scene2::SceneNode>("tilesetui");
-   _tilesetui->setContentSize(_tilesetui->getSize());
-   _tilesetui->doLayout();
-   _labels.resize(27);
-   for (int i = 0; i < 27; i++){
-       std::shared_ptr<scene2::Label> label = std::dynamic_pointer_cast<scene2::Label>(_assets->get<scene2::SceneNode>("tilesetui.tilesetscene.numbers." + std::to_string(i + 1)));
-       _labels[i] = label;
-   }
    
-    std::shared_ptr<scene2::SceneNode> childNode = _matchScene->getChild(0);
-    _discardBtn = std::dynamic_pointer_cast<scene2::Button>(childNode->getChild(3));
+    _discardBtn = std::dynamic_pointer_cast<scene2::Button>(_assets->get<scene2::SceneNode>("matchscene.gameplayscene.discard"));
     _tilesetUIBtn = std::dynamic_pointer_cast<scene2::Button>(_assets->get<scene2::SceneNode>("matchscene.gameplayscene.button_tileset"));
-    _pauseBtn = std::dynamic_pointer_cast<scene2::Button>(childNode->getChild(1));
-    _continueBtn = std::dynamic_pointer_cast<scene2::Button>(_pauseScene->getChild(0)->getChild(2));
+    _pauseBtn = std::dynamic_pointer_cast<scene2::Button>(_assets->get<scene2::SceneNode>("matchscene.gameplayscene.button_pause"));
     
     _discardBtnKey = _discardBtn->addListener([this](const std::string& name, bool down){
         if (!down){
@@ -91,7 +79,6 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::sha
                     _player->discarding = false;
                     _network->broadcastDeck(_tileSet->toJson(_tileSet->deck));
                     _tileSet->clearTilesToJson();
-                    
 //                    _network->endTurn();
                 }
             }
@@ -99,38 +86,15 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::sha
     });
     _tilesetUIBtnKey = _tilesetUIBtn->addListener([this](const std::string& name, bool down){
         if (!down){
-            _matchScene->setVisible(false);
-            _tilesetui->setVisible(true);
-            _backBtn->activate();
-            _uiopen = true;
+            _choice = Choice::TILESET;
         }
     });
     _pauseBtnKey = _pauseBtn->addListener([this](const std::string& name, bool down){
         if (!down){
-            _matchScene->setVisible(false);
-            _pauseScene->setVisible(true);
-            _paused = true;
-            _continueBtn->activate();
+            _choice = Choice::PAUSE;
         }
     });
-    _continueBtnKey = _continueBtn->addListener([this](const std::string& name, bool down){
-        if (!down){
-            _matchScene->setVisible(true);
-            _pauseScene->setVisible(false);
-            _paused = false;
-        }
-    });
-    _discardBtn->activate();
-    _pauseBtn->activate();
-    _tilesetUIBtn->activate();
-    
-    _matchScene->setVisible(true);
     addChild(_matchScene);
-    addChild(_pauseScene);
-    addChild(_tilesetui);
-    _tilesetui->setVisible(false);
-    _pauseScene->setVisible(false);
-    setActive(true);
     // Game Win and Lose bool
     _gameWin = false;
     _gameLose = false;
@@ -478,6 +442,21 @@ void GameScene::render() {
 //    _batch->drawText(_text,Vec2(getSize().width - _text->getBounds().size.width - 10, getSize().height-_text->getBounds().size.height));
     
     _batch->end();
+}
+
+void GameScene::setActive(bool value){
+    if (value){
+        _matchScene->setVisible(true);
+        _pauseBtn->activate();
+        _discardBtn->activate();
+        _tilesetUIBtn->activate();
+    } else {
+        _matchScene->setVisible(false);
+        _pauseBtn->deactivate();
+        _discardBtn->deactivate();
+        _tilesetUIBtn->deactivate();
+        _choice = Choice::NONE;
+    }
 }
 
 void GameScene::processData(std::vector<std::string> msg){

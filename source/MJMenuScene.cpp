@@ -57,14 +57,7 @@ bool MenuScene::init(const std::shared_ptr<cugl::AssetManager>& assets) {
 
     _hostbutton = std::dynamic_pointer_cast<scene2::Button>(childNode->getChild(0));
     _joinbutton = std::dynamic_pointer_cast<scene2::Button>(childNode->getChild(1));
-//    hostNode->getParent()->removeChild(hostNode);
-//    joinNode->getParent()->removeChild(joinNode);
-//    _hostbutton = std::dynamic_pointer_cast<scene2::Button>(hostNode);
-//    _joinbutton = std::dynamic_pointer_cast<scene2::Button>(joinNode);
-//    
-//    _hostbutton->setPosition(Vec2(_hostbutton->getPosition() - Vec2(300,200)));
-//    _joinbutton->setPosition(Vec2(_joinbutton->getPosition() - Vec2(300,200)));
-    
+
 //    // Program the buttons
     _hostbutton->addListener([this](const std::string& name, bool down) {
         if (down) {
@@ -76,10 +69,12 @@ bool MenuScene::init(const std::shared_ptr<cugl::AssetManager>& assets) {
             _choice = Choice::JOIN;
         }
     });
-//    settingsbutton = std::dynamic_pointer_cast<scene2::Button>(_assets->get<scene2::SceneNode>("home.home.menu.button3"));
-//    scene->addChild(_hostbutton);
-//    scene->addChild(_joinbutton);
-    
+    settingsbutton = std::dynamic_pointer_cast<scene2::Button>(_assets->get<scene2::SceneNode>("home.home.menu.button3"));
+    settingsbutton->addListener([this](const std::string& name, bool down){
+        if (down){
+            _choice = Choice::SETTING;
+        }
+    });
     scene->setVisible(true);
     addChild(scene);
     setActive(false);
@@ -115,15 +110,16 @@ void MenuScene::setActive(bool value) {
             _choice = NONE;
             _hostbutton->activate();
             _joinbutton->activate();
-//            settingsbutton->activate();
+            settingsbutton->activate();
         } else {
             _hostbutton->deactivate();
             _joinbutton->deactivate();
-//            settingsbutton->deactivate();
+            settingsbutton->deactivate();
             // If any were pressed, reset them
+            settingsbutton->setDown(false);
             _hostbutton->setDown(false);
             _joinbutton->setDown(false);
-//            settingsbutton->setDown(false);
+            _choice = Choice::NONE;
         }
     }
 }
