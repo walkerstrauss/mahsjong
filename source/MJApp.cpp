@@ -51,6 +51,14 @@ void MahsJongApp::onStartup() {
     _loading.init(_assets, "json/assets.json");
     _loading.setSpriteBatch(_batch);
     
+    // Get rid of wrong start button
+    std::shared_ptr<scene2::Button> wrongStart = std::dynamic_pointer_cast<scene2::Button>(_assets->get<scene2::SceneNode>("load.after.landingscene.menu.button1"));
+    wrongStart->setVisible(false);
+//    std::shared_ptr<scene2::SceneNode> wrongname = _assets->get<scene2::SceneNode>("load.before.name");
+//    wrongname->setVisible(false);
+//    std::shared_ptr<scene2::SceneNode> wronglogo = _assets->get<scene2::SceneNode>("load.before.logo");
+//    wronglogo->setVisible(false);
+    
     _loading.start();
     AudioEngine::start();
     netcode::NetworkLayer::start(netcode::NetworkLayer::Log::INFO);
