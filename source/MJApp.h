@@ -185,6 +185,13 @@ private:
      * @param timestep  The amount of time (in seconds) since the last frame
      */
     void updateGameOverScene(float timestep);
+    
+    /**
+     * Individualized update method for the tileset UI scene
+     *
+     * @param timestep  The amount of time (in seconds) since the last frame
+     */
+    void updateTilesetUIScene(float timestep);
 };
 
 #endif

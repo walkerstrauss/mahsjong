@@ -130,7 +130,7 @@ void MahsJongApp::update(float timestep) {
             updateGameOverScene(timestep);
             break;
         case TILESETUI:
-            // Update tileset UI
+            updateTilesetUIScene(timestep);
             break;
     }
 }
@@ -168,7 +168,7 @@ void MahsJongApp::draw() {
            _pause.render();
            break;
        case OVER:
-           _gameover.render();
+           _gameover.render(_batch);
            break;
        case TILESETUI:
            _tilesetui.render();
@@ -335,6 +335,18 @@ void MahsJongApp::updateGameScene(float timestep) {
         case GameScene::Choice::SETS:
             // Add logic for transitioning to sets scene
             break;
+        case GameScene::Choice::WIN:
+            _gameplay.setActive(false);
+            _gameover.type = GameOverScene::Type::WIN;
+            _gameover.setActive(true);
+            _scene = State::OVER;
+            break;
+        case GameScene::Choice::LOSE:
+            _gameplay.setActive(false);
+            _gameover.type = GameOverScene::Type::LOSE;
+            _gameover.setActive(true);
+            _scene = State::OVER;
+            break;
         case GameScene::Choice::NONE:
             // Do nothing
             break;
@@ -424,3 +436,21 @@ void MahsJongApp::updateGameOverScene(float timestep) {
     }
 }
 
+/**
+ * Individualized update method for the tileset UI scene
+ *
+ * @param timestep  The amount of time (in seconds) since the last frame
+ */
+void MahsJongApp::updateTilesetUIScene(float timestep) {
+    _tilesetui.update(timestep);
+    switch (_tilesetui.choice){
+        case DiscardUIScene::Choice::BACK:
+            _tilesetui.setActive(false);
+            _gameplay.setActive(true);
+            _scene = State::GAME;
+            break;
+        case DiscardUIScene::Choice::NONE:
+            // Do nothing
+            break;
+    }
+}

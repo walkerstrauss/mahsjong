@@ -42,7 +42,9 @@ public:
         NONE,
         PAUSE,
         TILESET,
-        SETS
+        SETS,
+        WIN,
+        LOSE
     };
 protected:
     Choice _choice;
@@ -212,7 +214,7 @@ public:
      */
     void render() override;
     
-    void setActive(bool value) override;
+    virtual void setActive(bool value) override;
     
     /**
      * Processes updates from network
@@ -238,22 +240,6 @@ public:
       * @return an int representing the index of this tile's discard UI label
       */
      int getLabelIndex(std::shared_ptr<TileSet::Tile> tile);
-     
-     /**
-      * Method to increment discard UI label corresponding to tile passed as argument
-      *
-      * @param tile  the tile to increment in the discard UI
-      * @return true if update was successful, and false otherwise
-      */
-     bool incrementLabel(std::shared_ptr<TileSet::Tile> tile);
-     
-     /**
-      * Method to decrement discard UI label corresponding to tile passed as argument
-      *
-      * @param tile  the tile to increment in the discard UI
-      * @return true if update was successful, and false otherwise
-      */
-     bool decrementLabel(std::shared_ptr<TileSet::Tile> tile);
 };
 
 #endif /* __MJ_GAME_SCENE_H__ */

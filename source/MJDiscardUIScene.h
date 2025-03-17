@@ -23,7 +23,7 @@ using namespace std;
 class DiscardUIScene : public cugl::scene2::Scene2 {
 public:
     enum Choice {
-        CONTINUE,
+        BACK,
         NONE
     };
     
@@ -40,8 +40,6 @@ public:
     std::shared_ptr<scene2::Button> backBtn;
     /** Key for the listener for the back button for discard UI */
     Uint32 backBtnKey;
-    /** Whether we should transition back to the gamescene */
-    bool back;
     /** Field representing our choice from the tileset UI scene */
     Choice choice;
     

@@ -119,7 +119,6 @@ void MenuScene::setActive(bool value) {
             settingsbutton->setDown(false);
             _hostbutton->setDown(false);
             _joinbutton->setDown(false);
-            _choice = Choice::NONE;
         }
     }
 }

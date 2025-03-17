@@ -28,7 +28,8 @@ bool GameOverScene::init(const std::shared_ptr<cugl::AssetManager>& assets){
     }
     
     _assets = assets;
-    
+    choice = Choice::NONE;
+    type = Type::NEITHER;
     // init the win scene
     _winscene = _assets->get<scene2::SceneNode>("winscene");
     // init the lose scene
@@ -39,14 +40,17 @@ bool GameOverScene::init(const std::shared_ptr<cugl::AssetManager>& assets){
     _quitWinBtn = std::dynamic_pointer_cast<scene2::Button>(_assets->get<scene2::SceneNode>("winscene.scorewinscene.menu.button_quit"));
     _mainLoseBtn = std::dynamic_pointer_cast<scene2::Button>(_assets->get<scene2::SceneNode>("losescene.scoredefeatscene.menu.button_main"));
     _quitLoseBtn = std::dynamic_pointer_cast<scene2::Button>(_assets->get<scene2::SceneNode>("losescene.scoredefeatscene.menu.button_quit"));
-    choice = Choice::NONE;
-    type = Type::NEITHER;
+    
+    setActive(false);
     return true;
 }
 
 void GameOverScene::dispose(){
     return;
 }
+
+#pragma mark -
+#pragma mark Gameplay Handling
 
 void GameOverScene::reset(){
     return;
@@ -59,13 +63,56 @@ void GameOverScene::update(float timestep){
 void GameOverScene::setActive(bool value){
     if (isActive() != value){
         Scene2::setActive(value);
-        if (value){
-            
-        } else {
-            
+        switch (type){
+            case Type::WIN:
+                if (value){
+                    _winscene->setVisible(true);
+                    _mainWinBtn->activate();
+                    _quitWinBtn->activate();
+                } else {
+                    _winscene->setVisible(false);
+                    _mainWinBtn->deactivate();
+                    _quitWinBtn->deactivate();
+                }
+                break;
+            case Type::LOSE:
+                if (value){
+                    _losescene->setVisible(true);
+                    _mainLoseBtn->activate();
+                    _quitLoseBtn->activate();
+                } else {
+                    _losescene->setVisible(false);
+                    _mainLoseBtn->deactivate();
+                    _quitLoseBtn->deactivate();
+                }
+                break;
+            case Type::NEITHER:
+                // Do nothing
+                if (value){
+                    CULog("should not be active if no type");
+                } else {
+                    _winscene->setVisible(false);
+                    _losescene->setVisible(false);
+                    _mainWinBtn->deactivate();
+                    _quitWinBtn->deactivate();
+                    _mainLoseBtn->deactivate();
+                    _quitLoseBtn->deactivate();
+                }
+                break;
         }
     }
 }
 
-#pragma mark -
-#pragma mark Gameplay Handling
+void GameOverScene::render(const std::shared_ptr<graphics::SpriteBatch>& batch){
+    switch (type){
+        case Type::WIN:
+            _winscene->render(batch);
+            break;
+        case Type::LOSE:
+            _losescene->render(batch);
+            break;
+        case Type::NEITHER:
+            CULog("no render for neither");
+            break;
+    }
+}

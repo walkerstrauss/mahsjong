@@ -103,9 +103,8 @@ bool SettingScene::init(const std::shared_ptr<cugl::AssetManager>& assets){
     exitBtn->setAnchor(Vec2::ANCHOR_TOP_LEFT);
     exitBtn->setPosition(900,600);
     exitBtn->doLayout();
-    _settingScene->setVisible(true);
+
     addChild(_settingScene);
-    setActive(false);
     return true;
 }
 

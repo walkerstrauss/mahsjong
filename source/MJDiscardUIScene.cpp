@@ -26,33 +26,32 @@ bool DiscardUIScene::init(const std::shared_ptr<cugl::AssetManager>& assets){
     } else if (!Scene::initWithHint(0,700)){
         return false;
     }
-    back = false;
     _assets = assets;
     _tilesetui = _assets->get<scene2::SceneNode>("tilesetui");
     _tilesetui->setContentSize(Application::get()->getDisplaySize());
     _tilesetui->doLayout();
     choice = Choice::NONE;
+    
     _labels.resize(27);
     for (int i = 0; i < 27; i++){
         std::shared_ptr<scene2::Label> label = std::dynamic_pointer_cast<scene2::Label>(_assets->get<scene2::SceneNode>("tilesetui.tilesetscene.numbers." + std::to_string(i + 1)));
         _labels[i] = label;
     }
     backBtn = std::dynamic_pointer_cast<scene2::Button>(_assets->get<scene2::SceneNode>("tilesetui.tilesetscene.back_tileset"));
-    backBtn->addListener([this](const std::string& name, bool down) {
-        if (!down) {  // Trigger on button release
-            CULog("Back button pressed!");
-            choice = Choice::CONTINUE;
+    backBtnKey = backBtn->addListener([this](const std::string& name, bool down) {
+        if (!down) {
+            choice = Choice::BACK;
         }
     });
-    
     addChild(_tilesetui);
+    setActive(false);
     return true;
 }
 
 void DiscardUIScene::dispose(){
-    _labels.clear();
-    _tilesetui = nullptr;
-    _assets = nullptr;
+//    _labels.clear();
+//    _tilesetui = nullptr;
+//    _assets = nullptr;
 }
 
 #pragma mark -
@@ -70,8 +69,10 @@ void DiscardUIScene::setActive(bool value){
     if (isActive() != value){
         Scene2::setActive(value);
         if (value){
+            choice = Choice::NONE;
             _tilesetui->setVisible(true);
             backBtn->activate();
+            CULog("back btn activated");
         } else {
             _tilesetui->setVisible(false);
             backBtn->deactivate();

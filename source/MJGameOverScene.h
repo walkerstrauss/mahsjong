@@ -80,6 +80,8 @@ public:
     void update(float timestep) override;
     
     void reset() override;
+    
+    void render(const std::shared_ptr<cugl::graphics::SpriteBatch>& batch);
 };
 
 #endif

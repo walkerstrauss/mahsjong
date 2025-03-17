@@ -281,6 +281,29 @@
         },
         "table": {
             "file": "textures/tilesetui/table.png"
+        },
+        "background_score_win": {
+            "file": "textures/score_win/background_score_win.png"
+        },
+        "Victory__logo_image": {
+            "file": "textures/score_win/Victory__logo_image.png"
+        },
+        "button_score": {
+            "file": "textures/score_win/button_score.png"
+        },
+        "button_point": {
+            "file": "textures/score_win/button_point.png"
+        },
+
+
+        "background_score_defeat": {
+            "file": "textures/score_defeat/background_score_defeat.png"
+        },
+        "Defeated_logo_image": {
+            "file": "textures/score_defeat/Defeated_logo_image.png"
+        },
+        "grandma_cry_image": {
+            "file": "textures/score_defeat/grandma_cry_image.png"
         }
     },
     "fonts": {
@@ -501,7 +524,7 @@
                 "type"        : "Anchored"
             },
             "children" : {
-                "clientscene":{
+                "scorewinscene":{
                     "type"      : "Widget",
                     "format"    : {
                         "type"        : "Anchored"
@@ -521,7 +544,7 @@
                 "type"        : "Anchored"
             },
             "children" : {
-                "clientscene":{
+                "scoredefeatscene":{
                     "type"      : "Widget",
                     "format"    : {
                         "type"        : "Anchored"
