@@ -43,7 +43,7 @@ bool Hand::initHand(std::shared_ptr<TileSet>& tileSet, bool isHost){
             drawnTile->inClientHand = true;
         }
         drawnTile->_scale = 0.2;
-        
+        drawnTile->inDeck = false; 
         _tiles.push_back(drawnTile);
     }
     

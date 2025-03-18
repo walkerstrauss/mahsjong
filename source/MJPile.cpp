@@ -63,6 +63,7 @@ bool Pile::createPile() {
             tile->_scale = 0.2;
             tile->inPile = true;
             tile->pileCoord = cugl::Vec2(i, j);
+            tile->inDeck = false; 
 
             float x = j * (_size.width * tile->_scale * spacingFactorX) + (_size.width * tile->_scale / 2);
             float y = i * (_size.height * tile->_scale) + (_size.height * tile->_scale / 2);
