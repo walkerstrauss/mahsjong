@@ -26,6 +26,7 @@ TileSet::Tile::Tile(const TileSet::Tile::Rank r, const TileSet::Tile::Suit s){
     _rank = r;
     _suit = s;
     
+    inDeck = true; 
     inPile = false;
     inHostHand = false;
     inClientHand = false;
