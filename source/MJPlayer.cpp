@@ -34,7 +34,6 @@ bool Hand::initHand(std::shared_ptr<TileSet>& tileSet, bool isHost){
     // draw from the deck
     for(int i = 0; i < _size; i++){
         std::shared_ptr<TileSet::Tile> drawnTile = tileSet->deck[i];
-        CULog(drawnTile->toString().c_str());
         if(isHost) {
             drawnTile->inHostHand = true;
             drawnTile->inClientHand = false;

@@ -26,7 +26,7 @@ TileSet::Tile::Tile(const TileSet::Tile::Rank r, const TileSet::Tile::Suit s){
     _rank = r;
     _suit = s;
     
-    inDeck = true; 
+    inDeck = true;
     inPile = false;
     inHostHand = false;
     inClientHand = false;
@@ -244,7 +244,7 @@ void TileSet::updateDeck(const std::shared_ptr<cugl::JsonValue>& deckJson) {
         tileMap[key]->played = played;
         tileMap[key]->pos = pos;
         tileMap[key]->_scale = scale;
-        if(tileMap[key]->inDeck == false ){
+        if(inDeck == false){
             deck.erase(std::remove(deck.begin(), deck.end(), tileMap[key]), deck.end());
         }
         tileMap[key]->inDeck = inDeck;
