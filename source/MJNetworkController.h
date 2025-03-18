@@ -215,6 +215,8 @@ public:
     
     void broadcastUpdating();
     
+    void broadcastReady();
+    
     /**
      * Converts a decimal string to a hexadecimal string
      *

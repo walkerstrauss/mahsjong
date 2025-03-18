@@ -149,6 +149,7 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::sha
         _player->getHand().initHand(_tileSet, _network->getHostStatus());
         _player->getHand().updateTilePositions();
         _pile->initPile(5, _tileSet);
+        _network->broadcastReady();
         _network->broadcastDeck(_tileSet->toJson(_tileSet->deck));
     } else {
         _tileSet->initClientDeck(_network->getStartingDeck());
