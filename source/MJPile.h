@@ -32,8 +32,6 @@ public:
 	std::shared_ptr<TileSet> _tileSet;
 	/** Stores the location of our pair in the pile */
     std::vector<std::shared_ptr<TileSet::Tile>> _pairs;
-    /** Index of the tileset to start drawing to the pile from */
-    int index = 26;
     
 #pragma mark -
 #pragma mark Constructors
@@ -123,6 +121,13 @@ public:
      * @param pileTile  the json representation of a tile
      */
     void removePileTile(const std::shared_ptr<cugl::JsonValue> tileJson, bool isHostDraw);
+    
+    /**
+     * Draws the pile to the screen
+     *
+     * @param batch     the SpriteBatch to render to the screen
+     */
+    void draw(const std::shared_ptr<cugl::graphics::SpriteBatch>& batch);
 };
 
 #endif /* __MJ_PILE_H__ */

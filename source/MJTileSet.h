@@ -54,6 +54,8 @@ public:
         int _id;
         /** The position of the tile (row, col) in the pile */
         cugl::Vec2 pileCoord;
+        /** Whether or not the tile is in the deck */
+        bool inDeck; 
         /** Whether or not the tile is in the pile */
         bool inPile;
         /** Whether or not the tile is in the host's hand */
@@ -271,6 +273,8 @@ public:
 public:
     /** Deck with all of the tiles */
     std::vector<std::shared_ptr<Tile>> deck;
+    /** Vector with starting representation of deck */
+    std::vector<std::shared_ptr<Tile>> startingDeck;
     /** Unsorted set containing tiles in the deck */
     std::map<std::string, std::shared_ptr<Tile>> tileMap;
     /** Grandma's favorite tiles */
@@ -338,68 +342,6 @@ public:
     }
     
     /**
-     * Generates 3 random unique grandma tiles
-     */
-    void generateGrandmaTiles();
-    
-    /**
-     * Prints Grandma's favorite tiles to the log
-     */
-    void printGrandmaTiles() {
-        for(const auto& it : grandmaTiles){
-            CULog("%s", it->toString().c_str());
-        }
-    }
-    
-    /**
-     * Generates a random wild tile after scoring a grandma tile
-     *
-     * @return a randomly generated tile
-     */
-    std::shared_ptr<TileSet::Tile> generateWildTile() {
-        rdTileSet.init();
-        int rank = static_cast<int>(rdTileSet.getOpenUint64(1, 11));
-        
-        std::shared_ptr<Tile> wildTile = std::make_shared<Tile>(static_cast<Tile::Rank>(rank), Tile::Suit::WILD_SUIT);
-        wildTile->_id = wildCount;
-        wildCount += 1;
-        return wildTile;
-    }
-    
-    /**
-     * Generates a set of wild tiles
-     */
-    void generateWildSet() {
-        for(int i = 0; i < 11; i++){
-            for(int j = 0; j < 3; j++){
-                std::shared_ptr<Tile> newTile = std::make_shared<Tile>(static_cast<Tile::Rank>(i), Tile::Suit::WILD_SUIT);
-                newTile->_id = wildCount;
-                wildCount += 1;
-                
-                wildTiles.emplace_back(newTile);
-            }
-        }
-    }
-    
-    /**
-     * Picks a random tile from the wild tiles set by shuffling then choosing the first element.
-     * Removes the chosen wild tile from wild tile set.
-     */
-    std::shared_ptr<Tile> pickWildTile(){
-        if(wildTiles.empty()){
-            throw std::runtime_error("no wild tiles!");
-        }
-        
-        rdTileSet.init();
-        rdTileSet.shuffle(wildTiles);
-
-        std::shared_ptr<Tile> currTile = wildTiles.front();
-        wildTiles.erase(wildTiles.begin());
-        
-        return currTile;
-    };
-    
-    /**
      * Sets the texture for all tiles in deck
      */
     void setAllTileTexture(const std::shared_ptr<cugl::AssetManager>& assets);
@@ -449,6 +391,8 @@ public:
     void setNextTile(std::shared_ptr<cugl::JsonValue>& nextTileJson);
     
     void updateDeck(const std::shared_ptr<cugl::JsonValue>& deckJson);
+    
+    std::vector<std::shared_ptr<Tile>> processTileJson(const std::shared_ptr<cugl::JsonValue>& tileJson);
 };
 
 #endif /* __MJ_TILESET_H__ */

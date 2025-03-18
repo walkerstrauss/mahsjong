@@ -111,7 +111,7 @@ void NetworkController::processData(const std::string source,
         _currentTurn = _deserializer->readUint32();
     }
     else if (msgType == "initialize game") {
-        _deckJson = _deserializer->readJson();
+        _startingDeckJson = _deserializer->readJson();
         _status = INGAME;
     }
     else if (msgType == "update deck") {
@@ -119,7 +119,7 @@ void NetworkController::processData(const std::string source,
         _status = DECK;
     }
     else if (msgType == "pile tile update") {
-        _pileTile = _deserializer->readJson();
+        _pileTileJson = _deserializer->readJson();
         _isHostDraw = _isHost;
         _status = PILETILEUPDATE;
     }
@@ -276,6 +276,14 @@ void NetworkController::broadcastNewDiscard(const std::shared_ptr<cugl::JsonValu
     
     broadcast(_serializer->serialize());
 }
+
+void NetworkController::broadcastStartingDeck(const std::shared_ptr<cugl::JsonValue>& deckJson) {
+    _serializer->reset();
+    
+    _serializer->writeString("starting deck");
+    _serializer->writeJson(deckJson);
+}
+                                                                                                 
 //
 //void NetworkController::notifyObservers(std::vector<std::string>& msg){
 //    observer.processData(msg);

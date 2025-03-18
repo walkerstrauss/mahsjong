@@ -65,13 +65,7 @@ public:
      *
      * @param tileSet   the tileset to draw from
      */
-    bool initHost(std::shared_ptr<TileSet>& tileSet);
-    
-    /**
-     * Initializes a new client hand by pulling 14 tiles from the game tileset
-     */
-    bool initClient(std::shared_ptr<TileSet>& tileSet);
-    
+    bool initHand(std::shared_ptr<TileSet>& tileSet, bool isHost);
     
 #pragma mark -
 #pragma mark Gameplay Handling
@@ -247,6 +241,11 @@ public:
             _turnsLeft--;
         }
     }
+    
+    /**
+     * Renders the current tiles in hand
+     */
+    void draw(const std::shared_ptr<cugl::graphics::SpriteBatch>& batch);
 };
 
 #endif /* __MJ_Player_H__ */

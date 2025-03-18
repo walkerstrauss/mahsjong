@@ -138,16 +138,25 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::sha
     // Initialize tile set
     _tileSet = std::make_shared<TileSet>();
     _player = std::make_shared<Player>();
-    
+    _pile = std::make_shared<Pile>(); //Init our pile
+
     if(_network->getHostStatus()){
         _tileSet->initHostDeck();
+        _tileSet->setAllTileTexture(assets);
         _tileSet->shuffle();
-        _player->getHand().initHost(_tileSet);
+        _network->initGame(_tileSet->toJson(_tileSet->startingDeck));
+
+        _player->getHand().initHand(_tileSet, _network->getHostStatus());
+        _player->getHand().updateTilePositions();
+        _pile->initPile(5, _tileSet);
+        _network->broadcastDeck(_tileSet->toJson(_tileSet->deck));
     } else {
-        _tileSet->initClientDeck(_network->getDeckJson());
-        _player->getHand().initClient(_tileSet);
-        }
-    
+        _tileSet->initClientDeck(_network->getStartingDeck());
+        _tileSet->updateDeck(_network->getDeckJson());
+        _player->getHand().initHand(_tileSet, _network->getHostStatus());
+        _player->getHand().updateTilePositions();
+        _network->broadcastDeck(_tileSet->toJson(_tileSet->deck));
+    }
 
     std::string msg = strtool::format("Score: %d", _player->_totalScore);
     _text = TextLayout::allocWithText(msg, assets->get<Font>("pixel32"));
@@ -157,19 +166,8 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::sha
     _lose = TextLayout::allocWithText("You Lost!\nReset with R", assets->get<Font>("pixel32"));
     _lose->layout();
 
-    _tileSet->setAllTileTexture(assets);
-    _pile = std::make_shared<Pile>(); //Init our pile
-    _pile->initPile(5, _tileSet);
-
     
 //    _tileSet->setBackTextures(assets);
-    
-    if(_network->getHostStatus()){
-        _network->initGame(_tileSet->toJson(_tileSet->deck));
-    } else {
-        _network->broadcastDeck(_tileSet->toJson(_tileSet->deck));
-    }
-
     
     // Initialize the discard pile
     _discardPile = std::make_shared<DiscardPile>();
@@ -293,7 +291,6 @@ void GameScene::update(float timestep) {
     if(_input.didRelease() && !_input.isDown()){
         cugl::Vec2 prev = _input.getPosition(); //Get our mouse position
         cugl::Vec2 mousePos = cugl::Scene::screenToWorldCoords(cugl::Vec3(prev));
-        _player->getHand().clickedTile(mousePos);
         if (_network->getCurrentTurn() == _network->getLocalPid()) {
             _discardPile->isTileSelected(mousePos);
             clickedTile(mousePos);
@@ -470,8 +467,8 @@ void GameScene::render() {
     // Not paused, in discard UI, won or lost. So, render match.
     _matchScene->render(_batch);
     
-    // Draw all tiles in hand, pile and grandma tiles
-    _tileSet->draw(_batch, getSize(), _network->getHostStatus());
+    _player->draw(_batch);
+    _pile->draw(_batch);
     
     // Draw score
 //    _batch->setColor(Color4::GREEN);
@@ -498,29 +495,37 @@ void GameScene::processData(std::vector<std::string> msg){
 }
 
 void GameScene::clickedTile(cugl::Vec2 mousePos){
-    for(auto& tile : _tileSet->deck){
-        bool inHand;
-        if (_network->getHostStatus()) {
-            inHand = tile->inHostHand;
-        } else {
-            inHand = tile->inClientHand;
-        }
-        if (inHand || tile->discarded || tile->played){
-            continue;
-        }
-        else if (tile->inPile){
-            if (tile->tileRect.contains(mousePos)){
-                if(tile->selected){
-                    tile->selected = false;
+    for(const auto& pair : _tileSet->tileMap){
+        std::shared_ptr<TileSet::Tile> currTile = pair.second;
+        if(currTile->tileRect.contains(mousePos)){
+            if((_network->getStatus() && currTile->inHostHand) || (!_network->getStatus() && currTile->inClientHand)) {
+                if(currTile->selected) {
+                    auto it = std::find(_player->getHand()._selectedTiles.begin(), _player->getHand()._selectedTiles.end(), currTile);
+                    if (it != _player->getHand()._selectedTiles.end()) {
+                        _player->getHand()._selectedTiles.erase(it);
+                    }
                 }
                 else{
-                    tile->selected = true;
+                    _player->getHand()._selectedTiles.push_back(currTile);
                 }
+            }
+            if(currTile->inPile) {
+                if(currTile->selected) {
+                    currTile->_scale = 0.2;
+                }
+                else{
+                    currTile->_scale = 0.25;
+                }
+            }
+            if(currTile->selected) {
+                currTile->selected = false;
+            }
+            else {
+                currTile->selected = true;
             }
         }
     }
 }
-
 
 /**
  * Method to get the index of this tile's associated label in the discard UI vector of labels
