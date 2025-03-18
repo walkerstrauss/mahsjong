@@ -109,64 +109,6 @@ void TileSet::setBackTextures(const std::shared_ptr<cugl::AssetManager>& assets)
     }
 }
 
-/**
- * Draws the tiles in the tileset to the screen
- */
-//void TileSet::draw(const std::shared_ptr<cugl::graphics::SpriteBatch>& batch, cugl::Size size, bool isHost){
-//    for(const auto& it : deck){
-//        Tile curr = (*it);
-//        Vec2 pos = curr.pos;
-//        
-//        if (it->played) {
-//            continue;
-//        }
-//        
-//        if (isHost && (it->inHostHand || it->inPile || it->topTile)){
-//            if(it->selected && it->inHostHand){
-//                pos.y = curr.pos.y + 10;
-//            }
-//            if(it->selected && (it->inPile || it->discarded)){
-//                it->_scale = 0.25;
-//            }
-//            else if (it->inPile || it->discarded){
-//                it->_scale = 0.2;
-//            }
-//            Vec2 origin = Vec2(curr.getTileTexture()->getSize().width/2, curr.getTileTexture()->getSize().height/2);
-//            
-//            Affine2 trans;
-//            trans.scale(curr._scale);
-//            trans.translate(pos);
-//            
-//            Size textureSize(350.0, 415.0);
-//            Vec2 rectOrigin(pos - (textureSize * curr._scale)/2);
-//            it->tileRect = cugl::Rect(rectOrigin, textureSize * curr._scale);
-//
-//            batch->draw(curr.getTileTexture(), origin, trans);
-//        } else if (!isHost && (it->inClientHand || it->inPile || it->topTile)){
-//            if(it->selected && it->inClientHand){
-//                pos.y = curr.pos.y + 10;
-//            }
-//            if(it->selected && (it->inPile || it->discarded)){
-//                it->_scale = 0.25;
-//            }
-//            else{
-//                it->_scale = 0.2;
-//            }
-//            Vec2 origin = Vec2(curr.getTileTexture()->getSize().width/2, curr.getTileTexture()->getSize().height/2);
-//            
-//            Affine2 trans;
-//            trans.scale(curr._scale);
-//            trans.translate(pos);
-//            
-//            Size textureSize(350.0, 415.0);
-//            Vec2 rectOrigin(pos - (textureSize * curr._scale)/2);
-//            it->tileRect = cugl::Rect(rectOrigin, textureSize * curr._scale);
-//
-//            batch->draw(curr.getTileTexture(), origin, trans);
-//        }
-//    }
-//}
-
 #pragma mark -
 #pragma mark Tile Gameplay Handling
 /**
@@ -222,7 +164,7 @@ void TileSet::updateDeck(const std::shared_ptr<cugl::JsonValue>& deckJson) {
         const std::string suit = tileKey->getString("suit");
         const std::string id = tileKey->getString("id");
         
-//        const cugl::Vec2 pileCoord = Tile::toVector(tileKey->getString("pileCoord"));
+        const cugl::Vec2 pileCoord = Tile::toVector(tileKey->getString("pileCoord"));
         const bool inPile = tileKey->getBool("inPile");
         const bool inHostHand = tileKey->getBool("inHostHand");
         const bool inClientHand = tileKey->getBool("inClientHand");
@@ -244,6 +186,7 @@ void TileSet::updateDeck(const std::shared_ptr<cugl::JsonValue>& deckJson) {
         tileMap[key]->played = played;
         tileMap[key]->pos = pos;
         tileMap[key]->_scale = scale;
+        tileMap[key]->pileCoord = pileCoord;
         if(inDeck == false){
             deck.erase(std::remove(deck.begin(), deck.end(), tileMap[key]), deck.end());
         }

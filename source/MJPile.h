@@ -98,15 +98,20 @@ public:
      * @return a vector of tiles in the pair
      */
 	std::vector<std::shared_ptr<TileSet::Tile>> pairTile(const std::shared_ptr<Player>& player);
-
+    
+    /**
+     * Remakes pile according to the player who drew the last tile in the pile
+     */
+    void remakePile();
+    
 	/**
-     * Method to draw the tiles in the pile (no longer used)
+     * Method to draw the tiles in the pile
      *
      * @param batch     the SpriteBatch to draw the pile tiles to
      * @param size       the size of the pile
      * @param position the position of the pile to draw
      */
-	void draw(const std::shared_ptr<cugl::graphics::SpriteBatch>& batch, cugl::Size size, cugl::Vec2 position);
+	void draw(const std::shared_ptr<cugl::graphics::SpriteBatch>& batch);
     
     /**
      * Method to check if the player has selected two tiles that form a pair and handle pairs
@@ -121,13 +126,6 @@ public:
      * @param pileTile  the json representation of a tile
      */
     void removePileTile(const std::shared_ptr<cugl::JsonValue> tileJson, bool isHostDraw);
-    
-    /**
-     * Draws the pile to the screen
-     *
-     * @param batch     the SpriteBatch to render to the screen
-     */
-    void draw(const std::shared_ptr<cugl::graphics::SpriteBatch>& batch);
 };
 
 #endif /* __MJ_PILE_H__ */

@@ -148,7 +148,7 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::sha
 
         _player->getHand().initHand(_tileSet, _network->getHostStatus());
         _player->getHand().updateTilePositions();
-        _pile->initPile(5, _tileSet);
+        _pile->initPile(2, _tileSet);
         _network->broadcastStartingDeck(_tileSet->mapToJson());
     } else {
         _tileSet->initClientDeck(_network->getStartingDeck());
@@ -156,6 +156,7 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::sha
         _tileSet->updateDeck(_network->getDeckJson());
         _player->getHand().initHand(_tileSet, _network->getHostStatus());
         _player->getHand().updateTilePositions();
+        _pile->remakePile();
         _network->broadcastDeck(_tileSet->mapToJson());
     }
 
@@ -279,10 +280,8 @@ void GameScene::update(float timestep) {
         lastTile = _player->getHand()._drawnPile.back();
     }
     
-    if(_network->getStatus() == NetworkController::Status::LAYER) {
-        _pile->createPile();
-        
-//        _network->broadcastDeck(_tileSet->toJson(_tileSet->deck));
+    if(_network->getStatus() == NetworkController::Status::LAYER and _pile->getVisibleSize() == 0) {
+        _pile->remakePile();
         _network->setStatus(NetworkController::Status::INGAME);
     }
     
@@ -308,15 +307,18 @@ void GameScene::update(float timestep) {
             _player->getHand().drawFromPile(_pile, 1, _network->getHostStatus());
             _network->broadcastTileDrawn(_tileSet->toJson(_tileSet->tilesToJson));
             _tileSet->clearTilesToJson();
-            _network->broadcastDeck(_tileSet->toJson(_tileSet->deck));
+            if (_pile->getVisibleSize() == 0) {
+                _pile->createPile();
+                _network->broadcastDeck(_tileSet->toJson(_tileSet->deck));
+                _network->broadcastPileLayer();
+            }
+            else{
+                _network->broadcastDeck(_tileSet->toJson(_tileSet->deck));
+            }
             if (_player->getHand().isWinningHand()){
                 _gameWin = true;
             }
             _player->canDraw = false;
-        }
-        
-        if (_pile->getVisibleSize() == 0) {
-            _network->broadcastPileLayer();
         }
             
         for (auto& tile : _player->getHand()._drawnPile) {

@@ -148,6 +148,24 @@ void Pile::removePileTile(const std::shared_ptr<cugl::JsonValue> tileJson, bool 
     }
 }
 
+void Pile::remakePile(){
+    if(_pileMap.size() != 0){
+        CUAssert("Must have an empty pile before remaking pile");
+    }
+    
+    for(auto const& pairs : _tileSet->tileMap) {
+        CUAssertLog(_pileMap.size() > 25, "too many tiles in pile");
+        std::shared_ptr<TileSet::Tile> currTile = pairs.second;
+        if(currTile->inPile) {
+            std::string key = currTile->toString() + " " + std::to_string(currTile->_id);
+            int x = currTile->pileCoord.x;
+            int y = currTile->pileCoord.y;
+            _pile[x][y] = currTile;
+            _pileMap.insert({key, currTile->pileCoord});
+        }
+    }
+}
+
 /**
  * Draws the pile to the screen
  *
@@ -167,7 +185,6 @@ void Pile::draw(const std::shared_ptr<cugl::graphics::SpriteBatch>& batch) {
             
             cugl::Size textureSize(350.0, 415.0);
             cugl::Vec2 rectOrigin(tile->pos - (textureSize * tile->_scale)/2);
-            CULog("%s", tile->pos.toString().c_str());
             tile->tileRect = cugl::Rect(rectOrigin, textureSize * tile->_scale);
 
             batch->draw(tile->getTileTexture(), origin, trans);
