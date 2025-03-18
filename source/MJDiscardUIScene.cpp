@@ -72,7 +72,6 @@ void DiscardUIScene::setActive(bool value){
             choice = Choice::NONE;
             _tilesetui->setVisible(true);
             backBtn->activate();
-            CULog("back btn activated");
         } else {
             _tilesetui->setVisible(false);
             backBtn->deactivate();

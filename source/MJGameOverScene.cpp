@@ -15,7 +15,7 @@ using namespace cugl::graphics;
 using namespace cugl::audio;
 using namespace std;
 
-#define SCENE_HEIGHT  720
+#define SCENE_HEIGHT  700
 
 #pragma mark -
 #pragma mark Constructors
@@ -28,6 +28,8 @@ bool GameOverScene::init(const std::shared_ptr<cugl::AssetManager>& assets){
     }
     
     _assets = assets;
+    Size dimen = Application::get()->getDisplaySize();
+    
     choice = Choice::NONE;
     type = Type::NEITHER;
     // init the win scene
@@ -41,6 +43,21 @@ bool GameOverScene::init(const std::shared_ptr<cugl::AssetManager>& assets){
     _mainLoseBtn = std::dynamic_pointer_cast<scene2::Button>(_assets->get<scene2::SceneNode>("losescene.scoredefeatscene.menu.button_main"));
     _quitLoseBtn = std::dynamic_pointer_cast<scene2::Button>(_assets->get<scene2::SceneNode>("losescene.scoredefeatscene.menu.button_quit"));
     
+    // add button listeners
+    _mainWinKey = _mainWinBtn->addListener([this](const std::string& name, bool down){
+        if (!down){
+            choice = Choice::MENU;
+        }
+       
+    });
+    _mainLoseKey = _mainLoseBtn->addListener([this](const std::string& name, bool down){
+        if (!down){
+            choice = Choice::MENU;
+        }
+    });
+    
+    addChild(_winscene);
+    addChild(_losescene);
     setActive(false);
     return true;
 }
@@ -90,6 +107,12 @@ void GameOverScene::setActive(bool value){
                 // Do nothing
                 if (value){
                     CULog("should not be active if no type");
+                    _winscene->setVisible(true);
+                    _losescene->setVisible(true);
+                    _mainWinBtn->activate();
+                    _quitWinBtn->activate();
+                    _mainLoseBtn->activate();
+                    _quitLoseBtn->activate();
                 } else {
                     _winscene->setVisible(false);
                     _losescene->setVisible(false);
@@ -104,6 +127,7 @@ void GameOverScene::setActive(bool value){
 }
 
 void GameOverScene::render(const std::shared_ptr<graphics::SpriteBatch>& batch){
+    batch->begin(_camera->getCombined());
     switch (type){
         case Type::WIN:
             _winscene->render(batch);
@@ -115,4 +139,5 @@ void GameOverScene::render(const std::shared_ptr<graphics::SpriteBatch>& batch){
             CULog("no render for neither");
             break;
     }
+    batch->end();
 }

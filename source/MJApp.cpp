@@ -409,8 +409,8 @@ void MahsJongApp::updatePauseScene(float timestep) {
             _pause.setActive(false);
             _mainmenu.setActive(true);
             _network->disconnect();
-            _scene = State::MENU;
             _gameplay.dispose();
+            _scene = State::MENU;
             break;
         case PauseScene::Choice::SETTINGS:
             _pause.setActive(false);
@@ -437,7 +437,11 @@ void MahsJongApp::updatePauseScene(float timestep) {
 void MahsJongApp::updateGameOverScene(float timestep) {
     _gameover.update(timestep);
     if (_gameover.choice == GameOverScene::Choice::MENU){
-        
+        _gameover.setActive(false);
+        _mainmenu.setActive(true);
+        _network->disconnect();
+        _scene = State::MENU;
+        _gameplay.dispose();
     } else if (_gameover.choice == GameOverScene::Choice::NONE){
         // Do nothing
         return;

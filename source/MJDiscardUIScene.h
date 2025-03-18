@@ -42,6 +42,8 @@ public:
     Uint32 backBtnKey;
     /** Field representing our choice from the tileset UI scene */
     Choice choice;
+    /** Input contorller */
+    InputController input;
     
 #pragma mark -
 #pragma mark Constructors
