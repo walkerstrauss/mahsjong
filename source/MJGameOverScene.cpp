@@ -34,8 +34,10 @@ bool GameOverScene::init(const std::shared_ptr<cugl::AssetManager>& assets){
     type = Type::NEITHER;
     // init the win scene
     _winscene = _assets->get<scene2::SceneNode>("winscene");
+    _winscene->setContentSize(dimen);
     // init the lose scene
     _losescene = _assets->get<scene2::SceneNode>("losescene");
+    _losescene->setContentSize(dimen);
     
     // init buttons
     _mainWinBtn = std::dynamic_pointer_cast<scene2::Button>(_assets->get<scene2::SceneNode>("winscene.scorewinscene.menu.button_main"));

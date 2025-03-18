@@ -397,20 +397,24 @@ void GameScene::render() {
 
 void GameScene::setActive(bool value){
     CULog("set active");
-//    if (isActive() != value){
-//        Scene2::setActive(value);
-        if (value){
-            _matchScene->setVisible(true);
-            _pauseBtn->activate();
-            _discardBtn->activate();
-            _tilesetUIBtn->activate();
-        } else {
-            _matchScene->setVisible(false);
-            _pauseBtn->deactivate();
-            _discardBtn->deactivate();
-            _tilesetUIBtn->deactivate();
-        }
-//    }
+    if (isActive() != value){
+        Scene2::setActive(value);
+    }
+}
+    
+void GameScene::setGameActive(bool value){
+    if (value){
+        _choice = NONE;
+        _matchScene->setVisible(true);
+        _pauseBtn->activate();
+        _discardBtn->activate();
+        _tilesetUIBtn->activate();
+    } else {
+        _matchScene->setVisible(false);
+        _pauseBtn->deactivate();
+        _discardBtn->deactivate();
+        _tilesetUIBtn->deactivate();
+    }
 }
 
 void GameScene::processData(std::vector<std::string> msg){

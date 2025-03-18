@@ -216,6 +216,8 @@ public:
     
     virtual void setActive(bool value) override;
     
+    void setGameActive(bool value);
+    
     /**
      * Processes updates from network
      */

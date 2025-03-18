@@ -272,6 +272,7 @@ void MahsJongApp::updateHostScene(float timestep) {
         _gameplay.setSpriteBatch(_batch);
         _hostgame.setActive(false);
         _gameplay.setActive(true);
+        _gameplay.setGameActive(true);
         _scene = State::GAME;
     } else if (_network->getStatus() == NetworkController::Status::NETERROR) {
         _scene = MENU;
@@ -301,6 +302,7 @@ void MahsJongApp::updateClientScene(float timestep) {
         _gameplay.setSpriteBatch(_batch);
         _joingame.setActive(false);
         _gameplay.setActive(true);
+        _gameplay.setGameActive(true);
         _scene = GAME;
     }
     else if (_network->getStatus() == NetworkController::Status::NETERROR) {
@@ -331,12 +333,12 @@ void MahsJongApp::updateGameScene(float timestep) {
     }
     switch (_gameplay.getChoice()){
         case GameScene::Choice::PAUSE:
-            _gameplay.setActive(false);
+            _gameplay.setGameActive(false);
             _pause.setActive(true);
             _scene = State::PAUSE;
             break;
         case GameScene::Choice::TILESET:
-            _gameplay.setActive(false);
+            _gameplay.setGameActive(false);
             _tilesetui.setActive(true);
             _scene = State::TILESETUI;
             break;
@@ -344,13 +346,13 @@ void MahsJongApp::updateGameScene(float timestep) {
             // Add logic for transitioning to sets scene
             break;
         case GameScene::Choice::WIN:
-            _gameplay.setActive(false);
+            _gameplay.setGameActive(false);
             _gameover.type = GameOverScene::Type::WIN;
             _gameover.setActive(true);
             _scene = State::OVER;
             break;
         case GameScene::Choice::LOSE:
-            _gameplay.setActive(false);
+            _gameplay.setGameActive(false);
             _gameover.type = GameOverScene::Type::LOSE;
             _gameover.setActive(true);
             _scene = State::OVER;
@@ -420,7 +422,7 @@ void MahsJongApp::updatePauseScene(float timestep) {
             break;
         case PauseScene::Choice::CONTINUE:
             _pause.setActive(false);
-            _gameplay.setActive(true);
+            _gameplay.setGameActive(true);
             _scene = State::GAME;
             break;
         case PauseScene::Choice::NONE:
@@ -459,6 +461,7 @@ void MahsJongApp::updateTilesetUIScene(float timestep) {
         case DiscardUIScene::Choice::BACK:
             _tilesetui.setActive(false);
             _gameplay.setActive(true);
+            _gameplay.setGameActive(true);
             _scene = State::GAME;
             break;
         case DiscardUIScene::Choice::NONE:
