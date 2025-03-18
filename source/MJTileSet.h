@@ -54,8 +54,6 @@ public:
         int _id;
         /** The position of the tile (row, col) in the pile */
         cugl::Vec2 pileCoord;
-        /** Whether or not the tile is in the deck */
-        bool inDeck; 
         /** Whether or not the tile is in the pile */
         bool inPile;
         /** Whether or not the tile is in the host's hand */
@@ -72,6 +70,8 @@ public:
         bool selectedInSet;
         /** True if this tile has been played, false otherwise */
         bool played;
+        /** If tile is in the current deck */
+        bool inDeck;
         /** The tile's position (updated in player and pile methods) */
         cugl::Vec2 pos;
         /** The rectangle representing the tile's position used for selection handling */
@@ -316,7 +316,7 @@ public:
      *
      * Only call if client
      */
-    bool initClientDeck(const std::shared_ptr<cugl::JsonValue>& deckJson);
+    void initClientDeck(const std::shared_ptr<cugl::JsonValue>& deckJson);
     
     
 #pragma mark -

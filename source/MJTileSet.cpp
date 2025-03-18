@@ -63,9 +63,9 @@ void TileSet::initHostDeck(){
 /**
  * Initializes deck to a **STARTING** representation of numbered tiles
  *
- * @returns  true if successful
+ * Only call if client
  */
-bool TileSet::initClientDeck(const std::shared_ptr<cugl::JsonValue>& deckJson){
+void TileSet::initClientDeck(const std::shared_ptr<cugl::JsonValue>& deckJson){
     std::vector<std::shared_ptr<TileSet::Tile>> allTiles = processTileJson(deckJson);
     deck = allTiles;
     
@@ -73,7 +73,6 @@ bool TileSet::initClientDeck(const std::shared_ptr<cugl::JsonValue>& deckJson){
         std::string key = tile->toString() + " " + std::to_string(tile->_id);
         tileMap.insert({key, tile});
     }
-    return true;
 }
 
 
