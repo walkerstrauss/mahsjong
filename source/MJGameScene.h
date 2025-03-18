@@ -76,6 +76,8 @@ protected:
     bool _quit;
     /** Whether or not UI is active*/
     bool _uiopen;
+    /** Is client deck done populating */
+    bool _clientDeckPopulated;
     /** Button for discarding */
     std::shared_ptr<cugl::scene2::Button> _discardBtn;
     /** Button for transitioning to the tileset UI scene (discarded cards) */
