@@ -393,6 +393,8 @@ public:
     void updateDeck(const std::shared_ptr<cugl::JsonValue>& deckJson);
     
     std::vector<std::shared_ptr<Tile>> processTileJson(const std::shared_ptr<cugl::JsonValue>& tileJson);
+    
+    std::shared_ptr<cugl::JsonValue> mapToJson();
 };
 
 #endif /* __MJ_TILESET_H__ */

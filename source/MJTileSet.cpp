@@ -216,7 +216,38 @@ void TileSet::setNextTile(std::shared_ptr<cugl::JsonValue>& nextTileJson) {
 }
 
 void TileSet::updateDeck(const std::shared_ptr<cugl::JsonValue>& deckJson) {
-    deck = processTileJson(deckJson);
+    for(const auto& tileKey : deckJson->children()) {
+        const std::string rank = tileKey->getString("rank");
+        const std::string suit = tileKey->getString("suit");
+        const std::string id = tileKey->getString("id");
+        
+//        const cugl::Vec2 pileCoord = Tile::toVector(tileKey->getString("pileCoord"));
+        const bool inPile = tileKey->getBool("inPile");
+        const bool inHostHand = tileKey->getBool("inHostHand");
+        const bool inClientHand = tileKey->getBool("inClientHand");
+        const bool discarded = tileKey->getBool("discarded");
+        const bool selected = tileKey->getBool("selected");
+        const bool selectedInSet = tileKey->getBool("selectedInSet");
+        const bool played = tileKey->getBool("played");
+        const bool inDeck = tileKey->getBool("inDeck");
+        const cugl::Vec2 pos = Tile::toVector(tileKey->getString("pos"));
+        const float scale = tileKey->getFloat("scale");
+        
+        std::string key = rank + " of " + suit + " " + id;
+        tileMap[key]->inPile = inPile;
+        tileMap[key]->inHostHand = inHostHand;
+        tileMap[key]->inClientHand = inClientHand;
+        tileMap[key]->discarded = discarded;
+        tileMap[key]->selected = selected;
+        tileMap[key]->selectedInSet = selectedInSet;
+        tileMap[key]->played = played;
+        tileMap[key]->pos = pos;
+        tileMap[key]->_scale = scale;
+        if(tileMap[key]->inDeck == false ){
+            deck.erase(std::remove(deck.begin(), deck.end(), tileMap[key]), deck.end());
+        }
+        tileMap[key]->inDeck = inDeck;
+    }
 }
 
 std::vector<std::shared_ptr<TileSet::Tile>> TileSet::processTileJson(const std::shared_ptr<cugl::JsonValue>& tileJson) {
@@ -256,5 +287,17 @@ std::vector<std::shared_ptr<TileSet::Tile>> TileSet::processTileJson(const std::
     }
     
     return tiles;
+}
+
+
+std::shared_ptr<cugl::JsonValue> TileSet::mapToJson() {
+    for(auto const& pairs : tileMap) {
+        tilesToJson.push_back(pairs.second);
+    }
+    
+    std::shared_ptr<cugl::JsonValue> tileJson = toJson(tilesToJson);
+    tilesToJson.clear();
+    
+    return tileJson;
 }
 

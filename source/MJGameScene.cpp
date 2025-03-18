@@ -149,14 +149,14 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::sha
         _player->getHand().initHand(_tileSet, _network->getHostStatus());
         _player->getHand().updateTilePositions();
         _pile->initPile(5, _tileSet);
-        _network->broadcastStartingDeck(_tileSet->toJson(_tileSet->deck));
+        _network->broadcastStartingDeck(_tileSet->mapToJson());
     } else {
         _tileSet->initClientDeck(_network->getStartingDeck());
         _tileSet->setAllTileTexture(_assets);
         _tileSet->updateDeck(_network->getDeckJson());
         _player->getHand().initHand(_tileSet, _network->getHostStatus());
         _player->getHand().updateTilePositions();
-        _network->broadcastDeck(_tileSet->toJson(_tileSet->deck));
+        _network->broadcastDeck(_tileSet->mapToJson());
     }
 
     std::string msg = strtool::format("Score: %d", _player->_totalScore);
