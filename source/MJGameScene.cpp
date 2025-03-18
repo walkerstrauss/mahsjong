@@ -397,8 +397,8 @@ void GameScene::render() {
 
 void GameScene::setActive(bool value){
     CULog("set active");
-    if (isActive() != value){
-        Scene2::setActive(value);
+//    if (isActive() != value){
+//        Scene2::setActive(value);
         if (value){
             _matchScene->setVisible(true);
             _pauseBtn->activate();
@@ -410,7 +410,7 @@ void GameScene::setActive(bool value){
             _discardBtn->deactivate();
             _tilesetUIBtn->deactivate();
         }
-    }
+//    }
 }
 
 void GameScene::processData(std::vector<std::string> msg){
