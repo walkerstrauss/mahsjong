@@ -294,8 +294,6 @@
         "button_point": {
             "file": "textures/score_win/button_point.png"
         },
-
-
         "background_score_defeat": {
             "file": "textures/score_defeat/background_score_defeat.png"
         },
@@ -304,6 +302,116 @@
         },
         "grandma_cry_image": {
             "file": "textures/score_defeat/grandma_cry_image.png"
+        },
+        
+        "settingIcon":{
+            "file": "textures/cornerIcon/settingIcon.png"
+        },
+        
+        "host1-background":{
+            "file": "textures/host1/host1-background.png"
+        },
+        "host1-checkbox":{
+            "file": "textures/host1/host1-checkbox.png"
+        },
+        "host1-crown":{
+            "file": "textures/host1/host1-crown.png"
+        },
+        "host1-exit-button":{
+            "file": "textures/host1/host1-exit-button.png"
+        },
+        "host1-grandma":{
+            "file": "textures/host1/host1-grandma.png"
+        },
+        "host1-player1-button":{
+            "file": "textures/host1/host1-player1-button.png"
+        },
+        "host1-playerboard-background":{
+            "file": "textures/host1/host1-playerboard-background.png"
+        },
+        "host1-roomid-tile":{
+            "file": "textures/host1/host1-roomid-tile.png"
+        },
+        "host1-waiting-button":{
+            "file": "textures/host1/host1-waiting-button.png"
+        },
+        "host1-waitingroom-background":{
+            "file": "textures/host1/host1-waitingroom-background.png"
+        },
+        "menuBackground":{
+            "file": "textures/menu/menuBackground.png"
+        },
+        "menuButtonDown":{
+            "file": "textures/menu/menuButtonDown.png"
+        },
+        "menuButtonUp":{
+            "file": "textures/menu/menuButtonUp.png"
+        },
+        "menuGrandma":{
+            "file": "textures/menu/menuGrandma.png"
+        },
+        "setting_button":{
+            "file": "textures/menu/setting_button.png"
+        },
+        "continueButton":{
+            "file": "textures/pause/continueButton.png"
+        },
+        "mainButton":{
+            "file": "textures/pause/mainButton.png"
+        },
+        "pauseBoard":{
+            "file": "textures/pause/pauseBoard.png"
+        },
+        "pauseexitButton":{
+            "file": "textures/pause/pauseexitButton.png"
+        },
+        "pauseGrandma":{
+            "file": "textures/pause/pauseGrandma.png"
+        },
+        "pauseShade":{
+            "file": "textures/pause/pauseShade.png"
+        },
+        "pausetitleBackground":{
+            "file": "textures/pause/pausetitleBackground.png"
+        },
+        "settingButtonBig":{
+            "file": "textures/pause/settingButtonBig.png"
+        },
+        "closeIcon":{
+            "file": "textures/setting/closeIcon.png"
+        },
+        "exitButton":{
+            "file": "textures/setting/exitButton.png"
+        },
+        "settingBoard":{
+            "file": "textures/setting/settingBoard.png"
+        },
+        "settingGrandma":{
+            "file": "textures/setting/settingGrandma.png"
+        },
+        "shade":{
+            "file": "textures/setting/shade.png"
+        },
+        "soundButton":{
+            "file": "textures/setting/soundButton.png"
+        },
+        "titleBackground":{
+            "file": "textures/setting/titleBackground.png"
+        },
+        "actionTileSection":{
+            "file": "textures/gameplay/actionTileSection.png"
+        },
+        "discardCanButton":{
+            "file": "textures/gameplay/discardCanButton.png"
+        },
+        "discardtileSample":{
+            "file": "textures/gameplay/discardtileSample.png"
+        },
+        "gameplayBackground":{
+            "file": "textures/gameplay/gameplayBackground.png"
+        },
+        "infoIcon":{
+            "file": "textures/gameplay/infoIcon.png"
         }
     },
     "fonts": {

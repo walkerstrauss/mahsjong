@@ -45,6 +45,9 @@
         },
         "transparentBackImage": {
             "file": "textures/landing/rect_transparent.png"
+        },
+        "landingButton": {
+            "file": "textures/landing/landingButton.png"
         }
     },
     "widgets" : {
