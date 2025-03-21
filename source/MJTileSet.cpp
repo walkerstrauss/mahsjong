@@ -229,25 +229,7 @@ void TileSet::draw(const std::shared_ptr<cugl::graphics::SpriteBatch>& batch, cu
 
             batch->draw(curr.getTileTexture(), origin, trans);
         }
-        
     }
-//    for (const auto& it : grandmaTiles){
-//        Tile curr = (*it);
-//        Vec2 pos = curr.pos;
-//        Vec2 origin = Vec2(curr.getTileTexture()->getSize().width/2, curr.getTileTexture()->getSize().height/2);
-//        Affine2 trans;
-//        trans.scale(curr._scale);
-//        trans.translate(pos);
-//        
-//        batch->draw(curr.getTileTexture(), origin, trans);
-//    }
-//    Vec2 pos = Vec2(70.0f,675.0f);
-//    Vec2 origin = Vec2(gmaTexture->getSize().width/2,gmaTexture->getSize().height/2);
-//    Affine2 trans;
-//    trans.scale(0.7);
-//    trans.translate(pos);
-//    
-//    batch->draw(gmaTexture, origin, trans);
 }
 
 #pragma mark -

@@ -74,7 +74,8 @@ protected:
     bool _paused;
     /** Whether we quit the game */
     bool _quit;
-    
+    /** Whether or not UI is active*/
+    bool _uiopen;
     /** Button for discarding */
     std::shared_ptr<cugl::scene2::Button> _discardBtn;
     /** Button for transitioning to the tileset UI scene (discarded cards) */
@@ -91,7 +92,31 @@ protected:
     Uint32 _pauseBtnKey;
     /** Key for continue button */
     Uint32 _continueBtnKey;
-        
+    /** Vector of scene nodes representing labels in the tileset UI table */
+    std::vector<std::shared_ptr<cugl::scene2::Label>> _labels;
+    /** Reference to scene node for UI scene */
+    std::shared_ptr<scene2::SceneNode> _tilesetui;
+    /** Button to exit the discard UI */
+    std::shared_ptr<scene2::Button> _backBtn;
+    /** Key for the listener for the back button for discard UI */
+    Uint32 _backBtnKey;
+    /** Holds reference to chow sprite sheet */
+    std::shared_ptr<cugl::graphics::SpriteSheet> _chowSheet;
+    /** Holds reference to kong sprite sheet */
+    std::shared_ptr<cugl::graphics::SpriteSheet> _kongSheet;
+    /** Holds reference to pong sprite sheet */
+    std::shared_ptr<cugl::graphics::SpriteSheet> _pongSheet;
+    /** Holds reference to win sprite sheet */
+    std::shared_ptr<cugl::graphics::SpriteSheet> _winSheet;
+    /** Holds reference to back pick sprite sheet */
+    std::shared_ptr<cugl::graphics::SpriteSheet> _backPickSheet;
+    /** Holds reference to empty discard sprite sheet */
+    std::shared_ptr<cugl::graphics::SpriteSheet> _emptyDiscardSheet;
+    /** Holds reference to empty pick sprite sheet */
+    std::shared_ptr<cugl::graphics::SpriteSheet> _emptyPickSheet;
+    /** Holds reference to empty pick flip sprite sheet */
+    std::shared_ptr<cugl::graphics::SpriteSheet> _emptyPickFlipSheet;
+    
 public:
 #pragma mark -
 #pragma mark Constructors
@@ -177,6 +202,37 @@ public:
      * Checks whether or not a tile has been clicked and sets selected status accordingly
      */
     void clickedTile(cugl::Vec2 mousePos);
+    
+    /**
+     * Method to init the sprite sheets for the game scene
+     *
+     * @return true if initialization of sprite sheets was successful, and false otherwise
+     */
+     bool initSheets();
+     
+     /**
+      * Method to get the index of this tile's associated label in the discard UI vector of labels
+      *
+      * @param tile  the tile whose label we need in _labels
+      * @return an int representing the index of this tile's discard UI label
+      */
+     int getLabelIndex(std::shared_ptr<TileSet::Tile> tile);
+     
+     /**
+      * Method to increment discard UI label corresponding to tile passed as argument
+      *
+      * @param tile  the tile to increment in the discard UI
+      * @return true if update was successful, and false otherwise
+      */
+     bool incrementLabel(std::shared_ptr<TileSet::Tile> tile);
+     
+     /**
+      * Method to decrement discard UI label corresponding to tile passed as argument
+      *
+      * @param tile  the tile to increment in the discard UI
+      * @return true if update was successful, and false otherwise
+      */
+     bool decrementLabel(std::shared_ptr<TileSet::Tile> tile);
 };
 
 #endif /* __MJ_GAME_SCENE_H__ */
