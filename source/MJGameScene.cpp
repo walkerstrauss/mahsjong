@@ -60,6 +60,7 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::sha
     
     _discardBtnKey = _discardBtn->addListener([this](const std::string& name, bool down){
         if (!down){
+            _pile->reshufflePile();
             if(_player->getHand()._tiles.size() == _player->getHand()._size){
                 CULog("Cannot discard tiles, already at required hand size");
                 return;
@@ -277,7 +278,6 @@ void GameScene::update(float timestep) {
     if(_network->getStatus() == NetworkController::Status::LAYER) {
         _pile->createPile();
         
-//        _network->broadcastDeck(_tileSet->toJson(_tileSet->deck));
         _network->setStatus(NetworkController::Status::INGAME);
     }
     
@@ -313,10 +313,6 @@ void GameScene::update(float timestep) {
         
         if (_pile->getVisibleSize() == 0) {
             _network->broadcastPileLayer();
-        }
-            
-        for (auto& tile : _player->getHand()._drawnPile) {
-            tile->setTexture(_assets->get<Texture>(tile->toString()));
         }
         
         if (_player->getHand().isWinningHand()){
@@ -474,20 +470,18 @@ void GameScene::render() {
     _batch->end();
 }
 
-void GameScene::processData(std::vector<std::string> msg){
-    std::string name = msg[0];
-    std::string id = msg[1];
-    std::string selected = msg[2];
-    
-    for(const auto& tile : _player->getHand()._tiles){
-        if(tile->toString() == name && std::to_string(tile->_id) == id){
-            if(selected == "true"){
-                tile->selected = true;
-            }
-            else{
-                tile->selected = false;
-            }
-        }
+void GameScene::applyAction(std::shared_ptr<TileSet::ActionTile> actionTile) {
+    switch (actionTile->type) {
+        case TileSet::ActionTile::ActionType::CHAOS:
+            CULog("CHAOS: Reshuffling the pile...");
+            _pile->reshufflePile();
+            // broadcast pile info
+            _player->getHand().discard(actionTile, _network->getHostStatus());
+            break;
+        case TileSet::ActionTile::ActionType::ECHO:
+            CULog("ECHO: Draw two tiles...");
+            _player->getHand().drawFromPile(_pile, 2, _network->getHostStatus());
+            break;
     }
 }
 

@@ -26,7 +26,7 @@ public:
     public:
         /** An enum to represent tile suits */
         enum class Suit : int {
-            WILD_SUIT,
+            SPECIAL,
             CRAK,
             BAMBOO,
             DOT
@@ -43,7 +43,8 @@ public:
             SEVEN = 7,
             EIGHT = 8,
             NINE = 9,
-            WILD_RANK = 10
+            ACTION = 10,
+            COMMAND = 11
         };
         
         /** The tile's rank */
@@ -146,8 +147,11 @@ public:
                 case Tile::Rank::NINE:
                     return "nine";
                     break;
-                case Tile::Rank::WILD_RANK:
-                    return "wild rank";
+                case Tile::Rank::ACTION:
+                    return "action";
+                    break;
+                case Tile::Rank::COMMAND:
+                    return "command";
                     break;
                 default:
                     return "no valid rank";
@@ -170,8 +174,8 @@ public:
                 case Tile::Suit::CRAK:
                     return "crak";
                     break;
-                case Tile::Suit::WILD_SUIT:
-                    return "wild suit";
+                case Tile::Suit::SPECIAL:
+                    return "special";
                     break;
                 default:
                     return "no valid suit";
@@ -268,6 +272,21 @@ public:
         }
     };
     
+    class ActionTile : public Tile {
+    public:
+        enum class ActionType : int {
+            JUGGERNAUT,     //rearrange tiles in current row
+            ORACLE,     //draw any tile in pile
+            SEER,       //draw any tile in discard pile
+            CHAOS,      //reshuffle the pile
+            ECHO        //draw two tiles instead of one
+        };
+        
+        ActionType type;
+        
+        ActionTile(ActionType type) : Tile(Tile::Rank::ACTION, Tile::Suit::SPECIAL), type(type) {}
+    };
+    
 public:
     /** Deck with all of the tiles */
     std::vector<std::shared_ptr<Tile>> deck;
@@ -351,35 +370,35 @@ public:
         }
     }
     
-    /**
-     * Generates a random wild tile after scoring a grandma tile
-     *
-     * @return a randomly generated tile
-     */
-    std::shared_ptr<TileSet::Tile> generateWildTile() {
-        rdTileSet.init();
-        int rank = static_cast<int>(rdTileSet.getOpenUint64(1, 11));
-        
-        std::shared_ptr<Tile> wildTile = std::make_shared<Tile>(static_cast<Tile::Rank>(rank), Tile::Suit::WILD_SUIT);
-        wildTile->_id = wildCount;
-        wildCount += 1;
-        return wildTile;
-    }
-    
-    /**
-     * Generates a set of wild tiles
-     */
-    void generateWildSet() {
-        for(int i = 0; i < 11; i++){
-            for(int j = 0; j < 3; j++){
-                std::shared_ptr<Tile> newTile = std::make_shared<Tile>(static_cast<Tile::Rank>(i), Tile::Suit::WILD_SUIT);
-                newTile->_id = wildCount;
-                wildCount += 1;
-                
-                wildTiles.emplace_back(newTile);
-            }
-        }
-    }
+//    /**
+//     * Generates a random wild tile after scoring a grandma tile
+//     *
+//     * @return a randomly generated tile
+//     */
+//    std::shared_ptr<TileSet::Tile> generateWildTile() {
+//        rdTileSet.init();
+//        int rank = static_cast<int>(rdTileSet.getOpenUint64(1, 11));
+//        
+//        std::shared_ptr<Tile> wildTile = std::make_shared<Tile>(static_cast<Tile::Rank>(rank), Tile::Suit::WILD_SUIT);
+//        wildTile->_id = wildCount;
+//        wildCount += 1;
+//        return wildTile;
+//    }
+//    
+//    /**
+//     * Generates a set of wild tiles
+//     */
+//    void generateWildSet() {
+//        for(int i = 0; i < 11; i++){
+//            for(int j = 0; j < 3; j++){
+//                std::shared_ptr<Tile> newTile = std::make_shared<Tile>(static_cast<Tile::Rank>(i), Tile::Suit::WILD_SUIT);
+//                newTile->_id = wildCount;
+//                wildCount += 1;
+//                
+//                wildTiles.emplace_back(newTile);
+//            }
+//        }
+//    }
     
     /**
      * Picks a random tile from the wild tiles set by shuffling then choosing the first element.

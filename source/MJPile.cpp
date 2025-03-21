@@ -135,6 +135,11 @@ void Pile::removePileTile(const std::shared_ptr<cugl::JsonValue> tileJson, bool 
     }
 }
 
+void Pile::reshufflePile(){
+    rdPile.init();
+    rdPile.shuffle(_pile);
+}
+
 ///**
 // * Method to handle pair making for the pile, including removing from pile and returning removed tiles
 // *

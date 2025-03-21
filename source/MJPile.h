@@ -24,6 +24,8 @@ private:
 public:
 	/** Two dimensional vector representing pile tiles */
 	std::vector<std::vector<std::shared_ptr<TileSet::Tile>>> _pile;
+    /** Random Generator */
+    cugl::Random rdPile;
     /** Map containing all tiles and their pile coordinates */
     std::map<std::string, cugl::Vec2> _pileMap;
     /** Vector representing tiles drawn from the pile */
@@ -123,6 +125,11 @@ public:
      * @param pileTile  the json representation of a tile
      */
     void removePileTile(const std::shared_ptr<cugl::JsonValue> tileJson, bool isHostDraw);
+    
+    /**
+     * Reshuffles the tiles within the pile
+     */
+    void reshufflePile();
 };
 
 #endif /* __MJ_PILE_H__ */

@@ -162,7 +162,7 @@ public:
      *
      * @param selectedTiles     the tiles to be checked for a straight
      */
-    bool isStraight(const std::vector<std::shared_ptr<TileSet::Tile>>& selectedTiles);
+    bool `isStraight`(const std::vector<std::shared_ptr<TileSet::Tile>>& selectedTiles);
     
     /**
      * Confirms if a set if of a kind.
