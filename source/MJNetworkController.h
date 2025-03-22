@@ -70,7 +70,7 @@ protected:
     
     std::shared_ptr<cugl::JsonValue> _deckJson;
     
-    std::shared_ptr<cugl::JsonValue> _startingDeckJson;
+    std::shared_ptr<cugl::JsonValue> _deckMapJson;
     
     std::shared_ptr<cugl::JsonValue> _nextTileJson;
     
@@ -156,7 +156,7 @@ public:
     
     void broadcastNewDiscard(const std::shared_ptr<cugl::JsonValue>& tileJson);
     
-    void broadcastStartingDeck(const std::shared_ptr<cugl::JsonValue>& deckJson);
+    void broadcastDeckMap(const std::shared_ptr<cugl::JsonValue>& deckMapJson);
     
     Uint32 getLocalPid() const {
         return _localPid;
@@ -197,8 +197,8 @@ public:
         return _pileTileJson;
     }
     
-    std::shared_ptr<cugl::JsonValue> getStartingDeck() {
-        return _startingDeckJson;
+    std::shared_ptr<cugl::JsonValue> getDeckMapJson() {
+        return _deckMapJson;
     }
     
     bool isNewPileTile() {

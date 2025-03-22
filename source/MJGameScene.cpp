@@ -160,13 +160,13 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::sha
         //Creating pile as Host
         _pile->initPile(2, _tileSet, _network->getHostStatus());
         //Broadcasting all tiles with attributes (sets pile tiles as !inDeck)
-        _network->broadcastStartingDeck(_tileSet->mapToJson());
+        _network->broadcastDeckMap(_tileSet->mapToJson());
     } else {
         //Initializing client pile (pile full of nullptrs)
         _pile->initPile(2, _tileSet, _network->getHostStatus());
         
         //Initialzing client deck
-        _tileSet->initClientDeck(_network->getStartingDeck());
+        _tileSet->initClientDeck(_network->getDeckMapJson());
         _tileSet->setAllTileTexture(_assets);
         _tileSet->updateDeck(_network->getDeckJson());
         _player->getHand().initHand(_tileSet, _network->getHostStatus());
@@ -297,6 +297,7 @@ void GameScene::update(float timestep) {
     }
     
     if(_network->getStatus() == NetworkController::Status::LAYER and _pile->getVisibleSize() == 0) {
+        _tileSet->updateDeck(_network->getDeckMapJson());
         _pile->remakePile();
         _network->setStatus(NetworkController::Status::INGAME);
     }
