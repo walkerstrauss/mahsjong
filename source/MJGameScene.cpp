@@ -326,6 +326,7 @@ void GameScene::update(float timestep) {
             if (_pile->getVisibleSize() == 0) {
                 _pile->createPile();
                 _network->broadcastDeck(_tileSet->toJson(_tileSet->deck));
+                _network->broadcastDeck(_tileSet->toJson(_tileSet->startingDeck));
                 _network->broadcastPileLayer();
             }
             else{
