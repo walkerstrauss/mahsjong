@@ -519,7 +519,7 @@ void GameScene::clickedTile(cugl::Vec2 mousePos){
     for(const auto& pair : _tileSet->tileMap){
         std::shared_ptr<TileSet::Tile> currTile = pair.second;
         if(currTile->tileRect.contains(mousePos)){
-            if((_network->getStatus() && currTile->inHostHand) || (!_network->getStatus() && currTile->inClientHand)) {
+            if((_network->getHostStatus() && currTile->inHostHand) || (!_network->getHostStatus() && currTile->inClientHand)) {
                 if(currTile->selected) {
                     auto it = std::find(_player->getHand()._selectedTiles.begin(), _player->getHand()._selectedTiles.end(), currTile);
                     if (it != _player->getHand()._selectedTiles.end()) {

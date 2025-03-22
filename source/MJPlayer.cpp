@@ -66,9 +66,10 @@ void Hand::drawFromPile(std::shared_ptr<Pile>& pile, int number, bool isHost){
     for(auto& tile : _drawnPile){
         if (isHost) {
             tile->inHostHand = true;
+            tile->inClientHand = false;
         } else {
             tile->inClientHand = true;
-
+            tile->inHostHand = false; 
         }
         tile->inPile = false;
         tile->selected = false;
