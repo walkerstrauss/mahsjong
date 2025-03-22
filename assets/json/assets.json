@@ -303,7 +303,6 @@
         "grandma_cry_image": {
             "file": "textures/score_defeat/grandma_cry_image.png"
         },
-        
         "settingIcon":{
             "file": "textures/cornerIcon/settingIcon.png"
         },
@@ -412,6 +411,9 @@
         },
         "infoIcon":{
             "file": "textures/gameplay/infoIcon.png"
+        },
+        "win":{
+            "file": "textures/win.png"
         }
     },
     "fonts": {

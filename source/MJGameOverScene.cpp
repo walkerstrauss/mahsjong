@@ -58,6 +58,12 @@ bool GameOverScene::init(const std::shared_ptr<cugl::AssetManager>& assets){
         }
     });
     
+    _sheetNode = scene2::SpriteNode::allocWithSheet(_assets->get<Texture>("win"),2,3,5);
+    _sheetNode->setAnchor(Vec2::ANCHOR_CENTER);
+    _sheetNode->setPosition(dimen.width / 2, dimen.height / 2);
+    _sheetNode->setScale(0.2);
+    _sheetNode->setFrame(0);
+    
     addChild(_winscene);
     addChild(_losescene);
     setActive(false);
@@ -76,6 +82,16 @@ void GameOverScene::reset(){
 }
 
 void GameOverScene::update(float timestep){
+    if (!isActive()) return;
+    _frameTimer += timestep;  // Accumulate time
+        if (_frameTimer >= _frameDelay) {
+            _frameTimer = 0; // Reset timer
+            if (_sheetNode->getFrame() > 3){
+                _sheetNode->setFrame(0);
+            } else {
+                _sheetNode->setFrame(_sheetNode->getFrame() + 1);
+            }
+        }
     return;
 }
 
@@ -133,6 +149,7 @@ void GameOverScene::render(const std::shared_ptr<graphics::SpriteBatch>& batch){
     switch (type){
         case Type::WIN:
             _winscene->render(batch);
+            _sheetNode->render(batch);
             break;
         case Type::LOSE:
             _losescene->render(batch);
