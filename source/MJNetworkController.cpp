@@ -111,7 +111,7 @@ void NetworkController::processData(const std::string source,
         _currentTurn = _deserializer->readUint32();
     }
     else if (msgType == "initialize game") {
-        _deckMapJson = _deserializer->readJson();
+        _startingDeckJson = _deserializer->readJson();
     }
     else if (msgType == "starting client deck") {
         _deckJson = _deserializer->readJson();
@@ -135,6 +135,9 @@ void NetworkController::processData(const std::string source,
     else if (msgType == "new discard tile") {
         _discardTile = _deserializer->readJson();   
         _status = NEWDISCARD;
+    }
+    else if (msgType == "tile map update") {
+        _tileMapJson = _deserializer->readJson();
     }
 }
 
@@ -247,6 +250,14 @@ void NetworkController::broadcastTileDrawn(const std::shared_ptr<cugl::JsonValue
     broadcast(_serializer->serialize());
 }
 
+void NetworkController::broadcastDeckMap(const std::shared_ptr<cugl::JsonValue>& tileMapJson) {
+    _serializer->reset();
+    
+    _serializer->writeString("tile map update");
+    _serializer->writeJson(tileMapJson);
+    
+    broadcast(_serializer->serialize());
+}
 void NetworkController::broadcastPileLayer() {
     _serializer->reset();
     
@@ -280,11 +291,11 @@ void NetworkController::broadcastNewDiscard(const std::shared_ptr<cugl::JsonValu
     broadcast(_serializer->serialize());
 }
 
-void NetworkController::broadcastDeckMap(const std::shared_ptr<cugl::JsonValue>& deckMapJson){
+void NetworkController::broadcastStartingDeck(const std::shared_ptr<cugl::JsonValue>& deckJson){
     _serializer->reset();
     
-    _serializer->writeString("deck map update");
-    _serializer->writeJson(deckMapJson);
+    _serializer->writeString("starting client deck");
+    _serializer->writeJson(deckJson);
     
     broadcast(_serializer->serialize());
 }
