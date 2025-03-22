@@ -79,6 +79,9 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::sha
                     for (auto& tile : _player->getHand()._selectedTiles) {
                         //Add to discard pile
                         tile->selected = false;
+                        tile->inHostHand = false;
+                        tile->inClientHand = false;
+                        tile->discarded = true; 
                         _discardPile->addTile(tile);
                         _tileSet->tilesToJson.push_back(tile);
                         _network->broadcastNewDiscard(_tileSet->toJson(_tileSet->tilesToJson));
