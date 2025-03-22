@@ -61,6 +61,11 @@ public:
      */
     bool createPile();
     
+    /**
+     * Method to update the positions of the tiles in pile
+     */
+    void updateTilePositions();
+    
 #pragma mark -
 #pragma mark Gameplay Handling
     /**

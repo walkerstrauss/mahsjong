@@ -62,13 +62,13 @@ bool Pile::createEmptyPile(){
  */
 bool Pile::createPile() {
     _pile.clear();
-    cugl::Size screenSize = cugl::Application::get()->getDisplaySize();
+//    cugl::Size screenSize = cugl::Application::get()->getDisplaySize();
 
     // Variables for positioning the pile tiles for drawing
-    float spacingFactor = 0.85f;
-    float spacingFactorX = 0.8f;
-    float xShift = 125.0f;
-    float yShift = 125.0f;
+//    float spacingFactor = 0.85f;
+//    float spacingFactorX = 0.8f;
+//    float xShift = 125.0f;
+//    float yShift = 125.0f;
     
     // Variable to keep track of what index we are on for pile creation
     int index = 0;
@@ -83,30 +83,32 @@ bool Pile::createPile() {
             }
             
             std::shared_ptr<TileSet::Tile> tile = _tileSet->deck[index];
-            cugl::Size _size = tile->getTileTexture()->getSize();
+//            cugl::Size _size = tile->getTileTexture()->getSize();
             
             tile->_scale = 0.2;
             tile->inPile = true;
             tile->pileCoord = cugl::Vec2(i, j);
             tile->inDeck = false; 
 
-            float x = j * (_size.width * tile->_scale * spacingFactorX) + (_size.width * tile->_scale / 2);
-            float y = i * (_size.height * tile->_scale) + (_size.height * tile->_scale / 2);
-            
-            float pileWidth = _pileSize * (_size.width * tile->_scale * spacingFactorX);
-            float pileHeight = _pileSize * (_size.height * tile->_scale);
-            cugl::Vec2 pileOffset((screenSize.width - pileWidth) / 2 + xShift, (screenSize.height - pileHeight) / 2 + yShift);
-            
-            tile->pos = cugl::Vec2(x * spacingFactor, y * spacingFactor) + pileOffset;
-                        
-            
-            std::string key = tile->toString() + " " + std::to_string(tile->_id);
-            _pileMap.insert({key, tile->pileCoord});
+//            float x = j * (_size.width * tile->_scale * spacingFactorX) + (_size.width * tile->_scale / 2);
+//            float y = i * (_size.height * tile->_scale) + (_size.height * tile->_scale / 2);
+//            
+//            float pileWidth = _pileSize * (_size.width * tile->_scale * spacingFactorX);
+//            float pileHeight = _pileSize * (_size.height * tile->_scale);
+//            cugl::Vec2 pileOffset((screenSize.width - pileWidth) / 2 + xShift, (screenSize.height - pileHeight) / 2 + yShift);
+//            
+//            tile->pos = cugl::Vec2(x * spacingFactor, y * spacingFactor) + pileOffset;
+//                        
+//            
+//            std::string key = tile->toString() + " " + std::to_string(tile->_id);
+//            _pileMap.insert({key, tile->pileCoord});
             row.push_back(_tileSet->deck[index]);
             index += 1;
         }
         _pile.push_back(row); //add tile from deck to pile
     }
+    
+    updateTilePositions();
     
     // Erase tiles put into the pile from deck
     if(_tileSet->deck.size() <= 25){
@@ -117,6 +119,38 @@ bool Pile::createPile() {
     }
     
     return true;
+}
+
+void Pile::updateTilePositions() {
+    cugl::Size screenSize = cugl::Application::get()->getDisplaySize();
+
+    float spacingFactor = 0.85f;
+    float spacingFactorX = 0.8f;
+    float xShift = 125.0f;
+    float yShift = 125.0f;
+    
+    _pileMap.clear();
+    
+    for (int i = 0; i < _pileSize; i++) {
+        for (int j = 0; j < _pileSize; j++) {
+            std::shared_ptr<TileSet::Tile> tile = _pile[i][j];
+            if (tile == nullptr) continue;
+            
+            cugl::Size _size = tile->getTileTexture()->getSize();
+            
+            float x = j * (_size.width * tile->_scale * spacingFactorX) + (_size.width * tile->_scale / 2);
+            float y = i * (_size.height * tile->_scale) + (_size.height * tile->_scale / 2);
+            
+            float pileWidth = _pileSize * (_size.width * tile->_scale * spacingFactorX);
+            float pileHeight = _pileSize * (_size.height * tile->_scale);
+            cugl::Vec2 pileOffset((screenSize.width - pileWidth) / 2 + xShift, (screenSize.height - pileHeight) / 2 + yShift);
+            
+            tile->pos = cugl::Vec2(x * spacingFactor, y * spacingFactor) + pileOffset;
+            
+            std::string key = tile->toString() + " " + std::to_string(tile->_id);
+            _pileMap.insert({key, tile->pileCoord});
+        }
+    }
 }
 
 #pragma mark -
@@ -218,8 +252,31 @@ void Pile::draw(const std::shared_ptr<cugl::graphics::SpriteBatch>& batch) {
 }
 
 void Pile::reshufflePile(){
+    std::vector<std::shared_ptr<TileSet::Tile>> tiles;
+    for (int i = 0; i < _pileSize; i++) {
+        for (int j = 0; j < _pileSize; j++) {
+            if (_pile[i][j] != nullptr) {
+                tiles.push_back(_pile[i][j]);
+            }
+        }
+    }
+    
     rdPile.init();
-    rdPile.shuffle(_pile);
+    rdPile.shuffle(tiles);
+    
+    int index = 0;
+    for (int i = 0; i < _pileSize; i++) {
+        for (int j = 0; j < _pileSize; j++) {
+            if (_pile[i][j] != nullptr) {
+                _pile[i][j] = tiles[index];
+                _pile[i][j]->pileCoord = cugl::Vec2(i, j);
+                index++;
+            }
+        }
+    }
+    updateTilePositions();
+    
+    CULog("pile reshuffled");
 }
 
 ///**

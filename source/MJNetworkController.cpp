@@ -126,7 +126,7 @@ void NetworkController::processData(const std::string source,
         _isHostDraw = _isHost;
         _status = PILETILEUPDATE;
     }
-    else if (msgType == "next layer") {
+    else if (msgType == "update layer") {
         _status = LAYER;
     }
     else if (msgType == "remove discard tile"){
@@ -261,7 +261,7 @@ void NetworkController::broadcastDeckMap(const std::shared_ptr<cugl::JsonValue>&
 void NetworkController::broadcastPileLayer() {
     _serializer->reset();
     
-    _serializer->writeString("next layer");
+    _serializer->writeString("update layer");
     
     broadcast(_serializer->serialize());
 }

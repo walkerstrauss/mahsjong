@@ -96,6 +96,11 @@ public:
     bool discard(std::shared_ptr<TileSet::Tile> tile, bool isHost);
     
     /**
+     * Discards all action tiles in hand and returns number of action tiles discarded.
+     */
+    int loseActions(bool isHost);
+    
+    /**
      * Method to make a set from your hand and add it to selected sets
      *
      * @returns true if successfully made VALID set, and false otherwise
@@ -156,7 +161,7 @@ public:
      *
      * @param selectedTiles     the tiles to be checked for a straight
      */
-    bool `isStraight`(const std::vector<std::shared_ptr<TileSet::Tile>>& selectedTiles);
+    bool isStraight(const std::vector<std::shared_ptr<TileSet::Tile>>& selectedTiles);
     
     /**
      * Confirms if a set if of a kind.

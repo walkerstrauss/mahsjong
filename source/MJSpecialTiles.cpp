@@ -270,7 +270,6 @@ bool CommandTile::lose_actions(Hand& hand, std::shared_ptr<DiscardPile> discard)
         auto it = std::find(hand._tiles.begin(), hand._tiles.end(), tile);
         if (it != hand._tiles.end()) {
             (*it)->discarded = true;
-//            (*it)->inHand = false;
             discard->addTile(*it);
             hand._tiles.erase(it);
         }

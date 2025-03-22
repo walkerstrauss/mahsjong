@@ -76,6 +76,22 @@ void TileSet::initClientDeck(const std::shared_ptr<cugl::JsonValue>& deckJson){
     }
 }
 
+void TileSet::addActionAndCommandTiles() {
+    for (int i = 0; i < 3; ++i) {
+        std::shared_ptr<ActionTile> chaos = std::make_shared<ActionTile>(ActionTile::ActionType::CHAOS);
+        chaos->_id = tileCount++;
+        deck.push_back(chaos);
+
+        std::shared_ptr<ActionTile> echo = std::make_shared<ActionTile>(ActionTile::ActionType::ECHO);
+        echo->_id = tileCount++;
+        deck.push_back(echo);
+
+        std::shared_ptr<CommandTile> oblivion = std::make_shared<CommandTile>(CommandTile::CommandType::OBLIVION);
+        oblivion->_id = tileCount++;
+        deck.push_back(oblivion);
+    }
+}
+
 
 #pragma mark -
 #pragma mark Tileset Gameplay Handling
@@ -87,12 +103,34 @@ void TileSet::setAllTileTexture(const std::shared_ptr<cugl::AssetManager>& asset
         CULog("Deck is empty");
     }
     for(const auto& it : deck){
-        std::string currTileTexture = it->toString();
-        it->setTexture(assets->get<Texture>(currTileTexture));
+        if (it->getSuit() != Tile::Suit::SPECIAL) {
+            it->setTexture(assets->get<Texture>(it->toString()));
+        }
     }
-    for(const auto& it: grandmaTiles){
-        std::string currTileTexture = it->toString();
-        it->setTexture(assets->get<Texture>(currTileTexture));
+}
+
+void TileSet::setSpecialTextures(const std::shared_ptr<cugl::AssetManager>& assets) {
+    for(const auto& it : deck){
+        if (it->getSuit() == Tile::Suit::SPECIAL) {
+            if (it->getRank() == Tile::Rank::ACTION) {
+                auto action = std::dynamic_pointer_cast<ActionTile>(it);
+                switch (action->type) {
+                    case ActionTile::ActionType::CHAOS:
+                        action->setTexture(assets->get<Texture>("one of wild suit"));
+                        break;
+                    case ActionTile::ActionType::ECHO:
+                        action->setTexture(assets->get<Texture>("two of wild suit"));
+                        break;
+                }
+            } else if (it->getRank() == Tile::Rank::COMMAND) {
+                auto command = std::dynamic_pointer_cast<CommandTile>(it);
+                switch (command->type) {
+                    case CommandTile::CommandType::OBLIVION:
+                        command->setTexture(assets->get<Texture>("six of wild suit"));
+                        break;
+                }
+            }
+        }
     }
 }
 
@@ -232,6 +270,7 @@ std::vector<std::shared_ptr<TileSet::Tile>> TileSet::processTileJson(const std::
     
     return tiles;
 }
+
 
 
 std::shared_ptr<cugl::JsonValue> TileSet::mapToJson() {

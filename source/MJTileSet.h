@@ -289,6 +289,17 @@ public:
         ActionTile(ActionType type) : Tile(Tile::Rank::ACTION, Tile::Suit::SPECIAL), type(type) {}
     };
     
+    class CommandTile: public Tile {
+    public:
+        enum class CommandType : int {
+            OBLIVION    //remove all action tiles from hand
+        };
+        
+        CommandType type;
+        
+        CommandTile(CommandType type) : Tile(Tile::Rank::ACTION, Tile::Suit::SPECIAL), type(type) {}
+    };
+    
 public:
     /** Deck with all of the tiles */
     std::vector<std::shared_ptr<Tile>> deck;
@@ -337,6 +348,7 @@ public:
      */
     void initClientDeck(const std::shared_ptr<cugl::JsonValue>& deckJson);
     
+    void addActionAndCommandTiles();
     
 #pragma mark -
 #pragma mark Tileset Gameplay Handling
@@ -427,6 +439,11 @@ public:
      * Sets the texture for all tiles in deck
      */
     void setAllTileTexture(const std::shared_ptr<cugl::AssetManager>& assets);
+    
+    /**
+     * Sets the textures for the action and command tiles in deck
+     */
+    void setSpecialTextures(const std::shared_ptr<cugl::AssetManager>& assets);
     
     /**
      * Sets the texture of a facedown tile

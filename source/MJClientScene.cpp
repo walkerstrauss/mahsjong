@@ -77,7 +77,6 @@ bool ClientScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::s
     _backout = std::dynamic_pointer_cast<scene2::Button>(_assets->get<scene2::SceneNode>("client.clientscene.menu.buttonmenu.button2"));
     _gameid = std::dynamic_pointer_cast<scene2::TextField>(_assets->get<scene2::SceneNode>("client.clientscene.menu.gameid.gameid_textfield.gameid"));
     _player = std::dynamic_pointer_cast<scene2::Label>(_assets->get<scene2::SceneNode>("client.clientscene.menu.player.player_textfield.label"));
-//    _status = Status::IDLE;
     
     _backout->addListener([this](const std::string& name, bool down) {
         if (down) {
