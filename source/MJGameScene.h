@@ -195,10 +195,9 @@ public:
     void render() override;
     
     /**
-     * Processes updates from network
+     * Applies the effects of the given action tile
      */
-    void processData(std::vector<std::string> msg);
-    
+    void applyAction(std::shared_ptr<TileSet::ActionTile> actionTile);
     /**
      * Checks whether or not a tile has been clicked and sets selected status accordingly
      */

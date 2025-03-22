@@ -26,7 +26,7 @@ public:
     public:
         /** An enum to represent tile suits */
         enum class Suit : int {
-            WILD_SUIT,
+            SPECIAL,
             CRAK,
             BAMBOO,
             DOT
@@ -43,7 +43,8 @@ public:
             SEVEN = 7,
             EIGHT = 8,
             NINE = 9,
-            WILD_RANK = 10
+            ACTION = 10,
+            COMMAND = 11
         };
         
         /** The tile's rank */
@@ -148,8 +149,11 @@ public:
                 case Tile::Rank::NINE:
                     return "nine";
                     break;
-                case Tile::Rank::WILD_RANK:
-                    return "wild rank";
+                case Tile::Rank::ACTION:
+                    return "action";
+                    break;
+                case Tile::Rank::COMMAND:
+                    return "command";
                     break;
                 default:
                     return "no valid rank";
@@ -172,8 +176,8 @@ public:
                 case Tile::Suit::CRAK:
                     return "crak";
                     break;
-                case Tile::Suit::WILD_SUIT:
-                    return "wild suit";
+                case Tile::Suit::SPECIAL:
+                    return "special";
                     break;
                 default:
                     return "no valid suit";
@@ -270,6 +274,21 @@ public:
         }
     };
     
+    class ActionTile : public Tile {
+    public:
+        enum class ActionType : int {
+            JUGGERNAUT,     //rearrange tiles in current row
+            ORACLE,     //draw any tile in pile
+            SEER,       //draw any tile in discard pile
+            CHAOS,      //reshuffle the pile
+            ECHO        //draw two tiles instead of one
+        };
+        
+        ActionType type;
+        
+        ActionTile(ActionType type) : Tile(Tile::Rank::ACTION, Tile::Suit::SPECIAL), type(type) {}
+    };
+    
 public:
     /** Deck with all of the tiles */
     std::vector<std::shared_ptr<Tile>> deck;
@@ -340,6 +359,69 @@ public:
             CULog("%s", it->toString().c_str());
         }
     }
+    
+    /**
+
+     * Generates 3 random unique grandma tiles
+     */
+    void generateGrandmaTiles();
+    
+    /**
+     * Prints Grandma's favorite tiles to the log
+     */
+    void printGrandmaTiles() {
+        for(const auto& it : grandmaTiles){
+            CULog("%s", it->toString().c_str());
+        }
+    }
+    
+//    /**
+//     * Generates a random wild tile after scoring a grandma tile
+//     *
+//     * @return a randomly generated tile
+//     */
+//    std::shared_ptr<TileSet::Tile> generateWildTile() {
+//        rdTileSet.init();
+//        int rank = static_cast<int>(rdTileSet.getOpenUint64(1, 11));
+//        
+//        std::shared_ptr<Tile> wildTile = std::make_shared<Tile>(static_cast<Tile::Rank>(rank), Tile::Suit::WILD_SUIT);
+//        wildTile->_id = wildCount;
+//        wildCount += 1;
+//        return wildTile;
+//    }
+//    
+//    /**
+//     * Generates a set of wild tiles
+//     */
+//    void generateWildSet() {
+//        for(int i = 0; i < 11; i++){
+//            for(int j = 0; j < 3; j++){
+//                std::shared_ptr<Tile> newTile = std::make_shared<Tile>(static_cast<Tile::Rank>(i), Tile::Suit::WILD_SUIT);
+//                newTile->_id = wildCount;
+//                wildCount += 1;
+//                
+//                wildTiles.emplace_back(newTile);
+//            }
+//        }
+//    }
+    
+    /**
+     * Picks a random tile from the wild tiles set by shuffling then choosing the first element.
+     * Removes the chosen wild tile from wild tile set.
+     */
+    std::shared_ptr<Tile> pickWildTile(){
+        if(wildTiles.empty()){
+            throw std::runtime_error("no wild tiles!");
+        }
+        
+        rdTileSet.init();
+        rdTileSet.shuffle(wildTiles);
+
+        std::shared_ptr<Tile> currTile = wildTiles.front();
+        wildTiles.erase(wildTiles.begin());
+        
+        return currTile;
+    };
     
     /**
      * Sets the texture for all tiles in deck

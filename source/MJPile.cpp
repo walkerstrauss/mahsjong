@@ -173,6 +173,7 @@ void Pile::removePileTile(const std::shared_ptr<cugl::JsonValue> tileJson, bool 
     }
 }
 
+
 void Pile::remakePile(){
     if(_pileMap.size() != 0){
         CUAssert("Must have an empty pile before remaking pile");
@@ -214,6 +215,11 @@ void Pile::draw(const std::shared_ptr<cugl::graphics::SpriteBatch>& batch) {
             batch->draw(tile->getTileTexture(), origin, trans);
         }
     }
+}
+
+void Pile::reshufflePile(){
+    rdPile.init();
+    rdPile.shuffle(_pile);
 }
 
 ///**
