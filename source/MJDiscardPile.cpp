@@ -115,7 +115,7 @@ std::shared_ptr<TileSet::Tile> DiscardPile::drawTopTile(){
  * Method to render the top card of the discard pile
  */
 void DiscardPile::draw(const std::shared_ptr<cugl::graphics::SpriteBatch>& batch){
-    if (_size > 0){
+    if (getTopTile()){
         std::shared_ptr<TileSet::Tile> tile = getTopTile();
         cugl::Vec2 pos(990,520);
         
