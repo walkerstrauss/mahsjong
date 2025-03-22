@@ -76,19 +76,26 @@ void TileSet::initClientDeck(const std::shared_ptr<cugl::JsonValue>& deckJson){
     }
 }
 
-void TileSet::addActionAndCommandTiles() {
-    for (int i = 0; i < 3; ++i) {
+void TileSet::addActionAndCommandTiles(const std::shared_ptr<cugl::AssetManager>& assets) {
+    for (int i = 1; i < 6; ++i) {
         std::shared_ptr<ActionTile> chaos = std::make_shared<ActionTile>(ActionTile::ActionType::CHAOS);
-        chaos->_id = tileCount++;
+        chaos->_id = i;
+        chaos->setTexture(assets->get<Texture>("one of wild suit"));
         deck.push_back(chaos);
+        tileMap[chaos->toString() + " " + std::to_string(chaos->_id)] = chaos;
 
         std::shared_ptr<ActionTile> echo = std::make_shared<ActionTile>(ActionTile::ActionType::ECHO);
-        echo->_id = tileCount++;
+        echo->_id = i;
+        echo->setTexture(assets->get<Texture>("two of wild suit"));
         deck.push_back(echo);
+        tileMap[echo->toString() + " " + std::to_string(chaos->_id)] = echo;
 
         std::shared_ptr<CommandTile> oblivion = std::make_shared<CommandTile>(CommandTile::CommandType::OBLIVION);
-        oblivion->_id = tileCount++;
+        oblivion->_id = i;
+        oblivion->setTexture(assets->get<Texture>("six of wild suit"));
         deck.push_back(oblivion);
+        tileMap[oblivion->toString() + " " + std::to_string(chaos->_id)] = oblivion;
+
     }
 }
 
@@ -198,9 +205,7 @@ void TileSet::setNextTile(std::shared_ptr<cugl::JsonValue>& nextTileJson) {
 
 void TileSet::updateDeck(const std::shared_ptr<cugl::JsonValue>& deckJson) {
     for(const auto& tileKey : deckJson->children()) {
-        const std::string rank = tileKey->getString("rank");
-        const std::string suit = tileKey->getString("suit");
-        const std::string id = tileKey->getString("id");
+        std::string key = tileKey->key();
         
         const cugl::Vec2 pileCoord = Tile::toVector(tileKey->getString("pileCoord"));
         const bool inPile = tileKey->getBool("inPile");
@@ -214,7 +219,6 @@ void TileSet::updateDeck(const std::shared_ptr<cugl::JsonValue>& deckJson) {
         const cugl::Vec2 pos = Tile::toVector(tileKey->getString("pos"));
         const float scale = tileKey->getFloat("scale");
         
-        std::string key = rank + " of " + suit + " " + id;
         tileMap[key]->inPile = inPile;
         tileMap[key]->inHostHand = inHostHand;
         tileMap[key]->inClientHand = inClientHand;
@@ -230,6 +234,7 @@ void TileSet::updateDeck(const std::shared_ptr<cugl::JsonValue>& deckJson) {
         }
         tileMap[key]->inDeck = inDeck;
     }
+
 }
 
 std::vector<std::shared_ptr<TileSet::Tile>> TileSet::processTileJson(const std::shared_ptr<cugl::JsonValue>& tileJson) {

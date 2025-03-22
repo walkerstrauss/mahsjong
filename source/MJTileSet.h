@@ -24,6 +24,8 @@ public:
         std::shared_ptr<cugl::graphics::Texture> _texture;
         
     public:
+        virtual ~Tile() = default;
+        
         /** An enum to represent tile suits */
         enum class Suit : int {
             SPECIAL,
@@ -233,7 +235,7 @@ public:
          *
          * @return a string representing the rank and suit of the tile
          */
-        std::string toString() const {
+        virtual std::string toString() const {
             return toStringRank() + " of " + toStringSuit();
         }
         
@@ -287,6 +289,23 @@ public:
         ActionType type;
         
         ActionTile(ActionType type) : Tile(Tile::Rank::ACTION, Tile::Suit::SPECIAL), type(type) {}
+        
+        std::string toString() const override {
+            switch (type) {
+                case ActionType::CHAOS:
+                    return "chaos of special";
+                case ActionType::ECHO:
+                    return "echo of special";
+                case ActionType::JUGGERNAUT:
+                    return "juggernaut of special";
+                case ActionType::ORACLE:
+                    return "oracle of special";
+                case ActionType::SEER:
+                    return "seer of special";
+                default:
+                    return "action of special";
+            }
+        }
     };
     
     class CommandTile: public Tile {
@@ -298,6 +317,16 @@ public:
         CommandType type;
         
         CommandTile(CommandType type) : Tile(Tile::Rank::ACTION, Tile::Suit::SPECIAL), type(type) {}
+        
+        std::string toString() const override {
+            switch (type) {
+                case CommandType::OBLIVION:
+                    return "oblivion of special";
+                default:
+                    return "command of special";
+            }
+        }
+
     };
     
 public:
@@ -348,7 +377,7 @@ public:
      */
     void initClientDeck(const std::shared_ptr<cugl::JsonValue>& deckJson);
     
-    void addActionAndCommandTiles();
+    void addActionAndCommandTiles(const std::shared_ptr<cugl::AssetManager>& assets);
     
 #pragma mark -
 #pragma mark Tileset Gameplay Handling
