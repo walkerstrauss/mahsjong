@@ -111,21 +111,21 @@ std::shared_ptr<TileSet::Tile> DiscardPile::drawTopTile(){
     return topTile;
 }
 
-///**
-// * Method to render the top card of the discard pile
-// */
-//void DiscardPile::render(const std::shared_ptr<cugl::graphics::SpriteBatch>& batch){
-//    if (_size > 0){
-//        std::shared_ptr<TileSet::Tile> tile = getTopTile();
-//        cugl::Vec2 pos(990,520);
-//        
-//        cugl::Vec2 origin = cugl::Vec2(tile->getTileTexture()->getSize().width/2, tile->getTileTexture()->getSize().height/2);
-//        cugl::Affine2 trans;
-//        trans.scale(tile->_scale);
-//        trans.translate(pos);
-//        
-//        batch->draw(tile->getTileTexture(), origin, trans);
-//    }
-//}
+/**
+ * Method to render the top card of the discard pile
+ */
+void DiscardPile::draw(const std::shared_ptr<cugl::graphics::SpriteBatch>& batch){
+    if (_size > 0){
+        std::shared_ptr<TileSet::Tile> tile = getTopTile();
+        cugl::Vec2 pos(990,520);
+        
+        cugl::Vec2 origin = cugl::Vec2(tile->getTileTexture()->getSize().width/2, tile->getTileTexture()->getSize().height/2);
+        cugl::Affine2 trans;
+        trans.scale(tile->_scale);
+        trans.translate(pos);
+        
+        batch->draw(tile->getTileTexture(), origin, trans);
+    }
+}
 
 

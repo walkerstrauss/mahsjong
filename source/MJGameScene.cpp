@@ -141,16 +141,27 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::sha
     _pile = std::make_shared<Pile>(); //Init our pile
 
     if(_network->getHostStatus()){
+        //Setting up whole deck
         _tileSet->initHostDeck();
         _tileSet->setAllTileTexture(assets);
         _tileSet->shuffle();
+        //Initializes the deck (ordered representation)
         _network->initGame(_tileSet->toJson(_tileSet->deck));
 
+        //Setting up hand
         _player->getHand().initHand(_tileSet, _network->getHostStatus());
+        //Updating tile positions in hand
         _player->getHand().updateTilePositions();
-        _pile->initPile(2, _tileSet);
+        
+        //Creating pile as Host
+        _pile->initPile(2, _tileSet, _network->getHostStatus());
+        //Broadcasting all tiles with attributes (sets pile tiles as !inDeck)
         _network->broadcastStartingDeck(_tileSet->mapToJson());
     } else {
+        //Initializing client pile (pile full of nullptrs)
+        _pile->initPile(2, _tileSet, _network->getHostStatus());
+        
+        //Initialzing client deck
         _tileSet->initClientDeck(_network->getStartingDeck());
         _tileSet->setAllTileTexture(_assets);
         _tileSet->updateDeck(_network->getDeckJson());
@@ -223,6 +234,7 @@ void GameScene::reset() {
  */
 void GameScene::update(float timestep) {
     
+    CULog("%d", _pile->getVisibleSize());
     if(_discardPile->getTopTile()){
         CULog("%d", _discardPile->getTopTile()->played);
     }
@@ -269,7 +281,7 @@ void GameScene::update(float timestep) {
             if(!_discardPile->getTopTile() || (_discardPile->getTopTile()->toString() + std::to_string(_discardPile->getTopTile()->_id)) != rank + " of " + suit + id){
                 _discardPile->addTile(_tileSet->tileMap[rank + " of " + suit + " " + id]);
                 _discardPile->updateTilePositions();
-                _discardUIScene->incrementLabel(_tileSet->tileMap[rank + " of " + suit + " " + id]);
+                incrementLabel(_tileSet->tileMap[rank + " of " + suit + " " + id]);
                 _network->setStatus(NetworkController::Status::INGAME);
             }
         }
@@ -472,6 +484,7 @@ void GameScene::render() {
     
     _player->draw(_batch);
     _pile->draw(_batch);
+    _discardPile->draw(_batch);
     
     // Draw score
 //    _batch->setColor(Color4::GREEN);

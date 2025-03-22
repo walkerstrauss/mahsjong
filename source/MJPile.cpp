@@ -20,13 +20,38 @@
  * @param size             the size the pile should be
  * @param tileSet      the tileset to draw from to build the pile
  */
-bool Pile::initPile(int size, std::shared_ptr<TileSet> tileSet) {
+bool Pile::initPile(int size, std::shared_ptr<TileSet> tileSet, bool isHost) {
     _tileSet = tileSet;
     _pileSize = size;
     _pile.clear();
     _draw.clear();
     _pairs.clear();
-    Pile::createPile();
+    if(isHost){
+        createPile();
+    }
+    else{
+        createEmptyPile();
+    }
+    return true;
+}
+
+/**
+ * Creates a new pile according to size. Initializes all pile elements to 0
+ *
+ * @return true if pile was created successfully, and false otherwise
+ */
+bool Pile::createEmptyPile(){
+    if (!(_pile.size() == 0)){
+        return false;
+    }
+    for (int i = 0; i < _pileSize; i++) {
+        std::vector<std::shared_ptr<TileSet::Tile>> row;
+        for (int j = 0; j < _pileSize; j++) {
+            row.push_back(nullptr);
+        }
+        _pile.push_back(row);
+    }
+    
     return true;
 }
 
@@ -154,7 +179,6 @@ void Pile::remakePile(){
     }
     
     for(auto const& pairs : _tileSet->tileMap) {
-        CUAssertLog(_pileMap.size() > 25, "too many tiles in pile");
         std::shared_ptr<TileSet::Tile> currTile = pairs.second;
         if(currTile->inPile) {
             std::string key = currTile->toString() + " " + std::to_string(currTile->_id);

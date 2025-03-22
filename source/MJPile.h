@@ -42,7 +42,15 @@ public:
      * @param size             the size the pile should be
      * @param tileSet      the tileset to draw from to build the pile
      */
-    bool initPile(int size, std::shared_ptr<TileSet> tileSet);
+    bool initPile(int size, std::shared_ptr<TileSet> tileSet, bool isHost);
+    
+    
+    /**
+     * Creates a new pile according to size. Initializes all pile elements to 0
+     *
+     * @return true if pile was created successfully, and false otherwise
+     */
+    bool createEmptyPile();
     
     /**
      * Creates a new pile and positions them for drawing to the screen
