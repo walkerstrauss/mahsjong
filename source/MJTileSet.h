@@ -182,23 +182,23 @@ public:
         }
         
         static Tile::Rank toRank(std::string rank) {
-            if (rank == "one") {
+            if (rank == "one" || rank == "1") {
                 return Tile::Rank::ONE;
-            } else if (rank == "two") {
+            } else if (rank == "two" || rank == "2") {
                 return Tile::Rank::TWO;
-            } else if (rank == "three") {
+            } else if (rank == "three" || rank == "3") {
                 return Tile::Rank::THREE;
-            } else if (rank == "four") {
+            } else if (rank == "four" || rank == "4") {
                 return Tile::Rank::FOUR;
-            } else if (rank == "five") {
+            } else if (rank == "five" || rank == "5") {
                 return Tile::Rank::FIVE;
-            } else if (rank == "six") {
+            } else if (rank == "six" || rank == "6") {
                 return Tile::Rank::SIX;
-            } else if (rank == "seven") {
+            } else if (rank == "seven" || rank == "7") {
                 return Tile::Rank::SEVEN;
-            } else if (rank == "eight") {
+            } else if (rank == "eight" || rank == "8") {
                 return Tile::Rank::EIGHT;
-            } else if (rank == "nine") {
+            } else if (rank == "nine" || rank == "9") {
                 return Tile::Rank::NINE;
             } else {
                 throw std::invalid_argument("No valid rank");
@@ -394,7 +394,10 @@ public:
     
     std::vector<std::shared_ptr<Tile>> processTileJson(const std::shared_ptr<cugl::JsonValue>& tileJson);
     
+    std::vector<std::shared_ptr<Tile>> processDeckJson(const std::shared_ptr<cugl::JsonValue>& deckJson);
+    
     std::shared_ptr<cugl::JsonValue> mapToJson();
+    
 };
 
 #endif /* __MJ_TILESET_H__ */

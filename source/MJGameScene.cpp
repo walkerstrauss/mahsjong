@@ -199,7 +199,12 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::sha
             _uiopen = false;
         }
     });
-
+    
+//    TileSet testDeck;
+//    std::shared_ptr<cugl::JsonValue> constants = _assets->get<JsonValue>("constants");
+//    std::shared_ptr<cugl::JsonValue> alphaDeck = constants->get("alpha_deck");
+//    testDeck.deck = testDeck.processDeckJson(alphaDeck);
+//    testDeck.printDeck();
 
     _input.init(); //Initialize the input controller
     

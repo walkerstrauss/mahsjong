@@ -527,6 +527,7 @@
             "tilesetscene": "widgets/scene/tilesetscene.json"
     },
     "jsons": {
-        "server": "json/server.json"
+        "server": "json/server.json",
+        "constants" : "json/constants.json"
     }
 }
