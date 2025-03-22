@@ -304,6 +304,9 @@
         },
         "grandma_cry_image": {
             "file": "textures/score_defeat/grandma_cry_image.png"
+        },
+        "win":{
+            "file": "textures/win.png"
         }
     },
     "fonts": {

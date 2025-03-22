@@ -56,6 +56,12 @@ protected:
     Uint32 _mainLoseKey;
     /** Reference to key for quit button in lose scene */
     Uint32 _quitLoseKey;
+    /** Reference to the animation for winning **/
+    std::shared_ptr<cugl::graphics::SpriteSheet> _sheet;
+    /** Node for sheet*/
+    std::shared_ptr<cugl::scene2::SpriteNode> _sheetNode;
+    float _frameTimer = 0.0f;  // Track time between frames
+    float _frameDelay = 0.2f;  // Time in seconds before switching frames
     
 public:
     /** Represents the choice for this scene */
