@@ -71,6 +71,8 @@ public:
         bool selectedInSet;
         /** True if this tile has been played, false otherwise */
         bool played;
+        /** If tile is in the current deck */
+        bool inDeck;
         /** The tile's position (updated in player and pile methods) */
         cugl::Vec2 pos;
         /** The rectangle representing the tile's position used for selection handling */
@@ -290,6 +292,8 @@ public:
 public:
     /** Deck with all of the tiles */
     std::vector<std::shared_ptr<Tile>> deck;
+    /** Vector with starting representation of deck */
+    std::vector<std::shared_ptr<Tile>> startingDeck;
     /** Unsorted set containing tiles in the deck */
     std::map<std::string, std::shared_ptr<Tile>> tileMap;
     /** Grandma's favorite tiles */
@@ -357,6 +361,7 @@ public:
     }
     
     /**
+
      * Generates 3 random unique grandma tiles
      */
     void generateGrandmaTiles();
@@ -468,6 +473,10 @@ public:
     void setNextTile(std::shared_ptr<cugl::JsonValue>& nextTileJson);
     
     void updateDeck(const std::shared_ptr<cugl::JsonValue>& deckJson);
+    
+    std::vector<std::shared_ptr<Tile>> processTileJson(const std::shared_ptr<cugl::JsonValue>& tileJson);
+    
+    std::shared_ptr<cugl::JsonValue> mapToJson();
 };
 
 #endif /* __MJ_TILESET_H__ */

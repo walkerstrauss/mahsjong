@@ -34,8 +34,6 @@ public:
 	std::shared_ptr<TileSet> _tileSet;
 	/** Stores the location of our pair in the pile */
     std::vector<std::shared_ptr<TileSet::Tile>> _pairs;
-    /** Index of the tileset to start drawing to the pile from */
-    int index = 26;
     
 #pragma mark -
 #pragma mark Constructors
@@ -46,7 +44,15 @@ public:
      * @param size             the size the pile should be
      * @param tileSet      the tileset to draw from to build the pile
      */
-    bool initPile(int size, std::shared_ptr<TileSet> tileSet);
+    bool initPile(int size, std::shared_ptr<TileSet> tileSet, bool isHost);
+    
+    
+    /**
+     * Creates a new pile according to size. Initializes all pile elements to 0
+     *
+     * @return true if pile was created successfully, and false otherwise
+     */
+    bool createEmptyPile();
     
     /**
      * Creates a new pile and positions them for drawing to the screen
@@ -102,15 +108,20 @@ public:
      * @return a vector of tiles in the pair
      */
 	std::vector<std::shared_ptr<TileSet::Tile>> pairTile(const std::shared_ptr<Player>& player);
-
+    
+    /**
+     * Remakes pile according to the player who drew the last tile in the pile
+     */
+    void remakePile();
+    
 	/**
-     * Method to draw the tiles in the pile (no longer used)
+     * Method to draw the tiles in the pile
      *
      * @param batch     the SpriteBatch to draw the pile tiles to
      * @param size       the size of the pile
      * @param position the position of the pile to draw
      */
-	void draw(const std::shared_ptr<cugl::graphics::SpriteBatch>& batch, cugl::Size size, cugl::Vec2 position);
+	void draw(const std::shared_ptr<cugl::graphics::SpriteBatch>& batch);
     
     /**
      * Method to check if the player has selected two tiles that form a pair and handle pairs

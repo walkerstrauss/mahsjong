@@ -29,36 +29,25 @@ Hand::Hand(Player* player) {
  *
  * @param tileSet   the tileset to draw from
  */
-bool Hand::initHost(std::shared_ptr<TileSet>& tileSet){
+bool Hand::initHand(std::shared_ptr<TileSet>& tileSet, bool isHost){
     _size = 13;
     // draw from the deck
     for(int i = 0; i < _size; i++){
         std::shared_ptr<TileSet::Tile> drawnTile = tileSet->deck[i];
-        drawnTile->inHostHand = true;
+        if(isHost) {
+            drawnTile->inHostHand = true;
+            drawnTile->inClientHand = false;
+        }
+        else{
+            drawnTile->inHostHand = false;
+            drawnTile->inClientHand = true;
+        }
         drawnTile->_scale = 0.2;
-        
+        drawnTile->inDeck = false; 
         _tiles.push_back(drawnTile);
     }
     
-    return true;
-}
-
-/**
- * Initializes a new client hand by pulling 14 tiles from the game tileset
- *
- * @param tileSet   the tileset to draw from
- */
-bool Hand::initClient(std::shared_ptr<TileSet>& tileSet){
-    _size = 13;
-    // draw from the deck
-    for(int i = 13; i < 26; i++){
-        std::shared_ptr<TileSet::Tile> drawnTile = tileSet->deck[i];
-        drawnTile->inClientHand = true;
-        drawnTile->_scale = 0.2;
-        _tiles.push_back(drawnTile);
-    
-    }
-    
+    tileSet->deck.erase(tileSet->deck.begin(), tileSet->deck.begin() + 13);
     return true;
 }
 
@@ -77,9 +66,10 @@ void Hand::drawFromPile(std::shared_ptr<Pile>& pile, int number, bool isHost){
     for(auto& tile : _drawnPile){
         if (isHost) {
             tile->inHostHand = true;
+            tile->inClientHand = false;
         } else {
             tile->inClientHand = true;
-
+            tile->inHostHand = false; 
         }
         tile->inPile = false;
         tile->selected = false;
@@ -477,29 +467,27 @@ void Hand::updateTilePositions(){
 //}
 
 /**
- * Handles selection of tiles using information from input event
+ * Function to draw the player's currently held tiles
  *
- * @param mousePos      the position of the mouse in this frame
+ * @param batch     the SpriteBatch to draw the tiles to screen
  */
-std::shared_ptr<TileSet::Tile> Hand::clickedTile(Vec2 mousePos) {
-    for (const auto& tile : _tiles) {
-        if (tile) {
-            if (tile->tileRect.contains(mousePos)) {
-                if (tile->selected) {
-                    tile->selected = false;
-                    auto it = std::find(_selectedTiles.begin(), _selectedTiles.end(), tile);
-                    if (it != _selectedTiles.end()) {
-                        _selectedTiles.erase(it);
-                        return tile;
-                    }
-                } else {
-                    tile->selected = true;
-                    _selectedTiles.push_back(tile);
-                    return tile;
-                }
-            }
+void Player::draw(const std::shared_ptr<cugl::graphics::SpriteBatch>& batch) {
+    for(const auto& tile : _hand._tiles){
+        Vec2 pos = tile->pos;
+        Vec2 origin = Vec2(tile->getTileTexture()->getSize().width/2, tile->getTileTexture()->getSize().height/2);
+        
+        if(tile->selected){
+            pos.y += 10;
         }
+        Affine2 trans;
+        trans.scale(tile->_scale);
+        trans.translate(pos);
+        
+        Size textureSize(350.0, 415.0);
+        Vec2 rectOrigin(tile->pos - (textureSize * tile->_scale)/2);
+        tile->tileRect = cugl::Rect(rectOrigin, textureSize * tile->_scale);
+
+        batch->draw(tile->getTileTexture(), origin, trans);
     }
-    return nullptr;
 }
 

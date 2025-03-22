@@ -20,13 +20,38 @@
  * @param size             the size the pile should be
  * @param tileSet      the tileset to draw from to build the pile
  */
-bool Pile::initPile(int size, std::shared_ptr<TileSet> tileSet) {
+bool Pile::initPile(int size, std::shared_ptr<TileSet> tileSet, bool isHost) {
     _tileSet = tileSet;
     _pileSize = size;
     _pile.clear();
     _draw.clear();
     _pairs.clear();
-    Pile::createPile();
+    if(isHost){
+        createPile();
+    }
+    else{
+        createEmptyPile();
+    }
+    return true;
+}
+
+/**
+ * Creates a new pile according to size. Initializes all pile elements to 0
+ *
+ * @return true if pile was created successfully, and false otherwise
+ */
+bool Pile::createEmptyPile(){
+    if (!(_pile.size() == 0)){
+        return false;
+    }
+    for (int i = 0; i < _pileSize; i++) {
+        std::vector<std::shared_ptr<TileSet::Tile>> row;
+        for (int j = 0; j < _pileSize; j++) {
+            row.push_back(nullptr);
+        }
+        _pile.push_back(row);
+    }
+    
     return true;
 }
 
@@ -45,11 +70,14 @@ bool Pile::createPile() {
     float xShift = 125.0f;
     float yShift = 125.0f;
     
+    // Variable to keep track of what index we are on for pile creation
+    int index = 0;
+    
     // Iterate through the pile
     for (int i = 0; i < _pileSize; i++) {
         std::vector<std::shared_ptr<TileSet::Tile>> row;
         for (int j = 0; j < _pileSize; j++) {
-            if (_tileSet->deck.size() <= index) { //If our deck is empty, set the rest of the _pile to be empty (deck.empty() instead?)
+            if (_tileSet->deck.size() <= 0) { //If our deck is empty, set the rest of the _pile to be empty (deck.empty() instead?)
                 row.push_back(nullptr);
                 continue;
             }
@@ -60,6 +88,7 @@ bool Pile::createPile() {
             tile->_scale = 0.2;
             tile->inPile = true;
             tile->pileCoord = cugl::Vec2(i, j);
+            tile->inDeck = false; 
 
             float x = j * (_size.width * tile->_scale * spacingFactorX) + (_size.width * tile->_scale / 2);
             float y = i * (_size.height * tile->_scale) + (_size.height * tile->_scale / 2);
@@ -78,6 +107,15 @@ bool Pile::createPile() {
         }
         _pile.push_back(row); //add tile from deck to pile
     }
+    
+    // Erase tiles put into the pile from deck
+    if(_tileSet->deck.size() <= 25){
+        _tileSet->deck.clear();
+    }
+    else{
+        _tileSet->deck.erase(_tileSet->deck.begin(), _tileSet->deck.begin() + index + 1);
+    }
+    
     return true;
 }
 
@@ -132,6 +170,50 @@ void Pile::removePileTile(const std::shared_ptr<cugl::JsonValue> tileJson, bool 
         }
         _pile[x][y] = nullptr;
         _pileMap.erase(key);
+    }
+}
+
+
+void Pile::remakePile(){
+    if(_pileMap.size() != 0){
+        CUAssert("Must have an empty pile before remaking pile");
+    }
+    
+    for(auto const& pairs : _tileSet->tileMap) {
+        std::shared_ptr<TileSet::Tile> currTile = pairs.second;
+        if(currTile->inPile) {
+            std::string key = currTile->toString() + " " + std::to_string(currTile->_id);
+            int x = currTile->pileCoord.x;
+            int y = currTile->pileCoord.y;
+            _pile[x][y] = currTile;
+            _pileMap.insert({key, currTile->pileCoord});
+        }
+    }
+}
+
+/**
+ * Draws the pile to the screen
+ *
+ * @param batch     the SpriteBatch to render to the screen
+ */
+void Pile::draw(const std::shared_ptr<cugl::graphics::SpriteBatch>& batch) {
+    for(const auto& row : _pile) {
+        for (const auto& tile : row) {
+            if(tile == nullptr){
+                continue;
+            }
+            cugl::Vec2 origin = cugl::Vec2(tile->getTileTexture()->getSize().width/2, tile->getTileTexture()->getSize().height/2);
+            
+            cugl::Affine2 trans;
+            trans.scale(tile->_scale);
+            trans.translate(tile->pos);
+            
+            cugl::Size textureSize(350.0, 415.0);
+            cugl::Vec2 rectOrigin(tile->pos - (textureSize * tile->_scale)/2);
+            tile->tileRect = cugl::Rect(rectOrigin, textureSize * tile->_scale);
+
+            batch->draw(tile->getTileTexture(), origin, trans);
+        }
     }
 }
 
