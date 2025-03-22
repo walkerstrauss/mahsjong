@@ -382,7 +382,7 @@ void GameScene::update(float timestep) {
                                 tile->inClientHand = false;
                             }
                             tile->played = true;
-                            _discardUIScene->incrementLabel(tile);
+                            incrementLabel(tile);
                             break;
                         }
                         else{
