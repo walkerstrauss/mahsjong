@@ -57,7 +57,7 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::sha
     
     float offset = (screenSize.width -_matchScene->getWidth())/2;
     
-    _matchScene->setPosition(_matchScene->getPosition().x+offset, _matchScene->getPosition().y);
+    _matchScene->setPosition(offset, _matchScene->getPosition().y);
     
     if (!Scene2::initWithHint(screenSize)) {
         std::cerr << "Scene2 initialization failed!" << std::endl;
@@ -67,10 +67,11 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::sha
     _matchScene->setContentSize(screenSize);
     _matchScene->doLayout();
    
-    _discardBtn = std::dynamic_pointer_cast<scene2::Button>(_assets->get<scene2::SceneNode>("matchscene.gameplayscene.discard"));
-    _tilesetUIBtn = std::dynamic_pointer_cast<scene2::Button>(_assets->get<scene2::SceneNode>("matchscene.gameplayscene.button_tileset"));
-    _pauseBtn = std::dynamic_pointer_cast<scene2::Button>(_assets->get<scene2::SceneNode>("matchscene.gameplayscene.button_pause"));
-    
+    std::shared_ptr<scene2::SceneNode> childNode = _matchScene->getChild(0);
+    _discardBtn = std::dynamic_pointer_cast<scene2::Button>(childNode->getChild(3));
+    _tilesetUIBtn = std::dynamic_pointer_cast<scene2::Button>(_assets->get<scene2::SceneNode>("matchscene.gameplayscene.discardButton"));
+    _pauseBtn = std::dynamic_pointer_cast<scene2::Button>(_assets->get<scene2::SceneNode>("matchscene.gameplayscene.pauseButton"));
+
     _discardBtnKey = _discardBtn->addListener([this](const std::string& name, bool down){
         if (!down){
             if(_player->getHand()._tiles.size() == _player->getHand()._size){
@@ -151,20 +152,19 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::sha
         _network->broadcastDeck(_tileSet->toJson(_tileSet->deck));
     }
 
-    _winBtn = std::dynamic_pointer_cast<scene2::Button>(_assets->get<scene2::SceneNode>("matchscene.gameplayscene.winButton"));
-    _defeatBtn = std::dynamic_pointer_cast<scene2::Button>(_assets->get<scene2::SceneNode>("matchscene.gameplayscene.loseButton"));
-    
-    _winBtn->addListener([this](const std::string& name, bool down){
-        if (!down){
-            _choice = Choice::WIN;
-        }
-    });
-    _defeatBtn->addListener([this](const std::string& name, bool down){
-        if (!down){
-            _choice = Choice::LOSE;
-        }
-    });
-    
+//    _winBtn = std::dynamic_pointer_cast<scene2::Button>(_assets->get<scene2::SceneNode>("matchscene.gameplayscene.winButton"));
+//    _defeatBtn = std::dynamic_pointer_cast<scene2::Button>(_assets->get<scene2::SceneNode>("matchscene.gameplayscene.loseButton"));
+//    
+//    _winBtn->addListener([this](const std::string& name, bool down){
+//        if (!down){
+//            _choice = Choice::WIN;
+//        }
+//    });
+//    _defeatBtn->addListener([this](const std::string& name, bool down){
+//        if (!down){
+//            _choice = Choice::LOSE;
+//        }
+//    });
     
     // Initialize the discard pile
     _discardPile = std::make_shared<DiscardPile>();
@@ -452,10 +452,14 @@ void GameScene::setGameActive(bool value){
         _pauseBtn->activate();
         _discardBtn->activate();
         _tilesetUIBtn->activate();
+//        _winBtn->activate();
+//        _defeatBtn->activate();
     } else {
         _pauseBtn->deactivate();
         _discardBtn->deactivate();
         _tilesetUIBtn->deactivate();
+//        _winBtn->deactivate();
+//        _defeatBtn->deactivate();
     }
 }
 
