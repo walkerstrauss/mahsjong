@@ -40,10 +40,9 @@ bool GameOverScene::init(const std::shared_ptr<cugl::AssetManager>& assets){
     _losescene->setContentSize(dimen);
     
     // init buttons
-    _mainWinBtn = std::dynamic_pointer_cast<scene2::Button>(_assets->get<scene2::SceneNode>("winscene.scorewinscene.menu.button_main"));
-    _quitWinBtn = std::dynamic_pointer_cast<scene2::Button>(_assets->get<scene2::SceneNode>("winscene.scorewinscene.menu.button_quit"));
-    _mainLoseBtn = std::dynamic_pointer_cast<scene2::Button>(_assets->get<scene2::SceneNode>("losescene.scoredefeatscene.menu.button_main"));
-    _quitLoseBtn = std::dynamic_pointer_cast<scene2::Button>(_assets->get<scene2::SceneNode>("losescene.scoredefeatscene.menu.button_quit"));
+    _mainWinBtn = std::dynamic_pointer_cast<scene2::Button>(_assets->get<scene2::SceneNode>("winscene.scorewinscene.win_board.button_main"));
+    _mainLoseBtn = std::dynamic_pointer_cast<scene2::Button>(_assets->get<scene2::SceneNode>("losescene.scoredefeatscene.defeated_board.button_main"));
+    
     
     // add button listeners
     _mainWinKey = _mainWinBtn->addListener([this](const std::string& name, bool down){
@@ -103,22 +102,18 @@ void GameOverScene::setActive(bool value){
                 if (value){
                     _winscene->setVisible(true);
                     _mainWinBtn->activate();
-                    _quitWinBtn->activate();
                 } else {
                     _winscene->setVisible(false);
                     _mainWinBtn->deactivate();
-                    _quitWinBtn->deactivate();
                 }
                 break;
             case Type::LOSE:
                 if (value){
                     _losescene->setVisible(true);
                     _mainLoseBtn->activate();
-                    _quitLoseBtn->activate();
                 } else {
                     _losescene->setVisible(false);
                     _mainLoseBtn->deactivate();
-                    _quitLoseBtn->deactivate();
                 }
                 break;
             case Type::NEITHER:
@@ -128,16 +123,12 @@ void GameOverScene::setActive(bool value){
                     _winscene->setVisible(true);
                     _losescene->setVisible(true);
                     _mainWinBtn->activate();
-                    _quitWinBtn->activate();
                     _mainLoseBtn->activate();
-                    _quitLoseBtn->activate();
                 } else {
                     _winscene->setVisible(false);
                     _losescene->setVisible(false);
                     _mainWinBtn->deactivate();
-                    _quitWinBtn->deactivate();
                     _mainLoseBtn->deactivate();
-                    _quitLoseBtn->deactivate();
                 }
                 break;
         }

@@ -133,6 +133,20 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::sha
         _network->broadcastDeck(_tileSet->toJson(_tileSet->deck));
     }
 
+    _winBtn = std::dynamic_pointer_cast<scene2::Button>(_assets->get<scene2::SceneNode>("matchscene.gameplayscene.winButton"));
+    _defeatBtn = std::dynamic_pointer_cast<scene2::Button>(_assets->get<scene2::SceneNode>("matchscene.gameplayscene.loseButton"));
+    
+    _winBtn->addListener([this](const std::string& name, bool down){
+        if (!down){
+            _choice = Choice::WIN;
+        }
+    });
+    _defeatBtn->addListener([this](const std::string& name, bool down){
+        if (!down){
+            _choice = Choice::LOSE;
+        }
+    });
+    
     
     // Initialize the discard pile
     _discardPile = std::make_shared<DiscardPile>();

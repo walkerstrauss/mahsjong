@@ -1,235 +1,1610 @@
 {
     "variables": {"size":["data","size"]},
     "contents": {
-      "type": "Node",
-      "format": {
-        "type": "Anchored"
-      },
-      "data": {
-        "anchor": [0, 0],
-        "size": [1024, 576],
-        "angle": 0,
-        "position": [0, 0],
-        "visible": true
-      },
-      "children": {
-        "background_menu": {
-          "type": "Image",
-          "data": {
-            "texture": "background_score_defeat",
-            "anchor": [0.5, 0.5],
-            "size": [1024, 576],
-            "angle": 0,
-            "position": [0, 0],
-            "visible": true
-          },
-          "layout": {
-            "x_anchor": "fill",
-            "y_anchor": "fill",
-            "absolute": false,
-            "x_offset": 0,
-            "y_offset": 0
-          }
-        },
-        "Defeated_logo": {
-          "type": "Node",
-          "format": {
+        "type": "Node",
+        "format": {
             "type": "Anchored"
-          },
-          "data": {
-            "anchor": [0.5, 1],
-            "size": [366.97, 65],
-            "angle": 0,
-            "position": [329, 464],
-            "visible": true
-          },
-          "children": {
-            "Defeated_logo_image": {
-              "type": "Image",
-              "data": {
-                "texture": "Defeated_logo_image",
-                "anchor": [0, 0],
-                "size": [366.97, 65],
-                "angle": 0,
-                "position": [0, 0],
-                "visible": true
-              },
-              "layout": {
-                "x_anchor": "left",
-                "y_anchor": "bottom",
-                "absolute": false,
-                "x_offset": 0,
-                "y_offset": 0
-              }
-            }
-          },
-          "layout": {
-            "x_anchor": "center",
-            "y_anchor": "top",
-            "absolute": false,
-            "x_offset": 0,
-            "y_offset": -0.08
-          }
         },
-        "grandma_cry": {
-          "type": "Node",
-          "format": {
-            "type": "Anchored"
-          },
-          "data": {
-            "anchor": [0, 1],
-            "size": [315, 315],
+        "data": {
+            "anchor": [
+                0,
+                0
+            ],
+            "size": [
+                1024,
+                576
+            ],
             "angle": 0,
-            "position": [30, 41],
+            "position": [
+                0,
+                0
+            ],
             "visible": true
-          },
-          "children": {
-            "grandma_cry_image": {
-              "type": "Image",
-              "data": {
-                "texture": "grandma_cry_image",
-                "anchor": [0, 1],
-                "size": [315, 315],
-                "angle": 0,
-                "position": [0, 0],
-                "visible": true
-              },
-              "layout": {
-                "x_anchor": "left",
-                "y_anchor": "top",
-                "absolute": false,
-                "x_offset": 0,
-                "y_offset": 0
-              }
-            }
-          },
-          "layout": {
-            "x_anchor": "left",
-            "y_anchor": "top",
-            "absolute": false,
-            "x_offset": 0.03,
-            "y_offset": -0.38
-          }
         },
-        "setting": {
-            "type": "Widget",
-            "format": {
-            "type": "Anchored"
-            },
-            "data": {
-            "key": "settingbutton",
-            "variables": {
-                "size": [
-                60,
-                60
-                ]
-            }
-            },
-            "layout": {
-                "x_anchor": "left",
-                "y_anchor": "top",
-                "absolute": false,
-                "x_offset": 0.93,
-                "y_offset": -0.1
-            }
-        },
-        "menu": {
-          "type": "Node",
-          "format": {
-            "type": "Anchored"
-          },
-          "data": {
-            "anchor": [0, 1],
-            "size": [271, 61],
-            "angle": 0,
-            "position": [715, 37],
-            "visible": true
-          },
-          "children": {
-            "button_main": {
-              "type": "Widget",
-              "format": {
-                "type": "Anchored"
-            },
-              "data": {
-                "key": "scorebutton_main",
-                "variables": {
-                  "text": "Main",
-                  "size": [135, 61]
-                }
-              },
-              "layout": {
-                "x_anchor": "left",
-                "y_anchor": "top",
-                "absolute": false,
-                "x_offset": 0,
-                "y_offset": 0.5
-              }
-            },
-            "button_quit": {
-              "type": "Widget",
-              "format": {
-                "type": "Anchored"
+        "children": {
+            "background_lose": {
+                "type": "Image",
+                "data": {
+                    "texture": "background_lose",
+                    "anchor": [
+                        0,
+                        1
+                    ],
+                    "size": [
+                        1024,
+                        576
+                    ],
+                    "angle": 0,
+                    "position": [
+                        0,
+                        0
+                    ],
+                    "visible": true
                 },
-              "data": {
-                "key": "scorebutton_main",
-                "variables": {
-                  "text": "Quit",
-                  "size": [135, 61]
-                }
-              },
-              "layout": {
-                "x_anchor": "left",
-                "y_anchor": "top",
-                "absolute": false,
-                "x_offset": 0.9,
-                "y_offset": 0.5
-              }
-            }
-          },
-          "layout": {
-            "x_anchor": "left",
-            "y_anchor": "top",
-            "absolute": false,
-            "x_offset": 0.7,
-            "y_offset": -0.80
-          }
-        },
-        "score-hand": {
-            "type": "Widget",
-            "data": {
-              "key": "playhand"
-            },
-            "layout": {
-              "x_anchor": "center",
-              "y_anchor": "top",
-              "absolute": false,
-              "x_offset": 0,
-              "y_offset": -0.25
-            }
-        },
-        "button_point": {
-            "type": "Widget",
-            "format": {
-                "type": "Anchored"
-            },
-            "data": {
-                "key": "scorepointbutton",
-                "variables": {
-                    "text": "Points",
-                    "text2": "-9",
-                    "size": [314,
-                    61]
+                "layout": {
+                    "x_anchor": "fill",
+                    "y_anchor": "fill",
+                    "absolute": false,
+                    "x_offset": 0,
+                    "y_offset": 0
                 }
             },
-            "layout": {
-                "x_anchor": "center",
-                "y_anchor": "top",
-                "absolute": false,
-                "x_offset": 0,
-                "y_offset": -0.55
+            "defeated_board": {
+                "type": "Node",
+                "format": {
+                    "type": "Anchored"
+                },
+                "data": {
+                    "anchor": [
+                        1,
+                        0
+                    ],
+                    "size": [
+                        716,
+                        395
+                    ],
+                    "angle": 0,
+                    "position": [
+                        287,
+                        45
+                    ],
+                    "visible": true
+                },
+                "children": {
+                    "defeated_board": {
+                        "type": "Image",
+                        "data": {
+                            "texture": "defeated_board",
+                            "anchor": [
+                                0,
+                                1
+                            ],
+                            "size": [
+                                726,
+                                405
+                            ],
+                            "angle": 0,
+                            "position": [
+                                0,
+                                0
+                            ],
+                            "visible": true
+                        },
+                        "layout": {
+                            "x_anchor": "left",
+                            "y_anchor": "top",
+                            "absolute": false,
+                            "x_offset": 0,
+                            "y_offset": 0
+                        }
+                    },
+                    "hand": {
+                        "type": "Node",
+                        "format": {
+                            "type": "Float",
+                            "x_alignment": "left",
+                            "y_alignment": "middle",
+                            "orientation": "horizontal"
+                        },
+                        "data": {
+                            "anchor": [
+                                0.5,
+                                0.5
+                            ],
+                            "size": [
+                                573,
+                                53
+                            ],
+                            "angle": 0,
+                            "position": [
+                                100,
+                                183
+                            ],
+                            "visible": true
+                        },
+                        "children": {
+                            "tile1": {
+                                "type": "Button",
+                                "format": {
+                                    "type": "Anchored"
+                                },
+                                "data": {
+                                    "anchor": [
+                                        0.5,
+                                        0.5
+                                    ],
+                                    "size": [
+                                        40,
+                                        53
+                                    ],
+                                    "angle": 0,
+                                    "position": [
+                                        20,
+                                        26.5
+                                    ],
+                                    "visible": true,
+                                    "upnode": "up"
+                                },
+                                "children": {
+                                    "up": {
+                                        "type": "Node",
+                                        "format": {
+                                            "type": "Anchored"
+                                        },
+                                        "data": {
+                                            "anchor": [
+                                                0,
+                                                1
+                                            ],
+                                            "size": [
+                                                40,
+                                                53
+                                            ],
+                                            "angle": 0,
+                                            "position": [
+                                                0,
+                                                0
+                                            ],
+                                            "visible": true
+                                        },
+                                        "children": {
+                                            "tilesample": {
+                                                "type": "Image",
+                                                "data": {
+                                                    "texture": "tilesample",
+                                                    "anchor": [
+                                                        0,
+                                                        1
+                                                    ],
+                                                    "size": [
+                                                        40,
+                                                        53
+                                                    ],
+                                                    "angle": 0,
+                                                    "position": [
+                                                        0,
+                                                        0
+                                                    ],
+                                                    "visible": true
+                                                },
+                                                "layout": {
+                                                    "x_anchor": "left",
+                                                    "y_anchor": "top",
+                                                    "absolute": false,
+                                                    "x_offset": 0,
+                                                    "y_offset": 0
+                                                }
+                                            }
+                                        },
+                                        "layout": {
+                                            "x_anchor": "left",
+                                            "y_anchor": "top",
+                                            "absolute": false,
+                                            "x_offset": 0,
+                                            "y_offset": 0
+                                        }
+                                    }
+                                },
+                                "layout": {
+                                    "priority": 0,
+                                    "padding": [
+                                        0,
+                                        0,
+                                        1,
+                                        0
+                                    ]
+                                }
+                            },
+                            "tile2": {
+                                "type": "Button",
+                                "format": {
+                                    "type": "Anchored"
+                                },
+                                "data": {
+                                    "anchor": [
+                                        0.5,
+                                        0.5
+                                    ],
+                                    "size": [
+                                        40,
+                                        53
+                                    ],
+                                    "angle": 0,
+                                    "position": [
+                                        61,
+                                        26.5
+                                    ],
+                                    "visible": true,
+                                    "upnode": "up"
+                                },
+                                "children": {
+                                    "up": {
+                                        "type": "Node",
+                                        "format": {
+                                            "type": "Anchored"
+                                        },
+                                        "data": {
+                                            "anchor": [
+                                                0,
+                                                1
+                                            ],
+                                            "size": [
+                                                40,
+                                                53
+                                            ],
+                                            "angle": 0,
+                                            "position": [
+                                                0,
+                                                0
+                                            ],
+                                            "visible": true
+                                        },
+                                        "children": {
+                                            "tilesample": {
+                                                "type": "Image",
+                                                "data": {
+                                                    "texture": "tilesample",
+                                                    "anchor": [
+                                                        0,
+                                                        1
+                                                    ],
+                                                    "size": [
+                                                        40,
+                                                        53
+                                                    ],
+                                                    "angle": 0,
+                                                    "position": [
+                                                        0,
+                                                        0
+                                                    ],
+                                                    "visible": true
+                                                },
+                                                "layout": {
+                                                    "x_anchor": "left",
+                                                    "y_anchor": "top",
+                                                    "absolute": false,
+                                                    "x_offset": 0,
+                                                    "y_offset": 0
+                                                }
+                                            }
+                                        },
+                                        "layout": {
+                                            "x_anchor": "left",
+                                            "y_anchor": "top",
+                                            "absolute": false,
+                                            "x_offset": 0,
+                                            "y_offset": 0
+                                        }
+                                    }
+                                },
+                                "layout": {
+                                    "priority": 1,
+                                    "padding": [
+                                        0,
+                                        0,
+                                        1,
+                                        0
+                                    ]
+                                }
+                            },
+                            "tile3": {
+                                "type": "Button",
+                                "format": {
+                                    "type": "Anchored"
+                                },
+                                "data": {
+                                    "anchor": [
+                                        0.5,
+                                        0.5
+                                    ],
+                                    "size": [
+                                        40,
+                                        53
+                                    ],
+                                    "angle": 0,
+                                    "position": [
+                                        102,
+                                        26.5
+                                    ],
+                                    "visible": true,
+                                    "upnode": "up"
+                                },
+                                "children": {
+                                    "up": {
+                                        "type": "Node",
+                                        "format": {
+                                            "type": "Anchored"
+                                        },
+                                        "data": {
+                                            "anchor": [
+                                                0,
+                                                1
+                                            ],
+                                            "size": [
+                                                40,
+                                                53
+                                            ],
+                                            "angle": 0,
+                                            "position": [
+                                                0,
+                                                0
+                                            ],
+                                            "visible": true
+                                        },
+                                        "children": {
+                                            "tilesample": {
+                                                "type": "Image",
+                                                "data": {
+                                                    "texture": "tilesample",
+                                                    "anchor": [
+                                                        0,
+                                                        1
+                                                    ],
+                                                    "size": [
+                                                        40,
+                                                        53
+                                                    ],
+                                                    "angle": 0,
+                                                    "position": [
+                                                        0,
+                                                        0
+                                                    ],
+                                                    "visible": true
+                                                },
+                                                "layout": {
+                                                    "x_anchor": "left",
+                                                    "y_anchor": "top",
+                                                    "absolute": false,
+                                                    "x_offset": 0,
+                                                    "y_offset": 0
+                                                }
+                                            }
+                                        },
+                                        "layout": {
+                                            "x_anchor": "left",
+                                            "y_anchor": "top",
+                                            "absolute": false,
+                                            "x_offset": 0,
+                                            "y_offset": 0
+                                        }
+                                    }
+                                },
+                                "layout": {
+                                    "priority": 2,
+                                    "padding": [
+                                        0,
+                                        0,
+                                        1,
+                                        0
+                                    ]
+                                }
+                            },
+                            "tile4": {
+                                "type": "Button",
+                                "format": {
+                                    "type": "Anchored"
+                                },
+                                "data": {
+                                    "anchor": [
+                                        0.5,
+                                        0.5
+                                    ],
+                                    "size": [
+                                        40,
+                                        53
+                                    ],
+                                    "angle": 0,
+                                    "position": [
+                                        143,
+                                        26.5
+                                    ],
+                                    "visible": true,
+                                    "upnode": "up"
+                                },
+                                "children": {
+                                    "up": {
+                                        "type": "Node",
+                                        "format": {
+                                            "type": "Anchored"
+                                        },
+                                        "data": {
+                                            "anchor": [
+                                                0,
+                                                1
+                                            ],
+                                            "size": [
+                                                40,
+                                                53
+                                            ],
+                                            "angle": 0,
+                                            "position": [
+                                                0,
+                                                0
+                                            ],
+                                            "visible": true
+                                        },
+                                        "children": {
+                                            "tilesample": {
+                                                "type": "Image",
+                                                "data": {
+                                                    "texture": "tilesample",
+                                                    "anchor": [
+                                                        0,
+                                                        1
+                                                    ],
+                                                    "size": [
+                                                        40,
+                                                        53
+                                                    ],
+                                                    "angle": 0,
+                                                    "position": [
+                                                        0,
+                                                        0
+                                                    ],
+                                                    "visible": true
+                                                },
+                                                "layout": {
+                                                    "x_anchor": "left",
+                                                    "y_anchor": "top",
+                                                    "absolute": false,
+                                                    "x_offset": 0,
+                                                    "y_offset": 0
+                                                }
+                                            }
+                                        },
+                                        "layout": {
+                                            "x_anchor": "left",
+                                            "y_anchor": "top",
+                                            "absolute": false,
+                                            "x_offset": 0,
+                                            "y_offset": 0
+                                        }
+                                    }
+                                },
+                                "layout": {
+                                    "priority": 3,
+                                    "padding": [
+                                        0,
+                                        0,
+                                        1,
+                                        0
+                                    ]
+                                }
+                            },
+                            "tile5": {
+                                "type": "Button",
+                                "format": {
+                                    "type": "Anchored"
+                                },
+                                "data": {
+                                    "anchor": [
+                                        0.5,
+                                        0.5
+                                    ],
+                                    "size": [
+                                        40,
+                                        53
+                                    ],
+                                    "angle": 0,
+                                    "position": [
+                                        184,
+                                        26.5
+                                    ],
+                                    "visible": true,
+                                    "upnode": "up"
+                                },
+                                "children": {
+                                    "up": {
+                                        "type": "Node",
+                                        "format": {
+                                            "type": "Anchored"
+                                        },
+                                        "data": {
+                                            "anchor": [
+                                                0,
+                                                1
+                                            ],
+                                            "size": [
+                                                40,
+                                                53
+                                            ],
+                                            "angle": 0,
+                                            "position": [
+                                                0,
+                                                0
+                                            ],
+                                            "visible": true
+                                        },
+                                        "children": {
+                                            "tilesample": {
+                                                "type": "Image",
+                                                "data": {
+                                                    "texture": "tilesample",
+                                                    "anchor": [
+                                                        0,
+                                                        1
+                                                    ],
+                                                    "size": [
+                                                        40,
+                                                        53
+                                                    ],
+                                                    "angle": 0,
+                                                    "position": [
+                                                        0,
+                                                        0
+                                                    ],
+                                                    "visible": true
+                                                },
+                                                "layout": {
+                                                    "x_anchor": "left",
+                                                    "y_anchor": "top",
+                                                    "absolute": false,
+                                                    "x_offset": 0,
+                                                    "y_offset": 0
+                                                }
+                                            }
+                                        },
+                                        "layout": {
+                                            "x_anchor": "left",
+                                            "y_anchor": "top",
+                                            "absolute": false,
+                                            "x_offset": 0,
+                                            "y_offset": 0
+                                        }
+                                    }
+                                },
+                                "layout": {
+                                    "priority": 4,
+                                    "padding": [
+                                        0,
+                                        0,
+                                        1,
+                                        0
+                                    ]
+                                }
+                            },
+                            "tile6": {
+                                "type": "Button",
+                                "format": {
+                                    "type": "Anchored"
+                                },
+                                "data": {
+                                    "anchor": [
+                                        0.5,
+                                        0.5
+                                    ],
+                                    "size": [
+                                        40,
+                                        53
+                                    ],
+                                    "angle": 0,
+                                    "position": [
+                                        225,
+                                        26.5
+                                    ],
+                                    "visible": true,
+                                    "upnode": "up"
+                                },
+                                "children": {
+                                    "up": {
+                                        "type": "Node",
+                                        "format": {
+                                            "type": "Anchored"
+                                        },
+                                        "data": {
+                                            "anchor": [
+                                                0,
+                                                1
+                                            ],
+                                            "size": [
+                                                40,
+                                                53
+                                            ],
+                                            "angle": 0,
+                                            "position": [
+                                                0,
+                                                0
+                                            ],
+                                            "visible": true
+                                        },
+                                        "children": {
+                                            "tilesample": {
+                                                "type": "Image",
+                                                "data": {
+                                                    "texture": "tilesample",
+                                                    "anchor": [
+                                                        0,
+                                                        1
+                                                    ],
+                                                    "size": [
+                                                        40,
+                                                        53
+                                                    ],
+                                                    "angle": 0,
+                                                    "position": [
+                                                        0,
+                                                        0
+                                                    ],
+                                                    "visible": true
+                                                },
+                                                "layout": {
+                                                    "x_anchor": "left",
+                                                    "y_anchor": "top",
+                                                    "absolute": false,
+                                                    "x_offset": 0,
+                                                    "y_offset": 0
+                                                }
+                                            }
+                                        },
+                                        "layout": {
+                                            "x_anchor": "left",
+                                            "y_anchor": "top",
+                                            "absolute": false,
+                                            "x_offset": 0,
+                                            "y_offset": 0
+                                        }
+                                    }
+                                },
+                                "layout": {
+                                    "priority": 5,
+                                    "padding": [
+                                        0,
+                                        0,
+                                        1,
+                                        0
+                                    ]
+                                }
+                            },
+                            "tile7": {
+                                "type": "Button",
+                                "format": {
+                                    "type": "Anchored"
+                                },
+                                "data": {
+                                    "anchor": [
+                                        0.5,
+                                        0.5
+                                    ],
+                                    "size": [
+                                        40,
+                                        53
+                                    ],
+                                    "angle": 0,
+                                    "position": [
+                                        266,
+                                        26.5
+                                    ],
+                                    "visible": true,
+                                    "upnode": "up"
+                                },
+                                "children": {
+                                    "up": {
+                                        "type": "Node",
+                                        "format": {
+                                            "type": "Anchored"
+                                        },
+                                        "data": {
+                                            "anchor": [
+                                                0,
+                                                1
+                                            ],
+                                            "size": [
+                                                40,
+                                                53
+                                            ],
+                                            "angle": 0,
+                                            "position": [
+                                                0,
+                                                0
+                                            ],
+                                            "visible": true
+                                        },
+                                        "children": {
+                                            "tilesample": {
+                                                "type": "Image",
+                                                "data": {
+                                                    "texture": "tilesample",
+                                                    "anchor": [
+                                                        0,
+                                                        1
+                                                    ],
+                                                    "size": [
+                                                        40,
+                                                        53
+                                                    ],
+                                                    "angle": 0,
+                                                    "position": [
+                                                        0,
+                                                        0
+                                                    ],
+                                                    "visible": true
+                                                },
+                                                "layout": {
+                                                    "x_anchor": "left",
+                                                    "y_anchor": "top",
+                                                    "absolute": false,
+                                                    "x_offset": 0,
+                                                    "y_offset": 0
+                                                }
+                                            }
+                                        },
+                                        "layout": {
+                                            "x_anchor": "left",
+                                            "y_anchor": "top",
+                                            "absolute": false,
+                                            "x_offset": 0,
+                                            "y_offset": 0
+                                        }
+                                    }
+                                },
+                                "layout": {
+                                    "priority": 6,
+                                    "padding": [
+                                        0,
+                                        0,
+                                        1,
+                                        0
+                                    ]
+                                }
+                            },
+                            "tile8": {
+                                "type": "Button",
+                                "format": {
+                                    "type": "Anchored"
+                                },
+                                "data": {
+                                    "anchor": [
+                                        0.5,
+                                        0.5
+                                    ],
+                                    "size": [
+                                        40,
+                                        53
+                                    ],
+                                    "angle": 0,
+                                    "position": [
+                                        307,
+                                        26.5
+                                    ],
+                                    "visible": true,
+                                    "upnode": "up"
+                                },
+                                "children": {
+                                    "up": {
+                                        "type": "Node",
+                                        "format": {
+                                            "type": "Anchored"
+                                        },
+                                        "data": {
+                                            "anchor": [
+                                                0,
+                                                1
+                                            ],
+                                            "size": [
+                                                40,
+                                                53
+                                            ],
+                                            "angle": 0,
+                                            "position": [
+                                                0,
+                                                0
+                                            ],
+                                            "visible": true
+                                        },
+                                        "children": {
+                                            "tilesample": {
+                                                "type": "Image",
+                                                "data": {
+                                                    "texture": "tilesample",
+                                                    "anchor": [
+                                                        0,
+                                                        1
+                                                    ],
+                                                    "size": [
+                                                        40,
+                                                        53
+                                                    ],
+                                                    "angle": 0,
+                                                    "position": [
+                                                        0,
+                                                        0
+                                                    ],
+                                                    "visible": true
+                                                },
+                                                "layout": {
+                                                    "x_anchor": "left",
+                                                    "y_anchor": "top",
+                                                    "absolute": false,
+                                                    "x_offset": 0,
+                                                    "y_offset": 0
+                                                }
+                                            }
+                                        },
+                                        "layout": {
+                                            "x_anchor": "left",
+                                            "y_anchor": "top",
+                                            "absolute": false,
+                                            "x_offset": 0,
+                                            "y_offset": 0
+                                        }
+                                    }
+                                },
+                                "layout": {
+                                    "priority": 7,
+                                    "padding": [
+                                        0,
+                                        0,
+                                        1,
+                                        0
+                                    ]
+                                }
+                            },
+                            "tile9": {
+                                "type": "Button",
+                                "format": {
+                                    "type": "Anchored"
+                                },
+                                "data": {
+                                    "anchor": [
+                                        0.5,
+                                        0.5
+                                    ],
+                                    "size": [
+                                        40,
+                                        53
+                                    ],
+                                    "angle": 0,
+                                    "position": [
+                                        348,
+                                        26.5
+                                    ],
+                                    "visible": true,
+                                    "upnode": "up"
+                                },
+                                "children": {
+                                    "up": {
+                                        "type": "Node",
+                                        "format": {
+                                            "type": "Anchored"
+                                        },
+                                        "data": {
+                                            "anchor": [
+                                                0,
+                                                1
+                                            ],
+                                            "size": [
+                                                40,
+                                                53
+                                            ],
+                                            "angle": 0,
+                                            "position": [
+                                                0,
+                                                0
+                                            ],
+                                            "visible": true
+                                        },
+                                        "children": {
+                                            "tilesample": {
+                                                "type": "Image",
+                                                "data": {
+                                                    "texture": "tilesample",
+                                                    "anchor": [
+                                                        0,
+                                                        1
+                                                    ],
+                                                    "size": [
+                                                        40,
+                                                        53
+                                                    ],
+                                                    "angle": 0,
+                                                    "position": [
+                                                        0,
+                                                        0
+                                                    ],
+                                                    "visible": true
+                                                },
+                                                "layout": {
+                                                    "x_anchor": "left",
+                                                    "y_anchor": "top",
+                                                    "absolute": false,
+                                                    "x_offset": 0,
+                                                    "y_offset": 0
+                                                }
+                                            }
+                                        },
+                                        "layout": {
+                                            "x_anchor": "left",
+                                            "y_anchor": "top",
+                                            "absolute": false,
+                                            "x_offset": 0,
+                                            "y_offset": 0
+                                        }
+                                    }
+                                },
+                                "layout": {
+                                    "priority": 8,
+                                    "padding": [
+                                        0,
+                                        0,
+                                        1,
+                                        0
+                                    ]
+                                }
+                            },
+                            "tile10": {
+                                "type": "Button",
+                                "format": {
+                                    "type": "Anchored"
+                                },
+                                "data": {
+                                    "anchor": [
+                                        0.5,
+                                        0.5
+                                    ],
+                                    "size": [
+                                        40,
+                                        53
+                                    ],
+                                    "angle": 0,
+                                    "position": [
+                                        389,
+                                        26.5
+                                    ],
+                                    "visible": true,
+                                    "upnode": "up"
+                                },
+                                "children": {
+                                    "up": {
+                                        "type": "Node",
+                                        "format": {
+                                            "type": "Anchored"
+                                        },
+                                        "data": {
+                                            "anchor": [
+                                                0,
+                                                1
+                                            ],
+                                            "size": [
+                                                40,
+                                                53
+                                            ],
+                                            "angle": 0,
+                                            "position": [
+                                                0,
+                                                0
+                                            ],
+                                            "visible": true
+                                        },
+                                        "children": {
+                                            "tilesample": {
+                                                "type": "Image",
+                                                "data": {
+                                                    "texture": "tilesample",
+                                                    "anchor": [
+                                                        0,
+                                                        1
+                                                    ],
+                                                    "size": [
+                                                        40,
+                                                        53
+                                                    ],
+                                                    "angle": 0,
+                                                    "position": [
+                                                        0,
+                                                        0
+                                                    ],
+                                                    "visible": true
+                                                },
+                                                "layout": {
+                                                    "x_anchor": "left",
+                                                    "y_anchor": "top",
+                                                    "absolute": false,
+                                                    "x_offset": 0,
+                                                    "y_offset": 0
+                                                }
+                                            }
+                                        },
+                                        "layout": {
+                                            "x_anchor": "left",
+                                            "y_anchor": "top",
+                                            "absolute": false,
+                                            "x_offset": 0,
+                                            "y_offset": 0
+                                        }
+                                    }
+                                },
+                                "layout": {
+                                    "priority": 9,
+                                    "padding": [
+                                        0,
+                                        0,
+                                        1,
+                                        0
+                                    ]
+                                }
+                            },
+                            "tile11": {
+                                "type": "Button",
+                                "format": {
+                                    "type": "Anchored"
+                                },
+                                "data": {
+                                    "anchor": [
+                                        0.5,
+                                        0.5
+                                    ],
+                                    "size": [
+                                        40,
+                                        53
+                                    ],
+                                    "angle": 0,
+                                    "position": [
+                                        430,
+                                        26.5
+                                    ],
+                                    "visible": true,
+                                    "upnode": "up"
+                                },
+                                "children": {
+                                    "up": {
+                                        "type": "Node",
+                                        "format": {
+                                            "type": "Anchored"
+                                        },
+                                        "data": {
+                                            "anchor": [
+                                                0,
+                                                1
+                                            ],
+                                            "size": [
+                                                40,
+                                                53
+                                            ],
+                                            "angle": 0,
+                                            "position": [
+                                                0,
+                                                0
+                                            ],
+                                            "visible": true
+                                        },
+                                        "children": {
+                                            "tilesample": {
+                                                "type": "Image",
+                                                "data": {
+                                                    "texture": "tilesample",
+                                                    "anchor": [
+                                                        0,
+                                                        1
+                                                    ],
+                                                    "size": [
+                                                        40,
+                                                        53
+                                                    ],
+                                                    "angle": 0,
+                                                    "position": [
+                                                        0,
+                                                        0
+                                                    ],
+                                                    "visible": true
+                                                },
+                                                "layout": {
+                                                    "x_anchor": "left",
+                                                    "y_anchor": "top",
+                                                    "absolute": false,
+                                                    "x_offset": 0,
+                                                    "y_offset": 0
+                                                }
+                                            }
+                                        },
+                                        "layout": {
+                                            "x_anchor": "left",
+                                            "y_anchor": "top",
+                                            "absolute": false,
+                                            "x_offset": 0,
+                                            "y_offset": 0
+                                        }
+                                    }
+                                },
+                                "layout": {
+                                    "priority": 10,
+                                    "padding": [
+                                        0,
+                                        0,
+                                        1,
+                                        0
+                                    ]
+                                }
+                            },
+                            "tile12": {
+                                "type": "Button",
+                                "format": {
+                                    "type": "Anchored"
+                                },
+                                "data": {
+                                    "anchor": [
+                                        0.5,
+                                        0.5
+                                    ],
+                                    "size": [
+                                        40,
+                                        53
+                                    ],
+                                    "angle": 0,
+                                    "position": [
+                                        471,
+                                        26.5
+                                    ],
+                                    "visible": true,
+                                    "upnode": "up"
+                                },
+                                "children": {
+                                    "up": {
+                                        "type": "Node",
+                                        "format": {
+                                            "type": "Anchored"
+                                        },
+                                        "data": {
+                                            "anchor": [
+                                                0,
+                                                1
+                                            ],
+                                            "size": [
+                                                40,
+                                                53
+                                            ],
+                                            "angle": 0,
+                                            "position": [
+                                                0,
+                                                0
+                                            ],
+                                            "visible": true
+                                        },
+                                        "children": {
+                                            "tilesample": {
+                                                "type": "Image",
+                                                "data": {
+                                                    "texture": "tilesample",
+                                                    "anchor": [
+                                                        0,
+                                                        1
+                                                    ],
+                                                    "size": [
+                                                        40,
+                                                        53
+                                                    ],
+                                                    "angle": 0,
+                                                    "position": [
+                                                        0,
+                                                        0
+                                                    ],
+                                                    "visible": true
+                                                },
+                                                "layout": {
+                                                    "x_anchor": "left",
+                                                    "y_anchor": "top",
+                                                    "absolute": false,
+                                                    "x_offset": 0,
+                                                    "y_offset": 0
+                                                }
+                                            }
+                                        },
+                                        "layout": {
+                                            "x_anchor": "left",
+                                            "y_anchor": "top",
+                                            "absolute": false,
+                                            "x_offset": 0,
+                                            "y_offset": 0
+                                        }
+                                    }
+                                },
+                                "layout": {
+                                    "priority": 11,
+                                    "padding": [
+                                        0,
+                                        0,
+                                        1,
+                                        0
+                                    ]
+                                }
+                            },
+                            "tile13": {
+                                "type": "Button",
+                                "format": {
+                                    "type": "Anchored"
+                                },
+                                "data": {
+                                    "anchor": [
+                                        0.5,
+                                        0.5
+                                    ],
+                                    "size": [
+                                        40,
+                                        53
+                                    ],
+                                    "angle": 0,
+                                    "position": [
+                                        512,
+                                        26.5
+                                    ],
+                                    "visible": true,
+                                    "upnode": "up"
+                                },
+                                "children": {
+                                    "up": {
+                                        "type": "Node",
+                                        "format": {
+                                            "type": "Anchored"
+                                        },
+                                        "data": {
+                                            "anchor": [
+                                                0,
+                                                1
+                                            ],
+                                            "size": [
+                                                40,
+                                                53
+                                            ],
+                                            "angle": 0,
+                                            "position": [
+                                                0,
+                                                0
+                                            ],
+                                            "visible": true
+                                        },
+                                        "children": {
+                                            "tilesample": {
+                                                "type": "Image",
+                                                "data": {
+                                                    "texture": "tilesample",
+                                                    "anchor": [
+                                                        0,
+                                                        1
+                                                    ],
+                                                    "size": [
+                                                        40,
+                                                        53
+                                                    ],
+                                                    "angle": 0,
+                                                    "position": [
+                                                        0,
+                                                        0
+                                                    ],
+                                                    "visible": true
+                                                },
+                                                "layout": {
+                                                    "x_anchor": "left",
+                                                    "y_anchor": "top",
+                                                    "absolute": false,
+                                                    "x_offset": 0,
+                                                    "y_offset": 0
+                                                }
+                                            }
+                                        },
+                                        "layout": {
+                                            "x_anchor": "left",
+                                            "y_anchor": "top",
+                                            "absolute": false,
+                                            "x_offset": 0,
+                                            "y_offset": 0
+                                        }
+                                    }
+                                },
+                                "layout": {
+                                    "priority": 12,
+                                    "padding": [
+                                        0,
+                                        0,
+                                        1,
+                                        0
+                                    ]
+                                }
+                            },
+                            "tile14": {
+                                "type": "Button",
+                                "format": {
+                                    "type": "Anchored"
+                                },
+                                "data": {
+                                    "anchor": [
+                                        0.5,
+                                        0.5
+                                    ],
+                                    "size": [
+                                        40,
+                                        53
+                                    ],
+                                    "angle": 0,
+                                    "position": [
+                                        553,
+                                        26.5
+                                    ],
+                                    "visible": true,
+                                    "upnode": "up"
+                                },
+                                "children": {
+                                    "up": {
+                                        "type": "Node",
+                                        "format": {
+                                            "type": "Anchored"
+                                        },
+                                        "data": {
+                                            "anchor": [
+                                                0,
+                                                1
+                                            ],
+                                            "size": [
+                                                40,
+                                                53
+                                            ],
+                                            "angle": 0,
+                                            "position": [
+                                                0,
+                                                0
+                                            ],
+                                            "visible": true
+                                        },
+                                        "children": {
+                                            "tilesample": {
+                                                "type": "Image",
+                                                "data": {
+                                                    "texture": "tilesample",
+                                                    "anchor": [
+                                                        0,
+                                                        1
+                                                    ],
+                                                    "size": [
+                                                        40,
+                                                        53
+                                                    ],
+                                                    "angle": 0,
+                                                    "position": [
+                                                        0,
+                                                        0
+                                                    ],
+                                                    "visible": true
+                                                },
+                                                "layout": {
+                                                    "x_anchor": "left",
+                                                    "y_anchor": "top",
+                                                    "absolute": false,
+                                                    "x_offset": 0,
+                                                    "y_offset": 0
+                                                }
+                                            }
+                                        },
+                                        "layout": {
+                                            "x_anchor": "left",
+                                            "y_anchor": "top",
+                                            "absolute": false,
+                                            "x_offset": 0,
+                                            "y_offset": 0
+                                        }
+                                    }
+                                },
+                                "layout": {
+                                    "priority": 13,
+                                    "padding": [
+                                        0,
+                                        0,
+                                        0,
+                                        0
+                                    ]
+                                }
+                            }
+                        },
+                        "layout": {
+                            "x_anchor": "center",
+                            "y_anchor": "middle",
+                            "absolute": false,
+                            "x_offset": 0.06,
+                            "y_offset": 0.03
+                        }
+                    },
+                    "Defeated_logo": {
+                        "type": "Node",
+                        "format": {
+                            "type": "Anchored"
+                        },
+                        "data": {
+                            "anchor": [
+                                0.5,
+                                1
+                            ],
+                            "size": [
+                                267,
+                                103
+                            ],
+                            "angle": 0,
+                            "position": [
+                                261,
+                                258
+                            ],
+                            "visible": true
+                        },
+                        "children": {
+                            "Defeated_logo": {
+                                "type": "Image",
+                                "data": {
+                                    "texture": "Defeated_logo",
+                                    "anchor": [
+                                        0,
+                                        1
+                                    ],
+                                    "size": [
+                                        273,
+                                        56
+                                    ],
+                                    "angle": 0,
+                                    "position": [
+                                        0,
+                                        0
+                                    ],
+                                    "visible": true
+                                },
+                                "layout": {
+                                    "x_anchor": "left",
+                                    "y_anchor": "top",
+                                    "absolute": false,
+                                    "x_offset": 0,
+                                    "y_offset": 0
+                                }
+                            }
+                        },
+                        "layout": {
+                            "x_anchor": "center",
+                            "y_anchor": "top",
+                            "absolute": false,
+                            "x_offset": 0.05,
+                            "y_offset": -0.1
+                        }
+                    },
+                    "button_main": {
+                        "type": "Button",
+                        "format": {
+                            "type": "Anchored"
+                        },
+                        "data": {
+                            "anchor": [
+                                1,
+                                0
+                            ],
+                            "size": [
+                                150,
+                                187
+                            ],
+                            "angle": 0,
+                            "position": [
+                                523,
+                                -45
+                            ],
+                            "visible": true,
+                            "upnode": "up"
+                        },
+                        "children": {
+                            "up": {
+                                "type": "Node",
+                                "format": {
+                                    "type": "Anchored"
+                                },
+                                "data": {
+                                    "anchor": [
+                                        0,
+                                        1
+                                    ],
+                                    "size": [
+                                        150,
+                                        198
+                                    ],
+                                    "angle": 0,
+                                    "position": [
+                                        0,
+                                        -11
+                                    ],
+                                    "visible": true
+                                },
+                                "children": {
+                                    "main": {
+                                        "type": "Image",
+                                        "data": {
+                                            "texture": "defeat_main",
+                                            "anchor": [
+                                                0,
+                                                1
+                                            ],
+                                            "size": [
+                                                150,
+                                                198
+                                            ],
+                                            "angle": 0,
+                                            "position": [
+                                                0,
+                                                0
+                                            ],
+                                            "visible": true
+                                        },
+                                        "layout": {
+                                            "x_anchor": "left",
+                                            "y_anchor": "top",
+                                            "absolute": false,
+                                            "x_offset": 0,
+                                            "y_offset": 0
+                                        }
+                                    },
+                                    "Main_word": {
+                                        "type": "Image",
+                                        "data": {
+                                            "texture": "Main_word",
+                                            "anchor": [
+                                                0,
+                                                1
+                                            ],
+                                            "size": [
+                                                64,
+                                                27
+                                            ],
+                                            "angle": 0,
+                                            "position": [
+                                                43,
+                                                99
+                                            ],
+                                            "visible": true
+                                        },
+                                        "layout": {
+                                            "x_anchor": "left",
+                                            "y_anchor": "top",
+                                            "absolute": false,
+                                            "x_offset": 0.29,
+                                            "y_offset": -0.26
+                                        }
+                                    }
+                                },
+                                "layout": {
+                                    "x_anchor": "left",
+                                    "y_anchor": "top",
+                                    "absolute": false,
+                                    "x_offset": 0,
+                                    "y_offset": 0
+                                }
+                            }
+                        },
+                        "layout": {
+                            "x_anchor": "right",
+                            "y_anchor": "bottom",
+                            "absolute": false,
+                            "x_offset": -0.06,
+                            "y_offset": -0.11
+                        }
+                    }
+                },
+                "layout": {
+                    "x_anchor": "right",
+                    "y_anchor": "bottom",
+                    "absolute": false,
+                    "x_offset": -0.02,
+                    "y_offset": 0.08
+                }
             }
         }
-      }
     }
-  }
+}
+

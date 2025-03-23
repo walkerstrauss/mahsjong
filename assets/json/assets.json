@@ -528,8 +528,40 @@
         },
         "settingShade": {
             "file": "textures/setting/shade.png"
+        },
+        "pauseexitButton":{
+            "file": "textures/pause/pauseexitButton.png"
+        },
+        "background_lose":{
+            "file": "textures/score_defeat/background_lose.png"
+        },
+        "background_win_lose":{
+            "file": "textures/score_defeat/background_win_lose.png"
+        },
+        "defeated_board":{
+            "file": "textures/score_defeat/defeated_board.png"
+        },
+        "Defeated_logo":{
+            "file": "textures/score_defeat/Defeated_logo.png"
+        },
+        "defeat_main":{
+            "file": "textures/score_defeat/main.png"
+        },
+        "Main_word":{
+            "file": "textures/score_defeat/Main_word.png"
+        },
+        "tilesample":{
+            "file": "textures/score_defeat/tilesample.png"
+        },
+        "Victory_logo":{
+            "file": "textures/score_win/Victory_logo.png"
+        },
+        "win_board":{
+            "file": "textures/score_win/win_board.png"
+        },
+        "win_main":{
+            "file": "textures/score_win/main.png"
         }
-        
     },
     "fonts": {
         "pixel32": {
@@ -578,7 +610,7 @@
                         "type":"Anchored"
                     },
                     "data":{
-                        "key":"technical_gamescene",
+                        "key":"gameplayscene",
                         "variables":{
                             "size":[1280,720]
                         }

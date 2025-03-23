@@ -172,6 +172,8 @@ void MahsJongApp::draw() {
        case SETTINGS:
            if (_settings.scene == SettingScene::PrevScene::PAUSED){
                _gameplay.render();
+           } else if (_settings.scene == SettingScene::PrevScene::MAIN){
+               _mainmenu.render();
            }
            _settings.render();
            break;

@@ -98,6 +98,12 @@ protected:
     std::shared_ptr<cugl::scene2::Button> _pauseBtn;
     /** Button for continuing (in the pause scene) */
     std::shared_ptr<cugl::scene2::Button> _continueBtn;
+    
+    /** Button to set to win scene (for debugging) */
+    std::shared_ptr<cugl::scene2::Button> _winBtn;
+    /** Button to set to defeat scene (for debugging) */
+    std::shared_ptr<cugl::scene2::Button> _defeatBtn;
+    
     /** Key for discard button listener */
     Uint32 _discardBtnKey;
     /** Key for tileset UI button listener */
