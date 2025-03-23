@@ -172,7 +172,7 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::sha
     _lose->layout();
 
     
-//    _tileSet->setBackTextures(assets);
+    _tileSet->setBackTextures(assets);
 //    _winBtn = std::dynamic_pointer_cast<scene2::Button>(_assets->get<scene2::SceneNode>("matchscene.gameplayscene.winButton"));
 //    _defeatBtn = std::dynamic_pointer_cast<scene2::Button>(_assets->get<scene2::SceneNode>("matchscene.gameplayscene.loseButton"));
 //    
@@ -181,7 +181,7 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::sha
 //            _choice = Choice::WIN;
 //        }
 //    });
-//        // Initialize the discard pile
+        // Initialize the discard pile
 //        _discardPile = std::make_shared<DiscardPile>();
 //        _discardPile->init(_assets);
 //    });
@@ -246,14 +246,14 @@ void GameScene::update(float timestep) {
     _input.update();
     
 
-//    cugl::Vec2 mousePos = cugl::Scene::screenToWorldCoords(cugl::Vec3(_input.getPosition()));
+    cugl::Vec2 mousePos = cugl::Scene::screenToWorldCoords(cugl::Vec3(_input.getPosition()));
     // Determine if the mouse is held down or was just released.
-//    bool isMouseDown = _input.isDown();
-//    bool isMouseReleased = _input.didRelease();
+    bool isMouseDown = _input.isDown();
+    bool isMouseReleased = _input.didRelease();
     
-    // Update the player's drag state.
-//    _player->updateDrag(mousePos, isMouseDown, isMouseReleased);
-//    _player->getHand().updateTilePositions(_matchScene->getSize());
+//     Update the player's drag state.
+    _player->updateDrag(mousePos, isMouseDown, isMouseReleased);
+    _player->getHand().updateTilePositions(_matchScene->getSize());
 
     
     if (_network->getStatus() == NetworkController::Status::DECK) {
