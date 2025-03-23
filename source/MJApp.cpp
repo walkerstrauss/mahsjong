@@ -25,7 +25,13 @@ using namespace cugl::scene2;
 void MahsJongApp::onStartup() {
     _assets = AssetManager::alloc();
     _batch = SpriteBatch::alloc();
-    auto cam = OrthographicCamera::alloc(getDisplaySize());
+    
+    // get the actual size of the screen.
+    cugl::Size screenSize = cugl::Application::get()->getDisplaySize();
+    
+    //auto cam = OrthographicCamera::alloc(getDisplaySize());
+    auto cam = OrthographicCamera::alloc(screenSize);
+    
     
 #ifdef CU_TOUCH_SCREEN
     Input::activate<Touchscreen>();
@@ -45,6 +51,7 @@ void MahsJongApp::onStartup() {
     _assets->attach<Button>(WidgetLoader::alloc()->getHook());
     _assets->attach<scene2::SceneNode>(Scene2Loader::alloc()->getHook());
     _assets->loadDirectory("json/loading.json");
+    
 
     //Create a "loading" screen
     _scene = State::LOAD;

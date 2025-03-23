@@ -281,7 +281,35 @@
         },
         "table": {
             "file": "textures/tilesetui/table.png"
+        },
+        "actionTileSection":{
+              "file": "textures/gameplay/actionTileSection.png"
+        },
+        "discardCanButton":{
+              "file": "textures/gameplay/discardCanButton.png"
+        },
+        "displaytileSample":{
+              "file": "textures/gameplay/displaytileSample.png"
+        },
+        "gameplayBackground":{
+              "file": "textures/gameplay/gameplayBackground.png"
+        },
+        "infoIconButton":{
+              "file": "textures/gameplay/infoIcon.png"
+        },
+        "opponentTile":{
+            "file": "textures/gameplay/opponentTile.png"
+        },
+        "pileTile":{
+            "file": "textures/gameplay/pileTile.png"
+        },
+        "playerSampleTile":{
+            "file": "textures/gameplay/playerSampleTile.png"
+        },
+        "pauseIcon":{
+            "file": "textures/gameplay/pauseButton.png"
         }
+        
     },
     "fonts": {
         "pixel32": {
@@ -326,7 +354,7 @@
                         "type":"Anchored"
                     },
                     "data":{
-                        "key":"technical_gamescene",
+                        "key":"gameplayscene",
                         "variables":{
                             "size":[1280,720]
                         }
@@ -351,6 +379,7 @@
                             "size":[1280,720]
                         }
                     }
+                    
                 }
             }
         },

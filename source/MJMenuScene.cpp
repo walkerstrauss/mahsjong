@@ -40,23 +40,37 @@ using namespace std;
 bool MenuScene::init(const std::shared_ptr<cugl::AssetManager>& assets) {
     // Initialize the scene to a locked width
     if (assets == nullptr) {
-        return false;
-    } else if (!Scene2::initWithHint(Size(0,SCENE_HEIGHT))) {
+        return false;}
+    // Start up the input handler
+    _assets = assets;
+    std::shared_ptr<scene2::SceneNode> scene = _assets->get<scene2::SceneNode>("home");
+    scene->setContentSize(1280,720);
+    cugl::Size screenSize = cugl::Application::get()->getDisplaySize();
+    
+    screenSize *= scene->getContentSize().height/screenSize.height;
+        
+    if (!Scene2::initWithHint(screenSize)) {
         return false;
     }
     
-    // Start up the input handler
-    _assets = assets;
     
-    std::shared_ptr<scene2::SceneNode> scene = _assets->get<scene2::SceneNode>("home");
-    scene->setContentSize(Application::get()->getDisplaySize());
+    scene->setContentSize(screenSize);
+    
+    //scene->setContentSize(Application::get()->getDisplaySize());
+    //scene->setContentSize(getSize());
+    //scene->setContentSize(1280,720);
+    //scene->setScale(scene->getContentSize().height/screenSize.height);
     scene->doLayout();
     _choice = Choice::NONE;
+    
+    //std::shared_ptr<scene2::SceneNode> childNode = scene->getChild(0)->getChild(1);
+    
     
     std::shared_ptr<scene2::SceneNode> childNode = scene->getChild(0)->getChild(1);
 
     _hostbutton = std::dynamic_pointer_cast<scene2::Button>(childNode->getChild(0));
     _joinbutton = std::dynamic_pointer_cast<scene2::Button>(childNode->getChild(1));
+
 //    hostNode->getParent()->removeChild(hostNode);
 //    joinNode->getParent()->removeChild(joinNode);
 //    _hostbutton = std::dynamic_pointer_cast<scene2::Button>(hostNode);
