@@ -233,10 +233,16 @@ public:
     
     void render(std::shared_ptr<cugl::graphics::SpriteBatch>& batch);
     
-    /**
-     * Processes updates from network
-     */
     void processData(std::vector<std::string> msg);
+    /**
+     * Applies the effects of the given action tile
+     */
+    void applyAction(std::shared_ptr<TileSet::ActionTile> actionTile);
+    
+    /**
+     * Applies the effects of the given command tile
+     */
+    void applyCommand(std::shared_ptr<TileSet::CommandTile> commandTile);
     
     /**
      * Checks whether or not a tile has been clicked and sets selected status accordingly
