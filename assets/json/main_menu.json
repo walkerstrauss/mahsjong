@@ -4,7 +4,7 @@
                    "file": "textures/menu-background.png",
                    "wrapS": "clamp",
                    "wrapT": "clamp",
-                   "minfilter": "linear",
+                   "minfilter": "linear"
        },
        "play":{
            "file":    "textures/cugl-play.png",

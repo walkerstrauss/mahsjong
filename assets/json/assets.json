@@ -306,7 +306,6 @@
         "settingIcon":{
             "file": "textures/cornerIcon/settingIcon.png"
         },
-        
         "host1-background":{
             "file": "textures/host1/host1-background.png"
         },
@@ -561,6 +560,33 @@
         },
         "win_main":{
             "file": "textures/score_win/main.png"
+        },
+        "actionTileSection":{
+              "file": "textures/gameplay/actionTileSection.png"
+        },
+        "discardCanButton":{
+              "file": "textures/gameplay/discardCanButton.png"
+        },
+        "displaytileSample":{
+              "file": "textures/gameplay/displaytileSample.png"
+        },
+        "gameplayBackground":{
+              "file": "textures/gameplay/gameplayBackground.png"
+        },
+        "infoIconButton":{
+              "file": "textures/gameplay/infoIcon.png"
+        },
+        "opponentTile":{
+            "file": "textures/gameplay/opponentTile.png"
+        },
+        "pileTile":{
+            "file": "textures/gameplay/pileTile.png"
+        },
+        "playerSampleTile":{
+            "file": "textures/gameplay/playerSampleTile.png"
+        },
+        "pauseIcon":{
+            "file": "textures/gameplay/pauseButton.png"
         }
     },
     "fonts": {
@@ -635,6 +661,7 @@
                             "size":[1280,720]
                         }
                     }
+                    
                 }
             }
         },

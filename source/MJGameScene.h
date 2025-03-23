@@ -136,6 +136,14 @@ protected:
     std::shared_ptr<cugl::graphics::SpriteSheet> _emptyPickSheet;
     /** Holds reference to empty pick flip sprite sheet */
     std::shared_ptr<cugl::graphics::SpriteSheet> _emptyPickFlipSheet;
+    
+    /** The tile currently being dragged */
+    std::shared_ptr<TileSet::Tile> _draggingTile = nullptr;
+    cugl::Vec2 _dragOffset;
+    
+    /** The rectangle representing the pile's position used for selection handling */
+    cugl::Rect _pileBox;
+    
 public:
 #pragma mark -
 #pragma mark Constructors
@@ -249,6 +257,32 @@ public:
       * @return an int representing the index of this tile's discard UI label
       */
      int getLabelIndex(std::shared_ptr<TileSet::Tile> tile);
+     
+     /**
+      * Method to increment discard UI label corresponding to tile passed as argument
+      *
+      * @param tile  the tile to increment in the discard UI
+      * @return true if update was successful, and false otherwise
+      */
+     bool incrementLabel(std::shared_ptr<TileSet::Tile> tile);
+     
+     /**
+      * Method to decrement discard UI label corresponding to tile passed as argument
+      *
+      * @param tile  the tile to increment in the discard UI
+      * @return true if update was successful, and false otherwise
+      */
+     bool decrementLabel(std::shared_ptr<TileSet::Tile> tile);
+    
+    /**
+     * Method to detect the tiles which are being pressed by a user in a mobile version of the game.
+     */
+    void pressTile();
+    
+    void dragTile();
+    
+    void releaseTile();
+    
 };
 
 #endif /* __MJ_GAME_SCENE_H__ */

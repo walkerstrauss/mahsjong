@@ -41,13 +41,19 @@ using namespace std;
 bool MenuScene::init(const std::shared_ptr<cugl::AssetManager>& assets) {
     // Initialize the scene to a locked width
     if (assets == nullptr) {
-        return false;
-    } else if (!Scene2::initWithHint(Size(0,SCENE_HEIGHT))) {
+        return false;}
+    // Start up the input handler
+    _assets = assets;
+    std::shared_ptr<scene2::SceneNode> scene = _assets->get<scene2::SceneNode>("home");
+    scene->setContentSize(1280,720);
+    cugl::Size screenSize = cugl::Application::get()->getDisplaySize();
+    
+    screenSize *= scene->getContentSize().height/screenSize.height;
+        
+    if (!Scene2::initWithHint(screenSize)) {
         return false;
     }
     
-    // Start up the input handler
-    _assets = assets;
     
     _homescene = _assets->get<scene2::SceneNode>("home");
     _homescene->setContentSize(getSize());

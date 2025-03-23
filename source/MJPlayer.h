@@ -186,7 +186,7 @@ public:
     /**
      * Updates the position of all tiles in the hand for drawing to the screen and selection detection
      */
-    void updateTilePositions();
+    void updateTilePositions(cugl::Size sceneSize);
     
     /**
      * Method to draw the tiles in our hand to the screen (no longer used)
@@ -201,6 +201,13 @@ public:
      * @param selectedTiles     the tiles to be checked for a wild card
      */
     bool hasJack(std::vector<std::shared_ptr<TileSet::Tile>> selectedTiles);
+    
+    
+    std::shared_ptr<TileSet::Tile> getTileAtPosition(const cugl::Vec2& mousePos);
+    
+    
+    
+    
 };
 
 // Player as subclass of hand for handling individual turns for the player
@@ -220,6 +227,13 @@ public:
     bool canExchange;
     // Whether or not the player has drawn this turn
     bool canDraw;
+    
+    std::shared_ptr<TileSet::Tile> _draggingTile = nullptr;
+    cugl::Vec2 _dragStartPos;
+    bool _dragInitiated = false;
+    const float DRAG_THRESHOLD = 0.0f;
+    
+    cugl::Vec2 _dragOffset;
 
 #pragma mark -
 #pragma mark Constructors
@@ -247,6 +261,11 @@ public:
             _turnsLeft--;
         }
     }
+    
+    void updateDrag(const cugl::Vec2& mousePos, bool mouseDown, bool mouseReleased);
+    
+    
+    std::shared_ptr<TileSet::Tile> getDraggingTile() const { return _draggingTile; }
 };
 
 #endif /* __MJ_Player_H__ */

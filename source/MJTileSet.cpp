@@ -178,9 +178,19 @@ void TileSet::setBackTextures(const std::shared_ptr<cugl::AssetManager>& assets)
  * Draws the tiles in the tileset to the screen
  */
 void TileSet::draw(const std::shared_ptr<cugl::graphics::SpriteBatch>& batch, cugl::Size size, bool isHost){
+    
+    size = cugl::Application().get()->getDisplaySize();
+    
+    
+    
     for(const auto& it : deck){
-        Tile curr = (*it);
-        Vec2 pos = curr.pos;
+        //Tile curr = (*it);
+        Tile& curr = *it;
+        Vec2 pos = it->pos;
+        Vec2 offset;
+        
+        cugl::Size screenSize = cugl::Application::get()->getDisplaySize();
+        float screenOffset = (screenSize.width - size.width)/2;
         
         if (it->played) {
             continue;
@@ -200,6 +210,14 @@ void TileSet::draw(const std::shared_ptr<cugl::graphics::SpriteBatch>& batch, cu
             
             Affine2 trans;
             trans.scale(curr._scale);
+            
+            //if(it->inHostHand){
+            //    offset.set(screenOffset, 0);
+            //}
+            //else{
+            //    offset.set(0, 0);
+            //}
+            
             trans.translate(pos);
             
             Size textureSize(350.0, 415.0);
@@ -217,6 +235,14 @@ void TileSet::draw(const std::shared_ptr<cugl::graphics::SpriteBatch>& batch, cu
             else{
                 it->_scale = 0.2;
             }
+            
+            //if(it->inClientHand){
+            //    offset.set(screenOffset, 0);
+            //}
+            //else{
+            //    offset.set(0, 0);
+            //}
+            
             Vec2 origin = Vec2(curr.getTileTexture()->getSize().width/2, curr.getTileTexture()->getSize().height/2);
             
             Affine2 trans;
