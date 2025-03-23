@@ -65,13 +65,7 @@ public:
      *
      * @param tileSet   the tileset to draw from
      */
-    bool initHost(std::shared_ptr<TileSet>& tileSet);
-    
-    /**
-     * Initializes a new client hand by pulling 14 tiles from the game tileset
-     */
-    bool initClient(std::shared_ptr<TileSet>& tileSet);
-    
+    bool initHand(std::shared_ptr<TileSet>& tileSet, bool isHost);
     
 #pragma mark -
 #pragma mark Gameplay Handling
@@ -100,6 +94,11 @@ public:
      * @param tile      the tile to discard from out hand
      */
     bool discard(std::shared_ptr<TileSet::Tile> tile, bool isHost);
+    
+    /**
+     * Discards all action tiles in hand and returns number of action tiles discarded.
+     */
+    int loseActions(bool isHost);
     
     /**
      * Method to make a set from your hand and add it to selected sets
@@ -266,6 +265,10 @@ public:
     
     
     std::shared_ptr<TileSet::Tile> getDraggingTile() const { return _draggingTile; }
+    /**
+     * Renders the current tiles in hand
+     */
+    void draw(const std::shared_ptr<cugl::graphics::SpriteBatch>& batch);
 };
 
 #endif /* __MJ_Player_H__ */
