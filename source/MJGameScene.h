@@ -233,6 +233,7 @@ public:
     
     void render(std::shared_ptr<cugl::graphics::SpriteBatch>& batch);
     
+    void processData(std::vector<std::string> msg);
     /**
      * Applies the effects of the given action tile
      */
