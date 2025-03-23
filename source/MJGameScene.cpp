@@ -46,7 +46,7 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::sha
     _network = network;
     _choice = Choice::NONE;
     
-    Size dimen = getSize();
+//    Size dimen = getSize();
     _matchScene = _assets->get<scene2::SceneNode>("matchscene");
     _matchScene->setContentSize(1280,720);
     cugl::Size screenSize = cugl::Application::get()->getDisplaySize();
@@ -54,10 +54,9 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::sha
     
     screenSize *= _matchScene->getContentSize().height/screenSize.height;
     
-    
-    float offset = (screenSize.width -_matchScene->getWidth())/2;
-    
+    float offset = (screenSize.width -_matchScene->getWidth())/2;    
     _matchScene->setPosition(offset, _matchScene->getPosition().y);
+
     
     if (!Scene2::initWithHint(screenSize)) {
         std::cerr << "Scene2 initialization failed!" << std::endl;
@@ -71,7 +70,7 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::sha
     _discardBtn = std::dynamic_pointer_cast<scene2::Button>(childNode->getChild(3));
     _tilesetUIBtn = std::dynamic_pointer_cast<scene2::Button>(_assets->get<scene2::SceneNode>("matchscene.gameplayscene.discardButton"));
     _pauseBtn = std::dynamic_pointer_cast<scene2::Button>(_assets->get<scene2::SceneNode>("matchscene.gameplayscene.pauseButton"));
-
+  
     _discardBtnKey = _discardBtn->addListener([this](const std::string& name, bool down){
         if (!down){
             _pile->reshufflePile();
@@ -114,11 +113,13 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::sha
             _choice = Choice::TILESET;
         }
     });
+    
     _pauseBtnKey = _pauseBtn->addListener([this](const std::string& name, bool down){
         if (!down){
             _choice = Choice::PAUSE;
         }
     });
+    
     addChild(_matchScene);
     // Game Win and Lose bool
     _gameWin = false;
@@ -172,12 +173,6 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::sha
 
     
 //    _tileSet->setBackTextures(assets);
-    if(_network->getHostStatus()){
-        _network->initGame(_tileSet->toJson(_tileSet->deck));
-    } else {
-        _network->broadcastDeck(_tileSet->toJson(_tileSet->deck));
-    }
-
 //    _winBtn = std::dynamic_pointer_cast<scene2::Button>(_assets->get<scene2::SceneNode>("matchscene.gameplayscene.winButton"));
 //    _defeatBtn = std::dynamic_pointer_cast<scene2::Button>(_assets->get<scene2::SceneNode>("matchscene.gameplayscene.loseButton"));
 //    
@@ -186,11 +181,17 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::sha
 //            _choice = Choice::WIN;
 //        }
 //    });
+//        // Initialize the discard pile
+//        _discardPile = std::make_shared<DiscardPile>();
+//        _discardPile->init(_assets);
+//    });
+//                         
 //    _defeatBtn->addListener([this](const std::string& name, bool down){
 //        if (!down){
 //            _choice = Choice::LOSE;
 //        }
 //    });
+
     
     // Initialize the discard pile
     _discardPile = std::make_shared<DiscardPile>();
@@ -245,14 +246,14 @@ void GameScene::update(float timestep) {
     _input.update();
     
 
-    cugl::Vec2 mousePos = cugl::Scene::screenToWorldCoords(cugl::Vec3(_input.getPosition()));
+//    cugl::Vec2 mousePos = cugl::Scene::screenToWorldCoords(cugl::Vec3(_input.getPosition()));
     // Determine if the mouse is held down or was just released.
-    bool isMouseDown = _input.isDown();
-    bool isMouseReleased = _input.didRelease();
+//    bool isMouseDown = _input.isDown();
+//    bool isMouseReleased = _input.didRelease();
     
     // Update the player's drag state.
-    _player->updateDrag(mousePos, isMouseDown, isMouseReleased);
-    _player->getHand().updateTilePositions(_matchScene->getSize());
+//    _player->updateDrag(mousePos, isMouseDown, isMouseReleased);
+//    _player->getHand().updateTilePositions(_matchScene->getSize());
 
     
     if (_network->getStatus() == NetworkController::Status::DECK) {
@@ -406,12 +407,12 @@ void GameScene::update(float timestep) {
                 _player->getHand()._selectedTiles.clear();
             }
         }
-        if (_input.getKeyPressed() == KeyCode::W && _input.getKeyDown()){
-            _choice = Choice::WIN;
-        }
-        if (_input.getKeyPressed() == KeyCode::L && _input.getKeyDown()){
-            _choice = Choice::LOSE;
-        }
+//        if (_input.getKeyPressed() == KeyCode::W && _input.getKeyDown()){
+//            _choice = Choice::WIN;
+//        }
+//        if (_input.getKeyPressed() == KeyCode::L && _input.getKeyDown()){
+//            _choice = Choice::LOSE;
+//        }
 //        if (_input.getKeyPressed() == KeyCode::E && _input.getKeyDown()) {
 //            if(_player->canDraw || _player->canExchange){
 //                CULog("Must draw from pile or discard first");
@@ -459,7 +460,7 @@ void GameScene::render() {
     _batch->draw(temp, Color4(0,0,0,255), Rect(Vec2::ZERO, cugl::Application().get()->getDisplaySize()));
    
     _matchScene->render(_batch);
-     _player->draw(_batch);
+    _player->draw(_batch);
     _pile->draw(_batch);
     _discardPile->draw(_batch);
     _batch->end();
@@ -544,6 +545,7 @@ void GameScene::applyCommand(std::shared_ptr<TileSet::CommandTile> commandTile) 
                 _network->endTurn();
             }
             break;
+
     }
 }
 
