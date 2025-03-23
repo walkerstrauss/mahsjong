@@ -33,7 +33,21 @@ using namespace std;
  * This world should contain all objects, assets, and input controller. Please start
  * including any and all objects and classes that will build our game */
 class GameScene: public cugl::scene2::Scene2{
+public:
+    /**
+     * Enum representing the player's choice when in the
+     * game scene for app transitioning scenes logic
+     */
+    enum Choice {
+        NONE,
+        PAUSE,
+        TILESET,
+        SETS,
+        WIN,
+        LOSE
+    };
 protected:
+    Choice _choice;
     /** Asset manager for this game mode */
     std::shared_ptr<cugl::AssetManager> _assets;
     /** The network connection (as made by this scene) */
@@ -84,6 +98,12 @@ protected:
     std::shared_ptr<cugl::scene2::Button> _pauseBtn;
     /** Button for continuing (in the pause scene) */
     std::shared_ptr<cugl::scene2::Button> _continueBtn;
+    
+    /** Button to set to win scene (for debugging) */
+    std::shared_ptr<cugl::scene2::Button> _winBtn;
+    /** Button to set to defeat scene (for debugging) */
+    std::shared_ptr<cugl::scene2::Button> _defeatBtn;
+    
     /** Key for discard button listener */
     Uint32 _discardBtnKey;
     /** Key for tileset UI button listener */
@@ -116,6 +136,13 @@ protected:
     std::shared_ptr<cugl::graphics::SpriteSheet> _emptyPickSheet;
     /** Holds reference to empty pick flip sprite sheet */
     std::shared_ptr<cugl::graphics::SpriteSheet> _emptyPickFlipSheet;
+    
+    /** The tile currently being dragged */
+    std::shared_ptr<TileSet::Tile> _draggingTile = nullptr;
+    cugl::Vec2 _dragOffset;
+    
+    /** The rectangle representing the pile's position used for selection handling */
+    cugl::Rect _pileBox;
     
 public:
 #pragma mark -
@@ -178,6 +205,12 @@ public:
 #pragma mark -
 #pragma mark Gameplay Handling
     /**
+     * Returns choice of this game scene
+     */
+    Choice getChoice(){
+        return _choice;
+    }
+    /**
      * Rests the status of the game so we can play again.
      */
     void reset() override;
@@ -193,6 +226,12 @@ public:
      * Draws all this scene to the scene's SpriteBatch.
      */
     void render() override;
+    
+    virtual void setActive(bool value) override;
+    
+    void setGameActive(bool value);
+    
+    void render(std::shared_ptr<cugl::graphics::SpriteBatch>& batch);
     
     /**
      * Applies the effects of the given action tile
@@ -239,6 +278,16 @@ public:
       * @return true if update was successful, and false otherwise
       */
      bool decrementLabel(std::shared_ptr<TileSet::Tile> tile);
+    
+    /**
+     * Method to detect the tiles which are being pressed by a user in a mobile version of the game.
+     */
+    void pressTile();
+    
+    void dragTile();
+    
+    void releaseTile();
+    
 };
 
 #endif /* __MJ_GAME_SCENE_H__ */

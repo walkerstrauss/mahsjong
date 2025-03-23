@@ -81,6 +81,8 @@ public:
         cugl::Rect tileRect;
         /** The scale of the tile */
         float _scale;
+        /** Wheather or not the tile is pressed to handle the mobile version of the game*/
+        bool pressed;
         
 #pragma mark -
 #pragma mark Tile Constructors

@@ -12,6 +12,7 @@
 
 using namespace cugl;
 using namespace cugl::scene2;
+using namespace cugl::graphics;
 using namespace std;
 
 #pragma mark -
@@ -40,31 +41,28 @@ using namespace std;
 bool MenuScene::init(const std::shared_ptr<cugl::AssetManager>& assets) {
     // Initialize the scene to a locked width
     if (assets == nullptr) {
-        return false;
-    } else if (!Scene2::initWithHint(Size(0,SCENE_HEIGHT))) {
+        return false;}
+    // Start up the input handler
+    _assets = assets;
+    std::shared_ptr<scene2::SceneNode> scene = _assets->get<scene2::SceneNode>("home");
+    scene->setContentSize(1280,720);
+    cugl::Size screenSize = cugl::Application::get()->getDisplaySize();
+    
+    screenSize *= scene->getContentSize().height/screenSize.height;
+        
+    if (!Scene2::initWithHint(screenSize)) {
         return false;
     }
     
-    // Start up the input handler
-    _assets = assets;
     
-    std::shared_ptr<scene2::SceneNode> scene = _assets->get<scene2::SceneNode>("home");
-    scene->setContentSize(Application::get()->getDisplaySize());
-    scene->doLayout();
+    _homescene = _assets->get<scene2::SceneNode>("home");
+    _homescene->setContentSize(getSize());
+    _homescene->doLayout();
+    _homescene->setPosition((Application::get()->getDisplayWidth() - _homescene->getWidth()) / 8, _homescene->getPosition().y);
     _choice = Choice::NONE;
-    
-    std::shared_ptr<scene2::SceneNode> childNode = scene->getChild(0)->getChild(1);
+    _hostbutton = std::dynamic_pointer_cast<scene2::Button>(_assets->get<scene2::SceneNode>("home.home.menu.button1"));
+    _joinbutton = std::dynamic_pointer_cast<scene2::Button>(_assets->get<scene2::SceneNode>("home.home.menu.button2"));
 
-    _hostbutton = std::dynamic_pointer_cast<scene2::Button>(childNode->getChild(0));
-    _joinbutton = std::dynamic_pointer_cast<scene2::Button>(childNode->getChild(1));
-//    hostNode->getParent()->removeChild(hostNode);
-//    joinNode->getParent()->removeChild(joinNode);
-//    _hostbutton = std::dynamic_pointer_cast<scene2::Button>(hostNode);
-//    _joinbutton = std::dynamic_pointer_cast<scene2::Button>(joinNode);
-//    
-//    _hostbutton->setPosition(Vec2(_hostbutton->getPosition() - Vec2(300,200)));
-//    _joinbutton->setPosition(Vec2(_joinbutton->getPosition() - Vec2(300,200)));
-    
 //    // Program the buttons
     _hostbutton->addListener([this](const std::string& name, bool down) {
         if (down) {
@@ -76,12 +74,14 @@ bool MenuScene::init(const std::shared_ptr<cugl::AssetManager>& assets) {
             _choice = Choice::JOIN;
         }
     });
-//    settingsbutton = std::dynamic_pointer_cast<scene2::Button>(_assets->get<scene2::SceneNode>("home.home.menu.button3"));
-//    scene->addChild(_hostbutton);
-//    scene->addChild(_joinbutton);
-    
-    scene->setVisible(true);
-    addChild(scene);
+    settingsbutton = std::dynamic_pointer_cast<scene2::Button>(_assets->get<scene2::SceneNode>("home.home.button3"));
+    settingsbutton->addListener([this](const std::string& name, bool down){
+        if (down){
+            _choice = Choice::SETTING;
+        }
+    });
+    _homescene->setVisible(true);
+    addChild(_homescene);
     setActive(false);
     return true;
 }
@@ -115,15 +115,23 @@ void MenuScene::setActive(bool value) {
             _choice = NONE;
             _hostbutton->activate();
             _joinbutton->activate();
-//            settingsbutton->activate();
+            settingsbutton->activate();
         } else {
             _hostbutton->deactivate();
             _joinbutton->deactivate();
-//            settingsbutton->deactivate();
+            settingsbutton->deactivate();
             // If any were pressed, reset them
+            settingsbutton->setDown(false);
             _hostbutton->setDown(false);
             _joinbutton->setDown(false);
-//            settingsbutton->setDown(false);
         }
     }
+}
+
+void MenuScene::render(){
+    _batch->begin(_camera->getCombined());
+    const std::shared_ptr<Texture> temp = Texture::getBlank();
+    _batch->draw(temp, Color4(0,0,0,255), Rect(Vec2::ZERO,Application::get()->getDisplaySize()));
+    _homescene->render(_batch);
+    _batch->end();
 }

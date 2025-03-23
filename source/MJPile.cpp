@@ -143,10 +143,9 @@ void Pile::updateTilePositions() {
             
             float pileWidth = _pileSize * (_size.width * tile->_scale * spacingFactorX);
             float pileHeight = _pileSize * (_size.height * tile->_scale);
-            cugl::Vec2 pileOffset((screenSize.width - pileWidth) / 2 + xShift, (screenSize.height - pileHeight) / 2 + yShift);
+            cugl::Vec2 pileOffset((screenSize.width - pileWidth) / 2 + xShift, (screenSize.height - pileHeight) / 2 );
             
-            tile->pos = cugl::Vec2(x * spacingFactor, y * spacingFactor) + pileOffset;
-            
+            tile->pos = cugl::Vec2(x * spacingFactor, y * spacingFactor) + pileOffset/2;     
             std::string key = tile->toString() + " " + std::to_string(tile->_id);
             _pileMap.insert({key, tile->pileCoord});
         }
