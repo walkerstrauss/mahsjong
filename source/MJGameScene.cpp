@@ -172,7 +172,7 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::sha
     _lose->layout();
 
     
-//    _tileSet->setBackTextures(assets);
+    _tileSet->setBackTextures(assets);
 //    _winBtn = std::dynamic_pointer_cast<scene2::Button>(_assets->get<scene2::SceneNode>("matchscene.gameplayscene.winButton"));
 //    _defeatBtn = std::dynamic_pointer_cast<scene2::Button>(_assets->get<scene2::SceneNode>("matchscene.gameplayscene.loseButton"));
 //    
@@ -181,7 +181,7 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::sha
 //            _choice = Choice::WIN;
 //        }
 //    });
-//        // Initialize the discard pile
+        // Initialize the discard pile
 //        _discardPile = std::make_shared<DiscardPile>();
 //        _discardPile->init(_assets);
 //    });
