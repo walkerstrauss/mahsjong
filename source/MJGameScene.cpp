@@ -142,6 +142,7 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::sha
     
     _quit = false;
     setActive(false);
+    _matchScene->setVisible(true);
     return true;
 }
 
@@ -405,12 +406,10 @@ void GameScene::setActive(bool value){
 void GameScene::setGameActive(bool value){
     if (value){
         _choice = NONE;
-        _matchScene->setVisible(true);
         _pauseBtn->activate();
         _discardBtn->activate();
         _tilesetUIBtn->activate();
     } else {
-        _matchScene->setVisible(false);
         _pauseBtn->deactivate();
         _discardBtn->deactivate();
         _tilesetUIBtn->deactivate();

@@ -10,6 +10,10 @@
 #include <sstream>
 #include "MJPauseScene.h"
 
+using namespace cugl;
+using namespace cugl::scene2;
+using namespace cugl::graphics;
+
 bool PauseScene::init(const std::shared_ptr<cugl::AssetManager>& assets){
     if (!assets){
         return false;
@@ -23,14 +27,16 @@ bool PauseScene::init(const std::shared_ptr<cugl::AssetManager>& assets){
     _pauseScene->setContentSize(dimen);
     _pauseScene->doLayout();
     
+    _pauseScene->setPosition((Application::get()->getDisplayWidth() - _pauseScene->getWidth()) / 8, _pauseScene->getPosition().y);
+    
     // Set initial choice to none
     choice = Choice::NONE;
     
     // Initialize buttons and add listeners
-    _continueBtn = std::dynamic_pointer_cast<scene2::Button>(_assets->get<scene2::SceneNode>("pause.pausescene.button_continue"));
-    _closePauseBtn = std::dynamic_pointer_cast<scene2::Button>(_assets->get<scene2::SceneNode>("pause.pausescene.button_cancel"));
-    _settingPauseBtn = std::dynamic_pointer_cast<scene2::Button>(_assets->get<scene2::SceneNode>("pause.pausescene.button_setting"));
-    _menuPauseBtn = std::dynamic_pointer_cast<scene2::Button>(_assets->get<scene2::SceneNode>("pause.pausescene.button_main"));
+    _continueBtn = std::dynamic_pointer_cast<scene2::Button>(_assets->get<scene2::SceneNode>("pause.pausescene.pauseSection.menu.button4"));
+    _closePauseBtn = std::dynamic_pointer_cast<scene2::Button>(_assets->get<scene2::SceneNode>("pause.pausescene.pauseSection.menu.button1"));
+    _settingPauseBtn = std::dynamic_pointer_cast<scene2::Button>(_assets->get<scene2::SceneNode>("pause.pausescene.pauseSection.menu.button3"));
+    _menuPauseBtn = std::dynamic_pointer_cast<scene2::Button>(_assets->get<scene2::SceneNode>("pause.pausescene.pauseSection.menu.button2"));
     
     _continueBtnKey = _continueBtn->addListener([this](const std::string& name, bool down){
         if (!down){

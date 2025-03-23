@@ -130,7 +130,6 @@ protected:
     std::shared_ptr<cugl::graphics::SpriteSheet> _emptyPickSheet;
     /** Holds reference to empty pick flip sprite sheet */
     std::shared_ptr<cugl::graphics::SpriteSheet> _emptyPickFlipSheet;
-    
 public:
 #pragma mark -
 #pragma mark Constructors
@@ -217,6 +216,8 @@ public:
     virtual void setActive(bool value) override;
     
     void setGameActive(bool value);
+    
+    void render(std::shared_ptr<cugl::graphics::SpriteBatch>& batch);
     
     /**
      * Processes updates from network

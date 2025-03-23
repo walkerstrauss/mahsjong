@@ -403,8 +403,8 @@
         "discardCanButton":{
             "file": "textures/gameplay/discardCanButton.png"
         },
-        "discardtileSample":{
-            "file": "textures/gameplay/discardtileSample.png"
+        "displaytileSample":{
+            "file": "textures/gameplay/displaytileSample.png"
         },
         "gameplayBackground":{
             "file": "textures/gameplay/gameplayBackground.png"
@@ -414,7 +414,122 @@
         },
         "win":{
             "file": "textures/win.png"
+        },
+        "1":{
+            "file": "textures/tilesetui/1.png"
+        },
+        "2":{
+            "file": "textures/tilesetui/2.png"
+        },
+        "3":{
+            "file": "textures/tilesetui/3.png"
+        },
+        "4":{
+            "file": "textures/tilesetui/4.png"
+        },
+        "5":{
+            "file": "textures/tilesetui/5.png"
+        },
+        "6":{
+            "file": "textures/tilesetui/6.png"
+        },
+        "7":{
+            "file": "textures/tilesetui/7.png"
+        },
+        "8":{
+            "file": "textures/tilesetui/8.png"
+        },
+        "9":{
+            "file": "textures/tilesetui/9.png"
+        },
+        "10":{
+            "file": "textures/tilesetui/10.png"
+        },
+        "11":{
+            "file": "textures/tilesetui/11.png"
+        },
+        "12":{
+            "file": "textures/tilesetui/12.png"
+        },
+        "13":{
+            "file": "textures/tilesetui/13.png"
+        },
+        "14":{
+            "file": "textures/tilesetui/14.png"
+        },
+        "15":{
+            "file": "textures/tilesetui/15.png"
+        },
+        "16":{
+            "file": "textures/tilesetui/16.png"
+        },
+        "17":{
+            "file": "textures/tilesetui/17.png"
+        },
+        "18":{
+            "file": "textures/tilesetui/18.png"
+        },
+        "19":{
+            "file": "textures/tilesetui/19.png"
+        },
+        "20":{
+            "file": "textures/tilesetui/20.png"
+        },
+        "21":{
+            "file": "textures/tilesetui/21.png"
+        },
+        "22":{
+            "file": "textures/tilesetui/22.png"
+        },
+        "23":{
+            "file": "textures/tilesetui/23.png"
+        },
+        "24":{
+            "file": "textures/tilesetui/24.png"
+        },
+        "25":{
+            "file": "textures/tilesetui/25.png"
+        },
+        "26":{
+            "file": "textures/tilesetui/26.png"
+        },
+        "27":{
+            "file": "textures/tilesetui/27.png"
+        },
+        "discardedtileBoard":{
+            "file": "textures/tilesetui/discardedtileBoard.png"
+        },
+        "DiscardedTileTitle":{
+            "file": "textures/tilesetui/DiscardedTileTitle.png"
+        },
+        "discardTilecloseIcon":{
+            "file": "textures/tilesetui/discardTilecloseIcon.png"
+        },
+        "DiscardShade":{
+            "file": "textures/tilesetui/discardTileShade.png"
+        },
+        "settingBoard": {
+            "file": "textures/setting/settingBoard.png"
+        },
+        "settingGrandma": {
+            "file": "textures/setting/settingGrandma.png"
+        },
+        "closeIcon": {
+            "file": "textures/setting/closeIcon.png"
+        },
+        "exitButton": {
+            "file": "textures/setting/exitButton.png"
+        },
+        "soundButton": {
+            "file": "textures/setting/soundButton.png"
+        },
+        "titleBackground": {
+            "file": "textures/setting/titleBackground.png"
+        },
+        "settingShade": {
+            "file": "textures/setting/shade.png"
         }
+        
     },
     "fonts": {
         "pixel32": {
@@ -439,11 +554,15 @@
         },
         "pixelify sansBold36": {
             "file":     "fonts/LightPixel7.ttf",
-            "size":     36
+            "size":     32
         },
         "gyparody": {
             "file":     "fonts/LightPixel7.ttf",
             "size": 32
+        },
+        "podkovaBold36": {
+            "file": "fonts/Podkova-Bold.ttf",
+            "size": 36
         }
     },
     "scene2s":{

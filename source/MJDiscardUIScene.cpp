@@ -28,16 +28,16 @@ bool DiscardUIScene::init(const std::shared_ptr<cugl::AssetManager>& assets){
     }
     _assets = assets;
     _tilesetui = _assets->get<scene2::SceneNode>("tilesetui");
-    _tilesetui->setContentSize(Application::get()->getDisplaySize());
+    _tilesetui->setContentSize(getSize());
     _tilesetui->doLayout();
     choice = Choice::NONE;
-    
+    _tilesetui->setPosition((Application::get()->getDisplayWidth() - _tilesetui->getWidth()) / 8, _tilesetui->getPosition().y);
     _labels.resize(27);
     for (int i = 0; i < 27; i++){
-        std::shared_ptr<scene2::Label> label = std::dynamic_pointer_cast<scene2::Label>(_assets->get<scene2::SceneNode>("tilesetui.tilesetscene.numbers." + std::to_string(i + 1)));
+        std::shared_ptr<scene2::Label> label = std::dynamic_pointer_cast<scene2::Label>(_assets->get<scene2::SceneNode>("tilesetui.tilesetscene.board.number.label_" + std::to_string(i + 1)));
         _labels[i] = label;
     }
-    backBtn = std::dynamic_pointer_cast<scene2::Button>(_assets->get<scene2::SceneNode>("tilesetui.tilesetscene.back_tileset"));
+    backBtn = std::dynamic_pointer_cast<scene2::Button>(_assets->get<scene2::SceneNode>("tilesetui.tilesetscene.board.buttonClose"));
     backBtnKey = backBtn->addListener([this](const std::string& name, bool down) {
         if (!down) {
             choice = Choice::BACK;
@@ -143,4 +143,10 @@ bool DiscardUIScene::decrementLabel(std::shared_ptr<TileSet::Tile> tile){
     std::string text = std::to_string(std::stoi(_labels[i]->getText()) - 1);
     _labels[i]->setText(text);
     return true;
+}
+
+void DiscardUIScene::render(){
+    _batch->begin(_camera->getCombined());
+    _tilesetui->render(_batch);
+    _batch->end();
 }

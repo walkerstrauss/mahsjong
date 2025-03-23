@@ -32,6 +32,9 @@ protected:
     std::shared_ptr<cugl::AssetManager> _assets;
     /** Vector of scene nodes representing labels in the tileset UI table */
     std::vector<std::shared_ptr<cugl::scene2::Label>> _labels;
+    /**
+        
+     */
     /** Reference to scene node for UI scene */
     std::shared_ptr<scene2::SceneNode> _tilesetui;
     
@@ -76,6 +79,8 @@ public:
      * @param timestep The amount of time (in seconds) since the last frame
      */
     void update(float timestep) override;
+    
+    void render() override;
     
     /**
      * Method to get the index of this tile's associated label in the discard UI vector of labels

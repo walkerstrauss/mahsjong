@@ -12,6 +12,7 @@
 
 using namespace cugl;
 using namespace cugl::scene2;
+using namespace cugl::graphics;
 using namespace std;
 
 #pragma mark -
@@ -48,15 +49,13 @@ bool MenuScene::init(const std::shared_ptr<cugl::AssetManager>& assets) {
     // Start up the input handler
     _assets = assets;
     
-    std::shared_ptr<scene2::SceneNode> scene = _assets->get<scene2::SceneNode>("home");
-    scene->setContentSize(Application::get()->getDisplaySize());
-    scene->doLayout();
+    _homescene = _assets->get<scene2::SceneNode>("home");
+    _homescene->setContentSize(getSize());
+    _homescene->doLayout();
+    _homescene->setPosition((Application::get()->getDisplayWidth() - _homescene->getWidth()) / 8, _homescene->getPosition().y);
     _choice = Choice::NONE;
-    
-    std::shared_ptr<scene2::SceneNode> childNode = scene->getChild(0)->getChild(1);
-
-    _hostbutton = std::dynamic_pointer_cast<scene2::Button>(childNode->getChild(0));
-    _joinbutton = std::dynamic_pointer_cast<scene2::Button>(childNode->getChild(1));
+    _hostbutton = std::dynamic_pointer_cast<scene2::Button>(_assets->get<scene2::SceneNode>("home.home.menu.button1"));
+    _joinbutton = std::dynamic_pointer_cast<scene2::Button>(_assets->get<scene2::SceneNode>("home.home.menu.button2"));
 
 //    // Program the buttons
     _hostbutton->addListener([this](const std::string& name, bool down) {
@@ -69,14 +68,14 @@ bool MenuScene::init(const std::shared_ptr<cugl::AssetManager>& assets) {
             _choice = Choice::JOIN;
         }
     });
-    settingsbutton = std::dynamic_pointer_cast<scene2::Button>(_assets->get<scene2::SceneNode>("home.home.menu.button3"));
+    settingsbutton = std::dynamic_pointer_cast<scene2::Button>(_assets->get<scene2::SceneNode>("home.home.button3"));
     settingsbutton->addListener([this](const std::string& name, bool down){
         if (down){
             _choice = Choice::SETTING;
         }
     });
-    scene->setVisible(true);
-    addChild(scene);
+    _homescene->setVisible(true);
+    addChild(_homescene);
     setActive(false);
     return true;
 }
@@ -121,4 +120,12 @@ void MenuScene::setActive(bool value) {
             _joinbutton->setDown(false);
         }
     }
+}
+
+void MenuScene::render(){
+    _batch->begin(_camera->getCombined());
+    const std::shared_ptr<Texture> temp = Texture::getBlank();
+    _batch->draw(temp, Color4(0,0,0,255), Rect(Vec2::ZERO,Application::get()->getDisplaySize()));
+    _homescene->render(_batch);
+    _batch->end();
 }

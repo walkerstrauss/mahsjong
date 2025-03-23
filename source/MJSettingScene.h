@@ -46,30 +46,10 @@ protected:
     std::shared_ptr<cugl::AssetManager> _assets;
     /** A reference to the scene node representing the setting scene */
     std::shared_ptr<cugl::scene2::SceneNode> _settingScene;
-    /** The button to turn on notifications */
-    std::shared_ptr<cugl::scene2::Button> _notifOnBtn;
-    /** The button to turn off notificatons */
-    std::shared_ptr<cugl::scene2::Button> _notifOffBtn;
-    /** The button to turn on music */
-    std::shared_ptr<cugl::scene2::Button> _musicOnBtn;
-    /** The button to turn off music */
-    std::shared_ptr<cugl::scene2::Button> _musicOffBtn;
-    /** The button to turn on sound */
-    std::shared_ptr<cugl::scene2::Button> _soundOnBtn;
-    /** The button to turn off sound */
-    std::shared_ptr<cugl::scene2::Button> _soundOffBtn;
+    /** The button to turn on and off sound */
+    std::shared_ptr<cugl::scene2::Button> _soundBtn;
     /** The listener for the notificiations on button*/
-    Uint32 _notifOnKey;
-    /** The listener for the notifications off button*/
-    Uint32 _notifOffKey;
-    /** The listener for the music on button*/
-    Uint32 _musicOnKey;
-    /** The listener for the music off button*/
-    Uint32 _musicOffKey;
-    /** The listener for the sound on button*/
-    Uint32 _soundOnKey;
-    /** The listener for the sound off button*/
-    Uint32 _soundOffKey;
+    Uint32 _soundKey;
 
 public:
     /** The button to exit the scene */

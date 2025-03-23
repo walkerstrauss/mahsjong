@@ -170,15 +170,20 @@ void MahsJongApp::draw() {
            _gameplay.render();
            break;
        case SETTINGS:
+           if (_settings.scene == SettingScene::PrevScene::PAUSED){
+               _gameplay.render();
+           }
            _settings.render();
            break;
        case PAUSE:
+           _gameplay.render();
            _pause.render();
            break;
        case OVER:
            _gameover.render(_batch);
            break;
        case TILESETUI:
+           _gameplay.render();
            _tilesetui.render();
            break;
    }
