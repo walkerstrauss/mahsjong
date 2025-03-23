@@ -161,9 +161,6 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::sha
         _player->getHand().updateTilePositions();
         
         //Creating pile as Host
-        _tileSet->addActionAndCommandTiles(assets);
-        _tileSet->shuffle();
-//        _tileSet->setSpecialTextures(assets);
         _pile->initPile(5, _tileSet, _network->getHostStatus());
         //Broadcasting all tiles with attributes (sets pile tiles as !inDeck)
         _network->broadcastStartingDeck(_tileSet->mapToJson());
@@ -177,6 +174,8 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::sha
         _tileSet->updateDeck(_network->getDeckJson());
         _player->getHand().initHand(_tileSet, _network->getHostStatus());
         _player->getHand().updateTilePositions();
+        _tileSet->addActionAndCommandTiles(assets);
+        _tileSet->shuffle();
         _pile->remakePile();
         _network->broadcastDeck(_tileSet->mapToJson());
     }
