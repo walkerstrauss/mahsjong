@@ -507,6 +507,14 @@ void GameScene::applyAction(std::shared_ptr<TileSet::ActionTile> actionTile) {
             _player->getHand().drawFromPile(_pile, 2, _network->getHostStatus());
             _network->broadcastTileDrawn(_tileSet->toJson(_tileSet->tilesToJson));
             _tileSet->clearTilesToJson();
+            if (_pile->getVisibleSize() == 0) {
+                _pile->createPile();
+                _network->broadcastDeckMap(_tileSet->mapToJson());
+                _network->broadcastPileLayer();
+            }
+            else{
+                _network->broadcastDeck(_tileSet->toJson(_tileSet->deck));
+            }
             break;
         case TileSet::ActionTile::ActionType::ORACLE:
             CULog("ORACLE: Draw any tile from pile...");
