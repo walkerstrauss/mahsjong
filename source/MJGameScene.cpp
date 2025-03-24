@@ -73,7 +73,6 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::sha
   
     _discardBtnKey = _discardBtn->addListener([this](const std::string& name, bool down){
         if (!down){
-//            _pile->reshufflePile();
             _network->broadcastDeckMap(_tileSet->mapToJson()); // Sends tile state
             _network->broadcastPileLayer();
             if(_player->getHand()._tiles.size() == _player->getHand()._size){
@@ -409,6 +408,11 @@ void GameScene::update(float timestep) {
                 _player->getHand()._selectedTiles.clear();
             }
         }
+//        if (_input.getKeyPressed() == KeyCode::P && _input.getKeyDown()){
+//            _pile->reshufflePile();
+//            _network->broadcastDeckMap(_tileSet->mapToJson());
+//            _network->broadcastPileLayer();
+//        }
 //        if (_input.getKeyPressed() == KeyCode::W && _input.getKeyDown()){
 //            _choice = Choice::WIN;
 //        }
@@ -489,20 +493,6 @@ void GameScene::setGameActive(bool value){
         _tilesetUIBtn->deactivate();
 //        _winBtn->deactivate();
 //        _defeatBtn->deactivate();
-    }
-}
-
-void GameScene::processData(std::vector<std::string> msg){
-    std::string name = msg[0];
-    std::string id = msg[1];
-    std::string selected = msg[2];
-    
-    for(const auto& tile : _player->getHand()._tiles){
-        if(tile->toString() == name && std::to_string(tile->_id) == id){
-            if(selected == "true"){
-                tile->selected = true;
-            }
-        }
     }
 }
 
