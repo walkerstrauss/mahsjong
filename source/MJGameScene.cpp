@@ -45,6 +45,8 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::sha
     _assets = assets;
     _network = network;
     _choice = Choice::NONE;
+    std::vector<std::shared_ptr<TileSet::Tile>> emptyDiscarded(2);
+    discardedTiles = emptyDiscarded;
     
 //    Size dimen = getSize();
     _matchScene = _assets->get<scene2::SceneNode>("matchscene");
@@ -94,8 +96,10 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::sha
                         _tileSet->tilesToJson.push_back(tile);
                         _network->broadcastNewDiscard(_tileSet->toJson(_tileSet->tilesToJson));
                         _tileSet->clearTilesToJson();
-                        //Add to discard UI scene
-                        // TODO: add to discard ui scene from app
+                        //Add to discard UI scene by sending choice to app
+                        discardedTiles.emplace_back(tile);
+                        _choice = DISCARDED;
+                        
                         _player->getHand().discard(tile, _network->getHostStatus());
                     }
                     _player->getHand()._selectedTiles.clear();
@@ -175,25 +179,6 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::sha
 
     
     _tileSet->setBackTextures(assets);
-//    _winBtn = std::dynamic_pointer_cast<scene2::Button>(_assets->get<scene2::SceneNode>("matchscene.gameplayscene.winButton"));
-//    _defeatBtn = std::dynamic_pointer_cast<scene2::Button>(_assets->get<scene2::SceneNode>("matchscene.gameplayscene.loseButton"));
-//    
-//    _winBtn->addListener([this](const std::string& name, bool down){
-//        if (!down){
-//            _choice = Choice::WIN;
-//        }
-//    });
-        // Initialize the discard pile
-//        _discardPile = std::make_shared<DiscardPile>();
-//        _discardPile->init(_assets);
-//    });
-//                         
-//    _defeatBtn->addListener([this](const std::string& name, bool down){
-//        if (!down){
-//            _choice = Choice::LOSE;
-//        }
-//    });
-
     
     // Initialize the discard pile
     _discardPile = std::make_shared<DiscardPile>();
@@ -382,7 +367,6 @@ void GameScene::update(float timestep) {
                                 tile->inClientHand = false;
                             }
                             tile->played = true;
-                            incrementLabel(tile);
                             break;
                         }
                         else{
@@ -396,8 +380,11 @@ void GameScene::update(float timestep) {
                 currDiscardTile->played = true;
                 _network->broadcastRemoveDiscard();
                 // TODO: handle decrement discard UI label
-                _discardPile->removeTopTile();
                 _player->canExchange = false;
+                
+                discardDrawTile = _discardPile->getTopTile();
+                _discardPile->removeTopTile();
+                _choice = DRAW_DISCARD;
             }
             else {
                 CULog("Not a valid set");

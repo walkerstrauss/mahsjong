@@ -371,6 +371,25 @@ void MahsJongApp::updateGameScene(float timestep) {
             _gameover.setActive(true);
             _scene = State::OVER;
             break;
+        case GameScene::Choice::DISCARDED:
+            if (_gameplay.discardedTiles.empty()){
+                CULog("Discarded tiles is empty");
+                break;
+            }
+            for (auto tile : _gameplay.discardedTiles){
+                _tilesetui.incrementLabel(tile);
+            }
+            _gameplay.discardedTiles.clear();
+            _gameplay._choice = GameScene::Choice::NONE;
+            break;
+        case GameScene::Choice::DRAW_DISCARD:
+            if (_gameplay.discardDrawTile == nullptr){
+                CULog("No discard pile tile drawn to hand this frame");
+                break;
+            }
+            _tilesetui.decrementLabel(_gameplay.discardDrawTile);
+            _gameplay.discardDrawTile = nullptr;
+            _gameplay._choice = GameScene::Choice::NONE;
         case GameScene::Choice::NONE:
             // Do nothing
             break;
