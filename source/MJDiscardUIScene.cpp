@@ -23,15 +23,30 @@ using namespace std;
 bool DiscardUIScene::init(const std::shared_ptr<cugl::AssetManager>& assets){
     if (!assets){
         return false;
-    } else if (!Scene::initWithHint(0,700)){
+    } else if (!Scene::initWithHint(0,720)){
         return false;
     }
     _assets = assets;
     _tilesetui = _assets->get<scene2::SceneNode>("tilesetui");
-    _tilesetui->setContentSize(getSize());
-    _tilesetui->doLayout();
+    _tilesetui->setContentSize(1280,720);
+    cugl::Size screenSize = cugl::Application::get()->getDisplaySize();
+    //cugl::Size screenSize = Size(0,SCENE_HEIGHT);
+    
+    screenSize *= _tilesetui->getContentSize().height/screenSize.height;
+    
+    float offset = (screenSize.width -_tilesetui->getWidth())/2;
+    _tilesetui->setPosition(offset, _tilesetui->getPosition().y);
+
+    
+    if (!Scene2::initWithHint(screenSize)) {
+        std::cerr << "Scene2 initialization failed!" << std::endl;
+        return false;
+    }
+//    _tilesetui->setContentSize(getSize());
+//    _tilesetui->doLayout();
+//    _tilesetui->setPosition((Application::get()->getDisplayWidth() - _tilesetui->getWidth()) / 8, _tilesetui->getPosition().y);
+    
     choice = Choice::NONE;
-    _tilesetui->setPosition((Application::get()->getDisplayWidth() - _tilesetui->getWidth()) / 8, _tilesetui->getPosition().y);
     _labels.resize(27);
     for (int i = 0; i < 27; i++){
         std::shared_ptr<scene2::Label> label = std::dynamic_pointer_cast<scene2::Label>(_assets->get<scene2::SceneNode>("tilesetui.tilesetscene.board.number.label_" + std::to_string(i + 1)));

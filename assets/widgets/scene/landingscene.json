@@ -114,8 +114,8 @@
                     "y_offset": 0
                 }
             },
-            "menu": {
-                "type": "Node",
+            "button1": {
+                "type": "Button",
                 "format": {
                     "type": "Anchored"
                 },
@@ -125,30 +125,66 @@
                         1
                     ],
                     "size": [
-                        225,
-                        69
+                        200,
+                        80
                     ],
                     "angle": 0,
                     "position": [
-                        400,
-                        90
+                        412,
+                        59
                     ],
-                    "visible": true
+                    "visible": true,
+                    "upnode": "up"
                 },
                 "children": {
-                    "button1": {
-                        "type": "Widget",
+                    "up": {
+                        "type": "Node",
                         "format": {
                             "type": "Anchored"
                         },
                         "data": {
-                            "key": "landingTextbutton",
-                            "variables": {
-                                "text": "Start Now!",
-                                "size": [
-                                    225,
-                                    69
-                                ]
+                            "anchor": [
+                                0,
+                                1
+                            ],
+                            "size": [
+                                200,
+                                82
+                            ],
+                            "angle": 0,
+                            "position": [
+                                0,
+                                0
+                            ],
+                            "visible": true
+                        },
+                        "children": {
+                            "landingButton": {
+                                "type": "Image",
+                                "data": {
+                                    "texture": "landingButton",
+                                    "anchor": [
+                                        0.5,
+                                        1
+                                    ],
+                                    "size": [
+                                        200,
+                                        80
+                                    ],
+                                    "angle": 0,
+                                    "position": [
+                                        0,
+                                        2
+                                    ],
+                                    "visible": true
+                                },
+                                "layout": {
+                                    "x_anchor": "center",
+                                    "y_anchor": "top",
+                                    "absolute": false,
+                                    "x_offset": 0,
+                                    "y_offset": 0
+                                }
                             }
                         },
                         "layout": {
@@ -165,8 +201,7 @@
                     "y_anchor": "top",
                     "absolute": false,
                     "x_offset": 0,
-                    "y_offset": -0.72
-
+                    "y_offset": -0.76
                 }
             },
             "main_logo": {
