@@ -221,7 +221,6 @@ void GameScene::update(float timestep) {
             if(!_discardPile->getTopTile() || (_discardPile->getTopTile()->toString() + std::to_string(_discardPile->getTopTile()->_id)) != rank + " of " + suit + id){
                 _discardPile->addTile(_tileSet->tileMap[rank + " of " + suit + " " + id]);
                 _discardPile->updateTilePositions();
-                incrementLabel(_tileSet->tileMap[rank + " of " + suit + " " + id]);
                 _network->setStatus(NetworkController::Status::INGAME);
             }
         }
