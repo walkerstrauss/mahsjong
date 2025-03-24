@@ -128,52 +128,52 @@ void HostScene::idSetup(const std::shared_ptr<cugl::scene2::TexturedNode>& tile,
 
     switch (serverPart) {
         case '1':
-            tile->setTexture(_assets->get<cugl::graphics::Texture>("one_of_bamboo"));
+            tile->setTexture(_assets->get<cugl::graphics::Texture>("one of bamboo"));
             break;
         case '2':
-            tile->setTexture(_assets->get<cugl::graphics::Texture>("two_of_bamboo"));
+            tile->setTexture(_assets->get<cugl::graphics::Texture>("two of bamboo"));
             break;
         case '3':
-            tile->setTexture(_assets->get<cugl::graphics::Texture>("three_of_bamboo"));
+            tile->setTexture(_assets->get<cugl::graphics::Texture>("three of bamboo"));
             break;
         case '4':
-            tile->setTexture(_assets->get<cugl::graphics::Texture>("four_of_bamboo"));
+            tile->setTexture(_assets->get<cugl::graphics::Texture>("four of bamboo"));
             break;
         case '5':
-            tile->setTexture(_assets->get<cugl::graphics::Texture>("five_of_bamboo"));
+            tile->setTexture(_assets->get<cugl::graphics::Texture>("five of bamboo"));
             break;
         case '6':
-            tile->setTexture(_assets->get<cugl::graphics::Texture>("six_of_bamboo"));
+            tile->setTexture(_assets->get<cugl::graphics::Texture>("six of bamboo"));
             break;
         case '7':
-            tile->setTexture(_assets->get<cugl::graphics::Texture>("seven_of_bamboo"));
+            tile->setTexture(_assets->get<cugl::graphics::Texture>("seven of bamboo"));
             break;
         case '8':
-            tile->setTexture(_assets->get<cugl::graphics::Texture>("eight_of_bamboo"));
+            tile->setTexture(_assets->get<cugl::graphics::Texture>("eight of bamboo"));
             break;
         case '9':
-            tile->setTexture(_assets->get<cugl::graphics::Texture>("nine_of_bamboo"));
+            tile->setTexture(_assets->get<cugl::graphics::Texture>("nine of bamboo"));
             break;
         case '0':
-            tile->setTexture(_assets->get<cugl::graphics::Texture>("one_of_dot"));
+            tile->setTexture(_assets->get<cugl::graphics::Texture>("one of dot"));
             break;
         case 'A':
-            tile->setTexture(_assets->get<cugl::graphics::Texture>("two_of_dot"));
+            tile->setTexture(_assets->get<cugl::graphics::Texture>("two of dot"));
             break;
         case 'B':
-            tile->setTexture(_assets->get<cugl::graphics::Texture>("three_of_dot"));
+            tile->setTexture(_assets->get<cugl::graphics::Texture>("three of dot"));
             break;
         case 'C':
-            tile->setTexture(_assets->get<cugl::graphics::Texture>("four_of_dot"));
+            tile->setTexture(_assets->get<cugl::graphics::Texture>("four of dot"));
             break;
         case 'D':
-            tile->setTexture(_assets->get<cugl::graphics::Texture>("five_of_dot"));
+            tile->setTexture(_assets->get<cugl::graphics::Texture>("five of dot"));
             break;
         case 'E':
-            tile->setTexture(_assets->get<cugl::graphics::Texture>("six_of_dot"));
+            tile->setTexture(_assets->get<cugl::graphics::Texture>("six of dot"));
             break;
         case 'F':
-            tile->setTexture(_assets->get<cugl::graphics::Texture>("seven_of_dot"));
+            tile->setTexture(_assets->get<cugl::graphics::Texture>("seven of dot"));
             break;
         default:
             tile->setTexture(_assets->get<cugl::graphics::Texture>("facedown"));
@@ -244,6 +244,7 @@ void HostScene::updateText(const std::shared_ptr<scene2::Button>& button, const 
  * @param timestep  The amount of time (in seconds) since the last frame
  */
 void HostScene::update(float timestep) {
+    std::string networkHex = "zzzz";
     if(_network->getStatus() == NetworkController::Status::CONNECTED){
         if (!_startGameClicked) {
             //updateText(_startgame, "Start Game");
@@ -255,18 +256,15 @@ void HostScene::update(float timestep) {
         }
         //_gameid->setText(hex2dec(_network->getRoomID()));
         //_player->setText(std::to_string(_network->getNumPlayers()));
-        std::string networkHex = "zzzz";
+        
         if (_network != nullptr) {
             networkHex = _network->getRoomID();
         }
-        
-        
-        idSetup(_tileOne, networkHex[0]);
-        idSetup(_tileTwo, networkHex[1]);
-        idSetup(_tileThree, networkHex[2]);
-        idSetup(_tileFour, networkHex[3]);
-        
     }
+    idSetup(_tileOne, networkHex[0]);
+    idSetup(_tileTwo, networkHex[1]);
+    idSetup(_tileThree, networkHex[2]);
+    idSetup(_tileFour, networkHex[3]);
 }
 
 /**
