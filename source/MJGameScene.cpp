@@ -73,7 +73,7 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::sha
   
     _discardBtnKey = _discardBtn->addListener([this](const std::string& name, bool down){
         if (!down){
-            _pile->reshufflePile();
+//            _pile->reshufflePile();
             _network->broadcastDeckMap(_tileSet->mapToJson()); // Sends tile state
             _network->broadcastPileLayer();
             if(_player->getHand()._tiles.size() == _player->getHand()._size){
@@ -249,11 +249,11 @@ void GameScene::update(float timestep) {
     
 
     cugl::Vec2 mousePos = cugl::Scene::screenToWorldCoords(cugl::Vec3(_input.getPosition()));
-    // Determine if the mouse is held down or was just released.
+     
     bool isMouseDown = _input.isDown();
     bool isMouseReleased = _input.didRelease();
     
-//     Update the player's drag state.
+    // Update the player's drag state.
     _player->updateDrag(mousePos, isMouseDown, isMouseReleased);
     _player->getHand().updateTilePositions(_matchScene->getSize());
 

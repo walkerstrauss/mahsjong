@@ -37,9 +37,9 @@ bool PauseScene::init(const std::shared_ptr<cugl::AssetManager>& assets){
     _closePauseBtn = std::dynamic_pointer_cast<scene2::Button>(_assets->get<scene2::SceneNode>("pause.pausescene.pauseSection.menu.button1"));
     _settingPauseBtn = std::dynamic_pointer_cast<scene2::Button>(_assets->get<scene2::SceneNode>("pause.pausescene.pauseSection.menu.button3"));
     _menuPauseBtn = std::dynamic_pointer_cast<scene2::Button>(_assets->get<scene2::SceneNode>("pause.pausescene.pauseSection.menu.button2"));
-    _continueBtn->setPosition(_continueBtn->getPositionX(), _continueBtn->getPositionY() + 100);
-    _menuPauseBtn->setPosition(_menuPauseBtn->getPositionX(), _menuPauseBtn->getPositionY() + 100);
-    _settingPauseBtn->setPosition(_settingPauseBtn->getPositionX(), _settingPauseBtn->getPositionY() + 100);
+    _continueBtn->setPosition(_continueBtn->getPositionX(), _continueBtn->getPositionY() + 50);
+    _menuPauseBtn->setPosition(_menuPauseBtn->getPositionX(), _menuPauseBtn->getPositionY() + 50);
+    _settingPauseBtn->setPosition(_settingPauseBtn->getPositionX(), _settingPauseBtn->getPositionY() + 50);
     _continueBtnKey = _continueBtn->addListener([this](const std::string& name, bool down){
         if (!down){
             choice = Choice::CONTINUE;
