@@ -377,7 +377,9 @@ void MahsJongApp::updateGameScene(float timestep) {
                 break;
             }
             for (auto tile : _gameplay.discardedTiles){
-                _tilesetui.incrementLabel(tile);
+                if (tile != nullptr){
+                    _tilesetui.incrementLabel(tile);
+                }
             }
             _gameplay.discardedTiles.clear();
             _gameplay._choice = GameScene::Choice::NONE;

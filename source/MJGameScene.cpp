@@ -74,44 +74,6 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::sha
     _discardBtn = std::dynamic_pointer_cast<scene2::Button>(childNode->getChild(3));
     _tilesetUIBtn = std::dynamic_pointer_cast<scene2::Button>(_assets->get<scene2::SceneNode>("matchscene.gameplayscene.discardButton"));
     _pauseBtn = std::dynamic_pointer_cast<scene2::Button>(_assets->get<scene2::SceneNode>("matchscene.gameplayscene.pauseButton"));
-  
-    _discardBtnKey = _discardBtn->addListener([this](const std::string& name, bool down){
-        if (!down){
-            _network->broadcastDeckMap(_tileSet->mapToJson()); // Sends tile state
-            _network->broadcastPileLayer();
-            if(_player->getHand()._tiles.size() == _player->getHand()._size){
-                CULog("Cannot discard tiles, already at required hand size");
-                return;
-            }
-            if (0 < _player->getHand()._selectedTiles.size() && _player->getHand()._selectedTiles.size() < 2) {
-                if (!_player->discarding){
-                    _player->discarding = true;
-                    for (auto& tile : _player->getHand()._selectedTiles) {
-                        //Add to discard pile
-                        tile->selected = false;
-                        tile->inHostHand = false;
-                        tile->inClientHand = false;
-                        tile->discarded = true;
-                        _discardPile->addTile(tile);
-                        _discardPile->updateTilePositions();
-                        _tileSet->tilesToJson.push_back(tile);
-                        _network->broadcastNewDiscard(_tileSet->toJson(_tileSet->tilesToJson));
-                        _tileSet->clearTilesToJson();
-                        //Add to discard UI scene by sending choice to app
-                        discardedTiles.emplace_back(tile);
-                        _choice = DISCARDED;
-                        
-                        _player->getHand().discard(tile, _network->getHostStatus());
-                    }
-                    _player->getHand()._selectedTiles.clear();
-                    _player->discarding = false;
-                    _network->broadcastDeck(_tileSet->toJson(_tileSet->deck));
-                    _tileSet->clearTilesToJson();
-                }
-            }
-        }
-    });
-
     _tilesetUIBtnKey = _tilesetUIBtn->addListener([this](const std::string& name, bool down){
         if (!down){
             _choice = Choice::TILESET;
@@ -291,6 +253,7 @@ void GameScene::update(float timestep) {
         if(_player->getHand()._tiles.size() > _player->getHand()._size && _player->getHand()._selectedTiles.size() > 0){
             discardTile();
         }
+        
         //Start turn by drawing tile to hand
         if(_input.getKeyPressed() == KeyCode::D && _input.getKeyDown()){
             if(_player->getHand()._tiles.size() > _player->getHand()._size){
@@ -751,7 +714,9 @@ void GameScene::discardTile() {
                     //Add to discard UI scene
                     // TODO: add to discard ui scene from app
                     _player->getHand().discard(tile, _network->getHostStatus());
+                    discardedTiles.emplace_back(tile);
                 }
+                _choice = DISCARDED;
             }
         }
     }
