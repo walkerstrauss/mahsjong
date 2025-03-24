@@ -76,21 +76,23 @@ bool HostScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::sha
     _assets = assets;
     _network = network;
     
-    Size dimen = getSize();
-    
     // Acquire the scene built by the asset loader and resize it the scene
     std::shared_ptr<scene2::SceneNode> scene = _assets->get<scene2::SceneNode>("host");
+
+    Size dimen = getSize();
+    
+
+
     scene->setContentSize(dimen);
     scene->doLayout(); // Repositions the HUD
 
     _startgame = std::dynamic_pointer_cast<scene2::Button>(_assets->get<scene2::SceneNode>("host.hostscene.menu.button1"));
     _backout = std::dynamic_pointer_cast<scene2::Button>(_assets->get<scene2::SceneNode>("host.hostscene.menu.button2"));
     
-    _tileOne = std::dynamic_pointer_cast<scene2::TexturedNode>(_assets->get<scene2::SceneNode>("host.hostscene.waitingRoom.roomid-tile.host1-roomid-tile"));
-    _tileTwo = std::dynamic_pointer_cast<scene2::TexturedNode>(_assets->get<scene2::SceneNode>("host.hostscene.waitingRoom.roomid-tile.host1-roomid-tile_1"));
-    _tileThree = std::dynamic_pointer_cast<scene2::TexturedNode>(_assets->get<scene2::SceneNode>("host.hostscene.waitingRoom.roomid-tile.host1-roomid-tile_2"));
-    _tileFour = std::dynamic_pointer_cast<scene2::TexturedNode>(_assets->get<scene2::SceneNode>("host.hostscene.waitingRoom.roomid-tile.host1-roomid-tile_3"));
-
+    _tileOne = std::dynamic_pointer_cast<scene2::PolygonNode>(_assets->get<scene2::SceneNode>("host.hostscene.waitingRoom.roomid-tile.host1-roomid-tile"));
+    _tileTwo = std::dynamic_pointer_cast<scene2::PolygonNode>(_assets->get<scene2::SceneNode>("host.hostscene.waitingRoom.roomid-tile.host1-roomid-tile_1"));
+    _tileThree = std::dynamic_pointer_cast<scene2::PolygonNode>(_assets->get<scene2::SceneNode>("host.hostscene.waitingRoom.roomid-tile.host1-roomid-tile_2"));
+    _tileFour = std::dynamic_pointer_cast<scene2::PolygonNode>(_assets->get<scene2::SceneNode>("host.hostscene.waitingRoom.roomid-tile.host1-roomid-tile_3"));
     
 
     // Program the buttons
@@ -124,8 +126,7 @@ bool HostScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::sha
 /**
 * Converts the hexademical server into specific tile IDs
 */
-void HostScene::idSetup(const std::shared_ptr<cugl::scene2::TexturedNode>& tile, const char serverPart) {
-
+void HostScene::idSetup(const std::shared_ptr<cugl::scene2::PolygonNode>& tile, const char serverPart) {
     switch (serverPart) {
         case '1':
             tile->setTexture(_assets->get<cugl::graphics::Texture>("one of bamboo"));
@@ -265,6 +266,8 @@ void HostScene::update(float timestep) {
     idSetup(_tileTwo, networkHex[1]);
     idSetup(_tileThree, networkHex[2]);
     idSetup(_tileFour, networkHex[3]);
+
+    _tileOne->setVisible(true); 
 }
 
 /**

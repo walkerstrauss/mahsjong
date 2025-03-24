@@ -72,31 +72,34 @@ bool ClientScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::s
     std::shared_ptr<scene2::SceneNode> scene = _assets->get<scene2::SceneNode>("client");
     scene->setContentSize(dimen);
     scene->doLayout(); // Repositions the HUD
+
+    _startgame = std::dynamic_pointer_cast<scene2::Button>(_assets->get<scene2::SceneNode>("client.clientscene.buttons.confirm-button"));
+    _backout = std::dynamic_pointer_cast<scene2::Button>(_assets->get<scene2::SceneNode>("client.clientscene.buttons.cancel-button"));
     
+    _backout->addListener([this](const std::string& name, bool down) {
+        if (down) {
+            _backClicked = true;
+            _network->disconnect();
+        }
+        });
+
+    _startgame->addListener([=, this](const std::string& name, bool down) {
+        if (down) {
+            // This will call the _gameid listener
+            //_gameid->releaseFocus();
+        }
+        });
+
     //TEMP REMOPVE LATER
+    _backout->activate();
     addChild(scene);
     return true;
     //TEMP REMOPVE LATER
-
-    _startgame = std::dynamic_pointer_cast<scene2::Button>(_assets->get<scene2::SceneNode>("client.clientscene.menu.buttonmenu.button1"));
-    _backout = std::dynamic_pointer_cast<scene2::Button>(_assets->get<scene2::SceneNode>("client.clientscene.menu.buttonmenu.button2"));
     _gameid = std::dynamic_pointer_cast<scene2::TextField>(_assets->get<scene2::SceneNode>("client.clientscene.menu.gameid.gameid_textfield.gameid"));
     _player = std::dynamic_pointer_cast<scene2::Label>(_assets->get<scene2::SceneNode>("client.clientscene.menu.player.player_textfield.label"));
 //    _status = Status::IDLE;
     
-    _backout->addListener([this](const std::string& name, bool down) {
-        if (down) {
-            _network->disconnect();
-            _backClicked = true;
-        }
-    });
-
-    _startgame->addListener([=,this](const std::string& name, bool down) {
-        if (down) {
-            // This will call the _gameid listener
-            _gameid->releaseFocus();
-        }
-    });
+    
     
     _gameid->addExitListener([this](const std::string& name, const std::string& value) {
         _network->connectAsClient(dec2hex(value));
@@ -134,14 +137,14 @@ void ClientScene::setActive(bool value) {
     if (isActive() != value) {
         Scene2::setActive(value);
         if (value) {
-            _gameid->activate();
+            //_gameid->activate();
             _backout->activate();
-            _player->setText("1");
+            //_player->setText("1");
             configureStartButton();
             _backClicked = false;
             // Don't reset the room id
         } else {
-            _gameid->deactivate();
+            //_gameid->deactivate();
             _startgame->deactivate();
             _backout->deactivate();
             _startgame->setDown(false);
@@ -274,16 +277,16 @@ void ClientScene::configureStartButton() {
     if(_network->getStatus() == NetworkController::Status::IDLE){
         _startgame->setDown(false);
         _startgame->activate();
-        updateText(_startgame,"Start Game");
+        //updateText(_startgame,"Start Game");
     }
     else if(_network->getStatus() == NetworkController::Status::CONNECTING){
         _startgame->setDown(false);
         _startgame->deactivate();
-        updateText(_startgame, "Connecting");
+        //updateText(_startgame, "Connecting");
     }
     else if(_network->getStatus() == NetworkController::Status::CONNECTED){
         _startgame->setDown(false);
         _startgame->deactivate();
-        updateText(_startgame, "Waiting");
+        //updateText(_startgame, "Waiting");
     }
 }

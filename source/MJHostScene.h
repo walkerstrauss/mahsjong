@@ -54,10 +54,10 @@ protected:
     std::shared_ptr<cugl::scene2::Label> _player;
     
     /** Tiles for gameID */
-    std::shared_ptr<cugl::scene2::TexturedNode> _tileOne;
-    std::shared_ptr<cugl::scene2::TexturedNode> _tileTwo;
-    std::shared_ptr<cugl::scene2::TexturedNode> _tileThree;
-    std::shared_ptr<cugl::scene2::TexturedNode> _tileFour;
+    std::shared_ptr<cugl::scene2::PolygonNode> _tileOne;
+    std::shared_ptr<cugl::scene2::PolygonNode> _tileTwo;
+    std::shared_ptr<cugl::scene2::PolygonNode> _tileThree;
+    std::shared_ptr<cugl::scene2::PolygonNode> _tileFour;
     
     /** Whether the startGame button had been pressed. */
     bool _startGameClicked = false;
@@ -94,7 +94,7 @@ public:
      */
     void dispose() override;
 
-    void idSetup(const std::shared_ptr<cugl::scene2::TexturedNode>& tile, const char serverPart);
+    void idSetup(const std::shared_ptr<cugl::scene2::PolygonNode>& tile, const char serverPart);
 
     
     /**
