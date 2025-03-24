@@ -17,18 +17,32 @@ using namespace cugl::graphics;
 bool PauseScene::init(const std::shared_ptr<cugl::AssetManager>& assets){
     if (!assets){
         return false;
-    } else if (!Scene2::initWithHint(0,700)){
+    } else if (!Scene2::initWithHint(0,720)){
         return false;
     }
     
     _assets = assets;
-    Size dimen = getSize();
+//    Size dimen = getSize();
     _pauseScene = _assets->get<scene2::SceneNode>("pause");
-    _pauseScene->setContentSize(dimen);
-    _pauseScene->doLayout();
+    _pauseScene->setContentSize(1280,720);
+    cugl::Size screenSize = cugl::Application::get()->getDisplaySize();
+    //cugl::Size screenSize = Size(0,SCENE_HEIGHT);
     
-    _pauseScene->setPosition((Application::get()->getDisplayWidth() - _pauseScene->getWidth()) / 8, _pauseScene->getPosition().y);
+    screenSize *= _pauseScene->getContentSize().height/screenSize.height;
     
+    float offset = (screenSize.width -_pauseScene->getWidth())/2;
+    _pauseScene->setPosition(offset, _pauseScene->getPosition().y);
+
+    
+    if (!Scene2::initWithHint(screenSize)) {
+        std::cerr << "Scene2 initialization failed!" << std::endl;
+        return false;
+    }
+//    _pauseScene->setContentSize(dimen);
+//    _pauseScene->doLayout();
+//    
+//    _pauseScene->setPosition((Application::get()->getDisplayWidth() - _pauseScene->getWidth()) / 8, _pauseScene->getPosition().y);
+//    _pauseScene->setPosition(125, _pauseScene->getPositionY());
     // Set initial choice to none
     choice = Choice::NONE;
     

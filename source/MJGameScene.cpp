@@ -62,9 +62,10 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::sha
         std::cerr << "Scene2 initialization failed!" << std::endl;
         return false;
     }
-
-    _matchScene->setContentSize(screenSize);
-    _matchScene->doLayout();
+//
+//    _matchScene->setContentSize(dimen);
+//    _matchScene->doLayout();
+//    _matchScene->setPosition(125, _matchScene->getPositionY());
    
     std::shared_ptr<scene2::SceneNode> childNode = _matchScene->getChild(0);
     _discardBtn = std::dynamic_pointer_cast<scene2::Button>(childNode->getChild(3));
@@ -479,14 +480,10 @@ void GameScene::setGameActive(bool value){
         _pauseBtn->activate();
         _discardBtn->activate();
         _tilesetUIBtn->activate();
-//        _winBtn->activate();
-//        _defeatBtn->activate();
     } else {
         _pauseBtn->deactivate();
         _discardBtn->deactivate();
         _tilesetUIBtn->deactivate();
-//        _winBtn->deactivate();
-//        _defeatBtn->deactivate();
     }
 }
 
