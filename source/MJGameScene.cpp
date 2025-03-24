@@ -246,14 +246,14 @@ void GameScene::update(float timestep) {
     _input.update();
     
 
-//    cugl::Vec2 mousePos = cugl::Scene::screenToWorldCoords(cugl::Vec3(_input.getPosition()));
+     cugl::Vec2 mousePos = cugl::Scene::screenToWorldCoords(cugl::Vec3(_input.getPosition()));
     // Determine if the mouse is held down or was just released.
-//    bool isMouseDown = _input.isDown();
-//    bool isMouseReleased = _input.didRelease();
+    bool isMouseDown = _input.isDown();
+    bool isMouseReleased = _input.didRelease();
     
     // Update the player's drag state.
-//    _player->updateDrag(mousePos, isMouseDown, isMouseReleased);
-//    _player->getHand().updateTilePositions(_matchScene->getSize());
+    updateDrag(mousePos, isMouseDown, isMouseReleased);
+    _player->getHand().updateTilePositions(_matchScene->getSize());
 
     
     if (_network->getStatus() == NetworkController::Status::DECK) {
@@ -713,4 +713,74 @@ void GameScene::releaseTile() {
     // finalize tile if needed
     // e.g. snap to discard region, check if in the right place
     _draggingTile = nullptr;
+}
+
+void GameScene::updateDrag(const cugl::Vec2& mousePos, bool mouseDown, bool mouseReleased) {
+    if (mouseDown) {
+        if (!_dragInitiated) {
+            _player->getHand().updateTilePositions(_matchScene->getSize());
+            _dragStartPos = mousePos;
+            _dragInitiated = true;
+            _draggingTile = _player->getHand().getTileAtPosition(mousePos);
+            _player->_draggingTile = _draggingTile;
+            if (_draggingTile) {
+                _originalTilePos = _draggingTile->pos;
+                _dragOffset = _draggingTile->pos - mousePos;
+                _draggingTile->selected = true;
+                _player->getHand()._selectedTiles.push_back(_draggingTile);
+
+                CULog("After push, selected tile count: %d", (int)_player->getHand()._selectedTiles.size());
+                CULog("Tile selected at %f, %f with offset %f, %f", mousePos.x, mousePos.y, _dragOffset.x, _dragOffset.y);
+            }
+            else {
+                CULog("No tile found at %f, %f", mousePos.x, mousePos.y);
+            }
+        }
+        else {
+            float distance = (mousePos - _dragStartPos).length();
+            CULog("Dragging... Distance: %f", distance);
+            if (distance > DRAG_THRESHOLD && _draggingTile) {
+                cugl::Vec2 newPos = mousePos + _dragOffset;
+                _draggingTile->pos = newPos;
+                _draggingTile->tileRect.origin = newPos;
+                CULog("Tile moved to %f, %f", newPos.x, newPos.y);
+            }
+        }
+    }
+
+    if (mouseReleased) {
+        if (_dragInitiated) {
+            float distance = (mousePos - _dragStartPos).length();
+            if (distance > DRAG_THRESHOLD) {
+                if (shouldReturn) {
+                    // Snap back to original position.
+                    _draggingTile->pos = _originalTilePos;
+                    _draggingTile->tileRect.origin = _originalTilePos;
+                    CULog("Tile snapped back to original position");
+                }
+                else {
+                    CULog("Tile dropped at new valid position");
+                }
+                if (_draggingTile) {
+                    _draggingTile->selected = false;
+                    _player->getHand()._selectedTiles.clear();
+
+                    CULog("Drag ended, tile dropped");
+                }
+            }
+            else {
+                clickedTile(mousePos);
+                CULog("Click registered instead of drag");
+            }
+        }
+        if (_draggingTile) {
+            CULog("Selected tile count: %d", (int)_player->getHand()._selectedTiles.size());
+            _draggingTile->selected = false;
+            _player->getHand()._selectedTiles.clear();
+
+        }
+        _dragInitiated = false;
+        _originalTilePos = cugl::Vec2::ZERO;
+        releaseTile();
+    }
 }
