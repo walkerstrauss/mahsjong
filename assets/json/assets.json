@@ -587,6 +587,9 @@
         },
         "pauseIcon":{
             "file": "textures/gameplay/pauseButton.png"
+        },
+        "endTurnButton":{
+            "file": "textures/gameplay/endTurnButton.png"
         }
     },
     "fonts": {
