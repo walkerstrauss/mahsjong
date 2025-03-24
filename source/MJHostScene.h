@@ -53,6 +53,12 @@ protected:
     /** The players label (for updating) */
     std::shared_ptr<cugl::scene2::Label> _player;
     
+    /** Tiles for gameID */
+    std::shared_ptr<cugl::scene2::TexturedNode> _tileOne;
+    std::shared_ptr<cugl::scene2::TexturedNode> _tileTwo;
+    std::shared_ptr<cugl::scene2::TexturedNode> _tileThree;
+    std::shared_ptr<cugl::scene2::TexturedNode> _tileFour;
+    
     /** Whether the startGame button had been pressed. */
     bool _startGameClicked = false;
     /** Whether the back button had been pressed. */
@@ -87,6 +93,9 @@ public:
      * Disposes of all (non-static) resources allocated to this mode.
      */
     void dispose() override;
+
+    void idSetup(const std::shared_ptr<cugl::scene2::TexturedNode>& tile, const char serverPart);
+
     
     /**
      * Initializes the controller contents, and starts the game

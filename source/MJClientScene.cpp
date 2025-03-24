@@ -73,6 +73,11 @@ bool ClientScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::s
     scene->setContentSize(dimen);
     scene->doLayout(); // Repositions the HUD
     
+    //TEMP REMOPVE LATER
+    addChild(scene);
+    return true;
+    //TEMP REMOPVE LATER
+
     _startgame = std::dynamic_pointer_cast<scene2::Button>(_assets->get<scene2::SceneNode>("client.clientscene.menu.buttonmenu.button1"));
     _backout = std::dynamic_pointer_cast<scene2::Button>(_assets->get<scene2::SceneNode>("client.clientscene.menu.buttonmenu.button2"));
     _gameid = std::dynamic_pointer_cast<scene2::TextField>(_assets->get<scene2::SceneNode>("client.clientscene.menu.gameid.gameid_textfield.gameid"));
