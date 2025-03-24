@@ -143,22 +143,24 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::sha
         //Updating tile positions in hand
         _player->getHand().updateTilePositions(getSize());
         
+        _tileSet->addActionAndCommandTiles(assets);
+        _tileSet->shuffle();
         //Creating pile as Host
-        _pile->initPile(5, _tileSet, _network->getHostStatus());
+        _pile->initPile(4, _tileSet, _network->getHostStatus());
         //Broadcasting all tiles with attributes (sets pile tiles as !inDeck)
         _network->broadcastStartingDeck(_tileSet->mapToJson());
     } else {
-        //Initializing client pile (pile full of nullptrs)
-        _pile->initPile(5, _tileSet, _network->getHostStatus());
-        
-        //Initialzing client deck
         _tileSet->initClientDeck(_network->getStartingDeck());
+        
+        //Initializing client pile (pile full of nullptrs)
+        _pile->initPile(4, _tileSet, _network->getHostStatus());
+        
+        //Initializing client deck
         _tileSet->setAllTileTexture(_assets);
+        _tileSet->addActionAndCommandTiles(assets);
         _tileSet->updateDeck(_network->getDeckJson());
         _player->getHand().initHand(_tileSet, _network->getHostStatus());
         _player->getHand().updateTilePositions(getSize());
-        _tileSet->addActionAndCommandTiles(assets);
-        _tileSet->shuffle();
         _pile->remakePile();
         _network->broadcastDeck(_tileSet->mapToJson());
     }
@@ -460,9 +462,9 @@ void GameScene::render() {
     _batch->draw(temp, Color4(0,0,0,255), Rect(Vec2::ZERO, cugl::Application().get()->getDisplaySize()));
    
     _matchScene->render(_batch);
-    _player->draw(_batch);
     _pile->draw(_batch);
     _discardPile->draw(_batch);
+    _player->draw(_batch);
     _batch->end();
 }
 
