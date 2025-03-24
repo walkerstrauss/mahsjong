@@ -74,7 +74,6 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::sha
   
     _discardBtnKey = _discardBtn->addListener([this](const std::string& name, bool down){
         if (!down){
-//            _pile->reshufflePile();
             _network->broadcastDeckMap(_tileSet->mapToJson()); // Sends tile state
             _network->broadcastPileLayer();
             if(_player->getHand()._tiles.size() == _player->getHand()._size){
@@ -144,22 +143,24 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::sha
         //Updating tile positions in hand
         _player->getHand().updateTilePositions(getSize());
         
+        _tileSet->addActionAndCommandTiles(assets);
+        _tileSet->shuffle();
         //Creating pile as Host
-        _pile->initPile(5, _tileSet, _network->getHostStatus());
+        _pile->initPile(4, _tileSet, _network->getHostStatus());
         //Broadcasting all tiles with attributes (sets pile tiles as !inDeck)
         _network->broadcastStartingDeck(_tileSet->mapToJson());
     } else {
-        //Initializing client pile (pile full of nullptrs)
-        _pile->initPile(5, _tileSet, _network->getHostStatus());
-        
-        //Initialzing client deck
         _tileSet->initClientDeck(_network->getStartingDeck());
+        
+        //Initializing client pile (pile full of nullptrs)
+        _pile->initPile(4, _tileSet, _network->getHostStatus());
+        
+        //Initializing client deck
         _tileSet->setAllTileTexture(_assets);
+        _tileSet->addActionAndCommandTiles(assets);
         _tileSet->updateDeck(_network->getDeckJson());
         _player->getHand().initHand(_tileSet, _network->getHostStatus());
         _player->getHand().updateTilePositions(getSize());
-        _tileSet->addActionAndCommandTiles(assets);
-        _tileSet->shuffle();
         _pile->remakePile();
         _network->broadcastDeck(_tileSet->mapToJson());
     }
@@ -408,6 +409,11 @@ void GameScene::update(float timestep) {
                 _player->getHand()._selectedTiles.clear();
             }
         }
+//        if (_input.getKeyPressed() == KeyCode::P && _input.getKeyDown()){
+//            _pile->reshufflePile();
+//            _network->broadcastDeckMap(_tileSet->mapToJson());
+//            _network->broadcastPileLayer();
+//        }
 //        if (_input.getKeyPressed() == KeyCode::W && _input.getKeyDown()){
 //            _choice = Choice::WIN;
 //        }
@@ -461,9 +467,9 @@ void GameScene::render() {
     _batch->draw(temp, Color4(0,0,0,255), Rect(Vec2::ZERO, cugl::Application().get()->getDisplaySize()));
    
     _matchScene->render(_batch);
-    _player->draw(_batch);
     _pile->draw(_batch);
     _discardPile->draw(_batch);
+    _player->draw(_batch);
     _batch->end();
 }
 
@@ -484,20 +490,6 @@ void GameScene::setGameActive(bool value){
         _pauseBtn->deactivate();
         _discardBtn->deactivate();
         _tilesetUIBtn->deactivate();
-    }
-}
-
-void GameScene::processData(std::vector<std::string> msg){
-    std::string name = msg[0];
-    std::string id = msg[1];
-    std::string selected = msg[2];
-    
-    for(const auto& tile : _player->getHand()._tiles){
-        if(tile->toString() == name && std::to_string(tile->_id) == id){
-            if(selected == "true"){
-                tile->selected = true;
-            }
-        }
     }
 }
 
