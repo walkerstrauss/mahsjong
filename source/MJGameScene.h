@@ -109,6 +109,8 @@ protected:
     std::shared_ptr<cugl::scene2::Button> _winBtn;
     /** Button to set to defeat scene (for debugging) */
     std::shared_ptr<cugl::scene2::Button> _defeatBtn;
+    /** Button for ending turn */
+    std::shared_ptr<cugl::scene2::Button> _endTurnBtn;
     
     /** Key for discard button listener */
     Uint32 _discardBtnKey;

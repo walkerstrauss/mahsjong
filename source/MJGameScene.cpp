@@ -74,6 +74,21 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::sha
     _discardBtn = std::dynamic_pointer_cast<scene2::Button>(childNode->getChild(3));
     _tilesetUIBtn = std::dynamic_pointer_cast<scene2::Button>(_assets->get<scene2::SceneNode>("matchscene.gameplayscene.discardButton"));
     _pauseBtn = std::dynamic_pointer_cast<scene2::Button>(_assets->get<scene2::SceneNode>("matchscene.gameplayscene.pauseButton"));
+    _endTurnBtn = std::dynamic_pointer_cast<scene2::Button>(_assets->get<scene2::SceneNode>("matchscene.gameplayscene.endTurnButton"));
+    _endTurnBtn->addListener([this](const std::string& name, bool down){
+        if (!down){
+            if(_player->canDraw && _player->canExchange){
+                CULog("Must perform a draw from pile or discard first");
+                return;
+            }
+            if(_player->getHand()._tiles.size() != _player->getHand()._size){
+                CULog("Must meet hand size requirement");
+                return;
+            }
+            _network->endTurn();
+        }
+    });
+    
     _tilesetUIBtnKey = _tilesetUIBtn->addListener([this](const std::string& name, bool down){
         if (!down){
             _choice = Choice::TILESET;
@@ -252,7 +267,7 @@ void GameScene::update(float timestep) {
     
     if (_network->getCurrentTurn() == _network->getLocalPid()) {
         if(_player->getHand()._tiles.size() > _player->getHand()._size && _player->getHand()._selectedTiles.size() > 0){
-            discardTile();
+            discardTile(); // Maybe this is where it's discarding the whole hand
         }
         
         //Start turn by drawing tile to hand
@@ -459,10 +474,12 @@ void GameScene::setGameActive(bool value){
         _pauseBtn->activate();
         _discardBtn->activate();
         _tilesetUIBtn->activate();
+        _endTurnBtn->activate();
     } else {
         _pauseBtn->deactivate();
         _discardBtn->deactivate();
         _tilesetUIBtn->deactivate();
+        _endTurnBtn->deactivate();
     }
 }
 
