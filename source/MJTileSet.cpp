@@ -80,19 +80,19 @@ void TileSet::addActionAndCommandTiles(const std::shared_ptr<cugl::AssetManager>
     for (int i = 1; i < 6; ++i) {
         std::shared_ptr<ActionTile> chaos = std::make_shared<ActionTile>(ActionTile::ActionType::CHAOS);
         chaos->_id = i;
-        chaos->setTexture(assets->get<Texture>("one of wild suit"));
+        chaos->setTexture(assets->get<Texture>(chaos->toString()));
         deck.push_back(chaos);
         tileMap[chaos->toString() + " " + std::to_string(chaos->_id)] = chaos;
 
         std::shared_ptr<ActionTile> echo = std::make_shared<ActionTile>(ActionTile::ActionType::ECHO);
         echo->_id = i;
-        echo->setTexture(assets->get<Texture>("two of wild suit"));
+        echo->setTexture(assets->get<Texture>(echo->toString()));
         deck.push_back(echo);
         tileMap[echo->toString() + " " + std::to_string(echo->_id)] = echo;
 
         std::shared_ptr<CommandTile> oblivion = std::make_shared<CommandTile>(CommandTile::CommandType::OBLIVION);
         oblivion->_id = i;
-        oblivion->setTexture(assets->get<Texture>("six of wild suit"));
+        oblivion->setTexture(assets->get<Texture>(oblivion->toString()));
         deck.push_back(oblivion);
         tileMap[oblivion->toString() + " " + std::to_string(oblivion->_id)] = oblivion;
 
