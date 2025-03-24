@@ -102,7 +102,6 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::sha
                     _player->discarding = false;
                     _network->broadcastDeck(_tileSet->toJson(_tileSet->deck));
                     _tileSet->clearTilesToJson();
-//                    _network->endTurn();
                 }
             }
         }
@@ -165,16 +164,6 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::sha
         _network->broadcastDeck(_tileSet->mapToJson());
     }
 
-    std::string msg = strtool::format("Score: %d", _player->_totalScore);
-    _text = TextLayout::allocWithText(msg, assets->get<Font>("pixel32"));
-    _text->layout();
-    _win = TextLayout::allocWithText("You Won!\nReset with R", assets->get<Font>("pixel32"));
-    _win->layout();
-    _lose = TextLayout::allocWithText("You Lost!\nReset with R", assets->get<Font>("pixel32"));
-    _lose->layout();
-
-    
-    _tileSet->setBackTextures(assets);
 //    _winBtn = std::dynamic_pointer_cast<scene2::Button>(_assets->get<scene2::SceneNode>("matchscene.gameplayscene.winButton"));
 //    _defeatBtn = std::dynamic_pointer_cast<scene2::Button>(_assets->get<scene2::SceneNode>("matchscene.gameplayscene.loseButton"));
 //    
@@ -238,7 +227,7 @@ void GameScene::reset() {
 void GameScene::update(float timestep) {
     
     if(_discardPile->getTopTile()){
-        CULog("%d", _discardPile->getTopTile()->played);
+//        CULog("%d", _discardPile->getTopTile()->played);
     }
 //    for(auto const& tile : _player->getHand()._tiles){
 //        CULog("%s, %s", tile->toString().c_str(), tile->pos.toString().c_str());
@@ -409,6 +398,17 @@ void GameScene::update(float timestep) {
                 _player->getHand()._selectedTiles.clear();
             }
         }
+        if (_input.getKeyPressed() == KeyCode::P && _input.getKeyDown()){
+            if (_player->getHand()._selectedTiles.size() == 1) {
+                std::shared_ptr<TileSet::Tile> selected = _player->getHand()._selectedTiles[0];
+                if (selected->getSuit() == TileSet::Tile::Suit::SPECIAL &&
+                    selected->getRank() == TileSet::Tile::Rank::ACTION) {
+                    auto action = std::dynamic_pointer_cast<TileSet::ActionTile>(selected);
+                    CULog("action tile: %s", action->toString().c_str());
+                    applyAction(action);
+                }
+            }
+        }
 //        if (_input.getKeyPressed() == KeyCode::P && _input.getKeyDown()){
 //            _pile->reshufflePile();
 //            _network->broadcastDeckMap(_tileSet->mapToJson());
@@ -494,13 +494,13 @@ void GameScene::setGameActive(bool value){
 }
 
 void GameScene::applyAction(std::shared_ptr<TileSet::ActionTile> actionTile) {
+    _player->getHand().discard(actionTile, _network->getHostStatus());
     switch (actionTile->type) {
         case TileSet::ActionTile::ActionType::CHAOS:
             CULog("CHAOS: Reshuffling the pile...");
             _pile->reshufflePile();
             _network->broadcastDeckMap(_tileSet->mapToJson());
             _network->broadcastPileLayer();
-            _player->getHand().discard(actionTile, _network->getHostStatus());
             break;
         case TileSet::ActionTile::ActionType::ECHO:
             CULog("ECHO: Draw two tiles...");
@@ -514,6 +514,7 @@ void GameScene::applyAction(std::shared_ptr<TileSet::ActionTile> actionTile) {
         default:
             break;
     }
+    
 }
 
 void GameScene::applyCommand(std::shared_ptr<TileSet::CommandTile> commandTile) {
