@@ -68,6 +68,7 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::sha
 //    _matchScene->setPosition(125, _matchScene->getPositionY());
    
     std::shared_ptr<scene2::SceneNode> childNode = _matchScene->getChild(0);
+    
     _discardBtn = std::dynamic_pointer_cast<scene2::Button>(childNode->getChild(3));
     _tilesetUIBtn = std::dynamic_pointer_cast<scene2::Button>(_assets->get<scene2::SceneNode>("matchscene.gameplayscene.discardButton"));
     _pauseBtn = std::dynamic_pointer_cast<scene2::Button>(_assets->get<scene2::SceneNode>("matchscene.gameplayscene.pauseButton"));
@@ -128,6 +129,7 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::sha
     _tileSet = std::make_shared<TileSet>();
     _player = std::make_shared<Player>();
     _pile = std::make_shared<Pile>(); //Init our pile
+    discardArea = cugl::Rect(Vec2(1000, 210), Size(273, 195));
 
     if(_network->getHostStatus()){
         //Setting up whole deck
@@ -182,7 +184,6 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::sha
 //            _choice = Choice::LOSE;
 //        }
 //    });
-
     
     // Initialize the discard pile
     _discardPile = std::make_shared<DiscardPile>();
@@ -236,7 +237,6 @@ void GameScene::update(float timestep) {
     _input.readInput();
     _input.update();
     
-
     cugl::Vec2 mousePos = cugl::Scene::screenToWorldCoords(cugl::Vec3(_input.getPosition()));
      
     bool isMouseDown = _input.isDown();
@@ -246,7 +246,6 @@ void GameScene::update(float timestep) {
     _player->updateDrag(mousePos, isMouseDown, isMouseReleased);
     _player->getHand().updateTilePositions(_matchScene->getSize());
 
-    
     if (_network->getStatus() == NetworkController::Status::DECK) {
         _tileSet->updateDeck(_network->getDeckJson());
         _network->setStatus(NetworkController::Status::INGAME);
@@ -304,6 +303,9 @@ void GameScene::update(float timestep) {
     }
     
     if (_network->getCurrentTurn() == _network->getLocalPid()) {
+        if(_player->getHand()._tiles.size() > _player->getHand()._size && _player->getHand()._selectedTiles.size() > 0){
+            discardTile();
+        }
         //Start turn by drawing tile to hand
         if(_input.getKeyPressed() == KeyCode::D && _input.getKeyDown()){
             if(_player->getHand()._tiles.size() > _player->getHand()._size){
@@ -484,6 +486,12 @@ void GameScene::render() {
     _pile->draw(_batch);
     _discardPile->draw(_batch);
     _player->draw(_batch);
+    
+    _batch->setColor(Color4(255, 0, 0, 200));
+    _batch->setTexture(nullptr);
+    
+    _batch->fill(discardArea);
+    
     _batch->end();
 }
 
@@ -735,4 +743,33 @@ void GameScene::releaseTile() {
     // finalize tile if needed
     // e.g. snap to discard region, check if in the right place
     _draggingTile = nullptr;
+}
+
+void GameScene::discardTile() {
+    for(auto& tile: _player->getHand()._selectedTiles){
+        if(discardArea.contains(tile->tileRect)){
+            if (!_player->discarding){
+                _player->discarding = true;
+                for (auto& tile : _player->getHand()._selectedTiles) {
+                    //Add to discard pile
+                    tile->selected = false;
+                    tile->inHostHand = false;
+                    tile->inClientHand = false;
+                    tile->discarded = true;
+                    _discardPile->addTile(tile);
+                    _discardPile->updateTilePositions();
+                    _tileSet->tilesToJson.push_back(tile);
+                    _network->broadcastNewDiscard(_tileSet->toJson(_tileSet->tilesToJson));
+                    _tileSet->clearTilesToJson();
+                    //Add to discard UI scene
+                    // TODO: add to discard ui scene from app
+                    _player->getHand().discard(tile, _network->getHostStatus());
+                }
+            }
+        }
+    }
+    _player->getHand()._selectedTiles.clear();
+    _player->discarding = false;
+    _network->broadcastDeck(_tileSet->toJson(_tileSet->deck));
+    _tileSet->clearTilesToJson();
 }
