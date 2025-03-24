@@ -77,8 +77,10 @@ protected:
     std::shared_ptr<DiscardPile> _discardPile;
     /** Reference to texture for gma text*/
     std::shared_ptr<cugl::graphics::Texture> _gmaLabelTexture;
-  
+    /** Text layout */
     std::shared_ptr<cugl::graphics::TextLayout> _text;
+    /** Temporary discard area b/c no asset created for it yet */
+    cugl::Rect discardArea; 
     
     Hand* _hand; // pointer to the hand.
     
@@ -292,6 +294,8 @@ public:
     void dragTile();
     
     void releaseTile();
+    
+    void discardTile();
     
 };
 
