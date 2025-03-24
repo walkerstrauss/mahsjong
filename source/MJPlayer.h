@@ -98,7 +98,7 @@ public:
     /**
      * Discards all action tiles in hand and returns number of action tiles discarded.
      */
-    int loseActions(bool isHost);
+    void loseActions(bool isHost);
     
     /**
      * Method to make a set from your hand and add it to selected sets

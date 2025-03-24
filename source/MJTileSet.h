@@ -295,17 +295,31 @@ public:
         std::string toString() const override {
             switch (type) {
                 case ActionType::CHAOS:
-                    return "chaos of special";
+                    return "chaos of action";
                 case ActionType::ECHO:
-                    return "echo of special";
+                    return "echo of action";
                 case ActionType::JUGGERNAUT:
-                    return "juggernaut of special";
+                    return "juggernaut of action";
                 case ActionType::ORACLE:
-                    return "oracle of special";
+                    return "oracle of action";
                 case ActionType::SEER:
-                    return "seer of special";
+                    return "seer of action";
                 default:
-                    return "action of special";
+                    return "unknown";
+            }
+        }
+        
+        static ActionTile::ActionType toType(const std::string& str) {
+            if (str == "chaos of action") {
+                return ActionType::CHAOS;
+            } else if (str == "echo of action") {
+                return ActionType::ECHO;
+            } else if (str == "juggernaut of action") {
+                return ActionType::JUGGERNAUT;
+            } else if (str == "oracle of action") {
+                return ActionType::ORACLE;
+            } else  {
+                return ActionType::SEER;
             }
         }
     };
@@ -323,12 +337,17 @@ public:
         std::string toString() const override {
             switch (type) {
                 case CommandType::OBLIVION:
-                    return "oblivion of special";
+                    return "oblivion of command";
                 default:
-                    return "command of special";
+                    return "unknown";
             }
         }
-
+        
+        static CommandTile::CommandType toType(const std::string& str) {
+//            if (str == "oblivion of command") {
+                return CommandType::OBLIVION;
+//            }
+        }
     };
     
 public:

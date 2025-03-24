@@ -501,13 +501,19 @@ void GameScene::applyAction(std::shared_ptr<TileSet::ActionTile> actionTile) {
         case TileSet::ActionTile::ActionType::CHAOS:
             CULog("CHAOS: Reshuffling the pile...");
             _pile->reshufflePile();
-            // broadcast pile info
+            _network->broadcastDeckMap(_tileSet->mapToJson());
+            _network->broadcastPileLayer();
             _player->getHand().discard(actionTile, _network->getHostStatus());
             break;
         case TileSet::ActionTile::ActionType::ECHO:
             CULog("ECHO: Draw two tiles...");
             _player->getHand().drawFromPile(_pile, 2, _network->getHostStatus());
+            _network->broadcastTileDrawn(_tileSet->toJson(_tileSet->tilesToJson));
+            _tileSet->clearTilesToJson();
             break;
+        case TileSet::ActionTile::ActionType::ORACLE:
+            CULog("ORACLE: Draw any tile from pile...");
+            
         default:
             break;
     }
@@ -517,7 +523,7 @@ void GameScene::applyCommand(std::shared_ptr<TileSet::CommandTile> commandTile) 
     switch (commandTile->type) {
         case TileSet::CommandTile::CommandType::OBLIVION:
             CULog("OBLIVION: Removing all action tiles from hand...");
-            int actionCount = _player->getHand().loseActions(_network->getHostStatus());
+            _player->getHand().loseActions(_network->getHostStatus());
             
             while (_player->getHand().getTileCount() < 13) {
                 _player->getHand().drawFromPile(_pile, 1, _network->getHostStatus());
@@ -537,6 +543,7 @@ void GameScene::applyCommand(std::shared_ptr<TileSet::CommandTile> commandTile) 
                 _network->endTurn();
             }
             break;
+//        case TileSet::CommandTile::CommandType
 
     }
 }
