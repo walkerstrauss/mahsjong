@@ -327,26 +327,31 @@ public:
     class CommandTile: public Tile {
     public:
         enum class CommandType : int {
-            OBLIVION    //remove all action tiles from hand
+            OBLIVION,    //remove all action tiles from hand
+            VOID    //discard a random tile from hand
         };
         
         CommandType type;
         
-        CommandTile(CommandType type) : Tile(Tile::Rank::ACTION, Tile::Suit::SPECIAL), type(type) {}
+        CommandTile(CommandType type) : Tile(Tile::Rank::COMMAND, Tile::Suit::SPECIAL), type(type) {}
         
         std::string toString() const override {
             switch (type) {
                 case CommandType::OBLIVION:
                     return "oblivion of command";
+                case CommandType::VOID:
+                    return "void of command";
                 default:
                     return "unknown";
             }
         }
         
         static CommandTile::CommandType toType(const std::string& str) {
-//            if (str == "oblivion of command") {
+            if (str == "oblivion of command") {
                 return CommandType::OBLIVION;
-//            }
+            } else {
+                return CommandType::VOID;
+            }
         }
     };
     

@@ -313,6 +313,20 @@ void GameScene::update(float timestep) {
             _player->getHand().drawFromPile(_pile, 1, _network->getHostStatus());
             _network->broadcastTileDrawn(_tileSet->toJson(_tileSet->tilesToJson));
             _tileSet->clearTilesToJson();
+            
+            
+            if (!_player->getHand()._drawnPile.empty()) {
+                auto drawnTile = _player->getHand()._drawnPile.back();
+                CULog("drawn tile: %s", drawnTile->toString().c_str());
+                if (drawnTile->getSuit() == TileSet::Tile::Suit::SPECIAL &&
+                    drawnTile->getRank() == TileSet::Tile::Rank::COMMAND) {
+                    auto cmdTile = std::dynamic_pointer_cast<TileSet::CommandTile>(drawnTile);
+                    if (cmdTile) {
+                        applyCommand(cmdTile);
+                    }
+                }
+            }
+            
             if (_pile->getVisibleSize() == 0) {
                 _pile->createPile();
                 _network->broadcastDeckMap(_tileSet->mapToJson());
@@ -526,6 +540,7 @@ void GameScene::applyAction(std::shared_ptr<TileSet::ActionTile> actionTile) {
 }
 
 void GameScene::applyCommand(std::shared_ptr<TileSet::CommandTile> commandTile) {
+    _player->getHand().discard(commandTile, _network->getHostStatus());
     switch (commandTile->type) {
         case TileSet::CommandTile::CommandType::OBLIVION:
             CULog("OBLIVION: Removing all action tiles from hand...");
@@ -535,6 +550,7 @@ void GameScene::applyCommand(std::shared_ptr<TileSet::CommandTile> commandTile) 
                 _player->getHand().drawFromPile(_pile, 1, _network->getHostStatus());
                 _network->broadcastTileDrawn(_tileSet->toJson(_tileSet->tilesToJson));
                 _tileSet->clearTilesToJson();
+                
                 if (_pile->getVisibleSize() == 0) {
                     _pile->createPile();
                     _network->broadcastDeckMap(_tileSet->mapToJson());
@@ -546,12 +562,13 @@ void GameScene::applyCommand(std::shared_ptr<TileSet::CommandTile> commandTile) 
                 if (_player->getHand().isWinningHand()){
                     _gameWin = true;
                 }
-                _network->endTurn();
             }
             break;
-//        case TileSet::CommandTile::CommandType
+        case TileSet::CommandTile::CommandType::VOID:
+            CULog("VOID: Discarding random tile from hand...");
 
     }
+    _network->endTurn();
 }
 
 void GameScene::clickedTile(cugl::Vec2 mousePos){
