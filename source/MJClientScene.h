@@ -128,6 +128,9 @@ public:
      */
     bool init(const std::shared_ptr<cugl::AssetManager>& assets, std::shared_ptr<NetworkController> network);
 
+    std::string tile2hex();
+    std::string idCreation(const std::shared_ptr<cugl::scene2::PolygonNode>& tile);
+
     /**
      * Sets whether the scene is currently active
      *

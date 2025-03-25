@@ -42,6 +42,8 @@ static std::string dec2hex(const std::string dec) {
 }
 
 
+
+
 #pragma mark -
 #pragma mark Provided Methods
 /**
@@ -75,28 +77,8 @@ bool ClientScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::s
 
     _startgame = std::dynamic_pointer_cast<scene2::Button>(_assets->get<scene2::SceneNode>("client.clientscene.buttons.confirm-button"));
     _backout = std::dynamic_pointer_cast<scene2::Button>(_assets->get<scene2::SceneNode>("client.clientscene.buttons.cancel-button"));
-
-    // Tile GameID
-    _gameIDNew[0] = std::dynamic_pointer_cast<scene2::PolygonNode>(_assets->get<scene2::SceneNode>("client.clientscene.client1-gameid-blank.client1-gameid-blank"));
-    _gameIDNew[1] = std::dynamic_pointer_cast<scene2::PolygonNode>(_assets->get<scene2::SceneNode>("client.clientscene.client1-gameid-blank.client1-gameid-blank_1"));
-    _gameIDNew[2] = std::dynamic_pointer_cast<scene2::PolygonNode>(_assets->get<scene2::SceneNode>("client.clientscene.client1-gameid-blank.client1-gameid-blank_2"));
-    _gameIDNew[3] = std::dynamic_pointer_cast<scene2::PolygonNode>(_assets->get<scene2::SceneNode>("client.clientscene.client1-gameid-blank.client1-gameid-blank_3"));
-    _idPos = 0;
-
-    // Tile Keypad
-    _tile1 = std::dynamic_pointer_cast<scene2::Button>(_assets->get<scene2::SceneNode>("client.clientscene.gameid-pad.pad-tile"));
-    _tile2 = std::dynamic_pointer_cast<scene2::Button>(_assets->get<scene2::SceneNode>("client.clientscene.gameid-pad.pad-tile1"));
-    _tile3 = std::dynamic_pointer_cast<scene2::Button>(_assets->get<scene2::SceneNode>("client.clientscene.gameid-pad.pad-tile2"));
-    _tile4 = std::dynamic_pointer_cast<scene2::Button>(_assets->get<scene2::SceneNode>("client.clientscene.gameid-pad.pad-tile3"));
-    _tile5 = std::dynamic_pointer_cast<scene2::Button>(_assets->get<scene2::SceneNode>("client.clientscene.gameid-pad.pad-tile4"));
-    _tile6 = std::dynamic_pointer_cast<scene2::Button>(_assets->get<scene2::SceneNode>("client.clientscene.gameid-pad.pad-tile5"));
-    _tile7 = std::dynamic_pointer_cast<scene2::Button>(_assets->get<scene2::SceneNode>("client.clientscene.gameid-pad.pad-tile6"));
-    _tile8 = std::dynamic_pointer_cast<scene2::Button>(_assets->get<scene2::SceneNode>("client.clientscene.gameid-pad.pad-tile7"));
-    _tile9 = std::dynamic_pointer_cast<scene2::Button>(_assets->get<scene2::SceneNode>("client.clientscene.gameid-pad.pad-tile8"));
-    _tile10 = std::dynamic_pointer_cast<scene2::Button>(_assets->get<scene2::SceneNode>("client.clientscene.gameid-pad.pad-tile9"));
-
     _resetGameID = std::dynamic_pointer_cast<scene2::Button>(_assets->get<scene2::SceneNode>("client.clientscene.cancel-box"));
-    
+
     _backout->addListener([this](const std::string& name, bool down) {
         if (down) {
             _backClicked = true;
@@ -121,10 +103,30 @@ bool ClientScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::s
 
     _startgame->addListener([=, this](const std::string& name, bool down) {
         if (down) {
+            std::string curr = tile2hex();
             // This will call the _gameid listener
             //_gameid->releaseFocus();
         }
         });
+
+    // Tile GameID
+    _gameIDNew[0] = std::dynamic_pointer_cast<scene2::PolygonNode>(_assets->get<scene2::SceneNode>("client.clientscene.client1-gameid-blank.client1-gameid-blank"));
+    _gameIDNew[1] = std::dynamic_pointer_cast<scene2::PolygonNode>(_assets->get<scene2::SceneNode>("client.clientscene.client1-gameid-blank.client1-gameid-blank_1"));
+    _gameIDNew[2] = std::dynamic_pointer_cast<scene2::PolygonNode>(_assets->get<scene2::SceneNode>("client.clientscene.client1-gameid-blank.client1-gameid-blank_2"));
+    _gameIDNew[3] = std::dynamic_pointer_cast<scene2::PolygonNode>(_assets->get<scene2::SceneNode>("client.clientscene.client1-gameid-blank.client1-gameid-blank_3"));
+    _idPos = 0;
+
+    // Tile Keypad
+    _tile1 = std::dynamic_pointer_cast<scene2::Button>(_assets->get<scene2::SceneNode>("client.clientscene.gameid-pad.pad-tile"));
+    _tile2 = std::dynamic_pointer_cast<scene2::Button>(_assets->get<scene2::SceneNode>("client.clientscene.gameid-pad.pad-tile1"));
+    _tile3 = std::dynamic_pointer_cast<scene2::Button>(_assets->get<scene2::SceneNode>("client.clientscene.gameid-pad.pad-tile2"));
+    _tile4 = std::dynamic_pointer_cast<scene2::Button>(_assets->get<scene2::SceneNode>("client.clientscene.gameid-pad.pad-tile3"));
+    _tile5 = std::dynamic_pointer_cast<scene2::Button>(_assets->get<scene2::SceneNode>("client.clientscene.gameid-pad.pad-tile4"));
+    _tile6 = std::dynamic_pointer_cast<scene2::Button>(_assets->get<scene2::SceneNode>("client.clientscene.gameid-pad.pad-tile5"));
+    _tile7 = std::dynamic_pointer_cast<scene2::Button>(_assets->get<scene2::SceneNode>("client.clientscene.gameid-pad.pad-tile6"));
+    _tile8 = std::dynamic_pointer_cast<scene2::Button>(_assets->get<scene2::SceneNode>("client.clientscene.gameid-pad.pad-tile7"));
+    _tile9 = std::dynamic_pointer_cast<scene2::Button>(_assets->get<scene2::SceneNode>("client.clientscene.gameid-pad.pad-tile8"));
+    _tile10 = std::dynamic_pointer_cast<scene2::Button>(_assets->get<scene2::SceneNode>("client.clientscene.gameid-pad.pad-tile9"));
 
     _tile1->addListener([this](const std::string& name, bool down) {
         if (down && _idPos != 4) {
@@ -200,6 +202,7 @@ bool ClientScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::s
     _tile9->activate();
     _tile10->activate();
     _resetGameID->activate();
+    _startgame->activate();
     addChild(scene);
     return true;
     //TEMP REMOPVE LATER
@@ -220,6 +223,67 @@ bool ClientScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::s
     addChild(scene);
     setActive(false);
     return true;
+}
+
+/**
+* Convert tile information into hexadecmial
+*/
+std::string ClientScene::tile2hex() {
+    if (_idPos != 4) {
+         _gameIDNew[0]->setTexture(_assets->get<cugl::graphics::Texture>("client1-gameid-blank"));
+         _gameIDNew[1]->setTexture(_assets->get<cugl::graphics::Texture>("client1-gameid-blank"));
+         _gameIDNew[2]->setTexture(_assets->get<cugl::graphics::Texture>("client1-gameid-blank"));
+         _gameIDNew[3]->setTexture(_assets->get<cugl::graphics::Texture>("client1-gameid-blank"));
+         _idPos = 0;
+         return "";
+    }
+    std::string hex = "";
+    for (int i = 0; i < 4; i++) {
+        hex.append(idCreation(_gameIDNew[i]));
+    }
+    if (hex == "1234") {
+        CULog("HIHIHIHIHI");
+    }
+    return hex;
+}
+
+std::string ClientScene::idCreation(const std::shared_ptr<cugl::scene2::PolygonNode>& tile) {
+    auto texture = tile->getTexture();
+
+    // Compare the texture to each asset
+    if (texture == _assets->get<cugl::graphics::Texture>("client1-gameid-tile")) {
+        return "1";
+    }
+    else if (texture == _assets->get<cugl::graphics::Texture>("client1-gameid-tile1")) {
+        return "2";
+    }
+    else if (texture == _assets->get<cugl::graphics::Texture>("client1-gameid-tile2")) {
+        return "3";
+    }
+    else if (texture == _assets->get<cugl::graphics::Texture>("client1-gameid-tile3")) {
+        return "4";
+    }
+    else if (texture == _assets->get<cugl::graphics::Texture>("client1-gameid-tile4")) {
+        return "5";
+    }
+    else if (texture == _assets->get<cugl::graphics::Texture>("client1-gameid-tile5")) {
+        return "6";
+    }
+    else if (texture == _assets->get<cugl::graphics::Texture>("client1-gameid-tile6")) {
+        return "7";
+    }
+    else if (texture == _assets->get<cugl::graphics::Texture>("client1-gameid-tile7")) {
+        return "8";
+    }
+    else if (texture == _assets->get<cugl::graphics::Texture>("client1-gameid-tile8")) {
+        return "9";
+    }
+    else if (texture == _assets->get<cugl::graphics::Texture>("client1-gameid-tile9")) {
+        return "0";
+    }
+    else {
+        return "BITCH"; // Default case if no match found
+    }
 }
 
 /**
