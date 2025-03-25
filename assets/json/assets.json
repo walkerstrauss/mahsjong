@@ -565,7 +565,7 @@
           "file": "textures/host1/host1-background.png"
         },
         "leave-button":{
-            "file": "textures/host1/leave_button.png"
+            "file": "textures/host1/leave-button.png"
         },
         "start":{
             "file": "textures/host1/start.png"
