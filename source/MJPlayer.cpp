@@ -527,4 +527,3 @@ std::shared_ptr<TileSet::Tile> Hand::getTileAtPosition(const cugl::Vec2& mousePo
     }
     return nullptr;
 }
-

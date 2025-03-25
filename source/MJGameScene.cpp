@@ -238,12 +238,6 @@ void GameScene::update(float timestep) {
     bool isMouseDown = _input.isDown();
     bool isMouseReleased = _input.didRelease();
     
-    // Update the player's drag state.
-    
-    
-    
-    
-
     _player->getHand().updateTilePositions(_matchScene->getSize());
 
     if (_network->getStatus() == NetworkController::Status::DECK) {
@@ -504,7 +498,6 @@ void GameScene::update(float timestep) {
                 currDiscardTile->discarded = false;
                 currDiscardTile->played = true;
                 _network->broadcastRemoveDiscard();
-                // TODO: handle decrement discard UI label
                 _player->canExchange = false;
                 
                 discardDrawTile = _discardPile->getTopTile();
@@ -681,14 +674,37 @@ void GameScene::applyCommand(std::shared_ptr<TileSet::CommandTile> commandTile) 
                 else {
                     _network->broadcastDeck(_tileSet->toJson(_tileSet->deck));
                 }
-                if (_player->getHand().isWinningHand()){
-                    _gameWin = true;
-                }
             }
             break;
         case TileSet::CommandTile::CommandType::VOID:
             CULog("VOID: Discarding random tile from hand...");
-
+            auto& hand = _player->getHand()._tiles;
+            
+            if (!hand.empty()) {
+                int index = rand() % hand.size();
+                std::shared_ptr<TileSet::Tile> random = hand[index];
+                
+                _player->forcedDiscard = true;
+                _player->getHand()._selectedTiles.clear();
+                random->selected = true;
+                _player->getHand()._selectedTiles.push_back(random);
+                discardTile();
+                _player->forcedDiscard = false;
+            }
+            
+            _player->getHand().drawFromPile(_pile, 1, _network->getHostStatus());
+            _network->broadcastTileDrawn(_tileSet->toJson(_tileSet->tilesToJson));
+            _tileSet->clearTilesToJson();
+            
+            if (_pile->getVisibleSize() == 0) {
+                _pile->createPile();
+                _network->broadcastDeckMap(_tileSet->mapToJson());
+                _network->broadcastPileLayer();
+            }
+            else {
+                _network->broadcastDeck(_tileSet->toJson(_tileSet->deck));
+            }
+            break;
     }
     _network->endTurn();
 }
@@ -883,7 +899,7 @@ void GameScene::releaseTile() {
         _draggingTile = nullptr;
     }
 }
-
+        
 void GameScene::updateDrag(const cugl::Vec2& mousePos, bool mouseDown, bool mouseReleased) {
     if (mouseDown) {
         if (!_dragInitiated) {
@@ -943,3 +959,25 @@ void GameScene::updateDrag(const cugl::Vec2& mousePos, bool mouseDown, bool mous
         releaseTile();
     }
 }
+
+void GameScene::discardTile() {
+    for(auto& tile: _player->getHand()._selectedTiles){
+        if((discardArea.contains(tile->tileRect) || _player->forcedDiscard) && tile->getRank() != TileSet::Tile::Rank::ACTION){
+            if (!_player->discarding){
+                _player->discarding = true;
+                for (auto& tile : _player->getHand()._selectedTiles) {
+                    //Add to discard pile
+                    tile->selected = false;
+                    tile->inHostHand = false;
+                    tile->inClientHand = false;
+                    tile->discarded = true;
+                    _discardPile->addTile(tile);
+                    _discardPile->updateTilePositions();
+                    _tileSet->tilesToJson.push_back(tile);
+                    _network->broadcastNewDiscard(_tileSet->toJson(_tileSet->tilesToJson));
+                    _tileSet->clearTilesToJson();
+                    _player->getHand().discard(tile, _network->getHostStatus());
+                    discardedTiles.emplace_back(tile);
+                }
+            }
+        }
