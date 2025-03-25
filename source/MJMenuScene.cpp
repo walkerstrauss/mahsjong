@@ -41,24 +41,32 @@ using namespace std;
 bool MenuScene::init(const std::shared_ptr<cugl::AssetManager>& assets) {
     // Initialize the scene to a locked width
     if (assets == nullptr) {
-        return false;}
+        return false;
+    } else if (!Scene2::initWithHint(0,720)){
+        return false;
+    }
     // Start up the input handler
     _assets = assets;
-    std::shared_ptr<scene2::SceneNode> scene = _assets->get<scene2::SceneNode>("home");
-    scene->setContentSize(1280,720);
-    cugl::Size screenSize = cugl::Application::get()->getDisplaySize();
     
-    screenSize *= scene->getContentSize().height/screenSize.height;
-        
+    _homescene = _assets->get<scene2::SceneNode>("home");
+    _homescene->setContentSize(1280,720);
+    cugl::Size screenSize = cugl::Application::get()->getDisplaySize();
+    //cugl::Size screenSize = Size(0,SCENE_HEIGHT);
+    
+    screenSize *= _homescene->getContentSize().height/screenSize.height;
+    
+    float offset = (screenSize.width -_homescene->getWidth())/2;
+    _homescene->setPosition(offset, _homescene->getPosition().y);
+
+    
     if (!Scene2::initWithHint(screenSize)) {
+        std::cerr << "Scene2 initialization failed!" << std::endl;
         return false;
     }
     
-    
-    _homescene = _assets->get<scene2::SceneNode>("home");
-    _homescene->setContentSize(getSize());
-    _homescene->doLayout();
-    _homescene->setPosition((Application::get()->getDisplayWidth() - _homescene->getWidth()) / 8, _homescene->getPosition().y);
+//    _homescene->setContentSize(getSize());
+//    _homescene->doLayout();
+//    _homescene->setPosition((Application::get()->getDisplayWidth() - _homescene->getContentWidth()) / 8, _homescene->getPosition().y);
     _choice = Choice::NONE;
     _hostbutton = std::dynamic_pointer_cast<scene2::Button>(_assets->get<scene2::SceneNode>("home.home.menu.button1"));
     _joinbutton = std::dynamic_pointer_cast<scene2::Button>(_assets->get<scene2::SceneNode>("home.home.menu.button2"));

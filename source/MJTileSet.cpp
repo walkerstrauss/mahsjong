@@ -80,21 +80,27 @@ void TileSet::addActionAndCommandTiles(const std::shared_ptr<cugl::AssetManager>
     for (int i = 1; i < 6; ++i) {
         std::shared_ptr<ActionTile> chaos = std::make_shared<ActionTile>(ActionTile::ActionType::CHAOS);
         chaos->_id = i;
-        chaos->setTexture(assets->get<Texture>("one of wild suit"));
+        chaos->setTexture(assets->get<Texture>(chaos->toString()));
         deck.push_back(chaos);
         tileMap[chaos->toString() + " " + std::to_string(chaos->_id)] = chaos;
 
         std::shared_ptr<ActionTile> echo = std::make_shared<ActionTile>(ActionTile::ActionType::ECHO);
         echo->_id = i;
-        echo->setTexture(assets->get<Texture>("two of wild suit"));
+        echo->setTexture(assets->get<Texture>(echo->toString()));
         deck.push_back(echo);
-        tileMap[echo->toString() + " " + std::to_string(chaos->_id)] = echo;
+        tileMap[echo->toString() + " " + std::to_string(echo->_id)] = echo;
 
         std::shared_ptr<CommandTile> oblivion = std::make_shared<CommandTile>(CommandTile::CommandType::OBLIVION);
         oblivion->_id = i;
-        oblivion->setTexture(assets->get<Texture>("six of wild suit"));
+        oblivion->setTexture(assets->get<Texture>(oblivion->toString()));
         deck.push_back(oblivion);
-        tileMap[oblivion->toString() + " " + std::to_string(chaos->_id)] = oblivion;
+        tileMap[oblivion->toString() + " " + std::to_string(oblivion->_id)] = oblivion;
+        
+        std::shared_ptr<CommandTile> vvoid = std::make_shared<CommandTile>(CommandTile::CommandType::VOID);
+        vvoid->_id = i;
+        vvoid->setTexture(assets->get<Texture>(vvoid->toString()));
+        deck.push_back(vvoid);
+        tileMap[vvoid->toString() + " " + std::to_string(vvoid->_id)] = vvoid;
 
     }
 }
@@ -116,30 +122,30 @@ void TileSet::setAllTileTexture(const std::shared_ptr<cugl::AssetManager>& asset
     }
 }
 
-void TileSet::setSpecialTextures(const std::shared_ptr<cugl::AssetManager>& assets) {
-    for(const auto& it : deck){
-        if (it->getSuit() == Tile::Suit::SPECIAL) {
-            if (it->getRank() == Tile::Rank::ACTION) {
-                auto action = std::dynamic_pointer_cast<ActionTile>(it);
-                switch (action->type) {
-                    case ActionTile::ActionType::CHAOS:
-                        action->setTexture(assets->get<Texture>("one of wild suit"));
-                        break;
-                    case ActionTile::ActionType::ECHO:
-                        action->setTexture(assets->get<Texture>("two of wild suit"));
-                        break;
-                }
-            } else if (it->getRank() == Tile::Rank::COMMAND) {
-                auto command = std::dynamic_pointer_cast<CommandTile>(it);
-                switch (command->type) {
-                    case CommandTile::CommandType::OBLIVION:
-                        command->setTexture(assets->get<Texture>("six of wild suit"));
-                        break;
-                }
-            }
-        }
-    }
-}
+//void TileSet::setSpecialTextures(const std::shared_ptr<cugl::AssetManager>& assets) {
+//    for(const auto& it : deck){
+//        if (it->getSuit() == Tile::Suit::SPECIAL) {
+//            if (it->getRank() == Tile::Rank::ACTION) {
+//                auto action = std::dynamic_pointer_cast<ActionTile>(it);
+//                switch (action->type) {
+//                    case ActionTile::ActionType::CHAOS:
+//                        action->setTexture(assets->get<Texture>("one of wild suit"));
+//                        break;
+//                    case ActionTile::ActionType::ECHO:
+//                        action->setTexture(assets->get<Texture>("two of wild suit"));
+//                        break;
+//                }
+//            } else if (it->getRank() == Tile::Rank::COMMAND) {
+//                auto command = std::dynamic_pointer_cast<CommandTile>(it);
+//                switch (command->type) {
+//                    case CommandTile::CommandType::OBLIVION:
+//                        command->setTexture(assets->get<Texture>("six of wild suit"));
+//                        break;
+//                }
+//            }
+//        }
+//    }
+//}
 
 /**
  * Sets the texture of a wild tile
@@ -181,6 +187,16 @@ const std::shared_ptr<cugl::JsonValue> TileSet::toJson(std::vector<std::shared_p
         currTile->appendValue("inDeck", tile->inDeck);
         currTile->appendValue("pos", tile->pos);
         currTile->appendValue("scale", tile->_scale);
+        
+        if (auto action = std::dynamic_pointer_cast<ActionTile>(tile)) {
+            currTile->appendValue("tileType", "action");
+            currTile->appendValue("actionType", action->toString());
+        } else if (auto command = std::dynamic_pointer_cast<CommandTile>(tile)) {
+            currTile->appendValue("tileType", "command");
+            currTile->appendValue("commandType", command->toString());
+        } else {
+            currTile->appendValue("tileType", "normal");
+        }
         
         root->appendChild(key, currTile);
     }
@@ -255,8 +271,20 @@ std::vector<std::shared_ptr<TileSet::Tile>> TileSet::processTileJson(const std::
         const bool inDeck = tileKey->getBool("inDeck");
         const cugl::Vec2 pos = Tile::toVector(tileKey->getString("pos"));
         const float scale = tileKey->getFloat("scale");
+        std::string type = tileKey->getString("tileType");
         
-        std::shared_ptr<Tile> newTile = std::make_shared<Tile>(rank, suit);
+//        std::shared_ptr<Tile> newTile = std::make_shared<Tile>(rank, suit);
+        std::shared_ptr<Tile> newTile;
+        if (type == "action") {
+            auto actionType = ActionTile::toType(tileKey->getString("actionType"));
+            newTile = std::make_shared<ActionTile>(actionType);
+        } else if (type == "command") {
+            auto commandType = CommandTile::toType(tileKey->getString("commandType"));
+            newTile = std::make_shared<CommandTile>(commandType);
+        } else {
+            newTile = std::make_shared<Tile>(rank, suit);
+        }
+        
         newTile->_id = id;
         newTile->pileCoord = pileCoord;
         newTile->inPile = inPile;

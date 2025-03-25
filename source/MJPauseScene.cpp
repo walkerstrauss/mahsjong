@@ -17,18 +17,32 @@ using namespace cugl::graphics;
 bool PauseScene::init(const std::shared_ptr<cugl::AssetManager>& assets){
     if (!assets){
         return false;
-    } else if (!Scene2::initWithHint(0,700)){
+    } else if (!Scene2::initWithHint(0,720)){
         return false;
     }
     
     _assets = assets;
-    Size dimen = getSize();
+//    Size dimen = getSize();
     _pauseScene = _assets->get<scene2::SceneNode>("pause");
-    _pauseScene->setContentSize(dimen);
-    _pauseScene->doLayout();
+    _pauseScene->setContentSize(1280,720);
+    cugl::Size screenSize = cugl::Application::get()->getDisplaySize();
+    //cugl::Size screenSize = Size(0,SCENE_HEIGHT);
     
-    _pauseScene->setPosition((Application::get()->getDisplayWidth() - _pauseScene->getWidth()) / 8, _pauseScene->getPosition().y);
+    screenSize *= _pauseScene->getContentSize().height/screenSize.height;
     
+    float offset = (screenSize.width -_pauseScene->getWidth())/2;
+    _pauseScene->setPosition(offset, _pauseScene->getPosition().y);
+
+    
+    if (!Scene2::initWithHint(screenSize)) {
+        std::cerr << "Scene2 initialization failed!" << std::endl;
+        return false;
+    }
+//    _pauseScene->setContentSize(dimen);
+//    _pauseScene->doLayout();
+//    
+//    _pauseScene->setPosition((Application::get()->getDisplayWidth() - _pauseScene->getWidth()) / 8, _pauseScene->getPosition().y);
+//    _pauseScene->setPosition(125, _pauseScene->getPositionY());
     // Set initial choice to none
     choice = Choice::NONE;
     
@@ -37,9 +51,9 @@ bool PauseScene::init(const std::shared_ptr<cugl::AssetManager>& assets){
     _closePauseBtn = std::dynamic_pointer_cast<scene2::Button>(_assets->get<scene2::SceneNode>("pause.pausescene.pauseSection.menu.button1"));
     _settingPauseBtn = std::dynamic_pointer_cast<scene2::Button>(_assets->get<scene2::SceneNode>("pause.pausescene.pauseSection.menu.button3"));
     _menuPauseBtn = std::dynamic_pointer_cast<scene2::Button>(_assets->get<scene2::SceneNode>("pause.pausescene.pauseSection.menu.button2"));
-    _continueBtn->setPosition(_continueBtn->getPositionX(), _continueBtn->getPositionY() + 100);
-    _menuPauseBtn->setPosition(_menuPauseBtn->getPositionX(), _menuPauseBtn->getPositionY() + 100);
-    _settingPauseBtn->setPosition(_settingPauseBtn->getPositionX(), _settingPauseBtn->getPositionY() + 100);
+    _continueBtn->setPosition(_continueBtn->getPositionX(), _continueBtn->getPositionY() + 50);
+    _menuPauseBtn->setPosition(_menuPauseBtn->getPositionX(), _menuPauseBtn->getPositionY() + 50);
+    _settingPauseBtn->setPosition(_settingPauseBtn->getPositionX(), _settingPauseBtn->getPositionY() + 50);
     _continueBtnKey = _continueBtn->addListener([this](const std::string& name, bool down){
         if (!down){
             choice = Choice::CONTINUE;

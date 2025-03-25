@@ -15,7 +15,7 @@ using namespace cugl::graphics;
 using namespace cugl::audio;
 using namespace std;
 
-#define SCENE_HEIGHT  700
+#define SCENE_HEIGHT  720
 
 #pragma mark -
 #pragma mark Constructors
@@ -32,9 +32,25 @@ bool SettingScene::init(const std::shared_ptr<cugl::AssetManager>& assets){
     }
     _assets = assets;
     _settingScene = _assets->get<scene2::SceneNode>("settings");
-    _settingScene->setContentSize(getSize());
-    _settingScene->doLayout();
-    _settingScene->setPosition((Application::get()->getDisplayWidth() - _settingScene->getWidth()) / 8, _settingScene->getPosition().y);
+    _settingScene->setContentSize(1280,720);
+    cugl::Size screenSize = cugl::Application::get()->getDisplaySize();
+    //cugl::Size screenSize = Size(0,SCENE_HEIGHT);
+    
+    screenSize *= _settingScene->getContentSize().height/screenSize.height;
+    
+    float offset = (screenSize.width -_settingScene->getWidth())/2;
+    _settingScene->setPosition(offset, _settingScene->getPosition().y);
+
+    
+    if (!Scene2::initWithHint(screenSize)) {
+        std::cerr << "Scene2 initialization failed!" << std::endl;
+        return false;
+    }
+    
+//    _settingScene->setContentSize(getSize());
+//    _settingScene->doLayout();
+//    _settingScene->setPosition((Application::get()->getDisplayWidth() - _settingScene->getWidth()) / 8, _settingScene->getPosition().y);
+    
     choice = Choice::NONE;
     scene = PrevScene::NEITHER;
     

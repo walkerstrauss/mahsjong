@@ -15,7 +15,7 @@ using namespace cugl::graphics;
 using namespace cugl::audio;
 using namespace std;
 
-#define SCENE_HEIGHT  700
+#define SCENE_HEIGHT  720
 
 #pragma mark -
 #pragma mark Constructors
@@ -28,21 +28,45 @@ bool GameOverScene::init(const std::shared_ptr<cugl::AssetManager>& assets){
     }
     
     _assets = assets;
-    Size dimen = Application::get()->getDisplaySize();
+//    Size dimen = getSize();
     
     choice = Choice::NONE;
     type = Type::NEITHER;
     // init the win scene
     _winscene = _assets->get<scene2::SceneNode>("winscene");
-    _winscene->setContentSize(dimen);
+    _winscene->setContentSize(1280,720);
+    cugl::Size screenSize = cugl::Application::get()->getDisplaySize();
+    //cugl::Size screenSize = Size(0,SCENE_HEIGHT);
+    
+    screenSize *= _winscene->getContentSize().height/screenSize.height;
+    
+    float offset = (screenSize.width -_winscene->getWidth())/2;
+    _winscene->setPosition(offset, _winscene->getPosition().y);
+
+//    _winscene->setContentSize(dimen);
+//    _winscene->doLayout();
+//    _winscene->setPosition(125, _winscene->getPositionY());
+    
     // init the lose scene
     _losescene = _assets->get<scene2::SceneNode>("losescene");
-    _losescene->setContentSize(dimen);
+    _losescene->setContentSize(1280,720);
+    //cugl::Size screenSize = Size(0,SCENE_HEIGHT);
+    
+    offset = (screenSize.width -_losescene->getWidth())/2;
+    _losescene->setPosition(offset, _losescene->getPosition().y);
+
+    if (!Scene2::initWithHint(screenSize)) {
+        std::cerr << "Scene2 initialization failed!" << std::endl;
+        return false;
+    }
+    
+//    _losescene->setContentSize(dimen);
+//    _losescene->doLayout();
+//    _losescene->setPosition(125, _winscene->getPositionY());
     
     // init buttons
     _mainWinBtn = std::dynamic_pointer_cast<scene2::Button>(_assets->get<scene2::SceneNode>("winscene.scorewinscene.win_board.button_main"));
     _mainLoseBtn = std::dynamic_pointer_cast<scene2::Button>(_assets->get<scene2::SceneNode>("losescene.scoredefeatscene.defeated_board.button_main"));
-    
     
     // add button listeners
     _mainWinKey = _mainWinBtn->addListener([this](const std::string& name, bool down){
@@ -59,7 +83,7 @@ bool GameOverScene::init(const std::shared_ptr<cugl::AssetManager>& assets){
     
     _sheetNode = scene2::SpriteNode::allocWithSheet(_assets->get<Texture>("win"),2,3,5);
     _sheetNode->setAnchor(Vec2::ANCHOR_CENTER);
-    _sheetNode->setPosition(dimen.width / 2, dimen.height / 2);
+    _sheetNode->setPosition(1100, 800);
     _sheetNode->setScale(0.2);
     _sheetNode->setFrame(0);
     
@@ -137,6 +161,9 @@ void GameOverScene::setActive(bool value){
 
 void GameOverScene::render(const std::shared_ptr<graphics::SpriteBatch>& batch){
     batch->begin(_camera->getCombined());
+    std::shared_ptr<graphics::Texture> temp = Texture::getBlank();
+    _batch->draw(temp, Color4(0,0,0,255), Rect(Vec2::ZERO, cugl::Application().get()->getDisplaySize()));
+   
     switch (type){
         case Type::WIN:
             _winscene->render(batch);

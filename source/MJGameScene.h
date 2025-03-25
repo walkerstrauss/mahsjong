@@ -43,11 +43,16 @@ public:
         PAUSE,
         TILESET,
         SETS,
+        DISCARDED,
+        DRAW_DISCARD,
         WIN,
         LOSE
     };
-protected:
+    /** Vector of tiles to add to discardUI*/
+    std::vector<std::shared_ptr<TileSet::Tile>> discardedTiles;
     Choice _choice;
+    std::shared_ptr<TileSet::Tile> discardDrawTile;
+protected:
     /** Asset manager for this game mode */
     std::shared_ptr<cugl::AssetManager> _assets;
     /** The network connection (as made by this scene) */
@@ -72,8 +77,10 @@ protected:
     std::shared_ptr<DiscardPile> _discardPile;
     /** Reference to texture for gma text*/
     std::shared_ptr<cugl::graphics::Texture> _gmaLabelTexture;
-  
+    /** Text layout */
     std::shared_ptr<cugl::graphics::TextLayout> _text;
+    /** Temporary discard area b/c no asset created for it yet */
+    cugl::Rect discardArea; 
     
     Hand* _hand; // pointer to the hand.
     
@@ -98,11 +105,12 @@ protected:
     std::shared_ptr<cugl::scene2::Button> _pauseBtn;
     /** Button for continuing (in the pause scene) */
     std::shared_ptr<cugl::scene2::Button> _continueBtn;
-    
     /** Button to set to win scene (for debugging) */
     std::shared_ptr<cugl::scene2::Button> _winBtn;
     /** Button to set to defeat scene (for debugging) */
     std::shared_ptr<cugl::scene2::Button> _defeatBtn;
+    /** Button for ending turn */
+    std::shared_ptr<cugl::scene2::Button> _endTurnBtn;
     
     /** Key for discard button listener */
     Uint32 _discardBtnKey;
@@ -299,6 +307,8 @@ public:
     void updateDrag(const cugl::Vec2& mousePos, bool mouseDown, bool mouseReleased);
 
 
+    
+    void discardTile();
     
 };
 

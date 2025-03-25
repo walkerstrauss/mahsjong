@@ -84,10 +84,10 @@
         "nine of crak": {
             "file": "textures/nine_of_crak.png"
         },
-        "one of wild suit": {
+        "chaos of action": {
             "file": "textures/wild_1.png"
         },
-        "two of wild suit": {
+        "echo of action": {
             "file": "textures/wild_2.png"
         },
         "three of wild suit": {
@@ -99,10 +99,10 @@
         "five of wild suit": {
             "file": "textures/wild_5.png"
         },
-        "six of wild suit": {
+        "oblivion of command": {
             "file": "textures/wild_6.png"
         },
-        "seven of wild suit": {
+        "void of command": {
             "file": "textures/wild_7.png"
         },
         "eight of wild suit": {
@@ -587,6 +587,9 @@
         },
         "pauseIcon":{
             "file": "textures/gameplay/pauseButton.png"
+        },
+        "endTurnButton":{
+            "file": "textures/gameplay/endTurnButton.png"
         }
     },
     "fonts": {
