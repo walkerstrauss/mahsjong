@@ -220,6 +220,8 @@ public:
                 return Tile::Suit::DOT;
             } else if (suit == "crak") {
                 return Tile::Suit::CRAK;
+            } else if (suit == "special"){
+                return Tile::Suit::SPECIAL;
             } else {
                 throw std::invalid_argument("No valid suit");
             }

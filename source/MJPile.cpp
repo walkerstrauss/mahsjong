@@ -188,7 +188,18 @@ void Pile::removePileTile(const std::shared_ptr<cugl::JsonValue> tileJson, bool 
         const std::string rank = tileKey->getString("rank");
         const std::string id = tileKey->getString("id");
         
+        const std::string actionType = tileKey->getString("actionType", "None");
+        const std::string commandType = tileKey->getString("commandType", "None");
+        
         std::string key = rank + " of " + suit + " " + id;
+        
+        if(actionType != "None"){
+            key = actionType + " of action " + id;
+        }
+        else if (commandType != "None") {
+            key = commandType + " of command " + id;
+        }
+        
         int x = _pileMap[key].x;
         int y = _pileMap[key].y;
         

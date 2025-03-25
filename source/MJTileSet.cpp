@@ -189,9 +189,15 @@ const std::shared_ptr<cugl::JsonValue> TileSet::toJson(std::vector<std::shared_p
         currTile->appendValue("scale", tile->_scale);
         
         if (auto action = std::dynamic_pointer_cast<ActionTile>(tile)) {
+            if (tile->toStringRank() != "action") {
+                continue;
+            }
             currTile->appendValue("tileType", "action");
             currTile->appendValue("actionType", action->toString());
         } else if (auto command = std::dynamic_pointer_cast<CommandTile>(tile)) {
+            if (tile->toStringRank() != "command") {
+                continue;
+            }
             currTile->appendValue("tileType", "command");
             currTile->appendValue("commandType", command->toString());
         } else {
@@ -223,6 +229,7 @@ void TileSet::updateDeck(const std::shared_ptr<cugl::JsonValue>& deckJson) {
     for(const auto& tileKey : deckJson->children()) {
         std::string key = tileKey->key();
         
+        const std::string id = tileKey->getString("id");
         const cugl::Vec2 pileCoord = Tile::toVector(tileKey->getString("pileCoord"));
         const bool inPile = tileKey->getBool("inPile");
         const bool inHostHand = tileKey->getBool("inHostHand");
@@ -234,6 +241,17 @@ void TileSet::updateDeck(const std::shared_ptr<cugl::JsonValue>& deckJson) {
         const bool inDeck = tileKey->getBool("inDeck");
         const cugl::Vec2 pos = Tile::toVector(tileKey->getString("pos"));
         const float scale = tileKey->getFloat("scale");
+        const std::string suit = tileKey->getString("suit");
+        
+        const std::string actionType = tileKey->getString("actionType", "None");
+        const std::string commandType = tileKey->getString("commandType", "None");
+        
+        if (actionType != "None") {
+            key = actionType + " " + id;
+        }
+        else if (commandType != "None") {
+            key = commandType + " " + id;
+        }
         
         tileMap[key]->inPile = inPile;
         tileMap[key]->inHostHand = inHostHand;
