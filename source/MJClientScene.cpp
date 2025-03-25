@@ -362,6 +362,11 @@ void ClientScene::update(float timestep) {
     if(_network->getStatus() == NetworkController::Status::CONNECTED){
         //_player->setText(std::to_string(_network->getNumPlayers()));
         CULog("WE ARE CONNECTED YOU STUPID HOE");
+        Size dimen = getSize();
+        // Acquire the scene built by the asset loader and resize it the scene
+        std::shared_ptr<scene2::SceneNode> scene = _assets->get<scene2::SceneNode>("host");
+        scene->setContentSize(dimen);
+        scene->doLayout(); // Repositions the HUD
     }
 }
 
