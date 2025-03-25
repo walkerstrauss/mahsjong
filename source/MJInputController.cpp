@@ -109,12 +109,19 @@ void InputController::dispose() {
  * Updates the input controller for the latest frame.
  */
 void InputController::update() {
+#ifdef CU_TOUCH_SCREEN
+    _prevDown = _currDown;
+    _currDown = _touchDown;
+
+    _prevPos = _currPos;
+#else
     _prevDown = _currDown;
     _currDown = _mouseDown;
-    
+
     _prevPos = _currPos;
     _currPos = _mousePos;
-    
+#endif
+
     _prevKeyDown = _keyDown;
     if (!_keyDown) {
         _keyPressed = KeyCode::UNKNOWN;
@@ -180,18 +187,24 @@ void InputController::touchPressCB(const cugl::TouchEvent& event, bool focus) {
         _touchKey = event.touch;
         _currPos = event.position;
         
+        CULog("TOUCH PRESS detected at (%f, %f)", event.position.x, event.position.y);
     }
 }
 
 void InputController::touchReleaseCB(const cugl::TouchEvent& event, bool focus) {
     if (_touchDown && _touchKey == event.touch) {
         _touchDown = false;
+        _touchKey = 0;
+        
+        CULog("TOUCH RELEASE detected at (%f, %f)", event.position.x, event.position.y);
     }
 }
 
 void InputController::dragCB(const cugl::TouchEvent& event, const Vec2 previous, bool focus) {
     if (_touchDown) {
         _currPos = event.position;
+        
+        CULog("TOUCH DRAG detected at (%f, %f)", event.position.x, event.position.y);
     }
 }
 

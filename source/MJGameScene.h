@@ -150,7 +150,7 @@ protected:
     cugl::Vec2 _dragOffset;
     
     /** The rectangle representing the pile's position used for selection handling */
-    cugl::Rect _pileBox;
+    cugl::Rect _pileBox = {0,0,100,100};
     
 public:
 #pragma mark -
