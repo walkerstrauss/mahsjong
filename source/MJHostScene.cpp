@@ -99,6 +99,11 @@ bool HostScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::sha
     _tileTwo = std::dynamic_pointer_cast<scene2::PolygonNode>(_assets->get<scene2::SceneNode>("host.hostscene.waitingRoom.roomid-tile.host1-roomid-tile_1"));
     _tileThree = std::dynamic_pointer_cast<scene2::PolygonNode>(_assets->get<scene2::SceneNode>("host.hostscene.waitingRoom.roomid-tile.host1-roomid-tile_2"));
     _tileFour = std::dynamic_pointer_cast<scene2::PolygonNode>(_assets->get<scene2::SceneNode>("host.hostscene.waitingRoom.roomid-tile.host1-roomid-tile_3"));
+    
+    std::shared_ptr<scene2::SceneNode> playerBoard = _assets->get<scene2::SceneNode>("host.hostscene.waitingRoom.playerBoard");
+    
+    std::shared_ptr<scene2::SceneNode> playerBoard2 = _assets->get<scene2::SceneNode>("host.hostscene.waitingRoom.playerBoard2");
+    playerBoard2->setVisible(false);
 
 
     // Program the buttons
@@ -122,9 +127,8 @@ bool HostScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::sha
     // Create the server configuration
     auto json = _assets->get<JsonValue>("server");
     _config.set(json);
-    
     addChild(scene);
-    //setActive(true);
+    setActive(false);
     _backout->activate();
     return true;
 }
@@ -260,7 +264,7 @@ void HostScene::update(float timestep) {
         }
         else {
             //updateText(_startgame, "Starting");
-            _startgame->deactivate();
+//            _startgame->deactivate();
         }
         //_gameid->setText(hex2dec(_network->getRoomID()));
         //_player->setText(std::to_string(_network->getNumPlayers()));
@@ -273,8 +277,6 @@ void HostScene::update(float timestep) {
     idSetup(_tileTwo, networkHex[1]);
     idSetup(_tileThree, networkHex[2]);
     idSetup(_tileFour, networkHex[3]);
-
-    _tileOne->setVisible(true); 
 }
 
 /**

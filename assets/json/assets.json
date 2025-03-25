@@ -282,6 +282,285 @@
         "table": {
           "file": "textures/tilesetui/table.png"
         },
+        "background_score_win": {
+            "file": "textures/score_win/background_score_win.png"
+        },
+        "Victory__logo_image": {
+            "file": "textures/score_win/Victory__logo_image.png"
+        },
+        "button_score": {
+            "file": "textures/score_win/button_score.png"
+        },
+        "button_point": {
+            "file": "textures/score_win/button_point.png"
+        },
+        "background_score_defeat": {
+            "file": "textures/score_defeat/background_score_defeat.png"
+        },
+        "Defeated_logo_image": {
+            "file": "textures/score_defeat/Defeated_logo_image.png"
+        },
+        "grandma_cry_image": {
+            "file": "textures/score_defeat/grandma_cry_image.png"
+        },
+        "settingIcon":{
+            "file": "textures/cornerIcon/settingIcon.png"
+        },
+        "menuBackground":{
+            "file": "textures/menu/menuBackground.png"
+        },
+        "menuButtonDown":{
+            "file": "textures/menu/menuButtonDown.png"
+        },
+        "menuButtonUp":{
+            "file": "textures/menu/menuButtonUp.png"
+        },
+        "menuGrandma":{
+            "file": "textures/menu/menuGrandma.png"
+        },
+        "setting_button":{
+            "file": "textures/menu/setting_button.png"
+        },
+        "continueButton":{
+            "file": "textures/pause/continueButton.png"
+        },
+        "mainButton":{
+            "file": "textures/pause/mainButton.png"
+        },
+        "pauseBoard":{
+            "file": "textures/pause/pauseBoard.png"
+        },
+        "pauseexitButton":{
+            "file": "textures/pause/pauseexitButton.png"
+        },
+        "pauseGrandma":{
+            "file": "textures/pause/pauseGrandma.png"
+        },
+        "pauseShade":{
+            "file": "textures/pause/pauseShade.png"
+        },
+        "pausetitleBackground":{
+            "file": "textures/pause/pausetitleBackground.png"
+        },
+        "settingButtonBig":{
+            "file": "textures/pause/settingButtonBig.png"
+        },
+        "closeIcon":{
+            "file": "textures/setting/closeIcon.png"
+        },
+        "exitButton":{
+            "file": "textures/setting/exitButton.png"
+        },
+        "settingBoard":{
+            "file": "textures/setting/settingBoard.png"
+        },
+        "settingGrandma":{
+            "file": "textures/setting/settingGrandma.png"
+        },
+        "shade":{
+            "file": "textures/setting/shade.png"
+        },
+        "soundButton":{
+            "file": "textures/setting/soundButton.png"
+        },
+        "titleBackground":{
+            "file": "textures/setting/titleBackground.png"
+        },
+        "actionTileSection":{
+            "file": "textures/gameplay/actionTileSection.png"
+        },
+        "discardCanButton":{
+            "file": "textures/gameplay/discardCanButton.png"
+        },
+        "displaytileSample":{
+            "file": "textures/gameplay/displaytileSample.png"
+        },
+        "gameplayBackground":{
+            "file": "textures/gameplay/gameplayBackground.png"
+        },
+        "infoIcon":{
+            "file": "textures/gameplay/infoIcon.png"
+        },
+        "win":{
+            "file": "textures/win.png"
+        },
+        "1":{
+            "file": "textures/tilesetui/1.png"
+        },
+        "2":{
+            "file": "textures/tilesetui/2.png"
+        },
+        "3":{
+            "file": "textures/tilesetui/3.png"
+        },
+        "4":{
+            "file": "textures/tilesetui/4.png"
+        },
+        "5":{
+            "file": "textures/tilesetui/5.png"
+        },
+        "6":{
+            "file": "textures/tilesetui/6.png"
+        },
+        "7":{
+            "file": "textures/tilesetui/7.png"
+        },
+        "8":{
+            "file": "textures/tilesetui/8.png"
+        },
+        "9":{
+            "file": "textures/tilesetui/9.png"
+        },
+        "10":{
+            "file": "textures/tilesetui/10.png"
+        },
+        "11":{
+            "file": "textures/tilesetui/11.png"
+        },
+        "12":{
+            "file": "textures/tilesetui/12.png"
+        },
+        "13":{
+            "file": "textures/tilesetui/13.png"
+        },
+        "14":{
+            "file": "textures/tilesetui/14.png"
+        },
+        "15":{
+            "file": "textures/tilesetui/15.png"
+        },
+        "16":{
+            "file": "textures/tilesetui/16.png"
+        },
+        "17":{
+            "file": "textures/tilesetui/17.png"
+        },
+        "18":{
+            "file": "textures/tilesetui/18.png"
+        },
+        "19":{
+            "file": "textures/tilesetui/19.png"
+        },
+        "20":{
+            "file": "textures/tilesetui/20.png"
+        },
+        "21":{
+            "file": "textures/tilesetui/21.png"
+        },
+        "22":{
+            "file": "textures/tilesetui/22.png"
+        },
+        "23":{
+            "file": "textures/tilesetui/23.png"
+        },
+        "24":{
+            "file": "textures/tilesetui/24.png"
+        },
+        "25":{
+            "file": "textures/tilesetui/25.png"
+        },
+        "26":{
+            "file": "textures/tilesetui/26.png"
+        },
+        "27":{
+            "file": "textures/tilesetui/27.png"
+        },
+        "discardedtileBoard":{
+            "file": "textures/tilesetui/discardedtileBoard.png"
+        },
+        "DiscardedTileTitle":{
+            "file": "textures/tilesetui/DiscardedTileTitle.png"
+        },
+        "discardTilecloseIcon":{
+            "file": "textures/tilesetui/discardTilecloseIcon.png"
+        },
+        "DiscardShade":{
+            "file": "textures/tilesetui/discardTileShade.png"
+        },
+        "settingBoard": {
+            "file": "textures/setting/settingBoard.png"
+        },
+        "settingGrandma": {
+            "file": "textures/setting/settingGrandma.png"
+        },
+        "closeIcon": {
+            "file": "textures/setting/closeIcon.png"
+        },
+        "exitButton": {
+            "file": "textures/setting/exitButton.png"
+        },
+        "soundButton": {
+            "file": "textures/setting/soundButton.png"
+        },
+        "titleBackground": {
+            "file": "textures/setting/titleBackground.png"
+        },
+        "settingShade": {
+            "file": "textures/setting/shade.png"
+        },
+        "pauseexitButton":{
+            "file": "textures/pause/pauseexitButton.png"
+        },
+        "background_lose":{
+            "file": "textures/score_defeat/background_lose.png"
+        },
+        "background_win_lose":{
+            "file": "textures/score_defeat/background_win_lose.png"
+        },
+        "defeated_board":{
+            "file": "textures/score_defeat/defeated_board.png"
+        },
+        "Defeated_logo":{
+            "file": "textures/score_defeat/Defeated_logo.png"
+        },
+        "defeat_main":{
+            "file": "textures/score_defeat/main.png"
+        },
+        "Main_word":{
+            "file": "textures/score_defeat/Main_word.png"
+        },
+        "tilesample":{
+            "file": "textures/score_defeat/tilesample.png"
+        },
+        "Victory_logo":{
+            "file": "textures/score_win/Victory_logo.png"
+        },
+        "win_board":{
+            "file": "textures/score_win/win_board.png"
+        },
+        "win_main":{
+            "file": "textures/score_win/main.png"
+        },
+        "actionTileSection":{
+              "file": "textures/gameplay/actionTileSection.png"
+        },
+        "discardCanButton":{
+              "file": "textures/gameplay/discardCanButton.png"
+        },
+        "displaytileSample":{
+              "file": "textures/gameplay/displaytileSample.png"
+        },
+        "gameplayBackground":{
+              "file": "textures/gameplay/gameplayBackground.png"
+        },
+        "infoIconButton":{
+              "file": "textures/gameplay/infoIcon.png"
+        },
+        "opponentTile":{
+            "file": "textures/gameplay/opponentTile.png"
+        },
+        "pileTile":{
+            "file": "textures/gameplay/pileTile.png"
+        },
+        "playerSampleTile":{
+            "file": "textures/gameplay/playerSampleTile.png"
+        },
+        "pauseIcon":{
+            "file": "textures/gameplay/pauseButton.png"
+        },
+        "endTurnButton":{
+            "file": "textures/gameplay/endTurnButton.png"
+        },
         "host1-background": {
           "file": "textures/host1/host1-background.png"
         },
@@ -321,7 +600,6 @@
         "host1-player1": {
           "file": "textures/host1/host1-player1.png"
         },
-
         "client1-background": {
           "file": "textures/client1/client1-background.png"
         },
@@ -405,6 +683,10 @@
         "gyparody": {
           "file": "fonts/LightPixel7.ttf",
           "size": 32
+        },
+        "podkovaBold36": {
+            "file": "fonts/Podkova-Bold.ttf",
+            "size": 36
         }
     },
     "scene2s":{
@@ -629,6 +911,26 @@
                     }
                 }
             }
+        },
+        "client3": {
+            "type"      : "Node",
+            "format"    : {
+                "type"        : "Anchored"
+            },
+            "children" : {
+                "client3Scene":{
+                    "type"      : "Widget",
+                    "format"    : {
+                        "type"        : "Anchored"
+                    },
+                    "data":{
+                        "variables": {
+                            "size": [1280,720]
+                        },
+                        "key":"client3Scene"
+                    }
+                }
+            }
         }
     },
   "widgets": {
@@ -661,7 +963,8 @@
     "settingbutton_onoff": "widgets/button/settingbutton_onoff.json",
     "tilesetscene": "widgets/scene/tilesetscene.json",
     "host1Scene": "widgets/scene/host1Scene.json",
-    "client1Scene": "widgets/scene/client1Scene.json"
+    "client1Scene": "widgets/scene/client1Scene.json",
+    "client3Scene": "widgets/scene/client3Scene.json"
   },
     "jsons": {
         "server": "json/server.json"

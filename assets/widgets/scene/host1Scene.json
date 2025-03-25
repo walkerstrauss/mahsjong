@@ -326,6 +326,288 @@
                             "y_offset": -0.27
                         }
                     },
+                    "playerBoard2": {
+                        "type": "Node",
+                        "format": {
+                            "type": "Anchored"
+                        },
+                        "data": {
+                            "anchor": [
+                                0,
+                                1
+                            ],
+                            "size": [
+                                341,
+                                243
+                            ],
+                            "angle": 0,
+                            "position": [
+                                276,
+                                68
+                            ],
+                            "visible": true
+                        },
+                        "children": {
+                            "playerBoardBackground": {
+                                "type": "Node",
+                                "format": {
+                                    "type": "Anchored"
+                                },
+                                "data": {
+                                    "anchor": [
+                                        0,
+                                        1
+                                    ],
+                                    "size": [
+                                        341,
+                                        243
+                                    ],
+                                    "angle": 0,
+                                    "position": [
+                                        0,
+                                        0
+                                    ],
+                                    "visible": true
+                                },
+                                "children": {
+                                    "host1-playerboard-background": {
+                                        "type": "Image",
+                                        "data": {
+                                            "texture": "host1-playerboard-background",
+                                            "anchor": [
+                                                0,
+                                                1
+                                            ],
+                                            "size": [
+                                                400,
+                                                300
+                                            ],
+                                            "angle": 0,
+                                            "position": [
+                                                0,
+                                                0
+                                            ],
+                                            "visible": true
+                                        },
+                                        "layout": {
+                                            "x_anchor": "left",
+                                            "y_anchor": "top",
+                                            "absolute": false,
+                                            "x_offset": 0.2,
+                                            "y_offset": -0.1
+                                        }
+                                    }
+                                },
+                                "layout": {
+                                    "x_anchor": "left",
+                                    "y_anchor": "top",
+                                    "absolute": false,
+                                    "x_offset": 0,
+                                    "y_offset": 0
+                                }
+                            },
+                            "player2": {
+                                "type": "Image",
+                                        "data": {
+                                            "texture": "player2",
+                                            "anchor": [
+                                                0,
+                                                1
+                                            ],
+                                            "size": [
+                                                175,
+                                                60
+                                            ],
+                                            "angle": 0,
+                                            "position": [
+                                                0,
+                                                0
+                                            ],
+                                            "visible": true
+                                        },
+                                        "layout": {
+                                            "x_anchor": "left",
+                                            "y_anchor": "top",
+                                            "absolute": false,
+                                            "x_offset": 0.36,
+                                            "y_offset": -0.7
+                                        }
+                            },
+                            "host1-checkbox": {
+                                        "type": "Image",
+                                        "data": {
+                                            "texture": "host1-checkbox",
+                                            "anchor": [
+                                                0,
+                                                1
+                                            ],
+                                            "size": [
+                                                55,
+                                                55
+                                            ],
+                                            "angle": 0,
+                                            "position": [
+                                                191,
+                                                5
+                                            ],
+                                            "visible": true
+                                        },
+                                        "layout": {
+                                            "x_anchor": "left",
+                                            "y_anchor": "top",
+                                            "absolute": false,
+                                            "x_offset": 1.01,
+                                            "y_offset": -0.7
+                                        }
+                                    },
+                            "player1": {
+                                "type": "Node",
+                                "format": {
+                                    "type": "Anchored"
+                                },
+                                "data": {
+                                    "anchor": [
+                                        0,
+                                        1
+                                    ],
+                                    "size": [
+                                        247,
+                                        52
+                                    ],
+                                    "angle": 0,
+                                    "position": [
+                                        47,
+                                        104
+                                    ],
+                                    "visible": true
+                                },
+                                "children": {
+                                    "host1-checkbox": {
+                                        "type": "Image",
+                                        "data": {
+                                            "texture": "host1-checkbox",
+                                            "anchor": [
+                                                0,
+                                                1
+                                            ],
+                                            "size": [
+                                                55,
+                                                55
+                                            ],
+                                            "angle": 0,
+                                            "position": [
+                                                191,
+                                                5
+                                            ],
+                                            "visible": true
+                                        },
+                                        "layout": {
+                                            "x_anchor": "left",
+                                            "y_anchor": "top",
+                                            "absolute": false,
+                                            "x_offset": 1.2,
+                                            "y_offset": 0
+                                        }
+                                    },
+                                    "host1-player1-button": {
+                                        "type": "Image",
+                                        "data": {
+                                            "texture": "host1-player1-button",
+                                            "anchor": [
+                                                0,
+                                                1
+                                            ],
+                                            "size": [
+                                                175,
+                                                60
+                                            ],
+                                            "angle": 0,
+                                            "position": [
+                                                0,
+                                                0
+                                            ],
+                                            "visible": true
+                                        },
+                                        "layout": {
+                                            "x_anchor": "left",
+                                            "y_anchor": "top",
+                                            "absolute": false,
+                                            "x_offset": 0.3,
+                                            "y_offset": 0
+                                        }
+                                    },
+                                    "host1-player1": {
+                                        "type": "Image",
+                                        "data": {
+                                            "texture": "host1-player1",
+                                            "anchor": [
+                                                0,
+                                                1
+                                            ],
+                                            "size": [
+                                                120,
+                                                35
+                                            ],
+                                            "angle": 0,
+                                            "position": [
+                                                28,
+                                                12
+                                            ],
+                                            "visible": true
+                                        },
+                                        "layout": {
+                                            "x_anchor": "left",
+                                            "y_anchor": "top",
+                                            "absolute": false,
+                                            "x_offset": 0.42,
+                                            "y_offset": -0.23
+                                        }
+                                    }
+                                },
+                                "layout": {
+                                    "x_anchor": "left",
+                                    "y_anchor": "top",
+                                    "absolute": false,
+                                    "x_offset": 0.14,
+                                    "y_offset": -0.36
+                                }
+                            },
+                            "host1-crown": {
+                                "type": "Image",
+                                "data": {
+                                    "texture": "host1-crown",
+                                    "anchor": [
+                                        0.5,
+                                        0.5
+                                    ],
+                                    "size": [
+                                        60,
+                                        60
+                                    ],
+                                    "angle": 18.46839426597258,
+                                    "position": [
+                                        23,
+                                        120.92
+                                    ],
+                                    "visible": true
+                                },
+                                "layout": {
+                                    "x_anchor": "left",
+                                    "y_anchor": "top",
+                                    "absolute": false,
+                                    "x_offset": 0.37,
+                                    "y_offset": -0.4
+                                }
+                            }
+                        },
+                        "layout": {
+                            "x_anchor": "left",
+                            "y_anchor": "top",
+                            "absolute": false,
+                            "x_offset": 0.43,
+                            "y_offset": -0.27
+                        }
+                    },
                     "roomid-tile": {
                         "type": "Node",
                         "format": {

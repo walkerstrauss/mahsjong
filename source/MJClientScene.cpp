@@ -62,23 +62,34 @@ bool ClientScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::s
     if (assets == nullptr) {
         return false;}
     
-    // get the size of the screen.
+    Size dimen = getSize();
+    
+    // Start up the input handler
+    _assets = assets;
+    _network = network;
+
+    // Acquire the scene built by the asset loader and resize it the scene
+    _clientScene1 = _assets->get<scene2::SceneNode>("client");
+    _clientScene1->setContentSize(1280,720);
     cugl::Size screenSize = cugl::Application::get()->getDisplaySize();
+    screenSize *= _clientScene1->getContentSize().height/screenSize.height;
     //cugl::Size screenSize = Size(0,SCENE_HEIGHT);
+    
+    float offset = (screenSize.width -_clientScene1->getWidth())/2;
+    _clientScene1->setPosition(offset, _clientScene1->getPosition().y);
     
     if (!Scene2::initWithHint(screenSize)) {
         return false;
     }
     
-    // Start up the input handler
-    _assets = assets;
-    _network = network;
+    _clientScene2 = _assets->get<scene2::SceneNode>("client3");
+    _clientScene2->setContentSize(1280,720);
     
-    //Size dimen = getSize();
-    // Acquire the scene built by the asset loader and resize it the scene
-    std::shared_ptr<scene2::SceneNode> scene = _assets->get<scene2::SceneNode>("client");
-    scene->setContentSize(screenSize);
-    scene->doLayout(); // Repositions the HUD
+    _clientScene1->setPosition(offset, _clientScene1->getPosition().y);
+    addChild(_clientScene2);
+    _clientScene2->setVisible(false);
+//    _clientCheckbox = _assets->get<scene2::SceneNode>("client3.client3Scene.waitingRoom.playerBoard.host1_checkbox");
+//    _clientCheckbox->setVisible(false);
 
     _startgame = std::dynamic_pointer_cast<scene2::Button>(_assets->get<scene2::SceneNode>("client.clientscene.buttons.confirm-button"));
     _backout = std::dynamic_pointer_cast<scene2::Button>(_assets->get<scene2::SceneNode>("client.clientscene.buttons.cancel-button"));
@@ -195,37 +206,11 @@ bool ClientScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::s
         }
         });
 
-    //TEMP REMOPVE LATER
-    _backout->activate();
-    _tile1->activate();
-    _tile2->activate();
-    _tile3->activate();
-    _tile4->activate();
-    _tile5->activate();
-    _tile6->activate();
-    _tile7->activate();
-    _tile8->activate();
-    _tile9->activate();
-    _tile10->activate();
-    _resetGameID->activate();
-    _startgame->activate();
-    addChild(scene);
-    return true;
-    //TEMP REMOPVE LATER
-    _gameid = std::dynamic_pointer_cast<scene2::TextField>(_assets->get<scene2::SceneNode>("client.clientscene.menu.gameid.gameid_textfield.gameid"));
-    _player = std::dynamic_pointer_cast<scene2::Label>(_assets->get<scene2::SceneNode>("client.clientscene.menu.player.player_textfield.label"));
-    
-    
-    
-    _gameid->addExitListener([this](const std::string& name, const std::string& value) {
-        _network->connectAsClient(dec2hex(value));
-    });
-
     // Create the server configuration
     auto json = _assets->get<JsonValue>("server");
     _config.set(json);
     
-    addChild(scene);
+    addChild(_clientScene1);
     setActive(false);
     return true;
 }
@@ -287,7 +272,7 @@ std::string ClientScene::idCreation(const std::shared_ptr<cugl::scene2::PolygonN
         return "0";
     }
     else {
-        return "BITCH"; // Default case if no match found
+        return ""; // Default case if no match found
     }
 }
 
@@ -319,6 +304,19 @@ void ClientScene::setActive(bool value) {
             //_player->setText("1");
             configureStartButton();
             _backClicked = false;
+            _backout->activate();
+            _tile1->activate();
+            _tile2->activate();
+            _tile3->activate();
+            _tile4->activate();
+            _tile5->activate();
+            _tile6->activate();
+            _tile7->activate();
+            _tile8->activate();
+            _tile9->activate();
+            _tile10->activate();
+            _resetGameID->activate();
+            _startgame->activate();
             // Don't reset the room id
         } else {
             //_gameid->deactivate();
@@ -326,6 +324,18 @@ void ClientScene::setActive(bool value) {
             _backout->deactivate();
             _startgame->setDown(false);
             _backout->setDown(false);
+            _tile1->deactivate();
+            _tile2->deactivate();
+            _tile3->deactivate();
+            _tile4->deactivate();
+            _tile5->deactivate();
+            _tile6->deactivate();
+            _tile7->deactivate();
+            _tile8->deactivate();
+            _tile9->deactivate();
+            _tile10->deactivate();
+            _resetGameID->deactivate();
+            _startgame->deactivate();
         }
     }
 }
@@ -363,14 +373,11 @@ void ClientScene::update(float timestep) {
 //        checkConnection();
     
     configureStartButton();
-    if(_network->getStatus() == NetworkController::Status::CONNECTED){
-        //_player->setText(std::to_string(_network->getNumPlayers()));
-        CULog("WE ARE CONNECTED YOU STUPID HOE");
-        Size dimen = getSize();
-        // Acquire the scene built by the asset loader and resize it the scene
-        std::shared_ptr<scene2::SceneNode> scene = _assets->get<scene2::SceneNode>("host");
-        scene->setContentSize(dimen);
-        scene->doLayout(); // Repositions the HUD
+    if(_network->getStatus() == NetworkController::Status::CONNECTING){
+        _clientScene1->setVisible(false);
+        _clientScene2->setVisible(true);
+    } else if (_network->getStatus() == NetworkController::Status::CONNECTED){
+        _clientCheckbox->setVisible(true);
     }
 }
 

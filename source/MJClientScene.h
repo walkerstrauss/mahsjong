@@ -55,7 +55,12 @@ protected:
     std::shared_ptr<cugl::scene2::TextField> _gameid;
     /** The players label (for updating) */
     std::shared_ptr<cugl::scene2::Label> _player;
-    
+    /** Reference to beginning keyboard client scene*/
+    std::shared_ptr<cugl::scene2::SceneNode> _clientScene1;
+    /** Reference to final client scene*/
+    std::shared_ptr<cugl::scene2::SceneNode> _clientScene2;
+    /**Checkbox for client**/
+    std::shared_ptr<cugl::scene2::SceneNode> _clientCheckbox;
     /** The network configuration */
     cugl::netcode::NetcodeConfig _config;
 

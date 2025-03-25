@@ -19,7 +19,7 @@
  * code a little more clear.
  */
 class HostScene : public cugl::scene2::Scene2 {
-//public:
+public:
 //    /**
 //     * The configuration status
 //     *
@@ -35,7 +35,10 @@ class HostScene : public cugl::scene2::Scene2 {
 //        /** Game was aborted; back to main menu */
 //        ABORT
 //    };
-    
+    /** Scene node for player board in scene 1*/
+    std::shared_ptr<cugl::scene2::SceneNode> playerBoard;
+    /** Scene node for player board in scene 2*/
+    std::shared_ptr<cugl::scene2::SceneNode> playerBoard2;
 protected:
     /** The asset manager for this scene. */
     std::shared_ptr<cugl::AssetManager> _assets;
@@ -52,6 +55,7 @@ protected:
     std::shared_ptr<cugl::scene2::Label> _gameid;
     /** The players label (for updating) */
     std::shared_ptr<cugl::scene2::Label> _player;
+    
     
     /** Tiles for gameID */
     std::shared_ptr<cugl::scene2::PolygonNode> _tileOne;
