@@ -49,8 +49,8 @@ public:
     // Keeps track of which grandma tile we are checking
     int grandmaToAdd;
     // Keeps track of current hand size
-    int _size; 
-    
+    int _size;
+        
 #pragma mark -
 #pragma mark Constructors
     /**
@@ -99,6 +99,8 @@ public:
      * Discards all action tiles in hand and returns number of action tiles discarded.
      */
     void loseActions(bool isHost);
+    
+    void voidEffect();
     
     /**
      * Method to make a set from your hand and add it to selected sets
@@ -226,6 +228,9 @@ public:
     bool canExchange;
     // Whether or not the player has drawn this turn
     bool canDraw;
+    
+    bool forcedDiscard = false;
+
     
     std::shared_ptr<TileSet::Tile> _draggingTile = nullptr;
     cugl::Vec2 _dragStartPos;

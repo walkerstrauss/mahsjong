@@ -534,14 +534,37 @@ void GameScene::applyCommand(std::shared_ptr<TileSet::CommandTile> commandTile) 
                 else {
                     _network->broadcastDeck(_tileSet->toJson(_tileSet->deck));
                 }
-                if (_player->getHand().isWinningHand()){
-                    _gameWin = true;
-                }
             }
             break;
         case TileSet::CommandTile::CommandType::VOID:
             CULog("VOID: Discarding random tile from hand...");
-
+            auto& hand = _player->getHand()._tiles;
+            
+            if (!hand.empty()) {
+                int index = rand() % hand.size();
+                std::shared_ptr<TileSet::Tile> random = hand[index];
+                
+                _player->forcedDiscard = true;
+                _player->getHand()._selectedTiles.clear();
+                random->selected = true;
+                _player->getHand()._selectedTiles.push_back(random);
+                discardTile();
+                _player->forcedDiscard = false;
+            }
+            
+            _player->getHand().drawFromPile(_pile, 1, _network->getHostStatus());
+            _network->broadcastTileDrawn(_tileSet->toJson(_tileSet->tilesToJson));
+            _tileSet->clearTilesToJson();
+            
+            if (_pile->getVisibleSize() == 0) {
+                _pile->createPile();
+                _network->broadcastDeckMap(_tileSet->mapToJson());
+                _network->broadcastPileLayer();
+            }
+            else {
+                _network->broadcastDeck(_tileSet->toJson(_tileSet->deck));
+            }
+            break;
     }
     _network->endTurn();
 }
@@ -714,7 +737,7 @@ void GameScene::releaseTile() {
 
 void GameScene::discardTile() {
     for(auto& tile: _player->getHand()._selectedTiles){
-        if(discardArea.contains(tile->tileRect) && tile->getRank() != TileSet::Tile::Rank::ACTION){
+        if((discardArea.contains(tile->tileRect) || _player->forcedDiscard) && tile->getRank() != TileSet::Tile::Rank::ACTION){
             if (!_player->discarding){
                 _player->discarding = true;
                 for (auto& tile : _player->getHand()._selectedTiles) {
