@@ -31,10 +31,14 @@ public:
         /** User wants to host a game */
         HOST,
         /** User wants to join a game */
-        JOIN
+        JOIN,
+        /** User wants to go to settings */
+        SETTING
     };
 
 protected:
+    /** Reference to the scene node for the homescene*/
+    std::shared_ptr<cugl::scene2::SceneNode> _homescene;
     /** The asset manager for this scene. */
     std::shared_ptr<cugl::AssetManager> _assets;
     /** The menu button for hosting a game */
@@ -86,6 +90,9 @@ public:
      */
     bool init(const std::shared_ptr<cugl::AssetManager>& assets);
 
+#pragma mark -
+#pragma mark Gameplay Handlers
+    
     /**
      * Sets whether the scene is currently active
      *
@@ -106,6 +113,7 @@ public:
      */
     Choice getChoice() const { return _choice; }
 
+    void render() override;
 };
 
 #endif /* __MJ_MENU_SCENE_H__ */

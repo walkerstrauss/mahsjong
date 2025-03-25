@@ -70,11 +70,15 @@ protected:
     
     std::shared_ptr<cugl::JsonValue> _deckJson;
     
+    std::shared_ptr<cugl::JsonValue> _startingDeckJson;
+    
     std::shared_ptr<cugl::JsonValue> _nextTileJson;
     
-    std::shared_ptr<cugl::JsonValue> _pileTile;
+    std::shared_ptr<cugl::JsonValue> _pileTileJson;
     
     std::shared_ptr<cugl::JsonValue> _discardTile;
+    
+    std::shared_ptr<cugl::JsonValue> _tileMapJson;
     
     bool _isHostDraw;
 public:
@@ -152,7 +156,12 @@ public:
     
     void broadcastRemoveDiscard();
     
-    void broadcastNewDiscard(const std::shared_ptr<cugl::JsonValue>&);
+    void broadcastNewDiscard(const std::shared_ptr<cugl::JsonValue>& tileJson);
+    
+    void broadcastStartingDeck(const std::shared_ptr<cugl::JsonValue>& deckJson);
+    
+    void broadcastDeckMap(const std::shared_ptr<cugl::JsonValue>& tileMapJson);
+
     
     Uint32 getLocalPid() const {
         return _localPid;
@@ -190,22 +199,33 @@ public:
     }
     
     std::shared_ptr<cugl::JsonValue> getPileTile() {
-        return _pileTile;
+        return _pileTileJson;
+    }
+    
+    std::shared_ptr<cugl::JsonValue> getStartingDeck() {
+        return _startingDeckJson;
     }
     
     bool isNewPileTile() {
-        return _pileTile != nullptr;
+        return _pileTileJson != nullptr;
     }
     
     void resetPileTile() {
-        _pileTile = nullptr;
+        _pileTileJson = nullptr;
     }
     
     bool getIsHostDraw() {
         return _isHostDraw;
     }
     
+    std::shared_ptr<cugl::JsonValue> getTileMapJson() {
+        return _tileMapJson;
+    }
+    
     void broadcastUpdating();
+    
+    void broadcastReady();
+    
     
     /**
      * Converts a decimal string to a hexadecimal string

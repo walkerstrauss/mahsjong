@@ -25,7 +25,13 @@ using namespace cugl::scene2;
 void MahsJongApp::onStartup() {
     _assets = AssetManager::alloc();
     _batch = SpriteBatch::alloc();
-    auto cam = OrthographicCamera::alloc(getDisplaySize());
+    
+    // get the actual size of the screen.
+    cugl::Size screenSize = cugl::Application::get()->getDisplaySize();
+    
+    //auto cam = OrthographicCamera::alloc(getDisplaySize());
+    auto cam = OrthographicCamera::alloc(screenSize);
+    
     
 #ifdef CU_TOUCH_SCREEN
     Input::activate<Touchscreen>();
@@ -45,11 +51,20 @@ void MahsJongApp::onStartup() {
     _assets->attach<Button>(WidgetLoader::alloc()->getHook());
     _assets->attach<scene2::SceneNode>(Scene2Loader::alloc()->getHook());
     _assets->loadDirectory("json/loading.json");
+    
 
     //Create a "loading" screen
     _scene = State::LOAD;
     _loading.init(_assets, "json/assets.json");
     _loading.setSpriteBatch(_batch);
+    
+    // Get rid of wrong start button
+    std::shared_ptr<scene2::Button> wrongStart = std::dynamic_pointer_cast<scene2::Button>(_assets->get<scene2::SceneNode>("load.after.landingscene.button1"));
+    wrongStart->setVisible(false);
+//    std::shared_ptr<scene2::SceneNode> wrongname = _assets->get<scene2::SceneNode>("load.before.name");
+//    wrongname->setVisible(false);
+//    std::shared_ptr<scene2::SceneNode> wronglogo = _assets->get<scene2::SceneNode>("load.before.logo");
+//    wronglogo->setVisible(false);
     
     _loading.start();
     AudioEngine::start();
@@ -71,6 +86,7 @@ void MahsJongApp::onShutdown() {
     _hostgame.dispose();
     _joingame.dispose();
     _settings.dispose();
+    _pause.dispose();
     _network->dispose();
     _assets = nullptr;
     _batch = nullptr;
@@ -120,7 +136,16 @@ void MahsJongApp::update(float timestep) {
             updateGameScene(timestep);
             break;
         case SETTINGS:
-            _settings.update(timestep);
+            updateSettingScene(timestep);
+            break;
+        case PAUSE:
+            updatePauseScene(timestep);
+            break;
+        case OVER:
+            updateGameOverScene(timestep);
+            break;
+        case TILESETUI:
+            updateTilesetUIScene(timestep);
             break;
     }
 }
@@ -152,7 +177,23 @@ void MahsJongApp::draw() {
            _gameplay.render();
            break;
        case SETTINGS:
+           if (_settings.scene == SettingScene::PrevScene::PAUSED){
+               _gameplay.render();
+           } else if (_settings.scene == SettingScene::PrevScene::MAIN){
+               _mainmenu.render();
+           }
            _settings.render();
+           break;
+       case PAUSE:
+           _gameplay.render();
+           _pause.render();
+           break;
+       case OVER:
+           _gameover.render(_batch);
+           break;
+       case TILESETUI:
+           _gameplay.render();
+           _tilesetui.render();
            break;
    }
 }
@@ -174,27 +215,18 @@ void MahsJongApp::updateLoadingScene(float timestep) {
        _network->init(_assets);
        _mainmenu.init(_assets);
        _mainmenu.setSpriteBatch(_batch);
-//       _mainmenu.settingsbutton->addListener([this](const std::string& name, bool down){
-//           if (!down){
-//               _settings.setActive(true);
-//               _mainmenu.setActive(false);
-//               _scene = State::SETTINGS;
-//           }
-//       });
        _hostgame.init(_assets, _network);
        _hostgame.setSpriteBatch(_batch);
        _joingame.init(_assets, _network);
        _joingame.setSpriteBatch(_batch);
        _settings.init(_assets);
        _settings.setSpriteBatch(_batch);
-       _settings.exitKey = _settings.exitBtn->addListener([this](const std::string& name, bool down){
-           if (!down){
-               _mainmenu.setActive(true);
-               _settings.setActive(false);
-               _scene = State::MENU;
-           }
-       });
-
+       _pause.init(_assets);
+       _pause.setSpriteBatch(_batch);
+       _gameover.init(_assets);
+       _gameover.setSpriteBatch(_batch);
+       _tilesetui.init(_assets);
+       _tilesetui.setSpriteBatch(_batch);
        _mainmenu.setActive(true);
        _scene = State::MENU;
    }
@@ -222,6 +254,12 @@ void MahsJongApp::updateMenuScene(float timestep) {
            _joingame.setActive(true);
            _scene = State::CLIENT;
            break;
+       case MenuScene::Choice::SETTING:
+           _mainmenu.setActive(false);
+           _settings.setActive(true);
+           _settings.scene = SettingScene::PrevScene::MAIN;
+           _scene = State::SETTINGS;
+           break;
        case MenuScene::Choice::NONE:
            // DO NOTHING
            break;
@@ -248,6 +286,7 @@ void MahsJongApp::updateHostScene(float timestep) {
         _gameplay.setSpriteBatch(_batch);
         _hostgame.setActive(false);
         _gameplay.setActive(true);
+        _gameplay.setGameActive(true);
         _scene = State::GAME;
     } else if (_network->getStatus() == NetworkController::Status::NETERROR) {
         _scene = MENU;
@@ -277,6 +316,7 @@ void MahsJongApp::updateClientScene(float timestep) {
         _gameplay.setSpriteBatch(_batch);
         _joingame.setActive(false);
         _gameplay.setActive(true);
+        _gameplay.setGameActive(true);
         _scene = GAME;
     }
     else if (_network->getStatus() == NetworkController::Status::NETERROR) {
@@ -303,7 +343,164 @@ void MahsJongApp::updateGameScene(float timestep) {
         _mainmenu.setActive(true);
         _gameplay.disconnect();
         _scene = State::MENU;
+        return;
+    }
+    switch (_gameplay.getChoice()){
+        case GameScene::Choice::PAUSE:
+            _gameplay.setGameActive(false);
+            _pause.setActive(true);
+            _scene = State::PAUSE;
+            break;
+        case GameScene::Choice::TILESET:
+            _gameplay.setGameActive(false);
+            _tilesetui.setActive(true);
+            _scene = State::TILESETUI;
+            break;
+        case GameScene::Choice::SETS:
+            // Add logic for transitioning to sets scene
+            break;
+        case GameScene::Choice::WIN:
+            _gameplay.setGameActive(false);
+            _gameover.type = GameOverScene::Type::WIN;
+            _gameover.setActive(true);
+            _scene = State::OVER;
+            break;
+        case GameScene::Choice::LOSE:
+            _gameplay.setGameActive(false);
+            _gameover.type = GameOverScene::Type::LOSE;
+            _gameover.setActive(true);
+            _scene = State::OVER;
+            break;
+        case GameScene::Choice::DISCARDED:
+            if (_gameplay.discardedTiles.empty()){
+                CULog("Discarded tiles is empty");
+                break;
+            }
+            for (auto tile : _gameplay.discardedTiles){
+                if (tile != nullptr){
+                    _tilesetui.incrementLabel(tile);
+                }
+            }
+            _gameplay.discardedTiles.clear();
+            _gameplay._choice = GameScene::Choice::NONE;
+            break;
+        case GameScene::Choice::DRAW_DISCARD:
+            if (_gameplay.discardDrawTile == nullptr){
+                CULog("No discard pile tile drawn to hand this frame");
+                break;
+            }
+            _tilesetui.decrementLabel(_gameplay.discardDrawTile);
+            _gameplay.discardDrawTile = nullptr;
+            _gameplay._choice = GameScene::Choice::NONE;
+        case GameScene::Choice::NONE:
+            // Do nothing
+            break;
     }
 }
 
+/**
+ * Individualized update method for the setting scene
+ *
+ * @param timestep  The amount of time (in seconds) since the last frame
+ */
+void MahsJongApp::updateSettingScene(float timestep){
+    _settings.update(timestep);
+    switch (_settings.choice){
+        case SettingScene::Choice::MENU:
+            _settings.setActive(false);
+            _mainmenu.setActive(true);
+            _scene = State::MENU;
+            break;
+        case SettingScene::Choice::PAUSE:
+            _settings.setActive(false);
+            _pause.setActive(true);
+            _scene = State::PAUSE;
+            break;
+        case SettingScene::Choice::MUSICON:
+            // TODO: Handle turning game music on
+            break;
+        case SettingScene::Choice::MUSICOFF:
+            // TODO: Handle turning game music off
+            break;
+        case SettingScene::Choice::SOUNDON:
+            // TODO: Handle turning game sound on
+            break;
+        case SettingScene::Choice::SOUNDOFF:
+            // TODO: Handling turning game sound off
+            break;
+        case SettingScene::Choice::NONE:
+            // Do nothing
+            break;
+    }
+}
 
+/**
+ * Individualized update method for the pause scene
+ *
+ * @param timestep  The amount of time (in seconds) since the last frame
+ */
+void MahsJongApp::updatePauseScene(float timestep) {
+    _pause.update(timestep);
+    switch (_pause.choice){
+        case PauseScene::Choice::MENU:
+            _pause.setActive(false);
+            _mainmenu.setActive(true);
+            _network->disconnect();
+            _gameplay.dispose();
+            _scene = State::MENU;
+            break;
+        case PauseScene::Choice::SETTINGS:
+            _pause.setActive(false);
+            _settings.setActive(true);
+            _settings.scene = SettingScene::PrevScene::PAUSED;
+            _scene = State::SETTINGS;
+            break;
+        case PauseScene::Choice::CONTINUE:
+            _pause.setActive(false);
+            _gameplay.setGameActive(true);
+            _scene = State::GAME;
+            break;
+        case PauseScene::Choice::NONE:
+            // Do nothing
+            break;
+    }
+}
+
+/**
+ * Individualized update method for the game over scene
+ *
+ * @param timestep  The amount of time (in seconds) since the last frame
+ */
+void MahsJongApp::updateGameOverScene(float timestep) {
+    _gameover.update(timestep);
+    if (_gameover.choice == GameOverScene::Choice::MENU){
+        _gameover.setActive(false);
+        _mainmenu.setActive(true);
+        _network->disconnect();
+        _scene = State::MENU;
+        _gameplay.dispose();
+    } else if (_gameover.choice == GameOverScene::Choice::NONE){
+        // Do nothing
+        return;
+    }
+}
+
+/**
+ * Individualized update method for the tileset UI scene
+ *
+ * @param timestep  The amount of time (in seconds) since the last frame
+ */
+void MahsJongApp::updateTilesetUIScene(float timestep) {
+    _tilesetui.update(timestep);
+    switch (_tilesetui.choice){
+        case DiscardUIScene::Choice::BACK:
+            _tilesetui.setActive(false);
+            _gameplay.setActive(true);
+            _gameplay.setGameActive(true);
+            _scene = State::GAME;
+            break;
+        case DiscardUIScene::Choice::NONE:
+            // Do nothing
+            break;
+    }
+}

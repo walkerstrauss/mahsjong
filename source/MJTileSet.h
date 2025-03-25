@@ -24,9 +24,11 @@ public:
         std::shared_ptr<cugl::graphics::Texture> _texture;
         
     public:
+        virtual ~Tile() = default;
+        
         /** An enum to represent tile suits */
         enum class Suit : int {
-            WILD_SUIT,
+            SPECIAL,
             CRAK,
             BAMBOO,
             DOT
@@ -43,7 +45,8 @@ public:
             SEVEN = 7,
             EIGHT = 8,
             NINE = 9,
-            WILD_RANK = 10
+            ACTION = 10,
+            COMMAND = 11
         };
         
         /** The tile's rank */
@@ -70,12 +73,16 @@ public:
         bool selectedInSet;
         /** True if this tile has been played, false otherwise */
         bool played;
+        /** If tile is in the current deck */
+        bool inDeck;
         /** The tile's position (updated in player and pile methods) */
         cugl::Vec2 pos;
         /** The rectangle representing the tile's position used for selection handling */
         cugl::Rect tileRect;
         /** The scale of the tile */
         float _scale;
+        /** Wheather or not the tile is pressed to handle the mobile version of the game*/
+        bool pressed;
         
 #pragma mark -
 #pragma mark Tile Constructors
@@ -146,8 +153,11 @@ public:
                 case Tile::Rank::NINE:
                     return "nine";
                     break;
-                case Tile::Rank::WILD_RANK:
-                    return "wild rank";
+                case Tile::Rank::ACTION:
+                    return "action";
+                    break;
+                case Tile::Rank::COMMAND:
+                    return "command";
                     break;
                 default:
                     return "no valid rank";
@@ -170,8 +180,8 @@ public:
                 case Tile::Suit::CRAK:
                     return "crak";
                     break;
-                case Tile::Suit::WILD_SUIT:
-                    return "wild suit";
+                case Tile::Suit::SPECIAL:
+                    return "special";
                     break;
                 default:
                     return "no valid suit";
@@ -227,7 +237,7 @@ public:
          *
          * @return a string representing the rank and suit of the tile
          */
-        std::string toString() const {
+        virtual std::string toString() const {
             return toStringRank() + " of " + toStringSuit();
         }
         
@@ -268,9 +278,88 @@ public:
         }
     };
     
+    class ActionTile : public Tile {
+    public:
+        enum class ActionType : int {
+            JUGGERNAUT,     //rearrange tiles in current row
+            ORACLE,     //draw any tile in pile
+            SEER,       //draw any tile in discard pile
+            CHAOS,      //reshuffle the pile
+            ECHO        //draw two tiles instead of one
+        };
+        
+        ActionType type;
+        
+        ActionTile(ActionType type) : Tile(Tile::Rank::ACTION, Tile::Suit::SPECIAL), type(type) {}
+        
+        std::string toString() const override {
+            switch (type) {
+                case ActionType::CHAOS:
+                    return "chaos of action";
+                case ActionType::ECHO:
+                    return "echo of action";
+                case ActionType::JUGGERNAUT:
+                    return "juggernaut of action";
+                case ActionType::ORACLE:
+                    return "oracle of action";
+                case ActionType::SEER:
+                    return "seer of action";
+                default:
+                    return "unknown";
+            }
+        }
+        
+        static ActionTile::ActionType toType(const std::string& str) {
+            if (str == "chaos of action") {
+                return ActionType::CHAOS;
+            } else if (str == "echo of action") {
+                return ActionType::ECHO;
+            } else if (str == "juggernaut of action") {
+                return ActionType::JUGGERNAUT;
+            } else if (str == "oracle of action") {
+                return ActionType::ORACLE;
+            } else  {
+                return ActionType::SEER;
+            }
+        }
+    };
+    
+    class CommandTile: public Tile {
+    public:
+        enum class CommandType : int {
+            OBLIVION,    //remove all action tiles from hand
+            VOID    //discard a random tile from hand
+        };
+        
+        CommandType type;
+        
+        CommandTile(CommandType type) : Tile(Tile::Rank::COMMAND, Tile::Suit::SPECIAL), type(type) {}
+        
+        std::string toString() const override {
+            switch (type) {
+                case CommandType::OBLIVION:
+                    return "oblivion of command";
+                case CommandType::VOID:
+                    return "void of command";
+                default:
+                    return "unknown";
+            }
+        }
+        
+        static CommandTile::CommandType toType(const std::string& str) {
+            if (str == "oblivion of command") {
+                return CommandType::OBLIVION;
+            } else {
+                return CommandType::VOID;
+            }
+        }
+    };
+    
 public:
     /** Deck with all of the tiles */
     std::vector<std::shared_ptr<Tile>> deck;
+    /** Vector with starting representation of deck */
+    std::vector<std::shared_ptr<Tile>> startingDeck;
     /** Unsorted set containing tiles in the deck */
     std::map<std::string, std::shared_ptr<Tile>> tileMap;
     /** Grandma's favorite tiles */
@@ -314,6 +403,7 @@ public:
      */
     void initClientDeck(const std::shared_ptr<cugl::JsonValue>& deckJson);
     
+    void addActionAndCommandTiles(const std::shared_ptr<cugl::AssetManager>& assets);
     
 #pragma mark -
 #pragma mark Tileset Gameplay Handling
@@ -338,6 +428,7 @@ public:
     }
     
     /**
+
      * Generates 3 random unique grandma tiles
      */
     void generateGrandmaTiles();
@@ -351,35 +442,35 @@ public:
         }
     }
     
-    /**
-     * Generates a random wild tile after scoring a grandma tile
-     *
-     * @return a randomly generated tile
-     */
-    std::shared_ptr<TileSet::Tile> generateWildTile() {
-        rdTileSet.init();
-        int rank = static_cast<int>(rdTileSet.getOpenUint64(1, 11));
-        
-        std::shared_ptr<Tile> wildTile = std::make_shared<Tile>(static_cast<Tile::Rank>(rank), Tile::Suit::WILD_SUIT);
-        wildTile->_id = wildCount;
-        wildCount += 1;
-        return wildTile;
-    }
-    
-    /**
-     * Generates a set of wild tiles
-     */
-    void generateWildSet() {
-        for(int i = 0; i < 11; i++){
-            for(int j = 0; j < 3; j++){
-                std::shared_ptr<Tile> newTile = std::make_shared<Tile>(static_cast<Tile::Rank>(i), Tile::Suit::WILD_SUIT);
-                newTile->_id = wildCount;
-                wildCount += 1;
-                
-                wildTiles.emplace_back(newTile);
-            }
-        }
-    }
+//    /**
+//     * Generates a random wild tile after scoring a grandma tile
+//     *
+//     * @return a randomly generated tile
+//     */
+//    std::shared_ptr<TileSet::Tile> generateWildTile() {
+//        rdTileSet.init();
+//        int rank = static_cast<int>(rdTileSet.getOpenUint64(1, 11));
+//        
+//        std::shared_ptr<Tile> wildTile = std::make_shared<Tile>(static_cast<Tile::Rank>(rank), Tile::Suit::WILD_SUIT);
+//        wildTile->_id = wildCount;
+//        wildCount += 1;
+//        return wildTile;
+//    }
+//    
+//    /**
+//     * Generates a set of wild tiles
+//     */
+//    void generateWildSet() {
+//        for(int i = 0; i < 11; i++){
+//            for(int j = 0; j < 3; j++){
+//                std::shared_ptr<Tile> newTile = std::make_shared<Tile>(static_cast<Tile::Rank>(i), Tile::Suit::WILD_SUIT);
+//                newTile->_id = wildCount;
+//                wildCount += 1;
+//                
+//                wildTiles.emplace_back(newTile);
+//            }
+//        }
+//    }
     
     /**
      * Picks a random tile from the wild tiles set by shuffling then choosing the first element.
@@ -403,6 +494,11 @@ public:
      * Sets the texture for all tiles in deck
      */
     void setAllTileTexture(const std::shared_ptr<cugl::AssetManager>& assets);
+    
+    /**
+     * Sets the textures for the action and command tiles in deck
+     */
+    void setSpecialTextures(const std::shared_ptr<cugl::AssetManager>& assets);
     
     /**
      * Sets the texture of a facedown tile
@@ -449,6 +545,10 @@ public:
     void setNextTile(std::shared_ptr<cugl::JsonValue>& nextTileJson);
     
     void updateDeck(const std::shared_ptr<cugl::JsonValue>& deckJson);
+    
+    std::vector<std::shared_ptr<Tile>> processTileJson(const std::shared_ptr<cugl::JsonValue>& tileJson);
+    
+    std::shared_ptr<cugl::JsonValue> mapToJson();
 };
 
 #endif /* __MJ_TILESET_H__ */

@@ -67,23 +67,29 @@ static std::string hex2dec(const std::string hex) {
 bool HostScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::shared_ptr<NetworkController> network) {
     // Initialize the scene to a locked width
     if (assets == nullptr) {
-        return false;
-    } else if (!Scene2::initWithHint(Size(0,SCENE_HEIGHT))) {
-        return false;
-    }
+        return false;}
+    
+    Size dimen = getSize();
     
     // Start up the input handler
     _assets = assets;
     _network = network;
-    
+
     // Acquire the scene built by the asset loader and resize it the scene
     std::shared_ptr<scene2::SceneNode> scene = _assets->get<scene2::SceneNode>("host");
-
-    Size dimen = getSize();
+    scene->setContentSize(1280,720);
+    cugl::Size screenSize = cugl::Application::get()->getDisplaySize();
+    screenSize *= scene->getContentSize().height/screenSize.height;
+    //cugl::Size screenSize = Size(0,SCENE_HEIGHT);
+    
+    if (!Scene2::initWithHint(screenSize)) {
+        return false;
+    }
     
 
+    //scene->setContentSize(dimen);
+//    scene->setContentSize(screenSize);
 
-    scene->setContentSize(dimen);
     scene->doLayout(); // Repositions the HUD
 
     _startgame = std::dynamic_pointer_cast<scene2::Button>(_assets->get<scene2::SceneNode>("host.hostscene.menu.button1"));
@@ -214,6 +220,7 @@ void HostScene::setActive(bool value) {
             _backout->deactivate();
             _startgame->setDown(false);
             _backout->setDown(false);
+            _startGameClicked = false;
         }
     }
 }

@@ -33,6 +33,25 @@ using namespace std;
  * This world should contain all objects, assets, and input controller. Please start
  * including any and all objects and classes that will build our game */
 class GameScene: public cugl::scene2::Scene2{
+public:
+    /**
+     * Enum representing the player's choice when in the
+     * game scene for app transitioning scenes logic
+     */
+    enum Choice {
+        NONE,
+        PAUSE,
+        TILESET,
+        SETS,
+        DISCARDED,
+        DRAW_DISCARD,
+        WIN,
+        LOSE
+    };
+    /** Vector of tiles to add to discardUI*/
+    std::vector<std::shared_ptr<TileSet::Tile>> discardedTiles;
+    Choice _choice;
+    std::shared_ptr<TileSet::Tile> discardDrawTile;
 protected:
     /** Asset manager for this game mode */
     std::shared_ptr<cugl::AssetManager> _assets;
@@ -58,8 +77,10 @@ protected:
     std::shared_ptr<DiscardPile> _discardPile;
     /** Reference to texture for gma text*/
     std::shared_ptr<cugl::graphics::Texture> _gmaLabelTexture;
-  
+    /** Text layout */
     std::shared_ptr<cugl::graphics::TextLayout> _text;
+    /** Temporary discard area b/c no asset created for it yet */
+    cugl::Rect discardArea; 
     
     Hand* _hand; // pointer to the hand.
     
@@ -84,6 +105,13 @@ protected:
     std::shared_ptr<cugl::scene2::Button> _pauseBtn;
     /** Button for continuing (in the pause scene) */
     std::shared_ptr<cugl::scene2::Button> _continueBtn;
+    /** Button to set to win scene (for debugging) */
+    std::shared_ptr<cugl::scene2::Button> _winBtn;
+    /** Button to set to defeat scene (for debugging) */
+    std::shared_ptr<cugl::scene2::Button> _defeatBtn;
+    /** Button for ending turn */
+    std::shared_ptr<cugl::scene2::Button> _endTurnBtn;
+    
     /** Key for discard button listener */
     Uint32 _discardBtnKey;
     /** Key for tileset UI button listener */
@@ -117,6 +145,20 @@ protected:
     /** Holds reference to empty pick flip sprite sheet */
     std::shared_ptr<cugl::graphics::SpriteSheet> _emptyPickFlipSheet;
     
+    /** The tile currently being dragged */
+    cugl::Vec2 _dragOffset;
+    
+    /** The rectangle representing the pile's position used for selection handling */
+    cugl::Rect _pileBox;
+
+    std::shared_ptr<TileSet::Tile> _draggingTile = nullptr;
+    cugl::Vec2 _dragStartPos;
+    bool _dragInitiated = false;
+    const float DRAG_THRESHOLD = 0.0f;
+
+    cugl::Vec2 _originalTilePos = cugl::Vec2::ZERO;
+    bool shouldReturn = true;
+
 public:
 #pragma mark -
 #pragma mark Constructors
@@ -178,6 +220,12 @@ public:
 #pragma mark -
 #pragma mark Gameplay Handling
     /**
+     * Returns choice of this game scene
+     */
+    Choice getChoice(){
+        return _choice;
+    }
+    /**
      * Rests the status of the game so we can play again.
      */
     void reset() override;
@@ -194,10 +242,22 @@ public:
      */
     void render() override;
     
-    /**
-     * Processes updates from network
-     */
+    virtual void setActive(bool value) override;
+    
+    void setGameActive(bool value);
+    
+    void render(std::shared_ptr<cugl::graphics::SpriteBatch>& batch);
+    
     void processData(std::vector<std::string> msg);
+    /**
+     * Applies the effects of the given action tile
+     */
+    void applyAction(std::shared_ptr<TileSet::ActionTile> actionTile);
+    
+    /**
+     * Applies the effects of the given command tile
+     */
+    void applyCommand(std::shared_ptr<TileSet::CommandTile> commandTile);
     
     /**
      * Checks whether or not a tile has been clicked and sets selected status accordingly
@@ -234,6 +294,22 @@ public:
       * @return true if update was successful, and false otherwise
       */
      bool decrementLabel(std::shared_ptr<TileSet::Tile> tile);
+    
+    /**
+     * Method to detect the tiles which are being pressed by a user in a mobile version of the game.
+     */
+    void pressTile();
+    
+    void dragTile();
+    
+    void releaseTile();
+
+    void updateDrag(const cugl::Vec2& mousePos, bool mouseDown, bool mouseReleased);
+
+
+    
+    void discardTile();
+    
 };
 
 #endif /* __MJ_GAME_SCENE_H__ */

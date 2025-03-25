@@ -60,8 +60,13 @@ static std::string dec2hex(const std::string dec) {
 bool ClientScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::shared_ptr<NetworkController> network) {
     // Initialize the scene to a locked width
     if (assets == nullptr) {
-        return false;
-    } else if (!Scene2::initWithHint(Size(0,SCENE_HEIGHT))) {
+        return false;}
+    
+    // get the size of the screen.
+    cugl::Size screenSize = cugl::Application::get()->getDisplaySize();
+    //cugl::Size screenSize = Size(0,SCENE_HEIGHT);
+    
+    if (!Scene2::initWithHint(screenSize)) {
         return false;
     }
     
@@ -69,10 +74,10 @@ bool ClientScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::s
     _assets = assets;
     _network = network;
     
-    Size dimen = getSize();
+    //Size dimen = getSize();
     // Acquire the scene built by the asset loader and resize it the scene
     std::shared_ptr<scene2::SceneNode> scene = _assets->get<scene2::SceneNode>("client");
-    scene->setContentSize(dimen);
+    scene->setContentSize(screenSize);
     scene->doLayout(); // Repositions the HUD
 
     _startgame = std::dynamic_pointer_cast<scene2::Button>(_assets->get<scene2::SceneNode>("client.clientscene.buttons.confirm-button"));
@@ -209,7 +214,6 @@ bool ClientScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::s
     //TEMP REMOPVE LATER
     _gameid = std::dynamic_pointer_cast<scene2::TextField>(_assets->get<scene2::SceneNode>("client.clientscene.menu.gameid.gameid_textfield.gameid"));
     _player = std::dynamic_pointer_cast<scene2::Label>(_assets->get<scene2::SceneNode>("client.clientscene.menu.player.player_textfield.label"));
-//    _status = Status::IDLE;
     
     
     
