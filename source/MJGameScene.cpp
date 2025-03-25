@@ -363,7 +363,6 @@ void GameScene::update(float timestep) {
                 currDiscardTile->discarded = false;
                 currDiscardTile->played = true;
                 _network->broadcastRemoveDiscard();
-                // TODO: handle decrement discard UI label
                 _player->canExchange = false;
                 
                 discardDrawTile = _discardPile->getTopTile();
@@ -715,7 +714,7 @@ void GameScene::releaseTile() {
 
 void GameScene::discardTile() {
     for(auto& tile: _player->getHand()._selectedTiles){
-        if(discardArea.contains(tile->tileRect)){
+        if(discardArea.contains(tile->tileRect) && tile->getRank() != TileSet::Tile::Rank::ACTION){
             if (!_player->discarding){
                 _player->discarding = true;
                 for (auto& tile : _player->getHand()._selectedTiles) {
@@ -729,8 +728,6 @@ void GameScene::discardTile() {
                     _tileSet->tilesToJson.push_back(tile);
                     _network->broadcastNewDiscard(_tileSet->toJson(_tileSet->tilesToJson));
                     _tileSet->clearTilesToJson();
-                    //Add to discard UI scene
-                    // TODO: add to discard ui scene from app
                     _player->getHand().discard(tile, _network->getHostStatus());
                     discardedTiles.emplace_back(tile);
                 }
