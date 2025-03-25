@@ -93,7 +93,7 @@ bool HostScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::sha
     _tileTwo = std::dynamic_pointer_cast<scene2::PolygonNode>(_assets->get<scene2::SceneNode>("host.hostscene.waitingRoom.roomid-tile.host1-roomid-tile_1"));
     _tileThree = std::dynamic_pointer_cast<scene2::PolygonNode>(_assets->get<scene2::SceneNode>("host.hostscene.waitingRoom.roomid-tile.host1-roomid-tile_2"));
     _tileFour = std::dynamic_pointer_cast<scene2::PolygonNode>(_assets->get<scene2::SceneNode>("host.hostscene.waitingRoom.roomid-tile.host1-roomid-tile_3"));
-    
+
 
     // Program the buttons
     _backout->addListener([this](const std::string& name, bool down) {
@@ -129,34 +129,34 @@ bool HostScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::sha
 void HostScene::idSetup(const std::shared_ptr<cugl::scene2::PolygonNode>& tile, const char serverPart) {
     switch (serverPart) {
         case '1':
-            tile->setTexture(_assets->get<cugl::graphics::Texture>("one of bamboo"));
+            tile->setTexture(_assets->get<cugl::graphics::Texture>("client1-gameid-tile"));
             break;
         case '2':
-            tile->setTexture(_assets->get<cugl::graphics::Texture>("two of bamboo"));
+            tile->setTexture(_assets->get<cugl::graphics::Texture>("client1-gameid-tile1"));
             break;
         case '3':
-            tile->setTexture(_assets->get<cugl::graphics::Texture>("three of bamboo"));
+            tile->setTexture(_assets->get<cugl::graphics::Texture>("client1-gameid-tile2"));
             break;
         case '4':
-            tile->setTexture(_assets->get<cugl::graphics::Texture>("four of bamboo"));
+            tile->setTexture(_assets->get<cugl::graphics::Texture>("client1-gameid-tile3"));
             break;
         case '5':
-            tile->setTexture(_assets->get<cugl::graphics::Texture>("five of bamboo"));
+            tile->setTexture(_assets->get<cugl::graphics::Texture>("client1-gameid-tile4"));
             break;
         case '6':
-            tile->setTexture(_assets->get<cugl::graphics::Texture>("six of bamboo"));
+            tile->setTexture(_assets->get<cugl::graphics::Texture>("client1-gameid-tile5"));
             break;
         case '7':
-            tile->setTexture(_assets->get<cugl::graphics::Texture>("seven of bamboo"));
+            tile->setTexture(_assets->get<cugl::graphics::Texture>("client1-gameid-tile6"));
             break;
         case '8':
-            tile->setTexture(_assets->get<cugl::graphics::Texture>("eight of bamboo"));
+            tile->setTexture(_assets->get<cugl::graphics::Texture>("client1-gameid-tile7"));
             break;
         case '9':
-            tile->setTexture(_assets->get<cugl::graphics::Texture>("nine of bamboo"));
+            tile->setTexture(_assets->get<cugl::graphics::Texture>("client1-gameid-tile8"));
             break;
         case '0':
-            tile->setTexture(_assets->get<cugl::graphics::Texture>("one of dot"));
+            tile->setTexture(_assets->get<cugl::graphics::Texture>("client1-gameid-tile9"));
             break;
         case 'A':
             tile->setTexture(_assets->get<cugl::graphics::Texture>("two of dot"));
@@ -177,7 +177,7 @@ void HostScene::idSetup(const std::shared_ptr<cugl::scene2::PolygonNode>& tile, 
             tile->setTexture(_assets->get<cugl::graphics::Texture>("seven of dot"));
             break;
         default:
-            tile->setTexture(_assets->get<cugl::graphics::Texture>("facedown"));
+            tile->setTexture(_assets->get<cugl::graphics::Texture>("client1-gameid-blank"));
     }
 }
 

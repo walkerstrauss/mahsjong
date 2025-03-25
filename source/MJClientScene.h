@@ -58,6 +58,30 @@ protected:
     
     /** The network configuration */
     cugl::netcode::NetcodeConfig _config;
+
+    /** Keypad */
+    std::shared_ptr<cugl::scene2::Button> _tile1;
+    std::shared_ptr<cugl::scene2::Button> _tile2;
+    std::shared_ptr<cugl::scene2::Button> _tile3;
+    std::shared_ptr<cugl::scene2::Button> _tile4;
+    std::shared_ptr<cugl::scene2::Button> _tile5;
+    std::shared_ptr<cugl::scene2::Button> _tile6;
+    std::shared_ptr<cugl::scene2::Button> _tile7;
+    std::shared_ptr<cugl::scene2::Button> _tile8;
+    std::shared_ptr<cugl::scene2::Button> _tile9;
+    std::shared_ptr<cugl::scene2::Button> _tile10;
+
+    std::shared_ptr<cugl::scene2::Button> _resetGameID;
+
+    /** GameID Tiles */
+    //std::shared_ptr<cugl::scene2::PolygonNode> _tileID1;
+    //std::shared_ptr<cugl::scene2::PolygonNode> _tileID2;
+    //std::shared_ptr<cugl::scene2::PolygonNode> _tileID3;
+    //std::shared_ptr<cugl::scene2::PolygonNode> _tileID4;
+
+    /** GameID list */
+    std::shared_ptr<cugl::scene2::PolygonNode> _gameIDNew[4];
+    int _idPos;
     
     /** Whether the back button had been clicked. */
     bool _backClicked = false;
