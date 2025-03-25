@@ -276,7 +276,6 @@ void MahsJongApp::updateMenuScene(float timestep) {
  */
 void MahsJongApp::updateHostScene(float timestep) {
     _hostgame.update(timestep);
-    
     if(_hostgame.getBackClicked()){
         _scene = MENU;
         _hostgame.setActive(false);

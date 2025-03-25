@@ -111,11 +111,6 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::sha
     _player = std::make_shared<Player>();
     _pile = std::make_shared<Pile>(); //Init our pile
     discardArea = cugl::Rect(Vec2(1000, 210), Size(273, 195));
-    
-    
-
-    
-    
 
     if(_network->getHostStatus()){
         //Setting up whole deck
@@ -131,6 +126,7 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::sha
         _player->getHand().updateTilePositions(getSize());
         
         _tileSet->addActionAndCommandTiles(assets);
+        _tileSet->setSpecialTextures(assets);
         _tileSet->shuffle();
         //Creating pile as Host
         _pile->initPile(4, _tileSet, _network->getHostStatus());
@@ -138,7 +134,6 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::sha
         _network->broadcastStartingDeck(_tileSet->mapToJson());
     } else {
         _tileSet->initClientDeck(_network->getStartingDeck());
-        
         //Initializing client pile (pile full of nullptrs)
         _pile->initPile(4, _tileSet, _network->getHostStatus());
         

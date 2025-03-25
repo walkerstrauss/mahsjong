@@ -95,12 +95,6 @@ void TileSet::addActionAndCommandTiles(const std::shared_ptr<cugl::AssetManager>
         oblivion->setTexture(assets->get<Texture>(oblivion->toString()));
         deck.push_back(oblivion);
         tileMap[oblivion->toString() + " " + std::to_string(oblivion->_id)] = oblivion;
-        
-        std::shared_ptr<CommandTile> vvoid = std::make_shared<CommandTile>(CommandTile::CommandType::VOID);
-        vvoid->_id = i;
-        vvoid->setTexture(assets->get<Texture>(vvoid->toString()));
-        deck.push_back(vvoid);
-        tileMap[vvoid->toString() + " " + std::to_string(vvoid->_id)] = vvoid;
 
     }
 }
@@ -122,30 +116,34 @@ void TileSet::setAllTileTexture(const std::shared_ptr<cugl::AssetManager>& asset
     }
 }
 
-//void TileSet::setSpecialTextures(const std::shared_ptr<cugl::AssetManager>& assets) {
-//    for(const auto& it : deck){
-//        if (it->getSuit() == Tile::Suit::SPECIAL) {
-//            if (it->getRank() == Tile::Rank::ACTION) {
-//                auto action = std::dynamic_pointer_cast<ActionTile>(it);
-//                switch (action->type) {
-//                    case ActionTile::ActionType::CHAOS:
-//                        action->setTexture(assets->get<Texture>("one of wild suit"));
-//                        break;
-//                    case ActionTile::ActionType::ECHO:
-//                        action->setTexture(assets->get<Texture>("two of wild suit"));
-//                        break;
-//                }
-//            } else if (it->getRank() == Tile::Rank::COMMAND) {
-//                auto command = std::dynamic_pointer_cast<CommandTile>(it);
-//                switch (command->type) {
-//                    case CommandTile::CommandType::OBLIVION:
-//                        command->setTexture(assets->get<Texture>("six of wild suit"));
-//                        break;
-//                }
-//            }
-//        }
-//    }
-//}
+void TileSet::setSpecialTextures(const std::shared_ptr<cugl::AssetManager>& assets) {
+    for(const auto& it : deck){
+        if (it->getSuit() == Tile::Suit::SPECIAL) {
+            if (it->getRank() == Tile::Rank::ACTION) {
+                auto action = std::dynamic_pointer_cast<ActionTile>(it);
+                switch (action->type) {
+                    case ActionTile::ActionType::CHAOS:
+                        action->setTexture(assets->get<Texture>("one of wild suit"));
+                        break;
+                    case ActionTile::ActionType::ECHO:
+                        action->setTexture(assets->get<Texture>("two of wild suit"));
+                        break;
+                    default:
+                        break;
+                }
+            } else if (it->getRank() == Tile::Rank::COMMAND) {
+                auto command = std::dynamic_pointer_cast<CommandTile>(it);
+                switch (command->type) {
+                    case CommandTile::CommandType::OBLIVION:
+                        command->setTexture(assets->get<Texture>("six of wild suit"));
+                        break;
+                    default:
+                        break;
+                }
+            }
+        }
+    }
+}
 
 /**
  * Sets the texture of a wild tile
