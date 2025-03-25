@@ -459,10 +459,10 @@ void Hand::updateTilePositions(cugl::Size sceneSize){
     
     
     float offsetWidth = (screenSize.width - sceneSize.width)/2.0f;
-    float startX = offsetWidth; // Starting x position for hand tile positioning
-    float endX = screenSize.width - offsetWidth; // Ending x position for hand tile positioning
-    float tileSpacing = (endX-startX) / 13 ; // Spacing in x direction between tiles
-    float yPos = 60.0f; // Height of hand tiles on the screen
+    float startX = offsetWidth + 75; // Starting x position for hand tile positioning
+    float endX = screenSize.width - offsetWidth - 100; // Ending x position for hand tile positioning
+    float tileSpacing = (endX-startX) / 14 ; // Spacing in x direction between tiles
+    float yPos = 80.0f; // Height of hand tiles on the screen
 
 
     for (size_t i = 0; i < _tiles.size(); i++){
@@ -470,7 +470,8 @@ void Hand::updateTilePositions(cugl::Size sceneSize){
           continue;
         }
       
-    cugl::Vec2 newPos(startX + i * tileSpacing, yPos);
+    cugl::Vec2 newPos(startX + i * tileSpacing + (_tiles[i]->getTileTexture()->getWidth()/2 * _tiles[i]->_scale), yPos);
+    CULog("%f", _tiles[i]->getTileTexture()->getWidth()/2 * _tiles[i]->_scale);
     _tiles[i]->pos = newPos;
       
       

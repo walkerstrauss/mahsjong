@@ -186,6 +186,7 @@ void InputController::touchPressCB(const cugl::TouchEvent& event, bool focus) {
         _touchDown = true;
         _touchKey = event.touch;
         _currPos = event.position;
+        _wasDragging = false; 
         
         CULog("TOUCH PRESS detected at (%f, %f)", event.position.x, event.position.y);
     }
@@ -195,6 +196,10 @@ void InputController::touchReleaseCB(const cugl::TouchEvent& event, bool focus) 
     if (_touchDown && _touchKey == event.touch) {
         _touchDown = false;
         _touchKey = 0;
+        if(_dragging == true){
+            _dragging = false;
+            _wasDragging = true;
+        }
         
         CULog("TOUCH RELEASE detected at (%f, %f)", event.position.x, event.position.y);
     }
@@ -203,7 +208,7 @@ void InputController::touchReleaseCB(const cugl::TouchEvent& event, bool focus) 
 void InputController::dragCB(const cugl::TouchEvent& event, const Vec2 previous, bool focus) {
     if (_touchDown) {
         _currPos = event.position;
-        
+        _dragging = true;
         CULog("TOUCH DRAG detected at (%f, %f)", event.position.x, event.position.y);
     }
 }

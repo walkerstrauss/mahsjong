@@ -127,7 +127,7 @@ void Pile::updateTilePositions() {
     float spacingFactor = 0.85f;
     float spacingFactorX = 0.8f;
     float xShift = 125.0f;
-    float yShift = 125.0f;
+//    float yShift = 125.0f;
     
     _pileMap.clear();
     

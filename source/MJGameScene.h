@@ -305,10 +305,8 @@ public:
     void releaseTile();
 
     void updateDrag(const cugl::Vec2& mousePos, bool mouseDown, bool mouseReleased);
-
-
     
-    void discardTile();
+    void discardTile(std::shared_ptr<TileSet::Tile> tile);
     
 };
 
