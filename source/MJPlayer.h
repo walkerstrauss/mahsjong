@@ -228,16 +228,11 @@ public:
     bool canExchange;
     // Whether or not the player has drawn this turn
     bool canDraw;
-    
+  
     bool forcedDiscard = false;
-
-    
+  
     std::shared_ptr<TileSet::Tile> _draggingTile = nullptr;
-    cugl::Vec2 _dragStartPos;
-    bool _dragInitiated = false;
-    const float DRAG_THRESHOLD = 0.0f;
-    
-    cugl::Vec2 _dragOffset;
+ 
 
 #pragma mark -
 #pragma mark Constructors
@@ -265,8 +260,6 @@ public:
             _turnsLeft--;
         }
     }
-    
-    void updateDrag(const cugl::Vec2& mousePos, bool mouseDown, bool mouseReleased);
     
     
     std::shared_ptr<TileSet::Tile> getDraggingTile() const { return _draggingTile; }
