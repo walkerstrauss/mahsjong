@@ -146,12 +146,20 @@ protected:
     std::shared_ptr<cugl::graphics::SpriteSheet> _emptyPickFlipSheet;
     
     /** The tile currently being dragged */
-    std::shared_ptr<TileSet::Tile> _draggingTile = nullptr;
     cugl::Vec2 _dragOffset;
     
     /** The rectangle representing the pile's position used for selection handling */
-    cugl::Rect _pileBox = {0,0,100,100};
     
+    cugl::Rect _pileBox;
+
+    std::shared_ptr<TileSet::Tile> _draggingTile = nullptr;
+    cugl::Vec2 _dragStartPos;
+    bool _dragInitiated = false;
+    const float DRAG_THRESHOLD = 0.0f;
+
+    cugl::Vec2 _originalTilePos = cugl::Vec2::ZERO;
+    bool shouldReturn = true;
+
 public:
 #pragma mark -
 #pragma mark Constructors
@@ -296,6 +304,10 @@ public:
     void dragTile();
     
     void releaseTile();
+
+    void updateDrag(const cugl::Vec2& mousePos, bool mouseDown, bool mouseReleased);
+
+
     
     void discardTile();
     

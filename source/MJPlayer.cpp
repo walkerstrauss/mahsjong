@@ -115,7 +115,6 @@ bool Hand::discard(std::shared_ptr<TileSet::Tile> tile, bool isHost){
             (*it)->selected = false;
 
             _tiles.erase(it);
-
         } else {
             ++it;
         }
@@ -458,15 +457,18 @@ void Hand::updateTilePositions(cugl::Size sceneSize){
   //cugl::Application::get()->getDisplayWidth();
   //cugl::Application::get()->getDisplayHeight();
     
+    
     float offsetWidth = (screenSize.width - sceneSize.width)/2.0f;
     float startX = offsetWidth; // Starting x position for hand tile positioning
     float endX = screenSize.width - offsetWidth; // Ending x position for hand tile positioning
     float tileSpacing = (endX-startX) / 13 ; // Spacing in x direction between tiles
-  float yPos = 60.0f; // Height of hand tiles on the screen
-    
-  for (size_t i = 0; i < _tiles.size(); i++){
-    std::shared_ptr<TileSet::Tile> draggingTile = _player->getDraggingTile();
-    if (_tiles[i] == draggingTile) continue;
+    float yPos = 60.0f; // Height of hand tiles on the screen
+
+
+    for (size_t i = 0; i < _tiles.size(); i++){
+        if (_tiles[i] == _player->getDraggingTile()) {
+          continue;
+        }
       
     cugl::Vec2 newPos(startX + i * tileSpacing, yPos);
     _tiles[i]->pos = newPos;
@@ -526,84 +528,3 @@ std::shared_ptr<TileSet::Tile> Hand::getTileAtPosition(const cugl::Vec2& mousePo
     return nullptr;
 }
 
-void Player::updateDrag(const cugl::Vec2& mousePos, bool mouseDown, bool mouseReleased) {
-    if (mouseDown) {
-        if (!_dragInitiated) {
-            _dragStartPos = mousePos;
-            _dragInitiated = true;
-            _draggingTile = getHand().getTileAtPosition(mousePos);
-            if (_draggingTile) {
-                _dragOffset = _draggingTile->pos - mousePos;
-                _draggingTile->selected = true;
-                getHand()._selectedTiles.push_back(_draggingTile);
-
-                CULog("After push, selected tile count: %d", (int)getHand()._selectedTiles.size());
-                CULog("Tile selected at %f, %f with offset %f, %f", mousePos.x, mousePos.y, _dragOffset.x, _dragOffset.y);
-            } else {
-                CULog("No tile found at %f, %f", mousePos.x, mousePos.y);
-            }
-        }
-        else {
-            float distance = (mousePos - _dragStartPos).length();
-            CULog("Dragging... Distance: %f", distance);
-            if (distance > DRAG_THRESHOLD && _draggingTile) {
-                cugl::Vec2 newPos = mousePos + _dragOffset;
-                _draggingTile->pos = newPos;
-                _draggingTile->tileRect.origin = newPos;
-                CULog("Tile moved to %f, %f", newPos.x, newPos.y);
-            }
-        }
-    }
-    
-    if (mouseReleased) {
-        if (_dragInitiated) {
-            float distance = (mousePos - _dragStartPos).length();
-            if (distance > DRAG_THRESHOLD) {
-                if (_draggingTile) {
-                    _draggingTile->selected = false;
-                    getHand()._selectedTiles.clear();
-
-                    CULog("Drag ended, tile dropped");
-                }
-            } else {
-                getHand().clickedTile(mousePos);
-                CULog("Click registered instead of drag");
-            }
-        }
-        if (_draggingTile) {
-            CULog("Selected tile count: %d", (int)getHand()._selectedTiles.size());
-            _draggingTile->selected = false;
-            getHand()._selectedTiles.clear();
-
-        }
-        _dragInitiated = false;
-        _draggingTile = nullptr;
-    }
-}
-
-/**
- * Handles selection of tiles using information from input event
- *
- * @param mousePos      the position of the mouse in this frame
- */
-std::shared_ptr<TileSet::Tile> Hand::clickedTile(Vec2 mousePos) {
-    for (const auto& tile : _tiles) {
-        if (tile) {
-            if (tile->tileRect.contains(mousePos)) {
-                if (tile->selected) {
-                    tile->selected = false;
-                    auto it = std::find(_selectedTiles.begin(), _selectedTiles.end(), tile);
-                    if (it != _selectedTiles.end()) {
-                        _selectedTiles.erase(it);
-                        return tile;
-                    }
-                } else {
-                    tile->selected = true;
-                    _selectedTiles.push_back(tile);
-                    return tile;
-                }
-            }
-        }
-    }
-    return nullptr;
-}

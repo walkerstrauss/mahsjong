@@ -232,13 +232,18 @@ void GameScene::update(float timestep) {
     _input.readInput();
     _input.update();
     
+
     cugl::Vec2 mousePos = cugl::Scene::screenToWorldCoords(cugl::Vec3(_input.getPosition()));
-     
+    // Determine if the mouse is held down or was just released.
     bool isMouseDown = _input.isDown();
     bool isMouseReleased = _input.didRelease();
     
     // Update the player's drag state.
-    _player->updateDrag(mousePos, isMouseDown, isMouseReleased);
+    
+    
+    
+    
+
     _player->getHand().updateTilePositions(_matchScene->getSize());
 
     if (_network->getStatus() == NetworkController::Status::DECK) {
@@ -298,6 +303,8 @@ void GameScene::update(float timestep) {
         }
     }
     
+    updateDrag(mousePos, isMouseDown, isMouseReleased);
+    
     // If input is still being held, update tile dragging
     //if (_input.isDown() && _draggingTile) {
     //    dragTile();   // Handle dragging motion
@@ -318,6 +325,7 @@ void GameScene::update(float timestep) {
        //     discardTile(); // Maybe this is where it's discarding the whole hand
        // }
         
+    
         
         cugl::Vec2 mousePos = cugl::Scene::screenToWorldCoords(cugl::Vec3(_input.getPosition()));
         bool tappedPile = _input.didRelease() && _pileBox.contains(mousePos);
@@ -366,6 +374,87 @@ void GameScene::update(float timestep) {
         if (_player->getHand().isWinningHand()){
             _gameWin = true;
         }
+        
+        
+        // DISCARD REGION
+        // if the screen is tapped and there is a selected tile
+        if(_input.didRelease() && !_player->getHand()._selectedTiles.empty()){
+            
+            // for all selected tiles (must be one)
+            for(auto const& tile : _player->getHand()._selectedTiles){
+                
+                CULog("Tile rect: (%f, %f, %f, %f), Discard area: (%f, %f, %f, %f)",
+                      tile->tileRect.origin.x, tile->tileRect.origin.y,
+                      tile->tileRect.size.width, tile->tileRect.size.height,
+                      discardArea.origin.x, discardArea.origin.y,
+                      discardArea.size.width, discardArea.size.height);
+                
+                // if this tile is in the discard area
+                if(discardArea.contains(mousePos)){ // tile->tileRect)
+                    
+                    if(!(_player->getHand()._tiles.size()>13)){
+                        CULog("You can't discard if you have less than 14 tiles");
+                        continue;
+                    }
+                    
+                    if(tile->getRank() == TileSet::Tile::Rank::ACTION){
+                        CULog("You can't discard an action tile");
+                        continue;
+                    }
+                    // discard the tile
+                    _player->getHand().discard(tile, _network->getHostStatus());
+                    _player->getHand()._selectedTiles.clear();
+                    CULog("The tile was discarded");
+
+                }
+            }
+        }
+        
+        // ACTION TILE REGION
+        std::shared_ptr<SceneNode> actionTileSection = _assets->get<scene2::SceneNode>("matchscene.gameplayscene.actionSection.up.actionTileSection");
+        cugl::Rect actionTileSectionRect = actionTileSection->getBoundingBox();
+        
+        cugl::Vec2 worldOrigin = actionTileSection->nodeToWorldCoords(Vec2::ZERO);
+        cugl::Rect worldRect(worldOrigin, actionTileSection->getContentSize());
+        
+        // if the screen is tapped and there is a selected tile
+        if(_input.didRelease() && !_player->getHand()._selectedTiles.empty()){
+            
+            // for all selected tiles (must be one)
+            for(auto const& tile : _player->getHand()._selectedTiles){
+                
+                CULog("Tile rect: (%f, %f, %f, %f), Discard area: (%f, %f, %f, %f)",
+                      tile->tileRect.origin.x, tile->tileRect.origin.y,
+                      tile->tileRect.size.width, tile->tileRect.size.height,
+                      actionTileSectionRect.origin.x, actionTileSectionRect.origin.y,
+                      actionTileSectionRect.size.width, actionTileSectionRect.size.height);
+
+                
+                // if this tile is in the discard area
+                if(worldRect.contains(mousePos)){ // tile->tileRect)
+                    
+                    if(tile->getRank() != TileSet::Tile::Rank::ACTION){
+                        CULog("You must use an action tile here");
+                        continue;
+                    }
+                    
+                    // activate the action tile
+                    std::shared_ptr<TileSet::ActionTile> actionTile =
+                        std::static_pointer_cast<TileSet::ActionTile>(
+                            std::const_pointer_cast<TileSet::Tile>(tile));
+                    applyAction(actionTile);
+ 
+                    
+                    // discard the action tile
+                    _player->getHand().discard(tile, _network->getHostStatus());
+                    _player->getHand()._selectedTiles.clear();
+                    CULog("The tile was discarded");
+
+                }
+            }
+        }
+
+
         if (_input.getKeyPressed() == KeyCode::G && _input.getKeyDown()){
             if(_player->getHand()._selectedTiles.size() != 1 && _player->getHand()._selectedTiles.size() != 2){
                 CULog("Must have 1 or 2 tiles selected in hand");
@@ -472,7 +561,7 @@ void GameScene::update(float timestep) {
         
         
 //
-        if (_input.getKeyPressed() == KeyCode::N && _input.getKeyDown()) {
+        if ((_input.getKeyPressed() == KeyCode::N && _input.getKeyDown())) {
             if(_player->canDraw && _player->canExchange){
                 CULog("Must perform a draw from pile or discard first");
                 return;
@@ -792,5 +881,65 @@ void GameScene::releaseTile() {
     if (_draggingTile) {
         _draggingTile->pressed = false;
         _draggingTile = nullptr;
+    }
+}
+
+void GameScene::updateDrag(const cugl::Vec2& mousePos, bool mouseDown, bool mouseReleased) {
+    if (mouseDown) {
+        if (!_dragInitiated) {
+            _player->getHand().updateTilePositions(_matchScene->getSize());
+            _dragStartPos = mousePos;
+            _dragInitiated = true;
+            _draggingTile = _player->getHand().getTileAtPosition(mousePos);
+            _player->_draggingTile = _draggingTile;
+            if (_draggingTile) {
+                _originalTilePos = _draggingTile->pos;
+                _dragOffset = _draggingTile->pos - mousePos;
+                // Removed: _player->getHand()._selectedTiles.push_back(_draggingTile);
+                CULog("Tile selected at %f, %f with offset %f, %f",
+                    mousePos.x, mousePos.y, _dragOffset.x, _dragOffset.y);
+            }
+            else {
+                CULog("No tile found at %f, %f", mousePos.x, mousePos.y);
+            }
+        }
+        else {
+            float distance = (mousePos - _dragStartPos).length();
+            CULog("Dragging... Distance: %f", distance);
+            if (distance > DRAG_THRESHOLD && _draggingTile) {
+                cugl::Vec2 newPos = mousePos + _dragOffset;
+                _draggingTile->pos = newPos;
+                _draggingTile->tileRect.origin = newPos;
+                CULog("Tile moved to %f, %f", newPos.x, newPos.y);
+            }
+        }
+    }
+
+    if (mouseReleased) {
+        if (_dragInitiated) {
+            float distance = (mousePos - _dragStartPos).length();
+            CULog("Distance: %f", distance);
+            if (distance > DRAG_THRESHOLD) {
+                if (_draggingTile) { // Only access _draggingTile if it's not null
+                    if (shouldReturn) {
+                        // Snap back to original position.
+                        _draggingTile->pos = _originalTilePos;
+                        _draggingTile->tileRect.origin = _originalTilePos;
+                        CULog("Tile snapped back to original position");
+                    }
+                    else {
+                        CULog("Tile dropped at new valid position");
+                    }
+                }
+                else {
+                    CULog("No tile was being dragged on release");
+                }
+            }
+            // Removed clicking logic branch.
+        }
+        // Removed any cleanup of selected tiles.
+        _dragInitiated = false;
+        _originalTilePos = cugl::Vec2::ZERO;
+        releaseTile();
     }
 }
