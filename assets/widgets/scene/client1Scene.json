@@ -723,7 +723,7 @@
                                     "client1-gameid-tile3": {
                                         "type": "Image",
                                         "data": {
-                                            "texture": "client1-gameid-tile3",
+                                            "texture": "client1-gameid-tile5",
                                             "anchor": [
                                                 0,
                                                 1
