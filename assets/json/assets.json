@@ -564,6 +564,15 @@
         "host1-background": {
           "file": "textures/host1/host1-background.png"
         },
+        "leave-button":{
+            "file": "textures/host1/leave_button.png"
+        },
+        "start":{
+            "file": "textures/host1/start.png"
+        },
+        "player2":{
+            "file": "textures/host1/player2.png"
+        },
         "host1-checkbox": {
           "file": "textures/host1/host1-checkbox.png"
         },

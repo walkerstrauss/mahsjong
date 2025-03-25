@@ -377,7 +377,7 @@ void ClientScene::update(float timestep) {
         _clientScene1->setVisible(false);
         _clientScene2->setVisible(true);
     } else if (_network->getStatus() == NetworkController::Status::CONNECTED){
-        _clientCheckbox->setVisible(true);
+//        _clientCheckbox->setVisible(true);
     }
 }
 
@@ -468,8 +468,8 @@ void ClientScene::configureStartButton() {
         _startgame->setDown(false);
         _startgame->activate();
         //updateText(_startgame,"Start Game");
-    }
-    else if(_network->getStatus() == NetworkController::Status::CONNECTING){
+        
+    } else if(_network->getStatus() == NetworkController::Status::CONNECTING){
         _startgame->setDown(false);
         _startgame->deactivate();
         //updateText(_startgame, "Connecting");
