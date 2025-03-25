@@ -43,7 +43,6 @@ protected:
     std::shared_ptr<NetworkController> _network;
     /** The network connection for this scene **/
 //    std::shared_ptr<cugl::netcode::NetcodeConnection> _hostNetwork;
-
     /** The menu button for starting a game */
     std::shared_ptr<cugl::scene2::Button> _startgame;
     /** The back button for the menu scene */

@@ -296,10 +296,12 @@ void GameScene::update(float timestep) {
         
     if (_network->getCurrentTurn() == _network->getLocalPid()) {
         cugl::Vec2 mousePos = cugl::Scene::screenToWorldCoords(cugl::Vec3(_input.getPosition()));
-        bool tappedPile = _input.didRelease() && _pileBox.contains(mousePos) ;
+        cugl::Vec2 initialMousePos = cugl::Scene::screenToWorldCoords(cugl::Vec3(_input.getInitialPosition()));
+        bool tappedPile = _input.didRelease() && _pileBox.contains(mousePos);
+        bool initialClickInPile = _pileBox.contains(initialMousePos);
         
         //Start turn by drawing tile to hand
-        if((_input.getKeyPressed() == KeyCode::D && _input.getKeyDown() ) || (tappedPile)){
+        if((_input.getKeyPressed() == KeyCode::D && _input.getKeyDown() ) || (tappedPile && initialClickInPile)){
             if(_player->getHand()._tiles.size() > _player->getHand()._size){
                 CULog("Hand too big");
                 return;
