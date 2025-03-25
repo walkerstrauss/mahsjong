@@ -981,3 +981,5 @@ void GameScene::discardTile() {
                 }
             }
         }
+    }
+}

@@ -74,6 +74,7 @@ bool HostScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::sha
     // Start up the input handler
     _assets = assets;
     _network = network;
+
     // Acquire the scene built by the asset loader and resize it the scene
     std::shared_ptr<scene2::SceneNode> scene = _assets->get<scene2::SceneNode>("host");
     scene->setContentSize(1280,720);
@@ -87,18 +88,23 @@ bool HostScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::sha
     
 
     //scene->setContentSize(dimen);
-    scene->setContentSize(screenSize);
+//    scene->setContentSize(screenSize);
+
     scene->doLayout(); // Repositions the HUD
 
-    _startgame = std::dynamic_pointer_cast<scene2::Button>(_assets->get<scene2::SceneNode>("host.hostscene.menu.buttonmenu.button1"));
-    _backout = std::dynamic_pointer_cast<scene2::Button>(_assets->get<scene2::SceneNode>("host.hostscene.menu.buttonmenu.button2"));
-    _gameid = std::dynamic_pointer_cast<scene2::Label>(_assets->get<scene2::SceneNode>("host.hostscene.menu.gameid.gameid_textfield.gameid"));
-    _player = std::dynamic_pointer_cast<scene2::Label>(_assets->get<scene2::SceneNode>("host.hostscene.menu.player.player_textfield.label"));
+    _startgame = std::dynamic_pointer_cast<scene2::Button>(_assets->get<scene2::SceneNode>("host.hostscene.menu.button1"));
+    _backout = std::dynamic_pointer_cast<scene2::Button>(_assets->get<scene2::SceneNode>("host.hostscene.menu.button2"));
     
-    
+    _tileOne = std::dynamic_pointer_cast<scene2::PolygonNode>(_assets->get<scene2::SceneNode>("host.hostscene.waitingRoom.roomid-tile.host1-roomid-tile"));
+    _tileTwo = std::dynamic_pointer_cast<scene2::PolygonNode>(_assets->get<scene2::SceneNode>("host.hostscene.waitingRoom.roomid-tile.host1-roomid-tile_1"));
+    _tileThree = std::dynamic_pointer_cast<scene2::PolygonNode>(_assets->get<scene2::SceneNode>("host.hostscene.waitingRoom.roomid-tile.host1-roomid-tile_2"));
+    _tileFour = std::dynamic_pointer_cast<scene2::PolygonNode>(_assets->get<scene2::SceneNode>("host.hostscene.waitingRoom.roomid-tile.host1-roomid-tile_3"));
+
+
     // Program the buttons
     _backout->addListener([this](const std::string& name, bool down) {
         if (down) {
+            CULog("YOU HIT ME");
             _backClicked = true;
             _network->disconnect();
         }
@@ -109,14 +115,76 @@ bool HostScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::sha
             startGame();
         }
     });
+
+    //_gameid = std::dynamic_pointer_cast<scene2::Label>(_assets->get<scene2::SceneNode>("host.hostscene.menu.gameid.gameid_textfield.gameid"));
+    //_player = std::dynamic_pointer_cast<scene2::Label>(_assets->get<scene2::SceneNode>("host.hostscene.menu.player.player_textfield.label"));  
     
     // Create the server configuration
     auto json = _assets->get<JsonValue>("server");
     _config.set(json);
     
     addChild(scene);
-    setActive(false);
+    //setActive(true);
+    _backout->activate();
     return true;
+}
+
+/**
+* Converts the hexademical server into specific tile IDs
+*/
+void HostScene::idSetup(const std::shared_ptr<cugl::scene2::PolygonNode>& tile, const char serverPart) {
+    switch (serverPart) {
+        case '1':
+            tile->setTexture(_assets->get<cugl::graphics::Texture>("client1-gameid-tile"));
+            break;
+        case '2':
+            tile->setTexture(_assets->get<cugl::graphics::Texture>("client1-gameid-tile1"));
+            break;
+        case '3':
+            tile->setTexture(_assets->get<cugl::graphics::Texture>("client1-gameid-tile2"));
+            break;
+        case '4':
+            tile->setTexture(_assets->get<cugl::graphics::Texture>("client1-gameid-tile3"));
+            break;
+        case '5':
+            tile->setTexture(_assets->get<cugl::graphics::Texture>("client1-gameid-tile4"));
+            break;
+        case '6':
+            tile->setTexture(_assets->get<cugl::graphics::Texture>("client1-gameid-tile5"));
+            break;
+        case '7':
+            tile->setTexture(_assets->get<cugl::graphics::Texture>("client1-gameid-tile6"));
+            break;
+        case '8':
+            tile->setTexture(_assets->get<cugl::graphics::Texture>("client1-gameid-tile7"));
+            break;
+        case '9':
+            tile->setTexture(_assets->get<cugl::graphics::Texture>("client1-gameid-tile8"));
+            break;
+        case '0':
+            tile->setTexture(_assets->get<cugl::graphics::Texture>("client1-gameid-tile9"));
+            break;
+        case 'A':
+            tile->setTexture(_assets->get<cugl::graphics::Texture>("two of dot"));
+            break;
+        case 'B':
+            tile->setTexture(_assets->get<cugl::graphics::Texture>("three of dot"));
+            break;
+        case 'C':
+            tile->setTexture(_assets->get<cugl::graphics::Texture>("four of dot"));
+            break;
+        case 'D':
+            tile->setTexture(_assets->get<cugl::graphics::Texture>("five of dot"));
+            break;
+        case 'E':
+            tile->setTexture(_assets->get<cugl::graphics::Texture>("six of dot"));
+            break;
+        case 'F':
+            tile->setTexture(_assets->get<cugl::graphics::Texture>("seven of dot"));
+            break;
+        default:
+            tile->setTexture(_assets->get<cugl::graphics::Texture>("client1-gameid-blank"));
+    }
 }
 
 /**
@@ -147,9 +215,8 @@ void HostScene::setActive(bool value) {
             _network->connectAsHost();
             _backClicked = false;
         } else {
-            _gameid->setText("");
             _startgame->deactivate();
-            updateText(_startgame, "INACTIVE");
+            //updateText(_startgame, "INACTIVE");
             _backout->deactivate();
             _startgame->setDown(false);
             _backout->setDown(false);
@@ -185,18 +252,29 @@ void HostScene::updateText(const std::shared_ptr<scene2::Button>& button, const 
  * @param timestep  The amount of time (in seconds) since the last frame
  */
 void HostScene::update(float timestep) {
+    std::string networkHex = "zzzz";
     if(_network->getStatus() == NetworkController::Status::CONNECTED){
         if (!_startGameClicked) {
-            updateText(_startgame, "Start Game");
+            //updateText(_startgame, "Start Game");
             _startgame->activate();
         }
         else {
-            updateText(_startgame, "Starting");
+            //updateText(_startgame, "Starting");
             _startgame->deactivate();
         }
-        _gameid->setText(hex2dec(_network->getRoomID()));
-        _player->setText(std::to_string(_network->getNumPlayers()));
+        //_gameid->setText(hex2dec(_network->getRoomID()));
+        //_player->setText(std::to_string(_network->getNumPlayers()));
+        
+        if (_network != nullptr) {
+            networkHex = _network->getRoomID();
+        }
     }
+    idSetup(_tileOne, networkHex[0]);
+    idSetup(_tileTwo, networkHex[1]);
+    idSetup(_tileThree, networkHex[2]);
+    idSetup(_tileFour, networkHex[3]);
+
+    _tileOne->setVisible(true); 
 }
 
 /**
