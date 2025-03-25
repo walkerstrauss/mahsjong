@@ -228,9 +228,7 @@ public:
     bool canExchange;
     // Whether or not the player has drawn this turn
     bool canDraw;
-  
     bool forcedDiscard = false;
-  
     std::shared_ptr<TileSet::Tile> _draggingTile = nullptr;
  
 

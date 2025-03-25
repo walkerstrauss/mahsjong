@@ -158,7 +158,7 @@ protected:
 
     cugl::Vec2 _originalTilePos = cugl::Vec2::ZERO;
     bool shouldReturn = true;
-    
+
 public:
 #pragma mark -
 #pragma mark Constructors

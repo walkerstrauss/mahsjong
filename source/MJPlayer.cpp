@@ -115,7 +115,6 @@ bool Hand::discard(std::shared_ptr<TileSet::Tile> tile, bool isHost){
             (*it)->selected = false;
 
             _tiles.erase(it);
-
         } else {
             ++it;
         }
@@ -458,15 +457,18 @@ void Hand::updateTilePositions(cugl::Size sceneSize){
   //cugl::Application::get()->getDisplayWidth();
   //cugl::Application::get()->getDisplayHeight();
     
+    
     float offsetWidth = (screenSize.width - sceneSize.width)/2.0f;
     float startX = offsetWidth; // Starting x position for hand tile positioning
     float endX = screenSize.width - offsetWidth; // Ending x position for hand tile positioning
     float tileSpacing = (endX-startX) / 13 ; // Spacing in x direction between tiles
-  float yPos = 60.0f; // Height of hand tiles on the screen
-    
-  for (size_t i = 0; i < _tiles.size(); i++){
-    std::shared_ptr<TileSet::Tile> draggingTile = _player->getDraggingTile();
-    if (_tiles[i] == draggingTile) continue;
+    float yPos = 60.0f; // Height of hand tiles on the screen
+
+
+    for (size_t i = 0; i < _tiles.size(); i++){
+        if (_tiles[i] == _player->getDraggingTile()) {
+          continue;
+        }
       
     cugl::Vec2 newPos(startX + i * tileSpacing, yPos);
     _tiles[i]->pos = newPos;
