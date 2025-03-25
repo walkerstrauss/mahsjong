@@ -296,7 +296,7 @@ void GameScene::update(float timestep) {
         
     if (_network->getCurrentTurn() == _network->getLocalPid()) {
         cugl::Vec2 mousePos = cugl::Scene::screenToWorldCoords(cugl::Vec3(_input.getPosition()));
-        bool tappedPile = _input.didRelease() && _pileBox.contains(mousePos);
+        bool tappedPile = _input.didRelease() && _pileBox.contains(mousePos) ;
         
         //Start turn by drawing tile to hand
         if((_input.getKeyPressed() == KeyCode::D && _input.getKeyDown() ) || (tappedPile)){
@@ -863,6 +863,7 @@ void GameScene::updateDrag(const cugl::Vec2& mousePos, bool mouseDown, bool mous
             if (distance > DRAG_THRESHOLD) {
                 if (_draggingTile) {
                     if (shouldReturn) {
+                        _draggingTile->selected = false;
                         _draggingTile->pos = _originalTilePos;
                         _draggingTile->tileRect.origin = _originalTilePos;
                     }
