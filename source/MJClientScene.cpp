@@ -103,7 +103,8 @@ bool ClientScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::s
 
     _startgame->addListener([=, this](const std::string& name, bool down) {
         if (down) {
-            std::string curr = tile2hex();
+            //std::string curr = tile2hex();
+            _network->connectAsClient(tile2hex());
             // This will call the _gameid listener
             //_gameid->releaseFocus();
         }
@@ -359,7 +360,8 @@ void ClientScene::update(float timestep) {
     
     configureStartButton();
     if(_network->getStatus() == NetworkController::Status::CONNECTED){
-        _player->setText(std::to_string(_network->getNumPlayers()));
+        //_player->setText(std::to_string(_network->getNumPlayers()));
+        CULog("WE ARE CONNECTED YOU STUPID HOE");
     }
 }
 
