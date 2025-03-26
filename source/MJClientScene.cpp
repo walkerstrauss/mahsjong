@@ -88,13 +88,14 @@ bool ClientScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::s
     _clientScene1->setPosition(offset, _clientScene1->getPosition().y);
     addChild(_clientScene2);
     _clientScene2->setVisible(false);
-//    _clientCheckbox = _assets->get<scene2::SceneNode>("client3.client3Scene.waitingRoom.playerBoard.host1_checkbox");
-//    _clientCheckbox->setVisible(false);
+    _clientCheckbox = _assets->get<scene2::SceneNode>("client3.client3Scene.waitingRoom.playerBoard.host1-checkbox");
+    _clientCheckbox->setVisible(false);
 
     _startgame = std::dynamic_pointer_cast<scene2::Button>(_assets->get<scene2::SceneNode>("client.clientscene.buttons.confirm-button"));
     _backout = std::dynamic_pointer_cast<scene2::Button>(_assets->get<scene2::SceneNode>("client.clientscene.buttons.cancel-button"));
     _backout2 = std::dynamic_pointer_cast<scene2::Button>(_assets->get<scene2::SceneNode>("client3.client3Scene.menu.button2Client"));
     _resetGameID = std::dynamic_pointer_cast<scene2::Button>(_assets->get<scene2::SceneNode>("client.clientscene.cancel-box"));
+    _prepareOrStart = std::dynamic_pointer_cast<scene2::PolygonNode>(_assets->get<scene2::SceneNode>("client3.client3Scene.menu.button1.up.start"));
 
     _backout->addListener([this](const std::string& name, bool down) {
         if (down) {
@@ -396,14 +397,18 @@ void ClientScene::update(float timestep) {
         id2->setTexture(_gameIDNew[1]->getTexture());
         id3->setTexture(_gameIDNew[2]->getTexture());
         id4->setTexture(_gameIDNew[3]->getTexture());
+        _prepareOrStart->setTexture(_assets->get<cugl::graphics::Texture>("prepareButton"));
 
     } else if (_network->getStatus() == NetworkController::Status::CONNECTED){
-//        _clientCheckbox->setVisible(true);
+        _clientCheckbox->setVisible(true);
+        _prepareOrStart->setTexture(_assets->get<cugl::graphics::Texture>("host1-start-button"));
     }
     else {
         _clientScene1->setVisible(true);
         _clientScene2->setVisible(false);
+        _clientCheckbox->setVisible(false);
     }
+    _prepareOrStart->setContentSize(200, 181);
 }
 
 

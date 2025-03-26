@@ -63,6 +63,8 @@ protected:
     std::shared_ptr<cugl::scene2::SceneNode> _clientScene2;
     /**Checkbox for client**/
     std::shared_ptr<cugl::scene2::SceneNode> _clientCheckbox;
+    /** texture for waiting or start button */
+    std::shared_ptr<cugl::scene2::PolygonNode> _prepareOrStart;
     /** The network configuration */
     cugl::netcode::NetcodeConfig _config;
 

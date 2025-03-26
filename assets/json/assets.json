@@ -615,6 +615,9 @@
         "client1-background": {
           "file": "textures/client1/client1-background.png"
         },
+        "prepareButton": {
+          "file": "textures/client1/prepare-button.png"
+        },
         "client1-board": {
           "file": "textures/client1/client1-board.png"
         },
