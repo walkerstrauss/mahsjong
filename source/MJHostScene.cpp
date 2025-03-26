@@ -91,7 +91,7 @@ bool HostScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::sha
 //    scene->setContentSize(screenSize);
 
     scene->doLayout(); // Repositions the HUD
-
+    
     _startgame = std::dynamic_pointer_cast<scene2::Button>(_assets->get<scene2::SceneNode>("host.hostscene.menu.button1"));
     _backout = std::dynamic_pointer_cast<scene2::Button>(_assets->get<scene2::SceneNode>("host.hostscene.menu.button2"));
     

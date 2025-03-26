@@ -55,7 +55,7 @@ protected:
     std::shared_ptr<cugl::scene2::Label> _gameid;
     /** The players label (for updating) */
     std::shared_ptr<cugl::scene2::Label> _player;
-    
+    /** button for waiting */
     
     /** Tiles for gameID */
     std::shared_ptr<cugl::scene2::PolygonNode> _tileOne;

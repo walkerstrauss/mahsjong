@@ -720,10 +720,10 @@
                                     "visible": true
                                 },
                                 "children": {
-                                    "client1-gameid-tile3": {
+                                    "client1-gameid-tile4": {
                                         "type": "Image",
                                         "data": {
-                                            "texture": "client1-gameid-tile5",
+                                            "texture": "client1-gameid-tile4",
                                             "anchor": [
                                                 0,
                                                 1
@@ -812,10 +812,10 @@
                                     "visible": true
                                 },
                                 "children": {
-                                    "client1-gameid-tile4": {
+                                    "client1-gameid-tile5": {
                                         "type": "Image",
                                         "data": {
-                                            "texture": "client1-gameid-tile4",
+                                            "texture": "client1-gameid-tile5",
                                             "anchor": [
                                                 0,
                                                 1
