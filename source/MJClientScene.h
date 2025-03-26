@@ -51,6 +51,8 @@ protected:
     std::shared_ptr<cugl::scene2::Button> _startgame;
     /** The back button for the menu scene */
     std::shared_ptr<cugl::scene2::Button> _backout;
+    /** The back button for the lobby scene */
+    std::shared_ptr<cugl::scene2::Button> _backout2;
     /** The game id label (for updating) */
     std::shared_ptr<cugl::scene2::TextField> _gameid;
     /** The players label (for updating) */

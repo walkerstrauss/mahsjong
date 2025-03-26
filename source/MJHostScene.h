@@ -55,7 +55,15 @@ protected:
     std::shared_ptr<cugl::scene2::Label> _gameid;
     /** The players label (for updating) */
     std::shared_ptr<cugl::scene2::Label> _player;
-    /** button for waiting */
+    /** texture for waiting or start button */
+    std::shared_ptr<cugl::scene2::PolygonNode> _waitOrStart;
+
+    /** Reference to init host scene*/
+    std::shared_ptr<cugl::scene2::SceneNode> _hostScene1;
+
+    /** Reference to Gameboard when players are connecting or alone */
+    std::shared_ptr<cugl::scene2::SceneNode> _playerSingle;
+    std::shared_ptr<cugl::scene2::SceneNode> _playerMulti;
     
     /** Tiles for gameID */
     std::shared_ptr<cugl::scene2::PolygonNode> _tileOne;

@@ -76,10 +76,10 @@ bool HostScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::sha
     _network = network;
 
     // Acquire the scene built by the asset loader and resize it the scene
-    std::shared_ptr<scene2::SceneNode> scene = _assets->get<scene2::SceneNode>("host");
-    scene->setContentSize(1280,720);
+    _hostScene1 = _assets->get<scene2::SceneNode>("host");
+    _hostScene1->setContentSize(1280,720);
     cugl::Size screenSize = cugl::Application::get()->getDisplaySize();
-    screenSize *= scene->getContentSize().height/screenSize.height;
+    screenSize *= _hostScene1->getContentSize().height/screenSize.height;
     //cugl::Size screenSize = Size(0,SCENE_HEIGHT);
     
     if (!Scene2::initWithHint(screenSize)) {
@@ -87,29 +87,28 @@ bool HostScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::sha
     }
     
 
+
     //scene->setContentSize(dimen);
 //    scene->setContentSize(screenSize);
 
-    scene->doLayout(); // Repositions the HUD
+    _hostScene1->doLayout(); // Repositions the HUD
     
     _startgame = std::dynamic_pointer_cast<scene2::Button>(_assets->get<scene2::SceneNode>("host.hostscene.menu.button1"));
     _backout = std::dynamic_pointer_cast<scene2::Button>(_assets->get<scene2::SceneNode>("host.hostscene.menu.button2"));
+    _waitOrStart = std::dynamic_pointer_cast<scene2::PolygonNode>(_assets->get<scene2::SceneNode>("host.hostscene.menu.button1.up.start"));
     
     _tileOne = std::dynamic_pointer_cast<scene2::PolygonNode>(_assets->get<scene2::SceneNode>("host.hostscene.waitingRoom.roomid-tile.host1-roomid-tile"));
     _tileTwo = std::dynamic_pointer_cast<scene2::PolygonNode>(_assets->get<scene2::SceneNode>("host.hostscene.waitingRoom.roomid-tile.host1-roomid-tile_1"));
     _tileThree = std::dynamic_pointer_cast<scene2::PolygonNode>(_assets->get<scene2::SceneNode>("host.hostscene.waitingRoom.roomid-tile.host1-roomid-tile_2"));
     _tileFour = std::dynamic_pointer_cast<scene2::PolygonNode>(_assets->get<scene2::SceneNode>("host.hostscene.waitingRoom.roomid-tile.host1-roomid-tile_3"));
     
-    std::shared_ptr<scene2::SceneNode> playerBoard = _assets->get<scene2::SceneNode>("host.hostscene.waitingRoom.playerBoard");
-    
-    std::shared_ptr<scene2::SceneNode> playerBoard2 = _assets->get<scene2::SceneNode>("host.hostscene.waitingRoom.playerBoard2");
-    playerBoard2->setVisible(false);
-
+    _playerSingle = _assets->get<scene2::SceneNode>("host.hostscene.waitingRoom.playerBoard");
+    _playerMulti = _assets->get<scene2::SceneNode>("host.hostscene.waitingRoom.playerBoard2");
+    _playerMulti->setVisible(false);
 
     // Program the buttons
     _backout->addListener([this](const std::string& name, bool down) {
         if (down) {
-            CULog("YOU HIT ME");
             _backClicked = true;
             _network->disconnect();
         }
@@ -127,7 +126,7 @@ bool HostScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::sha
     // Create the server configuration
     auto json = _assets->get<JsonValue>("server");
     _config.set(json);
-    addChild(scene);
+    addChild(_hostScene1);
     setActive(false);
     _backout->activate();
     return true;
@@ -188,6 +187,7 @@ void HostScene::idSetup(const std::shared_ptr<cugl::scene2::PolygonNode>& tile, 
             break;
         default:
             tile->setTexture(_assets->get<cugl::graphics::Texture>("client1-gameid-blank"));
+            tile->setContentSize(80, 75);
     }
 }
 
@@ -261,16 +261,19 @@ void HostScene::update(float timestep) {
         if (!_startGameClicked) {
             //updateText(_startgame, "Start Game");
             _startgame->activate();
-        }
-        else {
-            //updateText(_startgame, "Starting");
-//            _startgame->deactivate();
-        }
-        //_gameid->setText(hex2dec(_network->getRoomID()));
-        //_player->setText(std::to_string(_network->getNumPlayers()));
-        
+        }  
         if (_network != nullptr) {
             networkHex = _network->getRoomID();
+        }
+        if (_network->getNumPlayers() > 1) {
+            _playerMulti->setVisible(true);
+            _playerSingle->setVisible(false);
+            _waitOrStart->setTexture(_assets->get<cugl::graphics::Texture>("host1-start-button"));
+        }
+        else {
+            _playerMulti->setVisible(false);
+            _playerSingle->setVisible(true);
+            _waitOrStart->setTexture(_assets->get<cugl::graphics::Texture>("host1-waiting-button"));
         }
     }
     idSetup(_tileOne, networkHex[0]);

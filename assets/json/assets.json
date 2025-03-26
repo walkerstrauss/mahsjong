@@ -609,6 +609,9 @@
         "host1-player1": {
           "file": "textures/host1/host1-player1.png"
         },
+        "host1-start-button": {
+          "file": "textures/host1/start.png"
+        },
         "client1-background": {
           "file": "textures/client1/client1-background.png"
         },
@@ -657,6 +660,9 @@
         "client1-gameid-tile9": {
           "file": "textures/client1/client1-gameid-tile9.png"
         },
+        "client1-gameid-onedot": {
+          "file": "textures/client1/one_of_dot.png"
+        },
         "client1-gameid": {
           "file": "textures/client1/client1-gameid.png"
         },
@@ -698,250 +704,250 @@
             "size": 36
         }
     },
-    "scene2s":{
-        "matchscene":{
-            "type":"Node",
-            "format":{
-                "type":"Anchored"
-            },
-            "children":{
-                "gameplayscene":{
-                    "type":"Widget",
-                    "format":{
-                        "type":"Anchored"
-                    },
-                    "data":{
-                        "key":"gameplayscene",
-                        "variables":{
-                            "size":[1280,720]
-                        }
-                    }
-                }
+  "scene2s": {
+    "matchscene": {
+      "type": "Node",
+      "format": {
+        "type": "Anchored"
+      },
+      "children": {
+        "gameplayscene": {
+          "type": "Widget",
+          "format": {
+            "type": "Anchored"
+          },
+          "data": {
+            "key": "gameplayscene",
+            "variables": {
+              "size": [ 1280, 720 ]
             }
-        },
-        "home":{
-            "type":"Node",
-            "format":{
-                "type":"Anchored"
-            },
-            "children":{
-                "home":{
-                    "type":"Widget",
-                    "format":{
-                        "type":"Anchored"
-                    },
-                    "data":{
-                        "key":"home",
-                        "variables":{
-                            "size":[1280,720]
-                        }
-                    }
-                    
-                }
-            }
-        },
-        "pause":{
-            "type":"Node",
-            "format":{
-                "type":"Anchored"
-            },
-            "children":{
-                "pausescene":{
-                    "type":"Widget",
-                    "format":{
-                        "type":"Anchored"
-                    },
-                    "data":{
-                        "key":"pausescene",
-                        "variables":{
-                            "size":[1280,720]
-                        }
-                    }
-                }
-            }
-        },
-        "settings":{
-            "type":"Node",
-            "format":{
-                "type":"Anchored"
-            },
-            "children":{
-                "settingscene":{
-                    "type":"Widget",
-                    "format":{
-                        "type":"Anchored"
-                    },
-                    "data":{
-                        "key":"settingscene",
-                        "variables":{
-                            "size":[1280,720]
-                        }
-                    }
-                }
-            }
-        },
-        "tilesetui":{
-            "type":"Node",
-            "format":{
-                "type":"Anchored"
-            },
-            "children":{
-                "tilesetscene":{
-                    "type":"Widget",
-                    "format":{
-                        "type":"Anchored"
-                    },
-                    "data":{
-                        "key":"tilesetscene",
-                        "variables":{
-                            "size":[1280,720]
-                        }
-                    }
-                }
-            }
-        },
-        "menu": {
-            "type"      : "Node",
-            "format"    : {
-                "type"        : "Float",
-                "orientation" : "vertical",
-                "x_alignment" : "center",
-                "y_alignment" : "middle"
-            },
-            "children":  {
-                "host": {
-                    "type"   : "Widget",
-                    "data"   : {
-                        "key"     : "textbutton",
-                        "variables" : {
-                            "size": [300,100],
-                            "text": "Host Game",
-                            "color": "#000088"
-                        }
-                    },
-                    "layout" : {
-                        "priority" : 1,
-                        "padding"  : [0,0,60,150]
-                    }
-                },
-                "join": {
-                    "type"   : "Widget",
-                    "data"   : {
-                        "key"     : "textbutton",
-                        "variables" : {
-                            "size": [300,100],
-                            "text": "Join Game",
-                            "color": "#000088"
-                        }
-                    },
-                    "layout" : {
-                        "priority" : 1,
-                        "padding"  : [0,0,60,0]
-                    }
-                }
-            }
-        },
-        "host": {
-            "type"      : "Node",
-            "format"    : {
-                "type"        : "Anchored"
-            },
-            "children" : {
-                "hostscene":{
-                    "type"      : "Widget",
-                    "format"    : {
-                        "type"        : "Anchored"
-                    },
-                    "data":{
-                        "variables": {
-                            "size": [1280,720]
-                        },
-                        "key":"host1Scene"
-                    }
-                }
-            }
-        },
-        "client": {
-            "type"      : "Node",
-            "format"    : {
-                "type"        : "Anchored"
-            },
-            "children" : {
-                "clientscene":{
-                    "type"      : "Widget",
-                    "format"    : {
-                        "type"        : "Anchored"
-                    },
-                    "data":{
-                        "variables": {
-                            "size": [1280,720]
-                        },
-                        "key":"client1Scene"
-                    }
-                }
-            }
-        },
-        "winscene": {
-            "type"      : "Node",
-            "format"    : {
-                "type"        : "Anchored"
-            },
-            "children" : {
-                "scorewinscene":{
-                    "type"      : "Widget",
-                    "format"    : {
-                        "type"        : "Anchored"
-                    },
-                    "data":{
-                        "variables": {
-                            "size": [1280,720]
-                        },
-                        "key":"scorewinscene"
-                    }
-                }
-            }
-        },
-        "losescene": {
-            "type"      : "Node",
-            "format"    : {
-                "type"        : "Anchored"
-            },
-            "children" : {
-                "scoredefeatscene":{
-                    "type"      : "Widget",
-                    "format"    : {
-                        "type"        : "Anchored"
-                    },
-                    "data":{
-                        "variables": {
-                            "size": [1280,720]
-                        },
-                        "key":"scoredefeatscene"
-                    }
-                }
-            }
-        },
-        "client3": {
-            "type"      : "Node",
-            "format"    : {
-                "type"        : "Anchored"
-            },
-            "children" : {
-                "client3Scene":{
-                    "type"      : "Widget",
-                    "format"    : {
-                        "type"        : "Anchored"
-                    },
-                    "data":{
-                        "variables": {
-                            "size": [1280,720]
-                        },
-                        "key":"client3Scene"
-                    }
-                }
-            }
+          }
         }
+      }
     },
+    "home": {
+      "type": "Node",
+      "format": {
+        "type": "Anchored"
+      },
+      "children": {
+        "home": {
+          "type": "Widget",
+          "format": {
+            "type": "Anchored"
+          },
+          "data": {
+            "key": "home",
+            "variables": {
+              "size": [ 1280, 720 ]
+            }
+          }
+
+        }
+      }
+    },
+    "pause": {
+      "type": "Node",
+      "format": {
+        "type": "Anchored"
+      },
+      "children": {
+        "pausescene": {
+          "type": "Widget",
+          "format": {
+            "type": "Anchored"
+          },
+          "data": {
+            "key": "pausescene",
+            "variables": {
+              "size": [ 1280, 720 ]
+            }
+          }
+        }
+      }
+    },
+    "settings": {
+      "type": "Node",
+      "format": {
+        "type": "Anchored"
+      },
+      "children": {
+        "settingscene": {
+          "type": "Widget",
+          "format": {
+            "type": "Anchored"
+          },
+          "data": {
+            "key": "settingscene",
+            "variables": {
+              "size": [ 1280, 720 ]
+            }
+          }
+        }
+      }
+    },
+    "tilesetui": {
+      "type": "Node",
+      "format": {
+        "type": "Anchored"
+      },
+      "children": {
+        "tilesetscene": {
+          "type": "Widget",
+          "format": {
+            "type": "Anchored"
+          },
+          "data": {
+            "key": "tilesetscene",
+            "variables": {
+              "size": [ 1280, 720 ]
+            }
+          }
+        }
+      }
+    },
+    "menu": {
+      "type": "Node",
+      "format": {
+        "type": "Float",
+        "orientation": "vertical",
+        "x_alignment": "center",
+        "y_alignment": "middle"
+      },
+      "children": {
+        "host": {
+          "type": "Widget",
+          "data": {
+            "key": "textbutton",
+            "variables": {
+              "size": [ 300, 100 ],
+              "text": "Host Game",
+              "color": "#000088"
+            }
+          },
+          "layout": {
+            "priority": 1,
+            "padding": [ 0, 0, 60, 150 ]
+          }
+        },
+        "join": {
+          "type": "Widget",
+          "data": {
+            "key": "textbutton",
+            "variables": {
+              "size": [ 300, 100 ],
+              "text": "Join Game",
+              "color": "#000088"
+            }
+          },
+          "layout": {
+            "priority": 1,
+            "padding": [ 0, 0, 60, 0 ]
+          }
+        }
+      }
+    },
+    "host": {
+      "type": "Node",
+      "format": {
+        "type": "Anchored"
+      },
+      "children": {
+        "hostscene": {
+          "type": "Widget",
+          "format": {
+            "type": "Anchored"
+          },
+          "data": {
+            "variables": {
+              "size": [ 1280, 720 ]
+            },
+            "key": "host1Scene"
+          }
+        }
+      }
+    },
+    "client": {
+      "type": "Node",
+      "format": {
+        "type": "Anchored"
+      },
+      "children": {
+        "clientscene": {
+          "type": "Widget",
+          "format": {
+            "type": "Anchored"
+          },
+          "data": {
+            "variables": {
+              "size": [ 1280, 720 ]
+            },
+            "key": "client1Scene"
+          }
+        }
+      }
+    },
+    "winscene": {
+      "type": "Node",
+      "format": {
+        "type": "Anchored"
+      },
+      "children": {
+        "scorewinscene": {
+          "type": "Widget",
+          "format": {
+            "type": "Anchored"
+          },
+          "data": {
+            "variables": {
+              "size": [ 1280, 720 ]
+            },
+            "key": "scorewinscene"
+          }
+        }
+      }
+    },
+    "losescene": {
+      "type": "Node",
+      "format": {
+        "type": "Anchored"
+      },
+      "children": {
+        "scoredefeatscene": {
+          "type": "Widget",
+          "format": {
+            "type": "Anchored"
+          },
+          "data": {
+            "variables": {
+              "size": [ 1280, 720 ]
+            },
+            "key": "scoredefeatscene"
+          }
+        }
+      }
+    },
+    "client3": {
+      "type": "Node",
+      "format": {
+        "type": "Anchored"
+      },
+      "children": {
+        "client3Scene": {
+          "type": "Widget",
+          "format": {
+            "type": "Anchored"
+          },
+          "data": {
+            "variables": {
+              "size": [ 1280, 720 ]
+            },
+            "key": "client3Scene"
+          }
+        }
+      }
+    }
+  },
   "widgets": {
     "colorbutton": "widgets/colorbutton.json",
     "textbutton": "widgets/textbutton.json",

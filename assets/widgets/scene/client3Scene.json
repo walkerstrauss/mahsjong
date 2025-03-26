@@ -615,7 +615,7 @@
                     "visible": true
                 },
                 "children": {
-                    "button2": {
+                    "button2Client": {
                         "type": "Button",
                         "format": {
                             "type": "Anchored"
@@ -753,7 +753,7 @@
                                     "start": {
                                         "type": "Image",
                                         "data": {
-                                            "texture": "start",
+                                            "texture": "host1-start-button",
                                             "anchor": [
                                                 0,
                                                 1

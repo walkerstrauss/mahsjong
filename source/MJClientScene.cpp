@@ -93,6 +93,7 @@ bool ClientScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::s
 
     _startgame = std::dynamic_pointer_cast<scene2::Button>(_assets->get<scene2::SceneNode>("client.clientscene.buttons.confirm-button"));
     _backout = std::dynamic_pointer_cast<scene2::Button>(_assets->get<scene2::SceneNode>("client.clientscene.buttons.cancel-button"));
+    _backout2 = std::dynamic_pointer_cast<scene2::Button>(_assets->get<scene2::SceneNode>("client3.client3Scene.menu.button2Client"));
     _resetGameID = std::dynamic_pointer_cast<scene2::Button>(_assets->get<scene2::SceneNode>("client.clientscene.cancel-box"));
 
     _backout->addListener([this](const std::string& name, bool down) {
@@ -104,6 +105,19 @@ bool ClientScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::s
             _gameIDNew[2]->setTexture(_assets->get<cugl::graphics::Texture>("client1-gameid-blank"));
             _gameIDNew[3]->setTexture(_assets->get<cugl::graphics::Texture>("client1-gameid-blank"));
             _idPos = 0;
+        }
+        });
+    _backout2->addListener([this](const std::string& name, bool down) {
+        if (down) {
+            CULog("hold on....");
+            _backClicked = true;
+            _network->disconnect();
+            _gameIDNew[0]->setTexture(_assets->get<cugl::graphics::Texture>("client1-gameid-blank"));
+            _gameIDNew[1]->setTexture(_assets->get<cugl::graphics::Texture>("client1-gameid-blank"));
+            _gameIDNew[2]->setTexture(_assets->get<cugl::graphics::Texture>("client1-gameid-blank"));
+            _gameIDNew[3]->setTexture(_assets->get<cugl::graphics::Texture>("client1-gameid-blank"));
+            _idPos = 0;
+            _clientScene2->setVisible(false);
         }
         });
 
@@ -230,9 +244,6 @@ std::string ClientScene::tile2hex() {
     std::string hex = "";
     for (int i = 0; i < 4; i++) {
         hex.append(idCreation(_gameIDNew[i]));
-    }
-    if (hex == "1234") {
-        CULog("HIHIHIHIHI");
     }
     return hex;
 }
@@ -376,8 +387,22 @@ void ClientScene::update(float timestep) {
     if(_network->getStatus() == NetworkController::Status::CONNECTING){
         _clientScene1->setVisible(false);
         _clientScene2->setVisible(true);
+
+        std::shared_ptr<cugl::scene2::PolygonNode> id1 = std::dynamic_pointer_cast<scene2::PolygonNode>(_assets->get<scene2::SceneNode>("client3.client3Scene.waitingRoom.roomid-tile.host1-roomid-tile"));
+        std::shared_ptr<cugl::scene2::PolygonNode> id2 = std::dynamic_pointer_cast<scene2::PolygonNode>(_assets->get<scene2::SceneNode>("client3.client3Scene.waitingRoom.roomid-tile.host1-roomid-tile_1"));
+        std::shared_ptr<cugl::scene2::PolygonNode> id3 = std::dynamic_pointer_cast<scene2::PolygonNode>(_assets->get<scene2::SceneNode>("client3.client3Scene.waitingRoom.roomid-tile.host1-roomid-tile_2"));
+        std::shared_ptr<cugl::scene2::PolygonNode> id4 = std::dynamic_pointer_cast<scene2::PolygonNode>(_assets->get<scene2::SceneNode>("client3.client3Scene.waitingRoom.roomid-tile.host1-roomid-tile_3"));
+        id1->setTexture(_gameIDNew[0]->getTexture());
+        id2->setTexture(_gameIDNew[1]->getTexture());
+        id3->setTexture(_gameIDNew[2]->getTexture());
+        id4->setTexture(_gameIDNew[3]->getTexture());
+
     } else if (_network->getStatus() == NetworkController::Status::CONNECTED){
 //        _clientCheckbox->setVisible(true);
+    }
+    else {
+        _clientScene1->setVisible(true);
+        _clientScene2->setVisible(false);
     }
 }
 
