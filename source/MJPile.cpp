@@ -293,6 +293,22 @@ void Pile::reshufflePile(){
     CULog("pile reshuffled");
 }
 
+void Pile::removeNumTiles(int nums) {
+    for(int i = 0; i < _pileSize; i++) {
+        for(int j = 0; j < _pileSize; j++) {
+            if(nums == 0){
+                break;
+            }
+            else if (_pile[i][j] == nullptr) {
+                continue;
+            }
+            _pile[i][j] = nullptr;
+            nums -= 1;
+        }
+    }
+    CUAssertLog(nums == 0, "Did not delete correct amount of tiles");
+}
+
 ///**
 // * Method to handle pair making for the pile, including removing from pile and returning removed tiles
 // *
@@ -390,3 +406,5 @@ void Pile::reshufflePile(){
 //        }
 //    }
 //}
+
+

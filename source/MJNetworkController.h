@@ -42,7 +42,8 @@ public:
         NEWDISCARD,
         /** Error in connection */
         NETERROR,
-        BUFFER
+        /** Preemptive discard for reciever */
+        PREEMPTIVEDISCARD
     };
 
 protected:
@@ -82,6 +83,8 @@ protected:
     std::shared_ptr<cugl::JsonValue> _tileMapJson;
     
     bool _isHostDraw;
+    
+    std::tuple<int, bool> _numDiscard;
 public:
 #pragma mark -
 #pragma mark Constructors
@@ -207,6 +210,10 @@ public:
         return _startingDeckJson;
     }
     
+    std::tuple<int, bool> getNumDiscard() {
+        return _numDiscard;
+    }
+    
     bool isNewPileTile() {
         return _pileTileJson != nullptr;
     }
@@ -226,8 +233,10 @@ public:
     void broadcastUpdating();
     
     void broadcastReady();
+        
+    void broadcastPreDraw(int numDraw, bool isHost);
     
-    void broadcastBuffer();
+
 
     
     /**

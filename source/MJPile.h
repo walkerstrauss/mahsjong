@@ -18,21 +18,21 @@
 class Player;
 class Pile {
 private:
-	/** Number of possible tiles in pile */
-	int _pileSize;
+    /** Number of possible tiles in pile */
+    int _pileSize;
     
 public:
-	/** Two dimensional vector representing pile tiles */
-	std::vector<std::vector<std::shared_ptr<TileSet::Tile>>> _pile;
+    /** Two dimensional vector representing pile tiles */
+    std::vector<std::vector<std::shared_ptr<TileSet::Tile>>> _pile;
     /** Random Generator */
     cugl::Random rdPile;
     /** Map containing all tiles and their pile coordinates */
     std::map<std::string, cugl::Vec2> _pileMap;
     /** Vector representing tiles drawn from the pile */
-	std::vector<std::shared_ptr<TileSet::Tile>> _draw;
+    std::vector<std::shared_ptr<TileSet::Tile>> _draw;
     /** A reference the tileset in our game */
-	std::shared_ptr<TileSet> _tileSet;
-	/** Stores the location of our pair in the pile */
+    std::shared_ptr<TileSet> _tileSet;
+    /** Stores the location of our pair in the pile */
     std::vector<std::shared_ptr<TileSet::Tile>> _pairs;
     
 #pragma mark -
@@ -73,7 +73,7 @@ public:
      *
      * @return the size of the pile
      */
-	int getPileSize() {
+    int getPileSize() {
         return _pileSize;
     }
     
@@ -86,7 +86,7 @@ public:
         if (_pile.empty()) {
             return 0;
         }
-
+        
         int visible = 0;
         for (int i = 0; i < _pileSize; i++) {
             for (int j = 0; j < _pileSize; j++) {
@@ -97,36 +97,36 @@ public:
         }
         return visible;
     }
-
+    
     /**
      * Method to get the tiles drawn from the pile for the player
      *
      * @param number_of_tiles   the number of tiles to draw from the pile
      * @return a vector of tiles to add to the player hand
      */
-	std::vector<std::shared_ptr<TileSet::Tile>> tilesDrawn(int number_of_tiles);
-
+    std::vector<std::shared_ptr<TileSet::Tile>> tilesDrawn(int number_of_tiles);
+    
     /**
      * Method to handle pair making for the pile, including removing from pile and returning removed tiles
      *
      * @param player    the player whose hand the tiles in the pair are being drawn to
      * @return a vector of tiles in the pair
      */
-	std::vector<std::shared_ptr<TileSet::Tile>> pairTile(const std::shared_ptr<Player>& player);
+    std::vector<std::shared_ptr<TileSet::Tile>> pairTile(const std::shared_ptr<Player>& player);
     
     /**
      * Remakes pile according to the player who drew the last tile in the pile
      */
     void remakePile();
     
-	/**
+    /**
      * Method to draw the tiles in the pile
      *
      * @param batch     the SpriteBatch to draw the pile tiles to
      * @param size       the size of the pile
      * @param position the position of the pile to draw
      */
-	void draw(const std::shared_ptr<cugl::graphics::SpriteBatch>& batch);
+    void draw(const std::shared_ptr<cugl::graphics::SpriteBatch>& batch);
     
     /**
      * Method to check if the player has selected two tiles that form a pair and handle pairs
@@ -146,8 +146,12 @@ public:
      * Reshuffles the tiles within the pile
      */
     void reshufflePile();
+    
+    /**
+     * Remove inputted number of tiles iteratively
+     */
+    void removeNumTiles(int nums);
 };
-
 #endif /* __MJ_PILE_H__ */
 
 

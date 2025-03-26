@@ -273,6 +273,13 @@ void GameScene::update(float timestep) {
         _pile->remakePile();
         _network->setStatus(NetworkController::Status::INGAME);
     }
+    
+    if(_network->getStatus() == NetworkController::Status::PREEMPTIVEDISCARD) {
+        if(std::get<1>(_network->getNumDiscard()) != _network->getHostStatus()) {
+            _pile->removeNumTiles(std::get<0>(_network->getNumDiscard()));
+        }
+        _network->setStatus(NetworkController::Status::INGAME);
+    }
 
     _player->getHand().updateTilePositions(_matchScene->getSize());
     
@@ -302,6 +309,18 @@ void GameScene::update(float timestep) {
             _network->broadcastTileDrawn(_tileSet->toJson(_tileSet->tilesToJson));
             _tileSet->clearTilesToJson();
             
+            if (_pile->getVisibleSize() == 0) {
+                _pile->createPile();
+                _network->broadcastDeckMap(_tileSet->mapToJson());
+                _network->broadcastPileLayer();
+            }
+            else{
+                _network->broadcastDeck(_tileSet->toJson(_tileSet->deck));
+            }
+            if (_player->getHand().isWinningHand()){
+                _gameWin = true;
+            }
+            
             if (!_player->getHand()._drawnPile.empty()) {
                 auto drawnTile = _player->getHand()._drawnPile.back();
                 CULog("drawn tile: %s", drawnTile->toString().c_str());
@@ -315,17 +334,6 @@ void GameScene::update(float timestep) {
                 }
             }
             
-            if (_pile->getVisibleSize() == 0) {
-                _pile->createPile();
-                _network->broadcastDeckMap(_tileSet->mapToJson());
-                _network->broadcastPileLayer();
-            }
-            else{
-                _network->broadcastDeck(_tileSet->toJson(_tileSet->deck));
-            }
-            if (_player->getHand().isWinningHand()){
-                _gameWin = true;
-            }
             _player->canDraw = false;
         }
             
@@ -584,27 +592,32 @@ void GameScene::applyAction(std::shared_ptr<TileSet::ActionTile> actionTile) {
 void GameScene::applyCommand(std::shared_ptr<TileSet::CommandTile> commandTile) {
     switch (commandTile->type) {
         case TileSet::CommandTile::CommandType::OBLIVION:
-//            CULog("OBLIVION: Removing all action tiles from hand...");
+            //            CULog("OBLIVION: Removing all action tiles from hand...");
             _player->getHand().loseActions(_network->getHostStatus());
             
             if(_player->getHand()._tiles.size() < _player->getHand()._size){
                 int numTilesToDraw = _player->getHand()._size - static_cast<int>(_player->getHand()._tiles.size());
                 if(_pile->getVisibleSize() <= numTilesToDraw){
+                    int remainder = numTilesToDraw - _pile->getVisibleSize();
+                    _network->broadcastPreDraw(_pile->getVisibleSize(), _network->getHostStatus());
                     _player->getHand().drawFromPile(_pile, _pile->getVisibleSize(), _network->getHostStatus());
-                    _network->broadcastTileDrawn(_tileSet->toJson(_tileSet->tilesToJson));
                     
                     _pile->createPile();
-                    _network->broadcastDeckMap(_tileSet->mapToJson());
-                    _network->broadcastPileLayer();
+                    _player->getHand().drawFromPile(_pile, remainder, _network->getHostStatus());
                 }
-                _player->getHand().drawFromPile(_pile, numTilesToDraw, _network->getHostStatus());
-                _network->broadcastTileDrawn(_tileSet->toJson(_tileSet->tilesToJson));
-
+                else{
+                    _network->broadcastPreDraw(numTilesToDraw, _network->getHostStatus());
+                    _player->getHand().drawFromPile(_pile, numTilesToDraw, _network->getHostStatus());
+                }
+                _tileSet->clearTilesToJson();
+                _network->broadcastDeckMap(_tileSet->mapToJson());
+                _network->broadcastDeck(_tileSet->toJson(_tileSet->deck));
+                _network->broadcastPileLayer();
             }
             
             break;
         case TileSet::CommandTile::CommandType::VOID:
-//            CULog("VOID: Discarding random tile from hand...");
+            //            CULog("VOID: Discarding random tile from hand...");
             if (_player->getHand()._tiles.size()) {
                 cugl::Random rd;
                 rd.init();
@@ -615,18 +628,25 @@ void GameScene::applyCommand(std::shared_ptr<TileSet::CommandTile> commandTile) 
                 _player->getHand()._selectedTiles.clear();
                 discardTile(random);
                 _player->forcedDiscard = false;
+                
                 if(_player->getHand()._tiles.size() < _player->getHand()._size){
                     int numTilesToDraw = _player->getHand()._size - static_cast<int>(_player->getHand()._tiles.size());
-                    if(_pile->getVisibleSize() < numTilesToDraw){
+                    if(_pile->getVisibleSize() <= numTilesToDraw){
+                        int remainder = numTilesToDraw - _pile->getVisibleSize();
+                        _network->broadcastPreDraw(_pile->getVisibleSize(), _network->getHostStatus());
                         _player->getHand().drawFromPile(_pile, _pile->getVisibleSize(), _network->getHostStatus());
-                        _network->broadcastTileDrawn(_tileSet->toJson(_tileSet->tilesToJson));
                         
                         _pile->createPile();
-                        _network->broadcastDeckMap(_tileSet->mapToJson());
-                        _network->broadcastPileLayer();
+                        _player->getHand().drawFromPile(_pile, remainder, _network->getHostStatus());
                     }
-                    _player->getHand().drawFromPile(_pile, numTilesToDraw, _network->getHostStatus());
-                    _network->broadcastTileDrawn(_tileSet->toJson(_tileSet->tilesToJson));
+                    else{
+                        _network->broadcastPreDraw(numTilesToDraw, _network->getHostStatus());
+                        _player->getHand().drawFromPile(_pile, numTilesToDraw, _network->getHostStatus());
+                    }
+                    _tileSet->clearTilesToJson();
+                    _network->broadcastDeckMap(_tileSet->mapToJson());
+                    _network->broadcastDeck(_tileSet->toJson(_tileSet->deck));
+                    _network->broadcastPileLayer();
                 }
             }
             break;
