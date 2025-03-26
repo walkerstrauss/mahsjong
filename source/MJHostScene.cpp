@@ -275,6 +275,7 @@ void HostScene::update(float timestep) {
             _playerSingle->setVisible(true);
             _waitOrStart->setTexture(_assets->get<cugl::graphics::Texture>("host1-waiting-button"));
         }
+        _waitOrStart->setContentSize(200, 181);
     }
     idSetup(_tileOne, networkHex[0]);
     idSetup(_tileTwo, networkHex[1]);
