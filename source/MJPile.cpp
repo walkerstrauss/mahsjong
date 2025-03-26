@@ -199,10 +199,14 @@ void Pile::removePileTile(const std::shared_ptr<cugl::JsonValue> tileJson, bool 
         else if (commandType != "None") {
             key = commandType + " " + id;
         }
+        CULog("%s", key.c_str());
         
         int x = _pileMap[key].x;
         int y = _pileMap[key].y;
         
+        if(_pile[x][y] == nullptr){
+            continue;
+        }
         _pile[x][y]->inPile = false;
         if(isHostDraw){
             _pile[x][y]->inHostHand = true;

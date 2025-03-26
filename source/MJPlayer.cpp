@@ -471,7 +471,6 @@ void Hand::updateTilePositions(cugl::Size sceneSize){
         }
       
     cugl::Vec2 newPos(startX + i * tileSpacing + (_tiles[i]->getTileTexture()->getWidth()/2 * _tiles[i]->_scale), yPos);
-    CULog("%f", _tiles[i]->getTileTexture()->getWidth()/2 * _tiles[i]->_scale);
     _tiles[i]->pos = newPos;
       
       

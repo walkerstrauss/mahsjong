@@ -41,7 +41,8 @@ public:
         /** Adding new discard tile*/
         NEWDISCARD,
         /** Error in connection */
-        NETERROR
+        NETERROR,
+        BUFFER
     };
 
 protected:
@@ -226,6 +227,8 @@ public:
     
     void broadcastReady();
     
+    void broadcastBuffer();
+
     
     /**
      * Converts a decimal string to a hexadecimal string
