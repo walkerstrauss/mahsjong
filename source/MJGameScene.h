@@ -202,7 +202,6 @@ public:
     
     /**
      * Returns true if the player quits the game.
-     *
      * @return true if the player quits the game.
      */
     bool didQuit() const { return _quit; }

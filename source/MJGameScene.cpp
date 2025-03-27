@@ -76,7 +76,7 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::sha
     _pauseBtn = std::dynamic_pointer_cast<scene2::Button>(_assets->get<scene2::SceneNode>("matchscene.gameplayscene.pauseButton"));
     _endTurnBtn = std::dynamic_pointer_cast<scene2::Button>(_assets->get<scene2::SceneNode>("matchscene.gameplayscene.endTurnButton"));
     _endTurnBtn->addListener([this](const std::string& name, bool down){
-        if (!down){
+        if (!down && _network->getCurrentTurn() == _network->getLocalPid()){
             if(_player->canDraw && _player->canExchange){
                 CULog("Must perform a draw from pile or discard first");
                 return;
@@ -140,6 +140,7 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::sha
         _player->getHand().initHand(_tileSet, _network->getHostStatus());
         _player->getHand().updateTilePositions(getSize());
         _pile->remakePile();
+        _pile->updateTilePositions();
         _network->broadcastDeck(_tileSet->mapToJson());
     }
     
@@ -271,6 +272,7 @@ void GameScene::update(float timestep) {
     if(_network->getStatus() == NetworkController::Status::LAYER) {
         _tileSet->updateDeck(_network->getTileMapJson());
         _pile->remakePile();
+        _pile->updateTilePositions();
         _network->setStatus(NetworkController::Status::INGAME);
     }
     

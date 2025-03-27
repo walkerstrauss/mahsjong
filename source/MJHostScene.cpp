@@ -69,8 +69,6 @@ bool HostScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::sha
     if (assets == nullptr) {
         return false;}
     
-    Size dimen = getSize();
-    
     // Start up the input handler
     _assets = assets;
     _network = network;
