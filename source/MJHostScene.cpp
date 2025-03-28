@@ -138,52 +138,52 @@ bool HostScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::sha
 void HostScene::idSetup(const std::shared_ptr<cugl::scene2::PolygonNode>& tile, const char serverPart) {
     switch (serverPart) {
         case '1':
-            tile->setTexture(_assets->get<cugl::graphics::Texture>("client1-gameid-tile"));
-            break;
-        case '2':
             tile->setTexture(_assets->get<cugl::graphics::Texture>("client1-gameid-tile1"));
             break;
-        case '3':
+        case '2':
             tile->setTexture(_assets->get<cugl::graphics::Texture>("client1-gameid-tile2"));
             break;
-        case '4':
+        case '3':
             tile->setTexture(_assets->get<cugl::graphics::Texture>("client1-gameid-tile3"));
             break;
-        case '5':
+        case '4':
             tile->setTexture(_assets->get<cugl::graphics::Texture>("client1-gameid-tile4"));
             break;
-        case '6':
+        case '5':
             tile->setTexture(_assets->get<cugl::graphics::Texture>("client1-gameid-tile5"));
             break;
-        case '7':
+        case '6':
             tile->setTexture(_assets->get<cugl::graphics::Texture>("client1-gameid-tile6"));
             break;
-        case '8':
+        case '7':
             tile->setTexture(_assets->get<cugl::graphics::Texture>("client1-gameid-tile7"));
             break;
-        case '9':
+        case '8':
             tile->setTexture(_assets->get<cugl::graphics::Texture>("client1-gameid-tile8"));
             break;
-        case '0':
+        case '9':
             tile->setTexture(_assets->get<cugl::graphics::Texture>("client1-gameid-tile9"));
             break;
+        case '0':
+            tile->setTexture(_assets->get<cugl::graphics::Texture>("client1-gameid-tile1"));
+            break;
         case 'A':
-            tile->setTexture(_assets->get<cugl::graphics::Texture>("two of dot"));
+            tile->setTexture(_assets->get<cugl::graphics::Texture>("client1-gameid-tile2"));
             break;
         case 'B':
-            tile->setTexture(_assets->get<cugl::graphics::Texture>("three of dot"));
+            tile->setTexture(_assets->get<cugl::graphics::Texture>("client1-gameid-tile3"));
             break;
         case 'C':
-            tile->setTexture(_assets->get<cugl::graphics::Texture>("four of dot"));
+            tile->setTexture(_assets->get<cugl::graphics::Texture>("client1-gameid-tile4"));
             break;
         case 'D':
-            tile->setTexture(_assets->get<cugl::graphics::Texture>("five of dot"));
+            tile->setTexture(_assets->get<cugl::graphics::Texture>("client1-gameid-tile5"));
             break;
         case 'E':
-            tile->setTexture(_assets->get<cugl::graphics::Texture>("six of dot"));
+            tile->setTexture(_assets->get<cugl::graphics::Texture>("client1-gameid-tile6"));
             break;
         case 'F':
-            tile->setTexture(_assets->get<cugl::graphics::Texture>("seven of dot"));
+            tile->setTexture(_assets->get<cugl::graphics::Texture>("client1-gameid-tile7"));
             break;
         default:
             tile->setTexture(_assets->get<cugl::graphics::Texture>("client1-gameid-blank"));
@@ -276,11 +276,11 @@ void HostScene::update(float timestep) {
             _waitOrStart->setTexture(_assets->get<cugl::graphics::Texture>("host1-waiting-button"));
         }
         _waitOrStart->setContentSize(200, 181);
+        idSetup(_tileOne, networkHex[0]);
+        idSetup(_tileTwo, networkHex[1]);
+        idSetup(_tileThree, networkHex[2]);
+        idSetup(_tileFour, networkHex[3]);
     }
-    idSetup(_tileOne, networkHex[0]);
-    idSetup(_tileTwo, networkHex[1]);
-    idSetup(_tileThree, networkHex[2]);
-    idSetup(_tileFour, networkHex[3]);
 }
 
 /**

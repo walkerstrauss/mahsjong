@@ -94,6 +94,9 @@ protected:
     
     /** Whether the back button had been clicked. */
     bool _backClicked = false;
+
+    /** Whether we are using the second page of the keypad for client/host */
+    bool _keySecPage = false;
 //    /** The current status */
 //    Status _status;
 

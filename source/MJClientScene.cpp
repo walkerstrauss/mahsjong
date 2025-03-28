@@ -161,9 +161,13 @@ bool ClientScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::s
     _tile10 = std::dynamic_pointer_cast<scene2::Button>(_assets->get<scene2::SceneNode>("client.clientscene.gameid-pad.pad-tile9"));
 
     _tile1->addListener([this](const std::string& name, bool down) {
-        if (down && _idPos != 4) {
-            _gameIDNew[_idPos]->setTexture(_assets->get<cugl::graphics::Texture>("client1-gameid-tile"));
-            _idPos++;
+        if (down) {
+            //_gameIDNew[_idPos]->setTexture(_assets->get<cugl::graphics::Texture>("client1-gameid-tile"));
+            //_idPos++;
+            _keySecPage = !_keySecPage;
+            if (_keySecPage) { CULog("1 = 0, 2 = A, 3 = B, 4 = C, 5 = D, 6 = E, 7 = F"); }
+            _tile9->setVisible(!_keySecPage);
+            _tile10->setVisible(!_keySecPage);
         }
         });
     _tile2->addListener([this](const std::string& name, bool down) {
@@ -253,35 +257,39 @@ std::string ClientScene::idCreation(const std::shared_ptr<cugl::scene2::PolygonN
     auto texture = tile->getTexture();
 
     // Compare the texture to each asset
-    if (texture == _assets->get<cugl::graphics::Texture>("client1-gameid-tile")) {
+    if (texture == _assets->get<cugl::graphics::Texture>("client1-gameid-tile1")) {
+        if (_keySecPage) { return "0"; }
         return "1";
     }
-    else if (texture == _assets->get<cugl::graphics::Texture>("client1-gameid-tile1")) {
+    else if (texture == _assets->get<cugl::graphics::Texture>("client1-gameid-tile2")) {
+        if (_keySecPage) { return "A"; }
         return "2";
     }
-    else if (texture == _assets->get<cugl::graphics::Texture>("client1-gameid-tile2")) {
+    else if (texture == _assets->get<cugl::graphics::Texture>("client1-gameid-tile3")) {
+        if (_keySecPage) { return "B"; }
         return "3";
     }
-    else if (texture == _assets->get<cugl::graphics::Texture>("client1-gameid-tile3")) {
+    else if (texture == _assets->get<cugl::graphics::Texture>("client1-gameid-tile4")) {
+        if (_keySecPage) { return "C"; }
         return "4";
     }
-    else if (texture == _assets->get<cugl::graphics::Texture>("client1-gameid-tile4")) {
+    else if (texture == _assets->get<cugl::graphics::Texture>("client1-gameid-tile5")) {
+        if (_keySecPage) { return "D"; }
         return "5";
     }
-    else if (texture == _assets->get<cugl::graphics::Texture>("client1-gameid-tile5")) {
+    else if (texture == _assets->get<cugl::graphics::Texture>("client1-gameid-tile6")) {
+        if (_keySecPage) { return "E"; }
         return "6";
     }
-    else if (texture == _assets->get<cugl::graphics::Texture>("client1-gameid-tile6")) {
+    else if (texture == _assets->get<cugl::graphics::Texture>("client1-gameid-tile7")) {
+        if (_keySecPage) { return "F"; }
         return "7";
     }
-    else if (texture == _assets->get<cugl::graphics::Texture>("client1-gameid-tile7")) {
+    else if (texture == _assets->get<cugl::graphics::Texture>("client1-gameid-tile8")) {
         return "8";
     }
-    else if (texture == _assets->get<cugl::graphics::Texture>("client1-gameid-tile8")) {
-        return "9";
-    }
     else if (texture == _assets->get<cugl::graphics::Texture>("client1-gameid-tile9")) {
-        return "0";
+        return "9";
     }
     else {
         return ""; // Default case if no match found
