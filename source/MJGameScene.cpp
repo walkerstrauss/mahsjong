@@ -64,10 +64,6 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::sha
         std::cerr << "Scene2 initialization failed!" << std::endl;
         return false;
     }
-//
-//    _matchScene->setContentSize(dimen);
-//    _matchScene->doLayout();
-//    _matchScene->setPosition(125, _matchScene->getPositionY());
    
     std::shared_ptr<scene2::SceneNode> childNode = _matchScene->getChild(0);
     
@@ -106,10 +102,10 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::sha
     _gameWin = false;
     _gameLose = false;
 
-    // Initialize tile set
+    // Gamescene w/ game objects
     _tileSet = std::make_shared<TileSet>();
     _player = std::make_shared<Player>();
-    _pile = std::make_shared<Pile>(); //Init our pile
+    _pile = std::make_shared<Pile>();
     discardArea = cugl::Rect(Vec2(1000, 210), Size(273, 195));
 
     if(_network->getHostStatus()){

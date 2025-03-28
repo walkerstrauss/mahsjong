@@ -129,11 +129,21 @@ void TileSet::addActionAndCommandTiles(const std::shared_ptr<cugl::AssetManager>
  * Sets the texture for all tiles in deck
  */
 void TileSet::setAllTileTexture(const std::shared_ptr<cugl::AssetManager>& assets){
-    if(deck.size() == 0){
-        CULog("Deck is empty");
-    }
-    for(const auto& it : deck){
-        if (it->getSuit() != Tile::Suit::SPECIAL) {
+    CUAssertLog(deck.size() == 0, "Cannot initialize textures with empty deck");
+    
+    for(const auto& it : deck) {
+        //Initializing textures for command and action tiles
+        if(it->getSuit() == Tile::Suit::SPECIAL) {
+            if(it->getRank() == Tile::Rank::ACTION) {
+                auto actionTile = std::dynamic_pointer_cast<ActionTile>(it);
+                actionTile->setTexture(assets->get<Texture>(actionTile->toString()));
+            }
+            else if (it->getRank() == Tile::Rank::COMMAND) {
+                auto commandTile = std::dynamic_pointer_cast<CommandTile>(it);
+                commandTile->setTexture(assets->get<Texture>(commandTile->toString()));
+            }
+        }
+        else{
             it->setTexture(assets->get<Texture>(it->toString()));
         }
     }
