@@ -208,6 +208,10 @@ public:
                 return Tile::Rank::EIGHT;
             } else if (rank == "nine") {
                 return Tile::Rank::NINE;
+            } else if (rank == "action") {
+                return Tile::Rank::ACTION;
+            } else if (rank == "command") {
+                return Tile::Rank::COMMAND;
             } else {
                 throw std::invalid_argument("No valid rank");
             }
@@ -220,6 +224,8 @@ public:
                 return Tile::Suit::DOT;
             } else if (suit == "crak") {
                 return Tile::Suit::CRAK;
+            } else if (suit == "special"){
+                return Tile::Suit::SPECIAL;
             } else {
                 throw std::invalid_argument("No valid suit");
             }

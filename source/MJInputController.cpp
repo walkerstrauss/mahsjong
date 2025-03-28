@@ -143,6 +143,7 @@ void InputController::buttonDownCB(const cugl::MouseEvent& event, Uint8 clicks, 
     if (!_mouseDown && event.buttons.hasLeft()) {
         _mouseDown = true;
         _mousePos = event.position;
+        _initialPosition = _mousePos;
     }
 }
 
@@ -186,6 +187,7 @@ void InputController::touchPressCB(const cugl::TouchEvent& event, bool focus) {
         _touchDown = true;
         _touchKey = event.touch;
         _currPos = event.position;
+        _initialPosition = _currPos;
         
         CULog("TOUCH PRESS detected at (%f, %f)", event.position.x, event.position.y);
     }

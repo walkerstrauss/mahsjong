@@ -202,7 +202,6 @@ public:
     
     /**
      * Returns true if the player quits the game.
-     *
      * @return true if the player quits the game.
      */
     bool didQuit() const { return _quit; }
@@ -305,10 +304,8 @@ public:
     void releaseTile();
 
     void updateDrag(const cugl::Vec2& mousePos, bool mouseDown, bool mouseReleased);
-
-
     
-    void discardTile();
+    void discardTile(std::shared_ptr<TileSet::Tile> tile);
     
 };
 
