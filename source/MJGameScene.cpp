@@ -131,6 +131,8 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::sha
         _network->broadcastStartingDeck(_tileSet->mapToJson());
     } else {
         _tileSet->initClientDeck(_network->getStartingDeck());
+        //Initializing client pile (pile full of nullptrs)
+        _pile->initPile(4, _tileSet, _network->getHostStatus());
         //Initializing client deck
         _tileSet->setAllTileTexture(_assets);
         _tileSet->setSpecialTextures(_assets);
@@ -624,8 +626,7 @@ void GameScene::applyCommand(std::shared_ptr<TileSet::CommandTile> commandTile) 
                 cugl::Random rd;
                 rd.init();
                 int index = static_cast<int>(rd.getOpenUint64(0, _player->getHand()._size - 1));
-                std::shared_ptr<TileSet::Tile> random = _player->getHand()._tiles[index];
-                
+                std::shared_ptr<TileSet::Tile> random = _player->getHand()._tiles[index];                
                 _player->forcedDiscard = true;
                 _player->getHand()._selectedTiles.clear();
                 discardTile(random);

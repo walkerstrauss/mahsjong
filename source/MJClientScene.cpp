@@ -42,6 +42,8 @@ static std::string dec2hex(const std::string dec) {
 }
 
 
+
+
 #pragma mark -
 #pragma mark Provided Methods
 /**
@@ -60,54 +62,239 @@ bool ClientScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::s
     if (assets == nullptr) {
         return false;}
     
-    // get the size of the screen.
+    Size dimen = getSize();
+    
+    // Start up the input handler
+    _assets = assets;
+    _network = network;
+
+    // Acquire the scene built by the asset loader and resize it the scene
+    _clientScene1 = _assets->get<scene2::SceneNode>("client");
+    _clientScene1->setContentSize(1280,720);
     cugl::Size screenSize = cugl::Application::get()->getDisplaySize();
+    screenSize *= _clientScene1->getContentSize().height/screenSize.height;
     //cugl::Size screenSize = Size(0,SCENE_HEIGHT);
+    
+    float offset = (screenSize.width -_clientScene1->getWidth())/2;
+    _clientScene1->setPosition(offset, _clientScene1->getPosition().y);
     
     if (!Scene2::initWithHint(screenSize)) {
         return false;
     }
     
-    // Start up the input handler
-    _assets = assets;
-    _network = network;
+    _clientScene2 = _assets->get<scene2::SceneNode>("client3");
+    _clientScene2->setContentSize(1280,720);
     
-    //Size dimen = getSize();
-    // Acquire the scene built by the asset loader and resize it the scene
-    std::shared_ptr<scene2::SceneNode> scene = _assets->get<scene2::SceneNode>("client");
-    scene->setContentSize(screenSize);
-    scene->doLayout(); // Repositions the HUD
-    
-    _startgame = std::dynamic_pointer_cast<scene2::Button>(_assets->get<scene2::SceneNode>("client.clientscene.menu.buttonmenu.button1"));
-    _backout = std::dynamic_pointer_cast<scene2::Button>(_assets->get<scene2::SceneNode>("client.clientscene.menu.buttonmenu.button2"));
-    _gameid = std::dynamic_pointer_cast<scene2::TextField>(_assets->get<scene2::SceneNode>("client.clientscene.menu.gameid.gameid_textfield.gameid"));
-    _player = std::dynamic_pointer_cast<scene2::Label>(_assets->get<scene2::SceneNode>("client.clientscene.menu.player.player_textfield.label"));
-    
+    _clientScene1->setPosition(offset, _clientScene1->getPosition().y);
+    addChild(_clientScene2);
+    _clientScene2->setVisible(false);
+    _clientCheckbox = _assets->get<scene2::SceneNode>("client3.client3Scene.waitingRoom.playerBoard.host1-checkbox");
+    _clientCheckbox->setVisible(false);
+
+    _startgame = std::dynamic_pointer_cast<scene2::Button>(_assets->get<scene2::SceneNode>("client.clientscene.buttons.confirm-button"));
+    _backout = std::dynamic_pointer_cast<scene2::Button>(_assets->get<scene2::SceneNode>("client.clientscene.buttons.cancel-button"));
+    _backout2 = std::dynamic_pointer_cast<scene2::Button>(_assets->get<scene2::SceneNode>("client3.client3Scene.menu.button2Client"));
+    _resetGameID = std::dynamic_pointer_cast<scene2::Button>(_assets->get<scene2::SceneNode>("client.clientscene.cancel-box"));
+    _prepareOrStart = std::dynamic_pointer_cast<scene2::PolygonNode>(_assets->get<scene2::SceneNode>("client3.client3Scene.menu.button1.up.start"));
+
     _backout->addListener([this](const std::string& name, bool down) {
         if (down) {
-            _network->disconnect();
             _backClicked = true;
+            _network->disconnect();
+            _gameIDNew[0]->setTexture(_assets->get<cugl::graphics::Texture>("client1-gameid-blank"));
+            _gameIDNew[1]->setTexture(_assets->get<cugl::graphics::Texture>("client1-gameid-blank"));
+            _gameIDNew[2]->setTexture(_assets->get<cugl::graphics::Texture>("client1-gameid-blank"));
+            _gameIDNew[3]->setTexture(_assets->get<cugl::graphics::Texture>("client1-gameid-blank"));
+            _idPos = 0;
         }
-    });
-
-    _startgame->addListener([=,this](const std::string& name, bool down) {
+        });
+    _backout2->addListener([this](const std::string& name, bool down) {
         if (down) {
-            // This will call the _gameid listener
-            _gameid->releaseFocus();
+            CULog("hold on....");
+            _backClicked = true;
+            _network->disconnect();
+            _gameIDNew[0]->setTexture(_assets->get<cugl::graphics::Texture>("client1-gameid-blank"));
+            _gameIDNew[1]->setTexture(_assets->get<cugl::graphics::Texture>("client1-gameid-blank"));
+            _gameIDNew[2]->setTexture(_assets->get<cugl::graphics::Texture>("client1-gameid-blank"));
+            _gameIDNew[3]->setTexture(_assets->get<cugl::graphics::Texture>("client1-gameid-blank"));
+            _idPos = 0;
+            _clientScene2->setVisible(false);
         }
-    });
-    
-    _gameid->addExitListener([this](const std::string& name, const std::string& value) {
-        _network->connectAsClient(dec2hex(value));
-    });
+        });
+
+    _resetGameID->addListener([this](const std::string& name, bool down) {
+        if (down) {
+            _gameIDNew[0]->setTexture(_assets->get<cugl::graphics::Texture>("client1-gameid-blank"));
+            _gameIDNew[1]->setTexture(_assets->get<cugl::graphics::Texture>("client1-gameid-blank"));
+            _gameIDNew[2]->setTexture(_assets->get<cugl::graphics::Texture>("client1-gameid-blank"));
+            _gameIDNew[3]->setTexture(_assets->get<cugl::graphics::Texture>("client1-gameid-blank"));
+            _idPos = 0;
+        }
+        });
+
+    _startgame->addListener([=, this](const std::string& name, bool down) {
+        if (down) {
+            //std::string curr = tile2hex();
+            _network->connectAsClient(tile2hex());
+            // This will call the _gameid listener
+            //_gameid->releaseFocus();
+        }
+        });
+
+    // Tile GameID
+    _gameIDNew[0] = std::dynamic_pointer_cast<scene2::PolygonNode>(_assets->get<scene2::SceneNode>("client.clientscene.client1-gameid-blank.client1-gameid-blank"));
+    _gameIDNew[1] = std::dynamic_pointer_cast<scene2::PolygonNode>(_assets->get<scene2::SceneNode>("client.clientscene.client1-gameid-blank.client1-gameid-blank_1"));
+    _gameIDNew[2] = std::dynamic_pointer_cast<scene2::PolygonNode>(_assets->get<scene2::SceneNode>("client.clientscene.client1-gameid-blank.client1-gameid-blank_2"));
+    _gameIDNew[3] = std::dynamic_pointer_cast<scene2::PolygonNode>(_assets->get<scene2::SceneNode>("client.clientscene.client1-gameid-blank.client1-gameid-blank_3"));
+    _idPos = 0;
+
+    // Tile Keypad
+    _tile1 = std::dynamic_pointer_cast<scene2::Button>(_assets->get<scene2::SceneNode>("client.clientscene.gameid-pad.pad-tile"));
+    _tile2 = std::dynamic_pointer_cast<scene2::Button>(_assets->get<scene2::SceneNode>("client.clientscene.gameid-pad.pad-tile1"));
+    _tile3 = std::dynamic_pointer_cast<scene2::Button>(_assets->get<scene2::SceneNode>("client.clientscene.gameid-pad.pad-tile2"));
+    _tile4 = std::dynamic_pointer_cast<scene2::Button>(_assets->get<scene2::SceneNode>("client.clientscene.gameid-pad.pad-tile3"));
+    _tile5 = std::dynamic_pointer_cast<scene2::Button>(_assets->get<scene2::SceneNode>("client.clientscene.gameid-pad.pad-tile4"));
+    _tile6 = std::dynamic_pointer_cast<scene2::Button>(_assets->get<scene2::SceneNode>("client.clientscene.gameid-pad.pad-tile5"));
+    _tile7 = std::dynamic_pointer_cast<scene2::Button>(_assets->get<scene2::SceneNode>("client.clientscene.gameid-pad.pad-tile6"));
+    _tile8 = std::dynamic_pointer_cast<scene2::Button>(_assets->get<scene2::SceneNode>("client.clientscene.gameid-pad.pad-tile7"));
+    _tile9 = std::dynamic_pointer_cast<scene2::Button>(_assets->get<scene2::SceneNode>("client.clientscene.gameid-pad.pad-tile8"));
+    _tile10 = std::dynamic_pointer_cast<scene2::Button>(_assets->get<scene2::SceneNode>("client.clientscene.gameid-pad.pad-tile9"));
+
+    _tile1->addListener([this](const std::string& name, bool down) {
+        if (down) {
+            //_gameIDNew[_idPos]->setTexture(_assets->get<cugl::graphics::Texture>("client1-gameid-tile"));
+            //_idPos++;
+            _keySecPage = !_keySecPage;
+            if (_keySecPage) { CULog("1 = 0, 2 = A, 3 = B, 4 = C, 5 = D, 6 = E, 7 = F"); _tile9->deactivate(); _tile10->deactivate();  }
+            else { _tile9->activate(); _tile10->activate(); }
+            _tile9->setVisible(!_keySecPage);
+            _tile10->setVisible(!_keySecPage);
+        }
+        });
+    _tile2->addListener([this](const std::string& name, bool down) {
+        if (down && _idPos != 4) {
+            _gameIDNew[_idPos]->setTexture(_assets->get<cugl::graphics::Texture>("client1-gameid-tile1"));
+            _idPos++;
+        }
+        });
+    _tile3->addListener([this](const std::string& name, bool down) {
+        if (down && _idPos != 4) {
+            _gameIDNew[_idPos]->setTexture(_assets->get<cugl::graphics::Texture>("client1-gameid-tile2"));
+            _idPos++;
+        }
+        });
+    _tile4->addListener([this](const std::string& name, bool down) {
+        if (down && _idPos != 4) {
+            _gameIDNew[_idPos]->setTexture(_assets->get<cugl::graphics::Texture>("client1-gameid-tile3"));
+            _idPos++;
+        }
+        });
+    _tile5->addListener([this](const std::string& name, bool down) {
+        if (down && _idPos != 4) {
+            _gameIDNew[_idPos]->setTexture(_assets->get<cugl::graphics::Texture>("client1-gameid-tile4"));
+            _idPos++;
+        }
+        });
+    _tile6->addListener([this](const std::string& name, bool down) {
+        if (down && _idPos != 4) {
+            _gameIDNew[_idPos]->setTexture(_assets->get<cugl::graphics::Texture>("client1-gameid-tile5"));
+            _idPos++;
+        }
+        });
+    _tile7->addListener([this](const std::string& name, bool down) {
+        if (down && _idPos != 4) {
+            _gameIDNew[_idPos]->setTexture(_assets->get<cugl::graphics::Texture>("client1-gameid-tile6"));
+            _idPos++;
+        }
+        });
+    _tile8->addListener([this](const std::string& name, bool down) {
+        if (down && _idPos != 4) {
+            _gameIDNew[_idPos]->setTexture(_assets->get<cugl::graphics::Texture>("client1-gameid-tile7"));
+            _idPos++;
+        }
+        });
+    _tile9->addListener([this](const std::string& name, bool down) {
+        if (down && _idPos != 4) {
+            _gameIDNew[_idPos]->setTexture(_assets->get<cugl::graphics::Texture>("client1-gameid-tile8"));
+            _idPos++;
+        }
+        });
+    _tile10->addListener([this](const std::string& name, bool down) {
+        if (down && _idPos != 4) {
+            _gameIDNew[_idPos]->setTexture(_assets->get<cugl::graphics::Texture>("client1-gameid-tile9"));
+            _idPos++;
+        }
+        });
 
     // Create the server configuration
     auto json = _assets->get<JsonValue>("server");
     _config.set(json);
     
-    addChild(scene);
+    addChild(_clientScene1);
     setActive(false);
     return true;
+}
+
+/**
+* Convert tile information into hexadecmial
+*/
+std::string ClientScene::tile2hex() {
+    if (_idPos != 4) {
+         _gameIDNew[0]->setTexture(_assets->get<cugl::graphics::Texture>("client1-gameid-blank"));
+         _gameIDNew[1]->setTexture(_assets->get<cugl::graphics::Texture>("client1-gameid-blank"));
+         _gameIDNew[2]->setTexture(_assets->get<cugl::graphics::Texture>("client1-gameid-blank"));
+         _gameIDNew[3]->setTexture(_assets->get<cugl::graphics::Texture>("client1-gameid-blank"));
+         _idPos = 0;
+         return "";
+    }
+    std::string hex = "";
+    for (int i = 0; i < 4; i++) {
+        hex.append(idCreation(_gameIDNew[i]));
+    }
+    return hex;
+}
+
+std::string ClientScene::idCreation(const std::shared_ptr<cugl::scene2::PolygonNode>& tile) {
+    auto texture = tile->getTexture();
+
+    // Compare the texture to each asset
+    if (texture == _assets->get<cugl::graphics::Texture>("client1-gameid-tile1")) {
+        if (_keySecPage) { return "0"; }
+        return "1";
+    }
+    else if (texture == _assets->get<cugl::graphics::Texture>("client1-gameid-tile2")) {
+        if (_keySecPage) { return "A"; }
+        return "2";
+    }
+    else if (texture == _assets->get<cugl::graphics::Texture>("client1-gameid-tile3")) {
+        if (_keySecPage) { return "B"; }
+        return "3";
+    }
+    else if (texture == _assets->get<cugl::graphics::Texture>("client1-gameid-tile4")) {
+        if (_keySecPage) { return "C"; }
+        return "4";
+    }
+    else if (texture == _assets->get<cugl::graphics::Texture>("client1-gameid-tile5")) {
+        if (_keySecPage) { return "D"; }
+        return "5";
+    }
+    else if (texture == _assets->get<cugl::graphics::Texture>("client1-gameid-tile6")) {
+        if (_keySecPage) { return "E"; }
+        return "6";
+    }
+    else if (texture == _assets->get<cugl::graphics::Texture>("client1-gameid-tile7")) {
+        if (_keySecPage) { return "F"; }
+        return "7";
+    }
+    else if (texture == _assets->get<cugl::graphics::Texture>("client1-gameid-tile8")) {
+        return "8";
+    }
+    else if (texture == _assets->get<cugl::graphics::Texture>("client1-gameid-tile9")) {
+        return "9";
+    }
+    else {
+        return ""; // Default case if no match found
+    }
 }
 
 /**
@@ -133,18 +320,43 @@ void ClientScene::setActive(bool value) {
     if (isActive() != value) {
         Scene2::setActive(value);
         if (value) {
-            _gameid->activate();
+            //_gameid->activate();
             _backout->activate();
-            _player->setText("1");
+            //_player->setText("1");
             configureStartButton();
             _backClicked = false;
+            _backout->activate();
+            _tile1->activate();
+            _tile2->activate();
+            _tile3->activate();
+            _tile4->activate();
+            _tile5->activate();
+            _tile6->activate();
+            _tile7->activate();
+            _tile8->activate();
+            _tile9->activate();
+            _tile10->activate();
+            _resetGameID->activate();
+            _startgame->activate();
             // Don't reset the room id
         } else {
-            _gameid->deactivate();
+            //_gameid->deactivate();
             _startgame->deactivate();
             _backout->deactivate();
             _startgame->setDown(false);
             _backout->setDown(false);
+            _tile1->deactivate();
+            _tile2->deactivate();
+            _tile3->deactivate();
+            _tile4->deactivate();
+            _tile5->deactivate();
+            _tile6->deactivate();
+            _tile7->deactivate();
+            _tile8->deactivate();
+            _tile9->deactivate();
+            _tile10->deactivate();
+            _resetGameID->deactivate();
+            _startgame->deactivate();
         }
     }
 }
@@ -182,9 +394,30 @@ void ClientScene::update(float timestep) {
 //        checkConnection();
     
     configureStartButton();
-    if(_network->getStatus() == NetworkController::Status::CONNECTED){
-        _player->setText(std::to_string(_network->getNumPlayers()));
+    if(_network->getStatus() == NetworkController::Status::CONNECTING){
+        _clientScene1->setVisible(false);
+        _clientScene2->setVisible(true);
+
+        std::shared_ptr<cugl::scene2::PolygonNode> id1 = std::dynamic_pointer_cast<scene2::PolygonNode>(_assets->get<scene2::SceneNode>("client3.client3Scene.waitingRoom.roomid-tile.host1-roomid-tile"));
+        std::shared_ptr<cugl::scene2::PolygonNode> id2 = std::dynamic_pointer_cast<scene2::PolygonNode>(_assets->get<scene2::SceneNode>("client3.client3Scene.waitingRoom.roomid-tile.host1-roomid-tile_1"));
+        std::shared_ptr<cugl::scene2::PolygonNode> id3 = std::dynamic_pointer_cast<scene2::PolygonNode>(_assets->get<scene2::SceneNode>("client3.client3Scene.waitingRoom.roomid-tile.host1-roomid-tile_2"));
+        std::shared_ptr<cugl::scene2::PolygonNode> id4 = std::dynamic_pointer_cast<scene2::PolygonNode>(_assets->get<scene2::SceneNode>("client3.client3Scene.waitingRoom.roomid-tile.host1-roomid-tile_3"));
+        id1->setTexture(_gameIDNew[0]->getTexture());
+        id2->setTexture(_gameIDNew[1]->getTexture());
+        id3->setTexture(_gameIDNew[2]->getTexture());
+        id4->setTexture(_gameIDNew[3]->getTexture());
+        _prepareOrStart->setTexture(_assets->get<cugl::graphics::Texture>("prepareButton"));
+
+    } else if (_network->getStatus() == NetworkController::Status::CONNECTED){
+        _clientCheckbox->setVisible(true);
+        _prepareOrStart->setTexture(_assets->get<cugl::graphics::Texture>("host1-start-button"));
     }
+    else {
+        _clientScene1->setVisible(true);
+        _clientScene2->setVisible(false);
+        _clientCheckbox->setVisible(false);
+    }
+    _prepareOrStart->setContentSize(200, 181);
 }
 
 
@@ -273,16 +506,16 @@ void ClientScene::configureStartButton() {
     if(_network->getStatus() == NetworkController::Status::IDLE){
         _startgame->setDown(false);
         _startgame->activate();
-        updateText(_startgame,"Start Game");
-    }
-    else if(_network->getStatus() == NetworkController::Status::CONNECTING){
+        //updateText(_startgame,"Start Game");
+        
+    } else if(_network->getStatus() == NetworkController::Status::CONNECTING){
         _startgame->setDown(false);
         _startgame->deactivate();
-        updateText(_startgame, "Connecting");
+        //updateText(_startgame, "Connecting");
     }
     else if(_network->getStatus() == NetworkController::Status::CONNECTED){
         _startgame->setDown(false);
         _startgame->deactivate();
-        updateText(_startgame, "Waiting");
+        //updateText(_startgame, "Waiting");
     }
 }

@@ -96,7 +96,7 @@ protected:
     /** Whether we quit the game */
     bool _quit;
     /** Whether or not UI is active*/
-    bool _uiopen;
+    bool _uiopen = false;
     /** Button for discarding */
     std::shared_ptr<cugl::scene2::Button> _discardBtn;
     /** Button for transitioning to the tileset UI scene (discarded cards) */

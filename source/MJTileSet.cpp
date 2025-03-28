@@ -113,12 +113,6 @@ void TileSet::addActionAndCommandTiles(const std::shared_ptr<cugl::AssetManager>
         oblivion->setTexture(assets->get<Texture>(oblivion->toString()));
         deck.push_back(oblivion);
         tileMap[oblivion->toString() + " " + std::to_string(oblivion->_id)] = oblivion;
-        
-        std::shared_ptr<CommandTile> vvoid = std::make_shared<CommandTile>(CommandTile::CommandType::VOID);
-        vvoid->_id = i;
-        vvoid->setTexture(assets->get<Texture>(vvoid->toString()));
-        deck.push_back(vvoid);
-        tileMap[vvoid->toString() + " " + std::to_string(vvoid->_id)] = vvoid;
 
     }
 }
