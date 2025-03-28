@@ -620,7 +620,7 @@ void GameScene::applyCommand(std::shared_ptr<TileSet::CommandTile> commandTile) 
             }
             
             break;
-        case TileSet::CommandTile::CommandType::VOID:
+        case TileSet::CommandTile::CommandType::DISCARD:
             //            CULog("VOID: Discarding random tile from hand...");
             if (_player->getHand()._tiles.size()) {
                 cugl::Random rd;
