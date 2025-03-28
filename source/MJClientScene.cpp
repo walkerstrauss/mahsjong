@@ -165,7 +165,8 @@ bool ClientScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::s
             //_gameIDNew[_idPos]->setTexture(_assets->get<cugl::graphics::Texture>("client1-gameid-tile"));
             //_idPos++;
             _keySecPage = !_keySecPage;
-            if (_keySecPage) { CULog("1 = 0, 2 = A, 3 = B, 4 = C, 5 = D, 6 = E, 7 = F"); }
+            if (_keySecPage) { CULog("1 = 0, 2 = A, 3 = B, 4 = C, 5 = D, 6 = E, 7 = F"); _tile9->deactivate(); _tile10->deactivate();  }
+            else { _tile9->activate(); _tile10->activate(); }
             _tile9->setVisible(!_keySecPage);
             _tile10->setVisible(!_keySecPage);
         }
