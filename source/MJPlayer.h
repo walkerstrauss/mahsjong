@@ -49,8 +49,8 @@ public:
     // Keeps track of which grandma tile we are checking
     int grandmaToAdd;
     // Keeps track of current hand size
-    int _size; 
-    
+    int _size;
+        
 #pragma mark -
 #pragma mark Constructors
     /**
@@ -94,6 +94,13 @@ public:
      * @param tile      the tile to discard from out hand
      */
     bool discard(std::shared_ptr<TileSet::Tile> tile, bool isHost);
+    
+    /**
+     * Discards all action tiles in hand and returns number of action tiles discarded.
+     */
+    void loseActions(bool isHost);
+    
+    void voidEffect();
     
     /**
      * Method to make a set from your hand and add it to selected sets
@@ -180,7 +187,7 @@ public:
     /**
      * Updates the position of all tiles in the hand for drawing to the screen and selection detection
      */
-    void updateTilePositions();
+    void updateTilePositions(cugl::Size sceneSize);
     
     /**
      * Method to draw the tiles in our hand to the screen (no longer used)
@@ -195,6 +202,13 @@ public:
      * @param selectedTiles     the tiles to be checked for a wild card
      */
     bool hasJack(std::vector<std::shared_ptr<TileSet::Tile>> selectedTiles);
+    
+    
+    std::shared_ptr<TileSet::Tile> getTileAtPosition(const cugl::Vec2& mousePos);
+    
+    
+    
+    
 };
 
 // Player as subclass of hand for handling individual turns for the player
@@ -214,6 +228,9 @@ public:
     bool canExchange;
     // Whether or not the player has drawn this turn
     bool canDraw;
+    bool forcedDiscard = false;
+    std::shared_ptr<TileSet::Tile> _draggingTile = nullptr;
+ 
 
 #pragma mark -
 #pragma mark Constructors
@@ -242,6 +259,8 @@ public:
         }
     }
     
+    
+    std::shared_ptr<TileSet::Tile> getDraggingTile() const { return _draggingTile; }
     /**
      * Renders the current tiles in hand
      */

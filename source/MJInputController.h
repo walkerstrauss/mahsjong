@@ -24,11 +24,14 @@ protected:
     cugl::Vec2 _currPos;
     /** The previous touch/mouse position */
     cugl::Vec2 _prevPos;
+    /** Initial click/touch position  */
+    cugl::Vec2 _initialPosition;
+
     /** Whether there is an active button/touch press */
     bool _currDown;
     /** Whether there was an active button/touch press last frame*/
     bool _prevDown;
-
+    
     Uint64 _touchKey;
     /** The key for the mouse listeners */
     Uint32 _mouseKey;
@@ -189,6 +192,11 @@ public:
         return _prevKeyDown;
     }
     
+    /** Returns the initial click/touch position */
+    cugl::Vec2 getInitialPosition() {
+        return _initialPosition;
+    }
+    
     /**
      * Method to get the keycode of the key pressed last frame. UNKNOWN if
      * no key was pressed last frame.
@@ -201,6 +209,7 @@ public:
     
     /** Reads input from player and converts the result into game logic */
     void readInput();
+    
     
 #pragma mark -
 #pragma mark Mouse Callbacks

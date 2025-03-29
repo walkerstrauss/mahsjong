@@ -126,7 +126,7 @@ void NetworkController::processData(const std::string source,
         _isHostDraw = _isHost;
         _status = PILETILEUPDATE;
     }
-    else if (msgType == "next layer") {
+    else if (msgType == "update layer") {
         _status = LAYER;
     }
     else if (msgType == "remove discard tile"){
@@ -138,6 +138,12 @@ void NetworkController::processData(const std::string source,
     }
     else if (msgType == "tile map update") {
         _tileMapJson = _deserializer->readJson();
+    }
+    else if (msgType == "preemptive draw") {
+        int numToDraw = _deserializer->readUint32();
+        bool isHost = _deserializer->readBool();
+        _numDiscard = std::tuple<int, bool>(numToDraw, isHost);
+        _status = PREEMPTIVEDISCARD;
     }
 }
 
@@ -261,7 +267,7 @@ void NetworkController::broadcastDeckMap(const std::shared_ptr<cugl::JsonValue>&
 void NetworkController::broadcastPileLayer() {
     _serializer->reset();
     
-    _serializer->writeString("next layer");
+    _serializer->writeString("update layer");
     
     broadcast(_serializer->serialize());
 }
@@ -300,6 +306,15 @@ void NetworkController::broadcastStartingDeck(const std::shared_ptr<cugl::JsonVa
     broadcast(_serializer->serialize());
 }
 
+void NetworkController::broadcastPreDraw(int numDraw, bool isHost) {
+    _serializer->reset();
+    
+    _serializer->writeString("preemptive draw");
+    _serializer->writeUint32(numDraw);
+    _serializer->writeBool(isHost);
+    
+    broadcast(_serializer->serialize());
+}
 
                                                                                                  
 //

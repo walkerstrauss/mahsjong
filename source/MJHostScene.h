@@ -19,7 +19,7 @@
  * code a little more clear.
  */
 class HostScene : public cugl::scene2::Scene2 {
-//public:
+public:
 //    /**
 //     * The configuration status
 //     *
@@ -35,7 +35,10 @@ class HostScene : public cugl::scene2::Scene2 {
 //        /** Game was aborted; back to main menu */
 //        ABORT
 //    };
-    
+    /** Scene node for player board in scene 1*/
+    std::shared_ptr<cugl::scene2::SceneNode> playerBoard;
+    /** Scene node for player board in scene 2*/
+    std::shared_ptr<cugl::scene2::SceneNode> playerBoard2;
 protected:
     /** The asset manager for this scene. */
     std::shared_ptr<cugl::AssetManager> _assets;
@@ -43,7 +46,6 @@ protected:
     std::shared_ptr<NetworkController> _network;
     /** The network connection for this scene **/
 //    std::shared_ptr<cugl::netcode::NetcodeConnection> _hostNetwork;
-
     /** The menu button for starting a game */
     std::shared_ptr<cugl::scene2::Button> _startgame;
     /** The back button for the menu scene */
@@ -52,6 +54,21 @@ protected:
     std::shared_ptr<cugl::scene2::Label> _gameid;
     /** The players label (for updating) */
     std::shared_ptr<cugl::scene2::Label> _player;
+    /** texture for waiting or start button */
+    std::shared_ptr<cugl::scene2::PolygonNode> _waitOrStart;
+
+    /** Reference to init host scene*/
+    std::shared_ptr<cugl::scene2::SceneNode> _hostScene1;
+
+    /** Reference to Gameboard when players are connecting or alone */
+    std::shared_ptr<cugl::scene2::SceneNode> _playerSingle;
+    std::shared_ptr<cugl::scene2::SceneNode> _playerMulti;
+    
+    /** Tiles for gameID */
+    std::shared_ptr<cugl::scene2::PolygonNode> _tileOne;
+    std::shared_ptr<cugl::scene2::PolygonNode> _tileTwo;
+    std::shared_ptr<cugl::scene2::PolygonNode> _tileThree;
+    std::shared_ptr<cugl::scene2::PolygonNode> _tileFour;
     
     /** Whether the startGame button had been pressed. */
     bool _startGameClicked = false;
@@ -87,6 +104,9 @@ public:
      * Disposes of all (non-static) resources allocated to this mode.
      */
     void dispose() override;
+
+    void idSetup(const std::shared_ptr<cugl::scene2::PolygonNode>& tile, const char serverPart);
+
     
     /**
      * Initializes the controller contents, and starts the game
@@ -156,11 +176,18 @@ public:
 //     */
 //    void disconnect() { _network = nullptr; }
     
+    void makeBlackBackground() {
+        _batch->begin(getCamera()->getCombined());
+        _batch->setColor(cugl::Color4::BLACK);
+        _batch->fill(cugl::Rect(cugl::Vec2::ZERO, cugl::Application().get()->getDisplaySize()));
+        _batch->end();
+    }
+    
     /**
      * Returns whether the back button is pressed
      */
     bool getBackClicked() { return _backClicked; };
-
+    
 private:
     /**
      * Updates the text in the given button.
@@ -229,6 +256,8 @@ private:
      * players.
      */
     void startGame();
+    
+    
     
 };
 

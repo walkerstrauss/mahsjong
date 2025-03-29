@@ -13,8 +13,9 @@
 #include "MJHostScene.h"
 #include "MJClientScene.h"
 #include "MJSettingScene.h"
+#include "MJPauseScene.h"
+#include "MJGameOverScene.h"
 #include "MJNetworkController.h"
-
 /**
  * This class represents the application root for the Mah's Jong game
  */
@@ -29,7 +30,10 @@ protected:
         HOST,
         CLIENT,
         GAME,
-        SETTINGS
+        SETTINGS,
+        PAUSE,
+        OVER,
+        TILESETUI
     };
     
     /** Global asset manager */
@@ -50,6 +54,12 @@ protected:
     GameScene _gameplay;
     /** The scene for settings */
     SettingScene _settings;
+    /** The scene for pausing the game */
+    PauseScene _pause;
+    /** The scene for when the match ends/ is over */
+    GameOverScene _gameover;
+    /** Tileset UI scene */
+    DiscardUIScene _tilesetui;
     /** Whether or not we finished loading all assets*/
     bool _loaded;
     /** Scene loader reference */
@@ -60,6 +70,7 @@ protected:
     State _scene;
     /** The network controller */
     std::shared_ptr<NetworkController> _network;
+
     
 public:
     /**
@@ -153,6 +164,34 @@ private:
      * @param timestep  The amount of time (in seconds) since the last frame
      */
     void updateGameScene(float timestep);
+    
+    /**
+     * Individualized update method for the setting scene
+     *
+     * @param timestep  The amount of time (in seconds) since the last frame
+     */
+    void updateSettingScene(float timestep);
+    
+    /**
+     * Individualized update method for the pause scene
+     *
+     * @param timestep  The amount of time (in seconds) since the last frame
+     */
+    void updatePauseScene(float timestep);
+    
+    /**
+     * Individualized update method for the game over scene
+     *
+     * @param timestep  The amount of time (in seconds) since the last frame
+     */
+    void updateGameOverScene(float timestep);
+    
+    /**
+     * Individualized update method for the tileset UI scene
+     *
+     * @param timestep  The amount of time (in seconds) since the last frame
+     */
+    void updateTilesetUIScene(float timestep);
 };
 
 #endif
