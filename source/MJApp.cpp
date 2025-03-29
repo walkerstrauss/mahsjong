@@ -128,6 +128,7 @@ void MahsJongApp::update(float timestep) {
             updateMenuScene(timestep);
             break;
         case HOST:
+            _assets->loadDirectory("json/constants.json");
             updateHostScene(timestep);
             break;
         case CLIENT:

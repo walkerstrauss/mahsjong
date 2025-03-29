@@ -149,6 +149,12 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::sha
     // Initialize the discard pile
     _discardPile = std::make_shared<DiscardPile>();
     _discardPile->init(_assets);
+  
+//    TileSet testDeck;
+//    std::shared_ptr<cugl::JsonValue> constants = _assets->get<JsonValue>("constants");
+//    std::shared_ptr<cugl::JsonValue> alphaDeck = constants->get("alpha_deck");
+//    testDeck.deck = testDeck.processDeckJson(alphaDeck);
+//    testDeck.printDeck();
 
     _input.init(); //Initialize the input controller
     

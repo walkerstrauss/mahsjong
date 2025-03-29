@@ -340,6 +340,23 @@ std::vector<std::shared_ptr<TileSet::Tile>> TileSet::processTileJson(const std::
     return tiles;
 }
 
+std::vector<std::shared_ptr<TileSet::Tile>> TileSet::processDeckJson(const std::shared_ptr<cugl::JsonValue>& deckJson){
+    std::vector<std::shared_ptr<TileSet::Tile>> deck;
+    int id = 0;
+    
+    for(const auto& tile : deckJson->children()){
+        const Tile::Rank rank = Tile::toRank(tile->getString("rank"));
+        const Tile::Suit suit = Tile::toSuit(tile->getString("suit"));
+        
+        std::shared_ptr<Tile> newTile = std::make_shared<Tile>(rank, suit);
+        newTile->_id = id;
+        
+        deck.push_back(newTile);
+    }
+    
+    return deck;
+}
+
 
 
 std::shared_ptr<cugl::JsonValue> TileSet::mapToJson() {
