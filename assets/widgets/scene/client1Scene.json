@@ -1472,7 +1472,7 @@
                     "client1-gameid-blank": {
                         "type": "Image",
                         "data": {
-                            "texture": "client1-gameid-blank",
+                            "texture": "client1-gameid-tile19",
                             "anchor": [
                                 0,
                                 1
@@ -1499,7 +1499,7 @@
                     "client1-gameid-blank_1": {
                         "type": "Image",
                         "data": {
-                            "texture": "client1-gameid-blank",
+                            "texture": "client1-gameid-tile19",
                             "anchor": [
                                 0,
                                 1
@@ -1526,7 +1526,7 @@
                     "client1-gameid-blank_2": {
                         "type": "Image",
                         "data": {
-                            "texture": "client1-gameid-blank",
+                            "texture": "client1-gameid-tile19",
                             "anchor": [
                                 0,
                                 1
@@ -1553,7 +1553,7 @@
                     "client1-gameid-blank_3": {
                         "type": "Image",
                         "data": {
-                            "texture": "client1-gameid-blank",
+                            "texture": "client1-gameid-tile19",
                             "anchor": [
                                 0,
                                 1

@@ -84,10 +84,10 @@
         "nine of crak": {
           "file": "textures/nine_of_crak.png"
         },
-        "one of wild suit": {
+        "chaos of action": {
           "file": "textures/wild_1.png"
         },
-        "two of wild suit": {
+        "echo of action": {
           "file": "textures/wild_2.png"
         },
         "three of wild suit": {
@@ -99,10 +99,10 @@
         "five of wild suit": {
           "file": "textures/wild_5.png"
         },
-        "six of wild suit": {
+        "oblivion of command": {
           "file": "textures/wild_6.png"
         },
-        "seven of wild suit": {
+        "discard of command": {
           "file": "textures/wild_7.png"
         },
         "eight of wild suit": {
@@ -662,6 +662,60 @@
         },
         "client1-gameid-tile9": {
           "file": "textures/client1/client1-gameid-tile9.png"
+        },
+        "client1-gameid-tile10": {
+            "file": "textures/client1/client1-gameid-tile10.png"
+        },
+        "client1-gameid-tile11": {
+            "file": "textures/client1/client1-gameid-tile11.png"
+        },
+        "client1-gameid-tile12": {
+            "file": "textures/client1/client1-gameid-tile12.png"
+        },
+        "client1-gameid-tile13": {
+            "file": "textures/client1/client1-gameid-tile13.png"
+        },
+        "client1-gameid-tile14": {
+            "file": "textures/client1/client1-gameid-tile14.png"
+        },
+        "client1-gameid-tile15": {
+            "file": "textures/client1/client1-gameid-tile15.png"
+        },
+        "client1-gameid-tile16": {
+            "file": "textures/client1/client1-gameid-tile16.png"
+        },
+        "client1-gameid-tile17": {
+            "file": "textures/client1/client1-gameid-tile17.png"
+        },
+        "client1-gameid-tile18": {
+            "file": "textures/client1/client1-gameid-tile18.png"
+        },
+        "client1-gameid-tile19": {
+            "file": "textures/client1/client1-gameid-tile19.png"
+        },
+        "client1-gameid-tile20": {
+            "file": "textures/client1/client1-gameid-tile20.png"
+        },
+        "client1-gameid-tile21": {
+            "file": "textures/client1/client1-gameid-tile21.png"
+        },
+        "client1-gameid-tile22": {
+            "file": "textures/client1/client1-gameid-tile22.png"
+        },
+        "client1-gameid-tile23": {
+            "file": "textures/client1/client1-gameid-tile23.png"
+        },
+        "client1-gameid-tile24": {
+            "file": "textures/client1/client1-gameid-tile24.png"
+        },
+        "client1-gameid-tile25": {
+            "file": "textures/client1/client1-gameid-tile25.png"
+        },
+        "client1-gameid-tile26": {
+            "file": "textures/client1/client1-gameid-tile26.png"
+        },
+        "client1-gameid-tile27": {
+            "file": "textures/client1/client1-gameid-tile27.png"
         },
         "client1-gameid-onedot": {
           "file": "textures/client1/one_of_dot.png"

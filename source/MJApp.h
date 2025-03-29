@@ -70,6 +70,7 @@ protected:
     State _scene;
     /** The network controller */
     std::shared_ptr<NetworkController> _network;
+
     
 public:
     /**

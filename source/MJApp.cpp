@@ -114,6 +114,7 @@ void MahsJongApp::onShutdown() {
  *
  * @param timestep  The amount of time (in seconds) since the last frame
  */
+
 void MahsJongApp::update(float timestep) {
     if (_network) {
         _network->update(timestep);
@@ -162,15 +163,18 @@ void MahsJongApp::update(float timestep) {
 void MahsJongApp::draw() {
    switch (_scene) {
        case LOAD:
+           
            _loading.render();
            break;
        case MENU:
            _mainmenu.render();
            break;
        case HOST:
+           _hostgame.makeBlackBackground();
            _hostgame.render();
            break;
        case CLIENT:
+           _joingame.makeBlackBackground();
            _joingame.render();
            break;
        case GAME:

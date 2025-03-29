@@ -86,7 +86,7 @@ void TileSet::initClientDeck(const std::shared_ptr<cugl::JsonValue>& deckJson){
                     key = "oblivion of command " + std::to_string(tile->_id);
                 }
                 else if (command->type == CommandTile::CommandType::DISCARD) {
-                    key = "void of command " + std::to_string(tile->_id);
+                    key = "discard of command " + std::to_string(tile->_id);
                 }
             }
         }
@@ -156,7 +156,7 @@ void TileSet::setSpecialTextures(const std::shared_ptr<cugl::AssetManager>& asse
                         command->setTexture(assets->get<Texture>("oblivion of command"));
                         break;
                     case CommandTile::CommandType::DISCARD:
-                        command->setTexture(assets->get<Texture>("void of command"));
+                        command->setTexture(assets->get<Texture>("discard of command"));
                 }
             }
         }

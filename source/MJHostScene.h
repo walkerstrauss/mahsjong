@@ -176,11 +176,18 @@ public:
 //     */
 //    void disconnect() { _network = nullptr; }
     
+    void makeBlackBackground() {
+        _batch->begin(getCamera()->getCombined());
+        _batch->setColor(cugl::Color4::BLACK);
+        _batch->fill(cugl::Rect(cugl::Vec2::ZERO, cugl::Application().get()->getDisplaySize()));
+        _batch->end();
+    }
+    
     /**
      * Returns whether the back button is pressed
      */
     bool getBackClicked() { return _backClicked; };
-
+    
 private:
     /**
      * Updates the text in the given button.
@@ -249,6 +256,8 @@ private:
      * players.
      */
     void startGame();
+    
+    
     
 };
 

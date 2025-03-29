@@ -334,7 +334,7 @@ public:
     public:
         enum class CommandType : int {
             OBLIVION,    //remove all action tiles from hand
-            DISCARD    //discard a random tile from hand
+            DISCARD   //discard a random tile from hand
         };
         
         CommandType type;
@@ -346,7 +346,7 @@ public:
                 case CommandType::OBLIVION:
                     return "oblivion of command";
                 case CommandType::DISCARD:
-                    return "void of command";
+                    return "discard of command";
                 default:
                     return "unknown";
             }

@@ -79,7 +79,7 @@ protected:
     std::shared_ptr<cugl::scene2::Button> _tile8;
     std::shared_ptr<cugl::scene2::Button> _tile9;
     std::shared_ptr<cugl::scene2::Button> _tile10;
-
+    
     std::shared_ptr<cugl::scene2::Button> _resetGameID;
 
     /** GameID Tiles */
@@ -188,6 +188,14 @@ public:
      * Returns whether the back button has been clicked
      */
     bool getBackClicked() { return _backClicked; }
+    
+    void makeBlackBackground() {
+        _batch->begin(getCamera()->getCombined());
+        _batch->setColor(cugl::Color4::BLACK);
+        _batch->fill(cugl::Rect(cugl::Vec2::ZERO, cugl::Application().get()->getDisplaySize()));
+        _batch->end();
+    }
+    
 
 //    /**
 //     * Disconnects this scene from the network controller.
@@ -219,6 +227,8 @@ private:
      * networking.
      */
     void configureStartButton();
+    
+    
     
 //    /**
 //     * Connects to the game server as specified in the assets file
@@ -261,6 +271,7 @@ private:
 //     */
 //    bool checkConnection();
 
+    void changeKeyPadTexture(std::shared_ptr<cugl::scene2::Button>& tile, std::string texture);
 };
 
 #endif /* __MJ_CLIENT_SCENE_H__ */

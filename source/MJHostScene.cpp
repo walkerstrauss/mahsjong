@@ -80,12 +80,13 @@ bool HostScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::sha
     screenSize *= _hostScene1->getContentSize().height/screenSize.height;
     //cugl::Size screenSize = Size(0,SCENE_HEIGHT);
     
+    float offset = (screenSize.width -_hostScene1->getWidth())/2;
+    _hostScene1->setPosition(offset, _hostScene1->getPosition().y);
+    
     if (!Scene2::initWithHint(screenSize)) {
         return false;
     }
     
-
-
     //scene->setContentSize(dimen);
 //    scene->setContentSize(screenSize);
 
@@ -127,6 +128,7 @@ bool HostScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::sha
     addChild(_hostScene1);
     setActive(false);
     _backout->activate();
+    
     return true;
 }
 
@@ -163,30 +165,30 @@ void HostScene::idSetup(const std::shared_ptr<cugl::scene2::PolygonNode>& tile, 
             tile->setTexture(_assets->get<cugl::graphics::Texture>("client1-gameid-tile9"));
             break;
         case '0':
-            tile->setTexture(_assets->get<cugl::graphics::Texture>("client1-gameid-tile1"));
+            tile->setTexture(_assets->get<cugl::graphics::Texture>("client1-gameid-tile10"));
             break;
         case 'A':
-            tile->setTexture(_assets->get<cugl::graphics::Texture>("client1-gameid-tile2"));
+            tile->setTexture(_assets->get<cugl::graphics::Texture>("client1-gameid-tile11"));
             break;
         case 'B':
-            tile->setTexture(_assets->get<cugl::graphics::Texture>("client1-gameid-tile3"));
+            tile->setTexture(_assets->get<cugl::graphics::Texture>("client1-gameid-tile12"));
             break;
         case 'C':
-            tile->setTexture(_assets->get<cugl::graphics::Texture>("client1-gameid-tile4"));
+            tile->setTexture(_assets->get<cugl::graphics::Texture>("client1-gameid-tile13"));
             break;
         case 'D':
-            tile->setTexture(_assets->get<cugl::graphics::Texture>("client1-gameid-tile5"));
+            tile->setTexture(_assets->get<cugl::graphics::Texture>("client1-gameid-tile14"));
             break;
         case 'E':
-            tile->setTexture(_assets->get<cugl::graphics::Texture>("client1-gameid-tile6"));
+            tile->setTexture(_assets->get<cugl::graphics::Texture>("client1-gameid-tile15"));
             break;
         case 'F':
-            tile->setTexture(_assets->get<cugl::graphics::Texture>("client1-gameid-tile7"));
+            tile->setTexture(_assets->get<cugl::graphics::Texture>("client1-gameid-tile16"));
             break;
         default:
             tile->setTexture(_assets->get<cugl::graphics::Texture>("client1-gameid-blank"));
-            tile->setContentSize(80, 75);
     }
+        tile->setContentSize(80, 90);
 }
 
 /**
@@ -247,7 +249,7 @@ void HostScene::updateText(const std::shared_ptr<scene2::Button>& button, const 
 #pragma mark -
 #pragma mark Student Methods
 /**
- * The method called to update the scene.
+ * The method called to update thawe scene.
  *
  * We need to update this method to constantly talk to the server
  *
@@ -274,6 +276,7 @@ void HostScene::update(float timestep) {
             _waitOrStart->setTexture(_assets->get<cugl::graphics::Texture>("host1-waiting-button"));
         }
         _waitOrStart->setContentSize(200, 181);
+        
         idSetup(_tileOne, networkHex[0]);
         idSetup(_tileTwo, networkHex[1]);
         idSetup(_tileThree, networkHex[2]);
@@ -288,11 +291,10 @@ void HostScene::update(float timestep) {
  * It locks down the room and sends a "start game" message to all other
  * players.
  */
-void HostScene::startGame() {
-    CULog("host start game");
-    
+void HostScene::startGame() {    
     _network->startGame();
     _startGameClicked = true;
 }
+
 
 

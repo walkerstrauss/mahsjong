@@ -636,14 +636,14 @@
                             "host1-roomid-tile": {
                                 "type": "Image",
                                 "data": {
-                                    "texture": "host1-roomid-tile",
+                                    "texture": "client1-gameid-tile19",
                                     "anchor": [
                                         0.5,
                                         0.5
                                     ],
                                     "size": [
                                         80,
-                                        75
+                                        90
                                     ],
                                     "angle": 0,
                                     "position": [
@@ -665,14 +665,14 @@
                             "host1-roomid-tile_1": {
                                 "type": "Image",
                                 "data": {
-                                    "texture": "host1-roomid-tile",
+                                    "texture": "client1-gameid-tile19",
                                     "anchor": [
                                         0.5,
                                         0.5
                                     ],
                                     "size": [
                                         80,
-                                        75
+                                        90
                                     ],
                                     "angle": 0,
                                     "position": [
@@ -694,14 +694,14 @@
                             "host1-roomid-tile_2": {
                                 "type": "Image",
                                 "data": {
-                                    "texture": "host1-roomid-tile",
+                                    "texture": "client1-gameid-tile19",
                                     "anchor": [
                                         0.5,
                                         0.5
                                     ],
                                     "size": [
                                         80,
-                                        75
+                                        90
                                     ],
                                     "angle": 0,
                                     "position": [
@@ -723,14 +723,14 @@
                             "host1-roomid-tile_3": {
                                 "type": "Image",
                                 "data": {
-                                    "texture": "host1-roomid-tile",
+                                    "texture": "client1-gameid-tile19",
                                     "anchor": [
                                         0.5,
                                         0.5
                                     ],
                                     "size": [
                                         80,
-                                        75
+                                        90
                                     ],
                                     "angle": 0,
                                     "position": [
