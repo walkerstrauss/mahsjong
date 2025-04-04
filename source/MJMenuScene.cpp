@@ -13,6 +13,7 @@
 using namespace cugl;
 using namespace cugl::scene2;
 using namespace cugl::graphics;
+using namespace cugl::audio;
 using namespace std;
 
 #pragma mark -
@@ -75,17 +76,20 @@ bool MenuScene::init(const std::shared_ptr<cugl::AssetManager>& assets) {
     _hostbutton->addListener([this](const std::string& name, bool down) {
         if (down) {
             _choice = Choice::HOST;
+            AudioEngine::get()->play("confirm",_assets->get<Sound>("confirm"),false,1.0f);
         }
     });
     _joinbutton->addListener([this](const std::string& name, bool down) {
         if (down) {
             _choice = Choice::JOIN;
+            AudioEngine::get()->play("confirm",_assets->get<Sound>("confirm"),false,1.0f);
         }
     });
     settingsbutton = std::dynamic_pointer_cast<scene2::Button>(_assets->get<scene2::SceneNode>("home.home.button3"));
     settingsbutton->addListener([this](const std::string& name, bool down){
         if (down){
             _choice = Choice::SETTING;
+            AudioEngine::get()->play("confirm",_assets->get<Sound>("confirm"),false,1.0f);
         }
     });
     _homescene->setVisible(true);

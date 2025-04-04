@@ -12,6 +12,7 @@
 
 using namespace cugl;
 using namespace cugl::netcode;
+using namespace cugl::audio;
 using namespace std;
 
 #pragma mark -
@@ -110,6 +111,7 @@ bool ClientScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::s
             _gameIDNew[3]->setTexture(_assets->get<cugl::graphics::Texture>("client1-gameid-tile19"));
             _gameIDNew[3]->setContentSize(75,75);
             _idPos = 0;
+            AudioEngine::get()->play("back",_assets->get<Sound>("back"),false,1.0f);
         }
         });
     _backout2->addListener([this](const std::string& name, bool down) {
@@ -127,6 +129,7 @@ bool ClientScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::s
             _gameIDNew[3]->setContentSize(75,75);
             _idPos = 0;
             _clientScene2->setVisible(false);
+            AudioEngine::get()->play("back",_assets->get<Sound>("back"),false,1.0f);
         }
         });
 
@@ -141,6 +144,7 @@ bool ClientScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::s
             _gameIDNew[3]->setTexture(_assets->get<cugl::graphics::Texture>("client1-gameid-tile19"));
             _gameIDNew[3]->setContentSize(75,75);
             _idPos = 0;
+            AudioEngine::get()->play("shuffle",_assets->get<Sound>("shuffle"),false,1.0f);
         }
         });
 
@@ -151,6 +155,7 @@ bool ClientScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::s
             CULog(tile2hex().c_str());
             // This will call the _gameid listener
             //_gameid->releaseFocus();
+            AudioEngine::get()->play("confirm", _assets->get<Sound>("confirm"), false, 1.0f);
         }
         });
 
@@ -205,6 +210,7 @@ bool ClientScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::s
             }
             _tile9->setVisible(!_keySecPage);
             _tile10->setVisible(!_keySecPage);
+            AudioEngine::get()->play("swap",_assets->get<Sound>("swap"),false,1.0f);
         }
         });
     
@@ -218,6 +224,7 @@ bool ClientScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::s
             }
             _gameIDNew[_idPos]->setContentSize(75, 75);
             _idPos++;
+            AudioEngine::get()->play("select",_assets->get<Sound>("select"),false,1.0f);
         }
         });
     _tile3->addListener([this](const std::string& name, bool down) {
@@ -230,6 +237,7 @@ bool ClientScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::s
             }
             _gameIDNew[_idPos]->setContentSize(75, 75);
             _idPos++;
+            AudioEngine::get()->play("select",_assets->get<Sound>("select"),false,1.0f);
         }
         });
     
@@ -243,6 +251,7 @@ bool ClientScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::s
             }
             _gameIDNew[_idPos]->setContentSize(75, 75);
             _idPos++;
+            AudioEngine::get()->play("select",_assets->get<Sound>("select"),false,1.0f);
         }
         });
     _tile5->addListener([this](const std::string& name, bool down) {
@@ -255,6 +264,7 @@ bool ClientScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::s
             }
             _gameIDNew[_idPos]->setContentSize(75, 75);
             _idPos++;
+            AudioEngine::get()->play("select",_assets->get<Sound>("select"),false,1.0f);
         }
         });
     _tile6->addListener([this](const std::string& name, bool down) {
@@ -267,6 +277,7 @@ bool ClientScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::s
             }
             _gameIDNew[_idPos]->setContentSize(75, 75);
             _idPos++;
+            AudioEngine::get()->play("select",_assets->get<Sound>("select"),false,1.0f);
         }
         });
     _tile7->addListener([this](const std::string& name, bool down) {
@@ -279,6 +290,7 @@ bool ClientScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::s
             }
             _gameIDNew[_idPos]->setContentSize(75, 75);
             _idPos++;
+            AudioEngine::get()->play("select",_assets->get<Sound>("select"),false,1.0f);
         }
         });
     _tile8->addListener([this](const std::string& name, bool down) {
@@ -291,6 +303,7 @@ bool ClientScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::s
             }
             _gameIDNew[_idPos]->setContentSize(75, 75);
             _idPos++;
+            AudioEngine::get()->play("select",_assets->get<Sound>("select"),false,1.0f);
         }
         });
     _tile9->addListener([this](const std::string& name, bool down) {
@@ -298,6 +311,7 @@ bool ClientScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::s
             _gameIDNew[_idPos]->setTexture(_assets->get<cugl::graphics::Texture>("client1-gameid-tile8"));
             _gameIDNew[_idPos]->setContentSize(75, 75);
             _idPos++;
+            AudioEngine::get()->play("select",_assets->get<Sound>("select"),false,1.0f);
         }
         });
     _tile10->addListener([this](const std::string& name, bool down) {
@@ -305,6 +319,7 @@ bool ClientScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::s
             _gameIDNew[_idPos]->setTexture(_assets->get<cugl::graphics::Texture>("client1-gameid-tile9"));
             _gameIDNew[_idPos]->setContentSize(75, 75);
             _idPos++;
+            AudioEngine::get()->play("select",_assets->get<Sound>("select"),false,1.0f);
         }
         });
 

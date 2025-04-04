@@ -16,6 +16,8 @@
 #include "MJPauseScene.h"
 #include "MJGameOverScene.h"
 #include "MJNetworkController.h"
+#include "MJAudioController.h"
+
 /**
  * This class represents the application root for the Mah's Jong game
  */
@@ -70,7 +72,8 @@ protected:
     State _scene;
     /** The network controller */
     std::shared_ptr<NetworkController> _network;
-
+    /** Reference to audio controller for game sounds */
+//    std::shared_ptr<AudioController> _audio;
     
 public:
     /**

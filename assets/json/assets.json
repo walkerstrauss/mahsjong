@@ -1038,8 +1038,62 @@
     "client1Scene": "widgets/scene/client1Scene.json",
     "client3Scene": "widgets/scene/client3Scene.json"
   },
-    "jsons": {
-        "server": "json/server.json",
-        "constants" : "json/constants.json"
-    }
+  "jsons": {
+    "server": "json/server.json",
+    "constants" : "json/constants.json"
+  },
+  "sounds":{
+      "set":{
+          "type":"sample",
+          "file":"sounds/action/set/set.wav"
+      },
+      "set1":{
+          "type":"sample",
+          "file":"sounds/action/set/set1.wav"
+      },
+      "win":{
+          "type":"sample",
+          "file":"sounds/action/win/win.wav"
+      },
+      "winning-hand":{
+          "type":"sample",
+          "file":"sounds/action/win/winning-hand.wav"
+      },
+      "match-background":{
+          "type":"sample",
+          "file":"sounds/music/match-background.mp3"
+      },
+      "match-background1":{
+          "type":"sample",
+          "file":"sounds/music/match-background1.mp3"
+      },
+      "back":{
+          "type":"sample",
+          "file":"sounds/tiles/back/back.wav"
+      },
+      "confirm":{
+          "type":"sample",
+          "file":"sounds/tiles/confirm/confirm.wav"
+      },
+      "deselect":{
+          "type":"sample",
+          "file":"sounds/tiles/deselect/deselect.wav"
+      },
+      "select":{
+          "type":"sample",
+          "file":"sounds/tiles/select/select.wav"
+      },
+      "select2":{
+          "type":"sample",
+          "file":"sounds/tiles/select/select2.wav"
+      },
+      "shuffle":{
+          "type":"sample",
+          "file":"sounds/tiles/shuffle/shuffle.wav"
+      },
+      "swap":{
+          "type":"sample",
+          "file":"sounds/tiles/swap/swap.wav"
+      }
+  }
 }

@@ -158,6 +158,9 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::sha
 
     _input.init(); //Initialize the input controller
     
+//    _audio = std::make_shared<AudioController>();
+//    _audio->init(_assets);
+    
     _quit = false;
     setActive(false);
     _matchScene->setVisible(true);
@@ -463,57 +466,6 @@ void GameScene::update(float timestep) {
                 }
                 _player->getHand()._selectedTiles.clear();
             }
-        }
-        if (_input.getKeyPressed() == KeyCode::P && _input.getKeyDown()){
-            if (_player->getHand()._selectedTiles.size() == 1) {
-                std::shared_ptr<TileSet::Tile> selected = _player->getHand()._selectedTiles[0];
-                if (selected->getSuit() == TileSet::Tile::Suit::SPECIAL &&
-                    selected->getRank() == TileSet::Tile::Rank::ACTION) {
-                    auto action = std::dynamic_pointer_cast<TileSet::ActionTile>(selected);
-                    CULog("action tile: %s", action->toString().c_str());
-                    applyAction(action);
-                }
-            }
-        }
-//        if (_input.getKeyPressed() == KeyCode::P && _input.getKeyDown()){
-//            _pile->reshufflePile();
-//            _network->broadcastDeckMap(_tileSet->mapToJson());
-//            _network->broadcastPileLayer();
-//        }
-//        if (_input.getKeyPressed() == KeyCode::W && _input.getKeyDown()){
-//            _choice = Choice::WIN;
-//        }
-//        if (_input.getKeyPressed() == KeyCode::L && _input.getKeyDown()){
-//            _choice = Choice::LOSE;
-//        }
-//        if (_input.getKeyPressed() == KeyCode::E && _input.getKeyDown()) {
-//            if(_player->canDraw || _player->canExchange){
-//                CULog("Must draw from pile or discard first");
-//                return;
-//            }
-//            if(_player->getHand()._tiles.size() - _player->getHand()._selectedTiles.size() != _player->getHand()._size){
-//                CULog("Discard count must make hand equal to required size");
-//                return;
-//            }
-//            for(auto& tile: _player->getHand()._selectedTiles){
-//                _player->getHand().discard(tile, _network->getHostStatus());
-//                _discardPile->addTile(tile);
-//                _discardPile->updateTilePositions();
-//            }
-//        }
-        
-        
-//
-        if ((_input.getKeyPressed() == KeyCode::N && _input.getKeyDown())) {
-            if(_player->canDraw && _player->canExchange){
-                CULog("Must perform a draw from pile or discard first");
-                return;
-            }
-            if(_player->getHand()._tiles.size() != _player->getHand()._size){
-                CULog("Must meet hand size requirement");
-                return;
-            }
-            _network->endTurn();
         }
     }
 }

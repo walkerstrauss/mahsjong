@@ -72,12 +72,14 @@ bool GameOverScene::init(const std::shared_ptr<cugl::AssetManager>& assets){
     _mainWinKey = _mainWinBtn->addListener([this](const std::string& name, bool down){
         if (!down){
             choice = Choice::MENU;
+            AudioEngine::get()->play("confirm",_assets->get<Sound>("confirm"),false,1.0f);
         }
        
     });
     _mainLoseKey = _mainLoseBtn->addListener([this](const std::string& name, bool down){
         if (!down){
             choice = Choice::MENU;
+            AudioEngine::get()->play("confirm",_assets->get<Sound>("confirm"),false,1.0f);
         }
     });
     

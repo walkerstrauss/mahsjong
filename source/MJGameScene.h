@@ -21,6 +21,7 @@
 #include "MJDiscardUIScene.h"
 #include "MJScoreManager.h"
 #include "MJNetworkController.h"
+#include "MJAudioController.h"
 
 using namespace cugl;
 using namespace cugl::scene2;
@@ -80,7 +81,9 @@ protected:
     /** Text layout */
     std::shared_ptr<cugl::graphics::TextLayout> _text;
     /** Temporary discard area b/c no asset created for it yet */
-    cugl::Rect discardArea; 
+    cugl::Rect discardArea;
+    /** Reference to the audio controller */
+//    std::shared_ptr<AudioController> _audio;
     
     Hand* _hand; // pointer to the hand.
     
