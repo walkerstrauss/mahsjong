@@ -493,12 +493,10 @@ void GameScene::setGameActive(bool value){
     if (value){
         _choice = NONE;
         _pauseBtn->activate();
-        _discardBtn->activate();
         _tilesetUIBtn->activate();
         _endTurnBtn->activate();
     } else {
         _pauseBtn->deactivate();
-        _discardBtn->deactivate();
         _tilesetUIBtn->deactivate();
         _endTurnBtn->deactivate();
     }
