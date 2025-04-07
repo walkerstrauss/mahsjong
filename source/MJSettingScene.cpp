@@ -67,11 +67,11 @@ bool SettingScene::init(const std::shared_ptr<cugl::AssetManager>& assets){
             switch (scene){
                 case PrevScene::PAUSED:
                     choice = Choice::PAUSE;
-                    AudioEngine::get()->play("back", _assets->get<Sound>("back"), false, 1.0f);
+//                    AudioEngine::get()->play("back", _assets->get<Sound>("back"), false, 1.0f);
                     break;
                 case PrevScene::MAIN:
                     choice = Choice::MENU;
-                    AudioEngine::get()->play("back", _assets->get<Sound>("back"), false, 1.0f);
+//                    AudioEngine::get()->play("back", _assets->get<Sound>("back"), false, 1.0f);
                     break;
                 case PrevScene::NEITHER:
                     // Do nothing

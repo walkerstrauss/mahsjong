@@ -61,25 +61,25 @@ bool PauseScene::init(const std::shared_ptr<cugl::AssetManager>& assets){
     _continueBtnKey = _continueBtn->addListener([this](const std::string& name, bool down){
         if (!down){
             choice = Choice::CONTINUE;
-            AudioEngine::get()->play("confirm", _sound, false, 1.0f);
+//            AudioEngine::get()->play("confirm", _sound, false, 1.0f);
         }
     });
     _closePauseBtnKey = _closePauseBtn->addListener([this](const std::string& name, bool down){
         if (!down){
             choice = Choice::CONTINUE;
-            AudioEngine::get()->play("confirm", _sound, false, 1.0f);
+//            AudioEngine::get()->play("confirm", _sound, false, 1.0f);
         }
     });
     _settingPauseBtnKey = _settingPauseBtn->addListener([this](const std::string& name, bool down){
         if (!down){
             choice = Choice::SETTINGS;
-            AudioEngine::get()->play("confirm", _sound, false, 1.0f);
+//            AudioEngine::get()->play("confirm", _sound, false, 1.0f);
         }
     });
     _menuPauseBtnKey = _menuPauseBtn->addListener([this](const std::string& name, bool down){
         if (!down){
             choice = Choice::MENU;
-            AudioEngine::get()->play("confirm", _sound, false, 1.0f);
+//            AudioEngine::get()->play("confirm", _sound, false, 1.0f);
         }
     });
     _closePauseBtn->removeFromParent();

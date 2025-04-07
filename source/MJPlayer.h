@@ -76,6 +76,9 @@ public:
         return _tiles.size();
     }
     
+    std::vector<std::shared_ptr<TileSet::Tile>>& getTiles(){
+        return _tiles;
+    }
     /**
      * Draws how ever many cards we need from the pile
      *
@@ -206,6 +209,14 @@ public:
     
     std::shared_ptr<TileSet::Tile> getTileAtPosition(const cugl::Vec2& mousePos);
     
+    int getTileIndexAtPosition(const cugl::Vec2& p) const {
+        for (size_t i = 0; i < _tiles.size(); ++i) {
+                if (_tiles[i]->tileRect.contains(p)) {
+                    return static_cast<int>(i);
+                }
+            }
+        return -1;
+    }
     
     
     

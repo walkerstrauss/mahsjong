@@ -17,6 +17,7 @@
 #include "MJGameOverScene.h"
 #include "MJNetworkController.h"
 #include "MJAudioController.h"
+#include "MJAnimationController.h"
 
 /**
  * This class represents the application root for the Mah's Jong game

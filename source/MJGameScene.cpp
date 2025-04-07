@@ -48,11 +48,9 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::sha
     std::vector<std::shared_ptr<TileSet::Tile>> emptyDiscarded(2);
     discardedTiles = emptyDiscarded;
     
-//    Size dimen = getSize();
     _matchScene = _assets->get<scene2::SceneNode>("matchscene");
     _matchScene->setContentSize(1280,720);
     cugl::Size screenSize = cugl::Application::get()->getDisplaySize();
-    //cugl::Size screenSize = Size(0,SCENE_HEIGHT);
     
     screenSize *= _matchScene->getContentSize().height/screenSize.height;
     
@@ -64,14 +62,7 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::sha
         std::cerr << "Scene2 initialization failed!" << std::endl;
         return false;
     }
-//
-//    _matchScene->setContentSize(dimen);
-//    _matchScene->doLayout();
-//    _matchScene->setPosition(125, _matchScene->getPositionY());
    
-    std::shared_ptr<scene2::SceneNode> childNode = _matchScene->getChild(0);
-    
-    _discardBtn = std::dynamic_pointer_cast<scene2::Button>(childNode->getChild(3));
     _tilesetUIBtn = std::dynamic_pointer_cast<scene2::Button>(_assets->get<scene2::SceneNode>("matchscene.gameplayscene.discardButton"));
     _pauseBtn = std::dynamic_pointer_cast<scene2::Button>(_assets->get<scene2::SceneNode>("matchscene.gameplayscene.pauseButton"));
     _endTurnBtn = std::dynamic_pointer_cast<scene2::Button>(_assets->get<scene2::SceneNode>("matchscene.gameplayscene.endTurnButton"));
@@ -150,16 +141,10 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::sha
     _discardPile = std::make_shared<DiscardPile>();
     _discardPile->init(_assets);
   
-//    TileSet testDeck;
-//    std::shared_ptr<cugl::JsonValue> constants = _assets->get<JsonValue>("constants");
-//    std::shared_ptr<cugl::JsonValue> alphaDeck = constants->get("alpha_deck");
-//    testDeck.deck = testDeck.processDeckJson(alphaDeck);
-//    testDeck.printDeck();
-
     _input.init(); //Initialize the input controller
     
-//    _audio = std::make_shared<AudioController>();
-//    _audio->init(_assets);
+    // TODO: initialize audio controller and init with asset manager
+    // TODO: initialize animations for game scene 
     
     _quit = false;
     setActive(false);
@@ -711,10 +696,6 @@ bool GameScene::decrementLabel(std::shared_ptr<TileSet::Tile> tile){
     return true;
 }
 
-
-
-
-
 void GameScene::pressTile(){
     cugl::Vec2 screenPos = _input.getPosition();
     cugl::Vec2 mousePos = cugl::Scene::screenToWorldCoords(cugl::Vec3(screenPos));
@@ -799,7 +780,6 @@ void GameScene::dragTile(){
 }
 
 void GameScene::releaseTile() {
-
     if (_draggingTile) {
         _draggingTile->pressed = false;
         _draggingTile = nullptr;
@@ -809,7 +789,6 @@ void GameScene::releaseTile() {
 void GameScene::updateDrag(const cugl::Vec2& mousePos, bool mouseDown, bool mouseReleased) {
     if (mouseDown) {
         if (!_dragInitiated) {
-//            _player->getHand().updateTilePositions(_matchScene->getSize());
             _dragStartPos = mousePos;
             _dragInitiated = true;
             _draggingTile = _player->getHand().getTileAtPosition(mousePos);
@@ -847,6 +826,21 @@ void GameScene::updateDrag(const cugl::Vec2& mousePos, bool mouseDown, bool mous
         }
         _dragInitiated = false;
         _originalTilePos = cugl::Vec2::ZERO;
+        
+        // Player hand rearranging (dragging)
+        int newIndex = _player->getHand().getTileIndexAtPosition(mousePos);
+
+        if (newIndex != -1 && _draggingTile) {
+            auto& tiles = _player->getHand().getTiles();
+            auto tile = std::find(tiles.begin(), tiles.end(), _draggingTile);
+            if (tile != tiles.end()) {
+            tiles.erase(tile);
+            }
+            newIndex = std::min(newIndex, (int)tiles.size());
+            tiles.insert(tiles.begin() + newIndex, _draggingTile);
+        }
+        _player->_draggingTile = nullptr;
+        _player->getHand().updateTilePositions(_matchScene->getSize());
         releaseTile();
     }
 }

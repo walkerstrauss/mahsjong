@@ -23,8 +23,6 @@ bool AudioController::init(const std::shared_ptr<cugl::AssetManager>& assets){
     
     _assets = assets;
     
-    // Load all game sounds
-    
     _keys = {
         "set",
         "set1",
