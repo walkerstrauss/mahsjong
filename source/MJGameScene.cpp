@@ -599,8 +599,12 @@ void GameScene::applyCommand(std::shared_ptr<TileSet::CommandTile> commandTile) 
 }
 
 void GameScene::clickedTile(cugl::Vec2 mousePos){
+    // Check if we are dragging a tile - if so, cannot select a tile until released
+    if (_draggingTile != nullptr) return;
+    
     for(const auto& pair : _tileSet->tileMap){
         std::shared_ptr<TileSet::Tile> currTile = pair.second;
+        
         if(currTile->tileRect.contains(mousePos)){
             if((_network->getHostStatus() && currTile->inHostHand) || (!_network->getHostStatus() && currTile->inClientHand)) {
                 if(currTile->selected) {
@@ -615,18 +619,17 @@ void GameScene::clickedTile(cugl::Vec2 mousePos){
             }
             if(currTile->inPile) {
                 continue;
-//                if(currTile->selected) {
-//                    currTile->_scale = 0.2;
-//                }
-//                else{
-//                    currTile->_scale = 0.25;
-//                }
             }
             if(currTile->selected) {
+                // TODO: Animate tile deselection
+                // TODO: Play deselect sound effect
                 currTile->selected = false;
             }
             else {
+                // TODO: Animate tile selection
+                // TODO: Play select sound effect
                 currTile->selected = true;
+                
             }
         }
     }
