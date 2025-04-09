@@ -284,7 +284,7 @@ void GameScene::update(float timestep) {
         cugl::Vec2 prev = _input.getPosition(); //Get our mouse position
         cugl::Vec2 mousePos = cugl::Scene::screenToWorldCoords(cugl::Vec3(prev));
         if (_network->getCurrentTurn() == _network->getLocalPid()) {
-            clickedTile(mousePos);
+            pressTile();
         }
     }
     
@@ -385,9 +385,6 @@ void GameScene::update(float timestep) {
                 }
             }
         }
-
-        AnimationController::getInstance().update(timestep);
-        
         if (_input.getKeyPressed() == KeyCode::G && _input.getKeyDown()){
             if(_player->getHand()._selectedTiles.size() != 1 && _player->getHand()._selectedTiles.size() != 2){
                 CULog("Must have 1 or 2 tiles selected in hand");
@@ -454,6 +451,7 @@ void GameScene::update(float timestep) {
             }
         }
     }
+    AnimationController::getInstance().update(timestep);
 }
 
 
@@ -608,32 +606,23 @@ void GameScene::clickedTile(cugl::Vec2 mousePos){
         if(currTile->tileRect.contains(mousePos)){
             if((_network->getHostStatus() && currTile->inHostHand) || (!_network->getHostStatus() && currTile->inClientHand)) {
                 if(currTile->selected) {
+                    // TODO: Play deselect sound effect
+                    currTile->selected = false;
+                    AnimationController::getInstance().animateTileDeselect(currTile, 30);
                     auto it = std::find(_player->getHand()._selectedTiles.begin(), _player->getHand()._selectedTiles.end(), currTile);
                     if (it != _player->getHand()._selectedTiles.end()) {
                         _player->getHand()._selectedTiles.erase(it);
                     }
                 }
-                else{
+                else {
+                    // TODO: Play select sound effect
+                    currTile->selected = true;
+                    AnimationController::getInstance().animateTileSelect(currTile, 15);
                     _player->getHand()._selectedTiles.push_back(currTile);
                 }
             }
             if(currTile->inPile) {
                 continue;
-            }
-            if(currTile->selected) {
-                CULog("deselect");
-                
-                // TODO: Play deselect sound effect
-                currTile->selected = false;
-                AnimationController::getInstance().animateTileDeselect(currTile, 30);
-            }
-            else {
-                CULog("select");
-                
-                // TODO: Play select sound effect
-                currTile->selected = true;
-                AnimationController::getInstance().animateTileSelect(currTile, 30);
-                
             }
         }
     }
@@ -718,9 +707,17 @@ void GameScene::pressTile(){
             auto& selected = _player->getHand()._selectedTiles;
             auto it = std::find(selected.begin(), selected.end(), tile);
             if (tile->selected) {
-                if (it == selected.end()) selected.push_back(tile);
+                if (it == selected.end()) {
+                    selected.push_back(tile);
+                    // TODO: Play select sound effect
+                    AnimationController::getInstance().animateTileSelect(tile, 1);
+                }
             } else {
-                if (it != selected.end()) selected.erase(it);
+                if (it != selected.end()){
+                    selected.erase(it);
+                    // TODO: Play deselect sound effect
+                    AnimationController::getInstance().animateTileDeselect(tile, 1);
+                }
             }
             
         }

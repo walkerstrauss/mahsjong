@@ -70,11 +70,14 @@ private:
         std::shared_ptr<TileSet::Tile> tile;
         Vec2 startPos, endPos;
         float startScale, endScale;
+        float origScale;
         float elapsed;
         int frames;
         bool done;
+        /** Whether we are animating growing in selection */
+        bool growing;
         
-        SelectAnim(std::shared_ptr<TileSet::Tile> tile, Vec2 startPos, Vec2 endPos, float startScale, float endScale, int fps) : tile(tile), startPos(startPos), endPos(endPos), startScale(startScale), endScale(endScale), elapsed(0.0), done(false) {
+        SelectAnim(std::shared_ptr<TileSet::Tile> tile, Vec2 startPos, Vec2 endPos, float startScale, float endScale, int fps, bool isGrowing = true) : tile(tile), startPos(startPos), endPos(endPos), startScale(startScale), endScale(endScale), origScale(startScale), elapsed(0.0), done(false), growing(isGrowing) {
             frames = fps;
         }
         
@@ -101,10 +104,6 @@ private:
     std::vector<SelectAnim> _SelectAnims;
     /** Whether the animation controller is currently paused */
     bool _paused;
-    /** Whether we are animating growing in selection */
-    bool _growing;
-    /** Whether we are animating shrinking in selection */
-    bool _shrinking;
     
 public:
 #pragma mark -
@@ -146,17 +145,7 @@ public:
     /**
      * Update all animations
      */
-    void update(float dt) {
-        if (_paused) return;
-        
-        for (auto& anim : _spriteSheetAnimations) {
-            anim.update(dt);
-        }
-        
-        for (auto& anim: _SelectAnims) {
-            anim.update(dt);
-        }
-    }
+    void update(float dt);
     
     /**
      * Pause all animations
@@ -191,11 +180,11 @@ public:
     }
     
     void animateTileSelect(std::shared_ptr<TileSet::Tile> tile, float f){
-        addSelectAnim(tile, tile->pos, tile->pos + Vec2(0, 3.0f), tile->_scale, tile->_scale * 1.4f, f);
+        addSelectAnim(tile, tile->pos, tile->pos + Vec2(0, 5.0f), tile->_scale, tile->_scale * 1.2f, f);
     }
     
     void animateTileDeselect(std::shared_ptr<TileSet::Tile> tile, float f){
-        addSelectAnim(tile, tile->pos, tile->pos - Vec2(0, 3.0f), tile->_scale, tile->_scale, f);
+        addSelectAnim(tile, tile->pos, tile->pos - Vec2(0, 10.0f), tile->_scale, tile->_scale, f);
     }
     
 };

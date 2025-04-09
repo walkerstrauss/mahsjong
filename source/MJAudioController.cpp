@@ -25,16 +25,16 @@ bool AudioController::init(const std::shared_ptr<cugl::AssetManager>& assets){
     
     _keys = {
         "set",
-        "set1",
+//        "set1",
         "win",
         "winning-hand",
         "match-background",
-        "match-background1",
+//        "match-background1",
         "back",
         "confirm",
         "deselect",
         "select",
-        "select2",
+//        "select2",
         "shuffle",
         "swap"
     };

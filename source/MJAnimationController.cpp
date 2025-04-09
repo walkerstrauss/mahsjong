@@ -23,16 +23,31 @@ static AnimationController& getInstance() {
  * @return true if initialization was successful, and false otherwise
  */
 bool AnimationController::init(const std::shared_ptr<cugl::AssetManager>& assets){
-    _growing = false;
-    _shrinking = false;
     return true;
 }
 
-/**
- * Initializes the animation controller with an asset manager
- *
- * @param assets    The asset manager to get game sounds from
- * @param scene     The scene whose sprites this controller will animate
- * @return true if initialization was successful, and false otherwise
- */
-bool init(const std::shared_ptr<cugl::AssetManager>& assets, GameOverScene scene);
+#pragma mark -
+#pragma mark Gameplay Handling
+
+void AnimationController::update(float dt) {
+    if (_paused) return;
+    
+    for (auto& anim : _spriteSheetAnimations) {
+        anim.update(dt);
+        
+        if (anim.done){
+            _spriteSheetAnimations.erase(std::remove_if(_spriteSheetAnimations.begin(), _spriteSheetAnimations.end(), [&anim](const SpriteSheetAnimation& a) {return a.node == anim.node;}), _spriteSheetAnimations.end());
+        }
+    }
+    
+    for (auto& anim: _SelectAnims) {
+        anim.update(dt);
+        
+        if (anim.done && anim.growing) {
+            _SelectAnims.erase(std::remove_if(_SelectAnims.begin(), _SelectAnims.end(), [&anim](const SelectAnim& a) {return a.tile == anim.tile;}), _SelectAnims.end());
+            addSelectAnim(anim.tile, anim.tile->pos, anim.tile->pos + Vec2(0, 5.0f), anim.tile->_scale, anim.tile->_scale * 0.833333333f, 1);
+        } else if (anim.done && !anim.growing) {
+            _SelectAnims.erase(std::remove_if(_SelectAnims.begin(), _SelectAnims.end(), [&anim](const SelectAnim& a) {return a.tile == anim.tile;}), _SelectAnims.end());
+        }
+    }
+}
