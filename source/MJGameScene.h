@@ -252,14 +252,9 @@ public:
     
     void processData(std::vector<std::string> msg);
     /**
-     * Applies the effects of the given action tile
+     * Applies the effects of the given type of celestial tile.
      */
-    void applyAction(std::shared_ptr<TileSet::ActionTile> actionTile);
-    
-    /**
-     * Applies the effects of the given command tile
-     */
-    void applyCommand(std::shared_ptr<TileSet::CommandTile> commandTile);
+    void applyCelestial(TileSet::Tile::Rank type);
     
     /**
      * Checks whether or not a tile has been clicked and sets selected status accordingly

@@ -122,17 +122,6 @@ bool Hand::discard(std::shared_ptr<TileSet::Tile> tile, bool isHost){
     return true;
 }
 
-void Hand::loseActions(bool isHost) {
-    auto it = _tiles.begin();
-    while(it != _tiles.end()){
-        if ((*it)->getRank() == TileSet::Tile::Rank::ACTION) {
-            discard(*it, isHost);
-        } else {
-            ++it;
-        }
-    }
-}
-
 /**
  * Counts the total number of selected tiles.
  */
