@@ -22,6 +22,7 @@
 #include "MJScoreManager.h"
 #include "MJNetworkController.h"
 #include "MJAudioController.h"
+#include "MJAnimationController.h"
 
 using namespace cugl;
 using namespace cugl::scene2;

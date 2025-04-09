@@ -20,7 +20,7 @@ using namespace std;
 
 // Lock the screen esize to a fixed heigh regardless of aspect ratio
 // PLEASE ADJUST AS SEEN FIT
-#define SCENE_HEIGHT 720
+#define SCENE_HEIGHT 720 // Change to 874 for resizing from iPhone 16 Pro aspect ratio
 
 #pragma mark -
 #pragma mark Constructors
@@ -217,7 +217,6 @@ void GameScene::update(float timestep) {
     _input.readInput();
     _input.update();
     
-
     cugl::Vec2 mousePos = cugl::Scene::screenToWorldCoords(cugl::Vec3(_input.getPosition()));
     // Determine if the mouse is held down or was just released.
     bool isMouseDown = _input.isDown();
@@ -387,6 +386,8 @@ void GameScene::update(float timestep) {
             }
         }
 
+        AnimationController::getInstance().update(timestep);
+        
         if (_input.getKeyPressed() == KeyCode::G && _input.getKeyDown()){
             if(_player->getHand()._selectedTiles.size() != 1 && _player->getHand()._selectedTiles.size() != 2){
                 CULog("Must have 1 or 2 tiles selected in hand");
@@ -527,7 +528,6 @@ void GameScene::applyAction(std::shared_ptr<TileSet::ActionTile> actionTile) {
             break;
         case TileSet::ActionTile::ActionType::ORACLE:
             CULog("ORACLE: Draw any tile from pile...");
-            
         default:
             break;
     }
@@ -621,14 +621,18 @@ void GameScene::clickedTile(cugl::Vec2 mousePos){
                 continue;
             }
             if(currTile->selected) {
-                // TODO: Animate tile deselection
+                CULog("deselect");
+                
                 // TODO: Play deselect sound effect
                 currTile->selected = false;
+                AnimationController::getInstance().animateTileDeselect(currTile, 30);
             }
             else {
-                // TODO: Animate tile selection
+                CULog("select");
+                
                 // TODO: Play select sound effect
                 currTile->selected = true;
+                AnimationController::getInstance().animateTileSelect(currTile, 30);
                 
             }
         }

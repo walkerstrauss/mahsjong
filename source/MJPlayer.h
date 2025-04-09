@@ -5,8 +5,8 @@
 //  Created by Patrick Choo on 2/18/25.
 //
 
-#ifndef __MJ_MAIN_MENU_H__
-#define __MJ_MAIN_MENU_H__
+#ifndef __MJ_PLAYER_H__
+#define __MJ_PLAYER_H__
 
 #include <cugl/cugl.h>
 #include <vector>
