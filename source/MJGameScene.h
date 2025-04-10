@@ -19,7 +19,6 @@
 #include "MJPile.h"
 #include "MJDiscardPile.h"
 #include "MJDiscardUIScene.h"
-#include "MJScoreManager.h"
 #include "MJNetworkController.h"
 #include "MJAudioController.h"
 

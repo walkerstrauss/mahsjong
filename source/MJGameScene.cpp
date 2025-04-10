@@ -97,10 +97,10 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::sha
     _gameWin = false;
     _gameLose = false;
 
-    // Initialize tile set
+    // Gamescene w/ game objects
     _tileSet = std::make_shared<TileSet>();
     _player = std::make_shared<Player>();
-    _pile = std::make_shared<Pile>(); //Init our pile
+    _pile = std::make_shared<Pile>();
     discardArea = cugl::Rect(Vec2(1000, 210), Size(273, 195));
 
     if(_network->getHostStatus()){
