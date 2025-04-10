@@ -72,6 +72,7 @@ public:
      *
      * @param assets    the asset manager for the game
      * @param network   the network controller for the game
+     *  @returns true if init was successful, false otherwise
      */
     bool init(const std::shared_ptr<cugl::AssetManager>& assets, std::shared_ptr<NetworkController> network);
     
@@ -98,9 +99,30 @@ public:
      * Discards the currently dragged tile. After discarding, it broadcasts the newly discarded tile
      * to opposing player and updates the discarded pile element.
      *
+     * @param isHost       Whether or not current player is host
      * @param tile      The tile that was discarded
+     * @returns true if discard was successful, else false
      */
     bool discardTile(bool isHost, std::shared_ptr<TileSet::Tile> tile);
+    
+    /**
+     * Plays the inputted celestial tile, if tile is not a celestial tile then the function returns false.
+     * Calls the appropriate function according to the celestial tile type. It then broadcasts
+     * the tile that was played.
+     *
+     * @param isHost       Whether or not current player is host
+     * @param celestialTile     The celestial tile that was played
+     * @returns True if celestial was played, false if not
+     */
+    bool playCelestial(bool isHost, std::shared_ptr<TileSet::Tile>& celestialTile);
+    
+    /**
+     * Executes CHAOS celestial tile effect in current game scene. It then broadcasts the change
+     * to opposing player.
+     *
+     * @param isHost       Whether or not current player is host
+     */
+    bool playEcho(bool isHost);
     
     /**
      * Resets the state of the current turn. Called after the turn ends to allow the next player to draw,

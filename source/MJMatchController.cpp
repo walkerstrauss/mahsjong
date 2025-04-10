@@ -27,6 +27,7 @@ using namespace std;
  *
  * @param assets    the asset manager for the game
  * @param network   the network controller for the game
+ *  @returns true if init was successful, false otherwise
  */
 bool MatchController::init(const std::shared_ptr<cugl::AssetManager>& assets, std::shared_ptr<NetworkController> network) {
     _assets = assets;
@@ -53,7 +54,7 @@ bool MatchController::init(const std::shared_ptr<cugl::AssetManager>& assets, st
 void MatchController::initHost() {
     //Initializing the host deck
     _tileSet->initHostDeck();
-    _tileSet->addActionAndCommandTiles();
+    _tileSet->addCelestialTiles(_assets);
     _tileSet->setAllTileTexture(_assets);
     _tileSet->shuffle();
     
@@ -149,9 +150,9 @@ void MatchController::drawTile(bool isHost) {
  * to opposing player and updates the discarded pile element.
  *
  * @param tile      The tile that was discarded
+ * @returns true if discard was successful, else false
  */
 bool MatchController::discardTile(bool isHost, std::shared_ptr<TileSet::Tile> tile) {
-    
     // If hand is required size, then discard
     if((isHost && hostPlayer->getHand()._tiles.size() > hostPlayer->getHand()._size) ||
             (!isHost && clientPlayer->getHand()._tiles.size() > clientPlayer ->getHand()._size)){
@@ -167,7 +168,7 @@ bool MatchController::discardTile(bool isHost, std::shared_ptr<TileSet::Tile> ti
         else{clientPlayer->getHand().discard(tile, false);}
         
         // If not a special tile add it to the discard pile
-        if (!(tile->_rank == TileSet::Tile::Rank::ACTION || tile->_rank == TileSet::Tile::Rank::COMMAND)){
+        if (!(tile->_suit == TileSet::Tile::Suit::CELESTIAL)){
             _discardPile->addTile(tile);
             _discardPile->updateTilePositions();
             
@@ -179,6 +180,47 @@ bool MatchController::discardTile(bool isHost, std::shared_ptr<TileSet::Tile> ti
             return true;
         }
     }
+    return false; 
+}
+
+/**
+ * Plays the inputted celestial tile, if tile is not a celestial tile then the function returns false.
+ * Calls the appropriate function according to the celestial tile type. It then calls the appropriate
+ * callback function.
+ *
+ * @param celestialTile     The celestial tile that was played
+ * @returns True if celestial was played, false if not
+ */
+bool MatchController::playCelestial(bool isHost, std::shared_ptr<TileSet::Tile>& celestialTile) {
+    if(!hasPlayedCelestial) {
+        // Checking if tile is valid celestial
+        TileSet::Tile::Suit suit = celestialTile->_suit;
+        if(suit != TileSet::Tile::Suit::CELESTIAL) {
+            return false; 
+        }
+        // Execute appropriate callback
+        else{
+            TileSet::Tile::Rank rank = celestialTile->_rank;
+            switch(rank) {
+                // Chaos celestial tile
+                case(TileSet::Tile::Rank::CHAOS):
+                    break;
+                // Numbered rank
+                default:
+                    break;
+            }
+        }
+    }
+    return false;
+}
+
+/**
+ * Executes CHAOS celestial tile effect in current game scene. It then broadcasts the change
+ * to opposing player.
+ *
+ * @param isHost       Whether or not current player is host
+ */
+bool MatchController::playEcho(bool isHost){
     return false; 
 }
 
