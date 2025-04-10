@@ -61,10 +61,6 @@ void MahsJongApp::onStartup() {
     // Get rid of wrong start button
     std::shared_ptr<scene2::Button> wrongStart = std::dynamic_pointer_cast<scene2::Button>(_assets->get<scene2::SceneNode>("load.after.landingscene.button1"));
     wrongStart->setVisible(false);
-//    std::shared_ptr<scene2::SceneNode> wrongname = _assets->get<scene2::SceneNode>("load.before.name");
-//    wrongname->setVisible(false);
-//    std::shared_ptr<scene2::SceneNode> wronglogo = _assets->get<scene2::SceneNode>("load.before.logo");
-//    wronglogo->setVisible(false);
     
     _loading.start();
     AudioEngine::start();
@@ -87,7 +83,7 @@ void MahsJongApp::onShutdown() {
     _joingame.dispose();
     _settings.dispose();
     _pause.dispose();
-    _network->dispose();
+//    _network->dispose();
     _assets = nullptr;
     _batch = nullptr;
     
@@ -164,7 +160,6 @@ void MahsJongApp::update(float timestep) {
 void MahsJongApp::draw() {
    switch (_scene) {
        case LOAD:
-           
            _loading.render();
            break;
        case MENU:
@@ -218,6 +213,9 @@ void MahsJongApp::updateLoadingScene(float timestep) {
        _loading.dispose(); // Permanently disables the input listeners in this mode
        _network = std::make_shared<NetworkController>();
        _network->init(_assets);
+//       _audio = std::make_shared<AudioController>();
+//       _audio->init(_assets);
+       AnimationController::getInstance().init(_assets);
        _mainmenu.init(_assets);
        _mainmenu.setSpriteBatch(_batch);
        _hostgame.init(_assets, _network);

@@ -66,6 +66,8 @@ public:
      */
     void updateTilePositions();
     
+    void animTilePositions(int frames = 1);
+    
 #pragma mark -
 #pragma mark Gameplay Handling
     /**

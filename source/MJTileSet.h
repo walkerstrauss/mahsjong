@@ -284,13 +284,22 @@ public:
         }
     };
     
+    // TODO: Refactor action and command tiles to be special tiles with class Special Tile – add new four tiles, complete implementation of 1-4 and remove echo
+    // 1. ORACLE (draw any tile in the pile)
+    // 2. SEER (draw any tile in the discard pile)
+    // 3. CHAOS (reshuffle the pile)
+    // 4. JUGGERNAUT (rearrange tiles in current row)
+    // 5. _?_ (trade one tile with opponent)
+    // 6. _?_ (random debuff of two tiles)
+    // 7. _?_ (random rank change of random hand tile)
+    // 8. _?_ (random suit change of random hand tile)
     class ActionTile : public Tile {
     public:
         enum class ActionType : int {
-            JUGGERNAUT,     //rearrange tiles in current row
             ORACLE,     //draw any tile in pile
             SEER,       //draw any tile in discard pile
             CHAOS,      //reshuffle the pile
+            JUGGERNAUT,     //rearrange tiles in current row
             ECHO        //draw two tiles instead of one
         };
         
@@ -434,69 +443,6 @@ public:
     }
     
     /**
-
-     * Generates 3 random unique grandma tiles
-     */
-    void generateGrandmaTiles();
-    
-    /**
-     * Prints Grandma's favorite tiles to the log
-     */
-    void printGrandmaTiles() {
-        for(const auto& it : grandmaTiles){
-            CULog("%s", it->toString().c_str());
-        }
-    }
-    
-//    /**
-//     * Generates a random wild tile after scoring a grandma tile
-//     *
-//     * @return a randomly generated tile
-//     */
-//    std::shared_ptr<TileSet::Tile> generateWildTile() {
-//        rdTileSet.init();
-//        int rank = static_cast<int>(rdTileSet.getOpenUint64(1, 11));
-//        
-//        std::shared_ptr<Tile> wildTile = std::make_shared<Tile>(static_cast<Tile::Rank>(rank), Tile::Suit::WILD_SUIT);
-//        wildTile->_id = wildCount;
-//        wildCount += 1;
-//        return wildTile;
-//    }
-//    
-//    /**
-//     * Generates a set of wild tiles
-//     */
-//    void generateWildSet() {
-//        for(int i = 0; i < 11; i++){
-//            for(int j = 0; j < 3; j++){
-//                std::shared_ptr<Tile> newTile = std::make_shared<Tile>(static_cast<Tile::Rank>(i), Tile::Suit::WILD_SUIT);
-//                newTile->_id = wildCount;
-//                wildCount += 1;
-//                
-//                wildTiles.emplace_back(newTile);
-//            }
-//        }
-//    }
-    
-    /**
-     * Picks a random tile from the wild tiles set by shuffling then choosing the first element.
-     * Removes the chosen wild tile from wild tile set.
-     */
-    std::shared_ptr<Tile> pickWildTile(){
-        if(wildTiles.empty()){
-            throw std::runtime_error("no wild tiles!");
-        }
-        
-        rdTileSet.init();
-        rdTileSet.shuffle(wildTiles);
-
-        std::shared_ptr<Tile> currTile = wildTiles.front();
-        wildTiles.erase(wildTiles.begin());
-        
-        return currTile;
-    };
-    
-    /**
      * Sets the texture for all tiles in deck
      */
     void setAllTileTexture(const std::shared_ptr<cugl::AssetManager>& assets);
@@ -512,6 +458,7 @@ public:
      * @param assets    the asset manager to get the texture from
      */
     void setBackTextures(const std::shared_ptr<cugl::AssetManager>& assets);
+    
     /**
      * Draws the tiles in the tileset to the screen
      */

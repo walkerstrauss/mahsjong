@@ -1038,8 +1038,11 @@
     "client1Scene": "widgets/scene/client1Scene.json",
     "client3Scene": "widgets/scene/client3Scene.json"
   },
-    "jsons": {
-        "server": "json/server.json",
-        "constants" : "json/constants.json"
-    }
+  "jsons": {
+    "server": "json/server.json",
+    "constants" : "json/constants.json"
+  },
+  "sounds":{
+      
+  }
 }

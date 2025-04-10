@@ -60,9 +60,7 @@ bool Hand::initHand(std::shared_ptr<TileSet>& tileSet, bool isHost){
  * @param pile      the pile to draw to our hand from
  */
 void Hand::drawFromPile(std::shared_ptr<Pile>& pile, int number, bool isHost){
-
     _drawnPile = pile->tilesDrawn(number);
-    
     for(auto& tile : _drawnPile){
         if (isHost) {
             tile->inHostHand = true;
@@ -439,6 +437,10 @@ std::vector<std::shared_ptr<TileSet::Tile>> Hand::getSortedTiles(const std::vect
     
     std::sort(sortedTiles.begin(), sortedTiles.end(),
         [](const std::shared_ptr<TileSet::Tile>& a, const std::shared_ptr<TileSet::Tile>& b) {
+            // Added to prevent nullptr error
+            if (a == nullptr || b == nullptr) {
+                return false;
+            }
             if (a->getSuit() == b->getSuit()) {
                 return a->getRank() < b->getRank(); // Sort by rank if suit is the same
             }
@@ -453,9 +455,6 @@ void Hand::updateTilePositions(cugl::Size sceneSize){
     cugl::Size screenSize = cugl::Application::get()->getDisplaySize();
     
     screenSize *= sceneSize.height/screenSize.height;
-    
-  //cugl::Application::get()->getDisplayWidth();
-  //cugl::Application::get()->getDisplayHeight();
     
     
     float offsetWidth = (screenSize.width - sceneSize.width)/2.0f;
