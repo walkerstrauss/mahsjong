@@ -8,6 +8,7 @@
 
 #include "MJPile.h"
 #include "MJPlayer.h"
+#include "MJAnimationController.h"
 
 /**
  * This is the class intializing and handling the pile.
@@ -108,7 +109,6 @@ void Pile::updateTilePositions() {
     float spacingX = 0.8f;
     
     _pileMap.clear();
-    
     
     for (int i = 0; i < _pileSize; i++) {
         for (int j = 0; j < _pileSize; j++) {
@@ -259,14 +259,31 @@ void Pile::reshufflePile(){
     rdPile.init();
     rdPile.shuffle(tiles);
     
-    int index = 0;
+    cugl::Size screenSize(1280, 720); //Temporary pile placement fix
+
+    float spacingY = 0.85f;
+    float spacingX = 0.8f;
+    
+    _pileMap.clear();
+    
     for (int i = 0; i < _pileSize; i++) {
         for (int j = 0; j < _pileSize; j++) {
-            if (_pile[i][j] != nullptr) {
-                _pile[i][j] = tiles[index];
-                _pile[i][j]->pileCoord = cugl::Vec2(i, j);
-                index++;
-            }
+            std::shared_ptr<TileSet::Tile> tile = _pile[i][j];
+            if (tile == nullptr) continue;
+            
+            cugl::Size _size = tile->getTileTexture()->getSize();
+            cugl::Vec2 tileSize(_size.width * tile->_scale, _size.height * tile->_scale);
+            
+            float pileWidth = (_pileSize - 1) * (tileSize.x * spacingX);
+            float pileHeight = (_pileSize - 1)* (tileSize.y * spacingY);
+            cugl::Vec2 pileOffset((screenSize.width - pileWidth) / 2, (screenSize.height - pileHeight) / 2);
+            
+            float x = j * tileSize.x * spacingX;
+            float y = i * tileSize.y * spacingY;
+            
+            AnimationController::getInstance().addSelectAnim(tile, tile->pos, Vec2(x,y), tile->_scale, tile->_scale, 20);
+            std::string key = tile->toString() + " " + std::to_string(tile->_id);
+            _pileMap.insert({key, tile->pileCoord});
         }
     }
     

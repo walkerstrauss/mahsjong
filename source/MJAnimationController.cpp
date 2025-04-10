@@ -43,11 +43,13 @@ void AnimationController::update(float dt) {
     for (auto& anim: _SelectAnims) {
         anim.update(dt);
         
-        if (anim.done && anim.growing) {
-            _SelectAnims.erase(std::remove_if(_SelectAnims.begin(), _SelectAnims.end(), [&anim](const SelectAnim& a) {return a.tile == anim.tile;}), _SelectAnims.end());
-            addSelectAnim(anim.tile, anim.tile->pos, anim.tile->pos + Vec2(0, 5.0f), anim.tile->_scale, anim.tile->_scale * 0.833333333f, 1);
-        } else if (anim.done && !anim.growing) {
-            _SelectAnims.erase(std::remove_if(_SelectAnims.begin(), _SelectAnims.end(), [&anim](const SelectAnim& a) {return a.tile == anim.tile;}), _SelectAnims.end());
+        if (anim.done){
+            if (anim.growing) {
+                _SelectAnims.erase(std::remove_if(_SelectAnims.begin(), _SelectAnims.end(), [&anim](const SelectAnim& a) {return a.tile == anim.tile;}), _SelectAnims.end());
+                addSelectAnim(anim.tile, anim.tile->pos, anim.tile->pos + Vec2(0, 5.0f), anim.tile->_scale, anim.origScale, anim.frames, false);
+            } else {
+                _SelectAnims.erase(std::remove_if(_SelectAnims.begin(), _SelectAnims.end(), [&anim](const SelectAnim& a) {return a.tile == anim.tile;}), _SelectAnims.end());
+            }
         }
     }
 }

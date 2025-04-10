@@ -71,20 +71,21 @@ private:
         Vec2 startPos, endPos;
         float startScale, endScale;
         float origScale;
-        float elapsed;
         int frames;
+        int currFrame;
         bool done;
         /** Whether we are animating growing in selection */
         bool growing;
         
-        SelectAnim(std::shared_ptr<TileSet::Tile> tile, Vec2 startPos, Vec2 endPos, float startScale, float endScale, int fps, bool isGrowing = true) : tile(tile), startPos(startPos), endPos(endPos), startScale(startScale), endScale(endScale), origScale(startScale), elapsed(0.0), done(false), growing(isGrowing) {
+        SelectAnim(std::shared_ptr<TileSet::Tile> tile, Vec2 startPos, Vec2 endPos, float startScale, float endScale, int fps, bool isGrowing = true) : tile(tile), startPos(startPos), endPos(endPos), startScale(startScale), endScale(endScale), origScale(startScale), currFrame(0), done(false), growing(isGrowing) {
             frames = fps;
         }
         
         void update(float dt){
             if (done) return;
-            elapsed += dt;
-            int currFrame = static_cast<int>(elapsed);
+            
+            currFrame++;
+            
             if (currFrame >= frames){
                 currFrame = frames;
                 done = true;
@@ -95,7 +96,6 @@ private:
             tile->_scale = startScale * (1-diffTime) + endScale * diffTime;
         }
     };
-    
     /** Reference to asset manager for getting sprite sheets */
     std::shared_ptr<cugl::AssetManager> _assets;
     /** Vector holding sprites for controller animating */
@@ -138,8 +138,8 @@ public:
     /**
      * Method to add a tile animation
      */
-    void addSelectAnim(const std::shared_ptr<TileSet::Tile>& tile, Vec2 startPos, Vec2 endPos, float startScale, float endScale, int fps){
-        _SelectAnims.emplace_back(tile, startPos, endPos, startScale, endScale, fps);
+    void addSelectAnim(const std::shared_ptr<TileSet::Tile>& tile, Vec2 startPos, Vec2 endPos, float startScale, float endScale, int fps, bool isGrowing = true){
+        _SelectAnims.emplace_back(tile, startPos, endPos, startScale, endScale, fps, isGrowing);
     }
     
     /**
@@ -180,7 +180,7 @@ public:
     }
     
     void animateTileSelect(std::shared_ptr<TileSet::Tile> tile, float f){
-        addSelectAnim(tile, tile->pos, tile->pos + Vec2(0, 5.0f), tile->_scale, tile->_scale * 1.2f, f);
+        addSelectAnim(tile, tile->pos, tile->pos + Vec2(0, 5.0f), tile->_scale, tile->_scale * 1.2f, f/2);
     }
     
     void animateTileDeselect(std::shared_ptr<TileSet::Tile> tile, float f){

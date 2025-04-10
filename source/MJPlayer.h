@@ -217,9 +217,6 @@ public:
             }
         return -1;
     }
-    
-    
-    
 };
 
 // Player as subclass of hand for handling individual turns for the player
