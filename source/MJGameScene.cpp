@@ -284,7 +284,7 @@ void GameScene::update(float timestep) {
         cugl::Vec2 prev = _input.getPosition(); //Get our mouse position
         cugl::Vec2 mousePos = cugl::Scene::screenToWorldCoords(cugl::Vec3(prev));
         if (_network->getCurrentTurn() == _network->getLocalPid()) {
-            clickedTile(mousePos);
+            pressTile();
         }
     }
     
