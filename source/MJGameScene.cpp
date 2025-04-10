@@ -282,7 +282,7 @@ void GameScene::update(float timestep) {
     
     if(_input.didRelease() && !_input.isDown()){
         cugl::Vec2 prev = _input.getPosition(); //Get our mouse position
-        cugl::Vec2 mousePos = cugl::Scene::screenToWorldCoords(cugl::Vec3(prev));
+//        cugl::Vec2 mousePos = cugl::Scene::screenToWorldCoords(cugl::Vec3(prev));
         if (_network->getCurrentTurn() == _network->getLocalPid()) {
             pressTile();
         }
@@ -314,9 +314,9 @@ void GameScene::update(float timestep) {
             else{
                 _network->broadcastDeck(_tileSet->toJson(_tileSet->deck));
             }
-//            if (_player->getHand().isWinningHand()){
-//                _gameWin = true;
-//            }
+            if (_player->getHand().isWinningHand()){
+                _gameWin = true;
+            }
             
             if (!_player->getHand()._drawnPile.empty()) {
                 auto drawnTile = _player->getHand()._drawnPile.back();
@@ -711,21 +711,20 @@ void GameScene::pressTile(){
                 if (it == selected.end() && tile != nullptr) {
                     selected.push_back(tile);
                     // TODO: Play select sound effect
-                    AnimationController::getInstance().animateTileSelect(tile, 20);
+                    AnimationController::getInstance().animateTileSelect(tile, 30);
                 }
             } else {
                 if (it != selected.end()){
                     selected.erase(it);
                     // TODO: Play deselect sound effect
-                    AnimationController::getInstance().animateTileDeselect(tile, 10);
+                    AnimationController::getInstance().animateTileDeselect(tile, 15);
                 }
             }
-            
         }
     }
     
     // if the player pressed on the pile
-    if (_pileBox.contains(mousePos) && !_dragInitiated) {
+    if (_pileBox.contains(mousePos)) {
         if(_player->getHand()._tiles.size() > 14){
             CULog("Hand too big");
             return;
@@ -795,12 +794,12 @@ void GameScene::updateDrag(const cugl::Vec2& mousePos, bool mouseDown, bool mous
                         _draggingTile->selected = false;
                         _draggingTile->pos = _originalTilePos;
                         _draggingTile->tileRect.origin = _originalTilePos;
-                        _dragInitiated = false;
-                        _originalTilePos = cugl::Vec2::ZERO;
                     }
                 }
             }
         }
+        _dragInitiated = false;
+        _originalTilePos = cugl::Vec2::ZERO;
         
         // Player hand rearranging (dragging)
         int newIndex = _player->getHand().getTileIndexAtPosition(mousePos);

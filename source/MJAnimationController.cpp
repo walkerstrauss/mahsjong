@@ -11,11 +11,6 @@ AnimationController* AnimationController::_instance = nullptr;
 #pragma mark -
 #pragma mark Constructors
 
-static AnimationController& getInstance() {
-    static AnimationController instance;
-    return instance;
-}
-
 /**
  * Initializes the animation controller with an asset manager
  *
@@ -41,9 +36,9 @@ void AnimationController::update(float dt) {
     }
     
     for (auto& anim: _SelectAnims) {
-        anim.update(dt);
-        
-        if (anim.done){
+        if (!anim.done){
+            anim.update(dt);
+        } else {
             if (anim.growing) {
                 _SelectAnims.erase(std::remove_if(_SelectAnims.begin(), _SelectAnims.end(), [&anim](const SelectAnim& a) {return a.tile == anim.tile;}), _SelectAnims.end());
                 addSelectAnim(anim.tile, anim.tile->pos, anim.tile->pos + Vec2(0, 5.0f), anim.tile->_scale, anim.origScale, anim.frames, false);

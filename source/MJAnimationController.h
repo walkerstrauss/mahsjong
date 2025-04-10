@@ -142,6 +142,15 @@ public:
         _SelectAnims.emplace_back(tile, startPos, endPos, startScale, endScale, fps, isGrowing);
     }
     
+    bool isTileAnimated(const std::shared_ptr<TileSet::Tile>& tile){
+        for (const auto& anim : _SelectAnims){
+            if (anim.tile == tile){
+                return true;
+            }
+        }
+        return false;
+    }
+    
     /**
      * Update all animations
      */
@@ -180,7 +189,7 @@ public:
     }
     
     void animateTileSelect(std::shared_ptr<TileSet::Tile> tile, float f){
-        addSelectAnim(tile, tile->pos, tile->pos + Vec2(0, 5.0f), tile->_scale, tile->_scale * 1.2f, f/2);
+        addSelectAnim(tile, tile->pos, tile->pos + Vec2(0, 5.0f), tile->_scale, tile->_scale * 1.4f, f/2);
     }
     
     void animateTileDeselect(std::shared_ptr<TileSet::Tile> tile, float f){

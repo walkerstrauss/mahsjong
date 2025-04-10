@@ -60,9 +60,7 @@ bool Hand::initHand(std::shared_ptr<TileSet>& tileSet, bool isHost){
  * @param pile      the pile to draw to our hand from
  */
 void Hand::drawFromPile(std::shared_ptr<Pile>& pile, int number, bool isHost){
-
     _drawnPile = pile->tilesDrawn(number);
-    
     for(auto& tile : _drawnPile){
         if (isHost) {
             tile->inHostHand = true;
