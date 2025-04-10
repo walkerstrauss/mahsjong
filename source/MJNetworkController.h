@@ -43,28 +43,49 @@ public:
         /** Error in connection */
         NETERROR,
         /** Preemptive discard for reciever */
-        PREEMPTIVEDISCARD
+        PREEMPTIVEDISCARD,
+        
+        /** **BEGINNING OF MATCHMODEL STATES ** */
+        /** Tile has been drawn from pile */
+        TILEDRAWN,
+        /** TileMap has been updated */
+        TILEMAPUPDATE,
+        /** Discard pile has been updated */
+        DISCARDUPDATE, 
+        /** Game has concluded  */
+        ENDGAME
+        /** **END OF MATCHMODEL STATES ** */
+        
     };
-
+    
+    enum MapUpdateType {
+        /** Idle Update (update not based on any event) */
+        NONE,
+        /** Update to remake pile */
+        REMAKEPILE
+    };
+    
 protected:
     /** The asset manager for the controller. */
     std::shared_ptr<cugl::AssetManager> _assets;
-
+    
     /** The network configuration */
     cugl::netcode::NetcodeConfig _config;
-
+    
     /** The network connection */
     std::shared_ptr<cugl::netcode::NetcodeConnection> _network;
-
+    
     Status _status;
-
+    
+    MapUpdateType _mapUpdateType;
+    
     std::string _roomid;
-
+    
     bool _isHost;
     
     Uint32 _localPid;
     
-    Uint32 _localReady; 
+    Uint32 _localReady;
     
     Uint32 _currentTurn;
     
@@ -85,6 +106,15 @@ protected:
     bool _isHostDraw;
     
     std::tuple<int, bool> _numDiscard;
+    
+    /** ** START OF MATCH CONTROLLER BRANCH FIELDS**  */
+    
+    /** JSON representing the initial game reprsentation */
+    std::shared_ptr<cugl::JsonValue> _clientStart;
+    /** JSON representing the tile that was drawn*/
+    std::shared_ptr<cugl::JsonValue> _tileDrawn;
+    /** ** END OF MATCH CONTROLLER BRANCH FIELDS**  */
+    
 public:
 #pragma mark -
 #pragma mark Constructors
@@ -95,7 +125,7 @@ public:
      * This allows us to use the object without a heap pointer.
      */
     NetworkController();
-
+    
     /**
      * Disposes of all (non-static) resources allocated to this controller.
      *
@@ -106,12 +136,12 @@ public:
     
     std::shared_ptr<cugl::netcode::NetcodeSerializer> _serializer;
     std::shared_ptr<cugl::netcode::NetcodeDeserializer> _deserializer;
-
+    
     /**
      * Disposes of all (non-static) resources allocated to this controller.
      */
     void dispose();
-
+    
     bool init(const std::shared_ptr<cugl::AssetManager>& assets);
     
     int getNumPlayers() const {
@@ -121,15 +151,15 @@ public:
         return 1;
     }
     void update(float timestep);
-
+    
     bool connectAsHost();
-
+    
     bool connectAsClient(std::string room);
-
+    
     std::string getRoomID() const {
         return _roomid;
     }
-
+    
     void disconnect();
     
     void notifyEndTurn();
@@ -137,24 +167,22 @@ public:
     void endTurn();
     
     void transmitSingleTile(TileSet::Tile& tile);
-
+    
     bool checkConnection();
-
+    
     void broadcast(const std::vector<std::byte>& data);
-
+    
     void processData(const std::string source, const std::vector<std::byte>& data);
-
+    
     void startGame();
     
     void initGame(const std::shared_ptr<cugl::JsonValue>& deckJson);
-        
+    
     void broadcastDeck(const std::shared_ptr<cugl::JsonValue>& deckJson);
     
     void broadcastNextTile(const std::shared_ptr<cugl::JsonValue>& tileJson);
     
     void broadcastPileIndex(const int index);
-    
-    void broadcastTileDrawn(const std::shared_ptr<cugl::JsonValue>& drawnTileJson);
     
     void broadcastPileLayer();
     
@@ -165,22 +193,27 @@ public:
     void broadcastStartingDeck(const std::shared_ptr<cugl::JsonValue>& deckJson);
     
     void broadcastDeckMap(const std::shared_ptr<cugl::JsonValue>& tileMapJson);
-
+    
     
     Uint32 getLocalPid() const {
         return _localPid;
     }
-
+    
     Uint32 getCurrentTurn() const {
         return _currentTurn;
     }
-
+    
     Status getStatus() const {
         return _status;
     }
     
     void setStatus(Status status) {
         _status = status;
+    }
+    
+    /** Sets the status of pile map updates */
+    void setMapUpdateType(MapUpdateType mapUpdateType) {
+        _mapUpdateType = mapUpdateType;
     }
     
     std::shared_ptr<cugl::JsonValue> getDeckJson(){
@@ -195,7 +228,7 @@ public:
     }
     
     std::shared_ptr<cugl::JsonValue> getDiscardTile(){
-        return _discardTile; 
+        return _discardTile;
     }
     
     std::shared_ptr<cugl::JsonValue> getNextTileJson(){
@@ -233,10 +266,63 @@ public:
     void broadcastUpdating();
     
     void broadcastReady();
-        
+    
     void broadcastPreDraw(int numDraw, bool isHost);
     
-
+    /** **START OF MATCH CONTROLLER GETTERS** */
+    
+    MapUpdateType getMapUpdateType() {
+        return _mapUpdateType; 
+    }
+    
+    std::shared_ptr<cugl::JsonValue> getClientStart() {
+        return _clientStart;
+    }
+    
+    std::shared_ptr<cugl::JsonValue> getTileDrawn() {
+        return _tileDrawn; 
+    }
+    
+    /** **END OF MATCH CONTROLLER GETTERS ** */
+    
+    /** ** START OF MATCH CONTROLLER BRANCH FUNCTIONS**  */
+    
+    /**
+     * Called during initialization of GameScene and MatchController. Broadcasts the initial representation
+     * and state of game to client. When received, it sets status to INGAME for the client to join the game as
+     * initialized by host.
+     *
+     * @param clientStart   The JsonValue representing the initial representation of all tiles
+     */
+    void broadcastClientStart(const std::shared_ptr<cugl::JsonValue>& clientStart);
+    
+    /**
+     * Broadcasts the JSON representation of the tile that has been drawn. When received, it sets status to
+     * TILEDRAWN, indicating a tile has been drawn to the match controller.
+     *
+     * @param drawnTileJson     The JsonValue representing the drawn tile
+     */
+    void broadcastTileDrawn(int isHost, const std::shared_ptr<cugl::JsonValue>& tileJson);
+    
+    /**
+     * Broadcasts the JSON representation of all tiles in the tileset (not only deck). Currently used for:
+     * remaking pile, updating deck (deleting and adjusting fields for tiles), etc.
+     *
+     * @param tileMapJson       The JsonValue of the tileMap
+     */
+    void broadcastTileMap(int isHost, const std::shared_ptr<cugl::JsonValue>& tileMapJson, std::string mapUpdateType);
+    
+    /**
+     * Broadcasts the JSON representation of the discarded tiles.
+     *
+     * @param discardedTileJson     The JsonValue of the discarded tile
+     */
+    void broadcastDiscard(int isHost, const std::shared_ptr<cugl::JsonValue>& discardedTileJson);
+    
+    /** Broadcasts a message that the game has concluded */
+    void broadcastEnd(int isHost);
+    
+    /** ** START OF MATCH CONTROLLER BRANCH FUNCTIONS**  */
 
     
     /**

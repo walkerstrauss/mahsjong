@@ -409,7 +409,7 @@ public:
      */
     void initClientDeck(const std::shared_ptr<cugl::JsonValue>& deckJson);
     
-    void addActionAndCommandTiles(const std::shared_ptr<cugl::AssetManager>& assets);
+    void addActionAndCommandTiles();
     
 #pragma mark -
 #pragma mark Tileset Gameplay Handling
@@ -500,11 +500,6 @@ public:
      * Sets the texture for all tiles in deck
      */
     void setAllTileTexture(const std::shared_ptr<cugl::AssetManager>& assets);
-    
-    /**
-     * Sets the textures for the action and command tiles in deck
-     */
-    void setSpecialTextures(const std::shared_ptr<cugl::AssetManager>& assets);
     
     /**
      * Sets the texture of a facedown tile

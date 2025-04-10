@@ -15,6 +15,7 @@ using namespace cugl::netcode;
 
 NetworkController::NetworkController() {
     _status = IDLE;
+    _mapUpdateType = NONE; 
     _isHost = false;
     _roomid = "";
     _currentTurn = 0;
@@ -104,47 +105,80 @@ void NetworkController::processData(const std::string source,
     _deserializer->receive(data);
     std::string msgType = _deserializer->readString();
     
+    // Game start for host
     if (msgType == "start game") {
         _status = START;
     }
+    // End turn for player
     else if (msgType == "end turn") {
         _currentTurn = _deserializer->readUint32();
     }
-    else if (msgType == "initialize game") {
-        _startingDeckJson = _deserializer->readJson();
-    }
-    else if (msgType == "starting client deck") {
-        _deckJson = _deserializer->readJson();
+    // Start client's game
+    else if (msgType == "client start") {
+        _clientStart = _deserializer->readJson();
         _status = INGAME;
     }
-    else if (msgType == "update deck") {
-        _deckJson = _deserializer->readJson();
-        _status = DECK;
+    // Messages only for the opposing player
+    else if (_localPid != _deserializer->readUint32()) {
+        // Opponent drew a tile
+        if (msgType == "tile drawn") {
+            _tileDrawn = _deserializer->readJson();
+            _status = TILEDRAWN;
+        }
+        // Update to tile map
+        if (msgType == "tile map update") {
+            _tileMapJson = _deserializer->readJson();
+            // Remaking pile
+            if(_deserializer->readString() == "remake pile")
+                _mapUpdateType = REMAKEPILE;
+            _status = TILEMAPUPDATE;
+        }
+        // Update to discard pile
+        if (msgType == "discard update") {
+            _discardTile = _deserializer->readJson();
+            _status = DISCARDUPDATE; 
+        }
+        // Opponent won game
+        if(msgType == "game concluded") {
+            _status = ENDGAME;
+        }
+        //
     }
-    else if (msgType == "pile tile update") {
-        _pileTileJson = _deserializer->readJson();
-        _isHostDraw = _isHost;
-        _status = PILETILEUPDATE;
-    }
-    else if (msgType == "update layer") {
-        _status = LAYER;
-    }
-    else if (msgType == "remove discard tile"){
-        _status = REMOVEDISCARD;
-    }
-    else if (msgType == "new discard tile") {
-        _discardTile = _deserializer->readJson();   
-        _status = NEWDISCARD;
-    }
-    else if (msgType == "tile map update") {
-        _tileMapJson = _deserializer->readJson();
-    }
-    else if (msgType == "preemptive draw") {
-        int numToDraw = _deserializer->readUint32();
-        bool isHost = _deserializer->readBool();
-        _numDiscard = std::tuple<int, bool>(numToDraw, isHost);
-        _status = PREEMPTIVEDISCARD;
-    }
+//    else if (msgType == "initialize game") {
+//        _startingDeckJson = _deserializer->readJson();
+//    }
+//    else if (msgType == "starting client deck") {
+//        _deckJson = _deserializer->readJson();
+//        _status = INGAME;
+//    }
+//    else if (msgType == "update deck") {
+//        _deckJson = _deserializer->readJson();
+//        _status = DECK;
+//    }
+//    else if (msgType == "pile tile update") {
+//        _pileTileJson = _deserializer->readJson();
+//        _isHostDraw = _isHost;
+//        _status = PILETILEUPDATE;
+//    }
+//    else if (msgType == "update layer") {
+//        _status = LAYER;
+//    }
+//    else if (msgType == "remove discard tile"){
+//        _status = REMOVEDISCARD;
+//    }
+//    else if (msgType == "new discard tile") {
+//        _discardTile = _deserializer->readJson();   
+//        _status = NEWDISCARD;
+//    }
+//    else if (msgType == "tile map update") {
+//        _tileMapJson = _deserializer->readJson();
+//    }
+//    else if (msgType == "preemptive draw") {
+//        int numToDraw = _deserializer->readUint32();
+//        bool isHost = _deserializer->readBool();
+//        _numDiscard = std::tuple<int, bool>(numToDraw, isHost);
+//        _status = PREEMPTIVEDISCARD;
+//    }
 }
 
 void NetworkController::endTurn() {
@@ -247,15 +281,6 @@ void NetworkController::broadcastPileIndex(const int index){
     broadcast(_serializer->serialize());
 }
 
-void NetworkController::broadcastTileDrawn(const std::shared_ptr<cugl::JsonValue>& drawnTileJson){
-    _serializer->reset();
-    
-    _serializer->writeString("pile tile update");
-    _serializer->writeJson(drawnTileJson);
-    
-    broadcast(_serializer->serialize());
-}
-
 void NetworkController::broadcastDeckMap(const std::shared_ptr<cugl::JsonValue>& tileMapJson) {
     _serializer->reset();
     
@@ -264,6 +289,7 @@ void NetworkController::broadcastDeckMap(const std::shared_ptr<cugl::JsonValue>&
     
     broadcast(_serializer->serialize());
 }
+
 void NetworkController::broadcastPileLayer() {
     _serializer->reset();
     
@@ -315,6 +341,84 @@ void NetworkController::broadcastPreDraw(int numDraw, bool isHost) {
     
     broadcast(_serializer->serialize());
 }
+
+/** ** BEGINNING OF MATCHCONTROLLER BROADCASTS** */
+
+/**
+ * Called during initialization of GameScene and MatchController. Broadcasts the initial representation
+ * and state of game to client. When received, it sets status to INGAME for the client to join the game as
+ * initialized by host.
+ *
+ * @param clientStart   The JsonValue representing the initial representation of all tiles
+ */
+void NetworkController::broadcastClientStart(const std::shared_ptr<cugl::JsonValue>& clientStart) {
+    _serializer->reset();
+    
+    _serializer->writeString("client start");
+    _serializer->writeJson(clientStart);
+    
+    broadcast(_serializer->serialize());
+}
+
+/**
+ * Broadcasts the JSON representation of the tile that has been drawn. When received, it sets status to
+ * TILEDRAWN, indicating a tile has been drawn to the match controller.
+ *
+ * @param drawnTileJson     The JsonValue representing the drawn tile
+ */
+void NetworkController::broadcastTileDrawn(int isHost, const std::shared_ptr<cugl::JsonValue>& drawnTileJson) {
+    _serializer->reset();
+    
+    _serializer->writeString("tile drawn");
+    _serializer->writeUint32(isHost);
+    _serializer->writeJson(drawnTileJson);
+    
+    broadcast(_serializer->serialize());
+}
+
+/**
+ * Broadcasts the JSON representation of all tiles in the tileset (not only deck). Currently used for:
+ * remaking pile, updating deck (deleting and adjusting fields for tiles), etc.
+ *
+ * @param tileMapJson       The JsonValue of the tileMap 
+ */
+void NetworkController::broadcastTileMap(int isHost, const std::shared_ptr<cugl::JsonValue>& tileMapJson, std::string mapUpdateType) {
+    _serializer->reset();
+    
+    _serializer->writeString("tile map update");
+    _serializer->writeUint32(isHost);
+    _serializer->writeJson(tileMapJson);
+    _serializer->writeString(mapUpdateType);
+    
+    broadcast(_serializer->serialize());
+}
+
+/**
+ * Broadcasts the JSON representation of the discarded tiles.
+ *
+ * @param discardedTileJson     The JsonValue of the discarded tile
+ */
+void NetworkController::broadcastDiscard(int isHost, const std::shared_ptr<cugl::JsonValue>& discardedTileJson) {
+    _serializer->reset();
+    
+    _serializer->writeString("discard update");
+    _serializer->writeUint32(isHost);
+    _serializer->writeJson(discardedTileJson);
+    
+    broadcast(_serializer->serialize());
+}
+           
+/** Broadcasts a message that the game has concluded */
+void NetworkController::broadcastEnd(int isHost) {
+    _serializer->reset();
+    
+    _serializer->writeString("game concluded");
+    _serializer->writeUint32(isHost);
+
+    broadcast(_serializer->serialize());
+}
+
+/** ** END OF MATCHCONTROLLER BROADCASTS** */
 
                                                                                                  
 //

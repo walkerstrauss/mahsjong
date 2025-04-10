@@ -133,6 +133,7 @@ void MahsJongApp::update(float timestep) {
             updateClientScene(timestep);
             break;
         case GAME:
+            updateMatchController(timestep);
             updateGameScene(timestep);
             break;
         case SETTINGS:
@@ -215,6 +216,7 @@ void MahsJongApp::updateLoadingScene(float timestep) {
        _network->init(_assets);
        _mainmenu.init(_assets);
        _mainmenu.setSpriteBatch(_batch);
+       _matchController.init(_assets, _network);
        _hostgame.init(_assets, _network);
        _hostgame.setSpriteBatch(_batch);
        _joingame.init(_assets, _network);
@@ -282,7 +284,7 @@ void MahsJongApp::updateHostScene(float timestep) {
         _hostgame.setActive(false);
         _mainmenu.setActive(true);
     } else if (_network->getStatus() == NetworkController::Status::START) {
-        _gameplay.init(_assets, _network);
+        _gameplay.init(_assets, _network, _matchController);
         _gameplay.setSpriteBatch(_batch);
         _hostgame.setActive(false);
         _gameplay.setActive(true);
@@ -312,7 +314,7 @@ void MahsJongApp::updateClientScene(float timestep) {
         _joingame.setActive(false);
         _mainmenu.setActive(true);
     } else if (_network->getStatus() == NetworkController::Status::INGAME) {
-        _gameplay.init(_assets, _network);
+        _gameplay.init(_assets, _network, _matchController);
         _gameplay.setSpriteBatch(_batch);
         _joingame.setActive(false);
         _gameplay.setActive(true);
@@ -493,7 +495,7 @@ void MahsJongApp::updateGameOverScene(float timestep) {
 void MahsJongApp::updateTilesetUIScene(float timestep) {
     _tilesetui.update(timestep);
     switch (_tilesetui.choice){
-        case DiscardUIScene::Choice::BACK:
+        case DiscardUIScene::Choice::BACK: 
             _tilesetui.setActive(false);
             _gameplay.setActive(true);
             _gameplay.setGameActive(true);
@@ -503,4 +505,8 @@ void MahsJongApp::updateTilesetUIScene(float timestep) {
             // Do nothing
             break;
     }
+}
+
+void MahsJongApp::updateMatchController(float timestep) {
+    _matchController.update(timestep);
 }

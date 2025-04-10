@@ -16,6 +16,7 @@
 #include "MJPauseScene.h"
 #include "MJGameOverScene.h"
 #include "MJNetworkController.h"
+#include "MJMatchController.h"
 /**
  * This class represents the application root for the Mah's Jong game
  */
@@ -52,14 +53,16 @@ protected:
     ClientScene _joingame;
     /** The primary controller for game world */
     GameScene _gameplay;
+    /** The discard UI scene */
+    DiscardUIScene _tilesetui; 
     /** The scene for settings */
     SettingScene _settings;
     /** The scene for pausing the game */
     PauseScene _pause;
     /** The scene for when the match ends/ is over */
     GameOverScene _gameover;
-    /** Tileset UI scene */
-    DiscardUIScene _tilesetui;
+    /** The match controller for the game*/
+    MatchController _matchController; 
     /** Whether or not we finished loading all assets*/
     bool _loaded;
     /** Scene loader reference */
@@ -191,6 +194,13 @@ private:
      * @param timestep  The amount of time (in seconds) since the last frame
      */
     void updateTilesetUIScene(float timestep);
+    
+    /**
+     * Individualzed update method for the model controller
+     *
+     * @param timestep   The amount of time (in seconds) since the last frame 
+     */
+    void updateMatchController(float timestep);
 };
 
 #endif
