@@ -64,6 +64,7 @@ bool DiscardUIScene::init(const std::shared_ptr<cugl::AssetManager>& assets){
     backBtnKey = backBtn->addListener([this](const std::string& name, bool down) {
         if (!down) {
             choice = Choice::BACK;
+//            AudioEngine::get()->play("back",_assets->get<Sound>("back"), false, 1.0f);
         }
     });
     addChild(_tilesetui);

@@ -72,50 +72,16 @@ void TileSet::initClientDeck(const std::shared_ptr<cugl::JsonValue>& deckJson){
     
     for (auto& tile : deck) {
         std::string key = tile->toString() + " " + std::to_string(tile->_id);
-        if (tile->getSuit() == Tile::Suit::SPECIAL) {
-            if (tile->getRank() == Tile::Rank::ACTION) {
-                auto action = std::dynamic_pointer_cast<ActionTile>(tile);
-                    if (action->type == ActionTile::ActionType::CHAOS)
-                        key = "chaos of action " + std::to_string(tile->_id);
-                    else if (action->type == ActionTile::ActionType::ECHO)
-                        key = "echo of action " + std::to_string(tile->_id);
-                }
-            else if (tile->getRank() == Tile::Rank::COMMAND) {
-                auto command = std::dynamic_pointer_cast<CommandTile>(tile);
-                if (command->type == CommandTile::CommandType::OBLIVION) {
-                    key = "oblivion of command " + std::to_string(tile->_id);
-                }
-                else if (command->type == CommandTile::CommandType::VOID) {
-                    key = "void of command " + std::to_string(tile->_id);
-                }
-            }
-        }
         tileMap.insert({key, tile});
     }
 }
 
-void TileSet::addActionAndCommandTiles() {
-    for (int i = 1; i < 6; ++i) {
-        std::shared_ptr<ActionTile> chaos = std::make_shared<ActionTile>(ActionTile::ActionType::CHAOS);
+void TileSet::addCelestialTiles(const std::shared_ptr<cugl::AssetManager>& assets) {
+    for (int i = 1; i < 21; ++i) {
+        std::shared_ptr<Tile> chaos = std::make_shared<Tile>(Tile::Rank::CHAOS, Tile::Suit::CELESTIAL);
         chaos->_id = i;
         deck.push_back(chaos);
         tileMap[chaos->toString() + " " + std::to_string(chaos->_id)] = chaos;
-
-        std::shared_ptr<ActionTile> echo = std::make_shared<ActionTile>(ActionTile::ActionType::ECHO);
-        echo->_id = i;
-        deck.push_back(echo);
-        tileMap[echo->toString() + " " + std::to_string(echo->_id)] = echo;
-
-        std::shared_ptr<CommandTile> oblivion = std::make_shared<CommandTile>(CommandTile::CommandType::OBLIVION);
-        oblivion->_id = i;
-        deck.push_back(oblivion);
-        tileMap[oblivion->toString() + " " + std::to_string(oblivion->_id)] = oblivion;
-        
-        std::shared_ptr<CommandTile> vvoid = std::make_shared<CommandTile>(CommandTile::CommandType::VOID);
-        vvoid->_id = i;
-        deck.push_back(vvoid);
-        tileMap[vvoid->toString() + " " + std::to_string(vvoid->_id)] = vvoid;
-
     }
 }
 
@@ -125,23 +91,11 @@ void TileSet::addActionAndCommandTiles() {
  * Sets the texture for all tiles in deck
  */
 void TileSet::setAllTileTexture(const std::shared_ptr<cugl::AssetManager>& assets){
-    CUAssertLog(deck.size() != 0, "Cannot initialize textures with empty deck");
-    
-    for(const auto& it : deck) {
-        //Initializing textures for command and action tiles
-        if(it->getSuit() == Tile::Suit::SPECIAL) {
-            if(it->getRank() == Tile::Rank::ACTION) {
-                auto actionTile = std::dynamic_pointer_cast<ActionTile>(it);
-                actionTile->setTexture(assets->get<Texture>(actionTile->toString()));
-            }
-            else if (it->getRank() == Tile::Rank::COMMAND) {
-                auto commandTile = std::dynamic_pointer_cast<CommandTile>(it);
-                commandTile->setTexture(assets->get<Texture>(commandTile->toString()));
-            }
-        }
-        else{
-            it->setTexture(assets->get<Texture>(it->toString()));
-        }
+    if(deck.size() == 0){
+        CULog("Deck is empty");
+    }
+    for(const auto& it : deck){
+        it->setTexture(assets->get<Texture>(it->toString()));
     }
 }
 
@@ -185,23 +139,7 @@ const std::shared_ptr<cugl::JsonValue> TileSet::toJson(std::vector<std::shared_p
         currTile->appendValue("inDeck", tile->inDeck);
         currTile->appendValue("pos", tile->pos);
         currTile->appendValue("scale", tile->_scale);
-        
-        if (auto action = std::dynamic_pointer_cast<ActionTile>(tile)) {
-            if (tile->toStringRank() != "action") {
-                continue;
-            }
-            currTile->appendValue("tileType", std::string("action"));
-            currTile->appendValue("actionType", action->toString());
-        } else if (auto command = std::dynamic_pointer_cast<CommandTile>(tile)) {
-            if (tile->toStringRank() != "command") {
-                continue;
-            }
-            currTile->appendValue("tileType", std::string("command"));
-            currTile->appendValue("commandType", command->toString());
-        } else {
-            currTile->appendValue("tileType", "normal");
-        }
-        
+
         root->appendChild(key, currTile);
     }
     
@@ -241,16 +179,6 @@ void TileSet::updateDeck(const std::shared_ptr<cugl::JsonValue>& deckJson) {
         const float scale = tileKey->getFloat("scale");
         const std::string suit = tileKey->getString("suit");
         
-        const std::string actionType = tileKey->getString("actionType", "None");
-        const std::string commandType = tileKey->getString("commandType", "None");
-        
-        if (actionType != "None") {
-            key = actionType + " " + id;
-        }
-        else if (commandType != "None") {
-            key = commandType + " " + id;
-        }
-        
         tileMap[key]->inPile = inPile;
         tileMap[key]->inHostHand = inHostHand;
         tileMap[key]->inClientHand = inClientHand;
@@ -287,19 +215,8 @@ std::vector<std::shared_ptr<TileSet::Tile>> TileSet::processTileJson(const std::
         const bool inDeck = tileKey->getBool("inDeck");
         const cugl::Vec2 pos = Tile::toVector(tileKey->getString("pos"));
         const float scale = tileKey->getFloat("scale");
-        std::string type = tileKey->getString("tileType");
         
-//        std::shared_ptr<Tile> newTile = std::make_shared<Tile>(rank, suit);
-        std::shared_ptr<Tile> newTile;
-        if (type == "action") {
-            auto actionType = ActionTile::toType(tileKey->getString("actionType"));
-            newTile = std::make_shared<ActionTile>(actionType);
-        } else if (type == "command") {
-            auto commandType = CommandTile::toType(tileKey->getString("commandType"));
-            newTile = std::make_shared<CommandTile>(commandType);
-        } else {
-            newTile = std::make_shared<Tile>(rank, suit);
-        }
+        std::shared_ptr<Tile> newTile = std::make_shared<Tile>(rank, suit);
         
         newTile->_id = id;
         newTile->pileCoord = pileCoord;
@@ -318,6 +235,23 @@ std::vector<std::shared_ptr<TileSet::Tile>> TileSet::processTileJson(const std::
     }
     
     return tiles;
+}
+
+std::vector<std::shared_ptr<TileSet::Tile>> TileSet::processDeckJson(const std::shared_ptr<cugl::JsonValue>& deckJson){
+    std::vector<std::shared_ptr<TileSet::Tile>> deck;
+    int id = 0;
+    
+    for(const auto& tile : deckJson->children()){
+        const Tile::Rank rank = Tile::toRank(tile->getString("rank"));
+        const Tile::Suit suit = Tile::toSuit(tile->getString("suit"));
+        
+        std::shared_ptr<Tile> newTile = std::make_shared<Tile>(rank, suit);
+        newTile->_id = id;
+        
+        deck.push_back(newTile);
+    }
+    
+    return deck;
 }
 
 

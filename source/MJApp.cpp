@@ -61,10 +61,6 @@ void MahsJongApp::onStartup() {
     // Get rid of wrong start button
     std::shared_ptr<scene2::Button> wrongStart = std::dynamic_pointer_cast<scene2::Button>(_assets->get<scene2::SceneNode>("load.after.landingscene.button1"));
     wrongStart->setVisible(false);
-//    std::shared_ptr<scene2::SceneNode> wrongname = _assets->get<scene2::SceneNode>("load.before.name");
-//    wrongname->setVisible(false);
-//    std::shared_ptr<scene2::SceneNode> wronglogo = _assets->get<scene2::SceneNode>("load.before.logo");
-//    wronglogo->setVisible(false);
     
     _loading.start();
     AudioEngine::start();
@@ -87,7 +83,7 @@ void MahsJongApp::onShutdown() {
     _joingame.dispose();
     _settings.dispose();
     _pause.dispose();
-    _network->dispose();
+//    _network->dispose();
     _assets = nullptr;
     _batch = nullptr;
     
@@ -114,6 +110,7 @@ void MahsJongApp::onShutdown() {
  *
  * @param timestep  The amount of time (in seconds) since the last frame
  */
+
 void MahsJongApp::update(float timestep) {
     if (_network) {
         _network->update(timestep);
@@ -127,6 +124,7 @@ void MahsJongApp::update(float timestep) {
             updateMenuScene(timestep);
             break;
         case HOST:
+            _assets->loadDirectory("json/constants.json");
             updateHostScene(timestep);
             break;
         case CLIENT:
@@ -169,9 +167,11 @@ void MahsJongApp::draw() {
            _mainmenu.render();
            break;
        case HOST:
+           _hostgame.makeBlackBackground();
            _hostgame.render();
            break;
        case CLIENT:
+           _joingame.makeBlackBackground();
            _joingame.render();
            break;
        case GAME:
@@ -214,6 +214,8 @@ void MahsJongApp::updateLoadingScene(float timestep) {
        _loading.dispose(); // Permanently disables the input listeners in this mode
        _network = std::make_shared<NetworkController>();
        _network->init(_assets);
+//       _audio = std::make_shared<AudioController>();
+//       _audio->init(_assets);
        _mainmenu.init(_assets);
        _mainmenu.setSpriteBatch(_batch);
        _matchController.init(_assets, _network);
@@ -278,7 +280,6 @@ void MahsJongApp::updateMenuScene(float timestep) {
  */
 void MahsJongApp::updateHostScene(float timestep) {
     _hostgame.update(timestep);
-    
     if(_hostgame.getBackClicked()){
         _scene = MENU;
         _hostgame.setActive(false);

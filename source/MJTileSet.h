@@ -28,7 +28,7 @@ public:
         
         /** An enum to represent tile suits */
         enum class Suit : int {
-            SPECIAL,
+            CELESTIAL,
             CRAK,
             BAMBOO,
             DOT
@@ -45,8 +45,7 @@ public:
             SEVEN = 7,
             EIGHT = 8,
             NINE = 9,
-            ACTION = 10,
-            COMMAND = 11
+            CHAOS = 10
         };
         
         /** The tile's rank */
@@ -66,7 +65,7 @@ public:
         /** Boolean flag for if this tile has been discarded */
         bool discarded;
         /** Boolean flag for it this tile is the top tile of the discard pile */
-        bool topTile;
+        bool topTile = false;
         /** Whether the player has selected the tile */
         bool selected;
         /** Whether the player has selected the tile and it is in a set */
@@ -153,11 +152,8 @@ public:
                 case Tile::Rank::NINE:
                     return "nine";
                     break;
-                case Tile::Rank::ACTION:
-                    return "action";
-                    break;
-                case Tile::Rank::COMMAND:
-                    return "command";
+                case Tile::Rank::CHAOS:
+                    return "chaos";
                     break;
                 default:
                     return "no valid rank";
@@ -180,8 +176,8 @@ public:
                 case Tile::Suit::CRAK:
                     return "crak";
                     break;
-                case Tile::Suit::SPECIAL:
-                    return "special";
+                case Tile::Suit::CELESTIAL:
+                    return "celestial";
                     break;
                 default:
                     return "no valid suit";
@@ -190,28 +186,26 @@ public:
         }
         
         static Tile::Rank toRank(std::string rank) {
-            if (rank == "one") {
+            if (rank == "one" || rank == "1") {
                 return Tile::Rank::ONE;
-            } else if (rank == "two") {
+            } else if (rank == "two" || rank == "2") {
                 return Tile::Rank::TWO;
-            } else if (rank == "three") {
+            } else if (rank == "three" || rank == "3") {
                 return Tile::Rank::THREE;
-            } else if (rank == "four") {
+            } else if (rank == "four" || rank == "4") {
                 return Tile::Rank::FOUR;
-            } else if (rank == "five") {
+            } else if (rank == "five" || rank == "5") {
                 return Tile::Rank::FIVE;
-            } else if (rank == "six") {
+            } else if (rank == "six" || rank == "6") {
                 return Tile::Rank::SIX;
-            } else if (rank == "seven") {
+            } else if (rank == "seven" || rank == "7") {
                 return Tile::Rank::SEVEN;
-            } else if (rank == "eight") {
+            } else if (rank == "eight" || rank == "8") {
                 return Tile::Rank::EIGHT;
-            } else if (rank == "nine") {
+            } else if (rank == "nine" || rank == "9") {
                 return Tile::Rank::NINE;
-            } else if (rank == "action") {
-                return Tile::Rank::ACTION;
-            } else if (rank == "command") {
-                return Tile::Rank::COMMAND;
+            } else if (rank == "chaos") {
+                return Tile::Rank::CHAOS;
             } else {
                 throw std::invalid_argument("No valid rank");
             }
@@ -224,8 +218,8 @@ public:
                 return Tile::Suit::DOT;
             } else if (suit == "crak") {
                 return Tile::Suit::CRAK;
-            } else if (suit == "special"){
-                return Tile::Suit::SPECIAL;
+            } else if (suit == "celestial"){
+                return Tile::Suit::CELESTIAL;
             } else {
                 throw std::invalid_argument("No valid suit");
             }
@@ -284,82 +278,15 @@ public:
         }
     };
     
-    class ActionTile : public Tile {
-    public:
-        enum class ActionType : int {
-            JUGGERNAUT,     //rearrange tiles in current row
-            ORACLE,     //draw any tile in pile
-            SEER,       //draw any tile in discard pile
-            CHAOS,      //reshuffle the pile
-            ECHO        //draw two tiles instead of one
-        };
-        
-        ActionType type;
-        
-        ActionTile(ActionType type) : Tile(Tile::Rank::ACTION, Tile::Suit::SPECIAL), type(type) {}
-        
-        std::string toString() const override {
-            switch (type) {
-                case ActionType::CHAOS:
-                    return "chaos of action";
-                case ActionType::ECHO:
-                    return "echo of action";
-                case ActionType::JUGGERNAUT:
-                    return "juggernaut of action";
-                case ActionType::ORACLE:
-                    return "oracle of action";
-                case ActionType::SEER:
-                    return "seer of action";
-                default:
-                    return "unknown";
-            }
-        }
-        
-        static ActionTile::ActionType toType(const std::string& str) {
-            if (str == "chaos of action") {
-                return ActionType::CHAOS;
-            } else if (str == "echo of action") {
-                return ActionType::ECHO;
-            } else if (str == "juggernaut of action") {
-                return ActionType::JUGGERNAUT;
-            } else if (str == "oracle of action") {
-                return ActionType::ORACLE;
-            } else  {
-                return ActionType::SEER;
-            }
-        }
-    };
-    
-    class CommandTile: public Tile {
-    public:
-        enum class CommandType : int {
-            OBLIVION,    //remove all action tiles from hand
-            VOID    //discard a random tile from hand
-        };
-        
-        CommandType type;
-        
-        CommandTile(CommandType type) : Tile(Tile::Rank::COMMAND, Tile::Suit::SPECIAL), type(type) {}
-        
-        std::string toString() const override {
-            switch (type) {
-                case CommandType::OBLIVION:
-                    return "oblivion of command";
-                case CommandType::VOID:
-                    return "void of command";
-                default:
-                    return "unknown";
-            }
-        }
-        
-        static CommandTile::CommandType toType(const std::string& str) {
-            if (str == "oblivion of command") {
-                return CommandType::OBLIVION;
-            } else {
-                return CommandType::VOID;
-            }
-        }
-    };
+    // TODO: Refactor action and command tiles to be special tiles with class Special Tile – add new four tiles, complete implementation of 1-4 and remove echo
+    // 1. ORACLE (draw any tile in the pile)
+    // 2. SEER (draw any tile in the discard pile)
+    // 3. CHAOS (reshuffle the pile)
+    // 4. JUGGERNAUT (rearrange tiles in current row)
+    // 5. _?_ (trade one tile with opponent)
+    // 6. _?_ (random debuff of two tiles)
+    // 7. _?_ (random rank change of random hand tile)
+    // 8. _?_ (random suit change of random hand tile)
     
 public:
     /** Deck with all of the tiles */
@@ -409,7 +336,7 @@ public:
      */
     void initClientDeck(const std::shared_ptr<cugl::JsonValue>& deckJson);
     
-    void addActionAndCommandTiles();
+    void addCelestialTiles(const std::shared_ptr<cugl::AssetManager>& assets);
     
 #pragma mark -
 #pragma mark Tileset Gameplay Handling
@@ -432,69 +359,6 @@ public:
             CULog("%s", it->toString().c_str());
         }
     }
-    
-    /**
-
-     * Generates 3 random unique grandma tiles
-     */
-    void generateGrandmaTiles();
-    
-    /**
-     * Prints Grandma's favorite tiles to the log
-     */
-    void printGrandmaTiles() {
-        for(const auto& it : grandmaTiles){
-            CULog("%s", it->toString().c_str());
-        }
-    }
-    
-//    /**
-//     * Generates a random wild tile after scoring a grandma tile
-//     *
-//     * @return a randomly generated tile
-//     */
-//    std::shared_ptr<TileSet::Tile> generateWildTile() {
-//        rdTileSet.init();
-//        int rank = static_cast<int>(rdTileSet.getOpenUint64(1, 11));
-//        
-//        std::shared_ptr<Tile> wildTile = std::make_shared<Tile>(static_cast<Tile::Rank>(rank), Tile::Suit::WILD_SUIT);
-//        wildTile->_id = wildCount;
-//        wildCount += 1;
-//        return wildTile;
-//    }
-//    
-//    /**
-//     * Generates a set of wild tiles
-//     */
-//    void generateWildSet() {
-//        for(int i = 0; i < 11; i++){
-//            for(int j = 0; j < 3; j++){
-//                std::shared_ptr<Tile> newTile = std::make_shared<Tile>(static_cast<Tile::Rank>(i), Tile::Suit::WILD_SUIT);
-//                newTile->_id = wildCount;
-//                wildCount += 1;
-//                
-//                wildTiles.emplace_back(newTile);
-//            }
-//        }
-//    }
-    
-    /**
-     * Picks a random tile from the wild tiles set by shuffling then choosing the first element.
-     * Removes the chosen wild tile from wild tile set.
-     */
-    std::shared_ptr<Tile> pickWildTile(){
-        if(wildTiles.empty()){
-            throw std::runtime_error("no wild tiles!");
-        }
-        
-        rdTileSet.init();
-        rdTileSet.shuffle(wildTiles);
-
-        std::shared_ptr<Tile> currTile = wildTiles.front();
-        wildTiles.erase(wildTiles.begin());
-        
-        return currTile;
-    };
     
     /**
      * Sets the texture for all tiles in deck
@@ -549,7 +413,10 @@ public:
     
     std::vector<std::shared_ptr<Tile>> processTileJson(const std::shared_ptr<cugl::JsonValue>& tileJson);
     
+    std::vector<std::shared_ptr<Tile>> processDeckJson(const std::shared_ptr<cugl::JsonValue>& deckJson);
+    
     std::shared_ptr<cugl::JsonValue> mapToJson();
+    
 };
 
 #endif /* __MJ_TILESET_H__ */

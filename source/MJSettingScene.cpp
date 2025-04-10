@@ -47,10 +47,6 @@ bool SettingScene::init(const std::shared_ptr<cugl::AssetManager>& assets){
         return false;
     }
     
-//    _settingScene->setContentSize(getSize());
-//    _settingScene->doLayout();
-//    _settingScene->setPosition((Application::get()->getDisplayWidth() - _settingScene->getWidth()) / 8, _settingScene->getPosition().y);
-    
     choice = Choice::NONE;
     scene = PrevScene::NEITHER;
     
@@ -71,9 +67,11 @@ bool SettingScene::init(const std::shared_ptr<cugl::AssetManager>& assets){
             switch (scene){
                 case PrevScene::PAUSED:
                     choice = Choice::PAUSE;
+//                    AudioEngine::get()->play("back", _assets->get<Sound>("back"), false, 1.0f);
                     break;
                 case PrevScene::MAIN:
                     choice = Choice::MENU;
+//                    AudioEngine::get()->play("back", _assets->get<Sound>("back"), false, 1.0f);
                     break;
                 case PrevScene::NEITHER:
                     // Do nothing
@@ -81,10 +79,6 @@ bool SettingScene::init(const std::shared_ptr<cugl::AssetManager>& assets){
             }
         }
     });
-//    exitBtn->setContentSize(Size(300, 150));
-//    exitBtn->setAnchor(Vec2::ANCHOR_TOP_LEFT);
-//    exitBtn->setPosition(900,600);
-//    exitBtn->doLayout();
 
     addChild(_settingScene);
     return true;

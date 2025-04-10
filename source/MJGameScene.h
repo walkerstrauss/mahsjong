@@ -20,6 +20,7 @@
 #include "MJDiscardPile.h"
 #include "MJDiscardUIScene.h"
 #include "MJNetworkController.h"
+#include "MJAudioController.h"
 #include "MJMatchController.h"
 
 using namespace cugl;
@@ -82,7 +83,9 @@ protected:
     /** Text layout */
     std::shared_ptr<cugl::graphics::TextLayout> _text;
     /** Temporary discard area b/c no asset created for it yet */
-    cugl::Rect discardArea; 
+    cugl::Rect discardArea;
+    /** Reference to the audio controller */
+//    std::shared_ptr<AudioController> _audio;
     
     Hand* _hand; // pointer to the hand.
     
@@ -98,7 +101,7 @@ protected:
     /** Whether we quit the game */
     bool _quit;
     /** Whether or not UI is active*/
-    bool _uiopen;
+    bool _uiopen = false;
     /** Button for discarding */
     std::shared_ptr<cugl::scene2::Button> _discardBtn;
     /** Button for transitioning to the tileset UI scene (discarded cards) */
@@ -251,14 +254,9 @@ public:
     
     void processData(std::vector<std::string> msg);
     /**
-     * Applies the effects of the given action tile
+     * Applies the effects of the given type of celestial tile.
      */
-    void applyAction(std::shared_ptr<TileSet::ActionTile> actionTile);
-    
-    /**
-     * Applies the effects of the given command tile
-     */
-    void applyCommand(std::shared_ptr<TileSet::CommandTile> commandTile);
+    void applyCelestial(TileSet::Tile::Rank type);
     
     /**
      * Checks whether or not a tile has been clicked and sets selected status accordingly

@@ -35,6 +35,8 @@ protected:
     std::shared_ptr<cugl::scene2::Button> _settingPauseBtn;
     /** Main menu button for pause scene*/
     std::shared_ptr<cugl::scene2::Button> _menuPauseBtn;
+    /** Sound for button confirm */
+    std::shared_ptr<cugl::audio::Sound> _sound;
     
     /** Key for continue button */
     Uint32 _continueBtnKey;
