@@ -121,25 +121,25 @@ void MatchController::drawTile(bool isHost) {
                 _network->broadcastTileMap(0, _tileSet->mapToJson(), "remake pile");
             }
         }
-        //Client draw logic
-        else if (!isHost) {
-            if (clientPlayer->getHand()._tiles.size() <= clientPlayer->getHand()._size) {
-                clientPlayer->getHand().drawFromPile(_pile, 1, false);
-                if(clientPlayer->getHand().isWinningHand()) {
-                    _choice = Choice::WIN;
-                    _network->broadcastEnd(1);
-                }
-                
-                // Network drawn tile (automatically accumulated in tilesToJson when drawing)
-                _network->broadcastTileDrawn(1, _tileSet->toJson(_tileSet->tilesToJson));
-                // Clear tilesToJson for subsequent draws
-                _tileSet->clearTilesToJson();
-                
-                // Remake pile if tile was last tile in pile
-                if(_pile->getVisibleSize() == 0) {
-                    _pile->createPile();
-                    _network->broadcastTileMap(1, _tileSet->mapToJson(), "remake pile");
-                }
+    }
+    //Client draw logic
+    else if (!isHost) {
+        if (clientPlayer->getHand()._tiles.size() <= clientPlayer->getHand()._size) {
+            clientPlayer->getHand().drawFromPile(_pile, 1, false);
+            if(clientPlayer->getHand().isWinningHand()) {
+                _choice = Choice::WIN;
+                _network->broadcastEnd(1);
+            }
+            
+            // Network drawn tile (automatically accumulated in tilesToJson when drawing)
+            _network->broadcastTileDrawn(1, _tileSet->toJson(_tileSet->tilesToJson));
+            // Clear tilesToJson for subsequent draws
+            _tileSet->clearTilesToJson();
+            
+            // Remake pile if tile was last tile in pile
+            if(_pile->getVisibleSize() == 0) {
+                _pile->createPile();
+                _network->broadcastTileMap(1, _tileSet->mapToJson(), "remake pile");
             }
         }
     }
@@ -200,14 +200,19 @@ bool MatchController::playCelestial(bool isHost, std::shared_ptr<TileSet::Tile>&
         }
         // Execute appropriate callback
         else{
+            // Discarding celestial tile from appropriate player hand
+            if(isHost) {hostPlayer->getHand().discard(celestialTile, true);}
+            else{clientPlayer->getHand().discard(celestialTile, false);}
+            
             TileSet::Tile::Rank rank = celestialTile->_rank;
             switch(rank) {
                 // Chaos celestial tile
                 case(TileSet::Tile::Rank::CHAOS):
-                    break;
+                    playChaos(isHost, celestialTile);
                 // Numbered rank
                 default:
                     break;
+                return true;
             }
         }
     }
@@ -220,8 +225,23 @@ bool MatchController::playCelestial(bool isHost, std::shared_ptr<TileSet::Tile>&
  *
  * @param isHost       Whether or not current player is host
  */
-bool MatchController::playEcho(bool isHost){
-    return false; 
+void MatchController::playChaos(bool isHost, std::shared_ptr<TileSet::Tile>& celestialTile){
+    // Reshuffle current player's pile
+    _pile->reshufflePile();
+    _pile->updateTilePositions();
+    
+    // Transforming celestial tile to JSON
+    _tileSet->tilesToJson.push_back(celestialTile);
+    const std::shared_ptr<cugl::JsonValue> celestialTileJson = _tileSet->toJson(_tileSet->tilesToJson);
+    // Clear tilesToJson vector
+    _tileSet->clearTilesToJson();
+    
+    // Broadcast celestial tile
+    _network->broadcastCelestialTile(isHost, _tileSet->mapToJson(), celestialTileJson, "CHAOS");
+    // Clear tilesToJson vector
+    _tileSet->clearTilesToJson();
+    
+    return;
 }
 
 /**
@@ -255,12 +275,14 @@ void MatchController::update(float timestep) {
     
     // TileMap Update
     if(_network->getStatus() == NetworkController::TILEMAPUPDATE) {
+        //Updating deck (all tile fields and removing used tiles from deck)
+        _tileSet->updateDeck(_network->getTileMapJson());
+        // Map update type
+        NetworkController::MapUpdateType mapUpdateType = _network->getMapUpdateType();
         // Remake pile
-        if(_network->getMapUpdateType() == NetworkController::REMAKEPILE) {
-            //Updating deck (all tile fields and removing used tiles from deck)
-            _tileSet->updateDeck(_network->getTileMapJson());
+        if(mapUpdateType == NetworkController::REMAKEPILE) {
             _pile->remakePile();
-            _network->setMapUpdateType(NetworkController::NONE);
+            _network->setMapUpdateType(NetworkController::NOUPDATE);
         }
         // Reset to default
         _network->setStatus(NetworkController::INGAME);
@@ -287,5 +309,37 @@ void MatchController::update(float timestep) {
         
         //Change state so gamescene can update discardUI scene
         _choice = DISCARDUIUPDATE;
+    }
+    
+    //Celestial tile played update
+    if(_network->getStatus() == NetworkController::PLAYEDCELESTIAL) {
+        CULog("here");
+        //Retrives celestial tile that was played
+        std::shared_ptr<TileSet::Tile> celestialTile = _tileSet->processTileJson(_network->getCelestialTile())[0];
+        std::string key = celestialTile->toString() + " " + std::to_string(celestialTile->_id);
+        
+        //Actual reference to tile
+        celestialTile = _tileSet->tileMap[key];
+        celestialTile->inHostHand = false;
+        celestialTile->inClientHand = false;
+        celestialTile->discarded = true;
+        
+        //If chaos
+        if(_network->getCelestialUpdateType() == NetworkController::CHAOS) {
+            //Updating tileset
+            _tileSet->updateDeck(_network->getTileMapJson());
+            //Remaking pile
+            _pile->remakePile();
+            //Updating tile positions
+            _pile->updateTilePositions();
+            
+            _network->setCelestialUpdateType(NetworkController::NONE);
+        }
+        //Updating player hand
+        //If host
+        if(_network->getLocalPid() == 0) {clientPlayer->getHand().discard(celestialTile, true);}
+        //If client
+        else{hostPlayer->getHand().discard(celestialTile, false);}
+        _network->setStatus(NetworkController::INGAME);
     }
 }

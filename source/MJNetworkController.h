@@ -51,7 +51,9 @@ public:
         /** TileMap has been updated */
         TILEMAPUPDATE,
         /** Discard pile has been updated */
-        DISCARDUPDATE, 
+        DISCARDUPDATE,
+        /** Celestial tile has been played */
+        PLAYEDCELESTIAL,
         /** Game has concluded  */
         ENDGAME
         /** **END OF MATCHMODEL STATES ** */
@@ -59,10 +61,17 @@ public:
     };
     
     enum MapUpdateType {
-        /** Idle Update (update not based on any event) */
-        NONE,
+        /** Idle Update*/
+        NOUPDATE,
         /** Update to remake pile */
         REMAKEPILE
+    };
+    
+    enum CelestialUpdateType {
+        /** Idle Update */
+        NONE,
+        /** Chaos played */
+        CHAOS
     };
     
 protected:
@@ -77,7 +86,11 @@ protected:
     
     Status _status;
     
+    /** Enumerator type for map updates */
     MapUpdateType _mapUpdateType;
+    
+    /** Enumerator type for celestial tile updates */
+    CelestialUpdateType _celestialUpdateType;
     
     std::string _roomid;
     
@@ -111,8 +124,10 @@ protected:
     
     /** JSON representing the initial game reprsentation */
     std::shared_ptr<cugl::JsonValue> _clientStart;
-    /** JSON representing the tile that was drawn*/
+    /** JSON representing the tile that was drawn */
     std::shared_ptr<cugl::JsonValue> _tileDrawn;
+    /** JSON representing the celestial tile that was played */
+    std::shared_ptr<cugl::JsonValue> _celestialTile; 
     /** ** END OF MATCH CONTROLLER BRANCH FIELDS**  */
     
 public:
@@ -216,6 +231,11 @@ public:
         _mapUpdateType = mapUpdateType;
     }
     
+    /** Sets celestial tile update type */
+    void setCelestialUpdateType(CelestialUpdateType celestialUpdateType) {
+        _celestialUpdateType = celestialUpdateType;
+    }
+    
     std::shared_ptr<cugl::JsonValue> getDeckJson(){
         return _deckJson;
     }
@@ -259,10 +279,6 @@ public:
         return _isHostDraw;
     }
     
-    std::shared_ptr<cugl::JsonValue> getTileMapJson() {
-        return _tileMapJson;
-    }
-    
     void broadcastUpdating();
     
     void broadcastReady();
@@ -271,16 +287,34 @@ public:
     
     /** **START OF MATCH CONTROLLER GETTERS** */
     
+    /** Retrieves tileMap JSON as received by the network */
+    std::shared_ptr<cugl::JsonValue> getTileMapJson() {
+        return _tileMapJson;
+    }
+    
+    /** Retrieves the current map update type */
     MapUpdateType getMapUpdateType() {
         return _mapUpdateType; 
     }
     
+    /** Retrieves the current celestial update type */
+    CelestialUpdateType getCelestialUpdateType() {
+        return _celestialUpdateType;
+    }
+    
+    /** Retrieves the starting representation of game (for client) */
     std::shared_ptr<cugl::JsonValue> getClientStart() {
         return _clientStart;
     }
     
+    /** Retrieves the tile that was drawn as received by the network*/
     std::shared_ptr<cugl::JsonValue> getTileDrawn() {
         return _tileDrawn; 
+    }
+    
+    /** Retrieves the celestial tile that was played as received by the network*/
+    std::shared_ptr<cugl::JsonValue> getCelestialTile() {
+        return _celestialTile;
     }
     
     /** **END OF MATCH CONTROLLER GETTERS ** */
@@ -300,6 +334,7 @@ public:
      * Broadcasts the JSON representation of the tile that has been drawn. When received, it sets status to
      * TILEDRAWN, indicating a tile has been drawn to the match controller.
      *
+     * @param isHost    If current network is the host network or not
      * @param drawnTileJson     The JsonValue representing the drawn tile
      */
     void broadcastTileDrawn(int isHost, const std::shared_ptr<cugl::JsonValue>& tileJson);
@@ -308,18 +343,34 @@ public:
      * Broadcasts the JSON representation of all tiles in the tileset (not only deck). Currently used for:
      * remaking pile, updating deck (deleting and adjusting fields for tiles), etc.
      *
+     * @param isHost    If current network is the host network or not
      * @param tileMapJson       The JsonValue of the tileMap
+     * @param mapUpdateType     The type of map update
      */
     void broadcastTileMap(int isHost, const std::shared_ptr<cugl::JsonValue>& tileMapJson, std::string mapUpdateType);
     
     /**
      * Broadcasts the JSON representation of the discarded tiles.
      *
+     * @param isHost    If current network is the host network or not
      * @param discardedTileJson     The JsonValue of the discarded tile
      */
     void broadcastDiscard(int isHost, const std::shared_ptr<cugl::JsonValue>& discardedTileJson);
     
-    /** Broadcasts a message that the game has concluded */
+    /**
+     * Broadcasts the JSON representation of the celestial tile that has been played
+     *
+     * @param isHost        if the current network is the host network or not
+     * @param tileMapJson       the JSON representation of the current tileMap 
+     * @param celestialTile     The JSON representation of the celestial tile
+     * @param celestialType     The type of celestial tile that was played
+     */
+    void broadcastCelestialTile(int isHost, const std::shared_ptr<cugl::JsonValue>& tileMapJson, const std::shared_ptr<cugl::JsonValue>& celestialTile, std::string celestialType);
+    /**
+     * Broadcasts a message that the game has concluded
+     *
+     * @param isHost    If current network is the host network or not
+     */
     void broadcastEnd(int isHost);
     
     /** ** START OF MATCH CONTROLLER BRANCH FUNCTIONS**  */

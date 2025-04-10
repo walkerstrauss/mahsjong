@@ -15,7 +15,8 @@ using namespace cugl::netcode;
 
 NetworkController::NetworkController() {
     _status = IDLE;
-    _mapUpdateType = NONE; 
+    _mapUpdateType = NOUPDATE;
+    _celestialUpdateType = NONE; 
     _isHost = false;
     _roomid = "";
     _currentTurn = 0;
@@ -118,25 +119,39 @@ void NetworkController::processData(const std::string source,
         _clientStart = _deserializer->readJson();
         _status = INGAME;
     }
+    int isHost = _deserializer->readUint32();
     // Messages only for the opposing player
-    else if (_localPid != _deserializer->readUint32()) {
+    if (_localPid != isHost) {
         // Opponent drew a tile
         if (msgType == "tile drawn") {
             _tileDrawn = _deserializer->readJson();
             _status = TILEDRAWN;
         }
+        
         // Update to tile map
         if (msgType == "tile map update") {
             _tileMapJson = _deserializer->readJson();
+            std::string mapUpdateType = _deserializer->readString();
             // Remaking pile
-            if(_deserializer->readString() == "remake pile")
+            if(mapUpdateType == "remake pile"){
                 _mapUpdateType = REMAKEPILE;
+            }
             _status = TILEMAPUPDATE;
         }
         // Update to discard pile
         if (msgType == "discard update") {
             _discardTile = _deserializer->readJson();
             _status = DISCARDUPDATE; 
+        }
+        
+        // Celestial tile has been played
+        if (msgType == "celestial tile played") {
+            if(_deserializer->readString() == "CHAOS") {
+                _tileMapJson = _deserializer->readJson();
+                _celestialTile = _deserializer->readJson();
+                _celestialUpdateType = CHAOS;
+            }
+            _status = PLAYEDCELESTIAL;
         }
         // Opponent won game
         if(msgType == "game concluded") {
@@ -407,6 +422,30 @@ void NetworkController::broadcastDiscard(int isHost, const std::shared_ptr<cugl:
     
     broadcast(_serializer->serialize());
 }
+
+/**
+ * Broadcasts the JSON representation of the celestial tile that has been played
+ *
+ * @param isHost        if the current network is the host network or not
+ * @param tileMapJson       the JSON representation of the current tileMap
+ * @param celestialTile     The JSON representation of the celestial tile
+ * @param celestialType     The type of celestial tile that was played
+ */
+void NetworkController::broadcastCelestialTile(int isHost, const std::shared_ptr<cugl::JsonValue>& tileMapJson, const std::shared_ptr<cugl::JsonValue>& celestialTile, std::string celestialType) {
+    _serializer->reset();
+    
+    _serializer->writeString("celestial tile played");
+    _serializer->writeUint32(isHost);
+    _serializer->writeString(celestialType);
+    // If celestial that was played is CHAOS
+    if(celestialType == "CHAOS") {
+        // Writing tile map for tileset update
+        _serializer->writeJson(tileMapJson);
+        //Writing tile to remove from opposing player's hand
+        _serializer->writeJson(celestialTile);
+    }
+}
+
            
 /** Broadcasts a message that the game has concluded */
 void NetworkController::broadcastEnd(int isHost) {

@@ -146,8 +146,6 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::sha
     _pileBox = cugl::Rect(minX, minY, maxX - minX, maxY - minY);
     
     std::shared_ptr<SceneNode> actionTileSection = _assets->get<scene2::SceneNode>("matchscene.gameplayscene.actionSection.up.actionTileSection");
-    cugl::Rect actionTileSectionRect = actionTileSection->getBoundingBox();
-
     cugl::Vec2 worldOrigin = actionTileSection->nodeToWorldCoords(Vec2::ZERO);
     _celestialBox = cugl::Rect(worldOrigin, actionTileSection->getContentSize());
     
@@ -187,6 +185,7 @@ void GameScene::update(float timestep) {
     _input.readInput();
     _input.update();
     
+    CULog("%lu", _player->getHand()._tiles.size());
     // Fetching current mouse position
     cugl::Vec2 mousePos = cugl::Scene::screenToWorldCoords(cugl::Vec3(_input.getPosition()));
     
@@ -515,7 +514,7 @@ void GameScene::updateDrag(const cugl::Vec2& mousePos, bool mouseDown, bool mous
             _matchController.discardTile(_network->getHostStatus(), _draggingTile);
         }
         else if(_draggingTile && _celestialBox.contains(mousePos)) {
-//            _matchController.playCelestial()
+            _matchController.playCelestial(_network->getHostStatus(), _draggingTile);
         }
         if (_dragInitiated && _draggingTile) {
             float distance = (mousePos - _dragStartPos).length();

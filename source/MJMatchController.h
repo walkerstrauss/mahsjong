@@ -122,7 +122,7 @@ public:
      *
      * @param isHost       Whether or not current player is host
      */
-    bool playEcho(bool isHost);
+    void playChaos(bool isHost, std::shared_ptr<TileSet::Tile>& celestialTile);
     
     /**
      * Resets the state of the current turn. Called after the turn ends to allow the next player to draw,
