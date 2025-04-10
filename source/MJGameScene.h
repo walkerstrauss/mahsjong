@@ -21,6 +21,7 @@
 #include "MJDiscardUIScene.h"
 #include "MJNetworkController.h"
 #include "MJAudioController.h"
+#include "MJMatchController.h"
 
 using namespace cugl;
 using namespace cugl::scene2;
@@ -59,6 +60,8 @@ protected:
     std::shared_ptr<NetworkController> _network;
     /** Input controller for player input*/
     InputController _input;
+    /** Match controller for processing game logic */
+    MatchController _matchController; 
     /** JSON with all of our constants*/
     std::shared_ptr<cugl::JsonValue> _constants;
     /** Scene2 object for match scene */
@@ -191,7 +194,7 @@ public:
      *
      * @param assets    the asset manager for the game
      */
-    bool init(const std::shared_ptr<cugl::AssetManager>& assets, std::shared_ptr<NetworkController> network);
+    bool init(const std::shared_ptr<cugl::AssetManager>& assets, std::shared_ptr<NetworkController> network, MatchController& matchController);
     
     /**
      * Sets whether the player is host.

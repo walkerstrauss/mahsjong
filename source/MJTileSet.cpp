@@ -80,10 +80,8 @@ void TileSet::addCelestialTiles(const std::shared_ptr<cugl::AssetManager>& asset
     for (int i = 1; i < 21; ++i) {
         std::shared_ptr<Tile> chaos = std::make_shared<Tile>(Tile::Rank::CHAOS, Tile::Suit::CELESTIAL);
         chaos->_id = i;
-        chaos->setTexture(assets->get<Texture>(chaos->toString()));
         deck.push_back(chaos);
         tileMap[chaos->toString() + " " + std::to_string(chaos->_id)] = chaos;
-        
     }
 }
 

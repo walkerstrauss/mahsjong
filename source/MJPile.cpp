@@ -160,6 +160,7 @@ std::vector<std::shared_ptr<TileSet::Tile>> Pile::tilesDrawn(int number_of_tiles
             }
         }
     }
+    
     return _draw;
 }
 
