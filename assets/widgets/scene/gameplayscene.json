@@ -412,7 +412,7 @@
                                         0,
                                         0
                                     ],
-                                    "visible": true
+                                    "visible": false
                                 },
                                 "layout": {
                                     "x_anchor": "left",
@@ -1744,6 +1744,22 @@
                 },
                 "children": {
                     }
+            },
+            "activeRegion": {
+                "type": "Node",
+                "format": {
+                    "type": "Anchored"
+                },
+                "data": {
+                    "anchor": [0.5, 0.5],
+                    "size": [1024, 400],
+                    "angle": 0,
+                    "position": [640, 450],
+                    "visible": true
+                },
+                "children": {
+                    
+                }
             }
         }
     }

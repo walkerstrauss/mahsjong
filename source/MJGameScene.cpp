@@ -101,7 +101,7 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::sha
     _tileSet = std::make_shared<TileSet>();
     _player = std::make_shared<Player>();
     _pile = std::make_shared<Pile>(); //Init our pile
-    discardArea = cugl::Rect(Vec2(1000, 210), Size(273, 195));
+    //discardArea = cugl::Rect(Vec2(1000, 210), Size(273, 195));
 
     if(_network->getHostStatus()){
         //Setting up whole deck
@@ -150,7 +150,6 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::sha
     setActive(false);
     _matchScene->setVisible(true);
     
-    
     // init the pile for the pile rect
     float minX = std::numeric_limits<float>::max();
     float minY = std::numeric_limits<float>::max();
@@ -173,6 +172,23 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::sha
     }
 
     _pileBox = cugl::Rect(minX, minY, maxX - minX, maxY - minY);
+    
+    
+    _activeRegion = std::dynamic_pointer_cast<scene2::SceneNode>(
+        _assets->get<scene2::SceneNode>("matchscene.gameplayscene.activeRegion")
+    );
+    
+   // debugging poly rect
+    //auto poly = cugl::Poly2(cugl::Rect(0, 0, 10, 10));  // Centered geometry
+    //auto poly = cugl::Poly2(cugl::Rect(0, 0, 1024, 400));  // Centered geometry
+    //auto shape = scene2::PolygonNode::alloc();
+    //shape->setPolygon(poly);
+    //shape->setColor(cugl::Color4::RED);
+    //shape->setAnchor(cugl::Vec2::ANCHOR_BOTTOM_LEFT);  // Child uses its center as local origin
+    //shape->setPosition(0, 0);  // Place child at activeRegion's center
+    //_activeRegion->addChild(shape);
+    
+
     
     return true;
 }
@@ -343,45 +359,99 @@ void GameScene::update(float timestep) {
         }
         
         // ACTION TILE REGION
-        std::shared_ptr<SceneNode> actionTileSection = _assets->get<scene2::SceneNode>("matchscene.gameplayscene.actionSection.up.actionTileSection");
-        cugl::Rect actionTileSectionRect = actionTileSection->getBoundingBox();
+        //std::shared_ptr<SceneNode> actionTileSection = _assets->get<scene2::SceneNode>("matchscene.gameplayscene.actionSection.up.actionTileSection");
+        //cugl::Rect actionTileSectionRect = actionTileSection->getBoundingBox();
         
-        cugl::Vec2 worldOrigin = actionTileSection->nodeToWorldCoords(Vec2::ZERO);
-        cugl::Rect worldRect(worldOrigin, actionTileSection->getContentSize());
+        //cugl::Vec2 worldOrigin = actionTileSection->nodeToWorldCoords(Vec2::ZERO);
+        //cugl::Rect worldRect(worldOrigin, actionTileSection->getContentSize());
         
         // if the screen is tapped and there is a selected tile
-        if(_input.didRelease() && !_player->getHand()._selectedTiles.empty()){
+        //if(_input.didRelease() && !_player->getHand()._selectedTiles.empty()){
             
             // for all selected tiles (must be one)
-            for(auto const& tile : _player->getHand()._selectedTiles){
+            //for(auto const& tile : _player->getHand()._selectedTiles){
                 
-                CULog("Tile rect: (%f, %f, %f, %f), Discard area: (%f, %f, %f, %f)",
-                      tile->tileRect.origin.x, tile->tileRect.origin.y,
-                      tile->tileRect.size.width, tile->tileRect.size.height,
-                      actionTileSectionRect.origin.x, actionTileSectionRect.origin.y,
-                      actionTileSectionRect.size.width, actionTileSectionRect.size.height);
+                //CULog("Tile rect: (%f, %f, %f, %f), Discard area: (%f, %f, %f, %f)",
+                      //tile->tileRect.origin.x, tile->tileRect.origin.y,
+                      //tile->tileRect.size.width, tile->tileRect.size.height,
+                      //actionTileSectionRect.origin.x, actionTileSectionRect.origin.y,
+                      //actionTileSectionRect.size.width, actionTileSectionRect.size.height);
 
                 
                 // if this tile is in the discard area
-                if(worldRect.contains(mousePos)){ // tile->tileRect)
+                //if(worldRect.contains(mousePos)){ // tile->tileRect)
                     
-                    if(tile->getRank() != TileSet::Tile::Rank::ACTION){
-                        CULog("You must use an action tile here");
-                        continue;
-                    }
+                    //if(tile->getRank() != TileSet::Tile::Rank::ACTION){
+                    //    CULog("You must use an action tile here");
+                    //    continue;
+                    //}
+                    
+                    // activate the action tile
+                    //std::shared_ptr<TileSet::ActionTile> actionTile =
+                    //    std::static_pointer_cast<TileSet::ActionTile>(
+                    //        std::const_pointer_cast<TileSet::Tile>(tile));
+                    //applyAction(actionTile);
+ 
+                    
+                    // discard the action tile
+                    //_player->getHand().discard(tile, _network->getHostStatus());
+                    //_player->getHand()._selectedTiles.clear();
+                    //CULog("The tile was discarded");
+
+                //}
+            //}
+        //}
+        
+        
+        // The region for deleting/activating tiles.
+        
+        //std::shared_ptr<scene2::SceneNode> _activeRegion = //std::dynamic_pointer_cast<scene2::SceneNode>(_assets->get<scene2::SceneNode>("matchscene.gameplayscene.activeRegion"));
+
+        //cugl::Rect _activeRegionRect = _activeRegion->getBoundingBox();
+        cugl::Vec2 worldOrigin = _activeRegion->nodeToWorldCoords(Vec2::ZERO);
+        cugl::Rect worldRect(worldOrigin, _activeRegion->getContentSize());
+        
+        //CULog("Num of selected tiles %zu", _player->getHand()._selectedTiles.size());
+        
+        //CULog("Dragging tile is %s", (_draggingTile == nullptr ? "nullptr" : "valid"));
+        
+        // if there was a tap on the screen, and if a player selected exactly 1 tile.
+        if(_draggingTile && _player->getHand()._tiles.size() <= _player->getHand()._size){
+            return;
+            
+        }else if(_draggingTile) {
+            if (_network->getCurrentTurn() != _network->getLocalPid()) {
+                return;
+            }
+            
+            // if the tile is in the region.
+            if(worldRect.contains(_draggingTile->tileRect)){
+                
+                // if the tile is a special tile.
+                if(_draggingTile->getSuit() == TileSet::Tile::Suit::SPECIAL){
                     
                     // activate the action tile
                     std::shared_ptr<TileSet::ActionTile> actionTile =
                         std::static_pointer_cast<TileSet::ActionTile>(
-                            std::const_pointer_cast<TileSet::Tile>(tile));
+                            std::const_pointer_cast<TileSet::Tile>(_draggingTile));
                     applyAction(actionTile);
+                    CULog("The special tile was activated");
+                    CULog("Special Tile Type is: %s", actionTile->toStringRank().c_str());
  
                     
                     // discard the action tile
-                    _player->getHand().discard(tile, _network->getHostStatus());
+                    _player->getHand().discard(_draggingTile, _network->getHostStatus());
                     _player->getHand()._selectedTiles.clear();
+                    CULog("The special tile was discarded");
+                    
+                    _draggingTile = nullptr;
+                    
+                }
+                // if the tile is not a special tile.
+                else{
+                    discardTile(_draggingTile);
+                    _draggingTile = nullptr;
                     CULog("The tile was discarded");
-
                 }
             }
         }
@@ -476,7 +546,6 @@ void GameScene::render() {
     _batch->setColor(Color4(255, 0, 0, 200));
     _batch->setTexture(nullptr);
     
-    _batch->fill(discardArea);
     
     _batch->end();
 }
@@ -784,14 +853,21 @@ void GameScene::updateDrag(const cugl::Vec2& mousePos, bool mouseDown, bool mous
 
     if (mouseReleased) {
         if (_dragInitiated && _draggingTile) {
-            if(discardArea.contains(_draggingTile->pos)){
-                discardTile(_draggingTile);
-            }
+            //if(discardArea.contains(_draggingTile->pos)){
+            //    discardTile(_draggingTile);
+            //}
             float distance = (mousePos - _dragStartPos).length();
             if (distance > DRAG_THRESHOLD) {
                 if (_draggingTile) {
                     if (shouldReturn) {
                         _draggingTile->selected = false;
+                        
+                        auto& selected = _player->getHand()._selectedTiles;
+                        auto it = std::find(selected.begin(), selected.end(), _draggingTile);
+                        if (it != selected.end()) {
+                            selected.erase(it);
+                        }
+                        
                         _draggingTile->pos = _originalTilePos;
                         _draggingTile->tileRect.origin = _originalTilePos;
                     }
@@ -819,6 +895,7 @@ void GameScene::updateDrag(const cugl::Vec2& mousePos, bool mouseDown, bool mous
         }
 }
 
+// the diff from the general discard is that this function relocates the discarded tile to the discard region.
 void GameScene::discardTile(std::shared_ptr<TileSet::Tile> tile) {
     if(!(_network->getCurrentTurn() == _network->getLocalPid()) || (_player->getHand()._size >= _player->getHand()._tiles.size() && !_player->forcedDiscard)){
         return;
@@ -833,12 +910,14 @@ void GameScene::discardTile(std::shared_ptr<TileSet::Tile> tile) {
         if (!(tile->_rank == TileSet::Tile::Rank::ACTION || tile->_rank == TileSet::Tile::Rank::COMMAND)){
             _discardPile->addTile(tile);
             _discardPile->updateTilePositions();
+            
             _tileSet->tilesToJson.push_back(tile);
             _network->broadcastNewDiscard(_tileSet->toJson(_tileSet->tilesToJson));
             _tileSet->clearTilesToJson();
             discardedTiles.emplace_back(tile);
         }
         _player->getHand().discard(tile, _network->getHostStatus());
+        _player->discarding = false;
     }
-    _player->discarding = false;
+    
 }
