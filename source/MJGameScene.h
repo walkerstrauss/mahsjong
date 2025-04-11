@@ -18,7 +18,7 @@
 #include "MJPlayer.h"
 #include "MJPile.h"
 #include "MJDiscardPile.h"
-#include "MJDiscardUIScene.h"
+#include "MJDiscardUINode.h"
 #include "MJNetworkController.h"
 #include "MJAudioController.h"
 #include "MJAnimationController.h"
@@ -44,7 +44,6 @@ public:
     enum Choice {
         NONE,
         PAUSE,
-        TILESET,
         SETS,
         DISCARDED,
         DRAW_DISCARD,
@@ -70,8 +69,8 @@ protected:
     std::shared_ptr<cugl::scene2::SceneNode> _matchScene;
     /** Scene2 object for the pause scene */
     std::shared_ptr<cugl::scene2::SceneNode> _pauseScene;
-    /** Reference to the discard UI scene for the game */
-    std::shared_ptr<DiscardUIScene> _discardUIScene;
+    /** Reference to the discard UI node for the game */
+    std::shared_ptr<DiscardUINode> _discardUINode;
     /** TileSet for the game */
     std::shared_ptr<TileSet> _tileSet;
     /** Reference to player */

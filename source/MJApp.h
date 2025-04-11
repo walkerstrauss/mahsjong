@@ -37,7 +37,6 @@ protected:
         SETTINGS,
         PAUSE,
         OVER,
-        TILESETUI
     };
     
     /** Global asset manager */
@@ -56,8 +55,6 @@ protected:
     ClientScene _joingame;
     /** The primary controller for game world */
     GameScene _gameplay;
-    /** The discard UI scene */
-    DiscardUIScene _tilesetui; 
     /** The scene for settings */
     SettingScene _settings;
     /** The scene for pausing the game */
@@ -191,13 +188,6 @@ private:
      * @param timestep  The amount of time (in seconds) since the last frame
      */
     void updateGameOverScene(float timestep);
-    
-    /**
-     * Individualized update method for the tileset UI scene
-     *
-     * @param timestep  The amount of time (in seconds) since the last frame
-     */
-    void updateTilesetUIScene(float timestep);
     
     /**
      * Individualzed update method for the model controller

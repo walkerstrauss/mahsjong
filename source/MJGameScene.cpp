@@ -51,12 +51,13 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::sha
     _matchScene->setContentSize(1280,720);
     cugl::Size screenSize = cugl::Application::get()->getDisplaySize();
     
+    _discardUINode = std::make_shared<DiscardUINode>();
+    _discardUINode->init(_assets);    
     screenSize *= _matchScene->getContentSize().height/screenSize.height;
     
     float offset = (screenSize.width -_matchScene->getWidth())/2;    
     _matchScene->setPosition(offset, _matchScene->getPosition().y);
 
-    
     if (!Scene2::initWithHint(screenSize)) {
         std::cerr << "Scene2 initialization failed!" << std::endl;
         return false;
@@ -73,7 +74,10 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::sha
     
     _tilesetUIBtnKey = _tilesetUIBtn->addListener([this](const std::string& name, bool down){
         if (!down){
-            _choice = Choice::TILESET;
+            AnimationController::getInstance().pause();
+            setGameActive(false);
+            _discardUINode->setVisible(true);
+            _backBtn->activate();
         }
     });
     
@@ -81,6 +85,17 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::sha
         if (!down){
             _choice = Choice::PAUSE;
         }
+    });
+    
+    _backBtn = std::dynamic_pointer_cast<scene2::Button>(_assets->get<scene2::SceneNode>("tilesetui.tilesetscene.board.buttonClose"));
+    _backBtnKey = _backBtn->addListener([this](const std::string& name, bool down){
+        if (!down){
+            AnimationController::getInstance().resume();
+            setGameActive(true);
+            _discardUINode->setVisible(false);
+            _backBtn->deactivate();
+        }
+        
     });
     
     addChild(_matchScene);
@@ -103,9 +118,6 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::sha
     _discardPile = _matchController.getDiscardPile();
     
     _input.init(); //Initialize the input controller
-    
-    // TODO: initialize audio controller and init with asset manager
-    // TODO: initialize animations for game scene 
     
     _quit = false;
     setActive(false);
@@ -138,18 +150,6 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::sha
     std::shared_ptr<scene2::SceneNode> activeRegionNode = _assets->get<scene2::SceneNode>("matchscene.gameplayscene.activeRegion");
     cugl::Vec2 worldOrigin = activeRegionNode->nodeToWorldCoords(Vec2::ZERO);
     _activeRegion = cugl::Rect(worldOrigin, activeRegionNode->getContentSize());
-    
-    
-   // debugging poly rect
-    //auto poly = cugl::Poly2(cugl::Rect(0, 0, 10, 10));  // Centered geometry
-    //auto poly = cugl::Poly2(cugl::Rect(0, 0, 1024, 400));  // Centered geometry
-    //auto shape = scene2::PolygonNode::alloc();
-    //shape->setPolygon(poly);
-    //shape->setColor(cugl::Color4::RED);
-    //shape->setAnchor(cugl::Vec2::ANCHOR_BOTTOM_LEFT);  // Child uses its center as local origin
-    //shape->setPosition(0, 0);  // Place child at activeRegion's center
-    //_activeRegion->addChild(shape);
-    
     
     return true;
 }
@@ -236,6 +236,10 @@ void GameScene::render() {
     _discardPile->draw(_batch);
     _player->draw(_batch);
     
+    if (_discardUINode->isVisible()){
+        _discardUINode->render(_batch);
+    }
+    
     _batch->setColor(Color4(255, 0, 0, 200));
     _batch->setTexture(nullptr);
     
@@ -272,37 +276,6 @@ void GameScene::applyCelestial(TileSet::Tile::Rank type) {
     }
     
 }
-//void GameScene::applyAction(std::shared_ptr<TileSet::ActionTile> actionTile) {
-//    _player->getHand().discard(actionTile, _network->getHostStatus());
-//    switch (actionTile->type) {
-//        case TileSet::ActionTile::ActionType::CHAOS:
-//            CULog("CHAOS: Reshuffling the pile...");
-//            _pile->reshufflePile();
-//            _network->broadcastDeckMap(_tileSet->mapToJson());
-//            _network->broadcastPileLayer();
-//            break;
-//        case TileSet::ActionTile::ActionType::ECHO:
-//            CULog("ECHO: Draw two tiles...");
-//            _player->getHand().drawFromPile(_pile, 2, _network->getHostStatus());
-//            _network->broadcastTileDrawn(_tileSet->toJson(_tileSet->tilesToJson));
-//            _tileSet->clearTilesToJson();
-//            if (_pile->getVisibleSize() == 0) {
-//                _pile->createPile();
-//                _network->broadcastDeckMap(_tileSet->mapToJson());
-//                _network->broadcastPileLayer();
-//            }
-//            else{
-//                _network->broadcastDeck(_tileSet->toJson(_tileSet->deck));
-//            }
-//            break;
-//        case TileSet::ActionTile::ActionType::ORACLE:
-//            CULog("ORACLE: Draw any tile from pile...");
-//            
-//        default:
-//            break;
-//    }
-//    
-//}
 
 void GameScene::clickedTile(cugl::Vec2 mousePos){
     cugl::Vec2 initialMousePos = cugl::Scene::screenToWorldCoords(cugl::Vec3(_input.getInitialPosition()));
@@ -574,6 +547,7 @@ void GameScene::discardTile(std::shared_ptr<TileSet::Tile> tile) {
             discardedTiles.emplace_back(tile);
         }
         _player->getHand().discard(tile, _network->getHostStatus());
+        _discardUINode->incrementLabel(tile);
         _player->discarding = false;
     }
     

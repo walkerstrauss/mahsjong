@@ -144,9 +144,6 @@ void MahsJongApp::update(float timestep) {
         case OVER:
             updateGameOverScene(timestep);
             break;
-        case TILESETUI:
-            updateTilesetUIScene(timestep);
-            break;
     }
 }
 
@@ -193,10 +190,6 @@ void MahsJongApp::draw() {
        case OVER:
            _gameover.render(_batch);
            break;
-       case TILESETUI:
-           _gameplay.render();
-           _tilesetui.render();
-           break;
    }
 }
 
@@ -231,8 +224,6 @@ void MahsJongApp::updateLoadingScene(float timestep) {
        _pause.setSpriteBatch(_batch);
        _gameover.init(_assets);
        _gameover.setSpriteBatch(_batch);
-       _tilesetui.init(_assets);
-       _tilesetui.setSpriteBatch(_batch);
        _mainmenu.setActive(true);
        _scene = State::MENU;
    }
@@ -356,11 +347,6 @@ void MahsJongApp::updateGameScene(float timestep) {
             _pause.setActive(true);
             _scene = State::PAUSE;
             break;
-        case GameScene::Choice::TILESET:
-            _gameplay.setGameActive(false);
-            _tilesetui.setActive(true);
-            _scene = State::TILESETUI;
-            break;
         case GameScene::Choice::SETS:
             // Add logic for transitioning to sets scene
             break;
@@ -381,20 +367,10 @@ void MahsJongApp::updateGameScene(float timestep) {
                 CULog("Discarded tiles is empty");
                 break;
             }
-            for (auto tile : _gameplay.discardedTiles){
-                if (tile != nullptr){
-                    _tilesetui.incrementLabel(tile);
-                }
-            }
             _gameplay.discardedTiles.clear();
             _gameplay._choice = GameScene::Choice::NONE;
             break;
         case GameScene::Choice::DRAW_DISCARD:
-            if (_gameplay.discardDrawTile == nullptr){
-                CULog("No discard pile tile drawn to hand this frame");
-                break;
-            }
-            _tilesetui.decrementLabel(_gameplay.discardDrawTile);
             _gameplay.discardDrawTile = nullptr;
             _gameplay._choice = GameScene::Choice::NONE;
         case GameScene::Choice::NONE:
@@ -487,26 +463,6 @@ void MahsJongApp::updateGameOverScene(float timestep) {
     } else if (_gameover.choice == GameOverScene::Choice::NONE){
         // Do nothing
         return;
-    }
-}
-
-/**
- * Individualized update method for the tileset UI scene
- *
- * @param timestep  The amount of time (in seconds) since the last frame
- */
-void MahsJongApp::updateTilesetUIScene(float timestep) {
-    _tilesetui.update(timestep);
-    switch (_tilesetui.choice){
-        case DiscardUIScene::Choice::BACK: 
-            _tilesetui.setActive(false);
-            _gameplay.setActive(true);
-            _gameplay.setGameActive(true);
-            _scene = State::GAME;
-            break;
-        case DiscardUIScene::Choice::NONE:
-            // Do nothing
-            break;
     }
 }
 
