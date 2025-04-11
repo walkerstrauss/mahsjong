@@ -41,13 +41,16 @@ protected:
     std::shared_ptr<DiscardPile> _discardPile; 
     /** The current state of the game */
     Choice _choice;
+    /** Currnet active state of game */
+    bool _active; 
     
     /** If current player has already drawn from the pile/discard or not */
-    bool hasDrawn = false;
+    bool hasDrawn = true;
     /** If current player has already discarded or not */
-    bool hasDiscarded = false;
+    bool hasDiscarded = true;
     /** If current player has played a celestial tile or not */
-    bool hasPlayedCelestial= false;
+    bool hasPlayedCelestial = false;
+    
     
 public:
     /** The host player */
@@ -62,6 +65,11 @@ public:
      * This allows us to use the object without a heap pointer
      */
     MatchController() {};
+    
+    /**
+     * Disposes the MatchController
+     */
+    ~MatchController() { dispose(); }
     
     /**
      * Initializes the controller contents, and starts the game
@@ -93,7 +101,7 @@ public:
      * Draws a tile from the pile to the player that called the method. After drawing, it broadcasts
      * the state of the pile and updates any tiles associated with the action performed
      */
-    void drawTile(bool isHost);
+    void drawTile();
     
     /**
      * Discards the currently dragged tile. After discarding, it broadcasts the newly discarded tile
@@ -103,7 +111,7 @@ public:
      * @param tile      The tile that was discarded
      * @returns true if discard was successful, else false
      */
-    bool discardTile(bool isHost, std::shared_ptr<TileSet::Tile> tile);
+    bool discardTile(std::shared_ptr<TileSet::Tile> tile);
     
     /**
      * Plays the inputted celestial tile, if tile is not a celestial tile then the function returns false.
@@ -114,7 +122,7 @@ public:
      * @param celestialTile     The celestial tile that was played
      * @returns True if celestial was played, false if not
      */
-    bool playCelestial(bool isHost, std::shared_ptr<TileSet::Tile>& celestialTile);
+    bool playCelestial(std::shared_ptr<TileSet::Tile>& celestialTile);
     
     /**
      * Executes CHAOS celestial tile effect in current game scene. It then broadcasts the change
@@ -122,7 +130,13 @@ public:
      *
      * @param isHost       Whether or not current player is host
      */
-    void playChaos(bool isHost, std::shared_ptr<TileSet::Tile>& celestialTile);
+    void playChaos(std::shared_ptr<TileSet::Tile>& celestialTile);
+    
+    /**
+     * Call back for ending the turn for the current player. Must have drawn from the pile and dicsarded/played
+     * a tile in order to end turn successfully. Resets the current turn requirements with a sucessful end.
+     */
+    void endTurn(); 
     
     /**
      * Resets the state of the current turn. Called after the turn ends to allow the next player to draw,
@@ -164,7 +178,11 @@ public:
      * @param timestep The amount of time (in seconds) since the last frame
      */
     void update(float timestep);
-
+    
+    /**
+     * Disposes of all (non-static) resources allocated to this mode.
+     */
+    void dispose();
 };
 
 #endif /* __MJ_MATCH_CONTROLLER__ */

@@ -49,7 +49,7 @@ public:
     // Keeps track of which grandma tile we are checking
     int grandmaToAdd;
     // Keeps track of current hand size
-    int _size;
+    int _size = 13;
         
 #pragma mark -
 #pragma mark Constructors

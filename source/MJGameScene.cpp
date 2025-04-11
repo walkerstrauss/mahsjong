@@ -66,16 +66,8 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::sha
     _pauseBtn = std::dynamic_pointer_cast<scene2::Button>(_assets->get<scene2::SceneNode>("matchscene.gameplayscene.pauseButton"));
     _endTurnBtn = std::dynamic_pointer_cast<scene2::Button>(_assets->get<scene2::SceneNode>("matchscene.gameplayscene.endTurnButton"));
     _endTurnBtn->addListener([this](const std::string& name, bool down){
-        if (!down && _network->getCurrentTurn() == _network->getLocalPid()){
-            if(_player->canDraw && _player->canExchange){
-                CULog("Must perform a draw from pile or discard first");
-                return;
-            }
-            if(_player->getHand()._tiles.size() != _player->getHand()._size){
-                CULog("Must meet hand size requirement");
-                return;
-            }
-            _network->endTurn();
+        if (!down){
+            _matchController.endTurn();
         }
     });
     
@@ -185,7 +177,6 @@ void GameScene::update(float timestep) {
     _input.readInput();
     _input.update();
     
-    CULog("%lu", _player->getHand()._tiles.size());
     // Fetching current mouse position
     cugl::Vec2 mousePos = cugl::Scene::screenToWorldCoords(cugl::Vec3(_input.getPosition()));
     
@@ -208,7 +199,7 @@ void GameScene::update(float timestep) {
         bool releasedInPile = _input.didRelease() && _pileBox.contains(mousePos);
         // Drawing (from pile) logic
         if(_pileBox.contains(initialMousePos) && releasedInPile) {
-            _matchController.drawTile(_network->getHostStatus());
+            _matchController.drawTile();
         }
     }
 }
@@ -511,10 +502,10 @@ void GameScene::updateDrag(const cugl::Vec2& mousePos, bool mouseDown, bool mous
     if (mouseReleased) {
         // Discarding logic
         if(_draggingTile && discardArea.contains(mousePos)) {
-            _matchController.discardTile(_network->getHostStatus(), _draggingTile);
+            _matchController.discardTile(_draggingTile);
         }
         else if(_draggingTile && _celestialBox.contains(mousePos)) {
-            _matchController.playCelestial(_network->getHostStatus(), _draggingTile);
+            _matchController.playCelestial(_draggingTile);
         }
         if (_dragInitiated && _draggingTile) {
             float distance = (mousePos - _dragStartPos).length();

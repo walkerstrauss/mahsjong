@@ -30,7 +30,6 @@ Hand::Hand(Player* player) {
  * @param tileSet   the tileset to draw from
  */
 bool Hand::initHand(std::shared_ptr<TileSet>& tileSet, bool isHost){
-    _size = 13;
     // draw from the deck
     for(int i = 0; i < _size; i++){
         std::shared_ptr<TileSet::Tile> drawnTile = tileSet->deck[i];

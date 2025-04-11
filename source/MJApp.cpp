@@ -79,6 +79,7 @@ void MahsJongApp::onStartup() {
 void MahsJongApp::onShutdown() {
     _loading.dispose();
     _gameplay.dispose();
+    _matchController.dispose();
     _hostgame.dispose();
     _joingame.dispose();
     _settings.dispose();
