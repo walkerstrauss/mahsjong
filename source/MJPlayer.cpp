@@ -30,7 +30,6 @@ Hand::Hand(Player* player) {
  * @param tileSet   the tileset to draw from
  */
 bool Hand::initHand(std::shared_ptr<TileSet>& tileSet, bool isHost){
-    _size = 13;
     // draw from the deck
     for(int i = 0; i < _size; i++){
         std::shared_ptr<TileSet::Tile> drawnTile = tileSet->deck[i];
@@ -118,17 +117,6 @@ bool Hand::discard(std::shared_ptr<TileSet::Tile> tile, bool isHost){
         }
     }
     return true;
-}
-
-void Hand::loseActions(bool isHost) {
-    auto it = _tiles.begin();
-    while(it != _tiles.end()){
-        if ((*it)->getRank() == TileSet::Tile::Rank::ACTION) {
-            discard(*it, isHost);
-        } else {
-            ++it;
-        }
-    }
 }
 
 /**

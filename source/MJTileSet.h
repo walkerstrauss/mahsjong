@@ -28,7 +28,7 @@ public:
         
         /** An enum to represent tile suits */
         enum class Suit : int {
-            SPECIAL,
+            CELESTIAL,
             CRAK,
             BAMBOO,
             DOT
@@ -45,8 +45,7 @@ public:
             SEVEN = 7,
             EIGHT = 8,
             NINE = 9,
-            ACTION = 10,
-            COMMAND = 11
+            CHAOS = 10
         };
         
         /** The tile's rank */
@@ -153,11 +152,8 @@ public:
                 case Tile::Rank::NINE:
                     return "nine";
                     break;
-                case Tile::Rank::ACTION:
-                    return "action";
-                    break;
-                case Tile::Rank::COMMAND:
-                    return "command";
+                case Tile::Rank::CHAOS:
+                    return "chaos";
                     break;
                 default:
                     return "no valid rank";
@@ -180,8 +176,8 @@ public:
                 case Tile::Suit::CRAK:
                     return "crak";
                     break;
-                case Tile::Suit::SPECIAL:
-                    return "special";
+                case Tile::Suit::CELESTIAL:
+                    return "celestial";
                     break;
                 default:
                     return "no valid suit";
@@ -208,10 +204,8 @@ public:
                 return Tile::Rank::EIGHT;
             } else if (rank == "nine" || rank == "9") {
                 return Tile::Rank::NINE;
-            } else if (rank == "action") {
-                return Tile::Rank::ACTION;
-            } else if (rank == "command") {
-                return Tile::Rank::COMMAND;
+            } else if (rank == "chaos") {
+                return Tile::Rank::CHAOS;
             } else {
                 throw std::invalid_argument("No valid rank");
             }
@@ -224,8 +218,8 @@ public:
                 return Tile::Suit::DOT;
             } else if (suit == "crak") {
                 return Tile::Suit::CRAK;
-            } else if (suit == "special"){
-                return Tile::Suit::SPECIAL;
+            } else if (suit == "celestial"){
+                return Tile::Suit::CELESTIAL;
             } else {
                 throw std::invalid_argument("No valid suit");
             }
@@ -293,82 +287,6 @@ public:
     // 6. _?_ (random debuff of two tiles)
     // 7. _?_ (random rank change of random hand tile)
     // 8. _?_ (random suit change of random hand tile)
-    class ActionTile : public Tile {
-    public:
-        enum class ActionType : int {
-            ORACLE,     //draw any tile in pile
-            SEER,       //draw any tile in discard pile
-            CHAOS,      //reshuffle the pile
-            JUGGERNAUT,     //rearrange tiles in current row
-            ECHO        //draw two tiles instead of one
-        };
-        
-        ActionType type;
-        
-        ActionTile(ActionType type) : Tile(Tile::Rank::ACTION, Tile::Suit::SPECIAL), type(type) {}
-        
-        std::string toString() const override {
-            switch (type) {
-                case ActionType::CHAOS:
-                    return "chaos of action";
-                case ActionType::ECHO:
-                    return "echo of action";
-                case ActionType::JUGGERNAUT:
-                    return "juggernaut of action";
-                case ActionType::ORACLE:
-                    return "oracle of action";
-                case ActionType::SEER:
-                    return "seer of action";
-                default:
-                    return "unknown";
-            }
-        }
-        
-        static ActionTile::ActionType toType(const std::string& str) {
-            if (str == "chaos of action") {
-                return ActionType::CHAOS;
-            } else if (str == "echo of action") {
-                return ActionType::ECHO;
-            } else if (str == "juggernaut of action") {
-                return ActionType::JUGGERNAUT;
-            } else if (str == "oracle of action") {
-                return ActionType::ORACLE;
-            } else  {
-                return ActionType::SEER;
-            }
-        }
-    };
-    
-    class CommandTile: public Tile {
-    public:
-        enum class CommandType : int {
-            OBLIVION,    //remove all action tiles from hand
-            DISCARD   //discard a random tile from hand
-        };
-        
-        CommandType type;
-        
-        CommandTile(CommandType type) : Tile(Tile::Rank::COMMAND, Tile::Suit::SPECIAL), type(type) {}
-        
-        std::string toString() const override {
-            switch (type) {
-                case CommandType::OBLIVION:
-                    return "oblivion of command";
-                case CommandType::DISCARD:
-                    return "discard of command";
-                default:
-                    return "unknown";
-            }
-        }
-        
-        static CommandTile::CommandType toType(const std::string& str) {
-            if (str == "oblivion of command") {
-                return CommandType::OBLIVION;
-            } else {
-                return CommandType::DISCARD;
-            }
-        }
-    };
     
 public:
     /** Deck with all of the tiles */
@@ -418,7 +336,7 @@ public:
      */
     void initClientDeck(const std::shared_ptr<cugl::JsonValue>& deckJson);
     
-    void addActionAndCommandTiles(const std::shared_ptr<cugl::AssetManager>& assets);
+    void addCelestialTiles(const std::shared_ptr<cugl::AssetManager>& assets);
     
 #pragma mark -
 #pragma mark Tileset Gameplay Handling
@@ -446,11 +364,6 @@ public:
      * Sets the texture for all tiles in deck
      */
     void setAllTileTexture(const std::shared_ptr<cugl::AssetManager>& assets);
-    
-    /**
-     * Sets the textures for the action and command tiles in deck
-     */
-    void setSpecialTextures(const std::shared_ptr<cugl::AssetManager>& assets);
     
     /**
      * Sets the texture of a facedown tile

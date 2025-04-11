@@ -19,10 +19,11 @@
 #include "MJPile.h"
 #include "MJDiscardPile.h"
 #include "MJDiscardUIScene.h"
-#include "MJScoreManager.h"
 #include "MJNetworkController.h"
 #include "MJAudioController.h"
 #include "MJAnimationController.h"
+#include "MJMatchController.h"
+
 
 using namespace cugl;
 using namespace cugl::scene2;
@@ -61,6 +62,8 @@ protected:
     std::shared_ptr<NetworkController> _network;
     /** Input controller for player input*/
     InputController _input;
+    /** Match controller for processing game logic */
+    MatchController _matchController; 
     /** JSON with all of our constants*/
     std::shared_ptr<cugl::JsonValue> _constants;
     /** Scene2 object for match scene */
@@ -161,7 +164,10 @@ protected:
     /** The rectangle representing the pile's position used for selection handling */
     cugl::Rect _pileBox;
     
-    std::shared_ptr<scene2::SceneNode> _activeRegion;
+
+    /** The rectangle representing the play area for celestial tiles */
+    cugl::Rect _celestialBox; 
+
 
     std::shared_ptr<TileSet::Tile> _draggingTile = nullptr;
     cugl::Vec2 _dragStartPos;
@@ -201,7 +207,7 @@ public:
      *
      * @param assets    the asset manager for the game
      */
-    bool init(const std::shared_ptr<cugl::AssetManager>& assets, std::shared_ptr<NetworkController> network);
+    bool init(const std::shared_ptr<cugl::AssetManager>& assets, std::shared_ptr<NetworkController> network, MatchController& matchController);
     
     /**
      * Sets whether the player is host.
@@ -261,14 +267,9 @@ public:
     
     void processData(std::vector<std::string> msg);
     /**
-     * Applies the effects of the given action tile
+     * Applies the effects of the given type of celestial tile.
      */
-    void applyAction(std::shared_ptr<TileSet::ActionTile> actionTile);
-    
-    /**
-     * Applies the effects of the given command tile
-     */
-    void applyCommand(std::shared_ptr<TileSet::CommandTile> commandTile);
+    void applyCelestial(TileSet::Tile::Rank type);
     
     /**
      * Checks whether or not a tile has been clicked and sets selected status accordingly

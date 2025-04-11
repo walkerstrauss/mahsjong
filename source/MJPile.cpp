@@ -162,6 +162,7 @@ std::vector<std::shared_ptr<TileSet::Tile>> Pile::tilesDrawn(int number_of_tiles
             }
         }
     }
+    
     return _draw;
 }
 
@@ -206,9 +207,7 @@ void Pile::removePileTile(const std::shared_ptr<cugl::JsonValue> tileJson, bool 
 
 
 void Pile::remakePile(){
-    if(_pileMap.size() != 0){
-        CUAssert("Must have an empty pile before remaking pile");
-    }
+    _pileMap.clear();
     
     for(auto const& pairs : _tileSet->tileMap) {
         std::shared_ptr<TileSet::Tile> currTile = pairs.second;

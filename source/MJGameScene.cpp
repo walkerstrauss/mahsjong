@@ -33,7 +33,7 @@ using namespace std;
  *
  * @param assets    the asset manager for the game
  */
-bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::shared_ptr<NetworkController> network) {
+bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::shared_ptr<NetworkController> network, MatchController& matchController) {
     // Initialize the scene to a locked height
     if (assets == nullptr) {
         return false;
@@ -44,9 +44,8 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::sha
 
     _assets = assets;
     _network = network;
+    _matchController = matchController;
     _choice = Choice::NONE;
-    std::vector<std::shared_ptr<TileSet::Tile>> emptyDiscarded(2);
-    discardedTiles = emptyDiscarded;
     
     _matchScene = _assets->get<scene2::SceneNode>("matchscene");
     _matchScene->setContentSize(1280,720);
@@ -67,16 +66,8 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::sha
     _pauseBtn = std::dynamic_pointer_cast<scene2::Button>(_assets->get<scene2::SceneNode>("matchscene.gameplayscene.pauseButton"));
     _endTurnBtn = std::dynamic_pointer_cast<scene2::Button>(_assets->get<scene2::SceneNode>("matchscene.gameplayscene.endTurnButton"));
     _endTurnBtn->addListener([this](const std::string& name, bool down){
-        if (!down && _network->getCurrentTurn() == _network->getLocalPid()){
-            if(_player->canDraw && _player->canExchange){
-                CULog("Must perform a draw from pile or discard first");
-                return;
-            }
-            if(_player->getHand()._tiles.size() != _player->getHand()._size){
-                CULog("Must meet hand size requirement");
-                return;
-            }
-            _network->endTurn();
+        if (!down){
+            _matchController.endTurn();
         }
     });
     
@@ -97,50 +88,24 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::sha
     _gameWin = false;
     _gameLose = false;
 
-    // Initialize tile set
-    _tileSet = std::make_shared<TileSet>();
-    _player = std::make_shared<Player>();
-    _pile = std::make_shared<Pile>(); //Init our pile
-    //discardArea = cugl::Rect(Vec2(1000, 210), Size(273, 195));
+    
+    discardArea = cugl::Rect(Vec2(1000, 210), Size(273, 195));
 
+
+    // Host and Client specific initializations
     if(_network->getHostStatus()){
-        //Setting up whole deck
-        _tileSet->initHostDeck();
-        _tileSet->setAllTileTexture(assets);
-        _tileSet->shuffle();
-        //Initializes the deck (ordered representation)
-        _tileSet->addActionAndCommandTiles(assets);
-        _network->initGame(_tileSet->toJson(_tileSet->deck));
-        //Setting up hand
-        _player->getHand().initHand(_tileSet, _network->getHostStatus());
-        //Updating tile positions in hand
-        _player->getHand().updateTilePositions(getSize());
-        _tileSet->shuffle();
-        //Creating pile as Host
-        _pile->initPile(4, _tileSet, _network->getHostStatus());
-        //Broadcasting all tiles with attributes (sets pile tiles as !inDeck)
-        _network->broadcastStartingDeck(_tileSet->mapToJson());
+        _matchController.initHost();
+        _player = _matchController.hostPlayer;
     } else {
-        _tileSet->initClientDeck(_network->getStartingDeck());
-        //Initializing client pile (pile full of nullptrs)
-        _pile->initPile(4, _tileSet, _network->getHostStatus());
-        //Initializing client deck
-        _tileSet->setAllTileTexture(_assets);
-        _tileSet->setSpecialTextures(_assets);
-        //Initializing client pile (pile full of nullptrs)
-        _pile->initPile(4, _tileSet, _network->getHostStatus());
-        _tileSet->updateDeck(_network->getDeckJson());
-        _player->getHand().initHand(_tileSet, _network->getHostStatus());
-        _player->getHand().updateTilePositions(getSize());
-        _pile->remakePile();
-        _pile->updateTilePositions();
-        _network->broadcastDeck(_tileSet->mapToJson());
+        _matchController.initClient();
+        _player = _matchController.clientPlayer;
     }
     
-    // Initialize the discard pile
-    _discardPile = std::make_shared<DiscardPile>();
-    _discardPile->init(_assets);
-  
+    //Initialization of shared objects
+    _tileSet = _matchController.getTileSet();
+    _pile = _matchController.getPile();
+    _discardPile = _matchController.getDiscardPile();
+    
     _input.init(); //Initialize the input controller
     
     // TODO: initialize audio controller and init with asset manager
@@ -173,7 +138,7 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::sha
 
     _pileBox = cugl::Rect(minX, minY, maxX - minX, maxY - minY);
     
-    
+  
     _activeRegion = std::dynamic_pointer_cast<scene2::SceneNode>(
         _assets->get<scene2::SceneNode>("matchscene.gameplayscene.activeRegion")
     );
@@ -188,7 +153,6 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::sha
     //shape->setPosition(0, 0);  // Place child at activeRegion's center
     //_activeRegion->addChild(shape);
     
-
     
     return true;
 }
@@ -212,7 +176,7 @@ void GameScene::reset() {
     _gameLose = false;
     _gameWin = false;
     dispose();
-    init(_assets, _network);
+    init(_assets, _network, _matchController);
     return;
 }
 
@@ -222,303 +186,35 @@ void GameScene::reset() {
  * @param timestep The amount of time (in seconds) since the last frame
  */
 void GameScene::update(float timestep) {
-    
-    if(_discardPile->getTopTile()){
-//        CULog("%d", _discardPile->getTopTile()->played);
-    }
-//    for(auto const& tile : _player->getHand()._tiles){
-//        CULog("%s, %s", tile->toString().c_str(), tile->pos.toString().c_str());
-//    }
     //Reading input
     _input.readInput();
     _input.update();
-    
+   
+    // Fetching current mouse position
     cugl::Vec2 mousePos = cugl::Scene::screenToWorldCoords(cugl::Vec3(_input.getPosition()));
-    // Determine if the mouse is held down or was just released.
-    bool isMouseDown = _input.isDown();
-    bool isMouseReleased = _input.didRelease();
-//    
-//    _player->getHand().updateTilePositions(_matchScene->getSize()); // Why is this here
-
-    if (_network->getStatus() == NetworkController::Status::DECK) {
-        _tileSet->updateDeck(_network->getDeckJson());
-        _network->setStatus(NetworkController::Status::INGAME);
-    }
     
-    if(_network->getStatus() == NetworkController::Status::PILETILEUPDATE) {
-        _pile->removePileTile(_network->getPileTile(), _network->getIsHostDraw());
-        _tileSet->clearTilesToJson();
-        _network->setStatus(NetworkController::Status::INGAME);
-    }
-    
-    if(_discardPile->getTopTile() && _network->getStatus() == NetworkController::Status::REMOVEDISCARD){
-        // TODO: handle decrement discard ui
-        _discardPile->getTopTile()->played = true;
-        _discardPile->getTopTile()->discarded = false;
-        _discardPile->removeTopTile();
-        _network->setStatus(NetworkController::Status::INGAME);
-    }
-    
-    if(_network->getStatus() == NetworkController::Status::NEWDISCARD){
-        for(auto const& tileKey : _network->getDiscardTile()->children()){
-            std::string suit = tileKey->getString("suit");
-            std::string rank = tileKey->getString("rank");
-            std::string id = tileKey->getString("id");
-            
-            if(!_discardPile->getTopTile() || (_discardPile->getTopTile()->toString() + std::to_string(_discardPile->getTopTile()->_id)) != rank + " of " + suit + id){
-                _discardPile->addTile(_tileSet->tileMap[rank + " of " + suit + " " + id]);
-                _discardPile->updateTilePositions();
-                discardedTiles.emplace_back(_tileSet->tileMap[rank + " of " + suit + " " + id]);
-                _choice = DISCARDED;
-            }
-        }
-        _network->setStatus(NetworkController::Status::INGAME);
-    }
-    
-    std::shared_ptr<TileSet::Tile> lastTile = nullptr;
-    if (!_player->getHand()._drawnPile.empty()) {
-        lastTile = _player->getHand()._drawnPile.back();
-    }
-    
-    if(_network->getStatus() == NetworkController::Status::LAYER) {
-        _tileSet->updateDeck(_network->getTileMapJson());
-        _pile->remakePile();
-        _pile->updateTilePositions();
-        _network->setStatus(NetworkController::Status::INGAME);
-    }
-    
-    if(_network->getStatus() == NetworkController::Status::PREEMPTIVEDISCARD) {
-        if(std::get<1>(_network->getNumDiscard()) != _network->getHostStatus()) {
-            _pile->removeNumTiles(std::get<0>(_network->getNumDiscard()));
-        }
-        _network->setStatus(NetworkController::Status::INGAME);
-    }
-
+    // Constantly updating the position of tiles in hand
     _player->getHand().updateTilePositions(_matchScene->getSize());
     
-    if(_input.didRelease() && !_input.isDown()){
-        cugl::Vec2 prev = _input.getPosition(); //Get our mouse position
-//        cugl::Vec2 mousePos = cugl::Scene::screenToWorldCoords(cugl::Vec3(prev));
-        if (_network->getCurrentTurn() == _network->getLocalPid()) {
-            pressTile();
+    // Clicking/Tapping and Dragging logic
+    if(_input.didRelease() && !_input.isDown()) {
+        cugl::Vec2 initialMousePos = cugl::Scene::screenToWorldCoords(cugl::Vec3(_input.getInitialPosition()));
+        if(initialMousePos - mousePos == Vec2(0, 0)) {
+            clickedTile(mousePos);
         }
     }
+    updateDrag(mousePos, _input.isDown(), _input.didRelease());
     
-    updateDrag(mousePos, isMouseDown, isMouseReleased);
-    
-    if (_network->getCurrentTurn() == _network->getLocalPid()) {
-        cugl::Vec2 mousePos = cugl::Scene::screenToWorldCoords(cugl::Vec3(_input.getPosition()));
+    // If it is your turn, allow turn-based actions
+    if(_network->getCurrentTurn() == _network->getLocalPid()) {
+        // Coords of initial click and ending release
         cugl::Vec2 initialMousePos = cugl::Scene::screenToWorldCoords(cugl::Vec3(_input.getInitialPosition()));
-        bool tappedPile = _input.didRelease() && _pileBox.contains(mousePos);
-        bool initialClickInPile = _pileBox.contains(initialMousePos);
-        
-        //Start turn by drawing tile to hand
-        if((_input.getKeyPressed() == KeyCode::D && _input.getKeyDown() ) || (tappedPile && initialClickInPile)){
-            if(_player->getHand()._tiles.size() > _player->getHand()._size){
-                CULog("Hand too big");
-                return;
-            }
-            _player->getHand().drawFromPile(_pile, 1, _network->getHostStatus());
-            _network->broadcastTileDrawn(_tileSet->toJson(_tileSet->tilesToJson));
-            _tileSet->clearTilesToJson();
-            
-            if (_pile->getVisibleSize() == 0) {
-                _pile->createPile();
-                _network->broadcastDeckMap(_tileSet->mapToJson());
-                _network->broadcastPileLayer();
-            }
-            else{
-                _network->broadcastDeck(_tileSet->toJson(_tileSet->deck));
-            }
-            if (_player->getHand().isWinningHand()){
-                _gameWin = true;
-            }
-            
-            if (!_player->getHand()._drawnPile.empty()) {
-                auto drawnTile = _player->getHand()._drawnPile.back();
-                CULog("drawn tile: %s", drawnTile->toString().c_str());
-                if (drawnTile->getSuit() == TileSet::Tile::Suit::SPECIAL &&
-                    drawnTile->getRank() == TileSet::Tile::Rank::COMMAND) {
-                    auto cmdTile = std::dynamic_pointer_cast<TileSet::CommandTile>(drawnTile);
-                    if (cmdTile) {
-                        _player->getHand().discard(cmdTile, _network->getHostStatus());
-                        applyCommand(cmdTile);
-                    }
-                }
-            }
-            
-            _player->canDraw = false;
-        }
-            
-        for (auto& tile : _player->getHand()._drawnPile) {
-            tile->setTexture(_assets->get<Texture>(tile->toString()));
-        }
-        
-        if (_player->getHand().isWinningHand()){
-            _gameWin = true;
-        }
-        
-        // ACTION TILE REGION
-        //std::shared_ptr<SceneNode> actionTileSection = _assets->get<scene2::SceneNode>("matchscene.gameplayscene.actionSection.up.actionTileSection");
-        //cugl::Rect actionTileSectionRect = actionTileSection->getBoundingBox();
-        
-        //cugl::Vec2 worldOrigin = actionTileSection->nodeToWorldCoords(Vec2::ZERO);
-        //cugl::Rect worldRect(worldOrigin, actionTileSection->getContentSize());
-        
-        // if the screen is tapped and there is a selected tile
-        //if(_input.didRelease() && !_player->getHand()._selectedTiles.empty()){
-            
-            // for all selected tiles (must be one)
-            //for(auto const& tile : _player->getHand()._selectedTiles){
-                
-                //CULog("Tile rect: (%f, %f, %f, %f), Discard area: (%f, %f, %f, %f)",
-                      //tile->tileRect.origin.x, tile->tileRect.origin.y,
-                      //tile->tileRect.size.width, tile->tileRect.size.height,
-                      //actionTileSectionRect.origin.x, actionTileSectionRect.origin.y,
-                      //actionTileSectionRect.size.width, actionTileSectionRect.size.height);
 
-                
-                // if this tile is in the discard area
-                //if(worldRect.contains(mousePos)){ // tile->tileRect)
-                    
-                    //if(tile->getRank() != TileSet::Tile::Rank::ACTION){
-                    //    CULog("You must use an action tile here");
-                    //    continue;
-                    //}
-                    
-                    // activate the action tile
-                    //std::shared_ptr<TileSet::ActionTile> actionTile =
-                    //    std::static_pointer_cast<TileSet::ActionTile>(
-                    //        std::const_pointer_cast<TileSet::Tile>(tile));
-                    //applyAction(actionTile);
- 
-                    
-                    // discard the action tile
-                    //_player->getHand().discard(tile, _network->getHostStatus());
-                    //_player->getHand()._selectedTiles.clear();
-                    //CULog("The tile was discarded");
+        bool releasedInPile = _input.didRelease() && _pileBox.contains(mousePos);
+        // Drawing (from pile) logic
+        if(_pileBox.contains(initialMousePos) && releasedInPile) {
+            _matchController.drawTile();
 
-                //}
-            //}
-        //}
-        
-        
-        // The region for deleting/activating tiles.
-        
-        //std::shared_ptr<scene2::SceneNode> _activeRegion = //std::dynamic_pointer_cast<scene2::SceneNode>(_assets->get<scene2::SceneNode>("matchscene.gameplayscene.activeRegion"));
-
-        //cugl::Rect _activeRegionRect = _activeRegion->getBoundingBox();
-        cugl::Vec2 worldOrigin = _activeRegion->nodeToWorldCoords(Vec2::ZERO);
-        cugl::Rect worldRect(worldOrigin, _activeRegion->getContentSize());
-        
-        //CULog("Num of selected tiles %zu", _player->getHand()._selectedTiles.size());
-        
-        //CULog("Dragging tile is %s", (_draggingTile == nullptr ? "nullptr" : "valid"));
-        
-        // if there was a tap on the screen, and if a player selected exactly 1 tile.
-        if(_draggingTile && _player->getHand()._tiles.size() <= _player->getHand()._size){
-            return;
-            
-        }else if(_draggingTile) {
-            if (_network->getCurrentTurn() != _network->getLocalPid()) {
-                return;
-            }
-            
-            // if the tile is in the region.
-            if(worldRect.contains(_draggingTile->tileRect)){
-                
-                // if the tile is a special tile.
-                if(_draggingTile->getSuit() == TileSet::Tile::Suit::SPECIAL){
-                    
-                    // activate the action tile
-                    std::shared_ptr<TileSet::ActionTile> actionTile =
-                        std::static_pointer_cast<TileSet::ActionTile>(
-                            std::const_pointer_cast<TileSet::Tile>(_draggingTile));
-                    applyAction(actionTile);
-                    CULog("The special tile was activated");
-                    CULog("Special Tile Type is: %s", actionTile->toStringRank().c_str());
- 
-                    
-                    // discard the action tile
-                    _player->getHand().discard(_draggingTile, _network->getHostStatus());
-                    _player->getHand()._selectedTiles.clear();
-                    CULog("The special tile was discarded");
-                    
-                    _draggingTile = nullptr;
-                    
-                }
-                // if the tile is not a special tile.
-                else{
-                    discardTile(_draggingTile);
-                    _draggingTile = nullptr;
-                    CULog("The tile was discarded");
-                }
-            }
-        }
-        if (_input.getKeyPressed() == KeyCode::G && _input.getKeyDown()){
-            if(_player->getHand()._selectedTiles.size() != 1 && _player->getHand()._selectedTiles.size() != 2){
-                CULog("Must have 1 or 2 tiles selected in hand");
-                return;
-            }
-            else if (!_discardPile->getTopTile()){
-                CULog("Must have a tile in the discard pile");
-                return;
-            }
-            
-            //Temporarily add the top tile from the discard pile into selected tiles
-            std::shared_ptr<TileSet::Tile> currDiscardTile = _discardPile->getTopTile();
-            if(_player->getHand()._size == 2 && _player->getHand()._selectedTiles.size() == 1){
-                if(_player->getHand()._selectedTiles[0]->toString() == _discardPile->getTopTile()->toString()){
-                    _gameWin = true;
-                }
-                else{
-                    _player->getHand()._selectedTiles[0]->selected = false;
-                }
-            }
-            _player->getHand()._selectedTiles.push_back(currDiscardTile);
-            
-            if (_player->getHand().isSetValid(_player->getHand()._selectedTiles)) {
-                for(auto const& tile : _player->getHand()._selectedTiles){
-                    if(tile == currDiscardTile){
-                        continue;
-                    }
-                    for(auto it = _player->getHand()._tiles.begin(); it != _player->getHand()._tiles.end();)
-                        if(tile == *it){
-                            it = _player->getHand()._tiles.erase(it);
-                            tile->selected = false;
-                            if (_network->getHostStatus()) {
-                                tile->inHostHand = false;
-                            } else {
-                                tile->inClientHand = false;
-                            }
-                            tile->played = true;
-                            break;
-                        }
-                        else{
-                            it++;
-                        }
-                }
-                _player->getHand()._size -= 2;
-                _player->getHand()._selectedTiles.clear();
-                
-                currDiscardTile->discarded = false;
-                currDiscardTile->played = true;
-                _network->broadcastRemoveDiscard();
-                _player->canExchange = false;
-                
-                discardDrawTile = _discardPile->getTopTile();
-                _discardPile->removeTopTile();
-                _choice = DRAW_DISCARD;
-            }
-            else {
-                CULog("Not a valid set");
-                for(auto const& tile : _player->getHand()._tiles){
-                    if(tile->selected){
-                        tile->selected = false;
-                    }
-                }
-                _player->getHand()._selectedTiles.clear();
-            }
         }
     }
     AnimationController::getInstance().update(timestep);
@@ -570,109 +266,54 @@ void GameScene::setGameActive(bool value){
     }
 }
 
-void GameScene::applyAction(std::shared_ptr<TileSet::ActionTile> actionTile) {
-    _player->getHand().discard(actionTile, _network->getHostStatus());
-    switch (actionTile->type) {
-        case TileSet::ActionTile::ActionType::CHAOS:
-            CULog("CHAOS: Reshuffling the pile...");
-            _pile->reshufflePile();
-            _network->broadcastDeckMap(_tileSet->mapToJson());
-            _network->broadcastPileLayer();
-            break;
-        case TileSet::ActionTile::ActionType::ECHO:
-            CULog("ECHO: Draw two tiles...");
-            _player->getHand().drawFromPile(_pile, 2, _network->getHostStatus());
-            _network->broadcastTileDrawn(_tileSet->toJson(_tileSet->tilesToJson));
-            _tileSet->clearTilesToJson();
-            if (_pile->getVisibleSize() == 0) {
-                _pile->createPile();
-                _network->broadcastDeckMap(_tileSet->mapToJson());
-                _network->broadcastPileLayer();
-            }
-            else{
-                _network->broadcastDeck(_tileSet->toJson(_tileSet->deck));
-            }
-            break;
-        case TileSet::ActionTile::ActionType::ORACLE:
-            CULog("ORACLE: Draw any tile from pile...");
-        default:
-            break;
+
+void GameScene::applyCelestial(TileSet::Tile::Rank type) {
+    if (type == TileSet::Tile::Rank::CHAOS) {
+        _pile->reshufflePile();
+        _network->broadcastDeckMap(_tileSet->mapToJson());
+        _network->broadcastPileLayer();
+
     }
     
 }
-
-void GameScene::applyCommand(std::shared_ptr<TileSet::CommandTile> commandTile) {
-    switch (commandTile->type) {
-        case TileSet::CommandTile::CommandType::OBLIVION:
-            //            CULog("OBLIVION: Removing all action tiles from hand...");
-            _player->getHand().loseActions(_network->getHostStatus());
-            
-            if(_player->getHand()._tiles.size() < _player->getHand()._size){
-                int numTilesToDraw = _player->getHand()._size - static_cast<int>(_player->getHand()._tiles.size());
-                if(_pile->getVisibleSize() <= numTilesToDraw){
-                    int remainder = numTilesToDraw - _pile->getVisibleSize();
-                    _network->broadcastPreDraw(_pile->getVisibleSize(), _network->getHostStatus());
-                    _player->getHand().drawFromPile(_pile, _pile->getVisibleSize(), _network->getHostStatus());
-                    
-                    _pile->createPile();
-                    _player->getHand().drawFromPile(_pile, remainder, _network->getHostStatus());
-                }
-                else{
-                    _network->broadcastPreDraw(numTilesToDraw, _network->getHostStatus());
-                    _player->getHand().drawFromPile(_pile, numTilesToDraw, _network->getHostStatus());
-                }
-                _tileSet->clearTilesToJson();
-                _network->broadcastDeckMap(_tileSet->mapToJson());
-                _network->broadcastDeck(_tileSet->toJson(_tileSet->deck));
-                _network->broadcastPileLayer();
-            }
-            
-            break;
-        case TileSet::CommandTile::CommandType::DISCARD:
-            //            CULog("VOID: Discarding random tile from hand...");
-            if (_player->getHand()._tiles.size()) {
-                cugl::Random rd;
-                rd.init();
-                int index = static_cast<int>(rd.getOpenUint64(0, _player->getHand()._size - 1));
-                std::shared_ptr<TileSet::Tile> random = _player->getHand()._tiles[index];                
-                _player->forcedDiscard = true;
-                _player->getHand()._selectedTiles.clear();
-                discardTile(random);
-                _player->forcedDiscard = false;
-                
-                if(_player->getHand()._tiles.size() < _player->getHand()._size){
-                    int numTilesToDraw = _player->getHand()._size - static_cast<int>(_player->getHand()._tiles.size());
-                    if(_pile->getVisibleSize() <= numTilesToDraw){
-                        int remainder = numTilesToDraw - _pile->getVisibleSize();
-                        _network->broadcastPreDraw(_pile->getVisibleSize(), _network->getHostStatus());
-                        _player->getHand().drawFromPile(_pile, _pile->getVisibleSize(), _network->getHostStatus());
-                        
-                        _pile->createPile();
-                        _player->getHand().drawFromPile(_pile, remainder, _network->getHostStatus());
-                    }
-                    else{
-                        _network->broadcastPreDraw(numTilesToDraw, _network->getHostStatus());
-                        _player->getHand().drawFromPile(_pile, numTilesToDraw, _network->getHostStatus());
-                    }
-                    _tileSet->clearTilesToJson();
-                    _network->broadcastDeckMap(_tileSet->mapToJson());
-                    _network->broadcastDeck(_tileSet->toJson(_tileSet->deck));
-                    _network->broadcastPileLayer();
-                }
-            }
-            break;
-    }
-    _network->endTurn();
-}
+//void GameScene::applyAction(std::shared_ptr<TileSet::ActionTile> actionTile) {
+//    _player->getHand().discard(actionTile, _network->getHostStatus());
+//    switch (actionTile->type) {
+//        case TileSet::ActionTile::ActionType::CHAOS:
+//            CULog("CHAOS: Reshuffling the pile...");
+//            _pile->reshufflePile();
+//            _network->broadcastDeckMap(_tileSet->mapToJson());
+//            _network->broadcastPileLayer();
+//            break;
+//        case TileSet::ActionTile::ActionType::ECHO:
+//            CULog("ECHO: Draw two tiles...");
+//            _player->getHand().drawFromPile(_pile, 2, _network->getHostStatus());
+//            _network->broadcastTileDrawn(_tileSet->toJson(_tileSet->tilesToJson));
+//            _tileSet->clearTilesToJson();
+//            if (_pile->getVisibleSize() == 0) {
+//                _pile->createPile();
+//                _network->broadcastDeckMap(_tileSet->mapToJson());
+//                _network->broadcastPileLayer();
+//            }
+//            else{
+//                _network->broadcastDeck(_tileSet->toJson(_tileSet->deck));
+//            }
+//            break;
+//        case TileSet::ActionTile::ActionType::ORACLE:
+//            CULog("ORACLE: Draw any tile from pile...");
+//            
+//        default:
+//            break;
+//    }
+//    
+//}
 
 void GameScene::clickedTile(cugl::Vec2 mousePos){
-    // Check if we are dragging a tile - if so, cannot select a tile until released
-    if (_draggingTile != nullptr) return;
+    cugl::Vec2 initialMousePos = cugl::Scene::screenToWorldCoords(cugl::Vec3(_input.getInitialPosition()));
     
     for(const auto& pair : _tileSet->tileMap){
         std::shared_ptr<TileSet::Tile> currTile = pair.second;
-        
-        if(currTile->tileRect.contains(mousePos)){
+        if(currTile->tileRect.contains(mousePos) && currTile->tileRect.contains(initialMousePos)){
             if((_network->getHostStatus() && currTile->inHostHand) || (!_network->getHostStatus() && currTile->inClientHand)) {
                 if(currTile->selected) {
                     // TODO: Play deselect sound effect
@@ -692,6 +333,19 @@ void GameScene::clickedTile(cugl::Vec2 mousePos){
             }
             if(currTile->inPile) {
                 continue;
+//                if(currTile->selected) {
+//                    currTile->_scale = 0.2;
+//                }
+//                else{
+//                    currTile->_scale = 0.25;
+//                }
+            }
+
+            if(currTile->selected) {
+                currTile->selected = false;
+            }
+            else {
+                currTile->selected = true;
             }
         }
     }
@@ -759,55 +413,56 @@ bool GameScene::decrementLabel(std::shared_ptr<TileSet::Tile> tile){
     return true;
 }
 
-void GameScene::pressTile(){
-    cugl::Vec2 screenPos = _input.getPosition();
-    cugl::Vec2 mousePos = cugl::Scene::screenToWorldCoords(cugl::Vec3(screenPos));
+
+// void GameScene::pressTile(){
+//     cugl::Vec2 screenPos = _input.getPosition();
+//     cugl::Vec2 mousePos = cugl::Scene::screenToWorldCoords(cugl::Vec3(screenPos));
     
-    // if the player tapped on a tile in the hand.
-    CULog("Checking hand size: %zu", _player->getHand()._tiles.size());
-    for (auto & tile : _player->getHand()._tiles) {
-        if (tile->tileRect.contains(mousePos)) {
-            // select this tile
-            CULog("selected a tile");
-            tile->selected = !tile->selected;
-            _draggingTile = tile;
-            _dragOffset = _draggingTile->pos - mousePos;
-            _draggingTile->pressed = true;
+//     // if the player tapped on a tile in the hand.
+//     CULog("Checking hand size: %zu", _player->getHand()._tiles.size());
+//     for (auto & tile : _player->getHand()._tiles) {
+//         if (tile->tileRect.contains(mousePos)) {
+//             // select this tile
+//             CULog("selected a tile");
+//             tile->selected = !tile->selected;
+//             _draggingTile = tile;
+//             _dragOffset = _draggingTile->pos - mousePos;
+//             _draggingTile->pressed = true;
             
-            auto& selected = _player->getHand()._selectedTiles;
-            auto it = std::find(selected.begin(), selected.end(), tile);
-            if (tile->selected) {
-                if (it == selected.end() && tile != nullptr) {
-                    selected.push_back(tile);
-                    // TODO: Play select sound effect
-                    AnimationController::getInstance().animateTileSelect(tile, 30);
-                }
-            } else {
-                if (it != selected.end()){
-                    selected.erase(it);
-                    // TODO: Play deselect sound effect
-                    AnimationController::getInstance().animateTileDeselect(tile, 15);
-                }
-            }
-        }
-    }
+//             auto& selected = _player->getHand()._selectedTiles;
+//             auto it = std::find(selected.begin(), selected.end(), tile);
+//             if (tile->selected) {
+//                 if (it == selected.end() && tile != nullptr) {
+//                     selected.push_back(tile);
+//                     // TODO: Play select sound effect
+//                     AnimationController::getInstance().animateTileSelect(tile, 30);
+//                 }
+//             } else {
+//                 if (it != selected.end()){
+//                     selected.erase(it);
+//                     // TODO: Play deselect sound effect
+//                     AnimationController::getInstance().animateTileDeselect(tile, 15);
+//                 }
+//             }
+//         }
+//     }
     
-    // if the player pressed on the pile
-    if (_pileBox.contains(mousePos)) {
-        if(_player->getHand()._tiles.size() > 14){
-            CULog("Hand too big");
-            return;
-        }
-        _player->getHand().drawFromPile(_pile, 1, _network->getHostStatus());
-        _network->broadcastTileDrawn(_tileSet->toJson(_tileSet->tilesToJson));
-        _tileSet->clearTilesToJson();
-        _network->broadcastDeck(_tileSet->toJson(_tileSet->deck));
-        if (_player->getHand().isWinningHand()){
-            _gameWin = true;
-        }
-        _player->canDraw = false;
-    }
-}
+//     // if the player pressed on the pile
+//     if (_pileBox.contains(mousePos)) {
+//         if(_player->getHand()._tiles.size() > 14){
+//             CULog("Hand too big");
+//             return;
+//         }
+//         _player->getHand().drawFromPile(_pile, 1, _network->getHostStatus());
+//         _network->broadcastTileDrawn(_tileSet->toJson(_tileSet->tilesToJson));
+//         _tileSet->clearTilesToJson();
+//         _network->broadcastDeck(_tileSet->toJson(_tileSet->deck));
+//         if (_player->getHand().isWinningHand()){
+//             _gameWin = true;
+//         }
+//         _player->canDraw = false;
+//     }
+// }
 
 
 void GameScene::dragTile(){
@@ -852,10 +507,14 @@ void GameScene::updateDrag(const cugl::Vec2& mousePos, bool mouseDown, bool mous
     }
 
     if (mouseReleased) {
+        // Discarding logic
+        if(_draggingTile && discardArea.contains(mousePos)) {
+            _matchController.discardTile(_draggingTile);
+        }
+        else if(_draggingTile && _celestialBox.contains(mousePos)) {
+            _matchController.playCelestial(_draggingTile);
+        }
         if (_dragInitiated && _draggingTile) {
-            //if(discardArea.contains(_draggingTile->pos)){
-            //    discardTile(_draggingTile);
-            //}
             float distance = (mousePos - _dragStartPos).length();
             if (distance > DRAG_THRESHOLD) {
                 if (_draggingTile) {
@@ -907,7 +566,7 @@ void GameScene::discardTile(std::shared_ptr<TileSet::Tile> tile) {
         tile->inHostHand = false;
         tile->inClientHand = false;
         tile->discarded = true;
-        if (!(tile->_rank == TileSet::Tile::Rank::ACTION || tile->_rank == TileSet::Tile::Rank::COMMAND)){
+        if (!(tile->_suit == TileSet::Tile::Suit::CELESTIAL)){
             _discardPile->addTile(tile);
             _discardPile->updateTilePositions();
             
@@ -921,3 +580,4 @@ void GameScene::discardTile(std::shared_ptr<TileSet::Tile> tile) {
     }
     
 }
+
