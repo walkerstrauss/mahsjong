@@ -21,7 +21,9 @@
 #include "MJDiscardUIScene.h"
 #include "MJNetworkController.h"
 #include "MJAudioController.h"
+#include "MJAnimationController.h"
 #include "MJMatchController.h"
+
 
 using namespace cugl;
 using namespace cugl::scene2;
@@ -83,6 +85,9 @@ protected:
     /** Text layout */
     std::shared_ptr<cugl::graphics::TextLayout> _text;
     /** Temporary discard area b/c no asset created for it yet */
+
+    //cugl::Rect discardArea;
+
     cugl::Rect discardArea;
     /** Reference to the audio controller */
 //    std::shared_ptr<AudioController> _audio;
@@ -116,6 +121,9 @@ protected:
     std::shared_ptr<cugl::scene2::Button> _defeatBtn;
     /** Button for ending turn */
     std::shared_ptr<cugl::scene2::Button> _endTurnBtn;
+    
+    /** Button for playing a set */
+    std::shared_ptr<cugl::scene2::Button> _playSetBtn;
     
     /** Key for discard button listener */
     Uint32 _discardBtnKey;
@@ -156,8 +164,10 @@ protected:
     /** The rectangle representing the pile's position used for selection handling */
     cugl::Rect _pileBox;
     
+
     /** The rectangle representing the play area for celestial tiles */
     cugl::Rect _celestialBox; 
+
 
     std::shared_ptr<TileSet::Tile> _draggingTile = nullptr;
     cugl::Vec2 _dragStartPos;

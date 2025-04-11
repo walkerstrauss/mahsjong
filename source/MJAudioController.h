@@ -16,6 +16,7 @@ using namespace cugl::audio;
 
 class AudioController {
 private:
+    static AudioController* _instance;
     /** Reference to the asset manager */
     std::shared_ptr<cugl::AssetManager> _assets;
     /** Map to hold all sounds for the game */
@@ -29,6 +30,13 @@ public:
 #pragma mark -
 #pragma mark Constructors
     AudioController() : _assets(nullptr), _bgMusicID(-1) {}
+    
+    static AudioController& getInstance(){
+        if (!_instance){
+            _instance = new AudioController();
+        }
+        return *_instance;
+    }
     
     /**
      * Initializes the audio controller with an asset manager
@@ -68,6 +76,10 @@ public:
      * @param volume    the volume to set the audio to
      */
     void setSoundVolume(const std::string& key, float value);
+    
+    void playSelect(){
+        playSound("select",false);
+    }
 };
 
 #endif
