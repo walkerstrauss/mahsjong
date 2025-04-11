@@ -128,6 +128,8 @@ void Pile::updateTilePositions() {
             if (!AnimationController::getInstance().isTileAnimated(tile)) {
                 AnimationController::getInstance().addSelectAnim(tile, tile->pos, (Vec2(x, y) + pileOffset), tile->_scale, tile->_scale, 20, false);
             }
+            
+            tile->pos = cugl::Vec2(x, y) + pileOffset;
 
             std::string key = tile->toString() + " " + std::to_string(tile->_id);
             _pileMap.insert({key, tile->pileCoord});

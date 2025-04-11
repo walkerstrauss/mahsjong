@@ -88,10 +88,6 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::sha
     _gameWin = false;
     _gameLose = false;
 
-    
-    discardArea = cugl::Rect(Vec2(1000, 210), Size(273, 195));
-
-
     // Host and Client specific initializations
     if(_network->getHostStatus()){
         _matchController.initHost();
@@ -135,13 +131,14 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::sha
             maxY = std::max(maxY, rectEnd.y);
             }
     }
-
+    
     _pileBox = cugl::Rect(minX, minY, maxX - minX, maxY - minY);
     
-  
-    _activeRegion = std::dynamic_pointer_cast<scene2::SceneNode>(
-        _assets->get<scene2::SceneNode>("matchscene.gameplayscene.activeRegion")
-    );
+    // Initializing the active play/discard region
+    std::shared_ptr<scene2::SceneNode> activeRegionNode = _assets->get<scene2::SceneNode>("matchscene.gameplayscene.activeRegion");
+    cugl::Vec2 worldOrigin = activeRegionNode->nodeToWorldCoords(Vec2::ZERO);
+    _activeRegion = cugl::Rect(worldOrigin, activeRegionNode->getContentSize());
+    
     
    // debugging poly rect
     //auto poly = cugl::Poly2(cugl::Rect(0, 0, 10, 10));  // Centered geometry
@@ -233,7 +230,7 @@ void GameScene::render() {
     const std::shared_ptr<Texture> temp = Texture::getBlank();
     
     _batch->draw(temp, Color4(0,0,0,255), Rect(Vec2::ZERO, cugl::Application().get()->getDisplaySize()));
-
+    
     _matchScene->render(_batch);
     _pile->draw(_batch);
     _discardPile->draw(_batch);
@@ -241,7 +238,6 @@ void GameScene::render() {
     
     _batch->setColor(Color4(255, 0, 0, 200));
     _batch->setTexture(nullptr);
-    
     
     _batch->end();
 }
@@ -507,12 +503,14 @@ void GameScene::updateDrag(const cugl::Vec2& mousePos, bool mouseDown, bool mous
     }
 
     if (mouseReleased) {
-        // Discarding logic
-        if(_draggingTile && discardArea.contains(mousePos)) {
-            _matchController.discardTile(_draggingTile);
-        }
-        else if(_draggingTile && _celestialBox.contains(mousePos)) {
-            _matchController.playCelestial(_draggingTile);
+        // Active play area logic
+        if(_draggingTile && _activeRegion.contains(mousePos)) {
+            if(_draggingTile->_suit == TileSet::Tile::Suit::CELESTIAL) {
+                _matchController.playCelestial(_draggingTile);
+            }
+            else {
+                _matchController.discardTile(_draggingTile);
+            }
         }
         if (_dragInitiated && _draggingTile) {
             float distance = (mousePos - _dragStartPos).length();

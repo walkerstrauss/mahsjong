@@ -164,10 +164,8 @@ protected:
     /** The rectangle representing the pile's position used for selection handling */
     cugl::Rect _pileBox;
     
-
-    /** The rectangle representing the play area for celestial tiles */
-    cugl::Rect _celestialBox; 
-
+    /** The rectangle representing the active play/discard area for all tiles*/
+    cugl::Rect _activeRegion;
 
     std::shared_ptr<TileSet::Tile> _draggingTile = nullptr;
     cugl::Vec2 _dragStartPos;
