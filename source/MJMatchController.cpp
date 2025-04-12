@@ -68,6 +68,8 @@ void MatchController::initHost() {
     
     //Broadcast initial state
     _network->broadcastClientStart(_tileSet->mapToJson());
+    CULog("TileMap: %s", _tileSet->mapToJson()->toString(true).c_str());
+
 }
 
 /**
@@ -274,6 +276,8 @@ void MatchController::playOx(std::shared_ptr<TileSet::Tile>& celestialTile){
         if (!tile->debuffed && !tile->discarded) {
             tile->debuffed = true;
             _tileSet->tilesToJson.push_back(tile);
+            // Clear tilesToJson vector
+            _tileSet->clearTilesToJson();
             debuffed++;
         }
         if (debuffed == 2) break;
