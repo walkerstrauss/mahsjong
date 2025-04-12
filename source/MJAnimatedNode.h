@@ -32,19 +32,27 @@ protected:
         std::string key;
         int rows, cols, startFrame, endFrame;
         float fps;
-        bool loop, done;
+        int repeatCount = -1; // -1 means infinite
+        int playedCount = 0;
+        bool loop = true;
+        bool done = false;
         
-        bool init (AnimationType type, std::string key, int rows, int cols, int endFrame, float fps, bool loop){
-            type = type;
-            key = key;
-            rows = rows;
-            cols = cols;
+        bool init (AnimationType t, std::string k, int r, int c, int endF, float f, int repeat){
+            type = t;
+            key = k;
+            rows = r;
+            cols = c;
             startFrame = 0;
-            endFrame = endFrame;
-            fps = fps;
-            loop = loop;
+            endFrame = endF;
+            fps = f;
+            repeatCount = (t == IDLE) ? -1 : repeat; // Idle always infinite
+            loop = (repeatCount == -1);
             done = false;
             return true;
+        }
+        
+        bool shouldReplay() const {
+            return type == IDLE || repeatCount == -1 || playedCount < repeatCount;
         }
     };
     

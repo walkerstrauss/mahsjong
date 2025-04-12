@@ -30,10 +30,29 @@
               "key": "pong-sheet",
               "rows": 2,
               "cols": 3,
-              "count": 6
+              "count": 6,
+              "repeat": 10
           },
           "chow": {
-              
+              "key": "chow-sheet",
+              "rows": 3,
+              "cols": 3,
+              "count": 7,
+              "repeat": 10
+          },
+          "win": {
+              "key": "win-sheet",
+              "rows": 2,
+              "cols": 3,
+              "count": 5,
+              "repeat": 10
+          },
+          "lose":{
+              "key": "lose-sheet",
+              "rows": 2,
+              "cols": 3,
+              "count": 6,
+              "repeat": 10
           }
       }
   },
@@ -45,14 +64,15 @@
               "cols": 1,
               "count": 1
           }
-      },
-      "interrupt":{
           "turn-indicator":{
               "key": "turn-sheet",
               "rows": 2,
               "cols": 3,
               "count": 6
           }
+      },
+      "interrupt":{
+          
       }
   }
 }

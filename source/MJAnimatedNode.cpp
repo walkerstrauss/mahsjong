@@ -29,20 +29,38 @@ bool AnimatedNode::initWithData(const AssetManager* assets, const std::shared_pt
     auto idleAnims = json->get("idle");
     for (auto animJson : idleAnims->children()){
         Animation a;
-        a.init(AnimationType::IDLE, animJson->getString("key"), animJson->getInt("rows"),animJson->getInt("cols"),animJson->getInt("count"), fps, true);
+        a.init(AnimationType::IDLE,
+               animJson->getString("key"),
+               animJson->getInt("rows"),
+               animJson->getInt("cols"),
+               animJson->getInt("count"),
+               fps,
+               -1);
         _idleAnims[a.key] = a;
     }
     
     // Get default idle animation from JSON – if present
     if (idleAnims->has("default")){
         setDefaultIdleKey(idleAnims->getString("default"));
+    } else if (!idleAnims->children().empty()){
+        auto first = idleAnims->children().front();
+        if (first->has("key")){
+            setDefaultIdleKey(first->getString("key"));
+        }
     }
     
     // Load all interrupting animations from the JSON
     auto interruptAnims = json->get("interrupt");
     for (auto animJson : interruptAnims->children()){
+        int repeat = animJson->has("repeat") ? animJson->getInt("repeat") : 1;
         Animation a;
-        a.init(AnimationType::INTERRUPT, animJson->getString("key"), animJson->getInt("rows"), animJson->getInt("cols"), animJson->getInt("count"), fps, false);
+        a.init(AnimationType::INTERRUPT,
+               animJson->getString("key"),
+               animJson->getInt("rows"),
+               animJson->getInt("cols"),
+               animJson->getInt("count"),
+               fps,
+               repeat);
         _interruptAnims[a.key] = a;
     }
     return true;
@@ -50,13 +68,21 @@ bool AnimatedNode::initWithData(const AssetManager* assets, const std::shared_pt
 
 void AnimatedNode::play(const std::string& key, AnimationType type){
     const auto& animMap = (type == AnimationType::IDLE) ? _idleAnims : _interruptAnims;
-    CUAssertLog(animMap.find(key) != animMap.end(), "Animation with key '%s' not found", key.c_str());
+    auto it = animMap.find(key);
+    CUAssertLog(it != animMap.end(), "Animation with key '%s' not found", key.c_str());
     
+    _currAnim = it->second;
     _currKey = key;
-    _currAnim = animMap.at(key);
+    _frame = _currAnim.startFrame;
+    _currAnim.playedCount = 0;
+    _currAnim.done = false;
     _timeSinceFrameAdvance = 0.0f;
     _isPlaying = true;
     _isInterrupting = (type == INTERRUPT);
+    
+    _rows = _currAnim.rows;
+    _cols = _currAnim.cols;
+    _limit = _currAnim.endFrame + 1;
     _currAnim.done = false;
     setFrame(_frame);
     return;
@@ -77,7 +103,9 @@ void AnimatedNode::update(float timestep){
         _frame++;
         
         if (_frame > _currAnim.endFrame) {
-            if (_currAnim.loop && !_isInterrupting){
+            _currAnim.playedCount++;
+            
+            if (_currAnim.shouldReplay()){
                 _frame = _currAnim.startFrame;
             } else {
                 _isPlaying = false;
@@ -102,10 +130,13 @@ void AnimatedNode::setFrame(int frame){
     CUAssertLog(frame >= 0 && frame < _limit, "Invalid animation frame %d", frame);
     
     _frame = frame;
+    
     float x = (frame % _cols)*_bounds.size.width;
-    float y = _texture->getSize().height - (1+frame/_cols)*_bounds.size.height;
+    float y = (_rows - 1 - (frame / _cols)) * _bounds.size.height;
+    
     float dx = x-_bounds.origin.x;
     float dy = y-_bounds.origin.y;
+    
     _bounds.origin.set(x,y);
     shiftTexture(dx, dy);
 }
