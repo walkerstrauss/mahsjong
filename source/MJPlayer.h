@@ -46,8 +46,8 @@ public:
     std::vector<std::vector<std::shared_ptr<TileSet::Tile>>> _selectedSets;
     // Holds all tiles that are selected in our hand
     std::vector<std::shared_ptr<TileSet::Tile>> _selectedTiles;
-    // Keeps track of which grandma tile we are checking
-    int grandmaToAdd;
+    // Randomizer
+    cugl::Random rdHand;
     // Keeps track of current hand size
     int _size = 13;
         

@@ -78,10 +78,15 @@ void TileSet::initClientDeck(const std::shared_ptr<cugl::JsonValue>& deckJson){
 
 void TileSet::addCelestialTiles(const std::shared_ptr<cugl::AssetManager>& assets) {
     for (int i = 1; i < 21; ++i) {
-        std::shared_ptr<Tile> chaos = std::make_shared<Tile>(Tile::Rank::CHAOS, Tile::Suit::CELESTIAL);
-        chaos->_id = i;
-        deck.push_back(chaos);
-        tileMap[chaos->toString() + " " + std::to_string(chaos->_id)] = chaos;
+        std::shared_ptr<Tile> rooster = std::make_shared<Tile>(Tile::Rank::ROOSTER, Tile::Suit::CELESTIAL);
+        rooster->_id = i;
+        deck.push_back(rooster);
+        tileMap[rooster->toString() + " " + std::to_string(rooster->_id)] = rooster;
+        
+        std::shared_ptr<Tile> ox = std::make_shared<Tile>(Tile::Rank::OX, Tile::Suit::CELESTIAL);
+        ox->_id = i;
+        deck.push_back(ox);
+        tileMap[rooster->toString() + " " + std::to_string(rooster->_id)] = ox;
     }
 }
 
@@ -139,6 +144,7 @@ const std::shared_ptr<cugl::JsonValue> TileSet::toJson(std::vector<std::shared_p
         currTile->appendValue("inDeck", tile->inDeck);
         currTile->appendValue("pos", tile->pos);
         currTile->appendValue("scale", tile->_scale);
+        currTile->appendValue("debuffed", tile->debuffed);
 
         root->appendChild(key, currTile);
     }
@@ -177,6 +183,7 @@ void TileSet::updateDeck(const std::shared_ptr<cugl::JsonValue>& deckJson) {
         const bool inDeck = tileKey->getBool("inDeck");
         const cugl::Vec2 pos = Tile::toVector(tileKey->getString("pos"));
         const float scale = tileKey->getFloat("scale");
+        const bool debuffed = tileKey->getBool("debuffed");
         const std::string suit = tileKey->getString("suit");
         
         tileMap[key]->inPile = inPile;
@@ -188,6 +195,7 @@ void TileSet::updateDeck(const std::shared_ptr<cugl::JsonValue>& deckJson) {
         tileMap[key]->played = played;
         tileMap[key]->pos = pos;
         tileMap[key]->_scale = scale;
+        tileMap[key]->debuffed = debuffed;
         tileMap[key]->pileCoord = pileCoord;
         if(inDeck == false){
             deck.erase(std::remove(deck.begin(), deck.end(), tileMap[key]), deck.end());
@@ -215,6 +223,7 @@ std::vector<std::shared_ptr<TileSet::Tile>> TileSet::processTileJson(const std::
         const bool inDeck = tileKey->getBool("inDeck");
         const cugl::Vec2 pos = Tile::toVector(tileKey->getString("pos"));
         const float scale = tileKey->getFloat("scale");
+        const bool debuffed = tileKey->getBool("debuffed");
         
         std::shared_ptr<Tile> newTile = std::make_shared<Tile>(rank, suit);
         
@@ -230,6 +239,7 @@ std::vector<std::shared_ptr<TileSet::Tile>> TileSet::processTileJson(const std::
         newTile->inHostHand = inHostHand;
         newTile->inClientHand = inClientHand;
         newTile->inDeck = inDeck;
+        newTile->debuffed = debuffed;
         
         tiles.push_back(newTile);
     }

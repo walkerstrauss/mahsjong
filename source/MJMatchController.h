@@ -125,12 +125,23 @@ public:
     bool playCelestial(std::shared_ptr<TileSet::Tile>& celestialTile);
     
     /**
-     * Executes CHAOS celestial tile effect in current game scene. It then broadcasts the change
+     * Executes the Rooster celestial tile effect in current game scene. It then broadcasts the change
      * to opposing player.
      *
      * @param isHost       Whether or not current player is host
      */
-    void playChaos(std::shared_ptr<TileSet::Tile>& celestialTile);
+    void playRooster(std::shared_ptr<TileSet::Tile>& celestialTile);
+    
+    /**
+     * Executes the Ox celestial tile effect in current game scene. It then broadcasts the change
+     * to opposing player.
+     *
+     * @param isHost       Whether or not current player is host
+     */
+    void playOx(std::shared_ptr<TileSet::Tile>& celestialTile);
+    
+    /** Applies the effect of the celestial tile played by opponent by using the celestial state of the network. */
+    void celestialEffect();
     
     /**
      * Call back for ending the turn for the current player. Must have drawn from the pile and dicsarded/played
