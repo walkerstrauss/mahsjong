@@ -20,11 +20,23 @@ using namespace std;
  * This node is responsible for displaying the discard UI within the game scene.
  */
 class DiscardUINode : public cugl::scene2::SceneNode {
+public:
+    /** The state of the DiscardUINode */
+    enum State {
+        /** Idle State */
+        IDLE,
+        /** DiscardUI active */
+        ON,
+        /** DiscardUI not active */
+        OFF
+    };
 protected:
     /** Asset manager for this game mode */
     std::shared_ptr<cugl::AssetManager> _assets;
     /** Vector of scene nodes representing labels for each tile type */
     std::vector<std::shared_ptr<cugl::scene2::Label>> _labels;
+    /** The current state of DiscardUINode */
+    State _state;
 
 public:
     /** Button to exit the discard UI – for now in game scene*/
@@ -33,6 +45,8 @@ public:
     Uint32 backBtnKey;
     /** Input controller */
     InputController input;
+    /** The root scene node */
+    std::shared_ptr<SceneNode> _root;
 
 #pragma mark -
 #pragma mark Constructors
@@ -98,6 +112,19 @@ public:
      * @return A vector with one tile if selected, or empty if none
      */
     std::vector<std::shared_ptr<TileSet::Tile>> selectTile(cugl::Vec2& currPos);
+    
+    /** Gets the current state of this scene node */
+    State getState() {
+        return _state;
+    }
+    
+    /** Sets the current state of this scene node */
+    void setState(State state) {
+        _state = state;
+    }
+    
+    /** Sets this scene node as active */
+    void setDiscardUIActive(bool active);
 };
 
 #endif /* __MJ_DISCARD_UI_NODE_H__ */

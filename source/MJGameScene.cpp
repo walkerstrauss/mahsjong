@@ -49,15 +49,17 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::sha
     
     _matchScene = _assets->get<scene2::SceneNode>("matchscene");
     _matchScene->setContentSize(1280,720);
-    cugl::Size screenSize = cugl::Application::get()->getDisplaySize();
     
     _discardUINode = std::make_shared<DiscardUINode>();
-    _discardUINode->init(_assets);    
+    _discardUINode->init(_assets);
+    
+    cugl::Size screenSize = cugl::Application::get()->getDisplaySize();
+    
     screenSize *= _matchScene->getContentSize().height/screenSize.height;
     
     float offset = (screenSize.width -_matchScene->getWidth())/2;    
     _matchScene->setPosition(offset, _matchScene->getPosition().y);
-
+    
     if (!Scene2::initWithHint(screenSize)) {
         std::cerr << "Scene2 initialization failed!" << std::endl;
         return false;
@@ -71,13 +73,14 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::sha
             _matchController.endTurn();
         }
     });
-    
+        
     _tilesetUIBtnKey = _tilesetUIBtn->addListener([this](const std::string& name, bool down){
         if (!down){
-            AnimationController::getInstance().pause();
+            setActive(false);
             setGameActive(false);
-            _discardUINode->setVisible(true);
             _backBtn->activate();
+            _discardUINode->_root->setVisible(true);
+            AnimationController::getInstance().pause();
         }
     });
     
@@ -87,18 +90,19 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::sha
         }
     });
     
-    _backBtn = std::dynamic_pointer_cast<scene2::Button>(_assets->get<scene2::SceneNode>("tilesetui.tilesetscene.board.buttonClose"));
-    _backBtnKey = _backBtn->addListener([this](const std::string& name, bool down){
-        if (!down){
-            AnimationController::getInstance().resume();
-            setGameActive(true);
-            _discardUINode->setVisible(false);
-            _backBtn->deactivate();
-        }
-        
-    });
+    _backBtn = std::dynamic_pointer_cast<scene2::Button>(
+        _discardUINode->_root->getChildByName("tilesetscene")->getChildByName("board")->getChildByName("buttonClose"));
     
+    _backBtnKey = _backBtn->addListener([this](const std::string& name, bool down) {
+        if (!down) {
+            setActive(true);
+            setGameActive(true);
+            _discardUINode->_root->setVisible(false);
+        }
+    });
+        
     addChild(_matchScene);
+    addChild(_discardUINode->_root);
     // Game Win and Lose bool
     _gameWin = false;
     _gameLose = false;
@@ -186,7 +190,7 @@ void GameScene::update(float timestep) {
     //Reading input
     _input.readInput();
     _input.update();
-   
+    
     // Fetching current mouse position
     cugl::Vec2 mousePos = cugl::Scene::screenToWorldCoords(cugl::Vec3(_input.getPosition()));
     
@@ -235,10 +239,7 @@ void GameScene::render() {
     _pile->draw(_batch);
     _discardPile->draw(_batch);
     _player->draw(_batch);
-    
-    if (_discardUINode->isVisible()){
-        _discardUINode->render(_batch);
-    }
+    _discardUINode->_root->render(_batch);
     
     _batch->setColor(Color4(255, 0, 0, 200));
     _batch->setTexture(nullptr);
@@ -261,8 +262,8 @@ void GameScene::setGameActive(bool value){
         _endTurnBtn->activate();
     } else {
         _pauseBtn->deactivate();
-        _tilesetUIBtn->deactivate();
         _endTurnBtn->deactivate();
+        _backBtn->deactivate();
     }
 }
 

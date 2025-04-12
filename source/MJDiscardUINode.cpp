@@ -18,10 +18,9 @@ bool DiscardUINode::init(const std::shared_ptr<cugl::AssetManager>& assets) {
     if (!assets) {
         return false;
     }
-
+    
     _assets = assets;
-
-    std::shared_ptr<SceneNode> root = _assets->get<SceneNode>("tilesetui");
+    _root = _assets->get<SceneNode>("tilesetui");
     
     setContentSize(1280, 720);
     cugl::Size screenSize = cugl::Application::get()->getDisplaySize();
@@ -32,7 +31,7 @@ bool DiscardUINode::init(const std::shared_ptr<cugl::AssetManager>& assets) {
 
 
     _labels.resize(27);
-    std::shared_ptr<SceneNode> labelParent = root->getChildByName("tilesetscene")->getChildByName("board")->getChildByName("number");
+    std::shared_ptr<SceneNode> labelParent = _root->getChildByName("tilesetscene")->getChildByName("board")->getChildByName("number");
 
     for (int i = 0; i < 27; ++i) {
         std::shared_ptr<Label> label = std::dynamic_pointer_cast<Label>(labelParent->getChild(i));
@@ -41,9 +40,20 @@ bool DiscardUINode::init(const std::shared_ptr<cugl::AssetManager>& assets) {
             _labels[i] = label;
         }
     }
-
-    setVisible(false);
-    return true;
+    
+    backBtn = std::dynamic_pointer_cast<scene2::Button>(
+        _root->getChildByName("tilesetscene")->getChildByName("board")->getChildByName("buttonClose"));
+    
+    backBtnKey = backBtn->addListener([this](const std::string& name, bool down) {
+        if (!down) {
+            _root->setVisible(false);
+            _state = OFF;
+        }
+    });
+    
+    _state = OFF;
+    _root->setVisible(false);
+    return true; 
 }
 
 void DiscardUINode::dispose() {
@@ -64,6 +74,7 @@ void DiscardUINode::reset() {
 }
 
 void DiscardUINode::update(float timestep) {
+    return;
 }
 
 int DiscardUINode::getLabelIndex(std::shared_ptr<TileSet::Tile> tile) {
@@ -107,4 +118,18 @@ bool DiscardUINode::decrementLabel(std::shared_ptr<TileSet::Tile> tile) {
 
     _labels[i]->setText(std::to_string(count - 1));
     return true;
+}
+
+/** Sets this scene node as active */
+void DiscardUINode::setDiscardUIActive(bool active) {
+    if(active) {
+        _root->setVisible(true);
+        backBtn->activate();
+        _state = ON;
+    }
+    else {
+        _root->setVisible(false);
+//        backBtn->deactivate();
+        _state = OFF;
+    }
 }
