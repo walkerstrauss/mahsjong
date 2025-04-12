@@ -186,6 +186,8 @@ void TileSet::updateDeck(const std::shared_ptr<cugl::JsonValue>& deckJson) {
         const float scale = tileKey->getFloat("scale");
         const bool debuffed = tileKey->getBool("debuffed");
         
+        tileMap[id]->_suit = Tile::toSuit(suit);
+        tileMap[id]->_rank = Tile::toRank(rank);
         tileMap[id]->inPile = inPile;
         tileMap[id]->inHostHand = inHostHand;
         tileMap[id]->inClientHand = inClientHand;

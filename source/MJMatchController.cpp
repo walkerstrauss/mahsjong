@@ -316,7 +316,8 @@ void MatchController::playRabbit(std::shared_ptr<TileSet::Tile>& celestialTile){
 
     for (auto& tile : opponent->getHand()._tiles) {
         // Make sure we only try to change rank of non-celestial and non-discarded tiles
-        if (!tile->discarded && tile->_suit != TileSet::Tile::Suit::CELESTIAL) {
+        if (!tile->discarded && tile->_suit != TileSet::Tile::Suit::CELESTIAL && !tile->debuffed) {
+            CULog("old: %s", tile->toString().c_str());
             int oldRank = static_cast<int>(tile->_rank);
             int newRank = oldRank;
             
@@ -324,6 +325,7 @@ void MatchController::playRabbit(std::shared_ptr<TileSet::Tile>& celestialTile){
                 newRank = 1 + rand() % 9;
             }
             tile->_rank = static_cast<TileSet::Tile::Rank>(newRank);
+            CULog("new: %s", tile->toString().c_str());
             _tileSet->tilesToJson.push_back(tile);
             // Clear tilesToJson vector
             _tileSet->clearTilesToJson();
