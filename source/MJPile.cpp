@@ -8,6 +8,7 @@
 
 #include "MJPile.h"
 #include "MJPlayer.h"
+#include "MJAnimationController.h"
 
 /**
  * This is the class intializing and handling the pile.
@@ -109,7 +110,6 @@ void Pile::updateTilePositions() {
     
     _pileMap.clear();
     
-    
     for (int i = 0; i < _pileSize; i++) {
         for (int j = 0; j < _pileSize; j++) {
             std::shared_ptr<TileSet::Tile> tile = _pile[i][j];
@@ -124,6 +124,10 @@ void Pile::updateTilePositions() {
             
             float x = j * tileSize.x * spacingX;
             float y = i * tileSize.y * spacingY;
+            
+            if (!AnimationController::getInstance().isTileAnimated(tile)) {
+                AnimationController::getInstance().addSelectAnim(tile, tile->pos, (Vec2(x, y) + pileOffset), tile->_scale, tile->_scale, 20, false);
+            }
             
             tile->pos = cugl::Vec2(x, y) + pileOffset;
 
