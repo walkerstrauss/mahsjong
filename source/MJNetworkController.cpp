@@ -147,10 +147,14 @@ void NetworkController::processData(const std::string source,
         // Celestial tile has been played
         if (msgType == "celestial tile played") {
             std::string celestialType = _deserializer->readString();
-            if(celestialType == "CHAOS") {
+            if(celestialType == "ROOSTER") {
                 _tileMapJson = _deserializer->readJson();
                 _celestialTile = _deserializer->readJson();
-                _celestialUpdateType = CHAOS;
+                _celestialUpdateType = ROOSTER;
+            } else if (celestialType == "OX") {
+                _tileMapJson = _deserializer->readJson();
+                _celestialTile = _deserializer->readJson();
+                _celestialUpdateType = OX;
             }
             _status = PLAYEDCELESTIAL;
         }
@@ -438,8 +442,7 @@ void NetworkController::broadcastCelestialTile(int isHost, const std::shared_ptr
     _serializer->writeString("celestial tile played");
     _serializer->writeUint32(isHost);
     _serializer->writeString(celestialType);
-    // If celestial that was played is CHAOS
-    if(celestialType == "CHAOS") {
+    if(celestialType == "ROOSTER" || celestialType == "OX") {
         // Writing tile map for tileset update
         _serializer->writeJson(tileMapJson);
         //Writing tile to remove from opposing player's hand

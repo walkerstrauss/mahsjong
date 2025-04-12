@@ -45,7 +45,15 @@ public:
             SEVEN = 7,
             EIGHT = 8,
             NINE = 9,
-            CHAOS = 10
+            RAT = 10,
+            OX = 11,
+            RABBIT = 12,
+            DRAGON = 13,
+            SNAKE = 14,
+            MONKEY = 15,
+            ROOSTER = 16,
+            PIG = 17
+            
         };
         
         /** The tile's rank */
@@ -80,8 +88,10 @@ public:
         cugl::Rect tileRect;
         /** The scale of the tile */
         float _scale;
-        /** Wheather or not the tile is pressed to handle the mobile version of the game*/
+        /** Whether or not the tile is pressed to handle the mobile version of the game */
         bool pressed;
+        /** Whether or not the tile is debuffed */
+        bool debuffed = false;
         
 #pragma mark -
 #pragma mark Tile Constructors
@@ -152,8 +162,29 @@ public:
                 case Tile::Rank::NINE:
                     return "nine";
                     break;
-                case Tile::Rank::CHAOS:
-                    return "chaos";
+                case Tile::Rank::RAT:
+                    return "rat";
+                    break;
+                case Tile::Rank::OX:
+                    return "ox";
+                    break;
+                case Tile::Rank::RABBIT:
+                    return "rabbit";
+                    break;
+                case Tile::Rank::DRAGON:
+                    return "dragon";
+                    break;
+                case Tile::Rank::SNAKE:
+                    return "snake";
+                    break;
+                case Tile::Rank::MONKEY:
+                    return "monkey";
+                    break;
+                case Tile::Rank::ROOSTER:
+                    return "rooster";
+                    break;
+                case Tile::Rank::PIG:
+                    return "pig";
                     break;
                 default:
                     return "no valid rank";
@@ -204,8 +235,22 @@ public:
                 return Tile::Rank::EIGHT;
             } else if (rank == "nine" || rank == "9") {
                 return Tile::Rank::NINE;
-            } else if (rank == "chaos") {
-                return Tile::Rank::CHAOS;
+            } else if (rank == "rat") {
+                return Tile::Rank::RAT;
+            } else if (rank == "ox") {
+                return Tile::Rank::OX;
+            } else if (rank == "rabbit") {
+                return Tile::Rank::RABBIT;
+            } else if (rank == "dragon") {
+                return Tile::Rank::DRAGON;
+            } else if (rank == "snake") {
+                return Tile::Rank::SNAKE;
+            }  else if (rank == "monkey") {
+                return Tile::Rank::MONKEY;
+            }else if (rank == "rooster") {
+                return Tile::Rank::ROOSTER;
+            } else if (rank == "pig") {
+                return Tile::Rank::PIG;
             } else {
                 throw std::invalid_argument("No valid rank");
             }
