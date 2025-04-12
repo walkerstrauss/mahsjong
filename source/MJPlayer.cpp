@@ -497,13 +497,6 @@ void Player::draw(const std::shared_ptr<cugl::graphics::SpriteBatch>& batch) {
 
         batch->draw(tile->getTileTexture(), origin, trans);
         
-        // Temporary visual indicator for debuffed tiles
-        if (tile->debuffed) {
-            cugl::Rect overlay(tile->tileRect);
-            batch->setColor(Color4(0, 0, 0, 100)); // semi-transparent black
-            batch->fill(overlay);
-            batch->setColor(Color4::WHITE); // reset
-        }
     }
 }
 

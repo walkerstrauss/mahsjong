@@ -217,6 +217,18 @@ public:
             }
         return -1;
     }
+    
+    /** Update the texture of the tiles in hand. */
+    void updateHandTextures(const std::shared_ptr<cugl::AssetManager>& assets) {
+        for(auto& tile : _tiles) {
+            if (tile->debuffed) {
+                CULog("setting texture for debuffed tile");
+                tile->setTexture(assets->get<cugl::graphics::Texture>("facedown"));
+            } else {
+                tile->setTexture(assets->get<cugl::graphics::Texture>(tile->toString()));
+            }
+        }
+    }
 };
 
 // Player as subclass of hand for handling individual turns for the player

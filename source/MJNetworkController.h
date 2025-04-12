@@ -72,6 +72,8 @@ public:
         NONE,
         /** Ox played */
         OX,
+        /** Rabbit played*/
+        RABBIT,
         /** Rooster played */
         ROOSTER
         

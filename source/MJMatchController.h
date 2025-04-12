@@ -118,7 +118,6 @@ public:
      * Calls the appropriate function according to the celestial tile type. It then broadcasts
      * the tile that was played.
      *
-     * @param isHost       Whether or not current player is host
      * @param celestialTile     The celestial tile that was played
      * @returns True if celestial was played, false if not
      */
@@ -128,7 +127,6 @@ public:
      * Executes the Rooster celestial tile effect in current game scene. It then broadcasts the change
      * to opposing player.
      *
-     * @param isHost       Whether or not current player is host
      */
     void playRooster(std::shared_ptr<TileSet::Tile>& celestialTile);
     
@@ -136,9 +134,15 @@ public:
      * Executes the Ox celestial tile effect in current game scene. It then broadcasts the change
      * to opposing player.
      *
-     * @param isHost       Whether or not current player is host
      */
     void playOx(std::shared_ptr<TileSet::Tile>& celestialTile);
+    
+    /**
+     * Executes the Rabbit celestial tile effect in current game scene. It then broadcasts the change
+     * to opposing player.
+     *
+     */
+    void playRabbit(std::shared_ptr<TileSet::Tile>& celestialTile);
     
     /** Applies the effect of the celestial tile played by opponent by using the celestial state of the network. */
     void celestialEffect();

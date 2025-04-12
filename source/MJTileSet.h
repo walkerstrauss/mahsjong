@@ -323,16 +323,6 @@ public:
         }
     };
     
-    // TODO: Refactor action and command tiles to be special tiles with class Special Tile – add new four tiles, complete implementation of 1-4 and remove echo
-    // 1. ORACLE (draw any tile in the pile)
-    // 2. SEER (draw any tile in the discard pile)
-    // 3. CHAOS (reshuffle the pile)
-    // 4. JUGGERNAUT (rearrange tiles in current row)
-    // 5. _?_ (trade one tile with opponent)
-    // 6. _?_ (random debuff of two tiles)
-    // 7. _?_ (random rank change of random hand tile)
-    // 8. _?_ (random suit change of random hand tile)
-    
 public:
     /** Deck with all of the tiles */
     std::vector<std::shared_ptr<Tile>> deck;

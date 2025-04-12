@@ -200,8 +200,8 @@ bool MatchController::playCelestial(std::shared_ptr<TileSet::Tile>& celestialTil
     if(!hasPlayedCelestial) {
         // Checking if tile is valid celestial
         TileSet::Tile::Suit suit = celestialTile->_suit;
-        if(suit != TileSet::Tile::Suit::CELESTIAL) {
-            return false; 
+        if(suit != TileSet::Tile::Suit::CELESTIAL || celestialTile->debuffed) { // Do not allow debuffed celestial tiles to be played
+            return false;
         }
         // Execute appropriate callback
         else{
@@ -218,6 +218,9 @@ bool MatchController::playCelestial(std::shared_ptr<TileSet::Tile>& celestialTil
                 case(TileSet::Tile::Rank::OX):
                     playOx(celestialTile);
                     break;
+                case(TileSet::Tile::Rank::RABBIT):
+                    playRabbit(celestialTile);
+                    break;
                 // Numbered rank
                 default:
                     break;
@@ -232,7 +235,6 @@ bool MatchController::playCelestial(std::shared_ptr<TileSet::Tile>& celestialTil
  * Executes Rooster celestial tile effect in current game scene. It then broadcasts the change
  * to opposing player.
  *
- * @param isHost       Whether or not current player is host
  */
 void MatchController::playRooster(std::shared_ptr<TileSet::Tile>& celestialTile){
     CULog("Played Rooster");
@@ -258,7 +260,6 @@ void MatchController::playRooster(std::shared_ptr<TileSet::Tile>& celestialTile)
  * Executes Ox celestial tile effect in current game scene. It then broadcasts the change
  * to opposing player.
  *
- * @param isHost       Whether or not current player is host
  */
 void MatchController::playOx(std::shared_ptr<TileSet::Tile>& celestialTile){
     CULog("Played Ox");
@@ -297,6 +298,54 @@ void MatchController::playOx(std::shared_ptr<TileSet::Tile>& celestialTile){
     return;
 }
 
+/**
+ * Executes Rabbit celestial tile effect in current game scene. It then broadcasts the change
+ * to opposing player.
+ *
+ */
+void MatchController::playRabbit(std::shared_ptr<TileSet::Tile>& celestialTile){
+    CULog("Played Rabbit");
+
+    auto& opponent = _network->getHostStatus()
+                         ? clientPlayer
+                         : hostPlayer;
+    
+    opponent->getHand().rdHand.init();
+    opponent->getHand().rdHand.shuffle(opponent->getHand()._tiles);
+    
+
+    for (auto& tile : opponent->getHand()._tiles) {
+        // Make sure we only try to change rank of non-celestial and non-discarded tiles
+        if (!tile->discarded && tile->_suit != TileSet::Tile::Suit::CELESTIAL) {
+            int oldRank = static_cast<int>(tile->_rank);
+            int newRank = oldRank;
+            
+            while (newRank == oldRank) {
+                newRank = 1 + rand() % 9;
+            }
+            tile->_rank = static_cast<TileSet::Tile::Rank>(newRank);
+            _tileSet->tilesToJson.push_back(tile);
+            // Clear tilesToJson vector
+            _tileSet->clearTilesToJson();
+            break;
+
+        }
+    }
+    
+    // Transforming celestial tile to JSON
+    _tileSet->tilesToJson.push_back(celestialTile);
+    const std::shared_ptr<cugl::JsonValue> celestialTileJson = _tileSet->toJson(_tileSet->tilesToJson);
+    // Clear tilesToJson vector
+    _tileSet->clearTilesToJson();
+    
+    // Broadcast celestial tile
+    _network->broadcastCelestialTile(_network->getLocalPid(), _tileSet->mapToJson(), celestialTileJson, "RABBIT");
+    // Clear tilesToJson vector
+    _tileSet->clearTilesToJson();
+    
+    return;
+}
+
 
 void MatchController::celestialEffect(){
     if (_network->getCelestialUpdateType() == NetworkController::ROOSTER) {
@@ -310,6 +359,23 @@ void MatchController::celestialEffect(){
     } else if (_network->getCelestialUpdateType() == NetworkController::OX) {
         CULog("OX");
         _tileSet->updateDeck(_network->getTileMapJson());
+        
+        // Update the tile textures in hand to have debuffed tiles be facedown (for now)
+        auto& hand = _network->getHostStatus()
+                            ? hostPlayer->getHand()
+                            : clientPlayer->getHand();
+        
+        hand.updateHandTextures(_assets);
+    } else if (_network->getCelestialUpdateType() == NetworkController::RABBIT) {
+        CULog("RABBIT");
+        _tileSet->updateDeck(_network->getTileMapJson());
+        
+        // Update the tile textures in hand to have debuffed tiles be facedown (for now)
+        auto& hand = _network->getHostStatus()
+                            ? hostPlayer->getHand()
+                            : clientPlayer->getHand();
+        
+        hand.updateHandTextures(_assets);
     }
     _network->setCelestialUpdateType(NetworkController::NONE);
 }
@@ -413,8 +479,6 @@ void MatchController::update(float timestep) {
         std::shared_ptr<TileSet::Tile> celestialTile = _tileSet->processTileJson(_network->getCelestialTile())[0];
         std::string key = celestialTile->toString() + " " + std::to_string(celestialTile->_id);
         
-        //Actual reference to tile
-//        celestialTile = _tileSet->tileMap[key];
         celestialTile->inHostHand = false;
         celestialTile->inClientHand = false;
         celestialTile->discarded = true;
