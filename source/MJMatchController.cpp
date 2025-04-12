@@ -421,7 +421,7 @@ void MatchController::update(float timestep) {
         
         // Add tile that was drawn into this match controller
         std::shared_ptr<TileSet::Tile> tileDrawn= _tileSet->processTileJson(_network->getTileDrawn())[0];
-        std::string key = tileDrawn->toString() + " " + std::to_string(tileDrawn->_id);
+        std::string key = std::to_string(tileDrawn->_id);
         
         // If this match controller is host's
         if(isHost) {clientPlayer->getHand()._tiles.push_back(_tileSet->tileMap[key]);}
@@ -451,7 +451,7 @@ void MatchController::update(float timestep) {
     if(_network->getStatus() == NetworkController::DISCARDUPDATE) {
         // Fetching discarded tile
         std::shared_ptr<TileSet::Tile> tile = _tileSet->processTileJson(_network->getDiscardTile())[0];
-        std::string key = tile->toString() + " " + std::to_string(tile->_id);
+        std::string key = std::to_string(tile->_id);
         
         // Actual reference to tile from tileMap
         tile = _tileSet->tileMap[key];
@@ -477,7 +477,7 @@ void MatchController::update(float timestep) {
         CULog("here");
         //Retrieves celestial tile that was played
         std::shared_ptr<TileSet::Tile> celestialTile = _tileSet->processTileJson(_network->getCelestialTile())[0];
-        std::string key = celestialTile->toString() + " " + std::to_string(celestialTile->_id);
+        std::string key = std::to_string(celestialTile->_id);
         
         celestialTile->inHostHand = false;
         celestialTile->inClientHand = false;

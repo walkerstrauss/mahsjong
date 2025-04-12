@@ -53,7 +53,6 @@ public:
             MONKEY = 15,
             ROOSTER = 16,
             PIG = 17
-            
         };
         
         /** The tile's rank */
@@ -296,14 +295,6 @@ public:
         }
         
         /**
-         * Sets the texture of a wild tile
-         *
-         * @param assets    the asset manager to get the texture from
-         */
-        void setWildTexture(const std::shared_ptr<cugl::AssetManager>& assets);
-        
-        
-        /**
          * Method to get the tile texture
          *
          * @return the texture of the current tile
@@ -316,10 +307,7 @@ public:
          * Overloading operator to directly compare two tiles
          */
         bool operator==(std::shared_ptr<Tile>& tile){
-            if(this->toString() == tile->toString() && this->_id == tile->_id){
-                return true;
-            }
-            return false;
+            return this->_id == tile->_id;
         }
     };
     
@@ -330,16 +318,8 @@ public:
     std::vector<std::shared_ptr<Tile>> startingDeck;
     /** Unsorted set containing tiles in the deck */
     std::map<std::string, std::shared_ptr<Tile>> tileMap;
-    /** Grandma's favorite tiles */
-    std::vector<std::shared_ptr<Tile>> grandmaTiles;
-    /** Reference to texture for grandma tile text */
-    std::shared_ptr<cugl::graphics::Texture> gmaTexture;
     /** Random Generator */
     cugl::Random rdTileSet;
-     /** Wild tile set to draw from */
-    std::vector<std::shared_ptr<Tile>> wildTiles;
-    /** Number of wild tiles we have initilalized */
-    int wildCount;
     /** Number of tiles we have initialized */
     int tileCount;
     /** The center of a tile */
