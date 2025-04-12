@@ -1,0 +1,58 @@
+{
+  "textures":{
+      "lose-sheet":{
+          "file": "textures/lose.png"
+      },
+      "pong-sheet":{
+          "file": "textures/pong.png"
+      },
+      "chow-sheet":{
+          "file": "textures/chow.png"
+      },
+      "turn-sheet":{
+          "file": "textures/turn_indicator.png"
+      },
+      "win-sheet":{
+          "file": "textures/win.png"
+      }
+  },
+  "gameplay-action":{
+      "idle":{
+          "default":{
+              "key": "blank",
+              "rows": 1,
+              "cols": 1,
+              "count": 1
+          }
+      },
+      "interrupt":{
+          "pong": {
+              "key": "pong-sheet",
+              "rows": 2,
+              "cols": 3,
+              "count": 6
+          },
+          "chow": {
+              
+          }
+      }
+  },
+  "turn-indicator":{
+      "idle":{
+          "default":{
+              "key": "blank",
+              "rows": 1,
+              "cols": 1,
+              "count": 1
+          }
+      },
+      "interrupt":{
+          "turn-indicator":{
+              "key": "turn-sheet",
+              "rows": 2,
+              "cols": 3,
+              "count": 6
+          }
+      }
+  }
+}
