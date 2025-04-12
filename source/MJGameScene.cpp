@@ -153,9 +153,8 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::sha
     _actionAnimNode->setAnchor(Vec2::ANCHOR_CENTER);
     _actionAnimNode->setVisible(false);
     _actionAnimNode->setContentSize(Size(70, 70));
-    _actionAnimNode->setPosition(0,0);
+    _actionAnimNode->doLayout();
     _actionAnimNode->initWithData(_assets.get(), _assets->get<JsonValue>("animations"), "gameplay-action",12.0f);
-    _matchScene->addChild(_actionAnimNode);
     return true;
 }
 
@@ -222,10 +221,10 @@ void GameScene::update(float timestep) {
     
     if (_input.getKeyPressed() == KeyCode::P && _input.getKeyDown()){
         _actionAnimNode->setVisible(true);
-        _actionAnimNode->play("pong-sheet", AnimatedNode::AnimationType::INTERRUPT);
+        _actionAnimNode->play("pong-sheet", AnimatedNode::AnimationType::INTERRUPT, _assets->get<Texture>("pong-sheet"));
     } else if (_input.getKeyPressed() == KeyCode::C && _input.getKeyDown()){
         _actionAnimNode->setVisible(true);
-        _actionAnimNode->play("chow-sheet", AnimatedNode::AnimationType::INTERRUPT);
+        _actionAnimNode->play("chow-sheet", AnimatedNode::AnimationType::INTERRUPT, _assets->get<Texture>("chow-sheet"));
     }
     AnimationController::getInstance().update(timestep);
 }
@@ -571,7 +570,7 @@ void GameScene::playSetAnim(const std::vector<std::shared_ptr<TileSet::Tile>>& t
         } else {
             return;
         }
-        _actionAnimNode->play(animKey, AnimatedNode::AnimationType::INTERRUPT);
+//        _actionAnimNode->play(animKey, AnimatedNode::AnimationType::INTERRUPT);
     }
     
     

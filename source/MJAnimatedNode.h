@@ -80,7 +80,7 @@ public:
     
     bool initWithData(const AssetManager* assets, const std::shared_ptr<JsonValue>& json, std::string nodeKey, float fps);
     
-    void play(const std::string& key, AnimationType type);
+    void play(const std::string& key, AnimationType type, const std::shared_ptr<Texture>& texture);
     
     void stop();
     

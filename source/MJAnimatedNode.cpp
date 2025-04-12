@@ -68,13 +68,16 @@ bool AnimatedNode::initWithData(const AssetManager* assets, const std::shared_pt
     return true;
 }
 
-void AnimatedNode::play(const std::string& key, AnimationType type){
+void AnimatedNode::play(const std::string& key, AnimationType type, const std::shared_ptr<Texture>& texture){
     const auto& animMap = (type == AnimationType::IDLE) ? _idleAnims : _interruptAnims;
     auto it = animMap.find(key);
     CUAssertLog(it != animMap.end(), "Animation with key '%s' not found", key.c_str());
     
     _currAnim = it->second;
     _currKey = key;
+    if (texture){
+        _texture = texture;
+    }
     _frame = _currAnim.startFrame;
     _currAnim.playedCount = 0;
     _currAnim.done = false;
@@ -116,7 +119,8 @@ void AnimatedNode::update(float timestep){
                 if (_isInterrupting) {
                     _isInterrupting = false;
                     if (!_defaultIdleKey.empty()){
-                        play(_defaultIdleKey, IDLE);
+                        play(_defaultIdleKey, IDLE, Texture::getBlank());
+                        setVisible(false);
                     }
                 }
                 
