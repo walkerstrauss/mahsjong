@@ -197,6 +197,10 @@ void GameScene::update(float timestep) {
     // Constantly updating the position of tiles in hand
     _player->getHand().updateTilePositions(_matchScene->getSize());
     
+    if(!isActive()) {
+        return;
+    }
+    
     // Clicking/Tapping and Dragging logic
     if(_input.didRelease() && !_input.isDown()) {
         cugl::Vec2 initialMousePos = cugl::Scene::screenToWorldCoords(cugl::Vec3(_input.getInitialPosition()));
