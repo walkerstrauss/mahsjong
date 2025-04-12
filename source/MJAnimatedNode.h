@@ -78,7 +78,7 @@ public:
     
     bool initWithSheet(const std::shared_ptr<Texture>&, int rows, int cols);
     
-    bool initWithData(const AssetManager* assets, const std::shared_ptr<JsonValue>& json, float fps);
+    bool initWithData(const AssetManager* assets, const std::shared_ptr<JsonValue>& json, std::string nodeKey, float fps);
     
     void play(const std::string& key, AnimationType type);
     

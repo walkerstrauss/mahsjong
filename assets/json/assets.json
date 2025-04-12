@@ -381,7 +381,7 @@
         "infoIcon":{
             "file": "textures/gameplay/infoIcon.png"
         },
-        "win":{
+        "win-sheet":{
             "file": "textures/win.png"
         },
         "1":{
@@ -1052,7 +1052,8 @@
   },
   "jsons": {
     "server": "json/server.json",
-    "constants" : "json/constants.json"
+    "constants" : "json/constants.json",
+    "animations": "json/animations.json"
   },
   "sounds":{
       

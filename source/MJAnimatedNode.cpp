@@ -22,8 +22,10 @@ bool AnimatedNode::initWithSheet(const std::shared_ptr<Texture>& texture, int ro
     return true;
 }
 
-bool AnimatedNode::initWithData(const AssetManager* assets, const std::shared_ptr<JsonValue>& json, float fps){
-    CUAssertLog(json, "JsonValue must not be null");
+bool AnimatedNode::initWithData(const AssetManager* assets, const std::shared_ptr<JsonValue>& value, std::string nodeKey, float fps){
+    CUAssertLog(value, "JsonValue must not be null");
+    auto json = value->get(nodeKey);
+    CUAssertLog(json, "Node json value must be defined aka not null");
     
     // Load all idle animations from the JSON
     auto idleAnims = json->get("idle");

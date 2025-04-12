@@ -149,8 +149,13 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::sha
     //shape->setAnchor(cugl::Vec2::ANCHOR_BOTTOM_LEFT);  // Child uses its center as local origin
     //shape->setPosition(0, 0);  // Place child at activeRegion's center
     //_activeRegion->addChild(shape);
-    
-    
+    _actionAnimNode = std::make_shared<AnimatedNode>();
+    _actionAnimNode->setAnchor(Vec2::ANCHOR_CENTER);
+    _actionAnimNode->setVisible(false);
+    _actionAnimNode->setContentSize(Size(70, 70));
+    _actionAnimNode->setPosition(0,0);
+    _actionAnimNode->initWithData(_assets.get(), _assets->get<JsonValue>("animations"), "gameplay-action",12.0f);
+    _matchScene->addChild(_actionAnimNode);
     return true;
 }
 
@@ -214,6 +219,14 @@ void GameScene::update(float timestep) {
 
         }
     }
+    
+    if (_input.getKeyPressed() == KeyCode::P && _input.getKeyDown()){
+        _actionAnimNode->setVisible(true);
+        _actionAnimNode->play("pong-sheet", AnimatedNode::AnimationType::INTERRUPT);
+    } else if (_input.getKeyPressed() == KeyCode::C && _input.getKeyDown()){
+        _actionAnimNode->setVisible(true);
+        _actionAnimNode->play("chow-sheet", AnimatedNode::AnimationType::INTERRUPT);
+    }
     AnimationController::getInstance().update(timestep);
 }
 
@@ -272,37 +285,6 @@ void GameScene::applyCelestial(TileSet::Tile::Rank type) {
     }
     
 }
-//void GameScene::applyAction(std::shared_ptr<TileSet::ActionTile> actionTile) {
-//    _player->getHand().discard(actionTile, _network->getHostStatus());
-//    switch (actionTile->type) {
-//        case TileSet::ActionTile::ActionType::CHAOS:
-//            CULog("CHAOS: Reshuffling the pile...");
-//            _pile->reshufflePile();
-//            _network->broadcastDeckMap(_tileSet->mapToJson());
-//            _network->broadcastPileLayer();
-//            break;
-//        case TileSet::ActionTile::ActionType::ECHO:
-//            CULog("ECHO: Draw two tiles...");
-//            _player->getHand().drawFromPile(_pile, 2, _network->getHostStatus());
-//            _network->broadcastTileDrawn(_tileSet->toJson(_tileSet->tilesToJson));
-//            _tileSet->clearTilesToJson();
-//            if (_pile->getVisibleSize() == 0) {
-//                _pile->createPile();
-//                _network->broadcastDeckMap(_tileSet->mapToJson());
-//                _network->broadcastPileLayer();
-//            }
-//            else{
-//                _network->broadcastDeck(_tileSet->toJson(_tileSet->deck));
-//            }
-//            break;
-//        case TileSet::ActionTile::ActionType::ORACLE:
-//            CULog("ORACLE: Draw any tile from pile...");
-//            
-//        default:
-//            break;
-//    }
-//    
-//}
 
 void GameScene::clickedTile(cugl::Vec2 mousePos){
     cugl::Vec2 initialMousePos = cugl::Scene::screenToWorldCoords(cugl::Vec3(_input.getInitialPosition()));
@@ -579,3 +561,42 @@ void GameScene::discardTile(std::shared_ptr<TileSet::Tile> tile) {
     
 }
 
+void GameScene::playSetAnim(const std::vector<std::shared_ptr<TileSet::Tile>>& tiles){
+    if (tiles.size() != 3 || !_actionAnimNode){
+        std::string animKey;
+        if (isPong(tiles)){
+            animKey = "pong";
+        } else if (isChow(tiles)){
+            animKey = "chow";
+        } else {
+            return;
+        }
+        _actionAnimNode->play(animKey, AnimatedNode::AnimationType::INTERRUPT);
+    }
+    
+    
+}
+
+bool GameScene::isPong(const std::vector<std::shared_ptr<TileSet::Tile>>& tiles){
+    for (auto& tile : tiles){
+        if (tile->getSuit() == TileSet::Tile::Suit::CELESTIAL){
+            return false;
+        }
+    }
+    
+    return (tiles[0]->toString() == tiles[1]->toString() &&
+            tiles[1]->toString() == tiles[2]->toString());
+}
+
+bool GameScene::isChow(const std::vector<std::shared_ptr<TileSet::Tile>>& tiles){
+    for (auto& tile : tiles){
+        if (tile->getSuit() == TileSet::Tile::Suit::CELESTIAL){
+            return false;
+        }
+    }
+    auto sorted = _hand->getSortedTiles(tiles);
+    return (sorted[0]->getSuit() == sorted[1]->getSuit() &&
+            sorted[1]->getSuit() == sorted[2]->getSuit() &&
+            TileSet::Tile::toIntRank(sorted[1]->getRank()) - 1 == TileSet::Tile::toIntRank(sorted[0]->getRank()) &&
+            TileSet::Tile::toIntRank(sorted[2]->getRank()) - 1 == TileSet::Tile::toIntRank(sorted[1]->getRank()));
+}

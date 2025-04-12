@@ -23,6 +23,7 @@
 #include "MJAudioController.h"
 #include "MJAnimationController.h"
 #include "MJMatchController.h"
+#include "MJAnimatedNode.h"
 
 
 using namespace cugl;
@@ -80,18 +81,7 @@ protected:
     std::shared_ptr<Pile> _pile;
     /** Reference to the discard pile */
     std::shared_ptr<DiscardPile> _discardPile;
-    /** Reference to texture for gma text*/
-    std::shared_ptr<cugl::graphics::Texture> _gmaLabelTexture;
-    /** Text layout */
-    std::shared_ptr<cugl::graphics::TextLayout> _text;
     /** Temporary discard area b/c no asset created for it yet */
-
-    //cugl::Rect discardArea;
-
-    cugl::Rect discardArea;
-    /** Reference to the audio controller */
-//    std::shared_ptr<AudioController> _audio;
-    
     Hand* _hand; // pointer to the hand.
     
     std::shared_ptr<cugl::graphics::TextLayout> _win;
@@ -124,7 +114,6 @@ protected:
     
     /** Button for playing a set */
     std::shared_ptr<cugl::scene2::Button> _playSetBtn;
-    
     /** Key for discard button listener */
     Uint32 _discardBtnKey;
     /** Key for tileset UI button listener */
@@ -174,6 +163,8 @@ protected:
 
     cugl::Vec2 _originalTilePos = cugl::Vec2::ZERO;
     bool shouldReturn = true;
+    
+    std::shared_ptr<AnimatedNode> _actionAnimNode;
 
 public:
 #pragma mark -
@@ -318,6 +309,11 @@ public:
     
     void discardTile(std::shared_ptr<TileSet::Tile> tile);
     
+    void playSetAnim(const std::vector<std::shared_ptr<TileSet::Tile>>& tiles);
+    
+    bool isPong(const std::vector<std::shared_ptr<TileSet::Tile>>& tiles);
+    
+    bool isChow(const std::vector<std::shared_ptr<TileSet::Tile>>& tiles);
 };
 
 #endif /* __MJ_GAME_SCENE_H__ */

@@ -1,21 +1,4 @@
 {
-  "textures":{
-      "lose-sheet":{
-          "file": "textures/lose.png"
-      },
-      "pong-sheet":{
-          "file": "textures/pong.png"
-      },
-      "chow-sheet":{
-          "file": "textures/chow.png"
-      },
-      "turn-sheet":{
-          "file": "textures/turn_indicator.png"
-      },
-      "win-sheet":{
-          "file": "textures/win.png"
-      }
-  },
   "gameplay-action":{
       "idle":{
           "default":{
@@ -63,7 +46,7 @@
               "rows": 1,
               "cols": 1,
               "count": 1
-          }
+          },
           "turn-indicator":{
               "key": "turn-sheet",
               "rows": 2,
