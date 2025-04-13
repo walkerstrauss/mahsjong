@@ -29,7 +29,7 @@ using namespace std;
  * @param network   the network controller for the game
  *  @returns true if init was successful, false otherwise
  */
-bool MatchController::init(const std::shared_ptr<cugl::AssetManager>& assets, std::shared_ptr<NetworkController> network) {
+bool MatchController::init(const std::shared_ptr<cugl::AssetManager>& assets, std::shared_ptr<NetworkController>& network) {
     _assets = assets;
     _network = network;
     
@@ -334,14 +334,15 @@ void MatchController::update(float timestep) {
         _discardPile->addTile(tile);
         _discardPile->updateTilePositions();
         
-        //Change state so gamescene can update discardUI scene
+        // Change state so gamescene can update discardUI scene
         _choice = DISCARDUIUPDATE;
+        CULog("%d", _choice == DISCARDUIUPDATE);
+
         _network->setStatus(NetworkController::INGAME);
     }
     
     //Celestial tile played update
     if(_network->getStatus() == NetworkController::PLAYEDCELESTIAL) {
-        CULog("here");
         //Retrives celestial tile that was played
         std::shared_ptr<TileSet::Tile> celestialTile = _tileSet->processTileJson(_network->getCelestialTile())[0];
         std::string key = celestialTile->toString() + " " + std::to_string(celestialTile->_id);
@@ -378,7 +379,9 @@ void MatchController::update(float timestep) {
  */
 void MatchController::dispose() {
     if(_active) {
-        _network->disconnect(); 
+        if(_network) {
+            _network->disconnect();
+        }
         _active = false;
     }
 }

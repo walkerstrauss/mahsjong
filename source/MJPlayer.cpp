@@ -226,7 +226,6 @@ bool Hand::isSetValid(const std::vector<std::shared_ptr<TileSet::Tile>>& selecte
     for(size_t it = 0; it < selectedTiles.size(); it++){
         for(size_t jt = it+1; jt < selectedTiles.size(); jt++){
             if(selectedTiles[it]==selectedTiles[jt]){
-                
                 return false;
             }
         }

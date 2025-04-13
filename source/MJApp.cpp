@@ -79,7 +79,6 @@ void MahsJongApp::onStartup() {
 void MahsJongApp::onShutdown() {
     _loading.dispose();
     _gameplay.dispose();
-    _matchController.dispose();
     _hostgame.dispose();
     _joingame.dispose();
     _settings.dispose();
@@ -132,7 +131,6 @@ void MahsJongApp::update(float timestep) {
             updateClientScene(timestep);
             break;
         case GAME:
-            updateMatchController(timestep);
             updateGameScene(timestep);
             break;
         case SETTINGS:
@@ -213,7 +211,6 @@ void MahsJongApp::updateLoadingScene(float timestep) {
        AnimationController::getInstance().init(_assets);
        _mainmenu.init(_assets);
        _mainmenu.setSpriteBatch(_batch);
-       _matchController.init(_assets, _network);
        _hostgame.init(_assets, _network);
        _hostgame.setSpriteBatch(_batch);
        _joingame.init(_assets, _network);
@@ -278,7 +275,7 @@ void MahsJongApp::updateHostScene(float timestep) {
         _hostgame.setActive(false);
         _mainmenu.setActive(true);
     } else if (_network->getStatus() == NetworkController::Status::START) {
-        _gameplay.init(_assets, _network, _matchController);
+        _gameplay.init(_assets, _network);
         _gameplay.setSpriteBatch(_batch);
         _hostgame.setActive(false);
         _gameplay.setActive(true);
@@ -308,7 +305,7 @@ void MahsJongApp::updateClientScene(float timestep) {
         _joingame.setActive(false);
         _mainmenu.setActive(true);
     } else if (_network->getStatus() == NetworkController::Status::INGAME) {
-        _gameplay.init(_assets, _network, _matchController);
+        _gameplay.init(_assets, _network);
         _gameplay.setSpriteBatch(_batch);
         _joingame.setActive(false);
         _gameplay.setActive(true);
@@ -464,8 +461,4 @@ void MahsJongApp::updateGameOverScene(float timestep) {
         // Do nothing
         return;
     }
-}
-
-void MahsJongApp::updateMatchController(float timestep) {
-    _matchController.update(timestep);
 }

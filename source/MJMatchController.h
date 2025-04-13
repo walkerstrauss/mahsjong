@@ -82,7 +82,7 @@ public:
      * @param network   the network controller for the game
      *  @returns true if init was successful, false otherwise
      */
-    bool init(const std::shared_ptr<cugl::AssetManager>& assets, std::shared_ptr<NetworkController> network);
+    bool init(const std::shared_ptr<cugl::AssetManager>& assets, std::shared_ptr<NetworkController>& network);
     
     /**
      * Initializes the host game with objects and sends INGAME status to client. This
@@ -153,6 +153,7 @@ public:
         return _choice; 
     }
     
+    /** Sets the current state of game */
     void setChoice(Choice choice) {
         _choice = choice;
     }

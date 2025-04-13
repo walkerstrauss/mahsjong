@@ -62,7 +62,7 @@ protected:
     /** Input controller for player input*/
     InputController _input;
     /** Match controller for processing game logic */
-    MatchController _matchController; 
+    std::shared_ptr<MatchController> _matchController;
     /** JSON with all of our constants*/
     std::shared_ptr<cugl::JsonValue> _constants;
     /** Scene2 object for match scene */
@@ -204,7 +204,7 @@ public:
      *
      * @param assets    the asset manager for the game
      */
-    bool init(const std::shared_ptr<cugl::AssetManager>& assets, std::shared_ptr<NetworkController> network, MatchController& matchController);
+    bool init(const std::shared_ptr<cugl::AssetManager>& assets, std::shared_ptr<NetworkController> network);
     
     /**
      * Sets whether the player is host.
@@ -294,7 +294,7 @@ public:
       * @param tile  the tile to increment in the discard UI
       * @return true if update was successful, and false otherwise
       */
-     bool incrementLabel(std::shared_ptr<TileSet::Tile> tile);
+     void incrementLabel(std::shared_ptr<TileSet::Tile> tile);
      
      /**
       * Method to decrement discard UI label corresponding to tile passed as argument

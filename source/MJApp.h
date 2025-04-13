@@ -55,14 +55,14 @@ protected:
     ClientScene _joingame;
     /** The primary controller for game world */
     GameScene _gameplay;
-    /** The scene for settings */
+    /** The scene for settings */  
     SettingScene _settings;
     /** The scene for pausing the game */
     PauseScene _pause;
     /** The scene for when the match ends/ is over */
     GameOverScene _gameover;
     /** The match controller for the game*/
-    MatchController _matchController; 
+    std::shared_ptr<MatchController> _matchController;
     /** Whether or not we finished loading all assets*/
     bool _loaded;
     /** Scene loader reference */
