@@ -195,6 +195,13 @@ bool MatchController::discardTile(std::shared_ptr<TileSet::Tile> tile) {
  * @returns True if celestial was played, false if not
  */
 bool MatchController::playCelestial(std::shared_ptr<TileSet::Tile>& celestialTile) {
+    if(_network->getHostStatus() && hostPlayer->getHand()._tiles.size() <= hostPlayer->getHand()._size) {
+        return false;
+    }
+    else if(!_network->getHostStatus() && clientPlayer->getHand()._tiles.size() <= clientPlayer->getHand()._size) {
+        return false;
+    }
+    
     if(!hasPlayedCelestial) {
         // Checking if tile is valid celestial
         TileSet::Tile::Suit suit = celestialTile->_suit;
@@ -239,8 +246,10 @@ void MatchController::playChaos(std::shared_ptr<TileSet::Tile>& celestialTile){
     // Clear tilesToJson vector
     _tileSet->clearTilesToJson();
     
+    // Broadcast new tile map state
+    _network->broadcastTileMap(_network->getLocalPid(), _tileSet->mapToJson(), "remake pile");
     // Broadcast celestial tile
-    _network->broadcastCelestialTile(_network->getLocalPid(), _tileSet->mapToJson(), celestialTileJson, "CHAOS");
+    _network->broadcastCelestialTile(_network->getLocalPid(), celestialTileJson, "CHAOS");
     // Clear tilesToJson vector
     _tileSet->clearTilesToJson();
     
@@ -355,7 +364,6 @@ void MatchController::update(float timestep) {
         
         //If chaos
         if(_network->getCelestialUpdateType() == NetworkController::CHAOS) {
-            CULog("CHAOS");
             //Updating tileset
             _tileSet->updateDeck(_network->getTileMapJson());
             //Remaking pile

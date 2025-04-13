@@ -167,6 +167,7 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::sha
  */
 void GameScene::dispose() {
     if (_active) {
+        _matchController->dispose();
         removeAllChildren();
         _active = false;
     }
@@ -212,7 +213,6 @@ void GameScene::update(float timestep) {
     if(!isActive()) {
         return;
     }
-    
     
     // Clicking/Tapping and Dragging logic
     if(_input.didRelease() && !_input.isDown()) {

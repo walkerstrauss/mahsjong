@@ -148,7 +148,6 @@ void NetworkController::processData(const std::string source,
         if (msgType == "celestial tile played") {
             std::string celestialType = _deserializer->readString();
             if(celestialType == "CHAOS") {
-                _tileMapJson = _deserializer->readJson();
                 _celestialTile = _deserializer->readJson();
                 _celestialUpdateType = CHAOS;
             }
@@ -432,7 +431,7 @@ void NetworkController::broadcastDiscard(int isHost, const std::shared_ptr<cugl:
  * @param celestialTile     The JSON representation of the celestial tile
  * @param celestialType     The type of celestial tile that was played
  */
-void NetworkController::broadcastCelestialTile(int isHost, const std::shared_ptr<cugl::JsonValue>& tileMapJson, const std::shared_ptr<cugl::JsonValue>& celestialTile, std::string celestialType) {
+void NetworkController::broadcastCelestialTile(int isHost, const std::shared_ptr<cugl::JsonValue>& celestialTile, std::string celestialType) {
     _serializer->reset();
     
     _serializer->writeString("celestial tile played");
@@ -440,8 +439,6 @@ void NetworkController::broadcastCelestialTile(int isHost, const std::shared_ptr
     _serializer->writeString(celestialType);
     // If celestial that was played is CHAOS
     if(celestialType == "CHAOS") {
-        // Writing tile map for tileset update
-        _serializer->writeJson(tileMapJson);
         //Writing tile to remove from opposing player's hand
         _serializer->writeJson(celestialTile);
     }
