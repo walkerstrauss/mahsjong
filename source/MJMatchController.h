@@ -124,25 +124,32 @@ public:
     bool playCelestial(std::shared_ptr<TileSet::Tile>& celestialTile);
     
     /**
-     * Executes the Rooster celestial tile effect in current game scene. It then broadcasts the change
+     * Executes the Rooster celestial tile effect (reshuffle pile) in current game scene. It then broadcasts the change
      * to opposing player.
      *
      */
     void playRooster(std::shared_ptr<TileSet::Tile>& celestialTile);
     
     /**
-     * Executes the Ox celestial tile effect in current game scene. It then broadcasts the change
+     * Executes the Ox celestial tile effect (random debuff 2) in current game scene. It then broadcasts the change
      * to opposing player.
      *
      */
     void playOx(std::shared_ptr<TileSet::Tile>& celestialTile);
     
     /**
-     * Executes the Rabbit celestial tile effect in current game scene. It then broadcasts the change
+     * Executes the Rabbit celestial tile effect  (change rank of random tile) in current game scene. It then broadcasts the change
      * to opposing player.
      *
      */
     void playRabbit(std::shared_ptr<TileSet::Tile>& celestialTile);
+    
+    /**
+     * Executes the Snake celestial tile effect  (change suit of random tile) in current game scene. It then broadcasts the change
+     * to opposing player.
+     *
+     */
+    void playSnake(std::shared_ptr<TileSet::Tile>& celestialTile);
     
     /** Applies the effect of the celestial tile played by opponent by using the celestial state of the network. */
     void celestialEffect();

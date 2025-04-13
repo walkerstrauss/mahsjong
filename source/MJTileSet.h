@@ -399,25 +399,25 @@ public:
      */
     const std::shared_ptr<cugl::JsonValue> toJson(std::vector<std::shared_ptr<Tile>> tiles);
     
-    /**
-     * Randomly generates a suit with type Tile::Suit
-     *
-     * Returns suit with type Tile::Suit
-     */
-    Tile::Suit randomSuit() {
-        int randSuit = static_cast<int>(rdTileSet.getOpenUint64(0, 4));
-        return static_cast<TileSet::Tile::Suit>(randSuit);
-    };
-    
-    /**
-     * Randomly generates a rank
-     *
-     * Returns a Tile::Rank
-     */
-    Tile::Rank randomNumber() {
-        int randRank = static_cast<int>(rdTileSet.getOpenUint64(1, 11));
-        return static_cast<TileSet::Tile::Rank>(randRank);
-    };
+//    /**
+//     * Randomly generates a suit with type Tile::Suit
+//     *
+//     * Returns suit with type Tile::Suit
+//     */
+//    Tile::Suit randomSuit() {
+//        int randSuit = static_cast<int>(rdTileSet.getOpenUint64(0, 4));
+//        return static_cast<TileSet::Tile::Suit>(randSuit);
+//    };
+//    
+//    /**
+//     * Randomly generates a rank
+//     *
+//     * Returns a Tile::Rank
+//     */
+//    Tile::Rank randomNumber() {
+//        int randRank = static_cast<int>(rdTileSet.getOpenUint64(1, 11));
+//        return static_cast<TileSet::Tile::Rank>(randRank);
+//    };
     
     void clearTilesToJson(){
         tilesToJson.clear();

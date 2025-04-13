@@ -74,6 +74,8 @@ public:
         OX,
         /** Rabbit played*/
         RABBIT,
+        /** Snake played */
+        SNAKE,
         /** Rooster played */
         ROOSTER
         

@@ -262,38 +262,6 @@ void GameScene::setGameActive(bool value){
     }
 }
 
-//void GameScene::applyAction(std::shared_ptr<TileSet::ActionTile> actionTile) {
-//    _player->getHand().discard(actionTile, _network->getHostStatus());
-//    switch (actionTile->type) {
-//        case TileSet::ActionTile::ActionType::CHAOS:
-//            CULog("CHAOS: Reshuffling the pile...");
-//            _pile->reshufflePile();
-//            _network->broadcastDeckMap(_tileSet->mapToJson());
-//            _network->broadcastPileLayer();
-//            break;
-//        case TileSet::ActionTile::ActionType::ECHO:
-//            CULog("ECHO: Draw two tiles...");
-//            _player->getHand().drawFromPile(_pile, 2, _network->getHostStatus());
-//            _network->broadcastTileDrawn(_tileSet->toJson(_tileSet->tilesToJson));
-//            _tileSet->clearTilesToJson();
-//            if (_pile->getVisibleSize() == 0) {
-//                _pile->createPile();
-//                _network->broadcastDeckMap(_tileSet->mapToJson());
-//                _network->broadcastPileLayer();
-//            }
-//            else{
-//                _network->broadcastDeck(_tileSet->toJson(_tileSet->deck));
-//            }
-//            break;
-//        case TileSet::ActionTile::ActionType::ORACLE:
-//            CULog("ORACLE: Draw any tile from pile...");
-//            
-//        default:
-//            break;
-//    }
-//    
-//}
-
 void GameScene::clickedTile(cugl::Vec2 mousePos){
     cugl::Vec2 initialMousePos = cugl::Scene::screenToWorldCoords(cugl::Vec3(_input.getInitialPosition()));
     
@@ -495,7 +463,7 @@ void GameScene::updateDrag(const cugl::Vec2& mousePos, bool mouseDown, bool mous
     if (mouseReleased) {
         // Active play area logic
         if(_draggingTile && _activeRegion.contains(mousePos)) {
-            if(_draggingTile->_suit == TileSet::Tile::Suit::CELESTIAL) {
+            if(_draggingTile->_suit == TileSet::Tile::Suit::CELESTIAL && !_draggingTile->debuffed) {
                 _matchController.playCelestial(_draggingTile);
             }
             else {
