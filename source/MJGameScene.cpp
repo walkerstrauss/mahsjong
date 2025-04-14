@@ -425,7 +425,7 @@ void GameScene::updateDrag(const cugl::Vec2& mousePos, bool mouseDown, bool mous
         // Active play area logic
         if(_draggingTile && _activeRegion.contains(mousePos)) {
             if(_draggingTile->_suit == TileSet::Tile::Suit::CELESTIAL && !_draggingTile->debuffed) {
-                _matchController.playCelestial(_draggingTile);
+                _matchController->playCelestial(_draggingTile);
             }
             else {
                 if(_matchController->discardTile(_draggingTile)) {
