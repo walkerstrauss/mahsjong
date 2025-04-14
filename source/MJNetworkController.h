@@ -373,6 +373,7 @@ public:
      * @param celestialType     The type of celestial tile that was played
      */
     void broadcastCelestialTile(int isHost, const std::shared_ptr<cugl::JsonValue>& changedTilesJson, const std::shared_ptr<cugl::JsonValue>& celestialTile, std::string celestialType);
+  
     /**
      * Broadcasts a message that the game has concluded
      *

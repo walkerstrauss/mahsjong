@@ -33,7 +33,7 @@ using namespace std;
  *
  * @param assets    the asset manager for the game
  */
-bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::shared_ptr<NetworkController> network, MatchController& matchController) {
+bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::shared_ptr<NetworkController> network) {
     // Initialize the scene to a locked height
     if (assets == nullptr) {
         return false;
@@ -44,18 +44,22 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::sha
 
     _assets = assets;
     _network = network;
-    _matchController = matchController;
     _choice = Choice::NONE;
     
     _matchScene = _assets->get<scene2::SceneNode>("matchscene");
     _matchScene->setContentSize(1280,720);
+    
+    _discardUINode = std::make_shared<DiscardUINode>();
+    _discardUINode->init(_assets);
+    _discardUINode->_root->setContentSize(1280,720);
+    
     cugl::Size screenSize = cugl::Application::get()->getDisplaySize();
     
     screenSize *= _matchScene->getContentSize().height/screenSize.height;
     
     float offset = (screenSize.width -_matchScene->getWidth())/2;    
     _matchScene->setPosition(offset, _matchScene->getPosition().y);
-
+    _discardUINode->_root->setPosition(offset, _discardUINode->getPosition().y);
     
     if (!Scene2::initWithHint(screenSize)) {
         std::cerr << "Scene2 initialization failed!" << std::endl;
@@ -67,13 +71,17 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::sha
     _endTurnBtn = std::dynamic_pointer_cast<scene2::Button>(_assets->get<scene2::SceneNode>("matchscene.gameplayscene.endTurnButton"));
     _endTurnBtn->addListener([this](const std::string& name, bool down){
         if (!down){
-            _matchController.endTurn();
+            _matchController->endTurn();
         }
     });
-    
+        
     _tilesetUIBtnKey = _tilesetUIBtn->addListener([this](const std::string& name, bool down){
         if (!down){
-            _choice = Choice::TILESET;
+            setActive(false);
+            setGameActive(false);
+            _backBtn->activate();
+            _discardUINode->_root->setVisible(true);
+            AnimationController::getInstance().pause();
         }
     });
     
@@ -83,29 +91,41 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::sha
         }
     });
     
+    _backBtn = std::dynamic_pointer_cast<scene2::Button>(
+        _discardUINode->_root->getChildByName("tilesetscene")->getChildByName("board")->getChildByName("buttonClose"));
+    
+    _backBtnKey = _backBtn->addListener([this](const std::string& name, bool down) {
+        if (!down) {
+            setActive(true);
+            setGameActive(true);
+            _discardUINode->_root->setVisible(false);
+        }
+    });
+        
     addChild(_matchScene);
+    addChild(_discardUINode->_root);
     // Game Win and Lose bool
     _gameWin = false;
     _gameLose = false;
+    
+    _matchController = std::make_shared<MatchController>();
+    _matchController->init(_assets, _network);
 
     // Host and Client specific initializations
     if(_network->getHostStatus()){
-        _matchController.initHost();
-        _player = _matchController.hostPlayer;
+        _matchController->initHost();
+        _player = _matchController->hostPlayer;
     } else {
-        _matchController.initClient();
-        _player = _matchController.clientPlayer;
+        _matchController->initClient();
+        _player = _matchController->clientPlayer;
     }
     
     //Initialization of shared objects
-    _tileSet = _matchController.getTileSet();
-    _pile = _matchController.getPile();
-    _discardPile = _matchController.getDiscardPile();
+    _tileSet = _matchController->getTileSet();
+    _pile = _matchController->getPile();
+    _discardPile = _matchController->getDiscardPile();
     
     _input.init(); //Initialize the input controller
-    
-    // TODO: initialize audio controller and init with asset manager
-    // TODO: initialize animations for game scene 
     
     _quit = false;
     setActive(false);
@@ -139,18 +159,6 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::sha
     cugl::Vec2 worldOrigin = activeRegionNode->nodeToWorldCoords(Vec2::ZERO);
     _activeRegion = cugl::Rect(worldOrigin, activeRegionNode->getContentSize());
     
-    
-   // debugging poly rect
-    //auto poly = cugl::Poly2(cugl::Rect(0, 0, 10, 10));  // Centered geometry
-    //auto poly = cugl::Poly2(cugl::Rect(0, 0, 1024, 400));  // Centered geometry
-    //auto shape = scene2::PolygonNode::alloc();
-    //shape->setPolygon(poly);
-    //shape->setColor(cugl::Color4::RED);
-    //shape->setAnchor(cugl::Vec2::ANCHOR_BOTTOM_LEFT);  // Child uses its center as local origin
-    //shape->setPosition(0, 0);  // Place child at activeRegion's center
-    //_activeRegion->addChild(shape);
-    
-    
     return true;
 }
 
@@ -159,6 +167,7 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::sha
  */
 void GameScene::dispose() {
     if (_active) {
+        _matchController->dispose();
         removeAllChildren();
         _active = false;
     }
@@ -173,7 +182,7 @@ void GameScene::reset() {
     _gameLose = false;
     _gameWin = false;
     dispose();
-    init(_assets, _network, _matchController);
+    init(_assets, _network);
     return;
 }
 
@@ -186,12 +195,24 @@ void GameScene::update(float timestep) {
     //Reading input
     _input.readInput();
     _input.update();
-   
+    
+    _matchController->update(timestep);
+    
     // Fetching current mouse position
     cugl::Vec2 mousePos = cugl::Scene::screenToWorldCoords(cugl::Vec3(_input.getPosition()));
     
     // Constantly updating the position of tiles in hand
     _player->getHand().updateTilePositions(_matchScene->getSize());
+        
+    // Updating discardUINode if matchController has a disard update
+    if(_matchController->getChoice() == MatchController::Choice::DISCARDUIUPDATE) {
+        _discardUINode->incrementLabel(_discardPile->getTopTile());
+        _matchController->setChoice(MatchController::NONE);
+    }
+    
+    if(!isActive()) {
+        return;
+    }
     
     // Clicking/Tapping and Dragging logic
     if(_input.didRelease() && !_input.isDown()) {
@@ -210,7 +231,7 @@ void GameScene::update(float timestep) {
         bool releasedInPile = _input.didRelease() && _pileBox.contains(mousePos);
         // Drawing (from pile) logic
         if(_pileBox.contains(initialMousePos) && releasedInPile) {
-            _matchController.drawTile();
+            _matchController->drawTile();
 
         }
     }
@@ -235,6 +256,7 @@ void GameScene::render() {
     _pile->draw(_batch);
     _discardPile->draw(_batch);
     _player->draw(_batch);
+    _discardUINode->_root->render(_batch);
     
     _batch->setColor(Color4(255, 0, 0, 200));
     _batch->setTexture(nullptr);
@@ -257,8 +279,8 @@ void GameScene::setGameActive(bool value){
         _endTurnBtn->activate();
     } else {
         _pauseBtn->deactivate();
-        _tilesetUIBtn->deactivate();
         _endTurnBtn->deactivate();
+        _backBtn->deactivate();
     }
 }
 
@@ -305,67 +327,6 @@ void GameScene::clickedTile(cugl::Vec2 mousePos){
     }
 }
 
-/**
- * Method to get the index of this tile's associated label in the discard UI vector of labels
- *
- * @param tile  the tile whose label we need in _labels
- * @return an int representing the index of this tile's discard UI label
- */
-int GameScene::getLabelIndex(std::shared_ptr<TileSet::Tile> tile){
-    int rowIndex = 0;
-    switch (tile->getSuit()){
-        case TileSet::Tile::Suit::BAMBOO:
-            break;
-        case TileSet::Tile::Suit::CRAK:
-            rowIndex = 9;
-            break;
-        case TileSet::Tile::Suit::DOT:
-            rowIndex = 18;
-            break;
-        default:
-            break;
-    }
-    return rowIndex + (int)tile->getRank() - 1;
-}
-
-
-/**
- * Method to update discard UI label corresponding to tile passed as argument
- *
- * @param tile  the tile to increment in the discard UI
- * @return true if update was successful, and false otherwise
- */
-bool GameScene::incrementLabel(std::shared_ptr<TileSet::Tile> tile){
-    // Get index of label in _labels
-    int i = getLabelIndex(tile);
-    
-    // Check if we already discarded 4 (or more) of this tile
-    if (std::stoi(_labels[i]->getText()) > 3){
-        CULog("already discarded all copies of this tile");
-        return false;
-    }
-    
-    // Increment discard UI number and update label text
-    std::string text = std::to_string(std::stoi(_labels[i]->getText()) + 1);
-    _labels[i]->setText(text);
-    return true;
-}
-
-bool GameScene::decrementLabel(std::shared_ptr<TileSet::Tile> tile){
-    // Get index of label in _labels
-    int i = getLabelIndex(tile);
-    
-    // Check if we already discarded 4 (or more) of this tile
-    if (std::stoi(_labels[i]->getText()) < 1){
-        CULog("none of this tile discarded - cannot decrement");
-        return false;
-    }
-    
-    // Increment discard UI number and update label text
-    std::string text = std::to_string(std::stoi(_labels[i]->getText()) - 1);
-    _labels[i]->setText(text);
-    return true;
-}
 
 
 // void GameScene::pressTile(){
@@ -467,7 +428,9 @@ void GameScene::updateDrag(const cugl::Vec2& mousePos, bool mouseDown, bool mous
                 _matchController.playCelestial(_draggingTile);
             }
             else {
-                _matchController.discardTile(_draggingTile);
+                if(_matchController->discardTile(_draggingTile)) {
+                    _discardUINode->incrementLabel(_draggingTile);
+                };
             }
         }
         if (_dragInitiated && _draggingTile) {
@@ -509,31 +472,3 @@ void GameScene::updateDrag(const cugl::Vec2& mousePos, bool mouseDown, bool mous
             releaseTile();
         }
 }
-
-// the diff from the general discard is that this function relocates the discarded tile to the discard region.
-void GameScene::discardTile(std::shared_ptr<TileSet::Tile> tile) {
-    if(!(_network->getCurrentTurn() == _network->getLocalPid()) || (_player->getHand()._size >= _player->getHand()._tiles.size() && !_player->forcedDiscard)){
-        return;
-    }
-    if (!_player->discarding){
-        _player->discarding = true;
-        //Add to discard pile
-        tile->selected = false;
-        tile->inHostHand = false;
-        tile->inClientHand = false;
-        tile->discarded = true;
-        if (!(tile->_suit == TileSet::Tile::Suit::CELESTIAL)){
-            _discardPile->addTile(tile);
-            _discardPile->updateTilePositions();
-            
-            _tileSet->tilesToJson.push_back(tile);
-            _network->broadcastNewDiscard(_tileSet->toJson(_tileSet->tilesToJson));
-            _tileSet->clearTilesToJson();
-            discardedTiles.emplace_back(tile);
-        }
-        _player->getHand().discard(tile, _network->getHostStatus());
-        _player->discarding = false;
-    }
-    
-}
-

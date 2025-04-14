@@ -29,7 +29,7 @@ using namespace std;
  * @param network   the network controller for the game
  *  @returns true if init was successful, false otherwise
  */
-bool MatchController::init(const std::shared_ptr<cugl::AssetManager>& assets, std::shared_ptr<NetworkController> network) {
+bool MatchController::init(const std::shared_ptr<cugl::AssetManager>& assets, std::shared_ptr<NetworkController>& network) {
     _assets = assets;
     _network = network;
     
@@ -197,6 +197,13 @@ bool MatchController::discardTile(std::shared_ptr<TileSet::Tile> tile) {
  * @returns True if celestial was played, false if not
  */
 bool MatchController::playCelestial(std::shared_ptr<TileSet::Tile>& celestialTile) {
+    if(_network->getHostStatus() && hostPlayer->getHand()._tiles.size() <= hostPlayer->getHand()._size) {
+        return false;
+    }
+    else if(!_network->getHostStatus() && clientPlayer->getHand()._tiles.size() <= clientPlayer->getHand()._size) {
+        return false;
+    }
+    
     if(!hasPlayedCelestial) {
         // Checking if tile is valid celestial
         TileSet::Tile::Suit suit = celestialTile->_suit;
@@ -358,8 +365,12 @@ void MatchController::playRabbit(std::shared_ptr<TileSet::Tile>& celestialTile){
     // Clear tilesToJson vector
     _tileSet->clearTilesToJson();
     
+    // Broadcast new tile map state
+    _network->broadcastTileMap(_network->getLocalPid(), _tileSet->mapToJson(), "remake pile");
+  
     // Broadcast celestial tile
     _network->broadcastCelestialTile(_network->getLocalPid(), changedTileJson, celestialTileJson, "RABBIT");
+
     // Clear tilesToJson vector
     _tileSet->clearTilesToJson();
     
@@ -525,14 +536,15 @@ void MatchController::update(float timestep) {
         _discardPile->addTile(tile);
         _discardPile->updateTilePositions();
         
-        //Change state so gamescene can update discardUI scene
+        // Change state so gamescene can update discardUI scene
         _choice = DISCARDUIUPDATE;
+        CULog("%d", _choice == DISCARDUIUPDATE);
+
         _network->setStatus(NetworkController::INGAME);
     }
     
     //Celestial tile played update
     if(_network->getStatus() == NetworkController::PLAYEDCELESTIAL) {
-        CULog("here");
         //Retrieves celestial tile that was played
         std::shared_ptr<TileSet::Tile> celestialTile = _tileSet->processTileJson(_network->getCelestialTile())[0];
         std::string key = std::to_string(celestialTile->_id);
@@ -558,7 +570,9 @@ void MatchController::update(float timestep) {
  */
 void MatchController::dispose() {
     if(_active) {
-        _network->disconnect(); 
+        if(_network) {
+            _network->disconnect();
+        }
         _active = false;
     }
 }

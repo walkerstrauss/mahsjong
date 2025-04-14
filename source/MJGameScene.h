@@ -18,7 +18,7 @@
 #include "MJPlayer.h"
 #include "MJPile.h"
 #include "MJDiscardPile.h"
-#include "MJDiscardUIScene.h"
+#include "MJDiscardUINode.h"
 #include "MJNetworkController.h"
 #include "MJAudioController.h"
 #include "MJAnimationController.h"
@@ -44,7 +44,6 @@ public:
     enum Choice {
         NONE,
         PAUSE,
-        TILESET,
         SETS,
         DISCARDED,
         DRAW_DISCARD,
@@ -63,15 +62,15 @@ protected:
     /** Input controller for player input*/
     InputController _input;
     /** Match controller for processing game logic */
-    MatchController _matchController; 
+    std::shared_ptr<MatchController> _matchController;
     /** JSON with all of our constants*/
     std::shared_ptr<cugl::JsonValue> _constants;
     /** Scene2 object for match scene */
     std::shared_ptr<cugl::scene2::SceneNode> _matchScene;
     /** Scene2 object for the pause scene */
     std::shared_ptr<cugl::scene2::SceneNode> _pauseScene;
-    /** Reference to the discard UI scene for the game */
-    std::shared_ptr<DiscardUIScene> _discardUIScene;
+    /** Reference to the discard UI node for the game */
+    std::shared_ptr<DiscardUINode> _discardUINode;
     /** TileSet for the game */
     std::shared_ptr<TileSet> _tileSet;
     /** Reference to player */
@@ -205,7 +204,7 @@ public:
      *
      * @param assets    the asset manager for the game
      */
-    bool init(const std::shared_ptr<cugl::AssetManager>& assets, std::shared_ptr<NetworkController> network, MatchController& matchController);
+    bool init(const std::shared_ptr<cugl::AssetManager>& assets, std::shared_ptr<NetworkController> network);
     
     /**
      * Sets whether the player is host.
@@ -295,7 +294,7 @@ public:
       * @param tile  the tile to increment in the discard UI
       * @return true if update was successful, and false otherwise
       */
-     bool incrementLabel(std::shared_ptr<TileSet::Tile> tile);
+     void incrementLabel(std::shared_ptr<TileSet::Tile> tile);
      
      /**
       * Method to decrement discard UI label corresponding to tile passed as argument

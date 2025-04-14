@@ -45,8 +45,6 @@ bool DiscardUIScene::init(const std::shared_ptr<cugl::AssetManager>& assets){
 //    _tilesetui->setContentSize(getSize());
 //    _tilesetui->doLayout();
 //    _tilesetui->setPosition((Application::get()->getDisplayWidth() - _tilesetui->getWidth()) / 8, _tilesetui->getPosition().y);
-    
-    choice = Choice::NONE;
     _labels.resize(27);
     std::shared_ptr<scene2::SceneNode> node = _assets->get<scene2::SceneNode>("tilesetui.tilesetscene.board.number");
     
@@ -63,10 +61,12 @@ bool DiscardUIScene::init(const std::shared_ptr<cugl::AssetManager>& assets){
     backBtn = std::dynamic_pointer_cast<scene2::Button>(_assets->get<scene2::SceneNode>("tilesetui.tilesetscene.board.buttonClose"));
     backBtnKey = backBtn->addListener([this](const std::string& name, bool down) {
         if (!down) {
-            choice = Choice::BACK;
-//            AudioEngine::get()->play("back",_assets->get<Sound>("back"), false, 1.0f);
+            setActive(false);
         }
     });
+    
+    backBtn->activate();
+    
     addChild(_tilesetui);
     setActive(false);
     return true;

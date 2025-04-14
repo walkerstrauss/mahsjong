@@ -595,7 +595,7 @@
           "file": "textures/host1/host1-roomid-tile.png"
         },
         "host1-waiting-button": {
-          "file": "textures/host1/host1-waiting-button.png"
+          "file": "textures/host1/waitingButton.png"
         },
         "host1-waitingroom-background": {
           "file": "textures/host1/host1-waitingroom-background.png"
@@ -627,8 +627,8 @@
         "client1-confirm-button": {
           "file": "textures/client1/client1-confirm-button.png"
         },
-        "client1-cancel-button": {
-          "file": "textures/client1/client1-cancel-button.png"
+        "client1-clear-button": {
+          "file": "textures/client1/clearButton.png"
         },
         "client1-gameid-blank": {
           "file": "textures/client1/client1-gameid-blank.png"
