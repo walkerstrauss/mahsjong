@@ -46,8 +46,8 @@ public:
     std::vector<std::vector<std::shared_ptr<TileSet::Tile>>> _selectedSets;
     // Holds all tiles that are selected in our hand
     std::vector<std::shared_ptr<TileSet::Tile>> _selectedTiles;
-    // Keeps track of which grandma tile we are checking
-    int grandmaToAdd;
+    // Randomizer
+    cugl::Random rdHand;
     // Keeps track of current hand size
     int _size = 13;
         
@@ -216,6 +216,18 @@ public:
                 }
             }
         return -1;
+    }
+    
+    /** Update the texture of the tiles in hand. */
+    void updateHandTextures(const std::shared_ptr<cugl::AssetManager>& assets) {
+        for(auto& tile : _tiles) {
+            if (tile->debuffed) {
+                CULog("setting texture for debuffed tile");
+                tile->setTexture(assets->get<cugl::graphics::Texture>("facedown"));
+            } else {
+                tile->setTexture(assets->get<cugl::graphics::Texture>(tile->toString()));
+            }
+        }
     }
 };
 

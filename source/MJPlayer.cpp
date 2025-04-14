@@ -176,11 +176,6 @@ bool Hand::playSet(const std::shared_ptr<TileSet>& tileSet, bool isHost){
                 }
                 (*it)->discarded = false; // because it was played, not discarded.
                 
-                for(const auto& gTile : tileSet->grandmaTiles){
-                    if((*it)->toString() == (*gTile).toString()){
-                        grandmaToAdd += 1;
-                    }
-                }
                 playedSet.push_back(*it);
                 it = _tiles.erase(it);
             } else {
@@ -500,6 +495,7 @@ void Player::draw(const std::shared_ptr<cugl::graphics::SpriteBatch>& batch) {
         tile->tileRect = cugl::Rect(rectOrigin, textureSize * tile->_scale);
 
         batch->draw(tile->getTileTexture(), origin, trans);
+        
     }
 }
 
