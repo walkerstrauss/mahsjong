@@ -345,8 +345,7 @@ void MatchController::update(float timestep) {
         
         // Change state so gamescene can update discardUI scene
         _choice = DISCARDUIUPDATE;
-        CULog("%d", _choice == DISCARDUIUPDATE);
-
+        
         _network->setStatus(NetworkController::INGAME);
     }
     
