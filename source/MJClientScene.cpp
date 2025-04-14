@@ -93,9 +93,9 @@ bool ClientScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::s
     _clientCheckbox->setVisible(false);
 
     _startgame = std::dynamic_pointer_cast<scene2::Button>(_assets->get<scene2::SceneNode>("client.clientscene.buttons.confirm-button"));
-    _backout = std::dynamic_pointer_cast<scene2::Button>(_assets->get<scene2::SceneNode>("client.clientscene.buttons.cancel-button"));
+    _resetGameID = std::dynamic_pointer_cast<scene2::Button>(_assets->get<scene2::SceneNode>("client.clientscene.buttons.clear-button"));
     _backout2 = std::dynamic_pointer_cast<scene2::Button>(_assets->get<scene2::SceneNode>("client3.client3Scene.menu.button2Client"));
-    _resetGameID = std::dynamic_pointer_cast<scene2::Button>(_assets->get<scene2::SceneNode>("client.clientscene.cancel-box"));
+    _backout = std::dynamic_pointer_cast<scene2::Button>(_assets->get<scene2::SceneNode>("client.clientscene.cancel-box"));
     _prepareOrStart = std::dynamic_pointer_cast<scene2::PolygonNode>(_assets->get<scene2::SceneNode>("client3.client3Scene.menu.button1.up.start"));
 
     _backout->addListener([this](const std::string& name, bool down) {
@@ -116,7 +116,6 @@ bool ClientScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::s
         });
     _backout2->addListener([this](const std::string& name, bool down) {
         if (down) {
-            CULog("hold on....");
             _backClicked = true;
             _network->disconnect();
             _gameIDNew[0]->setTexture(_assets->get<cugl::graphics::Texture>("client1-gameid-tile19"));
