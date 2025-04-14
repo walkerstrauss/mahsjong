@@ -7,6 +7,10 @@
 
 #include "MJAnimatedNode.h"
 
+#include <cugl/graphics/CUTexture.h>
+#include <cugl/core/math/CUPoly2.h>
+#include <cugl/scene2/CUTexturedNode.h>
+
 using namespace cugl;
 using namespace cugl::scene2;
 using namespace cugl::graphics;
@@ -16,9 +20,30 @@ _rows(0), _cols(0), _frame(0), _limit(0), _timeSinceFrameAdvance(0.0f),_isPlayin
 
 AnimatedNode::~AnimatedNode() {}
 
-bool AnimatedNode::initWithSheet(const std::shared_ptr<Texture>& texture, int rows, int cols){
-    CUAssertLog(texture, "Texture must not be null");
-    _texture = texture;
+bool AnimatedNode::initWithSheet(const std::shared_ptr<Texture>& texture, int rows, int cols, int limit){
+    _rows = rows;
+    _cols = cols;
+    _limit = limit;
+    setTexture(texture);
+    
+    Size frameSize = texture->getSize();
+    frameSize.width /= cols;
+    frameSize.height /= rows;
+    
+    _bounds.origin.set(0,0);
+    _bounds.size = frameSize;
+    _isPlaying = true;
+    if (_currAnim.type == INTERRUPT){
+        _isInterrupting = true;
+    }
+    
+    Poly2 poly;
+    poly.set(_bounds);
+    setPolygon(poly);
+    
+    refresh();
+    
+    setContentSize(frameSize);
     return true;
 }
 
@@ -27,12 +52,19 @@ bool AnimatedNode::initWithData(const AssetManager* assets, const std::shared_pt
     auto json = value->get(nodeKey);
     CUAssertLog(json, "Node json value must be defined aka not null");
     
+    if (!value) {
+        return TexturedNode::init();
+    } else if (!TexturedNode::initWithData(assets, json->get("idle")->get("default"))) {
+        return false;
+    }
+    
     // Load all idle animations from the JSON
     auto idleAnims = json->get("idle");
+    CUAssertLog(idleAnims && !idleAnims->children().empty(), "Idle anims must be present");
     for (auto animJson : idleAnims->children()){
         Animation a;
         a.init(AnimationType::IDLE,
-               animJson->getString("key"),
+               animJson->getString("texture"),
                animJson->getInt("rows"),
                animJson->getInt("cols"),
                animJson->getInt("count"),
@@ -40,24 +72,13 @@ bool AnimatedNode::initWithData(const AssetManager* assets, const std::shared_pt
                -1);
         _idleAnims[a.key] = a;
     }
-    
-    // Get default idle animation from JSON – if present
-    if (idleAnims->has("default")){
-        setDefaultIdleKey(idleAnims->getString("default"));
-    } else if (!idleAnims->children().empty()){
-        auto first = idleAnims->children().front();
-        if (first->has("key")){
-            setDefaultIdleKey(first->getString("key"));
-        }
-    }
-    
     // Load all interrupting animations from the JSON
     auto interruptAnims = json->get("interrupt");
     for (auto animJson : interruptAnims->children()){
         int repeat = animJson->has("repeat") ? animJson->getInt("repeat") : 1;
         Animation a;
         a.init(AnimationType::INTERRUPT,
-               animJson->getString("key"),
+               animJson->getString("texture"),
                animJson->getInt("rows"),
                animJson->getInt("cols"),
                animJson->getInt("count"),
@@ -65,6 +86,19 @@ bool AnimatedNode::initWithData(const AssetManager* assets, const std::shared_pt
                repeat);
         _interruptAnims[a.key] = a;
     }
+    setVisible(false);
+    
+    _bounds.size = _texture->getSize();
+    _bounds.size.width  /= _cols;
+    _bounds.size.height /= _rows;
+    _bounds.origin.x = (_frame % _cols)*_bounds.size.width;
+    _bounds.origin.y = _texture->getSize().height - (1+_frame/_cols)*_bounds.size.height;
+
+    // And position it correctly
+    Vec2 coord = getPosition();
+    setPolygon(_bounds);
+    setPosition(coord);
+    refresh();
     return true;
 }
 
@@ -76,7 +110,7 @@ void AnimatedNode::play(const std::string& key, AnimationType type, const std::s
     _currAnim = it->second;
     _currKey = key;
     if (texture){
-        _texture = texture;
+        setTexture(texture);
     }
     _frame = _currAnim.startFrame;
     _currAnim.playedCount = 0;
@@ -89,6 +123,7 @@ void AnimatedNode::play(const std::string& key, AnimationType type, const std::s
     _cols = _currAnim.cols;
     _limit = _currAnim.endFrame + 1;
     _currAnim.done = false;
+    initWithSheet(_texture, _rows, _cols, _limit);
     setFrame(_frame);
     return;
 }
@@ -134,16 +169,28 @@ void AnimatedNode::update(float timestep){
 
 void AnimatedNode::setFrame(int frame){
     CUAssertLog(frame >= 0 && frame < _limit, "Invalid animation frame %d", frame);
+        _frame = frame;
+
+        // Calculate the new bounds for this frame in the texture atlas
+        float x = (frame % _cols) * _bounds.size.width;
+        float y = (frame / _cols) * _bounds.size.height;
+
+        // Debug: Print out the current bounds before updating
+        std::cout << "Old bounds: " << _bounds.origin.x << ", " << _bounds.origin.y << std::endl;
+
+        // Recalculate dx, dy based on the new bounds
+        float dx = x - _bounds.origin.x;
+        float dy = y - _bounds.origin.y;
     
-    _frame = frame;
+        _bounds.origin.set(x,y);
+        setContentSize(_bounds.size);
     
-    float x = (frame % _cols)*_bounds.size.width;
-    float y = (_rows - 1 - (frame / _cols)) * _bounds.size.height;
-    
-    float dx = x-_bounds.origin.x;
-    float dy = y-_bounds.origin.y;
-    
-    _bounds.origin.set(x,y);
-    shiftTexture(dx, dy);
+        // Debug: Print out the new bounds
+        std::cout << "New bounds: " << _bounds.origin.x << ", " << _bounds.origin.y << std::endl;
+
+        // Shift the texture based on the calculated offsets
+        std::cout << "Shifting texture by dx: " << dx << ", dy: " << dy << std::endl;
+        shiftTexture(dx, dy);
+        refresh();
 }
 

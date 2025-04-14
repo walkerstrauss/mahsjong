@@ -7,6 +7,7 @@
 
 #ifndef __MJ_ANIMATED_NODE_H__
 #define __MJ_ANIMATED_NODE_H__
+#include <cugl/cugl.h>
 #include <cugl/scene2/CUPolygonNode.h>
 #include <cugl/core/math/CURect.h>
 #include <cugl/graphics/CUTexture.h>
@@ -76,7 +77,7 @@ public:
      **/
     ~AnimatedNode();
     
-    bool initWithSheet(const std::shared_ptr<Texture>&, int rows, int cols);
+    bool initWithSheet(const std::shared_ptr<Texture>&, int rows, int cols, int limit);
     
     bool initWithData(const AssetManager* assets, const std::shared_ptr<JsonValue>& json, std::string nodeKey, float fps);
     

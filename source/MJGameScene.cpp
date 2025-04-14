@@ -13,6 +13,7 @@
 using namespace cugl;
 using namespace cugl::graphics;
 using namespace cugl::audio;
+using namespace cugl::scene2;
 using namespace std;
 
 #pragma mark -
@@ -155,6 +156,32 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::sha
     _actionAnimNode->setContentSize(Size(70, 70));
     _actionAnimNode->doLayout();
     _actionAnimNode->initWithData(_assets.get(), _assets->get<JsonValue>("animations"), "gameplay-action",12.0f);
+    
+    _pongSheet = SpriteNode::allocWithSheet(_assets->get<Texture>("pong-sheet"), 2, 3);
+    _pongSheet->setAnchor(Vec2::ANCHOR_CENTER);
+    _pongSheet->setPosition(screenSize.width/2,screenSize.height/2);
+    _pongSheet->setScale(0.2);
+    _pongSheet->setFrame(0);
+    _pongSheet->setVisible(false);
+    
+    _chowSheet = SpriteNode::allocWithSheet(_assets->get<Texture>("chow-sheet"), 3, 3, 7);
+    _chowSheet->setAnchor(Vec2::ANCHOR_CENTER);
+    _chowSheet->setPosition(screenSize.width/2,screenSize.height/2);
+    _chowSheet->setScale(0.2);
+    _chowSheet->setFrame(0);
+    _chowSheet->setVisible(false);
+    
+    _turnSheet = SpriteNode::allocWithSheet(_assets->get<Texture>("turn-sheet"), 2, 3, 3);
+    _turnSheet->setAnchor(Vec2::ANCHOR_CENTER);
+    _turnSheet->setPosition(1085,screenSize.height/2);
+    _turnSheet->setScale(0.12);
+    _turnSheet->setFrame(0);
+    _turnSheet->setVisible(false);
+    
+//    AnimationController::getInstance().addSpriteSheetAnimation(_pongSheet, 0, _pongSheet->getCount(), true);
+//    AnimationController::getInstance().addSpriteSheetAnimation(_chowSheet, 0, _chowSheet->getCount(), true);
+//    AnimationController::getInstance().addSpriteSheetAnimation(_turnSheet, 0, _turnSheet->getCount(), true);
+
     return true;
 }
 
@@ -218,14 +245,26 @@ void GameScene::update(float timestep) {
 
         }
     }
+
+    updateSpriteNodes(timestep);
     
     if (_input.getKeyPressed() == KeyCode::P && _input.getKeyDown()){
-        _actionAnimNode->setVisible(true);
-        _actionAnimNode->play("pong-sheet", AnimatedNode::AnimationType::INTERRUPT, _assets->get<Texture>("pong-sheet"));
+//        _actionAnimNode->setVisible(true);
+//        _actionAnimNode->play("pong-sheet", AnimatedNode::AnimationType::INTERRUPT, _assets->get<Texture>("pong-sheet"));
+        _pongSheet->setVisible(true);
+        
     } else if (_input.getKeyPressed() == KeyCode::C && _input.getKeyDown()){
-        _actionAnimNode->setVisible(true);
-        _actionAnimNode->play("chow-sheet", AnimatedNode::AnimationType::INTERRUPT, _assets->get<Texture>("chow-sheet"));
+//        _actionAnimNode->setVisible(true);
+//        _actionAnimNode->play("chow-sheet", AnimatedNode::AnimationType::INTERRUPT, _assets->get<Texture>("chow-sheet"));
+        _chowSheet->setVisible(true);
+    } else if (_input.getKeyPressed() == KeyCode::T && _input.getKeyDown()){
+        _turnSheet->setVisible(true);
+    } else if (_input.getKeyPressed() == KeyCode::SPACE && _input.getKeyDown()){
+        _pongSheet->setVisible(false);
+        _chowSheet->setVisible(false);
+        _turnSheet->setVisible(false);
     }
+    _actionAnimNode->update(timestep);
     AnimationController::getInstance().update(timestep);
 }
 
@@ -247,6 +286,10 @@ void GameScene::render() {
     _pile->draw(_batch);
     _discardPile->draw(_batch);
     _player->draw(_batch);
+//    if (_actionAnimNode->isVisible()) _batch->draw(_actionAnimNode->getTexture(), Rect(600,400,670,470));
+    if (_turnSheet->isVisible()) _turnSheet->render(_batch);
+    if (_pongSheet->isVisible()) _pongSheet->render(_batch);
+    if (_chowSheet->isVisible()) _chowSheet->render(_batch);
     
     _batch->setColor(Color4(255, 0, 0, 200));
     _batch->setTexture(nullptr);
@@ -280,9 +323,7 @@ void GameScene::applyCelestial(TileSet::Tile::Rank type) {
         _pile->reshufflePile();
         _network->broadcastDeckMap(_tileSet->mapToJson());
         _network->broadcastPileLayer();
-
     }
-    
 }
 
 void GameScene::clickedTile(cugl::Vec2 mousePos){
@@ -389,58 +430,6 @@ bool GameScene::decrementLabel(std::shared_ptr<TileSet::Tile> tile){
     _labels[i]->setText(text);
     return true;
 }
-
-
-// void GameScene::pressTile(){
-//     cugl::Vec2 screenPos = _input.getPosition();
-//     cugl::Vec2 mousePos = cugl::Scene::screenToWorldCoords(cugl::Vec3(screenPos));
-    
-//     // if the player tapped on a tile in the hand.
-//     CULog("Checking hand size: %zu", _player->getHand()._tiles.size());
-//     for (auto & tile : _player->getHand()._tiles) {
-//         if (tile->tileRect.contains(mousePos)) {
-//             // select this tile
-//             CULog("selected a tile");
-//             tile->selected = !tile->selected;
-//             _draggingTile = tile;
-//             _dragOffset = _draggingTile->pos - mousePos;
-//             _draggingTile->pressed = true;
-            
-//             auto& selected = _player->getHand()._selectedTiles;
-//             auto it = std::find(selected.begin(), selected.end(), tile);
-//             if (tile->selected) {
-//                 if (it == selected.end() && tile != nullptr) {
-//                     selected.push_back(tile);
-//                     // TODO: Play select sound effect
-//                     AnimationController::getInstance().animateTileSelect(tile, 30);
-//                 }
-//             } else {
-//                 if (it != selected.end()){
-//                     selected.erase(it);
-//                     // TODO: Play deselect sound effect
-//                     AnimationController::getInstance().animateTileDeselect(tile, 15);
-//                 }
-//             }
-//         }
-//     }
-    
-//     // if the player pressed on the pile
-//     if (_pileBox.contains(mousePos)) {
-//         if(_player->getHand()._tiles.size() > 14){
-//             CULog("Hand too big");
-//             return;
-//         }
-//         _player->getHand().drawFromPile(_pile, 1, _network->getHostStatus());
-//         _network->broadcastTileDrawn(_tileSet->toJson(_tileSet->tilesToJson));
-//         _tileSet->clearTilesToJson();
-//         _network->broadcastDeck(_tileSet->toJson(_tileSet->deck));
-//         if (_player->getHand().isWinningHand()){
-//             _gameWin = true;
-//         }
-//         _player->canDraw = false;
-//     }
-// }
-
 
 void GameScene::dragTile(){
     if (!_draggingTile) return;

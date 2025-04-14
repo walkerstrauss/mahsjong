@@ -23,6 +23,8 @@ using namespace cugl::scene2;
 
 class AnimationController {
 private:
+    float _frameTimer = 0.0f;
+    float _frameDelay = 0.2f;
     static AnimationController* _instance;
     /** Struct that stores information about an sprite node being animated */
     struct SpriteSheetAnimation {
@@ -196,6 +198,18 @@ public:
         addSelectAnim(tile, tile->pos, tile->pos - Vec2(0, 10.0f), tile->_scale, tile->_scale, f);
     }
     
+    void updateSpriteNode(float timestep, std::shared_ptr<SpriteNode>& sheetNode){
+        _frameTimer += timestep;  // Accumulate time
+            if (_frameTimer >= _frameDelay) {
+                _frameTimer = 0; // Reset timer
+                if (sheetNode->getFrame() >= sheetNode->getCount() - 1){
+                    sheetNode->setFrame(0);
+                } else {
+                    sheetNode->setFrame(sheetNode->getFrame() + 1);
+                }
+            }
+        return;
+    }
 };
 
 #endif
