@@ -260,8 +260,17 @@ void MatchController::playRooster(std::shared_ptr<TileSet::Tile>& celestialTile)
     // Clear tilesToJson vector
     _tileSet->clearTilesToJson();
     
+    std::vector<std::shared_ptr<TileSet::Tile>> flatPile;
+    for (auto& row : _pile->_pile) {
+        for (auto& tile : row) {
+            if (tile != nullptr) {
+                flatPile.push_back(tile);
+            }
+        }
+    }
+    
     // Broadcast celestial tile
-    _network->broadcastCelestialTile(_network->getLocalPid(), _tileSet->mapToJson(), celestialTileJson, "ROOSTER");
+    _network->broadcastCelestialTile(_network->getLocalPid(), _tileSet->toJson(flatPile), celestialTileJson, "ROOSTER");
     // Clear tilesToJson vector
     _tileSet->clearTilesToJson();
     
@@ -285,16 +294,19 @@ void MatchController::playOx(std::shared_ptr<TileSet::Tile>& celestialTile){
     
     // Makes sure that effect is applied on tiles that aren't already debuffed or discarded
     int debuffed = 0;
+    std::shared_ptr<cugl::JsonValue> changedTilesJson;
     for (auto& tile : opponent->getHand()._tiles) {
         if (!tile->debuffed && !tile->discarded) {
             tile->debuffed = true;
             _tileSet->tilesToJson.push_back(tile);
-            // Clear tilesToJson vector
-            _tileSet->clearTilesToJson();
             debuffed++;
         }
         if (debuffed == 2) break;
     }
+    
+    changedTilesJson = _tileSet->toJson(_tileSet->tilesToJson);
+    // Clear tilesToJson vector
+    _tileSet->clearTilesToJson();
     
     // Transforming celestial tile to JSON
     _tileSet->tilesToJson.push_back(celestialTile);
@@ -303,7 +315,7 @@ void MatchController::playOx(std::shared_ptr<TileSet::Tile>& celestialTile){
     _tileSet->clearTilesToJson();
     
     // Broadcast celestial tile
-    _network->broadcastCelestialTile(_network->getLocalPid(), _tileSet->mapToJson(), celestialTileJson, "OX");
+    _network->broadcastCelestialTile(_network->getLocalPid(), changedTilesJson, celestialTileJson, "OX");
     // Clear tilesToJson vector
     _tileSet->clearTilesToJson();
     
@@ -325,7 +337,7 @@ void MatchController::playRabbit(std::shared_ptr<TileSet::Tile>& celestialTile){
     opponent->getHand().rdHand.init();
     opponent->getHand().rdHand.shuffle(opponent->getHand()._tiles);
     
-
+    std::shared_ptr<cugl::JsonValue> changedTileJson;
     for (auto& tile : opponent->getHand()._tiles) {
         // Make sure we only try to change rank of non-celestial and non-discarded tiles
         if (!tile->discarded && tile->_suit != TileSet::Tile::Suit::CELESTIAL && !tile->debuffed) {
@@ -339,6 +351,7 @@ void MatchController::playRabbit(std::shared_ptr<TileSet::Tile>& celestialTile){
             tile->_rank = static_cast<TileSet::Tile::Rank>(newRank);
             CULog("new: %s", tile->toString().c_str());
             _tileSet->tilesToJson.push_back(tile);
+            changedTileJson = _tileSet->toJson(_tileSet->tilesToJson);
             // Clear tilesToJson vector
             _tileSet->clearTilesToJson();
             break;
@@ -356,7 +369,7 @@ void MatchController::playRabbit(std::shared_ptr<TileSet::Tile>& celestialTile){
     _network->broadcastTileMap(_network->getLocalPid(), _tileSet->mapToJson(), "remake pile");
   
     // Broadcast celestial tile
-    _network->broadcastCelestialTile(_network->getLocalPid(), celestialTileJson, "RABBIT");
+    _network->broadcastCelestialTile(_network->getLocalPid(), changedTileJson, celestialTileJson, "RABBIT");
 
     // Clear tilesToJson vector
     _tileSet->clearTilesToJson();
@@ -374,7 +387,7 @@ void MatchController::playSnake(std::shared_ptr<TileSet::Tile>& celestialTile){
     opponent->getHand().rdHand.init();
     opponent->getHand().rdHand.shuffle(opponent->getHand()._tiles);
     
-
+    std::shared_ptr<cugl::JsonValue> changedTileJson;
     for (auto& tile : opponent->getHand()._tiles) {
         // Make sure we only try to change rank of non-celestial and non-discarded tiles
         if (!tile->discarded && tile->_suit != TileSet::Tile::Suit::CELESTIAL && !tile->debuffed) {
@@ -388,6 +401,7 @@ void MatchController::playSnake(std::shared_ptr<TileSet::Tile>& celestialTile){
             tile->_suit = static_cast<TileSet::Tile::Suit>(newSuit);
             CULog("new: %s", tile->toString().c_str());
             _tileSet->tilesToJson.push_back(tile);
+            changedTileJson = _tileSet->toJson(_tileSet->tilesToJson);
             // Clear tilesToJson vector
             _tileSet->clearTilesToJson();
             break;
@@ -402,7 +416,7 @@ void MatchController::playSnake(std::shared_ptr<TileSet::Tile>& celestialTile){
     _tileSet->clearTilesToJson();
     
     // Broadcast celestial tile
-    _network->broadcastCelestialTile(_network->getLocalPid(), _tileSet->mapToJson(), celestialTileJson, "SNAKE");
+    _network->broadcastCelestialTile(_network->getLocalPid(), changedTileJson, celestialTileJson, "SNAKE");
     // Clear tilesToJson vector
     _tileSet->clearTilesToJson();
     

@@ -440,17 +440,20 @@ void NetworkController::broadcastDiscard(int isHost, const std::shared_ptr<cugl:
  * Broadcasts the JSON representation of the celestial tile that has been played
  *
  * @param isHost        if the current network is the host network or not
- * @param tileMapJson       the JSON representation of the current tileMap
+ * @param tileMapJson       the JSON representation of the changed tiles
  * @param celestialTile     The JSON representation of the celestial tile
  * @param celestialType     The type of celestial tile that was played
  */
-void NetworkController::broadcastCelestialTile(int isHost, const std::shared_ptr<cugl::JsonValue>& celestialTile, std::string celestialType) {
+void NetworkController::broadcastCelestialTile(int isHost, const std::shared_ptr<cugl::JsonValue>& changedTilesJson, const std::shared_ptr<cugl::JsonValue>& celestialTile, std::string celestialType) {
+
     _serializer->reset();
     
     _serializer->writeString("celestial tile played");
     _serializer->writeUint32(isHost);
     _serializer->writeString(celestialType);
-  
+    // Writing tile map for tileset update
+    _serializer->writeJson(changedTilesJson);
+
     //Writing tile to remove from opposing player's hand
     _serializer->writeJson(celestialTile);
 
