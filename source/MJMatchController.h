@@ -118,19 +118,41 @@ public:
      * Calls the appropriate function according to the celestial tile type. It then broadcasts
      * the tile that was played.
      *
-     * @param isHost       Whether or not current player is host
      * @param celestialTile     The celestial tile that was played
      * @returns True if celestial was played, false if not
      */
     bool playCelestial(std::shared_ptr<TileSet::Tile>& celestialTile);
     
     /**
-     * Executes CHAOS celestial tile effect in current game scene. It then broadcasts the change
+     * Executes the Rooster celestial tile effect (reshuffle pile) in current game scene. It then broadcasts the change
      * to opposing player.
      *
-     * @param isHost       Whether or not current player is host
      */
-    void playChaos(std::shared_ptr<TileSet::Tile>& celestialTile);
+    void playRooster(std::shared_ptr<TileSet::Tile>& celestialTile);
+    
+    /**
+     * Executes the Ox celestial tile effect (random debuff 2) in current game scene. It then broadcasts the change
+     * to opposing player.
+     *
+     */
+    void playOx(std::shared_ptr<TileSet::Tile>& celestialTile);
+    
+    /**
+     * Executes the Rabbit celestial tile effect  (change rank of random tile) in current game scene. It then broadcasts the change
+     * to opposing player.
+     *
+     */
+    void playRabbit(std::shared_ptr<TileSet::Tile>& celestialTile);
+    
+    /**
+     * Executes the Snake celestial tile effect  (change suit of random tile) in current game scene. It then broadcasts the change
+     * to opposing player.
+     *
+     */
+    void playSnake(std::shared_ptr<TileSet::Tile>& celestialTile);
+    
+    /** Applies the effect of the celestial tile played by opponent by using the celestial state of the network. */
+    void celestialEffect();
     
     /**
      * Call back for ending the turn for the current player. Must have drawn from the pile and dicsarded/played
