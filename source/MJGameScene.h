@@ -83,10 +83,8 @@ protected:
     std::shared_ptr<cugl::graphics::Texture> _gmaLabelTexture;
     /** Text layout */
     std::shared_ptr<cugl::graphics::TextLayout> _text;
+
     /** Temporary discard area b/c no asset created for it yet */
-
-    //cugl::Rect discardArea;
-
     cugl::Rect discardArea;
     /** Reference to the audio controller */
 //    std::shared_ptr<AudioController> _audio;
@@ -163,6 +161,9 @@ protected:
     /** The rectangle representing the pile's position used for selection handling */
     cugl::Rect _pileBox;
     
+    /** The rectangle representing the discrad pile's position*/
+    cugl::Rect _discardBox;
+
     /** The rectangle representing the active play/discard area for all tiles*/
     cugl::Rect _activeRegion;
 
@@ -173,6 +174,11 @@ protected:
 
     cugl::Vec2 _originalTilePos = cugl::Vec2::ZERO;
     bool shouldReturn = true;
+    
+    bool _waitingForTileSelection = false;
+    std::shared_ptr<TileSet::Tile> discardedTileSaved;
+    bool _selectedThree = false;
+
 
 public:
 #pragma mark -
@@ -316,6 +322,9 @@ public:
     void updateDrag(const cugl::Vec2& mousePos, bool mouseDown, bool mouseReleased);
     
     void discardTile(std::shared_ptr<TileSet::Tile> tile);
+    
+    
+    void revertDiscardedTile();
     
 };
 

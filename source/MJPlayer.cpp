@@ -156,6 +156,7 @@ bool Hand::makeSet(){
  *
  * @return true if a set was played sucessfully and false otherwise.
  */
+
 bool Hand::playSet(const std::shared_ptr<TileSet>& tileSet, bool isHost){
     if (_selectedSets.empty()) {
            return false;
@@ -179,26 +180,34 @@ bool Hand::playSet(const std::shared_ptr<TileSet>& tileSet, bool isHost){
                 playedSet.push_back(*it);
                 it = _tiles.erase(it);
             } else {
-                ++it;
+                (*it)->inClientHand = false;
             }
+            // Since the tile is played (and not being discarded), update its status.
+            (*it)->discarded = false;
+            
+            // Add tile to the played set
+            playedSet.push_back(*it);
+            // Remove the tile from the hand
+            it = _tiles.erase(it);
+        } else {
+            ++it;
         }
-        
-        _playedSets.push_back(playedSet); // Move tiles to the playedSet
     }
     
-    // Clear the selected tiles and unselect them.
-    for (auto& set : _selectedSets) {
-            for (auto& tile : set) {
-                tile->selected = false;
-                tile->selectedInSet = false;
-            }
-        }
-    _selectedSets.clear();
-//    ScoreManager scoreManager(_playedSets);
-//    _score = scoreManager.calculateScore(); // count the score for the turn
+    _playedSets.push_back(playedSet);
     
-    _player->_totalScore+=_score; // update level score
-    _playedSets.clear();
+    // Unselect all tiles now that they've been played.
+    for (auto& tile : _selectedTiles) {
+        tile->selected = false;
+        tile->selectedInSet = false;
+    }
+    _selectedTiles.clear();
+    
+    _size-=3;
+    
+    
+    //_playedSets.clear();
+    
     _player->endTurn();
     return true;
 }
@@ -226,9 +235,9 @@ bool Hand::isSetValid(const std::vector<std::shared_ptr<TileSet::Tile>>& selecte
         }
     }    
     // NOT a straight and NOT of the same kind.
-//    if(!isStraight(selectedTiles) && !isOfaKind(selectedTiles)){
-//        return false;
-//    }
+    if(!isStraight(selectedTiles) && !isOfaKind(selectedTiles)){
+        return false;
+    }
     
     return true;
 }
@@ -338,6 +347,75 @@ bool Hand::isSetValid(const std::vector<std::shared_ptr<TileSet::Tile>>& selecte
 //    }
 //    return true;
 //}
+
+
+///**
+// * Confirms if a set if of a kind.
+// * Cann't take in a celestial tile.
+// * @param selectedTiles
+// */
+bool Hand::isOfaKind(const std::vector<std::shared_ptr<TileSet::Tile>>& selectedTiles){
+    std::shared_ptr<TileSet::Tile> tileA = selectedTiles[0];
+
+    // iterate over all tiles besides the first tile.
+    for(int j=1; j<selectedTiles.size(); ++j){
+
+        std::shared_ptr<TileSet::Tile> tileB = selectedTiles[j];
+
+        // Not the same SUIT.
+        if(tileA->getSuit() != tileB->getSuit()){
+            return false;
+        }
+        // Not the same RANK.
+        if(tileA->getRank() != tileB->getRank()){
+            return false;
+        }
+    }
+    
+    return true;
+}
+
+
+/**
+ * Confirms if a set isStraight.
+ *
+ * @param selectedTiles     the tiles to be checked for a straight
+ */
+bool Hand::isStraight(const std::vector<std::shared_ptr<TileSet::Tile>>& selectedTiles){
+
+    std::vector<std::shared_ptr<TileSet::Tile>> sortedTiles = getSortedTiles(selectedTiles);
+
+    // the base tile.
+    std::shared_ptr<TileSet::Tile> tileA = sortedTiles[0];
+
+    // check if the sorted selectedTiles are of the same SUIT.
+    for(int i = 1; i<sortedTiles.size(); ++i){
+
+        std::shared_ptr<TileSet::Tile> tileB = sortedTiles[i];
+
+        // Not the same SUIT.
+        if(tileA->getSuit() != tileB->getSuit()){
+            return false;
+        }
+    }
+
+    // check if the selectedTiles are consequitive.
+        for(int i = 0; i<sortedTiles.size() - 1; ++i){
+            std::shared_ptr<TileSet::Tile> tileA = sortedTiles[i];
+            std::shared_ptr<TileSet::Tile> tileC = sortedTiles[i+1];
+
+            int gap = static_cast<int>(tileC->getRank()) - static_cast<int>(tileA->getRank());
+            if (gap>1) {
+                return false;
+            }
+        }
+
+    return true;
+}
+
+
+
+
 
 bool Hand::isWinningHand() {
     
