@@ -23,6 +23,7 @@
 #include "MJAudioController.h"
 #include "MJAnimationController.h"
 #include "MJMatchController.h"
+#include "MJAnimatedNode.h"
 
 
 using namespace cugl;
@@ -79,18 +80,11 @@ protected:
     std::shared_ptr<Pile> _pile;
     /** Reference to the discard pile */
     std::shared_ptr<DiscardPile> _discardPile;
-    /** Reference to texture for gma text*/
-    std::shared_ptr<cugl::graphics::Texture> _gmaLabelTexture;
-    /** Text layout */
-    std::shared_ptr<cugl::graphics::TextLayout> _text;
-
     /** Temporary discard area b/c no asset created for it yet */
     cugl::Rect discardArea;
-    /** Reference to the audio controller */
-//    std::shared_ptr<AudioController> _audio;
-    
-    Hand* _hand; // pointer to the hand.
-    
+    /** Pointer to the hand */
+    Hand* _hand;
+   
     std::shared_ptr<cugl::graphics::TextLayout> _win;
     std::shared_ptr<cugl::graphics::TextLayout> _lose;
     bool _gameWin;
@@ -121,7 +115,6 @@ protected:
     
     /** Button for playing a set */
     std::shared_ptr<cugl::scene2::Button> _playSetBtn;
-    
     /** Key for discard button listener */
     Uint32 _discardBtnKey;
     /** Key for tileset UI button listener */
@@ -138,22 +131,14 @@ protected:
     std::shared_ptr<scene2::Button> _backBtn;
     /** Key for the listener for the back button for discard UI */
     Uint32 _backBtnKey;
-    /** Holds reference to chow sprite sheet */
-    std::shared_ptr<cugl::graphics::SpriteSheet> _chowSheet;
-    /** Holds reference to kong sprite sheet */
-    std::shared_ptr<cugl::graphics::SpriteSheet> _kongSheet;
-    /** Holds reference to pong sprite sheet */
-    std::shared_ptr<cugl::graphics::SpriteSheet> _pongSheet;
-    /** Holds reference to win sprite sheet */
-    std::shared_ptr<cugl::graphics::SpriteSheet> _winSheet;
-    /** Holds reference to back pick sprite sheet */
-    std::shared_ptr<cugl::graphics::SpriteSheet> _backPickSheet;
-    /** Holds reference to empty discard sprite sheet */
-    std::shared_ptr<cugl::graphics::SpriteSheet> _emptyDiscardSheet;
-    /** Holds reference to empty pick sprite sheet */
-    std::shared_ptr<cugl::graphics::SpriteSheet> _emptyPickSheet;
-    /** Holds reference to empty pick flip sprite sheet */
-    std::shared_ptr<cugl::graphics::SpriteSheet> _emptyPickFlipSheet;
+    /** Holds reference to chow sprite node */
+    std::shared_ptr<cugl::scene2::SpriteNode> _chowSheet;
+    /** Holds reference to pong sprite node */
+    std::shared_ptr<cugl::scene2::SpriteNode> _pongSheet;
+    /** Holds reference to turn sprite node */
+    std::shared_ptr<cugl::scene2::SpriteNode> _turnSheet;
+    float _frameTimer = 0.0f;
+    float _frameDelay = 0.2f;
     
     /** The tile currently being dragged */
     cugl::Vec2 _dragOffset;
@@ -174,11 +159,12 @@ protected:
 
     cugl::Vec2 _originalTilePos = cugl::Vec2::ZERO;
     bool shouldReturn = true;
-    
+ 
+    std::shared_ptr<AnimatedNode> _actionAnimNode;
+
     bool _waitingForTileSelection = false;
     std::shared_ptr<TileSet::Tile> discardedTileSaved;
     bool _selectedThree = false;
-
 
 public:
 #pragma mark -
@@ -323,9 +309,33 @@ public:
     
     void discardTile(std::shared_ptr<TileSet::Tile> tile);
     
+
+    void playSetAnim(const std::vector<std::shared_ptr<TileSet::Tile>>& tiles);
+    
+    bool isPong(const std::vector<std::shared_ptr<TileSet::Tile>>& tiles);
+    
+    bool isChow(const std::vector<std::shared_ptr<TileSet::Tile>>& tiles);
+    
+    void updateSpriteNode(std::shared_ptr<SpriteNode>& sheetNode){
+        if (sheetNode->getFrame() >= sheetNode->getCount() - 1){
+            sheetNode->setFrame(0);
+        } else {
+            sheetNode->setFrame(sheetNode->getFrame() + 1);
+        }
+        return;
+    }
+    
+    void updateSpriteNodes(float timestep){
+        _frameTimer += timestep;  // Accumulate time
+        if (_frameTimer >= _frameDelay) {
+            _frameTimer = 0; // Reset timer
+            updateSpriteNode(_pongSheet);
+            updateSpriteNode(_chowSheet);
+            updateSpriteNode(_turnSheet);
+        }
+    }
     
     void revertDiscardedTile();
-    
 };
 
 #endif /* __MJ_GAME_SCENE_H__ */

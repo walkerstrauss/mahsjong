@@ -381,7 +381,7 @@
         "infoIcon":{
             "file": "textures/gameplay/infoIcon.png"
         },
-        "win":{
+        "win-sheet":{
             "file": "textures/win.png"
         },
         "1":{
@@ -725,6 +725,18 @@
         },
         "client1-rabbit": {
           "file": "textures/client1/client1-rabbit.png"
+        },
+        "lose-sheet":{
+            "file": "textures/lose.png"
+        },
+        "pong-sheet":{
+            "file": "textures/pong.png"
+        },
+        "chow-sheet":{
+            "file": "textures/chow.png"
+        },
+        "turn-sheet":{
+            "file": "textures/turn_indicator.png"
         }
     },
     "fonts": {
@@ -1040,7 +1052,8 @@
   },
   "jsons": {
     "server": "json/server.json",
-    "constants" : "json/constants.json"
+    "constants" : "json/constants.json",
+    "animations": "json/animations.json"
   },
   "sounds":{
       

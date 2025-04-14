@@ -285,6 +285,66 @@ public:
             return toStringRank() + " of " + toStringSuit();
         }
         
+        static Tile::Rank toRankInt(int rank){
+            if (rank == 1){
+                return Rank::ONE;
+            } else if (rank == 2){
+                return Rank::TWO;
+            } else if (rank == 3){
+                return Rank::THREE;
+            } else if (rank == 4){
+                return Rank::FOUR;
+            } else if (rank == 5){
+                return Rank::FIVE;
+            } else if (rank == 6){
+                return Rank::SIX;
+            } else if (rank == 7){
+                return Rank::SEVEN;
+            } else if (rank == 8){
+                return Rank::EIGHT;
+            } else if (rank == 9){
+                return Rank::NINE;
+            } else {
+                CULog("Invalid rank (should be int 1-9) – setting to 1 (default)");
+                return Rank::ONE;
+            }
+        }
+        
+        static int toIntRank(Rank rank){
+            int r = 1;
+            switch (rank){
+                case Rank::ONE:
+                    r = 1;
+                    break;
+                case Rank::TWO:
+                    r = 2;
+                    break;
+                case Rank::THREE:
+                    r = 3;
+                    break;
+                case Rank::FOUR:
+                    r = 4;
+                    break;
+                case Rank::FIVE:
+                    r = 5;
+                    break;
+                case Rank::SIX:
+                    r = 6;
+                    break;
+                case Rank::SEVEN:
+                    r = 7;
+                    break;
+                case Rank::EIGHT:
+                    r = 8;
+                    break;
+                case Rank::NINE:
+                    r = 9;
+                    break;
+                default:
+                    break;
+            }
+            return r;
+        }
         /**
          * Sets the texture of this tile
          *

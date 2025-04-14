@@ -23,6 +23,8 @@ using namespace cugl::scene2;
 
 class AnimationController {
 private:
+    float _frameTimer = 0.0f;
+    float _frameDelay = 0.2f;
     static AnimationController* _instance;
     /** Struct that stores information about an sprite node being animated */
     struct SpriteSheetAnimation {
@@ -65,8 +67,8 @@ private:
         }
     };
     
-    /** Struct representation tile select animation */
-    struct SelectAnim {
+    /** Struct representation tile movement and scaling animation */
+    struct TileAnim {
         std::shared_ptr<TileSet::Tile> tile;
         Vec2 startPos, endPos;
         float startScale, endScale;
@@ -77,7 +79,7 @@ private:
         /** Whether we are animating growing in selection */
         bool growing;
         
-        SelectAnim(std::shared_ptr<TileSet::Tile> tile, Vec2 startPos, Vec2 endPos, float startScale, float endScale, int fps, bool isGrowing = true) : tile(tile), startPos(startPos), endPos(endPos), startScale(startScale), endScale(endScale), origScale(startScale), currFrame(0), done(false), growing(isGrowing) {
+        TileAnim(std::shared_ptr<TileSet::Tile> tile, Vec2 startPos, Vec2 endPos, float startScale, float endScale, int fps, bool isGrowing = true) : tile(tile), startPos(startPos), endPos(endPos), startScale(startScale), endScale(endScale), origScale(startScale), currFrame(0), done(false), growing(isGrowing) {
             frames = fps;
         }
         
@@ -101,7 +103,7 @@ private:
     /** Vector holding sprites for controller animating */
     std::vector<SpriteSheetAnimation> _spriteSheetAnimations;
     /** Vector holding tile animations */
-    std::vector<SelectAnim> _SelectAnims;
+    std::vector<TileAnim> _TileAnims;
     /** Whether the animation controller is currently paused */
     bool _paused;
     
@@ -138,12 +140,12 @@ public:
     /**
      * Method to add a tile animation
      */
-    void addSelectAnim(const std::shared_ptr<TileSet::Tile>& tile, Vec2 startPos, Vec2 endPos, float startScale, float endScale, int fps, bool isGrowing = true){
-        _SelectAnims.emplace_back(tile, startPos, endPos, startScale, endScale, fps, isGrowing);
+    void addTileAnim(const std::shared_ptr<TileSet::Tile>& tile, Vec2 startPos, Vec2 endPos, float startScale, float endScale, int fps, bool isGrowing = true){
+        _TileAnims.emplace_back(tile, startPos, endPos, startScale, endScale, fps, isGrowing);
     }
     
     bool isTileAnimated(const std::shared_ptr<TileSet::Tile>& tile){
-        for (const auto& anim : _SelectAnims){
+        for (const auto& anim : _TileAnims){
             if (anim.tile == tile){
                 return true;
             }
@@ -189,13 +191,25 @@ public:
     }
     
     void animateTileSelect(std::shared_ptr<TileSet::Tile> tile, float f){
-        addSelectAnim(tile, tile->pos, tile->pos + Vec2(0, 5.0f), tile->_scale, tile->_scale * 1.4f, f/2);
+        addTileAnim(tile, tile->pos, tile->pos + Vec2(0, 5.0f), tile->_scale, tile->_scale * 1.4f, f/2);
     }
     
     void animateTileDeselect(std::shared_ptr<TileSet::Tile> tile, float f){
-        addSelectAnim(tile, tile->pos, tile->pos - Vec2(0, 10.0f), tile->_scale, tile->_scale, f);
+        addTileAnim(tile, tile->pos, tile->pos - Vec2(0, 10.0f), tile->_scale, tile->_scale, f);
     }
     
+    void updateSpriteNode(float timestep, std::shared_ptr<SpriteNode>& sheetNode){
+        _frameTimer += timestep;  // Accumulate time
+            if (_frameTimer >= _frameDelay) {
+                _frameTimer = 0; // Reset timer
+                if (sheetNode->getFrame() >= sheetNode->getCount() - 1){
+                    sheetNode->setFrame(0);
+                } else {
+                    sheetNode->setFrame(sheetNode->getFrame() + 1);
+                }
+            }
+        return;
+    }
 };
 
 #endif
