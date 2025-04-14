@@ -35,15 +35,15 @@ void AnimationController::update(float dt) {
         }
     }
     
-    for (auto& anim: _SelectAnims) {
+    for (auto& anim: _TileAnims) {
         if (!anim.done){
             anim.update(dt);
         } else {
             if (anim.growing) {
-                _SelectAnims.erase(std::remove_if(_SelectAnims.begin(), _SelectAnims.end(), [&anim](const SelectAnim& a) {return a.tile == anim.tile;}), _SelectAnims.end());
-                addSelectAnim(anim.tile, anim.tile->pos, anim.tile->pos + Vec2(0, 5.0f), anim.tile->_scale, anim.origScale, anim.frames, false);
+                _TileAnims.erase(std::remove_if(_TileAnims.begin(), _TileAnims.end(), [&anim](const TileAnim& a) {return a.tile == anim.tile;}), _TileAnims.end());
+                addTileAnim(anim.tile, anim.tile->pos, anim.tile->pos + Vec2(0, 5.0f), anim.tile->_scale, anim.origScale, anim.frames, false);
             } else {
-                _SelectAnims.erase(std::remove_if(_SelectAnims.begin(), _SelectAnims.end(), [&anim](const SelectAnim& a) {return a.tile == anim.tile;}), _SelectAnims.end());
+                _TileAnims.erase(std::remove_if(_TileAnims.begin(), _TileAnims.end(), [&anim](const TileAnim& a) {return a.tile == anim.tile;}), _TileAnims.end());
             }
         }
     }
