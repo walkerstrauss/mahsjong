@@ -157,28 +157,22 @@ bool Hand::makeSet(){
  * @return true if a set was played sucessfully and false otherwise.
  */
 
-bool Hand::playSet(const std::shared_ptr<TileSet>& tileSet, bool isHost){
-    if (_selectedSets.empty()) {
-           return false;
-       }
-
-    for (const auto& set : _selectedSets) {
-        std::vector<std::shared_ptr<TileSet::Tile>> playedSet;
-        auto it = _tiles.begin();
-        
-        while (it != _tiles.end()) {
-            if (std::find(set.begin(), set.end(), *it) != set.end()) {
-                (*it)->played = true;
-                if (isHost) {
-                    (*it)->inHostHand = false;
-                } else {
-                    (*it)->inClientHand = false;
-
-                }
-                (*it)->discarded = false; // because it was played, not discarded.
-                
-                playedSet.push_back(*it);
-                it = _tiles.erase(it);
+bool Hand::playSet(bool isHost) {
+    if (_selectedTiles.empty()) {
+        return false;
+    }
+    
+    // Prepare a container for the played set
+    std::vector<std::shared_ptr<TileSet::Tile>> playedSet;
+    
+    // Iterate over the hand and remove any tile that is in _selectedTiles
+    auto it = _tiles.begin();
+    while (it != _tiles.end()) {
+        // Check if the current tile is in the selected tiles list
+        if (std::find(_selectedTiles.begin(), _selectedTiles.end(), *it) != _selectedTiles.end()) {
+            (*it)->played = true;
+            if (isHost) {
+                (*it)->inHostHand = false;
             } else {
                 (*it)->inClientHand = false;
             }

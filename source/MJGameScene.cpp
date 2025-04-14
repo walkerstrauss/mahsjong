@@ -507,7 +507,7 @@ void GameScene::setGameActive(bool value){
 }
 
 void GameScene::applyCelestial(TileSet::Tile::Rank type) {
-    if (type == TileSet::Tile::Rank::CHAOS) {
+    if (type == TileSet::Tile::Rank::OX) {
         _pile->reshufflePile();
         _network->broadcastDeckMap(_tileSet->mapToJson());
         _network->broadcastPileLayer();
