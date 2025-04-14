@@ -1348,7 +1348,7 @@
                             "y_offset": 0.2
                         }
                     },
-                    "cancel-button": {
+                    "clear-button": {
                         "type": "Button",
                         "format": {
                             "type": "Anchored"
@@ -1393,10 +1393,10 @@
                                     "visible": true
                                 },
                                 "children": {
-                                    "client1-cancel-button": {
+                                    "client1-clear-button": {
                                         "type": "Image",
                                         "data": {
-                                            "texture": "client1-cancel-button",
+                                            "texture": "client1-clear-button",
                                             "anchor": [
                                                 0,
                                                 1

@@ -37,7 +37,6 @@ protected:
         SETTINGS,
         PAUSE,
         OVER,
-        TILESETUI
     };
     
     /** Global asset manager */
@@ -47,7 +46,12 @@ protected:
     /** The network interface */
 //    std::shared_ptr<cugl::netcode::NetcodeConnection> _network;
     /** Controller for loading scene */
+    
+    //
     cugl::scene2::LoadingScene _loading;
+    
+    //Loading _loading;
+    
     /** The menu scene to choose what to do */
     MenuScene _mainmenu;
     /** The scene to host a game*/
@@ -56,16 +60,14 @@ protected:
     ClientScene _joingame;
     /** The primary controller for game world */
     GameScene _gameplay;
-    /** The discard UI scene */
-    DiscardUIScene _tilesetui; 
-    /** The scene for settings */
+    /** The scene for settings */  
     SettingScene _settings;
     /** The scene for pausing the game */
     PauseScene _pause;
     /** The scene for when the match ends/ is over */
     GameOverScene _gameover;
     /** The match controller for the game*/
-    MatchController _matchController; 
+    std::shared_ptr<MatchController> _matchController;
     /** Whether or not we finished loading all assets*/
     bool _loaded;
     /** Scene loader reference */
@@ -191,13 +193,6 @@ private:
      * @param timestep  The amount of time (in seconds) since the last frame
      */
     void updateGameOverScene(float timestep);
-    
-    /**
-     * Individualized update method for the tileset UI scene
-     *
-     * @param timestep  The amount of time (in seconds) since the last frame
-     */
-    void updateTilesetUIScene(float timestep);
     
     /**
      * Individualzed update method for the model controller

@@ -45,7 +45,14 @@ public:
             SEVEN = 7,
             EIGHT = 8,
             NINE = 9,
-            CHAOS = 10
+            RAT = 10,
+            OX = 11,
+            RABBIT = 12,
+            DRAGON = 13,
+            SNAKE = 14,
+            MONKEY = 15,
+            ROOSTER = 16,
+            PIG = 17
         };
         
         /** The tile's rank */
@@ -80,8 +87,10 @@ public:
         cugl::Rect tileRect;
         /** The scale of the tile */
         float _scale;
-        /** Wheather or not the tile is pressed to handle the mobile version of the game*/
+        /** Whether or not the tile is pressed to handle the mobile version of the game */
         bool pressed;
+        /** Whether or not the tile is debuffed */
+        bool debuffed = false;
         
 #pragma mark -
 #pragma mark Tile Constructors
@@ -152,8 +161,29 @@ public:
                 case Tile::Rank::NINE:
                     return "nine";
                     break;
-                case Tile::Rank::CHAOS:
-                    return "chaos";
+                case Tile::Rank::RAT:
+                    return "rat";
+                    break;
+                case Tile::Rank::OX:
+                    return "ox";
+                    break;
+                case Tile::Rank::RABBIT:
+                    return "rabbit";
+                    break;
+                case Tile::Rank::DRAGON:
+                    return "dragon";
+                    break;
+                case Tile::Rank::SNAKE:
+                    return "snake";
+                    break;
+                case Tile::Rank::MONKEY:
+                    return "monkey";
+                    break;
+                case Tile::Rank::ROOSTER:
+                    return "rooster";
+                    break;
+                case Tile::Rank::PIG:
+                    return "pig";
                     break;
                 default:
                     return "no valid rank";
@@ -204,8 +234,22 @@ public:
                 return Tile::Rank::EIGHT;
             } else if (rank == "nine" || rank == "9") {
                 return Tile::Rank::NINE;
-            } else if (rank == "chaos") {
-                return Tile::Rank::CHAOS;
+            } else if (rank == "rat") {
+                return Tile::Rank::RAT;
+            } else if (rank == "ox") {
+                return Tile::Rank::OX;
+            } else if (rank == "rabbit") {
+                return Tile::Rank::RABBIT;
+            } else if (rank == "dragon") {
+                return Tile::Rank::DRAGON;
+            } else if (rank == "snake") {
+                return Tile::Rank::SNAKE;
+            }  else if (rank == "monkey") {
+                return Tile::Rank::MONKEY;
+            }else if (rank == "rooster") {
+                return Tile::Rank::ROOSTER;
+            } else if (rank == "pig") {
+                return Tile::Rank::PIG;
             } else {
                 throw std::invalid_argument("No valid rank");
             }
@@ -311,14 +355,6 @@ public:
         }
         
         /**
-         * Sets the texture of a wild tile
-         *
-         * @param assets    the asset manager to get the texture from
-         */
-        void setWildTexture(const std::shared_ptr<cugl::AssetManager>& assets);
-        
-        
-        /**
          * Method to get the tile texture
          *
          * @return the texture of the current tile
@@ -331,22 +367,9 @@ public:
          * Overloading operator to directly compare two tiles
          */
         bool operator==(std::shared_ptr<Tile>& tile){
-            if(this->toString() == tile->toString() && this->_id == tile->_id){
-                return true;
-            }
-            return false;
+            return this->_id == tile->_id;
         }
     };
-    
-    // TODO: Refactor action and command tiles to be special tiles with class Special Tile – add new four tiles, complete implementation of 1-4 and remove echo
-    // 1. ORACLE (draw any tile in the pile)
-    // 2. SEER (draw any tile in the discard pile)
-    // 3. CHAOS (reshuffle the pile)
-    // 4. JUGGERNAUT (rearrange tiles in current row)
-    // 5. _?_ (trade one tile with opponent)
-    // 6. _?_ (random debuff of two tiles)
-    // 7. _?_ (random rank change of random hand tile)
-    // 8. _?_ (random suit change of random hand tile)
     
 public:
     /** Deck with all of the tiles */
@@ -355,16 +378,8 @@ public:
     std::vector<std::shared_ptr<Tile>> startingDeck;
     /** Unsorted set containing tiles in the deck */
     std::map<std::string, std::shared_ptr<Tile>> tileMap;
-    /** Grandma's favorite tiles */
-    std::vector<std::shared_ptr<Tile>> grandmaTiles;
-    /** Reference to texture for grandma tile text */
-    std::shared_ptr<cugl::graphics::Texture> gmaTexture;
     /** Random Generator */
     cugl::Random rdTileSet;
-     /** Wild tile set to draw from */
-    std::vector<std::shared_ptr<Tile>> wildTiles;
-    /** Number of wild tiles we have initilalized */
-    int wildCount;
     /** Number of tiles we have initialized */
     int tileCount;
     /** The center of a tile */
@@ -444,25 +459,25 @@ public:
      */
     const std::shared_ptr<cugl::JsonValue> toJson(std::vector<std::shared_ptr<Tile>> tiles);
     
-    /**
-     * Randomly generates a suit with type Tile::Suit
-     *
-     * Returns suit with type Tile::Suit
-     */
-    Tile::Suit randomSuit() {
-        int randSuit = static_cast<int>(rdTileSet.getOpenUint64(0, 4));
-        return static_cast<TileSet::Tile::Suit>(randSuit);
-    };
-    
-    /**
-     * Randomly generates a rank
-     *
-     * Returns a Tile::Rank
-     */
-    Tile::Rank randomNumber() {
-        int randRank = static_cast<int>(rdTileSet.getOpenUint64(1, 11));
-        return static_cast<TileSet::Tile::Rank>(randRank);
-    };
+//    /**
+//     * Randomly generates a suit with type Tile::Suit
+//     *
+//     * Returns suit with type Tile::Suit
+//     */
+//    Tile::Suit randomSuit() {
+//        int randSuit = static_cast<int>(rdTileSet.getOpenUint64(0, 4));
+//        return static_cast<TileSet::Tile::Suit>(randSuit);
+//    };
+//    
+//    /**
+//     * Randomly generates a rank
+//     *
+//     * Returns a Tile::Rank
+//     */
+//    Tile::Rank randomNumber() {
+//        int randRank = static_cast<int>(rdTileSet.getOpenUint64(1, 11));
+//        return static_cast<TileSet::Tile::Rank>(randRank);
+//    };
     
     void clearTilesToJson(){
         tilesToJson.clear();

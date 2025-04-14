@@ -18,7 +18,7 @@
 #include "MJPlayer.h"
 #include "MJPile.h"
 #include "MJDiscardPile.h"
-#include "MJDiscardUIScene.h"
+#include "MJDiscardUINode.h"
 #include "MJNetworkController.h"
 #include "MJAudioController.h"
 #include "MJAnimationController.h"
@@ -45,7 +45,6 @@ public:
     enum Choice {
         NONE,
         PAUSE,
-        TILESET,
         SETS,
         DISCARDED,
         DRAW_DISCARD,
@@ -64,15 +63,15 @@ protected:
     /** Input controller for player input*/
     InputController _input;
     /** Match controller for processing game logic */
-    MatchController _matchController; 
+    std::shared_ptr<MatchController> _matchController;
     /** JSON with all of our constants*/
     std::shared_ptr<cugl::JsonValue> _constants;
     /** Scene2 object for match scene */
     std::shared_ptr<cugl::scene2::SceneNode> _matchScene;
     /** Scene2 object for the pause scene */
     std::shared_ptr<cugl::scene2::SceneNode> _pauseScene;
-    /** Reference to the discard UI scene for the game */
-    std::shared_ptr<DiscardUIScene> _discardUIScene;
+    /** Reference to the discard UI node for the game */
+    std::shared_ptr<DiscardUINode> _discardUINode;
     /** TileSet for the game */
     std::shared_ptr<TileSet> _tileSet;
     /** Reference to player */
@@ -82,8 +81,10 @@ protected:
     /** Reference to the discard pile */
     std::shared_ptr<DiscardPile> _discardPile;
     /** Temporary discard area b/c no asset created for it yet */
-    Hand* _hand; // pointer to the hand.
-    
+    cugl::Rect discardArea;
+    /** Pointer to the hand */
+    Hand* _hand;
+   
     std::shared_ptr<cugl::graphics::TextLayout> _win;
     std::shared_ptr<cugl::graphics::TextLayout> _lose;
     bool _gameWin;
@@ -145,6 +146,9 @@ protected:
     /** The rectangle representing the pile's position used for selection handling */
     cugl::Rect _pileBox;
     
+    /** The rectangle representing the discrad pile's position*/
+    cugl::Rect _discardBox;
+
     /** The rectangle representing the active play/discard area for all tiles*/
     cugl::Rect _activeRegion;
 
@@ -155,8 +159,12 @@ protected:
 
     cugl::Vec2 _originalTilePos = cugl::Vec2::ZERO;
     bool shouldReturn = true;
-    
+ 
     std::shared_ptr<AnimatedNode> _actionAnimNode;
+
+    bool _waitingForTileSelection = false;
+    std::shared_ptr<TileSet::Tile> discardedTileSaved;
+    bool _selectedThree = false;
 
 public:
 #pragma mark -
@@ -188,7 +196,7 @@ public:
      *
      * @param assets    the asset manager for the game
      */
-    bool init(const std::shared_ptr<cugl::AssetManager>& assets, std::shared_ptr<NetworkController> network, MatchController& matchController);
+    bool init(const std::shared_ptr<cugl::AssetManager>& assets, std::shared_ptr<NetworkController> network);
     
     /**
      * Sets whether the player is host.
@@ -278,7 +286,7 @@ public:
       * @param tile  the tile to increment in the discard UI
       * @return true if update was successful, and false otherwise
       */
-     bool incrementLabel(std::shared_ptr<TileSet::Tile> tile);
+     void incrementLabel(std::shared_ptr<TileSet::Tile> tile);
      
      /**
       * Method to decrement discard UI label corresponding to tile passed as argument
@@ -301,6 +309,7 @@ public:
     
     void discardTile(std::shared_ptr<TileSet::Tile> tile);
     
+
     void playSetAnim(const std::vector<std::shared_ptr<TileSet::Tile>>& tiles);
     
     bool isPong(const std::vector<std::shared_ptr<TileSet::Tile>>& tiles);
@@ -325,6 +334,8 @@ public:
             updateSpriteNode(_turnSheet);
         }
     }
+    
+    void revertDiscardedTile();
 };
 
 #endif /* __MJ_GAME_SCENE_H__ */
