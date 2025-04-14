@@ -368,11 +368,11 @@ public:
      * Broadcasts the JSON representation of the celestial tile that has been played
      *
      * @param isHost        if the current network is the host network or not
-     * @param tileMapJson       the JSON representation of the current tileMap 
+     * @param tileMapJson       the JSON representation of the changed tiles
      * @param celestialTile     The JSON representation of the celestial tile
      * @param celestialType     The type of celestial tile that was played
      */
-    void broadcastCelestialTile(int isHost, const std::shared_ptr<cugl::JsonValue>& tileMapJson, const std::shared_ptr<cugl::JsonValue>& celestialTile, std::string celestialType);
+    void broadcastCelestialTile(int isHost, const std::shared_ptr<cugl::JsonValue>& changedTilesJson, const std::shared_ptr<cugl::JsonValue>& celestialTile, std::string celestialType);
     /**
      * Broadcasts a message that the game has concluded
      *
