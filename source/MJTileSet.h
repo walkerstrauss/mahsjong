@@ -91,6 +91,10 @@ public:
         bool pressed;
         /** Whether or not the tile is debuffed */
         bool debuffed = false;
+        /** Whether or not the tile can be selected */
+        bool selectable = true;
+        /** Whether or not the tile can be unselectable */
+        bool unselectable = false; 
         
 #pragma mark -
 #pragma mark Tile Constructors

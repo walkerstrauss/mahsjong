@@ -35,6 +35,7 @@ TileSet::Tile::Tile(const TileSet::Tile::Rank r, const TileSet::Tile::Suit s){
     selected = false;
     selectedInSet = false;
     played = false;
+    
 }
 
 #pragma mark -

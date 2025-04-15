@@ -52,6 +52,12 @@ public:
         TILEMAPUPDATE,
         /** Discard pile has been updated */
         DISCARDUPDATE,
+        /** Drawn from discard pile */
+        DRAWNDISCARD,
+        /** Successfully played a set */
+        SUCCESSFULSET,
+        /** Unsucessfully played a set */
+        UNSUCCESSFULSET,
         /** Celestial tile has been played */
         PLAYEDCELESTIAL,
         /** Game has concluded  */
@@ -134,7 +140,9 @@ protected:
     /** JSON representing the tile that was drawn */
     std::shared_ptr<cugl::JsonValue> _tileDrawn;
     /** JSON representing the celestial tile that was played */
-    std::shared_ptr<cugl::JsonValue> _celestialTile; 
+    std::shared_ptr<cugl::JsonValue> _celestialTile;
+    /** JSON representing the tiles that player has played in a set */
+    std::shared_ptr<cugl::JsonValue> _playedTiles;
     /** ** END OF MATCH CONTROLLER BRANCH FIELDS**  */
     
 public:
@@ -324,6 +332,10 @@ public:
         return _celestialTile;
     }
     
+    std::shared_ptr<cugl::JsonValue> getPlayedTiles() {
+        return _playedTiles; 
+    }
+    
     /** **END OF MATCH CONTROLLER GETTERS ** */
     
     /** ** START OF MATCH CONTROLLER BRANCH FUNCTIONS**  */
@@ -363,6 +375,22 @@ public:
      * @param discardedTileJson     The JsonValue of the discarded tile
      */
     void broadcastDiscard(int isHost, const std::shared_ptr<cugl::JsonValue>& discardedTileJson);
+    
+    /**
+     * Broadcasts that the top tile of the discard pile has been drawn
+     *
+     * @param isHost If current network is the host network or not
+     */
+    void broadcastDrawnDiscard(int isHost);
+    
+    /**
+     * Broadcasts that a set has been played.
+     *
+     * @param isHost    true if current player is host, false otherwise
+     * @param isValid     true if set is valid, false otherwise
+     * @param playedTiles   JSON representing the set of tiles that have been played (empty if invalid set)
+     */
+    void broadcastPlaySet(int isHost, bool isValid, std::shared_ptr<cugl::JsonValue>& playedTiles);
     
     /**
      * Broadcasts the JSON representation of the celestial tile that has been played

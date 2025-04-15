@@ -127,7 +127,6 @@ void NetworkController::processData(const std::string source,
             _tileDrawn = _deserializer->readJson();
             _status = TILEDRAWN;
         }
-        
         // Update to tile map
         if (msgType == "tile map update") {
             _tileMapJson = _deserializer->readJson();
@@ -143,7 +142,17 @@ void NetworkController::processData(const std::string source,
             _discardTile = _deserializer->readJson();
             _status = DISCARDUPDATE; 
         }
-        
+        // Update for drawing from discard
+        if (msgType == "drawn discard") {
+            _status = DRAWNDISCARD;
+        }
+        // Update for playing a set
+        if (msgType == "played set") {
+            // Assinging playedTiles Json
+            _playedTiles = _deserializer->readJson();
+            // Assigning played set state
+            _status = _deserializer->readBool() ? SUCCESSFULSET : UNSUCCESSFULSET;
+        }
         // Celestial tile has been played
         if (msgType == "celestial tile played") {
             std::string celestialType = _deserializer->readString();
@@ -432,6 +441,38 @@ void NetworkController::broadcastDiscard(int isHost, const std::shared_ptr<cugl:
     _serializer->writeString("discard update");
     _serializer->writeUint32(isHost);
     _serializer->writeJson(discardedTileJson);
+    
+    broadcast(_serializer->serialize());
+}
+
+/**
+ * Broadcasts that the top tile of the discard pile has been drawn
+ *
+ * @param isHost If current network is the host network or not
+ */
+void NetworkController::broadcastDrawnDiscard(int isHost) {
+    _serializer->reset();
+    
+    _serializer->writeString("drawn discard");
+    _serializer->writeUint32(isHost);
+    
+    broadcast(_serializer->serialize());
+}
+
+/**
+ * Broadcasts that a set has been played.
+ *
+ * @param isHost    true if current player is host, false otherwise
+ * @param isValid     true if set is valid, false otherwise
+ * @param playedTiles   JSON representing the set of tiles that have been played (empty if invalid set)
+ */
+void NetworkController::broadcastPlaySet(int isHost, bool isValid, std::shared_ptr<cugl::JsonValue>& playedTiles) {
+    _serializer->reset();
+    
+    _serializer->writeString("played set");
+    _serializer->writeUint32(isHost);
+    _serializer->writeJson(playedTiles);
+    _serializer->writeBool(isValid);
     
     broadcast(_serializer->serialize());
 }

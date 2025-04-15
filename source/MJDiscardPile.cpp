@@ -96,16 +96,11 @@ std::shared_ptr<TileSet::Tile> DiscardPile::drawTopTile(){
     if (!_topTile) {
         return nullptr; // No tile to draw
     }
-        CULog("drawing from discard pile");
-        std::shared_ptr<TileSet::Tile> topTile = _topTile;
-        
-        if (!_discardPile.empty()) {
-            _topTile = _discardPile.back(); // Move the next tile to top
-            _discardPile.pop_back(); // Remove it from the discard pile
-        } else {
-            _discardMap.erase(_topTile->toString() + " " + std::to_string(_topTile->_id));
-            _topTile = nullptr; // No more tiles in the pile
-        }
+    std::shared_ptr<TileSet::Tile> topTile = _topTile;
+    
+    _discardMap.erase(_topTile->toString() + " " + std::to_string(_topTile->_id));
+    _topTile = nullptr; // Set top tile to null
+
     _size = static_cast<int>(_discardPile.size()) + (_topTile ? 1 : 0);
     
     return topTile;
