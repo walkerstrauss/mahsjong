@@ -25,6 +25,9 @@ public:
         NONE,
         DISCARDUIUPDATE,
         MONKEYTILE,
+        DRAWNDISCARD,
+        SUCCESS_SET,
+        FAILED_SET, 
         WIN,
         LOSE
     };
@@ -107,6 +110,16 @@ public:
     void drawTile();
     
     /**
+     *  Draws the most recently drawn tile from the discard pile. After drawing, it broadcasts that a
+     *  tile has been drawn from the discard pile. However, for the sake of efficiency, the broadcasted
+     *  message DOES NOT remove the discarded tile from the pile, rather it makes the tile invisible
+     *  giving the illusion that it has been drawn.
+     *
+     * @returns     true if drawing from discard is successful
+     */
+    bool drawDiscard(); 
+    
+    /**
      * Discards the currently dragged tile. After discarding, it broadcasts the newly discarded tile
      * to opposing player and updates the discarded pile element.
      *
@@ -115,6 +128,13 @@ public:
      * @returns true if discard was successful, else false
      */
     bool discardTile(std::shared_ptr<TileSet::Tile> tile);
+    
+    /**
+     * Plays the currently selected tiles as a set for this player.
+     *
+     * @return  true if playing set was successful, false otherwise
+     */
+    bool playSet();
     
     /**
      * Plays the inputted celestial tile, if tile is not a celestial tile then the function returns false.
@@ -129,28 +149,24 @@ public:
     /**
      * Executes the Rooster celestial tile effect (reshuffle pile) in current game scene. It then broadcasts the change
      * to opposing player.
-     *
      */
     void playRooster(std::shared_ptr<TileSet::Tile>& celestialTile);
     
     /**
      * Executes the Ox celestial tile effect (random debuff 2) in current game scene. It then broadcasts the change
      * to opposing player.
-     *
      */
     void playOx(std::shared_ptr<TileSet::Tile>& celestialTile);
     
     /**
      * Executes the Rabbit celestial tile effect  (change rank of random tile) in current game scene. It then broadcasts the change
      * to opposing player.
-     *
      */
     void playRabbit(std::shared_ptr<TileSet::Tile>& celestialTile);
     
     /**
      * Executes the Snake celestial tile effect  (change suit of random tile) in current game scene. It then broadcasts the change
      * to opposing player.
-     *
      */
     void playSnake(std::shared_ptr<TileSet::Tile>& celestialTile);
     

@@ -150,6 +150,54 @@ void MatchController::drawTile() {
 }
 
 /**
+ *  Draws the most recently drawn tile from the discard pile. After drawing, it broadcasts that a
+ *  tile has been drawn from the discard pile. However, for the sake of efficiency, the broadcasted
+ *  message DOES NOT remove the discarded tile from the pile, rather it makes the tile invisible
+ *  giving the illusion that it has been drawn.
+ *
+ * @returns     true if drawing from discard is successful
+ */
+bool MatchController::drawDiscard() {
+    // If not this player's turn then return
+    if(_network->getCurrentTurn() != _network->getLocalPid()) {
+        return false;
+    }
+    // If there is no top tile then return
+    if(!_discardPile->getTopTile()) {
+        CULog("discard pile top tile is empty");
+        return false;
+    }
+    
+    // Retrieving the current player
+    std::shared_ptr<Player> currPlayer = _network->getHostStatus() ? hostPlayer : clientPlayer;
+    // If the player's hand is too big return
+    if(currPlayer->getHand()._tiles.size() > currPlayer->getHand()._size) {
+        CULog("too many tiles in hand");
+        return false;
+    }
+    
+    // Getting top tile from dicsard and setting fields after drawing 
+    std::shared_ptr<TileSet::Tile> drawnDiscardTile = _discardPile->drawTopTile();
+    // Making tile unselectable
+    drawnDiscardTile->unselectable = true;
+    // Automatically select
+    drawnDiscardTile->selected = true;
+    // Setting tile state
+    drawnDiscardTile->inHostHand = _network->getHostStatus();
+    drawnDiscardTile->inClientHand = _network->getHostStatus();
+    
+    // Putting tile in hand and automatically selecting it
+    currPlayer->getHand()._tiles.push_back(drawnDiscardTile);
+    currPlayer->getHand()._selectedTiles.push_back(drawnDiscardTile);
+    
+    _network->broadcastDrawnDiscard(_network->getLocalPid());
+    
+    _choice = DRAWNDISCARD;
+    
+    return true; 
+}
+
+/**
  * Discards the currently dragged tile. After discarding, it broadcasts the newly discarded tile
  * to opposing player and updates the discarded pile element.
  *
@@ -186,6 +234,75 @@ bool MatchController::discardTile(std::shared_ptr<TileSet::Tile> tile) {
         }
     }
     return false; 
+}
+
+/**
+ * Plays the currently selected tiles as a set for this player.
+ *
+ * @return  true if playing set was successful, false otherwise
+ */
+bool MatchController::playSet() {
+    // Retrieving the current player
+    std::shared_ptr<Player> currPlayer = _network->getHostStatus() ? hostPlayer : clientPlayer;
+    
+    // If selected tiles is not a valid set size
+    if(currPlayer->getHand()._selectedTiles.size() != 3) {
+        return false;
+    }
+    // If selected tiles is a valid set
+    if(currPlayer->getHand().isSetValid(currPlayer->getHand()._selectedTiles)) {
+        // Accumulate tiles from selected set to transform into JSON
+        for(auto const& tile : currPlayer->getHand()._selectedTiles) {
+            _tileSet->tilesToJson.push_back(tile);
+        }
+        // Played tile JSON
+        std::shared_ptr<JsonValue> tilesJson = _tileSet->toJson(_tileSet->tilesToJson);
+        _tileSet->clearTilesToJson();
+        
+        // Broadcast that a successful set has been played
+        currPlayer->getHand().playSet(_network->getHostStatus());
+        _network->broadcastPlaySet(_network->getLocalPid(), true, tilesJson);
+
+        // Reset choice for match controller
+        _choice = NONE;
+        return true;
+    }
+    else {
+        // Unselect all selected tiles from hand
+        for(auto& selectedTile : currPlayer->getHand()._selectedTiles) {
+            for(auto it = currPlayer->getHand()._tiles.begin(); it != currPlayer->getHand()._tiles.end();) {
+                if(selectedTile == (*it)) {
+                    selectedTile->selected = false;
+                    
+                    // If the tile was a discarded tile reset to discarded status and discard from hand
+                    if(selectedTile->discarded) {
+                        selectedTile->inHostHand= false;
+                        selectedTile->inClientHand= false;
+                        selectedTile->unselectable = false;
+                        
+                        _discardPile->addTile(selectedTile);
+                        it = currPlayer->getHand()._tiles.erase(it);
+                    }
+                    break;
+                }
+                else {
+                    it++;
+                }
+            }
+        }
+        // Clear selected tiles from current player
+        currPlayer->getHand()._selectedTiles.clear();
+        
+        // Make empty JSON for broadcasting
+        std::shared_ptr<JsonValue> emptyJson = _tileSet->toJson(_tileSet->tilesToJson);
+        _network->broadcastPlaySet(_network->getLocalPid(), false, emptyJson);
+        
+        // Reset match controller choice
+        _choice = NONE;
+        return false;
+    }
+    
+    return false;
 }
 
 /**
@@ -248,7 +365,6 @@ bool MatchController::playCelestial(std::shared_ptr<TileSet::Tile>& celestialTil
 /**
  * Executes Rooster celestial tile effect in current game scene. It then broadcasts the change
  * to opposing player.
- *
  */
 void MatchController::playRooster(std::shared_ptr<TileSet::Tile>& celestialTile){
     CULog("Played Rooster");
@@ -284,7 +400,6 @@ void MatchController::playRooster(std::shared_ptr<TileSet::Tile>& celestialTile)
 /**
  * Executes Ox celestial tile effect in current game scene. It then broadcasts the change
  * to opposing player.
- *
  */
 void MatchController::playOx(std::shared_ptr<TileSet::Tile>& celestialTile){
     CULog("Played Ox");
@@ -329,7 +444,6 @@ void MatchController::playOx(std::shared_ptr<TileSet::Tile>& celestialTile){
 /**
  * Executes Rabbit celestial tile effect in current game scene. It then broadcasts the change
  * to opposing player.
- *
  */
 void MatchController::playRabbit(std::shared_ptr<TileSet::Tile>& celestialTile){
     CULog("Played Rabbit");
@@ -624,8 +738,7 @@ void MatchController::update(float timestep) {
         
         // Change state so gamescene can update discardUI scene
         _choice = DISCARDUIUPDATE;
-        CULog("%d", _choice == DISCARDUIUPDATE);
-
+        
         _network->setStatus(NetworkController::INGAME);
     }
     
@@ -648,6 +761,58 @@ void MatchController::update(float timestep) {
         //If client
         else{hostPlayer->getHand().discard(celestialTile, false);}
         _network->setStatus(NetworkController::INGAME);
+    }
+    
+    // If set that has been played was successful
+    if(_network->getStatus() == NetworkController::SUCCESSFULSET) {
+        // Retrieving the opposing player
+        std::shared_ptr<Player> opposingPlayer = _network->getHostStatus() ? clientPlayer : hostPlayer;
+        
+        // Fetching the top tile
+        std::shared_ptr<TileSet::Tile> discardTile = _discardPile->drawTopTile();
+        // Setting relevant fields
+        discardTile->inHostHand = false;
+        discardTile->inClientHand = false;
+        discardTile->discarded = false;
+        
+        // Erasing tiles from opponent hand that were played (if tile is discard tile then break since it is not in their hand in
+        // this opposing matchController model)
+        for(auto const& tileKey : _network->getPlayedTiles()->children()) {
+            std::string suit = tileKey->getString("suit");
+            std::string rank = tileKey->getString("rank");
+            std::string id = tileKey->getString("id");
+            
+            const std::string key = rank + " of " + suit + " " + id;
+            
+            for(auto it = opposingPlayer->getHand()._tiles.begin(); it != opposingPlayer->getHand()._tiles.end();) {
+                if((*it)->toString() == discardTile->toString()) {
+                    break;
+                }
+                if((*it)->toString() == key) {
+                    opposingPlayer->getHand()._tiles.erase(it);
+                    break;
+                }
+                else {
+                    it++;
+                }
+            }
+        }
+        
+        // Update opposing player's max hand size
+        opposingPlayer->getHand()._size -= 3;
+        
+        // Reset network state
+        _network->setStatus(NetworkController::INGAME);
+        // Indicate to gamescene to deactivate button
+        _choice = NONE;
+    }
+    
+    // If played set was unsuccessful
+    if(_network->getStatus() == NetworkController::UNSUCCESSFULSET) {
+        //Reset network state
+        _network->setStatus(NetworkController::INGAME);
+        // Indicate to gamescene to deactivate button
+        _choice = NONE;
     }
 }
 

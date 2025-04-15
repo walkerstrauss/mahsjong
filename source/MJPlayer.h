@@ -115,7 +115,7 @@ public:
      *
      * @return true if a set was played sucessfully and false otherwise.
      */
-    bool playSet(const std::shared_ptr<TileSet>& tileSet, bool isHost);
+    bool playSet(bool isHost);
     
     /**
      * Checks if the given set of tiles "selectedTiles" is valid under the game's set of rules.

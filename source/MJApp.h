@@ -46,7 +46,12 @@ protected:
     /** The network interface */
 //    std::shared_ptr<cugl::netcode::NetcodeConnection> _network;
     /** Controller for loading scene */
+    
+    //
     cugl::scene2::LoadingScene _loading;
+    
+    //Loading _loading;
+    
     /** The menu scene to choose what to do */
     MenuScene _mainmenu;
     /** The scene to host a game*/

@@ -116,7 +116,6 @@ bool ClientScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::s
         });
     _backout2->addListener([this](const std::string& name, bool down) {
         if (down) {
-            CULog("hold on....");
             _backClicked = true;
             _network->disconnect();
             _gameIDNew[0]->setTexture(_assets->get<cugl::graphics::Texture>("client1-gameid-tile19"));

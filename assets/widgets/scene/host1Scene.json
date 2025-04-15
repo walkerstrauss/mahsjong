@@ -1002,7 +1002,7 @@
                                             "y_anchor": "top",
                                             "absolute": false,
                                             "x_offset": 0,
-                                            "y_offset": 0.25
+                                            "y_offset": 0.5
                                         }
                                     }
                                 },
