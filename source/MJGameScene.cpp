@@ -173,7 +173,8 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::sha
     _pileBox = cugl::Rect(minX, minY, maxX - minX, maxY - minY);
     
     // Initializing the active play/discard region
-    std::shared_ptr<scene2::SceneNode> activeRegionNode = _assets->get<scene2::SceneNode>("matchscene.gameplayscene.activeRegion");
+    //std::shared_ptr<scene2::SceneNode> activeRegionNode = _assets->get<scene2::SceneNode>("matchscene.gameplayscene.activeRegion");
+    std::shared_ptr<scene2::SceneNode> activeRegionNode = _assets->get<scene2::SceneNode>("matchscene.gameplayscene.drag-to-discard-tile");
     cugl::Vec2 worldOrigin = activeRegionNode->nodeToWorldCoords(Vec2::ZERO);
     _activeRegion = cugl::Rect(worldOrigin, activeRegionNode->getContentSize());
     
@@ -210,7 +211,7 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::sha
         }
     });
    // Init all animations
-    _actionAnimNode = std::make_shared<AnimatedNode>();
+ /*   _actionAnimNode = std::make_shared<AnimatedNode>();
     _actionAnimNode->setAnchor(Vec2::ANCHOR_CENTER);
     _actionAnimNode->setVisible(false);
     _actionAnimNode->setContentSize(Size(70, 70));
@@ -237,7 +238,7 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::sha
     _turnSheet->setScale(0.12);
     _turnSheet->setFrame(0);
     _turnSheet->setVisible(false);
-    
+    */
     // Ideal method of adding animations below 
 //    AnimationController::getInstance().addSpriteSheetAnimation(_pongSheet, 0, _pongSheet->getCount(), true);
 //    AnimationController::getInstance().addSpriteSheetAnimation(_chowSheet, 0, _chowSheet->getCount(), true);
@@ -385,9 +386,9 @@ void GameScene::render() {
     _player->draw(_batch);
 
 //    if (_actionAnimNode->isVisible()) _batch->draw(_actionAnimNode->getTexture(), Rect(600,400,670,470));
-    if (_turnSheet->isVisible()) _turnSheet->render(_batch);
-    if (_pongSheet->isVisible()) _pongSheet->render(_batch);
-    if (_chowSheet->isVisible()) _chowSheet->render(_batch);
+    //if (_turnSheet->isVisible()) _turnSheet->render(_batch);
+    //if (_pongSheet->isVisible()) _pongSheet->render(_batch);
+    //if (_chowSheet->isVisible()) _chowSheet->render(_batch);
 
     _discardUINode->_root->render(_batch);
     
