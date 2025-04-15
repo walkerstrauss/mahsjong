@@ -123,6 +123,9 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::sha
         _player = _matchController->clientPlayer;
     }
     
+    // Premature repositioning so it tiles don't render in the corner of the screen
+    _player->getHand().updateTilePositions(_matchScene->getSize());
+    
     //Initialization of shared objects
     _tileSet = _matchController->getTileSet();
     _pile = _matchController->getPile();

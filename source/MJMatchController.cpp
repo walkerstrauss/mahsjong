@@ -446,8 +446,6 @@ void MatchController::playOx(std::shared_ptr<TileSet::Tile>& celestialTile){
  * to opposing player.
  */
 void MatchController::playRabbit(std::shared_ptr<TileSet::Tile>& celestialTile){
-    CULog("Played Rabbit");
-
     auto& opponent = _network->getHostStatus()
                          ? clientPlayer->getHand()
                          : hostPlayer->getHand();
