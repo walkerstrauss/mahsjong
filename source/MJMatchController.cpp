@@ -68,7 +68,7 @@ void MatchController::initHost() {
     
     //Broadcast initial state
     _network->broadcastClientStart(_tileSet->mapToJson());
-    CULog("TileMap: %s", _tileSet->mapToJson()->toString(true).c_str());
+//    CULog("TileMap: %s", _tileSet->mapToJson()->toString(true).c_str());
 
 }
 
@@ -348,6 +348,10 @@ bool MatchController::playCelestial(std::shared_ptr<TileSet::Tile>& celestialTil
                 case(TileSet::Tile::Rank::SNAKE):
                     playSnake(celestialTile);
                     break;
+                case(TileSet::Tile::Rank::MONKEY):
+                    _monkeyTile = celestialTile;
+                    _choice = MONKEYTILE;
+                    break;
                 // Numbered rank
                 default:
                     break;
@@ -401,16 +405,16 @@ void MatchController::playOx(std::shared_ptr<TileSet::Tile>& celestialTile){
     CULog("Played Ox");
 
     auto& opponent = _network->getHostStatus()
-                         ? clientPlayer
-                         : hostPlayer;
+                         ? clientPlayer->getHand()
+                         : hostPlayer->getHand();
     
-    opponent->getHand().rdHand.init();
-    opponent->getHand().rdHand.shuffle(opponent->getHand()._tiles);
+    opponent.rdHand.init();
+    opponent.rdHand.shuffle(opponent._tiles);
     
     // Makes sure that effect is applied on tiles that aren't already debuffed or discarded
     int debuffed = 0;
     std::shared_ptr<cugl::JsonValue> changedTilesJson;
-    for (auto& tile : opponent->getHand()._tiles) {
+    for (auto& tile : opponent._tiles) {
         if (!tile->debuffed && !tile->discarded) {
             tile->debuffed = true;
             _tileSet->tilesToJson.push_back(tile);
@@ -445,17 +449,16 @@ void MatchController::playRabbit(std::shared_ptr<TileSet::Tile>& celestialTile){
     CULog("Played Rabbit");
 
     auto& opponent = _network->getHostStatus()
-                         ? clientPlayer
-                         : hostPlayer;
+                         ? clientPlayer->getHand()
+                         : hostPlayer->getHand();
     
-    opponent->getHand().rdHand.init();
-    opponent->getHand().rdHand.shuffle(opponent->getHand()._tiles);
+    opponent.rdHand.init();
+    opponent.rdHand.shuffle(opponent._tiles);
     
     std::shared_ptr<cugl::JsonValue> changedTileJson;
-    for (auto& tile : opponent->getHand()._tiles) {
+    for (auto& tile : opponent._tiles) {
         // Make sure we only try to change rank of non-celestial and non-discarded tiles
         if (!tile->discarded && tile->_suit != TileSet::Tile::Suit::CELESTIAL && !tile->debuffed) {
-            CULog("old: %s", tile->toString().c_str());
             int oldRank = static_cast<int>(tile->_rank);
             int newRank = oldRank;
             
@@ -463,7 +466,6 @@ void MatchController::playRabbit(std::shared_ptr<TileSet::Tile>& celestialTile){
                 newRank = 1 + rand() % 9;
             }
             tile->_rank = static_cast<TileSet::Tile::Rank>(newRank);
-            CULog("new: %s", tile->toString().c_str());
             _tileSet->tilesToJson.push_back(tile);
             changedTileJson = _tileSet->toJson(_tileSet->tilesToJson);
             // Clear tilesToJson vector
@@ -491,21 +493,25 @@ void MatchController::playRabbit(std::shared_ptr<TileSet::Tile>& celestialTile){
     return;
 }
 
+/**
+ * Executes the Snake celestial tile effect  (change suit of random tile) in current game scene. It then broadcasts the change
+ * to opposing player.
+ *
+ */
 void MatchController::playSnake(std::shared_ptr<TileSet::Tile>& celestialTile){
     CULog("Played Snake");
 
     auto& opponent = _network->getHostStatus()
-                         ? clientPlayer
-                         : hostPlayer;
+                         ? clientPlayer->getHand()
+                         : hostPlayer->getHand();
     
-    opponent->getHand().rdHand.init();
-    opponent->getHand().rdHand.shuffle(opponent->getHand()._tiles);
+    opponent.rdHand.init();
+    opponent.rdHand.shuffle(opponent._tiles);
     
     std::shared_ptr<cugl::JsonValue> changedTileJson;
-    for (auto& tile : opponent->getHand()._tiles) {
+    for (auto& tile : opponent._tiles) {
         // Make sure we only try to change rank of non-celestial and non-discarded tiles
         if (!tile->discarded && tile->_suit != TileSet::Tile::Suit::CELESTIAL && !tile->debuffed) {
-            CULog("old: %s", tile->toString().c_str());
             int oldSuit = static_cast<int>(tile->_suit);
             int newSuit = oldSuit;
             
@@ -513,7 +519,6 @@ void MatchController::playSnake(std::shared_ptr<TileSet::Tile>& celestialTile){
                 newSuit = 1 + rand() % 3;
             }
             tile->_suit = static_cast<TileSet::Tile::Suit>(newSuit);
-            CULog("new: %s", tile->toString().c_str());
             _tileSet->tilesToJson.push_back(tile);
             changedTileJson = _tileSet->toJson(_tileSet->tilesToJson);
             // Clear tilesToJson vector
@@ -531,6 +536,60 @@ void MatchController::playSnake(std::shared_ptr<TileSet::Tile>& celestialTile){
     
     // Broadcast celestial tile
     _network->broadcastCelestialTile(_network->getLocalPid(), changedTileJson, celestialTileJson, "SNAKE");
+    // Clear tilesToJson vector
+    _tileSet->clearTilesToJson();
+    
+    return;
+}
+
+/**
+ * Executes the Monkey celestial tile effect (trade tiles) given the selected tile by the player. It will give the selected tile to the opponent and then take a random tile from them.
+ */
+void MatchController::playMonkey(std::shared_ptr<TileSet::Tile>& selectedTile) {
+    CULog("Played Monkey");
+    
+    auto& self = _network->getHostStatus()
+                         ? hostPlayer->getHand()
+                         : clientPlayer->getHand();
+    
+    auto& opponent = _network->getHostStatus()
+                         ? clientPlayer->getHand()
+                         : hostPlayer->getHand();
+    
+    // Remove selected tile from hand
+    self.removeTile(selectedTile, _network->getHostStatus());
+    
+    // Get the random tile from the opponent and remove it from their hand (can be a debuffed or celestial tile)
+    opponent.rdHand.init();
+    opponent.rdHand.shuffle(opponent._tiles);
+    std::shared_ptr<TileSet::Tile>& oppTile = opponent._tiles.front();
+    opponent.removeTile(oppTile, _network->getHostStatus());
+    
+    // Add the selected tile to opponent hand
+    opponent._tiles.push_back(selectedTile);
+    selectedTile->inHostHand = !_network->getHostStatus();
+    selectedTile->inClientHand = _network->getHostStatus();
+    
+    // Add the opponent tile to your own hand
+    self._tiles.push_back(oppTile);
+    oppTile->inHostHand = !_network->getHostStatus();
+    oppTile->inClientHand = _network->getHostStatus();
+
+    // Add the swapped tiles to tileSet and turn into JSON
+    _tileSet->tilesToJson.push_back(selectedTile);
+    _tileSet->tilesToJson.push_back(oppTile);
+    const std::shared_ptr<cugl::JsonValue> changedTilesJson = _tileSet->toJson(_tileSet->tilesToJson);
+    // Clear tilesToJson vector
+    _tileSet->clearTilesToJson();
+    
+    // Transforming celestial tile to JSON
+    _tileSet->tilesToJson.push_back(_monkeyTile);
+    const std::shared_ptr<cugl::JsonValue> celestialTileJson = _tileSet->toJson(_tileSet->tilesToJson);
+    // Clear tilesToJson vector
+    _tileSet->clearTilesToJson();
+    
+    // Broadcast celestial tile
+    _network->broadcastCelestialTile(_network->getLocalPid(), changedTilesJson , celestialTileJson, "MONKEY");
     // Clear tilesToJson vector
     _tileSet->clearTilesToJson();
     
@@ -559,9 +618,36 @@ void MatchController::celestialEffect(){
                             : clientPlayer->getHand();
         
         hand.updateHandTextures(_assets);
+    } else if (_network->getCelestialUpdateType() == NetworkController::MONKEY) {
+        CULog("MONKEY");
+        _tileSet->updateDeck(_network->getTileMapJson());
+        std::vector<std::shared_ptr<TileSet::Tile>> changedTiles = _tileSet->processTileJson(_network->getTileMapJson());
+        for (auto& change : changedTiles) {
+            auto tile = _tileSet->tileMap[std::to_string(change->_id)];
+            // Remove tile from the hand that has the tile
+            auto& host = hostPlayer->getHand();
+            auto& client = clientPlayer->getHand();
+            bool removed = host.removeTile(tile, true);
+            if (!removed) client.removeTile(tile, false);
+            
+            // Add tile to hand based on flags
+            if (tile->inHostHand) {
+                host._tiles.push_back(tile);
+            } else if (tile->inClientHand) {
+                client._tiles.push_back(tile);
+            }
+            
+            auto& hand = _network->getHostStatus()
+                                ? hostPlayer->getHand()
+                                : clientPlayer->getHand();
+            
+            hand.updateHandTextures(_assets);
+            
+        }
     }
     _network->setCelestialUpdateType(NetworkController::NONE);
 }
+
 
 /**
  * Call back for ending the turn for the current player. Must have drawn from the pile

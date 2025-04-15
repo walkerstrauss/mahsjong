@@ -287,7 +287,7 @@ void GameScene::update(float timestep) {
     // Constantly updating the position of tiles in hand
     _player->getHand().updateTilePositions(_matchScene->getSize());
         
-    // Updating discardUINode if matchController has a disard update
+    // Updating discardUINode if matchController has a discard update
     if(_matchController->getChoice() == MatchController::Choice::DISCARDUIUPDATE) {
         _discardUINode->incrementLabel(_discardPile->getTopTile());
         _matchController->setChoice(MatchController::NONE);
@@ -523,18 +523,27 @@ void GameScene::updateDrag(const cugl::Vec2& mousePos, bool mouseDown, bool mous
     }
 
     if (mouseReleased) {
-        // Active play area logic
-        if(_matchController->getChoice() != MatchController::DRAWNDISCARD) {
-            if(_draggingTile && _activeRegion.contains(mousePos)) {
-                if(_draggingTile->_suit == TileSet::Tile::Suit::CELESTIAL && !_draggingTile->debuffed) {
-                    _matchController->playCelestial(_draggingTile);
-                }
-                else {
-                    if(_matchController->discardTile(_draggingTile)) {
-                        _discardUINode->incrementLabel(_draggingTile);
-                    };
-                }
-            }
+        // Active play area logic. Ensure you only do these actions when it is your turn.
+        if(_draggingTile && _activeRegion.contains(mousePos) && _network->getCurrentTurn() == _network->getLocalPid()) {
+            if(_matchController->getChoice() != MatchController::DRAWNDISCARD) {
+              if(_draggingTile->_suit == TileSet::Tile::Suit::CELESTIAL && !_draggingTile->debuffed) {
+                  _matchController->playCelestial(_draggingTile);
+              }
+              else {
+                  // Monkey tile was played, regular tile chosen to trade
+                  if (_matchController->getChoice() == MatchController::Choice::MONKEYTILE) {
+                      _matchController->playMonkey(_draggingTile);
+
+                      // Rebind _player to prevent null ptr error
+                      _player = _network->getHostStatus() ? _matchController->hostPlayer : _matchController->clientPlayer;
+                      _matchController->setChoice(MatchController::Choice::NONE);
+                  }
+                  // Regular tile getting discarded
+                  else if(_matchController->discardTile(_draggingTile)) {
+                      _discardUINode->incrementLabel(_draggingTile);
+                  };
+              }
+           }
         }
         if (_dragInitiated && _draggingTile) {
             float distance = (mousePos - _dragStartPos).length();

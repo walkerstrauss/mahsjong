@@ -82,6 +82,8 @@ public:
         RABBIT,
         /** Snake played */
         SNAKE,
+        /** Monkey played */
+        MONKEY,
         /** Rooster played */
         ROOSTER
         

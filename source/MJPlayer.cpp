@@ -98,11 +98,20 @@ void Hand::drawFromDiscard(std::shared_ptr<TileSet::Tile> tile, bool isHost) {
  * @param tile      the tile to discard from out hand
  */
 bool Hand::discard(std::shared_ptr<TileSet::Tile> tile, bool isHost){
+    if (removeTile(tile, isHost)) {
+        tile->discarded = true;
+        return true;
+    }
+    return false;
+}
+
+/**
+ *  Finds and removes the given tile from hand.
+ */
+bool Hand::removeTile(std::shared_ptr<TileSet::Tile> tile, bool isHost) {
     auto it = _tiles.begin();
     while(it != _tiles.end()){
-        if (*it == tile) {
-            // if we find the tile, discard it
-            (*it)->discarded = true;
+        if ((*it)->_id == tile->_id) {
             if (isHost) {
                 (*it)->inHostHand = false;
             } else {
@@ -110,13 +119,15 @@ bool Hand::discard(std::shared_ptr<TileSet::Tile> tile, bool isHost){
             }
             (*it)->inPile = false;
             (*it)->selected = false;
-
+            
             _tiles.erase(it);
+            
+            return true;
         } else {
-            ++it;
+            it++;
         }
     }
-    return true;
+    return false;
 }
 
 /**

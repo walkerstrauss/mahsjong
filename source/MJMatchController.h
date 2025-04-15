@@ -24,6 +24,7 @@ public:
     enum Choice {
         NONE,
         DISCARDUIUPDATE,
+        MONKEYTILE,
         DRAWNDISCARD,
         SUCCESS_SET,
         FAILED_SET, 
@@ -44,6 +45,8 @@ protected:
     std::shared_ptr<DiscardPile> _discardPile; 
     /** The current state of the game */
     Choice _choice;
+    /** The instance of the monkey tile that was played */
+    std::shared_ptr<TileSet::Tile> _monkeyTile;
     /** Currnet active state of game */
     bool _active; 
     
@@ -166,6 +169,11 @@ public:
      * to opposing player.
      */
     void playSnake(std::shared_ptr<TileSet::Tile>& celestialTile);
+    
+    /**
+     * Executes the Monkey celestial tile effect (trade tiles) given the selected tile by the player. It will give the selected tile to the opponent and then take a random tile from them.
+     */
+    void playMonkey(std::shared_ptr<TileSet::Tile>& selectedTile);
     
     /** Applies the effect of the celestial tile played by opponent by using the celestial state of the network. */
     void celestialEffect();

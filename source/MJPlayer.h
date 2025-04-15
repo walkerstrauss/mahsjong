@@ -99,11 +99,9 @@ public:
     bool discard(std::shared_ptr<TileSet::Tile> tile, bool isHost);
     
     /**
-     * Discards all action tiles in hand and returns number of action tiles discarded.
+     *  Finds and removes the given tile from hand.
      */
-    void loseActions(bool isHost);
-    
-    void voidEffect();
+    bool removeTile(std::shared_ptr<TileSet::Tile> tile, bool isHost);
     
     /**
      * Method to make a set from your hand and add it to selected sets
@@ -135,24 +133,13 @@ public:
     const std::vector<std::vector<std::shared_ptr<TileSet::Tile>>>& getPlayedSets() const{
         return _playedSets;
     }
-
-    /**
-     * Method to rearrange set in your selected sets before playing
-     */
-    void rearangeSet();
-    
-    /**
-     * Resets the hand fields to handle a new turn.
-     */
-    void reset(){
-        _discardCount = 0;
-        _discardsTurn = 0;
-    }
     
     /**
      * Counts the total number of selected tiles.
      */
     int countSelectedTiles();
+    
+
     
     /**
      * Handles selection of tiles using information from input event
@@ -198,14 +185,6 @@ public:
      * @param batch     the SpriteBatch to draw the tiles in our hand to
      */
     void draw(const std::shared_ptr<cugl::graphics::SpriteBatch>& batch);
-    
-    /**
-     * Method to check if selected tiles contain a wild card (jack)
-     *
-     * @param selectedTiles     the tiles to be checked for a wild card
-     */
-    bool hasJack(std::vector<std::shared_ptr<TileSet::Tile>> selectedTiles);
-    
     
     std::shared_ptr<TileSet::Tile> getTileAtPosition(const cugl::Vec2& mousePos);
     
