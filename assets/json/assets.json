@@ -4,118 +4,100 @@
             "file": "textures/facedown.png"
         },
         "one of dot": {
-            "file": "textures/one_of_dot.png"
+            "file": "textures/oldTiles/one_of_dot.png"
         },
         "one of bamboo": {
-          "file": "textures/one_of_bamboo.png"
+          "file": "textures/oldTiles/one_of_bamboo.png"
         },
         "one of crak": {
-          "file": "textures/one_of_crak.png"
+          "file": "textures/oldTiles/one_of_crak.png"
         },
         "two of dot": {
-          "file": "textures/two_of_dot.png"
+          "file": "textures/oldTiles/two_of_dot.png"
         },
         "two of bamboo": {
-          "file": "textures/two_of_bamboo.png"
+          "file": "textures/oldTiles/two_of_bamboo.png"
         },
         "two of crak": {
-          "file": "textures/two_of_crak.png"
+          "file": "textures/oldTiles/two_of_crak.png"
         },
         "three of dot": {
-          "file": "textures/three_of_dot.png"
+          "file": "textures/oldTiles/three_of_dot.png"
         },
         "three of bamboo": {
-          "file": "textures/three_of_bamboo.png"
+          "file": "textures/oldTiles/three_of_bamboo.png"
         },
         "three of crak": {
-          "file": "textures/three_of_crak.png"
+          "file": "textures/oldTiles/three_of_crak.png"
         },
         "four of dot": {
-          "file": "textures/four_of_dot.png"
+          "file": "textures/oldTiles/four_of_dot.png"
         },
         "four of bamboo": {
-          "file": "textures/four_of_bamboo.png"
+          "file": "textures/oldTiles/four_of_bamboo.png"
         },
         "four of crak": {
-          "file": "textures/four_of_crak.png"
+          "file": "textures/oldTiles/four_of_crak.png"
         },
         "five of dot": {
-          "file": "textures/five_of_dot.png"
+          "file": "textures/oldTiles/five_of_dot.png"
         },
         "five of bamboo": {
-          "file": "textures/five_of_bamboo.png"
+          "file": "textures/oldTiles/five_of_bamboo.png"
         },
         "five of crak": {
-          "file": "textures/five_of_crak.png"
+          "file": "textures/oldTiles/five_of_crak.png"
         },
         "six of dot": {
-          "file": "textures/six_of_dot.png"
+          "file": "textures/oldTiles/six_of_dot.png"
         },
         "six of bamboo": {
-          "file": "textures/six_of_bamboo.png"
+          "file": "textures/oldTiles/six_of_bamboo.png"
         },
         "six of crak": {
-          "file": "textures/six_of_crak.png"
+          "file": "textures/oldTiles/six_of_crak.png"
         },
         "seven of dot": {
-          "file": "textures/seven_of_dot.png"
+          "file": "textures/oldTiles/seven_of_dot.png"
         },
         "seven of bamboo": {
-          "file": "textures/seven_of_bamboo.png"
+          "file": "textures/oldTiles/seven_of_bamboo.png"
         },
         "seven of crak": {
-          "file": "textures/seven_of_crak.png"
+          "file": "textures/oldTiles/seven_of_crak.png"
         },
         "eight of dot": {
-          "file": "textures/eight_of_dot.png"
+          "file": "textures/oldTiles/eight_of_dot.png"
         },
         "eight of bamboo": {
-          "file": "textures/eight_of_bamboo.png"
+          "file": "textures/oldTiles/eight_of_bamboo.png"
         },
         "eight of crak": {
-          "file": "textures/eight_of_crak.png"
+          "file": "textures/oldTiles/eight_of_crak.png"
         },
         "nine of dot": {
-          "file": "textures/nine_of_dot.png"
+          "file": "textures/oldTiles/nine_of_dot.png"
         },
         "nine of bamboo": {
-          "file": "textures/nine_of_bamboo.png"
+          "file": "textures/oldTiles/nine_of_bamboo.png"
         },
         "nine of crak": {
-          "file": "textures/nine_of_crak.png"
+          "file": "textures/oldTiles/nine_of_crak.png"
         },
         "rooster of celestial": {
-          "file": "textures/wild_1.png"
+          "file": "textures/oldTiles/wild_1.png"
         },
         "ox of celestial": {
-          "file": "textures/wild_2.png"
+          "file": "textures/oldTiles/wild_2.png"
         },
         "rabbit of celestial": {
-          "file": "textures/wild_3.png"
+          "file": "textures/oldTiles/wild_3.png"
         },
         "snake of celestial": {
-          "file": "textures/wild_4.png"
+          "file": "textures/oldTiles/wild_4.png"
         },
         "monkey of celestial": {
-          "file": "textures/wild_5.png"
-        },
-        "oblivion of command": {
-          "file": "textures/wild_6.png"
-        },
-        "discard of command": {
-          "file": "textures/wild_7.png"
-        },
-        "eight of wild suit": {
-          "file": "textures/wild_8.png"
-        },
-        "nine of wild suit": {
-          "file": "textures/wild_9.png"
-        },
-        "wild rank of wild suit": {
-          "file": "textures/wild_rank_wild_suit.png"
-        },
-        "grandma text": {
-          "file": "textures/grandma-text.png"
+          "file": "textures/oldTiles/wild_5.png"
         },
         "background": {
           "file": "textures/landing/background.png"
@@ -382,7 +364,7 @@
             "file": "textures/gameplay/infoIcon.png"
         },
         "win-sheet":{
-            "file": "textures/win.png"
+            "file": "textures/animations/win.png"
         },
         "1":{
             "file": "textures/tilesetui/1.png"
@@ -727,16 +709,16 @@
           "file": "textures/client1/client1-rabbit.png"
         },
         "lose-sheet":{
-            "file": "textures/lose.png"
+            "file": "textures/animations/lose.png"
         },
         "pong-sheet":{
-            "file": "textures/pong.png"
+            "file": "textures/animations/pong.png"
         },
         "chow-sheet":{
-            "file": "textures/chow.png"
+            "file": "textures/animations/chow.png"
         },
         "turn-sheet":{
-            "file": "textures/turn_indicator.png"
+            "file": "textures/animations/turn_indicator.png"
         }
     },
     "fonts": {
