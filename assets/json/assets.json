@@ -99,21 +99,6 @@
         "monkey of celestial": {
           "file": "textures/wild_5.png"
         },
-        "oblivion of command": {
-          "file": "textures/wild_6.png"
-        },
-        "discard of command": {
-          "file": "textures/wild_7.png"
-        },
-        "eight of wild suit": {
-          "file": "textures/wild_8.png"
-        },
-        "nine of wild suit": {
-          "file": "textures/wild_9.png"
-        },
-        "wild rank of wild suit": {
-          "file": "textures/wild_rank_wild_suit.png"
-        },
         "grandma text": {
           "file": "textures/grandma-text.png"
         },
