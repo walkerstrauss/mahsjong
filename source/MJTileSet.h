@@ -349,6 +349,7 @@ public:
             }
             return r;
         }
+
         /**
          * Sets the texture of this tile
          *

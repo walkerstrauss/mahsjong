@@ -201,8 +201,7 @@ public:
     void updateHandTextures(const std::shared_ptr<cugl::AssetManager>& assets) {
         for(auto& tile : _tiles) {
             if (tile->debuffed) {
-                CULog("setting texture for debuffed tile");
-                tile->setTexture(assets->get<cugl::graphics::Texture>("facedown"));
+                tile->setTexture(assets->get<cugl::graphics::Texture>("debuffed"));
             } else {
                 tile->setTexture(assets->get<cugl::graphics::Texture>(tile->toString()));
             }
