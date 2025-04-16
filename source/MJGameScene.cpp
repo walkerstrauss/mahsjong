@@ -334,6 +334,12 @@ void GameScene::update(float timestep) {
         _discardedTileImage->setVisible(false);
     }
     
+    // If play set button is active and visible and match controller state is NONE, deactivate and set visible to false
+    if((_playSetBtn->isVisible() || _playSetBtn->isActive()) && _matchController->getChoice() == MatchController::NONE) {
+        _playSetBtn->deactivate();
+        _playSetBtn->setVisible(false);
+    }
+    
     // Clicking/Tapping and Dragging logic
     if(_input.didRelease() && !_input.isDown()) {
         cugl::Vec2 initialMousePos = cugl::Scene::screenToWorldCoords(cugl::Vec3(_input.getInitialPosition()));

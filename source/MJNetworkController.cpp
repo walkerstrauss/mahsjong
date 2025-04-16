@@ -118,7 +118,7 @@ void NetworkController::processData(const std::string source,
     // Start client's game
     else if (msgType == "client start") {
         if(_localPid != 1) {
-            return; 
+            return;
         }
         _clientStart = _deserializer->readJson();
         _status = INGAME;
@@ -271,6 +271,7 @@ bool NetworkController::checkConnection() {
                state == cugl::netcode::NetcodeConnection::State::FAILED ||
                state == cugl::netcode::NetcodeConnection::State::INVALID ||
                state == cugl::netcode::NetcodeConnection::State::MISMATCHED) {
+        disconnect();
         _status = Status::NETERROR;
         return false;
     }
