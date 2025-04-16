@@ -112,6 +112,8 @@ protected:
     std::shared_ptr<cugl::scene2::Button> _defeatBtn;
     /** Button for ending turn */
     std::shared_ptr<cugl::scene2::Button> _endTurnBtn;
+    /** Textured node to set the discarded tile image*/
+    std::shared_ptr<cugl::scene2::TexturedNode> _discardedTileImage;
     
     /** Button for playing a set */
     std::shared_ptr<cugl::scene2::Button> _playSetBtn;
@@ -151,6 +153,12 @@ protected:
 
     /** The rectangle representing the active play/discard area for all tiles*/
     cugl::Rect _activeRegion;
+    
+    /** The rectangle representing the discarded tile widget */
+    cugl::Rect _discardedTileRegion;
+    
+    /** The rectangle reprsenting the player hand region */
+    cugl::Rect _playerHandRegion; 
 
     std::shared_ptr<TileSet::Tile> _draggingTile = nullptr;
     cugl::Vec2 _dragStartPos;

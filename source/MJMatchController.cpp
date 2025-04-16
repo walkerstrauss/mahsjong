@@ -245,10 +245,6 @@ bool MatchController::playSet() {
     // Retrieving the current player
     std::shared_ptr<Player> currPlayer = _network->getHostStatus() ? hostPlayer : clientPlayer;
     
-    // If selected tiles is not a valid set size
-    if(currPlayer->getHand()._selectedTiles.size() != 3) {
-        return false;
-    }
     // If selected tiles is a valid set
     if(currPlayer->getHand().isSetValid(currPlayer->getHand()._selectedTiles)) {
         // Accumulate tiles from selected set to transform into JSON

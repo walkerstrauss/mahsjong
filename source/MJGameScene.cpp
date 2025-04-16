@@ -68,9 +68,13 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::sha
         return false;
     }
     
-    _tilesetUIBtn = std::dynamic_pointer_cast<scene2::Button>(_assets->get<scene2::SceneNode>("matchscene.gameplayscene.discardButton"));
+    _tilesetUIBtn = std::dynamic_pointer_cast<scene2::Button>(_assets->get<scene2::SceneNode>("matchscene.gameplayscene.discarded-tile.discard-can"));
     _pauseBtn = std::dynamic_pointer_cast<scene2::Button>(_assets->get<scene2::SceneNode>("matchscene.gameplayscene.pauseButton"));
     _endTurnBtn = std::dynamic_pointer_cast<scene2::Button>(_assets->get<scene2::SceneNode>("matchscene.gameplayscene.endTurnButton"));
+    _backBtn = std::dynamic_pointer_cast<scene2::Button>(
+        _discardUINode->_root->getChildByName("tilesetscene")->getChildByName("board")->getChildByName("buttonClose"));
+    _discardedTileImage = std::dynamic_pointer_cast<scene2::TexturedNode>(_assets->get<scene2::SceneNode>("matchscene.gameplayscene.discarded-tile.discarded-tile-recent.up.discarded-tile-recent"));
+    
     _endTurnBtn->addListener([this](const std::string& name, bool down){
         if (!down){
             _matchController->endTurn();
@@ -92,9 +96,6 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::sha
             _choice = Choice::PAUSE;
         }
     });
-    
-    _backBtn = std::dynamic_pointer_cast<scene2::Button>(
-        _discardUINode->_root->getChildByName("tilesetscene")->getChildByName("board")->getChildByName("buttonClose"));
     
     _backBtnKey = _backBtn->addListener([this](const std::string& name, bool down) {
         if (!down) {
@@ -151,6 +152,7 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::sha
     _quit = false;
     setActive(false);
     _matchScene->setVisible(true);
+    _discardedTileImage->setVisible(false);
     
     // init the pile for the pile rect
     float minX = std::numeric_limits<float>::max();
@@ -178,8 +180,18 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::sha
     // Initializing the active play/discard region
     //std::shared_ptr<scene2::SceneNode> activeRegionNode = _assets->get<scene2::SceneNode>("matchscene.gameplayscene.activeRegion");
     std::shared_ptr<scene2::SceneNode> activeRegionNode = _assets->get<scene2::SceneNode>("matchscene.gameplayscene.drag-to-discard-tile");
-    cugl::Vec2 worldOrigin = activeRegionNode->nodeToWorldCoords(Vec2::ZERO);
-    _activeRegion = cugl::Rect(worldOrigin, activeRegionNode->getContentSize());
+    //Initializing the discarded tiles region
+    std::shared_ptr<scene2::SceneNode> discardedTileRegionNode = _assets->get<scene2::SceneNode>("matchscene.gameplayscene.discarded-tile.discarded-rec");
+    //Initializing the player hand region
+    std::shared_ptr<scene2::SceneNode> playerHandRegionNode = _assets->get<scene2::SceneNode>("matchscene.gameplayscene.playerhand");
+    
+    cugl::Vec2 activeRegionWorldOrigin = activeRegionNode->nodeToWorldCoords(Vec2::ZERO);
+    cugl::Vec2 discardedTileRegionWorldOrigin = discardedTileRegionNode->nodeToWorldCoords(Vec2::ZERO);
+    cugl::Vec2 playerHandRegionWorldOrigin = playerHandRegionNode->nodeToWorldCoords(Vec2::ZERO);
+    
+    _activeRegion = cugl::Rect(activeRegionWorldOrigin, activeRegionNode->getContentSize());
+    _discardedTileRegion = cugl::Rect(discardedTileRegionWorldOrigin, discardedTileRegionNode->getContentSize());
+    _playerHandRegion = cugl::Rect(playerHandRegionWorldOrigin, playerHandRegionNode->getContentSize());
     
     // Init the button for playing sets.
     _playSetBtn = std::dynamic_pointer_cast<scene2::Button>(_assets->get<scene2::SceneNode>("matchscene.gameplayscene.playSetButton"));
@@ -210,9 +222,12 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::sha
     
     _playSetBtn->addListener([this](const std::string& name, bool down) {
         if (!down) {
-            _matchController->playSet();
+            if(!_matchController->playSet()) {
+                _discardedTileImage->setVisible(true);
+            }
         }
     });
+
    // Init all animations
  /*   _actionAnimNode = std::make_shared<AnimatedNode>();
     _actionAnimNode->setAnchor(Vec2::ANCHOR_CENTER);
@@ -302,10 +317,7 @@ void GameScene::update(float timestep) {
         _playSetBtn->setVisible(false);
         _playSetBtn->deactivate();
     }
-        
-    if(!isActive()) {
-        return;
-    }
+    
     
     // Clicking/Tapping and Dragging logic
     if(_input.didRelease() && !_input.isDown()) {
@@ -315,6 +327,11 @@ void GameScene::update(float timestep) {
         }
     }
     updateDrag(mousePos, _input.isDown(), _input.didRelease());
+    
+    // If scene is not active prevent any input from user that changes the state of the game
+    if(!isActive()) {
+        return;
+    }
         
     // If it is your turn, allow turn-based actions
     if(_network->getCurrentTurn() == _network->getLocalPid()) {
@@ -337,6 +354,7 @@ void GameScene::update(float timestep) {
         if(_discardBox.contains(initialMousePos) && releasedInDiscard) {
             // If drawing from discard is successful activate play set button
             if(_matchController->drawDiscard()) {
+                _discardedTileImage->setVisible(false);
                 _player->getHand().updateTilePositions(_matchScene->getSize());
                 _playSetBtn->setVisible(true);
                 _playSetBtn->activate();
@@ -382,13 +400,10 @@ void GameScene::render() {
     
     _matchScene->render(_batch);
     _pile->draw(_batch);
-    // If there is an update w/ discard pile (drawing from discard) then stop rendering tile
-    if(!(_network->getStatus() == NetworkController::DRAWNDISCARD)) {
-        _discardPile->draw(_batch);
-    }
     _player->draw(_batch);
+    _discardPile->draw(_batch);
 
-//    if (_actionAnimNode->isVisible()) _batch->draw(_actionAnimNode->getTexture(), Rect(600,400,670,470));
+    //if (_actionAnimNode->isVisible()) _batch->draw(_actionAnimNode->getTexture(), Rect(600,400,670,470));
     //if (_turnSheet->isVisible()) _turnSheet->render(_batch);
     //if (_pongSheet->isVisible()) _pongSheet->render(_batch);
     //if (_chowSheet->isVisible()) _chowSheet->render(_batch);
@@ -398,7 +413,8 @@ void GameScene::render() {
     _batch->setColor(Color4(255, 0, 0, 200));
     _batch->setTexture(nullptr);
     
-    
+    _batch->setColor(Color4::RED);
+    _batch->fill(_playerHandRegion);
     
     _batch->end();
 }
@@ -515,6 +531,14 @@ void GameScene::updateDrag(const cugl::Vec2& mousePos, bool mouseDown, bool mous
                 _originalTilePos = _draggingTile->pos;
                 _dragOffset = _draggingTile->pos - mousePos;
             }
+            else if(!_tilesetUIBtn->isDown() && _discardedTileRegion.contains(mousePos)) {
+                if(_discardPile->getTopTile()) {
+                    _discardedTileImage->setVisible(false);
+                    _draggingTile = _discardPile->getTopTile();
+                    _draggingTile->_scale = 0.2;
+                    _draggingTile->pos = mousePos;
+                }
+            }
         }
         else {
             float distance = (mousePos - _dragStartPos).length();
@@ -544,12 +568,25 @@ void GameScene::updateDrag(const cugl::Vec2& mousePos, bool mouseDown, bool mous
                   }
                   // Regular tile getting discarded
                   else if(_matchController->discardTile(_draggingTile)) {
+                      _discardedTileImage->setTexture(_assets->get<Texture>(_draggingTile->toString()));
+                      _discardedTileImage->SceneNode::setContentSize(32, 35);
+                      _discardedTileImage->setVisible(true);
                       _discardUINode->incrementLabel(_draggingTile);
                   };
               }
            }
         }
         if (_dragInitiated && _draggingTile) {
+            if(_draggingTile->discarded) {
+                if(_playerHandRegion.contains(mousePos)) {
+                    _matchController->drawDiscard();
+                }
+                else {
+                    _discardedTileImage->setVisible(true);
+                    _draggingTile->_scale = 0;
+                    _draggingTile->pos = Vec2(0,0);
+                }
+            }
             float distance = (mousePos - _dragStartPos).length();
             if (distance > DRAG_THRESHOLD) {
                 if (_draggingTile) {
