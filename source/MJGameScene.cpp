@@ -309,15 +309,30 @@ void GameScene::update(float timestep) {
     // Updating discardUINode if matchController has a discard update
     if(_matchController->getChoice() == MatchController::Choice::DISCARDUIUPDATE) {
         _discardUINode->incrementLabel(_discardPile->getTopTile());
+        _discardedTileImage->setTexture(_assets->get<Texture>(_discardPile->getTopTile()->toString()));
+        _discardedTileImage->SceneNode::setContentSize(32, 35);
+        _discardedTileImage->setVisible(true);
+        
         _matchController->setChoice(MatchController::NONE);
     }
     
-    // If play set button was active and matchController state is NONE, deactivate button
-    if(_playSetBtn->isActive() && _matchController->getChoice() == MatchController::NONE) {
+    // If matchController state is SUCCESS_SET, deactivate button
+    if(_matchController->getChoice() == MatchController::SUCCESS_SET) {
         _playSetBtn->setVisible(false);
         _playSetBtn->deactivate();
     }
     
+    // If matchController state is FAILED_SET, deactivate button and make discarded tile visible
+    if(_matchController->getChoice() == MatchController::FAILED_SET) {
+        _discardedTileImage->setVisible(true);
+        _playSetBtn->setVisible(false);
+        _playSetBtn->deactivate();
+    }
+    
+    // If we are in drawn discard state, set discarded tile image visibility to false since player drew it
+    if(_matchController->getChoice() == MatchController::DRAWNDISCARD || _network->getStatus() == NetworkController::DRAWNDISCARD) {
+        _discardedTileImage->setVisible(false);
+    }
     
     // Clicking/Tapping and Dragging logic
     if(_input.didRelease() && !_input.isDown()) {
@@ -338,10 +353,6 @@ void GameScene::update(float timestep) {
         // If in drawn discard state, disallow any other action other then playing a set
         // Coords of initial click and ending release
         cugl::Vec2 initialMousePos = cugl::Scene::screenToWorldCoords(cugl::Vec3(_input.getInitialPosition()));
-        
-        if(_matchController->getChoice() == MatchController::DRAWNDISCARD) {
-            return;
-        }
 
         bool releasedInPile = _input.didRelease() && _pileBox.contains(mousePos);
         // Drawing (from pile) logic
@@ -361,7 +372,6 @@ void GameScene::update(float timestep) {
             };
         }
     }
-
 //    updateSpriteNodes(timestep);
 //    
 //    if (_input.getKeyPressed() == KeyCode::P && _input.getKeyDown()){
@@ -383,7 +393,6 @@ void GameScene::update(float timestep) {
 //    _actionAnimNode->update(timestep);
 //    AnimationController::getInstance().update(timestep);
 }
-
 
 /**
  * Draws all this to the scene's SpriteBatch.
@@ -412,9 +421,6 @@ void GameScene::render() {
     
     _batch->setColor(Color4(255, 0, 0, 200));
     _batch->setTexture(nullptr);
-    
-    _batch->setColor(Color4::RED);
-    _batch->fill(_playerHandRegion);
     
     _batch->end();
 }
@@ -549,7 +555,6 @@ void GameScene::updateDrag(const cugl::Vec2& mousePos, bool mouseDown, bool mous
             }
         }
     }
-
     if (mouseReleased) {
         // Active play area logic. Ensure you only do these actions when it is your turn.
         if(_draggingTile && _activeRegion.contains(mousePos) && _network->getCurrentTurn() == _network->getLocalPid()) {
@@ -577,9 +582,12 @@ void GameScene::updateDrag(const cugl::Vec2& mousePos, bool mouseDown, bool mous
            }
         }
         if (_dragInitiated && _draggingTile) {
+            float distance = (mousePos - _dragStartPos).length();
             if(_draggingTile->discarded) {
                 if(_playerHandRegion.contains(mousePos)) {
                     _matchController->drawDiscard();
+                    _playSetBtn->activate();
+                    _playSetBtn->setVisible(true);
                 }
                 else {
                     _discardedTileImage->setVisible(true);
@@ -587,8 +595,7 @@ void GameScene::updateDrag(const cugl::Vec2& mousePos, bool mouseDown, bool mous
                     _draggingTile->pos = Vec2(0,0);
                 }
             }
-            float distance = (mousePos - _dragStartPos).length();
-            if (distance > DRAG_THRESHOLD) {
+            else if (distance > DRAG_THRESHOLD) {
                 if (_draggingTile) {
                     if (shouldReturn) {
                         _draggingTile->selected = false;
@@ -605,6 +612,7 @@ void GameScene::updateDrag(const cugl::Vec2& mousePos, bool mouseDown, bool mous
                 }
             }
         }
+        
         _dragInitiated = false;
         _originalTilePos = cugl::Vec2::ZERO;
         

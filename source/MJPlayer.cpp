@@ -205,6 +205,9 @@ bool Hand::playSet(bool isHost) {
     for (auto& tile : _selectedTiles) {
         tile->selected = false;
         tile->selectedInSet = false;
+        
+        tile->_scale = 0;
+        tile->pos = Vec2::ZERO;
     }
     _selectedTiles.clear();
     

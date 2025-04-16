@@ -36,17 +36,17 @@ bool DiscardPile::init(const std::shared_ptr<cugl::AssetManager>& assets){
 /**
  * Method to update the position of the discard pile tiles
  */
-void DiscardPile::updateTilePositions(){
-    // TODO: implement positioning logic for if the pile is size one or two (if it is one keep location if it is two then start x, end x, spacing x, -
-    // TODO: replace this with better logic - should be based on the position specified in a Json file
-    
-    // Set top tile position for rendering to game scene
-    _topTile->pos = cugl::Vec2(990,520);
-    Size textureSize(350.0, 415.0);
-    Vec2 rectOrigin(_topTile->pos - (textureSize * getTopTile()->_scale)/2);
-    getTopTile()->tileRect = cugl::Rect(rectOrigin, textureSize * getTopTile()->_scale);
-    return;
-}
+//void DiscardPile::updateTilePositions(){
+//    // TODO: implement positioning logic for if the pile is size one or two (if it is one keep location if it is two then start x, end x, spacing x, -
+//    // TODO: replace this with better logic - should be based on the position specified in a Json file
+//    
+//    // Set top tile position for rendering to game scene
+//    _topTile->pos = cugl::Vec2(990,520);
+//    Size textureSize(350.0, 415.0);
+//    Vec2 rectOrigin(_topTile->pos - (textureSize * getTopTile()->_scale)/2);
+//    getTopTile()->tileRect = cugl::Rect(rectOrigin, textureSize * getTopTile()->_scale);
+//    return;
+//}
 
 bool DiscardPile::isTileSelected(const cugl::Vec2& mousePos){
     // Tile position (matches render)
@@ -110,7 +110,7 @@ std::shared_ptr<TileSet::Tile> DiscardPile::drawTopTile(){
  * Method to render the top card of the discard pile
  */
 void DiscardPile::draw(const std::shared_ptr<cugl::graphics::SpriteBatch>& batch){
-    if (getTopTile()){
+    if (_topTile){
         std::shared_ptr<TileSet::Tile> tile = getTopTile();
         
         cugl::Vec2 origin = cugl::Vec2(tile->getTileTexture()->getSize().width/2, tile->getTileTexture()->getSize().height/2);

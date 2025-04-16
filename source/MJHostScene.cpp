@@ -268,7 +268,7 @@ void HostScene::update(float timestep) {
         if (_network->getNumPlayers() > 1) {
             _playerMulti->setVisible(true);
             _playerSingle->setVisible(false);
-            _waitOrStart->setTexture(_assets->get<cugl::graphics::Texture>("host1-start-button"));
+            _waitOrStart->setTexture(_assets->get<cugl::graphics::Texture>("hoststart"));
         }
         else {
             _playerMulti->setVisible(false);

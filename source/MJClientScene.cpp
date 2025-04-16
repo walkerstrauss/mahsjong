@@ -94,7 +94,6 @@ bool ClientScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::s
 
     _startgame = std::dynamic_pointer_cast<scene2::Button>(_assets->get<scene2::SceneNode>("client.clientscene.buttons.confirm-button"));
     _resetGameID = std::dynamic_pointer_cast<scene2::Button>(_assets->get<scene2::SceneNode>("client.clientscene.buttons.clear-button"));
-    _backout2 = std::dynamic_pointer_cast<scene2::Button>(_assets->get<scene2::SceneNode>("client3.client3Scene.menu.button2Client"));
     _backout = std::dynamic_pointer_cast<scene2::Button>(_assets->get<scene2::SceneNode>("client.clientscene.cancel-box"));
     _prepareOrStart = std::dynamic_pointer_cast<scene2::PolygonNode>(_assets->get<scene2::SceneNode>("client3.client3Scene.menu.button1.up.start"));
 
@@ -114,26 +113,12 @@ bool ClientScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::s
 //            TODO: play back sound
         }
         });
-    _backout2->addListener([this](const std::string& name, bool down) {
-        if (down) {
-            _backClicked = true;
-            _network->disconnect();
-            _gameIDNew[0]->setTexture(_assets->get<cugl::graphics::Texture>("client1-gameid-tile19"));
-            _gameIDNew[0]->setContentSize(75,75);
-            _gameIDNew[1]->setTexture(_assets->get<cugl::graphics::Texture>("client1-gameid-tile19"));
-            _gameIDNew[1]->setContentSize(75,75);
-            _gameIDNew[2]->setTexture(_assets->get<cugl::graphics::Texture>("client1-gameid-tile19"));
-            _gameIDNew[2]->setContentSize(75,75);
-            _gameIDNew[3]->setTexture(_assets->get<cugl::graphics::Texture>("client1-gameid-tile19"));
-            _gameIDNew[3]->setContentSize(75,75);
-            _idPos = 0;
-            _clientScene2->setVisible(false);
-//            TODO: play back sound
-        }
-        });
 
     _resetGameID->addListener([this](const std::string& name, bool down) {
         if (down) {
+            if(_idPos == 0) {
+                return;
+            }
             _gameIDNew[0]->setTexture(_assets->get<cugl::graphics::Texture>("client1-gameid-tile19"));
             _gameIDNew[0]->setContentSize(75,75);
             _gameIDNew[1]->setTexture(_assets->get<cugl::graphics::Texture>("client1-gameid-tile19"));
@@ -149,10 +134,9 @@ bool ClientScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::s
 
     _startgame->addListener([=, this](const std::string& name, bool down) {
         if (down) {
-            //std::string curr = tile2hex();
-            _network->connectAsClient(tile2hex());
-            CULog(tile2hex().c_str());
-            // This will call the _gameid listener
+            if (_network->getStatus() == NetworkController::Status::IDLE) {
+                _network->connectAsClient(tile2hex());
+            }
             //_gameid->releaseFocus();
 //          TODO: play confirm sound
         }

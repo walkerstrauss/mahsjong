@@ -553,7 +553,7 @@
             "file": "textures/host1/leave-button.png"
         },
         "hoststart": {
-            "file": "textures/host1/start.png"
+            "file": "textures/host1/startButton.png"
         },
         "player2": {
             "file": "textures/host1/player2.png"
@@ -614,6 +614,9 @@
         },
         "client1-cancel-button": {
             "file": "textures/client1/client1-cancel-button.png"
+        },
+        "client1-clear-button": {
+            "file": "textures/client1/clearButton.png"
         },
         "client1-gameid-blank": {
             "file": "textures/client1/client1-gameid-blank.png"
