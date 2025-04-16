@@ -240,7 +240,7 @@ void Pile::draw(const std::shared_ptr<cugl::graphics::SpriteBatch>& batch) {
             trans.scale(tile->_scale);
             trans.translate(tile->pos);
             
-            cugl::Size textureSize(350.0, 415.0);
+            Size textureSize(750.0, 1000.0);
             cugl::Vec2 rectOrigin(tile->pos - (textureSize * tile->_scale)/2);
             tile->tileRect = cugl::Rect(rectOrigin, textureSize * tile->_scale);
 

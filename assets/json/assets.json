@@ -156,6 +156,9 @@
         "button_tileset": {
             "file": "textures/gameplay/button_tileset.png"
         },
+        "displayed-set-icon": {
+            "file": "textures/gameplay/displayed-set-icon.png"
+        },
         "background_pause": {
             "file": "textures/pause/background_pause.png"
         },
