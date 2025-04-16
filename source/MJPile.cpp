@@ -78,7 +78,7 @@ bool Pile::createPile() {
             
             std::shared_ptr<TileSet::Tile> tile = _tileSet->deck[index];
             
-            tile->_scale = 0.2;
+            tile->_scale = 0.1;
             tile->inPile = true;
             tile->pileCoord = cugl::Vec2(i, j);
             tile->inDeck = false; 
@@ -105,8 +105,8 @@ bool Pile::createPile() {
 void Pile::updateTilePositions() {
     cugl::Size screenSize(1280, 720); //Temporary pile placement fix
 
-    float spacingY = 0.85f;
-    float spacingX = 0.8f;
+    float spacingY = 1.0f;
+    float spacingX = 1.0f;
     
     _pileMap.clear();
     

@@ -340,26 +340,26 @@ void GameScene::update(float timestep) {
         }
     }
 
-//    updateSpriteNodes(timestep);
-//    
-//    if (_input.getKeyPressed() == KeyCode::P && _input.getKeyDown()){
-////        _actionAnimNode->setVisible(true);
-////        _actionAnimNode->play("pong-sheet", AnimatedNode::AnimationType::INTERRUPT, _assets->get<Texture>("pong-sheet"));
-//        _pongSheet->setVisible(true);
-//        
-//    } else if (_input.getKeyPressed() == KeyCode::C && _input.getKeyDown()){
-////        _actionAnimNode->setVisible(true);
-////        _actionAnimNode->play("chow-sheet", AnimatedNode::AnimationType::INTERRUPT, _assets->get<Texture>("chow-sheet"));
-//        _chowSheet->setVisible(true);
-//    } else if (_input.getKeyPressed() == KeyCode::T && _input.getKeyDown()){
-//        _turnSheet->setVisible(true);
-//    } else if (_input.getKeyPressed() == KeyCode::SPACE && _input.getKeyDown()){
-//        _pongSheet->setVisible(false);
-//        _chowSheet->setVisible(false);
-//        _turnSheet->setVisible(false);
-//    }
-//    _actionAnimNode->update(timestep);
-//    AnimationController::getInstance().update(timestep);
+    updateSpriteNodes(timestep);
+    
+    if (_input.getKeyPressed() == KeyCode::P && _input.getKeyDown()){
+//        _actionAnimNode->setVisible(true);
+//        _actionAnimNode->play("pong-sheet", AnimatedNode::AnimationType::INTERRUPT, _assets->get<Texture>("pong-sheet"));
+        _pongSheet->setVisible(true);
+        
+    } else if (_input.getKeyPressed() == KeyCode::C && _input.getKeyDown()){
+//        _actionAnimNode->setVisible(true);
+//        _actionAnimNode->play("chow-sheet", AnimatedNode::AnimationType::INTERRUPT, _assets->get<Texture>("chow-sheet"));
+        _chowSheet->setVisible(true);
+    } else if (_input.getKeyPressed() == KeyCode::T && _input.getKeyDown()){
+        _turnSheet->setVisible(true);
+    } else if (_input.getKeyPressed() == KeyCode::SPACE && _input.getKeyDown()){
+        _pongSheet->setVisible(false);
+        _chowSheet->setVisible(false);
+        _turnSheet->setVisible(false);
+    }
+    _actionAnimNode->update(timestep);
+    AnimationController::getInstance().update(timestep);
 }
 
 
