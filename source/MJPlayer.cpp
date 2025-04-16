@@ -205,6 +205,9 @@ bool Hand::playSet(bool isHost) {
     for (auto& tile : _selectedTiles) {
         tile->selected = false;
         tile->selectedInSet = false;
+        
+        tile->_scale = 0;
+        tile->pos = Vec2::ZERO;
     }
     _selectedTiles.clear();
     
@@ -227,7 +230,7 @@ bool Hand::isSetValid(const std::vector<std::shared_ptr<TileSet::Tile>>& selecte
     
     // check if the size of the set is valid.
     // only pairs, 3 or 4-tile sets.
-    if(selectedTiles.size() < 2 || selectedTiles.size() > 4){
+    if(selectedTiles.size() <= 2 || selectedTiles.size() >= 4){
         return false;
     }
     

@@ -223,7 +223,7 @@ bool MatchController::discardTile(std::shared_ptr<TileSet::Tile> tile) {
         // If not a special tile add it to the discard pile
         if (!(tile->_suit == TileSet::Tile::Suit::CELESTIAL)){
             _discardPile->addTile(tile);
-            _discardPile->updateTilePositions();
+//            _discardPile->updateTilePositions();
             
             // Converting to JSON and broadcasting discarded tile
             _tileSet->tilesToJson.push_back(tile);
@@ -245,10 +245,6 @@ bool MatchController::playSet() {
     // Retrieving the current player
     std::shared_ptr<Player> currPlayer = _network->getHostStatus() ? hostPlayer : clientPlayer;
     
-    // If selected tiles is not a valid set size
-    if(currPlayer->getHand()._selectedTiles.size() != 3) {
-        return false;
-    }
     // If selected tiles is a valid set
     if(currPlayer->getHand().isSetValid(currPlayer->getHand()._selectedTiles)) {
         // Accumulate tiles from selected set to transform into JSON
@@ -279,6 +275,9 @@ bool MatchController::playSet() {
                         selectedTile->inHostHand= false;
                         selectedTile->inClientHand= false;
                         selectedTile->unselectable = false;
+                        
+                        selectedTile->_scale = 0;
+                        selectedTile->pos = Vec2::ZERO;
                         
                         _discardPile->addTile(selectedTile);
                         it = currPlayer->getHand()._tiles.erase(it);
@@ -448,8 +447,6 @@ void MatchController::playOx(std::shared_ptr<TileSet::Tile>& celestialTile){
  * to opposing player.
  */
 void MatchController::playRabbit(std::shared_ptr<TileSet::Tile>& celestialTile){
-    CULog("Played Rabbit");
-
     auto& opponent = _network->getHostStatus()
                          ? clientPlayer->getHand()
                          : hostPlayer->getHand();
@@ -727,13 +724,16 @@ void MatchController::update(float timestep) {
         tile->inClientHand = false;
         tile->discarded = true;
         
+        tile->_scale = 0;
+        tile->pos = Vec2::ZERO;
+        
         //If host
         if(_network->getLocalPid() == 0) {clientPlayer->getHand().discard(tile, true);}
         //If client
         else{hostPlayer->getHand().discard(tile, false);}
         
         _discardPile->addTile(tile);
-        _discardPile->updateTilePositions();
+//        _discardPile->updateTilePositions();
         
         // Change state so gamescene can update discardUI scene
         _choice = DISCARDUIUPDATE;
@@ -803,7 +803,7 @@ void MatchController::update(float timestep) {
         // Reset network state
         _network->setStatus(NetworkController::INGAME);
         // Indicate to gamescene to deactivate button
-        _choice = NONE;
+        _choice = SUCCESS_SET;
     }
     
     // If played set was unsuccessful
@@ -811,7 +811,7 @@ void MatchController::update(float timestep) {
         //Reset network state
         _network->setStatus(NetworkController::INGAME);
         // Indicate to gamescene to deactivate button
-        _choice = NONE;
+        _choice = FAILED_SET;
     }
 }
 

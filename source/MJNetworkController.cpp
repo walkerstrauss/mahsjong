@@ -85,7 +85,6 @@ bool NetworkController::connectAsClient(std::string room) {
     }
     _roomid = room;
     return checkConnection();
-    
 }
 
 /**
@@ -109,15 +108,21 @@ void NetworkController::processData(const std::string source,
     // Game start for host
     if (msgType == "start game") {
         _status = START;
+        return;
     }
     // End turn for player
     else if (msgType == "end turn") {
         _currentTurn = _deserializer->readUint32();
+        return;
     }
     // Start client's game
     else if (msgType == "client start") {
+        if(_localPid != 1) {
+            return;
+        }
         _clientStart = _deserializer->readJson();
         _status = INGAME;
+        return;
     }
     int isHost = _deserializer->readUint32();
     // Messages only for the opposing player
@@ -266,6 +271,7 @@ bool NetworkController::checkConnection() {
                state == cugl::netcode::NetcodeConnection::State::FAILED ||
                state == cugl::netcode::NetcodeConnection::State::INVALID ||
                state == cugl::netcode::NetcodeConnection::State::MISMATCHED) {
+        disconnect();
         _status = Status::NETERROR;
         return false;
     }

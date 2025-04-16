@@ -1,5 +1,5 @@
 {
-    "variables": {"size":["data","size"]},
+    "variables": { "size": [ "data", "size" ] },
     "contents": {
         "type": "Node",
         "format": {
@@ -11,8 +11,8 @@
                 0
             ],
             "size": [
-                1024,
-                576
+                874,
+                402
             ],
             "angle": 0,
             "position": [
@@ -22,17 +22,17 @@
             "visible": true
         },
         "children": {
-            "gameplayBackground": {
+            "gameplay-background": {
                 "type": "Image",
                 "data": {
-                    "texture": "gameplayBackground",
+                    "texture": "gameplay-background",
                     "anchor": [
                         0.5,
                         0.5
                     ],
                     "size": [
-                        1024,
-                        576
+                        874,
+                        402
                     ],
                     "angle": 0,
                     "position": [
@@ -49,35 +49,31 @@
                     "y_offset": 0
                 }
             },
-            "pile": {
-                "type": "Node",
-                "format": {
-                    "type": "Anchored"
-                },
+            "drag-to-discard-tile": {
+                "type": "Image",
                 "data": {
+                    "texture": "drag-to-discard-tile",
                     "anchor": [
                         0.5,
                         0.5
                     ],
                     "size": [
-                        273,
-                        333
+                        1186.51,
+                        350
                     ],
                     "angle": 0,
                     "position": [
-                        376,
-                        121
+                        348,
+                        601
                     ],
-                    "visible": true
-                },
-                "children": {
+                    "visible": false
                 },
                 "layout": {
                     "x_anchor": "left",
                     "y_anchor": "top",
                     "absolute": false,
-                    "x_offset": 0.04,
-                    "y_offset": -0.04
+                    "x_offset": 0.5,
+                    "y_offset": -0.43
                 }
             },
             "pauseButton": {
@@ -350,1417 +346,670 @@
                     "y_offset": -0.16
                 }
             },
-            "actionSection": {
-                "type": "Button",
-                "format": {
-                    "type": "Anchored"
-                },
+            "drag-to-hand-area": {
+                "type": "Image",
                 "data": {
-                    "anchor": [
-                        0,
-                        1
-                    ],
-                    "size": [
-                        273,
-                        195
-                    ],
-                    "angle": 0,
-                    "position": [
-                        84,
-                        128
-                    ],
-                    "visible": true,
-                    "upnode": "up"
-                },
-                "children": {
-                    "up": {
-                        "type": "Node",
-                        "format": {
-                            "type": "Anchored"
-                        },
-                        "data": {
-                            "anchor": [
-                                0,
-                                1
-                            ],
-                            "size": [
-                                273,
-                                195
-                            ],
-                            "angle": 0,
-                            "position": [
-                                0,
-                                0
-                            ],
-                            "visible": true
-                        },
-                        "children": {
-                            "actionTileSection": {
-                                "type": "Image",
-                                "data": {
-                                    "texture": "actionTileSection",
-                                    "anchor": [
-                                        0.5,
-                                        0.5
-                                    ],
-                                    "size": [
-                                        273,
-                                        195
-                                    ],
-                                    "angle": 0,
-                                    "position": [
-                                        0,
-                                        0
-                                    ],
-                                    "visible": false
-                                },
-                                "layout": {
-                                    "x_anchor": "left",
-                                    "y_anchor": "top",
-                                    "absolute": false,
-                                    "x_offset": 0.5,
-                                    "y_offset": -0.5
-                                }
-                            }
-                        },
-                        "layout": {
-                            "x_anchor": "left",
-                            "y_anchor": "top",
-                            "absolute": false,
-                            "x_offset": 0,
-                            "y_offset": 0
-                        }
-                    }
-                },
-                "layout": {
-                    "x_anchor": "left",
-                    "y_anchor": "top",
-                    "absolute": false,
-                    "x_offset": 0.08,
-                    "y_offset": -0.44
-                }
-            },
-            "opponentHand": {
-                "type": "Node",
-                "format": {
-                    "type": "Float",
-                    "x_alignment": "left",
-                    "y_alignment": "middle",
-                    "orientation": "horizontal"
-                },
-                "data": {
-                    "anchor": [
-                        0.5,
-                        1
-                    ],
-                    "size": [
-                        572,
-                        58
-                    ],
-                    "angle": 0,
-                    "position": [
-                        226,
-                        475
-                    ],
-                    "visible": true
-                },
-                "children": {
-                    "opponentTile": {
-                        "type": "Button",
-                        "format": {
-                            "type": "Anchored"
-                        },
-                        "data": {
-                            "anchor": [
-                                0.5,
-                                0.5
-                            ],
-                            "size": [
-                                44,
-                                58
-                            ],
-                            "angle": 0,
-                            "position": [
-                                22,
-                                29
-                            ],
-                            "visible": true,
-                            "upnode": "up"
-                        },
-                        "children": {
-                            "up": {
-                                "type": "Node",
-                                "format": {
-                                    "type": "Anchored"
-                                },
-                                "data": {
-                                    "anchor": [
-                                        0,
-                                        1
-                                    ],
-                                    "size": [
-                                        44,
-                                        58
-                                    ],
-                                    "angle": 0,
-                                    "position": [
-                                        0,
-                                        0
-                                    ],
-                                    "visible": true
-                                },
-                                "children": {
-                                    "opponentTile": {
-                                        "type": "Image",
-                                        "data": {
-                                            "texture": "opponentTile",
-                                            "anchor": [
-                                                0.5,
-                                                0.5
-                                            ],
-                                            "size": [
-                                                44,
-                                                58
-                                            ],
-                                            "angle": 0,
-                                            "position": [
-                                                0,
-                                                0
-                                            ],
-                                            "visible": true
-                                        },
-                                        "layout": {
-                                            "x_anchor": "left",
-                                            "y_anchor": "top",
-                                            "absolute": false,
-                                            "x_offset": 0.5,
-                                            "y_offset": -0.5
-                                        }
-                                    }
-                                },
-                                "layout": {
-                                    "x_anchor": "left",
-                                    "y_anchor": "top",
-                                    "absolute": false,
-                                    "x_offset": 0,
-                                    "y_offset": 0
-                                }
-                            }
-                        },
-                        "layout": {
-                            "priority": 0,
-                            "padding": [
-                                0,
-                                0,
-                                0,
-                                0
-                            ]
-                        }
-                    },
-                    "opponentTile_1": {
-                        "type": "Button",
-                        "format": {
-                            "type": "Anchored"
-                        },
-                        "data": {
-                            "anchor": [
-                                0.5,
-                                0.5
-                            ],
-                            "size": [
-                                44,
-                                58
-                            ],
-                            "angle": 0,
-                            "position": [
-                                66,
-                                29
-                            ],
-                            "visible": true,
-                            "upnode": "up"
-                        },
-                        "children": {
-                            "up": {
-                                "type": "Node",
-                                "format": {
-                                    "type": "Anchored"
-                                },
-                                "data": {
-                                    "anchor": [
-                                        0,
-                                        1
-                                    ],
-                                    "size": [
-                                        44,
-                                        58
-                                    ],
-                                    "angle": 0,
-                                    "position": [
-                                        0,
-                                        0
-                                    ],
-                                    "visible": true
-                                },
-                                "children": {
-                                    "opponentTile": {
-                                        "type": "Image",
-                                        "data": {
-                                            "texture": "opponentTile",
-                                            "anchor": [
-                                                0.5,
-                                                0.5
-                                            ],
-                                            "size": [
-                                                44,
-                                                58
-                                            ],
-                                            "angle": 0,
-                                            "position": [
-                                                0,
-                                                0
-                                            ],
-                                            "visible": true
-                                        },
-                                        "layout": {
-                                            "x_anchor": "left",
-                                            "y_anchor": "top",
-                                            "absolute": false,
-                                            "x_offset": 0.5,
-                                            "y_offset": -0.5
-                                        }
-                                    }
-                                },
-                                "layout": {
-                                    "x_anchor": "left",
-                                    "y_anchor": "top",
-                                    "absolute": false,
-                                    "x_offset": 0,
-                                    "y_offset": 0
-                                }
-                            }
-                        },
-                        "layout": {
-                            "priority": 1,
-                            "padding": [
-                                0,
-                                0,
-                                0,
-                                0
-                            ]
-                        }
-                    },
-                    "opponentTile_2": {
-                        "type": "Button",
-                        "format": {
-                            "type": "Anchored"
-                        },
-                        "data": {
-                            "anchor": [
-                                0.5,
-                                0.5
-                            ],
-                            "size": [
-                                44,
-                                58
-                            ],
-                            "angle": 0,
-                            "position": [
-                                110,
-                                29
-                            ],
-                            "visible": true,
-                            "upnode": "up"
-                        },
-                        "children": {
-                            "up": {
-                                "type": "Node",
-                                "format": {
-                                    "type": "Anchored"
-                                },
-                                "data": {
-                                    "anchor": [
-                                        0,
-                                        1
-                                    ],
-                                    "size": [
-                                        44,
-                                        58
-                                    ],
-                                    "angle": 0,
-                                    "position": [
-                                        0,
-                                        0
-                                    ],
-                                    "visible": true
-                                },
-                                "children": {
-                                    "opponentTile": {
-                                        "type": "Image",
-                                        "data": {
-                                            "texture": "opponentTile",
-                                            "anchor": [
-                                                0.5,
-                                                0.5
-                                            ],
-                                            "size": [
-                                                44,
-                                                58
-                                            ],
-                                            "angle": 0,
-                                            "position": [
-                                                0,
-                                                0
-                                            ],
-                                            "visible": true
-                                        },
-                                        "layout": {
-                                            "x_anchor": "left",
-                                            "y_anchor": "top",
-                                            "absolute": false,
-                                            "x_offset": 0.5,
-                                            "y_offset": -0.5
-                                        }
-                                    }
-                                },
-                                "layout": {
-                                    "x_anchor": "left",
-                                    "y_anchor": "top",
-                                    "absolute": false,
-                                    "x_offset": 0,
-                                    "y_offset": 0
-                                }
-                            }
-                        },
-                        "layout": {
-                            "priority": 2,
-                            "padding": [
-                                0,
-                                0,
-                                0,
-                                0
-                            ]
-                        }
-                    },
-                    "opponentTile_3": {
-                        "type": "Button",
-                        "format": {
-                            "type": "Anchored"
-                        },
-                        "data": {
-                            "anchor": [
-                                0.5,
-                                0.5
-                            ],
-                            "size": [
-                                44,
-                                58
-                            ],
-                            "angle": 0,
-                            "position": [
-                                154,
-                                29
-                            ],
-                            "visible": true,
-                            "upnode": "up"
-                        },
-                        "children": {
-                            "up": {
-                                "type": "Node",
-                                "format": {
-                                    "type": "Anchored"
-                                },
-                                "data": {
-                                    "anchor": [
-                                        0,
-                                        1
-                                    ],
-                                    "size": [
-                                        44,
-                                        58
-                                    ],
-                                    "angle": 0,
-                                    "position": [
-                                        0,
-                                        0
-                                    ],
-                                    "visible": true
-                                },
-                                "children": {
-                                    "opponentTile": {
-                                        "type": "Image",
-                                        "data": {
-                                            "texture": "opponentTile",
-                                            "anchor": [
-                                                0.5,
-                                                0.5
-                                            ],
-                                            "size": [
-                                                44,
-                                                58
-                                            ],
-                                            "angle": 0,
-                                            "position": [
-                                                0,
-                                                0
-                                            ],
-                                            "visible": true
-                                        },
-                                        "layout": {
-                                            "x_anchor": "left",
-                                            "y_anchor": "top",
-                                            "absolute": false,
-                                            "x_offset": 0.5,
-                                            "y_offset": -0.5
-                                        }
-                                    }
-                                },
-                                "layout": {
-                                    "x_anchor": "left",
-                                    "y_anchor": "top",
-                                    "absolute": false,
-                                    "x_offset": 0,
-                                    "y_offset": 0
-                                }
-                            }
-                        },
-                        "layout": {
-                            "priority": 3,
-                            "padding": [
-                                0,
-                                0,
-                                0,
-                                0
-                            ]
-                        }
-                    },
-                    "opponentTile_4": {
-                        "type": "Button",
-                        "format": {
-                            "type": "Anchored"
-                        },
-                        "data": {
-                            "anchor": [
-                                0.5,
-                                0.5
-                            ],
-                            "size": [
-                                44,
-                                58
-                            ],
-                            "angle": 0,
-                            "position": [
-                                198,
-                                29
-                            ],
-                            "visible": true,
-                            "upnode": "up"
-                        },
-                        "children": {
-                            "up": {
-                                "type": "Node",
-                                "format": {
-                                    "type": "Anchored"
-                                },
-                                "data": {
-                                    "anchor": [
-                                        0,
-                                        1
-                                    ],
-                                    "size": [
-                                        44,
-                                        58
-                                    ],
-                                    "angle": 0,
-                                    "position": [
-                                        0,
-                                        0
-                                    ],
-                                    "visible": true
-                                },
-                                "children": {
-                                    "opponentTile": {
-                                        "type": "Image",
-                                        "data": {
-                                            "texture": "opponentTile",
-                                            "anchor": [
-                                                0.5,
-                                                0.5
-                                            ],
-                                            "size": [
-                                                44,
-                                                58
-                                            ],
-                                            "angle": 0,
-                                            "position": [
-                                                0,
-                                                0
-                                            ],
-                                            "visible": true
-                                        },
-                                        "layout": {
-                                            "x_anchor": "left",
-                                            "y_anchor": "top",
-                                            "absolute": false,
-                                            "x_offset": 0.5,
-                                            "y_offset": -0.5
-                                        }
-                                    }
-                                },
-                                "layout": {
-                                    "x_anchor": "left",
-                                    "y_anchor": "top",
-                                    "absolute": false,
-                                    "x_offset": 0,
-                                    "y_offset": 0
-                                }
-                            }
-                        },
-                        "layout": {
-                            "priority": 4,
-                            "padding": [
-                                0,
-                                0,
-                                0,
-                                0
-                            ]
-                        }
-                    },
-                    "opponentTile_5": {
-                        "type": "Button",
-                        "format": {
-                            "type": "Anchored"
-                        },
-                        "data": {
-                            "anchor": [
-                                0.5,
-                                0.5
-                            ],
-                            "size": [
-                                44,
-                                58
-                            ],
-                            "angle": 0,
-                            "position": [
-                                242,
-                                29
-                            ],
-                            "visible": true,
-                            "upnode": "up"
-                        },
-                        "children": {
-                            "up": {
-                                "type": "Node",
-                                "format": {
-                                    "type": "Anchored"
-                                },
-                                "data": {
-                                    "anchor": [
-                                        0,
-                                        1
-                                    ],
-                                    "size": [
-                                        44,
-                                        58
-                                    ],
-                                    "angle": 0,
-                                    "position": [
-                                        0,
-                                        0
-                                    ],
-                                    "visible": true
-                                },
-                                "children": {
-                                    "opponentTile": {
-                                        "type": "Image",
-                                        "data": {
-                                            "texture": "opponentTile",
-                                            "anchor": [
-                                                0.5,
-                                                0.5
-                                            ],
-                                            "size": [
-                                                44,
-                                                58
-                                            ],
-                                            "angle": 0,
-                                            "position": [
-                                                0,
-                                                0
-                                            ],
-                                            "visible": true
-                                        },
-                                        "layout": {
-                                            "x_anchor": "left",
-                                            "y_anchor": "top",
-                                            "absolute": false,
-                                            "x_offset": 0.5,
-                                            "y_offset": -0.5
-                                        }
-                                    }
-                                },
-                                "layout": {
-                                    "x_anchor": "left",
-                                    "y_anchor": "top",
-                                    "absolute": false,
-                                    "x_offset": 0,
-                                    "y_offset": 0
-                                }
-                            }
-                        },
-                        "layout": {
-                            "priority": 5,
-                            "padding": [
-                                0,
-                                0,
-                                0,
-                                0
-                            ]
-                        }
-                    },
-                    "opponentTile_6": {
-                        "type": "Button",
-                        "format": {
-                            "type": "Anchored"
-                        },
-                        "data": {
-                            "anchor": [
-                                0.5,
-                                0.5
-                            ],
-                            "size": [
-                                44,
-                                58
-                            ],
-                            "angle": 0,
-                            "position": [
-                                286,
-                                29
-                            ],
-                            "visible": true,
-                            "upnode": "up"
-                        },
-                        "children": {
-                            "up": {
-                                "type": "Node",
-                                "format": {
-                                    "type": "Anchored"
-                                },
-                                "data": {
-                                    "anchor": [
-                                        0,
-                                        1
-                                    ],
-                                    "size": [
-                                        44,
-                                        58
-                                    ],
-                                    "angle": 0,
-                                    "position": [
-                                        0,
-                                        0
-                                    ],
-                                    "visible": true
-                                },
-                                "children": {
-                                    "opponentTile": {
-                                        "type": "Image",
-                                        "data": {
-                                            "texture": "opponentTile",
-                                            "anchor": [
-                                                0.5,
-                                                0.5
-                                            ],
-                                            "size": [
-                                                44,
-                                                58
-                                            ],
-                                            "angle": 0,
-                                            "position": [
-                                                0,
-                                                0
-                                            ],
-                                            "visible": true
-                                        },
-                                        "layout": {
-                                            "x_anchor": "left",
-                                            "y_anchor": "top",
-                                            "absolute": false,
-                                            "x_offset": 0.5,
-                                            "y_offset": -0.5
-                                        }
-                                    }
-                                },
-                                "layout": {
-                                    "x_anchor": "left",
-                                    "y_anchor": "top",
-                                    "absolute": false,
-                                    "x_offset": 0,
-                                    "y_offset": 0
-                                }
-                            }
-                        },
-                        "layout": {
-                            "priority": 6,
-                            "padding": [
-                                0,
-                                0,
-                                0,
-                                0
-                            ]
-                        }
-                    },
-                    "opponentTile_7": {
-                        "type": "Button",
-                        "format": {
-                            "type": "Anchored"
-                        },
-                        "data": {
-                            "anchor": [
-                                0.5,
-                                0.5
-                            ],
-                            "size": [
-                                44,
-                                58
-                            ],
-                            "angle": 0,
-                            "position": [
-                                330,
-                                29
-                            ],
-                            "visible": true,
-                            "upnode": "up"
-                        },
-                        "children": {
-                            "up": {
-                                "type": "Node",
-                                "format": {
-                                    "type": "Anchored"
-                                },
-                                "data": {
-                                    "anchor": [
-                                        0,
-                                        1
-                                    ],
-                                    "size": [
-                                        44,
-                                        58
-                                    ],
-                                    "angle": 0,
-                                    "position": [
-                                        0,
-                                        0
-                                    ],
-                                    "visible": true
-                                },
-                                "children": {
-                                    "opponentTile": {
-                                        "type": "Image",
-                                        "data": {
-                                            "texture": "opponentTile",
-                                            "anchor": [
-                                                0.5,
-                                                0.5
-                                            ],
-                                            "size": [
-                                                44,
-                                                58
-                                            ],
-                                            "angle": 0,
-                                            "position": [
-                                                0,
-                                                0
-                                            ],
-                                            "visible": true
-                                        },
-                                        "layout": {
-                                            "x_anchor": "left",
-                                            "y_anchor": "top",
-                                            "absolute": false,
-                                            "x_offset": 0.5,
-                                            "y_offset": -0.5
-                                        }
-                                    }
-                                },
-                                "layout": {
-                                    "x_anchor": "left",
-                                    "y_anchor": "top",
-                                    "absolute": false,
-                                    "x_offset": 0,
-                                    "y_offset": 0
-                                }
-                            }
-                        },
-                        "layout": {
-                            "priority": 7,
-                            "padding": [
-                                0,
-                                0,
-                                0,
-                                0
-                            ]
-                        }
-                    },
-                    "opponentTile_8": {
-                        "type": "Button",
-                        "format": {
-                            "type": "Anchored"
-                        },
-                        "data": {
-                            "anchor": [
-                                0.5,
-                                0.5
-                            ],
-                            "size": [
-                                44,
-                                58
-                            ],
-                            "angle": 0,
-                            "position": [
-                                374,
-                                29
-                            ],
-                            "visible": true,
-                            "upnode": "up"
-                        },
-                        "children": {
-                            "up": {
-                                "type": "Node",
-                                "format": {
-                                    "type": "Anchored"
-                                },
-                                "data": {
-                                    "anchor": [
-                                        0,
-                                        1
-                                    ],
-                                    "size": [
-                                        44,
-                                        58
-                                    ],
-                                    "angle": 0,
-                                    "position": [
-                                        0,
-                                        0
-                                    ],
-                                    "visible": true
-                                },
-                                "children": {
-                                    "opponentTile": {
-                                        "type": "Image",
-                                        "data": {
-                                            "texture": "opponentTile",
-                                            "anchor": [
-                                                0.5,
-                                                0.5
-                                            ],
-                                            "size": [
-                                                44,
-                                                58
-                                            ],
-                                            "angle": 0,
-                                            "position": [
-                                                0,
-                                                0
-                                            ],
-                                            "visible": true
-                                        },
-                                        "layout": {
-                                            "x_anchor": "left",
-                                            "y_anchor": "top",
-                                            "absolute": false,
-                                            "x_offset": 0.5,
-                                            "y_offset": -0.5
-                                        }
-                                    }
-                                },
-                                "layout": {
-                                    "x_anchor": "left",
-                                    "y_anchor": "top",
-                                    "absolute": false,
-                                    "x_offset": 0,
-                                    "y_offset": 0
-                                }
-                            }
-                        },
-                        "layout": {
-                            "priority": 8,
-                            "padding": [
-                                0,
-                                0,
-                                0,
-                                0
-                            ]
-                        }
-                    },
-                    "opponentTile_9": {
-                        "type": "Button",
-                        "format": {
-                            "type": "Anchored"
-                        },
-                        "data": {
-                            "anchor": [
-                                0.5,
-                                0.5
-                            ],
-                            "size": [
-                                44,
-                                58
-                            ],
-                            "angle": 0,
-                            "position": [
-                                418,
-                                29
-                            ],
-                            "visible": true,
-                            "upnode": "up"
-                        },
-                        "children": {
-                            "up": {
-                                "type": "Node",
-                                "format": {
-                                    "type": "Anchored"
-                                },
-                                "data": {
-                                    "anchor": [
-                                        0,
-                                        1
-                                    ],
-                                    "size": [
-                                        44,
-                                        58
-                                    ],
-                                    "angle": 0,
-                                    "position": [
-                                        0,
-                                        0
-                                    ],
-                                    "visible": true
-                                },
-                                "children": {
-                                    "opponentTile": {
-                                        "type": "Image",
-                                        "data": {
-                                            "texture": "opponentTile",
-                                            "anchor": [
-                                                0.5,
-                                                0.5
-                                            ],
-                                            "size": [
-                                                44,
-                                                58
-                                            ],
-                                            "angle": 0,
-                                            "position": [
-                                                0,
-                                                0
-                                            ],
-                                            "visible": true
-                                        },
-                                        "layout": {
-                                            "x_anchor": "left",
-                                            "y_anchor": "top",
-                                            "absolute": false,
-                                            "x_offset": 0.5,
-                                            "y_offset": -0.5
-                                        }
-                                    }
-                                },
-                                "layout": {
-                                    "x_anchor": "left",
-                                    "y_anchor": "top",
-                                    "absolute": false,
-                                    "x_offset": 0,
-                                    "y_offset": 0
-                                }
-                            }
-                        },
-                        "layout": {
-                            "priority": 9,
-                            "padding": [
-                                0,
-                                0,
-                                0,
-                                0
-                            ]
-                        }
-                    },
-                    "opponentTile_10": {
-                        "type": "Button",
-                        "format": {
-                            "type": "Anchored"
-                        },
-                        "data": {
-                            "anchor": [
-                                0.5,
-                                0.5
-                            ],
-                            "size": [
-                                44,
-                                58
-                            ],
-                            "angle": 0,
-                            "position": [
-                                462,
-                                29
-                            ],
-                            "visible": true,
-                            "upnode": "up"
-                        },
-                        "children": {
-                            "up": {
-                                "type": "Node",
-                                "format": {
-                                    "type": "Anchored"
-                                },
-                                "data": {
-                                    "anchor": [
-                                        0,
-                                        1
-                                    ],
-                                    "size": [
-                                        44,
-                                        58
-                                    ],
-                                    "angle": 0,
-                                    "position": [
-                                        0,
-                                        0
-                                    ],
-                                    "visible": true
-                                },
-                                "children": {
-                                    "opponentTile": {
-                                        "type": "Image",
-                                        "data": {
-                                            "texture": "opponentTile",
-                                            "anchor": [
-                                                0.5,
-                                                0.5
-                                            ],
-                                            "size": [
-                                                44,
-                                                58
-                                            ],
-                                            "angle": 0,
-                                            "position": [
-                                                0,
-                                                0
-                                            ],
-                                            "visible": true
-                                        },
-                                        "layout": {
-                                            "x_anchor": "left",
-                                            "y_anchor": "top",
-                                            "absolute": false,
-                                            "x_offset": 0.5,
-                                            "y_offset": -0.5
-                                        }
-                                    }
-                                },
-                                "layout": {
-                                    "x_anchor": "left",
-                                    "y_anchor": "top",
-                                    "absolute": false,
-                                    "x_offset": 0,
-                                    "y_offset": 0
-                                }
-                            }
-                        },
-                        "layout": {
-                            "priority": 10,
-                            "padding": [
-                                0,
-                                0,
-                                0,
-                                0
-                            ]
-                        }
-                    },
-                    "opponentTile_11": {
-                        "type": "Button",
-                        "format": {
-                            "type": "Anchored"
-                        },
-                        "data": {
-                            "anchor": [
-                                0.5,
-                                0.5
-                            ],
-                            "size": [
-                                44,
-                                58
-                            ],
-                            "angle": 0,
-                            "position": [
-                                506,
-                                29
-                            ],
-                            "visible": true,
-                            "upnode": "up"
-                        },
-                        "children": {
-                            "up": {
-                                "type": "Node",
-                                "format": {
-                                    "type": "Anchored"
-                                },
-                                "data": {
-                                    "anchor": [
-                                        0,
-                                        1
-                                    ],
-                                    "size": [
-                                        44,
-                                        58
-                                    ],
-                                    "angle": 0,
-                                    "position": [
-                                        0,
-                                        0
-                                    ],
-                                    "visible": true
-                                },
-                                "children": {
-                                    "opponentTile": {
-                                        "type": "Image",
-                                        "data": {
-                                            "texture": "opponentTile",
-                                            "anchor": [
-                                                0.5,
-                                                0.5
-                                            ],
-                                            "size": [
-                                                44,
-                                                58
-                                            ],
-                                            "angle": 0,
-                                            "position": [
-                                                0,
-                                                0
-                                            ],
-                                            "visible": true
-                                        },
-                                        "layout": {
-                                            "x_anchor": "left",
-                                            "y_anchor": "top",
-                                            "absolute": false,
-                                            "x_offset": 0.5,
-                                            "y_offset": -0.5
-                                        }
-                                    }
-                                },
-                                "layout": {
-                                    "x_anchor": "left",
-                                    "y_anchor": "top",
-                                    "absolute": false,
-                                    "x_offset": 0,
-                                    "y_offset": 0
-                                }
-                            }
-                        },
-                        "layout": {
-                            "priority": 11,
-                            "padding": [
-                                0,
-                                0,
-                                0,
-                                0
-                            ]
-                        }
-                    },
-                    "opponentTile_12": {
-                        "type": "Button",
-                        "format": {
-                            "type": "Anchored"
-                        },
-                        "data": {
-                            "anchor": [
-                                0.5,
-                                0.5
-                            ],
-                            "size": [
-                                44,
-                                58
-                            ],
-                            "angle": 0,
-                            "position": [
-                                550,
-                                29
-                            ],
-                            "visible": true,
-                            "upnode": "up"
-                        },
-                        "children": {
-                            "up": {
-                                "type": "Node",
-                                "format": {
-                                    "type": "Anchored"
-                                },
-                                "data": {
-                                    "anchor": [
-                                        0,
-                                        1
-                                    ],
-                                    "size": [
-                                        44,
-                                        58
-                                    ],
-                                    "angle": 0,
-                                    "position": [
-                                        0,
-                                        0
-                                    ],
-                                    "visible": true
-                                },
-                                "children": {
-                                    "opponentTile": {
-                                        "type": "Image",
-                                        "data": {
-                                            "texture": "opponentTile",
-                                            "anchor": [
-                                                0.5,
-                                                0.5
-                                            ],
-                                            "size": [
-                                                44,
-                                                58
-                                            ],
-                                            "angle": 0,
-                                            "position": [
-                                                0,
-                                                0
-                                            ],
-                                            "visible": true
-                                        },
-                                        "layout": {
-                                            "x_anchor": "left",
-                                            "y_anchor": "top",
-                                            "absolute": false,
-                                            "x_offset": 0.5,
-                                            "y_offset": -0.5
-                                        }
-                                    }
-                                },
-                                "layout": {
-                                    "x_anchor": "left",
-                                    "y_anchor": "top",
-                                    "absolute": false,
-                                    "x_offset": 0,
-                                    "y_offset": 0
-                                }
-                            }
-                        },
-                        "layout": {
-                            "priority": 12,
-                            "padding": [
-                                0,
-                                0,
-                                0,
-                                0
-                            ]
-                        }
-                    }
-                },
-                "layout": {
-                    "x_anchor": "center",
-                    "y_anchor": "top",
-                    "absolute": false,
-                    "x_offset": 0,
-                    "y_offset": -0.07
-                }
-            },
-            "playerhand": {
-                "type": "Node",
-                "format": {
-                    "type": "Float",
-                    "x_alignment": "left",
-                    "y_alignment": "middle",
-                    "orientation": "horizontal"
-                },
-                "data": {
+                    "texture": "drag-to-hand-area",
                     "anchor": [
                         0.5,
                         0.5
                     ],
                     "size": [
-                        857,
-                        87
+                        854,
+                        212
                     ],
                     "angle": 0,
                     "position": [
-                        84,
-                        21
+                        92,
+                        784
                     ],
                     "visible": true
                 },
-                "children": {
-                    }
+                "layout": {
+                    "x_anchor": "left",
+                    "y_anchor": "top",
+                    "absolute": false,
+                    "x_offset": 1.6,
+                    "y_offset": -13
+                }
             },
-            "opponentDisplay": {
-                "type": "Node",
-                "format": {
-                    "type": "Anchored"
-                },
-                "data": {
-                    "anchor": [
-                        0,
-                        1
-                    ],
-                    "size": [
-                        278,
-                        120
-                    ],
-                    "angle": 0,
-                    "position": [
-                        73,
-                        347
-                    ],
-                    "visible": true
-                },
-                "children": {
+
+                "hamburger-menu": {
+                    "type": "Button",
+                    "format": {
+                        "type": "Anchored"
+                    },
+                    "data": {
+                        "anchor": [
+                            0,
+                            1
+                        ],
+                        "size": [
+                            45,
+                            45
+                        ],
+                        "angle": 0,
+                        "position": [
+                            356,
+                            811
+                        ],
+                        "visible": true,
+                        "upnode": "up"
+                    },
+                    "children": {
+                        "up": {
+                            "type": "Node",
+                            "format": {
+                                "type": "Anchored"
+                            },
+                            "data": {
+                                "anchor": [
+                                    0,
+                                    1
+                                ],
+                                "size": [
+                                    45,
+                                    45
+                                ],
+                                "angle": 0,
+                                "position": [
+                                    0,
+                                    0
+                                ],
+                                "visible": true
+                            },
+                            "children": {
+                                "hamburger-menu": {
+                                    "type": "Image",
+                                    "data": {
+                                        "texture": "hamburger-menu",
+                                        "anchor": [
+                                            0.5,
+                                            0.5
+                                        ],
+                                        "size": [
+                                            45,
+                                            45
+                                        ],
+                                        "angle": 0,
+                                        "position": [
+                                            34,
+                                            0
+                                        ],
+                                        "visible": true
+                                    },
+                                    "layout": {
+                                        "x_anchor": "left",
+                                        "y_anchor": "top",
+                                        "absolute": false,
+                                        "x_offset": 0.1,
+                                        "y_offset": -0.05
+                                    }
+                                }
+                            },
+                            "layout": {
+                                "x_anchor": "left",
+                                "y_anchor": "top",
+                                "absolute": false,
+                                "x_offset": 0.1,
+                                "y_offset": -0.05
+                            }
+                        }
+                    },
+                    "layout": {
+                        "x_anchor": "left",
+                        "y_anchor": "top",
+                        "absolute": false,
+                        "x_offset": 0.05,
+                        "y_offset": -0.07
                     }
-            },
-            "playerDisplay": {
-                "type": "Node",
-                "format": {
-                    "type": "Anchored"
                 },
-                "data": {
-                    "anchor": [
-                        0,
-                        1
-                    ],
-                    "size": [
-                        278,
-                        120
-                    ],
-                    "angle": 0,
-                    "position": [
-                        668,
-                        128
-                    ],
-                    "visible": true
-                },
-                "children": {
+                "opponent-hand": {
+                    "type": "Button",
+                    "format": {
+                        "type": "Anchored"
+                    },
+                    "data": {
+                        "anchor": [
+                            0,
+                            1
+                        ],
+                        "size": [
+                            259,
+                            35
+                        ],
+                        "angle": 0,
+                        "position": [
+                            355,
+                            539
+                        ],
+                        "visible": true,
+                        "upnode": "up"
+                    },
+                    "children": {
+                        "up": {
+                            "type": "Node",
+                            "format": {
+                                "type": "Anchored"
+                            },
+                            "data": {
+                                "anchor": [
+                                    0,
+                                    1
+                                ],
+                                "size": [
+                                    259,
+                                    35
+                                ],
+                                "angle": 0,
+                                "position": [
+                                    0,
+                                    0
+                                ],
+                                "visible": true
+                            },
+                            "children": {
+                                "opponent-hand": {
+                                    "type": "Image",
+                                    "data": {
+                                        "texture": "opponent-hand",
+                                        "anchor": [
+                                            0.5,
+                                            0.5
+                                        ],
+                                        "size": [
+                                            333,
+                                            45
+                                        ],
+                                        "angle": 0,
+                                        "position": [
+                                            35,
+                                            224
+                                        ],
+                                        "visible": true
+                                    },
+                                    "layout": {
+                                        "x_anchor": "left",
+                                        "y_anchor": "top",
+                                        "absolute": false,
+                                        "x_offset": 0.15,
+                                        "y_offset": -0.05
+                                    }
+                                }
+                            },
+                            "layout": {
+                                "x_anchor": "left",
+                                "y_anchor": "top",
+                                "absolute": false,
+                                "x_offset": 0.15,
+                                "y_offset": -0.05
+                            }
+                        }
+                    },
+                    "layout": {
+                        "x_anchor": "left",
+                        "y_anchor": "top",
+                        "absolute": false,
+                        "x_offset": 0.15,
+                        "y_offset": -0.07
                     }
-            },
-            "activeRegion": {
-                "type": "Node",
-                "format": {
-                    "type": "Anchored"
                 },
-                "data": {
-                    "anchor": [0.5, 0.5],
-                    "size": [1024, 400],
-                    "angle": 0,
-                    "position": [640, 450],
-                    "visible": true
+                "pile": {
+                    "type": "Node",
+                    "format": {
+                        "type": "Anchored"
+                    },
+                    "data": {
+                        "anchor": [
+                            0,
+                            1
+                        ],
+                        "size": [
+                            218,
+                            266
+                        ],
+                        "angle": 0,
+                        "position": [
+                            107,
+                            328
+                        ],
+                        "visible": true
+                    },
+                    "children": {
+
+                    },
+                    "layout": {
+                        "x_anchor": "left",
+                        "y_anchor": "top",
+                        "absolute": false,
+                        "x_offset": 0.41,
+                        "y_offset": -0.3
+                    }
                 },
-                "children": {
-                    
+                "playerhand": {
+                    "type": "Node",
+                    "format": {
+                        "type": "Float",
+                        "x_alignment": "left",
+                        "y_alignment": "middle",
+                        "orientation": "horizontal"
+                    },
+                    "data": {
+                        "anchor": [
+                            0.5,
+                            0.5
+                        ],
+                        "size": [
+                            853,
+                            80
+                        ],
+                        "angle": 0,
+                        "position": [
+                            92,
+                            784
+                        ],
+                        "visible": true
+                    },
+                    "children": {
+
+                    },
+                    "layout": {
+                        "priority": 0,
+                        "padding": [
+                            0,
+                            0,
+                            1,
+                            0
+                        ]
+                    }
+                },
+                "tile-left": {
+                    "type": "Node",
+                    "format": {
+                        "type": "Anchored"
+                    },
+                    "data": {
+                        "anchor": [
+                            0,
+                            1
+                        ],
+                        "size": [
+                            35,
+                            65
+                        ],
+                        "angle": 0,
+                        "position": [
+                            355,
+                            25
+                        ],
+                        "visible": true
+                    },
+                    "children": {
+                        "tile-left": {
+                            "type": "Image",
+                            "data": {
+                                "texture": "tile-left",
+                                "anchor": [
+                                    0.5,
+                                    0.5
+                                ],
+                                "size": [
+                                    97.5,
+                                    45
+                                ],
+                                "angle": 0,
+                                "position": [
+                                    35,
+                                    30
+                                ],
+                                "visible": true
+                            },
+                            "layout": {
+                                "x_anchor": "left",
+                                "y_anchor": "top",
+                                "absolute": false,
+                                "x_offset": 0.5,
+                                "y_offset": -0.5
+                            }
+                        }
+                    },
+                    "layout": {
+                        "x_anchor": "left",
+                        "y_anchor": "top",
+                        "absolute": false,
+                        "x_offset": 0.92,
+                        "y_offset": -0.03
+                    }
+                },
+                "discarded-tile": {
+                    "type": "Node",
+                    "format": {
+                        "type": "Anchored"
+                    },
+                    "data": {
+                        "anchor": [
+                            0,
+                            1
+                        ],
+                        "size": [
+                            35,
+                            66
+                        ],
+                        "angle": 0,
+                        "position": [
+                            355,
+                            102
+                        ],
+                        "visible": true
+                    },
+                    "children": {
+                        "discarded-rec": {
+                            "type": "Image",
+                            "data": {
+                                "texture": "discarded-rec",
+                                "anchor": [
+                                    0.5,
+                                    0.5
+                                ],
+                                "size": [
+                                    84.86,
+                                    45
+                                ],
+                                "angle": 0,
+                                "position": [
+                                    35,
+                                    31
+                                ],
+                                "visible": true
+                            },
+                            "layout": {
+                                "x_anchor": "left",
+                                "y_anchor": "top",
+                                "absolute": false,
+                                "x_offset": 0.5,
+                                "y_offset": -0.5
+                            }
+                        },
+                        "discard-can": {
+                            "type": "Button",
+                            "format": {
+                                "type": "Anchored"
+                            },
+                            "data": {
+                                "anchor": [
+                                    0,
+                                    1
+                                ],
+                                "size": [
+                                    18,
+                                    18
+                                ],
+                                "angle": 0,
+                                "position": [
+                                    9,
+                                    36
+                                ],
+                                "visible": true,
+                                "upnode": "up"
+                            },
+                            "children": {
+                                "up": {
+                                    "type": "Node",
+                                    "format": {
+                                        "type": "Anchored"
+                                    },
+                                    "data": {
+                                        "anchor": [
+                                            0,
+                                            1
+                                        ],
+                                        "size": [
+                                            18,
+                                            18
+                                        ],
+                                        "angle": 0,
+                                        "position": [
+                                            0,
+                                            0
+                                        ],
+                                        "visible": true
+                                    },
+                                    "children": {
+                                        "discard-can": {
+                                            "type": "Image",
+                                            "data": {
+                                                "texture": "discard-can",
+                                                "anchor": [
+                                                    0.5,
+                                                    0.5
+                                                ],
+                                                "size": [
+                                                    30,
+                                                    30
+                                                ],
+                                                "angle": 0,
+                                                "position": [
+                                                    18,
+                                                    0
+                                                ],
+                                                "visible": true
+                                            },
+                                            "layout": {
+                                                "x_anchor": "left",
+                                                "y_anchor": "top",
+                                                "absolute": false,
+                                                "x_offset": 0.5,
+                                                "y_offset": -0.5
+                                            }
+                                        }
+                                    },
+                                    "layout": {
+                                        "x_anchor": "left",
+                                        "y_anchor": "top",
+                                        "absolute": false,
+                                        "x_offset": 0,
+                                        "y_offset": 0
+                                    }
+                                }
+                            },
+                            "layout": {
+                                "x_anchor": "left",
+                                "y_anchor": "top",
+                                "absolute": false,
+                                "x_offset": -0.2,
+                                "y_offset": -0.35
+                            }
+                        },
+                        "discarded-tile-recent": {
+                            "type": "Button",
+                            "format": {
+                                "type": "Anchored"
+                            },
+                            "data": {
+                                "anchor": [
+                                    0,
+                                    1
+                                ],
+                                "size": [
+                                    27.37,
+                                    20
+                                ],
+                                "angle": 0,
+                                "position": [
+                                    4,
+                                    11
+                                ],
+                                "visible": true,
+                                "upnode": "up"
+                            },
+                            "children": {
+                                "up": {
+                                    "type": "Node",
+                                    "format": {
+                                        "type": "Anchored"
+                                    },
+                                    "data": {
+                                        "anchor": [
+                                            0,
+                                            1
+                                        ],
+                                        "size": [
+                                            27.37,
+                                            20
+                                        ],
+                                        "angle": 0,
+                                        "position": [
+                                            0,
+                                            0
+                                        ],
+                                        "visible": true
+                                    },
+                                    "children": {
+                                        "discarded-tile-recent": {
+                                            "type": "Image",
+                                            "data": {
+                                                "texture": "one of dot",
+                                                "anchor": [
+                                                    0.5,
+                                                    0.5
+                                                ],
+                                                "size": [
+                                                    32,
+                                                    35
+                                                ],
+                                                "angle": 0,
+                                                "position": [
+                                                    27.37,
+                                                    -7.37
+                                                ],
+                                                "visible": true
+                                            },
+                                            "layout": {
+                                                "x_anchor": "left",
+                                                "y_anchor": "top",
+                                                "absolute": false,
+                                                "x_offset": 0.75,
+                                                "y_offset": -0.5
+                                            }
+                                        }
+                                    },
+                                    "layout": {
+                                        "x_anchor": "left",
+                                        "y_anchor": "top",
+                                        "absolute": false,
+                                        "x_offset": 0,
+                                        "y_offset": 0
+                                    }
+                                }
+                            },
+                            "layout": {
+                                "x_anchor": "left",
+                                "y_anchor": "top",
+                                "absolute": false,
+                                "x_offset": 0.39,
+                                "y_offset": -0.33
+                            }
+                        }
+                    },
+                    "layout": {
+                        "x_anchor": "left",
+                        "y_anchor": "top",
+                        "absolute": false,
+                        "x_offset": 0.85,
+                        "y_offset": -0.03
+                    }
+                },
+                "displayed-set-icon": {
+                    "type": "Button",
+                    "format": {
+                        "type": "Anchored"
+                    },
+                    "data": {
+                        "anchor": [
+                            0,
+                            1
+                        ],
+                        "size": [
+                            35,
+                            35
+                        ],
+                        "angle": 0,
+                        "position": [
+                            107,
+                            8
+                        ],
+                        "visible": true,
+                        "upnode": "up"
+                    },
+                    "children": {
+                        "up": {
+                            "type": "Node",
+                            "format": {
+                                "type": "Anchored"
+                            },
+                            "data": {
+                                "anchor": [
+                                    0,
+                                    1
+                                ],
+                                "size": [
+                                    40,
+                                    40
+                                ],
+                                "angle": 0,
+                                "position": [
+                                    -2,
+                                    -3
+                                ],
+                                "visible": true
+                            },
+                            "children": {
+                                "displayed-set-icon": {
+                                    "type": "Image",
+                                    "data": {
+                                        "texture": "displayed-set-icon",
+                                        "anchor": [
+                                            0.5,
+                                            0.5
+                                        ],
+                                        "size": [
+                                            55,
+                                            55
+                                        ],
+                                        "angle": 0,
+                                        "position": [
+                                            40,
+                                            0
+                                        ],
+                                        "visible": true
+                                    },
+                                    "layout": {
+                                        "x_anchor": "left",
+                                        "y_anchor": "top",
+                                        "absolute": false,
+                                        "x_offset": 0.5,
+                                        "y_offset": -0.5
+                                    }
+                                }
+                            },
+                            "layout": {
+                                "x_anchor": "left",
+                                "y_anchor": "top",
+                                "absolute": false,
+                                "x_offset": -0.06,
+                                "y_offset": 0.06
+                            }
+                        }
+                    },
+                    "layout": {
+                        "x_anchor": "left",
+                        "y_anchor": "top",
+                        "absolute": false,
+                        "x_offset": 0.96,
+                        "y_offset": -0.7
+                    }
                 }
             }
-        }
+        
     }
 }
