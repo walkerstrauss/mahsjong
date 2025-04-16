@@ -1,7 +1,7 @@
 {
     "textures": {
-        "facedown": {
-            "file": "textures/facedown.png"
+        "debuffed": {
+            "file": "textures/tilesHand/debuffed.png"
         },
         "one of dot": {
             "file": "textures/tilesHand/one_of_dot.png"

@@ -411,12 +411,14 @@ void MatchController::playOx(std::shared_ptr<TileSet::Tile>& celestialTile){
     opponent.rdHand.init();
     opponent.rdHand.shuffle(opponent._tiles);
     
+    
     // Makes sure that effect is applied on tiles that aren't already debuffed or discarded
     int debuffed = 0;
     std::shared_ptr<cugl::JsonValue> changedTilesJson;
     for (auto& tile : opponent._tiles) {
         if (!tile->debuffed && !tile->discarded) {
             tile->debuffed = true;
+            tile->setTexture(_assets->get<cugl::graphics::Texture>("debuffed"));
             _tileSet->tilesToJson.push_back(tile);
             debuffed++;
         }
@@ -481,9 +483,6 @@ void MatchController::playRabbit(std::shared_ptr<TileSet::Tile>& celestialTile){
     // Clear tilesToJson vector
     _tileSet->clearTilesToJson();
     
-    // Broadcast new tile map state
-    _network->broadcastTileMap(_network->getLocalPid(), _tileSet->mapToJson(), "remake pile");
-  
     // Broadcast celestial tile
     _network->broadcastCelestialTile(_network->getLocalPid(), changedTileJson, celestialTileJson, "RABBIT");
 
