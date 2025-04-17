@@ -68,7 +68,6 @@ void MatchController::initHost() {
     
     //Broadcast initial state
     _network->broadcastClientStart(_tileSet->mapToJson());
-//    CULog("TileMap: %s", _tileSet->mapToJson()->toString(true).c_str());
 
 }
 

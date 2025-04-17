@@ -19,7 +19,7 @@ using namespace std;
 #pragma mark -
 #pragma mark Level Layout
 
-// Lock the screen esize to a fixed heigh regardless of aspect ratio
+// Lock the screen size to a fixed height regardless of aspect ratio
 // PLEASE ADJUST AS SEEN FIT
 #define SCENE_HEIGHT 720 // Change to 874 for resizing from iPhone 16 Pro aspect ratio
 
@@ -47,6 +47,7 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::sha
     _network = network;
     _choice = Choice::NONE;
     
+    Size dimen = getSize();
     _matchScene = _assets->get<scene2::SceneNode>("matchscene");
     _matchScene->setContentSize(1280,720);
     
@@ -67,6 +68,9 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::sha
         std::cerr << "Scene2 initialization failed!" << std::endl;
         return false;
     }
+    
+    _pileUINode = std::make_shared<PileUINode>();
+    _pileUINode->init(_assets);
     
     _tilesetUIBtn = std::dynamic_pointer_cast<scene2::Button>(_assets->get<scene2::SceneNode>("matchscene.gameplayscene.discarded-tile.discard-can"));
     _pauseBtn = std::dynamic_pointer_cast<scene2::Button>(_assets->get<scene2::SceneNode>("matchscene.gameplayscene.pauseButton"));
@@ -107,6 +111,8 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::sha
         
     addChild(_matchScene);
     addChild(_discardUINode->_root);
+    addChild(_pileUINode->_root);
+    
     // Game Win and Lose bool
     _gameWin = false;
     _gameLose = false;
@@ -329,6 +335,13 @@ void GameScene::update(float timestep) {
         _playSetBtn->deactivate();
     }
     
+    if (_matchController->getChoice() == MatchController::Choice::MONKEYTILE) {
+        setActive(false);
+        setGameActive(false);
+//        _backBtn->activate();
+        _pileUINode->_root->setVisible(true);
+    }
+    
     // If we are in drawn discard state, set discarded tile image visibility to false since player drew it
     if(_matchController->getChoice() == MatchController::DRAWNDISCARD || _network->getStatus() == NetworkController::DRAWNDISCARD) {
         _discardedTileImage->setVisible(false);
@@ -424,6 +437,8 @@ void GameScene::render() {
     //if (_chowSheet->isVisible()) _chowSheet->render(_batch);
 
     _discardUINode->_root->render(_batch);
+    _pileUINode->_root->render(_batch);
+
     
     _batch->setColor(Color4(255, 0, 0, 200));
     _batch->setTexture(nullptr);
@@ -448,14 +463,6 @@ void GameScene::setGameActive(bool value){
         _pauseBtn->deactivate();
         _endTurnBtn->deactivate();
         _backBtn->deactivate();
-    }
-}
-
-void GameScene::applyCelestial(TileSet::Tile::Rank type) {
-    if (type == TileSet::Tile::Rank::OX) {
-        _pile->reshufflePile();
-        _network->broadcastDeckMap(_tileSet->mapToJson());
-        _network->broadcastPileLayer();
     }
 }
 
@@ -571,6 +578,8 @@ void GameScene::updateDrag(const cugl::Vec2& mousePos, bool mouseDown, bool mous
               else {
                   // Monkey tile was played, regular tile chosen to trade
                   if (_matchController->getChoice() == MatchController::Choice::MONKEYTILE) {
+                      _pileUINode->_root->setVisible(true);
+                      
                       _matchController->playMonkey(_draggingTile);
 
                       // Rebind _player to prevent null ptr error
