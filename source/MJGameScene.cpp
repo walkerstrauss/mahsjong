@@ -48,11 +48,13 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::sha
     _choice = Choice::NONE;
     
     _matchScene = _assets->get<scene2::SceneNode>("matchscene");
-    _matchScene->setContentSize(1280,720);
+    _matchScene->setContentSize(getSize());
+    _matchScene->getChild(0)->setContentSize(_matchScene->getContentSize());
+    _matchScene->doLayout();
     
     _discardUINode = std::make_shared<DiscardUINode>();
     _discardUINode->init(_assets);
-    _discardUINode->_root->setContentSize(1280,720);
+    _discardUINode->_root->setContentSize(getSize());
     
     cugl::Size screenSize = cugl::Application::get()->getDisplaySize();
     
