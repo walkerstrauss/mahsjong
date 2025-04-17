@@ -25,7 +25,8 @@ bool PauseScene::init(const std::shared_ptr<cugl::AssetManager>& assets){
     _assets = assets;
 //    Size dimen = getSize();
     _pauseScene = _assets->get<scene2::SceneNode>("pause");
-    _pauseScene->setContentSize(1280,720);
+    _pauseScene->setContentSize(getSize());
+    _pauseScene->getChild(0)->setContentSize(_pauseScene->getContentSize());
     cugl::Size screenSize = cugl::Application::get()->getDisplaySize();
     //cugl::Size screenSize = Size(0,SCENE_HEIGHT);
     

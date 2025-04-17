@@ -20,7 +20,7 @@ using namespace std;
 #pragma mark Level Layout
 
 /** Regardless of logo, lock the height to this */
-#define SCENE_HEIGHT  700
+#define SCENE_HEIGHT  720
 
 
 #pragma mark -
@@ -43,14 +43,15 @@ bool MenuScene::init(const std::shared_ptr<cugl::AssetManager>& assets) {
     // Initialize the scene to a locked width
     if (assets == nullptr) {
         return false;
-    } else if (!Scene2::initWithHint(0,720)){
+    } else if (!Scene2::initWithHint(0,SCENE_HEIGHT)){
         return false;
     }
     // Start up the input handler
     _assets = assets;
     
     _homescene = _assets->get<scene2::SceneNode>("home");
-    _homescene->setContentSize(1280,720);
+    _homescene->setContentSize(getSize());
+    _homescene->getChild(0)->setContentSize(_homescene->getContentSize());
     cugl::Size screenSize = cugl::Application::get()->getDisplaySize();
     //cugl::Size screenSize = Size(0,SCENE_HEIGHT);
     
@@ -58,9 +59,6 @@ bool MenuScene::init(const std::shared_ptr<cugl::AssetManager>& assets) {
     
     float offset = (screenSize.width -_homescene->getWidth())/2;
     _homescene->setPosition(offset, _homescene->getPosition().y);
-
-    AudioController::getInstance().init(_assets);
-
     
     if (!Scene2::initWithHint(screenSize)) {
         std::cerr << "Scene2 initialization failed!" << std::endl;

@@ -32,7 +32,8 @@ bool SettingScene::init(const std::shared_ptr<cugl::AssetManager>& assets){
     }
     _assets = assets;
     _settingScene = _assets->get<scene2::SceneNode>("settings");
-    _settingScene->setContentSize(1280,720);
+    _settingScene->setContentSize(getSize());
+    _settingScene->getChild(0)->setContentSize(_settingScene->getContentSize());
     cugl::Size screenSize = cugl::Application::get()->getDisplaySize();
     //cugl::Size screenSize = Size(0,SCENE_HEIGHT);
     
@@ -61,6 +62,8 @@ bool SettingScene::init(const std::shared_ptr<cugl::AssetManager>& assets){
         if (!down){
             // TODO: handle turning sound on
             CULog("Turning sound on");
+            AudioController::getInstance().playSound("confirm");
+            AudioController::getInstance().toggleSound();
         }
     });
     exitKey = exitBtn->addListener([this](const std::string& name, bool down){
@@ -118,11 +121,13 @@ void SettingScene::setActive(bool value){
         Scene2::setActive(true);
         _settingScene->setVisible(true);
         exitBtn->activate();
+        _soundBtn->activate();
     } else {
         Scene2::setActive(false);
         choice = Choice::NONE;
         _settingScene->setVisible(false);
         exitBtn->deactivate();
         exitBtn->setDown(false);
+        _soundBtn->deactivate();
     }
 }

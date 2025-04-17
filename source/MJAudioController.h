@@ -29,6 +29,8 @@ private:
     std::vector<std::string> _keys;
     
 public:
+    /** Whether the game sound is currently on */
+    bool soundOn;
 #pragma mark -
 #pragma mark Constructors
     AudioController() : _assets(nullptr), _bgMusicID(-1) {}
@@ -80,7 +82,13 @@ public:
     void setSoundVolume(const std::string& key, float value);
     
     void playSelect(){
-        playSound("select",false);
+        if (soundOn){
+            playSound("select",false);
+        }
+    }
+    
+    void toggleSound() {
+        soundOn = !soundOn;
     }
 };
 

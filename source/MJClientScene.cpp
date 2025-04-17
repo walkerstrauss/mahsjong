@@ -61,7 +61,10 @@ static std::string dec2hex(const std::string dec) {
 bool ClientScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::shared_ptr<NetworkController> network) {
     // Initialize the scene to a locked width
     if (assets == nullptr) {
-        return false;}
+        return false;
+    } else if (!Scene2::initWithHint(0,SCENE_HEIGHT)){
+        return false;
+    }
     
     Size dimen = getSize();
     
@@ -71,7 +74,8 @@ bool ClientScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::s
 
     // Acquire the scene built by the asset loader and resize it the scene
     _clientScene1 = _assets->get<scene2::SceneNode>("client");
-    _clientScene1->setContentSize(1280,720);
+    _clientScene1->setContentSize(getSize());
+    _clientScene1->getChild(0)->setContentSize(_clientScene1->getContentSize());
     cugl::Size screenSize = cugl::Application::get()->getDisplaySize();
     screenSize *= _clientScene1->getContentSize().height/screenSize.height;
     //cugl::Size screenSize = Size(0,SCENE_HEIGHT);

@@ -49,6 +49,7 @@ bool AudioController::init(const std::shared_ptr<cugl::AssetManager>& assets){
             CULog("No sound with key: %s", key.c_str());
         }
     }
+    soundOn = true;
     
     return true;
 }
@@ -58,7 +59,9 @@ bool AudioController::init(const std::shared_ptr<cugl::AssetManager>& assets){
 
 void AudioController::playSound(const std::string& key, bool loop){
     if (_sounds.find(key) != _sounds.end()){
-        AudioEngine::get()->play(key, _sounds[key], loop, 1.0f);
+        if (soundOn){
+            AudioEngine::get()->play(key, _sounds[key], loop, 1.0f);
+        }
     } else {
         CULog("No sound with key: %s", key.c_str());
     }
@@ -66,11 +69,13 @@ void AudioController::playSound(const std::string& key, bool loop){
 
 void AudioController::playMusic(const std::string& key, bool loop){
     if (_sounds.find(key) != _sounds.end()){
-        if (_bgMusicID != -1){
-            AudioEngine::get()->stop();
+        if (soundOn){
+            if (_bgMusicID != -1){
+                AudioEngine::get()->stop();
+            }
+            
+            _bgMusicID = AudioEngine::get()->play(key, _sounds[key], loop, 1.0f);
         }
-        
-        _bgMusicID = AudioEngine::get()->play(key, _sounds[key], loop, 1.0f);
     } else {
         CULog("No music with key: %s", key.c_str());
     }
