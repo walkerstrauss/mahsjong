@@ -46,14 +46,15 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::sha
     _assets = assets;
     _network = network;
     _choice = Choice::NONE;
-    
-    Size dimen = getSize();
+
     _matchScene = _assets->get<scene2::SceneNode>("matchscene");
-    _matchScene->setContentSize(1280,720);
+    _matchScene->setContentSize(getSize());
+    _matchScene->getChild(0)->setContentSize(_matchScene->getContentSize());
+    _matchScene->doLayout();
     
     _discardUINode = std::make_shared<DiscardUINode>();
     _discardUINode->init(_assets);
-    _discardUINode->_root->setContentSize(1280,720);
+    _discardUINode->_root->setContentSize(getSize());
     
     cugl::Size screenSize = cugl::Application::get()->getDisplaySize();
     
@@ -71,6 +72,7 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::sha
     
     _pileUINode = std::make_shared<PileUINode>();
     _pileUINode->init(_assets);
+    _pileUINode->_root->setContentSize(getSize());
     
     _tilesetUIBtn = std::dynamic_pointer_cast<scene2::Button>(_assets->get<scene2::SceneNode>("matchscene.gameplayscene.discarded-tile.discard-can"));
     _pauseBtn = std::dynamic_pointer_cast<scene2::Button>(_assets->get<scene2::SceneNode>("matchscene.gameplayscene.pauseButton"));

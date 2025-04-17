@@ -22,7 +22,6 @@ bool PileUINode::init(const std::shared_ptr<cugl::AssetManager>& assets) {
     _assets = assets;
     _root = _assets->get<SceneNode>("pileui");
     
-    _root->setContentSize(Size(1280, 720));
 
     cugl::Size screenSize = cugl::Application::get()->getDisplaySize();
     screenSize *= getContentSize().height/screenSize.height;

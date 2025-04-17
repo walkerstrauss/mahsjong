@@ -22,7 +22,6 @@ bool DiscardUINode::init(const std::shared_ptr<cugl::AssetManager>& assets) {
     _assets = assets;
     _root = _assets->get<SceneNode>("tilesetui");
     
-    setContentSize(1280, 720);
     cugl::Size screenSize = cugl::Application::get()->getDisplaySize();
     screenSize *= getContentSize().height/screenSize.height;
     
