@@ -7,97 +7,97 @@
             "file": "textures/tilesHand/one_of_dot.png"
         },
         "one of bamboo": {
-          "file": "textures/tilesHand/one_of_bamboo.png"
+            "file": "textures/tilesHand/one_of_bamboo.png"
         },
         "one of crak": {
-          "file": "textures/tilesHand/one_of_crak.png"
+            "file": "textures/tilesHand/one_of_crak.png"
         },
         "two of dot": {
-          "file": "textures/tilesHand/two_of_dot.png"
+            "file": "textures/tilesHand/two_of_dot.png"
         },
         "two of bamboo": {
-          "file": "textures/tilesHand/two_of_bamboo.png"
+            "file": "textures/tilesHand/two_of_bamboo.png"
         },
         "two of crak": {
-          "file": "textures/tilesHand/two_of_crak.png"
+            "file": "textures/tilesHand/two_of_crak.png"
         },
         "three of dot": {
-          "file": "textures/tilesHand/three_of_dot.png"
+            "file": "textures/tilesHand/three_of_dot.png"
         },
         "three of bamboo": {
-          "file": "textures/tilesHand/three_of_bamboo.png"
+            "file": "textures/tilesHand/three_of_bamboo.png"
         },
         "three of crak": {
-          "file": "textures/tilesHand/three_of_crak.png"
+            "file": "textures/tilesHand/three_of_crak.png"
         },
         "four of dot": {
-          "file": "textures/tilesHand/four_of_dot.png"
+            "file": "textures/tilesHand/four_of_dot.png"
         },
         "four of bamboo": {
-          "file": "textures/tilesHand/four_of_bamboo.png"
+            "file": "textures/tilesHand/four_of_bamboo.png"
         },
         "four of crak": {
-          "file": "textures/tilesHand/four_of_crak.png"
+            "file": "textures/tilesHand/four_of_crak.png"
         },
         "five of dot": {
-          "file": "textures/tilesHand/five_of_dot.png"
+            "file": "textures/tilesHand/five_of_dot.png"
         },
         "five of bamboo": {
-          "file": "textures/tilesHand/five_of_bamboo.png"
+            "file": "textures/tilesHand/five_of_bamboo.png"
         },
         "five of crak": {
-          "file": "textures/tilesHand/five_of_crak.png"
+            "file": "textures/tilesHand/five_of_crak.png"
         },
         "six of dot": {
-          "file": "textures/tilesHand/six_of_dot.png"
+            "file": "textures/tilesHand/six_of_dot.png"
         },
         "six of bamboo": {
-          "file": "textures/tilesHand/six_of_bamboo.png"
+            "file": "textures/tilesHand/six_of_bamboo.png"
         },
         "six of crak": {
-          "file": "textures/tilesHand/six_of_crak.png"
+            "file": "textures/tilesHand/six_of_crak.png"
         },
         "seven of dot": {
-          "file": "textures/tilesHand/seven_of_dot.png"
+            "file": "textures/tilesHand/seven_of_dot.png"
         },
         "seven of bamboo": {
-          "file": "textures/tilesHand/seven_of_bamboo.png"
+            "file": "textures/tilesHand/seven_of_bamboo.png"
         },
         "seven of crak": {
-          "file": "textures/tilesHand/seven_of_crak.png"
+            "file": "textures/tilesHand/seven_of_crak.png"
         },
         "eight of dot": {
-          "file": "textures/tilesHand/eight_of_dot.png"
+            "file": "textures/tilesHand/eight_of_dot.png"
         },
         "eight of bamboo": {
-          "file": "textures/tilesHand/eight_of_bamboo.png"
+            "file": "textures/tilesHand/eight_of_bamboo.png"
         },
         "eight of crak": {
-          "file": "textures/tilesHand/eight_of_crak.png"
+            "file": "textures/tilesHand/eight_of_crak.png"
         },
         "nine of dot": {
-          "file": "textures/tilesHand/nine_of_dot.png"
+            "file": "textures/tilesHand/nine_of_dot.png"
         },
         "nine of bamboo": {
-          "file": "textures/tilesHand/nine_of_bamboo.png"
+            "file": "textures/tilesHand/nine_of_bamboo.png"
         },
         "nine of crak": {
-          "file": "textures/tilesHand/nine_of_crak.png"
+            "file": "textures/tilesHand/nine_of_crak.png"
         },
         "rooster of celestial": {
-          "file": "textures/celestialHand/rooster_hand.png"
+            "file": "textures/celestialHand/rooster_hand.png"
         },
         "ox of celestial": {
-          "file": "textures/celestialHand/ox_hand.png"
+            "file": "textures/celestialHand/ox_hand.png"
         },
         "rabbit of celestial": {
-          "file": "textures/celestialHand/rabbit_hand.png"
+            "file": "textures/celestialHand/rabbit_hand.png"
         },
         "snake of celestial": {
-          "file": "textures/celestialHand/snake_hand.png"
+            "file": "textures/celestialHand/snake_hand.png"
         },
         "monkey of celestial": {
-          "file": "textures/celestialHand/monkey_hand.png"
+            "file": "textures/celestialHand/monkey_hand.png"
         },
         "background": {
             "file": "textures/landing/background.png"
@@ -158,6 +158,9 @@
         },
         "displayed-set-icon": {
             "file": "textures/gameplay/displayed-set-icon.png"
+        },
+        "displayed-set-icon-expanded": {
+            "file": "textures/gameplay/displayed-set-icon-expanded.png"
         },
         "background_pause": {
             "file": "textures/pause/background_pause.png"
@@ -369,7 +372,7 @@
         "infoIcon": {
             "file": "textures/gameplay/infoIcon.png"
         },
-        "win-sheet":{
+        "win-sheet": {
             "file": "textures/animations/win.png"
         },
         "1": {
@@ -738,16 +741,16 @@
         "tile-left": {
             "file": "textures/gameplay/tile-left.png"
         },
-        "lose-sheet":{
+        "lose-sheet": {
             "file": "textures/animations/lose.png"
         },
-        "pong-sheet":{
+        "pong-sheet": {
             "file": "textures/animations/pong.png"
         },
-        "chow-sheet":{
+        "chow-sheet": {
             "file": "textures/animations/chow.png"
         },
-        "turn-sheet":{
+        "turn-sheet": {
             "file": "textures/animations/turn_indicator.png"
         }
     },

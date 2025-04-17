@@ -43,6 +43,8 @@ bool GameOverScene::init(const std::shared_ptr<cugl::AssetManager>& assets){
     float offset = (screenSize.width -_winscene->getWidth())/2;
     _winscene->setPosition(offset, _winscene->getPosition().y);
 
+    AudioController::getInstance().init(_assets);
+
 //    _winscene->setContentSize(dimen);
 //    _winscene->doLayout();
 //    _winscene->setPosition(125, _winscene->getPositionY());
@@ -73,6 +75,7 @@ bool GameOverScene::init(const std::shared_ptr<cugl::AssetManager>& assets){
         if (!down){
             choice = Choice::MENU;
 //            AudioEngine::get()->play("confirm",_assets->get<Sound>("confirm"),false,1.0f);
+            AudioController::getInstance().playSound("confirm");
         }
        
     });
@@ -80,6 +83,7 @@ bool GameOverScene::init(const std::shared_ptr<cugl::AssetManager>& assets){
         if (!down){
             choice = Choice::MENU;
 //            AudioEngine::get()->play("confirm",_assets->get<Sound>("confirm"),false,1.0f);
+            AudioController::getInstance().playSound("confirm");
         }
     });
     

@@ -114,7 +114,17 @@ protected:
     std::shared_ptr<cugl::scene2::Button> _endTurnBtn;
     /** Textured node to set the discarded tile image*/
     std::shared_ptr<cugl::scene2::TexturedNode> _discardedTileImage;
+
+    std::shared_ptr<cugl::scene2::Button> _displayIconBtn;
+
+    std::shared_ptr<cugl::scene2::TexturedNode> _expandedIcon;
     
+    std::shared_ptr<cugl::scene2::TexturedNode> _dragToDiscardNode;
+
+    std::shared_ptr<cugl::scene2::TexturedNode> _dragToHandNode;
+    bool _dragFromDiscard = false;
+    bool _dragToHandVisible = false;
+
     /** Button for playing a set */
     std::shared_ptr<cugl::scene2::Button> _playSetBtn;
     /** Key for discard button listener */

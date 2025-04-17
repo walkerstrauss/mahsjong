@@ -21,6 +21,8 @@ private:
     std::shared_ptr<cugl::AssetManager> _assets;
     /** Map to hold all sounds for the game */
     std::unordered_map<std::string, std::shared_ptr<Sound>> _sounds;
+
+    //std::unordered_map<std::string, std::shared_ptr<Music>> _music;
     /** ID for background music */
     int _bgMusicID;
     /** Vector of keys for sounds in the game (for dynamic loading) */

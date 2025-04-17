@@ -59,6 +59,8 @@ bool MenuScene::init(const std::shared_ptr<cugl::AssetManager>& assets) {
     float offset = (screenSize.width -_homescene->getWidth())/2;
     _homescene->setPosition(offset, _homescene->getPosition().y);
 
+    AudioController::getInstance().init(_assets);
+
     
     if (!Scene2::initWithHint(screenSize)) {
         std::cerr << "Scene2 initialization failed!" << std::endl;
@@ -77,12 +79,14 @@ bool MenuScene::init(const std::shared_ptr<cugl::AssetManager>& assets) {
         if (down) {
             _choice = Choice::HOST;
 //            AudioEngine::get()->play("confirm",_assets->get<Sound>("confirm"),false,1.0f);
+            AudioController::getInstance().playSound("confirm");
         }
     });
     _joinbutton->addListener([this](const std::string& name, bool down) {
         if (down) {
             _choice = Choice::JOIN;
 //            AudioEngine::get()->play("confirm",_assets->get<Sound>("confirm"),false,1.0f);
+            AudioController::getInstance().playSound("confirm");
         }
     });
     settingsbutton = std::dynamic_pointer_cast<scene2::Button>(_assets->get<scene2::SceneNode>("home.home.button3"));
@@ -90,6 +94,7 @@ bool MenuScene::init(const std::shared_ptr<cugl::AssetManager>& assets) {
         if (down){
             _choice = Choice::SETTING;
 //            AudioEngine::get()->play("confirm",_assets->get<Sound>("confirm"),false,1.0f);
+            AudioController::getInstance().playSound("confirm");
         }
     });
     _homescene->setVisible(true);

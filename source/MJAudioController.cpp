@@ -16,6 +16,8 @@ using namespace cugl::audio;
 #pragma mark -
 #pragma mark Constructors
 
+AudioController* AudioController::_instance = nullptr;
+
 bool AudioController::init(const std::shared_ptr<cugl::AssetManager>& assets){
     if (!assets){
         return false;

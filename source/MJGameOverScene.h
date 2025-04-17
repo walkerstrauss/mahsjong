@@ -9,6 +9,7 @@
 #define __MJ_GAME_OVER_SCENE_H__
 
 #include <cugl/cugl.h>
+#include "MJAudioController.h"
 
 using namespace cugl;
 using namespace cugl::scene2;

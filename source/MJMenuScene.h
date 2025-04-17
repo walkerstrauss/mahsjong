@@ -9,6 +9,7 @@
 #define __MJ_MENU_SCENE_H__
 #include <cugl/cugl.h>
 #include <vector>
+#include "MJAudioController.h"
 
 /**
  * This class presents the menu to the player.
