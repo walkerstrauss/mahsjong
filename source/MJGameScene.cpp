@@ -78,6 +78,7 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::sha
     _endTurnBtn->addListener([this](const std::string& name, bool down){
         if (!down){
             _matchController->endTurn();
+            AudioController::getInstance().playSound("confirm");
         }
     });
         
@@ -88,12 +89,14 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::sha
             _backBtn->activate();
             _discardUINode->_root->setVisible(true);
             AnimationController::getInstance().pause();
+            AudioController::getInstance().playSound("confirm");
         }
     });
     
     _pauseBtnKey = _pauseBtn->addListener([this](const std::string& name, bool down){
         if (!down){
             _choice = Choice::PAUSE;
+            AudioController::getInstance().playSound("confirm");
         }
     });
     
@@ -102,6 +105,7 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::sha
             setActive(true);
             setGameActive(true);
             _discardUINode->_root->setVisible(false);
+            AudioController::getInstance().playSound("back");
         }
     });
         
@@ -220,6 +224,7 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::sha
 
             // 2) Hide (and deactivate) the small button when expanded…
             _displayIconBtn->setVisible(!now);
+            AudioController::getInstance().playSound("confirm");
         }
         });
 
@@ -264,6 +269,7 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::sha
     
     _playSetBtn->addListener([this](const std::string& name, bool down) {
         if (!down) {
+            AudioController::getInstance().playSound("confirm");
             if(!_matchController->playSet()) {
                 _discardedTileImage->setVisible(true);
             }
@@ -405,6 +411,7 @@ void GameScene::update(float timestep) {
         bool releasedInPile = _input.didRelease() && _pileBox.contains(mousePos);
         // Drawing (from pile) logic
         if(_pileBox.contains(initialMousePos) && releasedInPile) {
+            AudioController::getInstance().playSound("confirm");
             _matchController->drawTile();
         }
         
