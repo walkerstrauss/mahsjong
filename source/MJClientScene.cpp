@@ -97,6 +97,8 @@ bool ClientScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::s
     _backout = std::dynamic_pointer_cast<scene2::Button>(_assets->get<scene2::SceneNode>("client.clientscene.cancel-box"));
     _prepareOrStart = std::dynamic_pointer_cast<scene2::PolygonNode>(_assets->get<scene2::SceneNode>("client3.client3Scene.menu.button1.up.start"));
 
+    AudioController::getInstance().init(_assets);
+
     _backout->addListener([this](const std::string& name, bool down) {
         if (down) {
             _backClicked = true;
@@ -111,6 +113,7 @@ bool ClientScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::s
             _gameIDNew[3]->setContentSize(75,75);
             _idPos = 0;
 //            TODO: play back sound
+            AudioController::getInstance().playSound("back");
         }
         });
 
@@ -129,6 +132,7 @@ bool ClientScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::s
             _gameIDNew[3]->setContentSize(75,75);
             _idPos = 0;
 //            TODO: play shuffle sound
+            AudioController::getInstance().playSound("shuffle");
         }
         });
 
@@ -139,6 +143,7 @@ bool ClientScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::s
             }
             //_gameid->releaseFocus();
 //          TODO: play confirm sound
+            AudioController::getInstance().playSound("confirm");
         }
         });
 
@@ -208,6 +213,7 @@ bool ClientScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::s
             _gameIDNew[_idPos]->setContentSize(75, 75);
             _idPos++;
 // TODO: play select sound
+            AudioController::getInstance().playSound("select");
         }
         });
     _tile3->addListener([this](const std::string& name, bool down) {
@@ -221,6 +227,7 @@ bool ClientScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::s
             _gameIDNew[_idPos]->setContentSize(75, 75);
             _idPos++;
 // TODO: play select sound
+            AudioController::getInstance().playSound("select");
         }
         });
     
@@ -235,6 +242,7 @@ bool ClientScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::s
             _gameIDNew[_idPos]->setContentSize(75, 75);
             _idPos++;
 // TODO: play select sound
+            AudioController::getInstance().playSound("select");
         }
         });
     _tile5->addListener([this](const std::string& name, bool down) {
@@ -248,6 +256,7 @@ bool ClientScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::s
             _gameIDNew[_idPos]->setContentSize(75, 75);
             _idPos++;
 // TODO: play select sound
+            AudioController::getInstance().playSound("select");
         }
         });
     _tile6->addListener([this](const std::string& name, bool down) {
@@ -261,6 +270,7 @@ bool ClientScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::s
             _gameIDNew[_idPos]->setContentSize(75, 75);
             _idPos++;
 // TODO: play select sound
+            AudioController::getInstance().playSound("select");
         }
         });
     _tile7->addListener([this](const std::string& name, bool down) {
@@ -274,6 +284,7 @@ bool ClientScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::s
             _gameIDNew[_idPos]->setContentSize(75, 75);
             _idPos++;
 // TODO: play select sound
+            AudioController::getInstance().playSound("select");
         }
         });
     _tile8->addListener([this](const std::string& name, bool down) {
@@ -287,6 +298,7 @@ bool ClientScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::s
             _gameIDNew[_idPos]->setContentSize(75, 75);
             _idPos++;
 // TODO: play select sound
+            AudioController::getInstance().playSound("select");
         }
         });
     _tile9->addListener([this](const std::string& name, bool down) {
@@ -295,6 +307,7 @@ bool ClientScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::s
             _gameIDNew[_idPos]->setContentSize(75, 75);
             _idPos++;
 // TODO: play select sound
+            AudioController::getInstance().playSound("select");
         }
         });
     _tile10->addListener([this](const std::string& name, bool down) {
@@ -303,6 +316,7 @@ bool ClientScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::s
             _gameIDNew[_idPos]->setContentSize(75, 75);
             _idPos++;
 // TODO: play select sound
+            AudioController::getInstance().playSound("select");
         }
         });
 

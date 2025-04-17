@@ -41,6 +41,7 @@ bool SettingScene::init(const std::shared_ptr<cugl::AssetManager>& assets){
     float offset = (screenSize.width -_settingScene->getWidth())/2;
     _settingScene->setPosition(offset, _settingScene->getPosition().y);
 
+    AudioController::getInstance().init(_assets);
     
     if (!Scene2::initWithHint(screenSize)) {
         std::cerr << "Scene2 initialization failed!" << std::endl;
@@ -68,10 +69,12 @@ bool SettingScene::init(const std::shared_ptr<cugl::AssetManager>& assets){
                 case PrevScene::PAUSED:
                     choice = Choice::PAUSE;
 //                    AudioEngine::get()->play("back", _assets->get<Sound>("back"), false, 1.0f);
+                    AudioController::getInstance().playSound("back");
                     break;
                 case PrevScene::MAIN:
                     choice = Choice::MENU;
 //                    AudioEngine::get()->play("back", _assets->get<Sound>("back"), false, 1.0f);
+                    AudioController::getInstance().playSound("back");
                     break;
                 case PrevScene::NEITHER:
                     // Do nothing

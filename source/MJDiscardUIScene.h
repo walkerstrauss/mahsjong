@@ -11,6 +11,7 @@
 #include <cugl/cugl.h>
 #include "MJTileSet.h"
 #include "MJPlayer.h"
+#include "MJAudioController.h"
 
 using namespace cugl;
 using namespace cugl::scene2;

@@ -196,6 +196,48 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::sha
     // Init the button for playing sets.
     _playSetBtn = std::dynamic_pointer_cast<scene2::Button>(_assets->get<scene2::SceneNode>("matchscene.gameplayscene.playSetButton"));
 
+    AudioController::getInstance().init(_assets);
+
+    //AudioController::getInstance().playMusic("match-music");
+
+    // 1) Grab the nodes from your scene graph
+    _displayIconBtn = std::dynamic_pointer_cast<scene2::Button>(
+        _assets->get<scene2::SceneNode>("matchscene.gameplayscene.displayed-set-icon")
+    );
+    _expandedIcon = std::dynamic_pointer_cast<scene2::TexturedNode>(
+        _assets->get<scene2::SceneNode>("matchscene.gameplayscene.displayed-set-icon-expanded")
+    );
+
+    // 2) Make sure the expanded version stays hidden initially
+    _expandedIcon->setVisible(false);
+
+    // 3) Add a listener that flips visibility each click
+    _displayIconBtn->addListener([this](const std::string& name, bool down) {
+        if (!down) {
+            // 1) Toggle expanded-image visibility
+            bool now = !_expandedIcon->isVisible();
+            _expandedIcon->setVisible(now);
+
+            // 2) Hide (and deactivate) the small button when expanded…
+            _displayIconBtn->setVisible(!now);
+        }
+        });
+
+    _dragToDiscardNode = std::dynamic_pointer_cast<cugl::scene2::TexturedNode>(
+        _assets->get<cugl::scene2::SceneNode>(
+            "matchscene.gameplayscene.drag-to-discard-tile"
+        )
+    );
+
+    _dragToDiscardNode->setVisible(true);
+
+    _dragToHandNode = std::dynamic_pointer_cast<cugl::scene2::TexturedNode>(
+        _assets->get<cugl::scene2::SceneNode>(
+            "matchscene.gameplayscene.opponent-hand.drag-to-hand-area"
+        )
+    );
+    _dragToHandNode->setVisible(true);
+
     cugl::Rect rect(0, 0, 150, 50);
     cugl::Poly2 poly(rect);
 
@@ -427,7 +469,25 @@ void GameScene::render() {
     
     _batch->setColor(Color4(255, 0, 0, 200));
     _batch->setTexture(nullptr);
-    
+
+    if (_dragToDiscardNode && _dragToDiscardNode->isVisible()) {
+        _dragToDiscardNode->render(_batch);
+    }
+    if (_dragToHandNode && _dragToHandVisible) {
+        Vec2 origin = _dragToHandNode->nodeToWorldCoords(Vec2::ZERO);
+        Size base = _dragToHandNode->getContentSize();
+
+        Rect highlight(
+            Vec2(origin.x - 100, origin.y - 80),
+            Size(base.width + 160, base.height - 100)
+        );
+
+        _batch->draw(
+            Texture::getBlank(),
+            Color4(0, 255, 0, 100),
+            highlight
+        );
+    }
     _batch->end();
 }
 
@@ -444,10 +504,12 @@ void GameScene::setGameActive(bool value){
         _pauseBtn->activate();
         _tilesetUIBtn->activate();
         _endTurnBtn->activate();
+        _displayIconBtn->activate();
     } else {
         _pauseBtn->deactivate();
         _endTurnBtn->deactivate();
         _backBtn->deactivate();
+        _displayIconBtn->deactivate();
     }
 }
 
@@ -471,7 +533,7 @@ void GameScene::clickedTile(cugl::Vec2 mousePos){
                     if(currTile->unselectable) {
                         return;
                     }
-                    // TODO: Play deselect sound effect
+                    AudioController::getInstance().playSound("deselect");
                     AnimationController::getInstance().animateTileDeselect(currTile, 30);
                     auto it = std::find(_player->getHand()._selectedTiles.begin(), _player->getHand()._selectedTiles.end(), currTile);
                     if (it != _player->getHand()._selectedTiles.end()) {
@@ -483,7 +545,7 @@ void GameScene::clickedTile(cugl::Vec2 mousePos){
                     if(!currTile->selectable) {
                         return;
                     }
-                    // TODO: Play select sound effect
+                    AudioController::getInstance().playSound("select");
                     AnimationController::getInstance().animateTileSelect(currTile, 30);
                     _player->getHand()._selectedTiles.push_back(currTile);
                     currTile->selected = true;
@@ -534,6 +596,7 @@ void GameScene::updateDrag(const cugl::Vec2& mousePos, bool mouseDown, bool mous
         if (!_dragInitiated) {
             _dragStartPos = mousePos;
             _draggingTile = _player->getHand().getTileAtPosition(mousePos);
+            _dragFromDiscard = false;
             if(_draggingTile && _draggingTile->unselectable) {
                 return;
             }
@@ -545,6 +608,7 @@ void GameScene::updateDrag(const cugl::Vec2& mousePos, bool mouseDown, bool mous
             }
             else if(!_tilesetUIBtn->isDown() && _discardedTileRegion.contains(mousePos)) {
                 if(_discardPile->getTopTile()) {
+                    _dragFromDiscard = true;
                     _discardedTileImage->setVisible(false);
                     _draggingTile = _discardPile->getTopTile();
                     _draggingTile->_scale = 0.1;
@@ -625,7 +689,7 @@ void GameScene::updateDrag(const cugl::Vec2& mousePos, bool mouseDown, bool mous
         // Player hand rearranging (dragging)
         int newIndex = _player->getHand().getTileIndexAtPosition(mousePos);
             
-        if (newIndex != -1 && _dragInitiated) {
+        if (newIndex != -1 && _draggingTile) {
                 auto& tiles = _player->getHand().getTiles();
                 auto tile = std::find(tiles.begin(), tiles.end(), _draggingTile);
                 if (tile != tiles.end()) {
@@ -637,7 +701,27 @@ void GameScene::updateDrag(const cugl::Vec2& mousePos, bool mouseDown, bool mous
             _player->_draggingTile = nullptr;
             _player->getHand().updateTilePositions(_matchScene->getSize());
             releaseTile();
-        }
+     }
+    bool isDragging = (_dragInitiated && _draggingTile != nullptr);
+    int hand_length = static_cast<int>(_player->getHand()._tiles.size());
+
+    if (isDragging && _dragFromDiscard) {
+        //_dragToHandNode->setVisible(true);
+        _dragToHandVisible = true;
+        _dragToDiscardNode->setVisible(false);
+    }
+    else if (isDragging && !_dragFromDiscard) {
+        if(hand_length == 14 && !_playSetBtn->isVisible()) _dragToDiscardNode->setVisible(true);
+        _dragToHandNode->setVisible(false);
+        _dragToHandVisible = false;
+    }
+    else {
+        // not dragging
+        _dragToDiscardNode->setVisible(false);
+        _dragToHandNode->setVisible(false);
+        _dragToHandVisible = false;
+    }
+
 }
 
 void GameScene::playSetAnim(const std::vector<std::shared_ptr<TileSet::Tile>>& tiles){

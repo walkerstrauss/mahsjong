@@ -105,16 +105,20 @@ bool HostScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::sha
     _playerMulti = _assets->get<scene2::SceneNode>("host.hostscene.waitingRoom.playerBoard2");
     _playerMulti->setVisible(false);
 
+    AudioController::getInstance().init(_assets);
+
     // Program the buttons
     _backout->addListener([this](const std::string& name, bool down) {
         if (down) {
             _backClicked = true;
+            AudioController::getInstance().playSound("back");
             _network->disconnect();
         }
     });
 
     _startgame->addListener([this](const std::string& name, bool down) {
         if (down) {
+            AudioController::getInstance().playSound("confirm");
             startGame();
         }
     });
