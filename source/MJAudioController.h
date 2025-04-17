@@ -26,6 +26,8 @@ private:
     /** Vector of keys for sounds in the game (for dynamic loading) */
     std::vector<std::string> _keys;
     
+    std::shared_ptr<cugl::audio::AudioQueue>  _musicQueue;
+    
 public:
 #pragma mark -
 #pragma mark Constructors

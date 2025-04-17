@@ -9,6 +9,7 @@
 #include <sstream>
 
 #include "MJMenuScene.h"
+#include "MJAudioController.h"
 
 using namespace cugl;
 using namespace cugl::scene2;
@@ -95,6 +96,13 @@ bool MenuScene::init(const std::shared_ptr<cugl::AssetManager>& assets) {
     _homescene->setVisible(true);
     addChild(_homescene);
     setActive(false);
+    
+    // Play the background music for the menu scene.
+    AudioController::getInstance().init(_assets);
+    AudioEngine::start();
+    AudioController::getInstance().playMusic("menuMusic", true);
+    
+    
     return true;
 }
 
@@ -103,6 +111,7 @@ bool MenuScene::init(const std::shared_ptr<cugl::AssetManager>& assets) {
  */
 void MenuScene::dispose() {
     if (_active) {
+        AudioController::getInstance().stopMusic();
         removeAllChildren();
         _active = false;
         _hostbutton = nullptr;

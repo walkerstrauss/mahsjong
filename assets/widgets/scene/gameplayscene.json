@@ -369,8 +369,8 @@
                     "x_anchor": "left",
                     "y_anchor": "top",
                     "absolute": false,
-                    "x_offset": 1.6,
-                    "y_offset": -13
+                    "x_offset": 0,
+                    "y_offset": 20
                 }
             },
 
@@ -919,6 +919,8 @@
                         "y_offset": -0.03
                     }
                 },
+            
+                
                 "displayed-set-icon": {
                     "type": "Button",
                     "format": {
