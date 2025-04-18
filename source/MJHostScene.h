@@ -9,6 +9,7 @@
 #include <cugl/cugl.h>
 #include <vector>
 #include "MJNetworkController.h"
+#include "MJAudioController.h"
 
 
 /**

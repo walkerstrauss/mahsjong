@@ -16,6 +16,8 @@ using namespace cugl::audio;
 #pragma mark -
 #pragma mark Constructors
 
+AudioController* AudioController::_instance = nullptr;
+
 bool AudioController::init(const std::shared_ptr<cugl::AssetManager>& assets){
     if (!assets){
         return false;
@@ -36,7 +38,9 @@ bool AudioController::init(const std::shared_ptr<cugl::AssetManager>& assets){
         "select",
         "select2",
         "shuffle",
-        "swap"
+        "swap",
+        "bgm",
+        "menuMusic"
     };
     
     for (const std::string& key  : _keys){
@@ -47,6 +51,12 @@ bool AudioController::init(const std::shared_ptr<cugl::AssetManager>& assets){
             CULog("No sound with key: %s", key.c_str());
         }
     }
+
+    // init the queue with the background music.
+    _musicQueue = AudioEngine::get()->getMusicQueue();
+
+    soundOn = true;
+
     
     return true;
 }
@@ -56,30 +66,55 @@ bool AudioController::init(const std::shared_ptr<cugl::AssetManager>& assets){
 
 void AudioController::playSound(const std::string& key, bool loop){
     if (_sounds.find(key) != _sounds.end()){
-        AudioEngine::get()->play(key, _sounds[key], loop, 1.0f);
+        if (soundOn){
+            AudioEngine::get()->play(key, _sounds[key], loop, 1.0f);
+        }
     } else {
         CULog("No sound with key: %s", key.c_str());
     }
 }
 
-void AudioController::playMusic(const std::string& key, bool loop){
-    if (_sounds.find(key) != _sounds.end()){
-        if (_bgMusicID != -1){
-            AudioEngine::get()->stop();
-        }
-        
-        _bgMusicID = AudioEngine::get()->play(key, _sounds[key], loop, 1.0f);
-    } else {
-        CULog("No music with key: %s", key.c_str());
-    }
-}
+//void AudioController::playMusic(const std::string& key, bool loop){
+//    if (_sounds.find(key) != _sounds.end()){
+//        if (_bgMusicID != -1){
+//            AudioEngine::get()->stop();
+//        }
+//
+//        _bgMusicID = AudioEngine::get()->play(key, _sounds[key], loop, 1.0f);
+//    } else {
+//        CULog("No music with key: %s", key.c_str());
+//    }
+//}
+
+//void AudioController::stopMusic() {
+//    if (_bgMusicID != -1){
+//        AudioEngine::get()->stop();
+//        _bgMusicID = -1;
+//    }
+//}
+
 
 void AudioController::stopMusic() {
-    if (_bgMusicID != -1){
-        AudioEngine::get()->stop();
-        _bgMusicID = -1;
-    }
+    // clear the queue
+  _musicQueue->clear(0.0f);
 }
+
+void AudioController::playMusic(const std::string& key, bool loop) {
+  auto it = _sounds.find(key);
+  if (it == _sounds.end()) {
+    CULog("No music with key: %s", key.c_str());
+    return;
+  }
+  // Clear whatever is playing. Instant cut for now, but can cahnage it later.
+  _musicQueue->clear(0.0f);
+  // play next song.
+  if (soundOn){
+    _musicQueue->play(it->second, loop, 1.0f, 0.0f);
+  }
+  _musicQueue->play(it->second, loop, 1.0f, 0.0f);
+}
+
+
 
 void AudioController::setSoundVolume(const std::string& key, float value){
     AudioEngine::get()->setVolume(key, value);

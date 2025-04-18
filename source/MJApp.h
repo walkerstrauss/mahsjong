@@ -19,6 +19,7 @@
 #include "MJAudioController.h"
 #include "MJAnimationController.h"
 #include "MJMatchController.h"
+#include "MJLoadingScene.h"
 
 /**
  * This class represents the application root for the Mah's Jong game
@@ -48,9 +49,9 @@ protected:
     /** Controller for loading scene */
     
     //
-    cugl::scene2::LoadingScene _loading;
+    //cugl::scene2::LoadingScene _loading;
     
-    //Loading _loading;
+    OurLoadingScene _loading;
     
     /** The menu scene to choose what to do */
     MenuScene _mainmenu;
