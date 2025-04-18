@@ -99,6 +99,9 @@
         "monkey of celestial": {
             "file": "textures/celestialHand/monkey_hand.png"
         },
+        "rat of celestial": {
+          "file": "textures/celestialHand/rat_hand.png"
+        },
         "background": {
             "file": "textures/landing/background.png"
         },
@@ -111,29 +114,11 @@
         "transparentBackImage": {
             "file": "textures/landing/rect_transparent.png"
         },
-        "background_menu": {
-            "file": "textures/menu/background_menu.png"
-        },
-        "button": {
-            "file": "textures/menu/button_menu.png"
-        },
-        "setting_button": {
-            "file": "textures/menu/setting_button.png"
-        },
-        "grandma_image": {
-            "file": "textures/menu/grandma-happy.png"
-        },
-        "menu-color-background": {
-            "file": "textures/menu/menu-color-background.png"
-        },
         "background_gameplay": {
             "file": "textures/gameplay/background_gameplay.png"
         },
         "pause": {
             "file": "textures/gameplay/pause.png"
-        },
-        "back": {
-            "file": "textures/gameplay/back.png"
         },
         "backgroundTable": {
             "file": "textures/gameplay/backgroundTable.png"
@@ -197,33 +182,6 @@
         },
         "left": {
             "file": "textures/left_arrow.png"
-        },
-        "background_hc": {
-            "file": "textures/hostAndClient/background_hc.png"
-        },
-        "cat": {
-            "file": "textures/hostAndClient/cat.png"
-        },
-        "Client_view_image": {
-            "file": "textures/hostAndClient/Client_view_image.png"
-        },
-        "grandpa": {
-            "file": "textures/hostAndClient/grandpa.png"
-        },
-        "hcButton": {
-            "file": "textures/hostAndClient/hcButton.png"
-        },
-        "hctitle": {
-            "file": "textures/hostAndClient/hctitle.png"
-        },
-        "Host_view_image": {
-            "file": "textures/hostAndClient/Host_view_image.png"
-        },
-        "playerImage": {
-            "file": "textures/hostAndClient/playerImage.png"
-        },
-        "textbox": {
-            "file": "textures/hostAndClient/textbox.png"
         },
         "yellow_dragon_left": {
             "file": "textures/setting/yellow_dragon_left.png"
@@ -363,9 +321,6 @@
         "displaytileSample": {
             "file": "textures/gameplay/displaytileSample.png"
         },
-        "gameplayBackground": {
-            "file": "textures/gameplay/gameplayBackground.png"
-        },
         "drag-to-discard-tile": {
             "file": "textures/gameplay/drag-to-discard-tile.png"
         },
@@ -468,6 +423,12 @@
         "DiscardShade": {
             "file": "textures/tilesetui/discardTileShade.png"
         },
+        "overlay-background": {
+            "file": "textures/pileui/overlay-background.png"
+        },
+        "select": {
+            "file": "textures/pileui/select.png"
+        },
         "settingBoard": {
             "file": "textures/setting/settingBoard.png"
         },
@@ -530,9 +491,6 @@
         },
         "displaytileSample": {
             "file": "textures/gameplay/displaytileSample.png"
-        },
-        "gameplayBackground": {
-            "file": "textures/gameplay/gameplayBackground.png"
         },
         "infoIconButton": {
             "file": "textures/gameplay/infoIcon.png"
@@ -786,6 +744,10 @@
           "file": "fonts/LightPixel7.ttf",
           "size": 32
         },
+        "podkovaBold24": {
+            "file": "fonts/Podkova-Bold.ttf",
+            "size": 24
+        },
         "podkovaBold36": {
             "file": "fonts/Podkova-Bold.ttf",
             "size": 36
@@ -893,47 +855,26 @@
         }
       }
     },
-    "menu": {
-      "type": "Node",
-      "format": {
-        "type": "Float",
-        "orientation": "vertical",
-        "x_alignment": "center",
-        "y_alignment": "middle"
-      },
-      "children": {
-        "host": {
-          "type": "Widget",
-          "data": {
-            "key": "textbutton",
-            "variables": {
-              "size": [ 300, 100 ],
-              "text": "Host Game",
-              "color": "#000088"
-            }
-          },
-          "layout": {
-            "priority": 1,
-            "padding": [ 0, 0, 60, 150 ]
-          }
+    "pileui": {
+        "type": "Node",
+        "format": {
+          "type": "Anchored"
         },
-        "join": {
-          "type": "Widget",
-          "data": {
-            "key": "textbutton",
-            "variables": {
-              "size": [ 300, 100 ],
-              "text": "Join Game",
-              "color": "#000088"
+        "children": {
+          "gameplay-select": {
+            "type": "Widget",
+            "format": {
+              "type": "Anchored"
+            },
+            "data": {
+              "key": "gameplay-select",
+              "variables": {
+                "size": [ 1280, 720 ]
+              }
             }
-          },
-          "layout": {
-            "priority": 1,
-            "padding": [ 0, 0, 60, 0 ]
           }
         }
-      }
-    },
+      },
     "host": {
       "type": "Node",
       "format": {
@@ -1064,6 +1005,7 @@
     "settingbutton_name": "widgets/button/settingbutton_name.json",
     "settingbutton_onoff": "widgets/button/settingbutton_onoff.json",
     "tilesetscene": "widgets/scene/tilesetscene.json",
+    "gameplay-select": "widgets/scene/gameplay-select.json",
     "host1Scene": "widgets/scene/host1Scene.json",
     "client1Scene": "widgets/scene/client1Scene.json",
     "client3Scene": "widgets/scene/client3Scene.json"

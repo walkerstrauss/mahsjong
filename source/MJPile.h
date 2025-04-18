@@ -138,16 +138,32 @@ public:
     void pairs(const cugl::Vec2 mousePos, const std::shared_ptr<Player>& player);
     
     /**
-     * Updates a singular tile within the pile
+     * Updates a singular tile within the pile (receiver action)
      *
      * @param pileTile  the json representation of a tile
      */
     void removePileTile(const std::shared_ptr<cugl::JsonValue> tileJson, bool isHostDraw);
     
     /**
+     * Removes a singular tile within the pile (sender action
+     */
+    void removeTile(std::shared_ptr<TileSet::Tile> tile);
+        
+    /**
      * Reshuffles the tiles within the pile
      */
     void reshufflePile();
+    
+    /**
+     * Fills the pile with nullptrs
+     */
+    void clearPile(){
+        for (int i = 0; i < _pileSize; ++i) {
+            for (int j = 0; j < _pileSize; ++j) {
+                _pile[i][j] = nullptr;
+            }
+        }
+    }
     
     /**
      * Remove inputted number of tiles iteratively

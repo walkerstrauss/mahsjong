@@ -76,6 +76,8 @@ public:
     enum CelestialUpdateType {
         /** Idle Update */
         NONE,
+        /** Rat played */
+        RAT,
         /** Ox played */
         OX,
         /** Rabbit played*/

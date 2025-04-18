@@ -131,7 +131,7 @@ void Pile::updateTilePositions() {
             
             tile->pos = cugl::Vec2(x, y) + pileOffset;
 
-            std::string key = tile->toString() + " " + std::to_string(tile->_id);
+            std::string key = std::to_string(tile->_id);
             _pileMap.insert({key, tile->pileCoord});
         }
     }
@@ -164,31 +164,15 @@ std::vector<std::shared_ptr<TileSet::Tile>> Pile::tilesDrawn(int number_of_tiles
             }
         }
     }
-    
     return _draw;
 }
 
 void Pile::removePileTile(const std::shared_ptr<cugl::JsonValue> tileJson, bool isHostDraw){
     for(auto const& tileKey : tileJson->children()){
-        const std::string suit = tileKey->getString("suit");
-        const std::string rank = tileKey->getString("rank");
         const std::string id = tileKey->getString("id");
         
-        const std::string actionType = tileKey->getString("actionType", "None");
-        const std::string commandType = tileKey->getString("commandType", "None");
-        
-        std::string key = rank + " of " + suit + " " + id;
-        
-        if(actionType != "None"){
-            key = actionType + " " + id;
-        }
-        else if (commandType != "None") {
-            key = commandType + " " + id;
-        }
-        CULog("%s", key.c_str());
-        
-        int x = _pileMap[key].x;
-        int y = _pileMap[key].y;
+        int x = _pileMap[id].x;
+        int y = _pileMap[id].y;
         
         if(_pile[x][y] == nullptr){
             continue;
@@ -203,18 +187,42 @@ void Pile::removePileTile(const std::shared_ptr<cugl::JsonValue> tileJson, bool 
             _pile[x][y]->inClientHand = true;
         }
         _pile[x][y] = nullptr;
-        _pileMap.erase(key);
+        _pileMap.erase(id);
     }
 }
 
+void Pile::removeTile(std::shared_ptr<TileSet::Tile> tile) {
+    std::vector<std::shared_ptr<TileSet::Tile>> tiles;
+    for (int i = _pileSize - 1; i >= 0; i--) {
+        for (int j = _pileSize - 1; j >= 0; j--) {
+            if (_pile[i][j] && _pile[i][j] != tile) {
+                tiles.push_back(_pile[i][j]);
+            }
+        }
+    }
+    
+    tile->inPile = false;
+    
+    clearPile();
+    
+    int index = 0;
+    for (int i = _pileSize - 1; i >= 0; i--) {
+        for (int j = _pileSize - 1; j >= 0; j--) {
+            if (index < tiles.size()) {
+                _pile[i][j] = tiles[index];
+                _pile[i][j]->pileCoord = cugl::Vec2(i, j);
+                index++;
+            }
+        }
+    }
+}
 
 void Pile::remakePile(){
     _pileMap.clear();
-    
     for(auto const& pairs : _tileSet->tileMap) {
         std::shared_ptr<TileSet::Tile> currTile = pairs.second;
         if(currTile->inPile) {
-            std::string key = currTile->toString() + " " + std::to_string(currTile->_id);
+            std::string key = std::to_string(currTile->_id);
             int x = currTile->pileCoord.x;
             int y = currTile->pileCoord.y;
             _pile[x][y] = currTile;
@@ -272,8 +280,6 @@ void Pile::reshufflePile(){
             }
         }
     }
-    
-    CULog("pile reshuffled");
 }
 
 void Pile::removeNumTiles(int nums) {

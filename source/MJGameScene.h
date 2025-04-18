@@ -19,6 +19,7 @@
 #include "MJPile.h"
 #include "MJDiscardPile.h"
 #include "MJDiscardUINode.h"
+#include "MJPileUINode.h"
 #include "MJNetworkController.h"
 #include "MJAudioController.h"
 #include "MJAnimationController.h"
@@ -72,6 +73,8 @@ protected:
     std::shared_ptr<cugl::scene2::SceneNode> _pauseScene;
     /** Reference to the discard UI node for the game */
     std::shared_ptr<DiscardUINode> _discardUINode;
+    /** Reference to the pile UI node for the game */
+    std::shared_ptr<PileUINode> _pileUINode;
     /** TileSet for the game */
     std::shared_ptr<TileSet> _tileSet;
     /** Reference to player */

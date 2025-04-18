@@ -19,7 +19,7 @@ using namespace std;
 #pragma mark -
 #pragma mark Level Layout
 
-// Lock the screen esize to a fixed heigh regardless of aspect ratio
+// Lock the screen size to a fixed height regardless of aspect ratio
 // PLEASE ADJUST AS SEEN FIT
 #define SCENE_HEIGHT 720 // Change to 874 for resizing from iPhone 16 Pro aspect ratio
 
@@ -46,7 +46,7 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::sha
     _assets = assets;
     _network = network;
     _choice = Choice::NONE;
-    
+
     _matchScene = _assets->get<scene2::SceneNode>("matchscene");
     _matchScene->setContentSize(getSize());
     _matchScene->getChild(0)->setContentSize(_matchScene->getContentSize());
@@ -55,7 +55,8 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::sha
     _discardUINode = std::make_shared<DiscardUINode>();
     _discardUINode->init(_assets);
     _discardUINode->_root->setContentSize(getSize());
-    
+    _discardUINode->doLayout();
+
     cugl::Size screenSize = cugl::Application::get()->getDisplaySize();
     
     screenSize *= _matchScene->getContentSize().height/screenSize.height;
@@ -69,6 +70,11 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::sha
         std::cerr << "Scene2 initialization failed!" << std::endl;
         return false;
     }
+    
+    _pileUINode = std::make_shared<PileUINode>();
+    _pileUINode->init(_assets);
+    _pileUINode->_root->setContentSize(getSize());
+    _pileUINode->_root->setPosition(offset, _pileUINode->getPosition().y);
     
     _tilesetUIBtn = std::dynamic_pointer_cast<scene2::Button>(_assets->get<scene2::SceneNode>("matchscene.gameplayscene.discarded-tile.discard-can"));
     _pauseBtn = std::dynamic_pointer_cast<scene2::Button>(_assets->get<scene2::SceneNode>("matchscene.gameplayscene.pauseButton"));
@@ -113,6 +119,8 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::sha
         
     addChild(_matchScene);
     addChild(_discardUINode->_root);
+    addChild(_pileUINode->_root);
+    
     // Game Win and Lose bool
     _gameWin = false;
     _gameLose = false;
@@ -222,7 +230,7 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::sha
             bool now = !_expandedIcon->isVisible();
             _expandedIcon->setVisible(now);
 
-            // 2) Hide (and deactivate) the small button when expanded…
+            // 2) Hide (and deactivate) the small button when expandedÂ…
             _displayIconBtn->setVisible(!now);
             AudioController::getInstance().playSound("confirm");
         }
@@ -377,6 +385,13 @@ void GameScene::update(float timestep) {
         _playSetBtn->deactivate();
     }
     
+    if (_matchController->getChoice() == MatchController::Choice::RATTILE) {
+//        setActive(false);
+//        setGameActive(false);
+//        _backBtn->activate();
+        _pileUINode->_root->setVisible(true);
+    }
+    
     // If we are in drawn discard state, set discarded tile image visibility to false since player drew it
     if(_matchController->getChoice() == MatchController::DRAWNDISCARD || _network->getStatus() == NetworkController::DRAWNDISCARD) {
         _discardedTileImage->setVisible(false);
@@ -410,8 +425,10 @@ void GameScene::update(float timestep) {
 
         bool releasedInPile = _input.didRelease() && _pileBox.contains(mousePos);
         // Drawing (from pile) logic
-        if(_pileBox.contains(initialMousePos) && releasedInPile) {
-            AudioController::getInstance().playSound("confirm");
+
+        if(_pileBox.contains(initialMousePos) && releasedInPile &&  _matchController->getChoice() != MatchController::Choice::RATTILE) {
+//         if(_pileBox.contains(initialMousePos) && releasedInPile) {
+            AudioController::getInstance().playSound("confirm", false);
             _matchController->drawTile();
         }
         
@@ -463,6 +480,7 @@ void GameScene::render() {
     _batch->draw(temp, Color4(0,0,0,255), Rect(Vec2::ZERO, cugl::Application().get()->getDisplaySize()));
     
     _matchScene->render(_batch);
+    _pileUINode->_root->render(_batch);
     _pile->draw(_batch);
     _player->draw(_batch);
     _discardPile->draw(_batch);
@@ -475,6 +493,8 @@ void GameScene::render() {
     //if (_chowSheet->isVisible()) _chowSheet->render(_batch);
 
     _discardUINode->_root->render(_batch);
+//    _pileUINode->_root->render(_batch);
+
     
     _batch->setColor(Color4(255, 0, 0, 200));
     _batch->setTexture(nullptr);
@@ -522,14 +542,6 @@ void GameScene::setGameActive(bool value){
     }
 }
 
-void GameScene::applyCelestial(TileSet::Tile::Rank type) {
-    if (type == TileSet::Tile::Rank::OX) {
-        _pile->reshufflePile();
-        _network->broadcastDeckMap(_tileSet->mapToJson());
-        _network->broadcastPileLayer();
-    }
-}
-
 void GameScene::clickedTile(cugl::Vec2 mousePos){
     cugl::Vec2 initialMousePos = cugl::Scene::screenToWorldCoords(cugl::Vec3(_input.getInitialPosition()));
     
@@ -560,22 +572,12 @@ void GameScene::clickedTile(cugl::Vec2 mousePos){
                     currTile->selected = true;
                 }
             }
-            if(currTile->inPile) {
-                continue;
-//                if(currTile->selected) {
-//                    currTile->_scale = 0.2;
-//                }
-//                else{
-//                    currTile->_scale = 0.25;
-//                }
+            if(currTile->inPile && _matchController->getChoice() == MatchController::Choice::RATTILE) {
+                _matchController->playRat(currTile);
+                _player = _network->getHostStatus() ? _matchController->hostPlayer : _matchController->clientPlayer;
+                _matchController->setChoice(MatchController::Choice::NONE);
+                _pileUINode->_root->setVisible(false);
             }
-
-            //if(currTile->selected) {
-            //    currTile->selected = false;
-            //}
-            //else {
-            //   currTile->selected = true;
-            //}
         }
     }
 }
@@ -644,6 +646,7 @@ void GameScene::updateDrag(const cugl::Vec2& mousePos, bool mouseDown, bool mous
               else {
                   // Monkey tile was played, regular tile chosen to trade
                   if (_matchController->getChoice() == MatchController::Choice::MONKEYTILE) {
+                      
                       _matchController->playMonkey(_draggingTile);
                       // Play the swap sound when the monkey tile is activated.
                       AudioController::getInstance().playSound("swap");
