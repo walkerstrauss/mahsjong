@@ -99,6 +99,9 @@
         "monkey of celestial": {
           "file": "textures/celestialHand/monkey_hand.png"
         },
+        "rat of celestial": {
+          "file": "textures/celestialHand/rat_hand.png"
+        },
         "background": {
             "file": "textures/landing/background.png"
         },

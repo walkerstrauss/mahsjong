@@ -1,5 +1,5 @@
 {
-    "variables": {},
+    "variables": {"size":["data","size"]},
     "contents": {
         "type": "Node",
         "format": {
@@ -22,33 +22,6 @@
             "visible": true
         },
         "children": {
-            "gameplay-background": {
-                "type": "Image",
-                "data": {
-                    "texture": "gameplay-background",
-                    "anchor": [
-                        0.5,
-                        0.5
-                    ],
-                    "size": [
-                        874,
-                        402
-                    ],
-                    "angle": 0,
-                    "position": [
-                        0,
-                        0
-                    ],
-                    "visible": true
-                },
-                "layout": {
-                    "x_anchor": "fill",
-                    "y_anchor": "fill",
-                    "absolute": false,
-                    "x_offset": 0,
-                    "y_offset": 0
-                }
-            },
             "overlay-background": {
                 "type": "Image",
                 "data": {

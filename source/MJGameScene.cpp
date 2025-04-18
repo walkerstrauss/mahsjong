@@ -55,7 +55,8 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::sha
     _discardUINode = std::make_shared<DiscardUINode>();
     _discardUINode->init(_assets);
     _discardUINode->_root->setContentSize(getSize());
-    
+    _discardUINode->doLayout();
+
     cugl::Size screenSize = cugl::Application::get()->getDisplaySize();
     
     screenSize *= _matchScene->getContentSize().height/screenSize.height;
@@ -73,6 +74,7 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::sha
     _pileUINode = std::make_shared<PileUINode>();
     _pileUINode->init(_assets);
     _pileUINode->_root->setContentSize(getSize());
+    _pileUINode->_root->setPosition(offset, _pileUINode->getPosition().y);
     
     _tilesetUIBtn = std::dynamic_pointer_cast<scene2::Button>(_assets->get<scene2::SceneNode>("matchscene.gameplayscene.discarded-tile.discard-can"));
     _pauseBtn = std::dynamic_pointer_cast<scene2::Button>(_assets->get<scene2::SceneNode>("matchscene.gameplayscene.pauseButton"));
@@ -337,12 +339,12 @@ void GameScene::update(float timestep) {
         _playSetBtn->deactivate();
     }
     
-    if (_matchController->getChoice() == MatchController::Choice::MONKEYTILE) {
-        setActive(false);
-        setGameActive(false);
-//        _backBtn->activate();
-        _pileUINode->_root->setVisible(true);
-    }
+//    if (_matchController->getChoice() == MatchController::Choice::MONKEYTILE) {
+//        setActive(false);
+//        setGameActive(false);
+////        _backBtn->activate();
+//        _pileUINode->_root->setVisible(true);
+//    }
     
     // If we are in drawn discard state, set discarded tile image visibility to false since player drew it
     if(_matchController->getChoice() == MatchController::DRAWNDISCARD || _network->getStatus() == NetworkController::DRAWNDISCARD) {
@@ -377,7 +379,7 @@ void GameScene::update(float timestep) {
 
         bool releasedInPile = _input.didRelease() && _pileBox.contains(mousePos);
         // Drawing (from pile) logic
-        if(_pileBox.contains(initialMousePos) && releasedInPile) {
+        if(_pileBox.contains(initialMousePos) && releasedInPile &&  _matchController->getChoice() != MatchController::Choice::RATTILE) {
             _matchController->drawTile();
         }
         
@@ -498,22 +500,9 @@ void GameScene::clickedTile(cugl::Vec2 mousePos){
                     currTile->selected = true;
                 }
             }
-            if(currTile->inPile) {
-                continue;
-//                if(currTile->selected) {
-//                    currTile->_scale = 0.2;
-//                }
-//                else{
-//                    currTile->_scale = 0.25;
-//                }
+            if(currTile->inPile && _matchController->getChoice() == MatchController::Choice::RATTILE) {
+                _matchController->playRat(currTile);
             }
-
-            //if(currTile->selected) {
-            //    currTile->selected = false;
-            //}
-            //else {
-            //   currTile->selected = true;
-            //}
         }
     }
 }
