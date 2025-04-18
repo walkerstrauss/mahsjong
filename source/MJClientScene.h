@@ -10,6 +10,7 @@
 #include <cugl/cugl.h>
 #include <vector>
 #include "MJNetworkController.h"
+#include "MJAudioController.h"
 
 /**
  * This class provides the interface to join an existing game.

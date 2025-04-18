@@ -61,9 +61,10 @@ static std::string dec2hex(const std::string dec) {
 bool ClientScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::shared_ptr<NetworkController> network) {
     // Initialize the scene to a locked width
     if (assets == nullptr) {
-        return false;}
-    
-    Size dimen = getSize();
+        return false;
+    } else if (!Scene2::initWithHint(0,SCENE_HEIGHT)){
+        return false;
+    }
     
     // Start up the input handler
     _assets = assets;
@@ -71,7 +72,8 @@ bool ClientScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::s
 
     // Acquire the scene built by the asset loader and resize it the scene
     _clientScene1 = _assets->get<scene2::SceneNode>("client");
-    _clientScene1->setContentSize(1280,720);
+    _clientScene1->setContentSize(getSize());
+    _clientScene1->getChild(0)->setContentSize(_clientScene1->getContentSize());
     cugl::Size screenSize = cugl::Application::get()->getDisplaySize();
     screenSize *= _clientScene1->getContentSize().height/screenSize.height;
     //cugl::Size screenSize = Size(0,SCENE_HEIGHT);
@@ -84,7 +86,7 @@ bool ClientScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::s
     }
     
     _clientScene2 = _assets->get<scene2::SceneNode>("client3");
-    _clientScene2->setContentSize(1280,720);
+    _clientScene2->setContentSize(getSize());
     
     _clientScene1->setPosition(offset, _clientScene1->getPosition().y);
     addChild(_clientScene2);
@@ -96,6 +98,8 @@ bool ClientScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::s
     _resetGameID = std::dynamic_pointer_cast<scene2::Button>(_assets->get<scene2::SceneNode>("client.clientscene.buttons.clear-button"));
     _backout = std::dynamic_pointer_cast<scene2::Button>(_assets->get<scene2::SceneNode>("client.clientscene.cancel-box"));
     _prepareOrStart = std::dynamic_pointer_cast<scene2::PolygonNode>(_assets->get<scene2::SceneNode>("client3.client3Scene.menu.button1.up.start"));
+
+    AudioController::getInstance().init(_assets);
 
     _backout->addListener([this](const std::string& name, bool down) {
         if (down) {
@@ -111,11 +115,13 @@ bool ClientScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::s
             _gameIDNew[3]->setContentSize(75,75);
             _idPos = 0;
 //            TODO: play back sound
+            AudioController::getInstance().playSound("back",false);
         }
         });
 
     _resetGameID->addListener([this](const std::string& name, bool down) {
         if (down) {
+            AudioController::getInstance().playSound("deselect", false);
             if(_idPos == 0) {
                 return;
             }
@@ -127,8 +133,7 @@ bool ClientScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::s
             _gameIDNew[2]->setContentSize(75,75);
             _gameIDNew[3]->setTexture(_assets->get<cugl::graphics::Texture>("client1-gameid-tile19"));
             _gameIDNew[3]->setContentSize(75,75);
-            _idPos = 0;
-//            TODO: play shuffle sound
+            _idPos = 0;            
         }
         });
 
@@ -139,6 +144,7 @@ bool ClientScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::s
             }
             //_gameid->releaseFocus();
 //          TODO: play confirm sound
+            AudioController::getInstance().playSound("confirm",false);
         }
         });
 
@@ -169,7 +175,7 @@ bool ClientScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::s
             if (_keySecPage) {
                 _tile9->deactivate();
                 _tile10->deactivate();
-                
+                changeKeyPadTexture(_tile1, "client1-gameid-tile");
                 changeKeyPadTexture(_tile2, "client1-gameid-tile10");
                 changeKeyPadTexture(_tile3, "client1-gameid-tile11");
                 changeKeyPadTexture(_tile4, "client1-gameid-tile12");
@@ -180,6 +186,7 @@ bool ClientScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::s
 
             }
             else {
+                changeKeyPadTexture(_tile1, "client1-gameid-tile");
                 changeKeyPadTexture(_tile2, "client1-gameid-tile1");
                 changeKeyPadTexture(_tile3, "client1-gameid-tile2");
                 changeKeyPadTexture(_tile4, "client1-gameid-tile3");
@@ -208,6 +215,7 @@ bool ClientScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::s
             _gameIDNew[_idPos]->setContentSize(75, 75);
             _idPos++;
 // TODO: play select sound
+            AudioController::getInstance().playSound("select", false);
         }
         });
     _tile3->addListener([this](const std::string& name, bool down) {
@@ -221,6 +229,7 @@ bool ClientScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::s
             _gameIDNew[_idPos]->setContentSize(75, 75);
             _idPos++;
 // TODO: play select sound
+            AudioController::getInstance().playSound("select", false);
         }
         });
     
@@ -235,6 +244,7 @@ bool ClientScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::s
             _gameIDNew[_idPos]->setContentSize(75, 75);
             _idPos++;
 // TODO: play select sound
+            AudioController::getInstance().playSound("select", false);
         }
         });
     _tile5->addListener([this](const std::string& name, bool down) {
@@ -248,6 +258,7 @@ bool ClientScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::s
             _gameIDNew[_idPos]->setContentSize(75, 75);
             _idPos++;
 // TODO: play select sound
+            AudioController::getInstance().playSound("select", false);
         }
         });
     _tile6->addListener([this](const std::string& name, bool down) {
@@ -261,6 +272,7 @@ bool ClientScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::s
             _gameIDNew[_idPos]->setContentSize(75, 75);
             _idPos++;
 // TODO: play select sound
+            AudioController::getInstance().playSound("select", false);
         }
         });
     _tile7->addListener([this](const std::string& name, bool down) {
@@ -274,6 +286,7 @@ bool ClientScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::s
             _gameIDNew[_idPos]->setContentSize(75, 75);
             _idPos++;
 // TODO: play select sound
+            AudioController::getInstance().playSound("select", false);
         }
         });
     _tile8->addListener([this](const std::string& name, bool down) {
@@ -287,6 +300,7 @@ bool ClientScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::s
             _gameIDNew[_idPos]->setContentSize(75, 75);
             _idPos++;
 // TODO: play select sound
+            AudioController::getInstance().playSound("select", false);
         }
         });
     _tile9->addListener([this](const std::string& name, bool down) {
@@ -295,6 +309,7 @@ bool ClientScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::s
             _gameIDNew[_idPos]->setContentSize(75, 75);
             _idPos++;
 // TODO: play select sound
+            AudioController::getInstance().playSound("select");
         }
         });
     _tile10->addListener([this](const std::string& name, bool down) {
@@ -303,6 +318,7 @@ bool ClientScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::s
             _gameIDNew[_idPos]->setContentSize(75, 75);
             _idPos++;
 // TODO: play select sound
+            AudioController::getInstance().playSound("select", false);
         }
         });
 
@@ -624,6 +640,6 @@ void ClientScene::changeKeyPadTexture(std::shared_ptr<cugl::scene2::Button>& til
     auto textureNode = std::dynamic_pointer_cast<cugl::scene2::TexturedNode>(image);
     textureNode->setTexture(_assets->get<cugl::graphics::Texture>(texture));
     
-    textureNode->setContentSize(115, 115);
+    textureNode->setContentSize(120, 120);
     textureNode->setAnchor(0, 1);
 }

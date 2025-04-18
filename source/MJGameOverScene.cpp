@@ -34,23 +34,23 @@ bool GameOverScene::init(const std::shared_ptr<cugl::AssetManager>& assets){
     type = Type::NEITHER;
     // init the win scene
     _winscene = _assets->get<scene2::SceneNode>("winscene");
-    _winscene->setContentSize(1280,720);
+    _winscene->setContentSize(getSize());
+    _winscene->getChild(0)->setContentSize(_winscene->getContentSize());
+    _winscene->doLayout();
+    
     cugl::Size screenSize = cugl::Application::get()->getDisplaySize();
-    //cugl::Size screenSize = Size(0,SCENE_HEIGHT);
     
     screenSize *= _winscene->getContentSize().height/screenSize.height;
     
     float offset = (screenSize.width -_winscene->getWidth())/2;
     _winscene->setPosition(offset, _winscene->getPosition().y);
 
-//    _winscene->setContentSize(dimen);
-//    _winscene->doLayout();
-//    _winscene->setPosition(125, _winscene->getPositionY());
+    AudioController::getInstance().init(_assets);
     
     // init the lose scene
     _losescene = _assets->get<scene2::SceneNode>("losescene");
-    _losescene->setContentSize(1280,720);
-    //cugl::Size screenSize = Size(0,SCENE_HEIGHT);
+    _losescene->setContentSize(getSize());
+    _losescene->getChild(0)->setContentSize(_losescene->getContentSize());
     
     offset = (screenSize.width -_losescene->getWidth())/2;
     _losescene->setPosition(offset, _losescene->getPosition().y);
@@ -60,10 +60,6 @@ bool GameOverScene::init(const std::shared_ptr<cugl::AssetManager>& assets){
         return false;
     }
     
-//    _losescene->setContentSize(dimen);
-//    _losescene->doLayout();
-//    _losescene->setPosition(125, _winscene->getPositionY());
-    
     // init buttons
     _mainWinBtn = std::dynamic_pointer_cast<scene2::Button>(_assets->get<scene2::SceneNode>("winscene.scorewinscene.win_board.button_main"));
     _mainLoseBtn = std::dynamic_pointer_cast<scene2::Button>(_assets->get<scene2::SceneNode>("losescene.scoredefeatscene.defeated_board.button_main"));
@@ -72,22 +68,16 @@ bool GameOverScene::init(const std::shared_ptr<cugl::AssetManager>& assets){
     _mainWinKey = _mainWinBtn->addListener([this](const std::string& name, bool down){
         if (!down){
             choice = Choice::MENU;
-//            AudioEngine::get()->play("confirm",_assets->get<Sound>("confirm"),false,1.0f);
+            AudioController::getInstance().playSound("confirm");
         }
        
     });
     _mainLoseKey = _mainLoseBtn->addListener([this](const std::string& name, bool down){
         if (!down){
             choice = Choice::MENU;
-//            AudioEngine::get()->play("confirm",_assets->get<Sound>("confirm"),false,1.0f);
+            AudioController::getInstance().playSound("confirm");
         }
     });
-    
-//    _sheetNode = scene2::SpriteNode::allocWithSheet(_assets->get<Texture>("win"),2,3,5);
-//    _sheetNode->setAnchor(Vec2::ANCHOR_CENTER);
-//    _sheetNode->setPosition(1100, 800);
-//    _sheetNode->setScale(0.2);
-//    _sheetNode->setFrame(0);
     
     addChild(_winscene);
     addChild(_losescene);
@@ -108,16 +98,6 @@ void GameOverScene::reset(){
 
 void GameOverScene::update(float timestep){
     if (!isActive()) return;
-//    _frameTimer += timestep;  // Accumulate time
-//        if (_frameTimer >= _frameDelay) {
-//            _frameTimer = 0; // Reset timer
-//            if (_sheetNode->getFrame() > 3){
-//                _sheetNode->setFrame(0);
-//            } else {
-//                _sheetNode->setFrame(_sheetNode->getFrame() + 1);
-//            }
-//        }
-    return;
 }
 
 void GameOverScene::setActive(bool value){
@@ -169,7 +149,6 @@ void GameOverScene::render(const std::shared_ptr<graphics::SpriteBatch>& batch){
     switch (type){
         case Type::WIN:
             _winscene->render(batch);
-//            _sheetNode->render(batch);
             break;
         case Type::LOSE:
             _losescene->render(batch);

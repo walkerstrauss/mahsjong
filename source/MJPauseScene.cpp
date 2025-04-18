@@ -25,7 +25,8 @@ bool PauseScene::init(const std::shared_ptr<cugl::AssetManager>& assets){
     _assets = assets;
 //    Size dimen = getSize();
     _pauseScene = _assets->get<scene2::SceneNode>("pause");
-    _pauseScene->setContentSize(1280,720);
+    _pauseScene->setContentSize(getSize());
+    _pauseScene->getChild(0)->setContentSize(_pauseScene->getContentSize());
     cugl::Size screenSize = cugl::Application::get()->getDisplaySize();
     //cugl::Size screenSize = Size(0,SCENE_HEIGHT);
     
@@ -55,6 +56,8 @@ bool PauseScene::init(const std::shared_ptr<cugl::AssetManager>& assets){
     _continueBtn->setPosition(_continueBtn->getPositionX(), _continueBtn->getPositionY() + 50);
     _menuPauseBtn->setPosition(_menuPauseBtn->getPositionX(), _menuPauseBtn->getPositionY() + 50);
     _settingPauseBtn->setPosition(_settingPauseBtn->getPositionX(), _settingPauseBtn->getPositionY() + 50);
+
+    AudioController::getInstance().init(_assets);
     
     _sound = _assets->get<audio::Sound>("confirm");
     
@@ -62,24 +65,28 @@ bool PauseScene::init(const std::shared_ptr<cugl::AssetManager>& assets){
         if (!down){
             choice = Choice::CONTINUE;
 //            AudioEngine::get()->play("confirm", _sound, false, 1.0f);
+            AudioController::getInstance().playSound("confirm");
         }
     });
     _closePauseBtnKey = _closePauseBtn->addListener([this](const std::string& name, bool down){
         if (!down){
             choice = Choice::CONTINUE;
 //            AudioEngine::get()->play("confirm", _sound, false, 1.0f);
+            AudioController::getInstance().playSound("confirm");
         }
     });
     _settingPauseBtnKey = _settingPauseBtn->addListener([this](const std::string& name, bool down){
         if (!down){
             choice = Choice::SETTINGS;
 //            AudioEngine::get()->play("confirm", _sound, false, 1.0f);
+            AudioController::getInstance().playSound("confirm");
         }
     });
     _menuPauseBtnKey = _menuPauseBtn->addListener([this](const std::string& name, bool down){
         if (!down){
             choice = Choice::MENU;
 //            AudioEngine::get()->play("confirm", _sound, false, 1.0f);
+            AudioController::getInstance().playSound("confirm");
         }
     });
     _closePauseBtn->removeFromParent();

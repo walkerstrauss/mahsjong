@@ -21,6 +21,8 @@ private:
     std::shared_ptr<cugl::AssetManager> _assets;
     /** Map to hold all sounds for the game */
     std::unordered_map<std::string, std::shared_ptr<Sound>> _sounds;
+
+    //std::unordered_map<std::string, std::shared_ptr<Music>> _music;
     /** ID for background music */
     int _bgMusicID;
     /** Vector of keys for sounds in the game (for dynamic loading) */
@@ -29,6 +31,8 @@ private:
     std::shared_ptr<cugl::audio::AudioQueue>  _musicQueue;
     
 public:
+    /** Whether the game sound is currently on */
+    bool soundOn;
 #pragma mark -
 #pragma mark Constructors
     AudioController() : _assets(nullptr), _bgMusicID(-1) {}
@@ -80,7 +84,13 @@ public:
     void setSoundVolume(const std::string& key, float value);
     
     void playSelect(){
-        playSound("select",false);
+        if (soundOn){
+            playSound("select",false);
+        }
+    }
+    
+    void toggleSound() {
+        soundOn = !soundOn;
     }
 };
 

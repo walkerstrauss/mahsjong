@@ -21,7 +21,7 @@ using namespace std;
 #pragma mark Level Layout
 
 /** Regardless of logo, lock the height to this */
-#define SCENE_HEIGHT  700
+#define SCENE_HEIGHT  720
 
 
 #pragma mark -
@@ -44,14 +44,15 @@ bool MenuScene::init(const std::shared_ptr<cugl::AssetManager>& assets) {
     // Initialize the scene to a locked width
     if (assets == nullptr) {
         return false;
-    } else if (!Scene2::initWithHint(0,720)){
+    } else if (!Scene2::initWithHint(0,SCENE_HEIGHT)){
         return false;
     }
     // Start up the input handler
     _assets = assets;
     
     _homescene = _assets->get<scene2::SceneNode>("home");
-    _homescene->setContentSize(1280,720);
+    _homescene->setContentSize(getSize());
+    _homescene->getChild(0)->setContentSize(_homescene->getContentSize());
     cugl::Size screenSize = cugl::Application::get()->getDisplaySize();
     //cugl::Size screenSize = Size(0,SCENE_HEIGHT);
     
@@ -59,7 +60,6 @@ bool MenuScene::init(const std::shared_ptr<cugl::AssetManager>& assets) {
     
     float offset = (screenSize.width -_homescene->getWidth())/2;
     _homescene->setPosition(offset, _homescene->getPosition().y);
-
     
     if (!Scene2::initWithHint(screenSize)) {
         std::cerr << "Scene2 initialization failed!" << std::endl;
@@ -78,12 +78,14 @@ bool MenuScene::init(const std::shared_ptr<cugl::AssetManager>& assets) {
         if (down) {
             _choice = Choice::HOST;
 //            AudioEngine::get()->play("confirm",_assets->get<Sound>("confirm"),false,1.0f);
+            AudioController::getInstance().playSound("confirm");
         }
     });
     _joinbutton->addListener([this](const std::string& name, bool down) {
         if (down) {
             _choice = Choice::JOIN;
 //            AudioEngine::get()->play("confirm",_assets->get<Sound>("confirm"),false,1.0f);
+            AudioController::getInstance().playSound("confirm", false);
         }
     });
     settingsbutton = std::dynamic_pointer_cast<scene2::Button>(_assets->get<scene2::SceneNode>("home.home.button3"));
@@ -91,8 +93,16 @@ bool MenuScene::init(const std::shared_ptr<cugl::AssetManager>& assets) {
         if (down){
             _choice = Choice::SETTING;
 //            AudioEngine::get()->play("confirm",_assets->get<Sound>("confirm"),false,1.0f);
+            AudioController::getInstance().playSound("confirm", false);
         }
     });
+    _grandmaMainSheet = SpriteNode::allocWithSheet(_assets->get<Texture>("grandmaMain"), 2, 3, 5);
+    _grandmaMainSheet->setAnchor(Vec2::ANCHOR_CENTER);
+    _grandmaMainSheet->setPosition(340, 410);
+    _grandmaMainSheet->setVisible(true);
+    _grandmaMainSheet->setFrame(0);
+    _grandmaMainSheet->setScale(0.13);
+    
     _homescene->setVisible(true);
     addChild(_homescene);
     setActive(false);
@@ -154,5 +164,24 @@ void MenuScene::render(){
     const std::shared_ptr<Texture> temp = Texture::getBlank();
     _batch->draw(temp, Color4(0,0,0,255), Rect(Vec2::ZERO,Application::get()->getDisplaySize()));
     _homescene->render(_batch);
+    _grandmaMainSheet->render(_batch);
     _batch->end();
+}
+
+void MenuScene::update(float timestep){
+    frameTimer += timestep;
+    
+    int frame = _grandmaMainSheet->getFrame();
+    if (frameTimer >= frameDelay){
+        frameTimer = 0.0;
+        frame++;
+    } else {
+        return;
+    }
+    
+    if (frame >= _grandmaMainSheet->getCount()){
+        _grandmaMainSheet->setFrame(0);
+    } else {
+        _grandmaMainSheet->setFrame(frame);
+    }
 }
