@@ -347,8 +347,8 @@ public:
         _frameTimer += timestep;  // Accumulate time
         if (_frameTimer >= _frameDelay) {
             _frameTimer = 0; // Reset timer
-            updateSpriteNode(_pongSheet);
-            updateSpriteNode(_chowSheet);
+//            updateSpriteNode(_pongSheet);
+//            updateSpriteNode(_chowSheet);
             updateSpriteNode(_turnSheet);
         }
     }

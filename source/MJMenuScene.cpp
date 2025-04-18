@@ -84,7 +84,7 @@ bool MenuScene::init(const std::shared_ptr<cugl::AssetManager>& assets) {
         if (down) {
             _choice = Choice::JOIN;
 //            AudioEngine::get()->play("confirm",_assets->get<Sound>("confirm"),false,1.0f);
-            AudioController::getInstance().playSound("confirm");
+            AudioController::getInstance().playSound("confirm", false);
         }
     });
     settingsbutton = std::dynamic_pointer_cast<scene2::Button>(_assets->get<scene2::SceneNode>("home.home.button3"));
@@ -92,9 +92,16 @@ bool MenuScene::init(const std::shared_ptr<cugl::AssetManager>& assets) {
         if (down){
             _choice = Choice::SETTING;
 //            AudioEngine::get()->play("confirm",_assets->get<Sound>("confirm"),false,1.0f);
-            AudioController::getInstance().playSound("confirm");
+            AudioController::getInstance().playSound("confirm", false);
         }
     });
+    _grandmaMainSheet = SpriteNode::allocWithSheet(_assets->get<Texture>("grandmaMain"), 2, 3, 5);
+    _grandmaMainSheet->setAnchor(Vec2::ANCHOR_CENTER);
+    _grandmaMainSheet->setPosition(340, 410);
+    _grandmaMainSheet->setVisible(true);
+    _grandmaMainSheet->setFrame(0);
+    _grandmaMainSheet->setScale(0.13);
+    
     _homescene->setVisible(true);
     addChild(_homescene);
     setActive(false);
@@ -148,5 +155,24 @@ void MenuScene::render(){
     const std::shared_ptr<Texture> temp = Texture::getBlank();
     _batch->draw(temp, Color4(0,0,0,255), Rect(Vec2::ZERO,Application::get()->getDisplaySize()));
     _homescene->render(_batch);
+    _grandmaMainSheet->render(_batch);
     _batch->end();
+}
+
+void MenuScene::update(float timestep){
+    frameTimer += timestep;
+    
+    int frame = _grandmaMainSheet->getFrame();
+    if (frameTimer >= frameDelay){
+        frameTimer = 0.0;
+        frame++;
+    } else {
+        return;
+    }
+    
+    if (frame >= _grandmaMainSheet->getCount()){
+        _grandmaMainSheet->setFrame(0);
+    } else {
+        _grandmaMainSheet->setFrame(frame);
+    }
 }

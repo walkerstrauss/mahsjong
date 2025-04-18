@@ -752,6 +752,9 @@
         },
         "turn-sheet": {
             "file": "textures/animations/turn_indicator.png"
+        },
+        "grandmaMain":{
+            "file": "textures/animations/grandmaMain.png"
         }
     },
     "fonts": {

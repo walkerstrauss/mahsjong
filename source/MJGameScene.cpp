@@ -202,8 +202,6 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::sha
     // Init the button for playing sets.
     _playSetBtn = std::dynamic_pointer_cast<scene2::Button>(_assets->get<scene2::SceneNode>("matchscene.gameplayscene.playSetButton"));
 
-    AudioController::getInstance().init(_assets);
-
     //AudioController::getInstance().playMusic("match-music");
 
     // 1) Grab the nodes from your scene graph
@@ -279,34 +277,34 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::sha
     });
 
    // Init all animations
- /*   _actionAnimNode = std::make_shared<AnimatedNode>();
-    _actionAnimNode->setAnchor(Vec2::ANCHOR_CENTER);
-    _actionAnimNode->setVisible(false);
-    _actionAnimNode->setContentSize(Size(70, 70));
-    _actionAnimNode->doLayout();
-    _actionAnimNode->initWithData(_assets.get(), _assets->get<JsonValue>("animations"), "gameplay-action",12.0f);
-
-    _pongSheet = SpriteNode::allocWithSheet(_assets->get<Texture>("pong-sheet"), 2, 3);
-    _pongSheet->setAnchor(Vec2::ANCHOR_CENTER);
-    _pongSheet->setPosition(screenSize.width/2,screenSize.height/2);
-    _pongSheet->setScale(0.2);
-    _pongSheet->setFrame(0);
-    _pongSheet->setVisible(false);
-
-    _chowSheet = SpriteNode::allocWithSheet(_assets->get<Texture>("chow-sheet"), 3, 3, 7);
-    _chowSheet->setAnchor(Vec2::ANCHOR_CENTER);
-    _chowSheet->setPosition(screenSize.width/2,screenSize.height/2);
-    _chowSheet->setScale(0.2);
-    _chowSheet->setFrame(0);
-    _chowSheet->setVisible(false);
+//    _actionAnimNode = std::make_shared<AnimatedNode>();
+//    _actionAnimNode->setAnchor(Vec2::ANCHOR_CENTER);
+//    _actionAnimNode->setVisible(false);
+//    _actionAnimNode->setContentSize(Size(70, 70));
+//    _actionAnimNode->doLayout();
+//    _actionAnimNode->initWithData(_assets.get(), _assets->get<JsonValue>("animations"), "gameplay-action",12.0f);
+//
+//    _pongSheet = SpriteNode::allocWithSheet(_assets->get<Texture>("pong-sheet"), 2, 3);
+//    _pongSheet->setAnchor(Vec2::ANCHOR_CENTER);
+//    _pongSheet->setPosition(screenSize.width/2,screenSize.height/2);
+//    _pongSheet->setScale(0.2);
+//    _pongSheet->setFrame(0);
+//    _pongSheet->setVisible(false);
+//
+//    _chowSheet = SpriteNode::allocWithSheet(_assets->get<Texture>("chow-sheet"), 3, 3, 7);
+//    _chowSheet->setAnchor(Vec2::ANCHOR_CENTER);
+//    _chowSheet->setPosition(screenSize.width/2,screenSize.height/2);
+//    _chowSheet->setScale(0.2);
+//    _chowSheet->setFrame(0);
+//    _chowSheet->setVisible(false);
 
     _turnSheet = SpriteNode::allocWithSheet(_assets->get<Texture>("turn-sheet"), 2, 3, 3);
     _turnSheet->setAnchor(Vec2::ANCHOR_CENTER);
     _turnSheet->setPosition(1085,screenSize.height/2);
     _turnSheet->setScale(0.12);
     _turnSheet->setFrame(0);
-    _turnSheet->setVisible(false);
-    */
+    _turnSheet->setVisible(true);
+    
     // Ideal method of adding animations below 
 //    AnimationController::getInstance().addSpriteSheetAnimation(_pongSheet, 0, _pongSheet->getCount(), true);
 //    AnimationController::getInstance().addSpriteSheetAnimation(_chowSheet, 0, _chowSheet->getCount(), true);
@@ -429,8 +427,8 @@ void GameScene::update(float timestep) {
             };
         }
     }
-//    updateSpriteNodes(timestep);
-//    
+    updateSpriteNodes(timestep);
+//
 //    if (_input.getKeyPressed() == KeyCode::P && _input.getKeyDown()){
 ////        _actionAnimNode->setVisible(true);
 ////        _actionAnimNode->play("pong-sheet", AnimatedNode::AnimationType::INTERRUPT, _assets->get<Texture>("pong-sheet"));
@@ -470,7 +468,9 @@ void GameScene::render() {
     _discardPile->draw(_batch);
 
     //if (_actionAnimNode->isVisible()) _batch->draw(_actionAnimNode->getTexture(), Rect(600,400,670,470));
-    //if (_turnSheet->isVisible()) _turnSheet->render(_batch);
+    if (_network->getCurrentTurn() != _network->getLocalPid()){
+        _turnSheet->render(_batch);
+    }
     //if (_pongSheet->isVisible()) _pongSheet->render(_batch);
     //if (_chowSheet->isVisible()) _chowSheet->render(_batch);
 

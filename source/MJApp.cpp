@@ -207,6 +207,7 @@ void MahsJongApp::updateLoadingScene(float timestep) {
        _network = std::make_shared<NetworkController>();
        _network->init(_assets);
        AnimationController::getInstance().init(_assets);
+       AudioController::getInstance().init(_assets);
        _mainmenu.init(_assets);
        _mainmenu.setSpriteBatch(_batch);
        _hostgame.init(_assets, _network);
