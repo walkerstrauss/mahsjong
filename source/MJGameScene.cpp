@@ -260,7 +260,7 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::sha
     _playSetBtn = scene2::Button::alloc(upPlaceholder, downPlaceholder);
     _playSetBtn->setContentSize(cugl::Size(150, 50));
     _playSetBtn->setAnchor(cugl::Vec2::ANCHOR_CENTER);
-    _playSetBtn->setPosition(cugl::Vec2(850, 360));
+    _playSetBtn->setPosition(cugl::Vec2(200, 560));
     _playSetBtn->setColor(cugl::Color4::RED);
     
     _playSetBtn->deactivate();
@@ -645,6 +645,8 @@ void GameScene::updateDrag(const cugl::Vec2& mousePos, bool mouseDown, bool mous
                   // Monkey tile was played, regular tile chosen to trade
                   if (_matchController->getChoice() == MatchController::Choice::MONKEYTILE) {
                       _matchController->playMonkey(_draggingTile);
+                      // Play the swap sound when the monkey tile is activated.
+                      AudioController::getInstance().playSound("swap");
 
                       // Rebind _player to prevent null ptr error
                       _player = _network->getHostStatus() ? _matchController->hostPlayer : _matchController->clientPlayer;

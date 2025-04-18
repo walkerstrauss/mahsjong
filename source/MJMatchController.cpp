@@ -9,6 +9,7 @@
 #include <iostream>
 #include <sstream>
 #include "MJMatchController.h"
+#include "MJAudioController.h"
 
 using namespace cugl;
 using namespace cugl::graphics;
@@ -43,6 +44,11 @@ bool MatchController::init(const std::shared_ptr<cugl::AssetManager>& assets, st
     
     _choice = Choice::NONE;
     _active = true;
+    
+    // play the background music for the match scene.
+    AudioController::getInstance().init(_assets);
+    AudioEngine::start();
+    AudioController::getInstance().playMusic("bgm", true);
     
     return true; 
 }
@@ -368,6 +374,8 @@ bool MatchController::playCelestial(std::shared_ptr<TileSet::Tile>& celestialTil
 void MatchController::playRooster(std::shared_ptr<TileSet::Tile>& celestialTile){
     CULog("Played Rooster");
     // Reshuffle current player's pile
+    // play the shuffle sound.
+    AudioController::getInstance().playSound("shuffle");
     _pile->reshufflePile();
     _pile->updateTilePositions();
     
@@ -820,6 +828,8 @@ void MatchController::update(float timestep) {
  */
 void MatchController::dispose() {
     if(_active) {
+        // end the background music for the matchscene.
+        AudioController::getInstance().stopMusic();
         if(_network) {
             _network->disconnect();
         }
