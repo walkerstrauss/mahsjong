@@ -54,7 +54,8 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::sha
     
     _discardUINode = std::make_shared<DiscardUINode>();
     _discardUINode->init(_assets);
-    _discardUINode->_root->setContentSize(getSize());
+    _discardUINode->setContentSize(getSize());
+    _discardUINode->_root->getChild(0)->setContentSize(_matchScene->getContentSize());
     _discardUINode->doLayout();
 
     cugl::Size screenSize = cugl::Application::get()->getDisplaySize();
@@ -66,15 +67,11 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::sha
 
     _discardUINode->_root->setPosition(offset, _discardUINode->getPosition().y);
     
-    if (!Scene2::initWithHint(screenSize)) {
-        std::cerr << "Scene2 initialization failed!" << std::endl;
-        return false;
-    }
-    
-    _pileUINode = std::make_shared<PileUINode>();
-    _pileUINode->init(_assets);
-    _pileUINode->_root->setContentSize(getSize());
-    _pileUINode->_root->setPosition(offset, _pileUINode->getPosition().y);
+    _pileUINode = _assets->get<SceneNode>("pileui");
+    _pileUINode->setContentSize(getSize());
+    _pileUINode->getChild(0)->setContentSize(_matchScene->getContentSize());
+    _pileUINode->doLayout();
+    _pileUINode->setVisible(false);
     
     _tilesetUIBtn = std::dynamic_pointer_cast<scene2::Button>(_assets->get<scene2::SceneNode>("matchscene.gameplayscene.discarded-tile.discard-can"));
     _pauseBtn = std::dynamic_pointer_cast<scene2::Button>(_assets->get<scene2::SceneNode>("matchscene.gameplayscene.pauseButton"));
@@ -119,7 +116,7 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::sha
         
     addChild(_matchScene);
     addChild(_discardUINode->_root);
-    addChild(_pileUINode->_root);
+    addChild(_pileUINode);
     
     // Game Win and Lose bool
     _gameWin = false;
@@ -389,7 +386,7 @@ void GameScene::update(float timestep) {
 //        setActive(false);
 //        setGameActive(false);
 //        _backBtn->activate();
-        _pileUINode->_root->setVisible(true);
+        _pileUINode->setVisible(true);
     }
     
     // If we are in drawn discard state, set discarded tile image visibility to false since player drew it
@@ -480,7 +477,7 @@ void GameScene::render() {
     _batch->draw(temp, Color4(0,0,0,255), Rect(Vec2::ZERO, cugl::Application().get()->getDisplaySize()));
     
     _matchScene->render(_batch);
-    _pileUINode->_root->render(_batch);
+    _pileUINode->render(_batch);
     _pile->draw(_batch);
     _player->draw(_batch);
     _discardPile->draw(_batch);
@@ -576,7 +573,7 @@ void GameScene::clickedTile(cugl::Vec2 mousePos){
                 _matchController->playRat(currTile);
                 _player = _network->getHostStatus() ? _matchController->hostPlayer : _matchController->clientPlayer;
                 _matchController->setChoice(MatchController::Choice::NONE);
-                _pileUINode->_root->setVisible(false);
+                _pileUINode->setVisible(false);
             }
         }
     }

@@ -103,7 +103,7 @@ bool Pile::createPile() {
 }
 
 void Pile::updateTilePositions() {
-    cugl::Size screenSize(1280, 720); //Temporary pile placement fix
+    cugl::Size screenSize(1561, 720); //Temporary pile placement fix
 
     float spacingY = 1.0f;
     float spacingX = 1.0f;
