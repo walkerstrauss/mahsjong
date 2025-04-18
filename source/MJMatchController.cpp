@@ -588,6 +588,8 @@ void MatchController::playRat(std::shared_ptr<TileSet::Tile>& selectedTile) {
     self._tiles.push_back(selectedTile);
     selectedTile->inHostHand = _network->getHostStatus();
     selectedTile->inClientHand = !_network->getHostStatus();
+    selectedTile->inPile = false;
+    selectedTile->selected = false;
     
 //    _tileSet->tilesToJson.push_back(selectedTile);
     // Clear tilesToJson vector
@@ -598,17 +600,13 @@ void MatchController::playRat(std::shared_ptr<TileSet::Tile>& selectedTile) {
     // Clear tilesToJson vector
     _tileSet->clearTilesToJson();
     
-    std::vector<std::shared_ptr<TileSet::Tile>> flatPile;
-    for (auto& row : _pile->_pile) {
-        for (auto& tile : row) {
-            if (tile != nullptr) {
-                flatPile.push_back(tile);
-            }
-        }
-    }
+    _tileSet->tilesToJson.push_back(selectedTile);
+    const std::shared_ptr<cugl::JsonValue> selectedTileJson = _tileSet->toJson(_tileSet->tilesToJson);
+    // Clear tilesToJson vector
+    _tileSet->clearTilesToJson();
     
     // Broadcast celestial tile
-    _network->broadcastCelestialTile(_network->getLocalPid(), _tileSet->toJson(flatPile), celestialTileJson, "RAT");
+    _network->broadcastCelestialTile(_network->getLocalPid(), selectedTileJson, celestialTileJson, "RAT");
     // Clear tilesToJson vector
     _tileSet->clearTilesToJson();
     
@@ -617,15 +615,30 @@ void MatchController::playRat(std::shared_ptr<TileSet::Tile>& selectedTile) {
 
 
 void MatchController::celestialEffect(){
-    if (_network->getCelestialUpdateType() == NetworkController::ROOSTER
-        || _network->getCelestialUpdateType() == NetworkController::RAT) {
-        CULog("ROOSTER/RAT");
+    if (_network->getCelestialUpdateType() == NetworkController::ROOSTER) {
+        CULog("ROOSTER");
         //Updating tileset
         _tileSet->updateDeck(_network->getTileMapJson());
-        //Remaking pile
         _pile->remakePile();
         //Updating tile positions
         _pile->updateTilePositions();
+    } else if (_network->getCelestialUpdateType() == NetworkController::RAT) {
+        bool isHost = _network->getHostStatus();
+        
+        // Add tile that was drawn into this match controller
+        std::shared_ptr<TileSet::Tile> tileDrawn= _tileSet->processTileJson(_network->getTileDrawn())[0];
+        std::string key = std::to_string(tileDrawn->_id);
+        
+        _pile->removeTile(_tileSet->tileMap[key]);
+        _pile->updateTilePositions();
+        
+        // If this match controller is host's
+        if(isHost) {clientPlayer->getHand()._tiles.push_back(_tileSet->tileMap[key]);}
+        // Else is client's
+        else {hostPlayer->getHand()._tiles.push_back(_tileSet->tileMap[key]);}
+        
+        // Reset network status
+        _network->setStatus(NetworkController::INGAME);
     } else if (_network->getCelestialUpdateType() == NetworkController::OX // these alter your hand, so must update textures
                || _network->getCelestialUpdateType() == NetworkController::RABBIT
                || _network->getCelestialUpdateType() == NetworkController::SNAKE) {

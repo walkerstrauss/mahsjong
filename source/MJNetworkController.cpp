@@ -166,7 +166,7 @@ void NetworkController::processData(const std::string source,
                 _celestialTile = _deserializer->readJson();
                 _celestialUpdateType = ROOSTER;
             } else if(celestialType == "RAT") {
-                _tileMapJson = _deserializer->readJson();
+                _tileDrawn = _deserializer->readJson();
                 _celestialTile = _deserializer->readJson();
                 _celestialUpdateType = RAT;
             } else if (celestialType == "OX") {

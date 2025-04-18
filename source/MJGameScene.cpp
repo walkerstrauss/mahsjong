@@ -339,12 +339,12 @@ void GameScene::update(float timestep) {
         _playSetBtn->deactivate();
     }
     
-//    if (_matchController->getChoice() == MatchController::Choice::MONKEYTILE) {
+    if (_matchController->getChoice() == MatchController::Choice::RATTILE) {
 //        setActive(false);
 //        setGameActive(false);
-////        _backBtn->activate();
-//        _pileUINode->_root->setVisible(true);
-//    }
+//        _backBtn->activate();
+        _pileUINode->_root->setVisible(true);
+    }
     
     // If we are in drawn discard state, set discarded tile image visibility to false since player drew it
     if(_matchController->getChoice() == MatchController::DRAWNDISCARD || _network->getStatus() == NetworkController::DRAWNDISCARD) {
@@ -431,6 +431,7 @@ void GameScene::render() {
     _batch->draw(temp, Color4(0,0,0,255), Rect(Vec2::ZERO, cugl::Application().get()->getDisplaySize()));
     
     _matchScene->render(_batch);
+    _pileUINode->_root->render(_batch);
     _pile->draw(_batch);
     _player->draw(_batch);
     _discardPile->draw(_batch);
@@ -441,7 +442,7 @@ void GameScene::render() {
     //if (_chowSheet->isVisible()) _chowSheet->render(_batch);
 
     _discardUINode->_root->render(_batch);
-    _pileUINode->_root->render(_batch);
+//    _pileUINode->_root->render(_batch);
 
     
     _batch->setColor(Color4(255, 0, 0, 200));
@@ -502,6 +503,9 @@ void GameScene::clickedTile(cugl::Vec2 mousePos){
             }
             if(currTile->inPile && _matchController->getChoice() == MatchController::Choice::RATTILE) {
                 _matchController->playRat(currTile);
+                _player = _network->getHostStatus() ? _matchController->hostPlayer : _matchController->clientPlayer;
+                _matchController->setChoice(MatchController::Choice::NONE);
+                _pileUINode->_root->setVisible(false);
             }
         }
     }
@@ -569,7 +573,6 @@ void GameScene::updateDrag(const cugl::Vec2& mousePos, bool mouseDown, bool mous
               else {
                   // Monkey tile was played, regular tile chosen to trade
                   if (_matchController->getChoice() == MatchController::Choice::MONKEYTILE) {
-                      _pileUINode->_root->setVisible(true);
                       
                       _matchController->playMonkey(_draggingTile);
 

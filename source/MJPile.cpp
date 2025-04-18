@@ -201,6 +201,8 @@ void Pile::removeTile(std::shared_ptr<TileSet::Tile> tile) {
         }
     }
     
+    tile->inPile = false;
+    
     clearPile();
     
     int index = 0;
