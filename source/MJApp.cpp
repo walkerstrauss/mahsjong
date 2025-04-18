@@ -58,11 +58,15 @@ void MahsJongApp::onStartup() {
     _loading.init(_assets, "json/assets.json");
     _loading.setSpriteBatch(_batch);
     
+    
+    
     // Get rid of wrong start button
     std::shared_ptr<scene2::Button> wrongStart = std::dynamic_pointer_cast<scene2::Button>(_assets->get<scene2::SceneNode>("load.after.landingscene.button1"));
     wrongStart->setVisible(false);
     
     _loading.start();
+    
+
     AudioEngine::start();
     netcode::NetworkLayer::start(netcode::NetworkLayer::Log::INFO);
 //    _network = NetworkController();
@@ -157,7 +161,7 @@ void MahsJongApp::update(float timestep) {
 void MahsJongApp::draw() {
    switch (_scene) {
        case LOAD:
-           _loading.render();
+           _loading.renderAfter();
            break;
        case MENU:
            _mainmenu.render();
@@ -202,8 +206,11 @@ void MahsJongApp::draw() {
 void MahsJongApp::updateLoadingScene(float timestep) {
    if (_loading.isActive()) {
        _loading.update(timestep);
+       _loading.resizeScene();
    } else {
        _loading.dispose(); // Permanently disables the input listeners in this mode
+       
+       
        _network = std::make_shared<NetworkController>();
        _network->init(_assets);
        AnimationController::getInstance().init(_assets);
