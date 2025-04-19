@@ -16,7 +16,7 @@
 #pragma mark Level Layout
 
 /** Regardless of logo, lock the height to this */
-#define SCENE_HEIGHT  700
+#define SCENE_HEIGHT  720
 
 #pragma mark -
 #pragma mark Constructors

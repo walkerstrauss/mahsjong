@@ -558,8 +558,8 @@ void MatchController::playMonkey(std::shared_ptr<TileSet::Tile>& selectedTile) {
     
     // Add the opponent tile to your own hand
     self._tiles.push_back(oppTile);
-    oppTile->inHostHand = !_network->getHostStatus();
-    oppTile->inClientHand = _network->getHostStatus();
+    oppTile->inHostHand = _network->getHostStatus();
+    oppTile->inClientHand = !_network->getHostStatus();
 
     // Add the swapped tiles to tileSet and turn into JSON
     _tileSet->tilesToJson.push_back(selectedTile);
@@ -665,17 +665,16 @@ void MatchController::celestialEffect(){
         std::vector<std::shared_ptr<TileSet::Tile>> changedTiles = _tileSet->processTileJson(_network->getTileMapJson());
         for (auto& change : changedTiles) {
             auto tile = _tileSet->tileMap[std::to_string(change->_id)];
-            // Remove tile from the hand that has the tile
             auto& host = hostPlayer->getHand();
             auto& client = clientPlayer->getHand();
-            bool removed = host.removeTile(tile, true);
-            if (!removed) client.removeTile(tile, false);
-            
+
             // Add tile to hand based on flags
             if (tile->inHostHand) {
                 host._tiles.push_back(tile);
+                client.removeTile(tile, false);
             } else if (tile->inClientHand) {
                 client._tiles.push_back(tile);
+                host.removeTile(tile, true);
             }
             
             auto& hand = _network->getHostStatus()

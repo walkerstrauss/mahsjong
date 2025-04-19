@@ -136,7 +136,6 @@ bool HostScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::sha
     _config.set(json);
     addChild(_hostScene1);
     setActive(false);
-    _backout->activate();
     
     return true;
 }
