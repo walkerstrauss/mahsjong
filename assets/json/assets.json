@@ -3,6 +3,93 @@
         "debuffed": {
             "file": "textures/tilesHand/debuffed.png"
         },
+        "blank celestial hand": {
+            "file": "textures/newTiles/blank_celestial_hand.png"
+        },
+        "blank normal hand": {
+            "file": "textures/newTiles/blank_normal_hand.png"
+        },
+        "one of dot new": {
+            "file": "textures/newTiles/one_of_dot_new.png"
+        },
+        "one of bamboo new": {
+            "file": "textures/newTiles/one_of_bamboo_new.png"
+        },
+        "one of crak new": {
+            "file": "textures/newTiles/one_of_crak_new.png"
+        },
+        "two of dot new": {
+            "file": "textures/newTiles/two_of_dot_new.png"
+        },
+        "two of bamboo new": {
+            "file": "textures/newTiles/two_of_bamboo_new.png"
+        },
+        "two of crak new": {
+            "file": "textures/newTiles/two_of_crak_new.png"
+        },
+        "three of dot new": {
+            "file": "textures/newTiles/three_of_dot_new.png"
+        },
+        "three of bamboo new": {
+            "file": "textures/newTiles/three_of_bamboo_new.png"
+        },
+        "three of crak new": {
+            "file": "textures/newTiles/three_of_crak_new.png"
+        },
+        "four of dot new": {
+            "file": "textures/newTiles/four_of_dot_new.png"
+        },
+        "four of bamboo new": {
+            "file": "textures/newTiles/four_of_bamboo_new.png"
+        },
+        "four of crak new": {
+            "file": "textures/newTiles/four_of_crak_new.png"
+        },
+        "five of dot new": {
+            "file": "textures/newTiles/five_of_dot_new.png"
+        },
+        "five of bamboo new": {
+            "file": "textures/newTiles/five_of_bamboo_new.png"
+        },
+        "five of crak new": {
+            "file": "textures/newTiles/five_of_crak_new.png"
+        },
+        "six of dot new": {
+            "file": "textures/newTiles/six_of_dot_new.png"
+        },
+        "six of bamboo new": {
+            "file": "textures/newTiles/six_of_bamboo_new.png"
+        },
+        "six of crak new": {
+            "file": "textures/newTiles/six_of_crak_new.png"
+        },
+        "seven of dot new": {
+            "file": "textures/newTiles/seven_of_dot_new.png"
+        },
+        "seven of bamboo new": {
+            "file": "textures/newTiles/seven_of_bamboo_new.png"
+        },
+        "seven of crak new": {
+            "file": "textures/newTiles/seven_of_crak_new.png"
+        },
+        "eight of dot new": {
+            "file": "textures/newTiles/eight_of_dot_new.png"
+        },
+        "eight of bamboo new": {
+            "file": "textures/newTiles/eight_of_bamboo_new.png"
+        },
+        "eight of crak new": {
+            "file": "textures/newTiles/eight_of_crak_new.png"
+        },
+        "nine of dot new": {
+            "file": "textures/newTiles/nine_of_dot_new.png"
+        },
+        "nine of bamboo new": {
+            "file": "textures/newTiles/nine_of_bamboo_new.png"
+        },
+        "nine of crak new": {
+            "file": "textures/newTiles/nine_of_crak_new.png"
+        },
         "one of dot": {
             "file": "textures/tilesHand/one_of_dot.png"
         },
