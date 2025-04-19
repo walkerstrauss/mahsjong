@@ -258,10 +258,10 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::sha
 
     _dragToHandNode = std::dynamic_pointer_cast<cugl::scene2::TexturedNode>(
         _assets->get<cugl::scene2::SceneNode>(
-            "matchscene.gameplayscene.opponent-hand.drag-to-hand-area"
+            "matchscene.gameplayscene.drag-to-hand-area"
         )
     );
-    _dragToHandNode->setVisible(true);
+//    _dragToHandNode->setVisible(true);
 
     cugl::Rect rect(0, 0, 150, 50);
     cugl::Poly2 poly(rect);
@@ -372,9 +372,6 @@ void GameScene::update(float timestep) {
     }
     
     if (_matchController->getChoice() == MatchController::Choice::RATTILE) {
-//        setActive(false);
-//        setGameActive(false);
-//        _backBtn->activate();
         _pileUINode->setVisible(true);
     }
     
@@ -471,20 +468,8 @@ void GameScene::render() {
     } else if (_playArea && _playArea->isVisible()){
         _playArea->render(_batch);
     }
-    if (_dragToHandNode && _dragToHandVisible) {
-        Vec2 origin = _dragToHandNode->nodeToWorldCoords(Vec2::ZERO);
-        Size base = _dragToHandNode->getContentSize();
-
-        Rect highlight(
-            Vec2(origin.x - 100, origin.y - 80),
-            Size(base.width + 160, base.height - 100)
-        );
-
-        _batch->draw(
-            Texture::getBlank(),
-            Color4(0, 255, 0, 100),
-            highlight
-        );
+    if (_dragToHandNode && _dragToHandNode->isVisible()) {
+        _dragToHandNode->render(_batch);
     }
     _batch->end();
 }
@@ -693,9 +678,9 @@ void GameScene::updateDrag(const cugl::Vec2& mousePos, bool mouseDown, bool mous
     int hand_length = static_cast<int>(_player->getHand()._tiles.size());
 
     if (isDragging && _dragFromDiscard) {
-        //_dragToHandNode->setVisible(true);
-        _dragToHandVisible = true;
+        _dragToHandNode->setVisible(true);
         _dragToDiscardNode->setVisible(false);
+        _playArea->setVisible(false);
     }
     else if (isDragging && !_dragFromDiscard) {
         if(hand_length == 14 && !_playSetBtn->isVisible() && _dragStartPos != mousePos && _draggingTile->getSuit()!=TileSet::Tile::Suit::CELESTIAL){
@@ -710,7 +695,6 @@ void GameScene::updateDrag(const cugl::Vec2& mousePos, bool mouseDown, bool mous
         // not dragging
         _dragToDiscardNode->setVisible(false);
         _dragToHandNode->setVisible(false);
-        _dragToHandVisible = false;
         _playArea->setVisible(false);
     }
 

@@ -486,33 +486,6 @@
                     "upnode": "up"
                 },
                 "children": {
-                    "drag-to-hand-area": {
-                        "type": "Image",
-                        "data": {
-                            "texture": "drag-to-hand-area",
-                            "anchor": [
-                                0.5,
-                                0.5
-                            ],
-                            "size": [
-                                854,
-                                212
-                            ],
-                            "angle": 0,
-                            "position": [
-                                92,
-                                784
-                            ],
-                            "visible": true
-                        },
-                        "layout": {
-                            "x_anchor": "left",
-                            "y_anchor": "top",
-                            "absolute": false,
-                            "x_offset": 1.6,
-                            "y_offset": -12
-                        }
-                    },
                     "up": {
                         "type": "Node",
                         "format": {
@@ -1022,6 +995,33 @@
                     "x_offset": 0.8,
                     "y_offset": -0.03
                 }
+            },
+            "drag-to-hand-area": {
+                        "type": "Image",
+                        "data": {
+                            "texture": "drag-to-hand-area",
+                            "anchor": [
+                                0.5,
+                                0.5
+                            ],
+                            "size": [
+                                1300,
+                                300
+                            ],
+                            "angle": 0,
+                            "position": [
+                                120,
+                                784
+                            ],
+                            "visible": true
+                        },
+                        "layout": {
+                            "x_anchor": "center",
+                            "y_anchor": "top",
+                            "absolute": true,
+                            "x_offset": 0,
+                            "y_offset": -540
+                        }
             }
         }
     }
