@@ -728,6 +728,15 @@
         },
         "tile-back":{
             "file": "textures/gameplay/tile-back.png"
+        },
+        "opponent-hand-rec":{
+            "file":"textures/gameplay/opponent-hand-rec.png"
+        },
+        "opponent-hand-indicator":{
+            "file":"textures/gameplay/opponent-hand-indicator.png"
+        },
+        "playerhand-indicator":{
+            "file":"textures/gameplay/playerhand-indicator.png"
         }
     },
     "fonts": {

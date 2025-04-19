@@ -198,6 +198,9 @@ protected:
     
     std::shared_ptr<Button> _opponentHandBtn;
     std::shared_ptr<Button> _playerHandBtn;
+    std::shared_ptr<Button> _opponentHandBtn2;
+    std::shared_ptr<Button> _playerHandBtn2;
+    
     std::vector<std::shared_ptr<SceneNode>> _opponentHandTiles;
     std::vector<std::shared_ptr<SceneNode>> _playerSetTiles;
     std::shared_ptr<SceneNode> _opponentHandRec;
@@ -373,6 +376,79 @@ public:
     }
     
     void revertDiscardedTile();
+    
+    void initTurnIndicators(){
+        _opponentHandRec = _assets->get<SceneNode>("matchscene.gameplayscene.opponent-hand-rec");
+        _opponentHandBtn = std::dynamic_pointer_cast<Button>(_assets->get<SceneNode>("matchscene.gameplayscene.opponent-hand"));
+        _opponentHandBtn->addListener([this](const std::string& name, bool down){
+            if (!down){
+                bool visible = !_opponentHandRec->isVisible();
+                _opponentHandRec->setVisible(visible);
+                for (int i = 0; i < _opponentHandTiles.size(); i++){
+                    _opponentHandTiles[i]->setVisible(visible);
+                }
+            }
+        });
+        
+        _opponentHandBtn2 = std::dynamic_pointer_cast<Button>(_assets->get<SceneNode>("matchscene.gameplayscene.opponent-hand2"));
+        _opponentHandBtn2->addListener([this](const std::string& name, bool down){
+            if (!down){
+                bool visible = !_opponentHandRec->isVisible();
+                _opponentHandRec->setVisible(visible);
+                for (int i = 0; i < _opponentHandTiles.size(); i++){
+                    _opponentHandTiles[i]->setVisible(visible);
+                }
+            }
+        });
+        
+        _playerHandBtn = std::dynamic_pointer_cast<Button>(_assets->get<SceneNode>("matchscene.gameplayscene.playerhand-button"));
+        _playerHandBtn->addListener([this](const std::string& name, bool down){
+            if (!down){
+                CULog("Player hand/set tab button 1 pressed!");
+                // TODO: implement showing made player sets
+            }
+        });
+        
+        _playerHandBtn2 = std::dynamic_pointer_cast<Button>(_assets->get<SceneNode>("matchscene.gameplayscene.playerhand-button2"));
+        _playerHandBtn->addListener([this](const std::string& name, bool down){
+            if (!down){
+                CULog("Player hand/set tab button 2 pressed!");
+                // TODO: implement showing made player sets
+            }
+        });
+        
+        updateTurnIndicators();
+    }
+    void updateTurnIndicators(){
+        if (_network->getCurrentTurn() == _network->getLocalPid()){
+            _opponentHandBtn->activate();
+            _opponentHandBtn->setVisible(true);
+            if (_opponentHandBtn2->isActive()){
+                _opponentHandBtn2->deactivate();
+            }
+            _opponentHandBtn2->setVisible(false);
+            if (_playerHandBtn->isActive()){
+                _playerHandBtn->deactivate();
+            }
+            _playerHandBtn->setVisible(false);
+            _playerHandBtn2->activate();
+            _playerHandBtn2->setVisible(true);
+        } else {
+            if (_opponentHandBtn->isActive()){
+                _opponentHandBtn->deactivate();
+                _opponentHandBtn->setVisible(false);
+            }
+            _opponentHandBtn2->activate();
+            _opponentHandBtn2->setVisible(true);
+            _playerHandBtn->activate();
+            _playerHandBtn->setVisible(true);
+            if (_playerHandBtn2->isActive()){
+                _playerHandBtn2->deactivate();
+            }
+            _playerHandBtn2->setVisible(false);
+        }
+        
+    }
 };
 
 #endif /* __MJ_GAME_SCENE_H__ */

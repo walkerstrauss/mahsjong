@@ -83,6 +83,7 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::sha
     _endTurnBtn->addListener([this](const std::string& name, bool down){
         if (!down){
             _matchController->endTurn();
+            updateTurnIndicators();
             AudioController::getInstance().playSound("confirm");
         }
     });
@@ -223,24 +224,15 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::sha
     _playSetBtn = std::dynamic_pointer_cast<scene2::Button>(_assets->get<scene2::SceneNode>("matchscene.gameplayscene.playSetButton"));
 
     //AudioController::getInstance().playMusic("match-music");
-    _opponentHandRec = _assets->get<SceneNode>("matchscene.gameplayscene.opponent-hand-rec");
-    _opponentHandBtn = std::dynamic_pointer_cast<Button>(_assets->get<SceneNode>("matchscene.gameplayscene.opponent-hand"));
-    _opponentHandBtn->addListener([this](const std::string& name, bool down){
-        if (!down){
-            _opponentHandRec->setVisible(!_opponentHandRec->isVisible());
-            for (int i = 0; i < _opponentHandTiles.size(); i++){
-                _opponentHandTiles[i]->setVisible(!_opponentHandTiles[i]->isVisible());
-            }
-        }
-    });
+    initTurnIndicators();
+    
     for (int i = 0; i < 14; i++){
         std::shared_ptr<SceneNode> tile = _assets->get<SceneNode>("matchscene.gameplayscene.opponent-hand-tile.tile-back_" + std::to_string(i));
         if (tile != nullptr){
             _opponentHandTiles.push_back(tile);
+            tile->setVisible(false);
         }
     }
-    _opponentHandBtn->activate();
-
     _dragToDiscardNode = std::dynamic_pointer_cast<cugl::scene2::TexturedNode>(
         _assets->get<cugl::scene2::SceneNode>(
             "matchscene.gameplayscene.drag-to-discard-tile"
@@ -442,16 +434,8 @@ void GameScene::render() {
     _player->draw(_batch);
     _discardPile->draw(_batch);
 
-    //if (_actionAnimNode->isVisible()) _batch->draw(_actionAnimNode->getTexture(), Rect(600,400,670,470));
-    if (_network->getCurrentTurn() != _network->getLocalPid()){
-        _turnSheet->render(_batch);
-    }
-    //if (_pongSheet->isVisible()) _pongSheet->render(_batch);
-    //if (_chowSheet->isVisible()) _chowSheet->render(_batch);
-
     _discardUINode->_root->render(_batch);
 //    _pileUINode->_root->render(_batch);
-
     
     _batch->setColor(Color4(255, 0, 0, 200));
     _batch->setTexture(nullptr);
@@ -483,6 +467,7 @@ void GameScene::setGameActive(bool value){
 //        _displayIconBtn->activate();
         _settingBtn->activate();
         _infoBtn->activate();
+        _opponentHandBtn->activate();
     } else {
 //        _pauseBtn->deactivate();
         _endTurnBtn->deactivate();
@@ -490,6 +475,7 @@ void GameScene::setGameActive(bool value){
 //        _displayIconBtn->deactivate();
         _settingBtn->deactivate();
         _infoBtn->deactivate();
+        _opponentHandBtn->deactivate();
     }
 }
 
