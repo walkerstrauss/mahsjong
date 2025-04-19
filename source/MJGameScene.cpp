@@ -223,30 +223,23 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::sha
     _playSetBtn = std::dynamic_pointer_cast<scene2::Button>(_assets->get<scene2::SceneNode>("matchscene.gameplayscene.playSetButton"));
 
     //AudioController::getInstance().playMusic("match-music");
-
-    // 1) Grab the nodes from your scene graph
-//    _displayIconBtn = std::dynamic_pointer_cast<scene2::Button>(
-//        _assets->get<scene2::SceneNode>("matchscene.gameplayscene.displayed-set-icon")
-//    );
-//    _expandedIcon = std::dynamic_pointer_cast<scene2::TexturedNode>(
-//        _assets->get<scene2::SceneNode>("matchscene.gameplayscene.displayed-set-icon-expanded")
-//    );
-
-    // 2) Make sure the expanded version stays hidden initially
-//    _expandedIcon->setVisible(false);
-
-    // 3) Add a listener that flips visibility each click
-//    _displayIconBtn->addListener([this](const std::string& name, bool down) {
-//        if (!down) {
-//            // 1) Toggle expanded-image visibility
-//            bool now = !_expandedIcon->isVisible();
-//            _expandedIcon->setVisible(now);
-//
-//            // 2) Hide (and deactivate) the small button when expanded
-//            _displayIconBtn->setVisible(!now);
-//            AudioController::getInstance().playSound("confirm");
-//        }
-//        });
+    _opponentHandRec = _assets->get<SceneNode>("matchscene.gameplayscene.opponent-hand-rec");
+    _opponentHandBtn = std::dynamic_pointer_cast<Button>(_assets->get<SceneNode>("matchscene.gameplayscene.opponent-hand"));
+    _opponentHandBtn->addListener([this](const std::string& name, bool down){
+        if (!down){
+            _opponentHandRec->setVisible(!_opponentHandRec->isVisible());
+            for (int i = 0; i < _opponentHandTiles.size(); i++){
+                _opponentHandTiles[i]->setVisible(!_opponentHandTiles[i]->isVisible());
+            }
+        }
+    });
+    for (int i = 0; i < 14; i++){
+        std::shared_ptr<SceneNode> tile = _assets->get<SceneNode>("matchscene.gameplayscene.opponent-hand-tile.tile-back_" + std::to_string(i));
+        if (tile != nullptr){
+            _opponentHandTiles.push_back(tile);
+        }
+    }
+    _opponentHandBtn->activate();
 
     _dragToDiscardNode = std::dynamic_pointer_cast<cugl::scene2::TexturedNode>(
         _assets->get<cugl::scene2::SceneNode>(

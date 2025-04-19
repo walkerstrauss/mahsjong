@@ -725,6 +725,9 @@
         },
         "playerhand-button":{
             "file": "textures/gameplay/playerhand-button.png"
+        },
+        "tile-back":{
+            "file": "textures/gameplay/tile-back.png"
         }
     },
     "fonts": {

@@ -195,6 +195,13 @@ protected:
     bool _waitingForTileSelection = false;
     std::shared_ptr<TileSet::Tile> discardedTileSaved;
     bool _selectedThree = false;
+    
+    std::shared_ptr<Button> _opponentHandBtn;
+    std::shared_ptr<Button> _playerHandBtn;
+    std::vector<std::shared_ptr<SceneNode>> _opponentHandTiles;
+    std::vector<std::shared_ptr<SceneNode>> _playerSetTiles;
+    std::shared_ptr<SceneNode> _opponentHandRec;
+    std::shared_ptr<SceneNode> _playerSetRec;
 
 public:
 #pragma mark -

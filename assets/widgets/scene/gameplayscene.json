@@ -1022,6 +1022,445 @@
                             "x_offset": 0,
                             "y_offset": -540
                         }
+            },
+            "opponent-hand-rec": {
+                "type": "Image",
+                "data": {
+                    "texture": "opponent-hand-rec",
+                    "anchor": [
+                        0.5,
+                        0.5
+                    ],
+                    "size": [
+                        449.04,
+                        63
+                    ],
+                    "angle": 0,
+                    "position": [
+                        346,
+                        818
+                    ],
+                    "visible": false
+                },
+                "layout": {
+                    "x_anchor": "left",
+                    "y_anchor": "top",
+                    "absolute": false,
+                    "x_offset": 0.195,
+                    "y_offset": -0.2
+                }
+            },
+            "opponent-hand-tile": {
+                "type": "Node",
+                "format": {
+                    "type": "Float",
+                    "x_alignment": "left",
+                    "y_alignment": "top",
+                    "orientation": "vertical"
+                },
+                "data": {
+                    "anchor": [
+                        0,
+                        1
+                    ],
+                    "size": [
+                        650,
+                        50
+                    ],
+                    "angle": 0,
+                    "position": [
+                        306,
+                        532
+                    ],
+                    "visible": false
+                },
+                "children": {
+                    "tile-back_0": {
+                        "type": "Image",
+                        "data": {
+                            "texture": "tile-back",
+                            "anchor": [
+                                0.5,
+                                0.5
+                            ],
+                            "size": [
+                                30,
+                                38.46
+                            ],
+                            "angle": 0,
+                            "position": [
+                                0,
+                                0
+                            ],
+                            "visible":false
+                        },
+                        "layout": {
+                            "x_anchor": "left",
+                            "y_anchor": "top",
+                            "absolute": false,
+                            "x_offset": 0,
+                            "y_offset": 0
+                        }
+                    },
+                    "tile-back_1": {
+                        "type": "Image",
+                        "data": {
+                            "texture": "tile-back",
+                            "anchor": [
+                                0.5,
+                                0.5
+                            ],
+                            "size": [
+                                30,
+                                38.46
+                            ],
+                            "angle": 0,
+                            "position": [
+                                40,
+                                0
+                            ],
+                            "visible":false
+                        },
+                        "layout": {
+                            "x_anchor": "left",
+                            "y_anchor": "top",
+                            "absolute": false,
+                            "x_offset": 0,
+                            "y_offset": 0
+                        }
+                    },
+                    "tile-back_2": {
+                        "type": "Image",
+                        "data": {
+                            "texture": "tile-back",
+                            "anchor": [
+                                0.5,
+                                0.5
+                            ],
+                            "size": [
+                                30,
+                                38.46
+                            ],
+                            "angle": 0,
+                            "position": [
+                                80,
+                                0
+                            ],
+                            "visible":false
+                        },
+                        "layout": {
+                            "x_anchor": "left",
+                            "y_anchor": "top",
+                            "absolute": false,
+                            "x_offset": 0,
+                            "y_offset": 0
+                        }
+                    },
+                    "tile-back_3": {
+                        "type": "Image",
+                        "data": {
+                            "texture": "tile-back",
+                            "anchor": [
+                                0.5,
+                                0.5
+                            ],
+                            "size": [
+                                30,
+                                38.46
+                            ],
+                            "angle": 0,
+                            "position": [
+                                120,
+                                0
+                            ],
+                            "visible":false
+                        },
+                        "layout": {
+                            "x_anchor": "left",
+                            "y_anchor": "top",
+                            "absolute": false,
+                            "x_offset": 0,
+                            "y_offset": 0
+                        }
+                    },
+                    "tile-back_4": {
+                        "type": "Image",
+                        "data": {
+                            "texture": "tile-back",
+                            "anchor": [
+                                0.5,
+                                0.5
+                            ],
+                            "size": [
+                                30,
+                                38.46
+                            ],
+                            "angle": 0,
+                            "position": [
+                                160,
+                                0
+                            ],
+                            "visible":false
+                        },
+                        "layout": {
+                            "x_anchor": "left",
+                            "y_anchor": "top",
+                            "absolute": false,
+                            "x_offset": 0,
+                            "y_offset": 0
+                        }
+                    },
+                    "tile-back_5": {
+                        "type": "Image",
+                        "data": {
+                            "texture": "tile-back",
+                            "anchor": [
+                                0.5,
+                                0.5
+                            ],
+                            "size": [
+                                30,
+                                38.46
+                            ],
+                            "angle": 0,
+                            "position": [
+                                200,
+                                0
+                            ],
+                            "visible":false
+                        },
+                        "layout": {
+                            "x_anchor": "left",
+                            "y_anchor": "top",
+                            "absolute": false,
+                            "x_offset": 0,
+                            "y_offset": 0
+                        }
+                    },
+                    "tile-back_6": {
+                        "type": "Image",
+                        "data": {
+                            "texture": "tile-back",
+                            "anchor": [
+                                0.5,
+                                0.5
+                            ],
+                            "size": [
+                                30,
+                                38.46
+                            ],
+                            "angle": 0,
+                            "position": [
+                                240,
+                                0
+                            ],
+                            "visible":false
+                        },
+                        "layout": {
+                            "x_anchor": "left",
+                            "y_anchor": "top",
+                            "absolute": false,
+                            "x_offset": 0,
+                            "y_offset": 0
+                        }
+                    },
+                    "tile-back_7": {
+                        "type": "Image",
+                        "data": {
+                            "texture": "tile-back",
+                            "anchor": [
+                                0.5,
+                                0.5
+                            ],
+                            "size": [
+                                30,
+                                38.46
+                            ],
+                            "angle": 0,
+                            "position": [
+                                280,
+                                0
+                            ],
+                            "visible":false
+                        },
+                        "layout": {
+                            "x_anchor": "left",
+                            "y_anchor": "top",
+                            "absolute": false,
+                            "x_offset": 0,
+                            "y_offset": 0
+                        }
+                    },
+                    "tile-back_8": {
+                        "type": "Image",
+                        "data": {
+                            "texture": "tile-back",
+                            "anchor": [
+                                0.5,
+                                0.5
+                            ],
+                            "size": [
+                                30,
+                                38.46
+                            ],
+                            "angle": 0,
+                            "position": [
+                                320,
+                                0
+                            ],
+                            "visible":false
+                        },
+                        "layout": {
+                            "x_anchor": "left",
+                            "y_anchor": "top",
+                            "absolute": false,
+                            "x_offset": 0,
+                            "y_offset": 0
+                        }
+                    },
+                    "tile-back_9": {
+                        "type": "Image",
+                        "data": {
+                            "texture": "tile-back",
+                            "anchor": [
+                                0.5,
+                                0.5
+                            ],
+                            "size": [
+                                30,
+                                38.46
+                            ],
+                            "angle": 0,
+                            "position": [
+                                360,
+                                0
+                            ],
+                            "visible":false
+                        },
+                        "layout": {
+                            "x_anchor": "left",
+                            "y_anchor": "top",
+                            "absolute": false,
+                            "x_offset": 0,
+                            "y_offset": 0
+                        }
+                    },
+                    "tile-back_10": {
+                        "type": "Image",
+                        "data": {
+                            "texture": "tile-back",
+                            "anchor": [
+                                0.5,
+                                0.5
+                            ],
+                            "size": [
+                                30,
+                                38.46
+                            ],
+                            "angle": 0,
+                            "position": [
+                                400,
+                                0
+                            ],
+                            "visible": false
+                        },
+                        "layout": {
+                            "x_anchor": "left",
+                            "y_anchor": "top",
+                            "absolute": false,
+                            "x_offset": 0,
+                            "y_offset": 0
+                        }
+                    },
+                    "tile-back_11": {
+                        "type": "Image",
+                        "data": {
+                            "texture": "tile-back",
+                            "anchor": [
+                                0.5,
+                                0.5
+                            ],
+                            "size": [
+                                30,
+                                38.46
+                            ],
+                            "angle": 0,
+                            "position": [
+                                440,
+                                0
+                            ],
+                            "visible":false
+                        },
+                        "layout": {
+                            "x_anchor": "left",
+                            "y_anchor": "top",
+                            "absolute": false,
+                            "x_offset": 0,
+                            "y_offset": 0
+                        }
+                    },
+                    "tile-back_12": {
+                        "type": "Image",
+                        "data": {
+                            "texture": "tile-back",
+                            "anchor": [
+                                0.5,
+                                0.5
+                            ],
+                            "size": [
+                                30,
+                                38.46
+                            ],
+                            "angle": 0,
+                            "position": [
+                                480,
+                                0
+                            ],
+                            "visible":false
+                        },
+                        "layout": {
+                            "x_anchor": "left",
+                            "y_anchor": "top",
+                            "absolute": false,
+                            "x_offset": 0,
+                            "y_offset": 0
+                        }
+                    },
+                    "tile-back_13": {
+                        "type": "Image",
+                        "data": {
+                            "texture": "tile-back",
+                            "anchor": [
+                                0.5,
+                                0.5
+                            ],
+                            "size": [
+                                30,
+                                38.46
+                            ],
+                            "angle": 0,
+                            "position": [
+                                520,
+                                0
+                            ],
+                            "visible":false
+                        },
+                        "layout": {
+                            "x_anchor": "left",
+                            "y_anchor": "top",
+                            "absolute": false,
+                            "x_offset": 0,
+                            "y_offset": 0
+                        }
+                    }
+                },
+                "layout": {
+                    "x_anchor": "left",
+                    "y_anchor": "top",
+                    "absolute": false,
+                    "x_offset": 0.03,
+                    "y_offset": -0.175
+                }
             }
         }
     }
