@@ -71,6 +71,7 @@ void Hand::drawFromPile(std::shared_ptr<Pile>& pile, int number, bool isHost){
         tile->inPile = false;
         tile->selected = false;
         tile->discarded = false;
+        tile->_scale = 0.1;
         _tiles.push_back(tile); // Add drawn tiles to hand
     }
  }
@@ -526,9 +527,9 @@ void Hand::updateTilePositions(cugl::Size sceneSize){
     
     
     float offsetWidth = (screenSize.width - sceneSize.width)/2.0f;
-    float startX = offsetWidth + 75; // Starting x position for hand tile positioning
-    float endX = screenSize.width - offsetWidth - 100; // Ending x position for hand tile positioning
-    float tileSpacing = (endX-startX) / 14 ; // Spacing in x direction between tiles
+    float startX = offsetWidth + 50; // Starting x position for hand tile positioning
+    float endX = screenSize.width - offsetWidth - 50; // Ending x position for hand tile positioning
+    float tileSpacing = (endX-startX) / getTileCount() ; // Spacing in x direction between tiles
     float yPos = 80.0f; // Height of hand tiles on the screen
 
 
@@ -539,8 +540,6 @@ void Hand::updateTilePositions(cugl::Size sceneSize){
       
     cugl::Vec2 newPos(startX + i * tileSpacing + (_tiles[i]->getTileTexture()->getWidth()/2 * _tiles[i]->_scale), yPos);
     _tiles[i]->pos = newPos;
-      
-      
   }
 }
 

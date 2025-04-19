@@ -74,7 +74,7 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::sha
     _pileUINode->setVisible(false);
     
     _tilesetUIBtn = std::dynamic_pointer_cast<scene2::Button>(_assets->get<scene2::SceneNode>("matchscene.gameplayscene.discarded-tile.discard-can"));
-    _pauseBtn = std::dynamic_pointer_cast<scene2::Button>(_assets->get<scene2::SceneNode>("matchscene.gameplayscene.pauseButton"));
+//    _pauseBtn = std::dynamic_pointer_cast<scene2::Button>(_assets->get<scene2::SceneNode>("matchscene.gameplayscene.pauseButton"));
     _endTurnBtn = std::dynamic_pointer_cast<scene2::Button>(_assets->get<scene2::SceneNode>("matchscene.gameplayscene.endTurnButton"));
     _backBtn = std::dynamic_pointer_cast<scene2::Button>(
         _discardUINode->_root->getChildByName("tilesetscene")->getChildByName("board")->getChildByName("buttonClose"));
@@ -98,12 +98,26 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::sha
         }
     });
     
-    _pauseBtnKey = _pauseBtn->addListener([this](const std::string& name, bool down){
+    _settingBtn = std::dynamic_pointer_cast<Button>(_assets->get<SceneNode>("matchscene.gameplayscene.setting-icon"));
+    _settingBtn->addListener([this](const std::string& name, bool down){
         if (!down){
-            _choice = Choice::PAUSE;
-            AudioController::getInstance().playSound("confirm");
+            _choice = SETTING;
         }
     });
+    
+    _infoBtn = std::dynamic_pointer_cast<Button>(_assets->get<SceneNode>("matchscene.gameplayscene.information-icon"));
+    _infoBtn->addListener([this](const std::string& name, bool down){
+        if (!down){
+            _choice = INFO;
+        }
+    });
+    
+//    _pauseBtnKey = _pauseBtn->addListener([this](const std::string& name, bool down){
+//        if (!down){
+//            _choice = Choice::PAUSE;
+//            AudioController::getInstance().playSound("confirm");
+//        }
+//    });
     
     _backBtnKey = _backBtn->addListener([this](const std::string& name, bool down) {
         if (!down) {
@@ -136,7 +150,7 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::sha
     }
     
     // Premature repositioning so it tiles don't render in the corner of the screen
-    _player->getHand().updateTilePositions(_matchScene->getSize());
+    _player->getHand().updateTilePositions(_matchScene->getContentSize());
     
     //Initialization of shared objects
     _tileSet = _matchController->getTileSet();
@@ -195,7 +209,8 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::sha
     std::shared_ptr<scene2::SceneNode> discardedTileRegionNode = _assets->get<scene2::SceneNode>("matchscene.gameplayscene.discarded-tile.discarded-rec");
     //Initializing the player hand region
     std::shared_ptr<scene2::SceneNode> playerHandRegionNode = _assets->get<scene2::SceneNode>("matchscene.gameplayscene.playerhand");
-    
+    _playArea = _assets->get<SceneNode>("matchscene.gameplayscene.play-area");
+    _playArea->setVisible(false);
     cugl::Vec2 activeRegionWorldOrigin = activeRegionNode->nodeToWorldCoords(Vec2::ZERO);
     cugl::Vec2 discardedTileRegionWorldOrigin = discardedTileRegionNode->nodeToWorldCoords(Vec2::ZERO);
     cugl::Vec2 playerHandRegionWorldOrigin = playerHandRegionNode->nodeToWorldCoords(Vec2::ZERO);
@@ -210,28 +225,28 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::sha
     //AudioController::getInstance().playMusic("match-music");
 
     // 1) Grab the nodes from your scene graph
-    _displayIconBtn = std::dynamic_pointer_cast<scene2::Button>(
-        _assets->get<scene2::SceneNode>("matchscene.gameplayscene.displayed-set-icon")
-    );
-    _expandedIcon = std::dynamic_pointer_cast<scene2::TexturedNode>(
-        _assets->get<scene2::SceneNode>("matchscene.gameplayscene.displayed-set-icon-expanded")
-    );
+//    _displayIconBtn = std::dynamic_pointer_cast<scene2::Button>(
+//        _assets->get<scene2::SceneNode>("matchscene.gameplayscene.displayed-set-icon")
+//    );
+//    _expandedIcon = std::dynamic_pointer_cast<scene2::TexturedNode>(
+//        _assets->get<scene2::SceneNode>("matchscene.gameplayscene.displayed-set-icon-expanded")
+//    );
 
     // 2) Make sure the expanded version stays hidden initially
-    _expandedIcon->setVisible(false);
+//    _expandedIcon->setVisible(false);
 
     // 3) Add a listener that flips visibility each click
-    _displayIconBtn->addListener([this](const std::string& name, bool down) {
-        if (!down) {
-            // 1) Toggle expanded-image visibility
-            bool now = !_expandedIcon->isVisible();
-            _expandedIcon->setVisible(now);
-
-            // 2) Hide (and deactivate) the small button when expanded
-            _displayIconBtn->setVisible(!now);
-            AudioController::getInstance().playSound("confirm");
-        }
-        });
+//    _displayIconBtn->addListener([this](const std::string& name, bool down) {
+//        if (!down) {
+//            // 1) Toggle expanded-image visibility
+//            bool now = !_expandedIcon->isVisible();
+//            _expandedIcon->setVisible(now);
+//
+//            // 2) Hide (and deactivate) the small button when expanded
+//            _displayIconBtn->setVisible(!now);
+//            AudioController::getInstance().playSound("confirm");
+//        }
+//        });
 
     _dragToDiscardNode = std::dynamic_pointer_cast<cugl::scene2::TexturedNode>(
         _assets->get<cugl::scene2::SceneNode>(
@@ -281,28 +296,6 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::sha
         }
     });
 
-   // Init all animations
-//    _actionAnimNode = std::make_shared<AnimatedNode>();
-//    _actionAnimNode->setAnchor(Vec2::ANCHOR_CENTER);
-//    _actionAnimNode->setVisible(false);
-//    _actionAnimNode->setContentSize(Size(70, 70));
-//    _actionAnimNode->doLayout();
-//    _actionAnimNode->initWithData(_assets.get(), _assets->get<JsonValue>("animations"), "gameplay-action",12.0f);
-//
-//    _pongSheet = SpriteNode::allocWithSheet(_assets->get<Texture>("pong-sheet"), 2, 3);
-//    _pongSheet->setAnchor(Vec2::ANCHOR_CENTER);
-//    _pongSheet->setPosition(screenSize.width/2,screenSize.height/2);
-//    _pongSheet->setScale(0.2);
-//    _pongSheet->setFrame(0);
-//    _pongSheet->setVisible(false);
-//
-//    _chowSheet = SpriteNode::allocWithSheet(_assets->get<Texture>("chow-sheet"), 3, 3, 7);
-//    _chowSheet->setAnchor(Vec2::ANCHOR_CENTER);
-//    _chowSheet->setPosition(screenSize.width/2,screenSize.height/2);
-//    _chowSheet->setScale(0.2);
-//    _chowSheet->setFrame(0);
-//    _chowSheet->setVisible(false);
-
     _turnSheet = SpriteNode::allocWithSheet(_assets->get<Texture>("turn-sheet"), 2, 3, 3);
     _turnSheet->setAnchor(Vec2::ANCHOR_CENTER);
     _turnSheet->setPosition(1085,screenSize.height/2);
@@ -310,10 +303,6 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::sha
     _turnSheet->setFrame(0);
     _turnSheet->setVisible(true);
     
-    // Ideal method of adding animations below 
-//    AnimationController::getInstance().addSpriteSheetAnimation(_pongSheet, 0, _pongSheet->getCount(), true);
-//    AnimationController::getInstance().addSpriteSheetAnimation(_chowSheet, 0, _chowSheet->getCount(), true);
-//    AnimationController::getInstance().addSpriteSheetAnimation(_turnSheet, 0, _turnSheet->getCount(), true);
     return true;
 }
 
@@ -442,25 +431,6 @@ void GameScene::update(float timestep) {
         }
     }
     updateSpriteNodes(timestep);
-//
-//    if (_input.getKeyPressed() == KeyCode::P && _input.getKeyDown()){
-////        _actionAnimNode->setVisible(true);
-////        _actionAnimNode->play("pong-sheet", AnimatedNode::AnimationType::INTERRUPT, _assets->get<Texture>("pong-sheet"));
-//        _pongSheet->setVisible(true);
-//        
-//    } else if (_input.getKeyPressed() == KeyCode::C && _input.getKeyDown()){
-////        _actionAnimNode->setVisible(true);
-////        _actionAnimNode->play("chow-sheet", AnimatedNode::AnimationType::INTERRUPT, _assets->get<Texture>("chow-sheet"));
-//        _chowSheet->setVisible(true);
-//    } else if (_input.getKeyPressed() == KeyCode::T && _input.getKeyDown()){
-//        _turnSheet->setVisible(true);
-//    } else if (_input.getKeyPressed() == KeyCode::SPACE && _input.getKeyDown()){
-//        _pongSheet->setVisible(false);
-//        _chowSheet->setVisible(false);
-//        _turnSheet->setVisible(false);
-//    }
-//    _actionAnimNode->update(timestep);
-//    AnimationController::getInstance().update(timestep);
 }
 
 /**
@@ -498,6 +468,8 @@ void GameScene::render() {
 
     if (_dragToDiscardNode && _dragToDiscardNode->isVisible()) {
         _dragToDiscardNode->render(_batch);
+    } else if (_playArea && _playArea->isVisible()){
+        _playArea->render(_batch);
     }
     if (_dragToHandNode && _dragToHandVisible) {
         Vec2 origin = _dragToHandNode->nodeToWorldCoords(Vec2::ZERO);
@@ -527,15 +499,19 @@ void GameScene::setActive(bool value){
 void GameScene::setGameActive(bool value){
     if (value){
         _choice = NONE;
-        _pauseBtn->activate();
+//        _pauseBtn->activate();
         _tilesetUIBtn->activate();
         _endTurnBtn->activate();
-        _displayIconBtn->activate();
+//        _displayIconBtn->activate();
+        _settingBtn->activate();
+        _infoBtn->activate();
     } else {
-        _pauseBtn->deactivate();
+//        _pauseBtn->deactivate();
         _endTurnBtn->deactivate();
         _backBtn->deactivate();
-        _displayIconBtn->deactivate();
+//        _displayIconBtn->deactivate();
+        _settingBtn->deactivate();
+        _infoBtn->deactivate();
     }
 }
 
@@ -722,7 +698,11 @@ void GameScene::updateDrag(const cugl::Vec2& mousePos, bool mouseDown, bool mous
         _dragToDiscardNode->setVisible(false);
     }
     else if (isDragging && !_dragFromDiscard) {
-        if(hand_length == 14 && !_playSetBtn->isVisible()) _dragToDiscardNode->setVisible(true);
+        if(hand_length == 14 && !_playSetBtn->isVisible() && _dragStartPos != mousePos && _draggingTile->getSuit()!=TileSet::Tile::Suit::CELESTIAL){
+            _dragToDiscardNode->setVisible(true);
+        } else if (_draggingTile->getSuit()==TileSet::Tile::Suit::CELESTIAL){
+            _playArea->setVisible(true);
+        }
         _dragToHandNode->setVisible(false);
         _dragToHandVisible = false;
     }
@@ -731,6 +711,7 @@ void GameScene::updateDrag(const cugl::Vec2& mousePos, bool mouseDown, bool mous
         _dragToDiscardNode->setVisible(false);
         _dragToHandNode->setVisible(false);
         _dragToHandVisible = false;
+        _playArea->setVisible(false);
     }
 
 }

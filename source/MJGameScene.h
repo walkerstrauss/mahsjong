@@ -46,6 +46,8 @@ public:
     enum Choice {
         NONE,
         PAUSE,
+        SETTING,
+        INFO,
         SETS,
         DISCARDED,
         DRAW_DISCARD,
@@ -105,8 +107,8 @@ protected:
     std::shared_ptr<cugl::scene2::Button> _discardBtn;
     /** Button for transitioning to the tileset UI scene (discarded cards) */
     std::shared_ptr<cugl::scene2::Button> _tilesetUIBtn;
-    /** Button for pausing */
-    std::shared_ptr<cugl::scene2::Button> _pauseBtn;
+//    /** Button for pausing */
+//    std::shared_ptr<cugl::scene2::Button> _pauseBtn;
     /** Button for continuing (in the pause scene) */
     std::shared_ptr<cugl::scene2::Button> _continueBtn;
     /** Button to set to win scene (for debugging) */
@@ -115,6 +117,12 @@ protected:
     std::shared_ptr<cugl::scene2::Button> _defeatBtn;
     /** Button for ending turn */
     std::shared_ptr<cugl::scene2::Button> _endTurnBtn;
+    
+    /**Button to transition to the setting scene**/
+    std::shared_ptr<Button> _settingBtn;
+    /**Button to transition to the info scene **/
+    std::shared_ptr<Button> _infoBtn;
+    
     /** Textured node to set the discarded tile image*/
     std::shared_ptr<cugl::scene2::TexturedNode> _discardedTileImage;
 
@@ -125,6 +133,7 @@ protected:
     std::shared_ptr<cugl::scene2::TexturedNode> _dragToDiscardNode;
 
     std::shared_ptr<cugl::scene2::TexturedNode> _dragToHandNode;
+    std::shared_ptr<SceneNode> _playArea;
     bool _dragFromDiscard = false;
     bool _dragToHandVisible = false;
 

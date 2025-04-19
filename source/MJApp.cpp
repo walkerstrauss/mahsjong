@@ -373,9 +373,18 @@ void MahsJongApp::updateGameScene(float timestep) {
             _gameplay.discardedTiles.clear();
             _gameplay._choice = GameScene::Choice::NONE;
             break;
+            break;
         case GameScene::Choice::DRAW_DISCARD:
             _gameplay.discardDrawTile = nullptr;
             _gameplay._choice = GameScene::Choice::NONE;
+            break;
+        case GameScene::Choice::INFO:
+            break;
+        case GameScene::Choice::SETTING:
+            _gameplay.setGameActive(false);
+            _settings.setActive(true);
+            _settings.scene = SettingScene::PrevScene::PAUSED;
+            _scene = State::SETTINGS;
         case GameScene::Choice::NONE:
             // Do nothing
             break;
@@ -397,8 +406,8 @@ void MahsJongApp::updateSettingScene(float timestep){
             break;
         case SettingScene::Choice::PAUSE:
             _settings.setActive(false);
-            _pause.setActive(true);
-            _scene = State::PAUSE;
+            _gameplay.setGameActive(true);
+            _scene = State::GAME;
             break;
         case SettingScene::Choice::MUSICON:
             // TODO: Handle turning game music on

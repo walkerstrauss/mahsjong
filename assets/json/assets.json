@@ -136,7 +136,7 @@
             "file": "textures/gameplay/tilesample.png"
         },
         "tilesample 2": {
-            "file": "textures/gameplay/tilesample 2.png"
+            "file": "textures/gameplay/tilesample.png"
         },
         "button_tileset": {
             "file": "textures/gameplay/button_tileset.png"
@@ -685,7 +685,7 @@
             "file": "textures/gameplay/discard-can.png"
         },
         "discarded-rec": {
-            "file": "textures/gameplay/discarded-rec.png"
+            "file": "textures/gameplay/discard-rec.png"
         },
         "gameplay-background": {
             "file": "textures/gameplay/gameplay-background.png"
@@ -713,6 +713,18 @@
         },
         "grandmaMain":{
             "file": "textures/animations/grandmaMain.png"
+        },
+        "setting-icon":{
+            "file":"textures/gameplay/setting-icon.png"
+        },
+        "information-icon":{
+            "file":"textures/gameplay/information-icon.png"
+        },
+        "play-area":{
+            "file": "textures/gameplay/play-area.png"
+        },
+        "playerhand-button":{
+            "file": "textures/gameplay/playerhand-button.png"
         }
     },
     "fonts": {
@@ -747,6 +759,10 @@
         "podkovaBold24": {
             "file": "fonts/Podkova-Bold.ttf",
             "size": 24
+        },
+        "podkovaBold32":{
+            "file":"fonts/Podkova-Bold.ttf",
+            "size":31
         },
         "podkovaBold36": {
             "file": "fonts/Podkova-Bold.ttf",
