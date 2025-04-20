@@ -1,0 +1,2105 @@
+{
+    "variables": {"size":["data","size"]},
+    "contents": {
+        "type": "Node",
+        "format": {
+            "type": "Anchored"
+        },
+        "data": {
+            "anchor": [
+                0,
+                0
+            ],
+            "size": [
+                1024,
+                576
+            ],
+            "angle": 0,
+            "position": [
+                0,
+                0
+            ],
+            "visible": true
+        },
+        "children": {
+            "shade": {
+                "type": "Node",
+                "format": {
+                    "type": "Anchored"
+                },
+                "data": {
+                    "anchor": [
+                        0,
+                        1
+                    ],
+                    "size": [
+                        1024,
+                        576
+                    ],
+                    "angle": 0,
+                    "position": [
+                        0,
+                        0
+                    ],
+                    "visible": true
+                },
+                "children": {
+                    "DiscardShade": {
+                        "type": "Image",
+                        "data": {
+                            "texture": "DiscardShade",
+                            "anchor": [
+                                0.5,
+                                0.5
+                            ],
+                            "size": [
+                                1024,
+                                576
+                            ],
+                            "angle": 0,
+                            "position": [
+                                0,
+                                0
+                            ],
+                            "visible": true
+                        },
+                        "layout": {
+                            "x_anchor": "fill",
+                            "y_anchor": "fill",
+                            "absolute": false,
+                            "x_offset": 0,
+                            "y_offset": 0
+                        }
+                    }
+                },
+                "layout": {
+                    "x_anchor": "fill",
+                    "y_anchor": "fill",
+                    "absolute": false,
+                    "x_offset": 0,
+                    "y_offset": 0
+                }
+            },
+            "board": {
+                "type": "Node",
+                "format": {
+                    "type": "Anchored"
+                },
+                "data": {
+                    "anchor": [
+                        0.5,
+                        1
+                    ],
+                    "size": [
+                        763,
+                        538
+                    ],
+                    "angle": 0,
+                    "position": [
+                        136,
+                        19
+                    ],
+                    "visible": true
+                },
+                "children": {
+                    "discardedtileBoard": {
+                        "type": "Image",
+                        "data": {
+                            "texture": "discardedtileBoard",
+                            "anchor": [
+                                0.5,
+                                0.5
+                            ],
+                            "size": [
+                                763,
+                                538
+                            ],
+                            "angle": 0,
+                            "position": [
+                                0,
+                                0
+                            ],
+                            "visible": true
+                        },
+                        "layout": {
+                            "x_anchor": "center",
+                            "y_anchor": "middle",
+                            "absolute": false,
+                            "x_offset": 0,
+                            "y_offset": 0
+                        }
+                    },
+                    "tiles": {
+                        "type": "Node",
+                        "format": {
+                            "type": "Anchored"
+                        },
+                        "data": {
+                            "anchor": [
+                                0.5,
+                                0.5
+                            ],
+                            "size": [
+                                625.25,
+                                371
+                            ],
+                            "angle": 0,
+                            "position": [
+                                63,
+                                80
+                            ],
+                            "visible": true
+                        },
+                        "children": {
+                            "1": {
+                                "type": "Image",
+                                "data": {
+                                    "texture": "1",
+                                    "anchor": [
+                                        0,
+                                        1
+                                    ],
+                                    "size": [
+                                        65.25,
+                                        87
+                                    ],
+                                    "angle": 0,
+                                    "position": [
+                                        0,
+                                        284
+                                    ],
+                                    "visible": true
+                                },
+                                "layout": {
+                                    "x_anchor": "left",
+                                    "y_anchor": "top",
+                                    "absolute": false,
+                                    "x_offset": 0,
+                                    "y_offset": 0
+                                }
+                            },
+                            "2": {
+                                "type": "Image",
+                                "data": {
+                                    "texture": "2",
+                                    "anchor": [
+                                        0,
+                                        1
+                                    ],
+                                    "size": [
+                                        65.25,
+                                        87
+                                    ],
+                                    "angle": 0,
+                                    "position": [
+                                        70,
+                                        284
+                                    ],
+                                    "visible": true
+                                },
+                                "layout": {
+                                    "x_anchor": "left",
+                                    "y_anchor": "top",
+                                    "absolute": false,
+                                    "x_offset": 0.11,
+                                    "y_offset": 0
+                                }
+                            },
+                            "3": {
+                                "type": "Image",
+                                "data": {
+                                    "texture": "3",
+                                    "anchor": [
+                                        0,
+                                        1
+                                    ],
+                                    "size": [
+                                        65.25,
+                                        87
+                                    ],
+                                    "angle": 0,
+                                    "position": [
+                                        140,
+                                        284
+                                    ],
+                                    "visible": true
+                                },
+                                "layout": {
+                                    "x_anchor": "left",
+                                    "y_anchor": "top",
+                                    "absolute": false,
+                                    "x_offset": 0.22,
+                                    "y_offset": 0
+                                }
+                            },
+                            "4": {
+                                "type": "Image",
+                                "data": {
+                                    "texture": "4",
+                                    "anchor": [
+                                        0,
+                                        1
+                                    ],
+                                    "size": [
+                                        65.25,
+                                        87
+                                    ],
+                                    "angle": 0,
+                                    "position": [
+                                        210,
+                                        284
+                                    ],
+                                    "visible": true
+                                },
+                                "layout": {
+                                    "x_anchor": "left",
+                                    "y_anchor": "top",
+                                    "absolute": false,
+                                    "x_offset": 0.34,
+                                    "y_offset": 0
+                                }
+                            },
+                            "5": {
+                                "type": "Image",
+                                "data": {
+                                    "texture": "5",
+                                    "anchor": [
+                                        0,
+                                        1
+                                    ],
+                                    "size": [
+                                        65.25,
+                                        87
+                                    ],
+                                    "angle": 0,
+                                    "position": [
+                                        280,
+                                        284
+                                    ],
+                                    "visible": true
+                                },
+                                "layout": {
+                                    "x_anchor": "left",
+                                    "y_anchor": "top",
+                                    "absolute": false,
+                                    "x_offset": 0.45,
+                                    "y_offset": 0
+                                }
+                            },
+                            "6": {
+                                "type": "Image",
+                                "data": {
+                                    "texture": "6",
+                                    "anchor": [
+                                        0,
+                                        1
+                                    ],
+                                    "size": [
+                                        65.25,
+                                        87
+                                    ],
+                                    "angle": 0,
+                                    "position": [
+                                        350,
+                                        284
+                                    ],
+                                    "visible": true
+                                },
+                                "layout": {
+                                    "x_anchor": "left",
+                                    "y_anchor": "top",
+                                    "absolute": false,
+                                    "x_offset": 0.56,
+                                    "y_offset": 0
+                                }
+                            },
+                            "7": {
+                                "type": "Image",
+                                "data": {
+                                    "texture": "7",
+                                    "anchor": [
+                                        0,
+                                        1
+                                    ],
+                                    "size": [
+                                        65.25,
+                                        87
+                                    ],
+                                    "angle": 0,
+                                    "position": [
+                                        420,
+                                        284
+                                    ],
+                                    "visible": true
+                                },
+                                "layout": {
+                                    "x_anchor": "left",
+                                    "y_anchor": "top",
+                                    "absolute": false,
+                                    "x_offset": 0.67,
+                                    "y_offset": 0
+                                }
+                            },
+                            "8": {
+                                "type": "Image",
+                                "data": {
+                                    "texture": "8",
+                                    "anchor": [
+                                        0,
+                                        1
+                                    ],
+                                    "size": [
+                                        65.25,
+                                        87
+                                    ],
+                                    "angle": 0,
+                                    "position": [
+                                        490,
+                                        284
+                                    ],
+                                    "visible": true
+                                },
+                                "layout": {
+                                    "x_anchor": "left",
+                                    "y_anchor": "top",
+                                    "absolute": false,
+                                    "x_offset": 0.78,
+                                    "y_offset": 0
+                                }
+                            },
+                            "9": {
+                                "type": "Image",
+                                "data": {
+                                    "texture": "9",
+                                    "anchor": [
+                                        0,
+                                        1
+                                    ],
+                                    "size": [
+                                        65.25,
+                                        87
+                                    ],
+                                    "angle": 0,
+                                    "position": [
+                                        560,
+                                        284
+                                    ],
+                                    "visible": true
+                                },
+                                "layout": {
+                                    "x_anchor": "left",
+                                    "y_anchor": "top",
+                                    "absolute": false,
+                                    "x_offset": 0.9,
+                                    "y_offset": 0
+                                }
+                            },
+                            "10": {
+                                "type": "Image",
+                                "data": {
+                                    "texture": "10",
+                                    "anchor": [
+                                        0,
+                                        1
+                                    ],
+                                    "size": [
+                                        65.25,
+                                        87
+                                    ],
+                                    "angle": 0,
+                                    "position": [
+                                        0,
+                                        146
+                                    ],
+                                    "visible": true
+                                },
+                                "layout": {
+                                    "x_anchor": "left",
+                                    "y_anchor": "top",
+                                    "absolute": false,
+                                    "x_offset": 0,
+                                    "y_offset": -0.37
+                                }
+                            },
+                            "11": {
+                                "type": "Image",
+                                "data": {
+                                    "texture": "11",
+                                    "anchor": [
+                                        0,
+                                        1
+                                    ],
+                                    "size": [
+                                        65.25,
+                                        87
+                                    ],
+                                    "angle": 0,
+                                    "position": [
+                                        70,
+                                        146
+                                    ],
+                                    "visible": true
+                                },
+                                "layout": {
+                                    "x_anchor": "left",
+                                    "y_anchor": "top",
+                                    "absolute": false,
+                                    "x_offset": 0.11,
+                                    "y_offset": -0.37
+                                }
+                            },
+                            "12": {
+                                "type": "Image",
+                                "data": {
+                                    "texture": "12",
+                                    "anchor": [
+                                        0,
+                                        1
+                                    ],
+                                    "size": [
+                                        65.25,
+                                        87
+                                    ],
+                                    "angle": 0,
+                                    "position": [
+                                        140,
+                                        146
+                                    ],
+                                    "visible": true
+                                },
+                                "layout": {
+                                    "x_anchor": "left",
+                                    "y_anchor": "top",
+                                    "absolute": false,
+                                    "x_offset": 0.22,
+                                    "y_offset": -0.37
+                                }
+                            },
+                            "13": {
+                                "type": "Image",
+                                "data": {
+                                    "texture": "13",
+                                    "anchor": [
+                                        0,
+                                        1
+                                    ],
+                                    "size": [
+                                        65.25,
+                                        87
+                                    ],
+                                    "angle": 0,
+                                    "position": [
+                                        210,
+                                        146
+                                    ],
+                                    "visible": true
+                                },
+                                "layout": {
+                                    "x_anchor": "left",
+                                    "y_anchor": "top",
+                                    "absolute": false,
+                                    "x_offset": 0.34,
+                                    "y_offset": -0.37
+                                }
+                            },
+                            "14": {
+                                "type": "Image",
+                                "data": {
+                                    "texture": "14",
+                                    "anchor": [
+                                        0,
+                                        1
+                                    ],
+                                    "size": [
+                                        65.25,
+                                        87
+                                    ],
+                                    "angle": 0,
+                                    "position": [
+                                        280,
+                                        146
+                                    ],
+                                    "visible": true
+                                },
+                                "layout": {
+                                    "x_anchor": "left",
+                                    "y_anchor": "top",
+                                    "absolute": false,
+                                    "x_offset": 0.45,
+                                    "y_offset": -0.37
+                                }
+                            },
+                            "15": {
+                                "type": "Image",
+                                "data": {
+                                    "texture": "15",
+                                    "anchor": [
+                                        0,
+                                        1
+                                    ],
+                                    "size": [
+                                        65.25,
+                                        87
+                                    ],
+                                    "angle": 0,
+                                    "position": [
+                                        350,
+                                        146
+                                    ],
+                                    "visible": true
+                                },
+                                "layout": {
+                                    "x_anchor": "left",
+                                    "y_anchor": "top",
+                                    "absolute": false,
+                                    "x_offset": 0.56,
+                                    "y_offset": -0.37
+                                }
+                            },
+                            "16": {
+                                "type": "Image",
+                                "data": {
+                                    "texture": "16",
+                                    "anchor": [
+                                        0,
+                                        1
+                                    ],
+                                    "size": [
+                                        65.25,
+                                        87
+                                    ],
+                                    "angle": 0,
+                                    "position": [
+                                        420,
+                                        146
+                                    ],
+                                    "visible": true
+                                },
+                                "layout": {
+                                    "x_anchor": "left",
+                                    "y_anchor": "top",
+                                    "absolute": false,
+                                    "x_offset": 0.67,
+                                    "y_offset": -0.37
+                                }
+                            },
+                            "17": {
+                                "type": "Image",
+                                "data": {
+                                    "texture": "17",
+                                    "anchor": [
+                                        0,
+                                        1
+                                    ],
+                                    "size": [
+                                        65.25,
+                                        87
+                                    ],
+                                    "angle": 0,
+                                    "position": [
+                                        490,
+                                        146
+                                    ],
+                                    "visible": true
+                                },
+                                "layout": {
+                                    "x_anchor": "left",
+                                    "y_anchor": "top",
+                                    "absolute": false,
+                                    "x_offset": 0.78,
+                                    "y_offset": -0.37
+                                }
+                            },
+                            "18": {
+                                "type": "Image",
+                                "data": {
+                                    "texture": "18",
+                                    "anchor": [
+                                        0,
+                                        1
+                                    ],
+                                    "size": [
+                                        65.25,
+                                        87
+                                    ],
+                                    "angle": 0,
+                                    "position": [
+                                        560,
+                                        146
+                                    ],
+                                    "visible": true
+                                },
+                                "layout": {
+                                    "x_anchor": "left",
+                                    "y_anchor": "top",
+                                    "absolute": false,
+                                    "x_offset": 0.9,
+                                    "y_offset": -0.37
+                                }
+                            },
+                            "19": {
+                                "type": "Image",
+                                "data": {
+                                    "texture": "19",
+                                    "anchor": [
+                                        0,
+                                        1
+                                    ],
+                                    "size": [
+                                        65.25,
+                                        87
+                                    ],
+                                    "angle": 0,
+                                    "position": [
+                                        0,
+                                        0
+                                    ],
+                                    "visible": true
+                                },
+                                "layout": {
+                                    "x_anchor": "left",
+                                    "y_anchor": "top",
+                                    "absolute": false,
+                                    "x_offset": 0,
+                                    "y_offset": -0.77
+                                }
+                            },
+                            "20": {
+                                "type": "Image",
+                                "data": {
+                                    "texture": "20",
+                                    "anchor": [
+                                        0,
+                                        1
+                                    ],
+                                    "size": [
+                                        65.25,
+                                        87
+                                    ],
+                                    "angle": 0,
+                                    "position": [
+                                        70,
+                                        0
+                                    ],
+                                    "visible": true
+                                },
+                                "layout": {
+                                    "x_anchor": "left",
+                                    "y_anchor": "top",
+                                    "absolute": false,
+                                    "x_offset": 0.11,
+                                    "y_offset": -0.77
+                                }
+                            },
+                            "21": {
+                                "type": "Image",
+                                "data": {
+                                    "texture": "21",
+                                    "anchor": [
+                                        0,
+                                        1
+                                    ],
+                                    "size": [
+                                        65.25,
+                                        87
+                                    ],
+                                    "angle": 0,
+                                    "position": [
+                                        140,
+                                        0
+                                    ],
+                                    "visible": true
+                                },
+                                "layout": {
+                                    "x_anchor": "left",
+                                    "y_anchor": "top",
+                                    "absolute": false,
+                                    "x_offset": 0.22,
+                                    "y_offset": -0.77
+                                }
+                            },
+                            "22": {
+                                "type": "Image",
+                                "data": {
+                                    "texture": "22",
+                                    "anchor": [
+                                        0,
+                                        1
+                                    ],
+                                    "size": [
+                                        65.25,
+                                        87
+                                    ],
+                                    "angle": 0,
+                                    "position": [
+                                        210,
+                                        0
+                                    ],
+                                    "visible": true
+                                },
+                                "layout": {
+                                    "x_anchor": "left",
+                                    "y_anchor": "top",
+                                    "absolute": false,
+                                    "x_offset": 0.34,
+                                    "y_offset": -0.77
+                                }
+                            },
+                            "23": {
+                                "type": "Image",
+                                "data": {
+                                    "texture": "23",
+                                    "anchor": [
+                                        0,
+                                        1
+                                    ],
+                                    "size": [
+                                        65.25,
+                                        87
+                                    ],
+                                    "angle": 0,
+                                    "position": [
+                                        280,
+                                        0
+                                    ],
+                                    "visible": true
+                                },
+                                "layout": {
+                                    "x_anchor": "left",
+                                    "y_anchor": "top",
+                                    "absolute": false,
+                                    "x_offset": 0.45,
+                                    "y_offset": -0.77
+                                }
+                            },
+                            "24": {
+                                "type": "Image",
+                                "data": {
+                                    "texture": "24",
+                                    "anchor": [
+                                        0,
+                                        1
+                                    ],
+                                    "size": [
+                                        65.25,
+                                        87
+                                    ],
+                                    "angle": 0,
+                                    "position": [
+                                        350,
+                                        0
+                                    ],
+                                    "visible": true
+                                },
+                                "layout": {
+                                    "x_anchor": "left",
+                                    "y_anchor": "top",
+                                    "absolute": false,
+                                    "x_offset": 0.56,
+                                    "y_offset": -0.77
+                                }
+                            },
+                            "25": {
+                                "type": "Image",
+                                "data": {
+                                    "texture": "25",
+                                    "anchor": [
+                                        0,
+                                        1
+                                    ],
+                                    "size": [
+                                        65.25,
+                                        87
+                                    ],
+                                    "angle": 0,
+                                    "position": [
+                                        420,
+                                        0
+                                    ],
+                                    "visible": true
+                                },
+                                "layout": {
+                                    "x_anchor": "left",
+                                    "y_anchor": "top",
+                                    "absolute": false,
+                                    "x_offset": 0.67,
+                                    "y_offset": -0.77
+                                }
+                            },
+                            "26": {
+                                "type": "Image",
+                                "data": {
+                                    "texture": "26",
+                                    "anchor": [
+                                        0,
+                                        1
+                                    ],
+                                    "size": [
+                                        65.25,
+                                        87
+                                    ],
+                                    "angle": 0,
+                                    "position": [
+                                        490,
+                                        0
+                                    ],
+                                    "visible": true
+                                },
+                                "layout": {
+                                    "x_anchor": "left",
+                                    "y_anchor": "top",
+                                    "absolute": false,
+                                    "x_offset": 0.78,
+                                    "y_offset": -0.77
+                                }
+                            },
+                            "27": {
+                                "type": "Image",
+                                "data": {
+                                    "texture": "27",
+                                    "anchor": [
+                                        0,
+                                        1
+                                    ],
+                                    "size": [
+                                        65.25,
+                                        87
+                                    ],
+                                    "angle": 0,
+                                    "position": [
+                                        560,
+                                        0
+                                    ],
+                                    "visible": true
+                                },
+                                "layout": {
+                                    "x_anchor": "left",
+                                    "y_anchor": "top",
+                                    "absolute": false,
+                                    "x_offset": 0.9,
+                                    "y_offset": -0.77
+                                }
+                            }
+                        },
+                        "layout": {
+                            "x_anchor": "left",
+                            "y_anchor": "top",
+                            "absolute": false,
+                            "x_offset": 0.49,
+                            "y_offset": -0.51
+                        }
+                    },
+                    "number": {
+                        "type": "Node",
+                        "format": {
+                            "type": "Anchored"
+                        },
+                        "data": {
+                            "anchor": [
+                                0.5,
+                                0.5
+                            ],
+                            "size": [
+                                593,
+                                319
+                            ],
+                            "angle": 0,
+                            "position": [
+                                79,
+                                37
+                            ],
+                            "visible": true
+                        },
+                        "children": {
+                            "label": {
+                                "type": "Label",
+                                "data": {
+                                    "anchor": [
+                                        0,
+                                        1
+                                    ],
+                                    "size": [
+                                        33,
+                                        34
+                                    ],
+                                    "position": [
+                                        0,
+                                        285
+                                    ],
+                                    "angle": 0,
+                                    "visible": true,
+                                    "font": "podkovaBold36",
+                                    "text": "0",
+                                    "foreground": "#ffffffff",
+                                    "background": "#00000000",
+                                    "padding": [
+                                        0,
+                                        0,
+                                        0,
+                                        0
+                                    ],
+                                    "valign": "middle",
+                                    "halign": "center"
+                                },
+                                "children": {},
+                                "layout": {
+                                    "x_anchor": "left",
+                                    "y_anchor": "top",
+                                    "absolute": false,
+                                    "x_offset": 0,
+                                    "y_offset": 0
+                                }
+                            },
+                            "label_1": {
+                                "type": "Label",
+                                "data": {
+                                    "anchor": [
+                                        0,
+                                        1
+                                    ],
+                                    "size": [
+                                        33,
+                                        34
+                                    ],
+                                    "position": [
+                                        70,
+                                        285
+                                    ],
+                                    "angle": 0,
+                                    "visible": true,
+                                    "font": "podkovaBold36",
+                                    "text": "0",
+                                    "foreground": "#ffffffff",
+                                    "background": "#00000000",
+                                    "padding": [
+                                        0,
+                                        0,
+                                        0,
+                                        0
+                                    ],
+                                    "valign": "middle",
+                                    "halign": "center"
+                                },
+                                "children": {},
+                                "layout": {
+                                    "x_anchor": "left",
+                                    "y_anchor": "top",
+                                    "absolute": false,
+                                    "x_offset": 0.12,
+                                    "y_offset": 0
+                                }
+                            },
+                            "label_2": {
+                                "type": "Label",
+                                "data": {
+                                    "anchor": [
+                                        0,
+                                        1
+                                    ],
+                                    "size": [
+                                        33,
+                                        34
+                                    ],
+                                    "position": [
+                                        140,
+                                        285
+                                    ],
+                                    "angle": 0,
+                                    "visible": true,
+                                    "font": "podkovaBold36",
+                                    "text": "0",
+                                    "foreground": "#ffffffff",
+                                    "background": "#00000000",
+                                    "padding": [
+                                        0,
+                                        0,
+                                        0,
+                                        0
+                                    ],
+                                    "valign": "middle",
+                                    "halign": "center"
+                                },
+                                "children": {},
+                                "layout": {
+                                    "x_anchor": "left",
+                                    "y_anchor": "top",
+                                    "absolute": false,
+                                    "x_offset": 0.24,
+                                    "y_offset": 0
+                                }
+                            },
+                            "label_3": {
+                                "type": "Label",
+                                "data": {
+                                    "anchor": [
+                                        0,
+                                        1
+                                    ],
+                                    "size": [
+                                        33,
+                                        34
+                                    ],
+                                    "position": [
+                                        210,
+                                        285
+                                    ],
+                                    "angle": 0,
+                                    "visible": true,
+                                    "font": "podkovaBold36",
+                                    "text": "0",
+                                    "foreground": "#ffffffff",
+                                    "background": "#00000000",
+                                    "padding": [
+                                        0,
+                                        0,
+                                        0,
+                                        0
+                                    ],
+                                    "valign": "middle",
+                                    "halign": "center"
+                                },
+                                "children": {},
+                                "layout": {
+                                    "x_anchor": "left",
+                                    "y_anchor": "top",
+                                    "absolute": false,
+                                    "x_offset": 0.35,
+                                    "y_offset": 0
+                                }
+                            },
+                            "label_4": {
+                                "type": "Label",
+                                "data": {
+                                    "anchor": [
+                                        0,
+                                        1
+                                    ],
+                                    "size": [
+                                        33,
+                                        34
+                                    ],
+                                    "position": [
+                                        280,
+                                        285
+                                    ],
+                                    "angle": 0,
+                                    "visible": true,
+                                    "font": "podkovaBold36",
+                                    "text": "0",
+                                    "foreground": "#ffffffff",
+                                    "background": "#00000000",
+                                    "padding": [
+                                        0,
+                                        0,
+                                        0,
+                                        0
+                                    ],
+                                    "valign": "middle",
+                                    "halign": "center"
+                                },
+                                "children": {},
+                                "layout": {
+                                    "x_anchor": "left",
+                                    "y_anchor": "top",
+                                    "absolute": false,
+                                    "x_offset": 0.47,
+                                    "y_offset": 0
+                                }
+                            },
+                            "label_5": {
+                                "type": "Label",
+                                "data": {
+                                    "anchor": [
+                                        0,
+                                        1
+                                    ],
+                                    "size": [
+                                        33,
+                                        34
+                                    ],
+                                    "position": [
+                                        350,
+                                        285
+                                    ],
+                                    "angle": 0,
+                                    "visible": true,
+                                    "font": "podkovaBold36",
+                                    "text": "0",
+                                    "foreground": "#ffffffff",
+                                    "background": "#00000000",
+                                    "padding": [
+                                        0,
+                                        0,
+                                        0,
+                                        0
+                                    ],
+                                    "valign": "middle",
+                                    "halign": "center"
+                                },
+                                "children": {},
+                                "layout": {
+                                    "x_anchor": "left",
+                                    "y_anchor": "top",
+                                    "absolute": false,
+                                    "x_offset": 0.59,
+                                    "y_offset": 0
+                                }
+                            },
+                            "label_6": {
+                                "type": "Label",
+                                "data": {
+                                    "anchor": [
+                                        0,
+                                        1
+                                    ],
+                                    "size": [
+                                        33,
+                                        34
+                                    ],
+                                    "position": [
+                                        420,
+                                        285
+                                    ],
+                                    "angle": 0,
+                                    "visible": true,
+                                    "font": "podkovaBold36",
+                                    "text": "0",
+                                    "foreground": "#ffffffff",
+                                    "background": "#00000000",
+                                    "padding": [
+                                        0,
+                                        0,
+                                        0,
+                                        0
+                                    ],
+                                    "valign": "middle",
+                                    "halign": "center"
+                                },
+                                "children": {},
+                                "layout": {
+                                    "x_anchor": "left",
+                                    "y_anchor": "top",
+                                    "absolute": false,
+                                    "x_offset": 0.71,
+                                    "y_offset": 0
+                                }
+                            },
+                            "label_7": {
+                                "type": "Label",
+                                "data": {
+                                    "anchor": [
+                                        0,
+                                        1
+                                    ],
+                                    "size": [
+                                        33,
+                                        34
+                                    ],
+                                    "position": [
+                                        490,
+                                        285
+                                    ],
+                                    "angle": 0,
+                                    "visible": true,
+                                    "font": "podkovaBold36",
+                                    "text": "0",
+                                    "foreground": "#ffffffff",
+                                    "background": "#00000000",
+                                    "padding": [
+                                        0,
+                                        0,
+                                        0,
+                                        0
+                                    ],
+                                    "valign": "middle",
+                                    "halign": "center"
+                                },
+                                "children": {},
+                                "layout": {
+                                    "x_anchor": "left",
+                                    "y_anchor": "top",
+                                    "absolute": false,
+                                    "x_offset": 0.83,
+                                    "y_offset": 0
+                                }
+                            },
+                            "label_8": {
+                                "type": "Label",
+                                "data": {
+                                    "anchor": [
+                                        0,
+                                        1
+                                    ],
+                                    "size": [
+                                        33,
+                                        34
+                                    ],
+                                    "position": [
+                                        560,
+                                        285
+                                    ],
+                                    "angle": 0,
+                                    "visible": true,
+                                    "font": "podkovaBold36",
+                                    "text": "0",
+                                    "foreground": "#ffffffff",
+                                    "background": "#00000000",
+                                    "padding": [
+                                        0,
+                                        0,
+                                        0,
+                                        0
+                                    ],
+                                    "valign": "middle",
+                                    "halign": "center"
+                                },
+                                "children": {},
+                                "layout": {
+                                    "x_anchor": "left",
+                                    "y_anchor": "top",
+                                    "absolute": false,
+                                    "x_offset": 0.94,
+                                    "y_offset": 0
+                                }
+                            },
+                            "label_9": {
+                                "type": "Label",
+                                "data": {
+                                    "anchor": [
+                                        0,
+                                        1
+                                    ],
+                                    "size": [
+                                        33,
+                                        34
+                                    ],
+                                    "position": [
+                                        0,
+                                        142
+                                    ],
+                                    "angle": 0,
+                                    "visible": true,
+                                    "font": "podkovaBold36",
+                                    "text": "0",
+                                    "foreground": "#ffffffff",
+                                    "background": "#00000000",
+                                    "padding": [
+                                        0,
+                                        0,
+                                        0,
+                                        0
+                                    ],
+                                    "valign": "middle",
+                                    "halign": "center"
+                                },
+                                "children": {},
+                                "layout": {
+                                    "x_anchor": "left",
+                                    "y_anchor": "top",
+                                    "absolute": false,
+                                    "x_offset": 0,
+                                    "y_offset": -0.45
+                                }
+                            },
+                            "label_10": {
+                                "type": "Label",
+                                "data": {
+                                    "anchor": [
+                                        0,
+                                        1
+                                    ],
+                                    "size": [
+                                        33,
+                                        34
+                                    ],
+                                    "position": [
+                                        70,
+                                        142
+                                    ],
+                                    "angle": 0,
+                                    "visible": true,
+                                    "font": "podkovaBold36",
+                                    "text": "0",
+                                    "foreground": "#ffffffff",
+                                    "background": "#00000000",
+                                    "padding": [
+                                        0,
+                                        0,
+                                        0,
+                                        0
+                                    ],
+                                    "valign": "middle",
+                                    "halign": "center"
+                                },
+                                "children": {},
+                                "layout": {
+                                    "x_anchor": "left",
+                                    "y_anchor": "top",
+                                    "absolute": false,
+                                    "x_offset": 0.12,
+                                    "y_offset": -0.45
+                                }
+                            },
+                            "label_11": {
+                                "type": "Label",
+                                "data": {
+                                    "anchor": [
+                                        0,
+                                        1
+                                    ],
+                                    "size": [
+                                        33,
+                                        34
+                                    ],
+                                    "position": [
+                                        140,
+                                        142
+                                    ],
+                                    "angle": 0,
+                                    "visible": true,
+                                    "font": "podkovaBold36",
+                                    "text": "0",
+                                    "foreground": "#ffffffff",
+                                    "background": "#00000000",
+                                    "padding": [
+                                        0,
+                                        0,
+                                        0,
+                                        0
+                                    ],
+                                    "valign": "middle",
+                                    "halign": "center"
+                                },
+                                "children": {},
+                                "layout": {
+                                    "x_anchor": "left",
+                                    "y_anchor": "top",
+                                    "absolute": false,
+                                    "x_offset": 0.24,
+                                    "y_offset": -0.45
+                                }
+                            },
+                            "label_12": {
+                                "type": "Label",
+                                "data": {
+                                    "anchor": [
+                                        0,
+                                        1
+                                    ],
+                                    "size": [
+                                        33,
+                                        34
+                                    ],
+                                    "position": [
+                                        210,
+                                        142
+                                    ],
+                                    "angle": 0,
+                                    "visible": true,
+                                    "font": "podkovaBold36",
+                                    "text": "0",
+                                    "foreground": "#ffffffff",
+                                    "background": "#00000000",
+                                    "padding": [
+                                        0,
+                                        0,
+                                        0,
+                                        0
+                                    ],
+                                    "valign": "middle",
+                                    "halign": "center"
+                                },
+                                "children": {},
+                                "layout": {
+                                    "x_anchor": "left",
+                                    "y_anchor": "top",
+                                    "absolute": false,
+                                    "x_offset": 0.35,
+                                    "y_offset": -0.45
+                                }
+                            },
+                            "label_13": {
+                                "type": "Label",
+                                "data": {
+                                    "anchor": [
+                                        0,
+                                        1
+                                    ],
+                                    "size": [
+                                        33,
+                                        34
+                                    ],
+                                    "position": [
+                                        280,
+                                        142
+                                    ],
+                                    "angle": 0,
+                                    "visible": true,
+                                    "font": "podkovaBold36",
+                                    "text": "0",
+                                    "foreground": "#ffffffff",
+                                    "background": "#00000000",
+                                    "padding": [
+                                        0,
+                                        0,
+                                        0,
+                                        0
+                                    ],
+                                    "valign": "middle",
+                                    "halign": "center"
+                                },
+                                "children": {},
+                                "layout": {
+                                    "x_anchor": "left",
+                                    "y_anchor": "top",
+                                    "absolute": false,
+                                    "x_offset": 0.47,
+                                    "y_offset": -0.45
+                                }
+                            },
+                            "label_14": {
+                                "type": "Label",
+                                "data": {
+                                    "anchor": [
+                                        0,
+                                        1
+                                    ],
+                                    "size": [
+                                        33,
+                                        34
+                                    ],
+                                    "position": [
+                                        350,
+                                        142
+                                    ],
+                                    "angle": 0,
+                                    "visible": true,
+                                    "font": "podkovaBold36",
+                                    "text": "0",
+                                    "foreground": "#ffffffff",
+                                    "background": "#00000000",
+                                    "padding": [
+                                        0,
+                                        0,
+                                        0,
+                                        0
+                                    ],
+                                    "valign": "middle",
+                                    "halign": "center"
+                                },
+                                "children": {},
+                                "layout": {
+                                    "x_anchor": "left",
+                                    "y_anchor": "top",
+                                    "absolute": false,
+                                    "x_offset": 0.59,
+                                    "y_offset": -0.45
+                                }
+                            },
+                            "label_15": {
+                                "type": "Label",
+                                "data": {
+                                    "anchor": [
+                                        0,
+                                        1
+                                    ],
+                                    "size": [
+                                        33,
+                                        34
+                                    ],
+                                    "position": [
+                                        420,
+                                        142
+                                    ],
+                                    "angle": 0,
+                                    "visible": true,
+                                    "font": "podkovaBold36",
+                                    "text": "0",
+                                    "foreground": "#ffffffff",
+                                    "background": "#00000000",
+                                    "padding": [
+                                        0,
+                                        0,
+                                        0,
+                                        0
+                                    ],
+                                    "valign": "middle",
+                                    "halign": "center"
+                                },
+                                "children": {},
+                                "layout": {
+                                    "x_anchor": "left",
+                                    "y_anchor": "top",
+                                    "absolute": false,
+                                    "x_offset": 0.71,
+                                    "y_offset": -0.45
+                                }
+                            },
+                            "label_16": {
+                                "type": "Label",
+                                "data": {
+                                    "anchor": [
+                                        0,
+                                        1
+                                    ],
+                                    "size": [
+                                        33,
+                                        34
+                                    ],
+                                    "position": [
+                                        490,
+                                        142
+                                    ],
+                                    "angle": 0,
+                                    "visible": true,
+                                    "font": "podkovaBold36",
+                                    "text": "0",
+                                    "foreground": "#ffffffff",
+                                    "background": "#00000000",
+                                    "padding": [
+                                        0,
+                                        0,
+                                        0,
+                                        0
+                                    ],
+                                    "valign": "middle",
+                                    "halign": "center"
+                                },
+                                "children": {},
+                                "layout": {
+                                    "x_anchor": "left",
+                                    "y_anchor": "top",
+                                    "absolute": false,
+                                    "x_offset": 0.83,
+                                    "y_offset": -0.45
+                                }
+                            },
+                            "label_17": {
+                                "type": "Label",
+                                "data": {
+                                    "anchor": [
+                                        0,
+                                        1
+                                    ],
+                                    "size": [
+                                        33,
+                                        34
+                                    ],
+                                    "position": [
+                                        560,
+                                        142
+                                    ],
+                                    "angle": 0,
+                                    "visible": true,
+                                    "font": "podkovaBold36",
+                                    "text": "0",
+                                    "foreground": "#ffffffff",
+                                    "background": "#00000000",
+                                    "padding": [
+                                        0,
+                                        0,
+                                        0,
+                                        0
+                                    ],
+                                    "valign": "middle",
+                                    "halign": "center"
+                                },
+                                "children": {},
+                                "layout": {
+                                    "x_anchor": "left",
+                                    "y_anchor": "top",
+                                    "absolute": false,
+                                    "x_offset": 0.94,
+                                    "y_offset": -0.45
+                                }
+                            },
+                            "label_18": {
+                                "type": "Label",
+                                "data": {
+                                    "anchor": [
+                                        0,
+                                        1
+                                    ],
+                                    "size": [
+                                        33,
+                                        34
+                                    ],
+                                    "position": [
+                                        0,
+                                        0
+                                    ],
+                                    "angle": 0,
+                                    "visible": true,
+                                    "font": "podkovaBold36",
+                                    "text": "0",
+                                    "foreground": "#ffffffff",
+                                    "background": "#00000000",
+                                    "padding": [
+                                        0,
+                                        0,
+                                        0,
+                                        0
+                                    ],
+                                    "valign": "middle",
+                                    "halign": "center"
+                                },
+                                "children": {},
+                                "layout": {
+                                    "x_anchor": "left",
+                                    "y_anchor": "top",
+                                    "absolute": false,
+                                    "x_offset": 0,
+                                    "y_offset": -0.89
+                                }
+                            },
+                            "label_19": {
+                                "type": "Label",
+                                "data": {
+                                    "anchor": [
+                                        0,
+                                        1
+                                    ],
+                                    "size": [
+                                        33,
+                                        34
+                                    ],
+                                    "position": [
+                                        70,
+                                        0
+                                    ],
+                                    "angle": 0,
+                                    "visible": true,
+                                    "font": "podkovaBold36",
+                                    "text": "0",
+                                    "foreground": "#ffffffff",
+                                    "background": "#00000000",
+                                    "padding": [
+                                        0,
+                                        0,
+                                        0,
+                                        0
+                                    ],
+                                    "valign": "middle",
+                                    "halign": "center"
+                                },
+                                "children": {},
+                                "layout": {
+                                    "x_anchor": "left",
+                                    "y_anchor": "top",
+                                    "absolute": false,
+                                    "x_offset": 0.12,
+                                    "y_offset": -0.89
+                                }
+                            },
+                            "label_20": {
+                                "type": "Label",
+                                "data": {
+                                    "anchor": [
+                                        0,
+                                        1
+                                    ],
+                                    "size": [
+                                        33,
+                                        34
+                                    ],
+                                    "position": [
+                                        140,
+                                        0
+                                    ],
+                                    "angle": 0,
+                                    "visible": true,
+                                    "font": "podkovaBold36",
+                                    "text": "0",
+                                    "foreground": "#ffffffff",
+                                    "background": "#00000000",
+                                    "padding": [
+                                        0,
+                                        0,
+                                        0,
+                                        0
+                                    ],
+                                    "valign": "middle",
+                                    "halign": "center"
+                                },
+                                "children": {},
+                                "layout": {
+                                    "x_anchor": "left",
+                                    "y_anchor": "top",
+                                    "absolute": false,
+                                    "x_offset": 0.24,
+                                    "y_offset": -0.89
+                                }
+                            },
+                            "label_21": {
+                                "type": "Label",
+                                "data": {
+                                    "anchor": [
+                                        0,
+                                        1
+                                    ],
+                                    "size": [
+                                        33,
+                                        34
+                                    ],
+                                    "position": [
+                                        210,
+                                        0
+                                    ],
+                                    "angle": 0,
+                                    "visible": true,
+                                    "font": "podkovaBold36",
+                                    "text": "0",
+                                    "foreground": "#ffffffff",
+                                    "background": "#00000000",
+                                    "padding": [
+                                        0,
+                                        0,
+                                        0,
+                                        0
+                                    ],
+                                    "valign": "middle",
+                                    "halign": "center"
+                                },
+                                "children": {},
+                                "layout": {
+                                    "x_anchor": "left",
+                                    "y_anchor": "top",
+                                    "absolute": false,
+                                    "x_offset": 0.35,
+                                    "y_offset": -0.89
+                                }
+                            },
+                            "label_22": {
+                                "type": "Label",
+                                "data": {
+                                    "anchor": [
+                                        0,
+                                        1
+                                    ],
+                                    "size": [
+                                        33,
+                                        34
+                                    ],
+                                    "position": [
+                                        280,
+                                        0
+                                    ],
+                                    "angle": 0,
+                                    "visible": true,
+                                    "font": "podkovaBold36",
+                                    "text": "0",
+                                    "foreground": "#ffffffff",
+                                    "background": "#00000000",
+                                    "padding": [
+                                        0,
+                                        0,
+                                        0,
+                                        0
+                                    ],
+                                    "valign": "middle",
+                                    "halign": "center"
+                                },
+                                "children": {},
+                                "layout": {
+                                    "x_anchor": "left",
+                                    "y_anchor": "top",
+                                    "absolute": false,
+                                    "x_offset": 0.47,
+                                    "y_offset": -0.89
+                                }
+                            },
+                            "label_23": {
+                                "type": "Label",
+                                "data": {
+                                    "anchor": [
+                                        0,
+                                        1
+                                    ],
+                                    "size": [
+                                        33,
+                                        34
+                                    ],
+                                    "position": [
+                                        350,
+                                        0
+                                    ],
+                                    "angle": 0,
+                                    "visible": true,
+                                    "font": "podkovaBold36",
+                                    "text": "0",
+                                    "foreground": "#ffffffff",
+                                    "background": "#00000000",
+                                    "padding": [
+                                        0,
+                                        0,
+                                        0,
+                                        0
+                                    ],
+                                    "valign": "middle",
+                                    "halign": "center"
+                                },
+                                "children": {},
+                                "layout": {
+                                    "x_anchor": "left",
+                                    "y_anchor": "top",
+                                    "absolute": false,
+                                    "x_offset": 0.59,
+                                    "y_offset": -0.89
+                                }
+                            },
+                            "label_24": {
+                                "type": "Label",
+                                "data": {
+                                    "anchor": [
+                                        0,
+                                        1
+                                    ],
+                                    "size": [
+                                        33,
+                                        34
+                                    ],
+                                    "position": [
+                                        420,
+                                        0
+                                    ],
+                                    "angle": 0,
+                                    "visible": true,
+                                    "font": "podkovaBold36",
+                                    "text": "0",
+                                    "foreground": "#ffffffff",
+                                    "background": "#00000000",
+                                    "padding": [
+                                        0,
+                                        0,
+                                        0,
+                                        0
+                                    ],
+                                    "valign": "middle",
+                                    "halign": "center"
+                                },
+                                "children": {},
+                                "layout": {
+                                    "x_anchor": "left",
+                                    "y_anchor": "top",
+                                    "absolute": false,
+                                    "x_offset": 0.71,
+                                    "y_offset": -0.89
+                                }
+                            },
+                            "label_25": {
+                                "type": "Label",
+                                "data": {
+                                    "anchor": [
+                                        0,
+                                        1
+                                    ],
+                                    "size": [
+                                        33,
+                                        34
+                                    ],
+                                    "position": [
+                                        490,
+                                        0
+                                    ],
+                                    "angle": 0,
+                                    "visible": true,
+                                    "font": "podkovaBold36",
+                                    "text": "0",
+                                    "foreground": "#ffffffff",
+                                    "background": "#00000000",
+                                    "padding": [
+                                        0,
+                                        0,
+                                        0,
+                                        0
+                                    ],
+                                    "valign": "middle",
+                                    "halign": "center"
+                                },
+                                "children": {},
+                                "layout": {
+                                    "x_anchor": "left",
+                                    "y_anchor": "top",
+                                    "absolute": false,
+                                    "x_offset": 0.83,
+                                    "y_offset": -0.89
+                                }
+                            },
+                            "label_26": {
+                                "type": "Label",
+                                "data": {
+                                    "anchor": [
+                                        0,
+                                        1
+                                    ],
+                                    "size": [
+                                        33,
+                                        34
+                                    ],
+                                    "position": [
+                                        560,
+                                        0
+                                    ],
+                                    "angle": 0,
+                                    "visible": true,
+                                    "font": "podkovaBold36",
+                                    "text": "0",
+                                    "foreground": "#ffffffff",
+                                    "background": "#00000000",
+                                    "padding": [
+                                        0,
+                                        0,
+                                        0,
+                                        0
+                                    ],
+                                    "valign": "middle",
+                                    "halign": "center"
+                                },
+                                "children": {},
+                                "layout": {
+                                    "x_anchor": "left",
+                                    "y_anchor": "top",
+                                    "absolute": false,
+                                    "x_offset": 0.94,
+                                    "y_offset": -0.89
+                                }
+                            }
+                        },
+                        "layout": {
+                            "x_anchor": "left",
+                            "y_anchor": "top",
+                            "absolute": false,
+                            "x_offset": 0.49,
+                            "y_offset": -0.63
+                        }
+                    },
+                    "buttonClose": {
+                        "type": "Button",
+                        "format": {
+                            "type": "Anchored"
+                        },
+                        "data": {
+                            "anchor": [
+                                0,
+                                1
+                            ],
+                            "size": [
+                                34,
+                                34
+                            ],
+                            "angle": 0,
+                            "position": [
+                                707,
+                                485
+                            ],
+                            "visible": true,
+                            "upnode": "up"
+                        },
+                        "children": {
+                            "up": {
+                                "type": "Node",
+                                "format": {
+                                    "type": "Anchored"
+                                },
+                                "data": {
+                                    "anchor": [
+                                        0,
+                                        1
+                                    ],
+                                    "size": [
+                                        34,
+                                        34
+                                    ],
+                                    "angle": 0,
+                                    "position": [
+                                        0,
+                                        0
+                                    ],
+                                    "visible": true
+                                },
+                                "children": {
+                                    "discardTilecloseIcon": {
+                                        "type": "Image",
+                                        "data": {
+                                            "texture": "discardTilecloseIcon",
+                                            "anchor": [
+                                                0.5,
+                                                0.5
+                                            ],
+                                            "size": [
+                                                34,
+                                                34
+                                            ],
+                                            "angle": 0,
+                                            "position": [
+                                                0,
+                                                0
+                                            ],
+                                            "visible": true
+                                        },
+                                        "layout": {
+                                            "x_anchor": "left",
+                                            "y_anchor": "top",
+                                            "absolute": false,
+                                            "x_offset": 0.5,
+                                            "y_offset": -0.5
+                                        }
+                                    }
+                                },
+                                "layout": {
+                                    "x_anchor": "left",
+                                    "y_anchor": "top",
+                                    "absolute": false,
+                                    "x_offset": 0,
+                                    "y_offset": 0
+                                }
+                            }
+                        },
+                        "layout": {
+                            "x_anchor": "left",
+                            "y_anchor": "top",
+                            "absolute": false,
+                            "x_offset": 0.93,
+                            "y_offset": -0.04
+                        }
+                    },
+                    "DiscardedTileTitle": {
+                        "type": "Image",
+                        "data": {
+                            "texture": "DiscardedTileTitle",
+                            "anchor": [
+                                0.5,
+                                0.5
+                            ],
+                            "size": [
+                                360,
+                                40
+                            ],
+                            "angle": 0,
+                            "position": [
+                                202,
+                                479
+                            ],
+                            "visible": true
+                        },
+                        "layout": {
+                            "x_anchor": "center",
+                            "y_anchor": "top",
+                            "absolute": false,
+                            "x_offset": 0,
+                            "y_offset": -0.07
+                        }
+                    }
+                },
+                "layout": {
+                    "x_anchor": "center",
+                    "y_anchor": "top",
+                    "absolute": false,
+                    "x_offset": 0,
+                    "y_offset": -0.13
+                }
+            }
+
+        }
+    }
+}
