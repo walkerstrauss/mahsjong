@@ -94,7 +94,6 @@ public:
             _discardPile.push_back(_topTile);
             getTopTile()->topTile = false;
         }
-        tile->pos = cugl::Vec2(990,520);
         tile->topTile = true;
         _discardMap.insert({tile->toString() + " " + std::to_string(tile->_id), tile});
         _topTile = tile;
@@ -125,7 +124,7 @@ public:
     /**
      * Method to render the top card of the discard pile
      */
-//    void render(const std::shared_ptr<cugl::graphics::SpriteBatch>& batch);
+    void draw(const std::shared_ptr<cugl::graphics::SpriteBatch>& batch);
     
     /**
      * Removes top tile in discard pile

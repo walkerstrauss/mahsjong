@@ -1,121 +1,106 @@
 {
     "textures": {
-        "facedown": {
-            "file": "textures/facedown.png"
+        "debuffed": {
+            "file": "textures/tilesHand/debuffed.png"
         },
         "one of dot": {
-            "file": "textures/one_of_dot.png"
+            "file": "textures/tilesHand/one_of_dot.png"
         },
         "one of bamboo": {
-            "file": "textures/one_of_bamboo.png"
+            "file": "textures/tilesHand/one_of_bamboo.png"
         },
         "one of crak": {
-            "file": "textures/one_of_crak.png"
+            "file": "textures/tilesHand/one_of_crak.png"
         },
         "two of dot": {
-            "file": "textures/two_of_dot.png"
+            "file": "textures/tilesHand/two_of_dot.png"
         },
         "two of bamboo": {
-            "file": "textures/two_of_bamboo.png"
+            "file": "textures/tilesHand/two_of_bamboo.png"
         },
         "two of crak": {
-            "file": "textures/two_of_crak.png"
+            "file": "textures/tilesHand/two_of_crak.png"
         },
         "three of dot": {
-            "file": "textures/three_of_dot.png"
+            "file": "textures/tilesHand/three_of_dot.png"
         },
         "three of bamboo": {
-            "file": "textures/three_of_bamboo.png"
+            "file": "textures/tilesHand/three_of_bamboo.png"
         },
         "three of crak": {
-            "file": "textures/three_of_crak.png"
+            "file": "textures/tilesHand/three_of_crak.png"
         },
         "four of dot": {
-            "file": "textures/four_of_dot.png"
+            "file": "textures/tilesHand/four_of_dot.png"
         },
         "four of bamboo": {
-            "file": "textures/four_of_bamboo.png"
+            "file": "textures/tilesHand/four_of_bamboo.png"
         },
         "four of crak": {
-            "file": "textures/four_of_crak.png"
+            "file": "textures/tilesHand/four_of_crak.png"
         },
         "five of dot": {
-            "file": "textures/five_of_dot.png"
+            "file": "textures/tilesHand/five_of_dot.png"
         },
         "five of bamboo": {
-            "file": "textures/five_of_bamboo.png"
+            "file": "textures/tilesHand/five_of_bamboo.png"
         },
         "five of crak": {
-            "file": "textures/five_of_crak.png"
+            "file": "textures/tilesHand/five_of_crak.png"
         },
         "six of dot": {
-            "file": "textures/six_of_dot.png"
+            "file": "textures/tilesHand/six_of_dot.png"
         },
         "six of bamboo": {
-            "file": "textures/six_of_bamboo.png"
+            "file": "textures/tilesHand/six_of_bamboo.png"
         },
         "six of crak": {
-            "file": "textures/six_of_crak.png"
+            "file": "textures/tilesHand/six_of_crak.png"
         },
         "seven of dot": {
-            "file": "textures/seven_of_dot.png"
+            "file": "textures/tilesHand/seven_of_dot.png"
         },
         "seven of bamboo": {
-            "file": "textures/seven_of_bamboo.png"
+            "file": "textures/tilesHand/seven_of_bamboo.png"
         },
         "seven of crak": {
-            "file": "textures/seven_of_crak.png"
+            "file": "textures/tilesHand/seven_of_crak.png"
         },
         "eight of dot": {
-            "file": "textures/eight_of_dot.png"
+            "file": "textures/tilesHand/eight_of_dot.png"
         },
         "eight of bamboo": {
-            "file": "textures/eight_of_bamboo.png"
+            "file": "textures/tilesHand/eight_of_bamboo.png"
         },
         "eight of crak": {
-            "file": "textures/eight_of_crak.png"
+            "file": "textures/tilesHand/eight_of_crak.png"
         },
         "nine of dot": {
-            "file": "textures/nine_of_dot.png"
+            "file": "textures/tilesHand/nine_of_dot.png"
         },
         "nine of bamboo": {
-            "file": "textures/nine_of_bamboo.png"
+            "file": "textures/tilesHand/nine_of_bamboo.png"
         },
         "nine of crak": {
-            "file": "textures/nine_of_crak.png"
+            "file": "textures/tilesHand/nine_of_crak.png"
         },
-        "one of wild suit": {
-            "file": "textures/wild_1.png"
+        "rooster of celestial": {
+            "file": "textures/celestialHand/rooster_hand.png"
         },
-        "two of wild suit": {
-            "file": "textures/wild_2.png"
+        "ox of celestial": {
+            "file": "textures/celestialHand/ox_hand.png"
         },
-        "three of wild suit": {
-            "file": "textures/wild_3.png"
+        "rabbit of celestial": {
+            "file": "textures/celestialHand/rabbit_hand.png"
         },
-        "four of wild suit": {
-            "file": "textures/wild_4.png"
+        "snake of celestial": {
+            "file": "textures/celestialHand/snake_hand.png"
         },
-        "five of wild suit": {
-            "file": "textures/wild_5.png"
+        "monkey of celestial": {
+            "file": "textures/celestialHand/monkey_hand.png"
         },
-        "six of wild suit": {
-            "file": "textures/wild_6.png"
-        },
-        "seven of wild suit": {
-            "file": "textures/wild_7.png"
-        },
-        "eight of wild suit": {
-            "file": "textures/wild_8.png"
-        },
-        "nine of wild suit" : {
-            "file": "textures/wild_9.png"
-        },
-        "wild rank of wild suit": {
-            "file": "textures/wild_rank_wild_suit.png"
-        },
-        "grandma text":{
-            "file": "textures/grandma-text.png"
+        "rat of celestial": {
+          "file": "textures/celestialHand/rat_hand.png"
         },
         "background": {
             "file": "textures/landing/background.png"
@@ -129,29 +114,11 @@
         "transparentBackImage": {
             "file": "textures/landing/rect_transparent.png"
         },
-        "background_menu": {
-            "file": "textures/menu/background_menu.png"
-        },
-        "button": {
-            "file": "textures/menu/button_menu.png"
-        },
-        "setting_button": {
-            "file": "textures/menu/setting_button.png"
-        },
-        "grandma_image": {
-            "file": "textures/menu/grandma-happy.png"
-        },
-        "menu-color-background": {
-            "file": "textures/menu/menu-color-background.png"
-        },
         "background_gameplay": {
             "file": "textures/gameplay/background_gameplay.png"
         },
         "pause": {
             "file": "textures/gameplay/pause.png"
-        },
-        "back": {
-            "file": "textures/gameplay/back.png"
         },
         "backgroundTable": {
             "file": "textures/gameplay/backgroundTable.png"
@@ -168,74 +135,53 @@
         "tilesample": {
             "file": "textures/gameplay/tilesample.png"
         },
-        "tilesample 2":{
-            "file":"textures/gameplay/tilesample 2.png"
+        "tilesample 2": {
+            "file": "textures/gameplay/tilesample.png"
         },
-        "button_tileset":{
-            "file":"textures/gameplay/button_tileset.png"
+        "button_tileset": {
+            "file": "textures/gameplay/button_tileset.png"
+        },
+        "displayed-set-icon": {
+            "file": "textures/gameplay/displayed-set-icon.png"
+        },
+        "displayed-set-icon-expanded": {
+            "file": "textures/gameplay/displayed-set-icon-expanded.png"
         },
         "background_pause": {
             "file": "textures/pause/background_pause.png"
         },
-        "button_w_icon1":{
-            "file":"textures/pause/button_w_icon1.png"
+        "button_w_icon1": {
+            "file": "textures/pause/button_w_icon1.png"
         },
-        "cancel":{
-            "file":"textures/pause/cancel.png"
+        "cancel": {
+            "file": "textures/pause/cancel.png"
         },
-        "continue_pause":{
-            "file":"textures/pause/continue_pause.png"
+        "continue_pause": {
+            "file": "textures/pause/continue_pause.png"
         },
-        "main_pause":{
-            "file":"textures/pause/main_pause.png"
+        "main_pause": {
+            "file": "textures/pause/main_pause.png"
         },
-        "notification_box1":{
-            "file":"textures/pause/notification_box1.png"
+        "notification_box1": {
+            "file": "textures/pause/notification_box1.png"
         },
-        "pause_logo_image":{
-            "file":"textures/pause/pause_logo_image.png"
+        "pause_logo_image": {
+            "file": "textures/pause/pause_logo_image.png"
         },
-        "replay_pause":{
-            "file":"textures/pause/replay_pause.png"
+        "replay_pause": {
+            "file": "textures/pause/replay_pause.png"
         },
-        "setting_pause":{
-            "file":"textures/pause/setting_pause.png"
+        "setting_pause": {
+            "file": "textures/pause/setting_pause.png"
         },
         "button": {
-            "file":  "textures/button.png"
+            "file": "textures/button.png"
         },
         "frame": {
-            "file":  "textures/frame.png"
+            "file": "textures/frame.png"
         },
         "left": {
-            "file":  "textures/left_arrow.png"
-        },
-        "background_hc":{
-            "file":"textures/hostAndClient/background_hc.png"
-        },
-        "cat":{
-            "file":"textures/hostAndClient/cat.png"
-        },
-        "Client_view_image":{
-            "file":"textures/hostAndClient/Client_view_image.png"
-        },
-        "grandpa":{
-            "file":"textures/hostAndClient/grandpa.png"
-        },
-        "hcButton":{
-            "file":"textures/hostAndClient/hcButton.png"
-        },
-        "hctitle":{
-            "file":"textures/hostAndClient/hctitle.png"
-        },
-        "Host_view_image":{
-            "file":"textures/hostAndClient/Host_view_image.png"
-        },
-        "playerImage":{
-            "file":"textures/hostAndClient/playerImage.png"
-        },
-        "textbox":{
-            "file":"textures/hostAndClient/textbox.png"
+            "file": "textures/left_arrow.png"
         },
         "yellow_dragon_left": {
             "file": "textures/setting/yellow_dragon_left.png"
@@ -258,275 +204,883 @@
         "Setting_logo_image": {
             "file": "textures/setting/Setting_logo_image.png"
         },
-        "notification_box2":{
+        "notification_box2": {
             "file": "textures/setting/notification_box2.png"
         },
-        "grandma_pixel":{
+        "grandma_pixel": {
             "file": "textures/setting/grandma_pixel.png"
         },
-        "grandmaKnob":{
+        "grandmaKnob": {
             "file": "textures/setting/grandmaKnob.png"
         },
-        "knob":{
+        "knob": {
             "file": "textures/setting/knob.png"
         },
         "slider": {
             "file": "textures/setting/slider.png"
         },
-        "back_tileset":{
+        "back_tileset": {
             "file": "textures/tilesetui/back_tileset.png"
         },
-        "background_tilesetui":{
+        "background_tilesetui": {
             "file": "textures/tilesetui/background_tilesetui.png"
         },
         "table": {
             "file": "textures/tilesetui/table.png"
+        },
+        "background_score_win": {
+            "file": "textures/score_win/background_score_win.png"
+        },
+        "Victory__logo_image": {
+            "file": "textures/score_win/Victory__logo_image.png"
+        },
+        "button_score": {
+            "file": "textures/score_win/button_score.png"
+        },
+        "button_point": {
+            "file": "textures/score_win/button_point.png"
+        },
+        "background_score_defeat": {
+            "file": "textures/score_defeat/background_score_defeat.png"
+        },
+        "Defeated_logo_image": {
+            "file": "textures/score_defeat/Defeated_logo_image.png"
+        },
+        "grandma_cry_image": {
+            "file": "textures/score_defeat/grandma_cry_image.png"
+        },
+        "settingIcon": {
+            "file": "textures/cornerIcon/settingIcon.png"
+        },
+        "menuBackground": {
+            "file": "textures/menu/menuBackground.png"
+        },
+        "menuButtonDown": {
+            "file": "textures/menu/menuButtonDown.png"
+        },
+        "menuButtonUp": {
+            "file": "textures/menu/menuButtonUp.png"
+        },
+        "menuGrandma": {
+            "file": "textures/menu/menuGrandma.png"
+        },
+        "setting_button": {
+            "file": "textures/menu/setting_button.png"
+        },
+        "continueButton": {
+            "file": "textures/pause/continueButton.png"
+        },
+        "mainButton": {
+            "file": "textures/pause/mainButton.png"
+        },
+        "pauseBoard": {
+            "file": "textures/pause/pauseBoard.png"
+        },
+        "pauseexitButton": {
+            "file": "textures/pause/pauseexitButton.png"
+        },
+        "pauseGrandma": {
+            "file": "textures/pause/pauseGrandma.png"
+        },
+        "pauseShade": {
+            "file": "textures/pause/pauseShade.png"
+        },
+        "pausetitleBackground": {
+            "file": "textures/pause/pausetitleBackground.png"
+        },
+        "settingButtonBig": {
+            "file": "textures/pause/settingButtonBig.png"
+        },
+        "closeIcon": {
+            "file": "textures/setting/closeIcon.png"
+        },
+        "exitButton": {
+            "file": "textures/setting/exitButton.png"
+        },
+        "settingBoard": {
+            "file": "textures/setting/settingBoard.png"
+        },
+        "settingGrandma": {
+            "file": "textures/setting/settingGrandma.png"
+        },
+        "shade": {
+            "file": "textures/setting/shade.png"
+        },
+        "soundButton": {
+            "file": "textures/setting/soundButton.png"
+        },
+        "titleBackground": {
+            "file": "textures/setting/titleBackground.png"
+        },
+        "actionTileSection": {
+            "file": "textures/gameplay/actionTileSection.png"
+        },
+        "discardCanButton": {
+            "file": "textures/gameplay/discardCanButton.png"
+        },
+        "displaytileSample": {
+            "file": "textures/gameplay/displaytileSample.png"
+        },
+        "drag-to-discard-tile": {
+            "file": "textures/gameplay/drag-to-discard-tile.png"
+        },
+        "infoIcon": {
+            "file": "textures/gameplay/infoIcon.png"
+        },
+        "win-sheet": {
+            "file": "textures/animations/win.png"
+        },
+        "1": {
+            "file": "textures/tilesetui/1.png"
+        },
+        "2": {
+            "file": "textures/tilesetui/2.png"
+        },
+        "3": {
+            "file": "textures/tilesetui/3.png"
+        },
+        "4": {
+            "file": "textures/tilesetui/4.png"
+        },
+        "5": {
+            "file": "textures/tilesetui/5.png"
+        },
+        "6": {
+            "file": "textures/tilesetui/6.png"
+        },
+        "7": {
+            "file": "textures/tilesetui/7.png"
+        },
+        "8": {
+            "file": "textures/tilesetui/8.png"
+        },
+        "9": {
+            "file": "textures/tilesetui/9.png"
+        },
+        "10": {
+            "file": "textures/tilesetui/10.png"
+        },
+        "11": {
+            "file": "textures/tilesetui/11.png"
+        },
+        "12": {
+            "file": "textures/tilesetui/12.png"
+        },
+        "13": {
+            "file": "textures/tilesetui/13.png"
+        },
+        "14": {
+            "file": "textures/tilesetui/14.png"
+        },
+        "15": {
+            "file": "textures/tilesetui/15.png"
+        },
+        "16": {
+            "file": "textures/tilesetui/16.png"
+        },
+        "17": {
+            "file": "textures/tilesetui/17.png"
+        },
+        "18": {
+            "file": "textures/tilesetui/18.png"
+        },
+        "19": {
+            "file": "textures/tilesetui/19.png"
+        },
+        "20": {
+            "file": "textures/tilesetui/20.png"
+        },
+        "21": {
+            "file": "textures/tilesetui/21.png"
+        },
+        "22": {
+            "file": "textures/tilesetui/22.png"
+        },
+        "23": {
+            "file": "textures/tilesetui/23.png"
+        },
+        "24": {
+            "file": "textures/tilesetui/24.png"
+        },
+        "25": {
+            "file": "textures/tilesetui/25.png"
+        },
+        "26": {
+            "file": "textures/tilesetui/26.png"
+        },
+        "27": {
+            "file": "textures/tilesetui/27.png"
+        },
+        "discardedtileBoard": {
+            "file": "textures/tilesetui/discardedtileBoard.png"
+        },
+        "DiscardedTileTitle": {
+            "file": "textures/tilesetui/DiscardedTileTitle.png"
+        },
+        "discardTilecloseIcon": {
+            "file": "textures/tilesetui/discardTilecloseIcon.png"
+        },
+        "DiscardShade": {
+            "file": "textures/tilesetui/discardTileShade.png"
+        },
+        "overlay-background": {
+            "file": "textures/pileui/overlay-background.png"
+        },
+        "select": {
+            "file": "textures/pileui/select.png"
+        },
+        "settingBoard": {
+            "file": "textures/setting/settingBoard.png"
+        },
+        "settingGrandma": {
+            "file": "textures/setting/settingGrandma.png"
+        },
+        "closeIcon": {
+            "file": "textures/setting/closeIcon.png"
+        },
+        "exitButton": {
+            "file": "textures/setting/exitButton.png"
+        },
+        "soundButton": {
+            "file": "textures/setting/soundButton.png"
+        },
+        "titleBackground": {
+            "file": "textures/setting/titleBackground.png"
+        },
+        "settingShade": {
+            "file": "textures/setting/shade.png"
+        },
+        "pauseexitButton": {
+            "file": "textures/pause/pauseexitButton.png"
+        },
+        "background_lose": {
+            "file": "textures/score_defeat/background_lose.png"
+        },
+        "background_win_lose": {
+            "file": "textures/score_defeat/background_win_lose.png"
+        },
+        "defeated_board": {
+            "file": "textures/score_defeat/defeated_board.png"
+        },
+        "Defeated_logo": {
+            "file": "textures/score_defeat/Defeated_logo.png"
+        },
+        "defeat_main": {
+            "file": "textures/score_defeat/main.png"
+        },
+        "Main_word": {
+            "file": "textures/score_defeat/Main_word.png"
+        },
+        "tilesample": {
+            "file": "textures/score_defeat/tilesample.png"
+        },
+        "Victory_logo": {
+            "file": "textures/score_win/Victory_logo.png"
+        },
+        "win_board": {
+            "file": "textures/score_win/win_board.png"
+        },
+        "win_main": {
+            "file": "textures/score_win/main.png"
+        },
+        "actionTileSection": {
+            "file": "textures/gameplay/actionTileSection.png"
+        },
+        "discardCanButton": {
+            "file": "textures/gameplay/discardCanButton.png"
+        },
+        "displaytileSample": {
+            "file": "textures/gameplay/displaytileSample.png"
+        },
+        "infoIconButton": {
+            "file": "textures/gameplay/infoIcon.png"
+        },
+        "opponentTile": {
+            "file": "textures/gameplay/opponentTile.png"
+        },
+        "pileTile": {
+            "file": "textures/gameplay/pileTile.png"
+        },
+        "playerSampleTile": {
+            "file": "textures/gameplay/playerSampleTile.png"
+        },
+        "pauseIcon": {
+            "file": "textures/gameplay/pauseButton.png"
+        },
+        "endTurnButton": {
+            "file": "textures/gameplay/endTurnButton.png"
+        },
+        "host1-background": {
+            "file": "textures/host1/host1-background.png"
+        },
+        "leave-button": {
+            "file": "textures/host1/leave-button.png"
+        },
+        "hoststart": {
+            "file": "textures/host1/startButton.png"
+        },
+        "player2": {
+            "file": "textures/host1/player2.png"
+        },
+        "host1-checkbox": {
+            "file": "textures/host1/host1-checkbox.png"
+        },
+        "host1-crown": {
+            "file": "textures/host1/host1-crown.png"
+        },
+        "host1-exit-button": {
+            "file": "textures/host1/host1-exit-button.png"
+        },
+        "host1-grandma": {
+            "file": "textures/host1/host1-grandma.png"
+        },
+        "host1-player1-button": {
+            "file": "textures/host1/host1-player1-button.png"
+        },
+        "host1-playerboard-background": {
+            "file": "textures/host1/host1-playerboard-background.png"
+        },
+        "host1-roomid-tile": {
+            "file": "textures/host1/host1-roomid-tile.png"
+        },
+        "host1-waiting-button": {
+            "file": "textures/host1/waitingButton.png"
+        },
+        "host1-waitingroom-background": {
+            "file": "textures/host1/host1-waitingroom-background.png"
+        },
+        "host1-roomid": {
+            "file": "textures/host1/host1-roomid.png"
+        },
+        "host1-waitingroom": {
+            "file": "textures/host1/host1-waitingroom.png"
+        },
+        "host1-player1": {
+            "file": "textures/host1/host1-player1.png"
+        },
+        "host1-start-button": {
+            "file": "textures/host1/start.png"
+        },
+        "client1-background": {
+            "file": "textures/client1/client1-background.png"
+        },
+        "prepareButton": {
+            "file": "textures/client1/prepare-button.png"
+        },
+        "client1-board": {
+            "file": "textures/client1/client1-board.png"
+        },
+        "client1-cancel-box": {
+            "file": "textures/client1/client1-cancel-box.png"
+        },
+        "client1-confirm-button": {
+            "file": "textures/client1/client1-confirm-button.png"
+        },
+        "client1-cancel-button": {
+            "file": "textures/client1/client1-cancel-button.png"
+        },
+        "client1-clear-button": {
+            "file": "textures/client1/clearButton.png"
+        },
+        "client1-gameid-blank": {
+            "file": "textures/client1/client1-gameid-blank.png"
+        },
+        "client1-gameid-tile": {
+            "file": "textures/client1/client1-gameid-tile.png"
+        },
+        "client1-gameid-tile1": {
+            "file": "textures/client1/client1-gameid-tile1.png"
+        },
+        "client1-gameid-tile2": {
+            "file": "textures/client1/client1-gameid-tile2.png"
+        },
+        "client1-gameid-tile3": {
+            "file": "textures/client1/client1-gameid-tile3.png"
+        },
+        "client1-gameid-tile4": {
+            "file": "textures/client1/client1-gameid-tile4.png"
+        },
+        "client1-gameid-tile5": {
+            "file": "textures/client1/client1-gameid-tile5.png"
+        },
+        "client1-gameid-tile6": {
+            "file": "textures/client1/client1-gameid-tile6.png"
+        },
+        "client1-gameid-tile7": {
+            "file": "textures/client1/client1-gameid-tile7.png"
+        },
+        "client1-gameid-tile8": {
+            "file": "textures/client1/client1-gameid-tile8.png"
+        },
+        "client1-gameid-tile9": {
+            "file": "textures/client1/client1-gameid-tile9.png"
+        },
+        "client1-gameid-tile10": {
+            "file": "textures/client1/client1-gameid-tile10.png"
+        },
+        "client1-gameid-tile11": {
+            "file": "textures/client1/client1-gameid-tile11.png"
+        },
+        "client1-gameid-tile12": {
+            "file": "textures/client1/client1-gameid-tile12.png"
+        },
+        "client1-gameid-tile13": {
+            "file": "textures/client1/client1-gameid-tile13.png"
+        },
+        "client1-gameid-tile14": {
+            "file": "textures/client1/client1-gameid-tile14.png"
+        },
+        "client1-gameid-tile15": {
+            "file": "textures/client1/client1-gameid-tile15.png"
+        },
+        "client1-gameid-tile16": {
+            "file": "textures/client1/client1-gameid-tile16.png"
+        },
+        "client1-gameid-tile17": {
+            "file": "textures/client1/client1-gameid-tile17.png"
+        },
+        "client1-gameid-tile18": {
+            "file": "textures/client1/client1-gameid-tile18.png"
+        },
+        "client1-gameid-tile19": {
+            "file": "textures/client1/client1-gameid-tile19.png"
+        },
+        "client1-gameid-tile20": {
+            "file": "textures/client1/client1-gameid-tile20.png"
+        },
+        "client1-gameid-tile21": {
+            "file": "textures/client1/client1-gameid-tile21.png"
+        },
+        "client1-gameid-tile22": {
+            "file": "textures/client1/client1-gameid-tile22.png"
+        },
+        "client1-gameid-tile23": {
+            "file": "textures/client1/client1-gameid-tile23.png"
+        },
+        "client1-gameid-tile24": {
+            "file": "textures/client1/client1-gameid-tile24.png"
+        },
+        "client1-gameid-tile25": {
+            "file": "textures/client1/client1-gameid-tile25.png"
+        },
+        "client1-gameid-tile26": {
+            "file": "textures/client1/client1-gameid-tile26.png"
+        },
+        "client1-gameid-tile27": {
+            "file": "textures/client1/client1-gameid-tile27.png"
+        },
+        "client1-gameid-onedot": {
+            "file": "textures/client1/one_of_dot.png"
+        },
+        "client1-gameid": {
+            "file": "textures/client1/client1-gameid.png"
+        },
+        "client1-rabbit": {
+            "file": "textures/client1/client1-rabbit.png"
+        },
+        "drag-to-hand-area": {
+            "file": "textures/gameplay/drag-to-hand-area.png"
+        },
+        "discard-can": {
+            "file": "textures/gameplay/discard-can.png"
+        },
+        "discarded-rec": {
+            "file": "textures/gameplay/discard-rec.png"
+        },
+        "gameplay-background": {
+            "file": "textures/gameplay/gameplay-background.png"
+        },
+        "hamburger-menu": {
+            "file": "textures/gameplay/hamburger-menu.png"
+        },
+        "opponent-hand": {
+            "file": "textures/gameplay/opponent-hand.png"
+        },
+        "tile-left": {
+            "file": "textures/gameplay/tile-left.png"
+        },
+        "lose-sheet": {
+            "file": "textures/animations/lose.png"
+        },
+        "pong-sheet": {
+            "file": "textures/animations/pong.png"
+        },
+        "chow-sheet": {
+            "file": "textures/animations/chow.png"
+        },
+        "turn-sheet": {
+            "file": "textures/animations/turn_indicator.png"
+        },
+        "grandmaMain":{
+            "file": "textures/animations/grandmaMain.png"
+        },
+        "setting-icon":{
+            "file":"textures/gameplay/setting-icon.png"
+        },
+        "information-icon":{
+            "file":"textures/gameplay/information-icon.png"
+        },
+        "play-area":{
+            "file": "textures/gameplay/play-area.png"
+        },
+        "playerhand-button":{
+            "file": "textures/gameplay/playerhand-button.png"
+        },
+        "tile-back":{
+            "file": "textures/gameplay/tile-back.png"
+        },
+        "opponent-hand-rec":{
+            "file":"textures/gameplay/opponent-hand-rec.png"
+        },
+        "opponent-hand-indicator":{
+            "file":"textures/gameplay/opponent-hand-indicator.png"
+        },
+        "playerhand-indicator":{
+            "file":"textures/gameplay/playerhand-indicator.png"
         }
     },
     "fonts": {
         "pixel32": {
-            "file":     "fonts/LightPixel7.ttf",
-            "size":     32
+          "file": "fonts/LightPixel7.ttf",
+          "size": 32
         },
         "pixel32_small": {
-            "file":     "fonts/LightPixel7.ttf",
-            "size":     16
+          "file": "fonts/LightPixel7.ttf",
+          "size": 16
         },
-        "sansBold20":{
-            "file":     "fonts/LightPixel7.ttf",
-            "size":     20
+        "sansBold20": {
+          "file": "fonts/LightPixel7.ttf",
+          "size": 20
         },
         "sansBold24": {
-            "file":     "fonts/LightPixel7.ttf",
-            "size":     24
+          "file": "fonts/LightPixel7.ttf",
+          "size": 24
         },
         "sansBold32": {
-            "file":     "fonts/LightPixel7.ttf",
-            "size":     32
+          "file": "fonts/LightPixel7.ttf",
+          "size": 32
         },
         "pixelify sansBold36": {
-            "file":     "fonts/LightPixel7.ttf",
-            "size":     36
+          "file": "fonts/LightPixel7.ttf",
+          "size": 36
         },
         "gyparody": {
-            "file":     "fonts/LightPixel7.ttf",
-            "size": 32
+          "file": "fonts/LightPixel7.ttf",
+          "size": 32
+        },
+        "podkovaBold24": {
+            "file": "fonts/Podkova-Bold.ttf",
+            "size": 24
+        },
+        "podkovaBold32":{
+            "file":"fonts/Podkova-Bold.ttf",
+            "size":31
+        },
+        "podkovaBold36": {
+            "file": "fonts/Podkova-Bold.ttf",
+            "size": 36
         }
     },
-    "scene2s":{
-        "matchscene":{
-            "type":"Node",
-            "format":{
-                "type":"Anchored"
-            },
-            "children":{
-                "gameplayscene":{
-                    "type":"Widget",
-                    "format":{
-                        "type":"Anchored"
-                    },
-                    "data":{
-                        "key":"technical_gamescene",
-                        "variables":{
-                            "size":[1280,720]
-                        }
-                    }
-                }
+  "scene2s": {
+    "matchscene": {
+      "type": "Node",
+      "format": {
+        "type": "Anchored"
+      },
+      "children": {
+        "gameplayscene": {
+          "type": "Widget",
+          "format": {
+            "type": "Anchored"
+          },
+          "data": {
+            "key": "gameplayscene",
+            "variables": {
+              "size": [ 1280, 720 ]
             }
-        },
-        "home":{
-            "type":"Node",
-            "format":{
-                "type":"Anchored"
-            },
-            "children":{
-                "home":{
-                    "type":"Widget",
-                    "format":{
-                        "type":"Anchored"
-                    },
-                    "data":{
-                        "key":"home",
-                        "variables":{
-                            "size":[1280,720]
-                        }
-                    }
-                }
-            }
-        },
-        "pause":{
-            "type":"Node",
-            "format":{
-                "type":"Anchored"
-            },
-            "children":{
-                "pausescene":{
-                    "type":"Widget",
-                    "format":{
-                        "type":"Anchored"
-                    },
-                    "data":{
-                        "key":"pausescene",
-                        "variables":{
-                            "size":[1280,720]
-                        }
-                    }
-                }
-            }
-        },
-        "settings":{
-            "type":"Node",
-            "format":{
-                "type":"Anchored"
-            },
-            "children":{
-                "settingscene":{
-                    "type":"Widget",
-                    "format":{
-                        "type":"Anchored"
-                    },
-                    "data":{
-                        "key":"settingscene",
-                        "variables":{
-                            "size":[1280,720]
-                        }
-                    }
-                }
-            }
-        },
-        "tilesetui":{
-            "type":"Node",
-            "format":{
-                "type":"Anchored"
-            },
-            "children":{
-                "tilesetscene":{
-                    "type":"Widget",
-                    "format":{
-                        "type":"Anchored"
-                    },
-                    "data":{
-                        "key":"tilesetscene",
-                        "variables":{
-                            "size":[1280,720]
-                        }
-                    }
-                }
-            }
-        },
-        "menu": {
-            "type"      : "Node",
-            "format"    : {
-                "type"        : "Float",
-                "orientation" : "vertical",
-                "x_alignment" : "center",
-                "y_alignment" : "middle"
-            },
-            "children":  {
-                "host": {
-                    "type"   : "Widget",
-                    "data"   : {
-                        "key"     : "textbutton",
-                        "variables" : {
-                            "size": [300,100],
-                            "text": "Host Game",
-                            "color": "#000088"
-                        }
-                    },
-                    "layout" : {
-                        "priority" : 1,
-                        "padding"  : [0,0,60,150]
-                    }
-                },
-                "join": {
-                    "type"   : "Widget",
-                    "data"   : {
-                        "key"     : "textbutton",
-                        "variables" : {
-                            "size": [300,100],
-                            "text": "Join Game",
-                            "color": "#000088"
-                        }
-                    },
-                    "layout" : {
-                        "priority" : 1,
-                        "padding"  : [0,0,60,0]
-                    }
-                }
-            }
-        },
-        "host": {
-            "type"      : "Node",
-            "format"    : {
-                "type"        : "Anchored"
-            },
-            "children" : {
-                "hostscene":{
-                    "type"      : "Widget",
-                    "format"    : {
-                        "type"        : "Anchored"
-                    },
-                    "data":{
-                        "variables": {
-                            "size": [1280,720]
-                        },
-                        "key":"hostscene"
-                    }
-                }
-            }
-        },
-        "client": {
-            "type"      : "Node",
-            "format"    : {
-                "type"        : "Anchored"
-            },
-            "children" : {
-                "clientscene":{
-                    "type"      : "Widget",
-                    "format"    : {
-                        "type"        : "Anchored"
-                    },
-                    "data":{
-                        "variables": {
-                            "size": [1280,720]
-                        },
-                        "key":"clientscene"
-                    }
-                }
-            }
+          }
         }
+      }
     },
-    "widgets": {
-            "colorbutton" : "widgets/colorbutton.json",
-            "textbutton" : "widgets/textbutton.json",
-            "textfield" : "widgets/textfield.json",
-            "labelbox" : "widgets/labelbox.json",
-            "landingscene": "widgets/scene/landingscene.json",
-            "landingTextbutton": "widgets/button/landingTextbutton.json",
-            "home": "widgets/scene/home.json",
-            "hostscene": "widgets/scene/hostscene.json",
-            "clientscene": "widgets/scene/clientscene.json",
-            "menubutton": "widgets/button/menubutton.json",
-            "settingbutton": "widgets/icon/settingicon.json",
-            "pausescene": "widgets/scene/pausescene.json",
-            "pausebutton": "widgets/button/pausebutton.json",
-            "gameplayscene": "widgets/scene/gameplayscene.json",
-            "technical_gamescene": "widgets/scene/technical_gamescene.json",
-            "gameplayDisplaytile": "widgets/tile/gameplayDisplaytile.json",
-            "gameplayDisplaytileButton": "widgets/tile/gameplayDisplaytileButton.json",
-            "playhand": "widgets/tile/playhand.json",
-            "opponentHand": "widgets/tile/opponentHand.json",
-            "opponentHandtile": "widgets/tile/opponentHandtile.json",
-            "scorewinscene": "widgets/scene/scorewinscene.json",
-            "scorebutton_main": "widgets/button/scorebutton_main.json",
-            "scorepointbutton": "widgets/button/scorepointbutton.json",
-            "scoredefeatscene": "widgets/scene/scoredefeatscene.json",
-            "settingscene": "widgets/scene/settingscene.json",
-            "settingbutton_name": "widgets/button/settingbutton_name.json",
-            "settingbutton_onoff": "widgets/button/settingbutton_onoff.json",
-            "tilesetscene": "widgets/scene/tilesetscene.json"
+    "home": {
+      "type": "Node",
+      "format": {
+        "type": "Anchored"
+      },
+      "children": {
+        "home": {
+          "type": "Widget",
+          "format": {
+            "type": "Anchored"
+          },
+          "data": {
+            "key": "home",
+            "variables": {
+              "size": [ 1280, 720 ]
+            }
+          }
+
+        }
+      }
     },
-    "jsons": {
-        "server": "json/server.json"
+    "pause": {
+      "type": "Node",
+      "format": {
+        "type": "Anchored"
+      },
+      "children": {
+        "pausescene": {
+          "type": "Widget",
+          "format": {
+            "type": "Anchored"
+          },
+          "data": {
+            "key": "pausescene",
+            "variables": {
+              "size": [ 1280, 720 ]
+            }
+          }
+        }
+      }
+    },
+    "settings": {
+      "type": "Node",
+      "format": {
+        "type": "Anchored"
+      },
+      "children": {
+        "settingscene": {
+          "type": "Widget",
+          "format": {
+            "type": "Anchored"
+          },
+          "data": {
+            "key": "settingscene",
+            "variables": {
+              "size": [ 1280, 720 ]
+            }
+          }
+        }
+      }
+    },
+    "tilesetui": {
+      "type": "Node",
+      "format": {
+        "type": "Anchored"
+      },
+      "children": {
+        "tilesetscene": {
+          "type": "Widget",
+          "format": {
+            "type": "Anchored"
+          },
+          "data": {
+            "key": "tilesetscene",
+            "variables": {
+              "size": [ 1280, 720 ]
+            }
+          }
+        }
+      }
+    },
+    "pileui": {
+        "type": "Node",
+        "format": {
+          "type": "Anchored"
+        },
+        "children": {
+          "gameplay-select": {
+            "type": "Widget",
+            "format": {
+              "type": "Anchored"
+            },
+            "data": {
+              "key": "gameplay-select",
+              "variables": {
+                "size": [ 1280, 720 ]
+              }
+            }
+          }
+        }
+      },
+    "host": {
+      "type": "Node",
+      "format": {
+        "type": "Anchored"
+      },
+      "children": {
+        "hostscene": {
+          "type": "Widget",
+          "format": {
+            "type": "Anchored"
+          },
+          "data": {
+            "variables": {
+              "size": [ 1280, 720 ]
+            },
+            "key": "host1Scene"
+          }
+        }
+      }
+    },
+    "client": {
+      "type": "Node",
+      "format": {
+        "type": "Anchored"
+      },
+      "children": {
+        "clientscene": {
+          "type": "Widget",
+          "format": {
+            "type": "Anchored"
+          },
+          "data": {
+            "variables": {
+              "size": [ 1280, 720 ]
+            },
+            "key": "client1Scene"
+          }
+        }
+      }
+    },
+    "winscene": {
+      "type": "Node",
+      "format": {
+        "type": "Anchored"
+      },
+      "children": {
+        "scorewinscene": {
+          "type": "Widget",
+          "format": {
+            "type": "Anchored"
+          },
+          "data": {
+            "variables": {
+              "size": [ 1280, 720 ]
+            },
+            "key": "scorewinscene"
+          }
+        }
+      }
+    },
+    "losescene": {
+      "type": "Node",
+      "format": {
+        "type": "Anchored"
+      },
+      "children": {
+        "scoredefeatscene": {
+          "type": "Widget",
+          "format": {
+            "type": "Anchored"
+          },
+          "data": {
+            "variables": {
+              "size": [ 1280, 720 ]
+            },
+            "key": "scoredefeatscene"
+          }
+        }
+      }
+    },
+    "client3": {
+      "type": "Node",
+      "format": {
+        "type": "Anchored"
+      },
+      "children": {
+        "client3Scene": {
+          "type": "Widget",
+          "format": {
+            "type": "Anchored"
+          },
+          "data": {
+            "variables": {
+              "size": [ 1280, 720 ]
+            },
+            "key": "client3Scene"
+          }
+        }
+      }
+    }
+  },
+  "widgets": {
+    "colorbutton": "widgets/colorbutton.json",
+    "textbutton": "widgets/textbutton.json",
+    "textfield": "widgets/textfield.json",
+    "labelbox": "widgets/labelbox.json",
+    "landingscene": "widgets/scene/landingscene.json",
+    "landingTextbutton": "widgets/button/landingTextbutton.json",
+    "home": "widgets/scene/home.json",
+    "hostscene": "widgets/scene/hostscene.json",
+    "clientscene": "widgets/scene/clientscene.json",
+    "menubutton": "widgets/button/menubutton.json",
+    "settingbutton": "widgets/icon/settingicon.json",
+    "pausescene": "widgets/scene/pausescene.json",
+    "pausebutton": "widgets/button/pausebutton.json",
+    "gameplayscene": "widgets/scene/gameplayscene.json",
+    "technical_gamescene": "widgets/scene/technical_gamescene.json",
+    "gameplayDisplaytile": "widgets/tile/gameplayDisplaytile.json",
+    "gameplayDisplaytileButton": "widgets/tile/gameplayDisplaytileButton.json",
+    "playhand": "widgets/tile/playhand.json",
+    "opponentHand": "widgets/tile/opponentHand.json",
+    "opponentHandtile": "widgets/tile/opponentHandtile.json",
+    "scorewinscene": "widgets/scene/scorewinscene.json",
+    "scorebutton_main": "widgets/button/scorebutton_main.json",
+    "scorepointbutton": "widgets/button/scorepointbutton.json",
+    "scoredefeatscene": "widgets/scene/scoredefeatscene.json",
+    "settingscene": "widgets/scene/settingscene.json",
+    "settingbutton_name": "widgets/button/settingbutton_name.json",
+    "settingbutton_onoff": "widgets/button/settingbutton_onoff.json",
+    "tilesetscene": "widgets/scene/tilesetscene.json",
+    "gameplay-select": "widgets/scene/gameplay-select.json",
+    "host1Scene": "widgets/scene/host1Scene.json",
+    "client1Scene": "widgets/scene/client1Scene.json",
+    "client3Scene": "widgets/scene/client3Scene.json"
+  },
+  "jsons": {
+    "server": "json/server.json",
+    "constants" : "json/constants.json"
+  },
+    "sounds": {
+        "select": {
+            "type": "sample",
+            "file": "sounds/tiles/select/select.wav"
+        },
+        "swap": {
+            "type": "sample",
+            "file": "sounds/tiles/swap/swap.wav"
+
+        },
+        "back": {
+            "type": "sample",
+            "file": "sounds/tiles/back/back.wav"
+
+        },
+        "confirm": {
+            "type": "sample",
+            "file": "sounds/tiles/confirm/confirm.wav"
+
+        },
+        "deselect": {
+            "type": "sample",
+            "file": "sounds/tiles/deselect/deselect.wav"
+
+        },
+        "shuffle": {
+            "type": "sample",
+            "file": "sounds/tiles/shuffle/shuffle.wav"
+
+        },
+        "set": {
+            "type": "sample",
+            "file": "sounds/action/set/set.wav"
+
+        },
+        "win": {
+            "type": "sample",
+            "file": "sounds/action/win/win.wav"
+        }
+
     }
 }

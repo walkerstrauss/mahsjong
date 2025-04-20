@@ -18,9 +18,14 @@
 #include "MJPlayer.h"
 #include "MJPile.h"
 #include "MJDiscardPile.h"
-#include "MJDiscardUIScene.h"
-#include "MJScoreManager.h"
+#include "MJDiscardUINode.h"
+#include "MJPileUINode.h"
 #include "MJNetworkController.h"
+#include "MJAudioController.h"
+#include "MJAnimationController.h"
+#include "MJMatchController.h"
+#include "MJAnimatedNode.h"
+
 
 using namespace cugl;
 using namespace cugl::scene2;
@@ -33,6 +38,26 @@ using namespace std;
  * This world should contain all objects, assets, and input controller. Please start
  * including any and all objects and classes that will build our game */
 class GameScene: public cugl::scene2::Scene2{
+public:
+    /**
+     * Enum representing the player's choice when in the
+     * game scene for app transitioning scenes logic
+     */
+    enum Choice {
+        NONE,
+        PAUSE,
+        SETTING,
+        INFO,
+        SETS,
+        DISCARDED,
+        DRAW_DISCARD,
+        WIN,
+        LOSE
+    };
+    /** Vector of tiles to add to discardUI*/
+    std::vector<std::shared_ptr<TileSet::Tile>> discardedTiles;
+    Choice _choice;
+    std::shared_ptr<TileSet::Tile> discardDrawTile;
 protected:
     /** Asset manager for this game mode */
     std::shared_ptr<cugl::AssetManager> _assets;
@@ -40,14 +65,18 @@ protected:
     std::shared_ptr<NetworkController> _network;
     /** Input controller for player input*/
     InputController _input;
+    /** Match controller for processing game logic */
+    std::shared_ptr<MatchController> _matchController;
     /** JSON with all of our constants*/
     std::shared_ptr<cugl::JsonValue> _constants;
     /** Scene2 object for match scene */
     std::shared_ptr<cugl::scene2::SceneNode> _matchScene;
     /** Scene2 object for the pause scene */
     std::shared_ptr<cugl::scene2::SceneNode> _pauseScene;
-    /** Reference to the discard UI scene for the game */
-    std::shared_ptr<DiscardUIScene> _discardUIScene;
+    /** Reference to the discard UI node for the game */
+    std::shared_ptr<DiscardUINode> _discardUINode;
+    /** Reference to the pile UI node for the game */
+    std::shared_ptr<cugl::scene2::SceneNode> _pileUINode;
     /** TileSet for the game */
     std::shared_ptr<TileSet> _tileSet;
     /** Reference to player */
@@ -56,13 +85,11 @@ protected:
     std::shared_ptr<Pile> _pile;
     /** Reference to the discard pile */
     std::shared_ptr<DiscardPile> _discardPile;
-    /** Reference to texture for gma text*/
-    std::shared_ptr<cugl::graphics::Texture> _gmaLabelTexture;
-  
-    std::shared_ptr<cugl::graphics::TextLayout> _text;
-    
-    Hand* _hand; // pointer to the hand.
-    
+    /** Temporary discard area b/c no asset created for it yet */
+    cugl::Rect discardArea;
+    /** Pointer to the hand */
+    Hand* _hand;
+   
     std::shared_ptr<cugl::graphics::TextLayout> _win;
     std::shared_ptr<cugl::graphics::TextLayout> _lose;
     bool _gameWin;
@@ -80,10 +107,38 @@ protected:
     std::shared_ptr<cugl::scene2::Button> _discardBtn;
     /** Button for transitioning to the tileset UI scene (discarded cards) */
     std::shared_ptr<cugl::scene2::Button> _tilesetUIBtn;
-    /** Button for pausing */
-    std::shared_ptr<cugl::scene2::Button> _pauseBtn;
+//    /** Button for pausing */
+//    std::shared_ptr<cugl::scene2::Button> _pauseBtn;
     /** Button for continuing (in the pause scene) */
     std::shared_ptr<cugl::scene2::Button> _continueBtn;
+    /** Button to set to win scene (for debugging) */
+    std::shared_ptr<cugl::scene2::Button> _winBtn;
+    /** Button to set to defeat scene (for debugging) */
+    std::shared_ptr<cugl::scene2::Button> _defeatBtn;
+    /** Button for ending turn */
+    std::shared_ptr<cugl::scene2::Button> _endTurnBtn;
+    
+    /**Button to transition to the setting scene**/
+    std::shared_ptr<Button> _settingBtn;
+    /**Button to transition to the info scene **/
+    std::shared_ptr<Button> _infoBtn;
+    
+    /** Textured node to set the discarded tile image*/
+    std::shared_ptr<cugl::scene2::TexturedNode> _discardedTileImage;
+
+    std::shared_ptr<cugl::scene2::Button> _displayIconBtn;
+
+    std::shared_ptr<cugl::scene2::TexturedNode> _expandedIcon;
+    
+    std::shared_ptr<cugl::scene2::TexturedNode> _dragToDiscardNode;
+
+    std::shared_ptr<cugl::scene2::TexturedNode> _dragToHandNode;
+    std::shared_ptr<SceneNode> _playArea;
+    bool _dragFromDiscard = false;
+    bool _dragToHandVisible = false;
+
+    /** Button for playing a set */
+    std::shared_ptr<cugl::scene2::Button> _playSetBtn;
     /** Key for discard button listener */
     Uint32 _discardBtnKey;
     /** Key for tileset UI button listener */
@@ -100,23 +155,57 @@ protected:
     std::shared_ptr<scene2::Button> _backBtn;
     /** Key for the listener for the back button for discard UI */
     Uint32 _backBtnKey;
-    /** Holds reference to chow sprite sheet */
-    std::shared_ptr<cugl::graphics::SpriteSheet> _chowSheet;
-    /** Holds reference to kong sprite sheet */
-    std::shared_ptr<cugl::graphics::SpriteSheet> _kongSheet;
-    /** Holds reference to pong sprite sheet */
-    std::shared_ptr<cugl::graphics::SpriteSheet> _pongSheet;
-    /** Holds reference to win sprite sheet */
-    std::shared_ptr<cugl::graphics::SpriteSheet> _winSheet;
-    /** Holds reference to back pick sprite sheet */
-    std::shared_ptr<cugl::graphics::SpriteSheet> _backPickSheet;
-    /** Holds reference to empty discard sprite sheet */
-    std::shared_ptr<cugl::graphics::SpriteSheet> _emptyDiscardSheet;
-    /** Holds reference to empty pick sprite sheet */
-    std::shared_ptr<cugl::graphics::SpriteSheet> _emptyPickSheet;
-    /** Holds reference to empty pick flip sprite sheet */
-    std::shared_ptr<cugl::graphics::SpriteSheet> _emptyPickFlipSheet;
+    /** Holds reference to chow sprite node */
+    std::shared_ptr<cugl::scene2::SpriteNode> _chowSheet;
+    /** Holds reference to pong sprite node */
+    std::shared_ptr<cugl::scene2::SpriteNode> _pongSheet;
+    /** Holds reference to turn sprite node */
+    std::shared_ptr<cugl::scene2::SpriteNode> _turnSheet;
+    float _frameTimer = 0.0f;
+    float _frameDelay = 0.2f;
     
+    /** The tile currently being dragged */
+    cugl::Vec2 _dragOffset;
+    
+    /** The rectangle representing the pile's position used for selection handling */
+    cugl::Rect _pileBox;
+    
+    /** The rectangle representing the discrad pile's position*/
+    cugl::Rect _discardBox;
+
+    /** The rectangle representing the active play/discard area for all tiles*/
+    cugl::Rect _activeRegion;
+    
+    /** The rectangle representing the discarded tile widget */
+    cugl::Rect _discardedTileRegion;
+    
+    /** The rectangle reprsenting the player hand region */
+    cugl::Rect _playerHandRegion; 
+
+    std::shared_ptr<TileSet::Tile> _draggingTile = nullptr;
+    cugl::Vec2 _dragStartPos;
+    bool _dragInitiated = false;
+    const float DRAG_THRESHOLD = 0.0f;
+
+    cugl::Vec2 _originalTilePos = cugl::Vec2::ZERO;
+    bool shouldReturn = true;
+ 
+    std::shared_ptr<AnimatedNode> _actionAnimNode;
+
+    bool _waitingForTileSelection = false;
+    std::shared_ptr<TileSet::Tile> discardedTileSaved;
+    bool _selectedThree = false;
+    
+    std::shared_ptr<Button> _opponentHandBtn;
+    std::shared_ptr<Button> _playerHandBtn;
+    std::shared_ptr<Button> _opponentHandBtn2;
+    std::shared_ptr<Button> _playerHandBtn2;
+    
+    std::vector<std::shared_ptr<SceneNode>> _opponentHandTiles;
+    std::vector<std::shared_ptr<SceneNode>> _playerSetTiles;
+    std::shared_ptr<SceneNode> _opponentHandRec;
+    std::shared_ptr<SceneNode> _playerSetRec;
+
 public:
 #pragma mark -
 #pragma mark Constructors
@@ -160,7 +249,6 @@ public:
     
     /**
      * Returns true if the player quits the game.
-     *
      * @return true if the player quits the game.
      */
     bool didQuit() const { return _quit; }
@@ -178,6 +266,12 @@ public:
 #pragma mark -
 #pragma mark Gameplay Handling
     /**
+     * Returns choice of this game scene
+     */
+    Choice getChoice(){
+        return _choice;
+    }
+    /**
      * Rests the status of the game so we can play again.
      */
     void reset() override;
@@ -194,10 +288,17 @@ public:
      */
     void render() override;
     
-    /**
-     * Processes updates from network
-     */
+    virtual void setActive(bool value) override;
+    
+    void setGameActive(bool value);
+    
+    void render(std::shared_ptr<cugl::graphics::SpriteBatch>& batch);
+    
     void processData(std::vector<std::string> msg);
+    /**
+     * Applies the effects of the given type of celestial tile.
+     */
+    void applyCelestial(TileSet::Tile::Rank type);
     
     /**
      * Checks whether or not a tile has been clicked and sets selected status accordingly
@@ -225,7 +326,7 @@ public:
       * @param tile  the tile to increment in the discard UI
       * @return true if update was successful, and false otherwise
       */
-     bool incrementLabel(std::shared_ptr<TileSet::Tile> tile);
+     void incrementLabel(std::shared_ptr<TileSet::Tile> tile);
      
      /**
       * Method to decrement discard UI label corresponding to tile passed as argument
@@ -234,6 +335,120 @@ public:
       * @return true if update was successful, and false otherwise
       */
      bool decrementLabel(std::shared_ptr<TileSet::Tile> tile);
+    
+    /**
+     * Method to detect the tiles which are being pressed by a user in a mobile version of the game.
+     */
+    void pressTile();
+    
+    void dragTile();
+    
+    void releaseTile();
+
+    void updateDrag(const cugl::Vec2& mousePos, bool mouseDown, bool mouseReleased);
+    
+    void discardTile(std::shared_ptr<TileSet::Tile> tile);
+    
+
+    void playSetAnim(const std::vector<std::shared_ptr<TileSet::Tile>>& tiles);
+    
+    bool isPong(const std::vector<std::shared_ptr<TileSet::Tile>>& tiles);
+    
+    bool isChow(const std::vector<std::shared_ptr<TileSet::Tile>>& tiles);
+    
+    void updateSpriteNode(std::shared_ptr<SpriteNode>& sheetNode){
+        if (sheetNode->getFrame() >= sheetNode->getCount() - 1){
+            sheetNode->setFrame(0);
+        } else {
+            sheetNode->setFrame(sheetNode->getFrame() + 1);
+        }
+        return;
+    }
+    
+    void updateSpriteNodes(float timestep){
+        _frameTimer += timestep;  // Accumulate time
+        if (_frameTimer >= _frameDelay) {
+            _frameTimer = 0; // Reset timer
+//            updateSpriteNode(_pongSheet);
+//            updateSpriteNode(_chowSheet);
+            updateSpriteNode(_turnSheet);
+        }
+    }
+    
+    void revertDiscardedTile();
+    
+    void initTurnIndicators(){
+        _opponentHandRec = _assets->get<SceneNode>("matchscene.gameplayscene.opponent-hand-rec");
+        _opponentHandBtn = std::dynamic_pointer_cast<Button>(_assets->get<SceneNode>("matchscene.gameplayscene.opponent-hand"));
+        _opponentHandBtn->addListener([this](const std::string& name, bool down){
+            if (!down){
+                bool visible = !_opponentHandRec->isVisible();
+                _opponentHandRec->setVisible(visible);
+                for (int i = 0; i < _opponentHandTiles.size(); i++){
+                    _opponentHandTiles[i]->setVisible(visible);
+                }
+            }
+        });
+        
+        _opponentHandBtn2 = std::dynamic_pointer_cast<Button>(_assets->get<SceneNode>("matchscene.gameplayscene.opponent-hand2"));
+        _opponentHandBtn2->addListener([this](const std::string& name, bool down){
+            if (!down){
+                bool visible = !_opponentHandRec->isVisible();
+                _opponentHandRec->setVisible(visible);
+                for (int i = 0; i < _opponentHandTiles.size(); i++){
+                    _opponentHandTiles[i]->setVisible(visible);
+                }
+            }
+        });
+        
+        _playerHandBtn = std::dynamic_pointer_cast<Button>(_assets->get<SceneNode>("matchscene.gameplayscene.playerhand-button"));
+        _playerHandBtn->addListener([this](const std::string& name, bool down){
+            if (!down){
+                CULog("Player hand/set tab button 1 pressed!");
+                // TODO: implement showing made player sets
+            }
+        });
+        
+        _playerHandBtn2 = std::dynamic_pointer_cast<Button>(_assets->get<SceneNode>("matchscene.gameplayscene.playerhand-button2"));
+        _playerHandBtn->addListener([this](const std::string& name, bool down){
+            if (!down){
+                CULog("Player hand/set tab button 2 pressed!");
+                // TODO: implement showing made player sets
+            }
+        });
+        
+        updateTurnIndicators();
+    }
+    void updateTurnIndicators(){
+        if (_network->getCurrentTurn() == _network->getLocalPid()){
+            _opponentHandBtn->activate();
+            _opponentHandBtn->setVisible(true);
+            if (_opponentHandBtn2->isActive()){
+                _opponentHandBtn2->deactivate();
+            }
+            _opponentHandBtn2->setVisible(false);
+            if (_playerHandBtn->isActive()){
+                _playerHandBtn->deactivate();
+            }
+            _playerHandBtn->setVisible(false);
+            _playerHandBtn2->activate();
+            _playerHandBtn2->setVisible(true);
+        } else {
+            if (_opponentHandBtn->isActive()){
+                _opponentHandBtn->deactivate();
+                _opponentHandBtn->setVisible(false);
+            }
+            _opponentHandBtn2->activate();
+            _opponentHandBtn2->setVisible(true);
+            _playerHandBtn->activate();
+            _playerHandBtn->setVisible(true);
+            if (_playerHandBtn2->isActive()){
+                _playerHandBtn2->deactivate();
+            }
+            _playerHandBtn2->setVisible(false);
+        }
+        
+    }
 };
 
 #endif /* __MJ_GAME_SCENE_H__ */

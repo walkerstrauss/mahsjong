@@ -19,7 +19,7 @@ modules:                            # Modules to use other than core, graphics
 
 # This must be one of portrait, landscape, portrait-flipped, landscape-flipped,
 targets:                        # The target platforms to build for
-    - android                   # Android Studio
     - apple                     # XCode (note macOS and iOS use one project)
-    - windows                   # Windows Sisual Studio
+    - windows
+    - android 
     - cmake                     # This supports all Desktop platfor G8AB3BC G8AB3BCD

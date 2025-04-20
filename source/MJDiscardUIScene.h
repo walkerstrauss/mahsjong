@@ -11,6 +11,7 @@
 #include <cugl/cugl.h>
 #include "MJTileSet.h"
 #include "MJPlayer.h"
+#include "MJAudioController.h"
 
 using namespace cugl;
 using namespace cugl::scene2;
@@ -21,11 +22,20 @@ using namespace std;
  * This is the class responsible for drawing the discard UI to the game scene
  */
 class DiscardUIScene : public cugl::scene2::Scene2 {
+public:
+    enum Choice {
+        BACK,
+        NONE
+    };
+    
 protected:
     /** Asset manager for this game mode */
     std::shared_ptr<cugl::AssetManager> _assets;
     /** Vector of scene nodes representing labels in the tileset UI table */
     std::vector<std::shared_ptr<cugl::scene2::Label>> _labels;
+    /**
+        
+     */
     /** Reference to scene node for UI scene */
     std::shared_ptr<scene2::SceneNode> _tilesetui;
     
@@ -34,8 +44,10 @@ public:
     std::shared_ptr<scene2::Button> backBtn;
     /** Key for the listener for the back button for discard UI */
     Uint32 backBtnKey;
-    /** Whether we should transition back to the gamescene */
-    bool back;
+    /** Field representing our choice from the tileset UI scene */
+    Choice choice;
+    /** Input contorller */
+    InputController input;
     
 #pragma mark -
 #pragma mark Constructors
@@ -60,12 +72,16 @@ public:
      */
     void reset() override;
     
+    virtual void setActive(bool value) override;
+    
     /**
      * The method called to update the discard UI scene
      *
      * @param timestep The amount of time (in seconds) since the last frame
      */
     void update(float timestep) override;
+    
+    void render() override;
     
     /**
      * Method to get the index of this tile's associated label in the discard UI vector of labels
@@ -100,10 +116,7 @@ public:
      */
     std::vector<std::shared_ptr<TileSet::Tile>> selectTile(cugl::Vec2& currPos);
     
-    /**
-     * Draws this scene and its children to the scene's SpriteBatch.
-     */
-    void render(const std::shared_ptr<cugl::graphics::SpriteBatch>& batch);
+    
 };
 
 #endif /*__MJ_DISCARD_UI_SCENE_H__*/

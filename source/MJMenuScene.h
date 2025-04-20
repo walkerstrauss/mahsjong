@@ -9,6 +9,7 @@
 #define __MJ_MENU_SCENE_H__
 #include <cugl/cugl.h>
 #include <vector>
+#include "MJAudioController.h"
 
 /**
  * This class presents the menu to the player.
@@ -31,10 +32,14 @@ public:
         /** User wants to host a game */
         HOST,
         /** User wants to join a game */
-        JOIN
+        JOIN,
+        /** User wants to go to settings */
+        SETTING
     };
 
 protected:
+    /** Reference to the scene node for the homescene*/
+    std::shared_ptr<cugl::scene2::SceneNode> _homescene;
     /** The asset manager for this scene. */
     std::shared_ptr<cugl::AssetManager> _assets;
     /** The menu button for hosting a game */
@@ -43,7 +48,11 @@ protected:
     std::shared_ptr<cugl::scene2::Button> _joinbutton;
     /** The player menu choice */
     Choice _choice;
-    
+    /** Reference to the sprite sheet for grandma animation*/
+    std::shared_ptr<cugl::scene2::SpriteNode> _grandmaMainSheet;
+
+    float frameTimer = 0.0f;
+    float frameDelay = 0.2f;
 public:
     /** The menu button to see the settings */
     std::shared_ptr<cugl::scene2::Button> settingsbutton;
@@ -86,6 +95,9 @@ public:
      */
     bool init(const std::shared_ptr<cugl::AssetManager>& assets);
 
+#pragma mark -
+#pragma mark Gameplay Handlers
+    
     /**
      * Sets whether the scene is currently active
      *
@@ -106,6 +118,9 @@ public:
      */
     Choice getChoice() const { return _choice; }
 
+    void render() override;
+    
+    void update(float timestep) override;
 };
 
 #endif /* __MJ_MENU_SCENE_H__ */

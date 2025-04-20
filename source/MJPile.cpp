@@ -8,6 +8,7 @@
 
 #include "MJPile.h"
 #include "MJPlayer.h"
+#include "MJAnimationController.h"
 
 /**
  * This is the class intializing and handling the pile.
@@ -20,13 +21,38 @@
  * @param size             the size the pile should be
  * @param tileSet      the tileset to draw from to build the pile
  */
-bool Pile::initPile(int size, std::shared_ptr<TileSet> tileSet) {
+bool Pile::initPile(int size, std::shared_ptr<TileSet> tileSet, bool isHost) {
     _tileSet = tileSet;
     _pileSize = size;
     _pile.clear();
     _draw.clear();
     _pairs.clear();
-    Pile::createPile();
+    if(isHost){
+        createPile();
+    }
+    else{
+        createEmptyPile();
+    }
+    return true;
+}
+
+/**
+ * Creates a new pile according to size. Initializes all pile elements to 0
+ *
+ * @return true if pile was created successfully, and false otherwise
+ */
+bool Pile::createEmptyPile(){
+    if (!(_pile.size() == 0)){
+        return false;
+    }
+    for (int i = 0; i < _pileSize; i++) {
+        std::vector<std::shared_ptr<TileSet::Tile>> row;
+        for (int j = 0; j < _pileSize; j++) {
+            row.push_back(nullptr);
+        }
+        _pile.push_back(row);
+    }
+    
     return true;
 }
 
@@ -37,48 +63,78 @@ bool Pile::initPile(int size, std::shared_ptr<TileSet> tileSet) {
  */
 bool Pile::createPile() {
     _pile.clear();
-    cugl::Size screenSize = cugl::Application::get()->getDisplaySize();
-
-    // Variables for positioning the pile tiles for drawing
-    float spacingFactor = 0.85f;
-    float spacingFactorX = 0.8f;
-    float xShift = 125.0f;
-    float yShift = 125.0f;
+    
+    // Variable to keep track of what index we are on for pile creation
+    int index = 0;
     
     // Iterate through the pile
     for (int i = 0; i < _pileSize; i++) {
         std::vector<std::shared_ptr<TileSet::Tile>> row;
         for (int j = 0; j < _pileSize; j++) {
-            if (_tileSet->deck.size() <= index) { //If our deck is empty, set the rest of the _pile to be empty (deck.empty() instead?)
+            if (_tileSet->deck.size() <= 0) { //If our deck is empty, set the rest of the _pile to be empty (deck.empty() instead?)
                 row.push_back(nullptr);
                 continue;
             }
             
             std::shared_ptr<TileSet::Tile> tile = _tileSet->deck[index];
-            cugl::Size _size = tile->getTileTexture()->getSize();
             
-            tile->_scale = 0.2;
+            tile->_scale = 0.1;
             tile->inPile = true;
             tile->pileCoord = cugl::Vec2(i, j);
+            tile->inDeck = false; 
 
-            float x = j * (_size.width * tile->_scale * spacingFactorX) + (_size.width * tile->_scale / 2);
-            float y = i * (_size.height * tile->_scale) + (_size.height * tile->_scale / 2);
-            
-            float pileWidth = _pileSize * (_size.width * tile->_scale * spacingFactorX);
-            float pileHeight = _pileSize * (_size.height * tile->_scale);
-            cugl::Vec2 pileOffset((screenSize.width - pileWidth) / 2 + xShift, (screenSize.height - pileHeight) / 2 + yShift);
-            
-            tile->pos = cugl::Vec2(x * spacingFactor, y * spacingFactor) + pileOffset;
-                        
-            
-            std::string key = tile->toString() + " " + std::to_string(tile->_id);
-            _pileMap.insert({key, tile->pileCoord});
             row.push_back(_tileSet->deck[index]);
             index += 1;
         }
         _pile.push_back(row); //add tile from deck to pile
     }
+    
+    updateTilePositions();
+    
+    // Erase tiles put into the pile from deck
+    if(_tileSet->deck.size() <= 25){
+        _tileSet->deck.clear();
+    }
+    else{
+        _tileSet->deck.erase(_tileSet->deck.begin(), _tileSet->deck.begin() + index + 1);
+    }
+    
     return true;
+}
+
+void Pile::updateTilePositions() {
+    cugl::Size screenSize(1561, 720); //Temporary pile placement fix
+
+    float spacingY = 1.0f;
+    float spacingX = 1.0f;
+    
+    _pileMap.clear();
+    
+    for (int i = 0; i < _pileSize; i++) {
+        for (int j = 0; j < _pileSize; j++) {
+            std::shared_ptr<TileSet::Tile> tile = _pile[i][j];
+            if (tile == nullptr) continue;
+            
+            cugl::Size _size = tile->getTileTexture()->getSize();
+            cugl::Vec2 tileSize(_size.width * tile->_scale, _size.height * tile->_scale);
+            
+            float pileWidth = (_pileSize - 1) * (tileSize.x * spacingX);
+            float pileHeight = (_pileSize - 1)* (tileSize.y * spacingY);
+            cugl::Vec2 pileOffset((screenSize.width - pileWidth) / 2, (screenSize.height - pileHeight) / 2);
+            
+            float x = j * tileSize.x * spacingX;
+            float y = i * tileSize.y * spacingY;
+            
+            if (!AnimationController::getInstance().isTileAnimated(tile)) {
+                AnimationController::getInstance().addTileAnim(tile, tile->pos, (Vec2(x, y) + pileOffset), tile->_scale, tile->_scale, 20, false);
+            }
+            
+            tile->pos = cugl::Vec2(x, y) + pileOffset;
+
+            std::string key = std::to_string(tile->_id);
+            _pileMap.insert({key, tile->pileCoord});
+        }
+    }
 }
 
 #pragma mark -
@@ -113,14 +169,14 @@ std::vector<std::shared_ptr<TileSet::Tile>> Pile::tilesDrawn(int number_of_tiles
 
 void Pile::removePileTile(const std::shared_ptr<cugl::JsonValue> tileJson, bool isHostDraw){
     for(auto const& tileKey : tileJson->children()){
-        const std::string suit = tileKey->getString("suit");
-        const std::string rank = tileKey->getString("rank");
         const std::string id = tileKey->getString("id");
         
-        std::string key = rank + " of " + suit + " " + id;
-        int x = _pileMap[key].x;
-        int y = _pileMap[key].y;
+        int x = _pileMap[id].x;
+        int y = _pileMap[id].y;
         
+        if(_pile[x][y] == nullptr){
+            continue;
+        }
         _pile[x][y]->inPile = false;
         if(isHostDraw){
             _pile[x][y]->inHostHand = true;
@@ -131,8 +187,115 @@ void Pile::removePileTile(const std::shared_ptr<cugl::JsonValue> tileJson, bool 
             _pile[x][y]->inClientHand = true;
         }
         _pile[x][y] = nullptr;
-        _pileMap.erase(key);
+        _pileMap.erase(id);
     }
+}
+
+void Pile::removeTile(std::shared_ptr<TileSet::Tile> tile) {
+    std::vector<std::shared_ptr<TileSet::Tile>> tiles;
+    for (int i = _pileSize - 1; i >= 0; i--) {
+        for (int j = _pileSize - 1; j >= 0; j--) {
+            if (_pile[i][j] && _pile[i][j] != tile) {
+                tiles.push_back(_pile[i][j]);
+            }
+        }
+    }
+    
+    tile->inPile = false;
+    
+    clearPile();
+    
+    int index = 0;
+    for (int i = _pileSize - 1; i >= 0; i--) {
+        for (int j = _pileSize - 1; j >= 0; j--) {
+            if (index < tiles.size()) {
+                _pile[i][j] = tiles[index];
+                _pile[i][j]->pileCoord = cugl::Vec2(i, j);
+                index++;
+            }
+        }
+    }
+}
+
+void Pile::remakePile(){
+    _pileMap.clear();
+    for(auto const& pairs : _tileSet->tileMap) {
+        std::shared_ptr<TileSet::Tile> currTile = pairs.second;
+        if(currTile->inPile) {
+            std::string key = std::to_string(currTile->_id);
+            int x = currTile->pileCoord.x;
+            int y = currTile->pileCoord.y;
+            _pile[x][y] = currTile;
+            _pileMap.insert({key, currTile->pileCoord});
+        }
+    }
+}
+
+/**
+ * Draws the pile to the screen
+ *
+ * @param batch     the SpriteBatch to render to the screen
+ */
+void Pile::draw(const std::shared_ptr<cugl::graphics::SpriteBatch>& batch) {
+    for(const auto& row : _pile) {
+        for (const auto& tile : row) {
+            if(tile == nullptr){
+                continue;
+            }
+            cugl::Vec2 origin = cugl::Vec2(tile->getTileTexture()->getSize().width/2, tile->getTileTexture()->getSize().height/2);
+            
+            cugl::Affine2 trans;
+            trans.scale(tile->_scale);
+            trans.translate(tile->pos);
+            
+            Size textureSize(750.0, 1000.0);
+            cugl::Vec2 rectOrigin(tile->pos - (textureSize * tile->_scale)/2);
+            tile->tileRect = cugl::Rect(rectOrigin, textureSize * tile->_scale);
+
+            batch->draw(tile->getTileTexture(), origin, trans);
+        }
+    }
+}
+
+void Pile::reshufflePile(){
+    std::vector<std::shared_ptr<TileSet::Tile>> tiles;
+    for (int i = 0; i < _pileSize; i++) {
+        for (int j = 0; j < _pileSize; j++) {
+            if (_pile[i][j] != nullptr) {
+                tiles.push_back(_pile[i][j]);
+            }
+        }
+    }
+    
+    rdPile.init();
+    rdPile.shuffle(tiles);
+    
+    int index = 0;
+    for (int i = 0; i < _pileSize; i++) {
+        for (int j = 0; j < _pileSize; j++) {
+            if (_pile[i][j] != nullptr) {
+                _pile[i][j] = tiles[index];
+                _pile[i][j]->pileCoord = cugl::Vec2(i, j);
+                index++;
+            }
+        }
+    }
+}
+
+void Pile::removeNumTiles(int nums) {
+    for(int i = 0; i < _pileSize; i++) {
+        for(int j = 0; j < _pileSize; j++) {
+            if(nums == 0){
+                break;
+            }
+            else if (_pile[i][j] == nullptr) {
+                continue;
+            }
+            _pile[i][j] = nullptr;
+            nums -= 1;
+        }
+    }
+    CUAssertLog(nums == 0, "Did not delete correct amount of tiles");
 }
 
 ///**
@@ -232,3 +395,5 @@ void Pile::removePileTile(const std::shared_ptr<cugl::JsonValue> tileJson, bool 
 //        }
 //    }
 //}
+
+

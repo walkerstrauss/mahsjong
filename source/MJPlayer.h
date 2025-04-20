@@ -5,8 +5,8 @@
 //  Created by Patrick Choo on 2/18/25.
 //
 
-#ifndef __MJ_MAIN_MENU_H__
-#define __MJ_MAIN_MENU_H__
+#ifndef __MJ_PLAYER_H__
+#define __MJ_PLAYER_H__
 
 #include <cugl/cugl.h>
 #include <vector>
@@ -46,11 +46,11 @@ public:
     std::vector<std::vector<std::shared_ptr<TileSet::Tile>>> _selectedSets;
     // Holds all tiles that are selected in our hand
     std::vector<std::shared_ptr<TileSet::Tile>> _selectedTiles;
-    // Keeps track of which grandma tile we are checking
-    int grandmaToAdd;
+    // Randomizer
+    cugl::Random rdHand;
     // Keeps track of current hand size
-    int _size; 
-    
+    int _size = 13;
+        
 #pragma mark -
 #pragma mark Constructors
     /**
@@ -65,13 +65,7 @@ public:
      *
      * @param tileSet   the tileset to draw from
      */
-    bool initHost(std::shared_ptr<TileSet>& tileSet);
-    
-    /**
-     * Initializes a new client hand by pulling 14 tiles from the game tileset
-     */
-    bool initClient(std::shared_ptr<TileSet>& tileSet);
-    
+    bool initHand(std::shared_ptr<TileSet>& tileSet, bool isHost);
     
 #pragma mark -
 #pragma mark Gameplay Handling
@@ -82,6 +76,9 @@ public:
         return _tiles.size();
     }
     
+    std::vector<std::shared_ptr<TileSet::Tile>>& getTiles(){
+        return _tiles;
+    }
     /**
      * Draws how ever many cards we need from the pile
      *
@@ -102,6 +99,11 @@ public:
     bool discard(std::shared_ptr<TileSet::Tile> tile, bool isHost);
     
     /**
+     *  Finds and removes the given tile from hand.
+     */
+    bool removeTile(std::shared_ptr<TileSet::Tile> tile, bool isHost);
+    
+    /**
      * Method to make a set from your hand and add it to selected sets
      *
      * @returns true if successfully made VALID set, and false otherwise
@@ -113,7 +115,7 @@ public:
      *
      * @return true if a set was played sucessfully and false otherwise.
      */
-    bool playSet(const std::shared_ptr<TileSet>& tileSet, bool isHost);
+    bool playSet(bool isHost);
     
     /**
      * Checks if the given set of tiles "selectedTiles" is valid under the game's set of rules.
@@ -131,24 +133,13 @@ public:
     const std::vector<std::vector<std::shared_ptr<TileSet::Tile>>>& getPlayedSets() const{
         return _playedSets;
     }
-
-    /**
-     * Method to rearrange set in your selected sets before playing
-     */
-    void rearangeSet();
-    
-    /**
-     * Resets the hand fields to handle a new turn.
-     */
-    void reset(){
-        _discardCount = 0;
-        _discardsTurn = 0;
-    }
     
     /**
      * Counts the total number of selected tiles.
      */
     int countSelectedTiles();
+    
+
     
     /**
      * Handles selection of tiles using information from input event
@@ -186,7 +177,7 @@ public:
     /**
      * Updates the position of all tiles in the hand for drawing to the screen and selection detection
      */
-    void updateTilePositions();
+    void updateTilePositions(cugl::Size sceneSize);
     
     /**
      * Method to draw the tiles in our hand to the screen (no longer used)
@@ -195,12 +186,27 @@ public:
      */
     void draw(const std::shared_ptr<cugl::graphics::SpriteBatch>& batch);
     
-    /**
-     * Method to check if selected tiles contain a wild card (jack)
-     *
-     * @param selectedTiles     the tiles to be checked for a wild card
-     */
-    bool hasJack(std::vector<std::shared_ptr<TileSet::Tile>> selectedTiles);
+    std::shared_ptr<TileSet::Tile> getTileAtPosition(const cugl::Vec2& mousePos);
+    
+    int getTileIndexAtPosition(const cugl::Vec2& p) const {
+        for (size_t i = 0; i < _tiles.size(); ++i) {
+                if (_tiles[i]->tileRect.contains(p)) {
+                    return static_cast<int>(i);
+                }
+            }
+        return -1;
+    }
+    
+    /** Update the texture of the tiles in hand. */
+    void updateHandTextures(const std::shared_ptr<cugl::AssetManager>& assets) {
+        for(auto& tile : _tiles) {
+            if (tile->debuffed) {
+                tile->setTexture(assets->get<cugl::graphics::Texture>("debuffed"));
+            } else {
+                tile->setTexture(assets->get<cugl::graphics::Texture>(tile->toString()));
+            }
+        }
+    }
 };
 
 // Player as subclass of hand for handling individual turns for the player
@@ -220,6 +226,9 @@ public:
     bool canExchange;
     // Whether or not the player has drawn this turn
     bool canDraw;
+    bool forcedDiscard = false;
+    std::shared_ptr<TileSet::Tile> _draggingTile = nullptr;
+ 
 
 #pragma mark -
 #pragma mark Constructors
@@ -247,6 +256,13 @@ public:
             _turnsLeft--;
         }
     }
+    
+    
+    std::shared_ptr<TileSet::Tile> getDraggingTile() const { return _draggingTile; }
+    /**
+     * Renders the current tiles in hand
+     */
+    void draw(const std::shared_ptr<cugl::graphics::SpriteBatch>& batch);
 };
 
 #endif /* __MJ_Player_H__ */
