@@ -24,8 +24,6 @@
 *.out
 *.app
 
-build
-cugl
 .DS_Store
 ._*
 .idea
