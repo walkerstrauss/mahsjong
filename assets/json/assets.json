@@ -737,7 +737,53 @@
         },
         "playerhand-indicator":{
             "file":"textures/gameplay/playerhand-indicator.png"
+        },
+        "contentArea": {
+            "file": "textures/playguide/contentArea.png"
+        },
+        "discardTilecloseIcon":{
+            "file": "textures/playguide/discardTilecloseIcon.png"
+        },
+        "infoBackground":{
+            "file": "textures/playguide/infoBackground.png"
+        },
+        "infoShade":{
+            "file": "textures/playguide/infoShade.png"
+        },
+        "slideDown":{
+            "file": "textures/playguide/slideDown.png"
+        },
+        "specialtileButtonDark":{
+            "file": "textures/playguide/specialtileButtonDark.png"
+        },
+        "specialtileButtonLight":{
+            "file": "textures/playguide/specialtileButtonLight.png"
+        },
+        "infoTile":{
+            "file": "textures/playguide/infoTile.png"
+        },
+        "infoTitle":{
+            "file": "textures/playguide/title.png"
+        },
+        "turnButtonDark":{
+            "file": "textures/playguide/turnButtonDark.png"
+        },
+        "turnButtonLight":{
+            "file": "textures/playguide/turnButtonLight.png"
+        },
+        "infoTurn":{
+            "file": "textures/playguide/infoTurn.png"
+        },
+        "winButtonDark":{
+            "file": "textures/playguide/winButtonDark.png"
+        },
+        "winButtonLight":{
+            "file": "textures/playguide/winButtonLight.png"
+        },
+        "infoWin":{
+            "file": "textures/playguide/infoWin.png"
         }
+        
     },
     "fonts": {
         "pixel32": {
@@ -801,6 +847,26 @@
           }
         }
       }
+    },
+    "info": {
+        "type": "Node",
+        "format": {
+          "type": "Anchored"
+        },
+        "children": {
+          "infoscene": {
+            "type": "Widget",
+            "format": {
+              "type": "Anchored"
+            },
+            "data": {
+              "key": "infoscene",
+              "variables": {
+                "size": [ 1280, 720 ]
+              }
+            }
+          }
+        }
     },
     "home": {
       "type": "Node",
@@ -1036,7 +1102,8 @@
     "gameplay-select": "widgets/scene/gameplay-select.json",
     "host1Scene": "widgets/scene/host1Scene.json",
     "client1Scene": "widgets/scene/client1Scene.json",
-    "client3Scene": "widgets/scene/client3Scene.json"
+    "client3Scene": "widgets/scene/client3Scene.json",
+    "infoscene": "widgets/scene/infoScene1.json"
   },
   "jsons": {
     "server": "json/server.json",

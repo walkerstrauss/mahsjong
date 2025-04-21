@@ -20,6 +20,7 @@
 #include "MJAnimationController.h"
 #include "MJMatchController.h"
 #include "MJLoadingScene.h"
+#include "MJInfoScene.h"
 
 /**
  * This class represents the application root for the Mah's Jong game
@@ -32,6 +33,7 @@ protected:
     enum State {
         LOAD,
         MENU,
+//        INFO,
         HOST,
         CLIENT,
         GAME,
@@ -67,6 +69,8 @@ protected:
     PauseScene _pause;
     /** The scene for when the match ends/ is over */
     GameOverScene _gameover;
+    /** The information scene for player onboarding and in-game information */
+    InfoScene _info;
     /** The match controller for the game*/
     std::shared_ptr<MatchController> _matchController;
     /** Whether or not we finished loading all assets*/

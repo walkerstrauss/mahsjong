@@ -15,6 +15,8 @@
 		23340F082DADB90500B07A51 /* MJAnimatedNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 23340F062DADB90500B07A51 /* MJAnimatedNode.cpp */; };
 		23340F4D2DB24CEA00B07A51 /* MJLoadingScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 23340F4C2DB24CEA00B07A51 /* MJLoadingScene.cpp */; };
 		23340F4E2DB24CEA00B07A51 /* MJLoadingScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 23340F4C2DB24CEA00B07A51 /* MJLoadingScene.cpp */; };
+		289E74F22DB69C9A0057C03A /* MJInfoScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 289E74F12DB69C950057C03A /* MJInfoScene.cpp */; };
+		289E74F32DB69C9A0057C03A /* MJInfoScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 289E74F12DB69C950057C03A /* MJInfoScene.cpp */; };
 		AB06F65AB0B4F10FCCCC8D2F /* widgets in Resources */ = {isa = PBXBuildFile; fileRef = AA8A42C73B2A17DA1163F4BD /* widgets */; };
 		AB084F9D0E7DEE813F658313 /* textures in Resources */ = {isa = PBXBuildFile; fileRef = AACD441E407C552AECEE9B33 /* textures */; };
 		ABBCECE05884D7F0EED5F50D /* json in Resources */ = {isa = PBXBuildFile; fileRef = AA1BA6EDE03659A8C6BB7FDA /* json */; };
@@ -194,6 +196,8 @@
 		23340F092DADB91500B07A51 /* MJAnimatedNode.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MJAnimatedNode.h; sourceTree = "<group>"; };
 		23340F4B2DB24CE400B07A51 /* MJLoadingScene.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MJLoadingScene.h; sourceTree = "<group>"; };
 		23340F4C2DB24CEA00B07A51 /* MJLoadingScene.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = MJLoadingScene.cpp; sourceTree = "<group>"; };
+		289E74F02DB69C8E0057C03A /* MJInfoScene.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MJInfoScene.h; sourceTree = "<group>"; };
+		289E74F12DB69C950057C03A /* MJInfoScene.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = MJInfoScene.cpp; sourceTree = "<group>"; };
 		AA1BA6EDE03659A8C6BB7FDA /* json */ = {isa = PBXFileReference; lastKnownFileType = folder; path = json; sourceTree = "<group>"; };
 		AA8A42C73B2A17DA1163F4BD /* widgets */ = {isa = PBXFileReference; lastKnownFileType = folder; path = widgets; sourceTree = "<group>"; };
 		AAAA991EE1AACE78BB02C3AD /* sounds */ = {isa = PBXFileReference; lastKnownFileType = folder; path = sounds; sourceTree = "<group>"; };
@@ -362,6 +366,8 @@
 		EB0F3C9827FB9DCB0037CC66 /* Source */ = {
 			isa = PBXGroup;
 			children = (
+				289E74F12DB69C950057C03A /* MJInfoScene.cpp */,
+				289E74F02DB69C8E0057C03A /* MJInfoScene.h */,
 				BACA3E795FDBD0D1AA5FE1D6 /* MJDiscardPile.cpp */,
 				BA386DB2F0398C6B215CF08F /* MJMenuScene.cpp */,
 				BA2ECE174C3FFAF4C2B7EA5B /* MJAnimationController.cpp */,
@@ -718,6 +724,7 @@
 				BBBB4CA4E9FD4B28FC10F88A /* MJHostScene.cpp in Sources */,
 				23340F4E2DB24CEA00B07A51 /* MJLoadingScene.cpp in Sources */,
 				BB4011487A879DE60329C614 /* MJPile.cpp in Sources */,
+				289E74F22DB69C9A0057C03A /* MJInfoScene.cpp in Sources */,
 				BBB9F86ABDCAB1BBBAECE9CA /* MJMatchController.cpp in Sources */,
 				BBF38F7F3FDC8984BE334C8B /* MJGameScene.cpp in Sources */,
 				23340EF72DADB71500B07A51 /* MJAnimationController.cpp in Sources */,
@@ -749,6 +756,7 @@
 				BCE98E0AE64141B7A2A6AC03 /* MJHostScene.cpp in Sources */,
 				23340F4D2DB24CEA00B07A51 /* MJLoadingScene.cpp in Sources */,
 				BC88EFC0A2F65EE1DF46AA8E /* MJPile.cpp in Sources */,
+				289E74F32DB69C9A0057C03A /* MJInfoScene.cpp in Sources */,
 				BCABFF15EDF5CF21F3629ED0 /* MJMatchController.cpp in Sources */,
 				BCA0DECAEA7651D74AB4D8FD /* MJGameScene.cpp in Sources */,
 				23340EF82DADB71500B07A51 /* MJAnimationController.cpp in Sources */,
@@ -907,11 +915,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = "$(PROJECT_DIR)/resources/macos.entitlements";
-				CODE_SIGN_IDENTITY = "-";
-				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = K95TNPN6HK;
 				ENABLE_HARDENED_RUNTIME = YES;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"$(inherited)",
@@ -946,11 +954,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = "$(PROJECT_DIR)/resources/macos.entitlements";
-				CODE_SIGN_IDENTITY = "-";
-				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = K95TNPN6HK;
 				ENABLE_HARDENED_RUNTIME = YES;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"$(inherited)",
@@ -1004,6 +1012,8 @@
 					"$(DATACH_INCLUDES)",
 				);
 				INFOPLIST_FILE = Resources/ios.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Mahs Jong";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.games";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = Landscape;
 				INFOPLIST_KEY_UIMainStoryboardFile = Landscape;
@@ -1052,6 +1062,8 @@
 					"$(DATACH_INCLUDES)",
 				);
 				INFOPLIST_FILE = Resources/ios.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Mahs Jong";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.games";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = Landscape;
 				INFOPLIST_KEY_UIMainStoryboardFile = Landscape;
