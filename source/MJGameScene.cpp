@@ -85,6 +85,7 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::sha
             _matchController->endTurn();
             updateTurnIndicators();
             AudioController::getInstance().playSound("confirm");
+            drawnThisTurn = false;
         }
     });
         
@@ -103,6 +104,7 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::sha
     _settingBtn->addListener([this](const std::string& name, bool down){
         if (!down){
             _choice = SETTING;
+            AudioController::getInstance().playSound("confirm");
         }
     });
     
@@ -110,6 +112,7 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::sha
     _infoBtn->addListener([this](const std::string& name, bool down){
         if (!down){
             _choice = INFO;
+            AudioController::getInstance().playSound("confirm",false);
         }
     });
     
@@ -233,6 +236,13 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::sha
             tile->setVisible(false);
         }
     }
+    for (int i = 0; i < 14; i++){
+        std::shared_ptr<SceneNode> tile = _assets->get<SceneNode>("matchscene.gameplayscene.player-hand-tile.tile-back_" + std::to_string(i));
+        if (tile != nullptr){
+            _playerHandTiles.push_back(tile);
+            tile->setVisible(false);
+        }
+    }
     _dragToDiscardNode = std::dynamic_pointer_cast<cugl::scene2::TexturedNode>(
         _assets->get<cugl::scene2::SceneNode>(
             "matchscene.gameplayscene.drag-to-discard-tile"
@@ -287,6 +297,8 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::sha
     _turnSheet->setScale(0.12);
     _turnSheet->setFrame(0);
     _turnSheet->setVisible(true);
+    
+    drawnThisTurn = false;
     
     return true;
 }
@@ -394,10 +406,11 @@ void GameScene::update(float timestep) {
         bool releasedInPile = _input.didRelease() && _pileBox.contains(mousePos);
         // Drawing (from pile) logic
 
-        if(_pileBox.contains(initialMousePos) && releasedInPile &&  _matchController->getChoice() != MatchController::Choice::RATTILE) {
+        if(_pileBox.contains(initialMousePos) && releasedInPile &&  _matchController->getChoice() != MatchController::Choice::RATTILE && !drawnThisTurn) {
 //         if(_pileBox.contains(initialMousePos) && releasedInPile) {
             AudioController::getInstance().playSound("confirm", false);
             _matchController->drawTile();
+            drawnThisTurn = true;
         }
         
         //Drawing (from discard) logic
@@ -409,6 +422,7 @@ void GameScene::update(float timestep) {
                 _player->getHand().updateTilePositions(_matchScene->getSize());
                 _playSetBtn->setVisible(true);
                 _playSetBtn->activate();
+                drawnThisTurn = true;
             };
         }
     }
@@ -461,21 +475,17 @@ void GameScene::setActive(bool value){
 void GameScene::setGameActive(bool value){
     if (value){
         _choice = NONE;
-//        _pauseBtn->activate();
         _tilesetUIBtn->activate();
         _endTurnBtn->activate();
-//        _displayIconBtn->activate();
         _settingBtn->activate();
         _infoBtn->activate();
-        _opponentHandBtn->activate();
+        updateTurnIndicators();
     } else {
-//        _pauseBtn->deactivate();
         _endTurnBtn->deactivate();
         _backBtn->deactivate();
-//        _displayIconBtn->deactivate();
         _settingBtn->deactivate();
         _infoBtn->deactivate();
-        _opponentHandBtn->deactivate();
+        updateTurnIndicators();
     }
 }
 
@@ -605,7 +615,7 @@ void GameScene::updateDrag(const cugl::Vec2& mousePos, bool mouseDown, bool mous
         if (_dragInitiated && _draggingTile) {
             float distance = (mousePos - _dragStartPos).length();
             if(_draggingTile->discarded) {
-                if(_playerHandRegion.contains(mousePos)) {
+                if(_playerHandRegion.contains(mousePos) && !drawnThisTurn) {
                     _matchController->drawDiscard();
                     _playSetBtn->activate();
                     _playSetBtn->setVisible(true);

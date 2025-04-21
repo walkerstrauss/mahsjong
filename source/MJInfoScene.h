@@ -43,6 +43,8 @@ protected:
     std::shared_ptr<SceneNode> _infoTurn;
     std::shared_ptr<SceneNode> _infoWin;
     std::shared_ptr<SceneNode> _infoTile;
+    
+    bool _pageChanged;
 public:
     enum Choice {
         NONE,
@@ -50,6 +52,7 @@ public:
     };
     
     enum InfoPage {
+        NO_PAGE,
         TURN,
         WIN,
         TILE
@@ -57,6 +60,7 @@ public:
     
     Choice choice;
     InfoPage currPage;
+    InfoPage nextPage;
 #pragma mark Constructors
 #pragma mark –
     InfoScene() : Scene2 (){}
@@ -65,10 +69,15 @@ public:
 #pragma mark Gameplay Handling
 #pragma mark –
     virtual void setActive(bool value) override;
-    void render() override;
+    void update(float timestep) override{
+        if (_pageChanged){
+            switchPage();
+            _pageChanged = false;
+        }
+    }
     void setButtonActive(std::shared_ptr<Button> button, bool value);
     void getNodes();
     void addListeners();
-    void switchPage(InfoPage page);
+    void switchPage();
 };
 #endif

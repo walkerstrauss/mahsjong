@@ -33,7 +33,7 @@ protected:
     enum State {
         LOAD,
         MENU,
-//        INFO,
+        INFO,
         HOST,
         CLIENT,
         GAME,
@@ -205,6 +205,13 @@ private:
      * @param timestep   The amount of time (in seconds) since the last frame 
      */
     void updateMatchController(float timestep);
+    
+    /**
+    * Individualzed update method for the info scene
+    *
+    * @param timestep   The amount of time (in seconds) since the last frame
+    */
+    void updateInfoScene(float timestep);
 };
 
 #endif

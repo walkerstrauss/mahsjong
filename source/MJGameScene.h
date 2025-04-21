@@ -202,9 +202,13 @@ protected:
     std::shared_ptr<Button> _playerHandBtn2;
     
     std::vector<std::shared_ptr<SceneNode>> _opponentHandTiles;
-    std::vector<std::shared_ptr<SceneNode>> _playerSetTiles;
+    std::vector<std::shared_ptr<SceneNode>> _playerHandTiles;
     std::shared_ptr<SceneNode> _opponentHandRec;
-    std::shared_ptr<SceneNode> _playerSetRec;
+    std::shared_ptr<SceneNode> _playerHandRec;
+    std::vector<std::shared_ptr<TileSet::Tile>> _opponentSetTiles;
+    std::vector<std::shared_ptr<TileSet::Tile>> _playerSetTiles;
+    
+    bool drawnThisTurn;
 
 public:
 #pragma mark -
@@ -389,7 +393,6 @@ public:
                 }
             }
         });
-        
         _opponentHandBtn2 = std::dynamic_pointer_cast<Button>(_assets->get<SceneNode>("matchscene.gameplayscene.opponent-hand2"));
         _opponentHandBtn2->addListener([this](const std::string& name, bool down){
             if (!down){
@@ -401,19 +404,25 @@ public:
             }
         });
         
+        _playerHandRec = _assets->get<SceneNode>("matchscene.gameplayscene.player-hand-rec");
         _playerHandBtn = std::dynamic_pointer_cast<Button>(_assets->get<SceneNode>("matchscene.gameplayscene.playerhand-button"));
         _playerHandBtn->addListener([this](const std::string& name, bool down){
             if (!down){
-                CULog("Player hand/set tab button 1 pressed!");
-                // TODO: implement showing made player sets
+                bool visible = !_playerHandRec->isVisible();
+                _playerHandRec->setVisible(visible);
+                for (int i = 0; i < _playerHandTiles.size(); i++){
+                    _playerHandTiles[i]->setVisible(visible);
+                }
             }
         });
-        
         _playerHandBtn2 = std::dynamic_pointer_cast<Button>(_assets->get<SceneNode>("matchscene.gameplayscene.playerhand-button2"));
-        _playerHandBtn->addListener([this](const std::string& name, bool down){
+        _playerHandBtn2->addListener([this](const std::string& name, bool down){
             if (!down){
-                CULog("Player hand/set tab button 2 pressed!");
-                // TODO: implement showing made player sets
+                bool visible = !_playerHandRec->isVisible();
+                _playerHandRec->setVisible(visible);
+                for (int i = 0; i < _playerHandTiles.size(); i++){
+                    _playerHandTiles[i]->setVisible(visible);
+                }
             }
         });
         
@@ -421,7 +430,9 @@ public:
     }
     void updateTurnIndicators(){
         if (_network->getCurrentTurn() == _network->getLocalPid()){
-            _opponentHandBtn->activate();
+            if (!_opponentHandBtn->isActive()){
+                _opponentHandBtn->activate();
+            }
             _opponentHandBtn->setVisible(true);
             if (_opponentHandBtn2->isActive()){
                 _opponentHandBtn2->deactivate();
@@ -431,24 +442,31 @@ public:
                 _playerHandBtn->deactivate();
             }
             _playerHandBtn->setVisible(false);
-            _playerHandBtn2->activate();
+            if (!_playerHandBtn2->isActive()){
+                _playerHandBtn2->activate();
+            }
             _playerHandBtn2->setVisible(true);
         } else {
             if (_opponentHandBtn->isActive()){
                 _opponentHandBtn->deactivate();
-                _opponentHandBtn->setVisible(false);
             }
-            _opponentHandBtn2->activate();
+            _opponentHandBtn->setVisible(false);
+            if (!_opponentHandBtn2->isActive()){
+                _opponentHandBtn2->activate();
+            }
             _opponentHandBtn2->setVisible(true);
-            _playerHandBtn->activate();
+            if (!_playerHandBtn->isActive()){
+                _playerHandBtn->activate();
+            }
             _playerHandBtn->setVisible(true);
             if (_playerHandBtn2->isActive()){
                 _playerHandBtn2->deactivate();
             }
             _playerHandBtn2->setVisible(false);
         }
-        
     }
 };
+
+
 
 #endif /* __MJ_GAME_SCENE_H__ */

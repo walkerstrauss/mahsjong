@@ -87,6 +87,8 @@ void MahsJongApp::onShutdown() {
     _joingame.dispose();
     _settings.dispose();
     _pause.dispose();
+    _gameover.dispose();
+    _info.dispose();
 //    _network->dispose();
     _assets = nullptr;
     _batch = nullptr;
@@ -146,6 +148,9 @@ void MahsJongApp::update(float timestep) {
         case OVER:
             updateGameOverScene(timestep);
             break;
+        case INFO:
+            updateInfoScene(timestep);
+            break;
     }
 }
 
@@ -192,6 +197,8 @@ void MahsJongApp::draw() {
        case OVER:
            _gameover.render(_batch);
            break;
+       case INFO:
+           _info.render();
    }
 }
 
@@ -228,6 +235,8 @@ void MahsJongApp::updateLoadingScene(float timestep) {
        _gameover.init(_assets);
        _gameover.setSpriteBatch(_batch);
        _mainmenu.setActive(true);
+       _info.init(_assets);
+       _info.setSpriteBatch(_batch);
        _scene = State::MENU;
    }
 }
@@ -379,6 +388,9 @@ void MahsJongApp::updateGameScene(float timestep) {
             _gameplay._choice = GameScene::Choice::NONE;
             break;
         case GameScene::Choice::INFO:
+            _gameplay.setGameActive(false);
+            _info.setActive(true);
+            _scene = INFO;
             break;
         case GameScene::Choice::SETTING:
             _gameplay.setGameActive(false);
@@ -475,5 +487,20 @@ void MahsJongApp::updateGameOverScene(float timestep) {
     } else if (_gameover.choice == GameOverScene::Choice::NONE){
         // Do nothing
         return;
+    }
+}
+
+/**
+* Individualzed update method for the info scene
+*
+* @param timestep   The amount of time (in seconds) since the last frame
+*/
+void MahsJongApp::updateInfoScene(float timestep){
+    _info.update(timestep);
+    if (_info.choice == InfoScene::BACK){
+        _info.setActive(false);
+        _info.choice = InfoScene::NONE;
+        _gameplay.setGameActive(true);
+        _scene = GAME;
     }
 }
