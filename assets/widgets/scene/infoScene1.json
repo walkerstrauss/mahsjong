@@ -560,7 +560,7 @@
                     "y_anchor": "top",
                     "absolute": false,
                     "x_offset": 0,
-                    "y_offset": -0.9
+                    "y_offset": -0.6
                 }
             },
             "menu2": {
@@ -1074,7 +1074,7 @@
                     "y_anchor": "top",
                     "absolute": false,
                     "x_offset": 0,
-                    "y_offset": -0.7
+                    "y_offset": -0.6
                 }
             },
             "menu3": {
@@ -1572,8 +1572,8 @@
                         0.5
                     ],
                     "size": [
-                        640,
-                        449
+                        661,
+                        200
                     ],
                     "angle": 0,
                     "position": [
@@ -1588,7 +1588,7 @@
                     "y_anchor": "top",
                     "absolute": false,
                     "x_offset": 0,
-                    "y_offset": -0.9
+                    "y_offset": -0.6
                 }
             }
         }
