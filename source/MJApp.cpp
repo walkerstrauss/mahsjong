@@ -151,6 +151,8 @@ void MahsJongApp::update(float timestep) {
         case INFO:
             updateInfoScene(timestep);
             break;
+        case TUTORIAL:
+            updateTutorialScene(timestep);
     }
 }
 
@@ -199,6 +201,8 @@ void MahsJongApp::draw() {
            break;
        case INFO:
            _info.render();
+       case TUTORIAL:
+           _tutorial.render();
    }
 }
 
@@ -237,6 +241,8 @@ void MahsJongApp::updateLoadingScene(float timestep) {
        _mainmenu.setActive(true);
        _info.init(_assets);
        _info.setSpriteBatch(_batch);
+       _tutorial.init(_assets);
+       _tutorial.setSpriteBatch(_batch);
        _scene = State::MENU;
    }
 }
@@ -268,6 +274,11 @@ void MahsJongApp::updateMenuScene(float timestep) {
            _settings.setActive(true);
            _settings.scene = SettingScene::PrevScene::MAIN;
            _scene = State::SETTINGS;
+           break;
+       case MenuScene::Choice::TUTORIAL:
+           _mainmenu.setActive(false);
+           _tutorial.setActive(true);
+           _scene = TUTORIAL;
            break;
        case MenuScene::Choice::NONE:
            // DO NOTHING
@@ -504,3 +515,22 @@ void MahsJongApp::updateInfoScene(float timestep){
         _scene = GAME;
     }
 }
+
+/**
+* Individualzed update method for the tutorial scene
+*
+* @param timestep   The amount of time (in seconds) since the last frame
+*/
+void MahsJongApp::updateTutorialScene(float timestep){
+    _tutorial.update(timestep);
+    switch (_tutorial.getChoice()){
+        case TutorialScene::NONE:
+            break;
+        case TutorialScene::BACK:
+            _tutorial.setActive(false);
+            _mainmenu.setActive(true);
+            _scene = MENU;
+            break;
+    }
+}
+

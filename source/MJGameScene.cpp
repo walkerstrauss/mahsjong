@@ -260,27 +260,8 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::sha
 
     cugl::Rect rect(0, 0, 150, 50);
     cugl::Poly2 poly(rect);
-
-    std::shared_ptr<scene2::PolygonNode> upPlaceholder = scene2::PolygonNode::alloc();
-    upPlaceholder->setPolygon(poly);
-    upPlaceholder->setContentSize(cugl::Size(150, 50));
-    upPlaceholder->setColor(cugl::Color4::GRAY);
-    
-    std::shared_ptr<scene2::PolygonNode> downPlaceholder = scene2::PolygonNode::alloc();
-    downPlaceholder->setPolygon(poly);
-    downPlaceholder->setContentSize(cugl::Size(150, 50));
-    cugl::Color4 darkGray(64, 64, 64, 255);
-    downPlaceholder->setColor(darkGray);
-    
-    _playSetBtn = scene2::Button::alloc(upPlaceholder, downPlaceholder);
-    _playSetBtn->setContentSize(cugl::Size(150, 50));
-    _playSetBtn->setAnchor(cugl::Vec2::ANCHOR_CENTER);
-    _playSetBtn->setPosition(cugl::Vec2(200, 560));
-    _playSetBtn->setColor(cugl::Color4::RED);
-    
-    _playSetBtn->deactivate();
+  
     _playSetBtn->setVisible(false);
-    _matchScene->addChild(_playSetBtn);
     
     _playSetBtn->addListener([this](const std::string& name, bool down) {
         if (!down) {
@@ -422,7 +403,7 @@ void GameScene::update(float timestep) {
                 _player->getHand().updateTilePositions(_matchScene->getSize());
                 _playSetBtn->setVisible(true);
                 _playSetBtn->activate();
-                drawnThisTurn = true;
+//                drawnThisTurn = true;
             };
         }
     }
@@ -615,7 +596,7 @@ void GameScene::updateDrag(const cugl::Vec2& mousePos, bool mouseDown, bool mous
         if (_dragInitiated && _draggingTile) {
             float distance = (mousePos - _dragStartPos).length();
             if(_draggingTile->discarded) {
-                if(_playerHandRegion.contains(mousePos) && !drawnThisTurn) {
+                if(_playerHandRegion.contains(mousePos) /*&& !drawnThisTurn*/) {
                     _matchController->drawDiscard();
                     _playSetBtn->activate();
                     _playSetBtn->setVisible(true);

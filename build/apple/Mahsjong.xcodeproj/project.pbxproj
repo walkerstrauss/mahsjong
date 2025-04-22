@@ -17,6 +17,8 @@
 		23340F4E2DB24CEA00B07A51 /* MJLoadingScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 23340F4C2DB24CEA00B07A51 /* MJLoadingScene.cpp */; };
 		289E74F22DB69C9A0057C03A /* MJInfoScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 289E74F12DB69C950057C03A /* MJInfoScene.cpp */; };
 		289E74F32DB69C9A0057C03A /* MJInfoScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 289E74F12DB69C950057C03A /* MJInfoScene.cpp */; };
+		289E755F2DB82D1F0057C03A /* MJTutorialScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 289E755E2DB82D1B0057C03A /* MJTutorialScene.cpp */; };
+		289E75602DB82D1F0057C03A /* MJTutorialScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 289E755E2DB82D1B0057C03A /* MJTutorialScene.cpp */; };
 		AB06F65AB0B4F10FCCCC8D2F /* widgets in Resources */ = {isa = PBXBuildFile; fileRef = AA8A42C73B2A17DA1163F4BD /* widgets */; };
 		AB084F9D0E7DEE813F658313 /* textures in Resources */ = {isa = PBXBuildFile; fileRef = AACD441E407C552AECEE9B33 /* textures */; };
 		ABBCECE05884D7F0EED5F50D /* json in Resources */ = {isa = PBXBuildFile; fileRef = AA1BA6EDE03659A8C6BB7FDA /* json */; };
@@ -198,6 +200,8 @@
 		23340F4C2DB24CEA00B07A51 /* MJLoadingScene.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = MJLoadingScene.cpp; sourceTree = "<group>"; };
 		289E74F02DB69C8E0057C03A /* MJInfoScene.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MJInfoScene.h; sourceTree = "<group>"; };
 		289E74F12DB69C950057C03A /* MJInfoScene.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = MJInfoScene.cpp; sourceTree = "<group>"; };
+		289E75512DB82D0D0057C03A /* MJTutorialScene.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MJTutorialScene.h; sourceTree = "<group>"; };
+		289E755E2DB82D1B0057C03A /* MJTutorialScene.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = MJTutorialScene.cpp; sourceTree = "<group>"; };
 		AA1BA6EDE03659A8C6BB7FDA /* json */ = {isa = PBXFileReference; lastKnownFileType = folder; path = json; sourceTree = "<group>"; };
 		AA8A42C73B2A17DA1163F4BD /* widgets */ = {isa = PBXFileReference; lastKnownFileType = folder; path = widgets; sourceTree = "<group>"; };
 		AAAA991EE1AACE78BB02C3AD /* sounds */ = {isa = PBXFileReference; lastKnownFileType = folder; path = sounds; sourceTree = "<group>"; };
@@ -366,6 +370,8 @@
 		EB0F3C9827FB9DCB0037CC66 /* Source */ = {
 			isa = PBXGroup;
 			children = (
+				289E755E2DB82D1B0057C03A /* MJTutorialScene.cpp */,
+				289E75512DB82D0D0057C03A /* MJTutorialScene.h */,
 				289E74F12DB69C950057C03A /* MJInfoScene.cpp */,
 				289E74F02DB69C8E0057C03A /* MJInfoScene.h */,
 				BACA3E795FDBD0D1AA5FE1D6 /* MJDiscardPile.cpp */,
@@ -723,6 +729,7 @@
 				BB1598F1E916E3F59D16CBB2 /* MJInputController.cpp in Sources */,
 				BBBB4CA4E9FD4B28FC10F88A /* MJHostScene.cpp in Sources */,
 				23340F4E2DB24CEA00B07A51 /* MJLoadingScene.cpp in Sources */,
+				289E75602DB82D1F0057C03A /* MJTutorialScene.cpp in Sources */,
 				BB4011487A879DE60329C614 /* MJPile.cpp in Sources */,
 				289E74F22DB69C9A0057C03A /* MJInfoScene.cpp in Sources */,
 				BBB9F86ABDCAB1BBBAECE9CA /* MJMatchController.cpp in Sources */,
@@ -755,6 +762,7 @@
 				BC928939FC5C016F9E0227C1 /* MJInputController.cpp in Sources */,
 				BCE98E0AE64141B7A2A6AC03 /* MJHostScene.cpp in Sources */,
 				23340F4D2DB24CEA00B07A51 /* MJLoadingScene.cpp in Sources */,
+				289E755F2DB82D1F0057C03A /* MJTutorialScene.cpp in Sources */,
 				BC88EFC0A2F65EE1DF46AA8E /* MJPile.cpp in Sources */,
 				289E74F32DB69C9A0057C03A /* MJInfoScene.cpp in Sources */,
 				BCABFF15EDF5CF21F3629ED0 /* MJMatchController.cpp in Sources */,

@@ -21,6 +21,7 @@
 #include "MJMatchController.h"
 #include "MJLoadingScene.h"
 #include "MJInfoScene.h"
+#include "MJTutorialScene.h"
 
 /**
  * This class represents the application root for the Mah's Jong game
@@ -34,6 +35,7 @@ protected:
         LOAD,
         MENU,
         INFO,
+        TUTORIAL,
         HOST,
         CLIENT,
         GAME,
@@ -71,6 +73,8 @@ protected:
     GameOverScene _gameover;
     /** The information scene for player onboarding and in-game information */
     InfoScene _info;
+    /** The tutorial scene for player onboarding outside of the game */
+    TutorialScene _tutorial;
     /** The match controller for the game*/
     std::shared_ptr<MatchController> _matchController;
     /** Whether or not we finished loading all assets*/
@@ -212,6 +216,13 @@ private:
     * @param timestep   The amount of time (in seconds) since the last frame
     */
     void updateInfoScene(float timestep);
+    
+    /**
+    * Individualzed update method for the tutorial scene
+    *
+    * @param timestep   The amount of time (in seconds) since the last frame
+    */
+    void updateTutorialScene(float timestep);
 };
 
 #endif

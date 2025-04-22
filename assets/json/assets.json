@@ -255,6 +255,9 @@
         "menuBackground": {
             "file": "textures/menu/menuBackground.png"
         },
+        "tut-btn":{
+            "file": "textures/menu/tut-btn.png"
+        },
         "menuButtonDown": {
             "file": "textures/menu/menuButtonDown.png"
         },
@@ -782,8 +785,46 @@
         },
         "infoWin":{
             "file": "textures/playguide/infoWin.png"
+        },
+        "tu1": {
+            "file": "textures/tutorial/tu1.png"
+        },
+        "tu2": {
+            "file": "textures/tutorial/tu2.png"
+        },
+        "tu3": {
+            "file": "textures/tutorial/tu3.png"
+        },
+        "tu4": {
+            "file": "textures/tutorial/tu4.png"
+        },
+        "tu5": {
+            "file": "textures/tutorial/tu5.png"
+        },
+        "tu6": {
+            "file": "textures/tutorial/tu6.png"
+        },
+        "tu7": {
+            "file": "textures/tutorial/tu7.png"
+        },
+        "tu8": {
+            "file": "textures/tutorial/tu8.png"
+        },
+        "tu9": {
+            "file": "textures/tutorial/tu9.png"
+        },
+        "tu10": {
+            "file": "textures/tutorial/tu10.png"
+        },
+        "tu11": {
+            "file": "textures/tutorial/tu11.png"
+        },
+        "tu12": {
+            "file": "textures/tutorial/tu12.png"
+        },
+        "playset":{
+            "file":"textures/gameplay/playset.png"
         }
-        
     },
     "fonts": {
         "pixel32": {
@@ -867,6 +908,26 @@
             }
           }
         }
+    },
+    "tutorial": {
+      "type": "Node",
+      "format": {
+        "type": "Anchored"
+      },
+      "children": {
+        "tutorialScene": {
+          "type": "Widget",
+          "format": {
+            "type": "Anchored"
+          },
+          "data": {
+            "variables": {
+              "size": [ 1280, 720 ]
+            },
+            "key": "tutorialScene"
+          }
+        }
+      }
     },
     "home": {
       "type": "Node",
@@ -1103,7 +1164,8 @@
     "host1Scene": "widgets/scene/host1Scene.json",
     "client1Scene": "widgets/scene/client1Scene.json",
     "client3Scene": "widgets/scene/client3Scene.json",
-    "infoscene": "widgets/scene/infoScene1.json"
+    "infoscene": "widgets/scene/infoScene1.json",
+    "tutorialScene": "widgets/scene/tutorialScene.json"
   },
   "jsons": {
     "server": "json/server.json",

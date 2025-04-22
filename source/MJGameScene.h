@@ -89,12 +89,10 @@ protected:
     cugl::Rect discardArea;
     /** Pointer to the hand */
     Hand* _hand;
-   
     std::shared_ptr<cugl::graphics::TextLayout> _win;
     std::shared_ptr<cugl::graphics::TextLayout> _lose;
     bool _gameWin;
     bool _gameLose;
-    
     /** Whether this player is the host */
     bool _ishost;
     /** Whether we paused the game **/
@@ -107,17 +105,8 @@ protected:
     std::shared_ptr<cugl::scene2::Button> _discardBtn;
     /** Button for transitioning to the tileset UI scene (discarded cards) */
     std::shared_ptr<cugl::scene2::Button> _tilesetUIBtn;
-//    /** Button for pausing */
-//    std::shared_ptr<cugl::scene2::Button> _pauseBtn;
-    /** Button for continuing (in the pause scene) */
-    std::shared_ptr<cugl::scene2::Button> _continueBtn;
-    /** Button to set to win scene (for debugging) */
-    std::shared_ptr<cugl::scene2::Button> _winBtn;
-    /** Button to set to defeat scene (for debugging) */
-    std::shared_ptr<cugl::scene2::Button> _defeatBtn;
     /** Button for ending turn */
     std::shared_ptr<cugl::scene2::Button> _endTurnBtn;
-    
     /**Button to transition to the setting scene**/
     std::shared_ptr<Button> _settingBtn;
     /**Button to transition to the info scene **/
@@ -126,10 +115,6 @@ protected:
     /** Textured node to set the discarded tile image*/
     std::shared_ptr<cugl::scene2::TexturedNode> _discardedTileImage;
 
-    std::shared_ptr<cugl::scene2::Button> _displayIconBtn;
-
-    std::shared_ptr<cugl::scene2::TexturedNode> _expandedIcon;
-    
     std::shared_ptr<cugl::scene2::TexturedNode> _dragToDiscardNode;
 
     std::shared_ptr<cugl::scene2::TexturedNode> _dragToHandNode;
