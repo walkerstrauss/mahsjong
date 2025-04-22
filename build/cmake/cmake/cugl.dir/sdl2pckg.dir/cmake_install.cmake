@@ -1,4 +1,4 @@
-# Install script for directory: /Users/patrickchoo/cs4152/cugl/sdlapp/buildfiles/cmake
+# Install script for directory: /users/patrickchoo/cs4152/cugl/sdlapp/buildfiles/cmake
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -39,17 +39,17 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
-  include("/Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2/cmake_install.cmake")
-  include("/Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2image/cmake_install.cmake")
-  include("/Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2ttf/cmake_install.cmake")
-  include("/Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2atk/cmake_install.cmake")
-  include("/Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2app/cmake_install.cmake")
+  include("/users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2/cmake_install.cmake")
+  include("/users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2image/cmake_install.cmake")
+  include("/users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2ttf/cmake_install.cmake")
+  include("/users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2atk/cmake_install.cmake")
+  include("/users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2app/cmake_install.cmake")
 
 endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
 if(CMAKE_INSTALL_LOCAL_ONLY)
-  file(WRITE "/Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/install_local_manifest.txt"
+  file(WRITE "/users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/install_local_manifest.txt"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")
 endif()

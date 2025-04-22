@@ -1,142 +1,142 @@
 {
   "images" : [
     {
+      "filename" : "appicon20x20.png",
       "idiom" : "universal",
-      "filename": "icon-20.png",
       "platform" : "ios",
       "size" : "20x20"
     },
     {
+      "filename" : "appicon40x40 2.png",
       "idiom" : "universal",
-      "filename": "icon-20@2x.png",
       "platform" : "ios",
       "scale" : "2x",
       "size" : "20x20"
     },
     {
+      "filename" : "appicon60x60.png",
       "idiom" : "universal",
-      "filename": "icon-20@3x.png",
       "platform" : "ios",
       "scale" : "3x",
       "size" : "20x20"
     },
     {
-      "filename": "icon-29.png",
+      "filename" : "appicon29x29.png",
       "idiom" : "universal",
       "platform" : "ios",
       "size" : "29x29"
     },
     {
-      "filename": "icon-29@2x.png",
+      "filename" : "appicon58x58.png",
       "idiom" : "universal",
       "platform" : "ios",
       "scale" : "2x",
       "size" : "29x29"
     },
     {
-      "filename": "icon-29@3x.png",
+      "filename" : "appicon87x87.png",
       "idiom" : "universal",
       "platform" : "ios",
       "scale" : "3x",
       "size" : "29x29"
     },
     {
-      "filename": "icon-38.png",
+      "filename" : "appicon38x38.png",
       "idiom" : "universal",
       "platform" : "ios",
       "size" : "38x38"
     },
     {
-      "filename": "icon-38@2x.png",
+      "filename" : "appicon76x76 1.png",
       "idiom" : "universal",
       "platform" : "ios",
       "scale" : "2x",
       "size" : "38x38"
     },
     {
-      "filename": "icon-38@3x.png",
+      "filename" : "appicon114x114.png",
       "idiom" : "universal",
       "platform" : "ios",
       "scale" : "3x",
       "size" : "38x38"
     },
     {
-      "filename": "icon-20@2x.png",
+      "filename" : "appicon40x40 1.png",
       "idiom" : "universal",
       "platform" : "ios",
       "size" : "40x40"
     },
     {
-      "filename": "icon-20@4x.png",
+      "filename" : "appicon80x80.png",
       "idiom" : "universal",
       "platform" : "ios",
       "scale" : "2x",
       "size" : "40x40"
     },
     {
-      "filename": "icon-60@2x.png",
+      "filename" : "appicon120x120 1.png",
       "idiom" : "universal",
       "platform" : "ios",
       "scale" : "3x",
       "size" : "40x40"
     },
     {
-      "filename": "icon-60@2x.png",
+      "filename" : "appicon120x120.png",
       "idiom" : "universal",
       "platform" : "ios",
       "scale" : "2x",
       "size" : "60x60"
     },
     {
-      "filename": "icon-60@3x.png",
+      "filename" : "appicon180x180.png",
       "idiom" : "universal",
       "platform" : "ios",
       "scale" : "3x",
       "size" : "60x60"
     },
     {
-      "filename": "icon-64@2x.png",
+      "filename" : "appicon128x128.png",
       "idiom" : "universal",
       "platform" : "ios",
       "scale" : "2x",
       "size" : "64x64"
     },
     {
-      "filename": "icon-64@3x.png",
+      "filename" : "appicon192x192.png",
       "idiom" : "universal",
       "platform" : "ios",
       "scale" : "3x",
       "size" : "64x64"
     },
     {
-      "filename": "icon-68@2x.png",
+      "filename" : "appicon136x136.png",
       "idiom" : "universal",
       "platform" : "ios",
       "scale" : "2x",
       "size" : "68x68"
     },
     {
-      "filename": "icon-38@2x.png",
+      "filename" : "appicon76x76.png",
       "idiom" : "universal",
       "platform" : "ios",
       "size" : "76x76"
     },
     {
-      "filename": "icon-38@4x.png",
+      "filename" : "appicon152x152.png",
       "idiom" : "universal",
       "platform" : "ios",
       "scale" : "2x",
       "size" : "76x76"
     },
     {
-      "filename": "icon-83.5@2x.png",
+      "filename" : "appicon167x167.png",
       "idiom" : "universal",
       "platform" : "ios",
       "scale" : "2x",
       "size" : "83.5x83.5"
     },
     {
-      "filename": "icon-1024.png",
+      "filename" : "appicon1024x1024.png",
       "idiom" : "universal",
       "platform" : "ios",
       "size" : "1024x1024"

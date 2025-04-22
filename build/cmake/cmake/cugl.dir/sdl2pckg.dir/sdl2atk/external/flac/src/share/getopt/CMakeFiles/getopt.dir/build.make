@@ -53,10 +53,10 @@ RM = /opt/homebrew/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /Users/patrickchoo/cs4152/mahsjong/build/cmake
+CMAKE_SOURCE_DIR = /users/patrickchoo/cs4152/mahsjong/build/cmake
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake
+CMAKE_BINARY_DIR = /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake
 
 # Include any dependencies generated for this target.
 include cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/getopt/CMakeFiles/getopt.dir/depend.make
@@ -72,59 +72,59 @@ include cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/getopt/CMakeFiles/
 cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/getopt/CMakeFiles/getopt.dir/codegen:
 .PHONY : cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/getopt/CMakeFiles/getopt.dir/codegen
 
-cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/getopt/CMakeFiles/getopt.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/getopt/getopt.c.o: cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/getopt/CMakeFiles/getopt.dir/flags.make
-cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/getopt/CMakeFiles/getopt.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/getopt/getopt.c.o: /Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/getopt/getopt.c
-cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/getopt/CMakeFiles/getopt.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/getopt/getopt.c.o: cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/getopt/CMakeFiles/getopt.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/getopt/CMakeFiles/getopt.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/getopt/getopt.c.o"
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/getopt && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/getopt/CMakeFiles/getopt.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/getopt/getopt.c.o -MF CMakeFiles/getopt.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/getopt/getopt.c.o.d -o CMakeFiles/getopt.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/getopt/getopt.c.o -c /Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/getopt/getopt.c
+cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/getopt/CMakeFiles/getopt.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/getopt/getopt.c.o: cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/getopt/CMakeFiles/getopt.dir/flags.make
+cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/getopt/CMakeFiles/getopt.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/getopt/getopt.c.o: /users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/getopt/getopt.c
+cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/getopt/CMakeFiles/getopt.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/getopt/getopt.c.o: cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/getopt/CMakeFiles/getopt.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/getopt/CMakeFiles/getopt.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/getopt/getopt.c.o"
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/getopt && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/getopt/CMakeFiles/getopt.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/getopt/getopt.c.o -MF CMakeFiles/getopt.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/getopt/getopt.c.o.d -o CMakeFiles/getopt.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/getopt/getopt.c.o -c /users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/getopt/getopt.c
 
-cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/getopt/CMakeFiles/getopt.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/getopt/getopt.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/getopt.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/getopt/getopt.c.i"
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/getopt && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/getopt/getopt.c > CMakeFiles/getopt.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/getopt/getopt.c.i
+cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/getopt/CMakeFiles/getopt.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/getopt/getopt.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/getopt.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/getopt/getopt.c.i"
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/getopt && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/getopt/getopt.c > CMakeFiles/getopt.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/getopt/getopt.c.i
 
-cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/getopt/CMakeFiles/getopt.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/getopt/getopt.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/getopt.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/getopt/getopt.c.s"
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/getopt && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/getopt/getopt.c -o CMakeFiles/getopt.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/getopt/getopt.c.s
+cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/getopt/CMakeFiles/getopt.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/getopt/getopt.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/getopt.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/getopt/getopt.c.s"
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/getopt && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/getopt/getopt.c -o CMakeFiles/getopt.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/getopt/getopt.c.s
 
-cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/getopt/CMakeFiles/getopt.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/getopt/getopt1.c.o: cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/getopt/CMakeFiles/getopt.dir/flags.make
-cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/getopt/CMakeFiles/getopt.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/getopt/getopt1.c.o: /Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/getopt/getopt1.c
-cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/getopt/CMakeFiles/getopt.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/getopt/getopt1.c.o: cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/getopt/CMakeFiles/getopt.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/getopt/CMakeFiles/getopt.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/getopt/getopt1.c.o"
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/getopt && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/getopt/CMakeFiles/getopt.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/getopt/getopt1.c.o -MF CMakeFiles/getopt.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/getopt/getopt1.c.o.d -o CMakeFiles/getopt.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/getopt/getopt1.c.o -c /Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/getopt/getopt1.c
+cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/getopt/CMakeFiles/getopt.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/getopt/getopt1.c.o: cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/getopt/CMakeFiles/getopt.dir/flags.make
+cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/getopt/CMakeFiles/getopt.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/getopt/getopt1.c.o: /users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/getopt/getopt1.c
+cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/getopt/CMakeFiles/getopt.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/getopt/getopt1.c.o: cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/getopt/CMakeFiles/getopt.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/getopt/CMakeFiles/getopt.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/getopt/getopt1.c.o"
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/getopt && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/getopt/CMakeFiles/getopt.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/getopt/getopt1.c.o -MF CMakeFiles/getopt.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/getopt/getopt1.c.o.d -o CMakeFiles/getopt.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/getopt/getopt1.c.o -c /users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/getopt/getopt1.c
 
-cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/getopt/CMakeFiles/getopt.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/getopt/getopt1.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/getopt.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/getopt/getopt1.c.i"
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/getopt && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/getopt/getopt1.c > CMakeFiles/getopt.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/getopt/getopt1.c.i
+cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/getopt/CMakeFiles/getopt.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/getopt/getopt1.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/getopt.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/getopt/getopt1.c.i"
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/getopt && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/getopt/getopt1.c > CMakeFiles/getopt.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/getopt/getopt1.c.i
 
-cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/getopt/CMakeFiles/getopt.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/getopt/getopt1.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/getopt.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/getopt/getopt1.c.s"
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/getopt && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/getopt/getopt1.c -o CMakeFiles/getopt.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/getopt/getopt1.c.s
+cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/getopt/CMakeFiles/getopt.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/getopt/getopt1.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/getopt.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/getopt/getopt1.c.s"
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/getopt && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/getopt/getopt1.c -o CMakeFiles/getopt.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/getopt/getopt1.c.s
 
 # Object files for target getopt
 getopt_OBJECTS = \
-"CMakeFiles/getopt.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/getopt/getopt.c.o" \
-"CMakeFiles/getopt.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/getopt/getopt1.c.o"
+"CMakeFiles/getopt.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/getopt/getopt.c.o" \
+"CMakeFiles/getopt.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/getopt/getopt1.c.o"
 
 # External object files for target getopt
 getopt_EXTERNAL_OBJECTS =
 
-cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/getopt/libgetopt.a: cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/getopt/CMakeFiles/getopt.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/getopt/getopt.c.o
-cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/getopt/libgetopt.a: cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/getopt/CMakeFiles/getopt.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/getopt/getopt1.c.o
+cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/getopt/libgetopt.a: cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/getopt/CMakeFiles/getopt.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/getopt/getopt.c.o
+cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/getopt/libgetopt.a: cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/getopt/CMakeFiles/getopt.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/getopt/getopt1.c.o
 cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/getopt/libgetopt.a: cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/getopt/CMakeFiles/getopt.dir/build.make
 cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/getopt/libgetopt.a: cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/getopt/CMakeFiles/getopt.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking C static library libgetopt.a"
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/getopt && $(CMAKE_COMMAND) -P CMakeFiles/getopt.dir/cmake_clean_target.cmake
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/getopt && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/getopt.dir/link.txt --verbose=$(VERBOSE)
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking C static library libgetopt.a"
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/getopt && $(CMAKE_COMMAND) -P CMakeFiles/getopt.dir/cmake_clean_target.cmake
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/getopt && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/getopt.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
 cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/getopt/CMakeFiles/getopt.dir/build: cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/getopt/libgetopt.a
 .PHONY : cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/getopt/CMakeFiles/getopt.dir/build
 
 cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/getopt/CMakeFiles/getopt.dir/clean:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/getopt && $(CMAKE_COMMAND) -P CMakeFiles/getopt.dir/cmake_clean.cmake
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/getopt && $(CMAKE_COMMAND) -P CMakeFiles/getopt.dir/cmake_clean.cmake
 .PHONY : cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/getopt/CMakeFiles/getopt.dir/clean
 
 cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/getopt/CMakeFiles/getopt.dir/depend:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /Users/patrickchoo/cs4152/mahsjong/build/cmake /Users/patrickchoo/cs4152/cugl/sdlapp/buildfiles/cmake/sdl2atk/external/flac/src/share/getopt /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/getopt /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/getopt/CMakeFiles/getopt.dir/DependInfo.cmake "--color=$(COLOR)"
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /users/patrickchoo/cs4152/mahsjong/build/cmake /users/patrickchoo/cs4152/cugl/sdlapp/buildfiles/cmake/sdl2atk/external/flac/src/share/getopt /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/getopt /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/getopt/CMakeFiles/getopt.dir/DependInfo.cmake "--color=$(COLOR)"
 .PHONY : cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/getopt/CMakeFiles/getopt.dir/depend
 

@@ -33,12 +33,16 @@ LOCAL_SRC_FILES := $(subst $(LOCAL_PATH)/,, \
 	$(LOCAL_PATH)/source/MJDiscardUIScene.cpp \
 	$(LOCAL_PATH)/source/MJClientScene.cpp \
 	$(LOCAL_PATH)/source/MJSettingScene.cpp \
+	$(LOCAL_PATH)/source/MJDiscardUINode.cpp \
+	$(LOCAL_PATH)/source/MJPileUINode.cpp \
 	$(LOCAL_PATH)/source/MJScoreManager.cpp \
 	$(LOCAL_PATH)/source/MJGameOverScene.cpp \
 	$(LOCAL_PATH)/source/MJAudioController.cpp \
 	$(LOCAL_PATH)/source/MJInputController.cpp \
+	$(LOCAL_PATH)/source/MJLoadingScene.cpp \
 	$(LOCAL_PATH)/source/MJHostScene.cpp \
 	$(LOCAL_PATH)/source/MJPile.cpp \
+	$(LOCAL_PATH)/source/MJAnimatedNode.cpp \
 	$(LOCAL_PATH)/source/MJMatchController.cpp \
 	$(LOCAL_PATH)/source/MJGameScene.cpp \
 	$(LOCAL_PATH)/source/MJTileSet.cpp \

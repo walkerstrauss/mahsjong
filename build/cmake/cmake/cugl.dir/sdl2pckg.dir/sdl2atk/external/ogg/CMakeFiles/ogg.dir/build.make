@@ -53,10 +53,10 @@ RM = /opt/homebrew/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /Users/patrickchoo/cs4152/mahsjong/build/cmake
+CMAKE_SOURCE_DIR = /users/patrickchoo/cs4152/mahsjong/build/cmake
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake
+CMAKE_BINARY_DIR = /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake
 
 # Include any dependencies generated for this target.
 include cugl.dir/sdl2pckg.dir/sdl2atk/external/ogg/CMakeFiles/ogg.dir/depend.make
@@ -72,59 +72,59 @@ include cugl.dir/sdl2pckg.dir/sdl2atk/external/ogg/CMakeFiles/ogg.dir/flags.make
 cugl.dir/sdl2pckg.dir/sdl2atk/external/ogg/CMakeFiles/ogg.dir/codegen:
 .PHONY : cugl.dir/sdl2pckg.dir/sdl2atk/external/ogg/CMakeFiles/ogg.dir/codegen
 
-cugl.dir/sdl2pckg.dir/sdl2atk/external/ogg/CMakeFiles/ogg.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/ogg/src/bitwise.c.o: cugl.dir/sdl2pckg.dir/sdl2atk/external/ogg/CMakeFiles/ogg.dir/flags.make
-cugl.dir/sdl2pckg.dir/sdl2atk/external/ogg/CMakeFiles/ogg.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/ogg/src/bitwise.c.o: /Users/patrickchoo/cs4152/cugl/sdlapp/external/ogg/src/bitwise.c
-cugl.dir/sdl2pckg.dir/sdl2atk/external/ogg/CMakeFiles/ogg.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/ogg/src/bitwise.c.o: cugl.dir/sdl2pckg.dir/sdl2atk/external/ogg/CMakeFiles/ogg.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object cugl.dir/sdl2pckg.dir/sdl2atk/external/ogg/CMakeFiles/ogg.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/ogg/src/bitwise.c.o"
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2atk/external/ogg && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT cugl.dir/sdl2pckg.dir/sdl2atk/external/ogg/CMakeFiles/ogg.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/ogg/src/bitwise.c.o -MF CMakeFiles/ogg.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/ogg/src/bitwise.c.o.d -o CMakeFiles/ogg.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/ogg/src/bitwise.c.o -c /Users/patrickchoo/cs4152/cugl/sdlapp/external/ogg/src/bitwise.c
+cugl.dir/sdl2pckg.dir/sdl2atk/external/ogg/CMakeFiles/ogg.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/ogg/src/bitwise.c.o: cugl.dir/sdl2pckg.dir/sdl2atk/external/ogg/CMakeFiles/ogg.dir/flags.make
+cugl.dir/sdl2pckg.dir/sdl2atk/external/ogg/CMakeFiles/ogg.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/ogg/src/bitwise.c.o: /users/patrickchoo/cs4152/cugl/sdlapp/external/ogg/src/bitwise.c
+cugl.dir/sdl2pckg.dir/sdl2atk/external/ogg/CMakeFiles/ogg.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/ogg/src/bitwise.c.o: cugl.dir/sdl2pckg.dir/sdl2atk/external/ogg/CMakeFiles/ogg.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object cugl.dir/sdl2pckg.dir/sdl2atk/external/ogg/CMakeFiles/ogg.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/ogg/src/bitwise.c.o"
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2atk/external/ogg && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT cugl.dir/sdl2pckg.dir/sdl2atk/external/ogg/CMakeFiles/ogg.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/ogg/src/bitwise.c.o -MF CMakeFiles/ogg.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/ogg/src/bitwise.c.o.d -o CMakeFiles/ogg.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/ogg/src/bitwise.c.o -c /users/patrickchoo/cs4152/cugl/sdlapp/external/ogg/src/bitwise.c
 
-cugl.dir/sdl2pckg.dir/sdl2atk/external/ogg/CMakeFiles/ogg.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/ogg/src/bitwise.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/ogg.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/ogg/src/bitwise.c.i"
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2atk/external/ogg && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/patrickchoo/cs4152/cugl/sdlapp/external/ogg/src/bitwise.c > CMakeFiles/ogg.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/ogg/src/bitwise.c.i
+cugl.dir/sdl2pckg.dir/sdl2atk/external/ogg/CMakeFiles/ogg.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/ogg/src/bitwise.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/ogg.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/ogg/src/bitwise.c.i"
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2atk/external/ogg && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /users/patrickchoo/cs4152/cugl/sdlapp/external/ogg/src/bitwise.c > CMakeFiles/ogg.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/ogg/src/bitwise.c.i
 
-cugl.dir/sdl2pckg.dir/sdl2atk/external/ogg/CMakeFiles/ogg.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/ogg/src/bitwise.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/ogg.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/ogg/src/bitwise.c.s"
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2atk/external/ogg && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/patrickchoo/cs4152/cugl/sdlapp/external/ogg/src/bitwise.c -o CMakeFiles/ogg.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/ogg/src/bitwise.c.s
+cugl.dir/sdl2pckg.dir/sdl2atk/external/ogg/CMakeFiles/ogg.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/ogg/src/bitwise.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/ogg.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/ogg/src/bitwise.c.s"
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2atk/external/ogg && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /users/patrickchoo/cs4152/cugl/sdlapp/external/ogg/src/bitwise.c -o CMakeFiles/ogg.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/ogg/src/bitwise.c.s
 
-cugl.dir/sdl2pckg.dir/sdl2atk/external/ogg/CMakeFiles/ogg.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/ogg/src/framing.c.o: cugl.dir/sdl2pckg.dir/sdl2atk/external/ogg/CMakeFiles/ogg.dir/flags.make
-cugl.dir/sdl2pckg.dir/sdl2atk/external/ogg/CMakeFiles/ogg.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/ogg/src/framing.c.o: /Users/patrickchoo/cs4152/cugl/sdlapp/external/ogg/src/framing.c
-cugl.dir/sdl2pckg.dir/sdl2atk/external/ogg/CMakeFiles/ogg.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/ogg/src/framing.c.o: cugl.dir/sdl2pckg.dir/sdl2atk/external/ogg/CMakeFiles/ogg.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object cugl.dir/sdl2pckg.dir/sdl2atk/external/ogg/CMakeFiles/ogg.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/ogg/src/framing.c.o"
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2atk/external/ogg && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT cugl.dir/sdl2pckg.dir/sdl2atk/external/ogg/CMakeFiles/ogg.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/ogg/src/framing.c.o -MF CMakeFiles/ogg.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/ogg/src/framing.c.o.d -o CMakeFiles/ogg.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/ogg/src/framing.c.o -c /Users/patrickchoo/cs4152/cugl/sdlapp/external/ogg/src/framing.c
+cugl.dir/sdl2pckg.dir/sdl2atk/external/ogg/CMakeFiles/ogg.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/ogg/src/framing.c.o: cugl.dir/sdl2pckg.dir/sdl2atk/external/ogg/CMakeFiles/ogg.dir/flags.make
+cugl.dir/sdl2pckg.dir/sdl2atk/external/ogg/CMakeFiles/ogg.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/ogg/src/framing.c.o: /users/patrickchoo/cs4152/cugl/sdlapp/external/ogg/src/framing.c
+cugl.dir/sdl2pckg.dir/sdl2atk/external/ogg/CMakeFiles/ogg.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/ogg/src/framing.c.o: cugl.dir/sdl2pckg.dir/sdl2atk/external/ogg/CMakeFiles/ogg.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object cugl.dir/sdl2pckg.dir/sdl2atk/external/ogg/CMakeFiles/ogg.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/ogg/src/framing.c.o"
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2atk/external/ogg && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT cugl.dir/sdl2pckg.dir/sdl2atk/external/ogg/CMakeFiles/ogg.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/ogg/src/framing.c.o -MF CMakeFiles/ogg.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/ogg/src/framing.c.o.d -o CMakeFiles/ogg.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/ogg/src/framing.c.o -c /users/patrickchoo/cs4152/cugl/sdlapp/external/ogg/src/framing.c
 
-cugl.dir/sdl2pckg.dir/sdl2atk/external/ogg/CMakeFiles/ogg.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/ogg/src/framing.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/ogg.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/ogg/src/framing.c.i"
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2atk/external/ogg && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/patrickchoo/cs4152/cugl/sdlapp/external/ogg/src/framing.c > CMakeFiles/ogg.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/ogg/src/framing.c.i
+cugl.dir/sdl2pckg.dir/sdl2atk/external/ogg/CMakeFiles/ogg.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/ogg/src/framing.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/ogg.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/ogg/src/framing.c.i"
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2atk/external/ogg && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /users/patrickchoo/cs4152/cugl/sdlapp/external/ogg/src/framing.c > CMakeFiles/ogg.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/ogg/src/framing.c.i
 
-cugl.dir/sdl2pckg.dir/sdl2atk/external/ogg/CMakeFiles/ogg.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/ogg/src/framing.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/ogg.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/ogg/src/framing.c.s"
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2atk/external/ogg && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/patrickchoo/cs4152/cugl/sdlapp/external/ogg/src/framing.c -o CMakeFiles/ogg.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/ogg/src/framing.c.s
+cugl.dir/sdl2pckg.dir/sdl2atk/external/ogg/CMakeFiles/ogg.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/ogg/src/framing.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/ogg.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/ogg/src/framing.c.s"
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2atk/external/ogg && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /users/patrickchoo/cs4152/cugl/sdlapp/external/ogg/src/framing.c -o CMakeFiles/ogg.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/ogg/src/framing.c.s
 
 # Object files for target ogg
 ogg_OBJECTS = \
-"CMakeFiles/ogg.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/ogg/src/bitwise.c.o" \
-"CMakeFiles/ogg.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/ogg/src/framing.c.o"
+"CMakeFiles/ogg.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/ogg/src/bitwise.c.o" \
+"CMakeFiles/ogg.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/ogg/src/framing.c.o"
 
 # External object files for target ogg
 ogg_EXTERNAL_OBJECTS =
 
-cugl.dir/sdl2pckg.dir/sdl2atk/external/ogg/libogg.a: cugl.dir/sdl2pckg.dir/sdl2atk/external/ogg/CMakeFiles/ogg.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/ogg/src/bitwise.c.o
-cugl.dir/sdl2pckg.dir/sdl2atk/external/ogg/libogg.a: cugl.dir/sdl2pckg.dir/sdl2atk/external/ogg/CMakeFiles/ogg.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/ogg/src/framing.c.o
+cugl.dir/sdl2pckg.dir/sdl2atk/external/ogg/libogg.a: cugl.dir/sdl2pckg.dir/sdl2atk/external/ogg/CMakeFiles/ogg.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/ogg/src/bitwise.c.o
+cugl.dir/sdl2pckg.dir/sdl2atk/external/ogg/libogg.a: cugl.dir/sdl2pckg.dir/sdl2atk/external/ogg/CMakeFiles/ogg.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/ogg/src/framing.c.o
 cugl.dir/sdl2pckg.dir/sdl2atk/external/ogg/libogg.a: cugl.dir/sdl2pckg.dir/sdl2atk/external/ogg/CMakeFiles/ogg.dir/build.make
 cugl.dir/sdl2pckg.dir/sdl2atk/external/ogg/libogg.a: cugl.dir/sdl2pckg.dir/sdl2atk/external/ogg/CMakeFiles/ogg.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking C static library libogg.a"
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2atk/external/ogg && $(CMAKE_COMMAND) -P CMakeFiles/ogg.dir/cmake_clean_target.cmake
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2atk/external/ogg && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/ogg.dir/link.txt --verbose=$(VERBOSE)
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking C static library libogg.a"
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2atk/external/ogg && $(CMAKE_COMMAND) -P CMakeFiles/ogg.dir/cmake_clean_target.cmake
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2atk/external/ogg && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/ogg.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
 cugl.dir/sdl2pckg.dir/sdl2atk/external/ogg/CMakeFiles/ogg.dir/build: cugl.dir/sdl2pckg.dir/sdl2atk/external/ogg/libogg.a
 .PHONY : cugl.dir/sdl2pckg.dir/sdl2atk/external/ogg/CMakeFiles/ogg.dir/build
 
 cugl.dir/sdl2pckg.dir/sdl2atk/external/ogg/CMakeFiles/ogg.dir/clean:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2atk/external/ogg && $(CMAKE_COMMAND) -P CMakeFiles/ogg.dir/cmake_clean.cmake
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2atk/external/ogg && $(CMAKE_COMMAND) -P CMakeFiles/ogg.dir/cmake_clean.cmake
 .PHONY : cugl.dir/sdl2pckg.dir/sdl2atk/external/ogg/CMakeFiles/ogg.dir/clean
 
 cugl.dir/sdl2pckg.dir/sdl2atk/external/ogg/CMakeFiles/ogg.dir/depend:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /Users/patrickchoo/cs4152/mahsjong/build/cmake /Users/patrickchoo/cs4152/cugl/sdlapp/buildfiles/cmake/sdl2atk/external/ogg /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2atk/external/ogg /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2atk/external/ogg/CMakeFiles/ogg.dir/DependInfo.cmake "--color=$(COLOR)"
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /users/patrickchoo/cs4152/mahsjong/build/cmake /users/patrickchoo/cs4152/cugl/sdlapp/buildfiles/cmake/sdl2atk/external/ogg /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2atk/external/ogg /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2atk/external/ogg/CMakeFiles/ogg.dir/DependInfo.cmake "--color=$(COLOR)"
 .PHONY : cugl.dir/sdl2pckg.dir/sdl2atk/external/ogg/CMakeFiles/ogg.dir/depend
 

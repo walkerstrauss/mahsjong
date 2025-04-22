@@ -57,10 +57,10 @@ RM = /opt/homebrew/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /Users/patrickchoo/cs4152/mahsjong/build/cmake
+CMAKE_SOURCE_DIR = /users/patrickchoo/cs4152/mahsjong/build/cmake
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake
+CMAKE_BINARY_DIR = /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -68,7 +68,7 @@ CMAKE_BINARY_DIR = /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake
 # Special rule for the target package
 package: preinstall
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Run CPack packaging tool..."
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && /opt/homebrew/bin/cpack --config ./CPackConfig.cmake
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && /opt/homebrew/bin/cpack --config ./CPackConfig.cmake
 .PHONY : package
 
 # Special rule for the target package
@@ -78,7 +78,7 @@ package/fast: package
 # Special rule for the target package_source
 package_source:
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Run CPack packaging tool for source..."
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && /opt/homebrew/bin/cpack --config ./CPackSourceConfig.cmake /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CPackSourceConfig.cmake
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && /opt/homebrew/bin/cpack --config ./CPackSourceConfig.cmake /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CPackSourceConfig.cmake
 .PHONY : package_source
 
 # Special rule for the target package_source
@@ -152,14 +152,14 @@ install/strip/fast: preinstall/fast
 
 # The main all target
 all: cmake_check_build_system
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(CMAKE_COMMAND) -E cmake_progress_start /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/external/poly2tri//CMakeFiles/progress.marks
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 cugl.dir/external/poly2tri/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles 0
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(CMAKE_COMMAND) -E cmake_progress_start /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/external/poly2tri//CMakeFiles/progress.marks
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 cugl.dir/external/poly2tri/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 cugl.dir/external/poly2tri/clean
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 cugl.dir/external/poly2tri/clean
 .PHONY : clean
 
 # The main clean target
@@ -168,22 +168,22 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 cugl.dir/external/poly2tri/preinstall
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 cugl.dir/external/poly2tri/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 cugl.dir/external/poly2tri/preinstall
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 cugl.dir/external/poly2tri/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
 # Convenience name for target.
 cugl.dir/external/poly2tri/CMakeFiles/poly2tri.dir/rule:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 cugl.dir/external/poly2tri/CMakeFiles/poly2tri.dir/rule
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 cugl.dir/external/poly2tri/CMakeFiles/poly2tri.dir/rule
 .PHONY : cugl.dir/external/poly2tri/CMakeFiles/poly2tri.dir/rule
 
 # Convenience name for target.
@@ -192,128 +192,128 @@ poly2tri: cugl.dir/external/poly2tri/CMakeFiles/poly2tri.dir/rule
 
 # fast build rule for target.
 poly2tri/fast:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/poly2tri/CMakeFiles/poly2tri.dir/build.make cugl.dir/external/poly2tri/CMakeFiles/poly2tri.dir/build
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/poly2tri/CMakeFiles/poly2tri.dir/build.make cugl.dir/external/poly2tri/CMakeFiles/poly2tri.dir/build
 .PHONY : poly2tri/fast
 
-Users/patrickchoo/cs4152/cugl/external/poly2tri/poly2tri/common/shapes.o: Users/patrickchoo/cs4152/cugl/external/poly2tri/poly2tri/common/shapes.cc.o
-.PHONY : Users/patrickchoo/cs4152/cugl/external/poly2tri/poly2tri/common/shapes.o
+users/patrickchoo/cs4152/cugl/external/poly2tri/poly2tri/common/shapes.o: users/patrickchoo/cs4152/cugl/external/poly2tri/poly2tri/common/shapes.cc.o
+.PHONY : users/patrickchoo/cs4152/cugl/external/poly2tri/poly2tri/common/shapes.o
 
 # target to build an object file
-Users/patrickchoo/cs4152/cugl/external/poly2tri/poly2tri/common/shapes.cc.o:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/poly2tri/CMakeFiles/poly2tri.dir/build.make cugl.dir/external/poly2tri/CMakeFiles/poly2tri.dir/Users/patrickchoo/cs4152/cugl/external/poly2tri/poly2tri/common/shapes.cc.o
-.PHONY : Users/patrickchoo/cs4152/cugl/external/poly2tri/poly2tri/common/shapes.cc.o
+users/patrickchoo/cs4152/cugl/external/poly2tri/poly2tri/common/shapes.cc.o:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/poly2tri/CMakeFiles/poly2tri.dir/build.make cugl.dir/external/poly2tri/CMakeFiles/poly2tri.dir/users/patrickchoo/cs4152/cugl/external/poly2tri/poly2tri/common/shapes.cc.o
+.PHONY : users/patrickchoo/cs4152/cugl/external/poly2tri/poly2tri/common/shapes.cc.o
 
-Users/patrickchoo/cs4152/cugl/external/poly2tri/poly2tri/common/shapes.i: Users/patrickchoo/cs4152/cugl/external/poly2tri/poly2tri/common/shapes.cc.i
-.PHONY : Users/patrickchoo/cs4152/cugl/external/poly2tri/poly2tri/common/shapes.i
+users/patrickchoo/cs4152/cugl/external/poly2tri/poly2tri/common/shapes.i: users/patrickchoo/cs4152/cugl/external/poly2tri/poly2tri/common/shapes.cc.i
+.PHONY : users/patrickchoo/cs4152/cugl/external/poly2tri/poly2tri/common/shapes.i
 
 # target to preprocess a source file
-Users/patrickchoo/cs4152/cugl/external/poly2tri/poly2tri/common/shapes.cc.i:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/poly2tri/CMakeFiles/poly2tri.dir/build.make cugl.dir/external/poly2tri/CMakeFiles/poly2tri.dir/Users/patrickchoo/cs4152/cugl/external/poly2tri/poly2tri/common/shapes.cc.i
-.PHONY : Users/patrickchoo/cs4152/cugl/external/poly2tri/poly2tri/common/shapes.cc.i
+users/patrickchoo/cs4152/cugl/external/poly2tri/poly2tri/common/shapes.cc.i:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/poly2tri/CMakeFiles/poly2tri.dir/build.make cugl.dir/external/poly2tri/CMakeFiles/poly2tri.dir/users/patrickchoo/cs4152/cugl/external/poly2tri/poly2tri/common/shapes.cc.i
+.PHONY : users/patrickchoo/cs4152/cugl/external/poly2tri/poly2tri/common/shapes.cc.i
 
-Users/patrickchoo/cs4152/cugl/external/poly2tri/poly2tri/common/shapes.s: Users/patrickchoo/cs4152/cugl/external/poly2tri/poly2tri/common/shapes.cc.s
-.PHONY : Users/patrickchoo/cs4152/cugl/external/poly2tri/poly2tri/common/shapes.s
+users/patrickchoo/cs4152/cugl/external/poly2tri/poly2tri/common/shapes.s: users/patrickchoo/cs4152/cugl/external/poly2tri/poly2tri/common/shapes.cc.s
+.PHONY : users/patrickchoo/cs4152/cugl/external/poly2tri/poly2tri/common/shapes.s
 
 # target to generate assembly for a file
-Users/patrickchoo/cs4152/cugl/external/poly2tri/poly2tri/common/shapes.cc.s:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/poly2tri/CMakeFiles/poly2tri.dir/build.make cugl.dir/external/poly2tri/CMakeFiles/poly2tri.dir/Users/patrickchoo/cs4152/cugl/external/poly2tri/poly2tri/common/shapes.cc.s
-.PHONY : Users/patrickchoo/cs4152/cugl/external/poly2tri/poly2tri/common/shapes.cc.s
+users/patrickchoo/cs4152/cugl/external/poly2tri/poly2tri/common/shapes.cc.s:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/poly2tri/CMakeFiles/poly2tri.dir/build.make cugl.dir/external/poly2tri/CMakeFiles/poly2tri.dir/users/patrickchoo/cs4152/cugl/external/poly2tri/poly2tri/common/shapes.cc.s
+.PHONY : users/patrickchoo/cs4152/cugl/external/poly2tri/poly2tri/common/shapes.cc.s
 
-Users/patrickchoo/cs4152/cugl/external/poly2tri/poly2tri/sweep/advancing_front.o: Users/patrickchoo/cs4152/cugl/external/poly2tri/poly2tri/sweep/advancing_front.cc.o
-.PHONY : Users/patrickchoo/cs4152/cugl/external/poly2tri/poly2tri/sweep/advancing_front.o
+users/patrickchoo/cs4152/cugl/external/poly2tri/poly2tri/sweep/advancing_front.o: users/patrickchoo/cs4152/cugl/external/poly2tri/poly2tri/sweep/advancing_front.cc.o
+.PHONY : users/patrickchoo/cs4152/cugl/external/poly2tri/poly2tri/sweep/advancing_front.o
 
 # target to build an object file
-Users/patrickchoo/cs4152/cugl/external/poly2tri/poly2tri/sweep/advancing_front.cc.o:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/poly2tri/CMakeFiles/poly2tri.dir/build.make cugl.dir/external/poly2tri/CMakeFiles/poly2tri.dir/Users/patrickchoo/cs4152/cugl/external/poly2tri/poly2tri/sweep/advancing_front.cc.o
-.PHONY : Users/patrickchoo/cs4152/cugl/external/poly2tri/poly2tri/sweep/advancing_front.cc.o
+users/patrickchoo/cs4152/cugl/external/poly2tri/poly2tri/sweep/advancing_front.cc.o:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/poly2tri/CMakeFiles/poly2tri.dir/build.make cugl.dir/external/poly2tri/CMakeFiles/poly2tri.dir/users/patrickchoo/cs4152/cugl/external/poly2tri/poly2tri/sweep/advancing_front.cc.o
+.PHONY : users/patrickchoo/cs4152/cugl/external/poly2tri/poly2tri/sweep/advancing_front.cc.o
 
-Users/patrickchoo/cs4152/cugl/external/poly2tri/poly2tri/sweep/advancing_front.i: Users/patrickchoo/cs4152/cugl/external/poly2tri/poly2tri/sweep/advancing_front.cc.i
-.PHONY : Users/patrickchoo/cs4152/cugl/external/poly2tri/poly2tri/sweep/advancing_front.i
+users/patrickchoo/cs4152/cugl/external/poly2tri/poly2tri/sweep/advancing_front.i: users/patrickchoo/cs4152/cugl/external/poly2tri/poly2tri/sweep/advancing_front.cc.i
+.PHONY : users/patrickchoo/cs4152/cugl/external/poly2tri/poly2tri/sweep/advancing_front.i
 
 # target to preprocess a source file
-Users/patrickchoo/cs4152/cugl/external/poly2tri/poly2tri/sweep/advancing_front.cc.i:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/poly2tri/CMakeFiles/poly2tri.dir/build.make cugl.dir/external/poly2tri/CMakeFiles/poly2tri.dir/Users/patrickchoo/cs4152/cugl/external/poly2tri/poly2tri/sweep/advancing_front.cc.i
-.PHONY : Users/patrickchoo/cs4152/cugl/external/poly2tri/poly2tri/sweep/advancing_front.cc.i
+users/patrickchoo/cs4152/cugl/external/poly2tri/poly2tri/sweep/advancing_front.cc.i:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/poly2tri/CMakeFiles/poly2tri.dir/build.make cugl.dir/external/poly2tri/CMakeFiles/poly2tri.dir/users/patrickchoo/cs4152/cugl/external/poly2tri/poly2tri/sweep/advancing_front.cc.i
+.PHONY : users/patrickchoo/cs4152/cugl/external/poly2tri/poly2tri/sweep/advancing_front.cc.i
 
-Users/patrickchoo/cs4152/cugl/external/poly2tri/poly2tri/sweep/advancing_front.s: Users/patrickchoo/cs4152/cugl/external/poly2tri/poly2tri/sweep/advancing_front.cc.s
-.PHONY : Users/patrickchoo/cs4152/cugl/external/poly2tri/poly2tri/sweep/advancing_front.s
+users/patrickchoo/cs4152/cugl/external/poly2tri/poly2tri/sweep/advancing_front.s: users/patrickchoo/cs4152/cugl/external/poly2tri/poly2tri/sweep/advancing_front.cc.s
+.PHONY : users/patrickchoo/cs4152/cugl/external/poly2tri/poly2tri/sweep/advancing_front.s
 
 # target to generate assembly for a file
-Users/patrickchoo/cs4152/cugl/external/poly2tri/poly2tri/sweep/advancing_front.cc.s:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/poly2tri/CMakeFiles/poly2tri.dir/build.make cugl.dir/external/poly2tri/CMakeFiles/poly2tri.dir/Users/patrickchoo/cs4152/cugl/external/poly2tri/poly2tri/sweep/advancing_front.cc.s
-.PHONY : Users/patrickchoo/cs4152/cugl/external/poly2tri/poly2tri/sweep/advancing_front.cc.s
+users/patrickchoo/cs4152/cugl/external/poly2tri/poly2tri/sweep/advancing_front.cc.s:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/poly2tri/CMakeFiles/poly2tri.dir/build.make cugl.dir/external/poly2tri/CMakeFiles/poly2tri.dir/users/patrickchoo/cs4152/cugl/external/poly2tri/poly2tri/sweep/advancing_front.cc.s
+.PHONY : users/patrickchoo/cs4152/cugl/external/poly2tri/poly2tri/sweep/advancing_front.cc.s
 
-Users/patrickchoo/cs4152/cugl/external/poly2tri/poly2tri/sweep/cdt.o: Users/patrickchoo/cs4152/cugl/external/poly2tri/poly2tri/sweep/cdt.cc.o
-.PHONY : Users/patrickchoo/cs4152/cugl/external/poly2tri/poly2tri/sweep/cdt.o
+users/patrickchoo/cs4152/cugl/external/poly2tri/poly2tri/sweep/cdt.o: users/patrickchoo/cs4152/cugl/external/poly2tri/poly2tri/sweep/cdt.cc.o
+.PHONY : users/patrickchoo/cs4152/cugl/external/poly2tri/poly2tri/sweep/cdt.o
 
 # target to build an object file
-Users/patrickchoo/cs4152/cugl/external/poly2tri/poly2tri/sweep/cdt.cc.o:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/poly2tri/CMakeFiles/poly2tri.dir/build.make cugl.dir/external/poly2tri/CMakeFiles/poly2tri.dir/Users/patrickchoo/cs4152/cugl/external/poly2tri/poly2tri/sweep/cdt.cc.o
-.PHONY : Users/patrickchoo/cs4152/cugl/external/poly2tri/poly2tri/sweep/cdt.cc.o
+users/patrickchoo/cs4152/cugl/external/poly2tri/poly2tri/sweep/cdt.cc.o:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/poly2tri/CMakeFiles/poly2tri.dir/build.make cugl.dir/external/poly2tri/CMakeFiles/poly2tri.dir/users/patrickchoo/cs4152/cugl/external/poly2tri/poly2tri/sweep/cdt.cc.o
+.PHONY : users/patrickchoo/cs4152/cugl/external/poly2tri/poly2tri/sweep/cdt.cc.o
 
-Users/patrickchoo/cs4152/cugl/external/poly2tri/poly2tri/sweep/cdt.i: Users/patrickchoo/cs4152/cugl/external/poly2tri/poly2tri/sweep/cdt.cc.i
-.PHONY : Users/patrickchoo/cs4152/cugl/external/poly2tri/poly2tri/sweep/cdt.i
+users/patrickchoo/cs4152/cugl/external/poly2tri/poly2tri/sweep/cdt.i: users/patrickchoo/cs4152/cugl/external/poly2tri/poly2tri/sweep/cdt.cc.i
+.PHONY : users/patrickchoo/cs4152/cugl/external/poly2tri/poly2tri/sweep/cdt.i
 
 # target to preprocess a source file
-Users/patrickchoo/cs4152/cugl/external/poly2tri/poly2tri/sweep/cdt.cc.i:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/poly2tri/CMakeFiles/poly2tri.dir/build.make cugl.dir/external/poly2tri/CMakeFiles/poly2tri.dir/Users/patrickchoo/cs4152/cugl/external/poly2tri/poly2tri/sweep/cdt.cc.i
-.PHONY : Users/patrickchoo/cs4152/cugl/external/poly2tri/poly2tri/sweep/cdt.cc.i
+users/patrickchoo/cs4152/cugl/external/poly2tri/poly2tri/sweep/cdt.cc.i:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/poly2tri/CMakeFiles/poly2tri.dir/build.make cugl.dir/external/poly2tri/CMakeFiles/poly2tri.dir/users/patrickchoo/cs4152/cugl/external/poly2tri/poly2tri/sweep/cdt.cc.i
+.PHONY : users/patrickchoo/cs4152/cugl/external/poly2tri/poly2tri/sweep/cdt.cc.i
 
-Users/patrickchoo/cs4152/cugl/external/poly2tri/poly2tri/sweep/cdt.s: Users/patrickchoo/cs4152/cugl/external/poly2tri/poly2tri/sweep/cdt.cc.s
-.PHONY : Users/patrickchoo/cs4152/cugl/external/poly2tri/poly2tri/sweep/cdt.s
+users/patrickchoo/cs4152/cugl/external/poly2tri/poly2tri/sweep/cdt.s: users/patrickchoo/cs4152/cugl/external/poly2tri/poly2tri/sweep/cdt.cc.s
+.PHONY : users/patrickchoo/cs4152/cugl/external/poly2tri/poly2tri/sweep/cdt.s
 
 # target to generate assembly for a file
-Users/patrickchoo/cs4152/cugl/external/poly2tri/poly2tri/sweep/cdt.cc.s:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/poly2tri/CMakeFiles/poly2tri.dir/build.make cugl.dir/external/poly2tri/CMakeFiles/poly2tri.dir/Users/patrickchoo/cs4152/cugl/external/poly2tri/poly2tri/sweep/cdt.cc.s
-.PHONY : Users/patrickchoo/cs4152/cugl/external/poly2tri/poly2tri/sweep/cdt.cc.s
+users/patrickchoo/cs4152/cugl/external/poly2tri/poly2tri/sweep/cdt.cc.s:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/poly2tri/CMakeFiles/poly2tri.dir/build.make cugl.dir/external/poly2tri/CMakeFiles/poly2tri.dir/users/patrickchoo/cs4152/cugl/external/poly2tri/poly2tri/sweep/cdt.cc.s
+.PHONY : users/patrickchoo/cs4152/cugl/external/poly2tri/poly2tri/sweep/cdt.cc.s
 
-Users/patrickchoo/cs4152/cugl/external/poly2tri/poly2tri/sweep/sweep.o: Users/patrickchoo/cs4152/cugl/external/poly2tri/poly2tri/sweep/sweep.cc.o
-.PHONY : Users/patrickchoo/cs4152/cugl/external/poly2tri/poly2tri/sweep/sweep.o
+users/patrickchoo/cs4152/cugl/external/poly2tri/poly2tri/sweep/sweep.o: users/patrickchoo/cs4152/cugl/external/poly2tri/poly2tri/sweep/sweep.cc.o
+.PHONY : users/patrickchoo/cs4152/cugl/external/poly2tri/poly2tri/sweep/sweep.o
 
 # target to build an object file
-Users/patrickchoo/cs4152/cugl/external/poly2tri/poly2tri/sweep/sweep.cc.o:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/poly2tri/CMakeFiles/poly2tri.dir/build.make cugl.dir/external/poly2tri/CMakeFiles/poly2tri.dir/Users/patrickchoo/cs4152/cugl/external/poly2tri/poly2tri/sweep/sweep.cc.o
-.PHONY : Users/patrickchoo/cs4152/cugl/external/poly2tri/poly2tri/sweep/sweep.cc.o
+users/patrickchoo/cs4152/cugl/external/poly2tri/poly2tri/sweep/sweep.cc.o:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/poly2tri/CMakeFiles/poly2tri.dir/build.make cugl.dir/external/poly2tri/CMakeFiles/poly2tri.dir/users/patrickchoo/cs4152/cugl/external/poly2tri/poly2tri/sweep/sweep.cc.o
+.PHONY : users/patrickchoo/cs4152/cugl/external/poly2tri/poly2tri/sweep/sweep.cc.o
 
-Users/patrickchoo/cs4152/cugl/external/poly2tri/poly2tri/sweep/sweep.i: Users/patrickchoo/cs4152/cugl/external/poly2tri/poly2tri/sweep/sweep.cc.i
-.PHONY : Users/patrickchoo/cs4152/cugl/external/poly2tri/poly2tri/sweep/sweep.i
+users/patrickchoo/cs4152/cugl/external/poly2tri/poly2tri/sweep/sweep.i: users/patrickchoo/cs4152/cugl/external/poly2tri/poly2tri/sweep/sweep.cc.i
+.PHONY : users/patrickchoo/cs4152/cugl/external/poly2tri/poly2tri/sweep/sweep.i
 
 # target to preprocess a source file
-Users/patrickchoo/cs4152/cugl/external/poly2tri/poly2tri/sweep/sweep.cc.i:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/poly2tri/CMakeFiles/poly2tri.dir/build.make cugl.dir/external/poly2tri/CMakeFiles/poly2tri.dir/Users/patrickchoo/cs4152/cugl/external/poly2tri/poly2tri/sweep/sweep.cc.i
-.PHONY : Users/patrickchoo/cs4152/cugl/external/poly2tri/poly2tri/sweep/sweep.cc.i
+users/patrickchoo/cs4152/cugl/external/poly2tri/poly2tri/sweep/sweep.cc.i:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/poly2tri/CMakeFiles/poly2tri.dir/build.make cugl.dir/external/poly2tri/CMakeFiles/poly2tri.dir/users/patrickchoo/cs4152/cugl/external/poly2tri/poly2tri/sweep/sweep.cc.i
+.PHONY : users/patrickchoo/cs4152/cugl/external/poly2tri/poly2tri/sweep/sweep.cc.i
 
-Users/patrickchoo/cs4152/cugl/external/poly2tri/poly2tri/sweep/sweep.s: Users/patrickchoo/cs4152/cugl/external/poly2tri/poly2tri/sweep/sweep.cc.s
-.PHONY : Users/patrickchoo/cs4152/cugl/external/poly2tri/poly2tri/sweep/sweep.s
+users/patrickchoo/cs4152/cugl/external/poly2tri/poly2tri/sweep/sweep.s: users/patrickchoo/cs4152/cugl/external/poly2tri/poly2tri/sweep/sweep.cc.s
+.PHONY : users/patrickchoo/cs4152/cugl/external/poly2tri/poly2tri/sweep/sweep.s
 
 # target to generate assembly for a file
-Users/patrickchoo/cs4152/cugl/external/poly2tri/poly2tri/sweep/sweep.cc.s:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/poly2tri/CMakeFiles/poly2tri.dir/build.make cugl.dir/external/poly2tri/CMakeFiles/poly2tri.dir/Users/patrickchoo/cs4152/cugl/external/poly2tri/poly2tri/sweep/sweep.cc.s
-.PHONY : Users/patrickchoo/cs4152/cugl/external/poly2tri/poly2tri/sweep/sweep.cc.s
+users/patrickchoo/cs4152/cugl/external/poly2tri/poly2tri/sweep/sweep.cc.s:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/poly2tri/CMakeFiles/poly2tri.dir/build.make cugl.dir/external/poly2tri/CMakeFiles/poly2tri.dir/users/patrickchoo/cs4152/cugl/external/poly2tri/poly2tri/sweep/sweep.cc.s
+.PHONY : users/patrickchoo/cs4152/cugl/external/poly2tri/poly2tri/sweep/sweep.cc.s
 
-Users/patrickchoo/cs4152/cugl/external/poly2tri/poly2tri/sweep/sweep_context.o: Users/patrickchoo/cs4152/cugl/external/poly2tri/poly2tri/sweep/sweep_context.cc.o
-.PHONY : Users/patrickchoo/cs4152/cugl/external/poly2tri/poly2tri/sweep/sweep_context.o
+users/patrickchoo/cs4152/cugl/external/poly2tri/poly2tri/sweep/sweep_context.o: users/patrickchoo/cs4152/cugl/external/poly2tri/poly2tri/sweep/sweep_context.cc.o
+.PHONY : users/patrickchoo/cs4152/cugl/external/poly2tri/poly2tri/sweep/sweep_context.o
 
 # target to build an object file
-Users/patrickchoo/cs4152/cugl/external/poly2tri/poly2tri/sweep/sweep_context.cc.o:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/poly2tri/CMakeFiles/poly2tri.dir/build.make cugl.dir/external/poly2tri/CMakeFiles/poly2tri.dir/Users/patrickchoo/cs4152/cugl/external/poly2tri/poly2tri/sweep/sweep_context.cc.o
-.PHONY : Users/patrickchoo/cs4152/cugl/external/poly2tri/poly2tri/sweep/sweep_context.cc.o
+users/patrickchoo/cs4152/cugl/external/poly2tri/poly2tri/sweep/sweep_context.cc.o:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/poly2tri/CMakeFiles/poly2tri.dir/build.make cugl.dir/external/poly2tri/CMakeFiles/poly2tri.dir/users/patrickchoo/cs4152/cugl/external/poly2tri/poly2tri/sweep/sweep_context.cc.o
+.PHONY : users/patrickchoo/cs4152/cugl/external/poly2tri/poly2tri/sweep/sweep_context.cc.o
 
-Users/patrickchoo/cs4152/cugl/external/poly2tri/poly2tri/sweep/sweep_context.i: Users/patrickchoo/cs4152/cugl/external/poly2tri/poly2tri/sweep/sweep_context.cc.i
-.PHONY : Users/patrickchoo/cs4152/cugl/external/poly2tri/poly2tri/sweep/sweep_context.i
+users/patrickchoo/cs4152/cugl/external/poly2tri/poly2tri/sweep/sweep_context.i: users/patrickchoo/cs4152/cugl/external/poly2tri/poly2tri/sweep/sweep_context.cc.i
+.PHONY : users/patrickchoo/cs4152/cugl/external/poly2tri/poly2tri/sweep/sweep_context.i
 
 # target to preprocess a source file
-Users/patrickchoo/cs4152/cugl/external/poly2tri/poly2tri/sweep/sweep_context.cc.i:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/poly2tri/CMakeFiles/poly2tri.dir/build.make cugl.dir/external/poly2tri/CMakeFiles/poly2tri.dir/Users/patrickchoo/cs4152/cugl/external/poly2tri/poly2tri/sweep/sweep_context.cc.i
-.PHONY : Users/patrickchoo/cs4152/cugl/external/poly2tri/poly2tri/sweep/sweep_context.cc.i
+users/patrickchoo/cs4152/cugl/external/poly2tri/poly2tri/sweep/sweep_context.cc.i:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/poly2tri/CMakeFiles/poly2tri.dir/build.make cugl.dir/external/poly2tri/CMakeFiles/poly2tri.dir/users/patrickchoo/cs4152/cugl/external/poly2tri/poly2tri/sweep/sweep_context.cc.i
+.PHONY : users/patrickchoo/cs4152/cugl/external/poly2tri/poly2tri/sweep/sweep_context.cc.i
 
-Users/patrickchoo/cs4152/cugl/external/poly2tri/poly2tri/sweep/sweep_context.s: Users/patrickchoo/cs4152/cugl/external/poly2tri/poly2tri/sweep/sweep_context.cc.s
-.PHONY : Users/patrickchoo/cs4152/cugl/external/poly2tri/poly2tri/sweep/sweep_context.s
+users/patrickchoo/cs4152/cugl/external/poly2tri/poly2tri/sweep/sweep_context.s: users/patrickchoo/cs4152/cugl/external/poly2tri/poly2tri/sweep/sweep_context.cc.s
+.PHONY : users/patrickchoo/cs4152/cugl/external/poly2tri/poly2tri/sweep/sweep_context.s
 
 # target to generate assembly for a file
-Users/patrickchoo/cs4152/cugl/external/poly2tri/poly2tri/sweep/sweep_context.cc.s:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/poly2tri/CMakeFiles/poly2tri.dir/build.make cugl.dir/external/poly2tri/CMakeFiles/poly2tri.dir/Users/patrickchoo/cs4152/cugl/external/poly2tri/poly2tri/sweep/sweep_context.cc.s
-.PHONY : Users/patrickchoo/cs4152/cugl/external/poly2tri/poly2tri/sweep/sweep_context.cc.s
+users/patrickchoo/cs4152/cugl/external/poly2tri/poly2tri/sweep/sweep_context.cc.s:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/poly2tri/CMakeFiles/poly2tri.dir/build.make cugl.dir/external/poly2tri/CMakeFiles/poly2tri.dir/users/patrickchoo/cs4152/cugl/external/poly2tri/poly2tri/sweep/sweep_context.cc.s
+.PHONY : users/patrickchoo/cs4152/cugl/external/poly2tri/poly2tri/sweep/sweep_context.cc.s
 
 # Help Target
 help:
@@ -330,21 +330,21 @@ help:
 	@echo "... package_source"
 	@echo "... rebuild_cache"
 	@echo "... poly2tri"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/poly2tri/poly2tri/common/shapes.o"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/poly2tri/poly2tri/common/shapes.i"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/poly2tri/poly2tri/common/shapes.s"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/poly2tri/poly2tri/sweep/advancing_front.o"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/poly2tri/poly2tri/sweep/advancing_front.i"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/poly2tri/poly2tri/sweep/advancing_front.s"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/poly2tri/poly2tri/sweep/cdt.o"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/poly2tri/poly2tri/sweep/cdt.i"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/poly2tri/poly2tri/sweep/cdt.s"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/poly2tri/poly2tri/sweep/sweep.o"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/poly2tri/poly2tri/sweep/sweep.i"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/poly2tri/poly2tri/sweep/sweep.s"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/poly2tri/poly2tri/sweep/sweep_context.o"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/poly2tri/poly2tri/sweep/sweep_context.i"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/poly2tri/poly2tri/sweep/sweep_context.s"
+	@echo "... users/patrickchoo/cs4152/cugl/external/poly2tri/poly2tri/common/shapes.o"
+	@echo "... users/patrickchoo/cs4152/cugl/external/poly2tri/poly2tri/common/shapes.i"
+	@echo "... users/patrickchoo/cs4152/cugl/external/poly2tri/poly2tri/common/shapes.s"
+	@echo "... users/patrickchoo/cs4152/cugl/external/poly2tri/poly2tri/sweep/advancing_front.o"
+	@echo "... users/patrickchoo/cs4152/cugl/external/poly2tri/poly2tri/sweep/advancing_front.i"
+	@echo "... users/patrickchoo/cs4152/cugl/external/poly2tri/poly2tri/sweep/advancing_front.s"
+	@echo "... users/patrickchoo/cs4152/cugl/external/poly2tri/poly2tri/sweep/cdt.o"
+	@echo "... users/patrickchoo/cs4152/cugl/external/poly2tri/poly2tri/sweep/cdt.i"
+	@echo "... users/patrickchoo/cs4152/cugl/external/poly2tri/poly2tri/sweep/cdt.s"
+	@echo "... users/patrickchoo/cs4152/cugl/external/poly2tri/poly2tri/sweep/sweep.o"
+	@echo "... users/patrickchoo/cs4152/cugl/external/poly2tri/poly2tri/sweep/sweep.i"
+	@echo "... users/patrickchoo/cs4152/cugl/external/poly2tri/poly2tri/sweep/sweep.s"
+	@echo "... users/patrickchoo/cs4152/cugl/external/poly2tri/poly2tri/sweep/sweep_context.o"
+	@echo "... users/patrickchoo/cs4152/cugl/external/poly2tri/poly2tri/sweep/sweep_context.i"
+	@echo "... users/patrickchoo/cs4152/cugl/external/poly2tri/poly2tri/sweep/sweep_context.s"
 .PHONY : help
 
 
@@ -356,6 +356,6 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 

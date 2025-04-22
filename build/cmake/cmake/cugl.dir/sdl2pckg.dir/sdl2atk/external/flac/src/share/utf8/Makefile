@@ -57,10 +57,10 @@ RM = /opt/homebrew/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /Users/patrickchoo/cs4152/mahsjong/build/cmake
+CMAKE_SOURCE_DIR = /users/patrickchoo/cs4152/mahsjong/build/cmake
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake
+CMAKE_BINARY_DIR = /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -68,7 +68,7 @@ CMAKE_BINARY_DIR = /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake
 # Special rule for the target package
 package: preinstall
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Run CPack packaging tool..."
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && /opt/homebrew/bin/cpack --config ./CPackConfig.cmake
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && /opt/homebrew/bin/cpack --config ./CPackConfig.cmake
 .PHONY : package
 
 # Special rule for the target package
@@ -78,7 +78,7 @@ package/fast: package
 # Special rule for the target package_source
 package_source:
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Run CPack packaging tool for source..."
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && /opt/homebrew/bin/cpack --config ./CPackSourceConfig.cmake /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CPackSourceConfig.cmake
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && /opt/homebrew/bin/cpack --config ./CPackSourceConfig.cmake /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CPackSourceConfig.cmake
 .PHONY : package_source
 
 # Special rule for the target package_source
@@ -152,14 +152,14 @@ install/strip/fast: preinstall/fast
 
 # The main all target
 all: cmake_check_build_system
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(CMAKE_COMMAND) -E cmake_progress_start /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/utf8//CMakeFiles/progress.marks
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/utf8/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles 0
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(CMAKE_COMMAND) -E cmake_progress_start /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/utf8//CMakeFiles/progress.marks
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/utf8/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/utf8/clean
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/utf8/clean
 .PHONY : clean
 
 # The main clean target
@@ -168,22 +168,22 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/utf8/preinstall
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/utf8/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/utf8/preinstall
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/utf8/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
 # Convenience name for target.
 cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/utf8/CMakeFiles/utf8.dir/rule:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/utf8/CMakeFiles/utf8.dir/rule
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/utf8/CMakeFiles/utf8.dir/rule
 .PHONY : cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/utf8/CMakeFiles/utf8.dir/rule
 
 # Convenience name for target.
@@ -192,80 +192,80 @@ utf8: cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/utf8/CMakeFiles/utf8
 
 # fast build rule for target.
 utf8/fast:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/utf8/CMakeFiles/utf8.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/utf8/CMakeFiles/utf8.dir/build
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/utf8/CMakeFiles/utf8.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/utf8/CMakeFiles/utf8.dir/build
 .PHONY : utf8/fast
 
-Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/utf8/charset.o: Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/utf8/charset.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/utf8/charset.o
+users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/utf8/charset.o: users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/utf8/charset.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/utf8/charset.o
 
 # target to build an object file
-Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/utf8/charset.c.o:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/utf8/CMakeFiles/utf8.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/utf8/CMakeFiles/utf8.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/utf8/charset.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/utf8/charset.c.o
+users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/utf8/charset.c.o:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/utf8/CMakeFiles/utf8.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/utf8/CMakeFiles/utf8.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/utf8/charset.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/utf8/charset.c.o
 
-Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/utf8/charset.i: Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/utf8/charset.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/utf8/charset.i
+users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/utf8/charset.i: users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/utf8/charset.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/utf8/charset.i
 
 # target to preprocess a source file
-Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/utf8/charset.c.i:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/utf8/CMakeFiles/utf8.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/utf8/CMakeFiles/utf8.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/utf8/charset.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/utf8/charset.c.i
+users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/utf8/charset.c.i:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/utf8/CMakeFiles/utf8.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/utf8/CMakeFiles/utf8.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/utf8/charset.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/utf8/charset.c.i
 
-Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/utf8/charset.s: Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/utf8/charset.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/utf8/charset.s
+users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/utf8/charset.s: users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/utf8/charset.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/utf8/charset.s
 
 # target to generate assembly for a file
-Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/utf8/charset.c.s:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/utf8/CMakeFiles/utf8.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/utf8/CMakeFiles/utf8.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/utf8/charset.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/utf8/charset.c.s
+users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/utf8/charset.c.s:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/utf8/CMakeFiles/utf8.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/utf8/CMakeFiles/utf8.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/utf8/charset.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/utf8/charset.c.s
 
-Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/utf8/iconvert.o: Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/utf8/iconvert.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/utf8/iconvert.o
+users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/utf8/iconvert.o: users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/utf8/iconvert.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/utf8/iconvert.o
 
 # target to build an object file
-Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/utf8/iconvert.c.o:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/utf8/CMakeFiles/utf8.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/utf8/CMakeFiles/utf8.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/utf8/iconvert.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/utf8/iconvert.c.o
+users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/utf8/iconvert.c.o:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/utf8/CMakeFiles/utf8.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/utf8/CMakeFiles/utf8.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/utf8/iconvert.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/utf8/iconvert.c.o
 
-Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/utf8/iconvert.i: Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/utf8/iconvert.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/utf8/iconvert.i
+users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/utf8/iconvert.i: users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/utf8/iconvert.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/utf8/iconvert.i
 
 # target to preprocess a source file
-Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/utf8/iconvert.c.i:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/utf8/CMakeFiles/utf8.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/utf8/CMakeFiles/utf8.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/utf8/iconvert.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/utf8/iconvert.c.i
+users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/utf8/iconvert.c.i:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/utf8/CMakeFiles/utf8.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/utf8/CMakeFiles/utf8.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/utf8/iconvert.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/utf8/iconvert.c.i
 
-Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/utf8/iconvert.s: Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/utf8/iconvert.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/utf8/iconvert.s
+users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/utf8/iconvert.s: users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/utf8/iconvert.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/utf8/iconvert.s
 
 # target to generate assembly for a file
-Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/utf8/iconvert.c.s:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/utf8/CMakeFiles/utf8.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/utf8/CMakeFiles/utf8.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/utf8/iconvert.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/utf8/iconvert.c.s
+users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/utf8/iconvert.c.s:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/utf8/CMakeFiles/utf8.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/utf8/CMakeFiles/utf8.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/utf8/iconvert.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/utf8/iconvert.c.s
 
-Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/utf8/utf8.o: Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/utf8/utf8.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/utf8/utf8.o
+users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/utf8/utf8.o: users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/utf8/utf8.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/utf8/utf8.o
 
 # target to build an object file
-Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/utf8/utf8.c.o:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/utf8/CMakeFiles/utf8.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/utf8/CMakeFiles/utf8.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/utf8/utf8.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/utf8/utf8.c.o
+users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/utf8/utf8.c.o:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/utf8/CMakeFiles/utf8.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/utf8/CMakeFiles/utf8.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/utf8/utf8.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/utf8/utf8.c.o
 
-Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/utf8/utf8.i: Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/utf8/utf8.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/utf8/utf8.i
+users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/utf8/utf8.i: users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/utf8/utf8.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/utf8/utf8.i
 
 # target to preprocess a source file
-Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/utf8/utf8.c.i:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/utf8/CMakeFiles/utf8.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/utf8/CMakeFiles/utf8.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/utf8/utf8.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/utf8/utf8.c.i
+users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/utf8/utf8.c.i:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/utf8/CMakeFiles/utf8.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/utf8/CMakeFiles/utf8.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/utf8/utf8.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/utf8/utf8.c.i
 
-Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/utf8/utf8.s: Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/utf8/utf8.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/utf8/utf8.s
+users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/utf8/utf8.s: users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/utf8/utf8.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/utf8/utf8.s
 
 # target to generate assembly for a file
-Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/utf8/utf8.c.s:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/utf8/CMakeFiles/utf8.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/utf8/CMakeFiles/utf8.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/utf8/utf8.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/utf8/utf8.c.s
+users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/utf8/utf8.c.s:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/utf8/CMakeFiles/utf8.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/utf8/CMakeFiles/utf8.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/utf8/utf8.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/utf8/utf8.c.s
 
 # Help Target
 help:
@@ -282,15 +282,15 @@ help:
 	@echo "... package_source"
 	@echo "... rebuild_cache"
 	@echo "... utf8"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/utf8/charset.o"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/utf8/charset.i"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/utf8/charset.s"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/utf8/iconvert.o"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/utf8/iconvert.i"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/utf8/iconvert.s"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/utf8/utf8.o"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/utf8/utf8.i"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/utf8/utf8.s"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/utf8/charset.o"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/utf8/charset.i"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/utf8/charset.s"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/utf8/iconvert.o"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/utf8/iconvert.i"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/utf8/iconvert.s"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/utf8/utf8.o"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/utf8/utf8.i"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/utf8/utf8.s"
 .PHONY : help
 
 
@@ -302,6 +302,6 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 

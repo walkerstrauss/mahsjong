@@ -57,10 +57,10 @@ RM = /opt/homebrew/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /Users/patrickchoo/cs4152/mahsjong/build/cmake
+CMAKE_SOURCE_DIR = /users/patrickchoo/cs4152/mahsjong/build/cmake
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake
+CMAKE_BINARY_DIR = /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -68,7 +68,7 @@ CMAKE_BINARY_DIR = /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake
 # Special rule for the target package
 package: preinstall
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Run CPack packaging tool..."
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && /opt/homebrew/bin/cpack --config ./CPackConfig.cmake
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && /opt/homebrew/bin/cpack --config ./CPackConfig.cmake
 .PHONY : package
 
 # Special rule for the target package
@@ -78,7 +78,7 @@ package/fast: package
 # Special rule for the target package_source
 package_source:
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Run CPack packaging tool for source..."
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && /opt/homebrew/bin/cpack --config ./CPackSourceConfig.cmake /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CPackSourceConfig.cmake
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && /opt/homebrew/bin/cpack --config ./CPackSourceConfig.cmake /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CPackSourceConfig.cmake
 .PHONY : package_source
 
 # Special rule for the target package_source
@@ -152,14 +152,14 @@ install/strip/fast: preinstall/fast
 
 # The main all target
 all: cmake_check_build_system
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(CMAKE_COMMAND) -E cmake_progress_start /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/external/libdatachannel/deps/usrsctp/usrsctplib//CMakeFiles/progress.marks
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 cugl.dir/external/libdatachannel/deps/usrsctp/usrsctplib/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles 0
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(CMAKE_COMMAND) -E cmake_progress_start /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/external/libdatachannel/deps/usrsctp/usrsctplib//CMakeFiles/progress.marks
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 cugl.dir/external/libdatachannel/deps/usrsctp/usrsctplib/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 cugl.dir/external/libdatachannel/deps/usrsctp/usrsctplib/clean
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 cugl.dir/external/libdatachannel/deps/usrsctp/usrsctplib/clean
 .PHONY : clean
 
 # The main clean target
@@ -168,22 +168,22 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 cugl.dir/external/libdatachannel/deps/usrsctp/usrsctplib/preinstall
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 cugl.dir/external/libdatachannel/deps/usrsctp/usrsctplib/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 cugl.dir/external/libdatachannel/deps/usrsctp/usrsctplib/preinstall
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 cugl.dir/external/libdatachannel/deps/usrsctp/usrsctplib/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
 # Convenience name for target.
 cugl.dir/external/libdatachannel/deps/usrsctp/usrsctplib/CMakeFiles/usrsctp.dir/rule:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 cugl.dir/external/libdatachannel/deps/usrsctp/usrsctplib/CMakeFiles/usrsctp.dir/rule
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 cugl.dir/external/libdatachannel/deps/usrsctp/usrsctplib/CMakeFiles/usrsctp.dir/rule
 .PHONY : cugl.dir/external/libdatachannel/deps/usrsctp/usrsctplib/CMakeFiles/usrsctp.dir/rule
 
 # Convenience name for target.
@@ -192,560 +192,560 @@ usrsctp: cugl.dir/external/libdatachannel/deps/usrsctp/usrsctplib/CMakeFiles/usr
 
 # fast build rule for target.
 usrsctp/fast:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/usrsctp/usrsctplib/CMakeFiles/usrsctp.dir/build.make cugl.dir/external/libdatachannel/deps/usrsctp/usrsctplib/CMakeFiles/usrsctp.dir/build
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/usrsctp/usrsctplib/CMakeFiles/usrsctp.dir/build.make cugl.dir/external/libdatachannel/deps/usrsctp/usrsctplib/CMakeFiles/usrsctp.dir/build
 .PHONY : usrsctp/fast
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_asconf.o: Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_asconf.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_asconf.o
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_asconf.o: users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_asconf.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_asconf.o
 
 # target to build an object file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_asconf.c.o:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/usrsctp/usrsctplib/CMakeFiles/usrsctp.dir/build.make cugl.dir/external/libdatachannel/deps/usrsctp/usrsctplib/CMakeFiles/usrsctp.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_asconf.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_asconf.c.o
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_asconf.c.o:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/usrsctp/usrsctplib/CMakeFiles/usrsctp.dir/build.make cugl.dir/external/libdatachannel/deps/usrsctp/usrsctplib/CMakeFiles/usrsctp.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_asconf.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_asconf.c.o
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_asconf.i: Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_asconf.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_asconf.i
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_asconf.i: users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_asconf.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_asconf.i
 
 # target to preprocess a source file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_asconf.c.i:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/usrsctp/usrsctplib/CMakeFiles/usrsctp.dir/build.make cugl.dir/external/libdatachannel/deps/usrsctp/usrsctplib/CMakeFiles/usrsctp.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_asconf.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_asconf.c.i
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_asconf.c.i:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/usrsctp/usrsctplib/CMakeFiles/usrsctp.dir/build.make cugl.dir/external/libdatachannel/deps/usrsctp/usrsctplib/CMakeFiles/usrsctp.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_asconf.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_asconf.c.i
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_asconf.s: Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_asconf.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_asconf.s
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_asconf.s: users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_asconf.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_asconf.s
 
 # target to generate assembly for a file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_asconf.c.s:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/usrsctp/usrsctplib/CMakeFiles/usrsctp.dir/build.make cugl.dir/external/libdatachannel/deps/usrsctp/usrsctplib/CMakeFiles/usrsctp.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_asconf.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_asconf.c.s
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_asconf.c.s:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/usrsctp/usrsctplib/CMakeFiles/usrsctp.dir/build.make cugl.dir/external/libdatachannel/deps/usrsctp/usrsctplib/CMakeFiles/usrsctp.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_asconf.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_asconf.c.s
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_auth.o: Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_auth.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_auth.o
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_auth.o: users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_auth.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_auth.o
 
 # target to build an object file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_auth.c.o:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/usrsctp/usrsctplib/CMakeFiles/usrsctp.dir/build.make cugl.dir/external/libdatachannel/deps/usrsctp/usrsctplib/CMakeFiles/usrsctp.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_auth.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_auth.c.o
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_auth.c.o:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/usrsctp/usrsctplib/CMakeFiles/usrsctp.dir/build.make cugl.dir/external/libdatachannel/deps/usrsctp/usrsctplib/CMakeFiles/usrsctp.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_auth.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_auth.c.o
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_auth.i: Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_auth.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_auth.i
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_auth.i: users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_auth.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_auth.i
 
 # target to preprocess a source file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_auth.c.i:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/usrsctp/usrsctplib/CMakeFiles/usrsctp.dir/build.make cugl.dir/external/libdatachannel/deps/usrsctp/usrsctplib/CMakeFiles/usrsctp.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_auth.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_auth.c.i
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_auth.c.i:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/usrsctp/usrsctplib/CMakeFiles/usrsctp.dir/build.make cugl.dir/external/libdatachannel/deps/usrsctp/usrsctplib/CMakeFiles/usrsctp.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_auth.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_auth.c.i
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_auth.s: Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_auth.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_auth.s
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_auth.s: users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_auth.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_auth.s
 
 # target to generate assembly for a file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_auth.c.s:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/usrsctp/usrsctplib/CMakeFiles/usrsctp.dir/build.make cugl.dir/external/libdatachannel/deps/usrsctp/usrsctplib/CMakeFiles/usrsctp.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_auth.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_auth.c.s
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_auth.c.s:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/usrsctp/usrsctplib/CMakeFiles/usrsctp.dir/build.make cugl.dir/external/libdatachannel/deps/usrsctp/usrsctplib/CMakeFiles/usrsctp.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_auth.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_auth.c.s
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_bsd_addr.o: Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_bsd_addr.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_bsd_addr.o
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_bsd_addr.o: users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_bsd_addr.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_bsd_addr.o
 
 # target to build an object file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_bsd_addr.c.o:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/usrsctp/usrsctplib/CMakeFiles/usrsctp.dir/build.make cugl.dir/external/libdatachannel/deps/usrsctp/usrsctplib/CMakeFiles/usrsctp.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_bsd_addr.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_bsd_addr.c.o
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_bsd_addr.c.o:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/usrsctp/usrsctplib/CMakeFiles/usrsctp.dir/build.make cugl.dir/external/libdatachannel/deps/usrsctp/usrsctplib/CMakeFiles/usrsctp.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_bsd_addr.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_bsd_addr.c.o
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_bsd_addr.i: Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_bsd_addr.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_bsd_addr.i
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_bsd_addr.i: users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_bsd_addr.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_bsd_addr.i
 
 # target to preprocess a source file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_bsd_addr.c.i:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/usrsctp/usrsctplib/CMakeFiles/usrsctp.dir/build.make cugl.dir/external/libdatachannel/deps/usrsctp/usrsctplib/CMakeFiles/usrsctp.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_bsd_addr.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_bsd_addr.c.i
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_bsd_addr.c.i:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/usrsctp/usrsctplib/CMakeFiles/usrsctp.dir/build.make cugl.dir/external/libdatachannel/deps/usrsctp/usrsctplib/CMakeFiles/usrsctp.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_bsd_addr.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_bsd_addr.c.i
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_bsd_addr.s: Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_bsd_addr.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_bsd_addr.s
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_bsd_addr.s: users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_bsd_addr.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_bsd_addr.s
 
 # target to generate assembly for a file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_bsd_addr.c.s:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/usrsctp/usrsctplib/CMakeFiles/usrsctp.dir/build.make cugl.dir/external/libdatachannel/deps/usrsctp/usrsctplib/CMakeFiles/usrsctp.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_bsd_addr.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_bsd_addr.c.s
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_bsd_addr.c.s:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/usrsctp/usrsctplib/CMakeFiles/usrsctp.dir/build.make cugl.dir/external/libdatachannel/deps/usrsctp/usrsctplib/CMakeFiles/usrsctp.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_bsd_addr.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_bsd_addr.c.s
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_callout.o: Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_callout.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_callout.o
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_callout.o: users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_callout.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_callout.o
 
 # target to build an object file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_callout.c.o:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/usrsctp/usrsctplib/CMakeFiles/usrsctp.dir/build.make cugl.dir/external/libdatachannel/deps/usrsctp/usrsctplib/CMakeFiles/usrsctp.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_callout.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_callout.c.o
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_callout.c.o:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/usrsctp/usrsctplib/CMakeFiles/usrsctp.dir/build.make cugl.dir/external/libdatachannel/deps/usrsctp/usrsctplib/CMakeFiles/usrsctp.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_callout.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_callout.c.o
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_callout.i: Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_callout.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_callout.i
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_callout.i: users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_callout.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_callout.i
 
 # target to preprocess a source file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_callout.c.i:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/usrsctp/usrsctplib/CMakeFiles/usrsctp.dir/build.make cugl.dir/external/libdatachannel/deps/usrsctp/usrsctplib/CMakeFiles/usrsctp.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_callout.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_callout.c.i
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_callout.c.i:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/usrsctp/usrsctplib/CMakeFiles/usrsctp.dir/build.make cugl.dir/external/libdatachannel/deps/usrsctp/usrsctplib/CMakeFiles/usrsctp.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_callout.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_callout.c.i
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_callout.s: Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_callout.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_callout.s
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_callout.s: users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_callout.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_callout.s
 
 # target to generate assembly for a file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_callout.c.s:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/usrsctp/usrsctplib/CMakeFiles/usrsctp.dir/build.make cugl.dir/external/libdatachannel/deps/usrsctp/usrsctplib/CMakeFiles/usrsctp.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_callout.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_callout.c.s
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_callout.c.s:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/usrsctp/usrsctplib/CMakeFiles/usrsctp.dir/build.make cugl.dir/external/libdatachannel/deps/usrsctp/usrsctplib/CMakeFiles/usrsctp.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_callout.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_callout.c.s
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_cc_functions.o: Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_cc_functions.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_cc_functions.o
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_cc_functions.o: users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_cc_functions.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_cc_functions.o
 
 # target to build an object file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_cc_functions.c.o:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/usrsctp/usrsctplib/CMakeFiles/usrsctp.dir/build.make cugl.dir/external/libdatachannel/deps/usrsctp/usrsctplib/CMakeFiles/usrsctp.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_cc_functions.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_cc_functions.c.o
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_cc_functions.c.o:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/usrsctp/usrsctplib/CMakeFiles/usrsctp.dir/build.make cugl.dir/external/libdatachannel/deps/usrsctp/usrsctplib/CMakeFiles/usrsctp.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_cc_functions.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_cc_functions.c.o
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_cc_functions.i: Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_cc_functions.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_cc_functions.i
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_cc_functions.i: users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_cc_functions.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_cc_functions.i
 
 # target to preprocess a source file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_cc_functions.c.i:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/usrsctp/usrsctplib/CMakeFiles/usrsctp.dir/build.make cugl.dir/external/libdatachannel/deps/usrsctp/usrsctplib/CMakeFiles/usrsctp.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_cc_functions.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_cc_functions.c.i
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_cc_functions.c.i:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/usrsctp/usrsctplib/CMakeFiles/usrsctp.dir/build.make cugl.dir/external/libdatachannel/deps/usrsctp/usrsctplib/CMakeFiles/usrsctp.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_cc_functions.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_cc_functions.c.i
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_cc_functions.s: Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_cc_functions.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_cc_functions.s
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_cc_functions.s: users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_cc_functions.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_cc_functions.s
 
 # target to generate assembly for a file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_cc_functions.c.s:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/usrsctp/usrsctplib/CMakeFiles/usrsctp.dir/build.make cugl.dir/external/libdatachannel/deps/usrsctp/usrsctplib/CMakeFiles/usrsctp.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_cc_functions.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_cc_functions.c.s
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_cc_functions.c.s:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/usrsctp/usrsctplib/CMakeFiles/usrsctp.dir/build.make cugl.dir/external/libdatachannel/deps/usrsctp/usrsctplib/CMakeFiles/usrsctp.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_cc_functions.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_cc_functions.c.s
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_crc32.o: Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_crc32.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_crc32.o
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_crc32.o: users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_crc32.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_crc32.o
 
 # target to build an object file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_crc32.c.o:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/usrsctp/usrsctplib/CMakeFiles/usrsctp.dir/build.make cugl.dir/external/libdatachannel/deps/usrsctp/usrsctplib/CMakeFiles/usrsctp.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_crc32.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_crc32.c.o
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_crc32.c.o:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/usrsctp/usrsctplib/CMakeFiles/usrsctp.dir/build.make cugl.dir/external/libdatachannel/deps/usrsctp/usrsctplib/CMakeFiles/usrsctp.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_crc32.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_crc32.c.o
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_crc32.i: Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_crc32.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_crc32.i
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_crc32.i: users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_crc32.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_crc32.i
 
 # target to preprocess a source file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_crc32.c.i:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/usrsctp/usrsctplib/CMakeFiles/usrsctp.dir/build.make cugl.dir/external/libdatachannel/deps/usrsctp/usrsctplib/CMakeFiles/usrsctp.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_crc32.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_crc32.c.i
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_crc32.c.i:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/usrsctp/usrsctplib/CMakeFiles/usrsctp.dir/build.make cugl.dir/external/libdatachannel/deps/usrsctp/usrsctplib/CMakeFiles/usrsctp.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_crc32.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_crc32.c.i
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_crc32.s: Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_crc32.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_crc32.s
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_crc32.s: users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_crc32.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_crc32.s
 
 # target to generate assembly for a file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_crc32.c.s:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/usrsctp/usrsctplib/CMakeFiles/usrsctp.dir/build.make cugl.dir/external/libdatachannel/deps/usrsctp/usrsctplib/CMakeFiles/usrsctp.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_crc32.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_crc32.c.s
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_crc32.c.s:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/usrsctp/usrsctplib/CMakeFiles/usrsctp.dir/build.make cugl.dir/external/libdatachannel/deps/usrsctp/usrsctplib/CMakeFiles/usrsctp.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_crc32.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_crc32.c.s
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_indata.o: Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_indata.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_indata.o
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_indata.o: users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_indata.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_indata.o
 
 # target to build an object file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_indata.c.o:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/usrsctp/usrsctplib/CMakeFiles/usrsctp.dir/build.make cugl.dir/external/libdatachannel/deps/usrsctp/usrsctplib/CMakeFiles/usrsctp.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_indata.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_indata.c.o
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_indata.c.o:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/usrsctp/usrsctplib/CMakeFiles/usrsctp.dir/build.make cugl.dir/external/libdatachannel/deps/usrsctp/usrsctplib/CMakeFiles/usrsctp.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_indata.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_indata.c.o
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_indata.i: Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_indata.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_indata.i
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_indata.i: users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_indata.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_indata.i
 
 # target to preprocess a source file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_indata.c.i:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/usrsctp/usrsctplib/CMakeFiles/usrsctp.dir/build.make cugl.dir/external/libdatachannel/deps/usrsctp/usrsctplib/CMakeFiles/usrsctp.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_indata.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_indata.c.i
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_indata.c.i:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/usrsctp/usrsctplib/CMakeFiles/usrsctp.dir/build.make cugl.dir/external/libdatachannel/deps/usrsctp/usrsctplib/CMakeFiles/usrsctp.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_indata.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_indata.c.i
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_indata.s: Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_indata.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_indata.s
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_indata.s: users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_indata.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_indata.s
 
 # target to generate assembly for a file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_indata.c.s:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/usrsctp/usrsctplib/CMakeFiles/usrsctp.dir/build.make cugl.dir/external/libdatachannel/deps/usrsctp/usrsctplib/CMakeFiles/usrsctp.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_indata.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_indata.c.s
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_indata.c.s:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/usrsctp/usrsctplib/CMakeFiles/usrsctp.dir/build.make cugl.dir/external/libdatachannel/deps/usrsctp/usrsctplib/CMakeFiles/usrsctp.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_indata.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_indata.c.s
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_input.o: Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_input.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_input.o
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_input.o: users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_input.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_input.o
 
 # target to build an object file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_input.c.o:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/usrsctp/usrsctplib/CMakeFiles/usrsctp.dir/build.make cugl.dir/external/libdatachannel/deps/usrsctp/usrsctplib/CMakeFiles/usrsctp.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_input.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_input.c.o
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_input.c.o:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/usrsctp/usrsctplib/CMakeFiles/usrsctp.dir/build.make cugl.dir/external/libdatachannel/deps/usrsctp/usrsctplib/CMakeFiles/usrsctp.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_input.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_input.c.o
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_input.i: Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_input.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_input.i
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_input.i: users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_input.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_input.i
 
 # target to preprocess a source file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_input.c.i:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/usrsctp/usrsctplib/CMakeFiles/usrsctp.dir/build.make cugl.dir/external/libdatachannel/deps/usrsctp/usrsctplib/CMakeFiles/usrsctp.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_input.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_input.c.i
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_input.c.i:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/usrsctp/usrsctplib/CMakeFiles/usrsctp.dir/build.make cugl.dir/external/libdatachannel/deps/usrsctp/usrsctplib/CMakeFiles/usrsctp.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_input.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_input.c.i
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_input.s: Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_input.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_input.s
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_input.s: users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_input.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_input.s
 
 # target to generate assembly for a file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_input.c.s:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/usrsctp/usrsctplib/CMakeFiles/usrsctp.dir/build.make cugl.dir/external/libdatachannel/deps/usrsctp/usrsctplib/CMakeFiles/usrsctp.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_input.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_input.c.s
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_input.c.s:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/usrsctp/usrsctplib/CMakeFiles/usrsctp.dir/build.make cugl.dir/external/libdatachannel/deps/usrsctp/usrsctplib/CMakeFiles/usrsctp.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_input.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_input.c.s
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_output.o: Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_output.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_output.o
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_output.o: users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_output.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_output.o
 
 # target to build an object file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_output.c.o:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/usrsctp/usrsctplib/CMakeFiles/usrsctp.dir/build.make cugl.dir/external/libdatachannel/deps/usrsctp/usrsctplib/CMakeFiles/usrsctp.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_output.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_output.c.o
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_output.c.o:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/usrsctp/usrsctplib/CMakeFiles/usrsctp.dir/build.make cugl.dir/external/libdatachannel/deps/usrsctp/usrsctplib/CMakeFiles/usrsctp.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_output.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_output.c.o
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_output.i: Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_output.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_output.i
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_output.i: users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_output.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_output.i
 
 # target to preprocess a source file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_output.c.i:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/usrsctp/usrsctplib/CMakeFiles/usrsctp.dir/build.make cugl.dir/external/libdatachannel/deps/usrsctp/usrsctplib/CMakeFiles/usrsctp.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_output.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_output.c.i
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_output.c.i:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/usrsctp/usrsctplib/CMakeFiles/usrsctp.dir/build.make cugl.dir/external/libdatachannel/deps/usrsctp/usrsctplib/CMakeFiles/usrsctp.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_output.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_output.c.i
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_output.s: Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_output.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_output.s
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_output.s: users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_output.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_output.s
 
 # target to generate assembly for a file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_output.c.s:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/usrsctp/usrsctplib/CMakeFiles/usrsctp.dir/build.make cugl.dir/external/libdatachannel/deps/usrsctp/usrsctplib/CMakeFiles/usrsctp.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_output.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_output.c.s
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_output.c.s:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/usrsctp/usrsctplib/CMakeFiles/usrsctp.dir/build.make cugl.dir/external/libdatachannel/deps/usrsctp/usrsctplib/CMakeFiles/usrsctp.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_output.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_output.c.s
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_pcb.o: Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_pcb.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_pcb.o
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_pcb.o: users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_pcb.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_pcb.o
 
 # target to build an object file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_pcb.c.o:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/usrsctp/usrsctplib/CMakeFiles/usrsctp.dir/build.make cugl.dir/external/libdatachannel/deps/usrsctp/usrsctplib/CMakeFiles/usrsctp.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_pcb.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_pcb.c.o
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_pcb.c.o:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/usrsctp/usrsctplib/CMakeFiles/usrsctp.dir/build.make cugl.dir/external/libdatachannel/deps/usrsctp/usrsctplib/CMakeFiles/usrsctp.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_pcb.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_pcb.c.o
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_pcb.i: Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_pcb.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_pcb.i
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_pcb.i: users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_pcb.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_pcb.i
 
 # target to preprocess a source file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_pcb.c.i:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/usrsctp/usrsctplib/CMakeFiles/usrsctp.dir/build.make cugl.dir/external/libdatachannel/deps/usrsctp/usrsctplib/CMakeFiles/usrsctp.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_pcb.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_pcb.c.i
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_pcb.c.i:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/usrsctp/usrsctplib/CMakeFiles/usrsctp.dir/build.make cugl.dir/external/libdatachannel/deps/usrsctp/usrsctplib/CMakeFiles/usrsctp.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_pcb.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_pcb.c.i
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_pcb.s: Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_pcb.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_pcb.s
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_pcb.s: users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_pcb.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_pcb.s
 
 # target to generate assembly for a file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_pcb.c.s:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/usrsctp/usrsctplib/CMakeFiles/usrsctp.dir/build.make cugl.dir/external/libdatachannel/deps/usrsctp/usrsctplib/CMakeFiles/usrsctp.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_pcb.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_pcb.c.s
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_pcb.c.s:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/usrsctp/usrsctplib/CMakeFiles/usrsctp.dir/build.make cugl.dir/external/libdatachannel/deps/usrsctp/usrsctplib/CMakeFiles/usrsctp.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_pcb.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_pcb.c.s
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_peeloff.o: Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_peeloff.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_peeloff.o
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_peeloff.o: users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_peeloff.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_peeloff.o
 
 # target to build an object file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_peeloff.c.o:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/usrsctp/usrsctplib/CMakeFiles/usrsctp.dir/build.make cugl.dir/external/libdatachannel/deps/usrsctp/usrsctplib/CMakeFiles/usrsctp.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_peeloff.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_peeloff.c.o
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_peeloff.c.o:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/usrsctp/usrsctplib/CMakeFiles/usrsctp.dir/build.make cugl.dir/external/libdatachannel/deps/usrsctp/usrsctplib/CMakeFiles/usrsctp.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_peeloff.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_peeloff.c.o
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_peeloff.i: Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_peeloff.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_peeloff.i
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_peeloff.i: users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_peeloff.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_peeloff.i
 
 # target to preprocess a source file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_peeloff.c.i:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/usrsctp/usrsctplib/CMakeFiles/usrsctp.dir/build.make cugl.dir/external/libdatachannel/deps/usrsctp/usrsctplib/CMakeFiles/usrsctp.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_peeloff.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_peeloff.c.i
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_peeloff.c.i:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/usrsctp/usrsctplib/CMakeFiles/usrsctp.dir/build.make cugl.dir/external/libdatachannel/deps/usrsctp/usrsctplib/CMakeFiles/usrsctp.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_peeloff.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_peeloff.c.i
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_peeloff.s: Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_peeloff.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_peeloff.s
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_peeloff.s: users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_peeloff.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_peeloff.s
 
 # target to generate assembly for a file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_peeloff.c.s:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/usrsctp/usrsctplib/CMakeFiles/usrsctp.dir/build.make cugl.dir/external/libdatachannel/deps/usrsctp/usrsctplib/CMakeFiles/usrsctp.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_peeloff.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_peeloff.c.s
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_peeloff.c.s:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/usrsctp/usrsctplib/CMakeFiles/usrsctp.dir/build.make cugl.dir/external/libdatachannel/deps/usrsctp/usrsctplib/CMakeFiles/usrsctp.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_peeloff.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_peeloff.c.s
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_sha1.o: Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_sha1.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_sha1.o
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_sha1.o: users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_sha1.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_sha1.o
 
 # target to build an object file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_sha1.c.o:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/usrsctp/usrsctplib/CMakeFiles/usrsctp.dir/build.make cugl.dir/external/libdatachannel/deps/usrsctp/usrsctplib/CMakeFiles/usrsctp.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_sha1.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_sha1.c.o
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_sha1.c.o:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/usrsctp/usrsctplib/CMakeFiles/usrsctp.dir/build.make cugl.dir/external/libdatachannel/deps/usrsctp/usrsctplib/CMakeFiles/usrsctp.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_sha1.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_sha1.c.o
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_sha1.i: Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_sha1.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_sha1.i
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_sha1.i: users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_sha1.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_sha1.i
 
 # target to preprocess a source file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_sha1.c.i:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/usrsctp/usrsctplib/CMakeFiles/usrsctp.dir/build.make cugl.dir/external/libdatachannel/deps/usrsctp/usrsctplib/CMakeFiles/usrsctp.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_sha1.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_sha1.c.i
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_sha1.c.i:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/usrsctp/usrsctplib/CMakeFiles/usrsctp.dir/build.make cugl.dir/external/libdatachannel/deps/usrsctp/usrsctplib/CMakeFiles/usrsctp.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_sha1.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_sha1.c.i
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_sha1.s: Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_sha1.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_sha1.s
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_sha1.s: users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_sha1.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_sha1.s
 
 # target to generate assembly for a file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_sha1.c.s:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/usrsctp/usrsctplib/CMakeFiles/usrsctp.dir/build.make cugl.dir/external/libdatachannel/deps/usrsctp/usrsctplib/CMakeFiles/usrsctp.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_sha1.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_sha1.c.s
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_sha1.c.s:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/usrsctp/usrsctplib/CMakeFiles/usrsctp.dir/build.make cugl.dir/external/libdatachannel/deps/usrsctp/usrsctplib/CMakeFiles/usrsctp.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_sha1.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_sha1.c.s
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_ss_functions.o: Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_ss_functions.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_ss_functions.o
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_ss_functions.o: users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_ss_functions.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_ss_functions.o
 
 # target to build an object file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_ss_functions.c.o:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/usrsctp/usrsctplib/CMakeFiles/usrsctp.dir/build.make cugl.dir/external/libdatachannel/deps/usrsctp/usrsctplib/CMakeFiles/usrsctp.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_ss_functions.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_ss_functions.c.o
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_ss_functions.c.o:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/usrsctp/usrsctplib/CMakeFiles/usrsctp.dir/build.make cugl.dir/external/libdatachannel/deps/usrsctp/usrsctplib/CMakeFiles/usrsctp.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_ss_functions.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_ss_functions.c.o
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_ss_functions.i: Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_ss_functions.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_ss_functions.i
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_ss_functions.i: users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_ss_functions.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_ss_functions.i
 
 # target to preprocess a source file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_ss_functions.c.i:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/usrsctp/usrsctplib/CMakeFiles/usrsctp.dir/build.make cugl.dir/external/libdatachannel/deps/usrsctp/usrsctplib/CMakeFiles/usrsctp.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_ss_functions.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_ss_functions.c.i
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_ss_functions.c.i:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/usrsctp/usrsctplib/CMakeFiles/usrsctp.dir/build.make cugl.dir/external/libdatachannel/deps/usrsctp/usrsctplib/CMakeFiles/usrsctp.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_ss_functions.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_ss_functions.c.i
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_ss_functions.s: Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_ss_functions.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_ss_functions.s
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_ss_functions.s: users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_ss_functions.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_ss_functions.s
 
 # target to generate assembly for a file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_ss_functions.c.s:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/usrsctp/usrsctplib/CMakeFiles/usrsctp.dir/build.make cugl.dir/external/libdatachannel/deps/usrsctp/usrsctplib/CMakeFiles/usrsctp.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_ss_functions.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_ss_functions.c.s
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_ss_functions.c.s:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/usrsctp/usrsctplib/CMakeFiles/usrsctp.dir/build.make cugl.dir/external/libdatachannel/deps/usrsctp/usrsctplib/CMakeFiles/usrsctp.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_ss_functions.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_ss_functions.c.s
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_sysctl.o: Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_sysctl.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_sysctl.o
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_sysctl.o: users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_sysctl.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_sysctl.o
 
 # target to build an object file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_sysctl.c.o:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/usrsctp/usrsctplib/CMakeFiles/usrsctp.dir/build.make cugl.dir/external/libdatachannel/deps/usrsctp/usrsctplib/CMakeFiles/usrsctp.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_sysctl.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_sysctl.c.o
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_sysctl.c.o:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/usrsctp/usrsctplib/CMakeFiles/usrsctp.dir/build.make cugl.dir/external/libdatachannel/deps/usrsctp/usrsctplib/CMakeFiles/usrsctp.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_sysctl.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_sysctl.c.o
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_sysctl.i: Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_sysctl.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_sysctl.i
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_sysctl.i: users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_sysctl.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_sysctl.i
 
 # target to preprocess a source file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_sysctl.c.i:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/usrsctp/usrsctplib/CMakeFiles/usrsctp.dir/build.make cugl.dir/external/libdatachannel/deps/usrsctp/usrsctplib/CMakeFiles/usrsctp.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_sysctl.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_sysctl.c.i
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_sysctl.c.i:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/usrsctp/usrsctplib/CMakeFiles/usrsctp.dir/build.make cugl.dir/external/libdatachannel/deps/usrsctp/usrsctplib/CMakeFiles/usrsctp.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_sysctl.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_sysctl.c.i
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_sysctl.s: Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_sysctl.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_sysctl.s
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_sysctl.s: users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_sysctl.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_sysctl.s
 
 # target to generate assembly for a file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_sysctl.c.s:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/usrsctp/usrsctplib/CMakeFiles/usrsctp.dir/build.make cugl.dir/external/libdatachannel/deps/usrsctp/usrsctplib/CMakeFiles/usrsctp.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_sysctl.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_sysctl.c.s
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_sysctl.c.s:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/usrsctp/usrsctplib/CMakeFiles/usrsctp.dir/build.make cugl.dir/external/libdatachannel/deps/usrsctp/usrsctplib/CMakeFiles/usrsctp.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_sysctl.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_sysctl.c.s
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_timer.o: Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_timer.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_timer.o
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_timer.o: users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_timer.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_timer.o
 
 # target to build an object file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_timer.c.o:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/usrsctp/usrsctplib/CMakeFiles/usrsctp.dir/build.make cugl.dir/external/libdatachannel/deps/usrsctp/usrsctplib/CMakeFiles/usrsctp.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_timer.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_timer.c.o
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_timer.c.o:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/usrsctp/usrsctplib/CMakeFiles/usrsctp.dir/build.make cugl.dir/external/libdatachannel/deps/usrsctp/usrsctplib/CMakeFiles/usrsctp.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_timer.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_timer.c.o
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_timer.i: Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_timer.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_timer.i
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_timer.i: users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_timer.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_timer.i
 
 # target to preprocess a source file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_timer.c.i:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/usrsctp/usrsctplib/CMakeFiles/usrsctp.dir/build.make cugl.dir/external/libdatachannel/deps/usrsctp/usrsctplib/CMakeFiles/usrsctp.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_timer.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_timer.c.i
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_timer.c.i:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/usrsctp/usrsctplib/CMakeFiles/usrsctp.dir/build.make cugl.dir/external/libdatachannel/deps/usrsctp/usrsctplib/CMakeFiles/usrsctp.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_timer.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_timer.c.i
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_timer.s: Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_timer.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_timer.s
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_timer.s: users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_timer.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_timer.s
 
 # target to generate assembly for a file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_timer.c.s:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/usrsctp/usrsctplib/CMakeFiles/usrsctp.dir/build.make cugl.dir/external/libdatachannel/deps/usrsctp/usrsctplib/CMakeFiles/usrsctp.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_timer.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_timer.c.s
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_timer.c.s:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/usrsctp/usrsctplib/CMakeFiles/usrsctp.dir/build.make cugl.dir/external/libdatachannel/deps/usrsctp/usrsctplib/CMakeFiles/usrsctp.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_timer.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_timer.c.s
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_userspace.o: Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_userspace.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_userspace.o
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_userspace.o: users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_userspace.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_userspace.o
 
 # target to build an object file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_userspace.c.o:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/usrsctp/usrsctplib/CMakeFiles/usrsctp.dir/build.make cugl.dir/external/libdatachannel/deps/usrsctp/usrsctplib/CMakeFiles/usrsctp.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_userspace.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_userspace.c.o
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_userspace.c.o:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/usrsctp/usrsctplib/CMakeFiles/usrsctp.dir/build.make cugl.dir/external/libdatachannel/deps/usrsctp/usrsctplib/CMakeFiles/usrsctp.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_userspace.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_userspace.c.o
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_userspace.i: Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_userspace.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_userspace.i
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_userspace.i: users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_userspace.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_userspace.i
 
 # target to preprocess a source file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_userspace.c.i:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/usrsctp/usrsctplib/CMakeFiles/usrsctp.dir/build.make cugl.dir/external/libdatachannel/deps/usrsctp/usrsctplib/CMakeFiles/usrsctp.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_userspace.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_userspace.c.i
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_userspace.c.i:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/usrsctp/usrsctplib/CMakeFiles/usrsctp.dir/build.make cugl.dir/external/libdatachannel/deps/usrsctp/usrsctplib/CMakeFiles/usrsctp.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_userspace.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_userspace.c.i
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_userspace.s: Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_userspace.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_userspace.s
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_userspace.s: users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_userspace.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_userspace.s
 
 # target to generate assembly for a file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_userspace.c.s:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/usrsctp/usrsctplib/CMakeFiles/usrsctp.dir/build.make cugl.dir/external/libdatachannel/deps/usrsctp/usrsctplib/CMakeFiles/usrsctp.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_userspace.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_userspace.c.s
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_userspace.c.s:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/usrsctp/usrsctplib/CMakeFiles/usrsctp.dir/build.make cugl.dir/external/libdatachannel/deps/usrsctp/usrsctplib/CMakeFiles/usrsctp.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_userspace.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_userspace.c.s
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_usrreq.o: Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_usrreq.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_usrreq.o
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_usrreq.o: users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_usrreq.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_usrreq.o
 
 # target to build an object file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_usrreq.c.o:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/usrsctp/usrsctplib/CMakeFiles/usrsctp.dir/build.make cugl.dir/external/libdatachannel/deps/usrsctp/usrsctplib/CMakeFiles/usrsctp.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_usrreq.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_usrreq.c.o
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_usrreq.c.o:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/usrsctp/usrsctplib/CMakeFiles/usrsctp.dir/build.make cugl.dir/external/libdatachannel/deps/usrsctp/usrsctplib/CMakeFiles/usrsctp.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_usrreq.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_usrreq.c.o
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_usrreq.i: Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_usrreq.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_usrreq.i
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_usrreq.i: users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_usrreq.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_usrreq.i
 
 # target to preprocess a source file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_usrreq.c.i:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/usrsctp/usrsctplib/CMakeFiles/usrsctp.dir/build.make cugl.dir/external/libdatachannel/deps/usrsctp/usrsctplib/CMakeFiles/usrsctp.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_usrreq.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_usrreq.c.i
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_usrreq.c.i:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/usrsctp/usrsctplib/CMakeFiles/usrsctp.dir/build.make cugl.dir/external/libdatachannel/deps/usrsctp/usrsctplib/CMakeFiles/usrsctp.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_usrreq.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_usrreq.c.i
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_usrreq.s: Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_usrreq.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_usrreq.s
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_usrreq.s: users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_usrreq.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_usrreq.s
 
 # target to generate assembly for a file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_usrreq.c.s:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/usrsctp/usrsctplib/CMakeFiles/usrsctp.dir/build.make cugl.dir/external/libdatachannel/deps/usrsctp/usrsctplib/CMakeFiles/usrsctp.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_usrreq.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_usrreq.c.s
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_usrreq.c.s:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/usrsctp/usrsctplib/CMakeFiles/usrsctp.dir/build.make cugl.dir/external/libdatachannel/deps/usrsctp/usrsctplib/CMakeFiles/usrsctp.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_usrreq.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_usrreq.c.s
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctputil.o: Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctputil.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctputil.o
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctputil.o: users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctputil.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctputil.o
 
 # target to build an object file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctputil.c.o:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/usrsctp/usrsctplib/CMakeFiles/usrsctp.dir/build.make cugl.dir/external/libdatachannel/deps/usrsctp/usrsctplib/CMakeFiles/usrsctp.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctputil.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctputil.c.o
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctputil.c.o:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/usrsctp/usrsctplib/CMakeFiles/usrsctp.dir/build.make cugl.dir/external/libdatachannel/deps/usrsctp/usrsctplib/CMakeFiles/usrsctp.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctputil.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctputil.c.o
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctputil.i: Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctputil.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctputil.i
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctputil.i: users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctputil.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctputil.i
 
 # target to preprocess a source file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctputil.c.i:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/usrsctp/usrsctplib/CMakeFiles/usrsctp.dir/build.make cugl.dir/external/libdatachannel/deps/usrsctp/usrsctplib/CMakeFiles/usrsctp.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctputil.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctputil.c.i
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctputil.c.i:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/usrsctp/usrsctplib/CMakeFiles/usrsctp.dir/build.make cugl.dir/external/libdatachannel/deps/usrsctp/usrsctplib/CMakeFiles/usrsctp.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctputil.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctputil.c.i
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctputil.s: Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctputil.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctputil.s
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctputil.s: users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctputil.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctputil.s
 
 # target to generate assembly for a file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctputil.c.s:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/usrsctp/usrsctplib/CMakeFiles/usrsctp.dir/build.make cugl.dir/external/libdatachannel/deps/usrsctp/usrsctplib/CMakeFiles/usrsctp.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctputil.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctputil.c.s
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctputil.c.s:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/usrsctp/usrsctplib/CMakeFiles/usrsctp.dir/build.make cugl.dir/external/libdatachannel/deps/usrsctp/usrsctplib/CMakeFiles/usrsctp.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctputil.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctputil.c.s
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet6/sctp6_usrreq.o: Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet6/sctp6_usrreq.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet6/sctp6_usrreq.o
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet6/sctp6_usrreq.o: users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet6/sctp6_usrreq.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet6/sctp6_usrreq.o
 
 # target to build an object file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet6/sctp6_usrreq.c.o:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/usrsctp/usrsctplib/CMakeFiles/usrsctp.dir/build.make cugl.dir/external/libdatachannel/deps/usrsctp/usrsctplib/CMakeFiles/usrsctp.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet6/sctp6_usrreq.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet6/sctp6_usrreq.c.o
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet6/sctp6_usrreq.c.o:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/usrsctp/usrsctplib/CMakeFiles/usrsctp.dir/build.make cugl.dir/external/libdatachannel/deps/usrsctp/usrsctplib/CMakeFiles/usrsctp.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet6/sctp6_usrreq.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet6/sctp6_usrreq.c.o
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet6/sctp6_usrreq.i: Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet6/sctp6_usrreq.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet6/sctp6_usrreq.i
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet6/sctp6_usrreq.i: users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet6/sctp6_usrreq.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet6/sctp6_usrreq.i
 
 # target to preprocess a source file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet6/sctp6_usrreq.c.i:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/usrsctp/usrsctplib/CMakeFiles/usrsctp.dir/build.make cugl.dir/external/libdatachannel/deps/usrsctp/usrsctplib/CMakeFiles/usrsctp.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet6/sctp6_usrreq.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet6/sctp6_usrreq.c.i
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet6/sctp6_usrreq.c.i:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/usrsctp/usrsctplib/CMakeFiles/usrsctp.dir/build.make cugl.dir/external/libdatachannel/deps/usrsctp/usrsctplib/CMakeFiles/usrsctp.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet6/sctp6_usrreq.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet6/sctp6_usrreq.c.i
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet6/sctp6_usrreq.s: Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet6/sctp6_usrreq.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet6/sctp6_usrreq.s
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet6/sctp6_usrreq.s: users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet6/sctp6_usrreq.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet6/sctp6_usrreq.s
 
 # target to generate assembly for a file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet6/sctp6_usrreq.c.s:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/usrsctp/usrsctplib/CMakeFiles/usrsctp.dir/build.make cugl.dir/external/libdatachannel/deps/usrsctp/usrsctplib/CMakeFiles/usrsctp.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet6/sctp6_usrreq.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet6/sctp6_usrreq.c.s
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet6/sctp6_usrreq.c.s:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/usrsctp/usrsctplib/CMakeFiles/usrsctp.dir/build.make cugl.dir/external/libdatachannel/deps/usrsctp/usrsctplib/CMakeFiles/usrsctp.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet6/sctp6_usrreq.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet6/sctp6_usrreq.c.s
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/user_environment.o: Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/user_environment.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/user_environment.o
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/user_environment.o: users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/user_environment.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/user_environment.o
 
 # target to build an object file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/user_environment.c.o:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/usrsctp/usrsctplib/CMakeFiles/usrsctp.dir/build.make cugl.dir/external/libdatachannel/deps/usrsctp/usrsctplib/CMakeFiles/usrsctp.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/user_environment.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/user_environment.c.o
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/user_environment.c.o:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/usrsctp/usrsctplib/CMakeFiles/usrsctp.dir/build.make cugl.dir/external/libdatachannel/deps/usrsctp/usrsctplib/CMakeFiles/usrsctp.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/user_environment.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/user_environment.c.o
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/user_environment.i: Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/user_environment.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/user_environment.i
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/user_environment.i: users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/user_environment.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/user_environment.i
 
 # target to preprocess a source file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/user_environment.c.i:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/usrsctp/usrsctplib/CMakeFiles/usrsctp.dir/build.make cugl.dir/external/libdatachannel/deps/usrsctp/usrsctplib/CMakeFiles/usrsctp.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/user_environment.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/user_environment.c.i
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/user_environment.c.i:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/usrsctp/usrsctplib/CMakeFiles/usrsctp.dir/build.make cugl.dir/external/libdatachannel/deps/usrsctp/usrsctplib/CMakeFiles/usrsctp.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/user_environment.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/user_environment.c.i
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/user_environment.s: Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/user_environment.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/user_environment.s
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/user_environment.s: users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/user_environment.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/user_environment.s
 
 # target to generate assembly for a file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/user_environment.c.s:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/usrsctp/usrsctplib/CMakeFiles/usrsctp.dir/build.make cugl.dir/external/libdatachannel/deps/usrsctp/usrsctplib/CMakeFiles/usrsctp.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/user_environment.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/user_environment.c.s
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/user_environment.c.s:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/usrsctp/usrsctplib/CMakeFiles/usrsctp.dir/build.make cugl.dir/external/libdatachannel/deps/usrsctp/usrsctplib/CMakeFiles/usrsctp.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/user_environment.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/user_environment.c.s
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/user_mbuf.o: Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/user_mbuf.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/user_mbuf.o
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/user_mbuf.o: users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/user_mbuf.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/user_mbuf.o
 
 # target to build an object file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/user_mbuf.c.o:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/usrsctp/usrsctplib/CMakeFiles/usrsctp.dir/build.make cugl.dir/external/libdatachannel/deps/usrsctp/usrsctplib/CMakeFiles/usrsctp.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/user_mbuf.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/user_mbuf.c.o
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/user_mbuf.c.o:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/usrsctp/usrsctplib/CMakeFiles/usrsctp.dir/build.make cugl.dir/external/libdatachannel/deps/usrsctp/usrsctplib/CMakeFiles/usrsctp.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/user_mbuf.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/user_mbuf.c.o
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/user_mbuf.i: Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/user_mbuf.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/user_mbuf.i
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/user_mbuf.i: users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/user_mbuf.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/user_mbuf.i
 
 # target to preprocess a source file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/user_mbuf.c.i:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/usrsctp/usrsctplib/CMakeFiles/usrsctp.dir/build.make cugl.dir/external/libdatachannel/deps/usrsctp/usrsctplib/CMakeFiles/usrsctp.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/user_mbuf.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/user_mbuf.c.i
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/user_mbuf.c.i:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/usrsctp/usrsctplib/CMakeFiles/usrsctp.dir/build.make cugl.dir/external/libdatachannel/deps/usrsctp/usrsctplib/CMakeFiles/usrsctp.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/user_mbuf.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/user_mbuf.c.i
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/user_mbuf.s: Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/user_mbuf.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/user_mbuf.s
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/user_mbuf.s: users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/user_mbuf.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/user_mbuf.s
 
 # target to generate assembly for a file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/user_mbuf.c.s:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/usrsctp/usrsctplib/CMakeFiles/usrsctp.dir/build.make cugl.dir/external/libdatachannel/deps/usrsctp/usrsctplib/CMakeFiles/usrsctp.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/user_mbuf.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/user_mbuf.c.s
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/user_mbuf.c.s:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/usrsctp/usrsctplib/CMakeFiles/usrsctp.dir/build.make cugl.dir/external/libdatachannel/deps/usrsctp/usrsctplib/CMakeFiles/usrsctp.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/user_mbuf.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/user_mbuf.c.s
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/user_recv_thread.o: Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/user_recv_thread.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/user_recv_thread.o
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/user_recv_thread.o: users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/user_recv_thread.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/user_recv_thread.o
 
 # target to build an object file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/user_recv_thread.c.o:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/usrsctp/usrsctplib/CMakeFiles/usrsctp.dir/build.make cugl.dir/external/libdatachannel/deps/usrsctp/usrsctplib/CMakeFiles/usrsctp.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/user_recv_thread.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/user_recv_thread.c.o
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/user_recv_thread.c.o:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/usrsctp/usrsctplib/CMakeFiles/usrsctp.dir/build.make cugl.dir/external/libdatachannel/deps/usrsctp/usrsctplib/CMakeFiles/usrsctp.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/user_recv_thread.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/user_recv_thread.c.o
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/user_recv_thread.i: Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/user_recv_thread.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/user_recv_thread.i
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/user_recv_thread.i: users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/user_recv_thread.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/user_recv_thread.i
 
 # target to preprocess a source file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/user_recv_thread.c.i:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/usrsctp/usrsctplib/CMakeFiles/usrsctp.dir/build.make cugl.dir/external/libdatachannel/deps/usrsctp/usrsctplib/CMakeFiles/usrsctp.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/user_recv_thread.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/user_recv_thread.c.i
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/user_recv_thread.c.i:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/usrsctp/usrsctplib/CMakeFiles/usrsctp.dir/build.make cugl.dir/external/libdatachannel/deps/usrsctp/usrsctplib/CMakeFiles/usrsctp.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/user_recv_thread.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/user_recv_thread.c.i
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/user_recv_thread.s: Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/user_recv_thread.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/user_recv_thread.s
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/user_recv_thread.s: users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/user_recv_thread.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/user_recv_thread.s
 
 # target to generate assembly for a file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/user_recv_thread.c.s:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/usrsctp/usrsctplib/CMakeFiles/usrsctp.dir/build.make cugl.dir/external/libdatachannel/deps/usrsctp/usrsctplib/CMakeFiles/usrsctp.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/user_recv_thread.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/user_recv_thread.c.s
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/user_recv_thread.c.s:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/usrsctp/usrsctplib/CMakeFiles/usrsctp.dir/build.make cugl.dir/external/libdatachannel/deps/usrsctp/usrsctplib/CMakeFiles/usrsctp.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/user_recv_thread.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/user_recv_thread.c.s
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/user_socket.o: Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/user_socket.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/user_socket.o
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/user_socket.o: users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/user_socket.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/user_socket.o
 
 # target to build an object file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/user_socket.c.o:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/usrsctp/usrsctplib/CMakeFiles/usrsctp.dir/build.make cugl.dir/external/libdatachannel/deps/usrsctp/usrsctplib/CMakeFiles/usrsctp.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/user_socket.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/user_socket.c.o
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/user_socket.c.o:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/usrsctp/usrsctplib/CMakeFiles/usrsctp.dir/build.make cugl.dir/external/libdatachannel/deps/usrsctp/usrsctplib/CMakeFiles/usrsctp.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/user_socket.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/user_socket.c.o
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/user_socket.i: Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/user_socket.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/user_socket.i
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/user_socket.i: users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/user_socket.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/user_socket.i
 
 # target to preprocess a source file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/user_socket.c.i:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/usrsctp/usrsctplib/CMakeFiles/usrsctp.dir/build.make cugl.dir/external/libdatachannel/deps/usrsctp/usrsctplib/CMakeFiles/usrsctp.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/user_socket.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/user_socket.c.i
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/user_socket.c.i:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/usrsctp/usrsctplib/CMakeFiles/usrsctp.dir/build.make cugl.dir/external/libdatachannel/deps/usrsctp/usrsctplib/CMakeFiles/usrsctp.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/user_socket.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/user_socket.c.i
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/user_socket.s: Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/user_socket.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/user_socket.s
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/user_socket.s: users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/user_socket.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/user_socket.s
 
 # target to generate assembly for a file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/user_socket.c.s:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/usrsctp/usrsctplib/CMakeFiles/usrsctp.dir/build.make cugl.dir/external/libdatachannel/deps/usrsctp/usrsctplib/CMakeFiles/usrsctp.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/user_socket.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/user_socket.c.s
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/user_socket.c.s:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/usrsctp/usrsctplib/CMakeFiles/usrsctp.dir/build.make cugl.dir/external/libdatachannel/deps/usrsctp/usrsctplib/CMakeFiles/usrsctp.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/user_socket.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/user_socket.c.s
 
 # Help Target
 help:
@@ -762,75 +762,75 @@ help:
 	@echo "... package_source"
 	@echo "... rebuild_cache"
 	@echo "... usrsctp"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_asconf.o"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_asconf.i"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_asconf.s"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_auth.o"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_auth.i"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_auth.s"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_bsd_addr.o"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_bsd_addr.i"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_bsd_addr.s"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_callout.o"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_callout.i"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_callout.s"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_cc_functions.o"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_cc_functions.i"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_cc_functions.s"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_crc32.o"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_crc32.i"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_crc32.s"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_indata.o"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_indata.i"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_indata.s"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_input.o"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_input.i"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_input.s"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_output.o"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_output.i"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_output.s"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_pcb.o"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_pcb.i"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_pcb.s"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_peeloff.o"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_peeloff.i"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_peeloff.s"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_sha1.o"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_sha1.i"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_sha1.s"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_ss_functions.o"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_ss_functions.i"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_ss_functions.s"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_sysctl.o"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_sysctl.i"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_sysctl.s"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_timer.o"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_timer.i"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_timer.s"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_userspace.o"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_userspace.i"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_userspace.s"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_usrreq.o"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_usrreq.i"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_usrreq.s"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctputil.o"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctputil.i"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctputil.s"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet6/sctp6_usrreq.o"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet6/sctp6_usrreq.i"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet6/sctp6_usrreq.s"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/user_environment.o"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/user_environment.i"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/user_environment.s"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/user_mbuf.o"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/user_mbuf.i"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/user_mbuf.s"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/user_recv_thread.o"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/user_recv_thread.i"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/user_recv_thread.s"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/user_socket.o"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/user_socket.i"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/user_socket.s"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_asconf.o"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_asconf.i"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_asconf.s"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_auth.o"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_auth.i"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_auth.s"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_bsd_addr.o"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_bsd_addr.i"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_bsd_addr.s"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_callout.o"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_callout.i"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_callout.s"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_cc_functions.o"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_cc_functions.i"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_cc_functions.s"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_crc32.o"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_crc32.i"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_crc32.s"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_indata.o"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_indata.i"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_indata.s"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_input.o"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_input.i"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_input.s"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_output.o"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_output.i"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_output.s"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_pcb.o"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_pcb.i"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_pcb.s"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_peeloff.o"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_peeloff.i"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_peeloff.s"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_sha1.o"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_sha1.i"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_sha1.s"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_ss_functions.o"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_ss_functions.i"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_ss_functions.s"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_sysctl.o"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_sysctl.i"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_sysctl.s"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_timer.o"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_timer.i"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_timer.s"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_userspace.o"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_userspace.i"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_userspace.s"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_usrreq.o"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_usrreq.i"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctp_usrreq.s"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctputil.o"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctputil.i"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet/sctputil.s"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet6/sctp6_usrreq.o"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet6/sctp6_usrreq.i"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/netinet6/sctp6_usrreq.s"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/user_environment.o"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/user_environment.i"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/user_environment.s"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/user_mbuf.o"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/user_mbuf.i"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/user_mbuf.s"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/user_recv_thread.o"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/user_recv_thread.i"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/user_recv_thread.s"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/user_socket.o"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/user_socket.i"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/usrsctp/usrsctplib/user_socket.s"
 .PHONY : help
 
 
@@ -842,6 +842,6 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 

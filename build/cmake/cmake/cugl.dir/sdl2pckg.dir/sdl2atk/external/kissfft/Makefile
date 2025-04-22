@@ -57,10 +57,10 @@ RM = /opt/homebrew/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /Users/patrickchoo/cs4152/mahsjong/build/cmake
+CMAKE_SOURCE_DIR = /users/patrickchoo/cs4152/mahsjong/build/cmake
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake
+CMAKE_BINARY_DIR = /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -68,7 +68,7 @@ CMAKE_BINARY_DIR = /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake
 # Special rule for the target package
 package: preinstall
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Run CPack packaging tool..."
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && /opt/homebrew/bin/cpack --config ./CPackConfig.cmake
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && /opt/homebrew/bin/cpack --config ./CPackConfig.cmake
 .PHONY : package
 
 # Special rule for the target package
@@ -78,7 +78,7 @@ package/fast: package
 # Special rule for the target package_source
 package_source:
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Run CPack packaging tool for source..."
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && /opt/homebrew/bin/cpack --config ./CPackSourceConfig.cmake /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CPackSourceConfig.cmake
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && /opt/homebrew/bin/cpack --config ./CPackSourceConfig.cmake /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CPackSourceConfig.cmake
 .PHONY : package_source
 
 # Special rule for the target package_source
@@ -152,14 +152,14 @@ install/strip/fast: preinstall/fast
 
 # The main all target
 all: cmake_check_build_system
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(CMAKE_COMMAND) -E cmake_progress_start /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2atk/external/kissfft//CMakeFiles/progress.marks
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 cugl.dir/sdl2pckg.dir/sdl2atk/external/kissfft/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles 0
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(CMAKE_COMMAND) -E cmake_progress_start /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2atk/external/kissfft//CMakeFiles/progress.marks
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 cugl.dir/sdl2pckg.dir/sdl2atk/external/kissfft/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 cugl.dir/sdl2pckg.dir/sdl2atk/external/kissfft/clean
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 cugl.dir/sdl2pckg.dir/sdl2atk/external/kissfft/clean
 .PHONY : clean
 
 # The main clean target
@@ -168,22 +168,22 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 cugl.dir/sdl2pckg.dir/sdl2atk/external/kissfft/preinstall
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 cugl.dir/sdl2pckg.dir/sdl2atk/external/kissfft/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 cugl.dir/sdl2pckg.dir/sdl2atk/external/kissfft/preinstall
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 cugl.dir/sdl2pckg.dir/sdl2atk/external/kissfft/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
 # Convenience name for target.
 cugl.dir/sdl2pckg.dir/sdl2atk/external/kissfft/CMakeFiles/kissfft.dir/rule:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 cugl.dir/sdl2pckg.dir/sdl2atk/external/kissfft/CMakeFiles/kissfft.dir/rule
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 cugl.dir/sdl2pckg.dir/sdl2atk/external/kissfft/CMakeFiles/kissfft.dir/rule
 .PHONY : cugl.dir/sdl2pckg.dir/sdl2atk/external/kissfft/CMakeFiles/kissfft.dir/rule
 
 # Convenience name for target.
@@ -192,128 +192,128 @@ kissfft: cugl.dir/sdl2pckg.dir/sdl2atk/external/kissfft/CMakeFiles/kissfft.dir/r
 
 # fast build rule for target.
 kissfft/fast:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/kissfft/CMakeFiles/kissfft.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/kissfft/CMakeFiles/kissfft.dir/build
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/kissfft/CMakeFiles/kissfft.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/kissfft/CMakeFiles/kissfft.dir/build
 .PHONY : kissfft/fast
 
-Users/patrickchoo/cs4152/cugl/sdlapp/external/kissfft/kfc.o: Users/patrickchoo/cs4152/cugl/sdlapp/external/kissfft/kfc.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/kissfft/kfc.o
+users/patrickchoo/cs4152/cugl/sdlapp/external/kissfft/kfc.o: users/patrickchoo/cs4152/cugl/sdlapp/external/kissfft/kfc.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/kissfft/kfc.o
 
 # target to build an object file
-Users/patrickchoo/cs4152/cugl/sdlapp/external/kissfft/kfc.c.o:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/kissfft/CMakeFiles/kissfft.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/kissfft/CMakeFiles/kissfft.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/kissfft/kfc.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/kissfft/kfc.c.o
+users/patrickchoo/cs4152/cugl/sdlapp/external/kissfft/kfc.c.o:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/kissfft/CMakeFiles/kissfft.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/kissfft/CMakeFiles/kissfft.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/kissfft/kfc.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/kissfft/kfc.c.o
 
-Users/patrickchoo/cs4152/cugl/sdlapp/external/kissfft/kfc.i: Users/patrickchoo/cs4152/cugl/sdlapp/external/kissfft/kfc.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/kissfft/kfc.i
+users/patrickchoo/cs4152/cugl/sdlapp/external/kissfft/kfc.i: users/patrickchoo/cs4152/cugl/sdlapp/external/kissfft/kfc.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/kissfft/kfc.i
 
 # target to preprocess a source file
-Users/patrickchoo/cs4152/cugl/sdlapp/external/kissfft/kfc.c.i:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/kissfft/CMakeFiles/kissfft.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/kissfft/CMakeFiles/kissfft.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/kissfft/kfc.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/kissfft/kfc.c.i
+users/patrickchoo/cs4152/cugl/sdlapp/external/kissfft/kfc.c.i:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/kissfft/CMakeFiles/kissfft.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/kissfft/CMakeFiles/kissfft.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/kissfft/kfc.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/kissfft/kfc.c.i
 
-Users/patrickchoo/cs4152/cugl/sdlapp/external/kissfft/kfc.s: Users/patrickchoo/cs4152/cugl/sdlapp/external/kissfft/kfc.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/kissfft/kfc.s
+users/patrickchoo/cs4152/cugl/sdlapp/external/kissfft/kfc.s: users/patrickchoo/cs4152/cugl/sdlapp/external/kissfft/kfc.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/kissfft/kfc.s
 
 # target to generate assembly for a file
-Users/patrickchoo/cs4152/cugl/sdlapp/external/kissfft/kfc.c.s:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/kissfft/CMakeFiles/kissfft.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/kissfft/CMakeFiles/kissfft.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/kissfft/kfc.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/kissfft/kfc.c.s
+users/patrickchoo/cs4152/cugl/sdlapp/external/kissfft/kfc.c.s:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/kissfft/CMakeFiles/kissfft.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/kissfft/CMakeFiles/kissfft.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/kissfft/kfc.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/kissfft/kfc.c.s
 
-Users/patrickchoo/cs4152/cugl/sdlapp/external/kissfft/kiss_fft.o: Users/patrickchoo/cs4152/cugl/sdlapp/external/kissfft/kiss_fft.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/kissfft/kiss_fft.o
+users/patrickchoo/cs4152/cugl/sdlapp/external/kissfft/kiss_fft.o: users/patrickchoo/cs4152/cugl/sdlapp/external/kissfft/kiss_fft.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/kissfft/kiss_fft.o
 
 # target to build an object file
-Users/patrickchoo/cs4152/cugl/sdlapp/external/kissfft/kiss_fft.c.o:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/kissfft/CMakeFiles/kissfft.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/kissfft/CMakeFiles/kissfft.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/kissfft/kiss_fft.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/kissfft/kiss_fft.c.o
+users/patrickchoo/cs4152/cugl/sdlapp/external/kissfft/kiss_fft.c.o:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/kissfft/CMakeFiles/kissfft.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/kissfft/CMakeFiles/kissfft.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/kissfft/kiss_fft.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/kissfft/kiss_fft.c.o
 
-Users/patrickchoo/cs4152/cugl/sdlapp/external/kissfft/kiss_fft.i: Users/patrickchoo/cs4152/cugl/sdlapp/external/kissfft/kiss_fft.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/kissfft/kiss_fft.i
+users/patrickchoo/cs4152/cugl/sdlapp/external/kissfft/kiss_fft.i: users/patrickchoo/cs4152/cugl/sdlapp/external/kissfft/kiss_fft.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/kissfft/kiss_fft.i
 
 # target to preprocess a source file
-Users/patrickchoo/cs4152/cugl/sdlapp/external/kissfft/kiss_fft.c.i:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/kissfft/CMakeFiles/kissfft.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/kissfft/CMakeFiles/kissfft.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/kissfft/kiss_fft.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/kissfft/kiss_fft.c.i
+users/patrickchoo/cs4152/cugl/sdlapp/external/kissfft/kiss_fft.c.i:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/kissfft/CMakeFiles/kissfft.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/kissfft/CMakeFiles/kissfft.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/kissfft/kiss_fft.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/kissfft/kiss_fft.c.i
 
-Users/patrickchoo/cs4152/cugl/sdlapp/external/kissfft/kiss_fft.s: Users/patrickchoo/cs4152/cugl/sdlapp/external/kissfft/kiss_fft.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/kissfft/kiss_fft.s
+users/patrickchoo/cs4152/cugl/sdlapp/external/kissfft/kiss_fft.s: users/patrickchoo/cs4152/cugl/sdlapp/external/kissfft/kiss_fft.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/kissfft/kiss_fft.s
 
 # target to generate assembly for a file
-Users/patrickchoo/cs4152/cugl/sdlapp/external/kissfft/kiss_fft.c.s:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/kissfft/CMakeFiles/kissfft.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/kissfft/CMakeFiles/kissfft.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/kissfft/kiss_fft.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/kissfft/kiss_fft.c.s
+users/patrickchoo/cs4152/cugl/sdlapp/external/kissfft/kiss_fft.c.s:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/kissfft/CMakeFiles/kissfft.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/kissfft/CMakeFiles/kissfft.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/kissfft/kiss_fft.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/kissfft/kiss_fft.c.s
 
-Users/patrickchoo/cs4152/cugl/sdlapp/external/kissfft/kiss_fftnd.o: Users/patrickchoo/cs4152/cugl/sdlapp/external/kissfft/kiss_fftnd.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/kissfft/kiss_fftnd.o
+users/patrickchoo/cs4152/cugl/sdlapp/external/kissfft/kiss_fftnd.o: users/patrickchoo/cs4152/cugl/sdlapp/external/kissfft/kiss_fftnd.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/kissfft/kiss_fftnd.o
 
 # target to build an object file
-Users/patrickchoo/cs4152/cugl/sdlapp/external/kissfft/kiss_fftnd.c.o:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/kissfft/CMakeFiles/kissfft.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/kissfft/CMakeFiles/kissfft.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/kissfft/kiss_fftnd.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/kissfft/kiss_fftnd.c.o
+users/patrickchoo/cs4152/cugl/sdlapp/external/kissfft/kiss_fftnd.c.o:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/kissfft/CMakeFiles/kissfft.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/kissfft/CMakeFiles/kissfft.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/kissfft/kiss_fftnd.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/kissfft/kiss_fftnd.c.o
 
-Users/patrickchoo/cs4152/cugl/sdlapp/external/kissfft/kiss_fftnd.i: Users/patrickchoo/cs4152/cugl/sdlapp/external/kissfft/kiss_fftnd.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/kissfft/kiss_fftnd.i
+users/patrickchoo/cs4152/cugl/sdlapp/external/kissfft/kiss_fftnd.i: users/patrickchoo/cs4152/cugl/sdlapp/external/kissfft/kiss_fftnd.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/kissfft/kiss_fftnd.i
 
 # target to preprocess a source file
-Users/patrickchoo/cs4152/cugl/sdlapp/external/kissfft/kiss_fftnd.c.i:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/kissfft/CMakeFiles/kissfft.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/kissfft/CMakeFiles/kissfft.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/kissfft/kiss_fftnd.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/kissfft/kiss_fftnd.c.i
+users/patrickchoo/cs4152/cugl/sdlapp/external/kissfft/kiss_fftnd.c.i:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/kissfft/CMakeFiles/kissfft.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/kissfft/CMakeFiles/kissfft.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/kissfft/kiss_fftnd.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/kissfft/kiss_fftnd.c.i
 
-Users/patrickchoo/cs4152/cugl/sdlapp/external/kissfft/kiss_fftnd.s: Users/patrickchoo/cs4152/cugl/sdlapp/external/kissfft/kiss_fftnd.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/kissfft/kiss_fftnd.s
+users/patrickchoo/cs4152/cugl/sdlapp/external/kissfft/kiss_fftnd.s: users/patrickchoo/cs4152/cugl/sdlapp/external/kissfft/kiss_fftnd.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/kissfft/kiss_fftnd.s
 
 # target to generate assembly for a file
-Users/patrickchoo/cs4152/cugl/sdlapp/external/kissfft/kiss_fftnd.c.s:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/kissfft/CMakeFiles/kissfft.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/kissfft/CMakeFiles/kissfft.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/kissfft/kiss_fftnd.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/kissfft/kiss_fftnd.c.s
+users/patrickchoo/cs4152/cugl/sdlapp/external/kissfft/kiss_fftnd.c.s:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/kissfft/CMakeFiles/kissfft.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/kissfft/CMakeFiles/kissfft.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/kissfft/kiss_fftnd.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/kissfft/kiss_fftnd.c.s
 
-Users/patrickchoo/cs4152/cugl/sdlapp/external/kissfft/kiss_fftndr.o: Users/patrickchoo/cs4152/cugl/sdlapp/external/kissfft/kiss_fftndr.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/kissfft/kiss_fftndr.o
+users/patrickchoo/cs4152/cugl/sdlapp/external/kissfft/kiss_fftndr.o: users/patrickchoo/cs4152/cugl/sdlapp/external/kissfft/kiss_fftndr.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/kissfft/kiss_fftndr.o
 
 # target to build an object file
-Users/patrickchoo/cs4152/cugl/sdlapp/external/kissfft/kiss_fftndr.c.o:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/kissfft/CMakeFiles/kissfft.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/kissfft/CMakeFiles/kissfft.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/kissfft/kiss_fftndr.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/kissfft/kiss_fftndr.c.o
+users/patrickchoo/cs4152/cugl/sdlapp/external/kissfft/kiss_fftndr.c.o:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/kissfft/CMakeFiles/kissfft.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/kissfft/CMakeFiles/kissfft.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/kissfft/kiss_fftndr.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/kissfft/kiss_fftndr.c.o
 
-Users/patrickchoo/cs4152/cugl/sdlapp/external/kissfft/kiss_fftndr.i: Users/patrickchoo/cs4152/cugl/sdlapp/external/kissfft/kiss_fftndr.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/kissfft/kiss_fftndr.i
+users/patrickchoo/cs4152/cugl/sdlapp/external/kissfft/kiss_fftndr.i: users/patrickchoo/cs4152/cugl/sdlapp/external/kissfft/kiss_fftndr.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/kissfft/kiss_fftndr.i
 
 # target to preprocess a source file
-Users/patrickchoo/cs4152/cugl/sdlapp/external/kissfft/kiss_fftndr.c.i:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/kissfft/CMakeFiles/kissfft.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/kissfft/CMakeFiles/kissfft.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/kissfft/kiss_fftndr.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/kissfft/kiss_fftndr.c.i
+users/patrickchoo/cs4152/cugl/sdlapp/external/kissfft/kiss_fftndr.c.i:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/kissfft/CMakeFiles/kissfft.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/kissfft/CMakeFiles/kissfft.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/kissfft/kiss_fftndr.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/kissfft/kiss_fftndr.c.i
 
-Users/patrickchoo/cs4152/cugl/sdlapp/external/kissfft/kiss_fftndr.s: Users/patrickchoo/cs4152/cugl/sdlapp/external/kissfft/kiss_fftndr.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/kissfft/kiss_fftndr.s
+users/patrickchoo/cs4152/cugl/sdlapp/external/kissfft/kiss_fftndr.s: users/patrickchoo/cs4152/cugl/sdlapp/external/kissfft/kiss_fftndr.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/kissfft/kiss_fftndr.s
 
 # target to generate assembly for a file
-Users/patrickchoo/cs4152/cugl/sdlapp/external/kissfft/kiss_fftndr.c.s:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/kissfft/CMakeFiles/kissfft.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/kissfft/CMakeFiles/kissfft.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/kissfft/kiss_fftndr.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/kissfft/kiss_fftndr.c.s
+users/patrickchoo/cs4152/cugl/sdlapp/external/kissfft/kiss_fftndr.c.s:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/kissfft/CMakeFiles/kissfft.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/kissfft/CMakeFiles/kissfft.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/kissfft/kiss_fftndr.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/kissfft/kiss_fftndr.c.s
 
-Users/patrickchoo/cs4152/cugl/sdlapp/external/kissfft/kiss_fftr.o: Users/patrickchoo/cs4152/cugl/sdlapp/external/kissfft/kiss_fftr.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/kissfft/kiss_fftr.o
+users/patrickchoo/cs4152/cugl/sdlapp/external/kissfft/kiss_fftr.o: users/patrickchoo/cs4152/cugl/sdlapp/external/kissfft/kiss_fftr.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/kissfft/kiss_fftr.o
 
 # target to build an object file
-Users/patrickchoo/cs4152/cugl/sdlapp/external/kissfft/kiss_fftr.c.o:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/kissfft/CMakeFiles/kissfft.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/kissfft/CMakeFiles/kissfft.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/kissfft/kiss_fftr.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/kissfft/kiss_fftr.c.o
+users/patrickchoo/cs4152/cugl/sdlapp/external/kissfft/kiss_fftr.c.o:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/kissfft/CMakeFiles/kissfft.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/kissfft/CMakeFiles/kissfft.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/kissfft/kiss_fftr.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/kissfft/kiss_fftr.c.o
 
-Users/patrickchoo/cs4152/cugl/sdlapp/external/kissfft/kiss_fftr.i: Users/patrickchoo/cs4152/cugl/sdlapp/external/kissfft/kiss_fftr.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/kissfft/kiss_fftr.i
+users/patrickchoo/cs4152/cugl/sdlapp/external/kissfft/kiss_fftr.i: users/patrickchoo/cs4152/cugl/sdlapp/external/kissfft/kiss_fftr.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/kissfft/kiss_fftr.i
 
 # target to preprocess a source file
-Users/patrickchoo/cs4152/cugl/sdlapp/external/kissfft/kiss_fftr.c.i:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/kissfft/CMakeFiles/kissfft.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/kissfft/CMakeFiles/kissfft.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/kissfft/kiss_fftr.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/kissfft/kiss_fftr.c.i
+users/patrickchoo/cs4152/cugl/sdlapp/external/kissfft/kiss_fftr.c.i:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/kissfft/CMakeFiles/kissfft.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/kissfft/CMakeFiles/kissfft.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/kissfft/kiss_fftr.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/kissfft/kiss_fftr.c.i
 
-Users/patrickchoo/cs4152/cugl/sdlapp/external/kissfft/kiss_fftr.s: Users/patrickchoo/cs4152/cugl/sdlapp/external/kissfft/kiss_fftr.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/kissfft/kiss_fftr.s
+users/patrickchoo/cs4152/cugl/sdlapp/external/kissfft/kiss_fftr.s: users/patrickchoo/cs4152/cugl/sdlapp/external/kissfft/kiss_fftr.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/kissfft/kiss_fftr.s
 
 # target to generate assembly for a file
-Users/patrickchoo/cs4152/cugl/sdlapp/external/kissfft/kiss_fftr.c.s:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/kissfft/CMakeFiles/kissfft.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/kissfft/CMakeFiles/kissfft.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/kissfft/kiss_fftr.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/kissfft/kiss_fftr.c.s
+users/patrickchoo/cs4152/cugl/sdlapp/external/kissfft/kiss_fftr.c.s:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/kissfft/CMakeFiles/kissfft.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/kissfft/CMakeFiles/kissfft.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/kissfft/kiss_fftr.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/kissfft/kiss_fftr.c.s
 
 # Help Target
 help:
@@ -330,21 +330,21 @@ help:
 	@echo "... package_source"
 	@echo "... rebuild_cache"
 	@echo "... kissfft"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/external/kissfft/kfc.o"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/external/kissfft/kfc.i"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/external/kissfft/kfc.s"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/external/kissfft/kiss_fft.o"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/external/kissfft/kiss_fft.i"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/external/kissfft/kiss_fft.s"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/external/kissfft/kiss_fftnd.o"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/external/kissfft/kiss_fftnd.i"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/external/kissfft/kiss_fftnd.s"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/external/kissfft/kiss_fftndr.o"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/external/kissfft/kiss_fftndr.i"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/external/kissfft/kiss_fftndr.s"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/external/kissfft/kiss_fftr.o"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/external/kissfft/kiss_fftr.i"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/external/kissfft/kiss_fftr.s"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/external/kissfft/kfc.o"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/external/kissfft/kfc.i"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/external/kissfft/kfc.s"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/external/kissfft/kiss_fft.o"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/external/kissfft/kiss_fft.i"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/external/kissfft/kiss_fft.s"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/external/kissfft/kiss_fftnd.o"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/external/kissfft/kiss_fftnd.i"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/external/kissfft/kiss_fftnd.s"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/external/kissfft/kiss_fftndr.o"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/external/kissfft/kiss_fftndr.i"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/external/kissfft/kiss_fftndr.s"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/external/kissfft/kiss_fftr.o"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/external/kissfft/kiss_fftr.i"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/external/kissfft/kiss_fftr.s"
 .PHONY : help
 
 
@@ -356,6 +356,6 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 

@@ -53,10 +53,10 @@ RM = /opt/homebrew/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /Users/patrickchoo/cs4152/mahsjong/build/cmake
+CMAKE_SOURCE_DIR = /users/patrickchoo/cs4152/mahsjong/build/cmake
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake
+CMAKE_BINARY_DIR = /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake
 
 # Utility rule file for sdl_headers_copy.
 
@@ -155,357 +155,357 @@ cugl.dir/sdl2pckg.dir/sdl2/CMakeFiles/sdl_headers_copy: cugl.dir/sdl2pckg.dir/sd
 cugl.dir/sdl2pckg.dir/sdl2/CMakeFiles/sdl_headers_copy: cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/begin_code.h
 cugl.dir/sdl2pckg.dir/sdl2/CMakeFiles/sdl_headers_copy: cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/close_code.h
 
-cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/ATK_audio.h: /Users/patrickchoo/cs4152/cugl/sdlapp/include/ATK_audio.h
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Generating include/SDL2/ATK_audio.h"
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2 && /opt/homebrew/bin/cmake -E copy_if_different /Users/patrickchoo/cs4152/cugl/sdlapp/buildfiles/cmake/../../include/ATK_audio.h /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/ATK_audio.h
-
-cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/ATK_codec.h: /Users/patrickchoo/cs4152/cugl/sdlapp/include/ATK_codec.h
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Generating include/SDL2/ATK_codec.h"
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2 && /opt/homebrew/bin/cmake -E copy_if_different /Users/patrickchoo/cs4152/cugl/sdlapp/buildfiles/cmake/../../include/ATK_codec.h /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/ATK_codec.h
-
-cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/ATK_dsp.h: /Users/patrickchoo/cs4152/cugl/sdlapp/include/ATK_dsp.h
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Generating include/SDL2/ATK_dsp.h"
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2 && /opt/homebrew/bin/cmake -E copy_if_different /Users/patrickchoo/cs4152/cugl/sdlapp/buildfiles/cmake/../../include/ATK_dsp.h /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/ATK_dsp.h
-
-cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/ATK_error.h: /Users/patrickchoo/cs4152/cugl/sdlapp/include/ATK_error.h
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Generating include/SDL2/ATK_error.h"
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2 && /opt/homebrew/bin/cmake -E copy_if_different /Users/patrickchoo/cs4152/cugl/sdlapp/buildfiles/cmake/../../include/ATK_error.h /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/ATK_error.h
-
-cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/ATK_file.h: /Users/patrickchoo/cs4152/cugl/sdlapp/include/ATK_file.h
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Generating include/SDL2/ATK_file.h"
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2 && /opt/homebrew/bin/cmake -E copy_if_different /Users/patrickchoo/cs4152/cugl/sdlapp/buildfiles/cmake/../../include/ATK_file.h /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/ATK_file.h
-
-cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/ATK_math.h: /Users/patrickchoo/cs4152/cugl/sdlapp/include/ATK_math.h
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Generating include/SDL2/ATK_math.h"
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2 && /opt/homebrew/bin/cmake -E copy_if_different /Users/patrickchoo/cs4152/cugl/sdlapp/buildfiles/cmake/../../include/ATK_math.h /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/ATK_math.h
-
-cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/ATK_rand.h: /Users/patrickchoo/cs4152/cugl/sdlapp/include/ATK_rand.h
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Generating include/SDL2/ATK_rand.h"
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2 && /opt/homebrew/bin/cmake -E copy_if_different /Users/patrickchoo/cs4152/cugl/sdlapp/buildfiles/cmake/../../include/ATK_rand.h /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/ATK_rand.h
-
-cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/SDL.h: /Users/patrickchoo/cs4152/cugl/sdlapp/include/SDL.h
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Generating include/SDL2/SDL.h"
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2 && /opt/homebrew/bin/cmake -E copy_if_different /Users/patrickchoo/cs4152/cugl/sdlapp/buildfiles/cmake/../../include/SDL.h /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/SDL.h
-
-cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/SDL_app.h: /Users/patrickchoo/cs4152/cugl/sdlapp/include/SDL_app.h
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Generating include/SDL2/SDL_app.h"
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2 && /opt/homebrew/bin/cmake -E copy_if_different /Users/patrickchoo/cs4152/cugl/sdlapp/buildfiles/cmake/../../include/SDL_app.h /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/SDL_app.h
-
-cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/SDL_assert.h: /Users/patrickchoo/cs4152/cugl/sdlapp/include/SDL_assert.h
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Generating include/SDL2/SDL_assert.h"
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2 && /opt/homebrew/bin/cmake -E copy_if_different /Users/patrickchoo/cs4152/cugl/sdlapp/buildfiles/cmake/../../include/SDL_assert.h /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/SDL_assert.h
-
-cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/SDL_atk.h: /Users/patrickchoo/cs4152/cugl/sdlapp/include/SDL_atk.h
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Generating include/SDL2/SDL_atk.h"
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2 && /opt/homebrew/bin/cmake -E copy_if_different /Users/patrickchoo/cs4152/cugl/sdlapp/buildfiles/cmake/../../include/SDL_atk.h /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/SDL_atk.h
-
-cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/SDL_atomic.h: /Users/patrickchoo/cs4152/cugl/sdlapp/include/SDL_atomic.h
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Generating include/SDL2/SDL_atomic.h"
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2 && /opt/homebrew/bin/cmake -E copy_if_different /Users/patrickchoo/cs4152/cugl/sdlapp/buildfiles/cmake/../../include/SDL_atomic.h /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/SDL_atomic.h
-
-cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/SDL_audio.h: /Users/patrickchoo/cs4152/cugl/sdlapp/include/SDL_audio.h
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Generating include/SDL2/SDL_audio.h"
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2 && /opt/homebrew/bin/cmake -E copy_if_different /Users/patrickchoo/cs4152/cugl/sdlapp/buildfiles/cmake/../../include/SDL_audio.h /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/SDL_audio.h
-
-cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/SDL_bits.h: /Users/patrickchoo/cs4152/cugl/sdlapp/include/SDL_bits.h
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Generating include/SDL2/SDL_bits.h"
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2 && /opt/homebrew/bin/cmake -E copy_if_different /Users/patrickchoo/cs4152/cugl/sdlapp/buildfiles/cmake/../../include/SDL_bits.h /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/SDL_bits.h
-
-cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/SDL_blendmode.h: /Users/patrickchoo/cs4152/cugl/sdlapp/include/SDL_blendmode.h
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num=$(CMAKE_PROGRESS_15) "Generating include/SDL2/SDL_blendmode.h"
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2 && /opt/homebrew/bin/cmake -E copy_if_different /Users/patrickchoo/cs4152/cugl/sdlapp/buildfiles/cmake/../../include/SDL_blendmode.h /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/SDL_blendmode.h
-
-cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/SDL_clipboard.h: /Users/patrickchoo/cs4152/cugl/sdlapp/include/SDL_clipboard.h
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num=$(CMAKE_PROGRESS_16) "Generating include/SDL2/SDL_clipboard.h"
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2 && /opt/homebrew/bin/cmake -E copy_if_different /Users/patrickchoo/cs4152/cugl/sdlapp/buildfiles/cmake/../../include/SDL_clipboard.h /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/SDL_clipboard.h
-
-cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/SDL_copying.h: /Users/patrickchoo/cs4152/cugl/sdlapp/include/SDL_copying.h
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num=$(CMAKE_PROGRESS_17) "Generating include/SDL2/SDL_copying.h"
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2 && /opt/homebrew/bin/cmake -E copy_if_different /Users/patrickchoo/cs4152/cugl/sdlapp/buildfiles/cmake/../../include/SDL_copying.h /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/SDL_copying.h
-
-cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/SDL_cpuinfo.h: /Users/patrickchoo/cs4152/cugl/sdlapp/include/SDL_cpuinfo.h
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num=$(CMAKE_PROGRESS_18) "Generating include/SDL2/SDL_cpuinfo.h"
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2 && /opt/homebrew/bin/cmake -E copy_if_different /Users/patrickchoo/cs4152/cugl/sdlapp/buildfiles/cmake/../../include/SDL_cpuinfo.h /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/SDL_cpuinfo.h
-
-cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/SDL_egl.h: /Users/patrickchoo/cs4152/cugl/sdlapp/include/SDL_egl.h
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num=$(CMAKE_PROGRESS_19) "Generating include/SDL2/SDL_egl.h"
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2 && /opt/homebrew/bin/cmake -E copy_if_different /Users/patrickchoo/cs4152/cugl/sdlapp/buildfiles/cmake/../../include/SDL_egl.h /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/SDL_egl.h
-
-cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/SDL_endian.h: /Users/patrickchoo/cs4152/cugl/sdlapp/include/SDL_endian.h
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num=$(CMAKE_PROGRESS_20) "Generating include/SDL2/SDL_endian.h"
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2 && /opt/homebrew/bin/cmake -E copy_if_different /Users/patrickchoo/cs4152/cugl/sdlapp/buildfiles/cmake/../../include/SDL_endian.h /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/SDL_endian.h
-
-cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/SDL_error.h: /Users/patrickchoo/cs4152/cugl/sdlapp/include/SDL_error.h
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num=$(CMAKE_PROGRESS_21) "Generating include/SDL2/SDL_error.h"
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2 && /opt/homebrew/bin/cmake -E copy_if_different /Users/patrickchoo/cs4152/cugl/sdlapp/buildfiles/cmake/../../include/SDL_error.h /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/SDL_error.h
-
-cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/SDL_events.h: /Users/patrickchoo/cs4152/cugl/sdlapp/include/SDL_events.h
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num=$(CMAKE_PROGRESS_22) "Generating include/SDL2/SDL_events.h"
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2 && /opt/homebrew/bin/cmake -E copy_if_different /Users/patrickchoo/cs4152/cugl/sdlapp/buildfiles/cmake/../../include/SDL_events.h /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/SDL_events.h
-
-cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/SDL_filesystem.h: /Users/patrickchoo/cs4152/cugl/sdlapp/include/SDL_filesystem.h
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num=$(CMAKE_PROGRESS_23) "Generating include/SDL2/SDL_filesystem.h"
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2 && /opt/homebrew/bin/cmake -E copy_if_different /Users/patrickchoo/cs4152/cugl/sdlapp/buildfiles/cmake/../../include/SDL_filesystem.h /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/SDL_filesystem.h
-
-cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/SDL_gamecontroller.h: /Users/patrickchoo/cs4152/cugl/sdlapp/include/SDL_gamecontroller.h
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num=$(CMAKE_PROGRESS_24) "Generating include/SDL2/SDL_gamecontroller.h"
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2 && /opt/homebrew/bin/cmake -E copy_if_different /Users/patrickchoo/cs4152/cugl/sdlapp/buildfiles/cmake/../../include/SDL_gamecontroller.h /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/SDL_gamecontroller.h
-
-cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/SDL_gesture.h: /Users/patrickchoo/cs4152/cugl/sdlapp/include/SDL_gesture.h
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num=$(CMAKE_PROGRESS_25) "Generating include/SDL2/SDL_gesture.h"
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2 && /opt/homebrew/bin/cmake -E copy_if_different /Users/patrickchoo/cs4152/cugl/sdlapp/buildfiles/cmake/../../include/SDL_gesture.h /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/SDL_gesture.h
-
-cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/SDL_guid.h: /Users/patrickchoo/cs4152/cugl/sdlapp/include/SDL_guid.h
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num=$(CMAKE_PROGRESS_26) "Generating include/SDL2/SDL_guid.h"
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2 && /opt/homebrew/bin/cmake -E copy_if_different /Users/patrickchoo/cs4152/cugl/sdlapp/buildfiles/cmake/../../include/SDL_guid.h /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/SDL_guid.h
-
-cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/SDL_haptic.h: /Users/patrickchoo/cs4152/cugl/sdlapp/include/SDL_haptic.h
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num=$(CMAKE_PROGRESS_27) "Generating include/SDL2/SDL_haptic.h"
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2 && /opt/homebrew/bin/cmake -E copy_if_different /Users/patrickchoo/cs4152/cugl/sdlapp/buildfiles/cmake/../../include/SDL_haptic.h /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/SDL_haptic.h
-
-cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/SDL_hidapi.h: /Users/patrickchoo/cs4152/cugl/sdlapp/include/SDL_hidapi.h
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num=$(CMAKE_PROGRESS_28) "Generating include/SDL2/SDL_hidapi.h"
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2 && /opt/homebrew/bin/cmake -E copy_if_different /Users/patrickchoo/cs4152/cugl/sdlapp/buildfiles/cmake/../../include/SDL_hidapi.h /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/SDL_hidapi.h
-
-cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/SDL_hints.h: /Users/patrickchoo/cs4152/cugl/sdlapp/include/SDL_hints.h
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num=$(CMAKE_PROGRESS_29) "Generating include/SDL2/SDL_hints.h"
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2 && /opt/homebrew/bin/cmake -E copy_if_different /Users/patrickchoo/cs4152/cugl/sdlapp/buildfiles/cmake/../../include/SDL_hints.h /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/SDL_hints.h
-
-cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/SDL_image.h: /Users/patrickchoo/cs4152/cugl/sdlapp/include/SDL_image.h
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num=$(CMAKE_PROGRESS_30) "Generating include/SDL2/SDL_image.h"
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2 && /opt/homebrew/bin/cmake -E copy_if_different /Users/patrickchoo/cs4152/cugl/sdlapp/buildfiles/cmake/../../include/SDL_image.h /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/SDL_image.h
-
-cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/SDL_joystick.h: /Users/patrickchoo/cs4152/cugl/sdlapp/include/SDL_joystick.h
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num=$(CMAKE_PROGRESS_31) "Generating include/SDL2/SDL_joystick.h"
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2 && /opt/homebrew/bin/cmake -E copy_if_different /Users/patrickchoo/cs4152/cugl/sdlapp/buildfiles/cmake/../../include/SDL_joystick.h /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/SDL_joystick.h
-
-cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/SDL_keyboard.h: /Users/patrickchoo/cs4152/cugl/sdlapp/include/SDL_keyboard.h
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num=$(CMAKE_PROGRESS_32) "Generating include/SDL2/SDL_keyboard.h"
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2 && /opt/homebrew/bin/cmake -E copy_if_different /Users/patrickchoo/cs4152/cugl/sdlapp/buildfiles/cmake/../../include/SDL_keyboard.h /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/SDL_keyboard.h
-
-cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/SDL_keycode.h: /Users/patrickchoo/cs4152/cugl/sdlapp/include/SDL_keycode.h
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num=$(CMAKE_PROGRESS_33) "Generating include/SDL2/SDL_keycode.h"
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2 && /opt/homebrew/bin/cmake -E copy_if_different /Users/patrickchoo/cs4152/cugl/sdlapp/buildfiles/cmake/../../include/SDL_keycode.h /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/SDL_keycode.h
-
-cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/SDL_loadso.h: /Users/patrickchoo/cs4152/cugl/sdlapp/include/SDL_loadso.h
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num=$(CMAKE_PROGRESS_34) "Generating include/SDL2/SDL_loadso.h"
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2 && /opt/homebrew/bin/cmake -E copy_if_different /Users/patrickchoo/cs4152/cugl/sdlapp/buildfiles/cmake/../../include/SDL_loadso.h /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/SDL_loadso.h
-
-cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/SDL_locale.h: /Users/patrickchoo/cs4152/cugl/sdlapp/include/SDL_locale.h
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num=$(CMAKE_PROGRESS_35) "Generating include/SDL2/SDL_locale.h"
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2 && /opt/homebrew/bin/cmake -E copy_if_different /Users/patrickchoo/cs4152/cugl/sdlapp/buildfiles/cmake/../../include/SDL_locale.h /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/SDL_locale.h
-
-cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/SDL_log.h: /Users/patrickchoo/cs4152/cugl/sdlapp/include/SDL_log.h
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num=$(CMAKE_PROGRESS_36) "Generating include/SDL2/SDL_log.h"
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2 && /opt/homebrew/bin/cmake -E copy_if_different /Users/patrickchoo/cs4152/cugl/sdlapp/buildfiles/cmake/../../include/SDL_log.h /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/SDL_log.h
-
-cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/SDL_main.h: /Users/patrickchoo/cs4152/cugl/sdlapp/include/SDL_main.h
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num=$(CMAKE_PROGRESS_37) "Generating include/SDL2/SDL_main.h"
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2 && /opt/homebrew/bin/cmake -E copy_if_different /Users/patrickchoo/cs4152/cugl/sdlapp/buildfiles/cmake/../../include/SDL_main.h /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/SDL_main.h
-
-cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/SDL_messagebox.h: /Users/patrickchoo/cs4152/cugl/sdlapp/include/SDL_messagebox.h
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num=$(CMAKE_PROGRESS_38) "Generating include/SDL2/SDL_messagebox.h"
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2 && /opt/homebrew/bin/cmake -E copy_if_different /Users/patrickchoo/cs4152/cugl/sdlapp/buildfiles/cmake/../../include/SDL_messagebox.h /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/SDL_messagebox.h
-
-cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/SDL_metal.h: /Users/patrickchoo/cs4152/cugl/sdlapp/include/SDL_metal.h
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num=$(CMAKE_PROGRESS_39) "Generating include/SDL2/SDL_metal.h"
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2 && /opt/homebrew/bin/cmake -E copy_if_different /Users/patrickchoo/cs4152/cugl/sdlapp/buildfiles/cmake/../../include/SDL_metal.h /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/SDL_metal.h
-
-cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/SDL_misc.h: /Users/patrickchoo/cs4152/cugl/sdlapp/include/SDL_misc.h
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num=$(CMAKE_PROGRESS_40) "Generating include/SDL2/SDL_misc.h"
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2 && /opt/homebrew/bin/cmake -E copy_if_different /Users/patrickchoo/cs4152/cugl/sdlapp/buildfiles/cmake/../../include/SDL_misc.h /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/SDL_misc.h
-
-cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/SDL_mouse.h: /Users/patrickchoo/cs4152/cugl/sdlapp/include/SDL_mouse.h
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num=$(CMAKE_PROGRESS_41) "Generating include/SDL2/SDL_mouse.h"
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2 && /opt/homebrew/bin/cmake -E copy_if_different /Users/patrickchoo/cs4152/cugl/sdlapp/buildfiles/cmake/../../include/SDL_mouse.h /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/SDL_mouse.h
-
-cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/SDL_mutex.h: /Users/patrickchoo/cs4152/cugl/sdlapp/include/SDL_mutex.h
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num=$(CMAKE_PROGRESS_42) "Generating include/SDL2/SDL_mutex.h"
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2 && /opt/homebrew/bin/cmake -E copy_if_different /Users/patrickchoo/cs4152/cugl/sdlapp/buildfiles/cmake/../../include/SDL_mutex.h /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/SDL_mutex.h
-
-cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/SDL_name.h: /Users/patrickchoo/cs4152/cugl/sdlapp/include/SDL_name.h
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num=$(CMAKE_PROGRESS_43) "Generating include/SDL2/SDL_name.h"
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2 && /opt/homebrew/bin/cmake -E copy_if_different /Users/patrickchoo/cs4152/cugl/sdlapp/buildfiles/cmake/../../include/SDL_name.h /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/SDL_name.h
-
-cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/SDL_opengl.h: /Users/patrickchoo/cs4152/cugl/sdlapp/include/SDL_opengl.h
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num=$(CMAKE_PROGRESS_44) "Generating include/SDL2/SDL_opengl.h"
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2 && /opt/homebrew/bin/cmake -E copy_if_different /Users/patrickchoo/cs4152/cugl/sdlapp/buildfiles/cmake/../../include/SDL_opengl.h /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/SDL_opengl.h
-
-cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/SDL_opengl_glext.h: /Users/patrickchoo/cs4152/cugl/sdlapp/include/SDL_opengl_glext.h
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num=$(CMAKE_PROGRESS_45) "Generating include/SDL2/SDL_opengl_glext.h"
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2 && /opt/homebrew/bin/cmake -E copy_if_different /Users/patrickchoo/cs4152/cugl/sdlapp/buildfiles/cmake/../../include/SDL_opengl_glext.h /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/SDL_opengl_glext.h
-
-cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/SDL_opengles.h: /Users/patrickchoo/cs4152/cugl/sdlapp/include/SDL_opengles.h
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num=$(CMAKE_PROGRESS_46) "Generating include/SDL2/SDL_opengles.h"
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2 && /opt/homebrew/bin/cmake -E copy_if_different /Users/patrickchoo/cs4152/cugl/sdlapp/buildfiles/cmake/../../include/SDL_opengles.h /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/SDL_opengles.h
-
-cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/SDL_opengles2.h: /Users/patrickchoo/cs4152/cugl/sdlapp/include/SDL_opengles2.h
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num=$(CMAKE_PROGRESS_47) "Generating include/SDL2/SDL_opengles2.h"
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2 && /opt/homebrew/bin/cmake -E copy_if_different /Users/patrickchoo/cs4152/cugl/sdlapp/buildfiles/cmake/../../include/SDL_opengles2.h /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/SDL_opengles2.h
-
-cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/SDL_opengles2_gl2.h: /Users/patrickchoo/cs4152/cugl/sdlapp/include/SDL_opengles2_gl2.h
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num=$(CMAKE_PROGRESS_48) "Generating include/SDL2/SDL_opengles2_gl2.h"
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2 && /opt/homebrew/bin/cmake -E copy_if_different /Users/patrickchoo/cs4152/cugl/sdlapp/buildfiles/cmake/../../include/SDL_opengles2_gl2.h /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/SDL_opengles2_gl2.h
-
-cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/SDL_opengles2_gl2ext.h: /Users/patrickchoo/cs4152/cugl/sdlapp/include/SDL_opengles2_gl2ext.h
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num=$(CMAKE_PROGRESS_49) "Generating include/SDL2/SDL_opengles2_gl2ext.h"
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2 && /opt/homebrew/bin/cmake -E copy_if_different /Users/patrickchoo/cs4152/cugl/sdlapp/buildfiles/cmake/../../include/SDL_opengles2_gl2ext.h /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/SDL_opengles2_gl2ext.h
-
-cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/SDL_opengles2_gl2platform.h: /Users/patrickchoo/cs4152/cugl/sdlapp/include/SDL_opengles2_gl2platform.h
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num=$(CMAKE_PROGRESS_50) "Generating include/SDL2/SDL_opengles2_gl2platform.h"
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2 && /opt/homebrew/bin/cmake -E copy_if_different /Users/patrickchoo/cs4152/cugl/sdlapp/buildfiles/cmake/../../include/SDL_opengles2_gl2platform.h /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/SDL_opengles2_gl2platform.h
-
-cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/SDL_opengles2_khrplatform.h: /Users/patrickchoo/cs4152/cugl/sdlapp/include/SDL_opengles2_khrplatform.h
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num=$(CMAKE_PROGRESS_51) "Generating include/SDL2/SDL_opengles2_khrplatform.h"
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2 && /opt/homebrew/bin/cmake -E copy_if_different /Users/patrickchoo/cs4152/cugl/sdlapp/buildfiles/cmake/../../include/SDL_opengles2_khrplatform.h /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/SDL_opengles2_khrplatform.h
-
-cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/SDL_pixels.h: /Users/patrickchoo/cs4152/cugl/sdlapp/include/SDL_pixels.h
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num=$(CMAKE_PROGRESS_52) "Generating include/SDL2/SDL_pixels.h"
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2 && /opt/homebrew/bin/cmake -E copy_if_different /Users/patrickchoo/cs4152/cugl/sdlapp/buildfiles/cmake/../../include/SDL_pixels.h /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/SDL_pixels.h
-
-cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/SDL_platform.h: /Users/patrickchoo/cs4152/cugl/sdlapp/include/SDL_platform.h
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num=$(CMAKE_PROGRESS_53) "Generating include/SDL2/SDL_platform.h"
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2 && /opt/homebrew/bin/cmake -E copy_if_different /Users/patrickchoo/cs4152/cugl/sdlapp/buildfiles/cmake/../../include/SDL_platform.h /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/SDL_platform.h
-
-cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/SDL_power.h: /Users/patrickchoo/cs4152/cugl/sdlapp/include/SDL_power.h
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num=$(CMAKE_PROGRESS_54) "Generating include/SDL2/SDL_power.h"
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2 && /opt/homebrew/bin/cmake -E copy_if_different /Users/patrickchoo/cs4152/cugl/sdlapp/buildfiles/cmake/../../include/SDL_power.h /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/SDL_power.h
-
-cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/SDL_quit.h: /Users/patrickchoo/cs4152/cugl/sdlapp/include/SDL_quit.h
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num=$(CMAKE_PROGRESS_55) "Generating include/SDL2/SDL_quit.h"
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2 && /opt/homebrew/bin/cmake -E copy_if_different /Users/patrickchoo/cs4152/cugl/sdlapp/buildfiles/cmake/../../include/SDL_quit.h /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/SDL_quit.h
-
-cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/SDL_rect.h: /Users/patrickchoo/cs4152/cugl/sdlapp/include/SDL_rect.h
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num=$(CMAKE_PROGRESS_56) "Generating include/SDL2/SDL_rect.h"
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2 && /opt/homebrew/bin/cmake -E copy_if_different /Users/patrickchoo/cs4152/cugl/sdlapp/buildfiles/cmake/../../include/SDL_rect.h /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/SDL_rect.h
-
-cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/SDL_render.h: /Users/patrickchoo/cs4152/cugl/sdlapp/include/SDL_render.h
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num=$(CMAKE_PROGRESS_57) "Generating include/SDL2/SDL_render.h"
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2 && /opt/homebrew/bin/cmake -E copy_if_different /Users/patrickchoo/cs4152/cugl/sdlapp/buildfiles/cmake/../../include/SDL_render.h /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/SDL_render.h
-
-cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/SDL_rwops.h: /Users/patrickchoo/cs4152/cugl/sdlapp/include/SDL_rwops.h
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num=$(CMAKE_PROGRESS_58) "Generating include/SDL2/SDL_rwops.h"
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2 && /opt/homebrew/bin/cmake -E copy_if_different /Users/patrickchoo/cs4152/cugl/sdlapp/buildfiles/cmake/../../include/SDL_rwops.h /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/SDL_rwops.h
-
-cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/SDL_scancode.h: /Users/patrickchoo/cs4152/cugl/sdlapp/include/SDL_scancode.h
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num=$(CMAKE_PROGRESS_59) "Generating include/SDL2/SDL_scancode.h"
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2 && /opt/homebrew/bin/cmake -E copy_if_different /Users/patrickchoo/cs4152/cugl/sdlapp/buildfiles/cmake/../../include/SDL_scancode.h /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/SDL_scancode.h
-
-cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/SDL_sensor.h: /Users/patrickchoo/cs4152/cugl/sdlapp/include/SDL_sensor.h
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num=$(CMAKE_PROGRESS_60) "Generating include/SDL2/SDL_sensor.h"
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2 && /opt/homebrew/bin/cmake -E copy_if_different /Users/patrickchoo/cs4152/cugl/sdlapp/buildfiles/cmake/../../include/SDL_sensor.h /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/SDL_sensor.h
-
-cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/SDL_shape.h: /Users/patrickchoo/cs4152/cugl/sdlapp/include/SDL_shape.h
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num=$(CMAKE_PROGRESS_61) "Generating include/SDL2/SDL_shape.h"
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2 && /opt/homebrew/bin/cmake -E copy_if_different /Users/patrickchoo/cs4152/cugl/sdlapp/buildfiles/cmake/../../include/SDL_shape.h /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/SDL_shape.h
-
-cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/SDL_stdinc.h: /Users/patrickchoo/cs4152/cugl/sdlapp/include/SDL_stdinc.h
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num=$(CMAKE_PROGRESS_62) "Generating include/SDL2/SDL_stdinc.h"
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2 && /opt/homebrew/bin/cmake -E copy_if_different /Users/patrickchoo/cs4152/cugl/sdlapp/buildfiles/cmake/../../include/SDL_stdinc.h /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/SDL_stdinc.h
-
-cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/SDL_surface.h: /Users/patrickchoo/cs4152/cugl/sdlapp/include/SDL_surface.h
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num=$(CMAKE_PROGRESS_63) "Generating include/SDL2/SDL_surface.h"
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2 && /opt/homebrew/bin/cmake -E copy_if_different /Users/patrickchoo/cs4152/cugl/sdlapp/buildfiles/cmake/../../include/SDL_surface.h /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/SDL_surface.h
-
-cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/SDL_system.h: /Users/patrickchoo/cs4152/cugl/sdlapp/include/SDL_system.h
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num=$(CMAKE_PROGRESS_64) "Generating include/SDL2/SDL_system.h"
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2 && /opt/homebrew/bin/cmake -E copy_if_different /Users/patrickchoo/cs4152/cugl/sdlapp/buildfiles/cmake/../../include/SDL_system.h /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/SDL_system.h
-
-cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/SDL_syswm.h: /Users/patrickchoo/cs4152/cugl/sdlapp/include/SDL_syswm.h
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num=$(CMAKE_PROGRESS_65) "Generating include/SDL2/SDL_syswm.h"
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2 && /opt/homebrew/bin/cmake -E copy_if_different /Users/patrickchoo/cs4152/cugl/sdlapp/buildfiles/cmake/../../include/SDL_syswm.h /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/SDL_syswm.h
-
-cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/SDL_test.h: /Users/patrickchoo/cs4152/cugl/sdlapp/include/SDL_test.h
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num=$(CMAKE_PROGRESS_66) "Generating include/SDL2/SDL_test.h"
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2 && /opt/homebrew/bin/cmake -E copy_if_different /Users/patrickchoo/cs4152/cugl/sdlapp/buildfiles/cmake/../../include/SDL_test.h /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/SDL_test.h
-
-cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/SDL_test_assert.h: /Users/patrickchoo/cs4152/cugl/sdlapp/include/SDL_test_assert.h
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num=$(CMAKE_PROGRESS_67) "Generating include/SDL2/SDL_test_assert.h"
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2 && /opt/homebrew/bin/cmake -E copy_if_different /Users/patrickchoo/cs4152/cugl/sdlapp/buildfiles/cmake/../../include/SDL_test_assert.h /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/SDL_test_assert.h
-
-cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/SDL_test_common.h: /Users/patrickchoo/cs4152/cugl/sdlapp/include/SDL_test_common.h
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num=$(CMAKE_PROGRESS_68) "Generating include/SDL2/SDL_test_common.h"
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2 && /opt/homebrew/bin/cmake -E copy_if_different /Users/patrickchoo/cs4152/cugl/sdlapp/buildfiles/cmake/../../include/SDL_test_common.h /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/SDL_test_common.h
-
-cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/SDL_test_compare.h: /Users/patrickchoo/cs4152/cugl/sdlapp/include/SDL_test_compare.h
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num=$(CMAKE_PROGRESS_69) "Generating include/SDL2/SDL_test_compare.h"
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2 && /opt/homebrew/bin/cmake -E copy_if_different /Users/patrickchoo/cs4152/cugl/sdlapp/buildfiles/cmake/../../include/SDL_test_compare.h /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/SDL_test_compare.h
-
-cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/SDL_test_crc32.h: /Users/patrickchoo/cs4152/cugl/sdlapp/include/SDL_test_crc32.h
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num=$(CMAKE_PROGRESS_70) "Generating include/SDL2/SDL_test_crc32.h"
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2 && /opt/homebrew/bin/cmake -E copy_if_different /Users/patrickchoo/cs4152/cugl/sdlapp/buildfiles/cmake/../../include/SDL_test_crc32.h /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/SDL_test_crc32.h
-
-cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/SDL_test_font.h: /Users/patrickchoo/cs4152/cugl/sdlapp/include/SDL_test_font.h
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num=$(CMAKE_PROGRESS_71) "Generating include/SDL2/SDL_test_font.h"
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2 && /opt/homebrew/bin/cmake -E copy_if_different /Users/patrickchoo/cs4152/cugl/sdlapp/buildfiles/cmake/../../include/SDL_test_font.h /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/SDL_test_font.h
-
-cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/SDL_test_fuzzer.h: /Users/patrickchoo/cs4152/cugl/sdlapp/include/SDL_test_fuzzer.h
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num=$(CMAKE_PROGRESS_72) "Generating include/SDL2/SDL_test_fuzzer.h"
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2 && /opt/homebrew/bin/cmake -E copy_if_different /Users/patrickchoo/cs4152/cugl/sdlapp/buildfiles/cmake/../../include/SDL_test_fuzzer.h /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/SDL_test_fuzzer.h
-
-cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/SDL_test_harness.h: /Users/patrickchoo/cs4152/cugl/sdlapp/include/SDL_test_harness.h
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num=$(CMAKE_PROGRESS_73) "Generating include/SDL2/SDL_test_harness.h"
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2 && /opt/homebrew/bin/cmake -E copy_if_different /Users/patrickchoo/cs4152/cugl/sdlapp/buildfiles/cmake/../../include/SDL_test_harness.h /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/SDL_test_harness.h
-
-cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/SDL_test_images.h: /Users/patrickchoo/cs4152/cugl/sdlapp/include/SDL_test_images.h
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num=$(CMAKE_PROGRESS_74) "Generating include/SDL2/SDL_test_images.h"
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2 && /opt/homebrew/bin/cmake -E copy_if_different /Users/patrickchoo/cs4152/cugl/sdlapp/buildfiles/cmake/../../include/SDL_test_images.h /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/SDL_test_images.h
-
-cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/SDL_test_log.h: /Users/patrickchoo/cs4152/cugl/sdlapp/include/SDL_test_log.h
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num=$(CMAKE_PROGRESS_75) "Generating include/SDL2/SDL_test_log.h"
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2 && /opt/homebrew/bin/cmake -E copy_if_different /Users/patrickchoo/cs4152/cugl/sdlapp/buildfiles/cmake/../../include/SDL_test_log.h /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/SDL_test_log.h
-
-cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/SDL_test_md5.h: /Users/patrickchoo/cs4152/cugl/sdlapp/include/SDL_test_md5.h
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num=$(CMAKE_PROGRESS_76) "Generating include/SDL2/SDL_test_md5.h"
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2 && /opt/homebrew/bin/cmake -E copy_if_different /Users/patrickchoo/cs4152/cugl/sdlapp/buildfiles/cmake/../../include/SDL_test_md5.h /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/SDL_test_md5.h
-
-cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/SDL_test_memory.h: /Users/patrickchoo/cs4152/cugl/sdlapp/include/SDL_test_memory.h
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num=$(CMAKE_PROGRESS_77) "Generating include/SDL2/SDL_test_memory.h"
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2 && /opt/homebrew/bin/cmake -E copy_if_different /Users/patrickchoo/cs4152/cugl/sdlapp/buildfiles/cmake/../../include/SDL_test_memory.h /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/SDL_test_memory.h
-
-cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/SDL_test_random.h: /Users/patrickchoo/cs4152/cugl/sdlapp/include/SDL_test_random.h
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num=$(CMAKE_PROGRESS_78) "Generating include/SDL2/SDL_test_random.h"
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2 && /opt/homebrew/bin/cmake -E copy_if_different /Users/patrickchoo/cs4152/cugl/sdlapp/buildfiles/cmake/../../include/SDL_test_random.h /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/SDL_test_random.h
-
-cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/SDL_thread.h: /Users/patrickchoo/cs4152/cugl/sdlapp/include/SDL_thread.h
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num=$(CMAKE_PROGRESS_79) "Generating include/SDL2/SDL_thread.h"
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2 && /opt/homebrew/bin/cmake -E copy_if_different /Users/patrickchoo/cs4152/cugl/sdlapp/buildfiles/cmake/../../include/SDL_thread.h /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/SDL_thread.h
-
-cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/SDL_timer.h: /Users/patrickchoo/cs4152/cugl/sdlapp/include/SDL_timer.h
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num=$(CMAKE_PROGRESS_80) "Generating include/SDL2/SDL_timer.h"
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2 && /opt/homebrew/bin/cmake -E copy_if_different /Users/patrickchoo/cs4152/cugl/sdlapp/buildfiles/cmake/../../include/SDL_timer.h /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/SDL_timer.h
-
-cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/SDL_touch.h: /Users/patrickchoo/cs4152/cugl/sdlapp/include/SDL_touch.h
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num=$(CMAKE_PROGRESS_81) "Generating include/SDL2/SDL_touch.h"
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2 && /opt/homebrew/bin/cmake -E copy_if_different /Users/patrickchoo/cs4152/cugl/sdlapp/buildfiles/cmake/../../include/SDL_touch.h /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/SDL_touch.h
-
-cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/SDL_ttf.h: /Users/patrickchoo/cs4152/cugl/sdlapp/include/SDL_ttf.h
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num=$(CMAKE_PROGRESS_82) "Generating include/SDL2/SDL_ttf.h"
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2 && /opt/homebrew/bin/cmake -E copy_if_different /Users/patrickchoo/cs4152/cugl/sdlapp/buildfiles/cmake/../../include/SDL_ttf.h /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/SDL_ttf.h
-
-cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/SDL_types.h: /Users/patrickchoo/cs4152/cugl/sdlapp/include/SDL_types.h
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num=$(CMAKE_PROGRESS_83) "Generating include/SDL2/SDL_types.h"
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2 && /opt/homebrew/bin/cmake -E copy_if_different /Users/patrickchoo/cs4152/cugl/sdlapp/buildfiles/cmake/../../include/SDL_types.h /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/SDL_types.h
-
-cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/SDL_version.h: /Users/patrickchoo/cs4152/cugl/sdlapp/include/SDL_version.h
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num=$(CMAKE_PROGRESS_84) "Generating include/SDL2/SDL_version.h"
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2 && /opt/homebrew/bin/cmake -E copy_if_different /Users/patrickchoo/cs4152/cugl/sdlapp/buildfiles/cmake/../../include/SDL_version.h /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/SDL_version.h
-
-cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/SDL_video.h: /Users/patrickchoo/cs4152/cugl/sdlapp/include/SDL_video.h
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num=$(CMAKE_PROGRESS_85) "Generating include/SDL2/SDL_video.h"
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2 && /opt/homebrew/bin/cmake -E copy_if_different /Users/patrickchoo/cs4152/cugl/sdlapp/buildfiles/cmake/../../include/SDL_video.h /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/SDL_video.h
-
-cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/SDL_vulkan.h: /Users/patrickchoo/cs4152/cugl/sdlapp/include/SDL_vulkan.h
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num=$(CMAKE_PROGRESS_86) "Generating include/SDL2/SDL_vulkan.h"
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2 && /opt/homebrew/bin/cmake -E copy_if_different /Users/patrickchoo/cs4152/cugl/sdlapp/buildfiles/cmake/../../include/SDL_vulkan.h /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/SDL_vulkan.h
-
-cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/begin_code.h: /Users/patrickchoo/cs4152/cugl/sdlapp/include/begin_code.h
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num=$(CMAKE_PROGRESS_87) "Generating include/SDL2/begin_code.h"
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2 && /opt/homebrew/bin/cmake -E copy_if_different /Users/patrickchoo/cs4152/cugl/sdlapp/buildfiles/cmake/../../include/begin_code.h /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/begin_code.h
-
-cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/close_code.h: /Users/patrickchoo/cs4152/cugl/sdlapp/include/close_code.h
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num=$(CMAKE_PROGRESS_88) "Generating include/SDL2/close_code.h"
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2 && /opt/homebrew/bin/cmake -E copy_if_different /Users/patrickchoo/cs4152/cugl/sdlapp/buildfiles/cmake/../../include/close_code.h /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/close_code.h
+cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/ATK_audio.h: /users/patrickchoo/cs4152/cugl/sdlapp/include/ATK_audio.h
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Generating include/SDL2/ATK_audio.h"
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2 && /opt/homebrew/bin/cmake -E copy_if_different /users/patrickchoo/cs4152/cugl/sdlapp/buildfiles/cmake/../../include/ATK_audio.h /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/ATK_audio.h
+
+cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/ATK_codec.h: /users/patrickchoo/cs4152/cugl/sdlapp/include/ATK_codec.h
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Generating include/SDL2/ATK_codec.h"
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2 && /opt/homebrew/bin/cmake -E copy_if_different /users/patrickchoo/cs4152/cugl/sdlapp/buildfiles/cmake/../../include/ATK_codec.h /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/ATK_codec.h
+
+cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/ATK_dsp.h: /users/patrickchoo/cs4152/cugl/sdlapp/include/ATK_dsp.h
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Generating include/SDL2/ATK_dsp.h"
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2 && /opt/homebrew/bin/cmake -E copy_if_different /users/patrickchoo/cs4152/cugl/sdlapp/buildfiles/cmake/../../include/ATK_dsp.h /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/ATK_dsp.h
+
+cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/ATK_error.h: /users/patrickchoo/cs4152/cugl/sdlapp/include/ATK_error.h
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Generating include/SDL2/ATK_error.h"
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2 && /opt/homebrew/bin/cmake -E copy_if_different /users/patrickchoo/cs4152/cugl/sdlapp/buildfiles/cmake/../../include/ATK_error.h /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/ATK_error.h
+
+cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/ATK_file.h: /users/patrickchoo/cs4152/cugl/sdlapp/include/ATK_file.h
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Generating include/SDL2/ATK_file.h"
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2 && /opt/homebrew/bin/cmake -E copy_if_different /users/patrickchoo/cs4152/cugl/sdlapp/buildfiles/cmake/../../include/ATK_file.h /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/ATK_file.h
+
+cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/ATK_math.h: /users/patrickchoo/cs4152/cugl/sdlapp/include/ATK_math.h
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Generating include/SDL2/ATK_math.h"
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2 && /opt/homebrew/bin/cmake -E copy_if_different /users/patrickchoo/cs4152/cugl/sdlapp/buildfiles/cmake/../../include/ATK_math.h /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/ATK_math.h
+
+cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/ATK_rand.h: /users/patrickchoo/cs4152/cugl/sdlapp/include/ATK_rand.h
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Generating include/SDL2/ATK_rand.h"
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2 && /opt/homebrew/bin/cmake -E copy_if_different /users/patrickchoo/cs4152/cugl/sdlapp/buildfiles/cmake/../../include/ATK_rand.h /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/ATK_rand.h
+
+cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/SDL.h: /users/patrickchoo/cs4152/cugl/sdlapp/include/SDL.h
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Generating include/SDL2/SDL.h"
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2 && /opt/homebrew/bin/cmake -E copy_if_different /users/patrickchoo/cs4152/cugl/sdlapp/buildfiles/cmake/../../include/SDL.h /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/SDL.h
+
+cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/SDL_app.h: /users/patrickchoo/cs4152/cugl/sdlapp/include/SDL_app.h
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Generating include/SDL2/SDL_app.h"
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2 && /opt/homebrew/bin/cmake -E copy_if_different /users/patrickchoo/cs4152/cugl/sdlapp/buildfiles/cmake/../../include/SDL_app.h /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/SDL_app.h
+
+cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/SDL_assert.h: /users/patrickchoo/cs4152/cugl/sdlapp/include/SDL_assert.h
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Generating include/SDL2/SDL_assert.h"
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2 && /opt/homebrew/bin/cmake -E copy_if_different /users/patrickchoo/cs4152/cugl/sdlapp/buildfiles/cmake/../../include/SDL_assert.h /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/SDL_assert.h
+
+cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/SDL_atk.h: /users/patrickchoo/cs4152/cugl/sdlapp/include/SDL_atk.h
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Generating include/SDL2/SDL_atk.h"
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2 && /opt/homebrew/bin/cmake -E copy_if_different /users/patrickchoo/cs4152/cugl/sdlapp/buildfiles/cmake/../../include/SDL_atk.h /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/SDL_atk.h
+
+cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/SDL_atomic.h: /users/patrickchoo/cs4152/cugl/sdlapp/include/SDL_atomic.h
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Generating include/SDL2/SDL_atomic.h"
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2 && /opt/homebrew/bin/cmake -E copy_if_different /users/patrickchoo/cs4152/cugl/sdlapp/buildfiles/cmake/../../include/SDL_atomic.h /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/SDL_atomic.h
+
+cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/SDL_audio.h: /users/patrickchoo/cs4152/cugl/sdlapp/include/SDL_audio.h
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Generating include/SDL2/SDL_audio.h"
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2 && /opt/homebrew/bin/cmake -E copy_if_different /users/patrickchoo/cs4152/cugl/sdlapp/buildfiles/cmake/../../include/SDL_audio.h /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/SDL_audio.h
+
+cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/SDL_bits.h: /users/patrickchoo/cs4152/cugl/sdlapp/include/SDL_bits.h
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Generating include/SDL2/SDL_bits.h"
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2 && /opt/homebrew/bin/cmake -E copy_if_different /users/patrickchoo/cs4152/cugl/sdlapp/buildfiles/cmake/../../include/SDL_bits.h /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/SDL_bits.h
+
+cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/SDL_blendmode.h: /users/patrickchoo/cs4152/cugl/sdlapp/include/SDL_blendmode.h
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num=$(CMAKE_PROGRESS_15) "Generating include/SDL2/SDL_blendmode.h"
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2 && /opt/homebrew/bin/cmake -E copy_if_different /users/patrickchoo/cs4152/cugl/sdlapp/buildfiles/cmake/../../include/SDL_blendmode.h /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/SDL_blendmode.h
+
+cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/SDL_clipboard.h: /users/patrickchoo/cs4152/cugl/sdlapp/include/SDL_clipboard.h
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num=$(CMAKE_PROGRESS_16) "Generating include/SDL2/SDL_clipboard.h"
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2 && /opt/homebrew/bin/cmake -E copy_if_different /users/patrickchoo/cs4152/cugl/sdlapp/buildfiles/cmake/../../include/SDL_clipboard.h /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/SDL_clipboard.h
+
+cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/SDL_copying.h: /users/patrickchoo/cs4152/cugl/sdlapp/include/SDL_copying.h
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num=$(CMAKE_PROGRESS_17) "Generating include/SDL2/SDL_copying.h"
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2 && /opt/homebrew/bin/cmake -E copy_if_different /users/patrickchoo/cs4152/cugl/sdlapp/buildfiles/cmake/../../include/SDL_copying.h /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/SDL_copying.h
+
+cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/SDL_cpuinfo.h: /users/patrickchoo/cs4152/cugl/sdlapp/include/SDL_cpuinfo.h
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num=$(CMAKE_PROGRESS_18) "Generating include/SDL2/SDL_cpuinfo.h"
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2 && /opt/homebrew/bin/cmake -E copy_if_different /users/patrickchoo/cs4152/cugl/sdlapp/buildfiles/cmake/../../include/SDL_cpuinfo.h /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/SDL_cpuinfo.h
+
+cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/SDL_egl.h: /users/patrickchoo/cs4152/cugl/sdlapp/include/SDL_egl.h
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num=$(CMAKE_PROGRESS_19) "Generating include/SDL2/SDL_egl.h"
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2 && /opt/homebrew/bin/cmake -E copy_if_different /users/patrickchoo/cs4152/cugl/sdlapp/buildfiles/cmake/../../include/SDL_egl.h /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/SDL_egl.h
+
+cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/SDL_endian.h: /users/patrickchoo/cs4152/cugl/sdlapp/include/SDL_endian.h
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num=$(CMAKE_PROGRESS_20) "Generating include/SDL2/SDL_endian.h"
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2 && /opt/homebrew/bin/cmake -E copy_if_different /users/patrickchoo/cs4152/cugl/sdlapp/buildfiles/cmake/../../include/SDL_endian.h /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/SDL_endian.h
+
+cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/SDL_error.h: /users/patrickchoo/cs4152/cugl/sdlapp/include/SDL_error.h
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num=$(CMAKE_PROGRESS_21) "Generating include/SDL2/SDL_error.h"
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2 && /opt/homebrew/bin/cmake -E copy_if_different /users/patrickchoo/cs4152/cugl/sdlapp/buildfiles/cmake/../../include/SDL_error.h /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/SDL_error.h
+
+cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/SDL_events.h: /users/patrickchoo/cs4152/cugl/sdlapp/include/SDL_events.h
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num=$(CMAKE_PROGRESS_22) "Generating include/SDL2/SDL_events.h"
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2 && /opt/homebrew/bin/cmake -E copy_if_different /users/patrickchoo/cs4152/cugl/sdlapp/buildfiles/cmake/../../include/SDL_events.h /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/SDL_events.h
+
+cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/SDL_filesystem.h: /users/patrickchoo/cs4152/cugl/sdlapp/include/SDL_filesystem.h
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num=$(CMAKE_PROGRESS_23) "Generating include/SDL2/SDL_filesystem.h"
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2 && /opt/homebrew/bin/cmake -E copy_if_different /users/patrickchoo/cs4152/cugl/sdlapp/buildfiles/cmake/../../include/SDL_filesystem.h /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/SDL_filesystem.h
+
+cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/SDL_gamecontroller.h: /users/patrickchoo/cs4152/cugl/sdlapp/include/SDL_gamecontroller.h
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num=$(CMAKE_PROGRESS_24) "Generating include/SDL2/SDL_gamecontroller.h"
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2 && /opt/homebrew/bin/cmake -E copy_if_different /users/patrickchoo/cs4152/cugl/sdlapp/buildfiles/cmake/../../include/SDL_gamecontroller.h /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/SDL_gamecontroller.h
+
+cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/SDL_gesture.h: /users/patrickchoo/cs4152/cugl/sdlapp/include/SDL_gesture.h
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num=$(CMAKE_PROGRESS_25) "Generating include/SDL2/SDL_gesture.h"
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2 && /opt/homebrew/bin/cmake -E copy_if_different /users/patrickchoo/cs4152/cugl/sdlapp/buildfiles/cmake/../../include/SDL_gesture.h /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/SDL_gesture.h
+
+cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/SDL_guid.h: /users/patrickchoo/cs4152/cugl/sdlapp/include/SDL_guid.h
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num=$(CMAKE_PROGRESS_26) "Generating include/SDL2/SDL_guid.h"
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2 && /opt/homebrew/bin/cmake -E copy_if_different /users/patrickchoo/cs4152/cugl/sdlapp/buildfiles/cmake/../../include/SDL_guid.h /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/SDL_guid.h
+
+cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/SDL_haptic.h: /users/patrickchoo/cs4152/cugl/sdlapp/include/SDL_haptic.h
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num=$(CMAKE_PROGRESS_27) "Generating include/SDL2/SDL_haptic.h"
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2 && /opt/homebrew/bin/cmake -E copy_if_different /users/patrickchoo/cs4152/cugl/sdlapp/buildfiles/cmake/../../include/SDL_haptic.h /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/SDL_haptic.h
+
+cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/SDL_hidapi.h: /users/patrickchoo/cs4152/cugl/sdlapp/include/SDL_hidapi.h
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num=$(CMAKE_PROGRESS_28) "Generating include/SDL2/SDL_hidapi.h"
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2 && /opt/homebrew/bin/cmake -E copy_if_different /users/patrickchoo/cs4152/cugl/sdlapp/buildfiles/cmake/../../include/SDL_hidapi.h /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/SDL_hidapi.h
+
+cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/SDL_hints.h: /users/patrickchoo/cs4152/cugl/sdlapp/include/SDL_hints.h
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num=$(CMAKE_PROGRESS_29) "Generating include/SDL2/SDL_hints.h"
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2 && /opt/homebrew/bin/cmake -E copy_if_different /users/patrickchoo/cs4152/cugl/sdlapp/buildfiles/cmake/../../include/SDL_hints.h /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/SDL_hints.h
+
+cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/SDL_image.h: /users/patrickchoo/cs4152/cugl/sdlapp/include/SDL_image.h
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num=$(CMAKE_PROGRESS_30) "Generating include/SDL2/SDL_image.h"
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2 && /opt/homebrew/bin/cmake -E copy_if_different /users/patrickchoo/cs4152/cugl/sdlapp/buildfiles/cmake/../../include/SDL_image.h /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/SDL_image.h
+
+cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/SDL_joystick.h: /users/patrickchoo/cs4152/cugl/sdlapp/include/SDL_joystick.h
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num=$(CMAKE_PROGRESS_31) "Generating include/SDL2/SDL_joystick.h"
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2 && /opt/homebrew/bin/cmake -E copy_if_different /users/patrickchoo/cs4152/cugl/sdlapp/buildfiles/cmake/../../include/SDL_joystick.h /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/SDL_joystick.h
+
+cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/SDL_keyboard.h: /users/patrickchoo/cs4152/cugl/sdlapp/include/SDL_keyboard.h
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num=$(CMAKE_PROGRESS_32) "Generating include/SDL2/SDL_keyboard.h"
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2 && /opt/homebrew/bin/cmake -E copy_if_different /users/patrickchoo/cs4152/cugl/sdlapp/buildfiles/cmake/../../include/SDL_keyboard.h /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/SDL_keyboard.h
+
+cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/SDL_keycode.h: /users/patrickchoo/cs4152/cugl/sdlapp/include/SDL_keycode.h
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num=$(CMAKE_PROGRESS_33) "Generating include/SDL2/SDL_keycode.h"
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2 && /opt/homebrew/bin/cmake -E copy_if_different /users/patrickchoo/cs4152/cugl/sdlapp/buildfiles/cmake/../../include/SDL_keycode.h /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/SDL_keycode.h
+
+cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/SDL_loadso.h: /users/patrickchoo/cs4152/cugl/sdlapp/include/SDL_loadso.h
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num=$(CMAKE_PROGRESS_34) "Generating include/SDL2/SDL_loadso.h"
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2 && /opt/homebrew/bin/cmake -E copy_if_different /users/patrickchoo/cs4152/cugl/sdlapp/buildfiles/cmake/../../include/SDL_loadso.h /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/SDL_loadso.h
+
+cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/SDL_locale.h: /users/patrickchoo/cs4152/cugl/sdlapp/include/SDL_locale.h
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num=$(CMAKE_PROGRESS_35) "Generating include/SDL2/SDL_locale.h"
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2 && /opt/homebrew/bin/cmake -E copy_if_different /users/patrickchoo/cs4152/cugl/sdlapp/buildfiles/cmake/../../include/SDL_locale.h /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/SDL_locale.h
+
+cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/SDL_log.h: /users/patrickchoo/cs4152/cugl/sdlapp/include/SDL_log.h
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num=$(CMAKE_PROGRESS_36) "Generating include/SDL2/SDL_log.h"
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2 && /opt/homebrew/bin/cmake -E copy_if_different /users/patrickchoo/cs4152/cugl/sdlapp/buildfiles/cmake/../../include/SDL_log.h /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/SDL_log.h
+
+cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/SDL_main.h: /users/patrickchoo/cs4152/cugl/sdlapp/include/SDL_main.h
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num=$(CMAKE_PROGRESS_37) "Generating include/SDL2/SDL_main.h"
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2 && /opt/homebrew/bin/cmake -E copy_if_different /users/patrickchoo/cs4152/cugl/sdlapp/buildfiles/cmake/../../include/SDL_main.h /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/SDL_main.h
+
+cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/SDL_messagebox.h: /users/patrickchoo/cs4152/cugl/sdlapp/include/SDL_messagebox.h
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num=$(CMAKE_PROGRESS_38) "Generating include/SDL2/SDL_messagebox.h"
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2 && /opt/homebrew/bin/cmake -E copy_if_different /users/patrickchoo/cs4152/cugl/sdlapp/buildfiles/cmake/../../include/SDL_messagebox.h /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/SDL_messagebox.h
+
+cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/SDL_metal.h: /users/patrickchoo/cs4152/cugl/sdlapp/include/SDL_metal.h
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num=$(CMAKE_PROGRESS_39) "Generating include/SDL2/SDL_metal.h"
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2 && /opt/homebrew/bin/cmake -E copy_if_different /users/patrickchoo/cs4152/cugl/sdlapp/buildfiles/cmake/../../include/SDL_metal.h /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/SDL_metal.h
+
+cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/SDL_misc.h: /users/patrickchoo/cs4152/cugl/sdlapp/include/SDL_misc.h
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num=$(CMAKE_PROGRESS_40) "Generating include/SDL2/SDL_misc.h"
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2 && /opt/homebrew/bin/cmake -E copy_if_different /users/patrickchoo/cs4152/cugl/sdlapp/buildfiles/cmake/../../include/SDL_misc.h /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/SDL_misc.h
+
+cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/SDL_mouse.h: /users/patrickchoo/cs4152/cugl/sdlapp/include/SDL_mouse.h
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num=$(CMAKE_PROGRESS_41) "Generating include/SDL2/SDL_mouse.h"
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2 && /opt/homebrew/bin/cmake -E copy_if_different /users/patrickchoo/cs4152/cugl/sdlapp/buildfiles/cmake/../../include/SDL_mouse.h /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/SDL_mouse.h
+
+cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/SDL_mutex.h: /users/patrickchoo/cs4152/cugl/sdlapp/include/SDL_mutex.h
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num=$(CMAKE_PROGRESS_42) "Generating include/SDL2/SDL_mutex.h"
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2 && /opt/homebrew/bin/cmake -E copy_if_different /users/patrickchoo/cs4152/cugl/sdlapp/buildfiles/cmake/../../include/SDL_mutex.h /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/SDL_mutex.h
+
+cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/SDL_name.h: /users/patrickchoo/cs4152/cugl/sdlapp/include/SDL_name.h
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num=$(CMAKE_PROGRESS_43) "Generating include/SDL2/SDL_name.h"
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2 && /opt/homebrew/bin/cmake -E copy_if_different /users/patrickchoo/cs4152/cugl/sdlapp/buildfiles/cmake/../../include/SDL_name.h /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/SDL_name.h
+
+cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/SDL_opengl.h: /users/patrickchoo/cs4152/cugl/sdlapp/include/SDL_opengl.h
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num=$(CMAKE_PROGRESS_44) "Generating include/SDL2/SDL_opengl.h"
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2 && /opt/homebrew/bin/cmake -E copy_if_different /users/patrickchoo/cs4152/cugl/sdlapp/buildfiles/cmake/../../include/SDL_opengl.h /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/SDL_opengl.h
+
+cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/SDL_opengl_glext.h: /users/patrickchoo/cs4152/cugl/sdlapp/include/SDL_opengl_glext.h
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num=$(CMAKE_PROGRESS_45) "Generating include/SDL2/SDL_opengl_glext.h"
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2 && /opt/homebrew/bin/cmake -E copy_if_different /users/patrickchoo/cs4152/cugl/sdlapp/buildfiles/cmake/../../include/SDL_opengl_glext.h /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/SDL_opengl_glext.h
+
+cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/SDL_opengles.h: /users/patrickchoo/cs4152/cugl/sdlapp/include/SDL_opengles.h
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num=$(CMAKE_PROGRESS_46) "Generating include/SDL2/SDL_opengles.h"
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2 && /opt/homebrew/bin/cmake -E copy_if_different /users/patrickchoo/cs4152/cugl/sdlapp/buildfiles/cmake/../../include/SDL_opengles.h /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/SDL_opengles.h
+
+cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/SDL_opengles2.h: /users/patrickchoo/cs4152/cugl/sdlapp/include/SDL_opengles2.h
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num=$(CMAKE_PROGRESS_47) "Generating include/SDL2/SDL_opengles2.h"
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2 && /opt/homebrew/bin/cmake -E copy_if_different /users/patrickchoo/cs4152/cugl/sdlapp/buildfiles/cmake/../../include/SDL_opengles2.h /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/SDL_opengles2.h
+
+cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/SDL_opengles2_gl2.h: /users/patrickchoo/cs4152/cugl/sdlapp/include/SDL_opengles2_gl2.h
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num=$(CMAKE_PROGRESS_48) "Generating include/SDL2/SDL_opengles2_gl2.h"
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2 && /opt/homebrew/bin/cmake -E copy_if_different /users/patrickchoo/cs4152/cugl/sdlapp/buildfiles/cmake/../../include/SDL_opengles2_gl2.h /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/SDL_opengles2_gl2.h
+
+cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/SDL_opengles2_gl2ext.h: /users/patrickchoo/cs4152/cugl/sdlapp/include/SDL_opengles2_gl2ext.h
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num=$(CMAKE_PROGRESS_49) "Generating include/SDL2/SDL_opengles2_gl2ext.h"
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2 && /opt/homebrew/bin/cmake -E copy_if_different /users/patrickchoo/cs4152/cugl/sdlapp/buildfiles/cmake/../../include/SDL_opengles2_gl2ext.h /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/SDL_opengles2_gl2ext.h
+
+cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/SDL_opengles2_gl2platform.h: /users/patrickchoo/cs4152/cugl/sdlapp/include/SDL_opengles2_gl2platform.h
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num=$(CMAKE_PROGRESS_50) "Generating include/SDL2/SDL_opengles2_gl2platform.h"
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2 && /opt/homebrew/bin/cmake -E copy_if_different /users/patrickchoo/cs4152/cugl/sdlapp/buildfiles/cmake/../../include/SDL_opengles2_gl2platform.h /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/SDL_opengles2_gl2platform.h
+
+cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/SDL_opengles2_khrplatform.h: /users/patrickchoo/cs4152/cugl/sdlapp/include/SDL_opengles2_khrplatform.h
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num=$(CMAKE_PROGRESS_51) "Generating include/SDL2/SDL_opengles2_khrplatform.h"
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2 && /opt/homebrew/bin/cmake -E copy_if_different /users/patrickchoo/cs4152/cugl/sdlapp/buildfiles/cmake/../../include/SDL_opengles2_khrplatform.h /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/SDL_opengles2_khrplatform.h
+
+cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/SDL_pixels.h: /users/patrickchoo/cs4152/cugl/sdlapp/include/SDL_pixels.h
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num=$(CMAKE_PROGRESS_52) "Generating include/SDL2/SDL_pixels.h"
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2 && /opt/homebrew/bin/cmake -E copy_if_different /users/patrickchoo/cs4152/cugl/sdlapp/buildfiles/cmake/../../include/SDL_pixels.h /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/SDL_pixels.h
+
+cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/SDL_platform.h: /users/patrickchoo/cs4152/cugl/sdlapp/include/SDL_platform.h
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num=$(CMAKE_PROGRESS_53) "Generating include/SDL2/SDL_platform.h"
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2 && /opt/homebrew/bin/cmake -E copy_if_different /users/patrickchoo/cs4152/cugl/sdlapp/buildfiles/cmake/../../include/SDL_platform.h /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/SDL_platform.h
+
+cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/SDL_power.h: /users/patrickchoo/cs4152/cugl/sdlapp/include/SDL_power.h
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num=$(CMAKE_PROGRESS_54) "Generating include/SDL2/SDL_power.h"
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2 && /opt/homebrew/bin/cmake -E copy_if_different /users/patrickchoo/cs4152/cugl/sdlapp/buildfiles/cmake/../../include/SDL_power.h /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/SDL_power.h
+
+cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/SDL_quit.h: /users/patrickchoo/cs4152/cugl/sdlapp/include/SDL_quit.h
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num=$(CMAKE_PROGRESS_55) "Generating include/SDL2/SDL_quit.h"
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2 && /opt/homebrew/bin/cmake -E copy_if_different /users/patrickchoo/cs4152/cugl/sdlapp/buildfiles/cmake/../../include/SDL_quit.h /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/SDL_quit.h
+
+cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/SDL_rect.h: /users/patrickchoo/cs4152/cugl/sdlapp/include/SDL_rect.h
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num=$(CMAKE_PROGRESS_56) "Generating include/SDL2/SDL_rect.h"
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2 && /opt/homebrew/bin/cmake -E copy_if_different /users/patrickchoo/cs4152/cugl/sdlapp/buildfiles/cmake/../../include/SDL_rect.h /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/SDL_rect.h
+
+cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/SDL_render.h: /users/patrickchoo/cs4152/cugl/sdlapp/include/SDL_render.h
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num=$(CMAKE_PROGRESS_57) "Generating include/SDL2/SDL_render.h"
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2 && /opt/homebrew/bin/cmake -E copy_if_different /users/patrickchoo/cs4152/cugl/sdlapp/buildfiles/cmake/../../include/SDL_render.h /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/SDL_render.h
+
+cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/SDL_rwops.h: /users/patrickchoo/cs4152/cugl/sdlapp/include/SDL_rwops.h
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num=$(CMAKE_PROGRESS_58) "Generating include/SDL2/SDL_rwops.h"
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2 && /opt/homebrew/bin/cmake -E copy_if_different /users/patrickchoo/cs4152/cugl/sdlapp/buildfiles/cmake/../../include/SDL_rwops.h /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/SDL_rwops.h
+
+cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/SDL_scancode.h: /users/patrickchoo/cs4152/cugl/sdlapp/include/SDL_scancode.h
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num=$(CMAKE_PROGRESS_59) "Generating include/SDL2/SDL_scancode.h"
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2 && /opt/homebrew/bin/cmake -E copy_if_different /users/patrickchoo/cs4152/cugl/sdlapp/buildfiles/cmake/../../include/SDL_scancode.h /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/SDL_scancode.h
+
+cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/SDL_sensor.h: /users/patrickchoo/cs4152/cugl/sdlapp/include/SDL_sensor.h
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num=$(CMAKE_PROGRESS_60) "Generating include/SDL2/SDL_sensor.h"
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2 && /opt/homebrew/bin/cmake -E copy_if_different /users/patrickchoo/cs4152/cugl/sdlapp/buildfiles/cmake/../../include/SDL_sensor.h /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/SDL_sensor.h
+
+cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/SDL_shape.h: /users/patrickchoo/cs4152/cugl/sdlapp/include/SDL_shape.h
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num=$(CMAKE_PROGRESS_61) "Generating include/SDL2/SDL_shape.h"
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2 && /opt/homebrew/bin/cmake -E copy_if_different /users/patrickchoo/cs4152/cugl/sdlapp/buildfiles/cmake/../../include/SDL_shape.h /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/SDL_shape.h
+
+cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/SDL_stdinc.h: /users/patrickchoo/cs4152/cugl/sdlapp/include/SDL_stdinc.h
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num=$(CMAKE_PROGRESS_62) "Generating include/SDL2/SDL_stdinc.h"
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2 && /opt/homebrew/bin/cmake -E copy_if_different /users/patrickchoo/cs4152/cugl/sdlapp/buildfiles/cmake/../../include/SDL_stdinc.h /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/SDL_stdinc.h
+
+cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/SDL_surface.h: /users/patrickchoo/cs4152/cugl/sdlapp/include/SDL_surface.h
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num=$(CMAKE_PROGRESS_63) "Generating include/SDL2/SDL_surface.h"
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2 && /opt/homebrew/bin/cmake -E copy_if_different /users/patrickchoo/cs4152/cugl/sdlapp/buildfiles/cmake/../../include/SDL_surface.h /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/SDL_surface.h
+
+cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/SDL_system.h: /users/patrickchoo/cs4152/cugl/sdlapp/include/SDL_system.h
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num=$(CMAKE_PROGRESS_64) "Generating include/SDL2/SDL_system.h"
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2 && /opt/homebrew/bin/cmake -E copy_if_different /users/patrickchoo/cs4152/cugl/sdlapp/buildfiles/cmake/../../include/SDL_system.h /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/SDL_system.h
+
+cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/SDL_syswm.h: /users/patrickchoo/cs4152/cugl/sdlapp/include/SDL_syswm.h
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num=$(CMAKE_PROGRESS_65) "Generating include/SDL2/SDL_syswm.h"
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2 && /opt/homebrew/bin/cmake -E copy_if_different /users/patrickchoo/cs4152/cugl/sdlapp/buildfiles/cmake/../../include/SDL_syswm.h /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/SDL_syswm.h
+
+cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/SDL_test.h: /users/patrickchoo/cs4152/cugl/sdlapp/include/SDL_test.h
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num=$(CMAKE_PROGRESS_66) "Generating include/SDL2/SDL_test.h"
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2 && /opt/homebrew/bin/cmake -E copy_if_different /users/patrickchoo/cs4152/cugl/sdlapp/buildfiles/cmake/../../include/SDL_test.h /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/SDL_test.h
+
+cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/SDL_test_assert.h: /users/patrickchoo/cs4152/cugl/sdlapp/include/SDL_test_assert.h
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num=$(CMAKE_PROGRESS_67) "Generating include/SDL2/SDL_test_assert.h"
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2 && /opt/homebrew/bin/cmake -E copy_if_different /users/patrickchoo/cs4152/cugl/sdlapp/buildfiles/cmake/../../include/SDL_test_assert.h /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/SDL_test_assert.h
+
+cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/SDL_test_common.h: /users/patrickchoo/cs4152/cugl/sdlapp/include/SDL_test_common.h
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num=$(CMAKE_PROGRESS_68) "Generating include/SDL2/SDL_test_common.h"
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2 && /opt/homebrew/bin/cmake -E copy_if_different /users/patrickchoo/cs4152/cugl/sdlapp/buildfiles/cmake/../../include/SDL_test_common.h /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/SDL_test_common.h
+
+cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/SDL_test_compare.h: /users/patrickchoo/cs4152/cugl/sdlapp/include/SDL_test_compare.h
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num=$(CMAKE_PROGRESS_69) "Generating include/SDL2/SDL_test_compare.h"
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2 && /opt/homebrew/bin/cmake -E copy_if_different /users/patrickchoo/cs4152/cugl/sdlapp/buildfiles/cmake/../../include/SDL_test_compare.h /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/SDL_test_compare.h
+
+cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/SDL_test_crc32.h: /users/patrickchoo/cs4152/cugl/sdlapp/include/SDL_test_crc32.h
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num=$(CMAKE_PROGRESS_70) "Generating include/SDL2/SDL_test_crc32.h"
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2 && /opt/homebrew/bin/cmake -E copy_if_different /users/patrickchoo/cs4152/cugl/sdlapp/buildfiles/cmake/../../include/SDL_test_crc32.h /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/SDL_test_crc32.h
+
+cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/SDL_test_font.h: /users/patrickchoo/cs4152/cugl/sdlapp/include/SDL_test_font.h
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num=$(CMAKE_PROGRESS_71) "Generating include/SDL2/SDL_test_font.h"
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2 && /opt/homebrew/bin/cmake -E copy_if_different /users/patrickchoo/cs4152/cugl/sdlapp/buildfiles/cmake/../../include/SDL_test_font.h /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/SDL_test_font.h
+
+cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/SDL_test_fuzzer.h: /users/patrickchoo/cs4152/cugl/sdlapp/include/SDL_test_fuzzer.h
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num=$(CMAKE_PROGRESS_72) "Generating include/SDL2/SDL_test_fuzzer.h"
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2 && /opt/homebrew/bin/cmake -E copy_if_different /users/patrickchoo/cs4152/cugl/sdlapp/buildfiles/cmake/../../include/SDL_test_fuzzer.h /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/SDL_test_fuzzer.h
+
+cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/SDL_test_harness.h: /users/patrickchoo/cs4152/cugl/sdlapp/include/SDL_test_harness.h
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num=$(CMAKE_PROGRESS_73) "Generating include/SDL2/SDL_test_harness.h"
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2 && /opt/homebrew/bin/cmake -E copy_if_different /users/patrickchoo/cs4152/cugl/sdlapp/buildfiles/cmake/../../include/SDL_test_harness.h /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/SDL_test_harness.h
+
+cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/SDL_test_images.h: /users/patrickchoo/cs4152/cugl/sdlapp/include/SDL_test_images.h
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num=$(CMAKE_PROGRESS_74) "Generating include/SDL2/SDL_test_images.h"
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2 && /opt/homebrew/bin/cmake -E copy_if_different /users/patrickchoo/cs4152/cugl/sdlapp/buildfiles/cmake/../../include/SDL_test_images.h /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/SDL_test_images.h
+
+cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/SDL_test_log.h: /users/patrickchoo/cs4152/cugl/sdlapp/include/SDL_test_log.h
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num=$(CMAKE_PROGRESS_75) "Generating include/SDL2/SDL_test_log.h"
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2 && /opt/homebrew/bin/cmake -E copy_if_different /users/patrickchoo/cs4152/cugl/sdlapp/buildfiles/cmake/../../include/SDL_test_log.h /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/SDL_test_log.h
+
+cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/SDL_test_md5.h: /users/patrickchoo/cs4152/cugl/sdlapp/include/SDL_test_md5.h
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num=$(CMAKE_PROGRESS_76) "Generating include/SDL2/SDL_test_md5.h"
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2 && /opt/homebrew/bin/cmake -E copy_if_different /users/patrickchoo/cs4152/cugl/sdlapp/buildfiles/cmake/../../include/SDL_test_md5.h /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/SDL_test_md5.h
+
+cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/SDL_test_memory.h: /users/patrickchoo/cs4152/cugl/sdlapp/include/SDL_test_memory.h
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num=$(CMAKE_PROGRESS_77) "Generating include/SDL2/SDL_test_memory.h"
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2 && /opt/homebrew/bin/cmake -E copy_if_different /users/patrickchoo/cs4152/cugl/sdlapp/buildfiles/cmake/../../include/SDL_test_memory.h /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/SDL_test_memory.h
+
+cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/SDL_test_random.h: /users/patrickchoo/cs4152/cugl/sdlapp/include/SDL_test_random.h
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num=$(CMAKE_PROGRESS_78) "Generating include/SDL2/SDL_test_random.h"
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2 && /opt/homebrew/bin/cmake -E copy_if_different /users/patrickchoo/cs4152/cugl/sdlapp/buildfiles/cmake/../../include/SDL_test_random.h /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/SDL_test_random.h
+
+cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/SDL_thread.h: /users/patrickchoo/cs4152/cugl/sdlapp/include/SDL_thread.h
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num=$(CMAKE_PROGRESS_79) "Generating include/SDL2/SDL_thread.h"
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2 && /opt/homebrew/bin/cmake -E copy_if_different /users/patrickchoo/cs4152/cugl/sdlapp/buildfiles/cmake/../../include/SDL_thread.h /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/SDL_thread.h
+
+cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/SDL_timer.h: /users/patrickchoo/cs4152/cugl/sdlapp/include/SDL_timer.h
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num=$(CMAKE_PROGRESS_80) "Generating include/SDL2/SDL_timer.h"
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2 && /opt/homebrew/bin/cmake -E copy_if_different /users/patrickchoo/cs4152/cugl/sdlapp/buildfiles/cmake/../../include/SDL_timer.h /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/SDL_timer.h
+
+cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/SDL_touch.h: /users/patrickchoo/cs4152/cugl/sdlapp/include/SDL_touch.h
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num=$(CMAKE_PROGRESS_81) "Generating include/SDL2/SDL_touch.h"
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2 && /opt/homebrew/bin/cmake -E copy_if_different /users/patrickchoo/cs4152/cugl/sdlapp/buildfiles/cmake/../../include/SDL_touch.h /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/SDL_touch.h
+
+cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/SDL_ttf.h: /users/patrickchoo/cs4152/cugl/sdlapp/include/SDL_ttf.h
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num=$(CMAKE_PROGRESS_82) "Generating include/SDL2/SDL_ttf.h"
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2 && /opt/homebrew/bin/cmake -E copy_if_different /users/patrickchoo/cs4152/cugl/sdlapp/buildfiles/cmake/../../include/SDL_ttf.h /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/SDL_ttf.h
+
+cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/SDL_types.h: /users/patrickchoo/cs4152/cugl/sdlapp/include/SDL_types.h
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num=$(CMAKE_PROGRESS_83) "Generating include/SDL2/SDL_types.h"
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2 && /opt/homebrew/bin/cmake -E copy_if_different /users/patrickchoo/cs4152/cugl/sdlapp/buildfiles/cmake/../../include/SDL_types.h /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/SDL_types.h
+
+cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/SDL_version.h: /users/patrickchoo/cs4152/cugl/sdlapp/include/SDL_version.h
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num=$(CMAKE_PROGRESS_84) "Generating include/SDL2/SDL_version.h"
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2 && /opt/homebrew/bin/cmake -E copy_if_different /users/patrickchoo/cs4152/cugl/sdlapp/buildfiles/cmake/../../include/SDL_version.h /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/SDL_version.h
+
+cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/SDL_video.h: /users/patrickchoo/cs4152/cugl/sdlapp/include/SDL_video.h
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num=$(CMAKE_PROGRESS_85) "Generating include/SDL2/SDL_video.h"
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2 && /opt/homebrew/bin/cmake -E copy_if_different /users/patrickchoo/cs4152/cugl/sdlapp/buildfiles/cmake/../../include/SDL_video.h /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/SDL_video.h
+
+cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/SDL_vulkan.h: /users/patrickchoo/cs4152/cugl/sdlapp/include/SDL_vulkan.h
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num=$(CMAKE_PROGRESS_86) "Generating include/SDL2/SDL_vulkan.h"
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2 && /opt/homebrew/bin/cmake -E copy_if_different /users/patrickchoo/cs4152/cugl/sdlapp/buildfiles/cmake/../../include/SDL_vulkan.h /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/SDL_vulkan.h
+
+cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/begin_code.h: /users/patrickchoo/cs4152/cugl/sdlapp/include/begin_code.h
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num=$(CMAKE_PROGRESS_87) "Generating include/SDL2/begin_code.h"
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2 && /opt/homebrew/bin/cmake -E copy_if_different /users/patrickchoo/cs4152/cugl/sdlapp/buildfiles/cmake/../../include/begin_code.h /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/begin_code.h
+
+cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/close_code.h: /users/patrickchoo/cs4152/cugl/sdlapp/include/close_code.h
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num=$(CMAKE_PROGRESS_88) "Generating include/SDL2/close_code.h"
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2 && /opt/homebrew/bin/cmake -E copy_if_different /users/patrickchoo/cs4152/cugl/sdlapp/buildfiles/cmake/../../include/close_code.h /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2/include/SDL2/close_code.h
 
 cugl.dir/sdl2pckg.dir/sdl2/CMakeFiles/sdl_headers_copy.dir/codegen:
 .PHONY : cugl.dir/sdl2pckg.dir/sdl2/CMakeFiles/sdl_headers_copy.dir/codegen
@@ -607,10 +607,10 @@ cugl.dir/sdl2pckg.dir/sdl2/CMakeFiles/sdl_headers_copy.dir/build: sdl_headers_co
 .PHONY : cugl.dir/sdl2pckg.dir/sdl2/CMakeFiles/sdl_headers_copy.dir/build
 
 cugl.dir/sdl2pckg.dir/sdl2/CMakeFiles/sdl_headers_copy.dir/clean:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2 && $(CMAKE_COMMAND) -P CMakeFiles/sdl_headers_copy.dir/cmake_clean.cmake
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2 && $(CMAKE_COMMAND) -P CMakeFiles/sdl_headers_copy.dir/cmake_clean.cmake
 .PHONY : cugl.dir/sdl2pckg.dir/sdl2/CMakeFiles/sdl_headers_copy.dir/clean
 
 cugl.dir/sdl2pckg.dir/sdl2/CMakeFiles/sdl_headers_copy.dir/depend:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /Users/patrickchoo/cs4152/mahsjong/build/cmake /Users/patrickchoo/cs4152/cugl/sdlapp/buildfiles/cmake/sdl2 /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2 /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2/CMakeFiles/sdl_headers_copy.dir/DependInfo.cmake "--color=$(COLOR)"
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /users/patrickchoo/cs4152/mahsjong/build/cmake /users/patrickchoo/cs4152/cugl/sdlapp/buildfiles/cmake/sdl2 /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2 /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2/CMakeFiles/sdl_headers_copy.dir/DependInfo.cmake "--color=$(COLOR)"
 .PHONY : cugl.dir/sdl2pckg.dir/sdl2/CMakeFiles/sdl_headers_copy.dir/depend
 

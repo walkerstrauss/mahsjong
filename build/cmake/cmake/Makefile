@@ -57,10 +57,10 @@ RM = /opt/homebrew/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /Users/patrickchoo/cs4152/mahsjong/build/cmake
+CMAKE_SOURCE_DIR = /users/patrickchoo/cs4152/mahsjong/build/cmake
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake
+CMAKE_BINARY_DIR = /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -78,7 +78,7 @@ package/fast: package
 # Special rule for the target package_source
 package_source:
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Run CPack packaging tool for source..."
-	/opt/homebrew/bin/cpack --config ./CPackSourceConfig.cmake /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CPackSourceConfig.cmake
+	/opt/homebrew/bin/cpack --config ./CPackSourceConfig.cmake /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CPackSourceConfig.cmake
 .PHONY : package_source
 
 # Special rule for the target package_source
@@ -152,9 +152,9 @@ install/strip/fast: preinstall/fast
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake//CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake//CMakeFiles/progress.marks
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -636,485 +636,581 @@ juice/fast:
 	$(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/libjuice/CMakeFiles/juice.dir/build.make cugl.dir/external/libdatachannel/deps/libjuice/CMakeFiles/juice.dir/build
 .PHONY : juice/fast
 
-Users/patrickchoo/cs4152/mahsjong/source/MJAnimationController.o: Users/patrickchoo/cs4152/mahsjong/source/MJAnimationController.cpp.o
-.PHONY : Users/patrickchoo/cs4152/mahsjong/source/MJAnimationController.o
+users/patrickchoo/cs4152/mahsjong/source/MJAnimatedNode.o: users/patrickchoo/cs4152/mahsjong/source/MJAnimatedNode.cpp.o
+.PHONY : users/patrickchoo/cs4152/mahsjong/source/MJAnimatedNode.o
 
 # target to build an object file
-Users/patrickchoo/cs4152/mahsjong/source/MJAnimationController.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/mahsjong.dir/build.make CMakeFiles/mahsjong.dir/Users/patrickchoo/cs4152/mahsjong/source/MJAnimationController.cpp.o
-.PHONY : Users/patrickchoo/cs4152/mahsjong/source/MJAnimationController.cpp.o
+users/patrickchoo/cs4152/mahsjong/source/MJAnimatedNode.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/mahsjong.dir/build.make CMakeFiles/mahsjong.dir/users/patrickchoo/cs4152/mahsjong/source/MJAnimatedNode.cpp.o
+.PHONY : users/patrickchoo/cs4152/mahsjong/source/MJAnimatedNode.cpp.o
 
-Users/patrickchoo/cs4152/mahsjong/source/MJAnimationController.i: Users/patrickchoo/cs4152/mahsjong/source/MJAnimationController.cpp.i
-.PHONY : Users/patrickchoo/cs4152/mahsjong/source/MJAnimationController.i
+users/patrickchoo/cs4152/mahsjong/source/MJAnimatedNode.i: users/patrickchoo/cs4152/mahsjong/source/MJAnimatedNode.cpp.i
+.PHONY : users/patrickchoo/cs4152/mahsjong/source/MJAnimatedNode.i
 
 # target to preprocess a source file
-Users/patrickchoo/cs4152/mahsjong/source/MJAnimationController.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/mahsjong.dir/build.make CMakeFiles/mahsjong.dir/Users/patrickchoo/cs4152/mahsjong/source/MJAnimationController.cpp.i
-.PHONY : Users/patrickchoo/cs4152/mahsjong/source/MJAnimationController.cpp.i
+users/patrickchoo/cs4152/mahsjong/source/MJAnimatedNode.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/mahsjong.dir/build.make CMakeFiles/mahsjong.dir/users/patrickchoo/cs4152/mahsjong/source/MJAnimatedNode.cpp.i
+.PHONY : users/patrickchoo/cs4152/mahsjong/source/MJAnimatedNode.cpp.i
 
-Users/patrickchoo/cs4152/mahsjong/source/MJAnimationController.s: Users/patrickchoo/cs4152/mahsjong/source/MJAnimationController.cpp.s
-.PHONY : Users/patrickchoo/cs4152/mahsjong/source/MJAnimationController.s
+users/patrickchoo/cs4152/mahsjong/source/MJAnimatedNode.s: users/patrickchoo/cs4152/mahsjong/source/MJAnimatedNode.cpp.s
+.PHONY : users/patrickchoo/cs4152/mahsjong/source/MJAnimatedNode.s
 
 # target to generate assembly for a file
-Users/patrickchoo/cs4152/mahsjong/source/MJAnimationController.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/mahsjong.dir/build.make CMakeFiles/mahsjong.dir/Users/patrickchoo/cs4152/mahsjong/source/MJAnimationController.cpp.s
-.PHONY : Users/patrickchoo/cs4152/mahsjong/source/MJAnimationController.cpp.s
+users/patrickchoo/cs4152/mahsjong/source/MJAnimatedNode.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/mahsjong.dir/build.make CMakeFiles/mahsjong.dir/users/patrickchoo/cs4152/mahsjong/source/MJAnimatedNode.cpp.s
+.PHONY : users/patrickchoo/cs4152/mahsjong/source/MJAnimatedNode.cpp.s
 
-Users/patrickchoo/cs4152/mahsjong/source/MJApp.o: Users/patrickchoo/cs4152/mahsjong/source/MJApp.cpp.o
-.PHONY : Users/patrickchoo/cs4152/mahsjong/source/MJApp.o
+users/patrickchoo/cs4152/mahsjong/source/MJAnimationController.o: users/patrickchoo/cs4152/mahsjong/source/MJAnimationController.cpp.o
+.PHONY : users/patrickchoo/cs4152/mahsjong/source/MJAnimationController.o
 
 # target to build an object file
-Users/patrickchoo/cs4152/mahsjong/source/MJApp.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/mahsjong.dir/build.make CMakeFiles/mahsjong.dir/Users/patrickchoo/cs4152/mahsjong/source/MJApp.cpp.o
-.PHONY : Users/patrickchoo/cs4152/mahsjong/source/MJApp.cpp.o
+users/patrickchoo/cs4152/mahsjong/source/MJAnimationController.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/mahsjong.dir/build.make CMakeFiles/mahsjong.dir/users/patrickchoo/cs4152/mahsjong/source/MJAnimationController.cpp.o
+.PHONY : users/patrickchoo/cs4152/mahsjong/source/MJAnimationController.cpp.o
 
-Users/patrickchoo/cs4152/mahsjong/source/MJApp.i: Users/patrickchoo/cs4152/mahsjong/source/MJApp.cpp.i
-.PHONY : Users/patrickchoo/cs4152/mahsjong/source/MJApp.i
+users/patrickchoo/cs4152/mahsjong/source/MJAnimationController.i: users/patrickchoo/cs4152/mahsjong/source/MJAnimationController.cpp.i
+.PHONY : users/patrickchoo/cs4152/mahsjong/source/MJAnimationController.i
 
 # target to preprocess a source file
-Users/patrickchoo/cs4152/mahsjong/source/MJApp.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/mahsjong.dir/build.make CMakeFiles/mahsjong.dir/Users/patrickchoo/cs4152/mahsjong/source/MJApp.cpp.i
-.PHONY : Users/patrickchoo/cs4152/mahsjong/source/MJApp.cpp.i
+users/patrickchoo/cs4152/mahsjong/source/MJAnimationController.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/mahsjong.dir/build.make CMakeFiles/mahsjong.dir/users/patrickchoo/cs4152/mahsjong/source/MJAnimationController.cpp.i
+.PHONY : users/patrickchoo/cs4152/mahsjong/source/MJAnimationController.cpp.i
 
-Users/patrickchoo/cs4152/mahsjong/source/MJApp.s: Users/patrickchoo/cs4152/mahsjong/source/MJApp.cpp.s
-.PHONY : Users/patrickchoo/cs4152/mahsjong/source/MJApp.s
+users/patrickchoo/cs4152/mahsjong/source/MJAnimationController.s: users/patrickchoo/cs4152/mahsjong/source/MJAnimationController.cpp.s
+.PHONY : users/patrickchoo/cs4152/mahsjong/source/MJAnimationController.s
 
 # target to generate assembly for a file
-Users/patrickchoo/cs4152/mahsjong/source/MJApp.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/mahsjong.dir/build.make CMakeFiles/mahsjong.dir/Users/patrickchoo/cs4152/mahsjong/source/MJApp.cpp.s
-.PHONY : Users/patrickchoo/cs4152/mahsjong/source/MJApp.cpp.s
+users/patrickchoo/cs4152/mahsjong/source/MJAnimationController.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/mahsjong.dir/build.make CMakeFiles/mahsjong.dir/users/patrickchoo/cs4152/mahsjong/source/MJAnimationController.cpp.s
+.PHONY : users/patrickchoo/cs4152/mahsjong/source/MJAnimationController.cpp.s
 
-Users/patrickchoo/cs4152/mahsjong/source/MJAudioController.o: Users/patrickchoo/cs4152/mahsjong/source/MJAudioController.cpp.o
-.PHONY : Users/patrickchoo/cs4152/mahsjong/source/MJAudioController.o
+users/patrickchoo/cs4152/mahsjong/source/MJApp.o: users/patrickchoo/cs4152/mahsjong/source/MJApp.cpp.o
+.PHONY : users/patrickchoo/cs4152/mahsjong/source/MJApp.o
 
 # target to build an object file
-Users/patrickchoo/cs4152/mahsjong/source/MJAudioController.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/mahsjong.dir/build.make CMakeFiles/mahsjong.dir/Users/patrickchoo/cs4152/mahsjong/source/MJAudioController.cpp.o
-.PHONY : Users/patrickchoo/cs4152/mahsjong/source/MJAudioController.cpp.o
+users/patrickchoo/cs4152/mahsjong/source/MJApp.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/mahsjong.dir/build.make CMakeFiles/mahsjong.dir/users/patrickchoo/cs4152/mahsjong/source/MJApp.cpp.o
+.PHONY : users/patrickchoo/cs4152/mahsjong/source/MJApp.cpp.o
 
-Users/patrickchoo/cs4152/mahsjong/source/MJAudioController.i: Users/patrickchoo/cs4152/mahsjong/source/MJAudioController.cpp.i
-.PHONY : Users/patrickchoo/cs4152/mahsjong/source/MJAudioController.i
+users/patrickchoo/cs4152/mahsjong/source/MJApp.i: users/patrickchoo/cs4152/mahsjong/source/MJApp.cpp.i
+.PHONY : users/patrickchoo/cs4152/mahsjong/source/MJApp.i
 
 # target to preprocess a source file
-Users/patrickchoo/cs4152/mahsjong/source/MJAudioController.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/mahsjong.dir/build.make CMakeFiles/mahsjong.dir/Users/patrickchoo/cs4152/mahsjong/source/MJAudioController.cpp.i
-.PHONY : Users/patrickchoo/cs4152/mahsjong/source/MJAudioController.cpp.i
+users/patrickchoo/cs4152/mahsjong/source/MJApp.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/mahsjong.dir/build.make CMakeFiles/mahsjong.dir/users/patrickchoo/cs4152/mahsjong/source/MJApp.cpp.i
+.PHONY : users/patrickchoo/cs4152/mahsjong/source/MJApp.cpp.i
 
-Users/patrickchoo/cs4152/mahsjong/source/MJAudioController.s: Users/patrickchoo/cs4152/mahsjong/source/MJAudioController.cpp.s
-.PHONY : Users/patrickchoo/cs4152/mahsjong/source/MJAudioController.s
+users/patrickchoo/cs4152/mahsjong/source/MJApp.s: users/patrickchoo/cs4152/mahsjong/source/MJApp.cpp.s
+.PHONY : users/patrickchoo/cs4152/mahsjong/source/MJApp.s
 
 # target to generate assembly for a file
-Users/patrickchoo/cs4152/mahsjong/source/MJAudioController.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/mahsjong.dir/build.make CMakeFiles/mahsjong.dir/Users/patrickchoo/cs4152/mahsjong/source/MJAudioController.cpp.s
-.PHONY : Users/patrickchoo/cs4152/mahsjong/source/MJAudioController.cpp.s
+users/patrickchoo/cs4152/mahsjong/source/MJApp.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/mahsjong.dir/build.make CMakeFiles/mahsjong.dir/users/patrickchoo/cs4152/mahsjong/source/MJApp.cpp.s
+.PHONY : users/patrickchoo/cs4152/mahsjong/source/MJApp.cpp.s
 
-Users/patrickchoo/cs4152/mahsjong/source/MJClientScene.o: Users/patrickchoo/cs4152/mahsjong/source/MJClientScene.cpp.o
-.PHONY : Users/patrickchoo/cs4152/mahsjong/source/MJClientScene.o
+users/patrickchoo/cs4152/mahsjong/source/MJAudioController.o: users/patrickchoo/cs4152/mahsjong/source/MJAudioController.cpp.o
+.PHONY : users/patrickchoo/cs4152/mahsjong/source/MJAudioController.o
 
 # target to build an object file
-Users/patrickchoo/cs4152/mahsjong/source/MJClientScene.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/mahsjong.dir/build.make CMakeFiles/mahsjong.dir/Users/patrickchoo/cs4152/mahsjong/source/MJClientScene.cpp.o
-.PHONY : Users/patrickchoo/cs4152/mahsjong/source/MJClientScene.cpp.o
+users/patrickchoo/cs4152/mahsjong/source/MJAudioController.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/mahsjong.dir/build.make CMakeFiles/mahsjong.dir/users/patrickchoo/cs4152/mahsjong/source/MJAudioController.cpp.o
+.PHONY : users/patrickchoo/cs4152/mahsjong/source/MJAudioController.cpp.o
 
-Users/patrickchoo/cs4152/mahsjong/source/MJClientScene.i: Users/patrickchoo/cs4152/mahsjong/source/MJClientScene.cpp.i
-.PHONY : Users/patrickchoo/cs4152/mahsjong/source/MJClientScene.i
+users/patrickchoo/cs4152/mahsjong/source/MJAudioController.i: users/patrickchoo/cs4152/mahsjong/source/MJAudioController.cpp.i
+.PHONY : users/patrickchoo/cs4152/mahsjong/source/MJAudioController.i
 
 # target to preprocess a source file
-Users/patrickchoo/cs4152/mahsjong/source/MJClientScene.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/mahsjong.dir/build.make CMakeFiles/mahsjong.dir/Users/patrickchoo/cs4152/mahsjong/source/MJClientScene.cpp.i
-.PHONY : Users/patrickchoo/cs4152/mahsjong/source/MJClientScene.cpp.i
+users/patrickchoo/cs4152/mahsjong/source/MJAudioController.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/mahsjong.dir/build.make CMakeFiles/mahsjong.dir/users/patrickchoo/cs4152/mahsjong/source/MJAudioController.cpp.i
+.PHONY : users/patrickchoo/cs4152/mahsjong/source/MJAudioController.cpp.i
 
-Users/patrickchoo/cs4152/mahsjong/source/MJClientScene.s: Users/patrickchoo/cs4152/mahsjong/source/MJClientScene.cpp.s
-.PHONY : Users/patrickchoo/cs4152/mahsjong/source/MJClientScene.s
+users/patrickchoo/cs4152/mahsjong/source/MJAudioController.s: users/patrickchoo/cs4152/mahsjong/source/MJAudioController.cpp.s
+.PHONY : users/patrickchoo/cs4152/mahsjong/source/MJAudioController.s
 
 # target to generate assembly for a file
-Users/patrickchoo/cs4152/mahsjong/source/MJClientScene.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/mahsjong.dir/build.make CMakeFiles/mahsjong.dir/Users/patrickchoo/cs4152/mahsjong/source/MJClientScene.cpp.s
-.PHONY : Users/patrickchoo/cs4152/mahsjong/source/MJClientScene.cpp.s
+users/patrickchoo/cs4152/mahsjong/source/MJAudioController.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/mahsjong.dir/build.make CMakeFiles/mahsjong.dir/users/patrickchoo/cs4152/mahsjong/source/MJAudioController.cpp.s
+.PHONY : users/patrickchoo/cs4152/mahsjong/source/MJAudioController.cpp.s
 
-Users/patrickchoo/cs4152/mahsjong/source/MJDiscardPile.o: Users/patrickchoo/cs4152/mahsjong/source/MJDiscardPile.cpp.o
-.PHONY : Users/patrickchoo/cs4152/mahsjong/source/MJDiscardPile.o
+users/patrickchoo/cs4152/mahsjong/source/MJClientScene.o: users/patrickchoo/cs4152/mahsjong/source/MJClientScene.cpp.o
+.PHONY : users/patrickchoo/cs4152/mahsjong/source/MJClientScene.o
 
 # target to build an object file
-Users/patrickchoo/cs4152/mahsjong/source/MJDiscardPile.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/mahsjong.dir/build.make CMakeFiles/mahsjong.dir/Users/patrickchoo/cs4152/mahsjong/source/MJDiscardPile.cpp.o
-.PHONY : Users/patrickchoo/cs4152/mahsjong/source/MJDiscardPile.cpp.o
+users/patrickchoo/cs4152/mahsjong/source/MJClientScene.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/mahsjong.dir/build.make CMakeFiles/mahsjong.dir/users/patrickchoo/cs4152/mahsjong/source/MJClientScene.cpp.o
+.PHONY : users/patrickchoo/cs4152/mahsjong/source/MJClientScene.cpp.o
 
-Users/patrickchoo/cs4152/mahsjong/source/MJDiscardPile.i: Users/patrickchoo/cs4152/mahsjong/source/MJDiscardPile.cpp.i
-.PHONY : Users/patrickchoo/cs4152/mahsjong/source/MJDiscardPile.i
+users/patrickchoo/cs4152/mahsjong/source/MJClientScene.i: users/patrickchoo/cs4152/mahsjong/source/MJClientScene.cpp.i
+.PHONY : users/patrickchoo/cs4152/mahsjong/source/MJClientScene.i
 
 # target to preprocess a source file
-Users/patrickchoo/cs4152/mahsjong/source/MJDiscardPile.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/mahsjong.dir/build.make CMakeFiles/mahsjong.dir/Users/patrickchoo/cs4152/mahsjong/source/MJDiscardPile.cpp.i
-.PHONY : Users/patrickchoo/cs4152/mahsjong/source/MJDiscardPile.cpp.i
+users/patrickchoo/cs4152/mahsjong/source/MJClientScene.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/mahsjong.dir/build.make CMakeFiles/mahsjong.dir/users/patrickchoo/cs4152/mahsjong/source/MJClientScene.cpp.i
+.PHONY : users/patrickchoo/cs4152/mahsjong/source/MJClientScene.cpp.i
 
-Users/patrickchoo/cs4152/mahsjong/source/MJDiscardPile.s: Users/patrickchoo/cs4152/mahsjong/source/MJDiscardPile.cpp.s
-.PHONY : Users/patrickchoo/cs4152/mahsjong/source/MJDiscardPile.s
+users/patrickchoo/cs4152/mahsjong/source/MJClientScene.s: users/patrickchoo/cs4152/mahsjong/source/MJClientScene.cpp.s
+.PHONY : users/patrickchoo/cs4152/mahsjong/source/MJClientScene.s
 
 # target to generate assembly for a file
-Users/patrickchoo/cs4152/mahsjong/source/MJDiscardPile.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/mahsjong.dir/build.make CMakeFiles/mahsjong.dir/Users/patrickchoo/cs4152/mahsjong/source/MJDiscardPile.cpp.s
-.PHONY : Users/patrickchoo/cs4152/mahsjong/source/MJDiscardPile.cpp.s
+users/patrickchoo/cs4152/mahsjong/source/MJClientScene.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/mahsjong.dir/build.make CMakeFiles/mahsjong.dir/users/patrickchoo/cs4152/mahsjong/source/MJClientScene.cpp.s
+.PHONY : users/patrickchoo/cs4152/mahsjong/source/MJClientScene.cpp.s
 
-Users/patrickchoo/cs4152/mahsjong/source/MJDiscardUIScene.o: Users/patrickchoo/cs4152/mahsjong/source/MJDiscardUIScene.cpp.o
-.PHONY : Users/patrickchoo/cs4152/mahsjong/source/MJDiscardUIScene.o
+users/patrickchoo/cs4152/mahsjong/source/MJDiscardPile.o: users/patrickchoo/cs4152/mahsjong/source/MJDiscardPile.cpp.o
+.PHONY : users/patrickchoo/cs4152/mahsjong/source/MJDiscardPile.o
 
 # target to build an object file
-Users/patrickchoo/cs4152/mahsjong/source/MJDiscardUIScene.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/mahsjong.dir/build.make CMakeFiles/mahsjong.dir/Users/patrickchoo/cs4152/mahsjong/source/MJDiscardUIScene.cpp.o
-.PHONY : Users/patrickchoo/cs4152/mahsjong/source/MJDiscardUIScene.cpp.o
+users/patrickchoo/cs4152/mahsjong/source/MJDiscardPile.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/mahsjong.dir/build.make CMakeFiles/mahsjong.dir/users/patrickchoo/cs4152/mahsjong/source/MJDiscardPile.cpp.o
+.PHONY : users/patrickchoo/cs4152/mahsjong/source/MJDiscardPile.cpp.o
 
-Users/patrickchoo/cs4152/mahsjong/source/MJDiscardUIScene.i: Users/patrickchoo/cs4152/mahsjong/source/MJDiscardUIScene.cpp.i
-.PHONY : Users/patrickchoo/cs4152/mahsjong/source/MJDiscardUIScene.i
+users/patrickchoo/cs4152/mahsjong/source/MJDiscardPile.i: users/patrickchoo/cs4152/mahsjong/source/MJDiscardPile.cpp.i
+.PHONY : users/patrickchoo/cs4152/mahsjong/source/MJDiscardPile.i
 
 # target to preprocess a source file
-Users/patrickchoo/cs4152/mahsjong/source/MJDiscardUIScene.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/mahsjong.dir/build.make CMakeFiles/mahsjong.dir/Users/patrickchoo/cs4152/mahsjong/source/MJDiscardUIScene.cpp.i
-.PHONY : Users/patrickchoo/cs4152/mahsjong/source/MJDiscardUIScene.cpp.i
+users/patrickchoo/cs4152/mahsjong/source/MJDiscardPile.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/mahsjong.dir/build.make CMakeFiles/mahsjong.dir/users/patrickchoo/cs4152/mahsjong/source/MJDiscardPile.cpp.i
+.PHONY : users/patrickchoo/cs4152/mahsjong/source/MJDiscardPile.cpp.i
 
-Users/patrickchoo/cs4152/mahsjong/source/MJDiscardUIScene.s: Users/patrickchoo/cs4152/mahsjong/source/MJDiscardUIScene.cpp.s
-.PHONY : Users/patrickchoo/cs4152/mahsjong/source/MJDiscardUIScene.s
+users/patrickchoo/cs4152/mahsjong/source/MJDiscardPile.s: users/patrickchoo/cs4152/mahsjong/source/MJDiscardPile.cpp.s
+.PHONY : users/patrickchoo/cs4152/mahsjong/source/MJDiscardPile.s
 
 # target to generate assembly for a file
-Users/patrickchoo/cs4152/mahsjong/source/MJDiscardUIScene.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/mahsjong.dir/build.make CMakeFiles/mahsjong.dir/Users/patrickchoo/cs4152/mahsjong/source/MJDiscardUIScene.cpp.s
-.PHONY : Users/patrickchoo/cs4152/mahsjong/source/MJDiscardUIScene.cpp.s
+users/patrickchoo/cs4152/mahsjong/source/MJDiscardPile.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/mahsjong.dir/build.make CMakeFiles/mahsjong.dir/users/patrickchoo/cs4152/mahsjong/source/MJDiscardPile.cpp.s
+.PHONY : users/patrickchoo/cs4152/mahsjong/source/MJDiscardPile.cpp.s
 
-Users/patrickchoo/cs4152/mahsjong/source/MJGameOverScene.o: Users/patrickchoo/cs4152/mahsjong/source/MJGameOverScene.cpp.o
-.PHONY : Users/patrickchoo/cs4152/mahsjong/source/MJGameOverScene.o
+users/patrickchoo/cs4152/mahsjong/source/MJDiscardUINode.o: users/patrickchoo/cs4152/mahsjong/source/MJDiscardUINode.cpp.o
+.PHONY : users/patrickchoo/cs4152/mahsjong/source/MJDiscardUINode.o
 
 # target to build an object file
-Users/patrickchoo/cs4152/mahsjong/source/MJGameOverScene.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/mahsjong.dir/build.make CMakeFiles/mahsjong.dir/Users/patrickchoo/cs4152/mahsjong/source/MJGameOverScene.cpp.o
-.PHONY : Users/patrickchoo/cs4152/mahsjong/source/MJGameOverScene.cpp.o
+users/patrickchoo/cs4152/mahsjong/source/MJDiscardUINode.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/mahsjong.dir/build.make CMakeFiles/mahsjong.dir/users/patrickchoo/cs4152/mahsjong/source/MJDiscardUINode.cpp.o
+.PHONY : users/patrickchoo/cs4152/mahsjong/source/MJDiscardUINode.cpp.o
 
-Users/patrickchoo/cs4152/mahsjong/source/MJGameOverScene.i: Users/patrickchoo/cs4152/mahsjong/source/MJGameOverScene.cpp.i
-.PHONY : Users/patrickchoo/cs4152/mahsjong/source/MJGameOverScene.i
+users/patrickchoo/cs4152/mahsjong/source/MJDiscardUINode.i: users/patrickchoo/cs4152/mahsjong/source/MJDiscardUINode.cpp.i
+.PHONY : users/patrickchoo/cs4152/mahsjong/source/MJDiscardUINode.i
 
 # target to preprocess a source file
-Users/patrickchoo/cs4152/mahsjong/source/MJGameOverScene.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/mahsjong.dir/build.make CMakeFiles/mahsjong.dir/Users/patrickchoo/cs4152/mahsjong/source/MJGameOverScene.cpp.i
-.PHONY : Users/patrickchoo/cs4152/mahsjong/source/MJGameOverScene.cpp.i
+users/patrickchoo/cs4152/mahsjong/source/MJDiscardUINode.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/mahsjong.dir/build.make CMakeFiles/mahsjong.dir/users/patrickchoo/cs4152/mahsjong/source/MJDiscardUINode.cpp.i
+.PHONY : users/patrickchoo/cs4152/mahsjong/source/MJDiscardUINode.cpp.i
 
-Users/patrickchoo/cs4152/mahsjong/source/MJGameOverScene.s: Users/patrickchoo/cs4152/mahsjong/source/MJGameOverScene.cpp.s
-.PHONY : Users/patrickchoo/cs4152/mahsjong/source/MJGameOverScene.s
+users/patrickchoo/cs4152/mahsjong/source/MJDiscardUINode.s: users/patrickchoo/cs4152/mahsjong/source/MJDiscardUINode.cpp.s
+.PHONY : users/patrickchoo/cs4152/mahsjong/source/MJDiscardUINode.s
 
 # target to generate assembly for a file
-Users/patrickchoo/cs4152/mahsjong/source/MJGameOverScene.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/mahsjong.dir/build.make CMakeFiles/mahsjong.dir/Users/patrickchoo/cs4152/mahsjong/source/MJGameOverScene.cpp.s
-.PHONY : Users/patrickchoo/cs4152/mahsjong/source/MJGameOverScene.cpp.s
+users/patrickchoo/cs4152/mahsjong/source/MJDiscardUINode.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/mahsjong.dir/build.make CMakeFiles/mahsjong.dir/users/patrickchoo/cs4152/mahsjong/source/MJDiscardUINode.cpp.s
+.PHONY : users/patrickchoo/cs4152/mahsjong/source/MJDiscardUINode.cpp.s
 
-Users/patrickchoo/cs4152/mahsjong/source/MJGameScene.o: Users/patrickchoo/cs4152/mahsjong/source/MJGameScene.cpp.o
-.PHONY : Users/patrickchoo/cs4152/mahsjong/source/MJGameScene.o
+users/patrickchoo/cs4152/mahsjong/source/MJDiscardUIScene.o: users/patrickchoo/cs4152/mahsjong/source/MJDiscardUIScene.cpp.o
+.PHONY : users/patrickchoo/cs4152/mahsjong/source/MJDiscardUIScene.o
 
 # target to build an object file
-Users/patrickchoo/cs4152/mahsjong/source/MJGameScene.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/mahsjong.dir/build.make CMakeFiles/mahsjong.dir/Users/patrickchoo/cs4152/mahsjong/source/MJGameScene.cpp.o
-.PHONY : Users/patrickchoo/cs4152/mahsjong/source/MJGameScene.cpp.o
+users/patrickchoo/cs4152/mahsjong/source/MJDiscardUIScene.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/mahsjong.dir/build.make CMakeFiles/mahsjong.dir/users/patrickchoo/cs4152/mahsjong/source/MJDiscardUIScene.cpp.o
+.PHONY : users/patrickchoo/cs4152/mahsjong/source/MJDiscardUIScene.cpp.o
 
-Users/patrickchoo/cs4152/mahsjong/source/MJGameScene.i: Users/patrickchoo/cs4152/mahsjong/source/MJGameScene.cpp.i
-.PHONY : Users/patrickchoo/cs4152/mahsjong/source/MJGameScene.i
+users/patrickchoo/cs4152/mahsjong/source/MJDiscardUIScene.i: users/patrickchoo/cs4152/mahsjong/source/MJDiscardUIScene.cpp.i
+.PHONY : users/patrickchoo/cs4152/mahsjong/source/MJDiscardUIScene.i
 
 # target to preprocess a source file
-Users/patrickchoo/cs4152/mahsjong/source/MJGameScene.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/mahsjong.dir/build.make CMakeFiles/mahsjong.dir/Users/patrickchoo/cs4152/mahsjong/source/MJGameScene.cpp.i
-.PHONY : Users/patrickchoo/cs4152/mahsjong/source/MJGameScene.cpp.i
+users/patrickchoo/cs4152/mahsjong/source/MJDiscardUIScene.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/mahsjong.dir/build.make CMakeFiles/mahsjong.dir/users/patrickchoo/cs4152/mahsjong/source/MJDiscardUIScene.cpp.i
+.PHONY : users/patrickchoo/cs4152/mahsjong/source/MJDiscardUIScene.cpp.i
 
-Users/patrickchoo/cs4152/mahsjong/source/MJGameScene.s: Users/patrickchoo/cs4152/mahsjong/source/MJGameScene.cpp.s
-.PHONY : Users/patrickchoo/cs4152/mahsjong/source/MJGameScene.s
+users/patrickchoo/cs4152/mahsjong/source/MJDiscardUIScene.s: users/patrickchoo/cs4152/mahsjong/source/MJDiscardUIScene.cpp.s
+.PHONY : users/patrickchoo/cs4152/mahsjong/source/MJDiscardUIScene.s
 
 # target to generate assembly for a file
-Users/patrickchoo/cs4152/mahsjong/source/MJGameScene.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/mahsjong.dir/build.make CMakeFiles/mahsjong.dir/Users/patrickchoo/cs4152/mahsjong/source/MJGameScene.cpp.s
-.PHONY : Users/patrickchoo/cs4152/mahsjong/source/MJGameScene.cpp.s
+users/patrickchoo/cs4152/mahsjong/source/MJDiscardUIScene.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/mahsjong.dir/build.make CMakeFiles/mahsjong.dir/users/patrickchoo/cs4152/mahsjong/source/MJDiscardUIScene.cpp.s
+.PHONY : users/patrickchoo/cs4152/mahsjong/source/MJDiscardUIScene.cpp.s
 
-Users/patrickchoo/cs4152/mahsjong/source/MJHostScene.o: Users/patrickchoo/cs4152/mahsjong/source/MJHostScene.cpp.o
-.PHONY : Users/patrickchoo/cs4152/mahsjong/source/MJHostScene.o
+users/patrickchoo/cs4152/mahsjong/source/MJGameOverScene.o: users/patrickchoo/cs4152/mahsjong/source/MJGameOverScene.cpp.o
+.PHONY : users/patrickchoo/cs4152/mahsjong/source/MJGameOverScene.o
 
 # target to build an object file
-Users/patrickchoo/cs4152/mahsjong/source/MJHostScene.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/mahsjong.dir/build.make CMakeFiles/mahsjong.dir/Users/patrickchoo/cs4152/mahsjong/source/MJHostScene.cpp.o
-.PHONY : Users/patrickchoo/cs4152/mahsjong/source/MJHostScene.cpp.o
+users/patrickchoo/cs4152/mahsjong/source/MJGameOverScene.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/mahsjong.dir/build.make CMakeFiles/mahsjong.dir/users/patrickchoo/cs4152/mahsjong/source/MJGameOverScene.cpp.o
+.PHONY : users/patrickchoo/cs4152/mahsjong/source/MJGameOverScene.cpp.o
 
-Users/patrickchoo/cs4152/mahsjong/source/MJHostScene.i: Users/patrickchoo/cs4152/mahsjong/source/MJHostScene.cpp.i
-.PHONY : Users/patrickchoo/cs4152/mahsjong/source/MJHostScene.i
+users/patrickchoo/cs4152/mahsjong/source/MJGameOverScene.i: users/patrickchoo/cs4152/mahsjong/source/MJGameOverScene.cpp.i
+.PHONY : users/patrickchoo/cs4152/mahsjong/source/MJGameOverScene.i
 
 # target to preprocess a source file
-Users/patrickchoo/cs4152/mahsjong/source/MJHostScene.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/mahsjong.dir/build.make CMakeFiles/mahsjong.dir/Users/patrickchoo/cs4152/mahsjong/source/MJHostScene.cpp.i
-.PHONY : Users/patrickchoo/cs4152/mahsjong/source/MJHostScene.cpp.i
+users/patrickchoo/cs4152/mahsjong/source/MJGameOverScene.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/mahsjong.dir/build.make CMakeFiles/mahsjong.dir/users/patrickchoo/cs4152/mahsjong/source/MJGameOverScene.cpp.i
+.PHONY : users/patrickchoo/cs4152/mahsjong/source/MJGameOverScene.cpp.i
 
-Users/patrickchoo/cs4152/mahsjong/source/MJHostScene.s: Users/patrickchoo/cs4152/mahsjong/source/MJHostScene.cpp.s
-.PHONY : Users/patrickchoo/cs4152/mahsjong/source/MJHostScene.s
+users/patrickchoo/cs4152/mahsjong/source/MJGameOverScene.s: users/patrickchoo/cs4152/mahsjong/source/MJGameOverScene.cpp.s
+.PHONY : users/patrickchoo/cs4152/mahsjong/source/MJGameOverScene.s
 
 # target to generate assembly for a file
-Users/patrickchoo/cs4152/mahsjong/source/MJHostScene.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/mahsjong.dir/build.make CMakeFiles/mahsjong.dir/Users/patrickchoo/cs4152/mahsjong/source/MJHostScene.cpp.s
-.PHONY : Users/patrickchoo/cs4152/mahsjong/source/MJHostScene.cpp.s
+users/patrickchoo/cs4152/mahsjong/source/MJGameOverScene.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/mahsjong.dir/build.make CMakeFiles/mahsjong.dir/users/patrickchoo/cs4152/mahsjong/source/MJGameOverScene.cpp.s
+.PHONY : users/patrickchoo/cs4152/mahsjong/source/MJGameOverScene.cpp.s
 
-Users/patrickchoo/cs4152/mahsjong/source/MJInputController.o: Users/patrickchoo/cs4152/mahsjong/source/MJInputController.cpp.o
-.PHONY : Users/patrickchoo/cs4152/mahsjong/source/MJInputController.o
+users/patrickchoo/cs4152/mahsjong/source/MJGameScene.o: users/patrickchoo/cs4152/mahsjong/source/MJGameScene.cpp.o
+.PHONY : users/patrickchoo/cs4152/mahsjong/source/MJGameScene.o
 
 # target to build an object file
-Users/patrickchoo/cs4152/mahsjong/source/MJInputController.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/mahsjong.dir/build.make CMakeFiles/mahsjong.dir/Users/patrickchoo/cs4152/mahsjong/source/MJInputController.cpp.o
-.PHONY : Users/patrickchoo/cs4152/mahsjong/source/MJInputController.cpp.o
+users/patrickchoo/cs4152/mahsjong/source/MJGameScene.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/mahsjong.dir/build.make CMakeFiles/mahsjong.dir/users/patrickchoo/cs4152/mahsjong/source/MJGameScene.cpp.o
+.PHONY : users/patrickchoo/cs4152/mahsjong/source/MJGameScene.cpp.o
 
-Users/patrickchoo/cs4152/mahsjong/source/MJInputController.i: Users/patrickchoo/cs4152/mahsjong/source/MJInputController.cpp.i
-.PHONY : Users/patrickchoo/cs4152/mahsjong/source/MJInputController.i
+users/patrickchoo/cs4152/mahsjong/source/MJGameScene.i: users/patrickchoo/cs4152/mahsjong/source/MJGameScene.cpp.i
+.PHONY : users/patrickchoo/cs4152/mahsjong/source/MJGameScene.i
 
 # target to preprocess a source file
-Users/patrickchoo/cs4152/mahsjong/source/MJInputController.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/mahsjong.dir/build.make CMakeFiles/mahsjong.dir/Users/patrickchoo/cs4152/mahsjong/source/MJInputController.cpp.i
-.PHONY : Users/patrickchoo/cs4152/mahsjong/source/MJInputController.cpp.i
+users/patrickchoo/cs4152/mahsjong/source/MJGameScene.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/mahsjong.dir/build.make CMakeFiles/mahsjong.dir/users/patrickchoo/cs4152/mahsjong/source/MJGameScene.cpp.i
+.PHONY : users/patrickchoo/cs4152/mahsjong/source/MJGameScene.cpp.i
 
-Users/patrickchoo/cs4152/mahsjong/source/MJInputController.s: Users/patrickchoo/cs4152/mahsjong/source/MJInputController.cpp.s
-.PHONY : Users/patrickchoo/cs4152/mahsjong/source/MJInputController.s
+users/patrickchoo/cs4152/mahsjong/source/MJGameScene.s: users/patrickchoo/cs4152/mahsjong/source/MJGameScene.cpp.s
+.PHONY : users/patrickchoo/cs4152/mahsjong/source/MJGameScene.s
 
 # target to generate assembly for a file
-Users/patrickchoo/cs4152/mahsjong/source/MJInputController.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/mahsjong.dir/build.make CMakeFiles/mahsjong.dir/Users/patrickchoo/cs4152/mahsjong/source/MJInputController.cpp.s
-.PHONY : Users/patrickchoo/cs4152/mahsjong/source/MJInputController.cpp.s
+users/patrickchoo/cs4152/mahsjong/source/MJGameScene.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/mahsjong.dir/build.make CMakeFiles/mahsjong.dir/users/patrickchoo/cs4152/mahsjong/source/MJGameScene.cpp.s
+.PHONY : users/patrickchoo/cs4152/mahsjong/source/MJGameScene.cpp.s
 
-Users/patrickchoo/cs4152/mahsjong/source/MJMatchController.o: Users/patrickchoo/cs4152/mahsjong/source/MJMatchController.cpp.o
-.PHONY : Users/patrickchoo/cs4152/mahsjong/source/MJMatchController.o
+users/patrickchoo/cs4152/mahsjong/source/MJHostScene.o: users/patrickchoo/cs4152/mahsjong/source/MJHostScene.cpp.o
+.PHONY : users/patrickchoo/cs4152/mahsjong/source/MJHostScene.o
 
 # target to build an object file
-Users/patrickchoo/cs4152/mahsjong/source/MJMatchController.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/mahsjong.dir/build.make CMakeFiles/mahsjong.dir/Users/patrickchoo/cs4152/mahsjong/source/MJMatchController.cpp.o
-.PHONY : Users/patrickchoo/cs4152/mahsjong/source/MJMatchController.cpp.o
+users/patrickchoo/cs4152/mahsjong/source/MJHostScene.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/mahsjong.dir/build.make CMakeFiles/mahsjong.dir/users/patrickchoo/cs4152/mahsjong/source/MJHostScene.cpp.o
+.PHONY : users/patrickchoo/cs4152/mahsjong/source/MJHostScene.cpp.o
 
-Users/patrickchoo/cs4152/mahsjong/source/MJMatchController.i: Users/patrickchoo/cs4152/mahsjong/source/MJMatchController.cpp.i
-.PHONY : Users/patrickchoo/cs4152/mahsjong/source/MJMatchController.i
+users/patrickchoo/cs4152/mahsjong/source/MJHostScene.i: users/patrickchoo/cs4152/mahsjong/source/MJHostScene.cpp.i
+.PHONY : users/patrickchoo/cs4152/mahsjong/source/MJHostScene.i
 
 # target to preprocess a source file
-Users/patrickchoo/cs4152/mahsjong/source/MJMatchController.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/mahsjong.dir/build.make CMakeFiles/mahsjong.dir/Users/patrickchoo/cs4152/mahsjong/source/MJMatchController.cpp.i
-.PHONY : Users/patrickchoo/cs4152/mahsjong/source/MJMatchController.cpp.i
+users/patrickchoo/cs4152/mahsjong/source/MJHostScene.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/mahsjong.dir/build.make CMakeFiles/mahsjong.dir/users/patrickchoo/cs4152/mahsjong/source/MJHostScene.cpp.i
+.PHONY : users/patrickchoo/cs4152/mahsjong/source/MJHostScene.cpp.i
 
-Users/patrickchoo/cs4152/mahsjong/source/MJMatchController.s: Users/patrickchoo/cs4152/mahsjong/source/MJMatchController.cpp.s
-.PHONY : Users/patrickchoo/cs4152/mahsjong/source/MJMatchController.s
+users/patrickchoo/cs4152/mahsjong/source/MJHostScene.s: users/patrickchoo/cs4152/mahsjong/source/MJHostScene.cpp.s
+.PHONY : users/patrickchoo/cs4152/mahsjong/source/MJHostScene.s
 
 # target to generate assembly for a file
-Users/patrickchoo/cs4152/mahsjong/source/MJMatchController.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/mahsjong.dir/build.make CMakeFiles/mahsjong.dir/Users/patrickchoo/cs4152/mahsjong/source/MJMatchController.cpp.s
-.PHONY : Users/patrickchoo/cs4152/mahsjong/source/MJMatchController.cpp.s
+users/patrickchoo/cs4152/mahsjong/source/MJHostScene.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/mahsjong.dir/build.make CMakeFiles/mahsjong.dir/users/patrickchoo/cs4152/mahsjong/source/MJHostScene.cpp.s
+.PHONY : users/patrickchoo/cs4152/mahsjong/source/MJHostScene.cpp.s
 
-Users/patrickchoo/cs4152/mahsjong/source/MJMenuScene.o: Users/patrickchoo/cs4152/mahsjong/source/MJMenuScene.cpp.o
-.PHONY : Users/patrickchoo/cs4152/mahsjong/source/MJMenuScene.o
+users/patrickchoo/cs4152/mahsjong/source/MJInputController.o: users/patrickchoo/cs4152/mahsjong/source/MJInputController.cpp.o
+.PHONY : users/patrickchoo/cs4152/mahsjong/source/MJInputController.o
 
 # target to build an object file
-Users/patrickchoo/cs4152/mahsjong/source/MJMenuScene.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/mahsjong.dir/build.make CMakeFiles/mahsjong.dir/Users/patrickchoo/cs4152/mahsjong/source/MJMenuScene.cpp.o
-.PHONY : Users/patrickchoo/cs4152/mahsjong/source/MJMenuScene.cpp.o
+users/patrickchoo/cs4152/mahsjong/source/MJInputController.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/mahsjong.dir/build.make CMakeFiles/mahsjong.dir/users/patrickchoo/cs4152/mahsjong/source/MJInputController.cpp.o
+.PHONY : users/patrickchoo/cs4152/mahsjong/source/MJInputController.cpp.o
 
-Users/patrickchoo/cs4152/mahsjong/source/MJMenuScene.i: Users/patrickchoo/cs4152/mahsjong/source/MJMenuScene.cpp.i
-.PHONY : Users/patrickchoo/cs4152/mahsjong/source/MJMenuScene.i
+users/patrickchoo/cs4152/mahsjong/source/MJInputController.i: users/patrickchoo/cs4152/mahsjong/source/MJInputController.cpp.i
+.PHONY : users/patrickchoo/cs4152/mahsjong/source/MJInputController.i
 
 # target to preprocess a source file
-Users/patrickchoo/cs4152/mahsjong/source/MJMenuScene.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/mahsjong.dir/build.make CMakeFiles/mahsjong.dir/Users/patrickchoo/cs4152/mahsjong/source/MJMenuScene.cpp.i
-.PHONY : Users/patrickchoo/cs4152/mahsjong/source/MJMenuScene.cpp.i
+users/patrickchoo/cs4152/mahsjong/source/MJInputController.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/mahsjong.dir/build.make CMakeFiles/mahsjong.dir/users/patrickchoo/cs4152/mahsjong/source/MJInputController.cpp.i
+.PHONY : users/patrickchoo/cs4152/mahsjong/source/MJInputController.cpp.i
 
-Users/patrickchoo/cs4152/mahsjong/source/MJMenuScene.s: Users/patrickchoo/cs4152/mahsjong/source/MJMenuScene.cpp.s
-.PHONY : Users/patrickchoo/cs4152/mahsjong/source/MJMenuScene.s
+users/patrickchoo/cs4152/mahsjong/source/MJInputController.s: users/patrickchoo/cs4152/mahsjong/source/MJInputController.cpp.s
+.PHONY : users/patrickchoo/cs4152/mahsjong/source/MJInputController.s
 
 # target to generate assembly for a file
-Users/patrickchoo/cs4152/mahsjong/source/MJMenuScene.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/mahsjong.dir/build.make CMakeFiles/mahsjong.dir/Users/patrickchoo/cs4152/mahsjong/source/MJMenuScene.cpp.s
-.PHONY : Users/patrickchoo/cs4152/mahsjong/source/MJMenuScene.cpp.s
+users/patrickchoo/cs4152/mahsjong/source/MJInputController.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/mahsjong.dir/build.make CMakeFiles/mahsjong.dir/users/patrickchoo/cs4152/mahsjong/source/MJInputController.cpp.s
+.PHONY : users/patrickchoo/cs4152/mahsjong/source/MJInputController.cpp.s
 
-Users/patrickchoo/cs4152/mahsjong/source/MJNetworkController.o: Users/patrickchoo/cs4152/mahsjong/source/MJNetworkController.cpp.o
-.PHONY : Users/patrickchoo/cs4152/mahsjong/source/MJNetworkController.o
+users/patrickchoo/cs4152/mahsjong/source/MJLoadingScene.o: users/patrickchoo/cs4152/mahsjong/source/MJLoadingScene.cpp.o
+.PHONY : users/patrickchoo/cs4152/mahsjong/source/MJLoadingScene.o
 
 # target to build an object file
-Users/patrickchoo/cs4152/mahsjong/source/MJNetworkController.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/mahsjong.dir/build.make CMakeFiles/mahsjong.dir/Users/patrickchoo/cs4152/mahsjong/source/MJNetworkController.cpp.o
-.PHONY : Users/patrickchoo/cs4152/mahsjong/source/MJNetworkController.cpp.o
+users/patrickchoo/cs4152/mahsjong/source/MJLoadingScene.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/mahsjong.dir/build.make CMakeFiles/mahsjong.dir/users/patrickchoo/cs4152/mahsjong/source/MJLoadingScene.cpp.o
+.PHONY : users/patrickchoo/cs4152/mahsjong/source/MJLoadingScene.cpp.o
 
-Users/patrickchoo/cs4152/mahsjong/source/MJNetworkController.i: Users/patrickchoo/cs4152/mahsjong/source/MJNetworkController.cpp.i
-.PHONY : Users/patrickchoo/cs4152/mahsjong/source/MJNetworkController.i
+users/patrickchoo/cs4152/mahsjong/source/MJLoadingScene.i: users/patrickchoo/cs4152/mahsjong/source/MJLoadingScene.cpp.i
+.PHONY : users/patrickchoo/cs4152/mahsjong/source/MJLoadingScene.i
 
 # target to preprocess a source file
-Users/patrickchoo/cs4152/mahsjong/source/MJNetworkController.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/mahsjong.dir/build.make CMakeFiles/mahsjong.dir/Users/patrickchoo/cs4152/mahsjong/source/MJNetworkController.cpp.i
-.PHONY : Users/patrickchoo/cs4152/mahsjong/source/MJNetworkController.cpp.i
+users/patrickchoo/cs4152/mahsjong/source/MJLoadingScene.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/mahsjong.dir/build.make CMakeFiles/mahsjong.dir/users/patrickchoo/cs4152/mahsjong/source/MJLoadingScene.cpp.i
+.PHONY : users/patrickchoo/cs4152/mahsjong/source/MJLoadingScene.cpp.i
 
-Users/patrickchoo/cs4152/mahsjong/source/MJNetworkController.s: Users/patrickchoo/cs4152/mahsjong/source/MJNetworkController.cpp.s
-.PHONY : Users/patrickchoo/cs4152/mahsjong/source/MJNetworkController.s
+users/patrickchoo/cs4152/mahsjong/source/MJLoadingScene.s: users/patrickchoo/cs4152/mahsjong/source/MJLoadingScene.cpp.s
+.PHONY : users/patrickchoo/cs4152/mahsjong/source/MJLoadingScene.s
 
 # target to generate assembly for a file
-Users/patrickchoo/cs4152/mahsjong/source/MJNetworkController.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/mahsjong.dir/build.make CMakeFiles/mahsjong.dir/Users/patrickchoo/cs4152/mahsjong/source/MJNetworkController.cpp.s
-.PHONY : Users/patrickchoo/cs4152/mahsjong/source/MJNetworkController.cpp.s
+users/patrickchoo/cs4152/mahsjong/source/MJLoadingScene.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/mahsjong.dir/build.make CMakeFiles/mahsjong.dir/users/patrickchoo/cs4152/mahsjong/source/MJLoadingScene.cpp.s
+.PHONY : users/patrickchoo/cs4152/mahsjong/source/MJLoadingScene.cpp.s
 
-Users/patrickchoo/cs4152/mahsjong/source/MJPauseScene.o: Users/patrickchoo/cs4152/mahsjong/source/MJPauseScene.cpp.o
-.PHONY : Users/patrickchoo/cs4152/mahsjong/source/MJPauseScene.o
+users/patrickchoo/cs4152/mahsjong/source/MJMatchController.o: users/patrickchoo/cs4152/mahsjong/source/MJMatchController.cpp.o
+.PHONY : users/patrickchoo/cs4152/mahsjong/source/MJMatchController.o
 
 # target to build an object file
-Users/patrickchoo/cs4152/mahsjong/source/MJPauseScene.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/mahsjong.dir/build.make CMakeFiles/mahsjong.dir/Users/patrickchoo/cs4152/mahsjong/source/MJPauseScene.cpp.o
-.PHONY : Users/patrickchoo/cs4152/mahsjong/source/MJPauseScene.cpp.o
+users/patrickchoo/cs4152/mahsjong/source/MJMatchController.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/mahsjong.dir/build.make CMakeFiles/mahsjong.dir/users/patrickchoo/cs4152/mahsjong/source/MJMatchController.cpp.o
+.PHONY : users/patrickchoo/cs4152/mahsjong/source/MJMatchController.cpp.o
 
-Users/patrickchoo/cs4152/mahsjong/source/MJPauseScene.i: Users/patrickchoo/cs4152/mahsjong/source/MJPauseScene.cpp.i
-.PHONY : Users/patrickchoo/cs4152/mahsjong/source/MJPauseScene.i
+users/patrickchoo/cs4152/mahsjong/source/MJMatchController.i: users/patrickchoo/cs4152/mahsjong/source/MJMatchController.cpp.i
+.PHONY : users/patrickchoo/cs4152/mahsjong/source/MJMatchController.i
 
 # target to preprocess a source file
-Users/patrickchoo/cs4152/mahsjong/source/MJPauseScene.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/mahsjong.dir/build.make CMakeFiles/mahsjong.dir/Users/patrickchoo/cs4152/mahsjong/source/MJPauseScene.cpp.i
-.PHONY : Users/patrickchoo/cs4152/mahsjong/source/MJPauseScene.cpp.i
+users/patrickchoo/cs4152/mahsjong/source/MJMatchController.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/mahsjong.dir/build.make CMakeFiles/mahsjong.dir/users/patrickchoo/cs4152/mahsjong/source/MJMatchController.cpp.i
+.PHONY : users/patrickchoo/cs4152/mahsjong/source/MJMatchController.cpp.i
 
-Users/patrickchoo/cs4152/mahsjong/source/MJPauseScene.s: Users/patrickchoo/cs4152/mahsjong/source/MJPauseScene.cpp.s
-.PHONY : Users/patrickchoo/cs4152/mahsjong/source/MJPauseScene.s
+users/patrickchoo/cs4152/mahsjong/source/MJMatchController.s: users/patrickchoo/cs4152/mahsjong/source/MJMatchController.cpp.s
+.PHONY : users/patrickchoo/cs4152/mahsjong/source/MJMatchController.s
 
 # target to generate assembly for a file
-Users/patrickchoo/cs4152/mahsjong/source/MJPauseScene.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/mahsjong.dir/build.make CMakeFiles/mahsjong.dir/Users/patrickchoo/cs4152/mahsjong/source/MJPauseScene.cpp.s
-.PHONY : Users/patrickchoo/cs4152/mahsjong/source/MJPauseScene.cpp.s
+users/patrickchoo/cs4152/mahsjong/source/MJMatchController.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/mahsjong.dir/build.make CMakeFiles/mahsjong.dir/users/patrickchoo/cs4152/mahsjong/source/MJMatchController.cpp.s
+.PHONY : users/patrickchoo/cs4152/mahsjong/source/MJMatchController.cpp.s
 
-Users/patrickchoo/cs4152/mahsjong/source/MJPile.o: Users/patrickchoo/cs4152/mahsjong/source/MJPile.cpp.o
-.PHONY : Users/patrickchoo/cs4152/mahsjong/source/MJPile.o
+users/patrickchoo/cs4152/mahsjong/source/MJMenuScene.o: users/patrickchoo/cs4152/mahsjong/source/MJMenuScene.cpp.o
+.PHONY : users/patrickchoo/cs4152/mahsjong/source/MJMenuScene.o
 
 # target to build an object file
-Users/patrickchoo/cs4152/mahsjong/source/MJPile.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/mahsjong.dir/build.make CMakeFiles/mahsjong.dir/Users/patrickchoo/cs4152/mahsjong/source/MJPile.cpp.o
-.PHONY : Users/patrickchoo/cs4152/mahsjong/source/MJPile.cpp.o
+users/patrickchoo/cs4152/mahsjong/source/MJMenuScene.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/mahsjong.dir/build.make CMakeFiles/mahsjong.dir/users/patrickchoo/cs4152/mahsjong/source/MJMenuScene.cpp.o
+.PHONY : users/patrickchoo/cs4152/mahsjong/source/MJMenuScene.cpp.o
 
-Users/patrickchoo/cs4152/mahsjong/source/MJPile.i: Users/patrickchoo/cs4152/mahsjong/source/MJPile.cpp.i
-.PHONY : Users/patrickchoo/cs4152/mahsjong/source/MJPile.i
+users/patrickchoo/cs4152/mahsjong/source/MJMenuScene.i: users/patrickchoo/cs4152/mahsjong/source/MJMenuScene.cpp.i
+.PHONY : users/patrickchoo/cs4152/mahsjong/source/MJMenuScene.i
 
 # target to preprocess a source file
-Users/patrickchoo/cs4152/mahsjong/source/MJPile.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/mahsjong.dir/build.make CMakeFiles/mahsjong.dir/Users/patrickchoo/cs4152/mahsjong/source/MJPile.cpp.i
-.PHONY : Users/patrickchoo/cs4152/mahsjong/source/MJPile.cpp.i
+users/patrickchoo/cs4152/mahsjong/source/MJMenuScene.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/mahsjong.dir/build.make CMakeFiles/mahsjong.dir/users/patrickchoo/cs4152/mahsjong/source/MJMenuScene.cpp.i
+.PHONY : users/patrickchoo/cs4152/mahsjong/source/MJMenuScene.cpp.i
 
-Users/patrickchoo/cs4152/mahsjong/source/MJPile.s: Users/patrickchoo/cs4152/mahsjong/source/MJPile.cpp.s
-.PHONY : Users/patrickchoo/cs4152/mahsjong/source/MJPile.s
+users/patrickchoo/cs4152/mahsjong/source/MJMenuScene.s: users/patrickchoo/cs4152/mahsjong/source/MJMenuScene.cpp.s
+.PHONY : users/patrickchoo/cs4152/mahsjong/source/MJMenuScene.s
 
 # target to generate assembly for a file
-Users/patrickchoo/cs4152/mahsjong/source/MJPile.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/mahsjong.dir/build.make CMakeFiles/mahsjong.dir/Users/patrickchoo/cs4152/mahsjong/source/MJPile.cpp.s
-.PHONY : Users/patrickchoo/cs4152/mahsjong/source/MJPile.cpp.s
+users/patrickchoo/cs4152/mahsjong/source/MJMenuScene.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/mahsjong.dir/build.make CMakeFiles/mahsjong.dir/users/patrickchoo/cs4152/mahsjong/source/MJMenuScene.cpp.s
+.PHONY : users/patrickchoo/cs4152/mahsjong/source/MJMenuScene.cpp.s
 
-Users/patrickchoo/cs4152/mahsjong/source/MJPlayer.o: Users/patrickchoo/cs4152/mahsjong/source/MJPlayer.cpp.o
-.PHONY : Users/patrickchoo/cs4152/mahsjong/source/MJPlayer.o
+users/patrickchoo/cs4152/mahsjong/source/MJNetworkController.o: users/patrickchoo/cs4152/mahsjong/source/MJNetworkController.cpp.o
+.PHONY : users/patrickchoo/cs4152/mahsjong/source/MJNetworkController.o
 
 # target to build an object file
-Users/patrickchoo/cs4152/mahsjong/source/MJPlayer.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/mahsjong.dir/build.make CMakeFiles/mahsjong.dir/Users/patrickchoo/cs4152/mahsjong/source/MJPlayer.cpp.o
-.PHONY : Users/patrickchoo/cs4152/mahsjong/source/MJPlayer.cpp.o
+users/patrickchoo/cs4152/mahsjong/source/MJNetworkController.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/mahsjong.dir/build.make CMakeFiles/mahsjong.dir/users/patrickchoo/cs4152/mahsjong/source/MJNetworkController.cpp.o
+.PHONY : users/patrickchoo/cs4152/mahsjong/source/MJNetworkController.cpp.o
 
-Users/patrickchoo/cs4152/mahsjong/source/MJPlayer.i: Users/patrickchoo/cs4152/mahsjong/source/MJPlayer.cpp.i
-.PHONY : Users/patrickchoo/cs4152/mahsjong/source/MJPlayer.i
+users/patrickchoo/cs4152/mahsjong/source/MJNetworkController.i: users/patrickchoo/cs4152/mahsjong/source/MJNetworkController.cpp.i
+.PHONY : users/patrickchoo/cs4152/mahsjong/source/MJNetworkController.i
 
 # target to preprocess a source file
-Users/patrickchoo/cs4152/mahsjong/source/MJPlayer.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/mahsjong.dir/build.make CMakeFiles/mahsjong.dir/Users/patrickchoo/cs4152/mahsjong/source/MJPlayer.cpp.i
-.PHONY : Users/patrickchoo/cs4152/mahsjong/source/MJPlayer.cpp.i
+users/patrickchoo/cs4152/mahsjong/source/MJNetworkController.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/mahsjong.dir/build.make CMakeFiles/mahsjong.dir/users/patrickchoo/cs4152/mahsjong/source/MJNetworkController.cpp.i
+.PHONY : users/patrickchoo/cs4152/mahsjong/source/MJNetworkController.cpp.i
 
-Users/patrickchoo/cs4152/mahsjong/source/MJPlayer.s: Users/patrickchoo/cs4152/mahsjong/source/MJPlayer.cpp.s
-.PHONY : Users/patrickchoo/cs4152/mahsjong/source/MJPlayer.s
+users/patrickchoo/cs4152/mahsjong/source/MJNetworkController.s: users/patrickchoo/cs4152/mahsjong/source/MJNetworkController.cpp.s
+.PHONY : users/patrickchoo/cs4152/mahsjong/source/MJNetworkController.s
 
 # target to generate assembly for a file
-Users/patrickchoo/cs4152/mahsjong/source/MJPlayer.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/mahsjong.dir/build.make CMakeFiles/mahsjong.dir/Users/patrickchoo/cs4152/mahsjong/source/MJPlayer.cpp.s
-.PHONY : Users/patrickchoo/cs4152/mahsjong/source/MJPlayer.cpp.s
+users/patrickchoo/cs4152/mahsjong/source/MJNetworkController.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/mahsjong.dir/build.make CMakeFiles/mahsjong.dir/users/patrickchoo/cs4152/mahsjong/source/MJNetworkController.cpp.s
+.PHONY : users/patrickchoo/cs4152/mahsjong/source/MJNetworkController.cpp.s
 
-Users/patrickchoo/cs4152/mahsjong/source/MJScoreManager.o: Users/patrickchoo/cs4152/mahsjong/source/MJScoreManager.cpp.o
-.PHONY : Users/patrickchoo/cs4152/mahsjong/source/MJScoreManager.o
+users/patrickchoo/cs4152/mahsjong/source/MJPauseScene.o: users/patrickchoo/cs4152/mahsjong/source/MJPauseScene.cpp.o
+.PHONY : users/patrickchoo/cs4152/mahsjong/source/MJPauseScene.o
 
 # target to build an object file
-Users/patrickchoo/cs4152/mahsjong/source/MJScoreManager.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/mahsjong.dir/build.make CMakeFiles/mahsjong.dir/Users/patrickchoo/cs4152/mahsjong/source/MJScoreManager.cpp.o
-.PHONY : Users/patrickchoo/cs4152/mahsjong/source/MJScoreManager.cpp.o
+users/patrickchoo/cs4152/mahsjong/source/MJPauseScene.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/mahsjong.dir/build.make CMakeFiles/mahsjong.dir/users/patrickchoo/cs4152/mahsjong/source/MJPauseScene.cpp.o
+.PHONY : users/patrickchoo/cs4152/mahsjong/source/MJPauseScene.cpp.o
 
-Users/patrickchoo/cs4152/mahsjong/source/MJScoreManager.i: Users/patrickchoo/cs4152/mahsjong/source/MJScoreManager.cpp.i
-.PHONY : Users/patrickchoo/cs4152/mahsjong/source/MJScoreManager.i
+users/patrickchoo/cs4152/mahsjong/source/MJPauseScene.i: users/patrickchoo/cs4152/mahsjong/source/MJPauseScene.cpp.i
+.PHONY : users/patrickchoo/cs4152/mahsjong/source/MJPauseScene.i
 
 # target to preprocess a source file
-Users/patrickchoo/cs4152/mahsjong/source/MJScoreManager.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/mahsjong.dir/build.make CMakeFiles/mahsjong.dir/Users/patrickchoo/cs4152/mahsjong/source/MJScoreManager.cpp.i
-.PHONY : Users/patrickchoo/cs4152/mahsjong/source/MJScoreManager.cpp.i
+users/patrickchoo/cs4152/mahsjong/source/MJPauseScene.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/mahsjong.dir/build.make CMakeFiles/mahsjong.dir/users/patrickchoo/cs4152/mahsjong/source/MJPauseScene.cpp.i
+.PHONY : users/patrickchoo/cs4152/mahsjong/source/MJPauseScene.cpp.i
 
-Users/patrickchoo/cs4152/mahsjong/source/MJScoreManager.s: Users/patrickchoo/cs4152/mahsjong/source/MJScoreManager.cpp.s
-.PHONY : Users/patrickchoo/cs4152/mahsjong/source/MJScoreManager.s
+users/patrickchoo/cs4152/mahsjong/source/MJPauseScene.s: users/patrickchoo/cs4152/mahsjong/source/MJPauseScene.cpp.s
+.PHONY : users/patrickchoo/cs4152/mahsjong/source/MJPauseScene.s
 
 # target to generate assembly for a file
-Users/patrickchoo/cs4152/mahsjong/source/MJScoreManager.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/mahsjong.dir/build.make CMakeFiles/mahsjong.dir/Users/patrickchoo/cs4152/mahsjong/source/MJScoreManager.cpp.s
-.PHONY : Users/patrickchoo/cs4152/mahsjong/source/MJScoreManager.cpp.s
+users/patrickchoo/cs4152/mahsjong/source/MJPauseScene.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/mahsjong.dir/build.make CMakeFiles/mahsjong.dir/users/patrickchoo/cs4152/mahsjong/source/MJPauseScene.cpp.s
+.PHONY : users/patrickchoo/cs4152/mahsjong/source/MJPauseScene.cpp.s
 
-Users/patrickchoo/cs4152/mahsjong/source/MJSettingScene.o: Users/patrickchoo/cs4152/mahsjong/source/MJSettingScene.cpp.o
-.PHONY : Users/patrickchoo/cs4152/mahsjong/source/MJSettingScene.o
+users/patrickchoo/cs4152/mahsjong/source/MJPile.o: users/patrickchoo/cs4152/mahsjong/source/MJPile.cpp.o
+.PHONY : users/patrickchoo/cs4152/mahsjong/source/MJPile.o
 
 # target to build an object file
-Users/patrickchoo/cs4152/mahsjong/source/MJSettingScene.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/mahsjong.dir/build.make CMakeFiles/mahsjong.dir/Users/patrickchoo/cs4152/mahsjong/source/MJSettingScene.cpp.o
-.PHONY : Users/patrickchoo/cs4152/mahsjong/source/MJSettingScene.cpp.o
+users/patrickchoo/cs4152/mahsjong/source/MJPile.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/mahsjong.dir/build.make CMakeFiles/mahsjong.dir/users/patrickchoo/cs4152/mahsjong/source/MJPile.cpp.o
+.PHONY : users/patrickchoo/cs4152/mahsjong/source/MJPile.cpp.o
 
-Users/patrickchoo/cs4152/mahsjong/source/MJSettingScene.i: Users/patrickchoo/cs4152/mahsjong/source/MJSettingScene.cpp.i
-.PHONY : Users/patrickchoo/cs4152/mahsjong/source/MJSettingScene.i
+users/patrickchoo/cs4152/mahsjong/source/MJPile.i: users/patrickchoo/cs4152/mahsjong/source/MJPile.cpp.i
+.PHONY : users/patrickchoo/cs4152/mahsjong/source/MJPile.i
 
 # target to preprocess a source file
-Users/patrickchoo/cs4152/mahsjong/source/MJSettingScene.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/mahsjong.dir/build.make CMakeFiles/mahsjong.dir/Users/patrickchoo/cs4152/mahsjong/source/MJSettingScene.cpp.i
-.PHONY : Users/patrickchoo/cs4152/mahsjong/source/MJSettingScene.cpp.i
+users/patrickchoo/cs4152/mahsjong/source/MJPile.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/mahsjong.dir/build.make CMakeFiles/mahsjong.dir/users/patrickchoo/cs4152/mahsjong/source/MJPile.cpp.i
+.PHONY : users/patrickchoo/cs4152/mahsjong/source/MJPile.cpp.i
 
-Users/patrickchoo/cs4152/mahsjong/source/MJSettingScene.s: Users/patrickchoo/cs4152/mahsjong/source/MJSettingScene.cpp.s
-.PHONY : Users/patrickchoo/cs4152/mahsjong/source/MJSettingScene.s
+users/patrickchoo/cs4152/mahsjong/source/MJPile.s: users/patrickchoo/cs4152/mahsjong/source/MJPile.cpp.s
+.PHONY : users/patrickchoo/cs4152/mahsjong/source/MJPile.s
 
 # target to generate assembly for a file
-Users/patrickchoo/cs4152/mahsjong/source/MJSettingScene.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/mahsjong.dir/build.make CMakeFiles/mahsjong.dir/Users/patrickchoo/cs4152/mahsjong/source/MJSettingScene.cpp.s
-.PHONY : Users/patrickchoo/cs4152/mahsjong/source/MJSettingScene.cpp.s
+users/patrickchoo/cs4152/mahsjong/source/MJPile.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/mahsjong.dir/build.make CMakeFiles/mahsjong.dir/users/patrickchoo/cs4152/mahsjong/source/MJPile.cpp.s
+.PHONY : users/patrickchoo/cs4152/mahsjong/source/MJPile.cpp.s
 
-Users/patrickchoo/cs4152/mahsjong/source/MJTileSet.o: Users/patrickchoo/cs4152/mahsjong/source/MJTileSet.cpp.o
-.PHONY : Users/patrickchoo/cs4152/mahsjong/source/MJTileSet.o
+users/patrickchoo/cs4152/mahsjong/source/MJPileUINode.o: users/patrickchoo/cs4152/mahsjong/source/MJPileUINode.cpp.o
+.PHONY : users/patrickchoo/cs4152/mahsjong/source/MJPileUINode.o
 
 # target to build an object file
-Users/patrickchoo/cs4152/mahsjong/source/MJTileSet.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/mahsjong.dir/build.make CMakeFiles/mahsjong.dir/Users/patrickchoo/cs4152/mahsjong/source/MJTileSet.cpp.o
-.PHONY : Users/patrickchoo/cs4152/mahsjong/source/MJTileSet.cpp.o
+users/patrickchoo/cs4152/mahsjong/source/MJPileUINode.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/mahsjong.dir/build.make CMakeFiles/mahsjong.dir/users/patrickchoo/cs4152/mahsjong/source/MJPileUINode.cpp.o
+.PHONY : users/patrickchoo/cs4152/mahsjong/source/MJPileUINode.cpp.o
 
-Users/patrickchoo/cs4152/mahsjong/source/MJTileSet.i: Users/patrickchoo/cs4152/mahsjong/source/MJTileSet.cpp.i
-.PHONY : Users/patrickchoo/cs4152/mahsjong/source/MJTileSet.i
+users/patrickchoo/cs4152/mahsjong/source/MJPileUINode.i: users/patrickchoo/cs4152/mahsjong/source/MJPileUINode.cpp.i
+.PHONY : users/patrickchoo/cs4152/mahsjong/source/MJPileUINode.i
 
 # target to preprocess a source file
-Users/patrickchoo/cs4152/mahsjong/source/MJTileSet.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/mahsjong.dir/build.make CMakeFiles/mahsjong.dir/Users/patrickchoo/cs4152/mahsjong/source/MJTileSet.cpp.i
-.PHONY : Users/patrickchoo/cs4152/mahsjong/source/MJTileSet.cpp.i
+users/patrickchoo/cs4152/mahsjong/source/MJPileUINode.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/mahsjong.dir/build.make CMakeFiles/mahsjong.dir/users/patrickchoo/cs4152/mahsjong/source/MJPileUINode.cpp.i
+.PHONY : users/patrickchoo/cs4152/mahsjong/source/MJPileUINode.cpp.i
 
-Users/patrickchoo/cs4152/mahsjong/source/MJTileSet.s: Users/patrickchoo/cs4152/mahsjong/source/MJTileSet.cpp.s
-.PHONY : Users/patrickchoo/cs4152/mahsjong/source/MJTileSet.s
+users/patrickchoo/cs4152/mahsjong/source/MJPileUINode.s: users/patrickchoo/cs4152/mahsjong/source/MJPileUINode.cpp.s
+.PHONY : users/patrickchoo/cs4152/mahsjong/source/MJPileUINode.s
 
 # target to generate assembly for a file
-Users/patrickchoo/cs4152/mahsjong/source/MJTileSet.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/mahsjong.dir/build.make CMakeFiles/mahsjong.dir/Users/patrickchoo/cs4152/mahsjong/source/MJTileSet.cpp.s
-.PHONY : Users/patrickchoo/cs4152/mahsjong/source/MJTileSet.cpp.s
+users/patrickchoo/cs4152/mahsjong/source/MJPileUINode.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/mahsjong.dir/build.make CMakeFiles/mahsjong.dir/users/patrickchoo/cs4152/mahsjong/source/MJPileUINode.cpp.s
+.PHONY : users/patrickchoo/cs4152/mahsjong/source/MJPileUINode.cpp.s
 
-Users/patrickchoo/cs4152/mahsjong/source/main.o: Users/patrickchoo/cs4152/mahsjong/source/main.cpp.o
-.PHONY : Users/patrickchoo/cs4152/mahsjong/source/main.o
+users/patrickchoo/cs4152/mahsjong/source/MJPlayer.o: users/patrickchoo/cs4152/mahsjong/source/MJPlayer.cpp.o
+.PHONY : users/patrickchoo/cs4152/mahsjong/source/MJPlayer.o
 
 # target to build an object file
-Users/patrickchoo/cs4152/mahsjong/source/main.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/mahsjong.dir/build.make CMakeFiles/mahsjong.dir/Users/patrickchoo/cs4152/mahsjong/source/main.cpp.o
-.PHONY : Users/patrickchoo/cs4152/mahsjong/source/main.cpp.o
+users/patrickchoo/cs4152/mahsjong/source/MJPlayer.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/mahsjong.dir/build.make CMakeFiles/mahsjong.dir/users/patrickchoo/cs4152/mahsjong/source/MJPlayer.cpp.o
+.PHONY : users/patrickchoo/cs4152/mahsjong/source/MJPlayer.cpp.o
 
-Users/patrickchoo/cs4152/mahsjong/source/main.i: Users/patrickchoo/cs4152/mahsjong/source/main.cpp.i
-.PHONY : Users/patrickchoo/cs4152/mahsjong/source/main.i
+users/patrickchoo/cs4152/mahsjong/source/MJPlayer.i: users/patrickchoo/cs4152/mahsjong/source/MJPlayer.cpp.i
+.PHONY : users/patrickchoo/cs4152/mahsjong/source/MJPlayer.i
 
 # target to preprocess a source file
-Users/patrickchoo/cs4152/mahsjong/source/main.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/mahsjong.dir/build.make CMakeFiles/mahsjong.dir/Users/patrickchoo/cs4152/mahsjong/source/main.cpp.i
-.PHONY : Users/patrickchoo/cs4152/mahsjong/source/main.cpp.i
+users/patrickchoo/cs4152/mahsjong/source/MJPlayer.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/mahsjong.dir/build.make CMakeFiles/mahsjong.dir/users/patrickchoo/cs4152/mahsjong/source/MJPlayer.cpp.i
+.PHONY : users/patrickchoo/cs4152/mahsjong/source/MJPlayer.cpp.i
 
-Users/patrickchoo/cs4152/mahsjong/source/main.s: Users/patrickchoo/cs4152/mahsjong/source/main.cpp.s
-.PHONY : Users/patrickchoo/cs4152/mahsjong/source/main.s
+users/patrickchoo/cs4152/mahsjong/source/MJPlayer.s: users/patrickchoo/cs4152/mahsjong/source/MJPlayer.cpp.s
+.PHONY : users/patrickchoo/cs4152/mahsjong/source/MJPlayer.s
 
 # target to generate assembly for a file
-Users/patrickchoo/cs4152/mahsjong/source/main.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/mahsjong.dir/build.make CMakeFiles/mahsjong.dir/Users/patrickchoo/cs4152/mahsjong/source/main.cpp.s
-.PHONY : Users/patrickchoo/cs4152/mahsjong/source/main.cpp.s
+users/patrickchoo/cs4152/mahsjong/source/MJPlayer.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/mahsjong.dir/build.make CMakeFiles/mahsjong.dir/users/patrickchoo/cs4152/mahsjong/source/MJPlayer.cpp.s
+.PHONY : users/patrickchoo/cs4152/mahsjong/source/MJPlayer.cpp.s
+
+users/patrickchoo/cs4152/mahsjong/source/MJScoreManager.o: users/patrickchoo/cs4152/mahsjong/source/MJScoreManager.cpp.o
+.PHONY : users/patrickchoo/cs4152/mahsjong/source/MJScoreManager.o
+
+# target to build an object file
+users/patrickchoo/cs4152/mahsjong/source/MJScoreManager.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/mahsjong.dir/build.make CMakeFiles/mahsjong.dir/users/patrickchoo/cs4152/mahsjong/source/MJScoreManager.cpp.o
+.PHONY : users/patrickchoo/cs4152/mahsjong/source/MJScoreManager.cpp.o
+
+users/patrickchoo/cs4152/mahsjong/source/MJScoreManager.i: users/patrickchoo/cs4152/mahsjong/source/MJScoreManager.cpp.i
+.PHONY : users/patrickchoo/cs4152/mahsjong/source/MJScoreManager.i
+
+# target to preprocess a source file
+users/patrickchoo/cs4152/mahsjong/source/MJScoreManager.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/mahsjong.dir/build.make CMakeFiles/mahsjong.dir/users/patrickchoo/cs4152/mahsjong/source/MJScoreManager.cpp.i
+.PHONY : users/patrickchoo/cs4152/mahsjong/source/MJScoreManager.cpp.i
+
+users/patrickchoo/cs4152/mahsjong/source/MJScoreManager.s: users/patrickchoo/cs4152/mahsjong/source/MJScoreManager.cpp.s
+.PHONY : users/patrickchoo/cs4152/mahsjong/source/MJScoreManager.s
+
+# target to generate assembly for a file
+users/patrickchoo/cs4152/mahsjong/source/MJScoreManager.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/mahsjong.dir/build.make CMakeFiles/mahsjong.dir/users/patrickchoo/cs4152/mahsjong/source/MJScoreManager.cpp.s
+.PHONY : users/patrickchoo/cs4152/mahsjong/source/MJScoreManager.cpp.s
+
+users/patrickchoo/cs4152/mahsjong/source/MJSettingScene.o: users/patrickchoo/cs4152/mahsjong/source/MJSettingScene.cpp.o
+.PHONY : users/patrickchoo/cs4152/mahsjong/source/MJSettingScene.o
+
+# target to build an object file
+users/patrickchoo/cs4152/mahsjong/source/MJSettingScene.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/mahsjong.dir/build.make CMakeFiles/mahsjong.dir/users/patrickchoo/cs4152/mahsjong/source/MJSettingScene.cpp.o
+.PHONY : users/patrickchoo/cs4152/mahsjong/source/MJSettingScene.cpp.o
+
+users/patrickchoo/cs4152/mahsjong/source/MJSettingScene.i: users/patrickchoo/cs4152/mahsjong/source/MJSettingScene.cpp.i
+.PHONY : users/patrickchoo/cs4152/mahsjong/source/MJSettingScene.i
+
+# target to preprocess a source file
+users/patrickchoo/cs4152/mahsjong/source/MJSettingScene.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/mahsjong.dir/build.make CMakeFiles/mahsjong.dir/users/patrickchoo/cs4152/mahsjong/source/MJSettingScene.cpp.i
+.PHONY : users/patrickchoo/cs4152/mahsjong/source/MJSettingScene.cpp.i
+
+users/patrickchoo/cs4152/mahsjong/source/MJSettingScene.s: users/patrickchoo/cs4152/mahsjong/source/MJSettingScene.cpp.s
+.PHONY : users/patrickchoo/cs4152/mahsjong/source/MJSettingScene.s
+
+# target to generate assembly for a file
+users/patrickchoo/cs4152/mahsjong/source/MJSettingScene.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/mahsjong.dir/build.make CMakeFiles/mahsjong.dir/users/patrickchoo/cs4152/mahsjong/source/MJSettingScene.cpp.s
+.PHONY : users/patrickchoo/cs4152/mahsjong/source/MJSettingScene.cpp.s
+
+users/patrickchoo/cs4152/mahsjong/source/MJTileSet.o: users/patrickchoo/cs4152/mahsjong/source/MJTileSet.cpp.o
+.PHONY : users/patrickchoo/cs4152/mahsjong/source/MJTileSet.o
+
+# target to build an object file
+users/patrickchoo/cs4152/mahsjong/source/MJTileSet.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/mahsjong.dir/build.make CMakeFiles/mahsjong.dir/users/patrickchoo/cs4152/mahsjong/source/MJTileSet.cpp.o
+.PHONY : users/patrickchoo/cs4152/mahsjong/source/MJTileSet.cpp.o
+
+users/patrickchoo/cs4152/mahsjong/source/MJTileSet.i: users/patrickchoo/cs4152/mahsjong/source/MJTileSet.cpp.i
+.PHONY : users/patrickchoo/cs4152/mahsjong/source/MJTileSet.i
+
+# target to preprocess a source file
+users/patrickchoo/cs4152/mahsjong/source/MJTileSet.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/mahsjong.dir/build.make CMakeFiles/mahsjong.dir/users/patrickchoo/cs4152/mahsjong/source/MJTileSet.cpp.i
+.PHONY : users/patrickchoo/cs4152/mahsjong/source/MJTileSet.cpp.i
+
+users/patrickchoo/cs4152/mahsjong/source/MJTileSet.s: users/patrickchoo/cs4152/mahsjong/source/MJTileSet.cpp.s
+.PHONY : users/patrickchoo/cs4152/mahsjong/source/MJTileSet.s
+
+# target to generate assembly for a file
+users/patrickchoo/cs4152/mahsjong/source/MJTileSet.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/mahsjong.dir/build.make CMakeFiles/mahsjong.dir/users/patrickchoo/cs4152/mahsjong/source/MJTileSet.cpp.s
+.PHONY : users/patrickchoo/cs4152/mahsjong/source/MJTileSet.cpp.s
+
+users/patrickchoo/cs4152/mahsjong/source/main.o: users/patrickchoo/cs4152/mahsjong/source/main.cpp.o
+.PHONY : users/patrickchoo/cs4152/mahsjong/source/main.o
+
+# target to build an object file
+users/patrickchoo/cs4152/mahsjong/source/main.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/mahsjong.dir/build.make CMakeFiles/mahsjong.dir/users/patrickchoo/cs4152/mahsjong/source/main.cpp.o
+.PHONY : users/patrickchoo/cs4152/mahsjong/source/main.cpp.o
+
+users/patrickchoo/cs4152/mahsjong/source/main.i: users/patrickchoo/cs4152/mahsjong/source/main.cpp.i
+.PHONY : users/patrickchoo/cs4152/mahsjong/source/main.i
+
+# target to preprocess a source file
+users/patrickchoo/cs4152/mahsjong/source/main.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/mahsjong.dir/build.make CMakeFiles/mahsjong.dir/users/patrickchoo/cs4152/mahsjong/source/main.cpp.i
+.PHONY : users/patrickchoo/cs4152/mahsjong/source/main.cpp.i
+
+users/patrickchoo/cs4152/mahsjong/source/main.s: users/patrickchoo/cs4152/mahsjong/source/main.cpp.s
+.PHONY : users/patrickchoo/cs4152/mahsjong/source/main.s
+
+# target to generate assembly for a file
+users/patrickchoo/cs4152/mahsjong/source/main.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/mahsjong.dir/build.make CMakeFiles/mahsjong.dir/users/patrickchoo/cs4152/mahsjong/source/main.cpp.s
+.PHONY : users/patrickchoo/cs4152/mahsjong/source/main.cpp.s
 
 # Help Target
 help:
@@ -1165,66 +1261,78 @@ help:
 	@echo "... vorbis"
 	@echo "... vorbisenc"
 	@echo "... vorbisfile"
-	@echo "... Users/patrickchoo/cs4152/mahsjong/source/MJAnimationController.o"
-	@echo "... Users/patrickchoo/cs4152/mahsjong/source/MJAnimationController.i"
-	@echo "... Users/patrickchoo/cs4152/mahsjong/source/MJAnimationController.s"
-	@echo "... Users/patrickchoo/cs4152/mahsjong/source/MJApp.o"
-	@echo "... Users/patrickchoo/cs4152/mahsjong/source/MJApp.i"
-	@echo "... Users/patrickchoo/cs4152/mahsjong/source/MJApp.s"
-	@echo "... Users/patrickchoo/cs4152/mahsjong/source/MJAudioController.o"
-	@echo "... Users/patrickchoo/cs4152/mahsjong/source/MJAudioController.i"
-	@echo "... Users/patrickchoo/cs4152/mahsjong/source/MJAudioController.s"
-	@echo "... Users/patrickchoo/cs4152/mahsjong/source/MJClientScene.o"
-	@echo "... Users/patrickchoo/cs4152/mahsjong/source/MJClientScene.i"
-	@echo "... Users/patrickchoo/cs4152/mahsjong/source/MJClientScene.s"
-	@echo "... Users/patrickchoo/cs4152/mahsjong/source/MJDiscardPile.o"
-	@echo "... Users/patrickchoo/cs4152/mahsjong/source/MJDiscardPile.i"
-	@echo "... Users/patrickchoo/cs4152/mahsjong/source/MJDiscardPile.s"
-	@echo "... Users/patrickchoo/cs4152/mahsjong/source/MJDiscardUIScene.o"
-	@echo "... Users/patrickchoo/cs4152/mahsjong/source/MJDiscardUIScene.i"
-	@echo "... Users/patrickchoo/cs4152/mahsjong/source/MJDiscardUIScene.s"
-	@echo "... Users/patrickchoo/cs4152/mahsjong/source/MJGameOverScene.o"
-	@echo "... Users/patrickchoo/cs4152/mahsjong/source/MJGameOverScene.i"
-	@echo "... Users/patrickchoo/cs4152/mahsjong/source/MJGameOverScene.s"
-	@echo "... Users/patrickchoo/cs4152/mahsjong/source/MJGameScene.o"
-	@echo "... Users/patrickchoo/cs4152/mahsjong/source/MJGameScene.i"
-	@echo "... Users/patrickchoo/cs4152/mahsjong/source/MJGameScene.s"
-	@echo "... Users/patrickchoo/cs4152/mahsjong/source/MJHostScene.o"
-	@echo "... Users/patrickchoo/cs4152/mahsjong/source/MJHostScene.i"
-	@echo "... Users/patrickchoo/cs4152/mahsjong/source/MJHostScene.s"
-	@echo "... Users/patrickchoo/cs4152/mahsjong/source/MJInputController.o"
-	@echo "... Users/patrickchoo/cs4152/mahsjong/source/MJInputController.i"
-	@echo "... Users/patrickchoo/cs4152/mahsjong/source/MJInputController.s"
-	@echo "... Users/patrickchoo/cs4152/mahsjong/source/MJMatchController.o"
-	@echo "... Users/patrickchoo/cs4152/mahsjong/source/MJMatchController.i"
-	@echo "... Users/patrickchoo/cs4152/mahsjong/source/MJMatchController.s"
-	@echo "... Users/patrickchoo/cs4152/mahsjong/source/MJMenuScene.o"
-	@echo "... Users/patrickchoo/cs4152/mahsjong/source/MJMenuScene.i"
-	@echo "... Users/patrickchoo/cs4152/mahsjong/source/MJMenuScene.s"
-	@echo "... Users/patrickchoo/cs4152/mahsjong/source/MJNetworkController.o"
-	@echo "... Users/patrickchoo/cs4152/mahsjong/source/MJNetworkController.i"
-	@echo "... Users/patrickchoo/cs4152/mahsjong/source/MJNetworkController.s"
-	@echo "... Users/patrickchoo/cs4152/mahsjong/source/MJPauseScene.o"
-	@echo "... Users/patrickchoo/cs4152/mahsjong/source/MJPauseScene.i"
-	@echo "... Users/patrickchoo/cs4152/mahsjong/source/MJPauseScene.s"
-	@echo "... Users/patrickchoo/cs4152/mahsjong/source/MJPile.o"
-	@echo "... Users/patrickchoo/cs4152/mahsjong/source/MJPile.i"
-	@echo "... Users/patrickchoo/cs4152/mahsjong/source/MJPile.s"
-	@echo "... Users/patrickchoo/cs4152/mahsjong/source/MJPlayer.o"
-	@echo "... Users/patrickchoo/cs4152/mahsjong/source/MJPlayer.i"
-	@echo "... Users/patrickchoo/cs4152/mahsjong/source/MJPlayer.s"
-	@echo "... Users/patrickchoo/cs4152/mahsjong/source/MJScoreManager.o"
-	@echo "... Users/patrickchoo/cs4152/mahsjong/source/MJScoreManager.i"
-	@echo "... Users/patrickchoo/cs4152/mahsjong/source/MJScoreManager.s"
-	@echo "... Users/patrickchoo/cs4152/mahsjong/source/MJSettingScene.o"
-	@echo "... Users/patrickchoo/cs4152/mahsjong/source/MJSettingScene.i"
-	@echo "... Users/patrickchoo/cs4152/mahsjong/source/MJSettingScene.s"
-	@echo "... Users/patrickchoo/cs4152/mahsjong/source/MJTileSet.o"
-	@echo "... Users/patrickchoo/cs4152/mahsjong/source/MJTileSet.i"
-	@echo "... Users/patrickchoo/cs4152/mahsjong/source/MJTileSet.s"
-	@echo "... Users/patrickchoo/cs4152/mahsjong/source/main.o"
-	@echo "... Users/patrickchoo/cs4152/mahsjong/source/main.i"
-	@echo "... Users/patrickchoo/cs4152/mahsjong/source/main.s"
+	@echo "... users/patrickchoo/cs4152/mahsjong/source/MJAnimatedNode.o"
+	@echo "... users/patrickchoo/cs4152/mahsjong/source/MJAnimatedNode.i"
+	@echo "... users/patrickchoo/cs4152/mahsjong/source/MJAnimatedNode.s"
+	@echo "... users/patrickchoo/cs4152/mahsjong/source/MJAnimationController.o"
+	@echo "... users/patrickchoo/cs4152/mahsjong/source/MJAnimationController.i"
+	@echo "... users/patrickchoo/cs4152/mahsjong/source/MJAnimationController.s"
+	@echo "... users/patrickchoo/cs4152/mahsjong/source/MJApp.o"
+	@echo "... users/patrickchoo/cs4152/mahsjong/source/MJApp.i"
+	@echo "... users/patrickchoo/cs4152/mahsjong/source/MJApp.s"
+	@echo "... users/patrickchoo/cs4152/mahsjong/source/MJAudioController.o"
+	@echo "... users/patrickchoo/cs4152/mahsjong/source/MJAudioController.i"
+	@echo "... users/patrickchoo/cs4152/mahsjong/source/MJAudioController.s"
+	@echo "... users/patrickchoo/cs4152/mahsjong/source/MJClientScene.o"
+	@echo "... users/patrickchoo/cs4152/mahsjong/source/MJClientScene.i"
+	@echo "... users/patrickchoo/cs4152/mahsjong/source/MJClientScene.s"
+	@echo "... users/patrickchoo/cs4152/mahsjong/source/MJDiscardPile.o"
+	@echo "... users/patrickchoo/cs4152/mahsjong/source/MJDiscardPile.i"
+	@echo "... users/patrickchoo/cs4152/mahsjong/source/MJDiscardPile.s"
+	@echo "... users/patrickchoo/cs4152/mahsjong/source/MJDiscardUINode.o"
+	@echo "... users/patrickchoo/cs4152/mahsjong/source/MJDiscardUINode.i"
+	@echo "... users/patrickchoo/cs4152/mahsjong/source/MJDiscardUINode.s"
+	@echo "... users/patrickchoo/cs4152/mahsjong/source/MJDiscardUIScene.o"
+	@echo "... users/patrickchoo/cs4152/mahsjong/source/MJDiscardUIScene.i"
+	@echo "... users/patrickchoo/cs4152/mahsjong/source/MJDiscardUIScene.s"
+	@echo "... users/patrickchoo/cs4152/mahsjong/source/MJGameOverScene.o"
+	@echo "... users/patrickchoo/cs4152/mahsjong/source/MJGameOverScene.i"
+	@echo "... users/patrickchoo/cs4152/mahsjong/source/MJGameOverScene.s"
+	@echo "... users/patrickchoo/cs4152/mahsjong/source/MJGameScene.o"
+	@echo "... users/patrickchoo/cs4152/mahsjong/source/MJGameScene.i"
+	@echo "... users/patrickchoo/cs4152/mahsjong/source/MJGameScene.s"
+	@echo "... users/patrickchoo/cs4152/mahsjong/source/MJHostScene.o"
+	@echo "... users/patrickchoo/cs4152/mahsjong/source/MJHostScene.i"
+	@echo "... users/patrickchoo/cs4152/mahsjong/source/MJHostScene.s"
+	@echo "... users/patrickchoo/cs4152/mahsjong/source/MJInputController.o"
+	@echo "... users/patrickchoo/cs4152/mahsjong/source/MJInputController.i"
+	@echo "... users/patrickchoo/cs4152/mahsjong/source/MJInputController.s"
+	@echo "... users/patrickchoo/cs4152/mahsjong/source/MJLoadingScene.o"
+	@echo "... users/patrickchoo/cs4152/mahsjong/source/MJLoadingScene.i"
+	@echo "... users/patrickchoo/cs4152/mahsjong/source/MJLoadingScene.s"
+	@echo "... users/patrickchoo/cs4152/mahsjong/source/MJMatchController.o"
+	@echo "... users/patrickchoo/cs4152/mahsjong/source/MJMatchController.i"
+	@echo "... users/patrickchoo/cs4152/mahsjong/source/MJMatchController.s"
+	@echo "... users/patrickchoo/cs4152/mahsjong/source/MJMenuScene.o"
+	@echo "... users/patrickchoo/cs4152/mahsjong/source/MJMenuScene.i"
+	@echo "... users/patrickchoo/cs4152/mahsjong/source/MJMenuScene.s"
+	@echo "... users/patrickchoo/cs4152/mahsjong/source/MJNetworkController.o"
+	@echo "... users/patrickchoo/cs4152/mahsjong/source/MJNetworkController.i"
+	@echo "... users/patrickchoo/cs4152/mahsjong/source/MJNetworkController.s"
+	@echo "... users/patrickchoo/cs4152/mahsjong/source/MJPauseScene.o"
+	@echo "... users/patrickchoo/cs4152/mahsjong/source/MJPauseScene.i"
+	@echo "... users/patrickchoo/cs4152/mahsjong/source/MJPauseScene.s"
+	@echo "... users/patrickchoo/cs4152/mahsjong/source/MJPile.o"
+	@echo "... users/patrickchoo/cs4152/mahsjong/source/MJPile.i"
+	@echo "... users/patrickchoo/cs4152/mahsjong/source/MJPile.s"
+	@echo "... users/patrickchoo/cs4152/mahsjong/source/MJPileUINode.o"
+	@echo "... users/patrickchoo/cs4152/mahsjong/source/MJPileUINode.i"
+	@echo "... users/patrickchoo/cs4152/mahsjong/source/MJPileUINode.s"
+	@echo "... users/patrickchoo/cs4152/mahsjong/source/MJPlayer.o"
+	@echo "... users/patrickchoo/cs4152/mahsjong/source/MJPlayer.i"
+	@echo "... users/patrickchoo/cs4152/mahsjong/source/MJPlayer.s"
+	@echo "... users/patrickchoo/cs4152/mahsjong/source/MJScoreManager.o"
+	@echo "... users/patrickchoo/cs4152/mahsjong/source/MJScoreManager.i"
+	@echo "... users/patrickchoo/cs4152/mahsjong/source/MJScoreManager.s"
+	@echo "... users/patrickchoo/cs4152/mahsjong/source/MJSettingScene.o"
+	@echo "... users/patrickchoo/cs4152/mahsjong/source/MJSettingScene.i"
+	@echo "... users/patrickchoo/cs4152/mahsjong/source/MJSettingScene.s"
+	@echo "... users/patrickchoo/cs4152/mahsjong/source/MJTileSet.o"
+	@echo "... users/patrickchoo/cs4152/mahsjong/source/MJTileSet.i"
+	@echo "... users/patrickchoo/cs4152/mahsjong/source/MJTileSet.s"
+	@echo "... users/patrickchoo/cs4152/mahsjong/source/main.o"
+	@echo "... users/patrickchoo/cs4152/mahsjong/source/main.i"
+	@echo "... users/patrickchoo/cs4152/mahsjong/source/main.s"
 .PHONY : help
 
 

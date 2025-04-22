@@ -1,4 +1,4 @@
-# Install script for directory: /Users/patrickchoo/cs4152/cugl/sdlapp/buildfiles/cmake/sdl2atk/external/flac/src
+# Install script for directory: /users/patrickchoo/cs4152/cugl/sdlapp/buildfiles/cmake/sdl2atk/external/flac/src
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -39,18 +39,18 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
-  include("/Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/cmake_install.cmake")
-  include("/Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/replaygain_analysis/cmake_install.cmake")
-  include("/Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/replaygain_synthesis/cmake_install.cmake")
-  include("/Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/getopt/cmake_install.cmake")
-  include("/Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/utf8/cmake_install.cmake")
-  include("/Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/grabbag/cmake_install.cmake")
+  include("/users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/cmake_install.cmake")
+  include("/users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/replaygain_analysis/cmake_install.cmake")
+  include("/users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/replaygain_synthesis/cmake_install.cmake")
+  include("/users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/getopt/cmake_install.cmake")
+  include("/users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/utf8/cmake_install.cmake")
+  include("/users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/grabbag/cmake_install.cmake")
 
 endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
 if(CMAKE_INSTALL_LOCAL_ONLY)
-  file(WRITE "/Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/install_local_manifest.txt"
+  file(WRITE "/users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/install_local_manifest.txt"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")
 endif()

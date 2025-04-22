@@ -4,7 +4,7 @@
 # compile C with /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc
 C_DEFINES = -DFT2_BUILD_LIBRARY -DFT_PUBLIC_FUNCTION_ATTRIBUTE=""
 
-C_INCLUDES = -I/Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2ttf/external/freetype/include -I/Users/patrickchoo/cs4152/cugl/sdlapp/buildfiles/cmake/../../external/freetype/include -I/Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2ttf/external/freetype/include/freetype/config -I/Users/patrickchoo/cs4152/cugl/sdlapp/buildfiles/cmake/../../external/harfbuzz/src
+C_INCLUDES = -I/users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2ttf/external/freetype/include -I/users/patrickchoo/cs4152/cugl/sdlapp/buildfiles/cmake/../../external/freetype/include -I/users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2ttf/external/freetype/include/freetype/config -I/users/patrickchoo/cs4152/cugl/sdlapp/buildfiles/cmake/../../external/harfbuzz/src
 
 C_FLAGSarm64 =  -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.2.sdk -mmacosx-version-min=15.0 -fPIC -fvisibility=hidden
 

@@ -57,10 +57,10 @@ RM = /opt/homebrew/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /Users/patrickchoo/cs4152/mahsjong/build/cmake
+CMAKE_SOURCE_DIR = /users/patrickchoo/cs4152/mahsjong/build/cmake
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake
+CMAKE_BINARY_DIR = /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -68,7 +68,7 @@ CMAKE_BINARY_DIR = /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake
 # Special rule for the target package
 package: preinstall
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Run CPack packaging tool..."
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && /opt/homebrew/bin/cpack --config ./CPackConfig.cmake
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && /opt/homebrew/bin/cpack --config ./CPackConfig.cmake
 .PHONY : package
 
 # Special rule for the target package
@@ -78,7 +78,7 @@ package/fast: package
 # Special rule for the target package_source
 package_source:
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Run CPack packaging tool for source..."
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && /opt/homebrew/bin/cpack --config ./CPackSourceConfig.cmake /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CPackSourceConfig.cmake
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && /opt/homebrew/bin/cpack --config ./CPackSourceConfig.cmake /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CPackSourceConfig.cmake
 .PHONY : package_source
 
 # Special rule for the target package_source
@@ -152,14 +152,14 @@ install/strip/fast: preinstall/fast
 
 # The main all target
 all: cmake_check_build_system
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(CMAKE_COMMAND) -E cmake_progress_start /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/external/libdatachannel/deps/libjuice//CMakeFiles/progress.marks
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 cugl.dir/external/libdatachannel/deps/libjuice/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles 0
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(CMAKE_COMMAND) -E cmake_progress_start /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/external/libdatachannel/deps/libjuice//CMakeFiles/progress.marks
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 cugl.dir/external/libdatachannel/deps/libjuice/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 cugl.dir/external/libdatachannel/deps/libjuice/clean
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 cugl.dir/external/libdatachannel/deps/libjuice/clean
 .PHONY : clean
 
 # The main clean target
@@ -168,22 +168,22 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 cugl.dir/external/libdatachannel/deps/libjuice/preinstall
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 cugl.dir/external/libdatachannel/deps/libjuice/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 cugl.dir/external/libdatachannel/deps/libjuice/preinstall
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 cugl.dir/external/libdatachannel/deps/libjuice/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
 # Convenience name for target.
 cugl.dir/external/libdatachannel/deps/libjuice/CMakeFiles/juice.dir/rule:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 cugl.dir/external/libdatachannel/deps/libjuice/CMakeFiles/juice.dir/rule
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 cugl.dir/external/libdatachannel/deps/libjuice/CMakeFiles/juice.dir/rule
 .PHONY : cugl.dir/external/libdatachannel/deps/libjuice/CMakeFiles/juice.dir/rule
 
 # Convenience name for target.
@@ -192,488 +192,488 @@ juice: cugl.dir/external/libdatachannel/deps/libjuice/CMakeFiles/juice.dir/rule
 
 # fast build rule for target.
 juice/fast:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/libjuice/CMakeFiles/juice.dir/build.make cugl.dir/external/libdatachannel/deps/libjuice/CMakeFiles/juice.dir/build
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/libjuice/CMakeFiles/juice.dir/build.make cugl.dir/external/libdatachannel/deps/libjuice/CMakeFiles/juice.dir/build
 .PHONY : juice/fast
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/addr.o: Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/addr.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/addr.o
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/addr.o: users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/addr.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/addr.o
 
 # target to build an object file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/addr.c.o:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/libjuice/CMakeFiles/juice.dir/build.make cugl.dir/external/libdatachannel/deps/libjuice/CMakeFiles/juice.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/addr.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/addr.c.o
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/addr.c.o:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/libjuice/CMakeFiles/juice.dir/build.make cugl.dir/external/libdatachannel/deps/libjuice/CMakeFiles/juice.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/addr.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/addr.c.o
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/addr.i: Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/addr.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/addr.i
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/addr.i: users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/addr.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/addr.i
 
 # target to preprocess a source file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/addr.c.i:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/libjuice/CMakeFiles/juice.dir/build.make cugl.dir/external/libdatachannel/deps/libjuice/CMakeFiles/juice.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/addr.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/addr.c.i
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/addr.c.i:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/libjuice/CMakeFiles/juice.dir/build.make cugl.dir/external/libdatachannel/deps/libjuice/CMakeFiles/juice.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/addr.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/addr.c.i
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/addr.s: Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/addr.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/addr.s
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/addr.s: users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/addr.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/addr.s
 
 # target to generate assembly for a file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/addr.c.s:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/libjuice/CMakeFiles/juice.dir/build.make cugl.dir/external/libdatachannel/deps/libjuice/CMakeFiles/juice.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/addr.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/addr.c.s
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/addr.c.s:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/libjuice/CMakeFiles/juice.dir/build.make cugl.dir/external/libdatachannel/deps/libjuice/CMakeFiles/juice.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/addr.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/addr.c.s
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/agent.o: Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/agent.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/agent.o
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/agent.o: users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/agent.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/agent.o
 
 # target to build an object file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/agent.c.o:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/libjuice/CMakeFiles/juice.dir/build.make cugl.dir/external/libdatachannel/deps/libjuice/CMakeFiles/juice.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/agent.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/agent.c.o
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/agent.c.o:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/libjuice/CMakeFiles/juice.dir/build.make cugl.dir/external/libdatachannel/deps/libjuice/CMakeFiles/juice.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/agent.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/agent.c.o
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/agent.i: Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/agent.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/agent.i
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/agent.i: users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/agent.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/agent.i
 
 # target to preprocess a source file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/agent.c.i:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/libjuice/CMakeFiles/juice.dir/build.make cugl.dir/external/libdatachannel/deps/libjuice/CMakeFiles/juice.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/agent.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/agent.c.i
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/agent.c.i:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/libjuice/CMakeFiles/juice.dir/build.make cugl.dir/external/libdatachannel/deps/libjuice/CMakeFiles/juice.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/agent.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/agent.c.i
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/agent.s: Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/agent.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/agent.s
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/agent.s: users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/agent.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/agent.s
 
 # target to generate assembly for a file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/agent.c.s:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/libjuice/CMakeFiles/juice.dir/build.make cugl.dir/external/libdatachannel/deps/libjuice/CMakeFiles/juice.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/agent.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/agent.c.s
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/agent.c.s:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/libjuice/CMakeFiles/juice.dir/build.make cugl.dir/external/libdatachannel/deps/libjuice/CMakeFiles/juice.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/agent.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/agent.c.s
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/base64.o: Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/base64.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/base64.o
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/base64.o: users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/base64.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/base64.o
 
 # target to build an object file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/base64.c.o:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/libjuice/CMakeFiles/juice.dir/build.make cugl.dir/external/libdatachannel/deps/libjuice/CMakeFiles/juice.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/base64.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/base64.c.o
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/base64.c.o:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/libjuice/CMakeFiles/juice.dir/build.make cugl.dir/external/libdatachannel/deps/libjuice/CMakeFiles/juice.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/base64.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/base64.c.o
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/base64.i: Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/base64.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/base64.i
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/base64.i: users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/base64.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/base64.i
 
 # target to preprocess a source file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/base64.c.i:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/libjuice/CMakeFiles/juice.dir/build.make cugl.dir/external/libdatachannel/deps/libjuice/CMakeFiles/juice.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/base64.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/base64.c.i
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/base64.c.i:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/libjuice/CMakeFiles/juice.dir/build.make cugl.dir/external/libdatachannel/deps/libjuice/CMakeFiles/juice.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/base64.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/base64.c.i
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/base64.s: Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/base64.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/base64.s
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/base64.s: users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/base64.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/base64.s
 
 # target to generate assembly for a file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/base64.c.s:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/libjuice/CMakeFiles/juice.dir/build.make cugl.dir/external/libdatachannel/deps/libjuice/CMakeFiles/juice.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/base64.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/base64.c.s
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/base64.c.s:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/libjuice/CMakeFiles/juice.dir/build.make cugl.dir/external/libdatachannel/deps/libjuice/CMakeFiles/juice.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/base64.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/base64.c.s
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/conn.o: Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/conn.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/conn.o
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/conn.o: users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/conn.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/conn.o
 
 # target to build an object file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/conn.c.o:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/libjuice/CMakeFiles/juice.dir/build.make cugl.dir/external/libdatachannel/deps/libjuice/CMakeFiles/juice.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/conn.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/conn.c.o
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/conn.c.o:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/libjuice/CMakeFiles/juice.dir/build.make cugl.dir/external/libdatachannel/deps/libjuice/CMakeFiles/juice.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/conn.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/conn.c.o
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/conn.i: Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/conn.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/conn.i
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/conn.i: users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/conn.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/conn.i
 
 # target to preprocess a source file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/conn.c.i:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/libjuice/CMakeFiles/juice.dir/build.make cugl.dir/external/libdatachannel/deps/libjuice/CMakeFiles/juice.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/conn.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/conn.c.i
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/conn.c.i:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/libjuice/CMakeFiles/juice.dir/build.make cugl.dir/external/libdatachannel/deps/libjuice/CMakeFiles/juice.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/conn.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/conn.c.i
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/conn.s: Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/conn.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/conn.s
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/conn.s: users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/conn.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/conn.s
 
 # target to generate assembly for a file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/conn.c.s:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/libjuice/CMakeFiles/juice.dir/build.make cugl.dir/external/libdatachannel/deps/libjuice/CMakeFiles/juice.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/conn.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/conn.c.s
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/conn.c.s:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/libjuice/CMakeFiles/juice.dir/build.make cugl.dir/external/libdatachannel/deps/libjuice/CMakeFiles/juice.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/conn.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/conn.c.s
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/conn_mux.o: Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/conn_mux.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/conn_mux.o
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/conn_mux.o: users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/conn_mux.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/conn_mux.o
 
 # target to build an object file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/conn_mux.c.o:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/libjuice/CMakeFiles/juice.dir/build.make cugl.dir/external/libdatachannel/deps/libjuice/CMakeFiles/juice.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/conn_mux.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/conn_mux.c.o
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/conn_mux.c.o:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/libjuice/CMakeFiles/juice.dir/build.make cugl.dir/external/libdatachannel/deps/libjuice/CMakeFiles/juice.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/conn_mux.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/conn_mux.c.o
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/conn_mux.i: Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/conn_mux.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/conn_mux.i
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/conn_mux.i: users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/conn_mux.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/conn_mux.i
 
 # target to preprocess a source file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/conn_mux.c.i:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/libjuice/CMakeFiles/juice.dir/build.make cugl.dir/external/libdatachannel/deps/libjuice/CMakeFiles/juice.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/conn_mux.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/conn_mux.c.i
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/conn_mux.c.i:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/libjuice/CMakeFiles/juice.dir/build.make cugl.dir/external/libdatachannel/deps/libjuice/CMakeFiles/juice.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/conn_mux.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/conn_mux.c.i
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/conn_mux.s: Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/conn_mux.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/conn_mux.s
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/conn_mux.s: users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/conn_mux.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/conn_mux.s
 
 # target to generate assembly for a file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/conn_mux.c.s:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/libjuice/CMakeFiles/juice.dir/build.make cugl.dir/external/libdatachannel/deps/libjuice/CMakeFiles/juice.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/conn_mux.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/conn_mux.c.s
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/conn_mux.c.s:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/libjuice/CMakeFiles/juice.dir/build.make cugl.dir/external/libdatachannel/deps/libjuice/CMakeFiles/juice.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/conn_mux.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/conn_mux.c.s
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/conn_poll.o: Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/conn_poll.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/conn_poll.o
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/conn_poll.o: users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/conn_poll.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/conn_poll.o
 
 # target to build an object file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/conn_poll.c.o:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/libjuice/CMakeFiles/juice.dir/build.make cugl.dir/external/libdatachannel/deps/libjuice/CMakeFiles/juice.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/conn_poll.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/conn_poll.c.o
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/conn_poll.c.o:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/libjuice/CMakeFiles/juice.dir/build.make cugl.dir/external/libdatachannel/deps/libjuice/CMakeFiles/juice.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/conn_poll.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/conn_poll.c.o
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/conn_poll.i: Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/conn_poll.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/conn_poll.i
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/conn_poll.i: users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/conn_poll.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/conn_poll.i
 
 # target to preprocess a source file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/conn_poll.c.i:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/libjuice/CMakeFiles/juice.dir/build.make cugl.dir/external/libdatachannel/deps/libjuice/CMakeFiles/juice.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/conn_poll.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/conn_poll.c.i
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/conn_poll.c.i:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/libjuice/CMakeFiles/juice.dir/build.make cugl.dir/external/libdatachannel/deps/libjuice/CMakeFiles/juice.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/conn_poll.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/conn_poll.c.i
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/conn_poll.s: Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/conn_poll.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/conn_poll.s
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/conn_poll.s: users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/conn_poll.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/conn_poll.s
 
 # target to generate assembly for a file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/conn_poll.c.s:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/libjuice/CMakeFiles/juice.dir/build.make cugl.dir/external/libdatachannel/deps/libjuice/CMakeFiles/juice.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/conn_poll.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/conn_poll.c.s
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/conn_poll.c.s:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/libjuice/CMakeFiles/juice.dir/build.make cugl.dir/external/libdatachannel/deps/libjuice/CMakeFiles/juice.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/conn_poll.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/conn_poll.c.s
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/conn_thread.o: Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/conn_thread.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/conn_thread.o
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/conn_thread.o: users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/conn_thread.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/conn_thread.o
 
 # target to build an object file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/conn_thread.c.o:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/libjuice/CMakeFiles/juice.dir/build.make cugl.dir/external/libdatachannel/deps/libjuice/CMakeFiles/juice.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/conn_thread.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/conn_thread.c.o
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/conn_thread.c.o:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/libjuice/CMakeFiles/juice.dir/build.make cugl.dir/external/libdatachannel/deps/libjuice/CMakeFiles/juice.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/conn_thread.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/conn_thread.c.o
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/conn_thread.i: Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/conn_thread.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/conn_thread.i
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/conn_thread.i: users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/conn_thread.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/conn_thread.i
 
 # target to preprocess a source file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/conn_thread.c.i:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/libjuice/CMakeFiles/juice.dir/build.make cugl.dir/external/libdatachannel/deps/libjuice/CMakeFiles/juice.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/conn_thread.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/conn_thread.c.i
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/conn_thread.c.i:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/libjuice/CMakeFiles/juice.dir/build.make cugl.dir/external/libdatachannel/deps/libjuice/CMakeFiles/juice.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/conn_thread.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/conn_thread.c.i
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/conn_thread.s: Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/conn_thread.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/conn_thread.s
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/conn_thread.s: users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/conn_thread.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/conn_thread.s
 
 # target to generate assembly for a file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/conn_thread.c.s:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/libjuice/CMakeFiles/juice.dir/build.make cugl.dir/external/libdatachannel/deps/libjuice/CMakeFiles/juice.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/conn_thread.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/conn_thread.c.s
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/conn_thread.c.s:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/libjuice/CMakeFiles/juice.dir/build.make cugl.dir/external/libdatachannel/deps/libjuice/CMakeFiles/juice.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/conn_thread.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/conn_thread.c.s
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/const_time.o: Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/const_time.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/const_time.o
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/const_time.o: users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/const_time.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/const_time.o
 
 # target to build an object file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/const_time.c.o:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/libjuice/CMakeFiles/juice.dir/build.make cugl.dir/external/libdatachannel/deps/libjuice/CMakeFiles/juice.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/const_time.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/const_time.c.o
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/const_time.c.o:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/libjuice/CMakeFiles/juice.dir/build.make cugl.dir/external/libdatachannel/deps/libjuice/CMakeFiles/juice.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/const_time.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/const_time.c.o
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/const_time.i: Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/const_time.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/const_time.i
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/const_time.i: users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/const_time.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/const_time.i
 
 # target to preprocess a source file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/const_time.c.i:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/libjuice/CMakeFiles/juice.dir/build.make cugl.dir/external/libdatachannel/deps/libjuice/CMakeFiles/juice.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/const_time.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/const_time.c.i
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/const_time.c.i:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/libjuice/CMakeFiles/juice.dir/build.make cugl.dir/external/libdatachannel/deps/libjuice/CMakeFiles/juice.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/const_time.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/const_time.c.i
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/const_time.s: Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/const_time.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/const_time.s
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/const_time.s: users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/const_time.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/const_time.s
 
 # target to generate assembly for a file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/const_time.c.s:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/libjuice/CMakeFiles/juice.dir/build.make cugl.dir/external/libdatachannel/deps/libjuice/CMakeFiles/juice.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/const_time.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/const_time.c.s
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/const_time.c.s:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/libjuice/CMakeFiles/juice.dir/build.make cugl.dir/external/libdatachannel/deps/libjuice/CMakeFiles/juice.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/const_time.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/const_time.c.s
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/crc32.o: Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/crc32.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/crc32.o
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/crc32.o: users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/crc32.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/crc32.o
 
 # target to build an object file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/crc32.c.o:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/libjuice/CMakeFiles/juice.dir/build.make cugl.dir/external/libdatachannel/deps/libjuice/CMakeFiles/juice.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/crc32.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/crc32.c.o
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/crc32.c.o:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/libjuice/CMakeFiles/juice.dir/build.make cugl.dir/external/libdatachannel/deps/libjuice/CMakeFiles/juice.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/crc32.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/crc32.c.o
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/crc32.i: Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/crc32.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/crc32.i
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/crc32.i: users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/crc32.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/crc32.i
 
 # target to preprocess a source file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/crc32.c.i:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/libjuice/CMakeFiles/juice.dir/build.make cugl.dir/external/libdatachannel/deps/libjuice/CMakeFiles/juice.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/crc32.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/crc32.c.i
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/crc32.c.i:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/libjuice/CMakeFiles/juice.dir/build.make cugl.dir/external/libdatachannel/deps/libjuice/CMakeFiles/juice.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/crc32.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/crc32.c.i
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/crc32.s: Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/crc32.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/crc32.s
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/crc32.s: users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/crc32.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/crc32.s
 
 # target to generate assembly for a file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/crc32.c.s:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/libjuice/CMakeFiles/juice.dir/build.make cugl.dir/external/libdatachannel/deps/libjuice/CMakeFiles/juice.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/crc32.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/crc32.c.s
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/crc32.c.s:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/libjuice/CMakeFiles/juice.dir/build.make cugl.dir/external/libdatachannel/deps/libjuice/CMakeFiles/juice.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/crc32.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/crc32.c.s
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/hash.o: Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/hash.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/hash.o
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/hash.o: users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/hash.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/hash.o
 
 # target to build an object file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/hash.c.o:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/libjuice/CMakeFiles/juice.dir/build.make cugl.dir/external/libdatachannel/deps/libjuice/CMakeFiles/juice.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/hash.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/hash.c.o
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/hash.c.o:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/libjuice/CMakeFiles/juice.dir/build.make cugl.dir/external/libdatachannel/deps/libjuice/CMakeFiles/juice.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/hash.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/hash.c.o
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/hash.i: Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/hash.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/hash.i
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/hash.i: users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/hash.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/hash.i
 
 # target to preprocess a source file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/hash.c.i:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/libjuice/CMakeFiles/juice.dir/build.make cugl.dir/external/libdatachannel/deps/libjuice/CMakeFiles/juice.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/hash.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/hash.c.i
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/hash.c.i:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/libjuice/CMakeFiles/juice.dir/build.make cugl.dir/external/libdatachannel/deps/libjuice/CMakeFiles/juice.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/hash.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/hash.c.i
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/hash.s: Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/hash.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/hash.s
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/hash.s: users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/hash.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/hash.s
 
 # target to generate assembly for a file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/hash.c.s:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/libjuice/CMakeFiles/juice.dir/build.make cugl.dir/external/libdatachannel/deps/libjuice/CMakeFiles/juice.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/hash.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/hash.c.s
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/hash.c.s:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/libjuice/CMakeFiles/juice.dir/build.make cugl.dir/external/libdatachannel/deps/libjuice/CMakeFiles/juice.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/hash.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/hash.c.s
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/hmac.o: Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/hmac.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/hmac.o
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/hmac.o: users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/hmac.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/hmac.o
 
 # target to build an object file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/hmac.c.o:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/libjuice/CMakeFiles/juice.dir/build.make cugl.dir/external/libdatachannel/deps/libjuice/CMakeFiles/juice.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/hmac.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/hmac.c.o
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/hmac.c.o:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/libjuice/CMakeFiles/juice.dir/build.make cugl.dir/external/libdatachannel/deps/libjuice/CMakeFiles/juice.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/hmac.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/hmac.c.o
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/hmac.i: Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/hmac.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/hmac.i
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/hmac.i: users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/hmac.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/hmac.i
 
 # target to preprocess a source file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/hmac.c.i:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/libjuice/CMakeFiles/juice.dir/build.make cugl.dir/external/libdatachannel/deps/libjuice/CMakeFiles/juice.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/hmac.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/hmac.c.i
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/hmac.c.i:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/libjuice/CMakeFiles/juice.dir/build.make cugl.dir/external/libdatachannel/deps/libjuice/CMakeFiles/juice.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/hmac.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/hmac.c.i
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/hmac.s: Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/hmac.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/hmac.s
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/hmac.s: users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/hmac.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/hmac.s
 
 # target to generate assembly for a file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/hmac.c.s:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/libjuice/CMakeFiles/juice.dir/build.make cugl.dir/external/libdatachannel/deps/libjuice/CMakeFiles/juice.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/hmac.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/hmac.c.s
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/hmac.c.s:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/libjuice/CMakeFiles/juice.dir/build.make cugl.dir/external/libdatachannel/deps/libjuice/CMakeFiles/juice.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/hmac.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/hmac.c.s
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/ice.o: Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/ice.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/ice.o
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/ice.o: users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/ice.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/ice.o
 
 # target to build an object file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/ice.c.o:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/libjuice/CMakeFiles/juice.dir/build.make cugl.dir/external/libdatachannel/deps/libjuice/CMakeFiles/juice.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/ice.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/ice.c.o
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/ice.c.o:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/libjuice/CMakeFiles/juice.dir/build.make cugl.dir/external/libdatachannel/deps/libjuice/CMakeFiles/juice.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/ice.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/ice.c.o
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/ice.i: Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/ice.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/ice.i
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/ice.i: users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/ice.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/ice.i
 
 # target to preprocess a source file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/ice.c.i:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/libjuice/CMakeFiles/juice.dir/build.make cugl.dir/external/libdatachannel/deps/libjuice/CMakeFiles/juice.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/ice.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/ice.c.i
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/ice.c.i:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/libjuice/CMakeFiles/juice.dir/build.make cugl.dir/external/libdatachannel/deps/libjuice/CMakeFiles/juice.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/ice.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/ice.c.i
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/ice.s: Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/ice.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/ice.s
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/ice.s: users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/ice.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/ice.s
 
 # target to generate assembly for a file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/ice.c.s:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/libjuice/CMakeFiles/juice.dir/build.make cugl.dir/external/libdatachannel/deps/libjuice/CMakeFiles/juice.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/ice.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/ice.c.s
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/ice.c.s:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/libjuice/CMakeFiles/juice.dir/build.make cugl.dir/external/libdatachannel/deps/libjuice/CMakeFiles/juice.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/ice.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/ice.c.s
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/juice.o: Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/juice.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/juice.o
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/juice.o: users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/juice.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/juice.o
 
 # target to build an object file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/juice.c.o:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/libjuice/CMakeFiles/juice.dir/build.make cugl.dir/external/libdatachannel/deps/libjuice/CMakeFiles/juice.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/juice.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/juice.c.o
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/juice.c.o:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/libjuice/CMakeFiles/juice.dir/build.make cugl.dir/external/libdatachannel/deps/libjuice/CMakeFiles/juice.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/juice.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/juice.c.o
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/juice.i: Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/juice.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/juice.i
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/juice.i: users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/juice.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/juice.i
 
 # target to preprocess a source file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/juice.c.i:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/libjuice/CMakeFiles/juice.dir/build.make cugl.dir/external/libdatachannel/deps/libjuice/CMakeFiles/juice.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/juice.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/juice.c.i
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/juice.c.i:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/libjuice/CMakeFiles/juice.dir/build.make cugl.dir/external/libdatachannel/deps/libjuice/CMakeFiles/juice.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/juice.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/juice.c.i
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/juice.s: Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/juice.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/juice.s
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/juice.s: users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/juice.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/juice.s
 
 # target to generate assembly for a file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/juice.c.s:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/libjuice/CMakeFiles/juice.dir/build.make cugl.dir/external/libdatachannel/deps/libjuice/CMakeFiles/juice.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/juice.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/juice.c.s
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/juice.c.s:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/libjuice/CMakeFiles/juice.dir/build.make cugl.dir/external/libdatachannel/deps/libjuice/CMakeFiles/juice.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/juice.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/juice.c.s
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/log.o: Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/log.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/log.o
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/log.o: users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/log.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/log.o
 
 # target to build an object file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/log.c.o:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/libjuice/CMakeFiles/juice.dir/build.make cugl.dir/external/libdatachannel/deps/libjuice/CMakeFiles/juice.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/log.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/log.c.o
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/log.c.o:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/libjuice/CMakeFiles/juice.dir/build.make cugl.dir/external/libdatachannel/deps/libjuice/CMakeFiles/juice.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/log.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/log.c.o
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/log.i: Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/log.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/log.i
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/log.i: users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/log.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/log.i
 
 # target to preprocess a source file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/log.c.i:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/libjuice/CMakeFiles/juice.dir/build.make cugl.dir/external/libdatachannel/deps/libjuice/CMakeFiles/juice.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/log.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/log.c.i
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/log.c.i:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/libjuice/CMakeFiles/juice.dir/build.make cugl.dir/external/libdatachannel/deps/libjuice/CMakeFiles/juice.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/log.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/log.c.i
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/log.s: Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/log.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/log.s
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/log.s: users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/log.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/log.s
 
 # target to generate assembly for a file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/log.c.s:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/libjuice/CMakeFiles/juice.dir/build.make cugl.dir/external/libdatachannel/deps/libjuice/CMakeFiles/juice.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/log.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/log.c.s
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/log.c.s:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/libjuice/CMakeFiles/juice.dir/build.make cugl.dir/external/libdatachannel/deps/libjuice/CMakeFiles/juice.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/log.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/log.c.s
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/random.o: Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/random.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/random.o
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/random.o: users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/random.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/random.o
 
 # target to build an object file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/random.c.o:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/libjuice/CMakeFiles/juice.dir/build.make cugl.dir/external/libdatachannel/deps/libjuice/CMakeFiles/juice.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/random.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/random.c.o
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/random.c.o:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/libjuice/CMakeFiles/juice.dir/build.make cugl.dir/external/libdatachannel/deps/libjuice/CMakeFiles/juice.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/random.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/random.c.o
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/random.i: Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/random.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/random.i
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/random.i: users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/random.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/random.i
 
 # target to preprocess a source file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/random.c.i:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/libjuice/CMakeFiles/juice.dir/build.make cugl.dir/external/libdatachannel/deps/libjuice/CMakeFiles/juice.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/random.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/random.c.i
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/random.c.i:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/libjuice/CMakeFiles/juice.dir/build.make cugl.dir/external/libdatachannel/deps/libjuice/CMakeFiles/juice.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/random.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/random.c.i
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/random.s: Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/random.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/random.s
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/random.s: users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/random.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/random.s
 
 # target to generate assembly for a file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/random.c.s:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/libjuice/CMakeFiles/juice.dir/build.make cugl.dir/external/libdatachannel/deps/libjuice/CMakeFiles/juice.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/random.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/random.c.s
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/random.c.s:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/libjuice/CMakeFiles/juice.dir/build.make cugl.dir/external/libdatachannel/deps/libjuice/CMakeFiles/juice.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/random.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/random.c.s
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/server.o: Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/server.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/server.o
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/server.o: users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/server.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/server.o
 
 # target to build an object file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/server.c.o:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/libjuice/CMakeFiles/juice.dir/build.make cugl.dir/external/libdatachannel/deps/libjuice/CMakeFiles/juice.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/server.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/server.c.o
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/server.c.o:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/libjuice/CMakeFiles/juice.dir/build.make cugl.dir/external/libdatachannel/deps/libjuice/CMakeFiles/juice.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/server.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/server.c.o
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/server.i: Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/server.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/server.i
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/server.i: users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/server.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/server.i
 
 # target to preprocess a source file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/server.c.i:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/libjuice/CMakeFiles/juice.dir/build.make cugl.dir/external/libdatachannel/deps/libjuice/CMakeFiles/juice.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/server.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/server.c.i
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/server.c.i:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/libjuice/CMakeFiles/juice.dir/build.make cugl.dir/external/libdatachannel/deps/libjuice/CMakeFiles/juice.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/server.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/server.c.i
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/server.s: Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/server.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/server.s
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/server.s: users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/server.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/server.s
 
 # target to generate assembly for a file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/server.c.s:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/libjuice/CMakeFiles/juice.dir/build.make cugl.dir/external/libdatachannel/deps/libjuice/CMakeFiles/juice.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/server.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/server.c.s
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/server.c.s:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/libjuice/CMakeFiles/juice.dir/build.make cugl.dir/external/libdatachannel/deps/libjuice/CMakeFiles/juice.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/server.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/server.c.s
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/stun.o: Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/stun.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/stun.o
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/stun.o: users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/stun.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/stun.o
 
 # target to build an object file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/stun.c.o:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/libjuice/CMakeFiles/juice.dir/build.make cugl.dir/external/libdatachannel/deps/libjuice/CMakeFiles/juice.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/stun.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/stun.c.o
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/stun.c.o:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/libjuice/CMakeFiles/juice.dir/build.make cugl.dir/external/libdatachannel/deps/libjuice/CMakeFiles/juice.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/stun.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/stun.c.o
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/stun.i: Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/stun.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/stun.i
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/stun.i: users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/stun.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/stun.i
 
 # target to preprocess a source file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/stun.c.i:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/libjuice/CMakeFiles/juice.dir/build.make cugl.dir/external/libdatachannel/deps/libjuice/CMakeFiles/juice.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/stun.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/stun.c.i
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/stun.c.i:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/libjuice/CMakeFiles/juice.dir/build.make cugl.dir/external/libdatachannel/deps/libjuice/CMakeFiles/juice.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/stun.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/stun.c.i
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/stun.s: Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/stun.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/stun.s
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/stun.s: users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/stun.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/stun.s
 
 # target to generate assembly for a file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/stun.c.s:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/libjuice/CMakeFiles/juice.dir/build.make cugl.dir/external/libdatachannel/deps/libjuice/CMakeFiles/juice.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/stun.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/stun.c.s
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/stun.c.s:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/libjuice/CMakeFiles/juice.dir/build.make cugl.dir/external/libdatachannel/deps/libjuice/CMakeFiles/juice.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/stun.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/stun.c.s
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/timestamp.o: Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/timestamp.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/timestamp.o
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/timestamp.o: users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/timestamp.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/timestamp.o
 
 # target to build an object file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/timestamp.c.o:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/libjuice/CMakeFiles/juice.dir/build.make cugl.dir/external/libdatachannel/deps/libjuice/CMakeFiles/juice.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/timestamp.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/timestamp.c.o
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/timestamp.c.o:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/libjuice/CMakeFiles/juice.dir/build.make cugl.dir/external/libdatachannel/deps/libjuice/CMakeFiles/juice.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/timestamp.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/timestamp.c.o
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/timestamp.i: Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/timestamp.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/timestamp.i
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/timestamp.i: users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/timestamp.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/timestamp.i
 
 # target to preprocess a source file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/timestamp.c.i:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/libjuice/CMakeFiles/juice.dir/build.make cugl.dir/external/libdatachannel/deps/libjuice/CMakeFiles/juice.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/timestamp.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/timestamp.c.i
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/timestamp.c.i:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/libjuice/CMakeFiles/juice.dir/build.make cugl.dir/external/libdatachannel/deps/libjuice/CMakeFiles/juice.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/timestamp.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/timestamp.c.i
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/timestamp.s: Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/timestamp.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/timestamp.s
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/timestamp.s: users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/timestamp.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/timestamp.s
 
 # target to generate assembly for a file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/timestamp.c.s:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/libjuice/CMakeFiles/juice.dir/build.make cugl.dir/external/libdatachannel/deps/libjuice/CMakeFiles/juice.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/timestamp.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/timestamp.c.s
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/timestamp.c.s:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/libjuice/CMakeFiles/juice.dir/build.make cugl.dir/external/libdatachannel/deps/libjuice/CMakeFiles/juice.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/timestamp.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/timestamp.c.s
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/turn.o: Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/turn.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/turn.o
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/turn.o: users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/turn.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/turn.o
 
 # target to build an object file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/turn.c.o:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/libjuice/CMakeFiles/juice.dir/build.make cugl.dir/external/libdatachannel/deps/libjuice/CMakeFiles/juice.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/turn.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/turn.c.o
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/turn.c.o:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/libjuice/CMakeFiles/juice.dir/build.make cugl.dir/external/libdatachannel/deps/libjuice/CMakeFiles/juice.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/turn.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/turn.c.o
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/turn.i: Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/turn.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/turn.i
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/turn.i: users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/turn.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/turn.i
 
 # target to preprocess a source file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/turn.c.i:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/libjuice/CMakeFiles/juice.dir/build.make cugl.dir/external/libdatachannel/deps/libjuice/CMakeFiles/juice.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/turn.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/turn.c.i
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/turn.c.i:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/libjuice/CMakeFiles/juice.dir/build.make cugl.dir/external/libdatachannel/deps/libjuice/CMakeFiles/juice.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/turn.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/turn.c.i
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/turn.s: Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/turn.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/turn.s
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/turn.s: users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/turn.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/turn.s
 
 # target to generate assembly for a file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/turn.c.s:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/libjuice/CMakeFiles/juice.dir/build.make cugl.dir/external/libdatachannel/deps/libjuice/CMakeFiles/juice.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/turn.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/turn.c.s
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/turn.c.s:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/libjuice/CMakeFiles/juice.dir/build.make cugl.dir/external/libdatachannel/deps/libjuice/CMakeFiles/juice.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/turn.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/turn.c.s
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/udp.o: Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/udp.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/udp.o
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/udp.o: users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/udp.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/udp.o
 
 # target to build an object file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/udp.c.o:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/libjuice/CMakeFiles/juice.dir/build.make cugl.dir/external/libdatachannel/deps/libjuice/CMakeFiles/juice.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/udp.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/udp.c.o
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/udp.c.o:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/libjuice/CMakeFiles/juice.dir/build.make cugl.dir/external/libdatachannel/deps/libjuice/CMakeFiles/juice.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/udp.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/udp.c.o
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/udp.i: Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/udp.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/udp.i
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/udp.i: users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/udp.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/udp.i
 
 # target to preprocess a source file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/udp.c.i:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/libjuice/CMakeFiles/juice.dir/build.make cugl.dir/external/libdatachannel/deps/libjuice/CMakeFiles/juice.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/udp.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/udp.c.i
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/udp.c.i:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/libjuice/CMakeFiles/juice.dir/build.make cugl.dir/external/libdatachannel/deps/libjuice/CMakeFiles/juice.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/udp.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/udp.c.i
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/udp.s: Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/udp.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/udp.s
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/udp.s: users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/udp.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/udp.s
 
 # target to generate assembly for a file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/udp.c.s:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/libjuice/CMakeFiles/juice.dir/build.make cugl.dir/external/libdatachannel/deps/libjuice/CMakeFiles/juice.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/udp.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/udp.c.s
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/udp.c.s:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/libjuice/CMakeFiles/juice.dir/build.make cugl.dir/external/libdatachannel/deps/libjuice/CMakeFiles/juice.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/udp.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/udp.c.s
 
 # Help Target
 help:
@@ -690,66 +690,66 @@ help:
 	@echo "... package_source"
 	@echo "... rebuild_cache"
 	@echo "... juice"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/addr.o"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/addr.i"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/addr.s"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/agent.o"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/agent.i"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/agent.s"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/base64.o"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/base64.i"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/base64.s"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/conn.o"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/conn.i"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/conn.s"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/conn_mux.o"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/conn_mux.i"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/conn_mux.s"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/conn_poll.o"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/conn_poll.i"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/conn_poll.s"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/conn_thread.o"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/conn_thread.i"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/conn_thread.s"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/const_time.o"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/const_time.i"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/const_time.s"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/crc32.o"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/crc32.i"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/crc32.s"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/hash.o"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/hash.i"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/hash.s"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/hmac.o"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/hmac.i"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/hmac.s"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/ice.o"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/ice.i"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/ice.s"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/juice.o"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/juice.i"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/juice.s"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/log.o"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/log.i"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/log.s"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/random.o"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/random.i"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/random.s"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/server.o"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/server.i"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/server.s"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/stun.o"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/stun.i"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/stun.s"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/timestamp.o"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/timestamp.i"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/timestamp.s"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/turn.o"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/turn.i"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/turn.s"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/udp.o"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/udp.i"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/udp.s"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/addr.o"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/addr.i"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/addr.s"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/agent.o"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/agent.i"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/agent.s"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/base64.o"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/base64.i"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/base64.s"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/conn.o"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/conn.i"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/conn.s"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/conn_mux.o"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/conn_mux.i"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/conn_mux.s"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/conn_poll.o"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/conn_poll.i"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/conn_poll.s"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/conn_thread.o"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/conn_thread.i"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/conn_thread.s"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/const_time.o"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/const_time.i"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/const_time.s"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/crc32.o"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/crc32.i"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/crc32.s"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/hash.o"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/hash.i"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/hash.s"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/hmac.o"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/hmac.i"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/hmac.s"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/ice.o"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/ice.i"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/ice.s"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/juice.o"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/juice.i"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/juice.s"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/log.o"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/log.i"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/log.s"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/random.o"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/random.i"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/random.s"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/server.o"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/server.i"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/server.s"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/stun.o"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/stun.i"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/stun.s"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/timestamp.o"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/timestamp.i"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/timestamp.s"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/turn.o"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/turn.i"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/turn.s"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/udp.o"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/udp.i"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libjuice/src/udp.s"
 .PHONY : help
 
 
@@ -761,6 +761,6 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 

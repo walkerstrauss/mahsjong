@@ -57,10 +57,10 @@ RM = /opt/homebrew/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /Users/patrickchoo/cs4152/mahsjong/build/cmake
+CMAKE_SOURCE_DIR = /users/patrickchoo/cs4152/mahsjong/build/cmake
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake
+CMAKE_BINARY_DIR = /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -68,7 +68,7 @@ CMAKE_BINARY_DIR = /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake
 # Special rule for the target package
 package: preinstall
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Run CPack packaging tool..."
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && /opt/homebrew/bin/cpack --config ./CPackConfig.cmake
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && /opt/homebrew/bin/cpack --config ./CPackConfig.cmake
 .PHONY : package
 
 # Special rule for the target package
@@ -78,7 +78,7 @@ package/fast: package
 # Special rule for the target package_source
 package_source:
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Run CPack packaging tool for source..."
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && /opt/homebrew/bin/cpack --config ./CPackSourceConfig.cmake /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CPackSourceConfig.cmake
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && /opt/homebrew/bin/cpack --config ./CPackSourceConfig.cmake /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CPackSourceConfig.cmake
 .PHONY : package_source
 
 # Special rule for the target package_source
@@ -152,14 +152,14 @@ install/strip/fast: preinstall/fast
 
 # The main all target
 all: cmake_check_build_system
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(CMAKE_COMMAND) -E cmake_progress_start /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2atk//CMakeFiles/progress.marks
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 cugl.dir/sdl2pckg.dir/sdl2atk/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles 0
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(CMAKE_COMMAND) -E cmake_progress_start /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2atk//CMakeFiles/progress.marks
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 cugl.dir/sdl2pckg.dir/sdl2atk/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 cugl.dir/sdl2pckg.dir/sdl2atk/clean
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 cugl.dir/sdl2pckg.dir/sdl2atk/clean
 .PHONY : clean
 
 # The main clean target
@@ -168,22 +168,22 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 cugl.dir/sdl2pckg.dir/sdl2atk/preinstall
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 cugl.dir/sdl2pckg.dir/sdl2atk/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 cugl.dir/sdl2pckg.dir/sdl2atk/preinstall
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 cugl.dir/sdl2pckg.dir/sdl2atk/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
 # Convenience name for target.
 cugl.dir/sdl2pckg.dir/sdl2atk/CMakeFiles/SDL2_atk.dir/rule:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 cugl.dir/sdl2pckg.dir/sdl2atk/CMakeFiles/SDL2_atk.dir/rule
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 cugl.dir/sdl2pckg.dir/sdl2atk/CMakeFiles/SDL2_atk.dir/rule
 .PHONY : cugl.dir/sdl2pckg.dir/sdl2atk/CMakeFiles/SDL2_atk.dir/rule
 
 # Convenience name for target.
@@ -192,416 +192,416 @@ SDL2_atk: cugl.dir/sdl2pckg.dir/sdl2atk/CMakeFiles/SDL2_atk.dir/rule
 
 # fast build rule for target.
 SDL2_atk/fast:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/CMakeFiles/SDL2_atk.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/CMakeFiles/SDL2_atk.dir/build
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/CMakeFiles/SDL2_atk.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/CMakeFiles/SDL2_atk.dir/build
 .PHONY : SDL2_atk/fast
 
-Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/audio/ATK_AlgoReverb.o: Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/audio/ATK_AlgoReverb.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/audio/ATK_AlgoReverb.o
+users/patrickchoo/cs4152/cugl/sdlapp/src/atk/audio/ATK_AlgoReverb.o: users/patrickchoo/cs4152/cugl/sdlapp/src/atk/audio/ATK_AlgoReverb.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/src/atk/audio/ATK_AlgoReverb.o
 
 # target to build an object file
-Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/audio/ATK_AlgoReverb.c.o:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/CMakeFiles/SDL2_atk.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/CMakeFiles/SDL2_atk.dir/Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/audio/ATK_AlgoReverb.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/audio/ATK_AlgoReverb.c.o
+users/patrickchoo/cs4152/cugl/sdlapp/src/atk/audio/ATK_AlgoReverb.c.o:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/CMakeFiles/SDL2_atk.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/CMakeFiles/SDL2_atk.dir/users/patrickchoo/cs4152/cugl/sdlapp/src/atk/audio/ATK_AlgoReverb.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/src/atk/audio/ATK_AlgoReverb.c.o
 
-Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/audio/ATK_AlgoReverb.i: Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/audio/ATK_AlgoReverb.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/audio/ATK_AlgoReverb.i
+users/patrickchoo/cs4152/cugl/sdlapp/src/atk/audio/ATK_AlgoReverb.i: users/patrickchoo/cs4152/cugl/sdlapp/src/atk/audio/ATK_AlgoReverb.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/src/atk/audio/ATK_AlgoReverb.i
 
 # target to preprocess a source file
-Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/audio/ATK_AlgoReverb.c.i:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/CMakeFiles/SDL2_atk.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/CMakeFiles/SDL2_atk.dir/Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/audio/ATK_AlgoReverb.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/audio/ATK_AlgoReverb.c.i
+users/patrickchoo/cs4152/cugl/sdlapp/src/atk/audio/ATK_AlgoReverb.c.i:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/CMakeFiles/SDL2_atk.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/CMakeFiles/SDL2_atk.dir/users/patrickchoo/cs4152/cugl/sdlapp/src/atk/audio/ATK_AlgoReverb.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/src/atk/audio/ATK_AlgoReverb.c.i
 
-Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/audio/ATK_AlgoReverb.s: Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/audio/ATK_AlgoReverb.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/audio/ATK_AlgoReverb.s
+users/patrickchoo/cs4152/cugl/sdlapp/src/atk/audio/ATK_AlgoReverb.s: users/patrickchoo/cs4152/cugl/sdlapp/src/atk/audio/ATK_AlgoReverb.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/src/atk/audio/ATK_AlgoReverb.s
 
 # target to generate assembly for a file
-Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/audio/ATK_AlgoReverb.c.s:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/CMakeFiles/SDL2_atk.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/CMakeFiles/SDL2_atk.dir/Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/audio/ATK_AlgoReverb.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/audio/ATK_AlgoReverb.c.s
+users/patrickchoo/cs4152/cugl/sdlapp/src/atk/audio/ATK_AlgoReverb.c.s:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/CMakeFiles/SDL2_atk.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/CMakeFiles/SDL2_atk.dir/users/patrickchoo/cs4152/cugl/sdlapp/src/atk/audio/ATK_AlgoReverb.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/src/atk/audio/ATK_AlgoReverb.c.s
 
-Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/audio/ATK_AudioCVT.o: Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/audio/ATK_AudioCVT.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/audio/ATK_AudioCVT.o
+users/patrickchoo/cs4152/cugl/sdlapp/src/atk/audio/ATK_AudioCVT.o: users/patrickchoo/cs4152/cugl/sdlapp/src/atk/audio/ATK_AudioCVT.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/src/atk/audio/ATK_AudioCVT.o
 
 # target to build an object file
-Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/audio/ATK_AudioCVT.c.o:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/CMakeFiles/SDL2_atk.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/CMakeFiles/SDL2_atk.dir/Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/audio/ATK_AudioCVT.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/audio/ATK_AudioCVT.c.o
+users/patrickchoo/cs4152/cugl/sdlapp/src/atk/audio/ATK_AudioCVT.c.o:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/CMakeFiles/SDL2_atk.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/CMakeFiles/SDL2_atk.dir/users/patrickchoo/cs4152/cugl/sdlapp/src/atk/audio/ATK_AudioCVT.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/src/atk/audio/ATK_AudioCVT.c.o
 
-Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/audio/ATK_AudioCVT.i: Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/audio/ATK_AudioCVT.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/audio/ATK_AudioCVT.i
+users/patrickchoo/cs4152/cugl/sdlapp/src/atk/audio/ATK_AudioCVT.i: users/patrickchoo/cs4152/cugl/sdlapp/src/atk/audio/ATK_AudioCVT.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/src/atk/audio/ATK_AudioCVT.i
 
 # target to preprocess a source file
-Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/audio/ATK_AudioCVT.c.i:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/CMakeFiles/SDL2_atk.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/CMakeFiles/SDL2_atk.dir/Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/audio/ATK_AudioCVT.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/audio/ATK_AudioCVT.c.i
+users/patrickchoo/cs4152/cugl/sdlapp/src/atk/audio/ATK_AudioCVT.c.i:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/CMakeFiles/SDL2_atk.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/CMakeFiles/SDL2_atk.dir/users/patrickchoo/cs4152/cugl/sdlapp/src/atk/audio/ATK_AudioCVT.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/src/atk/audio/ATK_AudioCVT.c.i
 
-Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/audio/ATK_AudioCVT.s: Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/audio/ATK_AudioCVT.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/audio/ATK_AudioCVT.s
+users/patrickchoo/cs4152/cugl/sdlapp/src/atk/audio/ATK_AudioCVT.s: users/patrickchoo/cs4152/cugl/sdlapp/src/atk/audio/ATK_AudioCVT.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/src/atk/audio/ATK_AudioCVT.s
 
 # target to generate assembly for a file
-Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/audio/ATK_AudioCVT.c.s:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/CMakeFiles/SDL2_atk.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/CMakeFiles/SDL2_atk.dir/Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/audio/ATK_AudioCVT.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/audio/ATK_AudioCVT.c.s
+users/patrickchoo/cs4152/cugl/sdlapp/src/atk/audio/ATK_AudioCVT.c.s:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/CMakeFiles/SDL2_atk.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/CMakeFiles/SDL2_atk.dir/users/patrickchoo/cs4152/cugl/sdlapp/src/atk/audio/ATK_AudioCVT.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/src/atk/audio/ATK_AudioCVT.c.s
 
-Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/audio/ATK_LatencyAdapter.o: Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/audio/ATK_LatencyAdapter.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/audio/ATK_LatencyAdapter.o
+users/patrickchoo/cs4152/cugl/sdlapp/src/atk/audio/ATK_LatencyAdapter.o: users/patrickchoo/cs4152/cugl/sdlapp/src/atk/audio/ATK_LatencyAdapter.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/src/atk/audio/ATK_LatencyAdapter.o
 
 # target to build an object file
-Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/audio/ATK_LatencyAdapter.c.o:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/CMakeFiles/SDL2_atk.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/CMakeFiles/SDL2_atk.dir/Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/audio/ATK_LatencyAdapter.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/audio/ATK_LatencyAdapter.c.o
+users/patrickchoo/cs4152/cugl/sdlapp/src/atk/audio/ATK_LatencyAdapter.c.o:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/CMakeFiles/SDL2_atk.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/CMakeFiles/SDL2_atk.dir/users/patrickchoo/cs4152/cugl/sdlapp/src/atk/audio/ATK_LatencyAdapter.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/src/atk/audio/ATK_LatencyAdapter.c.o
 
-Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/audio/ATK_LatencyAdapter.i: Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/audio/ATK_LatencyAdapter.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/audio/ATK_LatencyAdapter.i
+users/patrickchoo/cs4152/cugl/sdlapp/src/atk/audio/ATK_LatencyAdapter.i: users/patrickchoo/cs4152/cugl/sdlapp/src/atk/audio/ATK_LatencyAdapter.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/src/atk/audio/ATK_LatencyAdapter.i
 
 # target to preprocess a source file
-Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/audio/ATK_LatencyAdapter.c.i:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/CMakeFiles/SDL2_atk.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/CMakeFiles/SDL2_atk.dir/Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/audio/ATK_LatencyAdapter.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/audio/ATK_LatencyAdapter.c.i
+users/patrickchoo/cs4152/cugl/sdlapp/src/atk/audio/ATK_LatencyAdapter.c.i:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/CMakeFiles/SDL2_atk.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/CMakeFiles/SDL2_atk.dir/users/patrickchoo/cs4152/cugl/sdlapp/src/atk/audio/ATK_LatencyAdapter.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/src/atk/audio/ATK_LatencyAdapter.c.i
 
-Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/audio/ATK_LatencyAdapter.s: Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/audio/ATK_LatencyAdapter.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/audio/ATK_LatencyAdapter.s
+users/patrickchoo/cs4152/cugl/sdlapp/src/atk/audio/ATK_LatencyAdapter.s: users/patrickchoo/cs4152/cugl/sdlapp/src/atk/audio/ATK_LatencyAdapter.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/src/atk/audio/ATK_LatencyAdapter.s
 
 # target to generate assembly for a file
-Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/audio/ATK_LatencyAdapter.c.s:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/CMakeFiles/SDL2_atk.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/CMakeFiles/SDL2_atk.dir/Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/audio/ATK_LatencyAdapter.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/audio/ATK_LatencyAdapter.c.s
+users/patrickchoo/cs4152/cugl/sdlapp/src/atk/audio/ATK_LatencyAdapter.c.s:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/CMakeFiles/SDL2_atk.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/CMakeFiles/SDL2_atk.dir/users/patrickchoo/cs4152/cugl/sdlapp/src/atk/audio/ATK_LatencyAdapter.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/src/atk/audio/ATK_LatencyAdapter.c.s
 
-Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/codec/ATK_Codec.o: Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/codec/ATK_Codec.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/codec/ATK_Codec.o
+users/patrickchoo/cs4152/cugl/sdlapp/src/atk/codec/ATK_Codec.o: users/patrickchoo/cs4152/cugl/sdlapp/src/atk/codec/ATK_Codec.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/src/atk/codec/ATK_Codec.o
 
 # target to build an object file
-Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/codec/ATK_Codec.c.o:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/CMakeFiles/SDL2_atk.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/CMakeFiles/SDL2_atk.dir/Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/codec/ATK_Codec.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/codec/ATK_Codec.c.o
+users/patrickchoo/cs4152/cugl/sdlapp/src/atk/codec/ATK_Codec.c.o:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/CMakeFiles/SDL2_atk.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/CMakeFiles/SDL2_atk.dir/users/patrickchoo/cs4152/cugl/sdlapp/src/atk/codec/ATK_Codec.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/src/atk/codec/ATK_Codec.c.o
 
-Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/codec/ATK_Codec.i: Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/codec/ATK_Codec.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/codec/ATK_Codec.i
+users/patrickchoo/cs4152/cugl/sdlapp/src/atk/codec/ATK_Codec.i: users/patrickchoo/cs4152/cugl/sdlapp/src/atk/codec/ATK_Codec.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/src/atk/codec/ATK_Codec.i
 
 # target to preprocess a source file
-Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/codec/ATK_Codec.c.i:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/CMakeFiles/SDL2_atk.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/CMakeFiles/SDL2_atk.dir/Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/codec/ATK_Codec.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/codec/ATK_Codec.c.i
+users/patrickchoo/cs4152/cugl/sdlapp/src/atk/codec/ATK_Codec.c.i:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/CMakeFiles/SDL2_atk.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/CMakeFiles/SDL2_atk.dir/users/patrickchoo/cs4152/cugl/sdlapp/src/atk/codec/ATK_Codec.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/src/atk/codec/ATK_Codec.c.i
 
-Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/codec/ATK_Codec.s: Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/codec/ATK_Codec.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/codec/ATK_Codec.s
+users/patrickchoo/cs4152/cugl/sdlapp/src/atk/codec/ATK_Codec.s: users/patrickchoo/cs4152/cugl/sdlapp/src/atk/codec/ATK_Codec.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/src/atk/codec/ATK_Codec.s
 
 # target to generate assembly for a file
-Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/codec/ATK_Codec.c.s:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/CMakeFiles/SDL2_atk.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/CMakeFiles/SDL2_atk.dir/Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/codec/ATK_Codec.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/codec/ATK_Codec.c.s
+users/patrickchoo/cs4152/cugl/sdlapp/src/atk/codec/ATK_Codec.c.s:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/CMakeFiles/SDL2_atk.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/CMakeFiles/SDL2_atk.dir/users/patrickchoo/cs4152/cugl/sdlapp/src/atk/codec/ATK_Codec.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/src/atk/codec/ATK_Codec.c.s
 
-Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/codec/ATK_CodecFLAC.o: Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/codec/ATK_CodecFLAC.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/codec/ATK_CodecFLAC.o
+users/patrickchoo/cs4152/cugl/sdlapp/src/atk/codec/ATK_CodecFLAC.o: users/patrickchoo/cs4152/cugl/sdlapp/src/atk/codec/ATK_CodecFLAC.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/src/atk/codec/ATK_CodecFLAC.o
 
 # target to build an object file
-Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/codec/ATK_CodecFLAC.c.o:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/CMakeFiles/SDL2_atk.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/CMakeFiles/SDL2_atk.dir/Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/codec/ATK_CodecFLAC.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/codec/ATK_CodecFLAC.c.o
+users/patrickchoo/cs4152/cugl/sdlapp/src/atk/codec/ATK_CodecFLAC.c.o:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/CMakeFiles/SDL2_atk.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/CMakeFiles/SDL2_atk.dir/users/patrickchoo/cs4152/cugl/sdlapp/src/atk/codec/ATK_CodecFLAC.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/src/atk/codec/ATK_CodecFLAC.c.o
 
-Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/codec/ATK_CodecFLAC.i: Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/codec/ATK_CodecFLAC.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/codec/ATK_CodecFLAC.i
+users/patrickchoo/cs4152/cugl/sdlapp/src/atk/codec/ATK_CodecFLAC.i: users/patrickchoo/cs4152/cugl/sdlapp/src/atk/codec/ATK_CodecFLAC.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/src/atk/codec/ATK_CodecFLAC.i
 
 # target to preprocess a source file
-Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/codec/ATK_CodecFLAC.c.i:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/CMakeFiles/SDL2_atk.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/CMakeFiles/SDL2_atk.dir/Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/codec/ATK_CodecFLAC.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/codec/ATK_CodecFLAC.c.i
+users/patrickchoo/cs4152/cugl/sdlapp/src/atk/codec/ATK_CodecFLAC.c.i:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/CMakeFiles/SDL2_atk.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/CMakeFiles/SDL2_atk.dir/users/patrickchoo/cs4152/cugl/sdlapp/src/atk/codec/ATK_CodecFLAC.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/src/atk/codec/ATK_CodecFLAC.c.i
 
-Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/codec/ATK_CodecFLAC.s: Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/codec/ATK_CodecFLAC.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/codec/ATK_CodecFLAC.s
+users/patrickchoo/cs4152/cugl/sdlapp/src/atk/codec/ATK_CodecFLAC.s: users/patrickchoo/cs4152/cugl/sdlapp/src/atk/codec/ATK_CodecFLAC.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/src/atk/codec/ATK_CodecFLAC.s
 
 # target to generate assembly for a file
-Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/codec/ATK_CodecFLAC.c.s:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/CMakeFiles/SDL2_atk.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/CMakeFiles/SDL2_atk.dir/Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/codec/ATK_CodecFLAC.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/codec/ATK_CodecFLAC.c.s
+users/patrickchoo/cs4152/cugl/sdlapp/src/atk/codec/ATK_CodecFLAC.c.s:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/CMakeFiles/SDL2_atk.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/CMakeFiles/SDL2_atk.dir/users/patrickchoo/cs4152/cugl/sdlapp/src/atk/codec/ATK_CodecFLAC.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/src/atk/codec/ATK_CodecFLAC.c.s
 
-Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/codec/ATK_CodecMP3.o: Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/codec/ATK_CodecMP3.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/codec/ATK_CodecMP3.o
+users/patrickchoo/cs4152/cugl/sdlapp/src/atk/codec/ATK_CodecMP3.o: users/patrickchoo/cs4152/cugl/sdlapp/src/atk/codec/ATK_CodecMP3.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/src/atk/codec/ATK_CodecMP3.o
 
 # target to build an object file
-Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/codec/ATK_CodecMP3.c.o:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/CMakeFiles/SDL2_atk.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/CMakeFiles/SDL2_atk.dir/Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/codec/ATK_CodecMP3.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/codec/ATK_CodecMP3.c.o
+users/patrickchoo/cs4152/cugl/sdlapp/src/atk/codec/ATK_CodecMP3.c.o:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/CMakeFiles/SDL2_atk.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/CMakeFiles/SDL2_atk.dir/users/patrickchoo/cs4152/cugl/sdlapp/src/atk/codec/ATK_CodecMP3.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/src/atk/codec/ATK_CodecMP3.c.o
 
-Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/codec/ATK_CodecMP3.i: Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/codec/ATK_CodecMP3.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/codec/ATK_CodecMP3.i
+users/patrickchoo/cs4152/cugl/sdlapp/src/atk/codec/ATK_CodecMP3.i: users/patrickchoo/cs4152/cugl/sdlapp/src/atk/codec/ATK_CodecMP3.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/src/atk/codec/ATK_CodecMP3.i
 
 # target to preprocess a source file
-Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/codec/ATK_CodecMP3.c.i:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/CMakeFiles/SDL2_atk.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/CMakeFiles/SDL2_atk.dir/Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/codec/ATK_CodecMP3.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/codec/ATK_CodecMP3.c.i
+users/patrickchoo/cs4152/cugl/sdlapp/src/atk/codec/ATK_CodecMP3.c.i:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/CMakeFiles/SDL2_atk.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/CMakeFiles/SDL2_atk.dir/users/patrickchoo/cs4152/cugl/sdlapp/src/atk/codec/ATK_CodecMP3.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/src/atk/codec/ATK_CodecMP3.c.i
 
-Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/codec/ATK_CodecMP3.s: Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/codec/ATK_CodecMP3.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/codec/ATK_CodecMP3.s
+users/patrickchoo/cs4152/cugl/sdlapp/src/atk/codec/ATK_CodecMP3.s: users/patrickchoo/cs4152/cugl/sdlapp/src/atk/codec/ATK_CodecMP3.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/src/atk/codec/ATK_CodecMP3.s
 
 # target to generate assembly for a file
-Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/codec/ATK_CodecMP3.c.s:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/CMakeFiles/SDL2_atk.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/CMakeFiles/SDL2_atk.dir/Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/codec/ATK_CodecMP3.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/codec/ATK_CodecMP3.c.s
+users/patrickchoo/cs4152/cugl/sdlapp/src/atk/codec/ATK_CodecMP3.c.s:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/CMakeFiles/SDL2_atk.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/CMakeFiles/SDL2_atk.dir/users/patrickchoo/cs4152/cugl/sdlapp/src/atk/codec/ATK_CodecMP3.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/src/atk/codec/ATK_CodecMP3.c.s
 
-Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/codec/ATK_CodecVorbis.o: Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/codec/ATK_CodecVorbis.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/codec/ATK_CodecVorbis.o
+users/patrickchoo/cs4152/cugl/sdlapp/src/atk/codec/ATK_CodecVorbis.o: users/patrickchoo/cs4152/cugl/sdlapp/src/atk/codec/ATK_CodecVorbis.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/src/atk/codec/ATK_CodecVorbis.o
 
 # target to build an object file
-Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/codec/ATK_CodecVorbis.c.o:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/CMakeFiles/SDL2_atk.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/CMakeFiles/SDL2_atk.dir/Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/codec/ATK_CodecVorbis.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/codec/ATK_CodecVorbis.c.o
+users/patrickchoo/cs4152/cugl/sdlapp/src/atk/codec/ATK_CodecVorbis.c.o:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/CMakeFiles/SDL2_atk.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/CMakeFiles/SDL2_atk.dir/users/patrickchoo/cs4152/cugl/sdlapp/src/atk/codec/ATK_CodecVorbis.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/src/atk/codec/ATK_CodecVorbis.c.o
 
-Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/codec/ATK_CodecVorbis.i: Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/codec/ATK_CodecVorbis.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/codec/ATK_CodecVorbis.i
+users/patrickchoo/cs4152/cugl/sdlapp/src/atk/codec/ATK_CodecVorbis.i: users/patrickchoo/cs4152/cugl/sdlapp/src/atk/codec/ATK_CodecVorbis.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/src/atk/codec/ATK_CodecVorbis.i
 
 # target to preprocess a source file
-Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/codec/ATK_CodecVorbis.c.i:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/CMakeFiles/SDL2_atk.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/CMakeFiles/SDL2_atk.dir/Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/codec/ATK_CodecVorbis.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/codec/ATK_CodecVorbis.c.i
+users/patrickchoo/cs4152/cugl/sdlapp/src/atk/codec/ATK_CodecVorbis.c.i:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/CMakeFiles/SDL2_atk.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/CMakeFiles/SDL2_atk.dir/users/patrickchoo/cs4152/cugl/sdlapp/src/atk/codec/ATK_CodecVorbis.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/src/atk/codec/ATK_CodecVorbis.c.i
 
-Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/codec/ATK_CodecVorbis.s: Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/codec/ATK_CodecVorbis.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/codec/ATK_CodecVorbis.s
+users/patrickchoo/cs4152/cugl/sdlapp/src/atk/codec/ATK_CodecVorbis.s: users/patrickchoo/cs4152/cugl/sdlapp/src/atk/codec/ATK_CodecVorbis.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/src/atk/codec/ATK_CodecVorbis.s
 
 # target to generate assembly for a file
-Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/codec/ATK_CodecVorbis.c.s:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/CMakeFiles/SDL2_atk.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/CMakeFiles/SDL2_atk.dir/Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/codec/ATK_CodecVorbis.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/codec/ATK_CodecVorbis.c.s
+users/patrickchoo/cs4152/cugl/sdlapp/src/atk/codec/ATK_CodecVorbis.c.s:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/CMakeFiles/SDL2_atk.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/CMakeFiles/SDL2_atk.dir/users/patrickchoo/cs4152/cugl/sdlapp/src/atk/codec/ATK_CodecVorbis.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/src/atk/codec/ATK_CodecVorbis.c.s
 
-Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/codec/ATK_CodecWAV.o: Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/codec/ATK_CodecWAV.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/codec/ATK_CodecWAV.o
+users/patrickchoo/cs4152/cugl/sdlapp/src/atk/codec/ATK_CodecWAV.o: users/patrickchoo/cs4152/cugl/sdlapp/src/atk/codec/ATK_CodecWAV.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/src/atk/codec/ATK_CodecWAV.o
 
 # target to build an object file
-Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/codec/ATK_CodecWAV.c.o:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/CMakeFiles/SDL2_atk.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/CMakeFiles/SDL2_atk.dir/Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/codec/ATK_CodecWAV.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/codec/ATK_CodecWAV.c.o
+users/patrickchoo/cs4152/cugl/sdlapp/src/atk/codec/ATK_CodecWAV.c.o:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/CMakeFiles/SDL2_atk.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/CMakeFiles/SDL2_atk.dir/users/patrickchoo/cs4152/cugl/sdlapp/src/atk/codec/ATK_CodecWAV.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/src/atk/codec/ATK_CodecWAV.c.o
 
-Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/codec/ATK_CodecWAV.i: Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/codec/ATK_CodecWAV.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/codec/ATK_CodecWAV.i
+users/patrickchoo/cs4152/cugl/sdlapp/src/atk/codec/ATK_CodecWAV.i: users/patrickchoo/cs4152/cugl/sdlapp/src/atk/codec/ATK_CodecWAV.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/src/atk/codec/ATK_CodecWAV.i
 
 # target to preprocess a source file
-Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/codec/ATK_CodecWAV.c.i:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/CMakeFiles/SDL2_atk.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/CMakeFiles/SDL2_atk.dir/Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/codec/ATK_CodecWAV.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/codec/ATK_CodecWAV.c.i
+users/patrickchoo/cs4152/cugl/sdlapp/src/atk/codec/ATK_CodecWAV.c.i:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/CMakeFiles/SDL2_atk.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/CMakeFiles/SDL2_atk.dir/users/patrickchoo/cs4152/cugl/sdlapp/src/atk/codec/ATK_CodecWAV.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/src/atk/codec/ATK_CodecWAV.c.i
 
-Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/codec/ATK_CodecWAV.s: Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/codec/ATK_CodecWAV.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/codec/ATK_CodecWAV.s
+users/patrickchoo/cs4152/cugl/sdlapp/src/atk/codec/ATK_CodecWAV.s: users/patrickchoo/cs4152/cugl/sdlapp/src/atk/codec/ATK_CodecWAV.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/src/atk/codec/ATK_CodecWAV.s
 
 # target to generate assembly for a file
-Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/codec/ATK_CodecWAV.c.s:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/CMakeFiles/SDL2_atk.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/CMakeFiles/SDL2_atk.dir/Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/codec/ATK_CodecWAV.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/codec/ATK_CodecWAV.c.s
+users/patrickchoo/cs4152/cugl/sdlapp/src/atk/codec/ATK_CodecWAV.c.s:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/CMakeFiles/SDL2_atk.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/CMakeFiles/SDL2_atk.dir/users/patrickchoo/cs4152/cugl/sdlapp/src/atk/codec/ATK_CodecWAV.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/src/atk/codec/ATK_CodecWAV.c.s
 
-Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/dsp/ATK_DSPConvolve.o: Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/dsp/ATK_DSPConvolve.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/dsp/ATK_DSPConvolve.o
+users/patrickchoo/cs4152/cugl/sdlapp/src/atk/dsp/ATK_DSPConvolve.o: users/patrickchoo/cs4152/cugl/sdlapp/src/atk/dsp/ATK_DSPConvolve.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/src/atk/dsp/ATK_DSPConvolve.o
 
 # target to build an object file
-Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/dsp/ATK_DSPConvolve.c.o:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/CMakeFiles/SDL2_atk.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/CMakeFiles/SDL2_atk.dir/Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/dsp/ATK_DSPConvolve.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/dsp/ATK_DSPConvolve.c.o
+users/patrickchoo/cs4152/cugl/sdlapp/src/atk/dsp/ATK_DSPConvolve.c.o:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/CMakeFiles/SDL2_atk.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/CMakeFiles/SDL2_atk.dir/users/patrickchoo/cs4152/cugl/sdlapp/src/atk/dsp/ATK_DSPConvolve.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/src/atk/dsp/ATK_DSPConvolve.c.o
 
-Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/dsp/ATK_DSPConvolve.i: Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/dsp/ATK_DSPConvolve.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/dsp/ATK_DSPConvolve.i
+users/patrickchoo/cs4152/cugl/sdlapp/src/atk/dsp/ATK_DSPConvolve.i: users/patrickchoo/cs4152/cugl/sdlapp/src/atk/dsp/ATK_DSPConvolve.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/src/atk/dsp/ATK_DSPConvolve.i
 
 # target to preprocess a source file
-Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/dsp/ATK_DSPConvolve.c.i:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/CMakeFiles/SDL2_atk.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/CMakeFiles/SDL2_atk.dir/Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/dsp/ATK_DSPConvolve.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/dsp/ATK_DSPConvolve.c.i
+users/patrickchoo/cs4152/cugl/sdlapp/src/atk/dsp/ATK_DSPConvolve.c.i:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/CMakeFiles/SDL2_atk.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/CMakeFiles/SDL2_atk.dir/users/patrickchoo/cs4152/cugl/sdlapp/src/atk/dsp/ATK_DSPConvolve.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/src/atk/dsp/ATK_DSPConvolve.c.i
 
-Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/dsp/ATK_DSPConvolve.s: Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/dsp/ATK_DSPConvolve.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/dsp/ATK_DSPConvolve.s
+users/patrickchoo/cs4152/cugl/sdlapp/src/atk/dsp/ATK_DSPConvolve.s: users/patrickchoo/cs4152/cugl/sdlapp/src/atk/dsp/ATK_DSPConvolve.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/src/atk/dsp/ATK_DSPConvolve.s
 
 # target to generate assembly for a file
-Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/dsp/ATK_DSPConvolve.c.s:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/CMakeFiles/SDL2_atk.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/CMakeFiles/SDL2_atk.dir/Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/dsp/ATK_DSPConvolve.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/dsp/ATK_DSPConvolve.c.s
+users/patrickchoo/cs4152/cugl/sdlapp/src/atk/dsp/ATK_DSPConvolve.c.s:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/CMakeFiles/SDL2_atk.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/CMakeFiles/SDL2_atk.dir/users/patrickchoo/cs4152/cugl/sdlapp/src/atk/dsp/ATK_DSPConvolve.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/src/atk/dsp/ATK_DSPConvolve.c.s
 
-Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/dsp/ATK_DSPFilter.o: Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/dsp/ATK_DSPFilter.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/dsp/ATK_DSPFilter.o
+users/patrickchoo/cs4152/cugl/sdlapp/src/atk/dsp/ATK_DSPFilter.o: users/patrickchoo/cs4152/cugl/sdlapp/src/atk/dsp/ATK_DSPFilter.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/src/atk/dsp/ATK_DSPFilter.o
 
 # target to build an object file
-Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/dsp/ATK_DSPFilter.c.o:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/CMakeFiles/SDL2_atk.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/CMakeFiles/SDL2_atk.dir/Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/dsp/ATK_DSPFilter.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/dsp/ATK_DSPFilter.c.o
+users/patrickchoo/cs4152/cugl/sdlapp/src/atk/dsp/ATK_DSPFilter.c.o:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/CMakeFiles/SDL2_atk.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/CMakeFiles/SDL2_atk.dir/users/patrickchoo/cs4152/cugl/sdlapp/src/atk/dsp/ATK_DSPFilter.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/src/atk/dsp/ATK_DSPFilter.c.o
 
-Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/dsp/ATK_DSPFilter.i: Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/dsp/ATK_DSPFilter.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/dsp/ATK_DSPFilter.i
+users/patrickchoo/cs4152/cugl/sdlapp/src/atk/dsp/ATK_DSPFilter.i: users/patrickchoo/cs4152/cugl/sdlapp/src/atk/dsp/ATK_DSPFilter.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/src/atk/dsp/ATK_DSPFilter.i
 
 # target to preprocess a source file
-Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/dsp/ATK_DSPFilter.c.i:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/CMakeFiles/SDL2_atk.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/CMakeFiles/SDL2_atk.dir/Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/dsp/ATK_DSPFilter.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/dsp/ATK_DSPFilter.c.i
+users/patrickchoo/cs4152/cugl/sdlapp/src/atk/dsp/ATK_DSPFilter.c.i:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/CMakeFiles/SDL2_atk.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/CMakeFiles/SDL2_atk.dir/users/patrickchoo/cs4152/cugl/sdlapp/src/atk/dsp/ATK_DSPFilter.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/src/atk/dsp/ATK_DSPFilter.c.i
 
-Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/dsp/ATK_DSPFilter.s: Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/dsp/ATK_DSPFilter.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/dsp/ATK_DSPFilter.s
+users/patrickchoo/cs4152/cugl/sdlapp/src/atk/dsp/ATK_DSPFilter.s: users/patrickchoo/cs4152/cugl/sdlapp/src/atk/dsp/ATK_DSPFilter.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/src/atk/dsp/ATK_DSPFilter.s
 
 # target to generate assembly for a file
-Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/dsp/ATK_DSPFilter.c.s:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/CMakeFiles/SDL2_atk.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/CMakeFiles/SDL2_atk.dir/Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/dsp/ATK_DSPFilter.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/dsp/ATK_DSPFilter.c.s
+users/patrickchoo/cs4152/cugl/sdlapp/src/atk/dsp/ATK_DSPFilter.c.s:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/CMakeFiles/SDL2_atk.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/CMakeFiles/SDL2_atk.dir/users/patrickchoo/cs4152/cugl/sdlapp/src/atk/dsp/ATK_DSPFilter.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/src/atk/dsp/ATK_DSPFilter.c.s
 
-Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/dsp/ATK_DSPTransform.o: Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/dsp/ATK_DSPTransform.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/dsp/ATK_DSPTransform.o
+users/patrickchoo/cs4152/cugl/sdlapp/src/atk/dsp/ATK_DSPTransform.o: users/patrickchoo/cs4152/cugl/sdlapp/src/atk/dsp/ATK_DSPTransform.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/src/atk/dsp/ATK_DSPTransform.o
 
 # target to build an object file
-Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/dsp/ATK_DSPTransform.c.o:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/CMakeFiles/SDL2_atk.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/CMakeFiles/SDL2_atk.dir/Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/dsp/ATK_DSPTransform.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/dsp/ATK_DSPTransform.c.o
+users/patrickchoo/cs4152/cugl/sdlapp/src/atk/dsp/ATK_DSPTransform.c.o:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/CMakeFiles/SDL2_atk.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/CMakeFiles/SDL2_atk.dir/users/patrickchoo/cs4152/cugl/sdlapp/src/atk/dsp/ATK_DSPTransform.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/src/atk/dsp/ATK_DSPTransform.c.o
 
-Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/dsp/ATK_DSPTransform.i: Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/dsp/ATK_DSPTransform.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/dsp/ATK_DSPTransform.i
+users/patrickchoo/cs4152/cugl/sdlapp/src/atk/dsp/ATK_DSPTransform.i: users/patrickchoo/cs4152/cugl/sdlapp/src/atk/dsp/ATK_DSPTransform.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/src/atk/dsp/ATK_DSPTransform.i
 
 # target to preprocess a source file
-Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/dsp/ATK_DSPTransform.c.i:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/CMakeFiles/SDL2_atk.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/CMakeFiles/SDL2_atk.dir/Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/dsp/ATK_DSPTransform.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/dsp/ATK_DSPTransform.c.i
+users/patrickchoo/cs4152/cugl/sdlapp/src/atk/dsp/ATK_DSPTransform.c.i:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/CMakeFiles/SDL2_atk.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/CMakeFiles/SDL2_atk.dir/users/patrickchoo/cs4152/cugl/sdlapp/src/atk/dsp/ATK_DSPTransform.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/src/atk/dsp/ATK_DSPTransform.c.i
 
-Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/dsp/ATK_DSPTransform.s: Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/dsp/ATK_DSPTransform.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/dsp/ATK_DSPTransform.s
+users/patrickchoo/cs4152/cugl/sdlapp/src/atk/dsp/ATK_DSPTransform.s: users/patrickchoo/cs4152/cugl/sdlapp/src/atk/dsp/ATK_DSPTransform.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/src/atk/dsp/ATK_DSPTransform.s
 
 # target to generate assembly for a file
-Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/dsp/ATK_DSPTransform.c.s:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/CMakeFiles/SDL2_atk.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/CMakeFiles/SDL2_atk.dir/Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/dsp/ATK_DSPTransform.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/dsp/ATK_DSPTransform.c.s
+users/patrickchoo/cs4152/cugl/sdlapp/src/atk/dsp/ATK_DSPTransform.c.s:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/CMakeFiles/SDL2_atk.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/CMakeFiles/SDL2_atk.dir/users/patrickchoo/cs4152/cugl/sdlapp/src/atk/dsp/ATK_DSPTransform.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/src/atk/dsp/ATK_DSPTransform.c.s
 
-Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/dsp/ATK_DSPWaveform.o: Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/dsp/ATK_DSPWaveform.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/dsp/ATK_DSPWaveform.o
+users/patrickchoo/cs4152/cugl/sdlapp/src/atk/dsp/ATK_DSPWaveform.o: users/patrickchoo/cs4152/cugl/sdlapp/src/atk/dsp/ATK_DSPWaveform.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/src/atk/dsp/ATK_DSPWaveform.o
 
 # target to build an object file
-Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/dsp/ATK_DSPWaveform.c.o:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/CMakeFiles/SDL2_atk.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/CMakeFiles/SDL2_atk.dir/Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/dsp/ATK_DSPWaveform.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/dsp/ATK_DSPWaveform.c.o
+users/patrickchoo/cs4152/cugl/sdlapp/src/atk/dsp/ATK_DSPWaveform.c.o:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/CMakeFiles/SDL2_atk.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/CMakeFiles/SDL2_atk.dir/users/patrickchoo/cs4152/cugl/sdlapp/src/atk/dsp/ATK_DSPWaveform.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/src/atk/dsp/ATK_DSPWaveform.c.o
 
-Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/dsp/ATK_DSPWaveform.i: Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/dsp/ATK_DSPWaveform.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/dsp/ATK_DSPWaveform.i
+users/patrickchoo/cs4152/cugl/sdlapp/src/atk/dsp/ATK_DSPWaveform.i: users/patrickchoo/cs4152/cugl/sdlapp/src/atk/dsp/ATK_DSPWaveform.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/src/atk/dsp/ATK_DSPWaveform.i
 
 # target to preprocess a source file
-Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/dsp/ATK_DSPWaveform.c.i:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/CMakeFiles/SDL2_atk.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/CMakeFiles/SDL2_atk.dir/Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/dsp/ATK_DSPWaveform.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/dsp/ATK_DSPWaveform.c.i
+users/patrickchoo/cs4152/cugl/sdlapp/src/atk/dsp/ATK_DSPWaveform.c.i:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/CMakeFiles/SDL2_atk.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/CMakeFiles/SDL2_atk.dir/users/patrickchoo/cs4152/cugl/sdlapp/src/atk/dsp/ATK_DSPWaveform.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/src/atk/dsp/ATK_DSPWaveform.c.i
 
-Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/dsp/ATK_DSPWaveform.s: Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/dsp/ATK_DSPWaveform.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/dsp/ATK_DSPWaveform.s
+users/patrickchoo/cs4152/cugl/sdlapp/src/atk/dsp/ATK_DSPWaveform.s: users/patrickchoo/cs4152/cugl/sdlapp/src/atk/dsp/ATK_DSPWaveform.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/src/atk/dsp/ATK_DSPWaveform.s
 
 # target to generate assembly for a file
-Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/dsp/ATK_DSPWaveform.c.s:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/CMakeFiles/SDL2_atk.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/CMakeFiles/SDL2_atk.dir/Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/dsp/ATK_DSPWaveform.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/dsp/ATK_DSPWaveform.c.s
+users/patrickchoo/cs4152/cugl/sdlapp/src/atk/dsp/ATK_DSPWaveform.c.s:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/CMakeFiles/SDL2_atk.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/CMakeFiles/SDL2_atk.dir/users/patrickchoo/cs4152/cugl/sdlapp/src/atk/dsp/ATK_DSPWaveform.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/src/atk/dsp/ATK_DSPWaveform.c.s
 
-Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/file/ATK_file.o: Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/file/ATK_file.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/file/ATK_file.o
+users/patrickchoo/cs4152/cugl/sdlapp/src/atk/file/ATK_file.o: users/patrickchoo/cs4152/cugl/sdlapp/src/atk/file/ATK_file.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/src/atk/file/ATK_file.o
 
 # target to build an object file
-Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/file/ATK_file.c.o:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/CMakeFiles/SDL2_atk.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/CMakeFiles/SDL2_atk.dir/Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/file/ATK_file.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/file/ATK_file.c.o
+users/patrickchoo/cs4152/cugl/sdlapp/src/atk/file/ATK_file.c.o:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/CMakeFiles/SDL2_atk.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/CMakeFiles/SDL2_atk.dir/users/patrickchoo/cs4152/cugl/sdlapp/src/atk/file/ATK_file.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/src/atk/file/ATK_file.c.o
 
-Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/file/ATK_file.i: Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/file/ATK_file.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/file/ATK_file.i
+users/patrickchoo/cs4152/cugl/sdlapp/src/atk/file/ATK_file.i: users/patrickchoo/cs4152/cugl/sdlapp/src/atk/file/ATK_file.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/src/atk/file/ATK_file.i
 
 # target to preprocess a source file
-Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/file/ATK_file.c.i:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/CMakeFiles/SDL2_atk.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/CMakeFiles/SDL2_atk.dir/Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/file/ATK_file.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/file/ATK_file.c.i
+users/patrickchoo/cs4152/cugl/sdlapp/src/atk/file/ATK_file.c.i:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/CMakeFiles/SDL2_atk.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/CMakeFiles/SDL2_atk.dir/users/patrickchoo/cs4152/cugl/sdlapp/src/atk/file/ATK_file.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/src/atk/file/ATK_file.c.i
 
-Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/file/ATK_file.s: Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/file/ATK_file.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/file/ATK_file.s
+users/patrickchoo/cs4152/cugl/sdlapp/src/atk/file/ATK_file.s: users/patrickchoo/cs4152/cugl/sdlapp/src/atk/file/ATK_file.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/src/atk/file/ATK_file.s
 
 # target to generate assembly for a file
-Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/file/ATK_file.c.s:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/CMakeFiles/SDL2_atk.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/CMakeFiles/SDL2_atk.dir/Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/file/ATK_file.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/file/ATK_file.c.s
+users/patrickchoo/cs4152/cugl/sdlapp/src/atk/file/ATK_file.c.s:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/CMakeFiles/SDL2_atk.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/CMakeFiles/SDL2_atk.dir/users/patrickchoo/cs4152/cugl/sdlapp/src/atk/file/ATK_file.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/src/atk/file/ATK_file.c.s
 
-Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/math/ATK_MathComplex.o: Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/math/ATK_MathComplex.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/math/ATK_MathComplex.o
+users/patrickchoo/cs4152/cugl/sdlapp/src/atk/math/ATK_MathComplex.o: users/patrickchoo/cs4152/cugl/sdlapp/src/atk/math/ATK_MathComplex.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/src/atk/math/ATK_MathComplex.o
 
 # target to build an object file
-Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/math/ATK_MathComplex.c.o:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/CMakeFiles/SDL2_atk.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/CMakeFiles/SDL2_atk.dir/Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/math/ATK_MathComplex.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/math/ATK_MathComplex.c.o
+users/patrickchoo/cs4152/cugl/sdlapp/src/atk/math/ATK_MathComplex.c.o:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/CMakeFiles/SDL2_atk.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/CMakeFiles/SDL2_atk.dir/users/patrickchoo/cs4152/cugl/sdlapp/src/atk/math/ATK_MathComplex.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/src/atk/math/ATK_MathComplex.c.o
 
-Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/math/ATK_MathComplex.i: Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/math/ATK_MathComplex.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/math/ATK_MathComplex.i
+users/patrickchoo/cs4152/cugl/sdlapp/src/atk/math/ATK_MathComplex.i: users/patrickchoo/cs4152/cugl/sdlapp/src/atk/math/ATK_MathComplex.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/src/atk/math/ATK_MathComplex.i
 
 # target to preprocess a source file
-Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/math/ATK_MathComplex.c.i:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/CMakeFiles/SDL2_atk.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/CMakeFiles/SDL2_atk.dir/Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/math/ATK_MathComplex.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/math/ATK_MathComplex.c.i
+users/patrickchoo/cs4152/cugl/sdlapp/src/atk/math/ATK_MathComplex.c.i:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/CMakeFiles/SDL2_atk.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/CMakeFiles/SDL2_atk.dir/users/patrickchoo/cs4152/cugl/sdlapp/src/atk/math/ATK_MathComplex.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/src/atk/math/ATK_MathComplex.c.i
 
-Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/math/ATK_MathComplex.s: Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/math/ATK_MathComplex.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/math/ATK_MathComplex.s
+users/patrickchoo/cs4152/cugl/sdlapp/src/atk/math/ATK_MathComplex.s: users/patrickchoo/cs4152/cugl/sdlapp/src/atk/math/ATK_MathComplex.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/src/atk/math/ATK_MathComplex.s
 
 # target to generate assembly for a file
-Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/math/ATK_MathComplex.c.s:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/CMakeFiles/SDL2_atk.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/CMakeFiles/SDL2_atk.dir/Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/math/ATK_MathComplex.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/math/ATK_MathComplex.c.s
+users/patrickchoo/cs4152/cugl/sdlapp/src/atk/math/ATK_MathComplex.c.s:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/CMakeFiles/SDL2_atk.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/CMakeFiles/SDL2_atk.dir/users/patrickchoo/cs4152/cugl/sdlapp/src/atk/math/ATK_MathComplex.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/src/atk/math/ATK_MathComplex.c.s
 
-Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/math/ATK_MathPoly.o: Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/math/ATK_MathPoly.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/math/ATK_MathPoly.o
+users/patrickchoo/cs4152/cugl/sdlapp/src/atk/math/ATK_MathPoly.o: users/patrickchoo/cs4152/cugl/sdlapp/src/atk/math/ATK_MathPoly.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/src/atk/math/ATK_MathPoly.o
 
 # target to build an object file
-Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/math/ATK_MathPoly.c.o:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/CMakeFiles/SDL2_atk.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/CMakeFiles/SDL2_atk.dir/Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/math/ATK_MathPoly.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/math/ATK_MathPoly.c.o
+users/patrickchoo/cs4152/cugl/sdlapp/src/atk/math/ATK_MathPoly.c.o:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/CMakeFiles/SDL2_atk.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/CMakeFiles/SDL2_atk.dir/users/patrickchoo/cs4152/cugl/sdlapp/src/atk/math/ATK_MathPoly.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/src/atk/math/ATK_MathPoly.c.o
 
-Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/math/ATK_MathPoly.i: Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/math/ATK_MathPoly.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/math/ATK_MathPoly.i
+users/patrickchoo/cs4152/cugl/sdlapp/src/atk/math/ATK_MathPoly.i: users/patrickchoo/cs4152/cugl/sdlapp/src/atk/math/ATK_MathPoly.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/src/atk/math/ATK_MathPoly.i
 
 # target to preprocess a source file
-Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/math/ATK_MathPoly.c.i:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/CMakeFiles/SDL2_atk.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/CMakeFiles/SDL2_atk.dir/Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/math/ATK_MathPoly.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/math/ATK_MathPoly.c.i
+users/patrickchoo/cs4152/cugl/sdlapp/src/atk/math/ATK_MathPoly.c.i:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/CMakeFiles/SDL2_atk.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/CMakeFiles/SDL2_atk.dir/users/patrickchoo/cs4152/cugl/sdlapp/src/atk/math/ATK_MathPoly.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/src/atk/math/ATK_MathPoly.c.i
 
-Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/math/ATK_MathPoly.s: Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/math/ATK_MathPoly.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/math/ATK_MathPoly.s
+users/patrickchoo/cs4152/cugl/sdlapp/src/atk/math/ATK_MathPoly.s: users/patrickchoo/cs4152/cugl/sdlapp/src/atk/math/ATK_MathPoly.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/src/atk/math/ATK_MathPoly.s
 
 # target to generate assembly for a file
-Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/math/ATK_MathPoly.c.s:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/CMakeFiles/SDL2_atk.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/CMakeFiles/SDL2_atk.dir/Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/math/ATK_MathPoly.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/math/ATK_MathPoly.c.s
+users/patrickchoo/cs4152/cugl/sdlapp/src/atk/math/ATK_MathPoly.c.s:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/CMakeFiles/SDL2_atk.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/CMakeFiles/SDL2_atk.dir/users/patrickchoo/cs4152/cugl/sdlapp/src/atk/math/ATK_MathPoly.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/src/atk/math/ATK_MathPoly.c.s
 
-Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/math/ATK_MathVec.o: Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/math/ATK_MathVec.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/math/ATK_MathVec.o
+users/patrickchoo/cs4152/cugl/sdlapp/src/atk/math/ATK_MathVec.o: users/patrickchoo/cs4152/cugl/sdlapp/src/atk/math/ATK_MathVec.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/src/atk/math/ATK_MathVec.o
 
 # target to build an object file
-Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/math/ATK_MathVec.c.o:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/CMakeFiles/SDL2_atk.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/CMakeFiles/SDL2_atk.dir/Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/math/ATK_MathVec.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/math/ATK_MathVec.c.o
+users/patrickchoo/cs4152/cugl/sdlapp/src/atk/math/ATK_MathVec.c.o:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/CMakeFiles/SDL2_atk.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/CMakeFiles/SDL2_atk.dir/users/patrickchoo/cs4152/cugl/sdlapp/src/atk/math/ATK_MathVec.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/src/atk/math/ATK_MathVec.c.o
 
-Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/math/ATK_MathVec.i: Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/math/ATK_MathVec.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/math/ATK_MathVec.i
+users/patrickchoo/cs4152/cugl/sdlapp/src/atk/math/ATK_MathVec.i: users/patrickchoo/cs4152/cugl/sdlapp/src/atk/math/ATK_MathVec.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/src/atk/math/ATK_MathVec.i
 
 # target to preprocess a source file
-Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/math/ATK_MathVec.c.i:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/CMakeFiles/SDL2_atk.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/CMakeFiles/SDL2_atk.dir/Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/math/ATK_MathVec.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/math/ATK_MathVec.c.i
+users/patrickchoo/cs4152/cugl/sdlapp/src/atk/math/ATK_MathVec.c.i:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/CMakeFiles/SDL2_atk.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/CMakeFiles/SDL2_atk.dir/users/patrickchoo/cs4152/cugl/sdlapp/src/atk/math/ATK_MathVec.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/src/atk/math/ATK_MathVec.c.i
 
-Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/math/ATK_MathVec.s: Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/math/ATK_MathVec.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/math/ATK_MathVec.s
+users/patrickchoo/cs4152/cugl/sdlapp/src/atk/math/ATK_MathVec.s: users/patrickchoo/cs4152/cugl/sdlapp/src/atk/math/ATK_MathVec.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/src/atk/math/ATK_MathVec.s
 
 # target to generate assembly for a file
-Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/math/ATK_MathVec.c.s:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/CMakeFiles/SDL2_atk.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/CMakeFiles/SDL2_atk.dir/Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/math/ATK_MathVec.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/math/ATK_MathVec.c.s
+users/patrickchoo/cs4152/cugl/sdlapp/src/atk/math/ATK_MathVec.c.s:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/CMakeFiles/SDL2_atk.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/CMakeFiles/SDL2_atk.dir/users/patrickchoo/cs4152/cugl/sdlapp/src/atk/math/ATK_MathVec.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/src/atk/math/ATK_MathVec.c.s
 
-Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/rand/ATK_Rand.o: Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/rand/ATK_Rand.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/rand/ATK_Rand.o
+users/patrickchoo/cs4152/cugl/sdlapp/src/atk/rand/ATK_Rand.o: users/patrickchoo/cs4152/cugl/sdlapp/src/atk/rand/ATK_Rand.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/src/atk/rand/ATK_Rand.o
 
 # target to build an object file
-Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/rand/ATK_Rand.c.o:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/CMakeFiles/SDL2_atk.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/CMakeFiles/SDL2_atk.dir/Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/rand/ATK_Rand.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/rand/ATK_Rand.c.o
+users/patrickchoo/cs4152/cugl/sdlapp/src/atk/rand/ATK_Rand.c.o:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/CMakeFiles/SDL2_atk.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/CMakeFiles/SDL2_atk.dir/users/patrickchoo/cs4152/cugl/sdlapp/src/atk/rand/ATK_Rand.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/src/atk/rand/ATK_Rand.c.o
 
-Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/rand/ATK_Rand.i: Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/rand/ATK_Rand.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/rand/ATK_Rand.i
+users/patrickchoo/cs4152/cugl/sdlapp/src/atk/rand/ATK_Rand.i: users/patrickchoo/cs4152/cugl/sdlapp/src/atk/rand/ATK_Rand.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/src/atk/rand/ATK_Rand.i
 
 # target to preprocess a source file
-Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/rand/ATK_Rand.c.i:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/CMakeFiles/SDL2_atk.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/CMakeFiles/SDL2_atk.dir/Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/rand/ATK_Rand.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/rand/ATK_Rand.c.i
+users/patrickchoo/cs4152/cugl/sdlapp/src/atk/rand/ATK_Rand.c.i:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/CMakeFiles/SDL2_atk.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/CMakeFiles/SDL2_atk.dir/users/patrickchoo/cs4152/cugl/sdlapp/src/atk/rand/ATK_Rand.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/src/atk/rand/ATK_Rand.c.i
 
-Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/rand/ATK_Rand.s: Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/rand/ATK_Rand.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/rand/ATK_Rand.s
+users/patrickchoo/cs4152/cugl/sdlapp/src/atk/rand/ATK_Rand.s: users/patrickchoo/cs4152/cugl/sdlapp/src/atk/rand/ATK_Rand.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/src/atk/rand/ATK_Rand.s
 
 # target to generate assembly for a file
-Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/rand/ATK_Rand.c.s:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/CMakeFiles/SDL2_atk.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/CMakeFiles/SDL2_atk.dir/Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/rand/ATK_Rand.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/rand/ATK_Rand.c.s
+users/patrickchoo/cs4152/cugl/sdlapp/src/atk/rand/ATK_Rand.c.s:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/CMakeFiles/SDL2_atk.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/CMakeFiles/SDL2_atk.dir/users/patrickchoo/cs4152/cugl/sdlapp/src/atk/rand/ATK_Rand.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/src/atk/rand/ATK_Rand.c.s
 
 # Help Target
 help:
@@ -618,57 +618,57 @@ help:
 	@echo "... package_source"
 	@echo "... rebuild_cache"
 	@echo "... SDL2_atk"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/audio/ATK_AlgoReverb.o"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/audio/ATK_AlgoReverb.i"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/audio/ATK_AlgoReverb.s"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/audio/ATK_AudioCVT.o"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/audio/ATK_AudioCVT.i"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/audio/ATK_AudioCVT.s"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/audio/ATK_LatencyAdapter.o"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/audio/ATK_LatencyAdapter.i"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/audio/ATK_LatencyAdapter.s"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/codec/ATK_Codec.o"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/codec/ATK_Codec.i"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/codec/ATK_Codec.s"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/codec/ATK_CodecFLAC.o"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/codec/ATK_CodecFLAC.i"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/codec/ATK_CodecFLAC.s"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/codec/ATK_CodecMP3.o"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/codec/ATK_CodecMP3.i"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/codec/ATK_CodecMP3.s"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/codec/ATK_CodecVorbis.o"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/codec/ATK_CodecVorbis.i"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/codec/ATK_CodecVorbis.s"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/codec/ATK_CodecWAV.o"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/codec/ATK_CodecWAV.i"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/codec/ATK_CodecWAV.s"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/dsp/ATK_DSPConvolve.o"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/dsp/ATK_DSPConvolve.i"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/dsp/ATK_DSPConvolve.s"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/dsp/ATK_DSPFilter.o"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/dsp/ATK_DSPFilter.i"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/dsp/ATK_DSPFilter.s"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/dsp/ATK_DSPTransform.o"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/dsp/ATK_DSPTransform.i"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/dsp/ATK_DSPTransform.s"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/dsp/ATK_DSPWaveform.o"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/dsp/ATK_DSPWaveform.i"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/dsp/ATK_DSPWaveform.s"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/file/ATK_file.o"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/file/ATK_file.i"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/file/ATK_file.s"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/math/ATK_MathComplex.o"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/math/ATK_MathComplex.i"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/math/ATK_MathComplex.s"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/math/ATK_MathPoly.o"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/math/ATK_MathPoly.i"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/math/ATK_MathPoly.s"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/math/ATK_MathVec.o"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/math/ATK_MathVec.i"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/math/ATK_MathVec.s"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/rand/ATK_Rand.o"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/rand/ATK_Rand.i"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/src/atk/rand/ATK_Rand.s"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/src/atk/audio/ATK_AlgoReverb.o"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/src/atk/audio/ATK_AlgoReverb.i"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/src/atk/audio/ATK_AlgoReverb.s"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/src/atk/audio/ATK_AudioCVT.o"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/src/atk/audio/ATK_AudioCVT.i"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/src/atk/audio/ATK_AudioCVT.s"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/src/atk/audio/ATK_LatencyAdapter.o"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/src/atk/audio/ATK_LatencyAdapter.i"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/src/atk/audio/ATK_LatencyAdapter.s"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/src/atk/codec/ATK_Codec.o"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/src/atk/codec/ATK_Codec.i"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/src/atk/codec/ATK_Codec.s"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/src/atk/codec/ATK_CodecFLAC.o"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/src/atk/codec/ATK_CodecFLAC.i"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/src/atk/codec/ATK_CodecFLAC.s"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/src/atk/codec/ATK_CodecMP3.o"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/src/atk/codec/ATK_CodecMP3.i"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/src/atk/codec/ATK_CodecMP3.s"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/src/atk/codec/ATK_CodecVorbis.o"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/src/atk/codec/ATK_CodecVorbis.i"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/src/atk/codec/ATK_CodecVorbis.s"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/src/atk/codec/ATK_CodecWAV.o"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/src/atk/codec/ATK_CodecWAV.i"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/src/atk/codec/ATK_CodecWAV.s"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/src/atk/dsp/ATK_DSPConvolve.o"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/src/atk/dsp/ATK_DSPConvolve.i"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/src/atk/dsp/ATK_DSPConvolve.s"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/src/atk/dsp/ATK_DSPFilter.o"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/src/atk/dsp/ATK_DSPFilter.i"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/src/atk/dsp/ATK_DSPFilter.s"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/src/atk/dsp/ATK_DSPTransform.o"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/src/atk/dsp/ATK_DSPTransform.i"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/src/atk/dsp/ATK_DSPTransform.s"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/src/atk/dsp/ATK_DSPWaveform.o"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/src/atk/dsp/ATK_DSPWaveform.i"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/src/atk/dsp/ATK_DSPWaveform.s"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/src/atk/file/ATK_file.o"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/src/atk/file/ATK_file.i"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/src/atk/file/ATK_file.s"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/src/atk/math/ATK_MathComplex.o"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/src/atk/math/ATK_MathComplex.i"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/src/atk/math/ATK_MathComplex.s"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/src/atk/math/ATK_MathPoly.o"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/src/atk/math/ATK_MathPoly.i"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/src/atk/math/ATK_MathPoly.s"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/src/atk/math/ATK_MathVec.o"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/src/atk/math/ATK_MathVec.i"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/src/atk/math/ATK_MathVec.s"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/src/atk/rand/ATK_Rand.o"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/src/atk/rand/ATK_Rand.i"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/src/atk/rand/ATK_Rand.s"
 .PHONY : help
 
 
@@ -680,6 +680,6 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 

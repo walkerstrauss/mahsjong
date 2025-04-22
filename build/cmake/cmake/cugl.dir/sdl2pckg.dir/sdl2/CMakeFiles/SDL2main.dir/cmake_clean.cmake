@@ -1,6 +1,6 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/SDL2main.dir/Users/patrickchoo/cs4152/cugl/sdlapp/src/main/dummy/SDL_dummy_main.c.o"
-  "CMakeFiles/SDL2main.dir/Users/patrickchoo/cs4152/cugl/sdlapp/src/main/dummy/SDL_dummy_main.c.o.d"
+  "CMakeFiles/SDL2main.dir/users/patrickchoo/cs4152/cugl/sdlapp/src/main/dummy/SDL_dummy_main.c.o"
+  "CMakeFiles/SDL2main.dir/users/patrickchoo/cs4152/cugl/sdlapp/src/main/dummy/SDL_dummy_main.c.o.d"
   "libSDL2main.a"
   "libSDL2main.pdb"
 )

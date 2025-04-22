@@ -57,10 +57,10 @@ RM = /opt/homebrew/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /Users/patrickchoo/cs4152/mahsjong/build/cmake
+CMAKE_SOURCE_DIR = /users/patrickchoo/cs4152/mahsjong/build/cmake
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake
+CMAKE_BINARY_DIR = /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -68,7 +68,7 @@ CMAKE_BINARY_DIR = /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake
 # Special rule for the target package
 package: preinstall
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Run CPack packaging tool..."
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && /opt/homebrew/bin/cpack --config ./CPackConfig.cmake
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && /opt/homebrew/bin/cpack --config ./CPackConfig.cmake
 .PHONY : package
 
 # Special rule for the target package
@@ -78,7 +78,7 @@ package/fast: package
 # Special rule for the target package_source
 package_source:
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Run CPack packaging tool for source..."
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && /opt/homebrew/bin/cpack --config ./CPackSourceConfig.cmake /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CPackSourceConfig.cmake
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && /opt/homebrew/bin/cpack --config ./CPackSourceConfig.cmake /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CPackSourceConfig.cmake
 .PHONY : package_source
 
 # Special rule for the target package_source
@@ -152,14 +152,14 @@ install/strip/fast: preinstall/fast
 
 # The main all target
 all: cmake_check_build_system
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(CMAKE_COMMAND) -E cmake_progress_start /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/grabbag//CMakeFiles/progress.marks
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/grabbag/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles 0
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(CMAKE_COMMAND) -E cmake_progress_start /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/grabbag//CMakeFiles/progress.marks
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/grabbag/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/grabbag/clean
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/grabbag/clean
 .PHONY : clean
 
 # The main clean target
@@ -168,22 +168,22 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/grabbag/preinstall
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/grabbag/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/grabbag/preinstall
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/grabbag/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
 # Convenience name for target.
 cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/grabbag/CMakeFiles/grabbag.dir/rule:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/grabbag/CMakeFiles/grabbag.dir/rule
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/grabbag/CMakeFiles/grabbag.dir/rule
 .PHONY : cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/grabbag/CMakeFiles/grabbag.dir/rule
 
 # Convenience name for target.
@@ -192,176 +192,176 @@ grabbag: cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/grabbag/CMakeFile
 
 # fast build rule for target.
 grabbag/fast:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/grabbag/CMakeFiles/grabbag.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/grabbag/CMakeFiles/grabbag.dir/build
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/grabbag/CMakeFiles/grabbag.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/grabbag/CMakeFiles/grabbag.dir/build
 .PHONY : grabbag/fast
 
-Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/grabbag/alloc.o: Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/grabbag/alloc.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/grabbag/alloc.o
+users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/grabbag/alloc.o: users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/grabbag/alloc.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/grabbag/alloc.o
 
 # target to build an object file
-Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/grabbag/alloc.c.o:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/grabbag/CMakeFiles/grabbag.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/grabbag/CMakeFiles/grabbag.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/grabbag/alloc.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/grabbag/alloc.c.o
+users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/grabbag/alloc.c.o:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/grabbag/CMakeFiles/grabbag.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/grabbag/CMakeFiles/grabbag.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/grabbag/alloc.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/grabbag/alloc.c.o
 
-Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/grabbag/alloc.i: Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/grabbag/alloc.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/grabbag/alloc.i
+users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/grabbag/alloc.i: users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/grabbag/alloc.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/grabbag/alloc.i
 
 # target to preprocess a source file
-Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/grabbag/alloc.c.i:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/grabbag/CMakeFiles/grabbag.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/grabbag/CMakeFiles/grabbag.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/grabbag/alloc.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/grabbag/alloc.c.i
+users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/grabbag/alloc.c.i:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/grabbag/CMakeFiles/grabbag.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/grabbag/CMakeFiles/grabbag.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/grabbag/alloc.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/grabbag/alloc.c.i
 
-Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/grabbag/alloc.s: Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/grabbag/alloc.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/grabbag/alloc.s
+users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/grabbag/alloc.s: users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/grabbag/alloc.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/grabbag/alloc.s
 
 # target to generate assembly for a file
-Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/grabbag/alloc.c.s:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/grabbag/CMakeFiles/grabbag.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/grabbag/CMakeFiles/grabbag.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/grabbag/alloc.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/grabbag/alloc.c.s
+users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/grabbag/alloc.c.s:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/grabbag/CMakeFiles/grabbag.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/grabbag/CMakeFiles/grabbag.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/grabbag/alloc.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/grabbag/alloc.c.s
 
-Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/grabbag/cuesheet.o: Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/grabbag/cuesheet.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/grabbag/cuesheet.o
+users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/grabbag/cuesheet.o: users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/grabbag/cuesheet.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/grabbag/cuesheet.o
 
 # target to build an object file
-Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/grabbag/cuesheet.c.o:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/grabbag/CMakeFiles/grabbag.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/grabbag/CMakeFiles/grabbag.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/grabbag/cuesheet.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/grabbag/cuesheet.c.o
+users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/grabbag/cuesheet.c.o:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/grabbag/CMakeFiles/grabbag.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/grabbag/CMakeFiles/grabbag.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/grabbag/cuesheet.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/grabbag/cuesheet.c.o
 
-Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/grabbag/cuesheet.i: Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/grabbag/cuesheet.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/grabbag/cuesheet.i
+users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/grabbag/cuesheet.i: users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/grabbag/cuesheet.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/grabbag/cuesheet.i
 
 # target to preprocess a source file
-Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/grabbag/cuesheet.c.i:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/grabbag/CMakeFiles/grabbag.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/grabbag/CMakeFiles/grabbag.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/grabbag/cuesheet.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/grabbag/cuesheet.c.i
+users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/grabbag/cuesheet.c.i:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/grabbag/CMakeFiles/grabbag.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/grabbag/CMakeFiles/grabbag.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/grabbag/cuesheet.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/grabbag/cuesheet.c.i
 
-Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/grabbag/cuesheet.s: Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/grabbag/cuesheet.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/grabbag/cuesheet.s
+users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/grabbag/cuesheet.s: users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/grabbag/cuesheet.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/grabbag/cuesheet.s
 
 # target to generate assembly for a file
-Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/grabbag/cuesheet.c.s:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/grabbag/CMakeFiles/grabbag.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/grabbag/CMakeFiles/grabbag.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/grabbag/cuesheet.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/grabbag/cuesheet.c.s
+users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/grabbag/cuesheet.c.s:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/grabbag/CMakeFiles/grabbag.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/grabbag/CMakeFiles/grabbag.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/grabbag/cuesheet.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/grabbag/cuesheet.c.s
 
-Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/grabbag/file.o: Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/grabbag/file.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/grabbag/file.o
+users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/grabbag/file.o: users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/grabbag/file.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/grabbag/file.o
 
 # target to build an object file
-Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/grabbag/file.c.o:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/grabbag/CMakeFiles/grabbag.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/grabbag/CMakeFiles/grabbag.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/grabbag/file.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/grabbag/file.c.o
+users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/grabbag/file.c.o:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/grabbag/CMakeFiles/grabbag.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/grabbag/CMakeFiles/grabbag.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/grabbag/file.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/grabbag/file.c.o
 
-Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/grabbag/file.i: Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/grabbag/file.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/grabbag/file.i
+users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/grabbag/file.i: users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/grabbag/file.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/grabbag/file.i
 
 # target to preprocess a source file
-Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/grabbag/file.c.i:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/grabbag/CMakeFiles/grabbag.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/grabbag/CMakeFiles/grabbag.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/grabbag/file.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/grabbag/file.c.i
+users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/grabbag/file.c.i:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/grabbag/CMakeFiles/grabbag.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/grabbag/CMakeFiles/grabbag.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/grabbag/file.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/grabbag/file.c.i
 
-Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/grabbag/file.s: Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/grabbag/file.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/grabbag/file.s
+users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/grabbag/file.s: users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/grabbag/file.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/grabbag/file.s
 
 # target to generate assembly for a file
-Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/grabbag/file.c.s:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/grabbag/CMakeFiles/grabbag.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/grabbag/CMakeFiles/grabbag.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/grabbag/file.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/grabbag/file.c.s
+users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/grabbag/file.c.s:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/grabbag/CMakeFiles/grabbag.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/grabbag/CMakeFiles/grabbag.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/grabbag/file.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/grabbag/file.c.s
 
-Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/grabbag/picture.o: Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/grabbag/picture.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/grabbag/picture.o
+users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/grabbag/picture.o: users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/grabbag/picture.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/grabbag/picture.o
 
 # target to build an object file
-Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/grabbag/picture.c.o:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/grabbag/CMakeFiles/grabbag.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/grabbag/CMakeFiles/grabbag.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/grabbag/picture.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/grabbag/picture.c.o
+users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/grabbag/picture.c.o:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/grabbag/CMakeFiles/grabbag.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/grabbag/CMakeFiles/grabbag.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/grabbag/picture.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/grabbag/picture.c.o
 
-Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/grabbag/picture.i: Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/grabbag/picture.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/grabbag/picture.i
+users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/grabbag/picture.i: users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/grabbag/picture.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/grabbag/picture.i
 
 # target to preprocess a source file
-Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/grabbag/picture.c.i:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/grabbag/CMakeFiles/grabbag.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/grabbag/CMakeFiles/grabbag.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/grabbag/picture.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/grabbag/picture.c.i
+users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/grabbag/picture.c.i:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/grabbag/CMakeFiles/grabbag.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/grabbag/CMakeFiles/grabbag.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/grabbag/picture.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/grabbag/picture.c.i
 
-Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/grabbag/picture.s: Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/grabbag/picture.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/grabbag/picture.s
+users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/grabbag/picture.s: users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/grabbag/picture.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/grabbag/picture.s
 
 # target to generate assembly for a file
-Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/grabbag/picture.c.s:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/grabbag/CMakeFiles/grabbag.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/grabbag/CMakeFiles/grabbag.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/grabbag/picture.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/grabbag/picture.c.s
+users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/grabbag/picture.c.s:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/grabbag/CMakeFiles/grabbag.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/grabbag/CMakeFiles/grabbag.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/grabbag/picture.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/grabbag/picture.c.s
 
-Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/grabbag/replaygain.o: Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/grabbag/replaygain.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/grabbag/replaygain.o
+users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/grabbag/replaygain.o: users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/grabbag/replaygain.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/grabbag/replaygain.o
 
 # target to build an object file
-Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/grabbag/replaygain.c.o:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/grabbag/CMakeFiles/grabbag.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/grabbag/CMakeFiles/grabbag.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/grabbag/replaygain.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/grabbag/replaygain.c.o
+users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/grabbag/replaygain.c.o:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/grabbag/CMakeFiles/grabbag.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/grabbag/CMakeFiles/grabbag.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/grabbag/replaygain.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/grabbag/replaygain.c.o
 
-Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/grabbag/replaygain.i: Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/grabbag/replaygain.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/grabbag/replaygain.i
+users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/grabbag/replaygain.i: users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/grabbag/replaygain.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/grabbag/replaygain.i
 
 # target to preprocess a source file
-Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/grabbag/replaygain.c.i:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/grabbag/CMakeFiles/grabbag.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/grabbag/CMakeFiles/grabbag.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/grabbag/replaygain.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/grabbag/replaygain.c.i
+users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/grabbag/replaygain.c.i:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/grabbag/CMakeFiles/grabbag.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/grabbag/CMakeFiles/grabbag.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/grabbag/replaygain.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/grabbag/replaygain.c.i
 
-Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/grabbag/replaygain.s: Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/grabbag/replaygain.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/grabbag/replaygain.s
+users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/grabbag/replaygain.s: users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/grabbag/replaygain.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/grabbag/replaygain.s
 
 # target to generate assembly for a file
-Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/grabbag/replaygain.c.s:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/grabbag/CMakeFiles/grabbag.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/grabbag/CMakeFiles/grabbag.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/grabbag/replaygain.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/grabbag/replaygain.c.s
+users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/grabbag/replaygain.c.s:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/grabbag/CMakeFiles/grabbag.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/grabbag/CMakeFiles/grabbag.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/grabbag/replaygain.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/grabbag/replaygain.c.s
 
-Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/grabbag/seektable.o: Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/grabbag/seektable.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/grabbag/seektable.o
+users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/grabbag/seektable.o: users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/grabbag/seektable.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/grabbag/seektable.o
 
 # target to build an object file
-Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/grabbag/seektable.c.o:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/grabbag/CMakeFiles/grabbag.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/grabbag/CMakeFiles/grabbag.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/grabbag/seektable.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/grabbag/seektable.c.o
+users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/grabbag/seektable.c.o:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/grabbag/CMakeFiles/grabbag.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/grabbag/CMakeFiles/grabbag.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/grabbag/seektable.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/grabbag/seektable.c.o
 
-Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/grabbag/seektable.i: Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/grabbag/seektable.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/grabbag/seektable.i
+users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/grabbag/seektable.i: users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/grabbag/seektable.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/grabbag/seektable.i
 
 # target to preprocess a source file
-Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/grabbag/seektable.c.i:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/grabbag/CMakeFiles/grabbag.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/grabbag/CMakeFiles/grabbag.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/grabbag/seektable.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/grabbag/seektable.c.i
+users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/grabbag/seektable.c.i:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/grabbag/CMakeFiles/grabbag.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/grabbag/CMakeFiles/grabbag.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/grabbag/seektable.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/grabbag/seektable.c.i
 
-Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/grabbag/seektable.s: Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/grabbag/seektable.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/grabbag/seektable.s
+users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/grabbag/seektable.s: users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/grabbag/seektable.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/grabbag/seektable.s
 
 # target to generate assembly for a file
-Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/grabbag/seektable.c.s:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/grabbag/CMakeFiles/grabbag.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/grabbag/CMakeFiles/grabbag.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/grabbag/seektable.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/grabbag/seektable.c.s
+users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/grabbag/seektable.c.s:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/grabbag/CMakeFiles/grabbag.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/grabbag/CMakeFiles/grabbag.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/grabbag/seektable.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/grabbag/seektable.c.s
 
-Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/grabbag/snprintf.o: Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/grabbag/snprintf.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/grabbag/snprintf.o
+users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/grabbag/snprintf.o: users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/grabbag/snprintf.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/grabbag/snprintf.o
 
 # target to build an object file
-Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/grabbag/snprintf.c.o:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/grabbag/CMakeFiles/grabbag.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/grabbag/CMakeFiles/grabbag.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/grabbag/snprintf.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/grabbag/snprintf.c.o
+users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/grabbag/snprintf.c.o:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/grabbag/CMakeFiles/grabbag.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/grabbag/CMakeFiles/grabbag.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/grabbag/snprintf.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/grabbag/snprintf.c.o
 
-Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/grabbag/snprintf.i: Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/grabbag/snprintf.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/grabbag/snprintf.i
+users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/grabbag/snprintf.i: users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/grabbag/snprintf.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/grabbag/snprintf.i
 
 # target to preprocess a source file
-Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/grabbag/snprintf.c.i:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/grabbag/CMakeFiles/grabbag.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/grabbag/CMakeFiles/grabbag.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/grabbag/snprintf.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/grabbag/snprintf.c.i
+users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/grabbag/snprintf.c.i:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/grabbag/CMakeFiles/grabbag.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/grabbag/CMakeFiles/grabbag.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/grabbag/snprintf.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/grabbag/snprintf.c.i
 
-Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/grabbag/snprintf.s: Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/grabbag/snprintf.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/grabbag/snprintf.s
+users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/grabbag/snprintf.s: users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/grabbag/snprintf.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/grabbag/snprintf.s
 
 # target to generate assembly for a file
-Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/grabbag/snprintf.c.s:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/grabbag/CMakeFiles/grabbag.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/grabbag/CMakeFiles/grabbag.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/grabbag/snprintf.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/grabbag/snprintf.c.s
+users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/grabbag/snprintf.c.s:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/grabbag/CMakeFiles/grabbag.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/grabbag/CMakeFiles/grabbag.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/grabbag/snprintf.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/grabbag/snprintf.c.s
 
 # Help Target
 help:
@@ -378,27 +378,27 @@ help:
 	@echo "... package_source"
 	@echo "... rebuild_cache"
 	@echo "... grabbag"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/grabbag/alloc.o"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/grabbag/alloc.i"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/grabbag/alloc.s"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/grabbag/cuesheet.o"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/grabbag/cuesheet.i"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/grabbag/cuesheet.s"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/grabbag/file.o"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/grabbag/file.i"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/grabbag/file.s"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/grabbag/picture.o"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/grabbag/picture.i"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/grabbag/picture.s"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/grabbag/replaygain.o"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/grabbag/replaygain.i"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/grabbag/replaygain.s"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/grabbag/seektable.o"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/grabbag/seektable.i"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/grabbag/seektable.s"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/grabbag/snprintf.o"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/grabbag/snprintf.i"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/grabbag/snprintf.s"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/grabbag/alloc.o"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/grabbag/alloc.i"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/grabbag/alloc.s"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/grabbag/cuesheet.o"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/grabbag/cuesheet.i"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/grabbag/cuesheet.s"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/grabbag/file.o"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/grabbag/file.i"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/grabbag/file.s"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/grabbag/picture.o"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/grabbag/picture.i"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/grabbag/picture.s"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/grabbag/replaygain.o"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/grabbag/replaygain.i"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/grabbag/replaygain.s"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/grabbag/seektable.o"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/grabbag/seektable.i"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/grabbag/seektable.s"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/grabbag/snprintf.o"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/grabbag/snprintf.i"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/grabbag/snprintf.s"
 .PHONY : help
 
 
@@ -410,6 +410,6 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 

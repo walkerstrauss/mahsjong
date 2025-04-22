@@ -1,6 +1,6 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/harfbuzz.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/harfbuzz.cc.o"
-  "CMakeFiles/harfbuzz.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/harfbuzz.cc.o.d"
+  "CMakeFiles/harfbuzz.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/harfbuzz.cc.o"
+  "CMakeFiles/harfbuzz.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/harfbuzz.cc.o.d"
   "libharfbuzz.a"
   "libharfbuzz.pdb"
 )

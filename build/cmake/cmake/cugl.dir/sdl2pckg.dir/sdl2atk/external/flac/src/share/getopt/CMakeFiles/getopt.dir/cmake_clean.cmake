@@ -1,8 +1,8 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/getopt.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/getopt/getopt.c.o"
-  "CMakeFiles/getopt.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/getopt/getopt.c.o.d"
-  "CMakeFiles/getopt.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/getopt/getopt1.c.o"
-  "CMakeFiles/getopt.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/getopt/getopt1.c.o.d"
+  "CMakeFiles/getopt.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/getopt/getopt.c.o"
+  "CMakeFiles/getopt.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/getopt/getopt.c.o.d"
+  "CMakeFiles/getopt.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/getopt/getopt1.c.o"
+  "CMakeFiles/getopt.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/getopt/getopt1.c.o.d"
   "libgetopt.a"
   "libgetopt.pdb"
 )

@@ -57,10 +57,10 @@ RM = /opt/homebrew/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /Users/patrickchoo/cs4152/mahsjong/build/cmake
+CMAKE_SOURCE_DIR = /users/patrickchoo/cs4152/mahsjong/build/cmake
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake
+CMAKE_BINARY_DIR = /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -68,7 +68,7 @@ CMAKE_BINARY_DIR = /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake
 # Special rule for the target package
 package: preinstall
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Run CPack packaging tool..."
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && /opt/homebrew/bin/cpack --config ./CPackConfig.cmake
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && /opt/homebrew/bin/cpack --config ./CPackConfig.cmake
 .PHONY : package
 
 # Special rule for the target package
@@ -78,7 +78,7 @@ package/fast: package
 # Special rule for the target package_source
 package_source:
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Run CPack packaging tool for source..."
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && /opt/homebrew/bin/cpack --config ./CPackSourceConfig.cmake /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CPackSourceConfig.cmake
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && /opt/homebrew/bin/cpack --config ./CPackSourceConfig.cmake /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CPackSourceConfig.cmake
 .PHONY : package_source
 
 # Special rule for the target package_source
@@ -152,14 +152,14 @@ install/strip/fast: preinstall/fast
 
 # The main all target
 all: cmake_check_build_system
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(CMAKE_COMMAND) -E cmake_progress_start /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2ttf/external/harfbuzz//CMakeFiles/progress.marks
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 cugl.dir/sdl2pckg.dir/sdl2ttf/external/harfbuzz/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles 0
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(CMAKE_COMMAND) -E cmake_progress_start /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2ttf/external/harfbuzz//CMakeFiles/progress.marks
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 cugl.dir/sdl2pckg.dir/sdl2ttf/external/harfbuzz/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 cugl.dir/sdl2pckg.dir/sdl2ttf/external/harfbuzz/clean
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 cugl.dir/sdl2pckg.dir/sdl2ttf/external/harfbuzz/clean
 .PHONY : clean
 
 # The main clean target
@@ -168,22 +168,22 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 cugl.dir/sdl2pckg.dir/sdl2ttf/external/harfbuzz/preinstall
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 cugl.dir/sdl2pckg.dir/sdl2ttf/external/harfbuzz/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 cugl.dir/sdl2pckg.dir/sdl2ttf/external/harfbuzz/preinstall
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 cugl.dir/sdl2pckg.dir/sdl2ttf/external/harfbuzz/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
 # Convenience name for target.
 cugl.dir/sdl2pckg.dir/sdl2ttf/external/harfbuzz/CMakeFiles/harfbuzz.dir/rule:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 cugl.dir/sdl2pckg.dir/sdl2ttf/external/harfbuzz/CMakeFiles/harfbuzz.dir/rule
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 cugl.dir/sdl2pckg.dir/sdl2ttf/external/harfbuzz/CMakeFiles/harfbuzz.dir/rule
 .PHONY : cugl.dir/sdl2pckg.dir/sdl2ttf/external/harfbuzz/CMakeFiles/harfbuzz.dir/rule
 
 # Convenience name for target.
@@ -192,12 +192,12 @@ harfbuzz: cugl.dir/sdl2pckg.dir/sdl2ttf/external/harfbuzz/CMakeFiles/harfbuzz.di
 
 # fast build rule for target.
 harfbuzz/fast:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2ttf/external/harfbuzz/CMakeFiles/harfbuzz.dir/build.make cugl.dir/sdl2pckg.dir/sdl2ttf/external/harfbuzz/CMakeFiles/harfbuzz.dir/build
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2ttf/external/harfbuzz/CMakeFiles/harfbuzz.dir/build.make cugl.dir/sdl2pckg.dir/sdl2ttf/external/harfbuzz/CMakeFiles/harfbuzz.dir/build
 .PHONY : harfbuzz/fast
 
 # Convenience name for target.
 cugl.dir/sdl2pckg.dir/sdl2ttf/external/harfbuzz/CMakeFiles/harfbuzz-subset.dir/rule:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 cugl.dir/sdl2pckg.dir/sdl2ttf/external/harfbuzz/CMakeFiles/harfbuzz-subset.dir/rule
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 cugl.dir/sdl2pckg.dir/sdl2ttf/external/harfbuzz/CMakeFiles/harfbuzz-subset.dir/rule
 .PHONY : cugl.dir/sdl2pckg.dir/sdl2ttf/external/harfbuzz/CMakeFiles/harfbuzz-subset.dir/rule
 
 # Convenience name for target.
@@ -206,344 +206,344 @@ harfbuzz-subset: cugl.dir/sdl2pckg.dir/sdl2ttf/external/harfbuzz/CMakeFiles/harf
 
 # fast build rule for target.
 harfbuzz-subset/fast:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2ttf/external/harfbuzz/CMakeFiles/harfbuzz-subset.dir/build.make cugl.dir/sdl2pckg.dir/sdl2ttf/external/harfbuzz/CMakeFiles/harfbuzz-subset.dir/build
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2ttf/external/harfbuzz/CMakeFiles/harfbuzz-subset.dir/build.make cugl.dir/sdl2pckg.dir/sdl2ttf/external/harfbuzz/CMakeFiles/harfbuzz-subset.dir/build
 .PHONY : harfbuzz-subset/fast
 
-Users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/graph/gsubgpos-context.o: Users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/graph/gsubgpos-context.cc.o
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/graph/gsubgpos-context.o
+users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/graph/gsubgpos-context.o: users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/graph/gsubgpos-context.cc.o
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/graph/gsubgpos-context.o
 
 # target to build an object file
-Users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/graph/gsubgpos-context.cc.o:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2ttf/external/harfbuzz/CMakeFiles/harfbuzz-subset.dir/build.make cugl.dir/sdl2pckg.dir/sdl2ttf/external/harfbuzz/CMakeFiles/harfbuzz-subset.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/graph/gsubgpos-context.cc.o
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/graph/gsubgpos-context.cc.o
+users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/graph/gsubgpos-context.cc.o:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2ttf/external/harfbuzz/CMakeFiles/harfbuzz-subset.dir/build.make cugl.dir/sdl2pckg.dir/sdl2ttf/external/harfbuzz/CMakeFiles/harfbuzz-subset.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/graph/gsubgpos-context.cc.o
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/graph/gsubgpos-context.cc.o
 
-Users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/graph/gsubgpos-context.i: Users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/graph/gsubgpos-context.cc.i
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/graph/gsubgpos-context.i
+users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/graph/gsubgpos-context.i: users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/graph/gsubgpos-context.cc.i
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/graph/gsubgpos-context.i
 
 # target to preprocess a source file
-Users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/graph/gsubgpos-context.cc.i:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2ttf/external/harfbuzz/CMakeFiles/harfbuzz-subset.dir/build.make cugl.dir/sdl2pckg.dir/sdl2ttf/external/harfbuzz/CMakeFiles/harfbuzz-subset.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/graph/gsubgpos-context.cc.i
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/graph/gsubgpos-context.cc.i
+users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/graph/gsubgpos-context.cc.i:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2ttf/external/harfbuzz/CMakeFiles/harfbuzz-subset.dir/build.make cugl.dir/sdl2pckg.dir/sdl2ttf/external/harfbuzz/CMakeFiles/harfbuzz-subset.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/graph/gsubgpos-context.cc.i
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/graph/gsubgpos-context.cc.i
 
-Users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/graph/gsubgpos-context.s: Users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/graph/gsubgpos-context.cc.s
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/graph/gsubgpos-context.s
+users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/graph/gsubgpos-context.s: users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/graph/gsubgpos-context.cc.s
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/graph/gsubgpos-context.s
 
 # target to generate assembly for a file
-Users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/graph/gsubgpos-context.cc.s:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2ttf/external/harfbuzz/CMakeFiles/harfbuzz-subset.dir/build.make cugl.dir/sdl2pckg.dir/sdl2ttf/external/harfbuzz/CMakeFiles/harfbuzz-subset.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/graph/gsubgpos-context.cc.s
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/graph/gsubgpos-context.cc.s
+users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/graph/gsubgpos-context.cc.s:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2ttf/external/harfbuzz/CMakeFiles/harfbuzz-subset.dir/build.make cugl.dir/sdl2pckg.dir/sdl2ttf/external/harfbuzz/CMakeFiles/harfbuzz-subset.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/graph/gsubgpos-context.cc.s
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/graph/gsubgpos-context.cc.s
 
-Users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/harfbuzz.o: Users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/harfbuzz.cc.o
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/harfbuzz.o
+users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/harfbuzz.o: users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/harfbuzz.cc.o
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/harfbuzz.o
 
 # target to build an object file
-Users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/harfbuzz.cc.o:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2ttf/external/harfbuzz/CMakeFiles/harfbuzz.dir/build.make cugl.dir/sdl2pckg.dir/sdl2ttf/external/harfbuzz/CMakeFiles/harfbuzz.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/harfbuzz.cc.o
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/harfbuzz.cc.o
+users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/harfbuzz.cc.o:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2ttf/external/harfbuzz/CMakeFiles/harfbuzz.dir/build.make cugl.dir/sdl2pckg.dir/sdl2ttf/external/harfbuzz/CMakeFiles/harfbuzz.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/harfbuzz.cc.o
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/harfbuzz.cc.o
 
-Users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/harfbuzz.i: Users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/harfbuzz.cc.i
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/harfbuzz.i
+users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/harfbuzz.i: users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/harfbuzz.cc.i
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/harfbuzz.i
 
 # target to preprocess a source file
-Users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/harfbuzz.cc.i:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2ttf/external/harfbuzz/CMakeFiles/harfbuzz.dir/build.make cugl.dir/sdl2pckg.dir/sdl2ttf/external/harfbuzz/CMakeFiles/harfbuzz.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/harfbuzz.cc.i
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/harfbuzz.cc.i
+users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/harfbuzz.cc.i:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2ttf/external/harfbuzz/CMakeFiles/harfbuzz.dir/build.make cugl.dir/sdl2pckg.dir/sdl2ttf/external/harfbuzz/CMakeFiles/harfbuzz.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/harfbuzz.cc.i
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/harfbuzz.cc.i
 
-Users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/harfbuzz.s: Users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/harfbuzz.cc.s
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/harfbuzz.s
+users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/harfbuzz.s: users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/harfbuzz.cc.s
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/harfbuzz.s
 
 # target to generate assembly for a file
-Users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/harfbuzz.cc.s:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2ttf/external/harfbuzz/CMakeFiles/harfbuzz.dir/build.make cugl.dir/sdl2pckg.dir/sdl2ttf/external/harfbuzz/CMakeFiles/harfbuzz.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/harfbuzz.cc.s
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/harfbuzz.cc.s
+users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/harfbuzz.cc.s:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2ttf/external/harfbuzz/CMakeFiles/harfbuzz.dir/build.make cugl.dir/sdl2pckg.dir/sdl2ttf/external/harfbuzz/CMakeFiles/harfbuzz.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/harfbuzz.cc.s
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/harfbuzz.cc.s
 
-Users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-number.o: Users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-number.cc.o
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-number.o
+users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-number.o: users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-number.cc.o
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-number.o
 
 # target to build an object file
-Users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-number.cc.o:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2ttf/external/harfbuzz/CMakeFiles/harfbuzz-subset.dir/build.make cugl.dir/sdl2pckg.dir/sdl2ttf/external/harfbuzz/CMakeFiles/harfbuzz-subset.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-number.cc.o
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-number.cc.o
+users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-number.cc.o:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2ttf/external/harfbuzz/CMakeFiles/harfbuzz-subset.dir/build.make cugl.dir/sdl2pckg.dir/sdl2ttf/external/harfbuzz/CMakeFiles/harfbuzz-subset.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-number.cc.o
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-number.cc.o
 
-Users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-number.i: Users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-number.cc.i
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-number.i
+users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-number.i: users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-number.cc.i
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-number.i
 
 # target to preprocess a source file
-Users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-number.cc.i:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2ttf/external/harfbuzz/CMakeFiles/harfbuzz-subset.dir/build.make cugl.dir/sdl2pckg.dir/sdl2ttf/external/harfbuzz/CMakeFiles/harfbuzz-subset.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-number.cc.i
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-number.cc.i
+users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-number.cc.i:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2ttf/external/harfbuzz/CMakeFiles/harfbuzz-subset.dir/build.make cugl.dir/sdl2pckg.dir/sdl2ttf/external/harfbuzz/CMakeFiles/harfbuzz-subset.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-number.cc.i
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-number.cc.i
 
-Users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-number.s: Users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-number.cc.s
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-number.s
+users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-number.s: users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-number.cc.s
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-number.s
 
 # target to generate assembly for a file
-Users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-number.cc.s:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2ttf/external/harfbuzz/CMakeFiles/harfbuzz-subset.dir/build.make cugl.dir/sdl2pckg.dir/sdl2ttf/external/harfbuzz/CMakeFiles/harfbuzz-subset.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-number.cc.s
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-number.cc.s
+users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-number.cc.s:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2ttf/external/harfbuzz/CMakeFiles/harfbuzz-subset.dir/build.make cugl.dir/sdl2pckg.dir/sdl2ttf/external/harfbuzz/CMakeFiles/harfbuzz-subset.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-number.cc.s
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-number.cc.s
 
-Users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-ot-cff1-table.o: Users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-ot-cff1-table.cc.o
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-ot-cff1-table.o
+users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-ot-cff1-table.o: users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-ot-cff1-table.cc.o
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-ot-cff1-table.o
 
 # target to build an object file
-Users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-ot-cff1-table.cc.o:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2ttf/external/harfbuzz/CMakeFiles/harfbuzz-subset.dir/build.make cugl.dir/sdl2pckg.dir/sdl2ttf/external/harfbuzz/CMakeFiles/harfbuzz-subset.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-ot-cff1-table.cc.o
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-ot-cff1-table.cc.o
+users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-ot-cff1-table.cc.o:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2ttf/external/harfbuzz/CMakeFiles/harfbuzz-subset.dir/build.make cugl.dir/sdl2pckg.dir/sdl2ttf/external/harfbuzz/CMakeFiles/harfbuzz-subset.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-ot-cff1-table.cc.o
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-ot-cff1-table.cc.o
 
-Users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-ot-cff1-table.i: Users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-ot-cff1-table.cc.i
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-ot-cff1-table.i
+users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-ot-cff1-table.i: users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-ot-cff1-table.cc.i
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-ot-cff1-table.i
 
 # target to preprocess a source file
-Users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-ot-cff1-table.cc.i:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2ttf/external/harfbuzz/CMakeFiles/harfbuzz-subset.dir/build.make cugl.dir/sdl2pckg.dir/sdl2ttf/external/harfbuzz/CMakeFiles/harfbuzz-subset.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-ot-cff1-table.cc.i
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-ot-cff1-table.cc.i
+users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-ot-cff1-table.cc.i:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2ttf/external/harfbuzz/CMakeFiles/harfbuzz-subset.dir/build.make cugl.dir/sdl2pckg.dir/sdl2ttf/external/harfbuzz/CMakeFiles/harfbuzz-subset.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-ot-cff1-table.cc.i
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-ot-cff1-table.cc.i
 
-Users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-ot-cff1-table.s: Users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-ot-cff1-table.cc.s
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-ot-cff1-table.s
+users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-ot-cff1-table.s: users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-ot-cff1-table.cc.s
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-ot-cff1-table.s
 
 # target to generate assembly for a file
-Users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-ot-cff1-table.cc.s:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2ttf/external/harfbuzz/CMakeFiles/harfbuzz-subset.dir/build.make cugl.dir/sdl2pckg.dir/sdl2ttf/external/harfbuzz/CMakeFiles/harfbuzz-subset.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-ot-cff1-table.cc.s
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-ot-cff1-table.cc.s
+users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-ot-cff1-table.cc.s:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2ttf/external/harfbuzz/CMakeFiles/harfbuzz-subset.dir/build.make cugl.dir/sdl2pckg.dir/sdl2ttf/external/harfbuzz/CMakeFiles/harfbuzz-subset.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-ot-cff1-table.cc.s
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-ot-cff1-table.cc.s
 
-Users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-ot-cff2-table.o: Users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-ot-cff2-table.cc.o
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-ot-cff2-table.o
+users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-ot-cff2-table.o: users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-ot-cff2-table.cc.o
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-ot-cff2-table.o
 
 # target to build an object file
-Users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-ot-cff2-table.cc.o:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2ttf/external/harfbuzz/CMakeFiles/harfbuzz-subset.dir/build.make cugl.dir/sdl2pckg.dir/sdl2ttf/external/harfbuzz/CMakeFiles/harfbuzz-subset.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-ot-cff2-table.cc.o
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-ot-cff2-table.cc.o
+users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-ot-cff2-table.cc.o:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2ttf/external/harfbuzz/CMakeFiles/harfbuzz-subset.dir/build.make cugl.dir/sdl2pckg.dir/sdl2ttf/external/harfbuzz/CMakeFiles/harfbuzz-subset.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-ot-cff2-table.cc.o
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-ot-cff2-table.cc.o
 
-Users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-ot-cff2-table.i: Users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-ot-cff2-table.cc.i
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-ot-cff2-table.i
+users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-ot-cff2-table.i: users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-ot-cff2-table.cc.i
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-ot-cff2-table.i
 
 # target to preprocess a source file
-Users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-ot-cff2-table.cc.i:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2ttf/external/harfbuzz/CMakeFiles/harfbuzz-subset.dir/build.make cugl.dir/sdl2pckg.dir/sdl2ttf/external/harfbuzz/CMakeFiles/harfbuzz-subset.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-ot-cff2-table.cc.i
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-ot-cff2-table.cc.i
+users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-ot-cff2-table.cc.i:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2ttf/external/harfbuzz/CMakeFiles/harfbuzz-subset.dir/build.make cugl.dir/sdl2pckg.dir/sdl2ttf/external/harfbuzz/CMakeFiles/harfbuzz-subset.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-ot-cff2-table.cc.i
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-ot-cff2-table.cc.i
 
-Users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-ot-cff2-table.s: Users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-ot-cff2-table.cc.s
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-ot-cff2-table.s
+users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-ot-cff2-table.s: users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-ot-cff2-table.cc.s
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-ot-cff2-table.s
 
 # target to generate assembly for a file
-Users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-ot-cff2-table.cc.s:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2ttf/external/harfbuzz/CMakeFiles/harfbuzz-subset.dir/build.make cugl.dir/sdl2pckg.dir/sdl2ttf/external/harfbuzz/CMakeFiles/harfbuzz-subset.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-ot-cff2-table.cc.s
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-ot-cff2-table.cc.s
+users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-ot-cff2-table.cc.s:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2ttf/external/harfbuzz/CMakeFiles/harfbuzz-subset.dir/build.make cugl.dir/sdl2pckg.dir/sdl2ttf/external/harfbuzz/CMakeFiles/harfbuzz-subset.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-ot-cff2-table.cc.s
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-ot-cff2-table.cc.s
 
-Users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-static.o: Users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-static.cc.o
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-static.o
+users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-static.o: users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-static.cc.o
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-static.o
 
 # target to build an object file
-Users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-static.cc.o:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2ttf/external/harfbuzz/CMakeFiles/harfbuzz-subset.dir/build.make cugl.dir/sdl2pckg.dir/sdl2ttf/external/harfbuzz/CMakeFiles/harfbuzz-subset.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-static.cc.o
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-static.cc.o
+users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-static.cc.o:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2ttf/external/harfbuzz/CMakeFiles/harfbuzz-subset.dir/build.make cugl.dir/sdl2pckg.dir/sdl2ttf/external/harfbuzz/CMakeFiles/harfbuzz-subset.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-static.cc.o
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-static.cc.o
 
-Users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-static.i: Users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-static.cc.i
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-static.i
+users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-static.i: users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-static.cc.i
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-static.i
 
 # target to preprocess a source file
-Users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-static.cc.i:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2ttf/external/harfbuzz/CMakeFiles/harfbuzz-subset.dir/build.make cugl.dir/sdl2pckg.dir/sdl2ttf/external/harfbuzz/CMakeFiles/harfbuzz-subset.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-static.cc.i
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-static.cc.i
+users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-static.cc.i:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2ttf/external/harfbuzz/CMakeFiles/harfbuzz-subset.dir/build.make cugl.dir/sdl2pckg.dir/sdl2ttf/external/harfbuzz/CMakeFiles/harfbuzz-subset.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-static.cc.i
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-static.cc.i
 
-Users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-static.s: Users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-static.cc.s
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-static.s
+users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-static.s: users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-static.cc.s
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-static.s
 
 # target to generate assembly for a file
-Users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-static.cc.s:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2ttf/external/harfbuzz/CMakeFiles/harfbuzz-subset.dir/build.make cugl.dir/sdl2pckg.dir/sdl2ttf/external/harfbuzz/CMakeFiles/harfbuzz-subset.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-static.cc.s
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-static.cc.s
+users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-static.cc.s:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2ttf/external/harfbuzz/CMakeFiles/harfbuzz-subset.dir/build.make cugl.dir/sdl2pckg.dir/sdl2ttf/external/harfbuzz/CMakeFiles/harfbuzz-subset.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-static.cc.s
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-static.cc.s
 
-Users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset-cff-common.o: Users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset-cff-common.cc.o
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset-cff-common.o
+users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset-cff-common.o: users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset-cff-common.cc.o
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset-cff-common.o
 
 # target to build an object file
-Users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset-cff-common.cc.o:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2ttf/external/harfbuzz/CMakeFiles/harfbuzz-subset.dir/build.make cugl.dir/sdl2pckg.dir/sdl2ttf/external/harfbuzz/CMakeFiles/harfbuzz-subset.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset-cff-common.cc.o
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset-cff-common.cc.o
+users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset-cff-common.cc.o:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2ttf/external/harfbuzz/CMakeFiles/harfbuzz-subset.dir/build.make cugl.dir/sdl2pckg.dir/sdl2ttf/external/harfbuzz/CMakeFiles/harfbuzz-subset.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset-cff-common.cc.o
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset-cff-common.cc.o
 
-Users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset-cff-common.i: Users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset-cff-common.cc.i
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset-cff-common.i
+users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset-cff-common.i: users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset-cff-common.cc.i
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset-cff-common.i
 
 # target to preprocess a source file
-Users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset-cff-common.cc.i:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2ttf/external/harfbuzz/CMakeFiles/harfbuzz-subset.dir/build.make cugl.dir/sdl2pckg.dir/sdl2ttf/external/harfbuzz/CMakeFiles/harfbuzz-subset.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset-cff-common.cc.i
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset-cff-common.cc.i
+users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset-cff-common.cc.i:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2ttf/external/harfbuzz/CMakeFiles/harfbuzz-subset.dir/build.make cugl.dir/sdl2pckg.dir/sdl2ttf/external/harfbuzz/CMakeFiles/harfbuzz-subset.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset-cff-common.cc.i
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset-cff-common.cc.i
 
-Users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset-cff-common.s: Users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset-cff-common.cc.s
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset-cff-common.s
+users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset-cff-common.s: users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset-cff-common.cc.s
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset-cff-common.s
 
 # target to generate assembly for a file
-Users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset-cff-common.cc.s:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2ttf/external/harfbuzz/CMakeFiles/harfbuzz-subset.dir/build.make cugl.dir/sdl2pckg.dir/sdl2ttf/external/harfbuzz/CMakeFiles/harfbuzz-subset.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset-cff-common.cc.s
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset-cff-common.cc.s
+users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset-cff-common.cc.s:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2ttf/external/harfbuzz/CMakeFiles/harfbuzz-subset.dir/build.make cugl.dir/sdl2pckg.dir/sdl2ttf/external/harfbuzz/CMakeFiles/harfbuzz-subset.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset-cff-common.cc.s
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset-cff-common.cc.s
 
-Users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset-cff1.o: Users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset-cff1.cc.o
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset-cff1.o
+users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset-cff1.o: users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset-cff1.cc.o
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset-cff1.o
 
 # target to build an object file
-Users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset-cff1.cc.o:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2ttf/external/harfbuzz/CMakeFiles/harfbuzz-subset.dir/build.make cugl.dir/sdl2pckg.dir/sdl2ttf/external/harfbuzz/CMakeFiles/harfbuzz-subset.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset-cff1.cc.o
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset-cff1.cc.o
+users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset-cff1.cc.o:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2ttf/external/harfbuzz/CMakeFiles/harfbuzz-subset.dir/build.make cugl.dir/sdl2pckg.dir/sdl2ttf/external/harfbuzz/CMakeFiles/harfbuzz-subset.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset-cff1.cc.o
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset-cff1.cc.o
 
-Users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset-cff1.i: Users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset-cff1.cc.i
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset-cff1.i
+users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset-cff1.i: users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset-cff1.cc.i
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset-cff1.i
 
 # target to preprocess a source file
-Users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset-cff1.cc.i:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2ttf/external/harfbuzz/CMakeFiles/harfbuzz-subset.dir/build.make cugl.dir/sdl2pckg.dir/sdl2ttf/external/harfbuzz/CMakeFiles/harfbuzz-subset.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset-cff1.cc.i
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset-cff1.cc.i
+users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset-cff1.cc.i:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2ttf/external/harfbuzz/CMakeFiles/harfbuzz-subset.dir/build.make cugl.dir/sdl2pckg.dir/sdl2ttf/external/harfbuzz/CMakeFiles/harfbuzz-subset.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset-cff1.cc.i
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset-cff1.cc.i
 
-Users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset-cff1.s: Users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset-cff1.cc.s
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset-cff1.s
+users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset-cff1.s: users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset-cff1.cc.s
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset-cff1.s
 
 # target to generate assembly for a file
-Users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset-cff1.cc.s:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2ttf/external/harfbuzz/CMakeFiles/harfbuzz-subset.dir/build.make cugl.dir/sdl2pckg.dir/sdl2ttf/external/harfbuzz/CMakeFiles/harfbuzz-subset.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset-cff1.cc.s
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset-cff1.cc.s
+users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset-cff1.cc.s:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2ttf/external/harfbuzz/CMakeFiles/harfbuzz-subset.dir/build.make cugl.dir/sdl2pckg.dir/sdl2ttf/external/harfbuzz/CMakeFiles/harfbuzz-subset.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset-cff1.cc.s
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset-cff1.cc.s
 
-Users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset-cff2.o: Users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset-cff2.cc.o
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset-cff2.o
+users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset-cff2.o: users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset-cff2.cc.o
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset-cff2.o
 
 # target to build an object file
-Users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset-cff2.cc.o:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2ttf/external/harfbuzz/CMakeFiles/harfbuzz-subset.dir/build.make cugl.dir/sdl2pckg.dir/sdl2ttf/external/harfbuzz/CMakeFiles/harfbuzz-subset.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset-cff2.cc.o
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset-cff2.cc.o
+users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset-cff2.cc.o:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2ttf/external/harfbuzz/CMakeFiles/harfbuzz-subset.dir/build.make cugl.dir/sdl2pckg.dir/sdl2ttf/external/harfbuzz/CMakeFiles/harfbuzz-subset.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset-cff2.cc.o
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset-cff2.cc.o
 
-Users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset-cff2.i: Users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset-cff2.cc.i
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset-cff2.i
+users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset-cff2.i: users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset-cff2.cc.i
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset-cff2.i
 
 # target to preprocess a source file
-Users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset-cff2.cc.i:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2ttf/external/harfbuzz/CMakeFiles/harfbuzz-subset.dir/build.make cugl.dir/sdl2pckg.dir/sdl2ttf/external/harfbuzz/CMakeFiles/harfbuzz-subset.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset-cff2.cc.i
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset-cff2.cc.i
+users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset-cff2.cc.i:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2ttf/external/harfbuzz/CMakeFiles/harfbuzz-subset.dir/build.make cugl.dir/sdl2pckg.dir/sdl2ttf/external/harfbuzz/CMakeFiles/harfbuzz-subset.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset-cff2.cc.i
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset-cff2.cc.i
 
-Users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset-cff2.s: Users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset-cff2.cc.s
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset-cff2.s
+users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset-cff2.s: users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset-cff2.cc.s
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset-cff2.s
 
 # target to generate assembly for a file
-Users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset-cff2.cc.s:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2ttf/external/harfbuzz/CMakeFiles/harfbuzz-subset.dir/build.make cugl.dir/sdl2pckg.dir/sdl2ttf/external/harfbuzz/CMakeFiles/harfbuzz-subset.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset-cff2.cc.s
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset-cff2.cc.s
+users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset-cff2.cc.s:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2ttf/external/harfbuzz/CMakeFiles/harfbuzz-subset.dir/build.make cugl.dir/sdl2pckg.dir/sdl2ttf/external/harfbuzz/CMakeFiles/harfbuzz-subset.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset-cff2.cc.s
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset-cff2.cc.s
 
-Users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset-input.o: Users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset-input.cc.o
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset-input.o
+users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset-input.o: users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset-input.cc.o
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset-input.o
 
 # target to build an object file
-Users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset-input.cc.o:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2ttf/external/harfbuzz/CMakeFiles/harfbuzz-subset.dir/build.make cugl.dir/sdl2pckg.dir/sdl2ttf/external/harfbuzz/CMakeFiles/harfbuzz-subset.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset-input.cc.o
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset-input.cc.o
+users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset-input.cc.o:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2ttf/external/harfbuzz/CMakeFiles/harfbuzz-subset.dir/build.make cugl.dir/sdl2pckg.dir/sdl2ttf/external/harfbuzz/CMakeFiles/harfbuzz-subset.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset-input.cc.o
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset-input.cc.o
 
-Users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset-input.i: Users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset-input.cc.i
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset-input.i
+users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset-input.i: users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset-input.cc.i
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset-input.i
 
 # target to preprocess a source file
-Users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset-input.cc.i:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2ttf/external/harfbuzz/CMakeFiles/harfbuzz-subset.dir/build.make cugl.dir/sdl2pckg.dir/sdl2ttf/external/harfbuzz/CMakeFiles/harfbuzz-subset.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset-input.cc.i
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset-input.cc.i
+users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset-input.cc.i:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2ttf/external/harfbuzz/CMakeFiles/harfbuzz-subset.dir/build.make cugl.dir/sdl2pckg.dir/sdl2ttf/external/harfbuzz/CMakeFiles/harfbuzz-subset.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset-input.cc.i
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset-input.cc.i
 
-Users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset-input.s: Users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset-input.cc.s
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset-input.s
+users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset-input.s: users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset-input.cc.s
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset-input.s
 
 # target to generate assembly for a file
-Users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset-input.cc.s:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2ttf/external/harfbuzz/CMakeFiles/harfbuzz-subset.dir/build.make cugl.dir/sdl2pckg.dir/sdl2ttf/external/harfbuzz/CMakeFiles/harfbuzz-subset.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset-input.cc.s
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset-input.cc.s
+users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset-input.cc.s:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2ttf/external/harfbuzz/CMakeFiles/harfbuzz-subset.dir/build.make cugl.dir/sdl2pckg.dir/sdl2ttf/external/harfbuzz/CMakeFiles/harfbuzz-subset.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset-input.cc.s
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset-input.cc.s
 
-Users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset-instancer-solver.o: Users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset-instancer-solver.cc.o
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset-instancer-solver.o
+users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset-instancer-solver.o: users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset-instancer-solver.cc.o
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset-instancer-solver.o
 
 # target to build an object file
-Users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset-instancer-solver.cc.o:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2ttf/external/harfbuzz/CMakeFiles/harfbuzz-subset.dir/build.make cugl.dir/sdl2pckg.dir/sdl2ttf/external/harfbuzz/CMakeFiles/harfbuzz-subset.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset-instancer-solver.cc.o
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset-instancer-solver.cc.o
+users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset-instancer-solver.cc.o:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2ttf/external/harfbuzz/CMakeFiles/harfbuzz-subset.dir/build.make cugl.dir/sdl2pckg.dir/sdl2ttf/external/harfbuzz/CMakeFiles/harfbuzz-subset.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset-instancer-solver.cc.o
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset-instancer-solver.cc.o
 
-Users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset-instancer-solver.i: Users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset-instancer-solver.cc.i
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset-instancer-solver.i
+users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset-instancer-solver.i: users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset-instancer-solver.cc.i
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset-instancer-solver.i
 
 # target to preprocess a source file
-Users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset-instancer-solver.cc.i:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2ttf/external/harfbuzz/CMakeFiles/harfbuzz-subset.dir/build.make cugl.dir/sdl2pckg.dir/sdl2ttf/external/harfbuzz/CMakeFiles/harfbuzz-subset.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset-instancer-solver.cc.i
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset-instancer-solver.cc.i
+users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset-instancer-solver.cc.i:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2ttf/external/harfbuzz/CMakeFiles/harfbuzz-subset.dir/build.make cugl.dir/sdl2pckg.dir/sdl2ttf/external/harfbuzz/CMakeFiles/harfbuzz-subset.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset-instancer-solver.cc.i
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset-instancer-solver.cc.i
 
-Users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset-instancer-solver.s: Users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset-instancer-solver.cc.s
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset-instancer-solver.s
+users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset-instancer-solver.s: users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset-instancer-solver.cc.s
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset-instancer-solver.s
 
 # target to generate assembly for a file
-Users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset-instancer-solver.cc.s:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2ttf/external/harfbuzz/CMakeFiles/harfbuzz-subset.dir/build.make cugl.dir/sdl2pckg.dir/sdl2ttf/external/harfbuzz/CMakeFiles/harfbuzz-subset.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset-instancer-solver.cc.s
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset-instancer-solver.cc.s
+users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset-instancer-solver.cc.s:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2ttf/external/harfbuzz/CMakeFiles/harfbuzz-subset.dir/build.make cugl.dir/sdl2pckg.dir/sdl2ttf/external/harfbuzz/CMakeFiles/harfbuzz-subset.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset-instancer-solver.cc.s
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset-instancer-solver.cc.s
 
-Users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset-plan.o: Users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset-plan.cc.o
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset-plan.o
+users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset-plan.o: users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset-plan.cc.o
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset-plan.o
 
 # target to build an object file
-Users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset-plan.cc.o:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2ttf/external/harfbuzz/CMakeFiles/harfbuzz-subset.dir/build.make cugl.dir/sdl2pckg.dir/sdl2ttf/external/harfbuzz/CMakeFiles/harfbuzz-subset.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset-plan.cc.o
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset-plan.cc.o
+users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset-plan.cc.o:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2ttf/external/harfbuzz/CMakeFiles/harfbuzz-subset.dir/build.make cugl.dir/sdl2pckg.dir/sdl2ttf/external/harfbuzz/CMakeFiles/harfbuzz-subset.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset-plan.cc.o
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset-plan.cc.o
 
-Users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset-plan.i: Users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset-plan.cc.i
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset-plan.i
+users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset-plan.i: users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset-plan.cc.i
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset-plan.i
 
 # target to preprocess a source file
-Users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset-plan.cc.i:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2ttf/external/harfbuzz/CMakeFiles/harfbuzz-subset.dir/build.make cugl.dir/sdl2pckg.dir/sdl2ttf/external/harfbuzz/CMakeFiles/harfbuzz-subset.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset-plan.cc.i
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset-plan.cc.i
+users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset-plan.cc.i:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2ttf/external/harfbuzz/CMakeFiles/harfbuzz-subset.dir/build.make cugl.dir/sdl2pckg.dir/sdl2ttf/external/harfbuzz/CMakeFiles/harfbuzz-subset.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset-plan.cc.i
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset-plan.cc.i
 
-Users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset-plan.s: Users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset-plan.cc.s
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset-plan.s
+users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset-plan.s: users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset-plan.cc.s
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset-plan.s
 
 # target to generate assembly for a file
-Users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset-plan.cc.s:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2ttf/external/harfbuzz/CMakeFiles/harfbuzz-subset.dir/build.make cugl.dir/sdl2pckg.dir/sdl2ttf/external/harfbuzz/CMakeFiles/harfbuzz-subset.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset-plan.cc.s
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset-plan.cc.s
+users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset-plan.cc.s:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2ttf/external/harfbuzz/CMakeFiles/harfbuzz-subset.dir/build.make cugl.dir/sdl2pckg.dir/sdl2ttf/external/harfbuzz/CMakeFiles/harfbuzz-subset.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset-plan.cc.s
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset-plan.cc.s
 
-Users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset-repacker.o: Users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset-repacker.cc.o
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset-repacker.o
+users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset-repacker.o: users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset-repacker.cc.o
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset-repacker.o
 
 # target to build an object file
-Users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset-repacker.cc.o:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2ttf/external/harfbuzz/CMakeFiles/harfbuzz-subset.dir/build.make cugl.dir/sdl2pckg.dir/sdl2ttf/external/harfbuzz/CMakeFiles/harfbuzz-subset.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset-repacker.cc.o
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset-repacker.cc.o
+users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset-repacker.cc.o:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2ttf/external/harfbuzz/CMakeFiles/harfbuzz-subset.dir/build.make cugl.dir/sdl2pckg.dir/sdl2ttf/external/harfbuzz/CMakeFiles/harfbuzz-subset.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset-repacker.cc.o
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset-repacker.cc.o
 
-Users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset-repacker.i: Users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset-repacker.cc.i
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset-repacker.i
+users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset-repacker.i: users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset-repacker.cc.i
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset-repacker.i
 
 # target to preprocess a source file
-Users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset-repacker.cc.i:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2ttf/external/harfbuzz/CMakeFiles/harfbuzz-subset.dir/build.make cugl.dir/sdl2pckg.dir/sdl2ttf/external/harfbuzz/CMakeFiles/harfbuzz-subset.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset-repacker.cc.i
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset-repacker.cc.i
+users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset-repacker.cc.i:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2ttf/external/harfbuzz/CMakeFiles/harfbuzz-subset.dir/build.make cugl.dir/sdl2pckg.dir/sdl2ttf/external/harfbuzz/CMakeFiles/harfbuzz-subset.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset-repacker.cc.i
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset-repacker.cc.i
 
-Users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset-repacker.s: Users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset-repacker.cc.s
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset-repacker.s
+users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset-repacker.s: users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset-repacker.cc.s
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset-repacker.s
 
 # target to generate assembly for a file
-Users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset-repacker.cc.s:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2ttf/external/harfbuzz/CMakeFiles/harfbuzz-subset.dir/build.make cugl.dir/sdl2pckg.dir/sdl2ttf/external/harfbuzz/CMakeFiles/harfbuzz-subset.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset-repacker.cc.s
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset-repacker.cc.s
+users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset-repacker.cc.s:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2ttf/external/harfbuzz/CMakeFiles/harfbuzz-subset.dir/build.make cugl.dir/sdl2pckg.dir/sdl2ttf/external/harfbuzz/CMakeFiles/harfbuzz-subset.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset-repacker.cc.s
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset-repacker.cc.s
 
-Users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset.o: Users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset.cc.o
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset.o
+users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset.o: users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset.cc.o
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset.o
 
 # target to build an object file
-Users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset.cc.o:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2ttf/external/harfbuzz/CMakeFiles/harfbuzz-subset.dir/build.make cugl.dir/sdl2pckg.dir/sdl2ttf/external/harfbuzz/CMakeFiles/harfbuzz-subset.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset.cc.o
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset.cc.o
+users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset.cc.o:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2ttf/external/harfbuzz/CMakeFiles/harfbuzz-subset.dir/build.make cugl.dir/sdl2pckg.dir/sdl2ttf/external/harfbuzz/CMakeFiles/harfbuzz-subset.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset.cc.o
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset.cc.o
 
-Users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset.i: Users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset.cc.i
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset.i
+users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset.i: users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset.cc.i
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset.i
 
 # target to preprocess a source file
-Users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset.cc.i:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2ttf/external/harfbuzz/CMakeFiles/harfbuzz-subset.dir/build.make cugl.dir/sdl2pckg.dir/sdl2ttf/external/harfbuzz/CMakeFiles/harfbuzz-subset.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset.cc.i
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset.cc.i
+users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset.cc.i:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2ttf/external/harfbuzz/CMakeFiles/harfbuzz-subset.dir/build.make cugl.dir/sdl2pckg.dir/sdl2ttf/external/harfbuzz/CMakeFiles/harfbuzz-subset.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset.cc.i
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset.cc.i
 
-Users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset.s: Users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset.cc.s
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset.s
+users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset.s: users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset.cc.s
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset.s
 
 # target to generate assembly for a file
-Users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset.cc.s:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2ttf/external/harfbuzz/CMakeFiles/harfbuzz-subset.dir/build.make cugl.dir/sdl2pckg.dir/sdl2ttf/external/harfbuzz/CMakeFiles/harfbuzz-subset.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset.cc.s
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset.cc.s
+users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset.cc.s:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2ttf/external/harfbuzz/CMakeFiles/harfbuzz-subset.dir/build.make cugl.dir/sdl2pckg.dir/sdl2ttf/external/harfbuzz/CMakeFiles/harfbuzz-subset.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset.cc.s
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset.cc.s
 
 # Help Target
 help:
@@ -561,48 +561,48 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... harfbuzz"
 	@echo "... harfbuzz-subset"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/graph/gsubgpos-context.o"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/graph/gsubgpos-context.i"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/graph/gsubgpos-context.s"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/harfbuzz.o"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/harfbuzz.i"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/harfbuzz.s"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-number.o"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-number.i"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-number.s"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-ot-cff1-table.o"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-ot-cff1-table.i"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-ot-cff1-table.s"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-ot-cff2-table.o"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-ot-cff2-table.i"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-ot-cff2-table.s"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-static.o"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-static.i"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-static.s"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset-cff-common.o"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset-cff-common.i"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset-cff-common.s"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset-cff1.o"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset-cff1.i"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset-cff1.s"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset-cff2.o"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset-cff2.i"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset-cff2.s"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset-input.o"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset-input.i"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset-input.s"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset-instancer-solver.o"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset-instancer-solver.i"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset-instancer-solver.s"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset-plan.o"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset-plan.i"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset-plan.s"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset-repacker.o"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset-repacker.i"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset-repacker.s"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset.o"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset.i"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset.s"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/graph/gsubgpos-context.o"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/graph/gsubgpos-context.i"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/graph/gsubgpos-context.s"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/harfbuzz.o"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/harfbuzz.i"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/harfbuzz.s"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-number.o"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-number.i"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-number.s"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-ot-cff1-table.o"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-ot-cff1-table.i"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-ot-cff1-table.s"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-ot-cff2-table.o"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-ot-cff2-table.i"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-ot-cff2-table.s"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-static.o"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-static.i"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-static.s"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset-cff-common.o"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset-cff-common.i"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset-cff-common.s"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset-cff1.o"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset-cff1.i"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset-cff1.s"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset-cff2.o"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset-cff2.i"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset-cff2.s"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset-input.o"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset-input.i"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset-input.s"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset-instancer-solver.o"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset-instancer-solver.i"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset-instancer-solver.s"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset-plan.o"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset-plan.i"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset-plan.s"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset-repacker.o"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset-repacker.i"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset-repacker.s"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset.o"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset.i"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/hb-subset.s"
 .PHONY : help
 
 
@@ -614,6 +614,6 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 

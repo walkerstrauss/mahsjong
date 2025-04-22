@@ -50,7 +50,7 @@ unset(_cmake_expected_targets)
 add_library(Vorbis::vorbis STATIC IMPORTED)
 
 set_target_properties(Vorbis::vorbis PROPERTIES
-  INTERFACE_INCLUDE_DIRECTORIES "/Users/patrickchoo/cs4152/cugl/sdlapp/buildfiles/cmake/../../external/vorbis/include"
+  INTERFACE_INCLUDE_DIRECTORIES "/users/patrickchoo/cs4152/cugl/sdlapp/buildfiles/cmake/../../external/vorbis/include"
   INTERFACE_LINK_LIBRARIES "Ogg::ogg;\$<LINK_ONLY:\$<\$<BOOL:1>:m>>"
 )
 
@@ -58,7 +58,7 @@ set_target_properties(Vorbis::vorbis PROPERTIES
 add_library(Vorbis::vorbisenc STATIC IMPORTED)
 
 set_target_properties(Vorbis::vorbisenc PROPERTIES
-  INTERFACE_INCLUDE_DIRECTORIES "/Users/patrickchoo/cs4152/cugl/sdlapp/buildfiles/cmake/../../external/vorbis/include"
+  INTERFACE_INCLUDE_DIRECTORIES "/users/patrickchoo/cs4152/cugl/sdlapp/buildfiles/cmake/../../external/vorbis/include"
   INTERFACE_LINK_LIBRARIES "Vorbis::vorbis"
 )
 
@@ -66,7 +66,7 @@ set_target_properties(Vorbis::vorbisenc PROPERTIES
 add_library(Vorbis::vorbisfile STATIC IMPORTED)
 
 set_target_properties(Vorbis::vorbisfile PROPERTIES
-  INTERFACE_INCLUDE_DIRECTORIES "/Users/patrickchoo/cs4152/cugl/sdlapp/buildfiles/cmake/../../external/vorbis/include"
+  INTERFACE_INCLUDE_DIRECTORIES "/users/patrickchoo/cs4152/cugl/sdlapp/buildfiles/cmake/../../external/vorbis/include"
   INTERFACE_LINK_LIBRARIES "Vorbis::vorbis"
 )
 
@@ -74,21 +74,21 @@ set_target_properties(Vorbis::vorbisfile PROPERTIES
 set_property(TARGET Vorbis::vorbis APPEND PROPERTY IMPORTED_CONFIGURATIONS NOCONFIG)
 set_target_properties(Vorbis::vorbis PROPERTIES
   IMPORTED_LINK_INTERFACE_LANGUAGES_NOCONFIG "C"
-  IMPORTED_LOCATION_NOCONFIG "/Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/libvorbis.a"
+  IMPORTED_LOCATION_NOCONFIG "/users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/libvorbis.a"
   )
 
 # Import target "Vorbis::vorbisenc" for configuration ""
 set_property(TARGET Vorbis::vorbisenc APPEND PROPERTY IMPORTED_CONFIGURATIONS NOCONFIG)
 set_target_properties(Vorbis::vorbisenc PROPERTIES
   IMPORTED_LINK_INTERFACE_LANGUAGES_NOCONFIG "C"
-  IMPORTED_LOCATION_NOCONFIG "/Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/libvorbisenc.a"
+  IMPORTED_LOCATION_NOCONFIG "/users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/libvorbisenc.a"
   )
 
 # Import target "Vorbis::vorbisfile" for configuration ""
 set_property(TARGET Vorbis::vorbisfile APPEND PROPERTY IMPORTED_CONFIGURATIONS NOCONFIG)
 set_target_properties(Vorbis::vorbisfile PROPERTIES
   IMPORTED_LINK_INTERFACE_LANGUAGES_NOCONFIG "C"
-  IMPORTED_LOCATION_NOCONFIG "/Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/libvorbisfile.a"
+  IMPORTED_LOCATION_NOCONFIG "/users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/libvorbisfile.a"
   )
 
 # Make sure the targets which have been exported in some other

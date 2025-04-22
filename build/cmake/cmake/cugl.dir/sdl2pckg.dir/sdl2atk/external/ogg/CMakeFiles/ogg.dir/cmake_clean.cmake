@@ -1,8 +1,8 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/ogg.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/ogg/src/bitwise.c.o"
-  "CMakeFiles/ogg.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/ogg/src/bitwise.c.o.d"
-  "CMakeFiles/ogg.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/ogg/src/framing.c.o"
-  "CMakeFiles/ogg.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/ogg/src/framing.c.o.d"
+  "CMakeFiles/ogg.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/ogg/src/bitwise.c.o"
+  "CMakeFiles/ogg.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/ogg/src/bitwise.c.o.d"
+  "CMakeFiles/ogg.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/ogg/src/framing.c.o"
+  "CMakeFiles/ogg.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/ogg/src/framing.c.o.d"
   "libogg.a"
   "libogg.pdb"
 )

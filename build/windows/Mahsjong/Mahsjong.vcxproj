@@ -240,6 +240,8 @@ $(LocalDebuggerEnvironment)</LocalDebuggerEnvironment>
     <ClInclude Include="resource.h" />
     <ClInclude Include="..\..\..\source\MJPlayer.h"/>
 
+    <ClInclude Include="..\..\..\source\MJPileUINode.h"/>
+
     <ClInclude Include="..\..\..\source\MJHostScene.h"/>
 
     <ClInclude Include="..\..\..\source\MJGameController.h"/>
@@ -256,17 +258,23 @@ $(LocalDebuggerEnvironment)</LocalDebuggerEnvironment>
 
     <ClInclude Include="..\..\..\source\MJAnimationController.h"/>
 
+    <ClInclude Include="..\..\..\source\MJDiscardUINode.h"/>
+
     <ClInclude Include="..\..\..\source\MJPauseScene.h"/>
 
     <ClInclude Include="..\..\..\source\MJNetworkController.h"/>
 
     <ClInclude Include="..\..\..\source\MJScoreManager.h"/>
 
+    <ClInclude Include="..\..\..\source\MJLoadingScene.h"/>
+
     <ClInclude Include="..\..\..\source\MJInputController.h"/>
 
     <ClInclude Include="..\..\..\source\MJGameOverScene.h"/>
 
     <ClInclude Include="..\..\..\source\MJApp.h"/>
+
+    <ClInclude Include="..\..\..\source\MJAnimatedNode.h"/>
 
     <ClInclude Include="..\..\..\source\MJGameScene.h"/>
 
@@ -296,6 +304,10 @@ $(LocalDebuggerEnvironment)</LocalDebuggerEnvironment>
 
     <ClCompile Include="..\..\..\source\MJSettingScene.cpp"/>
 
+    <ClCompile Include="..\..\..\source\MJDiscardUINode.cpp"/>
+
+    <ClCompile Include="..\..\..\source\MJPileUINode.cpp"/>
+
     <ClCompile Include="..\..\..\source\MJScoreManager.cpp"/>
 
     <ClCompile Include="..\..\..\source\MJGameOverScene.cpp"/>
@@ -304,9 +316,13 @@ $(LocalDebuggerEnvironment)</LocalDebuggerEnvironment>
 
     <ClCompile Include="..\..\..\source\MJInputController.cpp"/>
 
+    <ClCompile Include="..\..\..\source\MJLoadingScene.cpp"/>
+
     <ClCompile Include="..\..\..\source\MJHostScene.cpp"/>
 
     <ClCompile Include="..\..\..\source\MJPile.cpp"/>
+
+    <ClCompile Include="..\..\..\source\MJAnimatedNode.cpp"/>
 
     <ClCompile Include="..\..\..\source\MJMatchController.cpp"/>
 

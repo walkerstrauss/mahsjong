@@ -50,14 +50,14 @@ unset(_cmake_expected_targets)
 add_library(Ogg::ogg STATIC IMPORTED)
 
 set_target_properties(Ogg::ogg PROPERTIES
-  INTERFACE_INCLUDE_DIRECTORIES "/Users/patrickchoo/cs4152/cugl/sdlapp/buildfiles/cmake/../../external/ogg/include;/Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2atk/external/ogg/include"
+  INTERFACE_INCLUDE_DIRECTORIES "/users/patrickchoo/cs4152/cugl/sdlapp/buildfiles/cmake/../../external/ogg/include;/users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2atk/external/ogg/include"
 )
 
 # Import target "Ogg::ogg" for configuration ""
 set_property(TARGET Ogg::ogg APPEND PROPERTY IMPORTED_CONFIGURATIONS NOCONFIG)
 set_target_properties(Ogg::ogg PROPERTIES
   IMPORTED_LINK_INTERFACE_LANGUAGES_NOCONFIG "C"
-  IMPORTED_LOCATION_NOCONFIG "/Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2atk/external/ogg/libogg.a"
+  IMPORTED_LOCATION_NOCONFIG "/users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2atk/external/ogg/libogg.a"
   )
 
 # This file does not depend on other imported targets which have

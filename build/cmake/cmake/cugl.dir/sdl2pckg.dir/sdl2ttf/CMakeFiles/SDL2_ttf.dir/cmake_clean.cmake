@@ -1,6 +1,6 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/SDL2_ttf.dir/Users/patrickchoo/cs4152/cugl/sdlapp/src/ttf/SDL_ttf.c.o"
-  "CMakeFiles/SDL2_ttf.dir/Users/patrickchoo/cs4152/cugl/sdlapp/src/ttf/SDL_ttf.c.o.d"
+  "CMakeFiles/SDL2_ttf.dir/users/patrickchoo/cs4152/cugl/sdlapp/src/ttf/SDL_ttf.c.o"
+  "CMakeFiles/SDL2_ttf.dir/users/patrickchoo/cs4152/cugl/sdlapp/src/ttf/SDL_ttf.c.o.d"
   "libSDL2_ttf.a"
   "libSDL2_ttf.pdb"
 )
