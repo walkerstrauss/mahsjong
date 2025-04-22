@@ -54,10 +54,10 @@ RM = /opt/homebrew/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /Users/patrickchoo/cs4152/mahsjong/build/cmake
+CMAKE_SOURCE_DIR = /users/patrickchoo/cs4152/mahsjong/build/cmake
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake
+CMAKE_BINARY_DIR = /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake
 
 #=============================================================================
 # Directory level rules for the build root directory
@@ -790,14 +790,14 @@ CMakeFiles/mahsjong.dir/all: cugl.dir/external/libdatachannel/deps/libsrtp/CMake
 CMakeFiles/mahsjong.dir/all: cugl.dir/external/libdatachannel/deps/libjuice/CMakeFiles/juice.dir/all
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/mahsjong.dir/build.make CMakeFiles/mahsjong.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/mahsjong.dir/build.make CMakeFiles/mahsjong.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num=84,85 "Built target mahsjong"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num=84,85 "Built target mahsjong"
 .PHONY : CMakeFiles/mahsjong.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/mahsjong.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles 98
+	$(CMAKE_COMMAND) -E cmake_progress_start /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles 98
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/mahsjong.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles 0
 .PHONY : CMakeFiles/mahsjong.dir/rule
 
 # Convenience name for target.
@@ -807,7 +807,7 @@ mahsjong: CMakeFiles/mahsjong.dir/rule
 # codegen rule for target.
 CMakeFiles/mahsjong.dir/codegen:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/mahsjong.dir/build.make CMakeFiles/mahsjong.dir/codegen
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num=84,85 "Finished codegen for target mahsjong"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num=84,85 "Finished codegen for target mahsjong"
 .PHONY : CMakeFiles/mahsjong.dir/codegen
 
 # clean rule for target.
@@ -834,14 +834,14 @@ cugl.dir/CMakeFiles/cugl-core.dir/all: cugl.dir/sdl2pckg.dir/sdl2app/CMakeFiles/
 cugl.dir/CMakeFiles/cugl-core.dir/all: cugl.dir/external/poly2tri/CMakeFiles/poly2tri.dir/all
 	$(MAKE) $(MAKESILENT) -f cugl.dir/CMakeFiles/cugl-core.dir/build.make cugl.dir/CMakeFiles/cugl-core.dir/depend
 	$(MAKE) $(MAKESILENT) -f cugl.dir/CMakeFiles/cugl-core.dir/build.make cugl.dir/CMakeFiles/cugl-core.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num=65,66,67,68 "Built target cugl-core"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num=64,65,66,67,68 "Built target cugl-core"
 .PHONY : cugl.dir/CMakeFiles/cugl-core.dir/all
 
 # Build rule for subdir invocation for target.
 cugl.dir/CMakeFiles/cugl-core.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles 34
+	$(CMAKE_COMMAND) -E cmake_progress_start /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles 36
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 cugl.dir/CMakeFiles/cugl-core.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles 0
 .PHONY : cugl.dir/CMakeFiles/cugl-core.dir/rule
 
 # Convenience name for target.
@@ -851,7 +851,7 @@ cugl-core: cugl.dir/CMakeFiles/cugl-core.dir/rule
 # codegen rule for target.
 cugl.dir/CMakeFiles/cugl-core.dir/codegen:
 	$(MAKE) $(MAKESILENT) -f cugl.dir/CMakeFiles/cugl-core.dir/build.make cugl.dir/CMakeFiles/cugl-core.dir/codegen
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num=65,66,67,68 "Finished codegen for target cugl-core"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num=64,65,66,67,68 "Finished codegen for target cugl-core"
 .PHONY : cugl.dir/CMakeFiles/cugl-core.dir/codegen
 
 # clean rule for target.
@@ -879,14 +879,14 @@ cugl.dir/CMakeFiles/cugl-graphics.dir/all: cugl.dir/sdl2pckg.dir/sdl2app/CMakeFi
 cugl.dir/CMakeFiles/cugl-graphics.dir/all: cugl.dir/external/poly2tri/CMakeFiles/poly2tri.dir/all
 	$(MAKE) $(MAKESILENT) -f cugl.dir/CMakeFiles/cugl-graphics.dir/build.make cugl.dir/CMakeFiles/cugl-graphics.dir/depend
 	$(MAKE) $(MAKESILENT) -f cugl.dir/CMakeFiles/cugl-graphics.dir/build.make cugl.dir/CMakeFiles/cugl-graphics.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num=69,70 "Built target cugl-graphics"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num=69 "Built target cugl-graphics"
 .PHONY : cugl.dir/CMakeFiles/cugl-graphics.dir/all
 
 # Build rule for subdir invocation for target.
 cugl.dir/CMakeFiles/cugl-graphics.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles 36
+	$(CMAKE_COMMAND) -E cmake_progress_start /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles 37
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 cugl.dir/CMakeFiles/cugl-graphics.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles 0
 .PHONY : cugl.dir/CMakeFiles/cugl-graphics.dir/rule
 
 # Convenience name for target.
@@ -896,7 +896,7 @@ cugl-graphics: cugl.dir/CMakeFiles/cugl-graphics.dir/rule
 # codegen rule for target.
 cugl.dir/CMakeFiles/cugl-graphics.dir/codegen:
 	$(MAKE) $(MAKESILENT) -f cugl.dir/CMakeFiles/cugl-graphics.dir/build.make cugl.dir/CMakeFiles/cugl-graphics.dir/codegen
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num=69,70 "Finished codegen for target cugl-graphics"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num=69 "Finished codegen for target cugl-graphics"
 .PHONY : cugl.dir/CMakeFiles/cugl-graphics.dir/codegen
 
 # clean rule for target.
@@ -924,14 +924,14 @@ cugl.dir/CMakeFiles/cugl-audio.dir/all: cugl.dir/sdl2pckg.dir/sdl2app/CMakeFiles
 cugl.dir/CMakeFiles/cugl-audio.dir/all: cugl.dir/external/poly2tri/CMakeFiles/poly2tri.dir/all
 	$(MAKE) $(MAKESILENT) -f cugl.dir/CMakeFiles/cugl-audio.dir/build.make cugl.dir/CMakeFiles/cugl-audio.dir/depend
 	$(MAKE) $(MAKESILENT) -f cugl.dir/CMakeFiles/cugl-audio.dir/build.make cugl.dir/CMakeFiles/cugl-audio.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num=63,64 "Built target cugl-audio"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num=63 "Built target cugl-audio"
 .PHONY : cugl.dir/CMakeFiles/cugl-audio.dir/all
 
 # Build rule for subdir invocation for target.
 cugl.dir/CMakeFiles/cugl-audio.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles 36
+	$(CMAKE_COMMAND) -E cmake_progress_start /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles 37
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 cugl.dir/CMakeFiles/cugl-audio.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles 0
 .PHONY : cugl.dir/CMakeFiles/cugl-audio.dir/rule
 
 # Convenience name for target.
@@ -941,7 +941,7 @@ cugl-audio: cugl.dir/CMakeFiles/cugl-audio.dir/rule
 # codegen rule for target.
 cugl.dir/CMakeFiles/cugl-audio.dir/codegen:
 	$(MAKE) $(MAKESILENT) -f cugl.dir/CMakeFiles/cugl-audio.dir/build.make cugl.dir/CMakeFiles/cugl-audio.dir/codegen
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num=63,64 "Finished codegen for target cugl-audio"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num=63 "Finished codegen for target cugl-audio"
 .PHONY : cugl.dir/CMakeFiles/cugl-audio.dir/codegen
 
 # clean rule for target.
@@ -970,14 +970,14 @@ cugl.dir/CMakeFiles/cugl-scene2.dir/all: cugl.dir/sdl2pckg.dir/sdl2app/CMakeFile
 cugl.dir/CMakeFiles/cugl-scene2.dir/all: cugl.dir/external/poly2tri/CMakeFiles/poly2tri.dir/all
 	$(MAKE) $(MAKESILENT) -f cugl.dir/CMakeFiles/cugl-scene2.dir/build.make cugl.dir/CMakeFiles/cugl-scene2.dir/depend
 	$(MAKE) $(MAKESILENT) -f cugl.dir/CMakeFiles/cugl-scene2.dir/build.make cugl.dir/CMakeFiles/cugl-scene2.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num=71,72 "Built target cugl-scene2"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num=71,72 "Built target cugl-scene2"
 .PHONY : cugl.dir/CMakeFiles/cugl-scene2.dir/all
 
 # Build rule for subdir invocation for target.
 cugl.dir/CMakeFiles/cugl-scene2.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles 38
+	$(CMAKE_COMMAND) -E cmake_progress_start /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles 39
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 cugl.dir/CMakeFiles/cugl-scene2.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles 0
 .PHONY : cugl.dir/CMakeFiles/cugl-scene2.dir/rule
 
 # Convenience name for target.
@@ -987,7 +987,7 @@ cugl-scene2: cugl.dir/CMakeFiles/cugl-scene2.dir/rule
 # codegen rule for target.
 cugl.dir/CMakeFiles/cugl-scene2.dir/codegen:
 	$(MAKE) $(MAKESILENT) -f cugl.dir/CMakeFiles/cugl-scene2.dir/build.make cugl.dir/CMakeFiles/cugl-scene2.dir/codegen
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num=71,72 "Finished codegen for target cugl-scene2"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num=71,72 "Finished codegen for target cugl-scene2"
 .PHONY : cugl.dir/CMakeFiles/cugl-scene2.dir/codegen
 
 # clean rule for target.
@@ -1021,14 +1021,14 @@ cugl.dir/CMakeFiles/cugl-netcode.dir/all: cugl.dir/external/libdatachannel/deps/
 cugl.dir/CMakeFiles/cugl-netcode.dir/all: cugl.dir/external/libdatachannel/deps/libjuice/CMakeFiles/juice.dir/all
 	$(MAKE) $(MAKESILENT) -f cugl.dir/CMakeFiles/cugl-netcode.dir/build.make cugl.dir/CMakeFiles/cugl-netcode.dir/depend
 	$(MAKE) $(MAKESILENT) -f cugl.dir/CMakeFiles/cugl-netcode.dir/build.make cugl.dir/CMakeFiles/cugl-netcode.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num= "Built target cugl-netcode"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num=70 "Built target cugl-netcode"
 .PHONY : cugl.dir/CMakeFiles/cugl-netcode.dir/all
 
 # Build rule for subdir invocation for target.
 cugl.dir/CMakeFiles/cugl-netcode.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles 90
+	$(CMAKE_COMMAND) -E cmake_progress_start /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles 92
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 cugl.dir/CMakeFiles/cugl-netcode.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles 0
 .PHONY : cugl.dir/CMakeFiles/cugl-netcode.dir/rule
 
 # Convenience name for target.
@@ -1038,7 +1038,7 @@ cugl-netcode: cugl.dir/CMakeFiles/cugl-netcode.dir/rule
 # codegen rule for target.
 cugl.dir/CMakeFiles/cugl-netcode.dir/codegen:
 	$(MAKE) $(MAKESILENT) -f cugl.dir/CMakeFiles/cugl-netcode.dir/build.make cugl.dir/CMakeFiles/cugl-netcode.dir/codegen
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num= "Finished codegen for target cugl-netcode"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num=70 "Finished codegen for target cugl-netcode"
 .PHONY : cugl.dir/CMakeFiles/cugl-netcode.dir/codegen
 
 # clean rule for target.
@@ -1053,14 +1053,14 @@ cugl.dir/CMakeFiles/cugl-netcode.dir/clean:
 cugl.dir/sdl2pckg.dir/sdl2/CMakeFiles/sdl_headers_copy.dir/all:
 	$(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2/CMakeFiles/sdl_headers_copy.dir/build.make cugl.dir/sdl2pckg.dir/sdl2/CMakeFiles/sdl_headers_copy.dir/depend
 	$(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2/CMakeFiles/sdl_headers_copy.dir/build.make cugl.dir/sdl2pckg.dir/sdl2/CMakeFiles/sdl_headers_copy.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num=86,87,88,89,90,91,92 "Built target sdl_headers_copy"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num=86,87,88,89,90,91,92 "Built target sdl_headers_copy"
 .PHONY : cugl.dir/sdl2pckg.dir/sdl2/CMakeFiles/sdl_headers_copy.dir/all
 
 # Build rule for subdir invocation for target.
 cugl.dir/sdl2pckg.dir/sdl2/CMakeFiles/sdl_headers_copy.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles 7
+	$(CMAKE_COMMAND) -E cmake_progress_start /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles 7
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 cugl.dir/sdl2pckg.dir/sdl2/CMakeFiles/sdl_headers_copy.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles 0
 .PHONY : cugl.dir/sdl2pckg.dir/sdl2/CMakeFiles/sdl_headers_copy.dir/rule
 
 # Convenience name for target.
@@ -1070,7 +1070,7 @@ sdl_headers_copy: cugl.dir/sdl2pckg.dir/sdl2/CMakeFiles/sdl_headers_copy.dir/rul
 # codegen rule for target.
 cugl.dir/sdl2pckg.dir/sdl2/CMakeFiles/sdl_headers_copy.dir/codegen:
 	$(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2/CMakeFiles/sdl_headers_copy.dir/build.make cugl.dir/sdl2pckg.dir/sdl2/CMakeFiles/sdl_headers_copy.dir/codegen
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num=86,87,88,89,90,91,92 "Finished codegen for target sdl_headers_copy"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num=86,87,88,89,90,91,92 "Finished codegen for target sdl_headers_copy"
 .PHONY : cugl.dir/sdl2pckg.dir/sdl2/CMakeFiles/sdl_headers_copy.dir/codegen
 
 # clean rule for target.
@@ -1085,14 +1085,14 @@ cugl.dir/sdl2pckg.dir/sdl2/CMakeFiles/sdl_headers_copy.dir/clean:
 cugl.dir/sdl2pckg.dir/sdl2/CMakeFiles/SDL2main.dir/all: cugl.dir/sdl2pckg.dir/sdl2/CMakeFiles/sdl_headers_copy.dir/all
 	$(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2/CMakeFiles/SDL2main.dir/build.make cugl.dir/sdl2pckg.dir/sdl2/CMakeFiles/SDL2main.dir/depend
 	$(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2/CMakeFiles/SDL2main.dir/build.make cugl.dir/sdl2pckg.dir/sdl2/CMakeFiles/SDL2main.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num= "Built target SDL2main"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num= "Built target SDL2main"
 .PHONY : cugl.dir/sdl2pckg.dir/sdl2/CMakeFiles/SDL2main.dir/all
 
 # Build rule for subdir invocation for target.
 cugl.dir/sdl2pckg.dir/sdl2/CMakeFiles/SDL2main.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles 7
+	$(CMAKE_COMMAND) -E cmake_progress_start /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles 7
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 cugl.dir/sdl2pckg.dir/sdl2/CMakeFiles/SDL2main.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles 0
 .PHONY : cugl.dir/sdl2pckg.dir/sdl2/CMakeFiles/SDL2main.dir/rule
 
 # Convenience name for target.
@@ -1102,7 +1102,7 @@ SDL2main: cugl.dir/sdl2pckg.dir/sdl2/CMakeFiles/SDL2main.dir/rule
 # codegen rule for target.
 cugl.dir/sdl2pckg.dir/sdl2/CMakeFiles/SDL2main.dir/codegen: cugl.dir/sdl2pckg.dir/sdl2/CMakeFiles/sdl_headers_copy.dir/all
 	$(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2/CMakeFiles/SDL2main.dir/build.make cugl.dir/sdl2pckg.dir/sdl2/CMakeFiles/SDL2main.dir/codegen
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num= "Finished codegen for target SDL2main"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num= "Finished codegen for target SDL2main"
 .PHONY : cugl.dir/sdl2pckg.dir/sdl2/CMakeFiles/SDL2main.dir/codegen
 
 # clean rule for target.
@@ -1117,14 +1117,14 @@ cugl.dir/sdl2pckg.dir/sdl2/CMakeFiles/SDL2main.dir/clean:
 cugl.dir/sdl2pckg.dir/sdl2/CMakeFiles/SDL2-static.dir/all: cugl.dir/sdl2pckg.dir/sdl2/CMakeFiles/sdl_headers_copy.dir/all
 	$(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2/CMakeFiles/SDL2-static.dir/build.make cugl.dir/sdl2pckg.dir/sdl2/CMakeFiles/SDL2-static.dir/depend
 	$(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2/CMakeFiles/SDL2-static.dir/build.make cugl.dir/sdl2pckg.dir/sdl2/CMakeFiles/SDL2-static.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num=3,4,5,6,7,8,9,10,11,12,13,14,15 "Built target SDL2-static"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num=3,4,5,6,7,8,9,10,11,12,13,14,15 "Built target SDL2-static"
 .PHONY : cugl.dir/sdl2pckg.dir/sdl2/CMakeFiles/SDL2-static.dir/all
 
 # Build rule for subdir invocation for target.
 cugl.dir/sdl2pckg.dir/sdl2/CMakeFiles/SDL2-static.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles 20
+	$(CMAKE_COMMAND) -E cmake_progress_start /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles 20
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 cugl.dir/sdl2pckg.dir/sdl2/CMakeFiles/SDL2-static.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles 0
 .PHONY : cugl.dir/sdl2pckg.dir/sdl2/CMakeFiles/SDL2-static.dir/rule
 
 # Convenience name for target.
@@ -1134,7 +1134,7 @@ SDL2-static: cugl.dir/sdl2pckg.dir/sdl2/CMakeFiles/SDL2-static.dir/rule
 # codegen rule for target.
 cugl.dir/sdl2pckg.dir/sdl2/CMakeFiles/SDL2-static.dir/codegen: cugl.dir/sdl2pckg.dir/sdl2/CMakeFiles/sdl_headers_copy.dir/all
 	$(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2/CMakeFiles/SDL2-static.dir/build.make cugl.dir/sdl2pckg.dir/sdl2/CMakeFiles/SDL2-static.dir/codegen
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num=3,4,5,6,7,8,9,10,11,12,13,14,15 "Finished codegen for target SDL2-static"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num=3,4,5,6,7,8,9,10,11,12,13,14,15 "Finished codegen for target SDL2-static"
 .PHONY : cugl.dir/sdl2pckg.dir/sdl2/CMakeFiles/SDL2-static.dir/codegen
 
 # clean rule for target.
@@ -1149,14 +1149,14 @@ cugl.dir/sdl2pckg.dir/sdl2/CMakeFiles/SDL2-static.dir/clean:
 cugl.dir/sdl2pckg.dir/sdl2/CMakeFiles/uninstall.dir/all:
 	$(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2/CMakeFiles/uninstall.dir/build.make cugl.dir/sdl2pckg.dir/sdl2/CMakeFiles/uninstall.dir/depend
 	$(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2/CMakeFiles/uninstall.dir/build.make cugl.dir/sdl2pckg.dir/sdl2/CMakeFiles/uninstall.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num= "Built target uninstall"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num= "Built target uninstall"
 .PHONY : cugl.dir/sdl2pckg.dir/sdl2/CMakeFiles/uninstall.dir/all
 
 # Build rule for subdir invocation for target.
 cugl.dir/sdl2pckg.dir/sdl2/CMakeFiles/uninstall.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles 0
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 cugl.dir/sdl2pckg.dir/sdl2/CMakeFiles/uninstall.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles 0
 .PHONY : cugl.dir/sdl2pckg.dir/sdl2/CMakeFiles/uninstall.dir/rule
 
 # Convenience name for target.
@@ -1166,7 +1166,7 @@ uninstall: cugl.dir/sdl2pckg.dir/sdl2/CMakeFiles/uninstall.dir/rule
 # codegen rule for target.
 cugl.dir/sdl2pckg.dir/sdl2/CMakeFiles/uninstall.dir/codegen:
 	$(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2/CMakeFiles/uninstall.dir/build.make cugl.dir/sdl2pckg.dir/sdl2/CMakeFiles/uninstall.dir/codegen
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num= "Finished codegen for target uninstall"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num= "Finished codegen for target uninstall"
 .PHONY : cugl.dir/sdl2pckg.dir/sdl2/CMakeFiles/uninstall.dir/codegen
 
 # clean rule for target.
@@ -1181,14 +1181,14 @@ cugl.dir/sdl2pckg.dir/sdl2/CMakeFiles/uninstall.dir/clean:
 cugl.dir/sdl2pckg.dir/sdl2image/CMakeFiles/SDL2_image.dir/all: cugl.dir/sdl2pckg.dir/sdl2/CMakeFiles/SDL2-static.dir/all
 	$(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2image/CMakeFiles/SDL2_image.dir/build.make cugl.dir/sdl2pckg.dir/sdl2image/CMakeFiles/SDL2_image.dir/depend
 	$(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2image/CMakeFiles/SDL2_image.dir/build.make cugl.dir/sdl2pckg.dir/sdl2image/CMakeFiles/SDL2_image.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num=17,18 "Built target SDL2_image"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num=17,18 "Built target SDL2_image"
 .PHONY : cugl.dir/sdl2pckg.dir/sdl2image/CMakeFiles/SDL2_image.dir/all
 
 # Build rule for subdir invocation for target.
 cugl.dir/sdl2pckg.dir/sdl2image/CMakeFiles/SDL2_image.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles 22
+	$(CMAKE_COMMAND) -E cmake_progress_start /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles 22
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 cugl.dir/sdl2pckg.dir/sdl2image/CMakeFiles/SDL2_image.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles 0
 .PHONY : cugl.dir/sdl2pckg.dir/sdl2image/CMakeFiles/SDL2_image.dir/rule
 
 # Convenience name for target.
@@ -1198,7 +1198,7 @@ SDL2_image: cugl.dir/sdl2pckg.dir/sdl2image/CMakeFiles/SDL2_image.dir/rule
 # codegen rule for target.
 cugl.dir/sdl2pckg.dir/sdl2image/CMakeFiles/SDL2_image.dir/codegen:
 	$(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2image/CMakeFiles/SDL2_image.dir/build.make cugl.dir/sdl2pckg.dir/sdl2image/CMakeFiles/SDL2_image.dir/codegen
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num=17,18 "Finished codegen for target SDL2_image"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num=17,18 "Finished codegen for target SDL2_image"
 .PHONY : cugl.dir/sdl2pckg.dir/sdl2image/CMakeFiles/SDL2_image.dir/codegen
 
 # clean rule for target.
@@ -1214,14 +1214,14 @@ cugl.dir/sdl2pckg.dir/sdl2ttf/CMakeFiles/SDL2_ttf.dir/all: cugl.dir/sdl2pckg.dir
 cugl.dir/sdl2pckg.dir/sdl2ttf/CMakeFiles/SDL2_ttf.dir/all: cugl.dir/sdl2pckg.dir/sdl2ttf/external/harfbuzz/CMakeFiles/harfbuzz.dir/all
 	$(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2ttf/CMakeFiles/SDL2_ttf.dir/build.make cugl.dir/sdl2pckg.dir/sdl2ttf/CMakeFiles/SDL2_ttf.dir/depend
 	$(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2ttf/CMakeFiles/SDL2_ttf.dir/build.make cugl.dir/sdl2pckg.dir/sdl2ttf/CMakeFiles/SDL2_ttf.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num= "Built target SDL2_ttf"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num= "Built target SDL2_ttf"
 .PHONY : cugl.dir/sdl2pckg.dir/sdl2ttf/CMakeFiles/SDL2_ttf.dir/all
 
 # Build rule for subdir invocation for target.
 cugl.dir/sdl2pckg.dir/sdl2ttf/CMakeFiles/SDL2_ttf.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles 23
+	$(CMAKE_COMMAND) -E cmake_progress_start /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles 23
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 cugl.dir/sdl2pckg.dir/sdl2ttf/CMakeFiles/SDL2_ttf.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles 0
 .PHONY : cugl.dir/sdl2pckg.dir/sdl2ttf/CMakeFiles/SDL2_ttf.dir/rule
 
 # Convenience name for target.
@@ -1231,7 +1231,7 @@ SDL2_ttf: cugl.dir/sdl2pckg.dir/sdl2ttf/CMakeFiles/SDL2_ttf.dir/rule
 # codegen rule for target.
 cugl.dir/sdl2pckg.dir/sdl2ttf/CMakeFiles/SDL2_ttf.dir/codegen:
 	$(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2ttf/CMakeFiles/SDL2_ttf.dir/build.make cugl.dir/sdl2pckg.dir/sdl2ttf/CMakeFiles/SDL2_ttf.dir/codegen
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num= "Finished codegen for target SDL2_ttf"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num= "Finished codegen for target SDL2_ttf"
 .PHONY : cugl.dir/sdl2pckg.dir/sdl2ttf/CMakeFiles/SDL2_ttf.dir/codegen
 
 # clean rule for target.
@@ -1246,14 +1246,14 @@ cugl.dir/sdl2pckg.dir/sdl2ttf/CMakeFiles/SDL2_ttf.dir/clean:
 cugl.dir/sdl2pckg.dir/sdl2ttf/external/harfbuzz/CMakeFiles/harfbuzz.dir/all: cugl.dir/sdl2pckg.dir/sdl2ttf/external/freetype/CMakeFiles/freetype.dir/all
 	$(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2ttf/external/harfbuzz/CMakeFiles/harfbuzz.dir/build.make cugl.dir/sdl2pckg.dir/sdl2ttf/external/harfbuzz/CMakeFiles/harfbuzz.dir/depend
 	$(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2ttf/external/harfbuzz/CMakeFiles/harfbuzz.dir/build.make cugl.dir/sdl2pckg.dir/sdl2ttf/external/harfbuzz/CMakeFiles/harfbuzz.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num= "Built target harfbuzz"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num= "Built target harfbuzz"
 .PHONY : cugl.dir/sdl2pckg.dir/sdl2ttf/external/harfbuzz/CMakeFiles/harfbuzz.dir/all
 
 # Build rule for subdir invocation for target.
 cugl.dir/sdl2pckg.dir/sdl2ttf/external/harfbuzz/CMakeFiles/harfbuzz.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles 3
+	$(CMAKE_COMMAND) -E cmake_progress_start /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles 3
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 cugl.dir/sdl2pckg.dir/sdl2ttf/external/harfbuzz/CMakeFiles/harfbuzz.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles 0
 .PHONY : cugl.dir/sdl2pckg.dir/sdl2ttf/external/harfbuzz/CMakeFiles/harfbuzz.dir/rule
 
 # Convenience name for target.
@@ -1263,7 +1263,7 @@ harfbuzz: cugl.dir/sdl2pckg.dir/sdl2ttf/external/harfbuzz/CMakeFiles/harfbuzz.di
 # codegen rule for target.
 cugl.dir/sdl2pckg.dir/sdl2ttf/external/harfbuzz/CMakeFiles/harfbuzz.dir/codegen:
 	$(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2ttf/external/harfbuzz/CMakeFiles/harfbuzz.dir/build.make cugl.dir/sdl2pckg.dir/sdl2ttf/external/harfbuzz/CMakeFiles/harfbuzz.dir/codegen
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num= "Finished codegen for target harfbuzz"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num= "Finished codegen for target harfbuzz"
 .PHONY : cugl.dir/sdl2pckg.dir/sdl2ttf/external/harfbuzz/CMakeFiles/harfbuzz.dir/codegen
 
 # clean rule for target.
@@ -1278,14 +1278,14 @@ cugl.dir/sdl2pckg.dir/sdl2ttf/external/harfbuzz/CMakeFiles/harfbuzz.dir/clean:
 cugl.dir/sdl2pckg.dir/sdl2ttf/external/harfbuzz/CMakeFiles/harfbuzz-subset.dir/all: cugl.dir/sdl2pckg.dir/sdl2ttf/external/harfbuzz/CMakeFiles/harfbuzz.dir/all
 	$(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2ttf/external/harfbuzz/CMakeFiles/harfbuzz-subset.dir/build.make cugl.dir/sdl2pckg.dir/sdl2ttf/external/harfbuzz/CMakeFiles/harfbuzz-subset.dir/depend
 	$(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2ttf/external/harfbuzz/CMakeFiles/harfbuzz-subset.dir/build.make cugl.dir/sdl2pckg.dir/sdl2ttf/external/harfbuzz/CMakeFiles/harfbuzz-subset.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num=81 "Built target harfbuzz-subset"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num=81 "Built target harfbuzz-subset"
 .PHONY : cugl.dir/sdl2pckg.dir/sdl2ttf/external/harfbuzz/CMakeFiles/harfbuzz-subset.dir/all
 
 # Build rule for subdir invocation for target.
 cugl.dir/sdl2pckg.dir/sdl2ttf/external/harfbuzz/CMakeFiles/harfbuzz-subset.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles 4
+	$(CMAKE_COMMAND) -E cmake_progress_start /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles 4
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 cugl.dir/sdl2pckg.dir/sdl2ttf/external/harfbuzz/CMakeFiles/harfbuzz-subset.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles 0
 .PHONY : cugl.dir/sdl2pckg.dir/sdl2ttf/external/harfbuzz/CMakeFiles/harfbuzz-subset.dir/rule
 
 # Convenience name for target.
@@ -1295,7 +1295,7 @@ harfbuzz-subset: cugl.dir/sdl2pckg.dir/sdl2ttf/external/harfbuzz/CMakeFiles/harf
 # codegen rule for target.
 cugl.dir/sdl2pckg.dir/sdl2ttf/external/harfbuzz/CMakeFiles/harfbuzz-subset.dir/codegen: cugl.dir/sdl2pckg.dir/sdl2ttf/external/harfbuzz/CMakeFiles/harfbuzz.dir/all
 	$(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2ttf/external/harfbuzz/CMakeFiles/harfbuzz-subset.dir/build.make cugl.dir/sdl2pckg.dir/sdl2ttf/external/harfbuzz/CMakeFiles/harfbuzz-subset.dir/codegen
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num=81 "Finished codegen for target harfbuzz-subset"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num=81 "Finished codegen for target harfbuzz-subset"
 .PHONY : cugl.dir/sdl2pckg.dir/sdl2ttf/external/harfbuzz/CMakeFiles/harfbuzz-subset.dir/codegen
 
 # clean rule for target.
@@ -1310,14 +1310,14 @@ cugl.dir/sdl2pckg.dir/sdl2ttf/external/harfbuzz/CMakeFiles/harfbuzz-subset.dir/c
 cugl.dir/sdl2pckg.dir/sdl2ttf/external/freetype/CMakeFiles/freetype.dir/all:
 	$(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2ttf/external/freetype/CMakeFiles/freetype.dir/build.make cugl.dir/sdl2pckg.dir/sdl2ttf/external/freetype/CMakeFiles/freetype.dir/depend
 	$(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2ttf/external/freetype/CMakeFiles/freetype.dir/build.make cugl.dir/sdl2pckg.dir/sdl2ttf/external/freetype/CMakeFiles/freetype.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num=77,78,79 "Built target freetype"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num=77,78,79 "Built target freetype"
 .PHONY : cugl.dir/sdl2pckg.dir/sdl2ttf/external/freetype/CMakeFiles/freetype.dir/all
 
 # Build rule for subdir invocation for target.
 cugl.dir/sdl2pckg.dir/sdl2ttf/external/freetype/CMakeFiles/freetype.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles 3
+	$(CMAKE_COMMAND) -E cmake_progress_start /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles 3
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 cugl.dir/sdl2pckg.dir/sdl2ttf/external/freetype/CMakeFiles/freetype.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles 0
 .PHONY : cugl.dir/sdl2pckg.dir/sdl2ttf/external/freetype/CMakeFiles/freetype.dir/rule
 
 # Convenience name for target.
@@ -1327,7 +1327,7 @@ freetype: cugl.dir/sdl2pckg.dir/sdl2ttf/external/freetype/CMakeFiles/freetype.di
 # codegen rule for target.
 cugl.dir/sdl2pckg.dir/sdl2ttf/external/freetype/CMakeFiles/freetype.dir/codegen:
 	$(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2ttf/external/freetype/CMakeFiles/freetype.dir/build.make cugl.dir/sdl2pckg.dir/sdl2ttf/external/freetype/CMakeFiles/freetype.dir/codegen
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num=77,78,79 "Finished codegen for target freetype"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num=77,78,79 "Finished codegen for target freetype"
 .PHONY : cugl.dir/sdl2pckg.dir/sdl2ttf/external/freetype/CMakeFiles/freetype.dir/codegen
 
 # clean rule for target.
@@ -1348,14 +1348,14 @@ cugl.dir/sdl2pckg.dir/sdl2atk/CMakeFiles/SDL2_atk.dir/all: cugl.dir/sdl2pckg.dir
 cugl.dir/sdl2pckg.dir/sdl2atk/CMakeFiles/SDL2_atk.dir/all: cugl.dir/sdl2pckg.dir/sdl2atk/external/kissfft/CMakeFiles/kissfft.dir/all
 	$(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/CMakeFiles/SDL2_atk.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/CMakeFiles/SDL2_atk.dir/depend
 	$(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/CMakeFiles/SDL2_atk.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/CMakeFiles/SDL2_atk.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num=16 "Built target SDL2_atk"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num=16 "Built target SDL2_atk"
 .PHONY : cugl.dir/sdl2pckg.dir/sdl2atk/CMakeFiles/SDL2_atk.dir/all
 
 # Build rule for subdir invocation for target.
 cugl.dir/sdl2pckg.dir/sdl2atk/CMakeFiles/SDL2_atk.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles 25
+	$(CMAKE_COMMAND) -E cmake_progress_start /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles 26
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 cugl.dir/sdl2pckg.dir/sdl2atk/CMakeFiles/SDL2_atk.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles 0
 .PHONY : cugl.dir/sdl2pckg.dir/sdl2atk/CMakeFiles/SDL2_atk.dir/rule
 
 # Convenience name for target.
@@ -1365,7 +1365,7 @@ SDL2_atk: cugl.dir/sdl2pckg.dir/sdl2atk/CMakeFiles/SDL2_atk.dir/rule
 # codegen rule for target.
 cugl.dir/sdl2pckg.dir/sdl2atk/CMakeFiles/SDL2_atk.dir/codegen:
 	$(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/CMakeFiles/SDL2_atk.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/CMakeFiles/SDL2_atk.dir/codegen
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num=16 "Finished codegen for target SDL2_atk"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num=16 "Finished codegen for target SDL2_atk"
 .PHONY : cugl.dir/sdl2pckg.dir/sdl2atk/CMakeFiles/SDL2_atk.dir/codegen
 
 # clean rule for target.
@@ -1380,14 +1380,14 @@ cugl.dir/sdl2pckg.dir/sdl2atk/CMakeFiles/SDL2_atk.dir/clean:
 cugl.dir/sdl2pckg.dir/sdl2atk/external/ogg/CMakeFiles/ogg.dir/all:
 	$(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/ogg/CMakeFiles/ogg.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/ogg/CMakeFiles/ogg.dir/depend
 	$(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/ogg/CMakeFiles/ogg.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/ogg/CMakeFiles/ogg.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num= "Built target ogg"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num= "Built target ogg"
 .PHONY : cugl.dir/sdl2pckg.dir/sdl2atk/external/ogg/CMakeFiles/ogg.dir/all
 
 # Build rule for subdir invocation for target.
 cugl.dir/sdl2pckg.dir/sdl2atk/external/ogg/CMakeFiles/ogg.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles 0
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 cugl.dir/sdl2pckg.dir/sdl2atk/external/ogg/CMakeFiles/ogg.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles 0
 .PHONY : cugl.dir/sdl2pckg.dir/sdl2atk/external/ogg/CMakeFiles/ogg.dir/rule
 
 # Convenience name for target.
@@ -1397,7 +1397,7 @@ ogg: cugl.dir/sdl2pckg.dir/sdl2atk/external/ogg/CMakeFiles/ogg.dir/rule
 # codegen rule for target.
 cugl.dir/sdl2pckg.dir/sdl2atk/external/ogg/CMakeFiles/ogg.dir/codegen:
 	$(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/ogg/CMakeFiles/ogg.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/ogg/CMakeFiles/ogg.dir/codegen
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num= "Finished codegen for target ogg"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num= "Finished codegen for target ogg"
 .PHONY : cugl.dir/sdl2pckg.dir/sdl2atk/external/ogg/CMakeFiles/ogg.dir/codegen
 
 # clean rule for target.
@@ -1412,14 +1412,14 @@ cugl.dir/sdl2pckg.dir/sdl2atk/external/ogg/CMakeFiles/ogg.dir/clean:
 cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/all: cugl.dir/sdl2pckg.dir/sdl2atk/external/ogg/CMakeFiles/ogg.dir/all
 	$(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/depend
 	$(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num=1,2 "Built target FLAC"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num=1,2 "Built target FLAC"
 .PHONY : cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/all
 
 # Build rule for subdir invocation for target.
 cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles 2
+	$(CMAKE_COMMAND) -E cmake_progress_start /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles 2
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles 0
 .PHONY : cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/rule
 
 # Convenience name for target.
@@ -1429,7 +1429,7 @@ FLAC: cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.di
 # codegen rule for target.
 cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/codegen:
 	$(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/codegen
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num=1,2 "Finished codegen for target FLAC"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num=1,2 "Finished codegen for target FLAC"
 .PHONY : cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/codegen
 
 # clean rule for target.
@@ -1444,14 +1444,14 @@ cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/clea
 cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/replaygain_analysis/CMakeFiles/replaygain_analysis.dir/all:
 	$(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/replaygain_analysis/CMakeFiles/replaygain_analysis.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/replaygain_analysis/CMakeFiles/replaygain_analysis.dir/depend
 	$(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/replaygain_analysis/CMakeFiles/replaygain_analysis.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/replaygain_analysis/CMakeFiles/replaygain_analysis.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num= "Built target replaygain_analysis"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num= "Built target replaygain_analysis"
 .PHONY : cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/replaygain_analysis/CMakeFiles/replaygain_analysis.dir/all
 
 # Build rule for subdir invocation for target.
 cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/replaygain_analysis/CMakeFiles/replaygain_analysis.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles 0
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/replaygain_analysis/CMakeFiles/replaygain_analysis.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles 0
 .PHONY : cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/replaygain_analysis/CMakeFiles/replaygain_analysis.dir/rule
 
 # Convenience name for target.
@@ -1461,7 +1461,7 @@ replaygain_analysis: cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/repla
 # codegen rule for target.
 cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/replaygain_analysis/CMakeFiles/replaygain_analysis.dir/codegen:
 	$(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/replaygain_analysis/CMakeFiles/replaygain_analysis.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/replaygain_analysis/CMakeFiles/replaygain_analysis.dir/codegen
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num= "Finished codegen for target replaygain_analysis"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num= "Finished codegen for target replaygain_analysis"
 .PHONY : cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/replaygain_analysis/CMakeFiles/replaygain_analysis.dir/codegen
 
 # clean rule for target.
@@ -1476,14 +1476,14 @@ cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/replaygain_analysis/CMakeF
 cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/replaygain_synthesis/CMakeFiles/replaygain_synthesis.dir/all:
 	$(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/replaygain_synthesis/CMakeFiles/replaygain_synthesis.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/replaygain_synthesis/CMakeFiles/replaygain_synthesis.dir/depend
 	$(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/replaygain_synthesis/CMakeFiles/replaygain_synthesis.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/replaygain_synthesis/CMakeFiles/replaygain_synthesis.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num= "Built target replaygain_synthesis"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num= "Built target replaygain_synthesis"
 .PHONY : cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/replaygain_synthesis/CMakeFiles/replaygain_synthesis.dir/all
 
 # Build rule for subdir invocation for target.
 cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/replaygain_synthesis/CMakeFiles/replaygain_synthesis.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles 0
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/replaygain_synthesis/CMakeFiles/replaygain_synthesis.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles 0
 .PHONY : cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/replaygain_synthesis/CMakeFiles/replaygain_synthesis.dir/rule
 
 # Convenience name for target.
@@ -1493,7 +1493,7 @@ replaygain_synthesis: cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/repl
 # codegen rule for target.
 cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/replaygain_synthesis/CMakeFiles/replaygain_synthesis.dir/codegen:
 	$(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/replaygain_synthesis/CMakeFiles/replaygain_synthesis.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/replaygain_synthesis/CMakeFiles/replaygain_synthesis.dir/codegen
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num= "Finished codegen for target replaygain_synthesis"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num= "Finished codegen for target replaygain_synthesis"
 .PHONY : cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/replaygain_synthesis/CMakeFiles/replaygain_synthesis.dir/codegen
 
 # clean rule for target.
@@ -1508,14 +1508,14 @@ cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/replaygain_synthesis/CMake
 cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/getopt/CMakeFiles/getopt.dir/all:
 	$(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/getopt/CMakeFiles/getopt.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/getopt/CMakeFiles/getopt.dir/depend
 	$(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/getopt/CMakeFiles/getopt.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/getopt/CMakeFiles/getopt.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num=80 "Built target getopt"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num= "Built target getopt"
 .PHONY : cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/getopt/CMakeFiles/getopt.dir/all
 
 # Build rule for subdir invocation for target.
 cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/getopt/CMakeFiles/getopt.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles 1
+	$(CMAKE_COMMAND) -E cmake_progress_start /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles 0
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/getopt/CMakeFiles/getopt.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles 0
 .PHONY : cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/getopt/CMakeFiles/getopt.dir/rule
 
 # Convenience name for target.
@@ -1525,7 +1525,7 @@ getopt: cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/getopt/CMakeFiles/
 # codegen rule for target.
 cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/getopt/CMakeFiles/getopt.dir/codegen:
 	$(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/getopt/CMakeFiles/getopt.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/getopt/CMakeFiles/getopt.dir/codegen
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num=80 "Finished codegen for target getopt"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num= "Finished codegen for target getopt"
 .PHONY : cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/getopt/CMakeFiles/getopt.dir/codegen
 
 # clean rule for target.
@@ -1543,14 +1543,14 @@ cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/utf8/CMakeFiles/utf8.dir/a
 cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/utf8/CMakeFiles/utf8.dir/all: cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/grabbag/CMakeFiles/grabbag.dir/all
 	$(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/utf8/CMakeFiles/utf8.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/utf8/CMakeFiles/utf8.dir/depend
 	$(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/utf8/CMakeFiles/utf8.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/utf8/CMakeFiles/utf8.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num= "Built target utf8"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num= "Built target utf8"
 .PHONY : cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/utf8/CMakeFiles/utf8.dir/all
 
 # Build rule for subdir invocation for target.
 cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/utf8/CMakeFiles/utf8.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles 2
+	$(CMAKE_COMMAND) -E cmake_progress_start /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles 3
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/utf8/CMakeFiles/utf8.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles 0
 .PHONY : cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/utf8/CMakeFiles/utf8.dir/rule
 
 # Convenience name for target.
@@ -1560,7 +1560,7 @@ utf8: cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/utf8/CMakeFiles/utf8
 # codegen rule for target.
 cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/utf8/CMakeFiles/utf8.dir/codegen:
 	$(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/utf8/CMakeFiles/utf8.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/utf8/CMakeFiles/utf8.dir/codegen
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num= "Finished codegen for target utf8"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num= "Finished codegen for target utf8"
 .PHONY : cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/utf8/CMakeFiles/utf8.dir/codegen
 
 # clean rule for target.
@@ -1577,14 +1577,14 @@ cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/grabbag/CMakeFiles/grabbag
 cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/grabbag/CMakeFiles/grabbag.dir/all: cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/replaygain_analysis/CMakeFiles/replaygain_analysis.dir/all
 	$(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/grabbag/CMakeFiles/grabbag.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/grabbag/CMakeFiles/grabbag.dir/depend
 	$(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/grabbag/CMakeFiles/grabbag.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/grabbag/CMakeFiles/grabbag.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num= "Built target grabbag"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num=80 "Built target grabbag"
 .PHONY : cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/grabbag/CMakeFiles/grabbag.dir/all
 
 # Build rule for subdir invocation for target.
 cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/grabbag/CMakeFiles/grabbag.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles 2
+	$(CMAKE_COMMAND) -E cmake_progress_start /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles 3
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/grabbag/CMakeFiles/grabbag.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles 0
 .PHONY : cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/grabbag/CMakeFiles/grabbag.dir/rule
 
 # Convenience name for target.
@@ -1594,7 +1594,7 @@ grabbag: cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/grabbag/CMakeFile
 # codegen rule for target.
 cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/grabbag/CMakeFiles/grabbag.dir/codegen:
 	$(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/grabbag/CMakeFiles/grabbag.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/grabbag/CMakeFiles/grabbag.dir/codegen
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num= "Finished codegen for target grabbag"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num=80 "Finished codegen for target grabbag"
 .PHONY : cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/grabbag/CMakeFiles/grabbag.dir/codegen
 
 # clean rule for target.
@@ -1609,14 +1609,14 @@ cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/grabbag/CMakeFiles/grabbag
 cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbis.dir/all: cugl.dir/sdl2pckg.dir/sdl2atk/external/ogg/CMakeFiles/ogg.dir/all
 	$(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbis.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbis.dir/depend
 	$(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbis.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbis.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num=99 "Built target vorbis"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num=99 "Built target vorbis"
 .PHONY : cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbis.dir/all
 
 # Build rule for subdir invocation for target.
 cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbis.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles 1
+	$(CMAKE_COMMAND) -E cmake_progress_start /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles 1
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbis.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles 0
 .PHONY : cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbis.dir/rule
 
 # Convenience name for target.
@@ -1626,7 +1626,7 @@ vorbis: cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbis.dir/
 # codegen rule for target.
 cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbis.dir/codegen:
 	$(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbis.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbis.dir/codegen
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num=99 "Finished codegen for target vorbis"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num=99 "Finished codegen for target vorbis"
 .PHONY : cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbis.dir/codegen
 
 # clean rule for target.
@@ -1642,14 +1642,14 @@ cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbisenc.dir/all: 
 cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbisenc.dir/all: cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbis.dir/all
 	$(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbisenc.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbisenc.dir/depend
 	$(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbisenc.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbisenc.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num= "Built target vorbisenc"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num= "Built target vorbisenc"
 .PHONY : cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbisenc.dir/all
 
 # Build rule for subdir invocation for target.
 cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbisenc.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles 1
+	$(CMAKE_COMMAND) -E cmake_progress_start /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles 1
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbisenc.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles 0
 .PHONY : cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbisenc.dir/rule
 
 # Convenience name for target.
@@ -1659,7 +1659,7 @@ vorbisenc: cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbisen
 # codegen rule for target.
 cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbisenc.dir/codegen:
 	$(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbisenc.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbisenc.dir/codegen
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num= "Finished codegen for target vorbisenc"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num= "Finished codegen for target vorbisenc"
 .PHONY : cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbisenc.dir/codegen
 
 # clean rule for target.
@@ -1675,14 +1675,14 @@ cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbisfile.dir/all:
 cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbisfile.dir/all: cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbis.dir/all
 	$(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbisfile.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbisfile.dir/depend
 	$(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbisfile.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbisfile.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num=100 "Built target vorbisfile"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num=100 "Built target vorbisfile"
 .PHONY : cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbisfile.dir/all
 
 # Build rule for subdir invocation for target.
 cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbisfile.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles 2
+	$(CMAKE_COMMAND) -E cmake_progress_start /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles 2
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbisfile.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles 0
 .PHONY : cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbisfile.dir/rule
 
 # Convenience name for target.
@@ -1692,7 +1692,7 @@ vorbisfile: cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbisf
 # codegen rule for target.
 cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbisfile.dir/codegen:
 	$(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbisfile.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbisfile.dir/codegen
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num=100 "Finished codegen for target vorbisfile"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num=100 "Finished codegen for target vorbisfile"
 .PHONY : cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbisfile.dir/codegen
 
 # clean rule for target.
@@ -1707,14 +1707,14 @@ cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbisfile.dir/clea
 cugl.dir/sdl2pckg.dir/sdl2atk/external/kissfft/CMakeFiles/kissfft.dir/all:
 	$(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/kissfft/CMakeFiles/kissfft.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/kissfft/CMakeFiles/kissfft.dir/depend
 	$(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/kissfft/CMakeFiles/kissfft.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/kissfft/CMakeFiles/kissfft.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num= "Built target kissfft"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num=83 "Built target kissfft"
 .PHONY : cugl.dir/sdl2pckg.dir/sdl2atk/external/kissfft/CMakeFiles/kissfft.dir/all
 
 # Build rule for subdir invocation for target.
 cugl.dir/sdl2pckg.dir/sdl2atk/external/kissfft/CMakeFiles/kissfft.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles 1
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 cugl.dir/sdl2pckg.dir/sdl2atk/external/kissfft/CMakeFiles/kissfft.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles 0
 .PHONY : cugl.dir/sdl2pckg.dir/sdl2atk/external/kissfft/CMakeFiles/kissfft.dir/rule
 
 # Convenience name for target.
@@ -1724,7 +1724,7 @@ kissfft: cugl.dir/sdl2pckg.dir/sdl2atk/external/kissfft/CMakeFiles/kissfft.dir/r
 # codegen rule for target.
 cugl.dir/sdl2pckg.dir/sdl2atk/external/kissfft/CMakeFiles/kissfft.dir/codegen:
 	$(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/kissfft/CMakeFiles/kissfft.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/kissfft/CMakeFiles/kissfft.dir/codegen
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num= "Finished codegen for target kissfft"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num=83 "Finished codegen for target kissfft"
 .PHONY : cugl.dir/sdl2pckg.dir/sdl2atk/external/kissfft/CMakeFiles/kissfft.dir/codegen
 
 # clean rule for target.
@@ -1739,14 +1739,14 @@ cugl.dir/sdl2pckg.dir/sdl2atk/external/kissfft/CMakeFiles/kissfft.dir/clean:
 cugl.dir/sdl2pckg.dir/sdl2app/CMakeFiles/SDL2_app.dir/all: cugl.dir/sdl2pckg.dir/sdl2/CMakeFiles/SDL2-static.dir/all
 	$(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2app/CMakeFiles/SDL2_app.dir/build.make cugl.dir/sdl2pckg.dir/sdl2app/CMakeFiles/SDL2_app.dir/depend
 	$(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2app/CMakeFiles/SDL2_app.dir/build.make cugl.dir/sdl2pckg.dir/sdl2app/CMakeFiles/SDL2_app.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num= "Built target SDL2_app"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num= "Built target SDL2_app"
 .PHONY : cugl.dir/sdl2pckg.dir/sdl2app/CMakeFiles/SDL2_app.dir/all
 
 # Build rule for subdir invocation for target.
 cugl.dir/sdl2pckg.dir/sdl2app/CMakeFiles/SDL2_app.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles 20
+	$(CMAKE_COMMAND) -E cmake_progress_start /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles 20
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 cugl.dir/sdl2pckg.dir/sdl2app/CMakeFiles/SDL2_app.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles 0
 .PHONY : cugl.dir/sdl2pckg.dir/sdl2app/CMakeFiles/SDL2_app.dir/rule
 
 # Convenience name for target.
@@ -1756,7 +1756,7 @@ SDL2_app: cugl.dir/sdl2pckg.dir/sdl2app/CMakeFiles/SDL2_app.dir/rule
 # codegen rule for target.
 cugl.dir/sdl2pckg.dir/sdl2app/CMakeFiles/SDL2_app.dir/codegen:
 	$(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2app/CMakeFiles/SDL2_app.dir/build.make cugl.dir/sdl2pckg.dir/sdl2app/CMakeFiles/SDL2_app.dir/codegen
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num= "Finished codegen for target SDL2_app"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num= "Finished codegen for target SDL2_app"
 .PHONY : cugl.dir/sdl2pckg.dir/sdl2app/CMakeFiles/SDL2_app.dir/codegen
 
 # clean rule for target.
@@ -1771,14 +1771,14 @@ cugl.dir/sdl2pckg.dir/sdl2app/CMakeFiles/SDL2_app.dir/clean:
 cugl.dir/external/poly2tri/CMakeFiles/poly2tri.dir/all:
 	$(MAKE) $(MAKESILENT) -f cugl.dir/external/poly2tri/CMakeFiles/poly2tri.dir/build.make cugl.dir/external/poly2tri/CMakeFiles/poly2tri.dir/depend
 	$(MAKE) $(MAKESILENT) -f cugl.dir/external/poly2tri/CMakeFiles/poly2tri.dir/build.make cugl.dir/external/poly2tri/CMakeFiles/poly2tri.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num= "Built target poly2tri"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num= "Built target poly2tri"
 .PHONY : cugl.dir/external/poly2tri/CMakeFiles/poly2tri.dir/all
 
 # Build rule for subdir invocation for target.
 cugl.dir/external/poly2tri/CMakeFiles/poly2tri.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles 0
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 cugl.dir/external/poly2tri/CMakeFiles/poly2tri.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles 0
 .PHONY : cugl.dir/external/poly2tri/CMakeFiles/poly2tri.dir/rule
 
 # Convenience name for target.
@@ -1788,7 +1788,7 @@ poly2tri: cugl.dir/external/poly2tri/CMakeFiles/poly2tri.dir/rule
 # codegen rule for target.
 cugl.dir/external/poly2tri/CMakeFiles/poly2tri.dir/codegen:
 	$(MAKE) $(MAKESILENT) -f cugl.dir/external/poly2tri/CMakeFiles/poly2tri.dir/build.make cugl.dir/external/poly2tri/CMakeFiles/poly2tri.dir/codegen
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num= "Finished codegen for target poly2tri"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num= "Finished codegen for target poly2tri"
 .PHONY : cugl.dir/external/poly2tri/CMakeFiles/poly2tri.dir/codegen
 
 # clean rule for target.
@@ -1807,14 +1807,14 @@ cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/all: cugl.dir/extern
 cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/all: cugl.dir/external/libdatachannel/deps/libjuice/CMakeFiles/juice.dir/all
 	$(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/depend
 	$(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num=73,74,75,76 "Built target datachannel"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num=73,74,75,76 "Built target datachannel"
 .PHONY : cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/all
 
 # Build rule for subdir invocation for target.
 cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles 56
+	$(CMAKE_COMMAND) -E cmake_progress_start /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles 55
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles 0
 .PHONY : cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/rule
 
 # Convenience name for target.
@@ -1824,7 +1824,7 @@ datachannel: cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/rule
 # codegen rule for target.
 cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/codegen:
 	$(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/codegen
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num=73,74,75,76 "Finished codegen for target datachannel"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num=73,74,75,76 "Finished codegen for target datachannel"
 .PHONY : cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/codegen
 
 # clean rule for target.
@@ -1839,14 +1839,14 @@ cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/clean:
 cugl.dir/external/libdatachannel/deps/usrsctp/usrsctplib/CMakeFiles/usrsctp.dir/all:
 	$(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/usrsctp/usrsctplib/CMakeFiles/usrsctp.dir/build.make cugl.dir/external/libdatachannel/deps/usrsctp/usrsctplib/CMakeFiles/usrsctp.dir/depend
 	$(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/usrsctp/usrsctplib/CMakeFiles/usrsctp.dir/build.make cugl.dir/external/libdatachannel/deps/usrsctp/usrsctplib/CMakeFiles/usrsctp.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num=97,98 "Built target usrsctp"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num=97,98 "Built target usrsctp"
 .PHONY : cugl.dir/external/libdatachannel/deps/usrsctp/usrsctplib/CMakeFiles/usrsctp.dir/all
 
 # Build rule for subdir invocation for target.
 cugl.dir/external/libdatachannel/deps/usrsctp/usrsctplib/CMakeFiles/usrsctp.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles 2
+	$(CMAKE_COMMAND) -E cmake_progress_start /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles 2
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 cugl.dir/external/libdatachannel/deps/usrsctp/usrsctplib/CMakeFiles/usrsctp.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles 0
 .PHONY : cugl.dir/external/libdatachannel/deps/usrsctp/usrsctplib/CMakeFiles/usrsctp.dir/rule
 
 # Convenience name for target.
@@ -1856,7 +1856,7 @@ usrsctp: cugl.dir/external/libdatachannel/deps/usrsctp/usrsctplib/CMakeFiles/usr
 # codegen rule for target.
 cugl.dir/external/libdatachannel/deps/usrsctp/usrsctplib/CMakeFiles/usrsctp.dir/codegen:
 	$(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/usrsctp/usrsctplib/CMakeFiles/usrsctp.dir/build.make cugl.dir/external/libdatachannel/deps/usrsctp/usrsctplib/CMakeFiles/usrsctp.dir/codegen
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num=97,98 "Finished codegen for target usrsctp"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num=97,98 "Finished codegen for target usrsctp"
 .PHONY : cugl.dir/external/libdatachannel/deps/usrsctp/usrsctplib/CMakeFiles/usrsctp.dir/codegen
 
 # clean rule for target.
@@ -1871,14 +1871,14 @@ cugl.dir/external/libdatachannel/deps/usrsctp/usrsctplib/CMakeFiles/usrsctp.dir/
 cugl.dir/external/libdatachannel/deps/openssl/crypto/CMakeFiles/crypto.dir/all:
 	$(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/openssl/crypto/CMakeFiles/crypto.dir/build.make cugl.dir/external/libdatachannel/deps/openssl/crypto/CMakeFiles/crypto.dir/depend
 	$(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/openssl/crypto/CMakeFiles/crypto.dir/build.make cugl.dir/external/libdatachannel/deps/openssl/crypto/CMakeFiles/crypto.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num=19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62 "Built target crypto"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num=19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62 "Built target crypto"
 .PHONY : cugl.dir/external/libdatachannel/deps/openssl/crypto/CMakeFiles/crypto.dir/all
 
 # Build rule for subdir invocation for target.
 cugl.dir/external/libdatachannel/deps/openssl/crypto/CMakeFiles/crypto.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles 44
+	$(CMAKE_COMMAND) -E cmake_progress_start /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles 44
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 cugl.dir/external/libdatachannel/deps/openssl/crypto/CMakeFiles/crypto.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles 0
 .PHONY : cugl.dir/external/libdatachannel/deps/openssl/crypto/CMakeFiles/crypto.dir/rule
 
 # Convenience name for target.
@@ -1888,7 +1888,7 @@ crypto: cugl.dir/external/libdatachannel/deps/openssl/crypto/CMakeFiles/crypto.d
 # codegen rule for target.
 cugl.dir/external/libdatachannel/deps/openssl/crypto/CMakeFiles/crypto.dir/codegen:
 	$(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/openssl/crypto/CMakeFiles/crypto.dir/build.make cugl.dir/external/libdatachannel/deps/openssl/crypto/CMakeFiles/crypto.dir/codegen
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num=19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62 "Finished codegen for target crypto"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num=19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62 "Finished codegen for target crypto"
 .PHONY : cugl.dir/external/libdatachannel/deps/openssl/crypto/CMakeFiles/crypto.dir/codegen
 
 # clean rule for target.
@@ -1903,14 +1903,14 @@ cugl.dir/external/libdatachannel/deps/openssl/crypto/CMakeFiles/crypto.dir/clean
 cugl.dir/external/libdatachannel/deps/openssl/ssl/CMakeFiles/ssl.dir/all: cugl.dir/external/libdatachannel/deps/openssl/crypto/CMakeFiles/crypto.dir/all
 	$(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/openssl/ssl/CMakeFiles/ssl.dir/build.make cugl.dir/external/libdatachannel/deps/openssl/ssl/CMakeFiles/ssl.dir/depend
 	$(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/openssl/ssl/CMakeFiles/ssl.dir/build.make cugl.dir/external/libdatachannel/deps/openssl/ssl/CMakeFiles/ssl.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num=94,95,96 "Built target ssl"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num=94,95,96 "Built target ssl"
 .PHONY : cugl.dir/external/libdatachannel/deps/openssl/ssl/CMakeFiles/ssl.dir/all
 
 # Build rule for subdir invocation for target.
 cugl.dir/external/libdatachannel/deps/openssl/ssl/CMakeFiles/ssl.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles 47
+	$(CMAKE_COMMAND) -E cmake_progress_start /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles 47
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 cugl.dir/external/libdatachannel/deps/openssl/ssl/CMakeFiles/ssl.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles 0
 .PHONY : cugl.dir/external/libdatachannel/deps/openssl/ssl/CMakeFiles/ssl.dir/rule
 
 # Convenience name for target.
@@ -1920,7 +1920,7 @@ ssl: cugl.dir/external/libdatachannel/deps/openssl/ssl/CMakeFiles/ssl.dir/rule
 # codegen rule for target.
 cugl.dir/external/libdatachannel/deps/openssl/ssl/CMakeFiles/ssl.dir/codegen:
 	$(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/openssl/ssl/CMakeFiles/ssl.dir/build.make cugl.dir/external/libdatachannel/deps/openssl/ssl/CMakeFiles/ssl.dir/codegen
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num=94,95,96 "Finished codegen for target ssl"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num=94,95,96 "Finished codegen for target ssl"
 .PHONY : cugl.dir/external/libdatachannel/deps/openssl/ssl/CMakeFiles/ssl.dir/codegen
 
 # clean rule for target.
@@ -1935,14 +1935,14 @@ cugl.dir/external/libdatachannel/deps/openssl/ssl/CMakeFiles/ssl.dir/clean:
 cugl.dir/external/libdatachannel/deps/libsrtp/CMakeFiles/srtp2.dir/all:
 	$(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/libsrtp/CMakeFiles/srtp2.dir/build.make cugl.dir/external/libdatachannel/deps/libsrtp/CMakeFiles/srtp2.dir/depend
 	$(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/libsrtp/CMakeFiles/srtp2.dir/build.make cugl.dir/external/libdatachannel/deps/libsrtp/CMakeFiles/srtp2.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num=93 "Built target srtp2"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num=93 "Built target srtp2"
 .PHONY : cugl.dir/external/libdatachannel/deps/libsrtp/CMakeFiles/srtp2.dir/all
 
 # Build rule for subdir invocation for target.
 cugl.dir/external/libdatachannel/deps/libsrtp/CMakeFiles/srtp2.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles 1
+	$(CMAKE_COMMAND) -E cmake_progress_start /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles 1
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 cugl.dir/external/libdatachannel/deps/libsrtp/CMakeFiles/srtp2.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles 0
 .PHONY : cugl.dir/external/libdatachannel/deps/libsrtp/CMakeFiles/srtp2.dir/rule
 
 # Convenience name for target.
@@ -1952,7 +1952,7 @@ srtp2: cugl.dir/external/libdatachannel/deps/libsrtp/CMakeFiles/srtp2.dir/rule
 # codegen rule for target.
 cugl.dir/external/libdatachannel/deps/libsrtp/CMakeFiles/srtp2.dir/codegen:
 	$(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/libsrtp/CMakeFiles/srtp2.dir/build.make cugl.dir/external/libdatachannel/deps/libsrtp/CMakeFiles/srtp2.dir/codegen
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num=93 "Finished codegen for target srtp2"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num=93 "Finished codegen for target srtp2"
 .PHONY : cugl.dir/external/libdatachannel/deps/libsrtp/CMakeFiles/srtp2.dir/codegen
 
 # clean rule for target.
@@ -1967,14 +1967,14 @@ cugl.dir/external/libdatachannel/deps/libsrtp/CMakeFiles/srtp2.dir/clean:
 cugl.dir/external/libdatachannel/deps/libjuice/CMakeFiles/juice.dir/all:
 	$(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/libjuice/CMakeFiles/juice.dir/build.make cugl.dir/external/libdatachannel/deps/libjuice/CMakeFiles/juice.dir/depend
 	$(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/libjuice/CMakeFiles/juice.dir/build.make cugl.dir/external/libdatachannel/deps/libjuice/CMakeFiles/juice.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num=82,83 "Built target juice"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num=82 "Built target juice"
 .PHONY : cugl.dir/external/libdatachannel/deps/libjuice/CMakeFiles/juice.dir/all
 
 # Build rule for subdir invocation for target.
 cugl.dir/external/libdatachannel/deps/libjuice/CMakeFiles/juice.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles 2
+	$(CMAKE_COMMAND) -E cmake_progress_start /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles 1
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 cugl.dir/external/libdatachannel/deps/libjuice/CMakeFiles/juice.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles 0
 .PHONY : cugl.dir/external/libdatachannel/deps/libjuice/CMakeFiles/juice.dir/rule
 
 # Convenience name for target.
@@ -1984,7 +1984,7 @@ juice: cugl.dir/external/libdatachannel/deps/libjuice/CMakeFiles/juice.dir/rule
 # codegen rule for target.
 cugl.dir/external/libdatachannel/deps/libjuice/CMakeFiles/juice.dir/codegen:
 	$(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/libjuice/CMakeFiles/juice.dir/build.make cugl.dir/external/libdatachannel/deps/libjuice/CMakeFiles/juice.dir/codegen
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num=82,83 "Finished codegen for target juice"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num=82 "Finished codegen for target juice"
 .PHONY : cugl.dir/external/libdatachannel/deps/libjuice/CMakeFiles/juice.dir/codegen
 
 # clean rule for target.

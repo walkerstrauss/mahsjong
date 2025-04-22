@@ -8,7 +8,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
-  "/Users/patrickchoo/cs4152/cugl/sdlapp/src/ttf/SDL_ttf.c" "cugl.dir/sdl2pckg.dir/sdl2ttf/CMakeFiles/SDL2_ttf.dir/Users/patrickchoo/cs4152/cugl/sdlapp/src/ttf/SDL_ttf.c.o" "gcc" "cugl.dir/sdl2pckg.dir/sdl2ttf/CMakeFiles/SDL2_ttf.dir/Users/patrickchoo/cs4152/cugl/sdlapp/src/ttf/SDL_ttf.c.o.d"
+  "/users/patrickchoo/cs4152/cugl/sdlapp/src/ttf/SDL_ttf.c" "cugl.dir/sdl2pckg.dir/sdl2ttf/CMakeFiles/SDL2_ttf.dir/users/patrickchoo/cs4152/cugl/sdlapp/src/ttf/SDL_ttf.c.o" "gcc" "cugl.dir/sdl2pckg.dir/sdl2ttf/CMakeFiles/SDL2_ttf.dir/users/patrickchoo/cs4152/cugl/sdlapp/src/ttf/SDL_ttf.c.o.d"
   )
 
 # Targets to which this target links which contain Fortran sources.

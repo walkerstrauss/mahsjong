@@ -57,10 +57,10 @@ RM = /opt/homebrew/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /Users/patrickchoo/cs4152/mahsjong/build/cmake
+CMAKE_SOURCE_DIR = /users/patrickchoo/cs4152/mahsjong/build/cmake
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake
+CMAKE_BINARY_DIR = /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -68,7 +68,7 @@ CMAKE_BINARY_DIR = /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake
 # Special rule for the target package
 package: preinstall
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Run CPack packaging tool..."
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && /opt/homebrew/bin/cpack --config ./CPackConfig.cmake
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && /opt/homebrew/bin/cpack --config ./CPackConfig.cmake
 .PHONY : package
 
 # Special rule for the target package
@@ -78,7 +78,7 @@ package/fast: package
 # Special rule for the target package_source
 package_source:
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Run CPack packaging tool for source..."
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && /opt/homebrew/bin/cpack --config ./CPackSourceConfig.cmake /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CPackSourceConfig.cmake
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && /opt/homebrew/bin/cpack --config ./CPackSourceConfig.cmake /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CPackSourceConfig.cmake
 .PHONY : package_source
 
 # Special rule for the target package_source
@@ -152,14 +152,14 @@ install/strip/fast: preinstall/fast
 
 # The main all target
 all: cmake_check_build_system
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(CMAKE_COMMAND) -E cmake_progress_start /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib//CMakeFiles/progress.marks
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles 0
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(CMAKE_COMMAND) -E cmake_progress_start /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib//CMakeFiles/progress.marks
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/clean
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/clean
 .PHONY : clean
 
 # The main clean target
@@ -168,22 +168,22 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/preinstall
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/preinstall
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
 # Convenience name for target.
 cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbis.dir/rule:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbis.dir/rule
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbis.dir/rule
 .PHONY : cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbis.dir/rule
 
 # Convenience name for target.
@@ -192,12 +192,12 @@ vorbis: cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbis.dir/
 
 # fast build rule for target.
 vorbis/fast:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbis.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbis.dir/build
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbis.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbis.dir/build
 .PHONY : vorbis/fast
 
 # Convenience name for target.
 cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbisenc.dir/rule:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbisenc.dir/rule
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbisenc.dir/rule
 .PHONY : cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbisenc.dir/rule
 
 # Convenience name for target.
@@ -206,12 +206,12 @@ vorbisenc: cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbisen
 
 # fast build rule for target.
 vorbisenc/fast:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbisenc.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbisenc.dir/build
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbisenc.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbisenc.dir/build
 .PHONY : vorbisenc/fast
 
 # Convenience name for target.
 cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbisfile.dir/rule:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbisfile.dir/rule
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbisfile.dir/rule
 .PHONY : cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbisfile.dir/rule
 
 # Convenience name for target.
@@ -220,536 +220,536 @@ vorbisfile: cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbisf
 
 # fast build rule for target.
 vorbisfile/fast:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbisfile.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbisfile.dir/build
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbisfile.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbisfile.dir/build
 .PHONY : vorbisfile/fast
 
-Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/analysis.o: Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/analysis.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/analysis.o
+users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/analysis.o: users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/analysis.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/analysis.o
 
 # target to build an object file
-Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/analysis.c.o:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbis.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbis.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/analysis.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/analysis.c.o
+users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/analysis.c.o:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbis.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbis.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/analysis.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/analysis.c.o
 
-Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/analysis.i: Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/analysis.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/analysis.i
+users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/analysis.i: users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/analysis.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/analysis.i
 
 # target to preprocess a source file
-Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/analysis.c.i:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbis.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbis.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/analysis.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/analysis.c.i
+users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/analysis.c.i:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbis.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbis.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/analysis.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/analysis.c.i
 
-Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/analysis.s: Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/analysis.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/analysis.s
+users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/analysis.s: users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/analysis.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/analysis.s
 
 # target to generate assembly for a file
-Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/analysis.c.s:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbis.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbis.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/analysis.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/analysis.c.s
+users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/analysis.c.s:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbis.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbis.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/analysis.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/analysis.c.s
 
-Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/bitrate.o: Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/bitrate.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/bitrate.o
+users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/bitrate.o: users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/bitrate.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/bitrate.o
 
 # target to build an object file
-Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/bitrate.c.o:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbis.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbis.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/bitrate.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/bitrate.c.o
+users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/bitrate.c.o:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbis.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbis.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/bitrate.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/bitrate.c.o
 
-Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/bitrate.i: Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/bitrate.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/bitrate.i
+users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/bitrate.i: users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/bitrate.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/bitrate.i
 
 # target to preprocess a source file
-Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/bitrate.c.i:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbis.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbis.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/bitrate.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/bitrate.c.i
+users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/bitrate.c.i:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbis.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbis.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/bitrate.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/bitrate.c.i
 
-Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/bitrate.s: Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/bitrate.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/bitrate.s
+users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/bitrate.s: users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/bitrate.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/bitrate.s
 
 # target to generate assembly for a file
-Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/bitrate.c.s:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbis.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbis.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/bitrate.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/bitrate.c.s
+users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/bitrate.c.s:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbis.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbis.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/bitrate.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/bitrate.c.s
 
-Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/block.o: Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/block.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/block.o
+users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/block.o: users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/block.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/block.o
 
 # target to build an object file
-Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/block.c.o:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbis.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbis.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/block.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/block.c.o
+users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/block.c.o:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbis.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbis.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/block.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/block.c.o
 
-Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/block.i: Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/block.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/block.i
+users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/block.i: users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/block.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/block.i
 
 # target to preprocess a source file
-Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/block.c.i:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbis.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbis.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/block.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/block.c.i
+users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/block.c.i:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbis.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbis.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/block.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/block.c.i
 
-Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/block.s: Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/block.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/block.s
+users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/block.s: users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/block.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/block.s
 
 # target to generate assembly for a file
-Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/block.c.s:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbis.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbis.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/block.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/block.c.s
+users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/block.c.s:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbis.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbis.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/block.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/block.c.s
 
-Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/codebook.o: Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/codebook.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/codebook.o
+users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/codebook.o: users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/codebook.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/codebook.o
 
 # target to build an object file
-Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/codebook.c.o:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbis.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbis.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/codebook.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/codebook.c.o
+users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/codebook.c.o:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbis.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbis.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/codebook.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/codebook.c.o
 
-Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/codebook.i: Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/codebook.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/codebook.i
+users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/codebook.i: users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/codebook.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/codebook.i
 
 # target to preprocess a source file
-Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/codebook.c.i:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbis.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbis.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/codebook.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/codebook.c.i
+users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/codebook.c.i:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbis.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbis.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/codebook.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/codebook.c.i
 
-Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/codebook.s: Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/codebook.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/codebook.s
+users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/codebook.s: users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/codebook.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/codebook.s
 
 # target to generate assembly for a file
-Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/codebook.c.s:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbis.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbis.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/codebook.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/codebook.c.s
+users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/codebook.c.s:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbis.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbis.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/codebook.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/codebook.c.s
 
-Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/envelope.o: Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/envelope.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/envelope.o
+users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/envelope.o: users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/envelope.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/envelope.o
 
 # target to build an object file
-Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/envelope.c.o:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbis.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbis.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/envelope.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/envelope.c.o
+users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/envelope.c.o:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbis.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbis.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/envelope.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/envelope.c.o
 
-Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/envelope.i: Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/envelope.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/envelope.i
+users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/envelope.i: users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/envelope.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/envelope.i
 
 # target to preprocess a source file
-Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/envelope.c.i:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbis.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbis.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/envelope.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/envelope.c.i
+users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/envelope.c.i:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbis.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbis.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/envelope.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/envelope.c.i
 
-Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/envelope.s: Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/envelope.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/envelope.s
+users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/envelope.s: users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/envelope.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/envelope.s
 
 # target to generate assembly for a file
-Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/envelope.c.s:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbis.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbis.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/envelope.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/envelope.c.s
+users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/envelope.c.s:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbis.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbis.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/envelope.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/envelope.c.s
 
-Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/floor0.o: Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/floor0.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/floor0.o
+users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/floor0.o: users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/floor0.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/floor0.o
 
 # target to build an object file
-Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/floor0.c.o:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbis.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbis.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/floor0.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/floor0.c.o
+users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/floor0.c.o:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbis.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbis.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/floor0.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/floor0.c.o
 
-Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/floor0.i: Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/floor0.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/floor0.i
+users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/floor0.i: users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/floor0.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/floor0.i
 
 # target to preprocess a source file
-Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/floor0.c.i:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbis.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbis.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/floor0.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/floor0.c.i
+users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/floor0.c.i:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbis.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbis.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/floor0.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/floor0.c.i
 
-Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/floor0.s: Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/floor0.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/floor0.s
+users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/floor0.s: users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/floor0.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/floor0.s
 
 # target to generate assembly for a file
-Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/floor0.c.s:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbis.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbis.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/floor0.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/floor0.c.s
+users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/floor0.c.s:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbis.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbis.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/floor0.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/floor0.c.s
 
-Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/floor1.o: Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/floor1.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/floor1.o
+users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/floor1.o: users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/floor1.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/floor1.o
 
 # target to build an object file
-Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/floor1.c.o:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbis.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbis.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/floor1.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/floor1.c.o
+users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/floor1.c.o:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbis.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbis.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/floor1.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/floor1.c.o
 
-Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/floor1.i: Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/floor1.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/floor1.i
+users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/floor1.i: users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/floor1.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/floor1.i
 
 # target to preprocess a source file
-Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/floor1.c.i:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbis.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbis.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/floor1.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/floor1.c.i
+users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/floor1.c.i:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbis.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbis.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/floor1.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/floor1.c.i
 
-Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/floor1.s: Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/floor1.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/floor1.s
+users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/floor1.s: users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/floor1.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/floor1.s
 
 # target to generate assembly for a file
-Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/floor1.c.s:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbis.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbis.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/floor1.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/floor1.c.s
+users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/floor1.c.s:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbis.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbis.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/floor1.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/floor1.c.s
 
-Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/info.o: Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/info.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/info.o
+users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/info.o: users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/info.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/info.o
 
 # target to build an object file
-Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/info.c.o:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbis.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbis.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/info.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/info.c.o
+users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/info.c.o:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbis.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbis.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/info.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/info.c.o
 
-Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/info.i: Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/info.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/info.i
+users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/info.i: users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/info.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/info.i
 
 # target to preprocess a source file
-Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/info.c.i:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbis.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbis.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/info.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/info.c.i
+users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/info.c.i:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbis.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbis.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/info.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/info.c.i
 
-Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/info.s: Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/info.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/info.s
+users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/info.s: users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/info.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/info.s
 
 # target to generate assembly for a file
-Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/info.c.s:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbis.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbis.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/info.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/info.c.s
+users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/info.c.s:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbis.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbis.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/info.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/info.c.s
 
-Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/lookup.o: Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/lookup.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/lookup.o
+users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/lookup.o: users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/lookup.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/lookup.o
 
 # target to build an object file
-Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/lookup.c.o:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbis.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbis.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/lookup.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/lookup.c.o
+users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/lookup.c.o:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbis.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbis.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/lookup.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/lookup.c.o
 
-Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/lookup.i: Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/lookup.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/lookup.i
+users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/lookup.i: users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/lookup.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/lookup.i
 
 # target to preprocess a source file
-Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/lookup.c.i:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbis.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbis.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/lookup.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/lookup.c.i
+users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/lookup.c.i:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbis.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbis.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/lookup.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/lookup.c.i
 
-Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/lookup.s: Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/lookup.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/lookup.s
+users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/lookup.s: users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/lookup.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/lookup.s
 
 # target to generate assembly for a file
-Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/lookup.c.s:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbis.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbis.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/lookup.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/lookup.c.s
+users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/lookup.c.s:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbis.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbis.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/lookup.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/lookup.c.s
 
-Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/lpc.o: Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/lpc.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/lpc.o
+users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/lpc.o: users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/lpc.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/lpc.o
 
 # target to build an object file
-Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/lpc.c.o:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbis.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbis.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/lpc.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/lpc.c.o
+users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/lpc.c.o:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbis.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbis.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/lpc.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/lpc.c.o
 
-Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/lpc.i: Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/lpc.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/lpc.i
+users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/lpc.i: users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/lpc.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/lpc.i
 
 # target to preprocess a source file
-Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/lpc.c.i:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbis.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbis.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/lpc.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/lpc.c.i
+users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/lpc.c.i:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbis.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbis.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/lpc.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/lpc.c.i
 
-Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/lpc.s: Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/lpc.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/lpc.s
+users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/lpc.s: users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/lpc.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/lpc.s
 
 # target to generate assembly for a file
-Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/lpc.c.s:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbis.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbis.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/lpc.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/lpc.c.s
+users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/lpc.c.s:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbis.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbis.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/lpc.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/lpc.c.s
 
-Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/lsp.o: Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/lsp.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/lsp.o
+users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/lsp.o: users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/lsp.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/lsp.o
 
 # target to build an object file
-Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/lsp.c.o:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbis.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbis.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/lsp.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/lsp.c.o
+users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/lsp.c.o:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbis.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbis.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/lsp.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/lsp.c.o
 
-Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/lsp.i: Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/lsp.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/lsp.i
+users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/lsp.i: users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/lsp.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/lsp.i
 
 # target to preprocess a source file
-Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/lsp.c.i:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbis.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbis.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/lsp.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/lsp.c.i
+users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/lsp.c.i:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbis.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbis.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/lsp.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/lsp.c.i
 
-Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/lsp.s: Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/lsp.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/lsp.s
+users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/lsp.s: users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/lsp.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/lsp.s
 
 # target to generate assembly for a file
-Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/lsp.c.s:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbis.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbis.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/lsp.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/lsp.c.s
+users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/lsp.c.s:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbis.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbis.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/lsp.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/lsp.c.s
 
-Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/mapping0.o: Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/mapping0.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/mapping0.o
+users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/mapping0.o: users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/mapping0.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/mapping0.o
 
 # target to build an object file
-Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/mapping0.c.o:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbis.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbis.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/mapping0.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/mapping0.c.o
+users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/mapping0.c.o:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbis.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbis.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/mapping0.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/mapping0.c.o
 
-Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/mapping0.i: Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/mapping0.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/mapping0.i
+users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/mapping0.i: users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/mapping0.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/mapping0.i
 
 # target to preprocess a source file
-Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/mapping0.c.i:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbis.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbis.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/mapping0.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/mapping0.c.i
+users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/mapping0.c.i:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbis.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbis.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/mapping0.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/mapping0.c.i
 
-Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/mapping0.s: Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/mapping0.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/mapping0.s
+users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/mapping0.s: users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/mapping0.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/mapping0.s
 
 # target to generate assembly for a file
-Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/mapping0.c.s:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbis.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbis.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/mapping0.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/mapping0.c.s
+users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/mapping0.c.s:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbis.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbis.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/mapping0.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/mapping0.c.s
 
-Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/mdct.o: Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/mdct.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/mdct.o
+users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/mdct.o: users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/mdct.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/mdct.o
 
 # target to build an object file
-Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/mdct.c.o:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbis.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbis.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/mdct.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/mdct.c.o
+users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/mdct.c.o:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbis.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbis.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/mdct.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/mdct.c.o
 
-Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/mdct.i: Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/mdct.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/mdct.i
+users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/mdct.i: users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/mdct.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/mdct.i
 
 # target to preprocess a source file
-Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/mdct.c.i:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbis.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbis.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/mdct.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/mdct.c.i
+users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/mdct.c.i:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbis.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbis.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/mdct.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/mdct.c.i
 
-Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/mdct.s: Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/mdct.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/mdct.s
+users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/mdct.s: users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/mdct.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/mdct.s
 
 # target to generate assembly for a file
-Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/mdct.c.s:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbis.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbis.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/mdct.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/mdct.c.s
+users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/mdct.c.s:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbis.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbis.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/mdct.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/mdct.c.s
 
-Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/psy.o: Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/psy.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/psy.o
+users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/psy.o: users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/psy.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/psy.o
 
 # target to build an object file
-Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/psy.c.o:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbis.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbis.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/psy.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/psy.c.o
+users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/psy.c.o:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbis.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbis.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/psy.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/psy.c.o
 
-Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/psy.i: Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/psy.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/psy.i
+users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/psy.i: users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/psy.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/psy.i
 
 # target to preprocess a source file
-Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/psy.c.i:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbis.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbis.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/psy.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/psy.c.i
+users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/psy.c.i:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbis.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbis.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/psy.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/psy.c.i
 
-Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/psy.s: Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/psy.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/psy.s
+users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/psy.s: users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/psy.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/psy.s
 
 # target to generate assembly for a file
-Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/psy.c.s:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbis.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbis.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/psy.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/psy.c.s
+users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/psy.c.s:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbis.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbis.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/psy.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/psy.c.s
 
-Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/registry.o: Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/registry.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/registry.o
+users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/registry.o: users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/registry.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/registry.o
 
 # target to build an object file
-Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/registry.c.o:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbis.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbis.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/registry.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/registry.c.o
+users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/registry.c.o:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbis.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbis.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/registry.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/registry.c.o
 
-Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/registry.i: Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/registry.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/registry.i
+users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/registry.i: users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/registry.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/registry.i
 
 # target to preprocess a source file
-Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/registry.c.i:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbis.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbis.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/registry.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/registry.c.i
+users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/registry.c.i:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbis.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbis.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/registry.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/registry.c.i
 
-Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/registry.s: Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/registry.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/registry.s
+users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/registry.s: users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/registry.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/registry.s
 
 # target to generate assembly for a file
-Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/registry.c.s:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbis.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbis.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/registry.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/registry.c.s
+users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/registry.c.s:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbis.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbis.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/registry.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/registry.c.s
 
-Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/res0.o: Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/res0.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/res0.o
+users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/res0.o: users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/res0.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/res0.o
 
 # target to build an object file
-Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/res0.c.o:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbis.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbis.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/res0.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/res0.c.o
+users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/res0.c.o:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbis.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbis.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/res0.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/res0.c.o
 
-Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/res0.i: Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/res0.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/res0.i
+users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/res0.i: users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/res0.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/res0.i
 
 # target to preprocess a source file
-Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/res0.c.i:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbis.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbis.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/res0.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/res0.c.i
+users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/res0.c.i:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbis.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbis.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/res0.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/res0.c.i
 
-Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/res0.s: Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/res0.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/res0.s
+users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/res0.s: users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/res0.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/res0.s
 
 # target to generate assembly for a file
-Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/res0.c.s:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbis.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbis.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/res0.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/res0.c.s
+users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/res0.c.s:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbis.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbis.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/res0.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/res0.c.s
 
-Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/sharedbook.o: Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/sharedbook.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/sharedbook.o
+users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/sharedbook.o: users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/sharedbook.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/sharedbook.o
 
 # target to build an object file
-Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/sharedbook.c.o:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbis.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbis.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/sharedbook.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/sharedbook.c.o
+users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/sharedbook.c.o:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbis.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbis.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/sharedbook.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/sharedbook.c.o
 
-Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/sharedbook.i: Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/sharedbook.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/sharedbook.i
+users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/sharedbook.i: users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/sharedbook.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/sharedbook.i
 
 # target to preprocess a source file
-Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/sharedbook.c.i:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbis.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbis.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/sharedbook.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/sharedbook.c.i
+users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/sharedbook.c.i:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbis.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbis.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/sharedbook.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/sharedbook.c.i
 
-Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/sharedbook.s: Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/sharedbook.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/sharedbook.s
+users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/sharedbook.s: users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/sharedbook.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/sharedbook.s
 
 # target to generate assembly for a file
-Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/sharedbook.c.s:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbis.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbis.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/sharedbook.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/sharedbook.c.s
+users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/sharedbook.c.s:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbis.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbis.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/sharedbook.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/sharedbook.c.s
 
-Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/smallft.o: Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/smallft.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/smallft.o
+users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/smallft.o: users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/smallft.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/smallft.o
 
 # target to build an object file
-Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/smallft.c.o:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbis.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbis.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/smallft.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/smallft.c.o
+users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/smallft.c.o:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbis.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbis.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/smallft.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/smallft.c.o
 
-Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/smallft.i: Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/smallft.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/smallft.i
+users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/smallft.i: users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/smallft.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/smallft.i
 
 # target to preprocess a source file
-Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/smallft.c.i:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbis.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbis.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/smallft.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/smallft.c.i
+users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/smallft.c.i:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbis.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbis.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/smallft.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/smallft.c.i
 
-Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/smallft.s: Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/smallft.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/smallft.s
+users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/smallft.s: users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/smallft.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/smallft.s
 
 # target to generate assembly for a file
-Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/smallft.c.s:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbis.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbis.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/smallft.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/smallft.c.s
+users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/smallft.c.s:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbis.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbis.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/smallft.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/smallft.c.s
 
-Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/synthesis.o: Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/synthesis.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/synthesis.o
+users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/synthesis.o: users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/synthesis.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/synthesis.o
 
 # target to build an object file
-Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/synthesis.c.o:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbis.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbis.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/synthesis.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/synthesis.c.o
+users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/synthesis.c.o:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbis.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbis.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/synthesis.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/synthesis.c.o
 
-Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/synthesis.i: Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/synthesis.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/synthesis.i
+users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/synthesis.i: users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/synthesis.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/synthesis.i
 
 # target to preprocess a source file
-Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/synthesis.c.i:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbis.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbis.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/synthesis.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/synthesis.c.i
+users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/synthesis.c.i:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbis.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbis.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/synthesis.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/synthesis.c.i
 
-Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/synthesis.s: Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/synthesis.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/synthesis.s
+users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/synthesis.s: users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/synthesis.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/synthesis.s
 
 # target to generate assembly for a file
-Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/synthesis.c.s:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbis.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbis.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/synthesis.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/synthesis.c.s
+users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/synthesis.c.s:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbis.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbis.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/synthesis.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/synthesis.c.s
 
-Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/vorbisenc.o: Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/vorbisenc.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/vorbisenc.o
+users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/vorbisenc.o: users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/vorbisenc.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/vorbisenc.o
 
 # target to build an object file
-Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/vorbisenc.c.o:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbisenc.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbisenc.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/vorbisenc.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/vorbisenc.c.o
+users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/vorbisenc.c.o:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbisenc.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbisenc.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/vorbisenc.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/vorbisenc.c.o
 
-Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/vorbisenc.i: Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/vorbisenc.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/vorbisenc.i
+users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/vorbisenc.i: users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/vorbisenc.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/vorbisenc.i
 
 # target to preprocess a source file
-Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/vorbisenc.c.i:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbisenc.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbisenc.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/vorbisenc.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/vorbisenc.c.i
+users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/vorbisenc.c.i:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbisenc.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbisenc.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/vorbisenc.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/vorbisenc.c.i
 
-Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/vorbisenc.s: Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/vorbisenc.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/vorbisenc.s
+users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/vorbisenc.s: users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/vorbisenc.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/vorbisenc.s
 
 # target to generate assembly for a file
-Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/vorbisenc.c.s:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbisenc.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbisenc.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/vorbisenc.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/vorbisenc.c.s
+users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/vorbisenc.c.s:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbisenc.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbisenc.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/vorbisenc.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/vorbisenc.c.s
 
-Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/vorbisfile.o: Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/vorbisfile.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/vorbisfile.o
+users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/vorbisfile.o: users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/vorbisfile.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/vorbisfile.o
 
 # target to build an object file
-Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/vorbisfile.c.o:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbisfile.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbisfile.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/vorbisfile.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/vorbisfile.c.o
+users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/vorbisfile.c.o:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbisfile.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbisfile.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/vorbisfile.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/vorbisfile.c.o
 
-Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/vorbisfile.i: Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/vorbisfile.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/vorbisfile.i
+users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/vorbisfile.i: users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/vorbisfile.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/vorbisfile.i
 
 # target to preprocess a source file
-Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/vorbisfile.c.i:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbisfile.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbisfile.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/vorbisfile.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/vorbisfile.c.i
+users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/vorbisfile.c.i:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbisfile.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbisfile.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/vorbisfile.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/vorbisfile.c.i
 
-Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/vorbisfile.s: Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/vorbisfile.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/vorbisfile.s
+users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/vorbisfile.s: users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/vorbisfile.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/vorbisfile.s
 
 # target to generate assembly for a file
-Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/vorbisfile.c.s:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbisfile.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbisfile.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/vorbisfile.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/vorbisfile.c.s
+users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/vorbisfile.c.s:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbisfile.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbisfile.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/vorbisfile.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/vorbisfile.c.s
 
-Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/window.o: Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/window.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/window.o
+users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/window.o: users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/window.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/window.o
 
 # target to build an object file
-Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/window.c.o:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbis.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbis.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/window.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/window.c.o
+users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/window.c.o:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbis.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbis.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/window.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/window.c.o
 
-Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/window.i: Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/window.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/window.i
+users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/window.i: users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/window.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/window.i
 
 # target to preprocess a source file
-Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/window.c.i:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbis.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbis.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/window.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/window.c.i
+users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/window.c.i:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbis.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbis.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/window.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/window.c.i
 
-Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/window.s: Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/window.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/window.s
+users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/window.s: users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/window.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/window.s
 
 # target to generate assembly for a file
-Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/window.c.s:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbis.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbis.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/window.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/window.c.s
+users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/window.c.s:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbis.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbis.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/window.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/window.c.s
 
 # Help Target
 help:
@@ -768,72 +768,72 @@ help:
 	@echo "... vorbis"
 	@echo "... vorbisenc"
 	@echo "... vorbisfile"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/analysis.o"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/analysis.i"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/analysis.s"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/bitrate.o"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/bitrate.i"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/bitrate.s"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/block.o"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/block.i"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/block.s"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/codebook.o"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/codebook.i"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/codebook.s"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/envelope.o"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/envelope.i"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/envelope.s"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/floor0.o"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/floor0.i"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/floor0.s"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/floor1.o"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/floor1.i"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/floor1.s"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/info.o"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/info.i"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/info.s"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/lookup.o"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/lookup.i"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/lookup.s"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/lpc.o"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/lpc.i"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/lpc.s"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/lsp.o"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/lsp.i"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/lsp.s"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/mapping0.o"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/mapping0.i"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/mapping0.s"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/mdct.o"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/mdct.i"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/mdct.s"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/psy.o"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/psy.i"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/psy.s"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/registry.o"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/registry.i"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/registry.s"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/res0.o"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/res0.i"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/res0.s"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/sharedbook.o"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/sharedbook.i"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/sharedbook.s"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/smallft.o"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/smallft.i"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/smallft.s"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/synthesis.o"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/synthesis.i"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/synthesis.s"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/vorbisenc.o"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/vorbisenc.i"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/vorbisenc.s"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/vorbisfile.o"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/vorbisfile.i"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/vorbisfile.s"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/window.o"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/window.i"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/window.s"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/analysis.o"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/analysis.i"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/analysis.s"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/bitrate.o"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/bitrate.i"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/bitrate.s"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/block.o"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/block.i"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/block.s"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/codebook.o"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/codebook.i"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/codebook.s"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/envelope.o"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/envelope.i"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/envelope.s"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/floor0.o"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/floor0.i"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/floor0.s"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/floor1.o"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/floor1.i"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/floor1.s"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/info.o"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/info.i"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/info.s"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/lookup.o"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/lookup.i"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/lookup.s"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/lpc.o"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/lpc.i"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/lpc.s"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/lsp.o"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/lsp.i"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/lsp.s"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/mapping0.o"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/mapping0.i"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/mapping0.s"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/mdct.o"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/mdct.i"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/mdct.s"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/psy.o"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/psy.i"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/psy.s"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/registry.o"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/registry.i"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/registry.s"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/res0.o"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/res0.i"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/res0.s"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/sharedbook.o"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/sharedbook.i"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/sharedbook.s"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/smallft.o"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/smallft.i"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/smallft.s"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/synthesis.o"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/synthesis.i"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/synthesis.s"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/vorbisenc.o"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/vorbisenc.i"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/vorbisenc.s"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/vorbisfile.o"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/vorbisfile.i"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/vorbisfile.s"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/window.o"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/window.i"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/window.s"
 .PHONY : help
 
 
@@ -845,6 +845,6 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 

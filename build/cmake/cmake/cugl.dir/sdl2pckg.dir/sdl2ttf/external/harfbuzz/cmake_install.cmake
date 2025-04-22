@@ -1,4 +1,4 @@
-# Install script for directory: /Users/patrickchoo/cs4152/cugl/sdlapp/buildfiles/cmake/sdl2ttf/external/harfbuzz
+# Install script for directory: /users/patrickchoo/cs4152/cugl/sdlapp/buildfiles/cmake/sdl2ttf/external/harfbuzz
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -39,45 +39,45 @@ endif()
 
 if(CMAKE_INSTALL_COMPONENT STREQUAL "Unspecified" OR NOT CMAKE_INSTALL_COMPONENT)
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include/harfbuzz" TYPE FILE FILES
-    "/Users/patrickchoo/cs4152/cugl/sdlapp/buildfiles/cmake/../../external/harfbuzz/src/hb-aat-layout.h"
-    "/Users/patrickchoo/cs4152/cugl/sdlapp/buildfiles/cmake/../../external/harfbuzz/src/hb-aat.h"
-    "/Users/patrickchoo/cs4152/cugl/sdlapp/buildfiles/cmake/../../external/harfbuzz/src/hb-blob.h"
-    "/Users/patrickchoo/cs4152/cugl/sdlapp/buildfiles/cmake/../../external/harfbuzz/src/hb-buffer.h"
-    "/Users/patrickchoo/cs4152/cugl/sdlapp/buildfiles/cmake/../../external/harfbuzz/src/hb-common.h"
-    "/Users/patrickchoo/cs4152/cugl/sdlapp/buildfiles/cmake/../../external/harfbuzz/src/hb-cplusplus.hh"
-    "/Users/patrickchoo/cs4152/cugl/sdlapp/buildfiles/cmake/../../external/harfbuzz/src/hb-deprecated.h"
-    "/Users/patrickchoo/cs4152/cugl/sdlapp/buildfiles/cmake/../../external/harfbuzz/src/hb-draw.h"
-    "/Users/patrickchoo/cs4152/cugl/sdlapp/buildfiles/cmake/../../external/harfbuzz/src/hb-face.h"
-    "/Users/patrickchoo/cs4152/cugl/sdlapp/buildfiles/cmake/../../external/harfbuzz/src/hb-font.h"
-    "/Users/patrickchoo/cs4152/cugl/sdlapp/buildfiles/cmake/../../external/harfbuzz/src/hb-map.h"
-    "/Users/patrickchoo/cs4152/cugl/sdlapp/buildfiles/cmake/../../external/harfbuzz/src/hb-ot-color.h"
-    "/Users/patrickchoo/cs4152/cugl/sdlapp/buildfiles/cmake/../../external/harfbuzz/src/hb-ot-deprecated.h"
-    "/Users/patrickchoo/cs4152/cugl/sdlapp/buildfiles/cmake/../../external/harfbuzz/src/hb-ot-font.h"
-    "/Users/patrickchoo/cs4152/cugl/sdlapp/buildfiles/cmake/../../external/harfbuzz/src/hb-ot-layout.h"
-    "/Users/patrickchoo/cs4152/cugl/sdlapp/buildfiles/cmake/../../external/harfbuzz/src/hb-ot-math.h"
-    "/Users/patrickchoo/cs4152/cugl/sdlapp/buildfiles/cmake/../../external/harfbuzz/src/hb-ot-meta.h"
-    "/Users/patrickchoo/cs4152/cugl/sdlapp/buildfiles/cmake/../../external/harfbuzz/src/hb-ot-metrics.h"
-    "/Users/patrickchoo/cs4152/cugl/sdlapp/buildfiles/cmake/../../external/harfbuzz/src/hb-ot-name.h"
-    "/Users/patrickchoo/cs4152/cugl/sdlapp/buildfiles/cmake/../../external/harfbuzz/src/hb-ot-shape.h"
-    "/Users/patrickchoo/cs4152/cugl/sdlapp/buildfiles/cmake/../../external/harfbuzz/src/hb-ot-var.h"
-    "/Users/patrickchoo/cs4152/cugl/sdlapp/buildfiles/cmake/../../external/harfbuzz/src/hb-ot.h"
-    "/Users/patrickchoo/cs4152/cugl/sdlapp/buildfiles/cmake/../../external/harfbuzz/src/hb-paint.h"
-    "/Users/patrickchoo/cs4152/cugl/sdlapp/buildfiles/cmake/../../external/harfbuzz/src/hb-set.h"
-    "/Users/patrickchoo/cs4152/cugl/sdlapp/buildfiles/cmake/../../external/harfbuzz/src/hb-shape-plan.h"
-    "/Users/patrickchoo/cs4152/cugl/sdlapp/buildfiles/cmake/../../external/harfbuzz/src/hb-shape.h"
-    "/Users/patrickchoo/cs4152/cugl/sdlapp/buildfiles/cmake/../../external/harfbuzz/src/hb-style.h"
-    "/Users/patrickchoo/cs4152/cugl/sdlapp/buildfiles/cmake/../../external/harfbuzz/src/hb-unicode.h"
-    "/Users/patrickchoo/cs4152/cugl/sdlapp/buildfiles/cmake/../../external/harfbuzz/src/hb-version.h"
-    "/Users/patrickchoo/cs4152/cugl/sdlapp/buildfiles/cmake/../../external/harfbuzz/src/hb.h"
-    "/Users/patrickchoo/cs4152/cugl/sdlapp/buildfiles/cmake/../../external/harfbuzz/src/hb-ft.h"
-    "/Users/patrickchoo/cs4152/cugl/sdlapp/buildfiles/cmake/../../external/harfbuzz/src/hb-coretext.h"
-    "/Users/patrickchoo/cs4152/cugl/sdlapp/buildfiles/cmake/../../external/harfbuzz/src/hb-subset.h"
+    "/users/patrickchoo/cs4152/cugl/sdlapp/buildfiles/cmake/../../external/harfbuzz/src/hb-aat-layout.h"
+    "/users/patrickchoo/cs4152/cugl/sdlapp/buildfiles/cmake/../../external/harfbuzz/src/hb-aat.h"
+    "/users/patrickchoo/cs4152/cugl/sdlapp/buildfiles/cmake/../../external/harfbuzz/src/hb-blob.h"
+    "/users/patrickchoo/cs4152/cugl/sdlapp/buildfiles/cmake/../../external/harfbuzz/src/hb-buffer.h"
+    "/users/patrickchoo/cs4152/cugl/sdlapp/buildfiles/cmake/../../external/harfbuzz/src/hb-common.h"
+    "/users/patrickchoo/cs4152/cugl/sdlapp/buildfiles/cmake/../../external/harfbuzz/src/hb-cplusplus.hh"
+    "/users/patrickchoo/cs4152/cugl/sdlapp/buildfiles/cmake/../../external/harfbuzz/src/hb-deprecated.h"
+    "/users/patrickchoo/cs4152/cugl/sdlapp/buildfiles/cmake/../../external/harfbuzz/src/hb-draw.h"
+    "/users/patrickchoo/cs4152/cugl/sdlapp/buildfiles/cmake/../../external/harfbuzz/src/hb-face.h"
+    "/users/patrickchoo/cs4152/cugl/sdlapp/buildfiles/cmake/../../external/harfbuzz/src/hb-font.h"
+    "/users/patrickchoo/cs4152/cugl/sdlapp/buildfiles/cmake/../../external/harfbuzz/src/hb-map.h"
+    "/users/patrickchoo/cs4152/cugl/sdlapp/buildfiles/cmake/../../external/harfbuzz/src/hb-ot-color.h"
+    "/users/patrickchoo/cs4152/cugl/sdlapp/buildfiles/cmake/../../external/harfbuzz/src/hb-ot-deprecated.h"
+    "/users/patrickchoo/cs4152/cugl/sdlapp/buildfiles/cmake/../../external/harfbuzz/src/hb-ot-font.h"
+    "/users/patrickchoo/cs4152/cugl/sdlapp/buildfiles/cmake/../../external/harfbuzz/src/hb-ot-layout.h"
+    "/users/patrickchoo/cs4152/cugl/sdlapp/buildfiles/cmake/../../external/harfbuzz/src/hb-ot-math.h"
+    "/users/patrickchoo/cs4152/cugl/sdlapp/buildfiles/cmake/../../external/harfbuzz/src/hb-ot-meta.h"
+    "/users/patrickchoo/cs4152/cugl/sdlapp/buildfiles/cmake/../../external/harfbuzz/src/hb-ot-metrics.h"
+    "/users/patrickchoo/cs4152/cugl/sdlapp/buildfiles/cmake/../../external/harfbuzz/src/hb-ot-name.h"
+    "/users/patrickchoo/cs4152/cugl/sdlapp/buildfiles/cmake/../../external/harfbuzz/src/hb-ot-shape.h"
+    "/users/patrickchoo/cs4152/cugl/sdlapp/buildfiles/cmake/../../external/harfbuzz/src/hb-ot-var.h"
+    "/users/patrickchoo/cs4152/cugl/sdlapp/buildfiles/cmake/../../external/harfbuzz/src/hb-ot.h"
+    "/users/patrickchoo/cs4152/cugl/sdlapp/buildfiles/cmake/../../external/harfbuzz/src/hb-paint.h"
+    "/users/patrickchoo/cs4152/cugl/sdlapp/buildfiles/cmake/../../external/harfbuzz/src/hb-set.h"
+    "/users/patrickchoo/cs4152/cugl/sdlapp/buildfiles/cmake/../../external/harfbuzz/src/hb-shape-plan.h"
+    "/users/patrickchoo/cs4152/cugl/sdlapp/buildfiles/cmake/../../external/harfbuzz/src/hb-shape.h"
+    "/users/patrickchoo/cs4152/cugl/sdlapp/buildfiles/cmake/../../external/harfbuzz/src/hb-style.h"
+    "/users/patrickchoo/cs4152/cugl/sdlapp/buildfiles/cmake/../../external/harfbuzz/src/hb-unicode.h"
+    "/users/patrickchoo/cs4152/cugl/sdlapp/buildfiles/cmake/../../external/harfbuzz/src/hb-version.h"
+    "/users/patrickchoo/cs4152/cugl/sdlapp/buildfiles/cmake/../../external/harfbuzz/src/hb.h"
+    "/users/patrickchoo/cs4152/cugl/sdlapp/buildfiles/cmake/../../external/harfbuzz/src/hb-ft.h"
+    "/users/patrickchoo/cs4152/cugl/sdlapp/buildfiles/cmake/../../external/harfbuzz/src/hb-coretext.h"
+    "/users/patrickchoo/cs4152/cugl/sdlapp/buildfiles/cmake/../../external/harfbuzz/src/hb-subset.h"
     )
 endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
 if(CMAKE_INSTALL_LOCAL_ONLY)
-  file(WRITE "/Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2ttf/external/harfbuzz/install_local_manifest.txt"
+  file(WRITE "/users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2ttf/external/harfbuzz/install_local_manifest.txt"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")
 endif()

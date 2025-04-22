@@ -57,10 +57,10 @@ RM = /opt/homebrew/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /Users/patrickchoo/cs4152/mahsjong/build/cmake
+CMAKE_SOURCE_DIR = /users/patrickchoo/cs4152/mahsjong/build/cmake
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake
+CMAKE_BINARY_DIR = /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -68,7 +68,7 @@ CMAKE_BINARY_DIR = /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake
 # Special rule for the target package
 package: preinstall
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Run CPack packaging tool..."
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && /opt/homebrew/bin/cpack --config ./CPackConfig.cmake
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && /opt/homebrew/bin/cpack --config ./CPackConfig.cmake
 .PHONY : package
 
 # Special rule for the target package
@@ -78,7 +78,7 @@ package/fast: package
 # Special rule for the target package_source
 package_source:
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Run CPack packaging tool for source..."
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && /opt/homebrew/bin/cpack --config ./CPackSourceConfig.cmake /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CPackSourceConfig.cmake
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && /opt/homebrew/bin/cpack --config ./CPackSourceConfig.cmake /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CPackSourceConfig.cmake
 .PHONY : package_source
 
 # Special rule for the target package_source
@@ -152,14 +152,14 @@ install/strip/fast: preinstall/fast
 
 # The main all target
 all: cmake_check_build_system
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(CMAKE_COMMAND) -E cmake_progress_start /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2atk/external/ogg//CMakeFiles/progress.marks
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 cugl.dir/sdl2pckg.dir/sdl2atk/external/ogg/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles 0
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(CMAKE_COMMAND) -E cmake_progress_start /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2atk/external/ogg//CMakeFiles/progress.marks
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 cugl.dir/sdl2pckg.dir/sdl2atk/external/ogg/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 cugl.dir/sdl2pckg.dir/sdl2atk/external/ogg/clean
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 cugl.dir/sdl2pckg.dir/sdl2atk/external/ogg/clean
 .PHONY : clean
 
 # The main clean target
@@ -168,22 +168,22 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 cugl.dir/sdl2pckg.dir/sdl2atk/external/ogg/preinstall
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 cugl.dir/sdl2pckg.dir/sdl2atk/external/ogg/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 cugl.dir/sdl2pckg.dir/sdl2atk/external/ogg/preinstall
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 cugl.dir/sdl2pckg.dir/sdl2atk/external/ogg/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
 # Convenience name for target.
 cugl.dir/sdl2pckg.dir/sdl2atk/external/ogg/CMakeFiles/ogg.dir/rule:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 cugl.dir/sdl2pckg.dir/sdl2atk/external/ogg/CMakeFiles/ogg.dir/rule
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 cugl.dir/sdl2pckg.dir/sdl2atk/external/ogg/CMakeFiles/ogg.dir/rule
 .PHONY : cugl.dir/sdl2pckg.dir/sdl2atk/external/ogg/CMakeFiles/ogg.dir/rule
 
 # Convenience name for target.
@@ -192,56 +192,56 @@ ogg: cugl.dir/sdl2pckg.dir/sdl2atk/external/ogg/CMakeFiles/ogg.dir/rule
 
 # fast build rule for target.
 ogg/fast:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/ogg/CMakeFiles/ogg.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/ogg/CMakeFiles/ogg.dir/build
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/ogg/CMakeFiles/ogg.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/ogg/CMakeFiles/ogg.dir/build
 .PHONY : ogg/fast
 
-Users/patrickchoo/cs4152/cugl/sdlapp/external/ogg/src/bitwise.o: Users/patrickchoo/cs4152/cugl/sdlapp/external/ogg/src/bitwise.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/ogg/src/bitwise.o
+users/patrickchoo/cs4152/cugl/sdlapp/external/ogg/src/bitwise.o: users/patrickchoo/cs4152/cugl/sdlapp/external/ogg/src/bitwise.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/ogg/src/bitwise.o
 
 # target to build an object file
-Users/patrickchoo/cs4152/cugl/sdlapp/external/ogg/src/bitwise.c.o:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/ogg/CMakeFiles/ogg.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/ogg/CMakeFiles/ogg.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/ogg/src/bitwise.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/ogg/src/bitwise.c.o
+users/patrickchoo/cs4152/cugl/sdlapp/external/ogg/src/bitwise.c.o:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/ogg/CMakeFiles/ogg.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/ogg/CMakeFiles/ogg.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/ogg/src/bitwise.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/ogg/src/bitwise.c.o
 
-Users/patrickchoo/cs4152/cugl/sdlapp/external/ogg/src/bitwise.i: Users/patrickchoo/cs4152/cugl/sdlapp/external/ogg/src/bitwise.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/ogg/src/bitwise.i
+users/patrickchoo/cs4152/cugl/sdlapp/external/ogg/src/bitwise.i: users/patrickchoo/cs4152/cugl/sdlapp/external/ogg/src/bitwise.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/ogg/src/bitwise.i
 
 # target to preprocess a source file
-Users/patrickchoo/cs4152/cugl/sdlapp/external/ogg/src/bitwise.c.i:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/ogg/CMakeFiles/ogg.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/ogg/CMakeFiles/ogg.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/ogg/src/bitwise.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/ogg/src/bitwise.c.i
+users/patrickchoo/cs4152/cugl/sdlapp/external/ogg/src/bitwise.c.i:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/ogg/CMakeFiles/ogg.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/ogg/CMakeFiles/ogg.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/ogg/src/bitwise.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/ogg/src/bitwise.c.i
 
-Users/patrickchoo/cs4152/cugl/sdlapp/external/ogg/src/bitwise.s: Users/patrickchoo/cs4152/cugl/sdlapp/external/ogg/src/bitwise.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/ogg/src/bitwise.s
+users/patrickchoo/cs4152/cugl/sdlapp/external/ogg/src/bitwise.s: users/patrickchoo/cs4152/cugl/sdlapp/external/ogg/src/bitwise.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/ogg/src/bitwise.s
 
 # target to generate assembly for a file
-Users/patrickchoo/cs4152/cugl/sdlapp/external/ogg/src/bitwise.c.s:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/ogg/CMakeFiles/ogg.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/ogg/CMakeFiles/ogg.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/ogg/src/bitwise.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/ogg/src/bitwise.c.s
+users/patrickchoo/cs4152/cugl/sdlapp/external/ogg/src/bitwise.c.s:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/ogg/CMakeFiles/ogg.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/ogg/CMakeFiles/ogg.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/ogg/src/bitwise.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/ogg/src/bitwise.c.s
 
-Users/patrickchoo/cs4152/cugl/sdlapp/external/ogg/src/framing.o: Users/patrickchoo/cs4152/cugl/sdlapp/external/ogg/src/framing.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/ogg/src/framing.o
+users/patrickchoo/cs4152/cugl/sdlapp/external/ogg/src/framing.o: users/patrickchoo/cs4152/cugl/sdlapp/external/ogg/src/framing.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/ogg/src/framing.o
 
 # target to build an object file
-Users/patrickchoo/cs4152/cugl/sdlapp/external/ogg/src/framing.c.o:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/ogg/CMakeFiles/ogg.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/ogg/CMakeFiles/ogg.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/ogg/src/framing.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/ogg/src/framing.c.o
+users/patrickchoo/cs4152/cugl/sdlapp/external/ogg/src/framing.c.o:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/ogg/CMakeFiles/ogg.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/ogg/CMakeFiles/ogg.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/ogg/src/framing.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/ogg/src/framing.c.o
 
-Users/patrickchoo/cs4152/cugl/sdlapp/external/ogg/src/framing.i: Users/patrickchoo/cs4152/cugl/sdlapp/external/ogg/src/framing.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/ogg/src/framing.i
+users/patrickchoo/cs4152/cugl/sdlapp/external/ogg/src/framing.i: users/patrickchoo/cs4152/cugl/sdlapp/external/ogg/src/framing.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/ogg/src/framing.i
 
 # target to preprocess a source file
-Users/patrickchoo/cs4152/cugl/sdlapp/external/ogg/src/framing.c.i:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/ogg/CMakeFiles/ogg.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/ogg/CMakeFiles/ogg.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/ogg/src/framing.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/ogg/src/framing.c.i
+users/patrickchoo/cs4152/cugl/sdlapp/external/ogg/src/framing.c.i:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/ogg/CMakeFiles/ogg.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/ogg/CMakeFiles/ogg.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/ogg/src/framing.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/ogg/src/framing.c.i
 
-Users/patrickchoo/cs4152/cugl/sdlapp/external/ogg/src/framing.s: Users/patrickchoo/cs4152/cugl/sdlapp/external/ogg/src/framing.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/ogg/src/framing.s
+users/patrickchoo/cs4152/cugl/sdlapp/external/ogg/src/framing.s: users/patrickchoo/cs4152/cugl/sdlapp/external/ogg/src/framing.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/ogg/src/framing.s
 
 # target to generate assembly for a file
-Users/patrickchoo/cs4152/cugl/sdlapp/external/ogg/src/framing.c.s:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/ogg/CMakeFiles/ogg.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/ogg/CMakeFiles/ogg.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/ogg/src/framing.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/ogg/src/framing.c.s
+users/patrickchoo/cs4152/cugl/sdlapp/external/ogg/src/framing.c.s:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/ogg/CMakeFiles/ogg.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/ogg/CMakeFiles/ogg.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/ogg/src/framing.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/ogg/src/framing.c.s
 
 # Help Target
 help:
@@ -258,12 +258,12 @@ help:
 	@echo "... package_source"
 	@echo "... rebuild_cache"
 	@echo "... ogg"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/external/ogg/src/bitwise.o"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/external/ogg/src/bitwise.i"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/external/ogg/src/bitwise.s"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/external/ogg/src/framing.o"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/external/ogg/src/framing.i"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/external/ogg/src/framing.s"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/external/ogg/src/bitwise.o"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/external/ogg/src/bitwise.i"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/external/ogg/src/bitwise.s"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/external/ogg/src/framing.o"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/external/ogg/src/framing.i"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/external/ogg/src/framing.s"
 .PHONY : help
 
 
@@ -275,6 +275,6 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 

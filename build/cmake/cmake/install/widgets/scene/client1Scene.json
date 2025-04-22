@@ -63,7 +63,7 @@
                     ],
                     "angle": 0,
                     "position": [
-                        121,
+                        0,
                         48
                     ],
                     "visible": true
@@ -72,7 +72,7 @@
                     "x_anchor": "left",
                     "y_anchor": "top",
                     "absolute": false,
-                    "x_offset": 0.12,
+                    "x_offset": 0.18,
                     "y_offset": -0.15
                 }
             },
@@ -162,7 +162,7 @@
                     "x_anchor": "left",
                     "y_anchor": "top",
                     "absolute": false,
-                    "x_offset": 0.8,
+                    "x_offset": 0.72,
                     "y_offset": -0.13
                 }
             },
@@ -278,8 +278,8 @@
                     "x_anchor": "left",
                     "y_anchor": "top",
                     "absolute": false,
-                    "x_offset": 0.03,
-                    "y_offset": -0.47
+                    "x_offset": 0.08,
+                    "y_offset": -0.48
                 }
             },
             "gameid-pad": {
@@ -318,8 +318,8 @@
                                 0.5
                             ],
                             "size": [
-                                115,
-                                115
+                                120,
+                                120
                             ],
                             "angle": 0,
                             "position": [
@@ -341,8 +341,8 @@
                                         1
                                     ],
                                     "size": [
-                                        115,
-                                        115
+                                        120,
+                                        120
                                     ],
                                     "angle": 0,
                                     "position": [
@@ -361,8 +361,8 @@
                                                 1
                                             ],
                                             "size": [
-                                                115,
-                                                115
+                                                120,
+                                                120
                                             ],
                                             "angle": 0,
                                             "position": [
@@ -410,13 +410,13 @@
                                 0.5
                             ],
                             "size": [
-                                115,
-                                115
+                                120,
+                                120
                             ],
                             "angle": 0,
                             "position": [
                                 138,
-                                46
+                                48
                             ],
                             "visible": true,
                             "upnode": "up"
@@ -433,8 +433,8 @@
                                         1
                                     ],
                                     "size": [
-                                        115,
-                                        115
+                                        120,
+                                        120
                                     ],
                                     "angle": 0,
                                     "position": [
@@ -453,8 +453,8 @@
                                                 1
                                             ],
                                             "size": [
-                                                115,
-                                                115
+                                                120,
+                                                120
                                             ],
                                             "angle": 0,
                                             "position": [
@@ -502,8 +502,8 @@
                                 0.5
                             ],
                             "size": [
-                                115,
-                                115
+                                120,
+                                120
                             ],
                             "angle": 0,
                             "position": [
@@ -525,8 +525,8 @@
                                         1
                                     ],
                                     "size": [
-                                        115,
-                                        115
+                                        120,
+                                        120
                                     ],
                                     "angle": 0,
                                     "position": [
@@ -545,8 +545,8 @@
                                                 1
                                             ],
                                             "size": [
-                                                115,
-                                                115
+                                                120,
+                                                120
                                             ],
                                             "angle": 0,
                                             "position": [
@@ -594,8 +594,8 @@
                                 0.5
                             ],
                             "size": [
-                                115,
-                                115
+                                120,
+                                120
                             ],
                             "angle": 0,
                             "position": [
@@ -617,8 +617,8 @@
                                         1
                                     ],
                                     "size": [
-                                        115,
-                                        115
+                                        120,
+                                        120
                                     ],
                                     "angle": 0,
                                     "position": [
@@ -637,8 +637,8 @@
                                                 1
                                             ],
                                             "size": [
-                                                115,
-                                                115
+                                                120,
+                                                120
                                             ],
                                             "angle": 0,
                                             "position": [
@@ -686,8 +686,8 @@
                                 0.5
                             ],
                             "size": [
-                                115,
-                                115
+                                120,
+                                120
                             ],
                             "angle": 0,
                             "position": [
@@ -709,8 +709,8 @@
                                         1
                                     ],
                                     "size": [
-                                        115,
-                                        115
+                                        120,
+                                        120
                                     ],
                                     "angle": 0,
                                     "position": [
@@ -729,8 +729,8 @@
                                                 1
                                             ],
                                             "size": [
-                                                115,
-                                                115
+                                                120,
+                                                120
                                             ],
                                             "angle": 0,
                                             "position": [
@@ -778,8 +778,8 @@
                                 0.5
                             ],
                             "size": [
-                                115,
-                                115
+                                120,
+                                120
                             ],
                             "angle": 0,
                             "position": [
@@ -801,8 +801,8 @@
                                         1
                                     ],
                                     "size": [
-                                        115,
-                                        115
+                                        120,
+                                        120
                                     ],
                                     "angle": 0,
                                     "position": [
@@ -821,8 +821,8 @@
                                                 1
                                             ],
                                             "size": [
-                                                115,
-                                                115
+                                                120,
+                                                120
                                             ],
                                             "angle": 0,
                                             "position": [
@@ -870,8 +870,8 @@
                                 0.5
                             ],
                             "size": [
-                                115,
-                                115
+                                120,
+                                120
                             ],
                             "angle": 0,
                             "position": [
@@ -893,8 +893,8 @@
                                         1
                                     ],
                                     "size": [
-                                        115,
-                                        115
+                                        120,
+                                        120
                                     ],
                                     "angle": 0,
                                     "position": [
@@ -913,8 +913,8 @@
                                                 1
                                             ],
                                             "size": [
-                                                115,
-                                                115
+                                                120,
+                                                120
                                             ],
                                             "angle": 0,
                                             "position": [
@@ -962,8 +962,8 @@
                                 0.5
                             ],
                             "size": [
-                                115,
-                                115
+                                120,
+                                120
                             ],
                             "angle": 0,
                             "position": [
@@ -985,8 +985,8 @@
                                         1
                                     ],
                                     "size": [
-                                        115,
-                                        115
+                                        120,
+                                        120
                                     ],
                                     "angle": 0,
                                     "position": [
@@ -1005,8 +1005,8 @@
                                                 1
                                             ],
                                             "size": [
-                                                115,
-                                                115
+                                                120,
+                                                120
                                             ],
                                             "angle": 0,
                                             "position": [
@@ -1054,8 +1054,8 @@
                                 0.5
                             ],
                             "size": [
-                                115,
-                                115
+                                120,
+                                120
                             ],
                             "angle": 0,
                             "position": [
@@ -1077,8 +1077,8 @@
                                         1
                                     ],
                                     "size": [
-                                        115,
-                                        115
+                                        120,
+                                        120
                                     ],
                                     "angle": 0,
                                     "position": [
@@ -1097,8 +1097,8 @@
                                                 1
                                             ],
                                             "size": [
-                                                115,
-                                                115
+                                                120,
+                                                120
                                             ],
                                             "angle": 0,
                                             "position": [
@@ -1146,8 +1146,8 @@
                                 0.5
                             ],
                             "size": [
-                                115,
-                                115
+                                120,
+                                120
                             ],
                             "angle": 0,
                             "position": [
@@ -1169,8 +1169,8 @@
                                         1
                                     ],
                                     "size": [
-                                        115,
-                                        115
+                                        120,
+                                        120
                                     ],
                                     "angle": 0,
                                     "position": [
@@ -1189,8 +1189,8 @@
                                                 1
                                             ],
                                             "size": [
-                                                115,
-                                                115
+                                                120,
+                                                120
                                             ],
                                             "angle": 0,
                                             "position": [
@@ -1232,7 +1232,7 @@
                     "x_anchor": "left",
                     "y_anchor": "top",
                     "absolute": false,
-                    "x_offset": 0.28,
+                    "x_offset": 0.3,
                     "y_offset": -0.4
                 }
             },
@@ -1348,7 +1348,7 @@
                             "y_offset": 0.2
                         }
                     },
-                    "cancel-button": {
+                    "clear-button": {
                         "type": "Button",
                         "format": {
                             "type": "Anchored"
@@ -1393,10 +1393,10 @@
                                     "visible": true
                                 },
                                 "children": {
-                                    "client1-cancel-button": {
+                                    "client1-clear-button": {
                                         "type": "Image",
                                         "data": {
-                                            "texture": "client1-cancel-button",
+                                            "texture": "client1-clear-button",
                                             "anchor": [
                                                 0,
                                                 1
@@ -1443,7 +1443,7 @@
                     "x_anchor": "left",
                     "y_anchor": "top",
                     "absolute": false,
-                    "x_offset": 0.74,
+                    "x_offset": 0.75,
                     "y_offset": -0.63
                 }
             },
@@ -1493,7 +1493,7 @@
                             "y_anchor": "top",
                             "absolute": false,
                             "x_offset": 0,
-                            "y_offset": -0.02
+                            "y_offset": 0
                         }
                     },
                     "client1-gameid-blank_1": {
@@ -1546,7 +1546,7 @@
                             "x_anchor": "left",
                             "y_anchor": "top",
                             "absolute": false,
-                            "x_offset": 0.51,
+                            "x_offset": 0.52,
                             "y_offset": 0
                         }
                     },
@@ -1573,7 +1573,7 @@
                             "x_anchor": "left",
                             "y_anchor": "top",
                             "absolute": false,
-                            "x_offset": 0.75,
+                            "x_offset": 0.78,
                             "y_offset": 0
                         }
                     }
@@ -1582,7 +1582,7 @@
                     "x_anchor": "left",
                     "y_anchor": "top",
                     "absolute": false,
-                    "x_offset": 0.49,
+                    "x_offset": 0.47,
                     "y_offset": -0.24
                 }
             }

@@ -1,10 +1,10 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/utf8.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/utf8/charset.c.o"
-  "CMakeFiles/utf8.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/utf8/charset.c.o.d"
-  "CMakeFiles/utf8.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/utf8/iconvert.c.o"
-  "CMakeFiles/utf8.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/utf8/iconvert.c.o.d"
-  "CMakeFiles/utf8.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/utf8/utf8.c.o"
-  "CMakeFiles/utf8.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/utf8/utf8.c.o.d"
+  "CMakeFiles/utf8.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/utf8/charset.c.o"
+  "CMakeFiles/utf8.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/utf8/charset.c.o.d"
+  "CMakeFiles/utf8.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/utf8/iconvert.c.o"
+  "CMakeFiles/utf8.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/utf8/iconvert.c.o.d"
+  "CMakeFiles/utf8.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/utf8/utf8.c.o"
+  "CMakeFiles/utf8.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/utf8/utf8.c.o.d"
   "libutf8.a"
   "libutf8.pdb"
 )

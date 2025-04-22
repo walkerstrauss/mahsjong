@@ -57,10 +57,10 @@ RM = /opt/homebrew/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /Users/patrickchoo/cs4152/mahsjong/build/cmake
+CMAKE_SOURCE_DIR = /users/patrickchoo/cs4152/mahsjong/build/cmake
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake
+CMAKE_BINARY_DIR = /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -68,7 +68,7 @@ CMAKE_BINARY_DIR = /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake
 # Special rule for the target package
 package: preinstall
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Run CPack packaging tool..."
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && /opt/homebrew/bin/cpack --config ./CPackConfig.cmake
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && /opt/homebrew/bin/cpack --config ./CPackConfig.cmake
 .PHONY : package
 
 # Special rule for the target package
@@ -78,7 +78,7 @@ package/fast: package
 # Special rule for the target package_source
 package_source:
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Run CPack packaging tool for source..."
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && /opt/homebrew/bin/cpack --config ./CPackSourceConfig.cmake /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CPackSourceConfig.cmake
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && /opt/homebrew/bin/cpack --config ./CPackSourceConfig.cmake /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CPackSourceConfig.cmake
 .PHONY : package_source
 
 # Special rule for the target package_source
@@ -152,14 +152,14 @@ install/strip/fast: preinstall/fast
 
 # The main all target
 all: cmake_check_build_system
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(CMAKE_COMMAND) -E cmake_progress_start /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC//CMakeFiles/progress.marks
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles 0
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(CMAKE_COMMAND) -E cmake_progress_start /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC//CMakeFiles/progress.marks
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/clean
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/clean
 .PHONY : clean
 
 # The main clean target
@@ -168,22 +168,22 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/preinstall
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/preinstall
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
 # Convenience name for target.
 cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/rule:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/rule
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/rule
 .PHONY : cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/rule
 
 # Convenience name for target.
@@ -192,800 +192,800 @@ FLAC: cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.di
 
 # fast build rule for target.
 FLAC/fast:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/build
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/build
 .PHONY : FLAC/fast
 
-Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/bitmath.o: Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/bitmath.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/bitmath.o
+users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/bitmath.o: users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/bitmath.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/bitmath.o
 
 # target to build an object file
-Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/bitmath.c.o:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/bitmath.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/bitmath.c.o
+users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/bitmath.c.o:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/bitmath.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/bitmath.c.o
 
-Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/bitmath.i: Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/bitmath.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/bitmath.i
+users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/bitmath.i: users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/bitmath.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/bitmath.i
 
 # target to preprocess a source file
-Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/bitmath.c.i:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/bitmath.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/bitmath.c.i
+users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/bitmath.c.i:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/bitmath.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/bitmath.c.i
 
-Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/bitmath.s: Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/bitmath.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/bitmath.s
+users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/bitmath.s: users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/bitmath.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/bitmath.s
 
 # target to generate assembly for a file
-Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/bitmath.c.s:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/bitmath.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/bitmath.c.s
+users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/bitmath.c.s:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/bitmath.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/bitmath.c.s
 
-Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/bitreader.o: Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/bitreader.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/bitreader.o
+users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/bitreader.o: users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/bitreader.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/bitreader.o
 
 # target to build an object file
-Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/bitreader.c.o:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/bitreader.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/bitreader.c.o
+users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/bitreader.c.o:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/bitreader.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/bitreader.c.o
 
-Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/bitreader.i: Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/bitreader.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/bitreader.i
+users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/bitreader.i: users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/bitreader.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/bitreader.i
 
 # target to preprocess a source file
-Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/bitreader.c.i:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/bitreader.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/bitreader.c.i
+users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/bitreader.c.i:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/bitreader.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/bitreader.c.i
 
-Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/bitreader.s: Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/bitreader.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/bitreader.s
+users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/bitreader.s: users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/bitreader.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/bitreader.s
 
 # target to generate assembly for a file
-Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/bitreader.c.s:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/bitreader.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/bitreader.c.s
+users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/bitreader.c.s:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/bitreader.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/bitreader.c.s
 
-Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/bitwriter.o: Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/bitwriter.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/bitwriter.o
+users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/bitwriter.o: users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/bitwriter.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/bitwriter.o
 
 # target to build an object file
-Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/bitwriter.c.o:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/bitwriter.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/bitwriter.c.o
+users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/bitwriter.c.o:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/bitwriter.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/bitwriter.c.o
 
-Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/bitwriter.i: Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/bitwriter.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/bitwriter.i
+users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/bitwriter.i: users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/bitwriter.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/bitwriter.i
 
 # target to preprocess a source file
-Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/bitwriter.c.i:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/bitwriter.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/bitwriter.c.i
+users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/bitwriter.c.i:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/bitwriter.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/bitwriter.c.i
 
-Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/bitwriter.s: Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/bitwriter.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/bitwriter.s
+users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/bitwriter.s: users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/bitwriter.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/bitwriter.s
 
 # target to generate assembly for a file
-Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/bitwriter.c.s:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/bitwriter.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/bitwriter.c.s
+users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/bitwriter.c.s:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/bitwriter.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/bitwriter.c.s
 
-Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/cpu.o: Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/cpu.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/cpu.o
+users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/cpu.o: users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/cpu.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/cpu.o
 
 # target to build an object file
-Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/cpu.c.o:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/cpu.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/cpu.c.o
+users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/cpu.c.o:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/cpu.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/cpu.c.o
 
-Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/cpu.i: Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/cpu.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/cpu.i
+users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/cpu.i: users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/cpu.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/cpu.i
 
 # target to preprocess a source file
-Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/cpu.c.i:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/cpu.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/cpu.c.i
+users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/cpu.c.i:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/cpu.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/cpu.c.i
 
-Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/cpu.s: Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/cpu.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/cpu.s
+users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/cpu.s: users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/cpu.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/cpu.s
 
 # target to generate assembly for a file
-Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/cpu.c.s:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/cpu.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/cpu.c.s
+users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/cpu.c.s:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/cpu.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/cpu.c.s
 
-Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/crc.o: Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/crc.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/crc.o
+users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/crc.o: users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/crc.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/crc.o
 
 # target to build an object file
-Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/crc.c.o:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/crc.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/crc.c.o
+users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/crc.c.o:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/crc.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/crc.c.o
 
-Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/crc.i: Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/crc.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/crc.i
+users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/crc.i: users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/crc.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/crc.i
 
 # target to preprocess a source file
-Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/crc.c.i:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/crc.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/crc.c.i
+users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/crc.c.i:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/crc.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/crc.c.i
 
-Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/crc.s: Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/crc.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/crc.s
+users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/crc.s: users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/crc.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/crc.s
 
 # target to generate assembly for a file
-Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/crc.c.s:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/crc.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/crc.c.s
+users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/crc.c.s:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/crc.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/crc.c.s
 
-Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/fixed.o: Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/fixed.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/fixed.o
+users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/fixed.o: users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/fixed.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/fixed.o
 
 # target to build an object file
-Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/fixed.c.o:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/fixed.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/fixed.c.o
+users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/fixed.c.o:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/fixed.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/fixed.c.o
 
-Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/fixed.i: Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/fixed.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/fixed.i
+users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/fixed.i: users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/fixed.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/fixed.i
 
 # target to preprocess a source file
-Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/fixed.c.i:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/fixed.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/fixed.c.i
+users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/fixed.c.i:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/fixed.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/fixed.c.i
 
-Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/fixed.s: Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/fixed.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/fixed.s
+users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/fixed.s: users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/fixed.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/fixed.s
 
 # target to generate assembly for a file
-Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/fixed.c.s:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/fixed.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/fixed.c.s
+users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/fixed.c.s:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/fixed.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/fixed.c.s
 
-Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/fixed_intrin_avx2.o: Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/fixed_intrin_avx2.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/fixed_intrin_avx2.o
+users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/fixed_intrin_avx2.o: users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/fixed_intrin_avx2.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/fixed_intrin_avx2.o
 
 # target to build an object file
-Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/fixed_intrin_avx2.c.o:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/fixed_intrin_avx2.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/fixed_intrin_avx2.c.o
+users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/fixed_intrin_avx2.c.o:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/fixed_intrin_avx2.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/fixed_intrin_avx2.c.o
 
-Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/fixed_intrin_avx2.i: Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/fixed_intrin_avx2.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/fixed_intrin_avx2.i
+users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/fixed_intrin_avx2.i: users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/fixed_intrin_avx2.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/fixed_intrin_avx2.i
 
 # target to preprocess a source file
-Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/fixed_intrin_avx2.c.i:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/fixed_intrin_avx2.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/fixed_intrin_avx2.c.i
+users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/fixed_intrin_avx2.c.i:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/fixed_intrin_avx2.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/fixed_intrin_avx2.c.i
 
-Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/fixed_intrin_avx2.s: Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/fixed_intrin_avx2.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/fixed_intrin_avx2.s
+users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/fixed_intrin_avx2.s: users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/fixed_intrin_avx2.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/fixed_intrin_avx2.s
 
 # target to generate assembly for a file
-Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/fixed_intrin_avx2.c.s:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/fixed_intrin_avx2.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/fixed_intrin_avx2.c.s
+users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/fixed_intrin_avx2.c.s:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/fixed_intrin_avx2.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/fixed_intrin_avx2.c.s
 
-Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/fixed_intrin_sse2.o: Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/fixed_intrin_sse2.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/fixed_intrin_sse2.o
+users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/fixed_intrin_sse2.o: users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/fixed_intrin_sse2.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/fixed_intrin_sse2.o
 
 # target to build an object file
-Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/fixed_intrin_sse2.c.o:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/fixed_intrin_sse2.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/fixed_intrin_sse2.c.o
+users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/fixed_intrin_sse2.c.o:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/fixed_intrin_sse2.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/fixed_intrin_sse2.c.o
 
-Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/fixed_intrin_sse2.i: Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/fixed_intrin_sse2.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/fixed_intrin_sse2.i
+users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/fixed_intrin_sse2.i: users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/fixed_intrin_sse2.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/fixed_intrin_sse2.i
 
 # target to preprocess a source file
-Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/fixed_intrin_sse2.c.i:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/fixed_intrin_sse2.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/fixed_intrin_sse2.c.i
+users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/fixed_intrin_sse2.c.i:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/fixed_intrin_sse2.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/fixed_intrin_sse2.c.i
 
-Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/fixed_intrin_sse2.s: Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/fixed_intrin_sse2.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/fixed_intrin_sse2.s
+users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/fixed_intrin_sse2.s: users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/fixed_intrin_sse2.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/fixed_intrin_sse2.s
 
 # target to generate assembly for a file
-Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/fixed_intrin_sse2.c.s:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/fixed_intrin_sse2.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/fixed_intrin_sse2.c.s
+users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/fixed_intrin_sse2.c.s:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/fixed_intrin_sse2.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/fixed_intrin_sse2.c.s
 
-Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/fixed_intrin_sse42.o: Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/fixed_intrin_sse42.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/fixed_intrin_sse42.o
+users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/fixed_intrin_sse42.o: users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/fixed_intrin_sse42.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/fixed_intrin_sse42.o
 
 # target to build an object file
-Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/fixed_intrin_sse42.c.o:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/fixed_intrin_sse42.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/fixed_intrin_sse42.c.o
+users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/fixed_intrin_sse42.c.o:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/fixed_intrin_sse42.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/fixed_intrin_sse42.c.o
 
-Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/fixed_intrin_sse42.i: Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/fixed_intrin_sse42.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/fixed_intrin_sse42.i
+users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/fixed_intrin_sse42.i: users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/fixed_intrin_sse42.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/fixed_intrin_sse42.i
 
 # target to preprocess a source file
-Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/fixed_intrin_sse42.c.i:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/fixed_intrin_sse42.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/fixed_intrin_sse42.c.i
+users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/fixed_intrin_sse42.c.i:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/fixed_intrin_sse42.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/fixed_intrin_sse42.c.i
 
-Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/fixed_intrin_sse42.s: Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/fixed_intrin_sse42.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/fixed_intrin_sse42.s
+users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/fixed_intrin_sse42.s: users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/fixed_intrin_sse42.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/fixed_intrin_sse42.s
 
 # target to generate assembly for a file
-Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/fixed_intrin_sse42.c.s:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/fixed_intrin_sse42.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/fixed_intrin_sse42.c.s
+users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/fixed_intrin_sse42.c.s:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/fixed_intrin_sse42.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/fixed_intrin_sse42.c.s
 
-Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/fixed_intrin_ssse3.o: Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/fixed_intrin_ssse3.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/fixed_intrin_ssse3.o
+users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/fixed_intrin_ssse3.o: users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/fixed_intrin_ssse3.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/fixed_intrin_ssse3.o
 
 # target to build an object file
-Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/fixed_intrin_ssse3.c.o:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/fixed_intrin_ssse3.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/fixed_intrin_ssse3.c.o
+users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/fixed_intrin_ssse3.c.o:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/fixed_intrin_ssse3.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/fixed_intrin_ssse3.c.o
 
-Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/fixed_intrin_ssse3.i: Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/fixed_intrin_ssse3.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/fixed_intrin_ssse3.i
+users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/fixed_intrin_ssse3.i: users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/fixed_intrin_ssse3.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/fixed_intrin_ssse3.i
 
 # target to preprocess a source file
-Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/fixed_intrin_ssse3.c.i:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/fixed_intrin_ssse3.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/fixed_intrin_ssse3.c.i
+users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/fixed_intrin_ssse3.c.i:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/fixed_intrin_ssse3.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/fixed_intrin_ssse3.c.i
 
-Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/fixed_intrin_ssse3.s: Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/fixed_intrin_ssse3.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/fixed_intrin_ssse3.s
+users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/fixed_intrin_ssse3.s: users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/fixed_intrin_ssse3.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/fixed_intrin_ssse3.s
 
 # target to generate assembly for a file
-Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/fixed_intrin_ssse3.c.s:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/fixed_intrin_ssse3.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/fixed_intrin_ssse3.c.s
+users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/fixed_intrin_ssse3.c.s:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/fixed_intrin_ssse3.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/fixed_intrin_ssse3.c.s
 
-Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/float.o: Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/float.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/float.o
+users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/float.o: users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/float.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/float.o
 
 # target to build an object file
-Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/float.c.o:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/float.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/float.c.o
+users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/float.c.o:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/float.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/float.c.o
 
-Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/float.i: Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/float.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/float.i
+users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/float.i: users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/float.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/float.i
 
 # target to preprocess a source file
-Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/float.c.i:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/float.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/float.c.i
+users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/float.c.i:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/float.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/float.c.i
 
-Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/float.s: Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/float.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/float.s
+users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/float.s: users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/float.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/float.s
 
 # target to generate assembly for a file
-Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/float.c.s:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/float.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/float.c.s
+users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/float.c.s:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/float.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/float.c.s
 
-Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/format.o: Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/format.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/format.o
+users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/format.o: users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/format.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/format.o
 
 # target to build an object file
-Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/format.c.o:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/format.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/format.c.o
+users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/format.c.o:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/format.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/format.c.o
 
-Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/format.i: Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/format.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/format.i
+users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/format.i: users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/format.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/format.i
 
 # target to preprocess a source file
-Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/format.c.i:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/format.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/format.c.i
+users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/format.c.i:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/format.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/format.c.i
 
-Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/format.s: Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/format.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/format.s
+users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/format.s: users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/format.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/format.s
 
 # target to generate assembly for a file
-Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/format.c.s:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/format.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/format.c.s
+users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/format.c.s:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/format.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/format.c.s
 
-Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/lpc.o: Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/lpc.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/lpc.o
+users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/lpc.o: users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/lpc.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/lpc.o
 
 # target to build an object file
-Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/lpc.c.o:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/lpc.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/lpc.c.o
+users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/lpc.c.o:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/lpc.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/lpc.c.o
 
-Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/lpc.i: Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/lpc.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/lpc.i
+users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/lpc.i: users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/lpc.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/lpc.i
 
 # target to preprocess a source file
-Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/lpc.c.i:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/lpc.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/lpc.c.i
+users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/lpc.c.i:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/lpc.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/lpc.c.i
 
-Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/lpc.s: Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/lpc.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/lpc.s
+users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/lpc.s: users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/lpc.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/lpc.s
 
 # target to generate assembly for a file
-Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/lpc.c.s:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/lpc.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/lpc.c.s
+users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/lpc.c.s:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/lpc.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/lpc.c.s
 
-Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/lpc_intrin_avx2.o: Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/lpc_intrin_avx2.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/lpc_intrin_avx2.o
+users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/lpc_intrin_avx2.o: users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/lpc_intrin_avx2.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/lpc_intrin_avx2.o
 
 # target to build an object file
-Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/lpc_intrin_avx2.c.o:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/lpc_intrin_avx2.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/lpc_intrin_avx2.c.o
+users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/lpc_intrin_avx2.c.o:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/lpc_intrin_avx2.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/lpc_intrin_avx2.c.o
 
-Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/lpc_intrin_avx2.i: Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/lpc_intrin_avx2.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/lpc_intrin_avx2.i
+users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/lpc_intrin_avx2.i: users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/lpc_intrin_avx2.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/lpc_intrin_avx2.i
 
 # target to preprocess a source file
-Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/lpc_intrin_avx2.c.i:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/lpc_intrin_avx2.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/lpc_intrin_avx2.c.i
+users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/lpc_intrin_avx2.c.i:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/lpc_intrin_avx2.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/lpc_intrin_avx2.c.i
 
-Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/lpc_intrin_avx2.s: Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/lpc_intrin_avx2.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/lpc_intrin_avx2.s
+users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/lpc_intrin_avx2.s: users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/lpc_intrin_avx2.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/lpc_intrin_avx2.s
 
 # target to generate assembly for a file
-Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/lpc_intrin_avx2.c.s:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/lpc_intrin_avx2.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/lpc_intrin_avx2.c.s
+users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/lpc_intrin_avx2.c.s:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/lpc_intrin_avx2.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/lpc_intrin_avx2.c.s
 
-Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/lpc_intrin_fma.o: Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/lpc_intrin_fma.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/lpc_intrin_fma.o
+users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/lpc_intrin_fma.o: users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/lpc_intrin_fma.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/lpc_intrin_fma.o
 
 # target to build an object file
-Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/lpc_intrin_fma.c.o:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/lpc_intrin_fma.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/lpc_intrin_fma.c.o
+users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/lpc_intrin_fma.c.o:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/lpc_intrin_fma.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/lpc_intrin_fma.c.o
 
-Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/lpc_intrin_fma.i: Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/lpc_intrin_fma.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/lpc_intrin_fma.i
+users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/lpc_intrin_fma.i: users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/lpc_intrin_fma.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/lpc_intrin_fma.i
 
 # target to preprocess a source file
-Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/lpc_intrin_fma.c.i:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/lpc_intrin_fma.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/lpc_intrin_fma.c.i
+users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/lpc_intrin_fma.c.i:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/lpc_intrin_fma.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/lpc_intrin_fma.c.i
 
-Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/lpc_intrin_fma.s: Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/lpc_intrin_fma.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/lpc_intrin_fma.s
+users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/lpc_intrin_fma.s: users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/lpc_intrin_fma.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/lpc_intrin_fma.s
 
 # target to generate assembly for a file
-Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/lpc_intrin_fma.c.s:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/lpc_intrin_fma.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/lpc_intrin_fma.c.s
+users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/lpc_intrin_fma.c.s:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/lpc_intrin_fma.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/lpc_intrin_fma.c.s
 
-Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/lpc_intrin_neon.o: Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/lpc_intrin_neon.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/lpc_intrin_neon.o
+users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/lpc_intrin_neon.o: users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/lpc_intrin_neon.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/lpc_intrin_neon.o
 
 # target to build an object file
-Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/lpc_intrin_neon.c.o:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/lpc_intrin_neon.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/lpc_intrin_neon.c.o
+users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/lpc_intrin_neon.c.o:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/lpc_intrin_neon.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/lpc_intrin_neon.c.o
 
-Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/lpc_intrin_neon.i: Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/lpc_intrin_neon.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/lpc_intrin_neon.i
+users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/lpc_intrin_neon.i: users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/lpc_intrin_neon.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/lpc_intrin_neon.i
 
 # target to preprocess a source file
-Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/lpc_intrin_neon.c.i:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/lpc_intrin_neon.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/lpc_intrin_neon.c.i
+users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/lpc_intrin_neon.c.i:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/lpc_intrin_neon.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/lpc_intrin_neon.c.i
 
-Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/lpc_intrin_neon.s: Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/lpc_intrin_neon.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/lpc_intrin_neon.s
+users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/lpc_intrin_neon.s: users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/lpc_intrin_neon.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/lpc_intrin_neon.s
 
 # target to generate assembly for a file
-Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/lpc_intrin_neon.c.s:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/lpc_intrin_neon.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/lpc_intrin_neon.c.s
+users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/lpc_intrin_neon.c.s:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/lpc_intrin_neon.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/lpc_intrin_neon.c.s
 
-Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/lpc_intrin_sse2.o: Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/lpc_intrin_sse2.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/lpc_intrin_sse2.o
+users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/lpc_intrin_sse2.o: users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/lpc_intrin_sse2.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/lpc_intrin_sse2.o
 
 # target to build an object file
-Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/lpc_intrin_sse2.c.o:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/lpc_intrin_sse2.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/lpc_intrin_sse2.c.o
+users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/lpc_intrin_sse2.c.o:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/lpc_intrin_sse2.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/lpc_intrin_sse2.c.o
 
-Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/lpc_intrin_sse2.i: Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/lpc_intrin_sse2.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/lpc_intrin_sse2.i
+users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/lpc_intrin_sse2.i: users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/lpc_intrin_sse2.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/lpc_intrin_sse2.i
 
 # target to preprocess a source file
-Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/lpc_intrin_sse2.c.i:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/lpc_intrin_sse2.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/lpc_intrin_sse2.c.i
+users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/lpc_intrin_sse2.c.i:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/lpc_intrin_sse2.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/lpc_intrin_sse2.c.i
 
-Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/lpc_intrin_sse2.s: Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/lpc_intrin_sse2.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/lpc_intrin_sse2.s
+users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/lpc_intrin_sse2.s: users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/lpc_intrin_sse2.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/lpc_intrin_sse2.s
 
 # target to generate assembly for a file
-Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/lpc_intrin_sse2.c.s:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/lpc_intrin_sse2.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/lpc_intrin_sse2.c.s
+users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/lpc_intrin_sse2.c.s:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/lpc_intrin_sse2.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/lpc_intrin_sse2.c.s
 
-Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/lpc_intrin_sse41.o: Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/lpc_intrin_sse41.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/lpc_intrin_sse41.o
+users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/lpc_intrin_sse41.o: users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/lpc_intrin_sse41.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/lpc_intrin_sse41.o
 
 # target to build an object file
-Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/lpc_intrin_sse41.c.o:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/lpc_intrin_sse41.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/lpc_intrin_sse41.c.o
+users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/lpc_intrin_sse41.c.o:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/lpc_intrin_sse41.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/lpc_intrin_sse41.c.o
 
-Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/lpc_intrin_sse41.i: Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/lpc_intrin_sse41.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/lpc_intrin_sse41.i
+users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/lpc_intrin_sse41.i: users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/lpc_intrin_sse41.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/lpc_intrin_sse41.i
 
 # target to preprocess a source file
-Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/lpc_intrin_sse41.c.i:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/lpc_intrin_sse41.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/lpc_intrin_sse41.c.i
+users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/lpc_intrin_sse41.c.i:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/lpc_intrin_sse41.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/lpc_intrin_sse41.c.i
 
-Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/lpc_intrin_sse41.s: Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/lpc_intrin_sse41.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/lpc_intrin_sse41.s
+users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/lpc_intrin_sse41.s: users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/lpc_intrin_sse41.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/lpc_intrin_sse41.s
 
 # target to generate assembly for a file
-Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/lpc_intrin_sse41.c.s:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/lpc_intrin_sse41.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/lpc_intrin_sse41.c.s
+users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/lpc_intrin_sse41.c.s:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/lpc_intrin_sse41.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/lpc_intrin_sse41.c.s
 
-Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/md5.o: Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/md5.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/md5.o
+users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/md5.o: users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/md5.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/md5.o
 
 # target to build an object file
-Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/md5.c.o:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/md5.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/md5.c.o
+users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/md5.c.o:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/md5.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/md5.c.o
 
-Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/md5.i: Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/md5.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/md5.i
+users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/md5.i: users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/md5.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/md5.i
 
 # target to preprocess a source file
-Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/md5.c.i:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/md5.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/md5.c.i
+users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/md5.c.i:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/md5.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/md5.c.i
 
-Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/md5.s: Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/md5.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/md5.s
+users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/md5.s: users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/md5.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/md5.s
 
 # target to generate assembly for a file
-Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/md5.c.s:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/md5.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/md5.c.s
+users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/md5.c.s:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/md5.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/md5.c.s
 
-Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/memory.o: Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/memory.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/memory.o
+users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/memory.o: users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/memory.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/memory.o
 
 # target to build an object file
-Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/memory.c.o:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/memory.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/memory.c.o
+users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/memory.c.o:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/memory.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/memory.c.o
 
-Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/memory.i: Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/memory.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/memory.i
+users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/memory.i: users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/memory.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/memory.i
 
 # target to preprocess a source file
-Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/memory.c.i:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/memory.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/memory.c.i
+users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/memory.c.i:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/memory.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/memory.c.i
 
-Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/memory.s: Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/memory.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/memory.s
+users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/memory.s: users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/memory.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/memory.s
 
 # target to generate assembly for a file
-Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/memory.c.s:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/memory.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/memory.c.s
+users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/memory.c.s:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/memory.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/memory.c.s
 
-Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/metadata_iterators.o: Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/metadata_iterators.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/metadata_iterators.o
+users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/metadata_iterators.o: users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/metadata_iterators.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/metadata_iterators.o
 
 # target to build an object file
-Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/metadata_iterators.c.o:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/metadata_iterators.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/metadata_iterators.c.o
+users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/metadata_iterators.c.o:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/metadata_iterators.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/metadata_iterators.c.o
 
-Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/metadata_iterators.i: Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/metadata_iterators.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/metadata_iterators.i
+users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/metadata_iterators.i: users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/metadata_iterators.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/metadata_iterators.i
 
 # target to preprocess a source file
-Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/metadata_iterators.c.i:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/metadata_iterators.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/metadata_iterators.c.i
+users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/metadata_iterators.c.i:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/metadata_iterators.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/metadata_iterators.c.i
 
-Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/metadata_iterators.s: Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/metadata_iterators.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/metadata_iterators.s
+users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/metadata_iterators.s: users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/metadata_iterators.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/metadata_iterators.s
 
 # target to generate assembly for a file
-Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/metadata_iterators.c.s:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/metadata_iterators.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/metadata_iterators.c.s
+users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/metadata_iterators.c.s:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/metadata_iterators.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/metadata_iterators.c.s
 
-Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/metadata_object.o: Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/metadata_object.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/metadata_object.o
+users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/metadata_object.o: users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/metadata_object.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/metadata_object.o
 
 # target to build an object file
-Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/metadata_object.c.o:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/metadata_object.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/metadata_object.c.o
+users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/metadata_object.c.o:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/metadata_object.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/metadata_object.c.o
 
-Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/metadata_object.i: Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/metadata_object.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/metadata_object.i
+users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/metadata_object.i: users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/metadata_object.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/metadata_object.i
 
 # target to preprocess a source file
-Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/metadata_object.c.i:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/metadata_object.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/metadata_object.c.i
+users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/metadata_object.c.i:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/metadata_object.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/metadata_object.c.i
 
-Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/metadata_object.s: Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/metadata_object.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/metadata_object.s
+users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/metadata_object.s: users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/metadata_object.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/metadata_object.s
 
 # target to generate assembly for a file
-Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/metadata_object.c.s:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/metadata_object.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/metadata_object.c.s
+users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/metadata_object.c.s:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/metadata_object.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/metadata_object.c.s
 
-Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/ogg_decoder_aspect.o: Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/ogg_decoder_aspect.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/ogg_decoder_aspect.o
+users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/ogg_decoder_aspect.o: users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/ogg_decoder_aspect.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/ogg_decoder_aspect.o
 
 # target to build an object file
-Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/ogg_decoder_aspect.c.o:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/ogg_decoder_aspect.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/ogg_decoder_aspect.c.o
+users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/ogg_decoder_aspect.c.o:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/ogg_decoder_aspect.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/ogg_decoder_aspect.c.o
 
-Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/ogg_decoder_aspect.i: Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/ogg_decoder_aspect.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/ogg_decoder_aspect.i
+users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/ogg_decoder_aspect.i: users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/ogg_decoder_aspect.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/ogg_decoder_aspect.i
 
 # target to preprocess a source file
-Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/ogg_decoder_aspect.c.i:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/ogg_decoder_aspect.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/ogg_decoder_aspect.c.i
+users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/ogg_decoder_aspect.c.i:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/ogg_decoder_aspect.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/ogg_decoder_aspect.c.i
 
-Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/ogg_decoder_aspect.s: Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/ogg_decoder_aspect.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/ogg_decoder_aspect.s
+users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/ogg_decoder_aspect.s: users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/ogg_decoder_aspect.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/ogg_decoder_aspect.s
 
 # target to generate assembly for a file
-Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/ogg_decoder_aspect.c.s:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/ogg_decoder_aspect.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/ogg_decoder_aspect.c.s
+users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/ogg_decoder_aspect.c.s:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/ogg_decoder_aspect.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/ogg_decoder_aspect.c.s
 
-Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/ogg_encoder_aspect.o: Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/ogg_encoder_aspect.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/ogg_encoder_aspect.o
+users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/ogg_encoder_aspect.o: users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/ogg_encoder_aspect.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/ogg_encoder_aspect.o
 
 # target to build an object file
-Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/ogg_encoder_aspect.c.o:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/ogg_encoder_aspect.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/ogg_encoder_aspect.c.o
+users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/ogg_encoder_aspect.c.o:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/ogg_encoder_aspect.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/ogg_encoder_aspect.c.o
 
-Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/ogg_encoder_aspect.i: Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/ogg_encoder_aspect.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/ogg_encoder_aspect.i
+users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/ogg_encoder_aspect.i: users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/ogg_encoder_aspect.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/ogg_encoder_aspect.i
 
 # target to preprocess a source file
-Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/ogg_encoder_aspect.c.i:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/ogg_encoder_aspect.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/ogg_encoder_aspect.c.i
+users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/ogg_encoder_aspect.c.i:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/ogg_encoder_aspect.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/ogg_encoder_aspect.c.i
 
-Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/ogg_encoder_aspect.s: Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/ogg_encoder_aspect.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/ogg_encoder_aspect.s
+users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/ogg_encoder_aspect.s: users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/ogg_encoder_aspect.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/ogg_encoder_aspect.s
 
 # target to generate assembly for a file
-Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/ogg_encoder_aspect.c.s:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/ogg_encoder_aspect.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/ogg_encoder_aspect.c.s
+users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/ogg_encoder_aspect.c.s:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/ogg_encoder_aspect.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/ogg_encoder_aspect.c.s
 
-Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/ogg_helper.o: Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/ogg_helper.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/ogg_helper.o
+users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/ogg_helper.o: users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/ogg_helper.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/ogg_helper.o
 
 # target to build an object file
-Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/ogg_helper.c.o:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/ogg_helper.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/ogg_helper.c.o
+users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/ogg_helper.c.o:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/ogg_helper.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/ogg_helper.c.o
 
-Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/ogg_helper.i: Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/ogg_helper.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/ogg_helper.i
+users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/ogg_helper.i: users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/ogg_helper.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/ogg_helper.i
 
 # target to preprocess a source file
-Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/ogg_helper.c.i:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/ogg_helper.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/ogg_helper.c.i
+users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/ogg_helper.c.i:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/ogg_helper.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/ogg_helper.c.i
 
-Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/ogg_helper.s: Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/ogg_helper.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/ogg_helper.s
+users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/ogg_helper.s: users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/ogg_helper.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/ogg_helper.s
 
 # target to generate assembly for a file
-Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/ogg_helper.c.s:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/ogg_helper.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/ogg_helper.c.s
+users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/ogg_helper.c.s:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/ogg_helper.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/ogg_helper.c.s
 
-Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/ogg_mapping.o: Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/ogg_mapping.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/ogg_mapping.o
+users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/ogg_mapping.o: users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/ogg_mapping.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/ogg_mapping.o
 
 # target to build an object file
-Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/ogg_mapping.c.o:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/ogg_mapping.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/ogg_mapping.c.o
+users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/ogg_mapping.c.o:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/ogg_mapping.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/ogg_mapping.c.o
 
-Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/ogg_mapping.i: Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/ogg_mapping.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/ogg_mapping.i
+users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/ogg_mapping.i: users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/ogg_mapping.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/ogg_mapping.i
 
 # target to preprocess a source file
-Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/ogg_mapping.c.i:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/ogg_mapping.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/ogg_mapping.c.i
+users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/ogg_mapping.c.i:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/ogg_mapping.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/ogg_mapping.c.i
 
-Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/ogg_mapping.s: Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/ogg_mapping.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/ogg_mapping.s
+users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/ogg_mapping.s: users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/ogg_mapping.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/ogg_mapping.s
 
 # target to generate assembly for a file
-Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/ogg_mapping.c.s:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/ogg_mapping.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/ogg_mapping.c.s
+users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/ogg_mapping.c.s:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/ogg_mapping.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/ogg_mapping.c.s
 
-Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/stream_decoder.o: Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/stream_decoder.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/stream_decoder.o
+users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/stream_decoder.o: users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/stream_decoder.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/stream_decoder.o
 
 # target to build an object file
-Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/stream_decoder.c.o:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/stream_decoder.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/stream_decoder.c.o
+users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/stream_decoder.c.o:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/stream_decoder.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/stream_decoder.c.o
 
-Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/stream_decoder.i: Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/stream_decoder.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/stream_decoder.i
+users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/stream_decoder.i: users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/stream_decoder.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/stream_decoder.i
 
 # target to preprocess a source file
-Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/stream_decoder.c.i:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/stream_decoder.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/stream_decoder.c.i
+users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/stream_decoder.c.i:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/stream_decoder.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/stream_decoder.c.i
 
-Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/stream_decoder.s: Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/stream_decoder.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/stream_decoder.s
+users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/stream_decoder.s: users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/stream_decoder.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/stream_decoder.s
 
 # target to generate assembly for a file
-Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/stream_decoder.c.s:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/stream_decoder.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/stream_decoder.c.s
+users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/stream_decoder.c.s:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/stream_decoder.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/stream_decoder.c.s
 
-Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/stream_encoder.o: Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/stream_encoder.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/stream_encoder.o
+users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/stream_encoder.o: users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/stream_encoder.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/stream_encoder.o
 
 # target to build an object file
-Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/stream_encoder.c.o:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/stream_encoder.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/stream_encoder.c.o
+users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/stream_encoder.c.o:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/stream_encoder.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/stream_encoder.c.o
 
-Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/stream_encoder.i: Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/stream_encoder.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/stream_encoder.i
+users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/stream_encoder.i: users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/stream_encoder.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/stream_encoder.i
 
 # target to preprocess a source file
-Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/stream_encoder.c.i:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/stream_encoder.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/stream_encoder.c.i
+users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/stream_encoder.c.i:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/stream_encoder.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/stream_encoder.c.i
 
-Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/stream_encoder.s: Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/stream_encoder.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/stream_encoder.s
+users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/stream_encoder.s: users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/stream_encoder.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/stream_encoder.s
 
 # target to generate assembly for a file
-Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/stream_encoder.c.s:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/stream_encoder.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/stream_encoder.c.s
+users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/stream_encoder.c.s:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/stream_encoder.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/stream_encoder.c.s
 
-Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/stream_encoder_framing.o: Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/stream_encoder_framing.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/stream_encoder_framing.o
+users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/stream_encoder_framing.o: users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/stream_encoder_framing.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/stream_encoder_framing.o
 
 # target to build an object file
-Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/stream_encoder_framing.c.o:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/stream_encoder_framing.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/stream_encoder_framing.c.o
+users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/stream_encoder_framing.c.o:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/stream_encoder_framing.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/stream_encoder_framing.c.o
 
-Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/stream_encoder_framing.i: Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/stream_encoder_framing.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/stream_encoder_framing.i
+users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/stream_encoder_framing.i: users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/stream_encoder_framing.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/stream_encoder_framing.i
 
 # target to preprocess a source file
-Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/stream_encoder_framing.c.i:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/stream_encoder_framing.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/stream_encoder_framing.c.i
+users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/stream_encoder_framing.c.i:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/stream_encoder_framing.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/stream_encoder_framing.c.i
 
-Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/stream_encoder_framing.s: Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/stream_encoder_framing.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/stream_encoder_framing.s
+users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/stream_encoder_framing.s: users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/stream_encoder_framing.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/stream_encoder_framing.s
 
 # target to generate assembly for a file
-Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/stream_encoder_framing.c.s:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/stream_encoder_framing.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/stream_encoder_framing.c.s
+users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/stream_encoder_framing.c.s:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/stream_encoder_framing.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/stream_encoder_framing.c.s
 
-Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/stream_encoder_intrin_avx2.o: Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/stream_encoder_intrin_avx2.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/stream_encoder_intrin_avx2.o
+users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/stream_encoder_intrin_avx2.o: users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/stream_encoder_intrin_avx2.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/stream_encoder_intrin_avx2.o
 
 # target to build an object file
-Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/stream_encoder_intrin_avx2.c.o:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/stream_encoder_intrin_avx2.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/stream_encoder_intrin_avx2.c.o
+users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/stream_encoder_intrin_avx2.c.o:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/stream_encoder_intrin_avx2.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/stream_encoder_intrin_avx2.c.o
 
-Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/stream_encoder_intrin_avx2.i: Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/stream_encoder_intrin_avx2.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/stream_encoder_intrin_avx2.i
+users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/stream_encoder_intrin_avx2.i: users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/stream_encoder_intrin_avx2.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/stream_encoder_intrin_avx2.i
 
 # target to preprocess a source file
-Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/stream_encoder_intrin_avx2.c.i:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/stream_encoder_intrin_avx2.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/stream_encoder_intrin_avx2.c.i
+users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/stream_encoder_intrin_avx2.c.i:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/stream_encoder_intrin_avx2.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/stream_encoder_intrin_avx2.c.i
 
-Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/stream_encoder_intrin_avx2.s: Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/stream_encoder_intrin_avx2.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/stream_encoder_intrin_avx2.s
+users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/stream_encoder_intrin_avx2.s: users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/stream_encoder_intrin_avx2.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/stream_encoder_intrin_avx2.s
 
 # target to generate assembly for a file
-Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/stream_encoder_intrin_avx2.c.s:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/stream_encoder_intrin_avx2.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/stream_encoder_intrin_avx2.c.s
+users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/stream_encoder_intrin_avx2.c.s:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/stream_encoder_intrin_avx2.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/stream_encoder_intrin_avx2.c.s
 
-Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/stream_encoder_intrin_sse2.o: Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/stream_encoder_intrin_sse2.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/stream_encoder_intrin_sse2.o
+users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/stream_encoder_intrin_sse2.o: users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/stream_encoder_intrin_sse2.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/stream_encoder_intrin_sse2.o
 
 # target to build an object file
-Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/stream_encoder_intrin_sse2.c.o:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/stream_encoder_intrin_sse2.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/stream_encoder_intrin_sse2.c.o
+users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/stream_encoder_intrin_sse2.c.o:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/stream_encoder_intrin_sse2.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/stream_encoder_intrin_sse2.c.o
 
-Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/stream_encoder_intrin_sse2.i: Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/stream_encoder_intrin_sse2.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/stream_encoder_intrin_sse2.i
+users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/stream_encoder_intrin_sse2.i: users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/stream_encoder_intrin_sse2.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/stream_encoder_intrin_sse2.i
 
 # target to preprocess a source file
-Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/stream_encoder_intrin_sse2.c.i:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/stream_encoder_intrin_sse2.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/stream_encoder_intrin_sse2.c.i
+users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/stream_encoder_intrin_sse2.c.i:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/stream_encoder_intrin_sse2.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/stream_encoder_intrin_sse2.c.i
 
-Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/stream_encoder_intrin_sse2.s: Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/stream_encoder_intrin_sse2.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/stream_encoder_intrin_sse2.s
+users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/stream_encoder_intrin_sse2.s: users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/stream_encoder_intrin_sse2.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/stream_encoder_intrin_sse2.s
 
 # target to generate assembly for a file
-Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/stream_encoder_intrin_sse2.c.s:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/stream_encoder_intrin_sse2.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/stream_encoder_intrin_sse2.c.s
+users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/stream_encoder_intrin_sse2.c.s:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/stream_encoder_intrin_sse2.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/stream_encoder_intrin_sse2.c.s
 
-Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/stream_encoder_intrin_ssse3.o: Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/stream_encoder_intrin_ssse3.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/stream_encoder_intrin_ssse3.o
+users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/stream_encoder_intrin_ssse3.o: users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/stream_encoder_intrin_ssse3.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/stream_encoder_intrin_ssse3.o
 
 # target to build an object file
-Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/stream_encoder_intrin_ssse3.c.o:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/stream_encoder_intrin_ssse3.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/stream_encoder_intrin_ssse3.c.o
+users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/stream_encoder_intrin_ssse3.c.o:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/stream_encoder_intrin_ssse3.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/stream_encoder_intrin_ssse3.c.o
 
-Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/stream_encoder_intrin_ssse3.i: Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/stream_encoder_intrin_ssse3.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/stream_encoder_intrin_ssse3.i
+users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/stream_encoder_intrin_ssse3.i: users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/stream_encoder_intrin_ssse3.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/stream_encoder_intrin_ssse3.i
 
 # target to preprocess a source file
-Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/stream_encoder_intrin_ssse3.c.i:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/stream_encoder_intrin_ssse3.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/stream_encoder_intrin_ssse3.c.i
+users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/stream_encoder_intrin_ssse3.c.i:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/stream_encoder_intrin_ssse3.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/stream_encoder_intrin_ssse3.c.i
 
-Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/stream_encoder_intrin_ssse3.s: Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/stream_encoder_intrin_ssse3.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/stream_encoder_intrin_ssse3.s
+users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/stream_encoder_intrin_ssse3.s: users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/stream_encoder_intrin_ssse3.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/stream_encoder_intrin_ssse3.s
 
 # target to generate assembly for a file
-Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/stream_encoder_intrin_ssse3.c.s:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/stream_encoder_intrin_ssse3.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/stream_encoder_intrin_ssse3.c.s
+users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/stream_encoder_intrin_ssse3.c.s:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/stream_encoder_intrin_ssse3.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/stream_encoder_intrin_ssse3.c.s
 
-Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/window.o: Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/window.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/window.o
+users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/window.o: users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/window.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/window.o
 
 # target to build an object file
-Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/window.c.o:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/window.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/window.c.o
+users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/window.c.o:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/window.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/window.c.o
 
-Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/window.i: Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/window.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/window.i
+users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/window.i: users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/window.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/window.i
 
 # target to preprocess a source file
-Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/window.c.i:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/window.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/window.c.i
+users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/window.c.i:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/window.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/window.c.i
 
-Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/window.s: Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/window.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/window.s
+users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/window.s: users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/window.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/window.s
 
 # target to generate assembly for a file
-Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/window.c.s:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/window.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/window.c.s
+users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/window.c.s:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/libFLAC/CMakeFiles/FLAC.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/window.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/window.c.s
 
 # Help Target
 help:
@@ -1002,105 +1002,105 @@ help:
 	@echo "... package_source"
 	@echo "... rebuild_cache"
 	@echo "... FLAC"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/bitmath.o"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/bitmath.i"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/bitmath.s"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/bitreader.o"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/bitreader.i"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/bitreader.s"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/bitwriter.o"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/bitwriter.i"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/bitwriter.s"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/cpu.o"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/cpu.i"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/cpu.s"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/crc.o"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/crc.i"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/crc.s"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/fixed.o"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/fixed.i"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/fixed.s"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/fixed_intrin_avx2.o"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/fixed_intrin_avx2.i"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/fixed_intrin_avx2.s"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/fixed_intrin_sse2.o"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/fixed_intrin_sse2.i"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/fixed_intrin_sse2.s"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/fixed_intrin_sse42.o"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/fixed_intrin_sse42.i"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/fixed_intrin_sse42.s"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/fixed_intrin_ssse3.o"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/fixed_intrin_ssse3.i"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/fixed_intrin_ssse3.s"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/float.o"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/float.i"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/float.s"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/format.o"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/format.i"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/format.s"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/lpc.o"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/lpc.i"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/lpc.s"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/lpc_intrin_avx2.o"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/lpc_intrin_avx2.i"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/lpc_intrin_avx2.s"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/lpc_intrin_fma.o"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/lpc_intrin_fma.i"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/lpc_intrin_fma.s"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/lpc_intrin_neon.o"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/lpc_intrin_neon.i"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/lpc_intrin_neon.s"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/lpc_intrin_sse2.o"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/lpc_intrin_sse2.i"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/lpc_intrin_sse2.s"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/lpc_intrin_sse41.o"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/lpc_intrin_sse41.i"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/lpc_intrin_sse41.s"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/md5.o"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/md5.i"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/md5.s"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/memory.o"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/memory.i"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/memory.s"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/metadata_iterators.o"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/metadata_iterators.i"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/metadata_iterators.s"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/metadata_object.o"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/metadata_object.i"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/metadata_object.s"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/ogg_decoder_aspect.o"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/ogg_decoder_aspect.i"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/ogg_decoder_aspect.s"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/ogg_encoder_aspect.o"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/ogg_encoder_aspect.i"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/ogg_encoder_aspect.s"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/ogg_helper.o"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/ogg_helper.i"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/ogg_helper.s"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/ogg_mapping.o"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/ogg_mapping.i"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/ogg_mapping.s"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/stream_decoder.o"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/stream_decoder.i"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/stream_decoder.s"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/stream_encoder.o"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/stream_encoder.i"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/stream_encoder.s"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/stream_encoder_framing.o"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/stream_encoder_framing.i"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/stream_encoder_framing.s"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/stream_encoder_intrin_avx2.o"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/stream_encoder_intrin_avx2.i"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/stream_encoder_intrin_avx2.s"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/stream_encoder_intrin_sse2.o"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/stream_encoder_intrin_sse2.i"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/stream_encoder_intrin_sse2.s"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/stream_encoder_intrin_ssse3.o"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/stream_encoder_intrin_ssse3.i"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/stream_encoder_intrin_ssse3.s"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/window.o"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/window.i"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/window.s"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/bitmath.o"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/bitmath.i"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/bitmath.s"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/bitreader.o"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/bitreader.i"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/bitreader.s"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/bitwriter.o"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/bitwriter.i"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/bitwriter.s"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/cpu.o"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/cpu.i"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/cpu.s"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/crc.o"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/crc.i"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/crc.s"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/fixed.o"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/fixed.i"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/fixed.s"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/fixed_intrin_avx2.o"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/fixed_intrin_avx2.i"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/fixed_intrin_avx2.s"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/fixed_intrin_sse2.o"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/fixed_intrin_sse2.i"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/fixed_intrin_sse2.s"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/fixed_intrin_sse42.o"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/fixed_intrin_sse42.i"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/fixed_intrin_sse42.s"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/fixed_intrin_ssse3.o"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/fixed_intrin_ssse3.i"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/fixed_intrin_ssse3.s"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/float.o"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/float.i"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/float.s"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/format.o"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/format.i"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/format.s"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/lpc.o"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/lpc.i"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/lpc.s"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/lpc_intrin_avx2.o"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/lpc_intrin_avx2.i"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/lpc_intrin_avx2.s"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/lpc_intrin_fma.o"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/lpc_intrin_fma.i"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/lpc_intrin_fma.s"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/lpc_intrin_neon.o"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/lpc_intrin_neon.i"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/lpc_intrin_neon.s"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/lpc_intrin_sse2.o"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/lpc_intrin_sse2.i"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/lpc_intrin_sse2.s"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/lpc_intrin_sse41.o"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/lpc_intrin_sse41.i"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/lpc_intrin_sse41.s"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/md5.o"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/md5.i"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/md5.s"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/memory.o"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/memory.i"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/memory.s"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/metadata_iterators.o"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/metadata_iterators.i"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/metadata_iterators.s"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/metadata_object.o"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/metadata_object.i"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/metadata_object.s"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/ogg_decoder_aspect.o"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/ogg_decoder_aspect.i"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/ogg_decoder_aspect.s"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/ogg_encoder_aspect.o"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/ogg_encoder_aspect.i"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/ogg_encoder_aspect.s"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/ogg_helper.o"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/ogg_helper.i"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/ogg_helper.s"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/ogg_mapping.o"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/ogg_mapping.i"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/ogg_mapping.s"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/stream_decoder.o"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/stream_decoder.i"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/stream_decoder.s"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/stream_encoder.o"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/stream_encoder.i"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/stream_encoder.s"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/stream_encoder_framing.o"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/stream_encoder_framing.i"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/stream_encoder_framing.s"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/stream_encoder_intrin_avx2.o"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/stream_encoder_intrin_avx2.i"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/stream_encoder_intrin_avx2.s"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/stream_encoder_intrin_sse2.o"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/stream_encoder_intrin_sse2.i"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/stream_encoder_intrin_sse2.s"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/stream_encoder_intrin_ssse3.o"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/stream_encoder_intrin_ssse3.i"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/stream_encoder_intrin_ssse3.s"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/window.o"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/window.i"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/libFLAC/window.s"
 .PHONY : help
 
 
@@ -1112,6 +1112,6 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 

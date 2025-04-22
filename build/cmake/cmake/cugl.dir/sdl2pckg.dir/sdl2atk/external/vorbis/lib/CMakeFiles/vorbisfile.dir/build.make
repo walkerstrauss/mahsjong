@@ -53,10 +53,10 @@ RM = /opt/homebrew/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /Users/patrickchoo/cs4152/mahsjong/build/cmake
+CMAKE_SOURCE_DIR = /users/patrickchoo/cs4152/mahsjong/build/cmake
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake
+CMAKE_BINARY_DIR = /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake
 
 # Include any dependencies generated for this target.
 include cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbisfile.dir/depend.make
@@ -72,43 +72,43 @@ include cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbisfile.
 cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbisfile.dir/codegen:
 .PHONY : cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbisfile.dir/codegen
 
-cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbisfile.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/vorbisfile.c.o: cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbisfile.dir/flags.make
-cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbisfile.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/vorbisfile.c.o: /Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/vorbisfile.c
-cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbisfile.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/vorbisfile.c.o: cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbisfile.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbisfile.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/vorbisfile.c.o"
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbisfile.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/vorbisfile.c.o -MF CMakeFiles/vorbisfile.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/vorbisfile.c.o.d -o CMakeFiles/vorbisfile.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/vorbisfile.c.o -c /Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/vorbisfile.c
+cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbisfile.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/vorbisfile.c.o: cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbisfile.dir/flags.make
+cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbisfile.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/vorbisfile.c.o: /users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/vorbisfile.c
+cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbisfile.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/vorbisfile.c.o: cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbisfile.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbisfile.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/vorbisfile.c.o"
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbisfile.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/vorbisfile.c.o -MF CMakeFiles/vorbisfile.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/vorbisfile.c.o.d -o CMakeFiles/vorbisfile.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/vorbisfile.c.o -c /users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/vorbisfile.c
 
-cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbisfile.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/vorbisfile.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/vorbisfile.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/vorbisfile.c.i"
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/vorbisfile.c > CMakeFiles/vorbisfile.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/vorbisfile.c.i
+cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbisfile.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/vorbisfile.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/vorbisfile.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/vorbisfile.c.i"
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/vorbisfile.c > CMakeFiles/vorbisfile.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/vorbisfile.c.i
 
-cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbisfile.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/vorbisfile.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/vorbisfile.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/vorbisfile.c.s"
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/vorbisfile.c -o CMakeFiles/vorbisfile.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/vorbisfile.c.s
+cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbisfile.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/vorbisfile.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/vorbisfile.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/vorbisfile.c.s"
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/vorbisfile.c -o CMakeFiles/vorbisfile.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/vorbisfile.c.s
 
 # Object files for target vorbisfile
 vorbisfile_OBJECTS = \
-"CMakeFiles/vorbisfile.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/vorbisfile.c.o"
+"CMakeFiles/vorbisfile.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/vorbisfile.c.o"
 
 # External object files for target vorbisfile
 vorbisfile_EXTERNAL_OBJECTS =
 
-cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/libvorbisfile.a: cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbisfile.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/vorbisfile.c.o
+cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/libvorbisfile.a: cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbisfile.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/vorbisfile.c.o
 cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/libvorbisfile.a: cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbisfile.dir/build.make
 cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/libvorbisfile.a: cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbisfile.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking C static library libvorbisfile.a"
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib && $(CMAKE_COMMAND) -P CMakeFiles/vorbisfile.dir/cmake_clean_target.cmake
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/vorbisfile.dir/link.txt --verbose=$(VERBOSE)
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking C static library libvorbisfile.a"
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib && $(CMAKE_COMMAND) -P CMakeFiles/vorbisfile.dir/cmake_clean_target.cmake
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/vorbisfile.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
 cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbisfile.dir/build: cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/libvorbisfile.a
 .PHONY : cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbisfile.dir/build
 
 cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbisfile.dir/clean:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib && $(CMAKE_COMMAND) -P CMakeFiles/vorbisfile.dir/cmake_clean.cmake
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib && $(CMAKE_COMMAND) -P CMakeFiles/vorbisfile.dir/cmake_clean.cmake
 .PHONY : cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbisfile.dir/clean
 
 cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbisfile.dir/depend:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /Users/patrickchoo/cs4152/mahsjong/build/cmake /Users/patrickchoo/cs4152/cugl/sdlapp/buildfiles/cmake/sdl2atk/external/vorbis/lib /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbisfile.dir/DependInfo.cmake "--color=$(COLOR)"
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /users/patrickchoo/cs4152/mahsjong/build/cmake /users/patrickchoo/cs4152/cugl/sdlapp/buildfiles/cmake/sdl2atk/external/vorbis/lib /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbisfile.dir/DependInfo.cmake "--color=$(COLOR)"
 .PHONY : cugl.dir/sdl2pckg.dir/sdl2atk/external/vorbis/lib/CMakeFiles/vorbisfile.dir/depend
 

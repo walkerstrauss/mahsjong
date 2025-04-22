@@ -4,7 +4,7 @@
 # compile C with /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc
 C_DEFINES = -DHAVE_CONFIG_H -DHAVE_LIBINTL_H -D_DARWIN_C_SOURCE -D_POSIX_PTHREAD_SEMANTICS -D_TANDEM_SOURCE -D__STDC_WANT_IEC_60559_BFP_EXT__ -D__STDC_WANT_IEC_60559_DFP_EXT__ -D__STDC_WANT_IEC_60559_FUNCS_EXT__ -D__STDC_WANT_IEC_60559_TYPES_EXT__ -D__STDC_WANT_LIB_EXT2__ -D__STDC_WANT_MATH_SPEC_FUNCS__
 
-C_INCLUDES = -I/Users/patrickchoo/cs4152/cugl/sdlapp/buildfiles/cmake/../../external/flac/include -I/Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2atk/external/flac -I/opt/homebrew/include
+C_INCLUDES = -I/users/patrickchoo/cs4152/cugl/sdlapp/buildfiles/cmake/../../external/flac/include -I/users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2atk/external/flac -I/opt/homebrew/include
 
 C_FLAGSarm64 = -Wall -Wextra -Wstrict-prototypes -Wmissing-prototypes -Waggregate-return -Wcast-align -Wnested-externs -Wshadow -Wundef -Wmissing-declarations -Winline  -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.2.sdk -mmacosx-version-min=15.0 -fPIC -Wdeclaration-after-statement
 

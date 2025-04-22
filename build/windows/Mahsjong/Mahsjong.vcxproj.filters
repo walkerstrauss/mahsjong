@@ -17,6 +17,9 @@
     <ClInclude Include="..\..\..\source\MJPlayer.h">
       <Filter>Source Files</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\source\MJPileUINode.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\..\source\MJHostScene.h">
       <Filter>Source Files</Filter>
     </ClInclude>
@@ -41,6 +44,9 @@
     <ClInclude Include="..\..\..\source\MJAnimationController.h">
       <Filter>Source Files</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\source\MJDiscardUINode.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\..\source\MJPauseScene.h">
       <Filter>Source Files</Filter>
     </ClInclude>
@@ -50,6 +56,9 @@
     <ClInclude Include="..\..\..\source\MJScoreManager.h">
       <Filter>Source Files</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\source\MJLoadingScene.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\..\source\MJInputController.h">
       <Filter>Source Files</Filter>
     </ClInclude>
@@ -57,6 +66,9 @@
       <Filter>Source Files</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\source\MJApp.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\MJAnimatedNode.h">
       <Filter>Source Files</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\source\MJGameScene.h">
@@ -100,6 +112,12 @@
     <ClCompile Include="..\..\..\source\MJSettingScene.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\source\MJDiscardUINode.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\MJPileUINode.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\..\source\MJScoreManager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -112,10 +130,16 @@
     <ClCompile Include="..\..\..\source\MJInputController.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\source\MJLoadingScene.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\..\source\MJHostScene.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\source\MJPile.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\MJAnimatedNode.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\source\MJMatchController.cpp">

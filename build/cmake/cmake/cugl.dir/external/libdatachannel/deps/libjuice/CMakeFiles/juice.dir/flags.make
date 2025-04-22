@@ -4,7 +4,7 @@
 # compile C with /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc
 C_DEFINES = -DJUICE_EXPORTS -DJUICE_STATIC -DUSE_NETTLE=0
 
-C_INCLUDES = -I/Users/patrickchoo/cs4152/cugl/buildfiles/cmake/external/libdatachannel/../../../../external/libdatachannel/deps/libjuice/include -I/Users/patrickchoo/cs4152/cugl/buildfiles/cmake/external/libdatachannel/../../../../external/libdatachannel/deps/libjuice/include/juice -I/Users/patrickchoo/cs4152/cugl/buildfiles/cmake/external/libdatachannel/../../../../external/libdatachannel/deps/libjuice/src -I/usr/local/include
+C_INCLUDES = -I/users/patrickchoo/cs4152/cugl/buildfiles/cmake/external/libdatachannel/../../../../external/libdatachannel/deps/libjuice/include -I/users/patrickchoo/cs4152/cugl/buildfiles/cmake/external/libdatachannel/../../../../external/libdatachannel/deps/libjuice/include/juice -I/users/patrickchoo/cs4152/cugl/buildfiles/cmake/external/libdatachannel/../../../../external/libdatachannel/deps/libjuice/src -I/usr/local/include
 
 C_FLAGSarm64 =  -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.2.sdk -mmacosx-version-min=15.0 -fPIC -Wno-deprecated-pragma -Wall -Wextra
 

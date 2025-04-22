@@ -57,10 +57,10 @@ RM = /opt/homebrew/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /Users/patrickchoo/cs4152/mahsjong/build/cmake
+CMAKE_SOURCE_DIR = /users/patrickchoo/cs4152/mahsjong/build/cmake
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake
+CMAKE_BINARY_DIR = /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -68,7 +68,7 @@ CMAKE_BINARY_DIR = /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake
 # Special rule for the target package
 package: preinstall
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Run CPack packaging tool..."
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && /opt/homebrew/bin/cpack --config ./CPackConfig.cmake
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && /opt/homebrew/bin/cpack --config ./CPackConfig.cmake
 .PHONY : package
 
 # Special rule for the target package
@@ -78,7 +78,7 @@ package/fast: package
 # Special rule for the target package_source
 package_source:
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Run CPack packaging tool for source..."
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && /opt/homebrew/bin/cpack --config ./CPackSourceConfig.cmake /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CPackSourceConfig.cmake
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && /opt/homebrew/bin/cpack --config ./CPackSourceConfig.cmake /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CPackSourceConfig.cmake
 .PHONY : package_source
 
 # Special rule for the target package_source
@@ -152,14 +152,14 @@ install/strip/fast: preinstall/fast
 
 # The main all target
 all: cmake_check_build_system
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(CMAKE_COMMAND) -E cmake_progress_start /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2app//CMakeFiles/progress.marks
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 cugl.dir/sdl2pckg.dir/sdl2app/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles 0
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(CMAKE_COMMAND) -E cmake_progress_start /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2app//CMakeFiles/progress.marks
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 cugl.dir/sdl2pckg.dir/sdl2app/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 cugl.dir/sdl2pckg.dir/sdl2app/clean
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 cugl.dir/sdl2pckg.dir/sdl2app/clean
 .PHONY : clean
 
 # The main clean target
@@ -168,22 +168,22 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 cugl.dir/sdl2pckg.dir/sdl2app/preinstall
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 cugl.dir/sdl2pckg.dir/sdl2app/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 cugl.dir/sdl2pckg.dir/sdl2app/preinstall
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 cugl.dir/sdl2pckg.dir/sdl2app/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
 # Convenience name for target.
 cugl.dir/sdl2pckg.dir/sdl2app/CMakeFiles/SDL2_app.dir/rule:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 cugl.dir/sdl2pckg.dir/sdl2app/CMakeFiles/SDL2_app.dir/rule
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 cugl.dir/sdl2pckg.dir/sdl2app/CMakeFiles/SDL2_app.dir/rule
 .PHONY : cugl.dir/sdl2pckg.dir/sdl2app/CMakeFiles/SDL2_app.dir/rule
 
 # Convenience name for target.
@@ -192,128 +192,128 @@ SDL2_app: cugl.dir/sdl2pckg.dir/sdl2app/CMakeFiles/SDL2_app.dir/rule
 
 # fast build rule for target.
 SDL2_app/fast:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2app/CMakeFiles/SDL2_app.dir/build.make cugl.dir/sdl2pckg.dir/sdl2app/CMakeFiles/SDL2_app.dir/build
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2app/CMakeFiles/SDL2_app.dir/build.make cugl.dir/sdl2pckg.dir/sdl2app/CMakeFiles/SDL2_app.dir/build
 .PHONY : SDL2_app/fast
 
-Users/patrickchoo/cs4152/cugl/sdlapp/src/app/APP_device.o: Users/patrickchoo/cs4152/cugl/sdlapp/src/app/APP_device.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/src/app/APP_device.o
+users/patrickchoo/cs4152/cugl/sdlapp/src/app/APP_device.o: users/patrickchoo/cs4152/cugl/sdlapp/src/app/APP_device.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/src/app/APP_device.o
 
 # target to build an object file
-Users/patrickchoo/cs4152/cugl/sdlapp/src/app/APP_device.c.o:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2app/CMakeFiles/SDL2_app.dir/build.make cugl.dir/sdl2pckg.dir/sdl2app/CMakeFiles/SDL2_app.dir/Users/patrickchoo/cs4152/cugl/sdlapp/src/app/APP_device.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/src/app/APP_device.c.o
+users/patrickchoo/cs4152/cugl/sdlapp/src/app/APP_device.c.o:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2app/CMakeFiles/SDL2_app.dir/build.make cugl.dir/sdl2pckg.dir/sdl2app/CMakeFiles/SDL2_app.dir/users/patrickchoo/cs4152/cugl/sdlapp/src/app/APP_device.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/src/app/APP_device.c.o
 
-Users/patrickchoo/cs4152/cugl/sdlapp/src/app/APP_device.i: Users/patrickchoo/cs4152/cugl/sdlapp/src/app/APP_device.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/src/app/APP_device.i
+users/patrickchoo/cs4152/cugl/sdlapp/src/app/APP_device.i: users/patrickchoo/cs4152/cugl/sdlapp/src/app/APP_device.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/src/app/APP_device.i
 
 # target to preprocess a source file
-Users/patrickchoo/cs4152/cugl/sdlapp/src/app/APP_device.c.i:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2app/CMakeFiles/SDL2_app.dir/build.make cugl.dir/sdl2pckg.dir/sdl2app/CMakeFiles/SDL2_app.dir/Users/patrickchoo/cs4152/cugl/sdlapp/src/app/APP_device.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/src/app/APP_device.c.i
+users/patrickchoo/cs4152/cugl/sdlapp/src/app/APP_device.c.i:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2app/CMakeFiles/SDL2_app.dir/build.make cugl.dir/sdl2pckg.dir/sdl2app/CMakeFiles/SDL2_app.dir/users/patrickchoo/cs4152/cugl/sdlapp/src/app/APP_device.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/src/app/APP_device.c.i
 
-Users/patrickchoo/cs4152/cugl/sdlapp/src/app/APP_device.s: Users/patrickchoo/cs4152/cugl/sdlapp/src/app/APP_device.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/src/app/APP_device.s
+users/patrickchoo/cs4152/cugl/sdlapp/src/app/APP_device.s: users/patrickchoo/cs4152/cugl/sdlapp/src/app/APP_device.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/src/app/APP_device.s
 
 # target to generate assembly for a file
-Users/patrickchoo/cs4152/cugl/sdlapp/src/app/APP_device.c.s:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2app/CMakeFiles/SDL2_app.dir/build.make cugl.dir/sdl2pckg.dir/sdl2app/CMakeFiles/SDL2_app.dir/Users/patrickchoo/cs4152/cugl/sdlapp/src/app/APP_device.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/src/app/APP_device.c.s
+users/patrickchoo/cs4152/cugl/sdlapp/src/app/APP_device.c.s:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2app/CMakeFiles/SDL2_app.dir/build.make cugl.dir/sdl2pckg.dir/sdl2app/CMakeFiles/SDL2_app.dir/users/patrickchoo/cs4152/cugl/sdlapp/src/app/APP_device.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/src/app/APP_device.c.s
 
-Users/patrickchoo/cs4152/cugl/sdlapp/src/app/APP_display.o: Users/patrickchoo/cs4152/cugl/sdlapp/src/app/APP_display.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/src/app/APP_display.o
+users/patrickchoo/cs4152/cugl/sdlapp/src/app/APP_display.o: users/patrickchoo/cs4152/cugl/sdlapp/src/app/APP_display.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/src/app/APP_display.o
 
 # target to build an object file
-Users/patrickchoo/cs4152/cugl/sdlapp/src/app/APP_display.c.o:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2app/CMakeFiles/SDL2_app.dir/build.make cugl.dir/sdl2pckg.dir/sdl2app/CMakeFiles/SDL2_app.dir/Users/patrickchoo/cs4152/cugl/sdlapp/src/app/APP_display.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/src/app/APP_display.c.o
+users/patrickchoo/cs4152/cugl/sdlapp/src/app/APP_display.c.o:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2app/CMakeFiles/SDL2_app.dir/build.make cugl.dir/sdl2pckg.dir/sdl2app/CMakeFiles/SDL2_app.dir/users/patrickchoo/cs4152/cugl/sdlapp/src/app/APP_display.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/src/app/APP_display.c.o
 
-Users/patrickchoo/cs4152/cugl/sdlapp/src/app/APP_display.i: Users/patrickchoo/cs4152/cugl/sdlapp/src/app/APP_display.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/src/app/APP_display.i
+users/patrickchoo/cs4152/cugl/sdlapp/src/app/APP_display.i: users/patrickchoo/cs4152/cugl/sdlapp/src/app/APP_display.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/src/app/APP_display.i
 
 # target to preprocess a source file
-Users/patrickchoo/cs4152/cugl/sdlapp/src/app/APP_display.c.i:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2app/CMakeFiles/SDL2_app.dir/build.make cugl.dir/sdl2pckg.dir/sdl2app/CMakeFiles/SDL2_app.dir/Users/patrickchoo/cs4152/cugl/sdlapp/src/app/APP_display.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/src/app/APP_display.c.i
+users/patrickchoo/cs4152/cugl/sdlapp/src/app/APP_display.c.i:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2app/CMakeFiles/SDL2_app.dir/build.make cugl.dir/sdl2pckg.dir/sdl2app/CMakeFiles/SDL2_app.dir/users/patrickchoo/cs4152/cugl/sdlapp/src/app/APP_display.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/src/app/APP_display.c.i
 
-Users/patrickchoo/cs4152/cugl/sdlapp/src/app/APP_display.s: Users/patrickchoo/cs4152/cugl/sdlapp/src/app/APP_display.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/src/app/APP_display.s
+users/patrickchoo/cs4152/cugl/sdlapp/src/app/APP_display.s: users/patrickchoo/cs4152/cugl/sdlapp/src/app/APP_display.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/src/app/APP_display.s
 
 # target to generate assembly for a file
-Users/patrickchoo/cs4152/cugl/sdlapp/src/app/APP_display.c.s:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2app/CMakeFiles/SDL2_app.dir/build.make cugl.dir/sdl2pckg.dir/sdl2app/CMakeFiles/SDL2_app.dir/Users/patrickchoo/cs4152/cugl/sdlapp/src/app/APP_display.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/src/app/APP_display.c.s
+users/patrickchoo/cs4152/cugl/sdlapp/src/app/APP_display.c.s:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2app/CMakeFiles/SDL2_app.dir/build.make cugl.dir/sdl2pckg.dir/sdl2app/CMakeFiles/SDL2_app.dir/users/patrickchoo/cs4152/cugl/sdlapp/src/app/APP_display.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/src/app/APP_display.c.s
 
-Users/patrickchoo/cs4152/cugl/sdlapp/src/app/APP_version.o: Users/patrickchoo/cs4152/cugl/sdlapp/src/app/APP_version.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/src/app/APP_version.o
+users/patrickchoo/cs4152/cugl/sdlapp/src/app/APP_version.o: users/patrickchoo/cs4152/cugl/sdlapp/src/app/APP_version.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/src/app/APP_version.o
 
 # target to build an object file
-Users/patrickchoo/cs4152/cugl/sdlapp/src/app/APP_version.c.o:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2app/CMakeFiles/SDL2_app.dir/build.make cugl.dir/sdl2pckg.dir/sdl2app/CMakeFiles/SDL2_app.dir/Users/patrickchoo/cs4152/cugl/sdlapp/src/app/APP_version.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/src/app/APP_version.c.o
+users/patrickchoo/cs4152/cugl/sdlapp/src/app/APP_version.c.o:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2app/CMakeFiles/SDL2_app.dir/build.make cugl.dir/sdl2pckg.dir/sdl2app/CMakeFiles/SDL2_app.dir/users/patrickchoo/cs4152/cugl/sdlapp/src/app/APP_version.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/src/app/APP_version.c.o
 
-Users/patrickchoo/cs4152/cugl/sdlapp/src/app/APP_version.i: Users/patrickchoo/cs4152/cugl/sdlapp/src/app/APP_version.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/src/app/APP_version.i
+users/patrickchoo/cs4152/cugl/sdlapp/src/app/APP_version.i: users/patrickchoo/cs4152/cugl/sdlapp/src/app/APP_version.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/src/app/APP_version.i
 
 # target to preprocess a source file
-Users/patrickchoo/cs4152/cugl/sdlapp/src/app/APP_version.c.i:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2app/CMakeFiles/SDL2_app.dir/build.make cugl.dir/sdl2pckg.dir/sdl2app/CMakeFiles/SDL2_app.dir/Users/patrickchoo/cs4152/cugl/sdlapp/src/app/APP_version.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/src/app/APP_version.c.i
+users/patrickchoo/cs4152/cugl/sdlapp/src/app/APP_version.c.i:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2app/CMakeFiles/SDL2_app.dir/build.make cugl.dir/sdl2pckg.dir/sdl2app/CMakeFiles/SDL2_app.dir/users/patrickchoo/cs4152/cugl/sdlapp/src/app/APP_version.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/src/app/APP_version.c.i
 
-Users/patrickchoo/cs4152/cugl/sdlapp/src/app/APP_version.s: Users/patrickchoo/cs4152/cugl/sdlapp/src/app/APP_version.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/src/app/APP_version.s
+users/patrickchoo/cs4152/cugl/sdlapp/src/app/APP_version.s: users/patrickchoo/cs4152/cugl/sdlapp/src/app/APP_version.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/src/app/APP_version.s
 
 # target to generate assembly for a file
-Users/patrickchoo/cs4152/cugl/sdlapp/src/app/APP_version.c.s:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2app/CMakeFiles/SDL2_app.dir/build.make cugl.dir/sdl2pckg.dir/sdl2app/CMakeFiles/SDL2_app.dir/Users/patrickchoo/cs4152/cugl/sdlapp/src/app/APP_version.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/src/app/APP_version.c.s
+users/patrickchoo/cs4152/cugl/sdlapp/src/app/APP_version.c.s:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2app/CMakeFiles/SDL2_app.dir/build.make cugl.dir/sdl2pckg.dir/sdl2app/CMakeFiles/SDL2_app.dir/users/patrickchoo/cs4152/cugl/sdlapp/src/app/APP_version.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/src/app/APP_version.c.s
 
-Users/patrickchoo/cs4152/cugl/sdlapp/src/app/macosx/APP_sysdevice.o: Users/patrickchoo/cs4152/cugl/sdlapp/src/app/macosx/APP_sysdevice.m.o
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/src/app/macosx/APP_sysdevice.o
+users/patrickchoo/cs4152/cugl/sdlapp/src/app/macosx/APP_sysdevice.o: users/patrickchoo/cs4152/cugl/sdlapp/src/app/macosx/APP_sysdevice.m.o
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/src/app/macosx/APP_sysdevice.o
 
 # target to build an object file
-Users/patrickchoo/cs4152/cugl/sdlapp/src/app/macosx/APP_sysdevice.m.o:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2app/CMakeFiles/SDL2_app.dir/build.make cugl.dir/sdl2pckg.dir/sdl2app/CMakeFiles/SDL2_app.dir/Users/patrickchoo/cs4152/cugl/sdlapp/src/app/macosx/APP_sysdevice.m.o
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/src/app/macosx/APP_sysdevice.m.o
+users/patrickchoo/cs4152/cugl/sdlapp/src/app/macosx/APP_sysdevice.m.o:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2app/CMakeFiles/SDL2_app.dir/build.make cugl.dir/sdl2pckg.dir/sdl2app/CMakeFiles/SDL2_app.dir/users/patrickchoo/cs4152/cugl/sdlapp/src/app/macosx/APP_sysdevice.m.o
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/src/app/macosx/APP_sysdevice.m.o
 
-Users/patrickchoo/cs4152/cugl/sdlapp/src/app/macosx/APP_sysdevice.i: Users/patrickchoo/cs4152/cugl/sdlapp/src/app/macosx/APP_sysdevice.m.i
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/src/app/macosx/APP_sysdevice.i
+users/patrickchoo/cs4152/cugl/sdlapp/src/app/macosx/APP_sysdevice.i: users/patrickchoo/cs4152/cugl/sdlapp/src/app/macosx/APP_sysdevice.m.i
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/src/app/macosx/APP_sysdevice.i
 
 # target to preprocess a source file
-Users/patrickchoo/cs4152/cugl/sdlapp/src/app/macosx/APP_sysdevice.m.i:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2app/CMakeFiles/SDL2_app.dir/build.make cugl.dir/sdl2pckg.dir/sdl2app/CMakeFiles/SDL2_app.dir/Users/patrickchoo/cs4152/cugl/sdlapp/src/app/macosx/APP_sysdevice.m.i
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/src/app/macosx/APP_sysdevice.m.i
+users/patrickchoo/cs4152/cugl/sdlapp/src/app/macosx/APP_sysdevice.m.i:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2app/CMakeFiles/SDL2_app.dir/build.make cugl.dir/sdl2pckg.dir/sdl2app/CMakeFiles/SDL2_app.dir/users/patrickchoo/cs4152/cugl/sdlapp/src/app/macosx/APP_sysdevice.m.i
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/src/app/macosx/APP_sysdevice.m.i
 
-Users/patrickchoo/cs4152/cugl/sdlapp/src/app/macosx/APP_sysdevice.s: Users/patrickchoo/cs4152/cugl/sdlapp/src/app/macosx/APP_sysdevice.m.s
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/src/app/macosx/APP_sysdevice.s
+users/patrickchoo/cs4152/cugl/sdlapp/src/app/macosx/APP_sysdevice.s: users/patrickchoo/cs4152/cugl/sdlapp/src/app/macosx/APP_sysdevice.m.s
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/src/app/macosx/APP_sysdevice.s
 
 # target to generate assembly for a file
-Users/patrickchoo/cs4152/cugl/sdlapp/src/app/macosx/APP_sysdevice.m.s:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2app/CMakeFiles/SDL2_app.dir/build.make cugl.dir/sdl2pckg.dir/sdl2app/CMakeFiles/SDL2_app.dir/Users/patrickchoo/cs4152/cugl/sdlapp/src/app/macosx/APP_sysdevice.m.s
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/src/app/macosx/APP_sysdevice.m.s
+users/patrickchoo/cs4152/cugl/sdlapp/src/app/macosx/APP_sysdevice.m.s:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2app/CMakeFiles/SDL2_app.dir/build.make cugl.dir/sdl2pckg.dir/sdl2app/CMakeFiles/SDL2_app.dir/users/patrickchoo/cs4152/cugl/sdlapp/src/app/macosx/APP_sysdevice.m.s
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/src/app/macosx/APP_sysdevice.m.s
 
-Users/patrickchoo/cs4152/cugl/sdlapp/src/app/macosx/APP_sysdisplay.o: Users/patrickchoo/cs4152/cugl/sdlapp/src/app/macosx/APP_sysdisplay.m.o
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/src/app/macosx/APP_sysdisplay.o
+users/patrickchoo/cs4152/cugl/sdlapp/src/app/macosx/APP_sysdisplay.o: users/patrickchoo/cs4152/cugl/sdlapp/src/app/macosx/APP_sysdisplay.m.o
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/src/app/macosx/APP_sysdisplay.o
 
 # target to build an object file
-Users/patrickchoo/cs4152/cugl/sdlapp/src/app/macosx/APP_sysdisplay.m.o:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2app/CMakeFiles/SDL2_app.dir/build.make cugl.dir/sdl2pckg.dir/sdl2app/CMakeFiles/SDL2_app.dir/Users/patrickchoo/cs4152/cugl/sdlapp/src/app/macosx/APP_sysdisplay.m.o
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/src/app/macosx/APP_sysdisplay.m.o
+users/patrickchoo/cs4152/cugl/sdlapp/src/app/macosx/APP_sysdisplay.m.o:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2app/CMakeFiles/SDL2_app.dir/build.make cugl.dir/sdl2pckg.dir/sdl2app/CMakeFiles/SDL2_app.dir/users/patrickchoo/cs4152/cugl/sdlapp/src/app/macosx/APP_sysdisplay.m.o
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/src/app/macosx/APP_sysdisplay.m.o
 
-Users/patrickchoo/cs4152/cugl/sdlapp/src/app/macosx/APP_sysdisplay.i: Users/patrickchoo/cs4152/cugl/sdlapp/src/app/macosx/APP_sysdisplay.m.i
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/src/app/macosx/APP_sysdisplay.i
+users/patrickchoo/cs4152/cugl/sdlapp/src/app/macosx/APP_sysdisplay.i: users/patrickchoo/cs4152/cugl/sdlapp/src/app/macosx/APP_sysdisplay.m.i
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/src/app/macosx/APP_sysdisplay.i
 
 # target to preprocess a source file
-Users/patrickchoo/cs4152/cugl/sdlapp/src/app/macosx/APP_sysdisplay.m.i:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2app/CMakeFiles/SDL2_app.dir/build.make cugl.dir/sdl2pckg.dir/sdl2app/CMakeFiles/SDL2_app.dir/Users/patrickchoo/cs4152/cugl/sdlapp/src/app/macosx/APP_sysdisplay.m.i
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/src/app/macosx/APP_sysdisplay.m.i
+users/patrickchoo/cs4152/cugl/sdlapp/src/app/macosx/APP_sysdisplay.m.i:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2app/CMakeFiles/SDL2_app.dir/build.make cugl.dir/sdl2pckg.dir/sdl2app/CMakeFiles/SDL2_app.dir/users/patrickchoo/cs4152/cugl/sdlapp/src/app/macosx/APP_sysdisplay.m.i
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/src/app/macosx/APP_sysdisplay.m.i
 
-Users/patrickchoo/cs4152/cugl/sdlapp/src/app/macosx/APP_sysdisplay.s: Users/patrickchoo/cs4152/cugl/sdlapp/src/app/macosx/APP_sysdisplay.m.s
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/src/app/macosx/APP_sysdisplay.s
+users/patrickchoo/cs4152/cugl/sdlapp/src/app/macosx/APP_sysdisplay.s: users/patrickchoo/cs4152/cugl/sdlapp/src/app/macosx/APP_sysdisplay.m.s
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/src/app/macosx/APP_sysdisplay.s
 
 # target to generate assembly for a file
-Users/patrickchoo/cs4152/cugl/sdlapp/src/app/macosx/APP_sysdisplay.m.s:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2app/CMakeFiles/SDL2_app.dir/build.make cugl.dir/sdl2pckg.dir/sdl2app/CMakeFiles/SDL2_app.dir/Users/patrickchoo/cs4152/cugl/sdlapp/src/app/macosx/APP_sysdisplay.m.s
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/src/app/macosx/APP_sysdisplay.m.s
+users/patrickchoo/cs4152/cugl/sdlapp/src/app/macosx/APP_sysdisplay.m.s:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2app/CMakeFiles/SDL2_app.dir/build.make cugl.dir/sdl2pckg.dir/sdl2app/CMakeFiles/SDL2_app.dir/users/patrickchoo/cs4152/cugl/sdlapp/src/app/macosx/APP_sysdisplay.m.s
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/src/app/macosx/APP_sysdisplay.m.s
 
 # Help Target
 help:
@@ -330,21 +330,21 @@ help:
 	@echo "... package_source"
 	@echo "... rebuild_cache"
 	@echo "... SDL2_app"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/src/app/APP_device.o"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/src/app/APP_device.i"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/src/app/APP_device.s"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/src/app/APP_display.o"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/src/app/APP_display.i"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/src/app/APP_display.s"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/src/app/APP_version.o"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/src/app/APP_version.i"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/src/app/APP_version.s"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/src/app/macosx/APP_sysdevice.o"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/src/app/macosx/APP_sysdevice.i"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/src/app/macosx/APP_sysdevice.s"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/src/app/macosx/APP_sysdisplay.o"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/src/app/macosx/APP_sysdisplay.i"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/src/app/macosx/APP_sysdisplay.s"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/src/app/APP_device.o"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/src/app/APP_device.i"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/src/app/APP_device.s"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/src/app/APP_display.o"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/src/app/APP_display.i"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/src/app/APP_display.s"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/src/app/APP_version.o"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/src/app/APP_version.i"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/src/app/APP_version.s"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/src/app/macosx/APP_sysdevice.o"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/src/app/macosx/APP_sysdevice.i"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/src/app/macosx/APP_sysdevice.s"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/src/app/macosx/APP_sysdisplay.o"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/src/app/macosx/APP_sysdisplay.i"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/src/app/macosx/APP_sysdisplay.s"
 .PHONY : help
 
 
@@ -356,6 +356,6 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 

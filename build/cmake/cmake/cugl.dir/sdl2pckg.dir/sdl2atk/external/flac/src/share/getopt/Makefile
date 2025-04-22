@@ -57,10 +57,10 @@ RM = /opt/homebrew/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /Users/patrickchoo/cs4152/mahsjong/build/cmake
+CMAKE_SOURCE_DIR = /users/patrickchoo/cs4152/mahsjong/build/cmake
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake
+CMAKE_BINARY_DIR = /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -68,7 +68,7 @@ CMAKE_BINARY_DIR = /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake
 # Special rule for the target package
 package: preinstall
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Run CPack packaging tool..."
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && /opt/homebrew/bin/cpack --config ./CPackConfig.cmake
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && /opt/homebrew/bin/cpack --config ./CPackConfig.cmake
 .PHONY : package
 
 # Special rule for the target package
@@ -78,7 +78,7 @@ package/fast: package
 # Special rule for the target package_source
 package_source:
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Run CPack packaging tool for source..."
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && /opt/homebrew/bin/cpack --config ./CPackSourceConfig.cmake /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CPackSourceConfig.cmake
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && /opt/homebrew/bin/cpack --config ./CPackSourceConfig.cmake /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CPackSourceConfig.cmake
 .PHONY : package_source
 
 # Special rule for the target package_source
@@ -152,14 +152,14 @@ install/strip/fast: preinstall/fast
 
 # The main all target
 all: cmake_check_build_system
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(CMAKE_COMMAND) -E cmake_progress_start /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/getopt//CMakeFiles/progress.marks
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/getopt/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles 0
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(CMAKE_COMMAND) -E cmake_progress_start /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/getopt//CMakeFiles/progress.marks
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/getopt/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/getopt/clean
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/getopt/clean
 .PHONY : clean
 
 # The main clean target
@@ -168,22 +168,22 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/getopt/preinstall
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/getopt/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/getopt/preinstall
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/getopt/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
 # Convenience name for target.
 cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/getopt/CMakeFiles/getopt.dir/rule:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/getopt/CMakeFiles/getopt.dir/rule
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/getopt/CMakeFiles/getopt.dir/rule
 .PHONY : cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/getopt/CMakeFiles/getopt.dir/rule
 
 # Convenience name for target.
@@ -192,56 +192,56 @@ getopt: cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/getopt/CMakeFiles/
 
 # fast build rule for target.
 getopt/fast:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/getopt/CMakeFiles/getopt.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/getopt/CMakeFiles/getopt.dir/build
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/getopt/CMakeFiles/getopt.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/getopt/CMakeFiles/getopt.dir/build
 .PHONY : getopt/fast
 
-Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/getopt/getopt.o: Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/getopt/getopt.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/getopt/getopt.o
+users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/getopt/getopt.o: users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/getopt/getopt.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/getopt/getopt.o
 
 # target to build an object file
-Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/getopt/getopt.c.o:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/getopt/CMakeFiles/getopt.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/getopt/CMakeFiles/getopt.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/getopt/getopt.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/getopt/getopt.c.o
+users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/getopt/getopt.c.o:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/getopt/CMakeFiles/getopt.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/getopt/CMakeFiles/getopt.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/getopt/getopt.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/getopt/getopt.c.o
 
-Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/getopt/getopt.i: Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/getopt/getopt.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/getopt/getopt.i
+users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/getopt/getopt.i: users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/getopt/getopt.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/getopt/getopt.i
 
 # target to preprocess a source file
-Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/getopt/getopt.c.i:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/getopt/CMakeFiles/getopt.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/getopt/CMakeFiles/getopt.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/getopt/getopt.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/getopt/getopt.c.i
+users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/getopt/getopt.c.i:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/getopt/CMakeFiles/getopt.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/getopt/CMakeFiles/getopt.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/getopt/getopt.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/getopt/getopt.c.i
 
-Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/getopt/getopt.s: Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/getopt/getopt.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/getopt/getopt.s
+users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/getopt/getopt.s: users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/getopt/getopt.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/getopt/getopt.s
 
 # target to generate assembly for a file
-Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/getopt/getopt.c.s:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/getopt/CMakeFiles/getopt.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/getopt/CMakeFiles/getopt.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/getopt/getopt.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/getopt/getopt.c.s
+users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/getopt/getopt.c.s:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/getopt/CMakeFiles/getopt.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/getopt/CMakeFiles/getopt.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/getopt/getopt.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/getopt/getopt.c.s
 
-Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/getopt/getopt1.o: Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/getopt/getopt1.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/getopt/getopt1.o
+users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/getopt/getopt1.o: users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/getopt/getopt1.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/getopt/getopt1.o
 
 # target to build an object file
-Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/getopt/getopt1.c.o:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/getopt/CMakeFiles/getopt.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/getopt/CMakeFiles/getopt.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/getopt/getopt1.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/getopt/getopt1.c.o
+users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/getopt/getopt1.c.o:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/getopt/CMakeFiles/getopt.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/getopt/CMakeFiles/getopt.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/getopt/getopt1.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/getopt/getopt1.c.o
 
-Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/getopt/getopt1.i: Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/getopt/getopt1.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/getopt/getopt1.i
+users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/getopt/getopt1.i: users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/getopt/getopt1.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/getopt/getopt1.i
 
 # target to preprocess a source file
-Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/getopt/getopt1.c.i:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/getopt/CMakeFiles/getopt.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/getopt/CMakeFiles/getopt.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/getopt/getopt1.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/getopt/getopt1.c.i
+users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/getopt/getopt1.c.i:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/getopt/CMakeFiles/getopt.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/getopt/CMakeFiles/getopt.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/getopt/getopt1.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/getopt/getopt1.c.i
 
-Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/getopt/getopt1.s: Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/getopt/getopt1.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/getopt/getopt1.s
+users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/getopt/getopt1.s: users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/getopt/getopt1.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/getopt/getopt1.s
 
 # target to generate assembly for a file
-Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/getopt/getopt1.c.s:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/getopt/CMakeFiles/getopt.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/getopt/CMakeFiles/getopt.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/getopt/getopt1.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/getopt/getopt1.c.s
+users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/getopt/getopt1.c.s:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/getopt/CMakeFiles/getopt.dir/build.make cugl.dir/sdl2pckg.dir/sdl2atk/external/flac/src/share/getopt/CMakeFiles/getopt.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/getopt/getopt1.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/getopt/getopt1.c.s
 
 # Help Target
 help:
@@ -258,12 +258,12 @@ help:
 	@echo "... package_source"
 	@echo "... rebuild_cache"
 	@echo "... getopt"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/getopt/getopt.o"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/getopt/getopt.i"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/getopt/getopt.s"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/getopt/getopt1.o"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/getopt/getopt1.i"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/getopt/getopt1.s"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/getopt/getopt.o"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/getopt/getopt.i"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/getopt/getopt.s"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/getopt/getopt1.o"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/getopt/getopt1.i"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/getopt/getopt1.s"
 .PHONY : help
 
 
@@ -275,6 +275,6 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 

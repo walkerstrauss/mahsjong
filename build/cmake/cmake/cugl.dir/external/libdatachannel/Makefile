@@ -57,10 +57,10 @@ RM = /opt/homebrew/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /Users/patrickchoo/cs4152/mahsjong/build/cmake
+CMAKE_SOURCE_DIR = /users/patrickchoo/cs4152/mahsjong/build/cmake
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake
+CMAKE_BINARY_DIR = /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -68,7 +68,7 @@ CMAKE_BINARY_DIR = /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake
 # Special rule for the target package
 package: preinstall
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Run CPack packaging tool..."
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && /opt/homebrew/bin/cpack --config ./CPackConfig.cmake
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && /opt/homebrew/bin/cpack --config ./CPackConfig.cmake
 .PHONY : package
 
 # Special rule for the target package
@@ -78,7 +78,7 @@ package/fast: package
 # Special rule for the target package_source
 package_source:
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Run CPack packaging tool for source..."
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && /opt/homebrew/bin/cpack --config ./CPackSourceConfig.cmake /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CPackSourceConfig.cmake
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && /opt/homebrew/bin/cpack --config ./CPackSourceConfig.cmake /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CPackSourceConfig.cmake
 .PHONY : package_source
 
 # Special rule for the target package_source
@@ -152,14 +152,14 @@ install/strip/fast: preinstall/fast
 
 # The main all target
 all: cmake_check_build_system
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(CMAKE_COMMAND) -E cmake_progress_start /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/external/libdatachannel//CMakeFiles/progress.marks
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 cugl.dir/external/libdatachannel/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles 0
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(CMAKE_COMMAND) -E cmake_progress_start /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/external/libdatachannel//CMakeFiles/progress.marks
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 cugl.dir/external/libdatachannel/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 cugl.dir/external/libdatachannel/clean
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 cugl.dir/external/libdatachannel/clean
 .PHONY : clean
 
 # The main clean target
@@ -168,22 +168,22 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 cugl.dir/external/libdatachannel/preinstall
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 cugl.dir/external/libdatachannel/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 cugl.dir/external/libdatachannel/preinstall
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 cugl.dir/external/libdatachannel/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
 # Convenience name for target.
 cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/rule:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/rule
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/rule
 .PHONY : cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/rule
 
 # Convenience name for target.
@@ -192,1400 +192,1400 @@ datachannel: cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/rule
 
 # fast build rule for target.
 datachannel/fast:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build
 .PHONY : datachannel/fast
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/av1rtppacketizer.o: Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/av1rtppacketizer.cpp.o
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/av1rtppacketizer.o
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/av1rtppacketizer.o: users/patrickchoo/cs4152/cugl/external/libdatachannel/src/av1rtppacketizer.cpp.o
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/av1rtppacketizer.o
 
 # target to build an object file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/av1rtppacketizer.cpp.o:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/av1rtppacketizer.cpp.o
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/av1rtppacketizer.cpp.o
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/av1rtppacketizer.cpp.o:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/src/av1rtppacketizer.cpp.o
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/av1rtppacketizer.cpp.o
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/av1rtppacketizer.i: Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/av1rtppacketizer.cpp.i
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/av1rtppacketizer.i
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/av1rtppacketizer.i: users/patrickchoo/cs4152/cugl/external/libdatachannel/src/av1rtppacketizer.cpp.i
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/av1rtppacketizer.i
 
 # target to preprocess a source file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/av1rtppacketizer.cpp.i:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/av1rtppacketizer.cpp.i
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/av1rtppacketizer.cpp.i
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/av1rtppacketizer.cpp.i:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/src/av1rtppacketizer.cpp.i
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/av1rtppacketizer.cpp.i
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/av1rtppacketizer.s: Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/av1rtppacketizer.cpp.s
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/av1rtppacketizer.s
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/av1rtppacketizer.s: users/patrickchoo/cs4152/cugl/external/libdatachannel/src/av1rtppacketizer.cpp.s
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/av1rtppacketizer.s
 
 # target to generate assembly for a file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/av1rtppacketizer.cpp.s:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/av1rtppacketizer.cpp.s
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/av1rtppacketizer.cpp.s
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/av1rtppacketizer.cpp.s:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/src/av1rtppacketizer.cpp.s
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/av1rtppacketizer.cpp.s
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/candidate.o: Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/candidate.cpp.o
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/candidate.o
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/candidate.o: users/patrickchoo/cs4152/cugl/external/libdatachannel/src/candidate.cpp.o
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/candidate.o
 
 # target to build an object file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/candidate.cpp.o:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/candidate.cpp.o
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/candidate.cpp.o
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/candidate.cpp.o:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/src/candidate.cpp.o
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/candidate.cpp.o
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/candidate.i: Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/candidate.cpp.i
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/candidate.i
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/candidate.i: users/patrickchoo/cs4152/cugl/external/libdatachannel/src/candidate.cpp.i
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/candidate.i
 
 # target to preprocess a source file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/candidate.cpp.i:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/candidate.cpp.i
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/candidate.cpp.i
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/candidate.cpp.i:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/src/candidate.cpp.i
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/candidate.cpp.i
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/candidate.s: Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/candidate.cpp.s
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/candidate.s
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/candidate.s: users/patrickchoo/cs4152/cugl/external/libdatachannel/src/candidate.cpp.s
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/candidate.s
 
 # target to generate assembly for a file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/candidate.cpp.s:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/candidate.cpp.s
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/candidate.cpp.s
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/candidate.cpp.s:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/src/candidate.cpp.s
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/candidate.cpp.s
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/capi.o: Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/capi.cpp.o
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/capi.o
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/capi.o: users/patrickchoo/cs4152/cugl/external/libdatachannel/src/capi.cpp.o
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/capi.o
 
 # target to build an object file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/capi.cpp.o:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/capi.cpp.o
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/capi.cpp.o
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/capi.cpp.o:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/src/capi.cpp.o
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/capi.cpp.o
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/capi.i: Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/capi.cpp.i
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/capi.i
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/capi.i: users/patrickchoo/cs4152/cugl/external/libdatachannel/src/capi.cpp.i
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/capi.i
 
 # target to preprocess a source file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/capi.cpp.i:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/capi.cpp.i
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/capi.cpp.i
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/capi.cpp.i:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/src/capi.cpp.i
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/capi.cpp.i
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/capi.s: Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/capi.cpp.s
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/capi.s
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/capi.s: users/patrickchoo/cs4152/cugl/external/libdatachannel/src/capi.cpp.s
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/capi.s
 
 # target to generate assembly for a file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/capi.cpp.s:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/capi.cpp.s
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/capi.cpp.s
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/capi.cpp.s:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/src/capi.cpp.s
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/capi.cpp.s
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/channel.o: Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/channel.cpp.o
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/channel.o
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/channel.o: users/patrickchoo/cs4152/cugl/external/libdatachannel/src/channel.cpp.o
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/channel.o
 
 # target to build an object file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/channel.cpp.o:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/channel.cpp.o
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/channel.cpp.o
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/channel.cpp.o:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/src/channel.cpp.o
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/channel.cpp.o
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/channel.i: Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/channel.cpp.i
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/channel.i
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/channel.i: users/patrickchoo/cs4152/cugl/external/libdatachannel/src/channel.cpp.i
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/channel.i
 
 # target to preprocess a source file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/channel.cpp.i:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/channel.cpp.i
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/channel.cpp.i
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/channel.cpp.i:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/src/channel.cpp.i
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/channel.cpp.i
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/channel.s: Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/channel.cpp.s
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/channel.s
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/channel.s: users/patrickchoo/cs4152/cugl/external/libdatachannel/src/channel.cpp.s
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/channel.s
 
 # target to generate assembly for a file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/channel.cpp.s:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/channel.cpp.s
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/channel.cpp.s
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/channel.cpp.s:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/src/channel.cpp.s
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/channel.cpp.s
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/configuration.o: Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/configuration.cpp.o
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/configuration.o
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/configuration.o: users/patrickchoo/cs4152/cugl/external/libdatachannel/src/configuration.cpp.o
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/configuration.o
 
 # target to build an object file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/configuration.cpp.o:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/configuration.cpp.o
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/configuration.cpp.o
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/configuration.cpp.o:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/src/configuration.cpp.o
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/configuration.cpp.o
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/configuration.i: Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/configuration.cpp.i
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/configuration.i
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/configuration.i: users/patrickchoo/cs4152/cugl/external/libdatachannel/src/configuration.cpp.i
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/configuration.i
 
 # target to preprocess a source file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/configuration.cpp.i:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/configuration.cpp.i
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/configuration.cpp.i
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/configuration.cpp.i:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/src/configuration.cpp.i
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/configuration.cpp.i
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/configuration.s: Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/configuration.cpp.s
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/configuration.s
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/configuration.s: users/patrickchoo/cs4152/cugl/external/libdatachannel/src/configuration.cpp.s
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/configuration.s
 
 # target to generate assembly for a file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/configuration.cpp.s:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/configuration.cpp.s
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/configuration.cpp.s
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/configuration.cpp.s:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/src/configuration.cpp.s
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/configuration.cpp.s
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/datachannel.o: Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/datachannel.cpp.o
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/datachannel.o
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/datachannel.o: users/patrickchoo/cs4152/cugl/external/libdatachannel/src/datachannel.cpp.o
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/datachannel.o
 
 # target to build an object file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/datachannel.cpp.o:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/datachannel.cpp.o
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/datachannel.cpp.o
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/datachannel.cpp.o:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/src/datachannel.cpp.o
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/datachannel.cpp.o
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/datachannel.i: Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/datachannel.cpp.i
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/datachannel.i
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/datachannel.i: users/patrickchoo/cs4152/cugl/external/libdatachannel/src/datachannel.cpp.i
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/datachannel.i
 
 # target to preprocess a source file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/datachannel.cpp.i:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/datachannel.cpp.i
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/datachannel.cpp.i
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/datachannel.cpp.i:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/src/datachannel.cpp.i
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/datachannel.cpp.i
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/datachannel.s: Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/datachannel.cpp.s
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/datachannel.s
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/datachannel.s: users/patrickchoo/cs4152/cugl/external/libdatachannel/src/datachannel.cpp.s
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/datachannel.s
 
 # target to generate assembly for a file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/datachannel.cpp.s:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/datachannel.cpp.s
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/datachannel.cpp.s
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/datachannel.cpp.s:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/src/datachannel.cpp.s
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/datachannel.cpp.s
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/description.o: Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/description.cpp.o
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/description.o
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/description.o: users/patrickchoo/cs4152/cugl/external/libdatachannel/src/description.cpp.o
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/description.o
 
 # target to build an object file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/description.cpp.o:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/description.cpp.o
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/description.cpp.o
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/description.cpp.o:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/src/description.cpp.o
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/description.cpp.o
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/description.i: Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/description.cpp.i
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/description.i
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/description.i: users/patrickchoo/cs4152/cugl/external/libdatachannel/src/description.cpp.i
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/description.i
 
 # target to preprocess a source file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/description.cpp.i:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/description.cpp.i
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/description.cpp.i
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/description.cpp.i:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/src/description.cpp.i
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/description.cpp.i
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/description.s: Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/description.cpp.s
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/description.s
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/description.s: users/patrickchoo/cs4152/cugl/external/libdatachannel/src/description.cpp.s
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/description.s
 
 # target to generate assembly for a file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/description.cpp.s:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/description.cpp.s
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/description.cpp.s
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/description.cpp.s:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/src/description.cpp.s
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/description.cpp.s
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/global.o: Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/global.cpp.o
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/global.o
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/global.o: users/patrickchoo/cs4152/cugl/external/libdatachannel/src/global.cpp.o
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/global.o
 
 # target to build an object file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/global.cpp.o:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/global.cpp.o
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/global.cpp.o
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/global.cpp.o:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/src/global.cpp.o
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/global.cpp.o
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/global.i: Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/global.cpp.i
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/global.i
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/global.i: users/patrickchoo/cs4152/cugl/external/libdatachannel/src/global.cpp.i
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/global.i
 
 # target to preprocess a source file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/global.cpp.i:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/global.cpp.i
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/global.cpp.i
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/global.cpp.i:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/src/global.cpp.i
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/global.cpp.i
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/global.s: Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/global.cpp.s
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/global.s
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/global.s: users/patrickchoo/cs4152/cugl/external/libdatachannel/src/global.cpp.s
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/global.s
 
 # target to generate assembly for a file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/global.cpp.s:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/global.cpp.s
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/global.cpp.s
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/global.cpp.s:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/src/global.cpp.s
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/global.cpp.s
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/h264rtpdepacketizer.o: Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/h264rtpdepacketizer.cpp.o
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/h264rtpdepacketizer.o
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/h264rtpdepacketizer.o: users/patrickchoo/cs4152/cugl/external/libdatachannel/src/h264rtpdepacketizer.cpp.o
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/h264rtpdepacketizer.o
 
 # target to build an object file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/h264rtpdepacketizer.cpp.o:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/h264rtpdepacketizer.cpp.o
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/h264rtpdepacketizer.cpp.o
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/h264rtpdepacketizer.cpp.o:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/src/h264rtpdepacketizer.cpp.o
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/h264rtpdepacketizer.cpp.o
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/h264rtpdepacketizer.i: Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/h264rtpdepacketizer.cpp.i
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/h264rtpdepacketizer.i
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/h264rtpdepacketizer.i: users/patrickchoo/cs4152/cugl/external/libdatachannel/src/h264rtpdepacketizer.cpp.i
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/h264rtpdepacketizer.i
 
 # target to preprocess a source file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/h264rtpdepacketizer.cpp.i:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/h264rtpdepacketizer.cpp.i
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/h264rtpdepacketizer.cpp.i
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/h264rtpdepacketizer.cpp.i:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/src/h264rtpdepacketizer.cpp.i
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/h264rtpdepacketizer.cpp.i
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/h264rtpdepacketizer.s: Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/h264rtpdepacketizer.cpp.s
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/h264rtpdepacketizer.s
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/h264rtpdepacketizer.s: users/patrickchoo/cs4152/cugl/external/libdatachannel/src/h264rtpdepacketizer.cpp.s
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/h264rtpdepacketizer.s
 
 # target to generate assembly for a file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/h264rtpdepacketizer.cpp.s:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/h264rtpdepacketizer.cpp.s
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/h264rtpdepacketizer.cpp.s
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/h264rtpdepacketizer.cpp.s:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/src/h264rtpdepacketizer.cpp.s
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/h264rtpdepacketizer.cpp.s
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/h264rtppacketizer.o: Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/h264rtppacketizer.cpp.o
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/h264rtppacketizer.o
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/h264rtppacketizer.o: users/patrickchoo/cs4152/cugl/external/libdatachannel/src/h264rtppacketizer.cpp.o
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/h264rtppacketizer.o
 
 # target to build an object file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/h264rtppacketizer.cpp.o:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/h264rtppacketizer.cpp.o
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/h264rtppacketizer.cpp.o
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/h264rtppacketizer.cpp.o:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/src/h264rtppacketizer.cpp.o
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/h264rtppacketizer.cpp.o
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/h264rtppacketizer.i: Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/h264rtppacketizer.cpp.i
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/h264rtppacketizer.i
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/h264rtppacketizer.i: users/patrickchoo/cs4152/cugl/external/libdatachannel/src/h264rtppacketizer.cpp.i
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/h264rtppacketizer.i
 
 # target to preprocess a source file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/h264rtppacketizer.cpp.i:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/h264rtppacketizer.cpp.i
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/h264rtppacketizer.cpp.i
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/h264rtppacketizer.cpp.i:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/src/h264rtppacketizer.cpp.i
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/h264rtppacketizer.cpp.i
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/h264rtppacketizer.s: Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/h264rtppacketizer.cpp.s
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/h264rtppacketizer.s
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/h264rtppacketizer.s: users/patrickchoo/cs4152/cugl/external/libdatachannel/src/h264rtppacketizer.cpp.s
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/h264rtppacketizer.s
 
 # target to generate assembly for a file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/h264rtppacketizer.cpp.s:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/h264rtppacketizer.cpp.s
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/h264rtppacketizer.cpp.s
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/h264rtppacketizer.cpp.s:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/src/h264rtppacketizer.cpp.s
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/h264rtppacketizer.cpp.s
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/h265nalunit.o: Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/h265nalunit.cpp.o
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/h265nalunit.o
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/h265nalunit.o: users/patrickchoo/cs4152/cugl/external/libdatachannel/src/h265nalunit.cpp.o
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/h265nalunit.o
 
 # target to build an object file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/h265nalunit.cpp.o:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/h265nalunit.cpp.o
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/h265nalunit.cpp.o
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/h265nalunit.cpp.o:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/src/h265nalunit.cpp.o
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/h265nalunit.cpp.o
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/h265nalunit.i: Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/h265nalunit.cpp.i
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/h265nalunit.i
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/h265nalunit.i: users/patrickchoo/cs4152/cugl/external/libdatachannel/src/h265nalunit.cpp.i
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/h265nalunit.i
 
 # target to preprocess a source file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/h265nalunit.cpp.i:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/h265nalunit.cpp.i
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/h265nalunit.cpp.i
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/h265nalunit.cpp.i:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/src/h265nalunit.cpp.i
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/h265nalunit.cpp.i
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/h265nalunit.s: Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/h265nalunit.cpp.s
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/h265nalunit.s
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/h265nalunit.s: users/patrickchoo/cs4152/cugl/external/libdatachannel/src/h265nalunit.cpp.s
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/h265nalunit.s
 
 # target to generate assembly for a file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/h265nalunit.cpp.s:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/h265nalunit.cpp.s
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/h265nalunit.cpp.s
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/h265nalunit.cpp.s:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/src/h265nalunit.cpp.s
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/h265nalunit.cpp.s
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/h265rtppacketizer.o: Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/h265rtppacketizer.cpp.o
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/h265rtppacketizer.o
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/h265rtppacketizer.o: users/patrickchoo/cs4152/cugl/external/libdatachannel/src/h265rtppacketizer.cpp.o
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/h265rtppacketizer.o
 
 # target to build an object file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/h265rtppacketizer.cpp.o:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/h265rtppacketizer.cpp.o
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/h265rtppacketizer.cpp.o
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/h265rtppacketizer.cpp.o:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/src/h265rtppacketizer.cpp.o
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/h265rtppacketizer.cpp.o
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/h265rtppacketizer.i: Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/h265rtppacketizer.cpp.i
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/h265rtppacketizer.i
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/h265rtppacketizer.i: users/patrickchoo/cs4152/cugl/external/libdatachannel/src/h265rtppacketizer.cpp.i
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/h265rtppacketizer.i
 
 # target to preprocess a source file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/h265rtppacketizer.cpp.i:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/h265rtppacketizer.cpp.i
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/h265rtppacketizer.cpp.i
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/h265rtppacketizer.cpp.i:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/src/h265rtppacketizer.cpp.i
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/h265rtppacketizer.cpp.i
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/h265rtppacketizer.s: Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/h265rtppacketizer.cpp.s
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/h265rtppacketizer.s
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/h265rtppacketizer.s: users/patrickchoo/cs4152/cugl/external/libdatachannel/src/h265rtppacketizer.cpp.s
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/h265rtppacketizer.s
 
 # target to generate assembly for a file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/h265rtppacketizer.cpp.s:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/h265rtppacketizer.cpp.s
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/h265rtppacketizer.cpp.s
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/h265rtppacketizer.cpp.s:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/src/h265rtppacketizer.cpp.s
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/h265rtppacketizer.cpp.s
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/certificate.o: Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/certificate.cpp.o
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/certificate.o
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/certificate.o: users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/certificate.cpp.o
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/certificate.o
 
 # target to build an object file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/certificate.cpp.o:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/certificate.cpp.o
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/certificate.cpp.o
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/certificate.cpp.o:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/certificate.cpp.o
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/certificate.cpp.o
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/certificate.i: Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/certificate.cpp.i
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/certificate.i
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/certificate.i: users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/certificate.cpp.i
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/certificate.i
 
 # target to preprocess a source file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/certificate.cpp.i:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/certificate.cpp.i
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/certificate.cpp.i
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/certificate.cpp.i:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/certificate.cpp.i
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/certificate.cpp.i
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/certificate.s: Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/certificate.cpp.s
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/certificate.s
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/certificate.s: users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/certificate.cpp.s
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/certificate.s
 
 # target to generate assembly for a file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/certificate.cpp.s:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/certificate.cpp.s
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/certificate.cpp.s
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/certificate.cpp.s:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/certificate.cpp.s
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/certificate.cpp.s
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/channel.o: Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/channel.cpp.o
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/channel.o
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/channel.o: users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/channel.cpp.o
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/channel.o
 
 # target to build an object file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/channel.cpp.o:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/channel.cpp.o
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/channel.cpp.o
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/channel.cpp.o:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/channel.cpp.o
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/channel.cpp.o
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/channel.i: Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/channel.cpp.i
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/channel.i
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/channel.i: users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/channel.cpp.i
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/channel.i
 
 # target to preprocess a source file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/channel.cpp.i:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/channel.cpp.i
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/channel.cpp.i
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/channel.cpp.i:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/channel.cpp.i
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/channel.cpp.i
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/channel.s: Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/channel.cpp.s
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/channel.s
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/channel.s: users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/channel.cpp.s
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/channel.s
 
 # target to generate assembly for a file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/channel.cpp.s:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/channel.cpp.s
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/channel.cpp.s
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/channel.cpp.s:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/channel.cpp.s
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/channel.cpp.s
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/datachannel.o: Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/datachannel.cpp.o
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/datachannel.o
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/datachannel.o: users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/datachannel.cpp.o
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/datachannel.o
 
 # target to build an object file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/datachannel.cpp.o:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/datachannel.cpp.o
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/datachannel.cpp.o
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/datachannel.cpp.o:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/datachannel.cpp.o
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/datachannel.cpp.o
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/datachannel.i: Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/datachannel.cpp.i
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/datachannel.i
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/datachannel.i: users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/datachannel.cpp.i
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/datachannel.i
 
 # target to preprocess a source file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/datachannel.cpp.i:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/datachannel.cpp.i
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/datachannel.cpp.i
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/datachannel.cpp.i:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/datachannel.cpp.i
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/datachannel.cpp.i
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/datachannel.s: Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/datachannel.cpp.s
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/datachannel.s
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/datachannel.s: users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/datachannel.cpp.s
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/datachannel.s
 
 # target to generate assembly for a file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/datachannel.cpp.s:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/datachannel.cpp.s
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/datachannel.cpp.s
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/datachannel.cpp.s:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/datachannel.cpp.s
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/datachannel.cpp.s
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/dtlssrtptransport.o: Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/dtlssrtptransport.cpp.o
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/dtlssrtptransport.o
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/dtlssrtptransport.o: users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/dtlssrtptransport.cpp.o
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/dtlssrtptransport.o
 
 # target to build an object file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/dtlssrtptransport.cpp.o:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/dtlssrtptransport.cpp.o
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/dtlssrtptransport.cpp.o
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/dtlssrtptransport.cpp.o:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/dtlssrtptransport.cpp.o
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/dtlssrtptransport.cpp.o
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/dtlssrtptransport.i: Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/dtlssrtptransport.cpp.i
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/dtlssrtptransport.i
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/dtlssrtptransport.i: users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/dtlssrtptransport.cpp.i
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/dtlssrtptransport.i
 
 # target to preprocess a source file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/dtlssrtptransport.cpp.i:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/dtlssrtptransport.cpp.i
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/dtlssrtptransport.cpp.i
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/dtlssrtptransport.cpp.i:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/dtlssrtptransport.cpp.i
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/dtlssrtptransport.cpp.i
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/dtlssrtptransport.s: Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/dtlssrtptransport.cpp.s
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/dtlssrtptransport.s
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/dtlssrtptransport.s: users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/dtlssrtptransport.cpp.s
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/dtlssrtptransport.s
 
 # target to generate assembly for a file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/dtlssrtptransport.cpp.s:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/dtlssrtptransport.cpp.s
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/dtlssrtptransport.cpp.s
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/dtlssrtptransport.cpp.s:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/dtlssrtptransport.cpp.s
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/dtlssrtptransport.cpp.s
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/dtlstransport.o: Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/dtlstransport.cpp.o
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/dtlstransport.o
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/dtlstransport.o: users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/dtlstransport.cpp.o
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/dtlstransport.o
 
 # target to build an object file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/dtlstransport.cpp.o:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/dtlstransport.cpp.o
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/dtlstransport.cpp.o
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/dtlstransport.cpp.o:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/dtlstransport.cpp.o
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/dtlstransport.cpp.o
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/dtlstransport.i: Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/dtlstransport.cpp.i
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/dtlstransport.i
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/dtlstransport.i: users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/dtlstransport.cpp.i
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/dtlstransport.i
 
 # target to preprocess a source file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/dtlstransport.cpp.i:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/dtlstransport.cpp.i
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/dtlstransport.cpp.i
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/dtlstransport.cpp.i:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/dtlstransport.cpp.i
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/dtlstransport.cpp.i
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/dtlstransport.s: Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/dtlstransport.cpp.s
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/dtlstransport.s
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/dtlstransport.s: users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/dtlstransport.cpp.s
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/dtlstransport.s
 
 # target to generate assembly for a file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/dtlstransport.cpp.s:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/dtlstransport.cpp.s
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/dtlstransport.cpp.s
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/dtlstransport.cpp.s:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/dtlstransport.cpp.s
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/dtlstransport.cpp.s
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/http.o: Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/http.cpp.o
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/http.o
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/http.o: users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/http.cpp.o
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/http.o
 
 # target to build an object file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/http.cpp.o:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/http.cpp.o
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/http.cpp.o
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/http.cpp.o:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/http.cpp.o
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/http.cpp.o
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/http.i: Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/http.cpp.i
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/http.i
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/http.i: users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/http.cpp.i
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/http.i
 
 # target to preprocess a source file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/http.cpp.i:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/http.cpp.i
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/http.cpp.i
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/http.cpp.i:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/http.cpp.i
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/http.cpp.i
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/http.s: Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/http.cpp.s
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/http.s
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/http.s: users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/http.cpp.s
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/http.s
 
 # target to generate assembly for a file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/http.cpp.s:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/http.cpp.s
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/http.cpp.s
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/http.cpp.s:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/http.cpp.s
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/http.cpp.s
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/httpproxytransport.o: Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/httpproxytransport.cpp.o
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/httpproxytransport.o
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/httpproxytransport.o: users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/httpproxytransport.cpp.o
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/httpproxytransport.o
 
 # target to build an object file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/httpproxytransport.cpp.o:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/httpproxytransport.cpp.o
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/httpproxytransport.cpp.o
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/httpproxytransport.cpp.o:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/httpproxytransport.cpp.o
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/httpproxytransport.cpp.o
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/httpproxytransport.i: Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/httpproxytransport.cpp.i
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/httpproxytransport.i
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/httpproxytransport.i: users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/httpproxytransport.cpp.i
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/httpproxytransport.i
 
 # target to preprocess a source file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/httpproxytransport.cpp.i:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/httpproxytransport.cpp.i
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/httpproxytransport.cpp.i
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/httpproxytransport.cpp.i:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/httpproxytransport.cpp.i
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/httpproxytransport.cpp.i
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/httpproxytransport.s: Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/httpproxytransport.cpp.s
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/httpproxytransport.s
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/httpproxytransport.s: users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/httpproxytransport.cpp.s
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/httpproxytransport.s
 
 # target to generate assembly for a file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/httpproxytransport.cpp.s:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/httpproxytransport.cpp.s
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/httpproxytransport.cpp.s
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/httpproxytransport.cpp.s:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/httpproxytransport.cpp.s
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/httpproxytransport.cpp.s
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/icetransport.o: Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/icetransport.cpp.o
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/icetransport.o
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/icetransport.o: users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/icetransport.cpp.o
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/icetransport.o
 
 # target to build an object file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/icetransport.cpp.o:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/icetransport.cpp.o
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/icetransport.cpp.o
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/icetransport.cpp.o:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/icetransport.cpp.o
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/icetransport.cpp.o
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/icetransport.i: Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/icetransport.cpp.i
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/icetransport.i
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/icetransport.i: users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/icetransport.cpp.i
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/icetransport.i
 
 # target to preprocess a source file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/icetransport.cpp.i:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/icetransport.cpp.i
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/icetransport.cpp.i
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/icetransport.cpp.i:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/icetransport.cpp.i
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/icetransport.cpp.i
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/icetransport.s: Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/icetransport.cpp.s
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/icetransport.s
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/icetransport.s: users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/icetransport.cpp.s
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/icetransport.s
 
 # target to generate assembly for a file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/icetransport.cpp.s:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/icetransport.cpp.s
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/icetransport.cpp.s
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/icetransport.cpp.s:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/icetransport.cpp.s
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/icetransport.cpp.s
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/init.o: Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/init.cpp.o
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/init.o
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/init.o: users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/init.cpp.o
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/init.o
 
 # target to build an object file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/init.cpp.o:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/init.cpp.o
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/init.cpp.o
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/init.cpp.o:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/init.cpp.o
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/init.cpp.o
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/init.i: Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/init.cpp.i
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/init.i
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/init.i: users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/init.cpp.i
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/init.i
 
 # target to preprocess a source file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/init.cpp.i:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/init.cpp.i
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/init.cpp.i
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/init.cpp.i:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/init.cpp.i
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/init.cpp.i
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/init.s: Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/init.cpp.s
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/init.s
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/init.s: users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/init.cpp.s
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/init.s
 
 # target to generate assembly for a file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/init.cpp.s:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/init.cpp.s
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/init.cpp.s
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/init.cpp.s:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/init.cpp.s
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/init.cpp.s
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/logcounter.o: Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/logcounter.cpp.o
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/logcounter.o
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/logcounter.o: users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/logcounter.cpp.o
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/logcounter.o
 
 # target to build an object file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/logcounter.cpp.o:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/logcounter.cpp.o
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/logcounter.cpp.o
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/logcounter.cpp.o:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/logcounter.cpp.o
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/logcounter.cpp.o
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/logcounter.i: Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/logcounter.cpp.i
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/logcounter.i
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/logcounter.i: users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/logcounter.cpp.i
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/logcounter.i
 
 # target to preprocess a source file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/logcounter.cpp.i:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/logcounter.cpp.i
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/logcounter.cpp.i
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/logcounter.cpp.i:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/logcounter.cpp.i
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/logcounter.cpp.i
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/logcounter.s: Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/logcounter.cpp.s
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/logcounter.s
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/logcounter.s: users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/logcounter.cpp.s
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/logcounter.s
 
 # target to generate assembly for a file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/logcounter.cpp.s:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/logcounter.cpp.s
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/logcounter.cpp.s
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/logcounter.cpp.s:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/logcounter.cpp.s
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/logcounter.cpp.s
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/peerconnection.o: Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/peerconnection.cpp.o
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/peerconnection.o
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/peerconnection.o: users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/peerconnection.cpp.o
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/peerconnection.o
 
 # target to build an object file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/peerconnection.cpp.o:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/peerconnection.cpp.o
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/peerconnection.cpp.o
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/peerconnection.cpp.o:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/peerconnection.cpp.o
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/peerconnection.cpp.o
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/peerconnection.i: Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/peerconnection.cpp.i
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/peerconnection.i
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/peerconnection.i: users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/peerconnection.cpp.i
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/peerconnection.i
 
 # target to preprocess a source file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/peerconnection.cpp.i:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/peerconnection.cpp.i
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/peerconnection.cpp.i
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/peerconnection.cpp.i:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/peerconnection.cpp.i
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/peerconnection.cpp.i
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/peerconnection.s: Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/peerconnection.cpp.s
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/peerconnection.s
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/peerconnection.s: users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/peerconnection.cpp.s
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/peerconnection.s
 
 # target to generate assembly for a file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/peerconnection.cpp.s:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/peerconnection.cpp.s
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/peerconnection.cpp.s
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/peerconnection.cpp.s:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/peerconnection.cpp.s
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/peerconnection.cpp.s
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/pollinterrupter.o: Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/pollinterrupter.cpp.o
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/pollinterrupter.o
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/pollinterrupter.o: users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/pollinterrupter.cpp.o
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/pollinterrupter.o
 
 # target to build an object file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/pollinterrupter.cpp.o:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/pollinterrupter.cpp.o
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/pollinterrupter.cpp.o
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/pollinterrupter.cpp.o:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/pollinterrupter.cpp.o
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/pollinterrupter.cpp.o
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/pollinterrupter.i: Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/pollinterrupter.cpp.i
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/pollinterrupter.i
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/pollinterrupter.i: users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/pollinterrupter.cpp.i
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/pollinterrupter.i
 
 # target to preprocess a source file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/pollinterrupter.cpp.i:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/pollinterrupter.cpp.i
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/pollinterrupter.cpp.i
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/pollinterrupter.cpp.i:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/pollinterrupter.cpp.i
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/pollinterrupter.cpp.i
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/pollinterrupter.s: Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/pollinterrupter.cpp.s
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/pollinterrupter.s
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/pollinterrupter.s: users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/pollinterrupter.cpp.s
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/pollinterrupter.s
 
 # target to generate assembly for a file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/pollinterrupter.cpp.s:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/pollinterrupter.cpp.s
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/pollinterrupter.cpp.s
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/pollinterrupter.cpp.s:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/pollinterrupter.cpp.s
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/pollinterrupter.cpp.s
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/pollservice.o: Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/pollservice.cpp.o
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/pollservice.o
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/pollservice.o: users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/pollservice.cpp.o
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/pollservice.o
 
 # target to build an object file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/pollservice.cpp.o:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/pollservice.cpp.o
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/pollservice.cpp.o
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/pollservice.cpp.o:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/pollservice.cpp.o
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/pollservice.cpp.o
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/pollservice.i: Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/pollservice.cpp.i
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/pollservice.i
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/pollservice.i: users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/pollservice.cpp.i
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/pollservice.i
 
 # target to preprocess a source file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/pollservice.cpp.i:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/pollservice.cpp.i
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/pollservice.cpp.i
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/pollservice.cpp.i:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/pollservice.cpp.i
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/pollservice.cpp.i
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/pollservice.s: Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/pollservice.cpp.s
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/pollservice.s
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/pollservice.s: users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/pollservice.cpp.s
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/pollservice.s
 
 # target to generate assembly for a file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/pollservice.cpp.s:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/pollservice.cpp.s
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/pollservice.cpp.s
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/pollservice.cpp.s:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/pollservice.cpp.s
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/pollservice.cpp.s
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/processor.o: Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/processor.cpp.o
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/processor.o
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/processor.o: users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/processor.cpp.o
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/processor.o
 
 # target to build an object file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/processor.cpp.o:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/processor.cpp.o
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/processor.cpp.o
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/processor.cpp.o:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/processor.cpp.o
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/processor.cpp.o
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/processor.i: Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/processor.cpp.i
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/processor.i
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/processor.i: users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/processor.cpp.i
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/processor.i
 
 # target to preprocess a source file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/processor.cpp.i:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/processor.cpp.i
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/processor.cpp.i
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/processor.cpp.i:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/processor.cpp.i
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/processor.cpp.i
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/processor.s: Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/processor.cpp.s
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/processor.s
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/processor.s: users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/processor.cpp.s
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/processor.s
 
 # target to generate assembly for a file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/processor.cpp.s:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/processor.cpp.s
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/processor.cpp.s
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/processor.cpp.s:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/processor.cpp.s
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/processor.cpp.s
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/sctptransport.o: Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/sctptransport.cpp.o
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/sctptransport.o
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/sctptransport.o: users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/sctptransport.cpp.o
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/sctptransport.o
 
 # target to build an object file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/sctptransport.cpp.o:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/sctptransport.cpp.o
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/sctptransport.cpp.o
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/sctptransport.cpp.o:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/sctptransport.cpp.o
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/sctptransport.cpp.o
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/sctptransport.i: Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/sctptransport.cpp.i
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/sctptransport.i
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/sctptransport.i: users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/sctptransport.cpp.i
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/sctptransport.i
 
 # target to preprocess a source file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/sctptransport.cpp.i:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/sctptransport.cpp.i
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/sctptransport.cpp.i
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/sctptransport.cpp.i:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/sctptransport.cpp.i
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/sctptransport.cpp.i
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/sctptransport.s: Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/sctptransport.cpp.s
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/sctptransport.s
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/sctptransport.s: users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/sctptransport.cpp.s
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/sctptransport.s
 
 # target to generate assembly for a file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/sctptransport.cpp.s:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/sctptransport.cpp.s
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/sctptransport.cpp.s
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/sctptransport.cpp.s:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/sctptransport.cpp.s
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/sctptransport.cpp.s
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/sha.o: Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/sha.cpp.o
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/sha.o
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/sha.o: users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/sha.cpp.o
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/sha.o
 
 # target to build an object file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/sha.cpp.o:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/sha.cpp.o
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/sha.cpp.o
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/sha.cpp.o:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/sha.cpp.o
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/sha.cpp.o
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/sha.i: Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/sha.cpp.i
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/sha.i
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/sha.i: users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/sha.cpp.i
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/sha.i
 
 # target to preprocess a source file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/sha.cpp.i:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/sha.cpp.i
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/sha.cpp.i
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/sha.cpp.i:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/sha.cpp.i
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/sha.cpp.i
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/sha.s: Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/sha.cpp.s
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/sha.s
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/sha.s: users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/sha.cpp.s
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/sha.s
 
 # target to generate assembly for a file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/sha.cpp.s:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/sha.cpp.s
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/sha.cpp.s
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/sha.cpp.s:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/sha.cpp.s
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/sha.cpp.s
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/tcpserver.o: Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/tcpserver.cpp.o
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/tcpserver.o
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/tcpserver.o: users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/tcpserver.cpp.o
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/tcpserver.o
 
 # target to build an object file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/tcpserver.cpp.o:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/tcpserver.cpp.o
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/tcpserver.cpp.o
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/tcpserver.cpp.o:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/tcpserver.cpp.o
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/tcpserver.cpp.o
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/tcpserver.i: Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/tcpserver.cpp.i
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/tcpserver.i
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/tcpserver.i: users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/tcpserver.cpp.i
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/tcpserver.i
 
 # target to preprocess a source file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/tcpserver.cpp.i:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/tcpserver.cpp.i
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/tcpserver.cpp.i
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/tcpserver.cpp.i:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/tcpserver.cpp.i
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/tcpserver.cpp.i
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/tcpserver.s: Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/tcpserver.cpp.s
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/tcpserver.s
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/tcpserver.s: users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/tcpserver.cpp.s
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/tcpserver.s
 
 # target to generate assembly for a file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/tcpserver.cpp.s:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/tcpserver.cpp.s
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/tcpserver.cpp.s
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/tcpserver.cpp.s:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/tcpserver.cpp.s
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/tcpserver.cpp.s
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/tcptransport.o: Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/tcptransport.cpp.o
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/tcptransport.o
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/tcptransport.o: users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/tcptransport.cpp.o
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/tcptransport.o
 
 # target to build an object file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/tcptransport.cpp.o:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/tcptransport.cpp.o
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/tcptransport.cpp.o
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/tcptransport.cpp.o:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/tcptransport.cpp.o
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/tcptransport.cpp.o
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/tcptransport.i: Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/tcptransport.cpp.i
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/tcptransport.i
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/tcptransport.i: users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/tcptransport.cpp.i
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/tcptransport.i
 
 # target to preprocess a source file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/tcptransport.cpp.i:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/tcptransport.cpp.i
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/tcptransport.cpp.i
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/tcptransport.cpp.i:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/tcptransport.cpp.i
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/tcptransport.cpp.i
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/tcptransport.s: Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/tcptransport.cpp.s
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/tcptransport.s
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/tcptransport.s: users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/tcptransport.cpp.s
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/tcptransport.s
 
 # target to generate assembly for a file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/tcptransport.cpp.s:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/tcptransport.cpp.s
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/tcptransport.cpp.s
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/tcptransport.cpp.s:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/tcptransport.cpp.s
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/tcptransport.cpp.s
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/threadpool.o: Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/threadpool.cpp.o
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/threadpool.o
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/threadpool.o: users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/threadpool.cpp.o
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/threadpool.o
 
 # target to build an object file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/threadpool.cpp.o:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/threadpool.cpp.o
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/threadpool.cpp.o
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/threadpool.cpp.o:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/threadpool.cpp.o
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/threadpool.cpp.o
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/threadpool.i: Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/threadpool.cpp.i
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/threadpool.i
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/threadpool.i: users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/threadpool.cpp.i
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/threadpool.i
 
 # target to preprocess a source file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/threadpool.cpp.i:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/threadpool.cpp.i
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/threadpool.cpp.i
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/threadpool.cpp.i:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/threadpool.cpp.i
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/threadpool.cpp.i
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/threadpool.s: Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/threadpool.cpp.s
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/threadpool.s
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/threadpool.s: users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/threadpool.cpp.s
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/threadpool.s
 
 # target to generate assembly for a file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/threadpool.cpp.s:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/threadpool.cpp.s
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/threadpool.cpp.s
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/threadpool.cpp.s:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/threadpool.cpp.s
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/threadpool.cpp.s
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/tls.o: Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/tls.cpp.o
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/tls.o
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/tls.o: users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/tls.cpp.o
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/tls.o
 
 # target to build an object file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/tls.cpp.o:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/tls.cpp.o
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/tls.cpp.o
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/tls.cpp.o:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/tls.cpp.o
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/tls.cpp.o
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/tls.i: Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/tls.cpp.i
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/tls.i
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/tls.i: users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/tls.cpp.i
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/tls.i
 
 # target to preprocess a source file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/tls.cpp.i:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/tls.cpp.i
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/tls.cpp.i
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/tls.cpp.i:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/tls.cpp.i
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/tls.cpp.i
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/tls.s: Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/tls.cpp.s
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/tls.s
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/tls.s: users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/tls.cpp.s
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/tls.s
 
 # target to generate assembly for a file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/tls.cpp.s:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/tls.cpp.s
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/tls.cpp.s
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/tls.cpp.s:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/tls.cpp.s
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/tls.cpp.s
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/tlstransport.o: Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/tlstransport.cpp.o
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/tlstransport.o
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/tlstransport.o: users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/tlstransport.cpp.o
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/tlstransport.o
 
 # target to build an object file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/tlstransport.cpp.o:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/tlstransport.cpp.o
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/tlstransport.cpp.o
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/tlstransport.cpp.o:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/tlstransport.cpp.o
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/tlstransport.cpp.o
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/tlstransport.i: Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/tlstransport.cpp.i
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/tlstransport.i
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/tlstransport.i: users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/tlstransport.cpp.i
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/tlstransport.i
 
 # target to preprocess a source file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/tlstransport.cpp.i:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/tlstransport.cpp.i
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/tlstransport.cpp.i
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/tlstransport.cpp.i:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/tlstransport.cpp.i
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/tlstransport.cpp.i
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/tlstransport.s: Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/tlstransport.cpp.s
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/tlstransport.s
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/tlstransport.s: users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/tlstransport.cpp.s
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/tlstransport.s
 
 # target to generate assembly for a file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/tlstransport.cpp.s:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/tlstransport.cpp.s
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/tlstransport.cpp.s
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/tlstransport.cpp.s:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/tlstransport.cpp.s
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/tlstransport.cpp.s
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/track.o: Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/track.cpp.o
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/track.o
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/track.o: users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/track.cpp.o
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/track.o
 
 # target to build an object file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/track.cpp.o:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/track.cpp.o
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/track.cpp.o
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/track.cpp.o:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/track.cpp.o
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/track.cpp.o
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/track.i: Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/track.cpp.i
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/track.i
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/track.i: users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/track.cpp.i
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/track.i
 
 # target to preprocess a source file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/track.cpp.i:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/track.cpp.i
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/track.cpp.i
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/track.cpp.i:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/track.cpp.i
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/track.cpp.i
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/track.s: Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/track.cpp.s
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/track.s
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/track.s: users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/track.cpp.s
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/track.s
 
 # target to generate assembly for a file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/track.cpp.s:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/track.cpp.s
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/track.cpp.s
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/track.cpp.s:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/track.cpp.s
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/track.cpp.s
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/transport.o: Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/transport.cpp.o
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/transport.o
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/transport.o: users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/transport.cpp.o
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/transport.o
 
 # target to build an object file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/transport.cpp.o:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/transport.cpp.o
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/transport.cpp.o
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/transport.cpp.o:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/transport.cpp.o
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/transport.cpp.o
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/transport.i: Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/transport.cpp.i
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/transport.i
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/transport.i: users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/transport.cpp.i
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/transport.i
 
 # target to preprocess a source file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/transport.cpp.i:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/transport.cpp.i
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/transport.cpp.i
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/transport.cpp.i:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/transport.cpp.i
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/transport.cpp.i
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/transport.s: Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/transport.cpp.s
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/transport.s
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/transport.s: users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/transport.cpp.s
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/transport.s
 
 # target to generate assembly for a file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/transport.cpp.s:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/transport.cpp.s
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/transport.cpp.s
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/transport.cpp.s:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/transport.cpp.s
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/transport.cpp.s
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/utils.o: Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/utils.cpp.o
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/utils.o
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/utils.o: users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/utils.cpp.o
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/utils.o
 
 # target to build an object file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/utils.cpp.o:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/utils.cpp.o
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/utils.cpp.o
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/utils.cpp.o:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/utils.cpp.o
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/utils.cpp.o
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/utils.i: Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/utils.cpp.i
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/utils.i
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/utils.i: users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/utils.cpp.i
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/utils.i
 
 # target to preprocess a source file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/utils.cpp.i:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/utils.cpp.i
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/utils.cpp.i
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/utils.cpp.i:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/utils.cpp.i
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/utils.cpp.i
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/utils.s: Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/utils.cpp.s
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/utils.s
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/utils.s: users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/utils.cpp.s
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/utils.s
 
 # target to generate assembly for a file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/utils.cpp.s:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/utils.cpp.s
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/utils.cpp.s
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/utils.cpp.s:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/utils.cpp.s
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/utils.cpp.s
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/verifiedtlstransport.o: Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/verifiedtlstransport.cpp.o
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/verifiedtlstransport.o
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/verifiedtlstransport.o: users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/verifiedtlstransport.cpp.o
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/verifiedtlstransport.o
 
 # target to build an object file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/verifiedtlstransport.cpp.o:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/verifiedtlstransport.cpp.o
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/verifiedtlstransport.cpp.o
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/verifiedtlstransport.cpp.o:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/verifiedtlstransport.cpp.o
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/verifiedtlstransport.cpp.o
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/verifiedtlstransport.i: Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/verifiedtlstransport.cpp.i
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/verifiedtlstransport.i
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/verifiedtlstransport.i: users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/verifiedtlstransport.cpp.i
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/verifiedtlstransport.i
 
 # target to preprocess a source file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/verifiedtlstransport.cpp.i:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/verifiedtlstransport.cpp.i
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/verifiedtlstransport.cpp.i
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/verifiedtlstransport.cpp.i:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/verifiedtlstransport.cpp.i
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/verifiedtlstransport.cpp.i
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/verifiedtlstransport.s: Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/verifiedtlstransport.cpp.s
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/verifiedtlstransport.s
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/verifiedtlstransport.s: users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/verifiedtlstransport.cpp.s
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/verifiedtlstransport.s
 
 # target to generate assembly for a file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/verifiedtlstransport.cpp.s:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/verifiedtlstransport.cpp.s
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/verifiedtlstransport.cpp.s
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/verifiedtlstransport.cpp.s:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/verifiedtlstransport.cpp.s
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/verifiedtlstransport.cpp.s
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/websocket.o: Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/websocket.cpp.o
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/websocket.o
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/websocket.o: users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/websocket.cpp.o
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/websocket.o
 
 # target to build an object file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/websocket.cpp.o:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/websocket.cpp.o
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/websocket.cpp.o
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/websocket.cpp.o:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/websocket.cpp.o
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/websocket.cpp.o
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/websocket.i: Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/websocket.cpp.i
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/websocket.i
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/websocket.i: users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/websocket.cpp.i
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/websocket.i
 
 # target to preprocess a source file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/websocket.cpp.i:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/websocket.cpp.i
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/websocket.cpp.i
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/websocket.cpp.i:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/websocket.cpp.i
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/websocket.cpp.i
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/websocket.s: Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/websocket.cpp.s
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/websocket.s
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/websocket.s: users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/websocket.cpp.s
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/websocket.s
 
 # target to generate assembly for a file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/websocket.cpp.s:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/websocket.cpp.s
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/websocket.cpp.s
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/websocket.cpp.s:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/websocket.cpp.s
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/websocket.cpp.s
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/websocketserver.o: Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/websocketserver.cpp.o
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/websocketserver.o
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/websocketserver.o: users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/websocketserver.cpp.o
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/websocketserver.o
 
 # target to build an object file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/websocketserver.cpp.o:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/websocketserver.cpp.o
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/websocketserver.cpp.o
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/websocketserver.cpp.o:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/websocketserver.cpp.o
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/websocketserver.cpp.o
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/websocketserver.i: Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/websocketserver.cpp.i
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/websocketserver.i
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/websocketserver.i: users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/websocketserver.cpp.i
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/websocketserver.i
 
 # target to preprocess a source file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/websocketserver.cpp.i:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/websocketserver.cpp.i
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/websocketserver.cpp.i
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/websocketserver.cpp.i:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/websocketserver.cpp.i
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/websocketserver.cpp.i
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/websocketserver.s: Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/websocketserver.cpp.s
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/websocketserver.s
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/websocketserver.s: users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/websocketserver.cpp.s
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/websocketserver.s
 
 # target to generate assembly for a file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/websocketserver.cpp.s:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/websocketserver.cpp.s
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/websocketserver.cpp.s
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/websocketserver.cpp.s:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/websocketserver.cpp.s
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/websocketserver.cpp.s
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/wshandshake.o: Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/wshandshake.cpp.o
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/wshandshake.o
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/wshandshake.o: users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/wshandshake.cpp.o
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/wshandshake.o
 
 # target to build an object file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/wshandshake.cpp.o:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/wshandshake.cpp.o
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/wshandshake.cpp.o
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/wshandshake.cpp.o:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/wshandshake.cpp.o
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/wshandshake.cpp.o
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/wshandshake.i: Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/wshandshake.cpp.i
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/wshandshake.i
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/wshandshake.i: users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/wshandshake.cpp.i
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/wshandshake.i
 
 # target to preprocess a source file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/wshandshake.cpp.i:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/wshandshake.cpp.i
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/wshandshake.cpp.i
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/wshandshake.cpp.i:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/wshandshake.cpp.i
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/wshandshake.cpp.i
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/wshandshake.s: Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/wshandshake.cpp.s
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/wshandshake.s
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/wshandshake.s: users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/wshandshake.cpp.s
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/wshandshake.s
 
 # target to generate assembly for a file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/wshandshake.cpp.s:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/wshandshake.cpp.s
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/wshandshake.cpp.s
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/wshandshake.cpp.s:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/wshandshake.cpp.s
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/wshandshake.cpp.s
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/wstransport.o: Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/wstransport.cpp.o
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/wstransport.o
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/wstransport.o: users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/wstransport.cpp.o
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/wstransport.o
 
 # target to build an object file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/wstransport.cpp.o:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/wstransport.cpp.o
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/wstransport.cpp.o
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/wstransport.cpp.o:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/wstransport.cpp.o
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/wstransport.cpp.o
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/wstransport.i: Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/wstransport.cpp.i
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/wstransport.i
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/wstransport.i: users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/wstransport.cpp.i
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/wstransport.i
 
 # target to preprocess a source file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/wstransport.cpp.i:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/wstransport.cpp.i
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/wstransport.cpp.i
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/wstransport.cpp.i:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/wstransport.cpp.i
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/wstransport.cpp.i
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/wstransport.s: Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/wstransport.cpp.s
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/wstransport.s
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/wstransport.s: users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/wstransport.cpp.s
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/wstransport.s
 
 # target to generate assembly for a file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/wstransport.cpp.s:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/wstransport.cpp.s
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/wstransport.cpp.s
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/wstransport.cpp.s:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/wstransport.cpp.s
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/wstransport.cpp.s
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/mediahandler.o: Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/mediahandler.cpp.o
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/mediahandler.o
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/mediahandler.o: users/patrickchoo/cs4152/cugl/external/libdatachannel/src/mediahandler.cpp.o
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/mediahandler.o
 
 # target to build an object file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/mediahandler.cpp.o:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/mediahandler.cpp.o
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/mediahandler.cpp.o
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/mediahandler.cpp.o:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/src/mediahandler.cpp.o
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/mediahandler.cpp.o
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/mediahandler.i: Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/mediahandler.cpp.i
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/mediahandler.i
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/mediahandler.i: users/patrickchoo/cs4152/cugl/external/libdatachannel/src/mediahandler.cpp.i
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/mediahandler.i
 
 # target to preprocess a source file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/mediahandler.cpp.i:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/mediahandler.cpp.i
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/mediahandler.cpp.i
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/mediahandler.cpp.i:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/src/mediahandler.cpp.i
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/mediahandler.cpp.i
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/mediahandler.s: Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/mediahandler.cpp.s
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/mediahandler.s
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/mediahandler.s: users/patrickchoo/cs4152/cugl/external/libdatachannel/src/mediahandler.cpp.s
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/mediahandler.s
 
 # target to generate assembly for a file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/mediahandler.cpp.s:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/mediahandler.cpp.s
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/mediahandler.cpp.s
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/mediahandler.cpp.s:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/src/mediahandler.cpp.s
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/mediahandler.cpp.s
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/message.o: Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/message.cpp.o
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/message.o
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/message.o: users/patrickchoo/cs4152/cugl/external/libdatachannel/src/message.cpp.o
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/message.o
 
 # target to build an object file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/message.cpp.o:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/message.cpp.o
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/message.cpp.o
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/message.cpp.o:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/src/message.cpp.o
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/message.cpp.o
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/message.i: Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/message.cpp.i
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/message.i
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/message.i: users/patrickchoo/cs4152/cugl/external/libdatachannel/src/message.cpp.i
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/message.i
 
 # target to preprocess a source file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/message.cpp.i:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/message.cpp.i
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/message.cpp.i
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/message.cpp.i:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/src/message.cpp.i
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/message.cpp.i
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/message.s: Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/message.cpp.s
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/message.s
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/message.s: users/patrickchoo/cs4152/cugl/external/libdatachannel/src/message.cpp.s
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/message.s
 
 # target to generate assembly for a file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/message.cpp.s:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/message.cpp.s
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/message.cpp.s
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/message.cpp.s:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/src/message.cpp.s
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/message.cpp.s
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/nalunit.o: Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/nalunit.cpp.o
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/nalunit.o
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/nalunit.o: users/patrickchoo/cs4152/cugl/external/libdatachannel/src/nalunit.cpp.o
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/nalunit.o
 
 # target to build an object file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/nalunit.cpp.o:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/nalunit.cpp.o
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/nalunit.cpp.o
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/nalunit.cpp.o:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/src/nalunit.cpp.o
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/nalunit.cpp.o
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/nalunit.i: Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/nalunit.cpp.i
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/nalunit.i
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/nalunit.i: users/patrickchoo/cs4152/cugl/external/libdatachannel/src/nalunit.cpp.i
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/nalunit.i
 
 # target to preprocess a source file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/nalunit.cpp.i:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/nalunit.cpp.i
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/nalunit.cpp.i
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/nalunit.cpp.i:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/src/nalunit.cpp.i
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/nalunit.cpp.i
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/nalunit.s: Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/nalunit.cpp.s
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/nalunit.s
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/nalunit.s: users/patrickchoo/cs4152/cugl/external/libdatachannel/src/nalunit.cpp.s
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/nalunit.s
 
 # target to generate assembly for a file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/nalunit.cpp.s:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/nalunit.cpp.s
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/nalunit.cpp.s
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/nalunit.cpp.s:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/src/nalunit.cpp.s
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/nalunit.cpp.s
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/pacinghandler.o: Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/pacinghandler.cpp.o
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/pacinghandler.o
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/pacinghandler.o: users/patrickchoo/cs4152/cugl/external/libdatachannel/src/pacinghandler.cpp.o
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/pacinghandler.o
 
 # target to build an object file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/pacinghandler.cpp.o:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/pacinghandler.cpp.o
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/pacinghandler.cpp.o
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/pacinghandler.cpp.o:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/src/pacinghandler.cpp.o
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/pacinghandler.cpp.o
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/pacinghandler.i: Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/pacinghandler.cpp.i
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/pacinghandler.i
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/pacinghandler.i: users/patrickchoo/cs4152/cugl/external/libdatachannel/src/pacinghandler.cpp.i
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/pacinghandler.i
 
 # target to preprocess a source file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/pacinghandler.cpp.i:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/pacinghandler.cpp.i
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/pacinghandler.cpp.i
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/pacinghandler.cpp.i:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/src/pacinghandler.cpp.i
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/pacinghandler.cpp.i
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/pacinghandler.s: Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/pacinghandler.cpp.s
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/pacinghandler.s
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/pacinghandler.s: users/patrickchoo/cs4152/cugl/external/libdatachannel/src/pacinghandler.cpp.s
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/pacinghandler.s
 
 # target to generate assembly for a file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/pacinghandler.cpp.s:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/pacinghandler.cpp.s
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/pacinghandler.cpp.s
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/pacinghandler.cpp.s:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/src/pacinghandler.cpp.s
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/pacinghandler.cpp.s
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/peerconnection.o: Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/peerconnection.cpp.o
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/peerconnection.o
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/peerconnection.o: users/patrickchoo/cs4152/cugl/external/libdatachannel/src/peerconnection.cpp.o
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/peerconnection.o
 
 # target to build an object file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/peerconnection.cpp.o:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/peerconnection.cpp.o
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/peerconnection.cpp.o
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/peerconnection.cpp.o:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/src/peerconnection.cpp.o
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/peerconnection.cpp.o
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/peerconnection.i: Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/peerconnection.cpp.i
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/peerconnection.i
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/peerconnection.i: users/patrickchoo/cs4152/cugl/external/libdatachannel/src/peerconnection.cpp.i
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/peerconnection.i
 
 # target to preprocess a source file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/peerconnection.cpp.i:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/peerconnection.cpp.i
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/peerconnection.cpp.i
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/peerconnection.cpp.i:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/src/peerconnection.cpp.i
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/peerconnection.cpp.i
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/peerconnection.s: Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/peerconnection.cpp.s
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/peerconnection.s
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/peerconnection.s: users/patrickchoo/cs4152/cugl/external/libdatachannel/src/peerconnection.cpp.s
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/peerconnection.s
 
 # target to generate assembly for a file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/peerconnection.cpp.s:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/peerconnection.cpp.s
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/peerconnection.cpp.s
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/peerconnection.cpp.s:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/src/peerconnection.cpp.s
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/peerconnection.cpp.s
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/plihandler.o: Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/plihandler.cpp.o
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/plihandler.o
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/plihandler.o: users/patrickchoo/cs4152/cugl/external/libdatachannel/src/plihandler.cpp.o
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/plihandler.o
 
 # target to build an object file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/plihandler.cpp.o:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/plihandler.cpp.o
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/plihandler.cpp.o
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/plihandler.cpp.o:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/src/plihandler.cpp.o
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/plihandler.cpp.o
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/plihandler.i: Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/plihandler.cpp.i
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/plihandler.i
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/plihandler.i: users/patrickchoo/cs4152/cugl/external/libdatachannel/src/plihandler.cpp.i
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/plihandler.i
 
 # target to preprocess a source file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/plihandler.cpp.i:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/plihandler.cpp.i
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/plihandler.cpp.i
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/plihandler.cpp.i:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/src/plihandler.cpp.i
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/plihandler.cpp.i
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/plihandler.s: Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/plihandler.cpp.s
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/plihandler.s
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/plihandler.s: users/patrickchoo/cs4152/cugl/external/libdatachannel/src/plihandler.cpp.s
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/plihandler.s
 
 # target to generate assembly for a file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/plihandler.cpp.s:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/plihandler.cpp.s
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/plihandler.cpp.s
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/plihandler.cpp.s:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/src/plihandler.cpp.s
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/plihandler.cpp.s
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rembhandler.o: Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rembhandler.cpp.o
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rembhandler.o
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rembhandler.o: users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rembhandler.cpp.o
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rembhandler.o
 
 # target to build an object file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rembhandler.cpp.o:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rembhandler.cpp.o
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rembhandler.cpp.o
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rembhandler.cpp.o:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rembhandler.cpp.o
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rembhandler.cpp.o
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rembhandler.i: Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rembhandler.cpp.i
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rembhandler.i
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rembhandler.i: users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rembhandler.cpp.i
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rembhandler.i
 
 # target to preprocess a source file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rembhandler.cpp.i:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rembhandler.cpp.i
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rembhandler.cpp.i
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rembhandler.cpp.i:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rembhandler.cpp.i
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rembhandler.cpp.i
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rembhandler.s: Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rembhandler.cpp.s
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rembhandler.s
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rembhandler.s: users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rembhandler.cpp.s
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rembhandler.s
 
 # target to generate assembly for a file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rembhandler.cpp.s:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rembhandler.cpp.s
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rembhandler.cpp.s
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rembhandler.cpp.s:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rembhandler.cpp.s
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rembhandler.cpp.s
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rtcpnackresponder.o: Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rtcpnackresponder.cpp.o
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rtcpnackresponder.o
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rtcpnackresponder.o: users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rtcpnackresponder.cpp.o
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rtcpnackresponder.o
 
 # target to build an object file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rtcpnackresponder.cpp.o:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rtcpnackresponder.cpp.o
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rtcpnackresponder.cpp.o
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rtcpnackresponder.cpp.o:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rtcpnackresponder.cpp.o
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rtcpnackresponder.cpp.o
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rtcpnackresponder.i: Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rtcpnackresponder.cpp.i
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rtcpnackresponder.i
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rtcpnackresponder.i: users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rtcpnackresponder.cpp.i
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rtcpnackresponder.i
 
 # target to preprocess a source file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rtcpnackresponder.cpp.i:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rtcpnackresponder.cpp.i
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rtcpnackresponder.cpp.i
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rtcpnackresponder.cpp.i:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rtcpnackresponder.cpp.i
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rtcpnackresponder.cpp.i
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rtcpnackresponder.s: Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rtcpnackresponder.cpp.s
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rtcpnackresponder.s
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rtcpnackresponder.s: users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rtcpnackresponder.cpp.s
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rtcpnackresponder.s
 
 # target to generate assembly for a file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rtcpnackresponder.cpp.s:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rtcpnackresponder.cpp.s
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rtcpnackresponder.cpp.s
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rtcpnackresponder.cpp.s:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rtcpnackresponder.cpp.s
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rtcpnackresponder.cpp.s
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rtcpreceivingsession.o: Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rtcpreceivingsession.cpp.o
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rtcpreceivingsession.o
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rtcpreceivingsession.o: users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rtcpreceivingsession.cpp.o
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rtcpreceivingsession.o
 
 # target to build an object file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rtcpreceivingsession.cpp.o:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rtcpreceivingsession.cpp.o
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rtcpreceivingsession.cpp.o
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rtcpreceivingsession.cpp.o:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rtcpreceivingsession.cpp.o
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rtcpreceivingsession.cpp.o
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rtcpreceivingsession.i: Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rtcpreceivingsession.cpp.i
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rtcpreceivingsession.i
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rtcpreceivingsession.i: users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rtcpreceivingsession.cpp.i
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rtcpreceivingsession.i
 
 # target to preprocess a source file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rtcpreceivingsession.cpp.i:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rtcpreceivingsession.cpp.i
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rtcpreceivingsession.cpp.i
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rtcpreceivingsession.cpp.i:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rtcpreceivingsession.cpp.i
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rtcpreceivingsession.cpp.i
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rtcpreceivingsession.s: Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rtcpreceivingsession.cpp.s
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rtcpreceivingsession.s
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rtcpreceivingsession.s: users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rtcpreceivingsession.cpp.s
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rtcpreceivingsession.s
 
 # target to generate assembly for a file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rtcpreceivingsession.cpp.s:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rtcpreceivingsession.cpp.s
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rtcpreceivingsession.cpp.s
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rtcpreceivingsession.cpp.s:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rtcpreceivingsession.cpp.s
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rtcpreceivingsession.cpp.s
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rtcpsrreporter.o: Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rtcpsrreporter.cpp.o
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rtcpsrreporter.o
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rtcpsrreporter.o: users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rtcpsrreporter.cpp.o
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rtcpsrreporter.o
 
 # target to build an object file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rtcpsrreporter.cpp.o:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rtcpsrreporter.cpp.o
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rtcpsrreporter.cpp.o
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rtcpsrreporter.cpp.o:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rtcpsrreporter.cpp.o
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rtcpsrreporter.cpp.o
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rtcpsrreporter.i: Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rtcpsrreporter.cpp.i
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rtcpsrreporter.i
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rtcpsrreporter.i: users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rtcpsrreporter.cpp.i
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rtcpsrreporter.i
 
 # target to preprocess a source file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rtcpsrreporter.cpp.i:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rtcpsrreporter.cpp.i
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rtcpsrreporter.cpp.i
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rtcpsrreporter.cpp.i:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rtcpsrreporter.cpp.i
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rtcpsrreporter.cpp.i
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rtcpsrreporter.s: Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rtcpsrreporter.cpp.s
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rtcpsrreporter.s
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rtcpsrreporter.s: users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rtcpsrreporter.cpp.s
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rtcpsrreporter.s
 
 # target to generate assembly for a file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rtcpsrreporter.cpp.s:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rtcpsrreporter.cpp.s
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rtcpsrreporter.cpp.s
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rtcpsrreporter.cpp.s:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rtcpsrreporter.cpp.s
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rtcpsrreporter.cpp.s
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rtp.o: Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rtp.cpp.o
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rtp.o
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rtp.o: users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rtp.cpp.o
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rtp.o
 
 # target to build an object file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rtp.cpp.o:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rtp.cpp.o
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rtp.cpp.o
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rtp.cpp.o:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rtp.cpp.o
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rtp.cpp.o
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rtp.i: Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rtp.cpp.i
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rtp.i
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rtp.i: users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rtp.cpp.i
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rtp.i
 
 # target to preprocess a source file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rtp.cpp.i:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rtp.cpp.i
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rtp.cpp.i
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rtp.cpp.i:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rtp.cpp.i
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rtp.cpp.i
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rtp.s: Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rtp.cpp.s
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rtp.s
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rtp.s: users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rtp.cpp.s
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rtp.s
 
 # target to generate assembly for a file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rtp.cpp.s:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rtp.cpp.s
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rtp.cpp.s
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rtp.cpp.s:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rtp.cpp.s
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rtp.cpp.s
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rtpdepacketizer.o: Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rtpdepacketizer.cpp.o
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rtpdepacketizer.o
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rtpdepacketizer.o: users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rtpdepacketizer.cpp.o
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rtpdepacketizer.o
 
 # target to build an object file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rtpdepacketizer.cpp.o:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rtpdepacketizer.cpp.o
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rtpdepacketizer.cpp.o
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rtpdepacketizer.cpp.o:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rtpdepacketizer.cpp.o
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rtpdepacketizer.cpp.o
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rtpdepacketizer.i: Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rtpdepacketizer.cpp.i
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rtpdepacketizer.i
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rtpdepacketizer.i: users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rtpdepacketizer.cpp.i
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rtpdepacketizer.i
 
 # target to preprocess a source file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rtpdepacketizer.cpp.i:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rtpdepacketizer.cpp.i
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rtpdepacketizer.cpp.i
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rtpdepacketizer.cpp.i:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rtpdepacketizer.cpp.i
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rtpdepacketizer.cpp.i
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rtpdepacketizer.s: Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rtpdepacketizer.cpp.s
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rtpdepacketizer.s
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rtpdepacketizer.s: users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rtpdepacketizer.cpp.s
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rtpdepacketizer.s
 
 # target to generate assembly for a file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rtpdepacketizer.cpp.s:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rtpdepacketizer.cpp.s
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rtpdepacketizer.cpp.s
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rtpdepacketizer.cpp.s:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rtpdepacketizer.cpp.s
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rtpdepacketizer.cpp.s
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rtppacketizationconfig.o: Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rtppacketizationconfig.cpp.o
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rtppacketizationconfig.o
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rtppacketizationconfig.o: users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rtppacketizationconfig.cpp.o
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rtppacketizationconfig.o
 
 # target to build an object file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rtppacketizationconfig.cpp.o:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rtppacketizationconfig.cpp.o
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rtppacketizationconfig.cpp.o
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rtppacketizationconfig.cpp.o:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rtppacketizationconfig.cpp.o
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rtppacketizationconfig.cpp.o
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rtppacketizationconfig.i: Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rtppacketizationconfig.cpp.i
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rtppacketizationconfig.i
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rtppacketizationconfig.i: users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rtppacketizationconfig.cpp.i
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rtppacketizationconfig.i
 
 # target to preprocess a source file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rtppacketizationconfig.cpp.i:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rtppacketizationconfig.cpp.i
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rtppacketizationconfig.cpp.i
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rtppacketizationconfig.cpp.i:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rtppacketizationconfig.cpp.i
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rtppacketizationconfig.cpp.i
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rtppacketizationconfig.s: Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rtppacketizationconfig.cpp.s
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rtppacketizationconfig.s
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rtppacketizationconfig.s: users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rtppacketizationconfig.cpp.s
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rtppacketizationconfig.s
 
 # target to generate assembly for a file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rtppacketizationconfig.cpp.s:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rtppacketizationconfig.cpp.s
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rtppacketizationconfig.cpp.s
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rtppacketizationconfig.cpp.s:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rtppacketizationconfig.cpp.s
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rtppacketizationconfig.cpp.s
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rtppacketizer.o: Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rtppacketizer.cpp.o
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rtppacketizer.o
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rtppacketizer.o: users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rtppacketizer.cpp.o
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rtppacketizer.o
 
 # target to build an object file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rtppacketizer.cpp.o:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rtppacketizer.cpp.o
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rtppacketizer.cpp.o
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rtppacketizer.cpp.o:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rtppacketizer.cpp.o
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rtppacketizer.cpp.o
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rtppacketizer.i: Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rtppacketizer.cpp.i
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rtppacketizer.i
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rtppacketizer.i: users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rtppacketizer.cpp.i
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rtppacketizer.i
 
 # target to preprocess a source file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rtppacketizer.cpp.i:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rtppacketizer.cpp.i
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rtppacketizer.cpp.i
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rtppacketizer.cpp.i:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rtppacketizer.cpp.i
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rtppacketizer.cpp.i
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rtppacketizer.s: Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rtppacketizer.cpp.s
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rtppacketizer.s
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rtppacketizer.s: users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rtppacketizer.cpp.s
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rtppacketizer.s
 
 # target to generate assembly for a file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rtppacketizer.cpp.s:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rtppacketizer.cpp.s
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rtppacketizer.cpp.s
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rtppacketizer.cpp.s:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rtppacketizer.cpp.s
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rtppacketizer.cpp.s
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/track.o: Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/track.cpp.o
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/track.o
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/track.o: users/patrickchoo/cs4152/cugl/external/libdatachannel/src/track.cpp.o
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/track.o
 
 # target to build an object file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/track.cpp.o:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/track.cpp.o
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/track.cpp.o
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/track.cpp.o:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/src/track.cpp.o
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/track.cpp.o
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/track.i: Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/track.cpp.i
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/track.i
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/track.i: users/patrickchoo/cs4152/cugl/external/libdatachannel/src/track.cpp.i
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/track.i
 
 # target to preprocess a source file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/track.cpp.i:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/track.cpp.i
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/track.cpp.i
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/track.cpp.i:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/src/track.cpp.i
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/track.cpp.i
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/track.s: Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/track.cpp.s
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/track.s
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/track.s: users/patrickchoo/cs4152/cugl/external/libdatachannel/src/track.cpp.s
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/track.s
 
 # target to generate assembly for a file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/track.cpp.s:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/track.cpp.s
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/track.cpp.s
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/track.cpp.s:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/src/track.cpp.s
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/track.cpp.s
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/websocket.o: Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/websocket.cpp.o
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/websocket.o
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/websocket.o: users/patrickchoo/cs4152/cugl/external/libdatachannel/src/websocket.cpp.o
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/websocket.o
 
 # target to build an object file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/websocket.cpp.o:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/websocket.cpp.o
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/websocket.cpp.o
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/websocket.cpp.o:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/src/websocket.cpp.o
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/websocket.cpp.o
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/websocket.i: Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/websocket.cpp.i
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/websocket.i
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/websocket.i: users/patrickchoo/cs4152/cugl/external/libdatachannel/src/websocket.cpp.i
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/websocket.i
 
 # target to preprocess a source file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/websocket.cpp.i:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/websocket.cpp.i
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/websocket.cpp.i
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/websocket.cpp.i:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/src/websocket.cpp.i
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/websocket.cpp.i
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/websocket.s: Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/websocket.cpp.s
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/websocket.s
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/websocket.s: users/patrickchoo/cs4152/cugl/external/libdatachannel/src/websocket.cpp.s
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/websocket.s
 
 # target to generate assembly for a file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/websocket.cpp.s:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/websocket.cpp.s
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/websocket.cpp.s
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/websocket.cpp.s:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/src/websocket.cpp.s
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/websocket.cpp.s
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/websocketserver.o: Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/websocketserver.cpp.o
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/websocketserver.o
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/websocketserver.o: users/patrickchoo/cs4152/cugl/external/libdatachannel/src/websocketserver.cpp.o
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/websocketserver.o
 
 # target to build an object file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/websocketserver.cpp.o:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/websocketserver.cpp.o
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/websocketserver.cpp.o
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/websocketserver.cpp.o:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/src/websocketserver.cpp.o
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/websocketserver.cpp.o
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/websocketserver.i: Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/websocketserver.cpp.i
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/websocketserver.i
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/websocketserver.i: users/patrickchoo/cs4152/cugl/external/libdatachannel/src/websocketserver.cpp.i
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/websocketserver.i
 
 # target to preprocess a source file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/websocketserver.cpp.i:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/websocketserver.cpp.i
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/websocketserver.cpp.i
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/websocketserver.cpp.i:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/src/websocketserver.cpp.i
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/websocketserver.cpp.i
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/websocketserver.s: Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/websocketserver.cpp.s
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/websocketserver.s
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/websocketserver.s: users/patrickchoo/cs4152/cugl/external/libdatachannel/src/websocketserver.cpp.s
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/websocketserver.s
 
 # target to generate assembly for a file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/websocketserver.cpp.s:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/websocketserver.cpp.s
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/websocketserver.cpp.s
+users/patrickchoo/cs4152/cugl/external/libdatachannel/src/websocketserver.cpp.s:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/build.make cugl.dir/external/libdatachannel/CMakeFiles/datachannel.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/src/websocketserver.cpp.s
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/src/websocketserver.cpp.s
 
 # Help Target
 help:
@@ -1602,180 +1602,180 @@ help:
 	@echo "... package_source"
 	@echo "... rebuild_cache"
 	@echo "... datachannel"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/av1rtppacketizer.o"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/av1rtppacketizer.i"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/av1rtppacketizer.s"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/candidate.o"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/candidate.i"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/candidate.s"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/capi.o"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/capi.i"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/capi.s"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/channel.o"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/channel.i"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/channel.s"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/configuration.o"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/configuration.i"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/configuration.s"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/datachannel.o"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/datachannel.i"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/datachannel.s"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/description.o"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/description.i"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/description.s"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/global.o"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/global.i"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/global.s"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/h264rtpdepacketizer.o"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/h264rtpdepacketizer.i"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/h264rtpdepacketizer.s"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/h264rtppacketizer.o"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/h264rtppacketizer.i"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/h264rtppacketizer.s"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/h265nalunit.o"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/h265nalunit.i"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/h265nalunit.s"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/h265rtppacketizer.o"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/h265rtppacketizer.i"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/h265rtppacketizer.s"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/certificate.o"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/certificate.i"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/certificate.s"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/channel.o"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/channel.i"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/channel.s"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/datachannel.o"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/datachannel.i"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/datachannel.s"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/dtlssrtptransport.o"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/dtlssrtptransport.i"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/dtlssrtptransport.s"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/dtlstransport.o"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/dtlstransport.i"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/dtlstransport.s"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/http.o"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/http.i"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/http.s"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/httpproxytransport.o"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/httpproxytransport.i"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/httpproxytransport.s"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/icetransport.o"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/icetransport.i"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/icetransport.s"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/init.o"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/init.i"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/init.s"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/logcounter.o"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/logcounter.i"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/logcounter.s"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/peerconnection.o"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/peerconnection.i"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/peerconnection.s"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/pollinterrupter.o"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/pollinterrupter.i"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/pollinterrupter.s"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/pollservice.o"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/pollservice.i"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/pollservice.s"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/processor.o"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/processor.i"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/processor.s"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/sctptransport.o"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/sctptransport.i"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/sctptransport.s"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/sha.o"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/sha.i"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/sha.s"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/tcpserver.o"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/tcpserver.i"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/tcpserver.s"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/tcptransport.o"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/tcptransport.i"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/tcptransport.s"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/threadpool.o"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/threadpool.i"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/threadpool.s"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/tls.o"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/tls.i"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/tls.s"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/tlstransport.o"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/tlstransport.i"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/tlstransport.s"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/track.o"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/track.i"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/track.s"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/transport.o"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/transport.i"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/transport.s"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/utils.o"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/utils.i"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/utils.s"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/verifiedtlstransport.o"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/verifiedtlstransport.i"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/verifiedtlstransport.s"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/websocket.o"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/websocket.i"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/websocket.s"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/websocketserver.o"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/websocketserver.i"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/websocketserver.s"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/wshandshake.o"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/wshandshake.i"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/wshandshake.s"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/wstransport.o"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/wstransport.i"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/wstransport.s"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/mediahandler.o"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/mediahandler.i"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/mediahandler.s"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/message.o"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/message.i"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/message.s"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/nalunit.o"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/nalunit.i"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/nalunit.s"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/pacinghandler.o"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/pacinghandler.i"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/pacinghandler.s"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/peerconnection.o"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/peerconnection.i"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/peerconnection.s"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/plihandler.o"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/plihandler.i"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/plihandler.s"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rembhandler.o"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rembhandler.i"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rembhandler.s"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rtcpnackresponder.o"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rtcpnackresponder.i"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rtcpnackresponder.s"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rtcpreceivingsession.o"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rtcpreceivingsession.i"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rtcpreceivingsession.s"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rtcpsrreporter.o"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rtcpsrreporter.i"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rtcpsrreporter.s"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rtp.o"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rtp.i"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rtp.s"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rtpdepacketizer.o"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rtpdepacketizer.i"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rtpdepacketizer.s"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rtppacketizationconfig.o"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rtppacketizationconfig.i"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rtppacketizationconfig.s"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rtppacketizer.o"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rtppacketizer.i"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rtppacketizer.s"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/track.o"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/track.i"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/track.s"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/websocket.o"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/websocket.i"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/websocket.s"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/websocketserver.o"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/websocketserver.i"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/src/websocketserver.s"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/src/av1rtppacketizer.o"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/src/av1rtppacketizer.i"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/src/av1rtppacketizer.s"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/src/candidate.o"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/src/candidate.i"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/src/candidate.s"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/src/capi.o"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/src/capi.i"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/src/capi.s"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/src/channel.o"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/src/channel.i"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/src/channel.s"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/src/configuration.o"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/src/configuration.i"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/src/configuration.s"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/src/datachannel.o"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/src/datachannel.i"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/src/datachannel.s"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/src/description.o"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/src/description.i"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/src/description.s"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/src/global.o"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/src/global.i"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/src/global.s"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/src/h264rtpdepacketizer.o"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/src/h264rtpdepacketizer.i"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/src/h264rtpdepacketizer.s"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/src/h264rtppacketizer.o"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/src/h264rtppacketizer.i"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/src/h264rtppacketizer.s"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/src/h265nalunit.o"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/src/h265nalunit.i"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/src/h265nalunit.s"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/src/h265rtppacketizer.o"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/src/h265rtppacketizer.i"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/src/h265rtppacketizer.s"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/certificate.o"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/certificate.i"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/certificate.s"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/channel.o"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/channel.i"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/channel.s"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/datachannel.o"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/datachannel.i"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/datachannel.s"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/dtlssrtptransport.o"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/dtlssrtptransport.i"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/dtlssrtptransport.s"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/dtlstransport.o"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/dtlstransport.i"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/dtlstransport.s"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/http.o"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/http.i"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/http.s"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/httpproxytransport.o"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/httpproxytransport.i"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/httpproxytransport.s"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/icetransport.o"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/icetransport.i"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/icetransport.s"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/init.o"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/init.i"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/init.s"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/logcounter.o"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/logcounter.i"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/logcounter.s"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/peerconnection.o"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/peerconnection.i"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/peerconnection.s"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/pollinterrupter.o"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/pollinterrupter.i"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/pollinterrupter.s"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/pollservice.o"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/pollservice.i"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/pollservice.s"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/processor.o"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/processor.i"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/processor.s"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/sctptransport.o"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/sctptransport.i"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/sctptransport.s"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/sha.o"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/sha.i"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/sha.s"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/tcpserver.o"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/tcpserver.i"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/tcpserver.s"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/tcptransport.o"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/tcptransport.i"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/tcptransport.s"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/threadpool.o"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/threadpool.i"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/threadpool.s"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/tls.o"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/tls.i"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/tls.s"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/tlstransport.o"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/tlstransport.i"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/tlstransport.s"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/track.o"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/track.i"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/track.s"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/transport.o"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/transport.i"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/transport.s"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/utils.o"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/utils.i"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/utils.s"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/verifiedtlstransport.o"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/verifiedtlstransport.i"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/verifiedtlstransport.s"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/websocket.o"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/websocket.i"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/websocket.s"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/websocketserver.o"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/websocketserver.i"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/websocketserver.s"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/wshandshake.o"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/wshandshake.i"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/wshandshake.s"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/wstransport.o"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/wstransport.i"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/src/impl/wstransport.s"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/src/mediahandler.o"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/src/mediahandler.i"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/src/mediahandler.s"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/src/message.o"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/src/message.i"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/src/message.s"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/src/nalunit.o"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/src/nalunit.i"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/src/nalunit.s"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/src/pacinghandler.o"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/src/pacinghandler.i"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/src/pacinghandler.s"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/src/peerconnection.o"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/src/peerconnection.i"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/src/peerconnection.s"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/src/plihandler.o"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/src/plihandler.i"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/src/plihandler.s"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rembhandler.o"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rembhandler.i"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rembhandler.s"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rtcpnackresponder.o"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rtcpnackresponder.i"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rtcpnackresponder.s"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rtcpreceivingsession.o"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rtcpreceivingsession.i"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rtcpreceivingsession.s"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rtcpsrreporter.o"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rtcpsrreporter.i"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rtcpsrreporter.s"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rtp.o"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rtp.i"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rtp.s"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rtpdepacketizer.o"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rtpdepacketizer.i"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rtpdepacketizer.s"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rtppacketizationconfig.o"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rtppacketizationconfig.i"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rtppacketizationconfig.s"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rtppacketizer.o"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rtppacketizer.i"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/src/rtppacketizer.s"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/src/track.o"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/src/track.i"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/src/track.s"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/src/websocket.o"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/src/websocket.i"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/src/websocket.s"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/src/websocketserver.o"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/src/websocketserver.i"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/src/websocketserver.s"
 .PHONY : help
 
 
@@ -1787,6 +1787,6 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 

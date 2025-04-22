@@ -1,9 +1,9 @@
-IF(NOT EXISTS "/Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/external/libdatachannel/deps/openssl/install_manifest.txt")
+IF(NOT EXISTS "/users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/external/libdatachannel/deps/openssl/install_manifest.txt")
   MESSAGE(FATAL_ERROR "Cannot find install manifest:
-\"/Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/external/libdatachannel/deps/openssl/install_manifest.txt\"")
-ENDIF(NOT EXISTS "/Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/external/libdatachannel/deps/openssl/install_manifest.txt")
+\"/users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/external/libdatachannel/deps/openssl/install_manifest.txt\"")
+ENDIF(NOT EXISTS "/users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/external/libdatachannel/deps/openssl/install_manifest.txt")
 
-FILE(READ "/Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/external/libdatachannel/deps/openssl/install_manifest.txt" files)
+FILE(READ "/users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/external/libdatachannel/deps/openssl/install_manifest.txt" files)
 STRING(REGEX REPLACE "\n" ";" files "${files}")
 FOREACH(file ${files})
   MESSAGE(STATUS "Uninstalling \"$ENV{DESTDIR}${file}\"")

@@ -53,10 +53,10 @@ RM = /opt/homebrew/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /Users/patrickchoo/cs4152/mahsjong/build/cmake
+CMAKE_SOURCE_DIR = /users/patrickchoo/cs4152/mahsjong/build/cmake
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake
+CMAKE_BINARY_DIR = /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake
 
 # Include any dependencies generated for this target.
 include cugl.dir/sdl2pckg.dir/sdl2ttf/CMakeFiles/SDL2_ttf.dir/depend.make
@@ -72,43 +72,43 @@ include cugl.dir/sdl2pckg.dir/sdl2ttf/CMakeFiles/SDL2_ttf.dir/flags.make
 cugl.dir/sdl2pckg.dir/sdl2ttf/CMakeFiles/SDL2_ttf.dir/codegen:
 .PHONY : cugl.dir/sdl2pckg.dir/sdl2ttf/CMakeFiles/SDL2_ttf.dir/codegen
 
-cugl.dir/sdl2pckg.dir/sdl2ttf/CMakeFiles/SDL2_ttf.dir/Users/patrickchoo/cs4152/cugl/sdlapp/src/ttf/SDL_ttf.c.o: cugl.dir/sdl2pckg.dir/sdl2ttf/CMakeFiles/SDL2_ttf.dir/flags.make
-cugl.dir/sdl2pckg.dir/sdl2ttf/CMakeFiles/SDL2_ttf.dir/Users/patrickchoo/cs4152/cugl/sdlapp/src/ttf/SDL_ttf.c.o: /Users/patrickchoo/cs4152/cugl/sdlapp/src/ttf/SDL_ttf.c
-cugl.dir/sdl2pckg.dir/sdl2ttf/CMakeFiles/SDL2_ttf.dir/Users/patrickchoo/cs4152/cugl/sdlapp/src/ttf/SDL_ttf.c.o: cugl.dir/sdl2pckg.dir/sdl2ttf/CMakeFiles/SDL2_ttf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object cugl.dir/sdl2pckg.dir/sdl2ttf/CMakeFiles/SDL2_ttf.dir/Users/patrickchoo/cs4152/cugl/sdlapp/src/ttf/SDL_ttf.c.o"
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2ttf && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT cugl.dir/sdl2pckg.dir/sdl2ttf/CMakeFiles/SDL2_ttf.dir/Users/patrickchoo/cs4152/cugl/sdlapp/src/ttf/SDL_ttf.c.o -MF CMakeFiles/SDL2_ttf.dir/Users/patrickchoo/cs4152/cugl/sdlapp/src/ttf/SDL_ttf.c.o.d -o CMakeFiles/SDL2_ttf.dir/Users/patrickchoo/cs4152/cugl/sdlapp/src/ttf/SDL_ttf.c.o -c /Users/patrickchoo/cs4152/cugl/sdlapp/src/ttf/SDL_ttf.c
+cugl.dir/sdl2pckg.dir/sdl2ttf/CMakeFiles/SDL2_ttf.dir/users/patrickchoo/cs4152/cugl/sdlapp/src/ttf/SDL_ttf.c.o: cugl.dir/sdl2pckg.dir/sdl2ttf/CMakeFiles/SDL2_ttf.dir/flags.make
+cugl.dir/sdl2pckg.dir/sdl2ttf/CMakeFiles/SDL2_ttf.dir/users/patrickchoo/cs4152/cugl/sdlapp/src/ttf/SDL_ttf.c.o: /users/patrickchoo/cs4152/cugl/sdlapp/src/ttf/SDL_ttf.c
+cugl.dir/sdl2pckg.dir/sdl2ttf/CMakeFiles/SDL2_ttf.dir/users/patrickchoo/cs4152/cugl/sdlapp/src/ttf/SDL_ttf.c.o: cugl.dir/sdl2pckg.dir/sdl2ttf/CMakeFiles/SDL2_ttf.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object cugl.dir/sdl2pckg.dir/sdl2ttf/CMakeFiles/SDL2_ttf.dir/users/patrickchoo/cs4152/cugl/sdlapp/src/ttf/SDL_ttf.c.o"
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2ttf && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT cugl.dir/sdl2pckg.dir/sdl2ttf/CMakeFiles/SDL2_ttf.dir/users/patrickchoo/cs4152/cugl/sdlapp/src/ttf/SDL_ttf.c.o -MF CMakeFiles/SDL2_ttf.dir/users/patrickchoo/cs4152/cugl/sdlapp/src/ttf/SDL_ttf.c.o.d -o CMakeFiles/SDL2_ttf.dir/users/patrickchoo/cs4152/cugl/sdlapp/src/ttf/SDL_ttf.c.o -c /users/patrickchoo/cs4152/cugl/sdlapp/src/ttf/SDL_ttf.c
 
-cugl.dir/sdl2pckg.dir/sdl2ttf/CMakeFiles/SDL2_ttf.dir/Users/patrickchoo/cs4152/cugl/sdlapp/src/ttf/SDL_ttf.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/SDL2_ttf.dir/Users/patrickchoo/cs4152/cugl/sdlapp/src/ttf/SDL_ttf.c.i"
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2ttf && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/patrickchoo/cs4152/cugl/sdlapp/src/ttf/SDL_ttf.c > CMakeFiles/SDL2_ttf.dir/Users/patrickchoo/cs4152/cugl/sdlapp/src/ttf/SDL_ttf.c.i
+cugl.dir/sdl2pckg.dir/sdl2ttf/CMakeFiles/SDL2_ttf.dir/users/patrickchoo/cs4152/cugl/sdlapp/src/ttf/SDL_ttf.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/SDL2_ttf.dir/users/patrickchoo/cs4152/cugl/sdlapp/src/ttf/SDL_ttf.c.i"
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2ttf && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /users/patrickchoo/cs4152/cugl/sdlapp/src/ttf/SDL_ttf.c > CMakeFiles/SDL2_ttf.dir/users/patrickchoo/cs4152/cugl/sdlapp/src/ttf/SDL_ttf.c.i
 
-cugl.dir/sdl2pckg.dir/sdl2ttf/CMakeFiles/SDL2_ttf.dir/Users/patrickchoo/cs4152/cugl/sdlapp/src/ttf/SDL_ttf.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/SDL2_ttf.dir/Users/patrickchoo/cs4152/cugl/sdlapp/src/ttf/SDL_ttf.c.s"
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2ttf && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/patrickchoo/cs4152/cugl/sdlapp/src/ttf/SDL_ttf.c -o CMakeFiles/SDL2_ttf.dir/Users/patrickchoo/cs4152/cugl/sdlapp/src/ttf/SDL_ttf.c.s
+cugl.dir/sdl2pckg.dir/sdl2ttf/CMakeFiles/SDL2_ttf.dir/users/patrickchoo/cs4152/cugl/sdlapp/src/ttf/SDL_ttf.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/SDL2_ttf.dir/users/patrickchoo/cs4152/cugl/sdlapp/src/ttf/SDL_ttf.c.s"
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2ttf && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /users/patrickchoo/cs4152/cugl/sdlapp/src/ttf/SDL_ttf.c -o CMakeFiles/SDL2_ttf.dir/users/patrickchoo/cs4152/cugl/sdlapp/src/ttf/SDL_ttf.c.s
 
 # Object files for target SDL2_ttf
 SDL2_ttf_OBJECTS = \
-"CMakeFiles/SDL2_ttf.dir/Users/patrickchoo/cs4152/cugl/sdlapp/src/ttf/SDL_ttf.c.o"
+"CMakeFiles/SDL2_ttf.dir/users/patrickchoo/cs4152/cugl/sdlapp/src/ttf/SDL_ttf.c.o"
 
 # External object files for target SDL2_ttf
 SDL2_ttf_EXTERNAL_OBJECTS =
 
-cugl.dir/sdl2pckg.dir/sdl2ttf/libSDL2_ttf.a: cugl.dir/sdl2pckg.dir/sdl2ttf/CMakeFiles/SDL2_ttf.dir/Users/patrickchoo/cs4152/cugl/sdlapp/src/ttf/SDL_ttf.c.o
+cugl.dir/sdl2pckg.dir/sdl2ttf/libSDL2_ttf.a: cugl.dir/sdl2pckg.dir/sdl2ttf/CMakeFiles/SDL2_ttf.dir/users/patrickchoo/cs4152/cugl/sdlapp/src/ttf/SDL_ttf.c.o
 cugl.dir/sdl2pckg.dir/sdl2ttf/libSDL2_ttf.a: cugl.dir/sdl2pckg.dir/sdl2ttf/CMakeFiles/SDL2_ttf.dir/build.make
 cugl.dir/sdl2pckg.dir/sdl2ttf/libSDL2_ttf.a: cugl.dir/sdl2pckg.dir/sdl2ttf/CMakeFiles/SDL2_ttf.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX static library libSDL2_ttf.a"
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2ttf && $(CMAKE_COMMAND) -P CMakeFiles/SDL2_ttf.dir/cmake_clean_target.cmake
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2ttf && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/SDL2_ttf.dir/link.txt --verbose=$(VERBOSE)
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX static library libSDL2_ttf.a"
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2ttf && $(CMAKE_COMMAND) -P CMakeFiles/SDL2_ttf.dir/cmake_clean_target.cmake
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2ttf && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/SDL2_ttf.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
 cugl.dir/sdl2pckg.dir/sdl2ttf/CMakeFiles/SDL2_ttf.dir/build: cugl.dir/sdl2pckg.dir/sdl2ttf/libSDL2_ttf.a
 .PHONY : cugl.dir/sdl2pckg.dir/sdl2ttf/CMakeFiles/SDL2_ttf.dir/build
 
 cugl.dir/sdl2pckg.dir/sdl2ttf/CMakeFiles/SDL2_ttf.dir/clean:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2ttf && $(CMAKE_COMMAND) -P CMakeFiles/SDL2_ttf.dir/cmake_clean.cmake
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2ttf && $(CMAKE_COMMAND) -P CMakeFiles/SDL2_ttf.dir/cmake_clean.cmake
 .PHONY : cugl.dir/sdl2pckg.dir/sdl2ttf/CMakeFiles/SDL2_ttf.dir/clean
 
 cugl.dir/sdl2pckg.dir/sdl2ttf/CMakeFiles/SDL2_ttf.dir/depend:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /Users/patrickchoo/cs4152/mahsjong/build/cmake /Users/patrickchoo/cs4152/cugl/sdlapp/buildfiles/cmake/sdl2ttf /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2ttf /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2ttf/CMakeFiles/SDL2_ttf.dir/DependInfo.cmake "--color=$(COLOR)"
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /users/patrickchoo/cs4152/mahsjong/build/cmake /users/patrickchoo/cs4152/cugl/sdlapp/buildfiles/cmake/sdl2ttf /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2ttf /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2ttf/CMakeFiles/SDL2_ttf.dir/DependInfo.cmake "--color=$(COLOR)"
 .PHONY : cugl.dir/sdl2pckg.dir/sdl2ttf/CMakeFiles/SDL2_ttf.dir/depend
 

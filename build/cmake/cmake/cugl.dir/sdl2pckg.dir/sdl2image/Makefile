@@ -57,10 +57,10 @@ RM = /opt/homebrew/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /Users/patrickchoo/cs4152/mahsjong/build/cmake
+CMAKE_SOURCE_DIR = /users/patrickchoo/cs4152/mahsjong/build/cmake
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake
+CMAKE_BINARY_DIR = /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -68,7 +68,7 @@ CMAKE_BINARY_DIR = /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake
 # Special rule for the target package
 package: preinstall
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Run CPack packaging tool..."
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && /opt/homebrew/bin/cpack --config ./CPackConfig.cmake
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && /opt/homebrew/bin/cpack --config ./CPackConfig.cmake
 .PHONY : package
 
 # Special rule for the target package
@@ -78,7 +78,7 @@ package/fast: package
 # Special rule for the target package_source
 package_source:
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Run CPack packaging tool for source..."
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && /opt/homebrew/bin/cpack --config ./CPackSourceConfig.cmake /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CPackSourceConfig.cmake
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && /opt/homebrew/bin/cpack --config ./CPackSourceConfig.cmake /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CPackSourceConfig.cmake
 .PHONY : package_source
 
 # Special rule for the target package_source
@@ -152,14 +152,14 @@ install/strip/fast: preinstall/fast
 
 # The main all target
 all: cmake_check_build_system
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(CMAKE_COMMAND) -E cmake_progress_start /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2image//CMakeFiles/progress.marks
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 cugl.dir/sdl2pckg.dir/sdl2image/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles 0
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(CMAKE_COMMAND) -E cmake_progress_start /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2image//CMakeFiles/progress.marks
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 cugl.dir/sdl2pckg.dir/sdl2image/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 cugl.dir/sdl2pckg.dir/sdl2image/clean
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 cugl.dir/sdl2pckg.dir/sdl2image/clean
 .PHONY : clean
 
 # The main clean target
@@ -168,22 +168,22 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 cugl.dir/sdl2pckg.dir/sdl2image/preinstall
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 cugl.dir/sdl2pckg.dir/sdl2image/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 cugl.dir/sdl2pckg.dir/sdl2image/preinstall
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 cugl.dir/sdl2pckg.dir/sdl2image/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
 # Convenience name for target.
 cugl.dir/sdl2pckg.dir/sdl2image/CMakeFiles/SDL2_image.dir/rule:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 cugl.dir/sdl2pckg.dir/sdl2image/CMakeFiles/SDL2_image.dir/rule
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 cugl.dir/sdl2pckg.dir/sdl2image/CMakeFiles/SDL2_image.dir/rule
 .PHONY : cugl.dir/sdl2pckg.dir/sdl2image/CMakeFiles/SDL2_image.dir/rule
 
 # Convenience name for target.
@@ -192,536 +192,536 @@ SDL2_image: cugl.dir/sdl2pckg.dir/sdl2image/CMakeFiles/SDL2_image.dir/rule
 
 # fast build rule for target.
 SDL2_image/fast:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2image/CMakeFiles/SDL2_image.dir/build.make cugl.dir/sdl2pckg.dir/sdl2image/CMakeFiles/SDL2_image.dir/build
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2image/CMakeFiles/SDL2_image.dir/build.make cugl.dir/sdl2pckg.dir/sdl2image/CMakeFiles/SDL2_image.dir/build
 .PHONY : SDL2_image/fast
 
-Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG.o: Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG.o
+users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG.o: users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG.o
 
 # target to build an object file
-Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG.c.o:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2image/CMakeFiles/SDL2_image.dir/build.make cugl.dir/sdl2pckg.dir/sdl2image/CMakeFiles/SDL2_image.dir/Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG.c.o
+users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG.c.o:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2image/CMakeFiles/SDL2_image.dir/build.make cugl.dir/sdl2pckg.dir/sdl2image/CMakeFiles/SDL2_image.dir/users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG.c.o
 
-Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG.i: Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG.i
+users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG.i: users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG.i
 
 # target to preprocess a source file
-Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG.c.i:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2image/CMakeFiles/SDL2_image.dir/build.make cugl.dir/sdl2pckg.dir/sdl2image/CMakeFiles/SDL2_image.dir/Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG.c.i
+users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG.c.i:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2image/CMakeFiles/SDL2_image.dir/build.make cugl.dir/sdl2pckg.dir/sdl2image/CMakeFiles/SDL2_image.dir/users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG.c.i
 
-Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG.s: Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG.s
+users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG.s: users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG.s
 
 # target to generate assembly for a file
-Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG.c.s:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2image/CMakeFiles/SDL2_image.dir/build.make cugl.dir/sdl2pckg.dir/sdl2image/CMakeFiles/SDL2_image.dir/Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG.c.s
+users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG.c.s:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2image/CMakeFiles/SDL2_image.dir/build.make cugl.dir/sdl2pckg.dir/sdl2image/CMakeFiles/SDL2_image.dir/users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG.c.s
 
-Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_ImageIO.o: Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_ImageIO.m.o
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_ImageIO.o
+users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_ImageIO.o: users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_ImageIO.m.o
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_ImageIO.o
 
 # target to build an object file
-Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_ImageIO.m.o:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2image/CMakeFiles/SDL2_image.dir/build.make cugl.dir/sdl2pckg.dir/sdl2image/CMakeFiles/SDL2_image.dir/Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_ImageIO.m.o
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_ImageIO.m.o
+users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_ImageIO.m.o:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2image/CMakeFiles/SDL2_image.dir/build.make cugl.dir/sdl2pckg.dir/sdl2image/CMakeFiles/SDL2_image.dir/users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_ImageIO.m.o
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_ImageIO.m.o
 
-Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_ImageIO.i: Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_ImageIO.m.i
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_ImageIO.i
+users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_ImageIO.i: users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_ImageIO.m.i
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_ImageIO.i
 
 # target to preprocess a source file
-Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_ImageIO.m.i:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2image/CMakeFiles/SDL2_image.dir/build.make cugl.dir/sdl2pckg.dir/sdl2image/CMakeFiles/SDL2_image.dir/Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_ImageIO.m.i
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_ImageIO.m.i
+users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_ImageIO.m.i:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2image/CMakeFiles/SDL2_image.dir/build.make cugl.dir/sdl2pckg.dir/sdl2image/CMakeFiles/SDL2_image.dir/users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_ImageIO.m.i
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_ImageIO.m.i
 
-Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_ImageIO.s: Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_ImageIO.m.s
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_ImageIO.s
+users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_ImageIO.s: users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_ImageIO.m.s
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_ImageIO.s
 
 # target to generate assembly for a file
-Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_ImageIO.m.s:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2image/CMakeFiles/SDL2_image.dir/build.make cugl.dir/sdl2pckg.dir/sdl2image/CMakeFiles/SDL2_image.dir/Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_ImageIO.m.s
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_ImageIO.m.s
+users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_ImageIO.m.s:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2image/CMakeFiles/SDL2_image.dir/build.make cugl.dir/sdl2pckg.dir/sdl2image/CMakeFiles/SDL2_image.dir/users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_ImageIO.m.s
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_ImageIO.m.s
 
-Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_WIC.o: Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_WIC.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_WIC.o
+users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_WIC.o: users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_WIC.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_WIC.o
 
 # target to build an object file
-Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_WIC.c.o:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2image/CMakeFiles/SDL2_image.dir/build.make cugl.dir/sdl2pckg.dir/sdl2image/CMakeFiles/SDL2_image.dir/Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_WIC.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_WIC.c.o
+users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_WIC.c.o:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2image/CMakeFiles/SDL2_image.dir/build.make cugl.dir/sdl2pckg.dir/sdl2image/CMakeFiles/SDL2_image.dir/users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_WIC.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_WIC.c.o
 
-Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_WIC.i: Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_WIC.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_WIC.i
+users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_WIC.i: users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_WIC.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_WIC.i
 
 # target to preprocess a source file
-Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_WIC.c.i:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2image/CMakeFiles/SDL2_image.dir/build.make cugl.dir/sdl2pckg.dir/sdl2image/CMakeFiles/SDL2_image.dir/Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_WIC.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_WIC.c.i
+users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_WIC.c.i:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2image/CMakeFiles/SDL2_image.dir/build.make cugl.dir/sdl2pckg.dir/sdl2image/CMakeFiles/SDL2_image.dir/users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_WIC.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_WIC.c.i
 
-Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_WIC.s: Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_WIC.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_WIC.s
+users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_WIC.s: users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_WIC.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_WIC.s
 
 # target to generate assembly for a file
-Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_WIC.c.s:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2image/CMakeFiles/SDL2_image.dir/build.make cugl.dir/sdl2pckg.dir/sdl2image/CMakeFiles/SDL2_image.dir/Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_WIC.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_WIC.c.s
+users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_WIC.c.s:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2image/CMakeFiles/SDL2_image.dir/build.make cugl.dir/sdl2pckg.dir/sdl2image/CMakeFiles/SDL2_image.dir/users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_WIC.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_WIC.c.s
 
-Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_avif.o: Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_avif.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_avif.o
+users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_avif.o: users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_avif.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_avif.o
 
 # target to build an object file
-Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_avif.c.o:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2image/CMakeFiles/SDL2_image.dir/build.make cugl.dir/sdl2pckg.dir/sdl2image/CMakeFiles/SDL2_image.dir/Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_avif.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_avif.c.o
+users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_avif.c.o:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2image/CMakeFiles/SDL2_image.dir/build.make cugl.dir/sdl2pckg.dir/sdl2image/CMakeFiles/SDL2_image.dir/users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_avif.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_avif.c.o
 
-Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_avif.i: Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_avif.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_avif.i
+users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_avif.i: users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_avif.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_avif.i
 
 # target to preprocess a source file
-Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_avif.c.i:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2image/CMakeFiles/SDL2_image.dir/build.make cugl.dir/sdl2pckg.dir/sdl2image/CMakeFiles/SDL2_image.dir/Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_avif.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_avif.c.i
+users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_avif.c.i:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2image/CMakeFiles/SDL2_image.dir/build.make cugl.dir/sdl2pckg.dir/sdl2image/CMakeFiles/SDL2_image.dir/users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_avif.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_avif.c.i
 
-Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_avif.s: Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_avif.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_avif.s
+users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_avif.s: users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_avif.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_avif.s
 
 # target to generate assembly for a file
-Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_avif.c.s:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2image/CMakeFiles/SDL2_image.dir/build.make cugl.dir/sdl2pckg.dir/sdl2image/CMakeFiles/SDL2_image.dir/Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_avif.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_avif.c.s
+users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_avif.c.s:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2image/CMakeFiles/SDL2_image.dir/build.make cugl.dir/sdl2pckg.dir/sdl2image/CMakeFiles/SDL2_image.dir/users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_avif.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_avif.c.s
 
-Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_bmp.o: Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_bmp.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_bmp.o
+users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_bmp.o: users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_bmp.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_bmp.o
 
 # target to build an object file
-Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_bmp.c.o:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2image/CMakeFiles/SDL2_image.dir/build.make cugl.dir/sdl2pckg.dir/sdl2image/CMakeFiles/SDL2_image.dir/Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_bmp.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_bmp.c.o
+users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_bmp.c.o:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2image/CMakeFiles/SDL2_image.dir/build.make cugl.dir/sdl2pckg.dir/sdl2image/CMakeFiles/SDL2_image.dir/users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_bmp.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_bmp.c.o
 
-Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_bmp.i: Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_bmp.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_bmp.i
+users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_bmp.i: users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_bmp.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_bmp.i
 
 # target to preprocess a source file
-Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_bmp.c.i:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2image/CMakeFiles/SDL2_image.dir/build.make cugl.dir/sdl2pckg.dir/sdl2image/CMakeFiles/SDL2_image.dir/Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_bmp.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_bmp.c.i
+users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_bmp.c.i:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2image/CMakeFiles/SDL2_image.dir/build.make cugl.dir/sdl2pckg.dir/sdl2image/CMakeFiles/SDL2_image.dir/users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_bmp.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_bmp.c.i
 
-Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_bmp.s: Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_bmp.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_bmp.s
+users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_bmp.s: users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_bmp.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_bmp.s
 
 # target to generate assembly for a file
-Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_bmp.c.s:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2image/CMakeFiles/SDL2_image.dir/build.make cugl.dir/sdl2pckg.dir/sdl2image/CMakeFiles/SDL2_image.dir/Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_bmp.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_bmp.c.s
+users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_bmp.c.s:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2image/CMakeFiles/SDL2_image.dir/build.make cugl.dir/sdl2pckg.dir/sdl2image/CMakeFiles/SDL2_image.dir/users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_bmp.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_bmp.c.s
 
-Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_gif.o: Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_gif.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_gif.o
+users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_gif.o: users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_gif.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_gif.o
 
 # target to build an object file
-Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_gif.c.o:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2image/CMakeFiles/SDL2_image.dir/build.make cugl.dir/sdl2pckg.dir/sdl2image/CMakeFiles/SDL2_image.dir/Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_gif.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_gif.c.o
+users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_gif.c.o:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2image/CMakeFiles/SDL2_image.dir/build.make cugl.dir/sdl2pckg.dir/sdl2image/CMakeFiles/SDL2_image.dir/users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_gif.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_gif.c.o
 
-Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_gif.i: Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_gif.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_gif.i
+users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_gif.i: users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_gif.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_gif.i
 
 # target to preprocess a source file
-Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_gif.c.i:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2image/CMakeFiles/SDL2_image.dir/build.make cugl.dir/sdl2pckg.dir/sdl2image/CMakeFiles/SDL2_image.dir/Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_gif.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_gif.c.i
+users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_gif.c.i:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2image/CMakeFiles/SDL2_image.dir/build.make cugl.dir/sdl2pckg.dir/sdl2image/CMakeFiles/SDL2_image.dir/users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_gif.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_gif.c.i
 
-Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_gif.s: Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_gif.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_gif.s
+users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_gif.s: users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_gif.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_gif.s
 
 # target to generate assembly for a file
-Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_gif.c.s:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2image/CMakeFiles/SDL2_image.dir/build.make cugl.dir/sdl2pckg.dir/sdl2image/CMakeFiles/SDL2_image.dir/Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_gif.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_gif.c.s
+users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_gif.c.s:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2image/CMakeFiles/SDL2_image.dir/build.make cugl.dir/sdl2pckg.dir/sdl2image/CMakeFiles/SDL2_image.dir/users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_gif.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_gif.c.s
 
-Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_jpg.o: Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_jpg.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_jpg.o
+users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_jpg.o: users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_jpg.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_jpg.o
 
 # target to build an object file
-Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_jpg.c.o:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2image/CMakeFiles/SDL2_image.dir/build.make cugl.dir/sdl2pckg.dir/sdl2image/CMakeFiles/SDL2_image.dir/Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_jpg.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_jpg.c.o
+users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_jpg.c.o:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2image/CMakeFiles/SDL2_image.dir/build.make cugl.dir/sdl2pckg.dir/sdl2image/CMakeFiles/SDL2_image.dir/users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_jpg.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_jpg.c.o
 
-Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_jpg.i: Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_jpg.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_jpg.i
+users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_jpg.i: users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_jpg.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_jpg.i
 
 # target to preprocess a source file
-Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_jpg.c.i:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2image/CMakeFiles/SDL2_image.dir/build.make cugl.dir/sdl2pckg.dir/sdl2image/CMakeFiles/SDL2_image.dir/Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_jpg.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_jpg.c.i
+users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_jpg.c.i:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2image/CMakeFiles/SDL2_image.dir/build.make cugl.dir/sdl2pckg.dir/sdl2image/CMakeFiles/SDL2_image.dir/users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_jpg.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_jpg.c.i
 
-Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_jpg.s: Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_jpg.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_jpg.s
+users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_jpg.s: users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_jpg.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_jpg.s
 
 # target to generate assembly for a file
-Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_jpg.c.s:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2image/CMakeFiles/SDL2_image.dir/build.make cugl.dir/sdl2pckg.dir/sdl2image/CMakeFiles/SDL2_image.dir/Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_jpg.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_jpg.c.s
+users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_jpg.c.s:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2image/CMakeFiles/SDL2_image.dir/build.make cugl.dir/sdl2pckg.dir/sdl2image/CMakeFiles/SDL2_image.dir/users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_jpg.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_jpg.c.s
 
-Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_jxl.o: Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_jxl.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_jxl.o
+users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_jxl.o: users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_jxl.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_jxl.o
 
 # target to build an object file
-Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_jxl.c.o:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2image/CMakeFiles/SDL2_image.dir/build.make cugl.dir/sdl2pckg.dir/sdl2image/CMakeFiles/SDL2_image.dir/Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_jxl.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_jxl.c.o
+users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_jxl.c.o:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2image/CMakeFiles/SDL2_image.dir/build.make cugl.dir/sdl2pckg.dir/sdl2image/CMakeFiles/SDL2_image.dir/users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_jxl.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_jxl.c.o
 
-Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_jxl.i: Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_jxl.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_jxl.i
+users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_jxl.i: users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_jxl.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_jxl.i
 
 # target to preprocess a source file
-Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_jxl.c.i:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2image/CMakeFiles/SDL2_image.dir/build.make cugl.dir/sdl2pckg.dir/sdl2image/CMakeFiles/SDL2_image.dir/Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_jxl.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_jxl.c.i
+users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_jxl.c.i:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2image/CMakeFiles/SDL2_image.dir/build.make cugl.dir/sdl2pckg.dir/sdl2image/CMakeFiles/SDL2_image.dir/users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_jxl.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_jxl.c.i
 
-Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_jxl.s: Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_jxl.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_jxl.s
+users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_jxl.s: users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_jxl.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_jxl.s
 
 # target to generate assembly for a file
-Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_jxl.c.s:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2image/CMakeFiles/SDL2_image.dir/build.make cugl.dir/sdl2pckg.dir/sdl2image/CMakeFiles/SDL2_image.dir/Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_jxl.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_jxl.c.s
+users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_jxl.c.s:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2image/CMakeFiles/SDL2_image.dir/build.make cugl.dir/sdl2pckg.dir/sdl2image/CMakeFiles/SDL2_image.dir/users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_jxl.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_jxl.c.s
 
-Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_lbm.o: Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_lbm.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_lbm.o
+users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_lbm.o: users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_lbm.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_lbm.o
 
 # target to build an object file
-Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_lbm.c.o:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2image/CMakeFiles/SDL2_image.dir/build.make cugl.dir/sdl2pckg.dir/sdl2image/CMakeFiles/SDL2_image.dir/Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_lbm.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_lbm.c.o
+users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_lbm.c.o:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2image/CMakeFiles/SDL2_image.dir/build.make cugl.dir/sdl2pckg.dir/sdl2image/CMakeFiles/SDL2_image.dir/users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_lbm.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_lbm.c.o
 
-Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_lbm.i: Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_lbm.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_lbm.i
+users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_lbm.i: users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_lbm.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_lbm.i
 
 # target to preprocess a source file
-Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_lbm.c.i:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2image/CMakeFiles/SDL2_image.dir/build.make cugl.dir/sdl2pckg.dir/sdl2image/CMakeFiles/SDL2_image.dir/Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_lbm.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_lbm.c.i
+users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_lbm.c.i:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2image/CMakeFiles/SDL2_image.dir/build.make cugl.dir/sdl2pckg.dir/sdl2image/CMakeFiles/SDL2_image.dir/users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_lbm.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_lbm.c.i
 
-Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_lbm.s: Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_lbm.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_lbm.s
+users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_lbm.s: users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_lbm.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_lbm.s
 
 # target to generate assembly for a file
-Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_lbm.c.s:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2image/CMakeFiles/SDL2_image.dir/build.make cugl.dir/sdl2pckg.dir/sdl2image/CMakeFiles/SDL2_image.dir/Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_lbm.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_lbm.c.s
+users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_lbm.c.s:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2image/CMakeFiles/SDL2_image.dir/build.make cugl.dir/sdl2pckg.dir/sdl2image/CMakeFiles/SDL2_image.dir/users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_lbm.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_lbm.c.s
 
-Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_pcx.o: Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_pcx.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_pcx.o
+users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_pcx.o: users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_pcx.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_pcx.o
 
 # target to build an object file
-Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_pcx.c.o:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2image/CMakeFiles/SDL2_image.dir/build.make cugl.dir/sdl2pckg.dir/sdl2image/CMakeFiles/SDL2_image.dir/Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_pcx.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_pcx.c.o
+users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_pcx.c.o:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2image/CMakeFiles/SDL2_image.dir/build.make cugl.dir/sdl2pckg.dir/sdl2image/CMakeFiles/SDL2_image.dir/users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_pcx.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_pcx.c.o
 
-Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_pcx.i: Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_pcx.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_pcx.i
+users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_pcx.i: users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_pcx.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_pcx.i
 
 # target to preprocess a source file
-Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_pcx.c.i:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2image/CMakeFiles/SDL2_image.dir/build.make cugl.dir/sdl2pckg.dir/sdl2image/CMakeFiles/SDL2_image.dir/Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_pcx.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_pcx.c.i
+users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_pcx.c.i:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2image/CMakeFiles/SDL2_image.dir/build.make cugl.dir/sdl2pckg.dir/sdl2image/CMakeFiles/SDL2_image.dir/users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_pcx.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_pcx.c.i
 
-Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_pcx.s: Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_pcx.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_pcx.s
+users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_pcx.s: users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_pcx.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_pcx.s
 
 # target to generate assembly for a file
-Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_pcx.c.s:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2image/CMakeFiles/SDL2_image.dir/build.make cugl.dir/sdl2pckg.dir/sdl2image/CMakeFiles/SDL2_image.dir/Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_pcx.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_pcx.c.s
+users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_pcx.c.s:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2image/CMakeFiles/SDL2_image.dir/build.make cugl.dir/sdl2pckg.dir/sdl2image/CMakeFiles/SDL2_image.dir/users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_pcx.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_pcx.c.s
 
-Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_png.o: Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_png.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_png.o
+users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_png.o: users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_png.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_png.o
 
 # target to build an object file
-Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_png.c.o:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2image/CMakeFiles/SDL2_image.dir/build.make cugl.dir/sdl2pckg.dir/sdl2image/CMakeFiles/SDL2_image.dir/Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_png.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_png.c.o
+users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_png.c.o:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2image/CMakeFiles/SDL2_image.dir/build.make cugl.dir/sdl2pckg.dir/sdl2image/CMakeFiles/SDL2_image.dir/users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_png.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_png.c.o
 
-Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_png.i: Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_png.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_png.i
+users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_png.i: users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_png.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_png.i
 
 # target to preprocess a source file
-Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_png.c.i:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2image/CMakeFiles/SDL2_image.dir/build.make cugl.dir/sdl2pckg.dir/sdl2image/CMakeFiles/SDL2_image.dir/Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_png.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_png.c.i
+users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_png.c.i:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2image/CMakeFiles/SDL2_image.dir/build.make cugl.dir/sdl2pckg.dir/sdl2image/CMakeFiles/SDL2_image.dir/users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_png.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_png.c.i
 
-Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_png.s: Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_png.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_png.s
+users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_png.s: users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_png.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_png.s
 
 # target to generate assembly for a file
-Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_png.c.s:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2image/CMakeFiles/SDL2_image.dir/build.make cugl.dir/sdl2pckg.dir/sdl2image/CMakeFiles/SDL2_image.dir/Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_png.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_png.c.s
+users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_png.c.s:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2image/CMakeFiles/SDL2_image.dir/build.make cugl.dir/sdl2pckg.dir/sdl2image/CMakeFiles/SDL2_image.dir/users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_png.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_png.c.s
 
-Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_pnm.o: Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_pnm.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_pnm.o
+users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_pnm.o: users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_pnm.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_pnm.o
 
 # target to build an object file
-Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_pnm.c.o:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2image/CMakeFiles/SDL2_image.dir/build.make cugl.dir/sdl2pckg.dir/sdl2image/CMakeFiles/SDL2_image.dir/Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_pnm.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_pnm.c.o
+users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_pnm.c.o:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2image/CMakeFiles/SDL2_image.dir/build.make cugl.dir/sdl2pckg.dir/sdl2image/CMakeFiles/SDL2_image.dir/users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_pnm.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_pnm.c.o
 
-Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_pnm.i: Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_pnm.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_pnm.i
+users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_pnm.i: users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_pnm.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_pnm.i
 
 # target to preprocess a source file
-Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_pnm.c.i:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2image/CMakeFiles/SDL2_image.dir/build.make cugl.dir/sdl2pckg.dir/sdl2image/CMakeFiles/SDL2_image.dir/Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_pnm.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_pnm.c.i
+users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_pnm.c.i:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2image/CMakeFiles/SDL2_image.dir/build.make cugl.dir/sdl2pckg.dir/sdl2image/CMakeFiles/SDL2_image.dir/users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_pnm.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_pnm.c.i
 
-Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_pnm.s: Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_pnm.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_pnm.s
+users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_pnm.s: users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_pnm.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_pnm.s
 
 # target to generate assembly for a file
-Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_pnm.c.s:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2image/CMakeFiles/SDL2_image.dir/build.make cugl.dir/sdl2pckg.dir/sdl2image/CMakeFiles/SDL2_image.dir/Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_pnm.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_pnm.c.s
+users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_pnm.c.s:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2image/CMakeFiles/SDL2_image.dir/build.make cugl.dir/sdl2pckg.dir/sdl2image/CMakeFiles/SDL2_image.dir/users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_pnm.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_pnm.c.s
 
-Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_qoi.o: Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_qoi.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_qoi.o
+users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_qoi.o: users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_qoi.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_qoi.o
 
 # target to build an object file
-Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_qoi.c.o:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2image/CMakeFiles/SDL2_image.dir/build.make cugl.dir/sdl2pckg.dir/sdl2image/CMakeFiles/SDL2_image.dir/Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_qoi.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_qoi.c.o
+users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_qoi.c.o:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2image/CMakeFiles/SDL2_image.dir/build.make cugl.dir/sdl2pckg.dir/sdl2image/CMakeFiles/SDL2_image.dir/users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_qoi.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_qoi.c.o
 
-Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_qoi.i: Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_qoi.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_qoi.i
+users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_qoi.i: users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_qoi.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_qoi.i
 
 # target to preprocess a source file
-Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_qoi.c.i:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2image/CMakeFiles/SDL2_image.dir/build.make cugl.dir/sdl2pckg.dir/sdl2image/CMakeFiles/SDL2_image.dir/Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_qoi.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_qoi.c.i
+users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_qoi.c.i:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2image/CMakeFiles/SDL2_image.dir/build.make cugl.dir/sdl2pckg.dir/sdl2image/CMakeFiles/SDL2_image.dir/users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_qoi.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_qoi.c.i
 
-Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_qoi.s: Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_qoi.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_qoi.s
+users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_qoi.s: users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_qoi.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_qoi.s
 
 # target to generate assembly for a file
-Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_qoi.c.s:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2image/CMakeFiles/SDL2_image.dir/build.make cugl.dir/sdl2pckg.dir/sdl2image/CMakeFiles/SDL2_image.dir/Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_qoi.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_qoi.c.s
+users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_qoi.c.s:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2image/CMakeFiles/SDL2_image.dir/build.make cugl.dir/sdl2pckg.dir/sdl2image/CMakeFiles/SDL2_image.dir/users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_qoi.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_qoi.c.s
 
-Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_stb.o: Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_stb.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_stb.o
+users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_stb.o: users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_stb.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_stb.o
 
 # target to build an object file
-Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_stb.c.o:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2image/CMakeFiles/SDL2_image.dir/build.make cugl.dir/sdl2pckg.dir/sdl2image/CMakeFiles/SDL2_image.dir/Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_stb.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_stb.c.o
+users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_stb.c.o:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2image/CMakeFiles/SDL2_image.dir/build.make cugl.dir/sdl2pckg.dir/sdl2image/CMakeFiles/SDL2_image.dir/users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_stb.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_stb.c.o
 
-Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_stb.i: Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_stb.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_stb.i
+users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_stb.i: users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_stb.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_stb.i
 
 # target to preprocess a source file
-Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_stb.c.i:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2image/CMakeFiles/SDL2_image.dir/build.make cugl.dir/sdl2pckg.dir/sdl2image/CMakeFiles/SDL2_image.dir/Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_stb.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_stb.c.i
+users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_stb.c.i:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2image/CMakeFiles/SDL2_image.dir/build.make cugl.dir/sdl2pckg.dir/sdl2image/CMakeFiles/SDL2_image.dir/users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_stb.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_stb.c.i
 
-Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_stb.s: Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_stb.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_stb.s
+users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_stb.s: users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_stb.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_stb.s
 
 # target to generate assembly for a file
-Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_stb.c.s:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2image/CMakeFiles/SDL2_image.dir/build.make cugl.dir/sdl2pckg.dir/sdl2image/CMakeFiles/SDL2_image.dir/Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_stb.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_stb.c.s
+users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_stb.c.s:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2image/CMakeFiles/SDL2_image.dir/build.make cugl.dir/sdl2pckg.dir/sdl2image/CMakeFiles/SDL2_image.dir/users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_stb.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_stb.c.s
 
-Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_svg.o: Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_svg.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_svg.o
+users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_svg.o: users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_svg.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_svg.o
 
 # target to build an object file
-Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_svg.c.o:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2image/CMakeFiles/SDL2_image.dir/build.make cugl.dir/sdl2pckg.dir/sdl2image/CMakeFiles/SDL2_image.dir/Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_svg.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_svg.c.o
+users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_svg.c.o:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2image/CMakeFiles/SDL2_image.dir/build.make cugl.dir/sdl2pckg.dir/sdl2image/CMakeFiles/SDL2_image.dir/users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_svg.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_svg.c.o
 
-Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_svg.i: Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_svg.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_svg.i
+users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_svg.i: users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_svg.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_svg.i
 
 # target to preprocess a source file
-Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_svg.c.i:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2image/CMakeFiles/SDL2_image.dir/build.make cugl.dir/sdl2pckg.dir/sdl2image/CMakeFiles/SDL2_image.dir/Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_svg.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_svg.c.i
+users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_svg.c.i:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2image/CMakeFiles/SDL2_image.dir/build.make cugl.dir/sdl2pckg.dir/sdl2image/CMakeFiles/SDL2_image.dir/users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_svg.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_svg.c.i
 
-Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_svg.s: Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_svg.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_svg.s
+users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_svg.s: users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_svg.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_svg.s
 
 # target to generate assembly for a file
-Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_svg.c.s:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2image/CMakeFiles/SDL2_image.dir/build.make cugl.dir/sdl2pckg.dir/sdl2image/CMakeFiles/SDL2_image.dir/Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_svg.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_svg.c.s
+users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_svg.c.s:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2image/CMakeFiles/SDL2_image.dir/build.make cugl.dir/sdl2pckg.dir/sdl2image/CMakeFiles/SDL2_image.dir/users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_svg.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_svg.c.s
 
-Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_tga.o: Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_tga.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_tga.o
+users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_tga.o: users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_tga.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_tga.o
 
 # target to build an object file
-Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_tga.c.o:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2image/CMakeFiles/SDL2_image.dir/build.make cugl.dir/sdl2pckg.dir/sdl2image/CMakeFiles/SDL2_image.dir/Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_tga.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_tga.c.o
+users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_tga.c.o:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2image/CMakeFiles/SDL2_image.dir/build.make cugl.dir/sdl2pckg.dir/sdl2image/CMakeFiles/SDL2_image.dir/users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_tga.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_tga.c.o
 
-Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_tga.i: Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_tga.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_tga.i
+users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_tga.i: users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_tga.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_tga.i
 
 # target to preprocess a source file
-Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_tga.c.i:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2image/CMakeFiles/SDL2_image.dir/build.make cugl.dir/sdl2pckg.dir/sdl2image/CMakeFiles/SDL2_image.dir/Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_tga.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_tga.c.i
+users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_tga.c.i:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2image/CMakeFiles/SDL2_image.dir/build.make cugl.dir/sdl2pckg.dir/sdl2image/CMakeFiles/SDL2_image.dir/users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_tga.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_tga.c.i
 
-Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_tga.s: Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_tga.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_tga.s
+users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_tga.s: users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_tga.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_tga.s
 
 # target to generate assembly for a file
-Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_tga.c.s:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2image/CMakeFiles/SDL2_image.dir/build.make cugl.dir/sdl2pckg.dir/sdl2image/CMakeFiles/SDL2_image.dir/Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_tga.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_tga.c.s
+users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_tga.c.s:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2image/CMakeFiles/SDL2_image.dir/build.make cugl.dir/sdl2pckg.dir/sdl2image/CMakeFiles/SDL2_image.dir/users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_tga.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_tga.c.s
 
-Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_tif.o: Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_tif.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_tif.o
+users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_tif.o: users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_tif.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_tif.o
 
 # target to build an object file
-Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_tif.c.o:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2image/CMakeFiles/SDL2_image.dir/build.make cugl.dir/sdl2pckg.dir/sdl2image/CMakeFiles/SDL2_image.dir/Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_tif.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_tif.c.o
+users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_tif.c.o:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2image/CMakeFiles/SDL2_image.dir/build.make cugl.dir/sdl2pckg.dir/sdl2image/CMakeFiles/SDL2_image.dir/users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_tif.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_tif.c.o
 
-Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_tif.i: Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_tif.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_tif.i
+users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_tif.i: users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_tif.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_tif.i
 
 # target to preprocess a source file
-Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_tif.c.i:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2image/CMakeFiles/SDL2_image.dir/build.make cugl.dir/sdl2pckg.dir/sdl2image/CMakeFiles/SDL2_image.dir/Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_tif.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_tif.c.i
+users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_tif.c.i:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2image/CMakeFiles/SDL2_image.dir/build.make cugl.dir/sdl2pckg.dir/sdl2image/CMakeFiles/SDL2_image.dir/users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_tif.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_tif.c.i
 
-Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_tif.s: Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_tif.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_tif.s
+users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_tif.s: users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_tif.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_tif.s
 
 # target to generate assembly for a file
-Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_tif.c.s:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2image/CMakeFiles/SDL2_image.dir/build.make cugl.dir/sdl2pckg.dir/sdl2image/CMakeFiles/SDL2_image.dir/Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_tif.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_tif.c.s
+users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_tif.c.s:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2image/CMakeFiles/SDL2_image.dir/build.make cugl.dir/sdl2pckg.dir/sdl2image/CMakeFiles/SDL2_image.dir/users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_tif.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_tif.c.s
 
-Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_webp.o: Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_webp.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_webp.o
+users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_webp.o: users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_webp.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_webp.o
 
 # target to build an object file
-Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_webp.c.o:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2image/CMakeFiles/SDL2_image.dir/build.make cugl.dir/sdl2pckg.dir/sdl2image/CMakeFiles/SDL2_image.dir/Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_webp.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_webp.c.o
+users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_webp.c.o:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2image/CMakeFiles/SDL2_image.dir/build.make cugl.dir/sdl2pckg.dir/sdl2image/CMakeFiles/SDL2_image.dir/users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_webp.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_webp.c.o
 
-Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_webp.i: Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_webp.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_webp.i
+users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_webp.i: users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_webp.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_webp.i
 
 # target to preprocess a source file
-Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_webp.c.i:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2image/CMakeFiles/SDL2_image.dir/build.make cugl.dir/sdl2pckg.dir/sdl2image/CMakeFiles/SDL2_image.dir/Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_webp.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_webp.c.i
+users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_webp.c.i:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2image/CMakeFiles/SDL2_image.dir/build.make cugl.dir/sdl2pckg.dir/sdl2image/CMakeFiles/SDL2_image.dir/users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_webp.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_webp.c.i
 
-Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_webp.s: Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_webp.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_webp.s
+users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_webp.s: users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_webp.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_webp.s
 
 # target to generate assembly for a file
-Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_webp.c.s:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2image/CMakeFiles/SDL2_image.dir/build.make cugl.dir/sdl2pckg.dir/sdl2image/CMakeFiles/SDL2_image.dir/Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_webp.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_webp.c.s
+users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_webp.c.s:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2image/CMakeFiles/SDL2_image.dir/build.make cugl.dir/sdl2pckg.dir/sdl2image/CMakeFiles/SDL2_image.dir/users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_webp.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_webp.c.s
 
-Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_xcf.o: Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_xcf.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_xcf.o
+users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_xcf.o: users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_xcf.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_xcf.o
 
 # target to build an object file
-Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_xcf.c.o:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2image/CMakeFiles/SDL2_image.dir/build.make cugl.dir/sdl2pckg.dir/sdl2image/CMakeFiles/SDL2_image.dir/Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_xcf.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_xcf.c.o
+users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_xcf.c.o:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2image/CMakeFiles/SDL2_image.dir/build.make cugl.dir/sdl2pckg.dir/sdl2image/CMakeFiles/SDL2_image.dir/users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_xcf.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_xcf.c.o
 
-Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_xcf.i: Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_xcf.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_xcf.i
+users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_xcf.i: users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_xcf.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_xcf.i
 
 # target to preprocess a source file
-Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_xcf.c.i:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2image/CMakeFiles/SDL2_image.dir/build.make cugl.dir/sdl2pckg.dir/sdl2image/CMakeFiles/SDL2_image.dir/Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_xcf.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_xcf.c.i
+users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_xcf.c.i:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2image/CMakeFiles/SDL2_image.dir/build.make cugl.dir/sdl2pckg.dir/sdl2image/CMakeFiles/SDL2_image.dir/users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_xcf.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_xcf.c.i
 
-Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_xcf.s: Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_xcf.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_xcf.s
+users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_xcf.s: users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_xcf.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_xcf.s
 
 # target to generate assembly for a file
-Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_xcf.c.s:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2image/CMakeFiles/SDL2_image.dir/build.make cugl.dir/sdl2pckg.dir/sdl2image/CMakeFiles/SDL2_image.dir/Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_xcf.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_xcf.c.s
+users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_xcf.c.s:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2image/CMakeFiles/SDL2_image.dir/build.make cugl.dir/sdl2pckg.dir/sdl2image/CMakeFiles/SDL2_image.dir/users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_xcf.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_xcf.c.s
 
-Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_xpm.o: Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_xpm.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_xpm.o
+users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_xpm.o: users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_xpm.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_xpm.o
 
 # target to build an object file
-Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_xpm.c.o:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2image/CMakeFiles/SDL2_image.dir/build.make cugl.dir/sdl2pckg.dir/sdl2image/CMakeFiles/SDL2_image.dir/Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_xpm.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_xpm.c.o
+users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_xpm.c.o:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2image/CMakeFiles/SDL2_image.dir/build.make cugl.dir/sdl2pckg.dir/sdl2image/CMakeFiles/SDL2_image.dir/users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_xpm.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_xpm.c.o
 
-Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_xpm.i: Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_xpm.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_xpm.i
+users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_xpm.i: users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_xpm.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_xpm.i
 
 # target to preprocess a source file
-Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_xpm.c.i:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2image/CMakeFiles/SDL2_image.dir/build.make cugl.dir/sdl2pckg.dir/sdl2image/CMakeFiles/SDL2_image.dir/Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_xpm.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_xpm.c.i
+users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_xpm.c.i:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2image/CMakeFiles/SDL2_image.dir/build.make cugl.dir/sdl2pckg.dir/sdl2image/CMakeFiles/SDL2_image.dir/users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_xpm.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_xpm.c.i
 
-Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_xpm.s: Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_xpm.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_xpm.s
+users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_xpm.s: users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_xpm.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_xpm.s
 
 # target to generate assembly for a file
-Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_xpm.c.s:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2image/CMakeFiles/SDL2_image.dir/build.make cugl.dir/sdl2pckg.dir/sdl2image/CMakeFiles/SDL2_image.dir/Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_xpm.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_xpm.c.s
+users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_xpm.c.s:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2image/CMakeFiles/SDL2_image.dir/build.make cugl.dir/sdl2pckg.dir/sdl2image/CMakeFiles/SDL2_image.dir/users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_xpm.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_xpm.c.s
 
-Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_xv.o: Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_xv.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_xv.o
+users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_xv.o: users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_xv.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_xv.o
 
 # target to build an object file
-Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_xv.c.o:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2image/CMakeFiles/SDL2_image.dir/build.make cugl.dir/sdl2pckg.dir/sdl2image/CMakeFiles/SDL2_image.dir/Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_xv.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_xv.c.o
+users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_xv.c.o:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2image/CMakeFiles/SDL2_image.dir/build.make cugl.dir/sdl2pckg.dir/sdl2image/CMakeFiles/SDL2_image.dir/users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_xv.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_xv.c.o
 
-Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_xv.i: Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_xv.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_xv.i
+users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_xv.i: users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_xv.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_xv.i
 
 # target to preprocess a source file
-Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_xv.c.i:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2image/CMakeFiles/SDL2_image.dir/build.make cugl.dir/sdl2pckg.dir/sdl2image/CMakeFiles/SDL2_image.dir/Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_xv.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_xv.c.i
+users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_xv.c.i:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2image/CMakeFiles/SDL2_image.dir/build.make cugl.dir/sdl2pckg.dir/sdl2image/CMakeFiles/SDL2_image.dir/users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_xv.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_xv.c.i
 
-Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_xv.s: Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_xv.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_xv.s
+users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_xv.s: users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_xv.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_xv.s
 
 # target to generate assembly for a file
-Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_xv.c.s:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2image/CMakeFiles/SDL2_image.dir/build.make cugl.dir/sdl2pckg.dir/sdl2image/CMakeFiles/SDL2_image.dir/Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_xv.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_xv.c.s
+users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_xv.c.s:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2image/CMakeFiles/SDL2_image.dir/build.make cugl.dir/sdl2pckg.dir/sdl2image/CMakeFiles/SDL2_image.dir/users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_xv.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_xv.c.s
 
-Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_xxx.o: Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_xxx.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_xxx.o
+users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_xxx.o: users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_xxx.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_xxx.o
 
 # target to build an object file
-Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_xxx.c.o:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2image/CMakeFiles/SDL2_image.dir/build.make cugl.dir/sdl2pckg.dir/sdl2image/CMakeFiles/SDL2_image.dir/Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_xxx.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_xxx.c.o
+users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_xxx.c.o:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2image/CMakeFiles/SDL2_image.dir/build.make cugl.dir/sdl2pckg.dir/sdl2image/CMakeFiles/SDL2_image.dir/users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_xxx.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_xxx.c.o
 
-Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_xxx.i: Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_xxx.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_xxx.i
+users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_xxx.i: users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_xxx.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_xxx.i
 
 # target to preprocess a source file
-Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_xxx.c.i:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2image/CMakeFiles/SDL2_image.dir/build.make cugl.dir/sdl2pckg.dir/sdl2image/CMakeFiles/SDL2_image.dir/Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_xxx.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_xxx.c.i
+users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_xxx.c.i:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2image/CMakeFiles/SDL2_image.dir/build.make cugl.dir/sdl2pckg.dir/sdl2image/CMakeFiles/SDL2_image.dir/users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_xxx.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_xxx.c.i
 
-Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_xxx.s: Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_xxx.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_xxx.s
+users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_xxx.s: users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_xxx.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_xxx.s
 
 # target to generate assembly for a file
-Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_xxx.c.s:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2image/CMakeFiles/SDL2_image.dir/build.make cugl.dir/sdl2pckg.dir/sdl2image/CMakeFiles/SDL2_image.dir/Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_xxx.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_xxx.c.s
+users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_xxx.c.s:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/sdl2pckg.dir/sdl2image/CMakeFiles/SDL2_image.dir/build.make cugl.dir/sdl2pckg.dir/sdl2image/CMakeFiles/SDL2_image.dir/users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_xxx.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_xxx.c.s
 
 # Help Target
 help:
@@ -738,72 +738,72 @@ help:
 	@echo "... package_source"
 	@echo "... rebuild_cache"
 	@echo "... SDL2_image"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG.o"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG.i"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG.s"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_ImageIO.o"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_ImageIO.i"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_ImageIO.s"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_WIC.o"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_WIC.i"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_WIC.s"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_avif.o"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_avif.i"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_avif.s"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_bmp.o"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_bmp.i"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_bmp.s"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_gif.o"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_gif.i"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_gif.s"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_jpg.o"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_jpg.i"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_jpg.s"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_jxl.o"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_jxl.i"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_jxl.s"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_lbm.o"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_lbm.i"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_lbm.s"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_pcx.o"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_pcx.i"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_pcx.s"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_png.o"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_png.i"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_png.s"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_pnm.o"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_pnm.i"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_pnm.s"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_qoi.o"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_qoi.i"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_qoi.s"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_stb.o"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_stb.i"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_stb.s"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_svg.o"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_svg.i"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_svg.s"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_tga.o"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_tga.i"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_tga.s"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_tif.o"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_tif.i"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_tif.s"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_webp.o"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_webp.i"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_webp.s"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_xcf.o"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_xcf.i"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_xcf.s"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_xpm.o"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_xpm.i"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_xpm.s"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_xv.o"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_xv.i"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_xv.s"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_xxx.o"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_xxx.i"
-	@echo "... Users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_xxx.s"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG.o"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG.i"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG.s"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_ImageIO.o"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_ImageIO.i"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_ImageIO.s"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_WIC.o"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_WIC.i"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_WIC.s"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_avif.o"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_avif.i"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_avif.s"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_bmp.o"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_bmp.i"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_bmp.s"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_gif.o"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_gif.i"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_gif.s"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_jpg.o"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_jpg.i"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_jpg.s"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_jxl.o"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_jxl.i"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_jxl.s"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_lbm.o"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_lbm.i"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_lbm.s"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_pcx.o"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_pcx.i"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_pcx.s"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_png.o"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_png.i"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_png.s"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_pnm.o"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_pnm.i"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_pnm.s"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_qoi.o"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_qoi.i"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_qoi.s"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_stb.o"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_stb.i"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_stb.s"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_svg.o"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_svg.i"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_svg.s"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_tga.o"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_tga.i"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_tga.s"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_tif.o"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_tif.i"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_tif.s"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_webp.o"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_webp.i"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_webp.s"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_xcf.o"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_xcf.i"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_xcf.s"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_xpm.o"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_xpm.i"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_xpm.s"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_xv.o"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_xv.i"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_xv.s"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_xxx.o"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_xxx.i"
+	@echo "... users/patrickchoo/cs4152/cugl/sdlapp/src/image/IMG_xxx.s"
 .PHONY : help
 
 
@@ -815,6 +815,6 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 

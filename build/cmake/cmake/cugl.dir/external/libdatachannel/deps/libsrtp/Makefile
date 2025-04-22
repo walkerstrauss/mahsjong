@@ -57,10 +57,10 @@ RM = /opt/homebrew/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /Users/patrickchoo/cs4152/mahsjong/build/cmake
+CMAKE_SOURCE_DIR = /users/patrickchoo/cs4152/mahsjong/build/cmake
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake
+CMAKE_BINARY_DIR = /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -68,7 +68,7 @@ CMAKE_BINARY_DIR = /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake
 # Special rule for the target package
 package: preinstall
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Run CPack packaging tool..."
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && /opt/homebrew/bin/cpack --config ./CPackConfig.cmake
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && /opt/homebrew/bin/cpack --config ./CPackConfig.cmake
 .PHONY : package
 
 # Special rule for the target package
@@ -78,7 +78,7 @@ package/fast: package
 # Special rule for the target package_source
 package_source:
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Run CPack packaging tool for source..."
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && /opt/homebrew/bin/cpack --config ./CPackSourceConfig.cmake /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CPackSourceConfig.cmake
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && /opt/homebrew/bin/cpack --config ./CPackSourceConfig.cmake /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CPackSourceConfig.cmake
 .PHONY : package_source
 
 # Special rule for the target package_source
@@ -152,14 +152,14 @@ install/strip/fast: preinstall/fast
 
 # The main all target
 all: cmake_check_build_system
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(CMAKE_COMMAND) -E cmake_progress_start /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/external/libdatachannel/deps/libsrtp//CMakeFiles/progress.marks
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 cugl.dir/external/libdatachannel/deps/libsrtp/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles 0
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(CMAKE_COMMAND) -E cmake_progress_start /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/external/libdatachannel/deps/libsrtp//CMakeFiles/progress.marks
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 cugl.dir/external/libdatachannel/deps/libsrtp/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 cugl.dir/external/libdatachannel/deps/libsrtp/clean
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 cugl.dir/external/libdatachannel/deps/libsrtp/clean
 .PHONY : clean
 
 # The main clean target
@@ -168,22 +168,22 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 cugl.dir/external/libdatachannel/deps/libsrtp/preinstall
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 cugl.dir/external/libdatachannel/deps/libsrtp/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 cugl.dir/external/libdatachannel/deps/libsrtp/preinstall
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 cugl.dir/external/libdatachannel/deps/libsrtp/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
 # Convenience name for target.
 cugl.dir/external/libdatachannel/deps/libsrtp/CMakeFiles/srtp2.dir/rule:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 cugl.dir/external/libdatachannel/deps/libsrtp/CMakeFiles/srtp2.dir/rule
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 cugl.dir/external/libdatachannel/deps/libsrtp/CMakeFiles/srtp2.dir/rule
 .PHONY : cugl.dir/external/libdatachannel/deps/libsrtp/CMakeFiles/srtp2.dir/rule
 
 # Convenience name for target.
@@ -192,416 +192,416 @@ srtp2: cugl.dir/external/libdatachannel/deps/libsrtp/CMakeFiles/srtp2.dir/rule
 
 # fast build rule for target.
 srtp2/fast:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/libsrtp/CMakeFiles/srtp2.dir/build.make cugl.dir/external/libdatachannel/deps/libsrtp/CMakeFiles/srtp2.dir/build
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/libsrtp/CMakeFiles/srtp2.dir/build.make cugl.dir/external/libdatachannel/deps/libsrtp/CMakeFiles/srtp2.dir/build
 .PHONY : srtp2/fast
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/cipher/aes_gcm_ossl.o: Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/cipher/aes_gcm_ossl.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/cipher/aes_gcm_ossl.o
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/cipher/aes_gcm_ossl.o: users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/cipher/aes_gcm_ossl.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/cipher/aes_gcm_ossl.o
 
 # target to build an object file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/cipher/aes_gcm_ossl.c.o:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/libsrtp/CMakeFiles/srtp2.dir/build.make cugl.dir/external/libdatachannel/deps/libsrtp/CMakeFiles/srtp2.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/cipher/aes_gcm_ossl.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/cipher/aes_gcm_ossl.c.o
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/cipher/aes_gcm_ossl.c.o:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/libsrtp/CMakeFiles/srtp2.dir/build.make cugl.dir/external/libdatachannel/deps/libsrtp/CMakeFiles/srtp2.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/cipher/aes_gcm_ossl.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/cipher/aes_gcm_ossl.c.o
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/cipher/aes_gcm_ossl.i: Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/cipher/aes_gcm_ossl.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/cipher/aes_gcm_ossl.i
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/cipher/aes_gcm_ossl.i: users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/cipher/aes_gcm_ossl.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/cipher/aes_gcm_ossl.i
 
 # target to preprocess a source file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/cipher/aes_gcm_ossl.c.i:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/libsrtp/CMakeFiles/srtp2.dir/build.make cugl.dir/external/libdatachannel/deps/libsrtp/CMakeFiles/srtp2.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/cipher/aes_gcm_ossl.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/cipher/aes_gcm_ossl.c.i
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/cipher/aes_gcm_ossl.c.i:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/libsrtp/CMakeFiles/srtp2.dir/build.make cugl.dir/external/libdatachannel/deps/libsrtp/CMakeFiles/srtp2.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/cipher/aes_gcm_ossl.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/cipher/aes_gcm_ossl.c.i
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/cipher/aes_gcm_ossl.s: Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/cipher/aes_gcm_ossl.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/cipher/aes_gcm_ossl.s
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/cipher/aes_gcm_ossl.s: users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/cipher/aes_gcm_ossl.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/cipher/aes_gcm_ossl.s
 
 # target to generate assembly for a file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/cipher/aes_gcm_ossl.c.s:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/libsrtp/CMakeFiles/srtp2.dir/build.make cugl.dir/external/libdatachannel/deps/libsrtp/CMakeFiles/srtp2.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/cipher/aes_gcm_ossl.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/cipher/aes_gcm_ossl.c.s
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/cipher/aes_gcm_ossl.c.s:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/libsrtp/CMakeFiles/srtp2.dir/build.make cugl.dir/external/libdatachannel/deps/libsrtp/CMakeFiles/srtp2.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/cipher/aes_gcm_ossl.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/cipher/aes_gcm_ossl.c.s
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/cipher/aes_icm_ossl.o: Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/cipher/aes_icm_ossl.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/cipher/aes_icm_ossl.o
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/cipher/aes_icm_ossl.o: users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/cipher/aes_icm_ossl.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/cipher/aes_icm_ossl.o
 
 # target to build an object file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/cipher/aes_icm_ossl.c.o:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/libsrtp/CMakeFiles/srtp2.dir/build.make cugl.dir/external/libdatachannel/deps/libsrtp/CMakeFiles/srtp2.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/cipher/aes_icm_ossl.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/cipher/aes_icm_ossl.c.o
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/cipher/aes_icm_ossl.c.o:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/libsrtp/CMakeFiles/srtp2.dir/build.make cugl.dir/external/libdatachannel/deps/libsrtp/CMakeFiles/srtp2.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/cipher/aes_icm_ossl.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/cipher/aes_icm_ossl.c.o
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/cipher/aes_icm_ossl.i: Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/cipher/aes_icm_ossl.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/cipher/aes_icm_ossl.i
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/cipher/aes_icm_ossl.i: users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/cipher/aes_icm_ossl.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/cipher/aes_icm_ossl.i
 
 # target to preprocess a source file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/cipher/aes_icm_ossl.c.i:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/libsrtp/CMakeFiles/srtp2.dir/build.make cugl.dir/external/libdatachannel/deps/libsrtp/CMakeFiles/srtp2.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/cipher/aes_icm_ossl.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/cipher/aes_icm_ossl.c.i
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/cipher/aes_icm_ossl.c.i:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/libsrtp/CMakeFiles/srtp2.dir/build.make cugl.dir/external/libdatachannel/deps/libsrtp/CMakeFiles/srtp2.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/cipher/aes_icm_ossl.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/cipher/aes_icm_ossl.c.i
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/cipher/aes_icm_ossl.s: Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/cipher/aes_icm_ossl.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/cipher/aes_icm_ossl.s
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/cipher/aes_icm_ossl.s: users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/cipher/aes_icm_ossl.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/cipher/aes_icm_ossl.s
 
 # target to generate assembly for a file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/cipher/aes_icm_ossl.c.s:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/libsrtp/CMakeFiles/srtp2.dir/build.make cugl.dir/external/libdatachannel/deps/libsrtp/CMakeFiles/srtp2.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/cipher/aes_icm_ossl.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/cipher/aes_icm_ossl.c.s
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/cipher/aes_icm_ossl.c.s:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/libsrtp/CMakeFiles/srtp2.dir/build.make cugl.dir/external/libdatachannel/deps/libsrtp/CMakeFiles/srtp2.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/cipher/aes_icm_ossl.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/cipher/aes_icm_ossl.c.s
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/cipher/cipher.o: Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/cipher/cipher.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/cipher/cipher.o
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/cipher/cipher.o: users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/cipher/cipher.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/cipher/cipher.o
 
 # target to build an object file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/cipher/cipher.c.o:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/libsrtp/CMakeFiles/srtp2.dir/build.make cugl.dir/external/libdatachannel/deps/libsrtp/CMakeFiles/srtp2.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/cipher/cipher.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/cipher/cipher.c.o
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/cipher/cipher.c.o:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/libsrtp/CMakeFiles/srtp2.dir/build.make cugl.dir/external/libdatachannel/deps/libsrtp/CMakeFiles/srtp2.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/cipher/cipher.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/cipher/cipher.c.o
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/cipher/cipher.i: Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/cipher/cipher.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/cipher/cipher.i
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/cipher/cipher.i: users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/cipher/cipher.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/cipher/cipher.i
 
 # target to preprocess a source file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/cipher/cipher.c.i:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/libsrtp/CMakeFiles/srtp2.dir/build.make cugl.dir/external/libdatachannel/deps/libsrtp/CMakeFiles/srtp2.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/cipher/cipher.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/cipher/cipher.c.i
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/cipher/cipher.c.i:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/libsrtp/CMakeFiles/srtp2.dir/build.make cugl.dir/external/libdatachannel/deps/libsrtp/CMakeFiles/srtp2.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/cipher/cipher.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/cipher/cipher.c.i
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/cipher/cipher.s: Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/cipher/cipher.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/cipher/cipher.s
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/cipher/cipher.s: users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/cipher/cipher.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/cipher/cipher.s
 
 # target to generate assembly for a file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/cipher/cipher.c.s:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/libsrtp/CMakeFiles/srtp2.dir/build.make cugl.dir/external/libdatachannel/deps/libsrtp/CMakeFiles/srtp2.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/cipher/cipher.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/cipher/cipher.c.s
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/cipher/cipher.c.s:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/libsrtp/CMakeFiles/srtp2.dir/build.make cugl.dir/external/libdatachannel/deps/libsrtp/CMakeFiles/srtp2.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/cipher/cipher.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/cipher/cipher.c.s
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/cipher/cipher_test_cases.o: Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/cipher/cipher_test_cases.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/cipher/cipher_test_cases.o
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/cipher/cipher_test_cases.o: users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/cipher/cipher_test_cases.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/cipher/cipher_test_cases.o
 
 # target to build an object file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/cipher/cipher_test_cases.c.o:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/libsrtp/CMakeFiles/srtp2.dir/build.make cugl.dir/external/libdatachannel/deps/libsrtp/CMakeFiles/srtp2.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/cipher/cipher_test_cases.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/cipher/cipher_test_cases.c.o
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/cipher/cipher_test_cases.c.o:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/libsrtp/CMakeFiles/srtp2.dir/build.make cugl.dir/external/libdatachannel/deps/libsrtp/CMakeFiles/srtp2.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/cipher/cipher_test_cases.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/cipher/cipher_test_cases.c.o
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/cipher/cipher_test_cases.i: Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/cipher/cipher_test_cases.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/cipher/cipher_test_cases.i
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/cipher/cipher_test_cases.i: users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/cipher/cipher_test_cases.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/cipher/cipher_test_cases.i
 
 # target to preprocess a source file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/cipher/cipher_test_cases.c.i:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/libsrtp/CMakeFiles/srtp2.dir/build.make cugl.dir/external/libdatachannel/deps/libsrtp/CMakeFiles/srtp2.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/cipher/cipher_test_cases.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/cipher/cipher_test_cases.c.i
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/cipher/cipher_test_cases.c.i:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/libsrtp/CMakeFiles/srtp2.dir/build.make cugl.dir/external/libdatachannel/deps/libsrtp/CMakeFiles/srtp2.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/cipher/cipher_test_cases.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/cipher/cipher_test_cases.c.i
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/cipher/cipher_test_cases.s: Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/cipher/cipher_test_cases.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/cipher/cipher_test_cases.s
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/cipher/cipher_test_cases.s: users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/cipher/cipher_test_cases.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/cipher/cipher_test_cases.s
 
 # target to generate assembly for a file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/cipher/cipher_test_cases.c.s:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/libsrtp/CMakeFiles/srtp2.dir/build.make cugl.dir/external/libdatachannel/deps/libsrtp/CMakeFiles/srtp2.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/cipher/cipher_test_cases.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/cipher/cipher_test_cases.c.s
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/cipher/cipher_test_cases.c.s:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/libsrtp/CMakeFiles/srtp2.dir/build.make cugl.dir/external/libdatachannel/deps/libsrtp/CMakeFiles/srtp2.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/cipher/cipher_test_cases.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/cipher/cipher_test_cases.c.s
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/cipher/null_cipher.o: Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/cipher/null_cipher.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/cipher/null_cipher.o
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/cipher/null_cipher.o: users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/cipher/null_cipher.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/cipher/null_cipher.o
 
 # target to build an object file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/cipher/null_cipher.c.o:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/libsrtp/CMakeFiles/srtp2.dir/build.make cugl.dir/external/libdatachannel/deps/libsrtp/CMakeFiles/srtp2.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/cipher/null_cipher.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/cipher/null_cipher.c.o
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/cipher/null_cipher.c.o:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/libsrtp/CMakeFiles/srtp2.dir/build.make cugl.dir/external/libdatachannel/deps/libsrtp/CMakeFiles/srtp2.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/cipher/null_cipher.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/cipher/null_cipher.c.o
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/cipher/null_cipher.i: Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/cipher/null_cipher.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/cipher/null_cipher.i
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/cipher/null_cipher.i: users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/cipher/null_cipher.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/cipher/null_cipher.i
 
 # target to preprocess a source file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/cipher/null_cipher.c.i:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/libsrtp/CMakeFiles/srtp2.dir/build.make cugl.dir/external/libdatachannel/deps/libsrtp/CMakeFiles/srtp2.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/cipher/null_cipher.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/cipher/null_cipher.c.i
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/cipher/null_cipher.c.i:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/libsrtp/CMakeFiles/srtp2.dir/build.make cugl.dir/external/libdatachannel/deps/libsrtp/CMakeFiles/srtp2.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/cipher/null_cipher.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/cipher/null_cipher.c.i
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/cipher/null_cipher.s: Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/cipher/null_cipher.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/cipher/null_cipher.s
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/cipher/null_cipher.s: users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/cipher/null_cipher.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/cipher/null_cipher.s
 
 # target to generate assembly for a file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/cipher/null_cipher.c.s:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/libsrtp/CMakeFiles/srtp2.dir/build.make cugl.dir/external/libdatachannel/deps/libsrtp/CMakeFiles/srtp2.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/cipher/null_cipher.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/cipher/null_cipher.c.s
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/cipher/null_cipher.c.s:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/libsrtp/CMakeFiles/srtp2.dir/build.make cugl.dir/external/libdatachannel/deps/libsrtp/CMakeFiles/srtp2.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/cipher/null_cipher.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/cipher/null_cipher.c.s
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/hash/auth.o: Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/hash/auth.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/hash/auth.o
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/hash/auth.o: users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/hash/auth.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/hash/auth.o
 
 # target to build an object file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/hash/auth.c.o:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/libsrtp/CMakeFiles/srtp2.dir/build.make cugl.dir/external/libdatachannel/deps/libsrtp/CMakeFiles/srtp2.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/hash/auth.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/hash/auth.c.o
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/hash/auth.c.o:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/libsrtp/CMakeFiles/srtp2.dir/build.make cugl.dir/external/libdatachannel/deps/libsrtp/CMakeFiles/srtp2.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/hash/auth.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/hash/auth.c.o
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/hash/auth.i: Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/hash/auth.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/hash/auth.i
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/hash/auth.i: users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/hash/auth.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/hash/auth.i
 
 # target to preprocess a source file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/hash/auth.c.i:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/libsrtp/CMakeFiles/srtp2.dir/build.make cugl.dir/external/libdatachannel/deps/libsrtp/CMakeFiles/srtp2.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/hash/auth.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/hash/auth.c.i
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/hash/auth.c.i:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/libsrtp/CMakeFiles/srtp2.dir/build.make cugl.dir/external/libdatachannel/deps/libsrtp/CMakeFiles/srtp2.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/hash/auth.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/hash/auth.c.i
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/hash/auth.s: Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/hash/auth.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/hash/auth.s
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/hash/auth.s: users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/hash/auth.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/hash/auth.s
 
 # target to generate assembly for a file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/hash/auth.c.s:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/libsrtp/CMakeFiles/srtp2.dir/build.make cugl.dir/external/libdatachannel/deps/libsrtp/CMakeFiles/srtp2.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/hash/auth.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/hash/auth.c.s
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/hash/auth.c.s:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/libsrtp/CMakeFiles/srtp2.dir/build.make cugl.dir/external/libdatachannel/deps/libsrtp/CMakeFiles/srtp2.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/hash/auth.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/hash/auth.c.s
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/hash/auth_test_cases.o: Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/hash/auth_test_cases.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/hash/auth_test_cases.o
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/hash/auth_test_cases.o: users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/hash/auth_test_cases.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/hash/auth_test_cases.o
 
 # target to build an object file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/hash/auth_test_cases.c.o:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/libsrtp/CMakeFiles/srtp2.dir/build.make cugl.dir/external/libdatachannel/deps/libsrtp/CMakeFiles/srtp2.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/hash/auth_test_cases.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/hash/auth_test_cases.c.o
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/hash/auth_test_cases.c.o:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/libsrtp/CMakeFiles/srtp2.dir/build.make cugl.dir/external/libdatachannel/deps/libsrtp/CMakeFiles/srtp2.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/hash/auth_test_cases.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/hash/auth_test_cases.c.o
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/hash/auth_test_cases.i: Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/hash/auth_test_cases.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/hash/auth_test_cases.i
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/hash/auth_test_cases.i: users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/hash/auth_test_cases.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/hash/auth_test_cases.i
 
 # target to preprocess a source file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/hash/auth_test_cases.c.i:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/libsrtp/CMakeFiles/srtp2.dir/build.make cugl.dir/external/libdatachannel/deps/libsrtp/CMakeFiles/srtp2.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/hash/auth_test_cases.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/hash/auth_test_cases.c.i
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/hash/auth_test_cases.c.i:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/libsrtp/CMakeFiles/srtp2.dir/build.make cugl.dir/external/libdatachannel/deps/libsrtp/CMakeFiles/srtp2.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/hash/auth_test_cases.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/hash/auth_test_cases.c.i
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/hash/auth_test_cases.s: Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/hash/auth_test_cases.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/hash/auth_test_cases.s
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/hash/auth_test_cases.s: users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/hash/auth_test_cases.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/hash/auth_test_cases.s
 
 # target to generate assembly for a file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/hash/auth_test_cases.c.s:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/libsrtp/CMakeFiles/srtp2.dir/build.make cugl.dir/external/libdatachannel/deps/libsrtp/CMakeFiles/srtp2.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/hash/auth_test_cases.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/hash/auth_test_cases.c.s
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/hash/auth_test_cases.c.s:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/libsrtp/CMakeFiles/srtp2.dir/build.make cugl.dir/external/libdatachannel/deps/libsrtp/CMakeFiles/srtp2.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/hash/auth_test_cases.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/hash/auth_test_cases.c.s
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/hash/hmac_ossl.o: Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/hash/hmac_ossl.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/hash/hmac_ossl.o
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/hash/hmac_ossl.o: users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/hash/hmac_ossl.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/hash/hmac_ossl.o
 
 # target to build an object file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/hash/hmac_ossl.c.o:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/libsrtp/CMakeFiles/srtp2.dir/build.make cugl.dir/external/libdatachannel/deps/libsrtp/CMakeFiles/srtp2.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/hash/hmac_ossl.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/hash/hmac_ossl.c.o
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/hash/hmac_ossl.c.o:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/libsrtp/CMakeFiles/srtp2.dir/build.make cugl.dir/external/libdatachannel/deps/libsrtp/CMakeFiles/srtp2.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/hash/hmac_ossl.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/hash/hmac_ossl.c.o
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/hash/hmac_ossl.i: Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/hash/hmac_ossl.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/hash/hmac_ossl.i
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/hash/hmac_ossl.i: users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/hash/hmac_ossl.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/hash/hmac_ossl.i
 
 # target to preprocess a source file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/hash/hmac_ossl.c.i:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/libsrtp/CMakeFiles/srtp2.dir/build.make cugl.dir/external/libdatachannel/deps/libsrtp/CMakeFiles/srtp2.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/hash/hmac_ossl.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/hash/hmac_ossl.c.i
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/hash/hmac_ossl.c.i:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/libsrtp/CMakeFiles/srtp2.dir/build.make cugl.dir/external/libdatachannel/deps/libsrtp/CMakeFiles/srtp2.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/hash/hmac_ossl.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/hash/hmac_ossl.c.i
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/hash/hmac_ossl.s: Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/hash/hmac_ossl.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/hash/hmac_ossl.s
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/hash/hmac_ossl.s: users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/hash/hmac_ossl.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/hash/hmac_ossl.s
 
 # target to generate assembly for a file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/hash/hmac_ossl.c.s:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/libsrtp/CMakeFiles/srtp2.dir/build.make cugl.dir/external/libdatachannel/deps/libsrtp/CMakeFiles/srtp2.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/hash/hmac_ossl.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/hash/hmac_ossl.c.s
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/hash/hmac_ossl.c.s:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/libsrtp/CMakeFiles/srtp2.dir/build.make cugl.dir/external/libdatachannel/deps/libsrtp/CMakeFiles/srtp2.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/hash/hmac_ossl.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/hash/hmac_ossl.c.s
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/hash/null_auth.o: Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/hash/null_auth.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/hash/null_auth.o
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/hash/null_auth.o: users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/hash/null_auth.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/hash/null_auth.o
 
 # target to build an object file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/hash/null_auth.c.o:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/libsrtp/CMakeFiles/srtp2.dir/build.make cugl.dir/external/libdatachannel/deps/libsrtp/CMakeFiles/srtp2.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/hash/null_auth.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/hash/null_auth.c.o
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/hash/null_auth.c.o:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/libsrtp/CMakeFiles/srtp2.dir/build.make cugl.dir/external/libdatachannel/deps/libsrtp/CMakeFiles/srtp2.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/hash/null_auth.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/hash/null_auth.c.o
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/hash/null_auth.i: Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/hash/null_auth.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/hash/null_auth.i
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/hash/null_auth.i: users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/hash/null_auth.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/hash/null_auth.i
 
 # target to preprocess a source file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/hash/null_auth.c.i:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/libsrtp/CMakeFiles/srtp2.dir/build.make cugl.dir/external/libdatachannel/deps/libsrtp/CMakeFiles/srtp2.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/hash/null_auth.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/hash/null_auth.c.i
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/hash/null_auth.c.i:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/libsrtp/CMakeFiles/srtp2.dir/build.make cugl.dir/external/libdatachannel/deps/libsrtp/CMakeFiles/srtp2.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/hash/null_auth.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/hash/null_auth.c.i
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/hash/null_auth.s: Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/hash/null_auth.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/hash/null_auth.s
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/hash/null_auth.s: users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/hash/null_auth.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/hash/null_auth.s
 
 # target to generate assembly for a file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/hash/null_auth.c.s:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/libsrtp/CMakeFiles/srtp2.dir/build.make cugl.dir/external/libdatachannel/deps/libsrtp/CMakeFiles/srtp2.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/hash/null_auth.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/hash/null_auth.c.s
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/hash/null_auth.c.s:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/libsrtp/CMakeFiles/srtp2.dir/build.make cugl.dir/external/libdatachannel/deps/libsrtp/CMakeFiles/srtp2.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/hash/null_auth.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/hash/null_auth.c.s
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/kernel/alloc.o: Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/kernel/alloc.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/kernel/alloc.o
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/kernel/alloc.o: users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/kernel/alloc.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/kernel/alloc.o
 
 # target to build an object file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/kernel/alloc.c.o:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/libsrtp/CMakeFiles/srtp2.dir/build.make cugl.dir/external/libdatachannel/deps/libsrtp/CMakeFiles/srtp2.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/kernel/alloc.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/kernel/alloc.c.o
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/kernel/alloc.c.o:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/libsrtp/CMakeFiles/srtp2.dir/build.make cugl.dir/external/libdatachannel/deps/libsrtp/CMakeFiles/srtp2.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/kernel/alloc.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/kernel/alloc.c.o
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/kernel/alloc.i: Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/kernel/alloc.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/kernel/alloc.i
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/kernel/alloc.i: users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/kernel/alloc.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/kernel/alloc.i
 
 # target to preprocess a source file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/kernel/alloc.c.i:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/libsrtp/CMakeFiles/srtp2.dir/build.make cugl.dir/external/libdatachannel/deps/libsrtp/CMakeFiles/srtp2.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/kernel/alloc.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/kernel/alloc.c.i
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/kernel/alloc.c.i:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/libsrtp/CMakeFiles/srtp2.dir/build.make cugl.dir/external/libdatachannel/deps/libsrtp/CMakeFiles/srtp2.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/kernel/alloc.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/kernel/alloc.c.i
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/kernel/alloc.s: Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/kernel/alloc.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/kernel/alloc.s
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/kernel/alloc.s: users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/kernel/alloc.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/kernel/alloc.s
 
 # target to generate assembly for a file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/kernel/alloc.c.s:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/libsrtp/CMakeFiles/srtp2.dir/build.make cugl.dir/external/libdatachannel/deps/libsrtp/CMakeFiles/srtp2.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/kernel/alloc.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/kernel/alloc.c.s
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/kernel/alloc.c.s:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/libsrtp/CMakeFiles/srtp2.dir/build.make cugl.dir/external/libdatachannel/deps/libsrtp/CMakeFiles/srtp2.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/kernel/alloc.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/kernel/alloc.c.s
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/kernel/crypto_kernel.o: Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/kernel/crypto_kernel.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/kernel/crypto_kernel.o
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/kernel/crypto_kernel.o: users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/kernel/crypto_kernel.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/kernel/crypto_kernel.o
 
 # target to build an object file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/kernel/crypto_kernel.c.o:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/libsrtp/CMakeFiles/srtp2.dir/build.make cugl.dir/external/libdatachannel/deps/libsrtp/CMakeFiles/srtp2.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/kernel/crypto_kernel.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/kernel/crypto_kernel.c.o
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/kernel/crypto_kernel.c.o:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/libsrtp/CMakeFiles/srtp2.dir/build.make cugl.dir/external/libdatachannel/deps/libsrtp/CMakeFiles/srtp2.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/kernel/crypto_kernel.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/kernel/crypto_kernel.c.o
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/kernel/crypto_kernel.i: Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/kernel/crypto_kernel.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/kernel/crypto_kernel.i
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/kernel/crypto_kernel.i: users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/kernel/crypto_kernel.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/kernel/crypto_kernel.i
 
 # target to preprocess a source file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/kernel/crypto_kernel.c.i:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/libsrtp/CMakeFiles/srtp2.dir/build.make cugl.dir/external/libdatachannel/deps/libsrtp/CMakeFiles/srtp2.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/kernel/crypto_kernel.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/kernel/crypto_kernel.c.i
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/kernel/crypto_kernel.c.i:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/libsrtp/CMakeFiles/srtp2.dir/build.make cugl.dir/external/libdatachannel/deps/libsrtp/CMakeFiles/srtp2.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/kernel/crypto_kernel.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/kernel/crypto_kernel.c.i
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/kernel/crypto_kernel.s: Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/kernel/crypto_kernel.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/kernel/crypto_kernel.s
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/kernel/crypto_kernel.s: users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/kernel/crypto_kernel.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/kernel/crypto_kernel.s
 
 # target to generate assembly for a file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/kernel/crypto_kernel.c.s:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/libsrtp/CMakeFiles/srtp2.dir/build.make cugl.dir/external/libdatachannel/deps/libsrtp/CMakeFiles/srtp2.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/kernel/crypto_kernel.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/kernel/crypto_kernel.c.s
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/kernel/crypto_kernel.c.s:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/libsrtp/CMakeFiles/srtp2.dir/build.make cugl.dir/external/libdatachannel/deps/libsrtp/CMakeFiles/srtp2.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/kernel/crypto_kernel.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/kernel/crypto_kernel.c.s
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/kernel/err.o: Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/kernel/err.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/kernel/err.o
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/kernel/err.o: users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/kernel/err.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/kernel/err.o
 
 # target to build an object file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/kernel/err.c.o:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/libsrtp/CMakeFiles/srtp2.dir/build.make cugl.dir/external/libdatachannel/deps/libsrtp/CMakeFiles/srtp2.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/kernel/err.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/kernel/err.c.o
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/kernel/err.c.o:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/libsrtp/CMakeFiles/srtp2.dir/build.make cugl.dir/external/libdatachannel/deps/libsrtp/CMakeFiles/srtp2.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/kernel/err.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/kernel/err.c.o
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/kernel/err.i: Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/kernel/err.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/kernel/err.i
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/kernel/err.i: users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/kernel/err.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/kernel/err.i
 
 # target to preprocess a source file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/kernel/err.c.i:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/libsrtp/CMakeFiles/srtp2.dir/build.make cugl.dir/external/libdatachannel/deps/libsrtp/CMakeFiles/srtp2.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/kernel/err.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/kernel/err.c.i
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/kernel/err.c.i:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/libsrtp/CMakeFiles/srtp2.dir/build.make cugl.dir/external/libdatachannel/deps/libsrtp/CMakeFiles/srtp2.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/kernel/err.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/kernel/err.c.i
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/kernel/err.s: Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/kernel/err.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/kernel/err.s
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/kernel/err.s: users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/kernel/err.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/kernel/err.s
 
 # target to generate assembly for a file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/kernel/err.c.s:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/libsrtp/CMakeFiles/srtp2.dir/build.make cugl.dir/external/libdatachannel/deps/libsrtp/CMakeFiles/srtp2.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/kernel/err.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/kernel/err.c.s
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/kernel/err.c.s:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/libsrtp/CMakeFiles/srtp2.dir/build.make cugl.dir/external/libdatachannel/deps/libsrtp/CMakeFiles/srtp2.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/kernel/err.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/kernel/err.c.s
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/kernel/key.o: Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/kernel/key.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/kernel/key.o
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/kernel/key.o: users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/kernel/key.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/kernel/key.o
 
 # target to build an object file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/kernel/key.c.o:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/libsrtp/CMakeFiles/srtp2.dir/build.make cugl.dir/external/libdatachannel/deps/libsrtp/CMakeFiles/srtp2.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/kernel/key.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/kernel/key.c.o
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/kernel/key.c.o:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/libsrtp/CMakeFiles/srtp2.dir/build.make cugl.dir/external/libdatachannel/deps/libsrtp/CMakeFiles/srtp2.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/kernel/key.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/kernel/key.c.o
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/kernel/key.i: Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/kernel/key.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/kernel/key.i
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/kernel/key.i: users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/kernel/key.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/kernel/key.i
 
 # target to preprocess a source file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/kernel/key.c.i:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/libsrtp/CMakeFiles/srtp2.dir/build.make cugl.dir/external/libdatachannel/deps/libsrtp/CMakeFiles/srtp2.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/kernel/key.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/kernel/key.c.i
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/kernel/key.c.i:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/libsrtp/CMakeFiles/srtp2.dir/build.make cugl.dir/external/libdatachannel/deps/libsrtp/CMakeFiles/srtp2.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/kernel/key.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/kernel/key.c.i
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/kernel/key.s: Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/kernel/key.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/kernel/key.s
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/kernel/key.s: users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/kernel/key.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/kernel/key.s
 
 # target to generate assembly for a file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/kernel/key.c.s:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/libsrtp/CMakeFiles/srtp2.dir/build.make cugl.dir/external/libdatachannel/deps/libsrtp/CMakeFiles/srtp2.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/kernel/key.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/kernel/key.c.s
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/kernel/key.c.s:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/libsrtp/CMakeFiles/srtp2.dir/build.make cugl.dir/external/libdatachannel/deps/libsrtp/CMakeFiles/srtp2.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/kernel/key.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/kernel/key.c.s
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/math/datatypes.o: Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/math/datatypes.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/math/datatypes.o
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/math/datatypes.o: users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/math/datatypes.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/math/datatypes.o
 
 # target to build an object file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/math/datatypes.c.o:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/libsrtp/CMakeFiles/srtp2.dir/build.make cugl.dir/external/libdatachannel/deps/libsrtp/CMakeFiles/srtp2.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/math/datatypes.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/math/datatypes.c.o
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/math/datatypes.c.o:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/libsrtp/CMakeFiles/srtp2.dir/build.make cugl.dir/external/libdatachannel/deps/libsrtp/CMakeFiles/srtp2.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/math/datatypes.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/math/datatypes.c.o
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/math/datatypes.i: Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/math/datatypes.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/math/datatypes.i
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/math/datatypes.i: users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/math/datatypes.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/math/datatypes.i
 
 # target to preprocess a source file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/math/datatypes.c.i:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/libsrtp/CMakeFiles/srtp2.dir/build.make cugl.dir/external/libdatachannel/deps/libsrtp/CMakeFiles/srtp2.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/math/datatypes.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/math/datatypes.c.i
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/math/datatypes.c.i:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/libsrtp/CMakeFiles/srtp2.dir/build.make cugl.dir/external/libdatachannel/deps/libsrtp/CMakeFiles/srtp2.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/math/datatypes.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/math/datatypes.c.i
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/math/datatypes.s: Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/math/datatypes.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/math/datatypes.s
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/math/datatypes.s: users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/math/datatypes.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/math/datatypes.s
 
 # target to generate assembly for a file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/math/datatypes.c.s:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/libsrtp/CMakeFiles/srtp2.dir/build.make cugl.dir/external/libdatachannel/deps/libsrtp/CMakeFiles/srtp2.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/math/datatypes.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/math/datatypes.c.s
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/math/datatypes.c.s:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/libsrtp/CMakeFiles/srtp2.dir/build.make cugl.dir/external/libdatachannel/deps/libsrtp/CMakeFiles/srtp2.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/math/datatypes.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/math/datatypes.c.s
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/replay/rdb.o: Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/replay/rdb.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/replay/rdb.o
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/replay/rdb.o: users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/replay/rdb.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/replay/rdb.o
 
 # target to build an object file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/replay/rdb.c.o:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/libsrtp/CMakeFiles/srtp2.dir/build.make cugl.dir/external/libdatachannel/deps/libsrtp/CMakeFiles/srtp2.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/replay/rdb.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/replay/rdb.c.o
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/replay/rdb.c.o:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/libsrtp/CMakeFiles/srtp2.dir/build.make cugl.dir/external/libdatachannel/deps/libsrtp/CMakeFiles/srtp2.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/replay/rdb.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/replay/rdb.c.o
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/replay/rdb.i: Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/replay/rdb.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/replay/rdb.i
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/replay/rdb.i: users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/replay/rdb.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/replay/rdb.i
 
 # target to preprocess a source file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/replay/rdb.c.i:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/libsrtp/CMakeFiles/srtp2.dir/build.make cugl.dir/external/libdatachannel/deps/libsrtp/CMakeFiles/srtp2.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/replay/rdb.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/replay/rdb.c.i
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/replay/rdb.c.i:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/libsrtp/CMakeFiles/srtp2.dir/build.make cugl.dir/external/libdatachannel/deps/libsrtp/CMakeFiles/srtp2.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/replay/rdb.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/replay/rdb.c.i
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/replay/rdb.s: Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/replay/rdb.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/replay/rdb.s
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/replay/rdb.s: users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/replay/rdb.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/replay/rdb.s
 
 # target to generate assembly for a file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/replay/rdb.c.s:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/libsrtp/CMakeFiles/srtp2.dir/build.make cugl.dir/external/libdatachannel/deps/libsrtp/CMakeFiles/srtp2.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/replay/rdb.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/replay/rdb.c.s
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/replay/rdb.c.s:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/libsrtp/CMakeFiles/srtp2.dir/build.make cugl.dir/external/libdatachannel/deps/libsrtp/CMakeFiles/srtp2.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/replay/rdb.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/replay/rdb.c.s
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/replay/rdbx.o: Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/replay/rdbx.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/replay/rdbx.o
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/replay/rdbx.o: users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/replay/rdbx.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/replay/rdbx.o
 
 # target to build an object file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/replay/rdbx.c.o:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/libsrtp/CMakeFiles/srtp2.dir/build.make cugl.dir/external/libdatachannel/deps/libsrtp/CMakeFiles/srtp2.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/replay/rdbx.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/replay/rdbx.c.o
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/replay/rdbx.c.o:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/libsrtp/CMakeFiles/srtp2.dir/build.make cugl.dir/external/libdatachannel/deps/libsrtp/CMakeFiles/srtp2.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/replay/rdbx.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/replay/rdbx.c.o
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/replay/rdbx.i: Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/replay/rdbx.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/replay/rdbx.i
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/replay/rdbx.i: users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/replay/rdbx.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/replay/rdbx.i
 
 # target to preprocess a source file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/replay/rdbx.c.i:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/libsrtp/CMakeFiles/srtp2.dir/build.make cugl.dir/external/libdatachannel/deps/libsrtp/CMakeFiles/srtp2.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/replay/rdbx.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/replay/rdbx.c.i
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/replay/rdbx.c.i:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/libsrtp/CMakeFiles/srtp2.dir/build.make cugl.dir/external/libdatachannel/deps/libsrtp/CMakeFiles/srtp2.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/replay/rdbx.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/replay/rdbx.c.i
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/replay/rdbx.s: Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/replay/rdbx.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/replay/rdbx.s
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/replay/rdbx.s: users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/replay/rdbx.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/replay/rdbx.s
 
 # target to generate assembly for a file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/replay/rdbx.c.s:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/libsrtp/CMakeFiles/srtp2.dir/build.make cugl.dir/external/libdatachannel/deps/libsrtp/CMakeFiles/srtp2.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/replay/rdbx.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/replay/rdbx.c.s
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/replay/rdbx.c.s:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/libsrtp/CMakeFiles/srtp2.dir/build.make cugl.dir/external/libdatachannel/deps/libsrtp/CMakeFiles/srtp2.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/replay/rdbx.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/replay/rdbx.c.s
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/srtp/srtp.o: Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/srtp/srtp.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/srtp/srtp.o
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/srtp/srtp.o: users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/srtp/srtp.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/srtp/srtp.o
 
 # target to build an object file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/srtp/srtp.c.o:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/libsrtp/CMakeFiles/srtp2.dir/build.make cugl.dir/external/libdatachannel/deps/libsrtp/CMakeFiles/srtp2.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/srtp/srtp.c.o
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/srtp/srtp.c.o
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/srtp/srtp.c.o:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/libsrtp/CMakeFiles/srtp2.dir/build.make cugl.dir/external/libdatachannel/deps/libsrtp/CMakeFiles/srtp2.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/srtp/srtp.c.o
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/srtp/srtp.c.o
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/srtp/srtp.i: Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/srtp/srtp.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/srtp/srtp.i
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/srtp/srtp.i: users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/srtp/srtp.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/srtp/srtp.i
 
 # target to preprocess a source file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/srtp/srtp.c.i:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/libsrtp/CMakeFiles/srtp2.dir/build.make cugl.dir/external/libdatachannel/deps/libsrtp/CMakeFiles/srtp2.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/srtp/srtp.c.i
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/srtp/srtp.c.i
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/srtp/srtp.c.i:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/libsrtp/CMakeFiles/srtp2.dir/build.make cugl.dir/external/libdatachannel/deps/libsrtp/CMakeFiles/srtp2.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/srtp/srtp.c.i
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/srtp/srtp.c.i
 
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/srtp/srtp.s: Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/srtp/srtp.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/srtp/srtp.s
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/srtp/srtp.s: users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/srtp/srtp.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/srtp/srtp.s
 
 # target to generate assembly for a file
-Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/srtp/srtp.c.s:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/libsrtp/CMakeFiles/srtp2.dir/build.make cugl.dir/external/libdatachannel/deps/libsrtp/CMakeFiles/srtp2.dir/Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/srtp/srtp.c.s
-.PHONY : Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/srtp/srtp.c.s
+users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/srtp/srtp.c.s:
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(MAKE) $(MAKESILENT) -f cugl.dir/external/libdatachannel/deps/libsrtp/CMakeFiles/srtp2.dir/build.make cugl.dir/external/libdatachannel/deps/libsrtp/CMakeFiles/srtp2.dir/users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/srtp/srtp.c.s
+.PHONY : users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/srtp/srtp.c.s
 
 # Help Target
 help:
@@ -618,57 +618,57 @@ help:
 	@echo "... package_source"
 	@echo "... rebuild_cache"
 	@echo "... srtp2"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/cipher/aes_gcm_ossl.o"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/cipher/aes_gcm_ossl.i"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/cipher/aes_gcm_ossl.s"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/cipher/aes_icm_ossl.o"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/cipher/aes_icm_ossl.i"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/cipher/aes_icm_ossl.s"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/cipher/cipher.o"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/cipher/cipher.i"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/cipher/cipher.s"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/cipher/cipher_test_cases.o"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/cipher/cipher_test_cases.i"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/cipher/cipher_test_cases.s"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/cipher/null_cipher.o"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/cipher/null_cipher.i"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/cipher/null_cipher.s"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/hash/auth.o"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/hash/auth.i"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/hash/auth.s"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/hash/auth_test_cases.o"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/hash/auth_test_cases.i"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/hash/auth_test_cases.s"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/hash/hmac_ossl.o"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/hash/hmac_ossl.i"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/hash/hmac_ossl.s"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/hash/null_auth.o"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/hash/null_auth.i"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/hash/null_auth.s"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/kernel/alloc.o"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/kernel/alloc.i"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/kernel/alloc.s"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/kernel/crypto_kernel.o"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/kernel/crypto_kernel.i"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/kernel/crypto_kernel.s"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/kernel/err.o"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/kernel/err.i"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/kernel/err.s"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/kernel/key.o"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/kernel/key.i"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/kernel/key.s"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/math/datatypes.o"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/math/datatypes.i"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/math/datatypes.s"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/replay/rdb.o"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/replay/rdb.i"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/replay/rdb.s"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/replay/rdbx.o"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/replay/rdbx.i"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/replay/rdbx.s"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/srtp/srtp.o"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/srtp/srtp.i"
-	@echo "... Users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/srtp/srtp.s"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/cipher/aes_gcm_ossl.o"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/cipher/aes_gcm_ossl.i"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/cipher/aes_gcm_ossl.s"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/cipher/aes_icm_ossl.o"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/cipher/aes_icm_ossl.i"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/cipher/aes_icm_ossl.s"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/cipher/cipher.o"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/cipher/cipher.i"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/cipher/cipher.s"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/cipher/cipher_test_cases.o"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/cipher/cipher_test_cases.i"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/cipher/cipher_test_cases.s"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/cipher/null_cipher.o"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/cipher/null_cipher.i"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/cipher/null_cipher.s"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/hash/auth.o"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/hash/auth.i"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/hash/auth.s"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/hash/auth_test_cases.o"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/hash/auth_test_cases.i"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/hash/auth_test_cases.s"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/hash/hmac_ossl.o"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/hash/hmac_ossl.i"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/hash/hmac_ossl.s"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/hash/null_auth.o"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/hash/null_auth.i"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/hash/null_auth.s"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/kernel/alloc.o"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/kernel/alloc.i"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/kernel/alloc.s"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/kernel/crypto_kernel.o"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/kernel/crypto_kernel.i"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/kernel/crypto_kernel.s"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/kernel/err.o"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/kernel/err.i"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/kernel/err.s"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/kernel/key.o"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/kernel/key.i"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/kernel/key.s"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/math/datatypes.o"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/math/datatypes.i"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/math/datatypes.s"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/replay/rdb.o"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/replay/rdb.i"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/replay/rdb.s"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/replay/rdbx.o"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/replay/rdbx.i"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/crypto/replay/rdbx.s"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/srtp/srtp.o"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/srtp/srtp.i"
+	@echo "... users/patrickchoo/cs4152/cugl/external/libdatachannel/deps/libsrtp/srtp/srtp.s"
 .PHONY : help
 
 
@@ -680,6 +680,6 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 

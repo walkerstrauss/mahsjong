@@ -1,4 +1,4 @@
-# Install script for directory: /Users/patrickchoo/cs4152/cugl/sdlapp/buildfiles/cmake/sdl2atk/external/ogg
+# Install script for directory: /users/patrickchoo/cs4152/cugl/sdlapp/buildfiles/cmake/sdl2atk/external/ogg
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -38,7 +38,7 @@ if(NOT DEFINED CMAKE_OBJDUMP)
 endif()
 
 if(CMAKE_INSTALL_COMPONENT STREQUAL "Unspecified" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib" TYPE STATIC_LIBRARY FILES "/Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2atk/external/ogg/libogg.a")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib" TYPE STATIC_LIBRARY FILES "/users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2atk/external/ogg/libogg.a")
   if(EXISTS "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/libogg.a" AND
      NOT IS_SYMLINK "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/libogg.a")
     execute_process(COMMAND "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/ranlib" "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/libogg.a")
@@ -47,9 +47,9 @@ endif()
 
 if(CMAKE_INSTALL_COMPONENT STREQUAL "Unspecified" OR NOT CMAKE_INSTALL_COMPONENT)
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include/ogg" TYPE FILE FILES
-    "/Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2atk/external/ogg/include/ogg/config_types.h"
-    "/Users/patrickchoo/cs4152/cugl/sdlapp/buildfiles/cmake/../../external/ogg/include/ogg/ogg.h"
-    "/Users/patrickchoo/cs4152/cugl/sdlapp/buildfiles/cmake/../../external/ogg/include/ogg/os_types.h"
+    "/users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2atk/external/ogg/include/ogg/config_types.h"
+    "/users/patrickchoo/cs4152/cugl/sdlapp/buildfiles/cmake/../../external/ogg/include/ogg/ogg.h"
+    "/users/patrickchoo/cs4152/cugl/sdlapp/buildfiles/cmake/../../external/ogg/include/ogg/os_types.h"
     )
 endif()
 
@@ -57,7 +57,7 @@ if(CMAKE_INSTALL_COMPONENT STREQUAL "Unspecified" OR NOT CMAKE_INSTALL_COMPONENT
   if(EXISTS "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/cmake/Ogg/OggTargets.cmake")
     file(DIFFERENT _cmake_export_file_changed FILES
          "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/cmake/Ogg/OggTargets.cmake"
-         "/Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2atk/external/ogg/CMakeFiles/Export/dee6fd410a50d06b294b496f57355584/OggTargets.cmake")
+         "/users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2atk/external/ogg/CMakeFiles/Export/dee6fd410a50d06b294b496f57355584/OggTargets.cmake")
     if(_cmake_export_file_changed)
       file(GLOB _cmake_old_config_files "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/cmake/Ogg/OggTargets-*.cmake")
       if(_cmake_old_config_files)
@@ -70,50 +70,50 @@ if(CMAKE_INSTALL_COMPONENT STREQUAL "Unspecified" OR NOT CMAKE_INSTALL_COMPONENT
     endif()
     unset(_cmake_export_file_changed)
   endif()
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/cmake/Ogg" TYPE FILE FILES "/Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2atk/external/ogg/CMakeFiles/Export/dee6fd410a50d06b294b496f57355584/OggTargets.cmake")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/cmake/Ogg" TYPE FILE FILES "/users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2atk/external/ogg/CMakeFiles/Export/dee6fd410a50d06b294b496f57355584/OggTargets.cmake")
   if(CMAKE_INSTALL_CONFIG_NAME MATCHES "^()$")
-    file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/cmake/Ogg" TYPE FILE FILES "/Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2atk/external/ogg/CMakeFiles/Export/dee6fd410a50d06b294b496f57355584/OggTargets-noconfig.cmake")
+    file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/cmake/Ogg" TYPE FILE FILES "/users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2atk/external/ogg/CMakeFiles/Export/dee6fd410a50d06b294b496f57355584/OggTargets-noconfig.cmake")
   endif()
 endif()
 
 if(CMAKE_INSTALL_COMPONENT STREQUAL "Unspecified" OR NOT CMAKE_INSTALL_COMPONENT)
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/cmake/Ogg" TYPE FILE FILES
-    "/Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2atk/external/ogg/OggConfig.cmake"
-    "/Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2atk/external/ogg/OggConfigVersion.cmake"
+    "/users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2atk/external/ogg/OggConfig.cmake"
+    "/users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2atk/external/ogg/OggConfigVersion.cmake"
     )
 endif()
 
 if(CMAKE_INSTALL_COMPONENT STREQUAL "Unspecified" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/pkgconfig" TYPE FILE FILES "/Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2atk/external/ogg/ogg.pc")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/pkgconfig" TYPE FILE FILES "/users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2atk/external/ogg/ogg.pc")
 endif()
 
 if(CMAKE_INSTALL_COMPONENT STREQUAL "Unspecified" OR NOT CMAKE_INSTALL_COMPONENT)
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/doc/SDL2_atk/html" TYPE FILE FILES
-    "/Users/patrickchoo/cs4152/cugl/sdlapp/buildfiles/cmake/../../external/ogg/doc/framing.html"
-    "/Users/patrickchoo/cs4152/cugl/sdlapp/buildfiles/cmake/../../external/ogg/doc/index.html"
-    "/Users/patrickchoo/cs4152/cugl/sdlapp/buildfiles/cmake/../../external/ogg/doc/oggstream.html"
-    "/Users/patrickchoo/cs4152/cugl/sdlapp/buildfiles/cmake/../../external/ogg/doc/ogg-multiplex.html"
-    "/Users/patrickchoo/cs4152/cugl/sdlapp/buildfiles/cmake/../../external/ogg/doc/fish_xiph_org.png"
-    "/Users/patrickchoo/cs4152/cugl/sdlapp/buildfiles/cmake/../../external/ogg/doc/multiplex1.png"
-    "/Users/patrickchoo/cs4152/cugl/sdlapp/buildfiles/cmake/../../external/ogg/doc/packets.png"
-    "/Users/patrickchoo/cs4152/cugl/sdlapp/buildfiles/cmake/../../external/ogg/doc/pages.png"
-    "/Users/patrickchoo/cs4152/cugl/sdlapp/buildfiles/cmake/../../external/ogg/doc/stream.png"
-    "/Users/patrickchoo/cs4152/cugl/sdlapp/buildfiles/cmake/../../external/ogg/doc/vorbisword2.png"
-    "/Users/patrickchoo/cs4152/cugl/sdlapp/buildfiles/cmake/../../external/ogg/doc/white-ogg.png"
-    "/Users/patrickchoo/cs4152/cugl/sdlapp/buildfiles/cmake/../../external/ogg/doc/white-xifish.png"
-    "/Users/patrickchoo/cs4152/cugl/sdlapp/buildfiles/cmake/../../external/ogg/doc/rfc3533.txt"
-    "/Users/patrickchoo/cs4152/cugl/sdlapp/buildfiles/cmake/../../external/ogg/doc/rfc5334.txt"
-    "/Users/patrickchoo/cs4152/cugl/sdlapp/buildfiles/cmake/../../external/ogg/doc/skeleton.html"
+    "/users/patrickchoo/cs4152/cugl/sdlapp/buildfiles/cmake/../../external/ogg/doc/framing.html"
+    "/users/patrickchoo/cs4152/cugl/sdlapp/buildfiles/cmake/../../external/ogg/doc/index.html"
+    "/users/patrickchoo/cs4152/cugl/sdlapp/buildfiles/cmake/../../external/ogg/doc/oggstream.html"
+    "/users/patrickchoo/cs4152/cugl/sdlapp/buildfiles/cmake/../../external/ogg/doc/ogg-multiplex.html"
+    "/users/patrickchoo/cs4152/cugl/sdlapp/buildfiles/cmake/../../external/ogg/doc/fish_xiph_org.png"
+    "/users/patrickchoo/cs4152/cugl/sdlapp/buildfiles/cmake/../../external/ogg/doc/multiplex1.png"
+    "/users/patrickchoo/cs4152/cugl/sdlapp/buildfiles/cmake/../../external/ogg/doc/packets.png"
+    "/users/patrickchoo/cs4152/cugl/sdlapp/buildfiles/cmake/../../external/ogg/doc/pages.png"
+    "/users/patrickchoo/cs4152/cugl/sdlapp/buildfiles/cmake/../../external/ogg/doc/stream.png"
+    "/users/patrickchoo/cs4152/cugl/sdlapp/buildfiles/cmake/../../external/ogg/doc/vorbisword2.png"
+    "/users/patrickchoo/cs4152/cugl/sdlapp/buildfiles/cmake/../../external/ogg/doc/white-ogg.png"
+    "/users/patrickchoo/cs4152/cugl/sdlapp/buildfiles/cmake/../../external/ogg/doc/white-xifish.png"
+    "/users/patrickchoo/cs4152/cugl/sdlapp/buildfiles/cmake/../../external/ogg/doc/rfc3533.txt"
+    "/users/patrickchoo/cs4152/cugl/sdlapp/buildfiles/cmake/../../external/ogg/doc/rfc5334.txt"
+    "/users/patrickchoo/cs4152/cugl/sdlapp/buildfiles/cmake/../../external/ogg/doc/skeleton.html"
     )
 endif()
 
 if(CMAKE_INSTALL_COMPONENT STREQUAL "Unspecified" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/doc/SDL2_atk/html" TYPE DIRECTORY FILES "/Users/patrickchoo/cs4152/cugl/sdlapp/buildfiles/cmake/../../external/ogg/doc/libogg")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/doc/SDL2_atk/html" TYPE DIRECTORY FILES "/users/patrickchoo/cs4152/cugl/sdlapp/buildfiles/cmake/../../external/ogg/doc/libogg")
 endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
 if(CMAKE_INSTALL_LOCAL_ONLY)
-  file(WRITE "/Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2atk/external/ogg/install_local_manifest.txt"
+  file(WRITE "/users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2atk/external/ogg/install_local_manifest.txt"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")
 endif()

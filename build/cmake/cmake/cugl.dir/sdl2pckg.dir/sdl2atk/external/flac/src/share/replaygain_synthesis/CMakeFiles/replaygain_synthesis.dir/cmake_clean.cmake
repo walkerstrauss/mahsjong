@@ -1,6 +1,6 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/replaygain_synthesis.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/replaygain_synthesis/replaygain_synthesis.c.o"
-  "CMakeFiles/replaygain_synthesis.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/replaygain_synthesis/replaygain_synthesis.c.o.d"
+  "CMakeFiles/replaygain_synthesis.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/replaygain_synthesis/replaygain_synthesis.c.o"
+  "CMakeFiles/replaygain_synthesis.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/flac/src/share/replaygain_synthesis/replaygain_synthesis.c.o.d"
   "libreplaygain_synthesis.a"
   "libreplaygain_synthesis.pdb"
 )

@@ -53,10 +53,10 @@ RM = /opt/homebrew/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /Users/patrickchoo/cs4152/mahsjong/build/cmake
+CMAKE_SOURCE_DIR = /users/patrickchoo/cs4152/mahsjong/build/cmake
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake
+CMAKE_BINARY_DIR = /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake
 
 # Include any dependencies generated for this target.
 include cugl.dir/sdl2pckg.dir/sdl2ttf/external/harfbuzz/CMakeFiles/harfbuzz.dir/depend.make
@@ -72,43 +72,43 @@ include cugl.dir/sdl2pckg.dir/sdl2ttf/external/harfbuzz/CMakeFiles/harfbuzz.dir/
 cugl.dir/sdl2pckg.dir/sdl2ttf/external/harfbuzz/CMakeFiles/harfbuzz.dir/codegen:
 .PHONY : cugl.dir/sdl2pckg.dir/sdl2ttf/external/harfbuzz/CMakeFiles/harfbuzz.dir/codegen
 
-cugl.dir/sdl2pckg.dir/sdl2ttf/external/harfbuzz/CMakeFiles/harfbuzz.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/harfbuzz.cc.o: cugl.dir/sdl2pckg.dir/sdl2ttf/external/harfbuzz/CMakeFiles/harfbuzz.dir/flags.make
-cugl.dir/sdl2pckg.dir/sdl2ttf/external/harfbuzz/CMakeFiles/harfbuzz.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/harfbuzz.cc.o: /Users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/harfbuzz.cc
-cugl.dir/sdl2pckg.dir/sdl2ttf/external/harfbuzz/CMakeFiles/harfbuzz.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/harfbuzz.cc.o: cugl.dir/sdl2pckg.dir/sdl2ttf/external/harfbuzz/CMakeFiles/harfbuzz.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object cugl.dir/sdl2pckg.dir/sdl2ttf/external/harfbuzz/CMakeFiles/harfbuzz.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/harfbuzz.cc.o"
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2ttf/external/harfbuzz && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT cugl.dir/sdl2pckg.dir/sdl2ttf/external/harfbuzz/CMakeFiles/harfbuzz.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/harfbuzz.cc.o -MF CMakeFiles/harfbuzz.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/harfbuzz.cc.o.d -o CMakeFiles/harfbuzz.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/harfbuzz.cc.o -c /Users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/harfbuzz.cc
+cugl.dir/sdl2pckg.dir/sdl2ttf/external/harfbuzz/CMakeFiles/harfbuzz.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/harfbuzz.cc.o: cugl.dir/sdl2pckg.dir/sdl2ttf/external/harfbuzz/CMakeFiles/harfbuzz.dir/flags.make
+cugl.dir/sdl2pckg.dir/sdl2ttf/external/harfbuzz/CMakeFiles/harfbuzz.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/harfbuzz.cc.o: /users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/harfbuzz.cc
+cugl.dir/sdl2pckg.dir/sdl2ttf/external/harfbuzz/CMakeFiles/harfbuzz.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/harfbuzz.cc.o: cugl.dir/sdl2pckg.dir/sdl2ttf/external/harfbuzz/CMakeFiles/harfbuzz.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object cugl.dir/sdl2pckg.dir/sdl2ttf/external/harfbuzz/CMakeFiles/harfbuzz.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/harfbuzz.cc.o"
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2ttf/external/harfbuzz && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT cugl.dir/sdl2pckg.dir/sdl2ttf/external/harfbuzz/CMakeFiles/harfbuzz.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/harfbuzz.cc.o -MF CMakeFiles/harfbuzz.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/harfbuzz.cc.o.d -o CMakeFiles/harfbuzz.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/harfbuzz.cc.o -c /users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/harfbuzz.cc
 
-cugl.dir/sdl2pckg.dir/sdl2ttf/external/harfbuzz/CMakeFiles/harfbuzz.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/harfbuzz.cc.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/harfbuzz.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/harfbuzz.cc.i"
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2ttf/external/harfbuzz && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/harfbuzz.cc > CMakeFiles/harfbuzz.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/harfbuzz.cc.i
+cugl.dir/sdl2pckg.dir/sdl2ttf/external/harfbuzz/CMakeFiles/harfbuzz.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/harfbuzz.cc.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/harfbuzz.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/harfbuzz.cc.i"
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2ttf/external/harfbuzz && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/harfbuzz.cc > CMakeFiles/harfbuzz.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/harfbuzz.cc.i
 
-cugl.dir/sdl2pckg.dir/sdl2ttf/external/harfbuzz/CMakeFiles/harfbuzz.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/harfbuzz.cc.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/harfbuzz.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/harfbuzz.cc.s"
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2ttf/external/harfbuzz && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/harfbuzz.cc -o CMakeFiles/harfbuzz.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/harfbuzz.cc.s
+cugl.dir/sdl2pckg.dir/sdl2ttf/external/harfbuzz/CMakeFiles/harfbuzz.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/harfbuzz.cc.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/harfbuzz.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/harfbuzz.cc.s"
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2ttf/external/harfbuzz && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/harfbuzz.cc -o CMakeFiles/harfbuzz.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/harfbuzz.cc.s
 
 # Object files for target harfbuzz
 harfbuzz_OBJECTS = \
-"CMakeFiles/harfbuzz.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/harfbuzz.cc.o"
+"CMakeFiles/harfbuzz.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/harfbuzz.cc.o"
 
 # External object files for target harfbuzz
 harfbuzz_EXTERNAL_OBJECTS =
 
-cugl.dir/sdl2pckg.dir/sdl2ttf/external/harfbuzz/libharfbuzz.a: cugl.dir/sdl2pckg.dir/sdl2ttf/external/harfbuzz/CMakeFiles/harfbuzz.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/harfbuzz.cc.o
+cugl.dir/sdl2pckg.dir/sdl2ttf/external/harfbuzz/libharfbuzz.a: cugl.dir/sdl2pckg.dir/sdl2ttf/external/harfbuzz/CMakeFiles/harfbuzz.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/harfbuzz.cc.o
 cugl.dir/sdl2pckg.dir/sdl2ttf/external/harfbuzz/libharfbuzz.a: cugl.dir/sdl2pckg.dir/sdl2ttf/external/harfbuzz/CMakeFiles/harfbuzz.dir/build.make
 cugl.dir/sdl2pckg.dir/sdl2ttf/external/harfbuzz/libharfbuzz.a: cugl.dir/sdl2pckg.dir/sdl2ttf/external/harfbuzz/CMakeFiles/harfbuzz.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking C static library libharfbuzz.a"
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2ttf/external/harfbuzz && $(CMAKE_COMMAND) -P CMakeFiles/harfbuzz.dir/cmake_clean_target.cmake
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2ttf/external/harfbuzz && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/harfbuzz.dir/link.txt --verbose=$(VERBOSE)
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking C static library libharfbuzz.a"
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2ttf/external/harfbuzz && $(CMAKE_COMMAND) -P CMakeFiles/harfbuzz.dir/cmake_clean_target.cmake
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2ttf/external/harfbuzz && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/harfbuzz.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
 cugl.dir/sdl2pckg.dir/sdl2ttf/external/harfbuzz/CMakeFiles/harfbuzz.dir/build: cugl.dir/sdl2pckg.dir/sdl2ttf/external/harfbuzz/libharfbuzz.a
 .PHONY : cugl.dir/sdl2pckg.dir/sdl2ttf/external/harfbuzz/CMakeFiles/harfbuzz.dir/build
 
 cugl.dir/sdl2pckg.dir/sdl2ttf/external/harfbuzz/CMakeFiles/harfbuzz.dir/clean:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2ttf/external/harfbuzz && $(CMAKE_COMMAND) -P CMakeFiles/harfbuzz.dir/cmake_clean.cmake
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2ttf/external/harfbuzz && $(CMAKE_COMMAND) -P CMakeFiles/harfbuzz.dir/cmake_clean.cmake
 .PHONY : cugl.dir/sdl2pckg.dir/sdl2ttf/external/harfbuzz/CMakeFiles/harfbuzz.dir/clean
 
 cugl.dir/sdl2pckg.dir/sdl2ttf/external/harfbuzz/CMakeFiles/harfbuzz.dir/depend:
-	cd /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /Users/patrickchoo/cs4152/mahsjong/build/cmake /Users/patrickchoo/cs4152/cugl/sdlapp/buildfiles/cmake/sdl2ttf/external/harfbuzz /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2ttf/external/harfbuzz /Users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2ttf/external/harfbuzz/CMakeFiles/harfbuzz.dir/DependInfo.cmake "--color=$(COLOR)"
+	cd /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /users/patrickchoo/cs4152/mahsjong/build/cmake /users/patrickchoo/cs4152/cugl/sdlapp/buildfiles/cmake/sdl2ttf/external/harfbuzz /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2ttf/external/harfbuzz /users/patrickchoo/cs4152/mahsjong/build/cmake/cmake/cugl.dir/sdl2pckg.dir/sdl2ttf/external/harfbuzz/CMakeFiles/harfbuzz.dir/DependInfo.cmake "--color=$(COLOR)"
 .PHONY : cugl.dir/sdl2pckg.dir/sdl2ttf/external/harfbuzz/CMakeFiles/harfbuzz.dir/depend
 

@@ -1,6 +1,6 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/vorbisenc.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/vorbisenc.c.o"
-  "CMakeFiles/vorbisenc.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/vorbisenc.c.o.d"
+  "CMakeFiles/vorbisenc.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/vorbisenc.c.o"
+  "CMakeFiles/vorbisenc.dir/users/patrickchoo/cs4152/cugl/sdlapp/external/vorbis/lib/vorbisenc.c.o.d"
   "libvorbisenc.a"
   "libvorbisenc.pdb"
 )
