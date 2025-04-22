@@ -793,9 +793,7 @@
                     ],
                     "visible": true
                 },
-                "children": {
-
-                },
+                "children": [],
                 "layout": {
                     "x_anchor": "left",
                     "y_anchor": "top",
@@ -828,9 +826,8 @@
                     ],
                     "visible": true
                 },
-                "children": {
-
-                },
+                "children": []
+                ,
                 "layout": {
                     "priority": 0,
                     "padding": [
