@@ -67,7 +67,7 @@ bool SettingScene::init(const std::shared_ptr<cugl::AssetManager>& assets){
         }
     });
     exitKey = exitBtn->addListener([this](const std::string& name, bool down){
-        if (down) {
+        if (!down) {
             switch (scene){
                 case PrevScene::PAUSED:
                     choice = Choice::PAUSE;
@@ -127,7 +127,6 @@ void SettingScene::setActive(bool value){
         choice = Choice::NONE;
         _settingScene->setVisible(false);
         exitBtn->deactivate();
-        exitBtn->setDown(false);
         _soundBtn->deactivate();
     }
 }
