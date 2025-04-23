@@ -186,15 +186,14 @@ protected:
     std::shared_ptr<Button> _opponentHandBtn2;
     std::shared_ptr<Button> _playerHandBtn2;
     
-    std::vector<std::shared_ptr<SceneNode>> _opponentHandTiles;
-    std::vector<std::shared_ptr<SceneNode>> _playerHandTiles;
+    std::vector<std::shared_ptr<TexturedNode>> _opponentHandTiles;
+    std::vector<std::shared_ptr<TexturedNode>> _playerHandTiles;
     std::shared_ptr<SceneNode> _opponentHandRec;
     std::shared_ptr<SceneNode> _playerHandRec;
-    std::vector<std::shared_ptr<TileSet::Tile>> _opponentSetTiles;
-    std::vector<std::shared_ptr<TileSet::Tile>> _playerSetTiles;
     int _remainingTiles;
     std::shared_ptr<Label> _remainingLabel;
-    int currOpponentSetIndex = 0;
+    int opponentSetIndex = 0;
+    int playerSetIndex = 0;
     
     bool drawnThisTurn;
 
