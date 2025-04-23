@@ -201,8 +201,10 @@ void MahsJongApp::draw() {
            break;
        case INFO:
            _info.render();
+           break;
        case TUTORIAL:
            _tutorial.render();
+           break;
    }
 }
 

@@ -725,9 +725,7 @@ void MatchController::update(float timestep) {
     
     // Tile has been drawn from the pile 
     if(_network->getStatus() == NetworkController::TILEDRAWN) {
-        setChoice(PILEDRAW);
         bool isHost = _network->getHostStatus();
-        
         _pile->removePileTile(_network->getTileDrawn(), isHost);
         
         // Add tile that was drawn into this match controller

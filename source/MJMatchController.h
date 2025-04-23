@@ -23,6 +23,7 @@ public:
     /** Enum for states of the game */
     enum Choice {
         NONE,
+        PILEDRAW,
         DISCARDUIUPDATE,
         MONKEYTILE,
         RATTILE,

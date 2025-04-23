@@ -414,7 +414,7 @@ bool Hand::isStraight(const std::vector<std::shared_ptr<TileSet::Tile>>& selecte
             std::shared_ptr<TileSet::Tile> tileC = sortedTiles[i+1];
 
             int gap = static_cast<int>(tileC->getRank()) - static_cast<int>(tileA->getRank());
-            if (gap>1) {
+            if (gap != 1) {
                 return false;
             }
         }

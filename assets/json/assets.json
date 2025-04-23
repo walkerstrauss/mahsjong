@@ -822,6 +822,15 @@
         "tu12": {
             "file": "textures/tutorial/tu12.png"
         },
+        "button_back":{
+            "file": "textures/tutorial/button_back.png"
+        },
+        "button_exit":{
+            "file": "textures/tutorial/button_exit.png"
+        },
+        "clickText":{
+            "file": "textures/tutorial/clickText.png"
+        },
         "playset":{
             "file":"textures/gameplay/playset.png"
         }

@@ -192,6 +192,9 @@ protected:
     std::shared_ptr<SceneNode> _playerHandRec;
     std::vector<std::shared_ptr<TileSet::Tile>> _opponentSetTiles;
     std::vector<std::shared_ptr<TileSet::Tile>> _playerSetTiles;
+    int _remainingTiles = 108;
+    std::shared_ptr<Label> _remainingLabel;
+    int currOpponentSetIndex = 0;
     
     bool drawnThisTurn;
 
