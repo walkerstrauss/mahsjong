@@ -65,6 +65,8 @@
 		BCE98E0AE64141B7A2A6AC03 /* MJHostScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BAD6CD0BDE6F8EAFBB5CF0C7 /* MJHostScene.cpp */; };
 		BCFAAB022CD9CD93B6D5BD01 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BA74D663E7C15A3342E7A1F8 /* main.cpp */; };
 		BCFEBFFDBD09AC8AA4C1035D /* MJPauseScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BA195CBED554CEB9FA9EE92B /* MJPauseScene.cpp */; };
+		BEF1E1E82DB82361004464CB /* MJPileUINode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BEF1E1E72DB82361004464CB /* MJPileUINode.cpp */; };
+		BEF1E1E92DB82361004464CB /* MJPileUINode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BEF1E1E72DB82361004464CB /* MJPileUINode.cpp */; };
 		EB0F3CB827FB9FD40037CC66 /* Mac.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EB0F3CB327FB9FD40037CC66 /* Mac.xcassets */; };
 		EB0F3CD527FBA2190037CC66 /* ForceFeedback.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EB0F3CC727FBA2180037CC66 /* ForceFeedback.framework */; };
 		EB0F3CD627FBA2190037CC66 /* CoreHaptics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EB0F3CC827FBA2180037CC66 /* CoreHaptics.framework */; };
@@ -238,6 +240,8 @@
 		BAEA1CFCE37EBB84BD5DABAC /* MJScoreManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJScoreManager.h; sourceTree = "<group>"; };
 		BAF50B1B9DC41DFBAD98FE02 /* MJInputController.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MJInputController.cpp; sourceTree = "<group>"; };
 		BAFBBED62482C8E93FE0DAAE /* MJPile.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MJPile.cpp; sourceTree = "<group>"; };
+		BEF1E1E62DB82361004464CB /* MJPileUINode.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MJPileUINode.h; sourceTree = "<group>"; };
+		BEF1E1E72DB82361004464CB /* MJPileUINode.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = MJPileUINode.cpp; sourceTree = "<group>"; };
 		EB0F3C9627FB9DCB0037CC66 /* Mahs Jong.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Mahs Jong.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EB0F3CB027FB9FD40037CC66 /* Landscape.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Landscape.storyboard; sourceTree = "<group>"; };
 		EB0F3CB127FB9FD40037CC66 /* iOS.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = iOS.xcassets; sourceTree = "<group>"; };
@@ -362,6 +366,8 @@
 		EB0F3C9827FB9DCB0037CC66 /* Source */ = {
 			isa = PBXGroup;
 			children = (
+				BEF1E1E62DB82361004464CB /* MJPileUINode.h */,
+				BEF1E1E72DB82361004464CB /* MJPileUINode.cpp */,
 				BACA3E795FDBD0D1AA5FE1D6 /* MJDiscardPile.cpp */,
 				BA386DB2F0398C6B215CF08F /* MJMenuScene.cpp */,
 				BA2ECE174C3FFAF4C2B7EA5B /* MJAnimationController.cpp */,
@@ -709,6 +715,7 @@
 				BBC9DA163C028C1ECC84CD4C /* MJPauseScene.cpp in Sources */,
 				BB45ABD0603ACFEBBBAFEBEB /* MJDiscardUIScene.cpp in Sources */,
 				BB1C07146F4E1BCCAA80B7EB /* MJClientScene.cpp in Sources */,
+				BEF1E1E92DB82361004464CB /* MJPileUINode.cpp in Sources */,
 				BB60C3D2AA02E5BFEED63A7E /* MJSettingScene.cpp in Sources */,
 				BBAFDFD34912CAAFFD1FF5B8 /* MJScoreManager.cpp in Sources */,
 				BB82D7F66B8DF241C93F56ED /* MJGameOverScene.cpp in Sources */,
@@ -740,6 +747,7 @@
 				BCFEBFFDBD09AC8AA4C1035D /* MJPauseScene.cpp in Sources */,
 				BC8D20A4A5B42C25EA6917EB /* MJDiscardUIScene.cpp in Sources */,
 				BC9507EEB40FD3F0CDE0D05E /* MJClientScene.cpp in Sources */,
+				BEF1E1E82DB82361004464CB /* MJPileUINode.cpp in Sources */,
 				BCC5DE22279CB52F7FEDC90C /* MJSettingScene.cpp in Sources */,
 				BC3DEABC7BEDC58AA4C77A8F /* MJScoreManager.cpp in Sources */,
 				BC777F92ADD2DBE12448B483 /* MJGameOverScene.cpp in Sources */,

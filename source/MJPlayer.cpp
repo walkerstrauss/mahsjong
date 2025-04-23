@@ -423,9 +423,6 @@ bool Hand::isStraight(const std::vector<std::shared_ptr<TileSet::Tile>>& selecte
 }
 
 
-
-
-
 bool Hand::isWinningHand() {
     
     

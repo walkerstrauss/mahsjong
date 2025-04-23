@@ -102,6 +102,12 @@
         "rat of celestial": {
           "file": "textures/celestialHand/rat_hand.png"
         },
+        "dragon of celestial": {
+          "file": "textures/celestialHand/dragon_hand.png"
+        },
+        "pig of celestial": {
+          "file": "textures/celestialHand/pig_hand.png"
+        },
         "background": {
             "file": "textures/landing/background.png"
         },
@@ -428,6 +434,12 @@
         },
         "select": {
             "file": "textures/pileui/select.png"
+        },
+        "rearrange1": {
+            "file": "textures/pileui/rearrange1.png"
+        },
+        "rearrange2": {
+            "file": "textures/pileui/rearrange2.png"
         },
         "settingBoard": {
             "file": "textures/setting/settingBoard.png"
@@ -889,13 +901,13 @@
           "type": "Anchored"
         },
         "children": {
-          "gameplay-select": {
+          "pile-ui": {
             "type": "Widget",
             "format": {
               "type": "Anchored"
             },
             "data": {
-              "key": "gameplay-select",
+              "key": "pile-ui",
               "variables": {
                 "size": [ 1280, 720 ]
               }
@@ -1033,7 +1045,7 @@
     "settingbutton_name": "widgets/button/settingbutton_name.json",
     "settingbutton_onoff": "widgets/button/settingbutton_onoff.json",
     "tilesetscene": "widgets/scene/tilesetscene.json",
-    "gameplay-select": "widgets/scene/gameplay-select.json",
+    "pile-ui": "widgets/scene/pile-ui.json",
     "host1Scene": "widgets/scene/host1Scene.json",
     "client1Scene": "widgets/scene/client1Scene.json",
     "client3Scene": "widgets/scene/client3Scene.json"

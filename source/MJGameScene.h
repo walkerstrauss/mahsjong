@@ -76,7 +76,7 @@ protected:
     /** Reference to the discard UI node for the game */
     std::shared_ptr<DiscardUINode> _discardUINode;
     /** Reference to the pile UI node for the game */
-    std::shared_ptr<cugl::scene2::SceneNode> _pileUINode;
+    std::shared_ptr<PileUINode> _pileUINode;
     /** TileSet for the game */
     std::shared_ptr<TileSet> _tileSet;
     /** Reference to player */

@@ -67,11 +67,11 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::sha
 
     _discardUINode->_root->setPosition(offset, _discardUINode->getPosition().y);
     
-    _pileUINode = _assets->get<SceneNode>("pileui");
+    _pileUINode = std::make_shared<PileUINode>();
+    _pileUINode->init(_assets);
     _pileUINode->setContentSize(getSize());
-    _pileUINode->getChild(0)->setContentSize(_matchScene->getContentSize());
+    _pileUINode->_root->getChild(0)->setContentSize(_matchScene->getContentSize());
     _pileUINode->doLayout();
-    _pileUINode->setVisible(false);
     
     _tilesetUIBtn = std::dynamic_pointer_cast<scene2::Button>(_assets->get<scene2::SceneNode>("matchscene.gameplayscene.discarded-tile.discard-can"));
 //    _pauseBtn = std::dynamic_pointer_cast<scene2::Button>(_assets->get<scene2::SceneNode>("matchscene.gameplayscene.pauseButton"));
@@ -131,7 +131,7 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::sha
         
     addChild(_matchScene);
     addChild(_discardUINode->_root);
-    addChild(_pileUINode);
+    addChild(_pileUINode->_root);
     
     // Game Win and Lose bool
     _gameWin = false;
@@ -357,7 +357,12 @@ void GameScene::update(float timestep) {
     }
     
     if (_matchController->getChoice() == MatchController::Choice::RATTILE) {
-        _pileUINode->setVisible(true);
+        _pileUINode->setState(PileUINode::RATSELECT);
+    }
+    
+    if (_matchController->getChoice() == MatchController::Choice::DRAGONTILE) {
+        _pileUINode->setState(PileUINode::DRAGONROW);
+
     }
     
     // If we are in drawn discard state, set discarded tile image visibility to false since player drew it
@@ -429,13 +434,13 @@ void GameScene::render() {
     _batch->draw(temp, Color4(0,0,0,255), Rect(Vec2::ZERO, cugl::Application().get()->getDisplaySize()));
     
     _matchScene->render(_batch);
-    _pileUINode->render(_batch);
+    _discardPile->draw(_batch);
+    
+    _pileUINode->_root->render(_batch);
     _pile->draw(_batch);
     _player->draw(_batch);
-    _discardPile->draw(_batch);
 
     _discardUINode->_root->render(_batch);
-//    _pileUINode->_root->render(_batch);
     
     _batch->setColor(Color4(255, 0, 0, 200));
     _batch->setTexture(nullptr);

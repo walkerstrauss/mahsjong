@@ -338,7 +338,10 @@ bool MatchController::playCelestial(std::shared_ptr<TileSet::Tile>& celestialTil
                     _ratTile = celestialTile;
                     _choice = RATTILE;
                     break;
-                    
+                case(TileSet::Tile::Rank::DRAGON):
+                    _dragonTile = celestialTile;
+                    _choice = DRAGONTILE;
+                    break;
                 // Numbered rank
                 default:
                     break;

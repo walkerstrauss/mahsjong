@@ -21,9 +21,11 @@ bool PileUINode::init(const std::shared_ptr<cugl::AssetManager>& assets) {
     
     _assets = assets;
     _root = _assets->get<SceneNode>("pileui");
-    _root->setContentSize(getSize());
+    _select = _assets->get<SceneNode>("pileui.pile-ui.select");
+    _rearrange1 = _assets->get<SceneNode>("pileui.pile-ui.rearrange1");
+    _rearrange2 = _assets->get<SceneNode>("pileui.pile-ui.rearrange2");
     
-    _state = OFF;
+    _state = NONE;
     _root->setVisible(false);
     return true;
 }
@@ -37,14 +39,3 @@ void PileUINode::reset() {
     return;
 }
 
-/** Sets this scene node as active */
-void PileUINode::setPileUIActive(bool active) {
-    if(active) {
-        _root->setVisible(true);
-        _state = ON;
-    }
-    else {
-        _root->setVisible(false);
-        _state = OFF;
-    }
-}
