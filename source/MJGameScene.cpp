@@ -282,6 +282,8 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::sha
     drawnThisTurn = false;
     
     _remainingLabel = std::dynamic_pointer_cast<Label>(_assets->get<SceneNode>("matchscene.gameplayscene.tile-left.tile-left-number"));
+    _remainingTiles = _tileSet->deck.size();
+    _remainingLabel->setText(std::to_string(_remainingTiles));
     
     return true;
 }
@@ -347,12 +349,12 @@ void GameScene::update(float timestep) {
     
     // If matchController state is SUCCESS_SET, deactivate button
     if(_matchController->getChoice() == MatchController::SUCCESS_SET) {
-//        auto tiles = _network->getPlayedTiles();
+        // TODO: implement updated opponent hand 
 //        if (currOpponentSetIndex < 12){
+//            auto tiles = _network->getPlayedTiles();
+//            std::vector<std::shared_ptr<TileSet::Tile>> played = _tileSet->processTileJson(tiles);
 //            for (int i = 0; i < 3; i++){
-//                auto tile = _tileSet->processTileJson(tiles[i]);
-//                auto texture = tile->getTileTexture();
-//                _opponentSetTiles[currOpponentSetIndex+i]->setTexture(texture);
+//                _opponentSetTiles[i + currOpponentSetIndex]->setTexture(played[i]->getTileTexture());
 //            }
 //        }
         _playSetBtn->setVisible(false);
@@ -373,8 +375,6 @@ void GameScene::update(float timestep) {
     // If we are in drawn discard state, set discarded tile image visibility to false since player drew it
     if(_matchController->getChoice() == MatchController::DRAWNDISCARD || _network->getStatus() == NetworkController::DRAWNDISCARD) {
         _discardedTileImage->setVisible(false);
-
-        // Currently breaks because match controller choice is not set to none
     }
     
     // If play set button is active and visible and match controller state is NONE, deactivate and set visible to false
@@ -412,7 +412,7 @@ void GameScene::update(float timestep) {
                 _remainingLabel->setText(std::to_string(_remainingTiles));
                 AudioController::getInstance().playSound("confirm", false);
                 _matchController->drawTile();
-                //            drawnThisTurn = true;
+//              drawnThisTurn = true;
             }
         }
         
@@ -607,8 +607,6 @@ void GameScene::updateDrag(const cugl::Vec2& mousePos, bool mouseDown, bool mous
                   }
                   // Regular tile getting discarded
                   else if(_matchController->discardTile(_draggingTile)) {
-                      _remainingTiles--;
-                      _remainingLabel->setText(std::to_string(_remainingTiles));
                       _discardedTileImage->setTexture(_assets->get<Texture>(_draggingTile->toString()));
                       _discardedTileImage->SceneNode::setContentSize(27, 30);
                       _discardedTileImage->setVisible(true);
