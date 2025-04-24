@@ -948,6 +948,9 @@
         "setting-icon": {
             "file": "textures/gameplay/setting-icon.png"
         },
+        "grandmaWin":{
+            "file": "textures/animations/grandmaWin.png"
+        },
         "information-icon": {
             "file": "textures/gameplay/information-icon.png"
         },

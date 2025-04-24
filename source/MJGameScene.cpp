@@ -366,6 +366,7 @@ void GameScene::reset() {
  * @param timestep The amount of time (in seconds) since the last frame
  */
 void GameScene::update(float timestep) {
+    
     if (_input->getKeyPressed() == cugl::KeyCode::A && _input->getPrevKeyPressed() != cugl::KeyCode::A) {
 
         // there are multiple _choice. One is from MatchController, and the other is from GameScene.
@@ -375,6 +376,7 @@ void GameScene::update(float timestep) {
 
         _network->broadcastEnd(_network->getLocalPid());
     }
+    
     _matchController->update(timestep);
     
     // if there is no tiles left in the pile - it is a tie
@@ -490,6 +492,36 @@ void GameScene::update(float timestep) {
     if(_matchController->getChoice() == MatchController::DRAWNDISCARD || _network->getStatus() == NetworkController::DRAWNDISCARD) {
         _discardedTileImage->setVisible(false);
     }
+    
+    if (_matchController->getChoice() == MatchController::WIN && !_gameWin) {
+        
+        _winningHand.clear();
+
+        // Flatten played sets into individual tiles.
+        for (auto const& set : _player->getHand()._playedSets) {
+            _winningHand.insert(_winningHand.end(), set.begin(), set.end());
+        }
+
+        // The rest is filled with the tiles from the hand.
+        auto remaining = _matchController->getWinningHand();
+        _winningHand.insert(_winningHand.end(), remaining.begin(), remaining.end());
+
+        _gameWin = true;
+        
+    }
+    
+    if (_matchController->getChoice()==MatchController::Choice::LOSE && !_gameLose) {
+        _gameLose = true;
+        
+        bool amHost = _network->getHostStatus();
+        auto winner = amHost
+          ? _matchController->clientPlayer
+          : _matchController->hostPlayer;
+        _winningHand = winner->getHand()._tiles;
+        
+        _choice = Choice::LOSE;
+    }
+    
     
     // If play set button is active and visible and match controller state is NONE, deactivate and set visible to false
     if((_playSetBtn->isVisible() || _playSetBtn->isActive()) && _matchController->getChoice() == MatchController::NONE) {

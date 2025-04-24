@@ -36,6 +36,13 @@
               "cols": 3,
               "count": 6,
               "repeat": 10
+          },
+          "grandmaWin":{
+              "texture": "grandmaWin",
+              "rows":2,
+              "cols":3,
+              "count":6,
+              "repeat":10
           }
       }
   },

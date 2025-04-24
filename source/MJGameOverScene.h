@@ -10,6 +10,8 @@
 
 #include <cugl/cugl.h>
 #include "MJAudioController.h"
+#include "MJTileSet.h"
+#include "MJAnimatedNode.h"
 
 using namespace cugl;
 using namespace cugl::scene2;
@@ -71,6 +73,17 @@ protected:
     float _frameTimer = 0.0f;  // Track time between frames
     float _frameDelay = 0.2f;  // Time in seconds before switching frames
     
+    std::vector<std::shared_ptr<TileSet::Tile>> _winningHand;
+    
+    //std::vector<std::shared_ptr<cugl::scene2::TexturedNode>> _winBoardTiles;
+    //std::shared_ptr<cugl::scene2::SceneNode> _winBoardNode;
+    std::vector<std::shared_ptr<cugl::scene2::TexturedNode>> _winSlots;
+    std::vector<std::shared_ptr<cugl::scene2::TexturedNode>> _loseSlots;
+    
+    //std::shared_ptr<AnimatedNode>  _grandmaLose;
+    
+    std::shared_ptr<cugl::scene2::SpriteNode> _grandmaWin;
+    
 public:
     /** Represents the choice for this scene */
     Choice choice;
@@ -96,6 +109,10 @@ public:
     void reset() override;
     
     void render(const std::shared_ptr<cugl::graphics::SpriteBatch>& batch);
+    
+    void setWinningHand(const std::vector<std::shared_ptr<TileSet::Tile>>& hand);
+    
+    void setLosingHand(const std::vector<std::shared_ptr<TileSet::Tile>>& hand);
 };
 
 #endif

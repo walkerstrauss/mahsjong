@@ -265,6 +265,12 @@ public:
      * Disposes of all (non-static) resources allocated to this mode.
      */
     void dispose();
+    
+    
+    std::vector<std::shared_ptr<TileSet::Tile>> getWinningHand() const {
+        bool isHost = _network->getHostStatus();
+        return isHost ? hostPlayer->getHand()._tiles : clientPlayer->getHand()._tiles;
+    }
 };
 
 #endif /* __MJ_MATCH_CONTROLLER__ */

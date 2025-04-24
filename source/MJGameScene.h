@@ -212,6 +212,9 @@ protected:
     bool _wasDragToHandVisible = false;
     bool _wasDragToDiscardVisible = false;
     bool _wasTradeTileVisible = false;
+    
+    std::vector<std::shared_ptr<TileSet::Tile>> _winningHand;
+
 public:
 #pragma mark -
 #pragma mark Constructors
@@ -383,6 +386,7 @@ public:
     
     void revertDiscardedTile();
     
+
     void initTurnIndicators(){
         _opponentHandRec = _assets->get<SceneNode>("matchscene.gameplayscene.opponent-hand-rec");
         _opponentHandBtn = std::dynamic_pointer_cast<Button>(_assets->get<SceneNode>("matchscene.gameplayscene.opponent-hand"));
@@ -559,6 +563,11 @@ public:
     void endTurnFromTimeout();
     
     void updateAreaVisibility(Vec2 mousePos, float timestep);
+    
+    
+    std::vector<std::shared_ptr<TileSet::Tile>> getWinningHand() const {
+        return _winningHand;
+    }
     
     void updateTurnTimer(float timestep){
         int currTurn = _network->getCurrentTurn();
