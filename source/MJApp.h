@@ -22,6 +22,7 @@
 #include "MJLoadingScene.h"
 #include "MJInfoScene.h"
 #include "MJTutorialScene.h"
+#include "MJInputController.h"
 
 /**
  * This class represents the application root for the Mah's Jong game
@@ -77,6 +78,8 @@ protected:
     TutorialScene _tutorial;
     /** The match controller for the game*/
     std::shared_ptr<MatchController> _matchController;
+    /** The input controller for the game */
+    std::shared_ptr<InputController> _inputController;
     /** Whether or not we finished loading all assets*/
     bool _loaded;
     /** Scene loader reference */

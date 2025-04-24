@@ -101,6 +101,12 @@ void InputController::dispose() {
         mouse->removeReleaseListener(_mouseKey);
         mouse->removeDragListener(_mouseKey);
         mouse->setPointerAwareness(Mouse::PointerAwareness::BUTTON);
+        
+        Touchscreen* touchScreen = Input::get<Touchscreen>();
+        touchScreen->removeEndListener(_touchKey);
+        touchScreen->removeBeginListener(_touchKey);
+        touchScreen->removeMotionListener(_touchKey);
+        
         _active = false;
     }
 }
@@ -112,6 +118,7 @@ void InputController::update() {
 #ifdef CU_TOUCH_SCREEN
     _prevDown = _currDown;
     _currDown = _touchDown;
+//    CULog("[update] this=%p  _touchDown=%d", this, _touchDown);
 
     _prevPos = _currPos;
 #else
@@ -120,6 +127,8 @@ void InputController::update() {
 
     _prevPos = _currPos;
     _currPos = _mousePos;
+    
+//    CULog("[update] this=%p  _touchDown=%d", this, _mouseDown);
 #endif
 
     _prevKeyDown = _keyDown;
@@ -176,6 +185,7 @@ void InputController::buttonUpCB(const cugl::MouseEvent& event, Uint8 clicks, bo
  */
 void InputController::motionCB(const cugl::MouseEvent& event, const Vec2 previous, bool focus) {
     if (_mouseDown) {
+//        CULog("[motionCB] this=%p  _touchDown=%d", this, _mouseDown);
         _mousePos = event.position;
     }
 }
@@ -204,8 +214,8 @@ void InputController::touchReleaseCB(const cugl::TouchEvent& event, bool focus) 
 
 void InputController::dragCB(const cugl::TouchEvent& event, const Vec2 previous, bool focus) {
     if (_touchDown) {
+//        CULog("[dragCB] this=%p  _touchDown=%d", this, _touchDown);
         _currPos = event.position;
-        
         //CULog("TOUCH DRAG detected at (%f, %f)", event.position.x, event.position.y);
     }
 }

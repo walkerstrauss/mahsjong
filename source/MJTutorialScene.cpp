@@ -10,7 +10,7 @@
 
 #include "MJTutorialScene.h"
 
-bool TutorialScene::init(const std::shared_ptr<AssetManager>& assets) {
+bool TutorialScene::init(const std::shared_ptr<AssetManager>& assets, std::shared_ptr<InputController> inputController) {
     if (assets == nullptr) {
         return false;
     } else if (!Scene2::initWithHint(0,720)) {
@@ -47,7 +47,7 @@ bool TutorialScene::init(const std::shared_ptr<AssetManager>& assets) {
     _presentation->setContentSize(_tutorialScene->getContentSize());
     _presentation->setPosition(_tutorialScene->getWidth() / 2, _tutorialScene->getHeight() / 2);
     
-    _input.init();
+    _input = inputController;
     _choice = TutorialScene::NONE;
     addChild(_tutorialScene);
 
@@ -55,10 +55,10 @@ bool TutorialScene::init(const std::shared_ptr<AssetManager>& assets) {
 }
 
 void TutorialScene::update(float timestep) {
-    _input.readInput();
-    _input.update();
+//    _input.readInput();
+//    _input.update();
 
-    if (_input.didPress() && !_back->isDown() && _slide < 12 && !_exit->isDown()) {
+    if (_input->didPress() && !_back->isDown() && _slide < 12 && !_exit->isDown()) {
         if (_slide == 11){
             _slide = 0;
             _choice = BACK;
@@ -89,6 +89,8 @@ void TutorialScene::setActive(bool value) {
 void TutorialScene::dispose() {
     if (_active) {
         removeAllChildren();
+//        _input.dispose();
+
         _active = false;
     }
 }
