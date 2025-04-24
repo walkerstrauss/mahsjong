@@ -1,2 +1,0 @@
-/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/ar qc libharfbuzz.a CMakeFiles/harfbuzz.dir/Users/patrickchoo/cs4152/cugl/sdlapp/external/harfbuzz/src/harfbuzz.cc.o
-/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/ranlib libharfbuzz.a
