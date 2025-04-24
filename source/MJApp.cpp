@@ -58,15 +58,15 @@ void MahsJongApp::onStartup() {
     _loading.init(_assets, "json/assets.json");
     _loading.setSpriteBatch(_batch);
     
-    
-    
     // Get rid of wrong start button
     std::shared_ptr<scene2::Button> wrongStart = std::dynamic_pointer_cast<scene2::Button>(_assets->get<scene2::SceneNode>("load.after.landingscene.button1"));
     wrongStart->setVisible(false);
     
     _loading.start();
     
-
+    _inputController = std::make_shared<InputController>();
+    _inputController->init();
+    
     AudioEngine::start();
     netcode::NetworkLayer::start(netcode::NetworkLayer::Log::INFO);
 //    _network = NetworkController();
@@ -89,6 +89,7 @@ void MahsJongApp::onShutdown() {
     _pause.dispose();
     _gameover.dispose();
     _info.dispose();
+    _inputController->dispose();
 //    _network->dispose();
     _assets = nullptr;
     _batch = nullptr;
@@ -118,6 +119,10 @@ void MahsJongApp::onShutdown() {
  */
 
 void MahsJongApp::update(float timestep) {
+    if(_inputController) {
+        _inputController->readInput();
+        _inputController->update();
+    }
     if (_network) {
         _network->update(timestep);
     }
@@ -243,7 +248,7 @@ void MahsJongApp::updateLoadingScene(float timestep) {
        _mainmenu.setActive(true);
        _info.init(_assets);
        _info.setSpriteBatch(_batch);
-       _tutorial.init(_assets);
+       _tutorial.init(_assets, _inputController);
        _tutorial.setSpriteBatch(_batch);
        _scene = State::MENU;
    }
@@ -303,7 +308,7 @@ void MahsJongApp::updateHostScene(float timestep) {
         _hostgame.setActive(false);
         _mainmenu.setActive(true);
     } else if (_network->getStatus() == NetworkController::Status::START) {
-        _gameplay.init(_assets, _network);
+        _gameplay.init(_assets, _network, _inputController);
         _gameplay.setSpriteBatch(_batch);
         _hostgame.setActive(false);
         _gameplay.setActive(true);
@@ -333,7 +338,7 @@ void MahsJongApp::updateClientScene(float timestep) {
         _joingame.setActive(false);
         _mainmenu.setActive(true);
     } else if (_network->getStatus() == NetworkController::Status::INGAME) {
-        _gameplay.init(_assets, _network);
+        _gameplay.init(_assets, _network, _inputController);
         _gameplay.setSpriteBatch(_batch);
         _joingame.setActive(false);
         _gameplay.setActive(true);

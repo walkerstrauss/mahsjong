@@ -26,13 +26,13 @@ protected:
     std::vector<std::string> _slides;
     int _slide;
 
-    InputController _input;
+    std::shared_ptr<InputController> _input;
     
 public:
 #pragma mark Constructors
     TutorialScene() : Scene2(){}
     
-    bool init(const std::shared_ptr<AssetManager>& assets);
+    bool init(const std::shared_ptr<AssetManager>& assets, std::shared_ptr<InputController> inputController);
 
     enum Choice {
         NONE,

@@ -72,7 +72,7 @@ protected:
     /** The network connection (as made by this scene) */
     std::shared_ptr<NetworkController> _network;
     /** Input controller for player input*/
-    InputController _input;
+    std::shared_ptr<InputController> _input;
     /** Match controller for processing game logic */
     std::shared_ptr<MatchController> _matchController;
     /** JSON with all of our constants*/
@@ -226,7 +226,7 @@ public:
      *
      * @param assets    the asset manager for the game
      */
-    bool init(const std::shared_ptr<cugl::AssetManager>& assets, std::shared_ptr<NetworkController> network);
+    bool init(const std::shared_ptr<cugl::AssetManager>& assets, std::shared_ptr<NetworkController> network, std::shared_ptr<InputController> inputController);
     
     /**
      * Sets whether the player is host.

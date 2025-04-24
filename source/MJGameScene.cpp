@@ -34,7 +34,7 @@ using namespace std;
  *
  * @param assets    the asset manager for the game
  */
-bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::shared_ptr<NetworkController> network) {
+bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::shared_ptr<NetworkController> network, std::shared_ptr<InputController> inputController) {
     // Initialize the scene to a locked height
     if (assets == nullptr) {
         return false;
@@ -176,7 +176,7 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::sha
         _discardBox = cugl::Rect(990 - 87.5, 520 - 103.75, 175, 207.5);
     }
     
-    _input.init(); //Initialize the input controller
+    _input = inputController; //Initialize the input controller
     
     _quit = false;
     setActive(false);
@@ -308,7 +308,7 @@ void GameScene::reset() {
     _gameLose = false;
     _gameWin = false;
     dispose();
-    init(_assets, _network);
+    init(_assets, _network, _input);
     return;
 }
 
@@ -318,14 +318,10 @@ void GameScene::reset() {
  * @param timestep The amount of time (in seconds) since the last frame
  */
 void GameScene::update(float timestep) {
-    //Reading input
-    _input.readInput();
-    _input.update();
-    
     _matchController->update(timestep);
     
     // Fetching current mouse position
-    cugl::Vec2 mousePos = cugl::Scene::screenToWorldCoords(cugl::Vec3(_input.getPosition()));
+    cugl::Vec2 mousePos = cugl::Scene::screenToWorldCoords(cugl::Vec3(_input->getPosition()));
     
     // Constantly updating the position of tiles in hand
     _player->getHand().updateTilePositions(_matchScene->getSize());
@@ -387,13 +383,13 @@ void GameScene::update(float timestep) {
     }
     
     // Clicking/Tapping and Dragging logic
-    if(_input.didRelease() && !_input.isDown()) {
-        cugl::Vec2 initialMousePos = cugl::Scene::screenToWorldCoords(cugl::Vec3(_input.getInitialPosition()));
+    if(_input->didRelease() && !_input->isDown()) {
+        cugl::Vec2 initialMousePos = cugl::Scene::screenToWorldCoords(cugl::Vec3(_input->getInitialPosition()));
         if(initialMousePos - mousePos == Vec2(0, 0)) {
             clickedTile(mousePos);
         }
     }
-    updateDrag(mousePos, _input.isDown(), _input.didRelease());
+    updateDrag(mousePos, _input->isDown(), _input->didRelease());
     
     // If scene is not active prevent any input from user that changes the state of the game
     if(!isActive()) {
@@ -404,9 +400,9 @@ void GameScene::update(float timestep) {
     if(_network->getCurrentTurn() == _network->getLocalPid()) {
         // If in drawn discard state, disallow any other action other then playing a set
         // Coords of initial click and ending release
-        cugl::Vec2 initialMousePos = cugl::Scene::screenToWorldCoords(cugl::Vec3(_input.getInitialPosition()));
+        cugl::Vec2 initialMousePos = cugl::Scene::screenToWorldCoords(cugl::Vec3(_input->getInitialPosition()));
 
-        bool releasedInPile = _input.didRelease() && _pileBox.contains(mousePos);
+        bool releasedInPile = _input->didRelease() && _pileBox.contains(mousePos);
         // Drawing (from pile) logic
 
         if(_pileBox.contains(initialMousePos) && releasedInPile &&  _matchController->getChoice() != MatchController::Choice::RATTILE) {
@@ -420,7 +416,7 @@ void GameScene::update(float timestep) {
         }
         
         //Drawing (from discard) logic
-        bool releasedInDiscard = _input.didRelease() && _discardBox.contains(mousePos);
+        bool releasedInDiscard = _input->didRelease() && _discardBox.contains(mousePos);
         if(_discardBox.contains(initialMousePos) && releasedInDiscard) {
             // If drawing from discard is successful activate play set button
             if(_matchController->drawDiscard()) {
@@ -496,7 +492,7 @@ void GameScene::setGameActive(bool value){
 }
 
 void GameScene::clickedTile(cugl::Vec2 mousePos){
-    cugl::Vec2 initialMousePos = cugl::Scene::screenToWorldCoords(cugl::Vec3(_input.getInitialPosition()));
+    cugl::Vec2 initialMousePos = cugl::Scene::screenToWorldCoords(cugl::Vec3(_input->getInitialPosition()));
     
     for(const auto& pair : _tileSet->tileMap){
         std::shared_ptr<TileSet::Tile> currTile = pair.second;
@@ -539,7 +535,7 @@ void GameScene::clickedTile(cugl::Vec2 mousePos){
 void GameScene::dragTile(){
     if (!_draggingTile) return;
     
-    cugl::Vec2 screenPos = _input.getPosition();
+    cugl::Vec2 screenPos = _input->getPosition();
     cugl::Vec2 mousePos = cugl::Scene::screenToWorldCoords(cugl::Vec3(screenPos));
     
     cugl::Vec2 newPos = mousePos + _dragOffset;
