@@ -22,7 +22,7 @@ int main(int argc, char * argv[]){
     app.setFPS(60.0f);
     
 //    // Can adjust this for screen size
-    app.setDisplaySize(1559, 720);
+//    app.setDisplaySize(2560, 1080);
 //
     // DO NOT MODIFY ANYTHING BELOW THIS LINE
     if(!app.init()){

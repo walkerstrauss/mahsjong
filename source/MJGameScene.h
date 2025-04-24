@@ -193,9 +193,6 @@ protected:
     std::shared_ptr<Button> _playerHandBtn;
     std::shared_ptr<Button> _opponentHandBtn2;
     std::shared_ptr<Button> _playerHandBtn2;
-    
-    bool drawnThisTurn;
-
 public:
 #pragma mark -
 #pragma mark Constructors

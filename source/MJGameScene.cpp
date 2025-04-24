@@ -85,7 +85,6 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::sha
             _matchController->endTurn();
             updateTurnIndicators();
             AudioController::getInstance().playSound("confirm");
-            drawnThisTurn = false;
         }
     });
         
@@ -231,14 +230,14 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::sha
     
     for (int i = 0; i < 14; i++){
         std::shared_ptr<TexturedNode> tile = std::dynamic_pointer_cast<TexturedNode>(_assets->get<SceneNode>("matchscene.gameplayscene.opponent-hand-tile.tile-back_" + std::to_string(i)));
-        if (tile != nullptr){
+        if (tile){
             _opponentHandTiles.push_back(tile);
             tile->setVisible(false);
         }
     }
     for (int i = 0; i < 14; i++){
         std::shared_ptr<TexturedNode> tile = std::dynamic_pointer_cast<TexturedNode>(_assets->get<SceneNode>("matchscene.gameplayscene.player-hand-tile.tile-back_" + std::to_string(i)));
-        if (tile != nullptr){
+        if (tile){
             _playerHandTiles.push_back(tile);
             tile->setVisible(false);
         }
@@ -278,8 +277,6 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::sha
     _turnSheet->setScale(0.12);
     _turnSheet->setFrame(0);
     _turnSheet->setVisible(true);
-    
-    drawnThisTurn = false;
     
     _remainingLabel = std::dynamic_pointer_cast<Label>(_assets->get<SceneNode>("matchscene.gameplayscene.tile-left.tile-left-number"));
     _remainingTiles = _tileSet->deck.size();
@@ -344,24 +341,39 @@ void GameScene::update(float timestep) {
     if(_matchController->getChoice() == MatchController::PILEDRAW){
         _remainingTiles--;
         _remainingLabel->setText(std::to_string(_remainingTiles));
+        
         _matchController->setChoice(MatchController::NONE);
     }
     
     // If matchController state is SUCCESS_SET, deactivate button
     if(_matchController->getChoice() == MatchController::SUCCESS_SET) {
-        if (playerSetIndex < 12){
-            auto tilesJson = _network->getPlayedTiles();
-            auto played = _tileSet->processTileJson(tilesJson);
-            for (int i = 0; i < 3; i++){
-                int ii = playerSetIndex + i;
-                _playerHandTiles[ii + playerSetIndex]->setTexture(played[i]->getTileTexture());
-                _playerHandTiles[ii + playerSetIndex]->setContentSize(75,100);
-                _playerHandTiles[ii + playerSetIndex]->doLayout();
+        if (_network->getCurrentTurn() == _network->getLocalPid()){
+            if (playerSetIndex < 12){
+                auto tilesJson = _network->getPlayedTiles();
+                auto played = _tileSet->processTileJson(tilesJson);
+                for (int i = 0; i < 3; i++){
+                    int ii = playerSetIndex + i;
+                    _playerHandTiles[ii + playerSetIndex]->setTexture(played[i]->getTileTexture());
+                    _playerHandTiles[ii + playerSetIndex]->setContentSize(50,66);
+                    _playerHandTiles[ii + playerSetIndex]->doLayout();
+                }
+                playerSetIndex += 3;
             }
-            playerSetIndex += 3;
+            _playSetBtn->setVisible(false);
+            _playSetBtn->deactivate();
+        } else {
+            if (opponentSetIndex < 12){
+                auto tilesJson = _network->getPlayedTiles();
+                auto played = _tileSet->processTileJson(tilesJson);
+                for (int i = 0; i < 3; i++){
+                    int ii = opponentSetIndex + 1;
+                    _opponentHandTiles[ii + opponentSetIndex]->setTexture(played[i]->getTileTexture());
+                    _opponentHandTiles[ii + opponentSetIndex]->setContentSize(50,66);
+                    _opponentHandTiles[ii + opponentSetIndex]->doLayout();
+                }
+                opponentSetIndex += 3;
+            }
         }
-        _playSetBtn->setVisible(false);
-        _playSetBtn->deactivate();
     }
     
     // If matchController state is FAILED_SET, deactivate button and make discarded tile visible
@@ -389,7 +401,7 @@ void GameScene::update(float timestep) {
     // Clicking/Tapping and Dragging logic
     if(_input.didRelease() && !_input.isDown()) {
         cugl::Vec2 initialMousePos = cugl::Scene::screenToWorldCoords(cugl::Vec3(_input.getInitialPosition()));
-        if(initialMousePos - mousePos == Vec2(0, 0)) {
+        if(initialMousePos - mousePos < Vec2(0.01f, 0.01f)) {
             clickedTile(mousePos);
         }
     }
@@ -415,7 +427,6 @@ void GameScene::update(float timestep) {
                 _remainingLabel->setText(std::to_string(_remainingTiles));
                 AudioController::getInstance().playSound("confirm", false);
                 _matchController->drawTile();
-//              drawnThisTurn = true;
             }
         }
         
@@ -428,7 +439,6 @@ void GameScene::update(float timestep) {
                 _player->getHand().updateTilePositions(_matchScene->getSize());
                 _playSetBtn->setVisible(true);
                 _playSetBtn->activate();
-//                drawnThisTurn = true;
             };
         }
     }
@@ -527,7 +537,6 @@ void GameScene::clickedTile(cugl::Vec2 mousePos){
             }
             if(currTile->inPile && _matchController->getChoice() == MatchController::Choice::RATTILE) {
                 _matchController->playRat(currTile);
-                _player = _network->getHostStatus() ? _matchController->hostPlayer : _matchController->clientPlayer;
                 _matchController->setChoice(MatchController::Choice::NONE);
                 _pileUINode->setVisible(false);
             }
@@ -621,7 +630,7 @@ void GameScene::updateDrag(const cugl::Vec2& mousePos, bool mouseDown, bool mous
         if (_dragInitiated && _draggingTile) {
             float distance = (mousePos - _dragStartPos).length();
             if(_draggingTile->discarded) {
-                if(_playerHandRegion.contains(mousePos) /*&& !drawnThisTurn*/) {
+                if(_playerHandRegion.contains(mousePos)) {
                     _matchController->drawDiscard();
                     _playSetBtn->activate();
                     _playSetBtn->setVisible(true);

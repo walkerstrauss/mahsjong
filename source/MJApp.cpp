@@ -89,6 +89,7 @@ void MahsJongApp::onShutdown() {
     _pause.dispose();
     _gameover.dispose();
     _info.dispose();
+    _tutorial.dispose();
 //    _network->dispose();
     _assets = nullptr;
     _batch = nullptr;
@@ -153,6 +154,7 @@ void MahsJongApp::update(float timestep) {
             break;
         case TUTORIAL:
             updateTutorialScene(timestep);
+            break;
     }
 }
 
