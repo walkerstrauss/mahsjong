@@ -577,6 +577,27 @@ void GameScene::updateDrag(const cugl::Vec2& mousePos, bool mouseDown, bool mous
                 _draggingTile->tileRect.origin = newPos;
             }
         }
+        if (_draggingTile && !_dragFromDiscard) {
+            int newIndex = _player->getHand().getTileIndexAtPosition(mousePos);
+            auto& tiles  = _player->getHand().getTiles();
+
+            if (newIndex != -1) {
+                // Current position of the tile in the vector
+                auto it = std::find(tiles.begin(), tiles.end(), _draggingTile);
+                if (it != tiles.end()) {
+                    int oldIndex = static_cast<int>(std::distance(tiles.begin(), it));
+
+                    // Only reshuffle if we actually crossed to a new slot
+                    if (newIndex != oldIndex) {
+                        tiles.erase(it);
+                        newIndex = std::min(newIndex, (int)tiles.size());
+                        tiles.insert(tiles.begin() + newIndex, _draggingTile);
+
+                        _player->getHand().updateTilePositions(_matchScene->getSize());
+                    }
+                }
+            }
+        }
     }
     if (mouseReleased) {
         // Active play area logic. Ensure you only do these actions when it is your turn.
