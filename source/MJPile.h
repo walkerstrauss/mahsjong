@@ -117,6 +117,11 @@ public:
     std::vector<std::shared_ptr<TileSet::Tile>> pairTile(const std::shared_ptr<Player>& player);
     
     /**
+     *  Returns the index of the row that the given tile is in.
+     */
+    int selectedRow(std::shared_ptr<TileSet::Tile> tile);
+    
+    /**
      * Remakes pile according to the player who drew the last tile in the pile
      */
     void remakePile();

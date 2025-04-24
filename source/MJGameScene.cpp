@@ -356,13 +356,14 @@ void GameScene::update(float timestep) {
         _playSetBtn->deactivate();
     }
     
-    if (_matchController->getChoice() == MatchController::Choice::RATTILE) {
+    if (_matchController->getChoice() == MatchController::Choice::RATTILE
+        && _pileUINode->getState() == PileUINode::NONE) {
         _pileUINode->setState(PileUINode::RATSELECT);
     }
     
-    if (_matchController->getChoice() == MatchController::Choice::DRAGONTILE) {
+    if (_matchController->getChoice() == MatchController::Choice::DRAGONTILE
+        && _pileUINode->getState() == PileUINode::NONE) {
         _pileUINode->setState(PileUINode::DRAGONROW);
-
     }
     
     // If we are in drawn discard state, set discarded tile image visibility to false since player drew it
@@ -514,11 +515,16 @@ void GameScene::clickedTile(cugl::Vec2 mousePos){
                     currTile->selected = true;
                 }
             }
-            if(currTile->inPile && _matchController->getChoice() == MatchController::Choice::RATTILE) {
+            if(currTile->inPile && _pileUINode->getState() == PileUINode::RATSELECT) {
                 _matchController->playRat(currTile);
                 _player = _network->getHostStatus() ? _matchController->hostPlayer : _matchController->clientPlayer;
                 _matchController->setChoice(MatchController::Choice::NONE);
-                _pileUINode->setVisible(false);
+                _pileUINode->setState(PileUINode::NONE);
+            }
+            
+            if(currTile->inPile && _pileUINode->getState() == PileUINode::DRAGONROW) {
+                int selectedRow = _pile->selectedRow(currTile);
+                _pileUINode->setState(PileUINode::DRAGONREARRANGE);
             }
         }
     }

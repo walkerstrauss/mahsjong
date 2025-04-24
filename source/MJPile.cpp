@@ -396,4 +396,15 @@ void Pile::removeNumTiles(int nums) {
 //    }
 //}
 
+int Pile::selectedRow(std::shared_ptr<TileSet::Tile> tile) {
+    for (int i = 0; i < _pileSize; i++) {
+        for (int j = 0; j < _pileSize; j++) {
+            if (_pile[i][j] == tile) {
+                return i;
+                break;
+            }
+        }
+    }
+    return -1;
+}
 
