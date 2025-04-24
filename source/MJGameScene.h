@@ -58,6 +58,14 @@ public:
     std::vector<std::shared_ptr<TileSet::Tile>> discardedTiles;
     Choice _choice;
     std::shared_ptr<TileSet::Tile> discardDrawTile;
+    std::vector<std::shared_ptr<TexturedNode>> _opponentHandTiles;
+    std::vector<std::shared_ptr<TexturedNode>> _playerHandTiles;
+    std::shared_ptr<SceneNode> _opponentHandRec;
+    std::shared_ptr<SceneNode> _playerHandRec;
+    int _remainingTiles;
+    std::shared_ptr<Label> _remainingLabel;
+    int opponentSetIndex = 0;
+    int playerSetIndex = 0;
 protected:
     /** Asset manager for this game mode */
     std::shared_ptr<cugl::AssetManager> _assets;
@@ -185,15 +193,6 @@ protected:
     std::shared_ptr<Button> _playerHandBtn;
     std::shared_ptr<Button> _opponentHandBtn2;
     std::shared_ptr<Button> _playerHandBtn2;
-    
-    std::vector<std::shared_ptr<TexturedNode>> _opponentHandTiles;
-    std::vector<std::shared_ptr<TexturedNode>> _playerHandTiles;
-    std::shared_ptr<SceneNode> _opponentHandRec;
-    std::shared_ptr<SceneNode> _playerHandRec;
-    int _remainingTiles;
-    std::shared_ptr<Label> _remainingLabel;
-    int opponentSetIndex = 0;
-    int playerSetIndex = 0;
     
     bool drawnThisTurn;
 

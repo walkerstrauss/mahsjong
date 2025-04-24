@@ -354,8 +354,11 @@ void GameScene::update(float timestep) {
             auto played = _tileSet->processTileJson(tilesJson);
             for (int i = 0; i < 3; i++){
                 int ii = playerSetIndex + i;
-                _playerHandTiles[ii]->setTexture(played[i]->getTileTexture());
+                _playerHandTiles[ii + playerSetIndex]->setTexture(played[i]->getTileTexture());
+                _playerHandTiles[ii + playerSetIndex]->setContentSize(75,100);
+                _playerHandTiles[ii + playerSetIndex]->doLayout();
             }
+            playerSetIndex += 3;
         }
         _playSetBtn->setVisible(false);
         _playSetBtn->deactivate();
