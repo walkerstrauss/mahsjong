@@ -47,9 +47,7 @@ bool AudioController::init(const std::shared_ptr<cugl::AssetManager>& assets){
         auto sound = _assets->get<Sound>(key);
         if (sound) {
             _sounds[key] = sound;
-        } else {
-            CULog("No sound with key: %s", key.c_str());
-        }
+        } 
     }
 
     // init the queue with the background music.
@@ -69,8 +67,6 @@ void AudioController::playSound(const std::string& key, bool loop){
         if (soundOn){
             AudioEngine::get()->play(key, _sounds[key], loop, 1.0f);
         }
-    } else {
-        CULog("No sound with key: %s", key.c_str());
     }
 }
 

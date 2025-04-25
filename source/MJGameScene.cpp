@@ -468,7 +468,6 @@ void GameScene::render() {
 }
 
 void GameScene::setActive(bool value){
-    CULog("set active");
     if (isActive() != value){
         Scene2::setActive(value);
     }
