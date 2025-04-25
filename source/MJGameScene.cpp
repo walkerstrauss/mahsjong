@@ -322,6 +322,20 @@ void GameScene::update(float timestep) {
     
     // Constantly updating the position of tiles in hand
     _player->getHand().updateTilePositions(_matchScene->getSize());
+    
+    // Updating set tabs
+    int i = 0;
+    for (auto set : _player->getHand()._playedSets){
+        set = _player->getHand().getSortedTiles(set);
+        for (auto tile : set){
+            auto node = _playerHandTiles[i];
+            auto texture = tile->getTileTexture();
+            node->setTexture(tile->getTileTexture());
+            node->setContentSize(30, 38.46f);
+            node->doLayout();
+            i++;
+        }
+    }
         
     // Updating discardUINode if matchController has a discard update
     if(_matchController->getChoice() == MatchController::Choice::DISCARDUIUPDATE) {
@@ -343,33 +357,21 @@ void GameScene::update(float timestep) {
     
     // If matchController state is SUCCESS_SET, deactivate button
     if(_matchController->getChoice() == MatchController::SUCCESS_SET) {
-        if (_network->getCurrentTurn() == _network->getLocalPid()){
-            if (playerSetIndex < 12){
-                auto tilesJson = _network->getPlayedTiles();
-                auto played = _tileSet->processTileJson(tilesJson);
-                for (int i = 0; i < 3; i++){
-                    int ii = playerSetIndex + i;
-                    _playerHandTiles[ii + playerSetIndex]->setTexture(played[i]->getTileTexture());
-                    _playerHandTiles[ii + playerSetIndex]->setContentSize(50,66);
-                    _playerHandTiles[ii + playerSetIndex]->doLayout();
-                }
-                playerSetIndex += 3;
-            }
-            _playSetBtn->setVisible(false);
-            _playSetBtn->deactivate();
-        } else {
-            if (opponentSetIndex < 12){
-                auto tilesJson = _network->getPlayedTiles();
-                auto played = _tileSet->processTileJson(tilesJson);
-                for (int i = 0; i < 3; i++){
-                    int ii = opponentSetIndex + 1;
-                    _opponentHandTiles[ii + opponentSetIndex]->setTexture(played[i]->getTileTexture());
-                    _opponentHandTiles[ii + opponentSetIndex]->setContentSize(50,66);
-                    _opponentHandTiles[ii + opponentSetIndex]->doLayout();
-                }
-                opponentSetIndex += 3;
+        int i = 0;
+        for (auto set : _player->getHand().opponentPlayedSets){
+            set = _player->getHand().getSortedTiles(set);
+            for (auto tile : set){
+                auto node = _opponentHandTiles[i];
+                auto texture = tile->getTileTexture();
+                node->setTexture(tile->getTileTexture());
+                node->setContentSize(30, 38.46f);
+                node->doLayout();
+                i++;
             }
         }
+        
+        _playSetBtn->setVisible(false);
+        _playSetBtn->deactivate();
     }
     
     // If matchController state is FAILED_SET, deactivate button and make discarded tile visible

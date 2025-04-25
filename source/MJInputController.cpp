@@ -95,20 +95,24 @@ bool InputController::init() {
  * {@link #init} method.
  */
 void InputController::dispose() {
+#ifdef CU_TOUCH_SCREEN
     if (_active) {
+        Touchscreen* touchScreen = Input::get<Touchscreen>();
+        touchScreen->removeEndListener(_touchKey);
+        touchScreen->removeBeginListener(_touchKey);
+        touchScreen->removeMotionListener(_touchKey);
+    }
+#else
+    if (_active){
         Mouse* mouse = Input::get<Mouse>();
         mouse->removePressListener(_mouseKey);
         mouse->removeReleaseListener(_mouseKey);
         mouse->removeDragListener(_mouseKey);
         mouse->setPointerAwareness(Mouse::PointerAwareness::BUTTON);
         
-        Touchscreen* touchScreen = Input::get<Touchscreen>();
-        touchScreen->removeEndListener(_touchKey);
-        touchScreen->removeBeginListener(_touchKey);
-        touchScreen->removeMotionListener(_touchKey);
-        
         _active = false;
     }
+#endif
 }
 
 /**

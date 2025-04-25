@@ -451,5 +451,4 @@ public:
 };
 
 
-
 #endif /* __MJ_GAME_SCENE_H__ */

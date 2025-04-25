@@ -230,7 +230,6 @@ void MahsJongApp::updateLoadingScene(float timestep) {
    } else {
        _loading.dispose(); // Permanently disables the input listeners in this mode
        
-       
        _network = std::make_shared<NetworkController>();
        _network->init(_assets);
        AnimationController::getInstance().init(_assets);

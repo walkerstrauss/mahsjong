@@ -227,7 +227,8 @@ bool MatchController::discardTile(std::shared_ptr<TileSet::Tile> tile) {
 bool MatchController::playSet() {
     // Retrieving the current player
     std::shared_ptr<Player> currPlayer = _network->getHostStatus() ? hostPlayer : clientPlayer;
-    
+    std::shared_ptr<Player> opponentPlayer = _network->getHostStatus() ? clientPlayer : hostPlayer;
+    std::vector<std::shared_ptr<TileSet::Tile>> tiles;
     // If selected tiles is a valid set
     if(currPlayer->getHand().isSetValid(currPlayer->getHand()._selectedTiles)) {
         // Accumulate tiles from selected set to transform into JSON
@@ -240,6 +241,7 @@ bool MatchController::playSet() {
         
         // Broadcast that a successful set has been played
         currPlayer->getHand().playSet(_network->getHostStatus());
+        opponentPlayer->getHand().opponentPlayedSets.push_back(currPlayer->getHand()._selectedTiles);
         _network->broadcastPlaySet(_network->getLocalPid(), true, tilesJson);
 
         // Reset choice for match controller
@@ -812,7 +814,6 @@ void MatchController::update(float timestep) {
     if(_network->getStatus() == NetworkController::SUCCESSFULSET) {
         // Retrieving the opposing player
         std::shared_ptr<Player> opposingPlayer = _network->getHostStatus() ? clientPlayer : hostPlayer;
-        
         // Fetching the top tile
         std::shared_ptr<TileSet::Tile> discardTile = _discardPile->drawTopTile();
         // Setting relevant fields
@@ -828,12 +829,15 @@ void MatchController::update(float timestep) {
             std::string id = tileKey->getString("id");
             
             const std::string key = rank + " of " + suit + " " + id;
+            std::vector<std::shared_ptr<TileSet::Tile>> tiles;
             
             for(auto it = opposingPlayer->getHand()._tiles.begin(); it != opposingPlayer->getHand()._tiles.end();) {
                 if((*it)->toString() == discardTile->toString()) {
+                    tiles.push_back(*it);
                     break;
                 }
                 if((*it)->toString() == key) {
+                    tiles.push_back(*it);
                     opposingPlayer->getHand()._tiles.erase(it);
                     break;
                 }
@@ -841,6 +845,7 @@ void MatchController::update(float timestep) {
                     it++;
                 }
             }
+            opposingPlayer->getHand()._playedSets.push_back(tiles);
         }
         
         // Update opposing player's max hand size

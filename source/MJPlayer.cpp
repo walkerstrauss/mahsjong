@@ -216,8 +216,8 @@ bool Hand::playSet(bool isHost) {
     
     
     //_playedSets.clear();
-    
-    _player->endTurn();
+//    
+//    _player->endTurn();
     return true;
 }
 

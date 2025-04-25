@@ -374,6 +374,7 @@ public:
         bool operator==(std::shared_ptr<Tile>& tile){
             return this->_id == tile->_id;
         }
+        
     };
     
 public:
