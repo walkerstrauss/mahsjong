@@ -198,7 +198,7 @@ protected:
     std::vector<std::string> playerGuideKeys;
     std::unordered_map<std::string, std::shared_ptr<SceneNode>> playerGuideNodeMap;
     int framesOnScreen = 0;
-    int maxFramesOnScreen = 30;
+    int maxFramesOnScreen = 150;
 public:
 #pragma mark -
 #pragma mark Constructors
@@ -457,7 +457,7 @@ public:
     
     void initPlayerGuide(){
         playerGuideKeys = {
-            "discard-or-play-to-hand",
+            "discard-or-play-to-end",
             "discard-to-end",
             "invalid",
             "valid",
@@ -466,7 +466,8 @@ public:
             "must-draw-play",
             "not-your-turn",
             "start-your-turn1",
-            "start-your-turn2"
+            "start-your-turn2",
+            "drew-try-play"
         };
         
         for (auto key : playerGuideKeys){
@@ -474,25 +475,45 @@ public:
         }
     }
     
-    void updatePlayerGuide(std::string key){
-        auto node = playerGuideNodeMap[key];
-        if (node->isVisible()){
-            framesOnScreen++;
-            if (framesOnScreen > maxFramesOnScreen){
-                node->setVisible(false);
+    void updatePlayerGuide(){
+        for (auto key : playerGuideKeys){
+            auto node = playerGuideNodeMap[key];
+            if (node->isVisible()){
+                framesOnScreen++;
+                if (framesOnScreen > maxFramesOnScreen){
+                    node->setVisible(false);
+                }
             }
-        } else {
-            node->setVisible(true);
-            framesOnScreen = 0;
         }
     }
     
-    void displayPlayerSets(){
+    void showPlayerGuide(std::string key){
+        auto node = playerGuideNodeMap[key];
+        node->setVisible(true);
+        framesOnScreen = 0;
+    }
+    
+    void displayOpponentSets(){
         int i = 0;
         for (auto set : _player->getHand().opponentPlayedSets){
             set = _player->getHand().getSortedTiles(set);
             for (auto tile : set){
                 auto node = _opponentHandTiles[i];
+                auto texture = tile->getTileTexture();
+                node->setTexture(tile->getTileTexture());
+                node->setContentSize(30, 38.46f);
+                node->doLayout();
+                i++;
+            }
+        }
+    }
+    
+    void displayPlayerSets(){
+        int i = 0;
+        for (auto set : _player->getHand()._playedSets){
+            set = _player->getHand().getSortedTiles(set);
+            for (auto tile : set){
+                auto node = _playerHandTiles[i];
                 auto texture = tile->getTileTexture();
                 node->setTexture(tile->getTileTexture());
                 node->setContentSize(30, 38.46f);

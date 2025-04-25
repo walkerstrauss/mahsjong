@@ -860,6 +860,12 @@
         },
         "valid":{
             "file":"textures/gameplay/valid.png"
+        },
+        "drew-try-play":{
+            "file":"textures/gameplay/drew-try-play.png"
+        },
+        "not-your-turn":{
+            "file":"textures/gameplay/not-your-turn.png"
         }
     },
     "fonts": {

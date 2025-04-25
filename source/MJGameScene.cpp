@@ -265,6 +265,8 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::sha
     _remainingTiles = _tileSet->deck.size();
     _remainingLabel->setText(std::to_string(_remainingTiles));
     
+    initPlayerGuide();
+    
     return true;
 }
 
@@ -310,18 +312,10 @@ void GameScene::update(float timestep) {
     updateTurnIndicators();
     
     // Updating set tabs
-    int i = 0;
-    for (auto set : _player->getHand()._playedSets){
-        set = _player->getHand().getSortedTiles(set);
-        for (auto tile : set){
-            auto node = _playerHandTiles[i];
-            auto texture = tile->getTileTexture();
-            node->setTexture(tile->getTileTexture());
-            node->setContentSize(30, 38.46f);
-            node->doLayout();
-            i++;
-        }
-    }
+    displayPlayerSets();
+    
+    // Updating player guide nodes
+    updatePlayerGuide();
         
     // Updating discardUINode if matchController has a discard update
     if(_matchController->getChoice() == MatchController::Choice::DISCARDUIUPDATE) {
@@ -342,7 +336,7 @@ void GameScene::update(float timestep) {
     
     // If matchController state is SUCCESS_SET, deactivate button
     if(_matchController->getChoice() == MatchController::SUCCESS_SET) {
-        displayPlayerSets();
+        displayOpponentSets();
         _playSetBtn->setVisible(false);
         _playSetBtn->deactivate();
         _matchController->endTurn();
@@ -396,6 +390,13 @@ void GameScene::update(float timestep) {
 
         if(_pileBox.contains(initialMousePos) && releasedInPile &&  _matchController->getChoice() != MatchController::Choice::RATTILE) {
             if(_pileBox.contains(initialMousePos) && releasedInPile) {
+                if (_matchController->hasDrawn){
+                    if (_matchController->hasPlayedCelestial){
+                        showPlayerGuide("discard-to-end");
+                    } else {
+                        showPlayerGuide("discard-or-play-to-end");
+                    }
+                }
                 _remainingTiles--;
                 _remainingLabel->setText(std::to_string(_remainingTiles));
                 AudioController::getInstance().playSound("confirm", false);
@@ -436,6 +437,13 @@ void GameScene::render() {
     _pile->draw(_batch);
     _player->draw(_batch);
     _discardPile->draw(_batch);
+    
+    for (auto key : playerGuideKeys){
+        auto node = playerGuideNodeMap[key];
+        if (node->isVisible()){
+            node->render(_batch);
+        }
+    }
 
     _discardUINode->_root->render(_batch);
 //    _pileUINode->_root->render(_batch);
@@ -571,36 +579,42 @@ void GameScene::updateDrag(const cugl::Vec2& mousePos, bool mouseDown, bool mous
     }
     if (mouseReleased) {
         // Active play area logic. Ensure you only do these actions when it is your turn.
-        if(_draggingTile && _activeRegion.contains(mousePos) && _network->getCurrentTurn() == _network->getLocalPid()) {
-            if(_matchController->getChoice() != MatchController::DRAWNDISCARD) {
-              if(_draggingTile->_suit == TileSet::Tile::Suit::CELESTIAL && !_draggingTile->debuffed) {
-                  _matchController->playCelestial(_draggingTile);
-                  if (_player->getHand()._size - 1 == _player->getHand()._tiles.size()){
-                      _matchController->endTurn();
+        if(_draggingTile && _activeRegion.contains(mousePos)) {
+            if (_network->getCurrentTurn() == _network->getLocalPid()) {
+                if(_matchController->getChoice() == MatchController::DRAWNDISCARD) {
+                    showPlayerGuide("drew-try-play");
+                } else {
+                    if(_draggingTile->_suit == TileSet::Tile::Suit::CELESTIAL && !_draggingTile->debuffed) {
+                      _matchController->playCelestial(_draggingTile);
+                          if (_player->getHand()._size - 1 == _player->getHand()._tiles.size()){
+                              _matchController->endTurn();
+                          }
+                  }
+                  else {
+                      // Monkey tile was played, regular tile chosen to trade
+                      if (_matchController->getChoice() == MatchController::Choice::MONKEYTILE) {
+                          
+                          _matchController->playMonkey(_draggingTile);
+                          // Play the swap sound when the monkey tile is activated.
+                          AudioController::getInstance().playSound("swap");
+                          
+                          // Rebind _player to prevent null ptr error
+                          _player = _network->getHostStatus() ? _matchController->hostPlayer : _matchController->clientPlayer;
+                          _matchController->setChoice(MatchController::Choice::NONE);
+                      }
+                      // Regular tile getting discarded
+                      else if(_matchController->discardTile(_draggingTile)) {
+                          _discardedTileImage->setTexture(_assets->get<Texture>(_draggingTile->toString()));
+                          _discardedTileImage->SceneNode::setContentSize(27, 30);
+                          _discardedTileImage->setVisible(true);
+                          _discardUINode->incrementLabel(_draggingTile);
+                          _matchController->endTurn();
+                      }
                   }
               }
-              else {
-                  // Monkey tile was played, regular tile chosen to trade
-                  if (_matchController->getChoice() == MatchController::Choice::MONKEYTILE) {
-                      
-                      _matchController->playMonkey(_draggingTile);
-                      // Play the swap sound when the monkey tile is activated.
-                      AudioController::getInstance().playSound("swap");
-
-                      // Rebind _player to prevent null ptr error
-                      _player = _network->getHostStatus() ? _matchController->hostPlayer : _matchController->clientPlayer;
-                      _matchController->setChoice(MatchController::Choice::NONE);
-                  }
-                  // Regular tile getting discarded
-                  else if(_matchController->discardTile(_draggingTile)) {
-                      _discardedTileImage->setTexture(_assets->get<Texture>(_draggingTile->toString()));
-                      _discardedTileImage->SceneNode::setContentSize(27, 30);
-                      _discardedTileImage->setVisible(true);
-                      _discardUINode->incrementLabel(_draggingTile);
-                      _matchController->endTurn();
-                  };
-              }
-           }
+            } else {
+                showPlayerGuide("not-your-turn");
+            }
         }
         if (_dragInitiated && _draggingTile) {
             float distance = (mousePos - _dragStartPos).length();

@@ -187,7 +187,7 @@
             "must-discard-play": {
                 "type": "Image",
                 "data": {
-                    "texture": "discard-to-end",
+                    "texture": "must-discard-play",
                     "anchor": [
                         0.5,
                         0.5
@@ -214,7 +214,7 @@
             "must-draw-discard": {
                 "type": "Image",
                 "data": {
-                    "texture": "discard-to-end",
+                    "texture": "must-draw-discard",
                     "anchor": [
                         0.5,
                         0.5
@@ -241,7 +241,7 @@
             "must-draw-play": {
                 "type": "Image",
                 "data": {
-                    "texture": "discard-to-end",
+                    "texture": "must-draw-play",
                     "anchor": [
                         0.5,
                         0.5
@@ -268,7 +268,7 @@
             "not-your-turn": {
                 "type": "Image",
                 "data": {
-                    "texture": "discard-to-end",
+                    "texture": "not-your-turn",
                     "anchor": [
                         0.5,
                         0.5
@@ -295,7 +295,7 @@
             "start-your-turn1": {
                 "type": "Image",
                 "data": {
-                    "texture": "discard-to-end",
+                    "texture": "start-your-turn1",
                     "anchor": [
                         0.5,
                         0.5
@@ -323,6 +323,33 @@
                 "type": "Image",
                 "data": {
                     "texture": "start-your-turn2",
+                    "anchor": [
+                        0.5,
+                        0.5
+                    ],
+                    "size": [
+                        800,
+                        100
+                    ],
+                    "angle": 0,
+                    "position": [
+                        348,
+                        601
+                    ],
+                    "visible": false
+                },
+                "layout": {
+                    "x_anchor": "left",
+                    "y_anchor": "top",
+                    "absolute": false,
+                    "x_offset": 0.5,
+                    "y_offset": -0.5
+                }
+            },
+            "drew-try-play": {
+                "type": "Image",
+                "data": {
+                    "texture": "drew-try-play",
                     "anchor": [
                         0.5,
                         0.5
