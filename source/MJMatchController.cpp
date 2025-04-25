@@ -344,13 +344,12 @@ bool MatchController::playCelestial(std::shared_ptr<TileSet::Tile>& celestialTil
                     _ratTile = celestialTile;
                     _choice = RATTILE;
                     break;
-                    
-                hasPlayedCelestial = true;
                 // Numbered rank
                 default:
                     break;
-                return true;
             }
+            hasPlayedCelestial = true;
+            return true;
         }
     }
     return false;

@@ -833,6 +833,33 @@
         },
         "playset":{
             "file":"textures/gameplay/playset.png"
+        },
+        "discard-or-play-to-end":{
+            "file":"textures/gameplay/discard-or-play-to-end.png"
+        },
+        "discard-to-end":{
+            "file":"textures/gameplay/discard-to-end.png"
+        },
+        "invalid":{
+            "file":"textures/gameplay/invalid.png"
+        },
+        "must-discard-play":{
+            "file":"textures/gameplay/must-discard-play.png"
+        },
+        "must-draw-discard":{
+            "file":"textures/gameplay/must-draw-discard.png"
+        },
+        "must-draw-play":{
+            "file":"textures/gameplay/must-draw-play.png"
+        },
+        "start-your-turn1":{
+            "file":"textures/gameplay/start-your-turn1.png"
+        },
+        "start-your-turn2":{
+            "file":"textures/gameplay/start-your-turn2.png"
+        },
+        "valid":{
+            "file":"textures/gameplay/valid.png"
         }
     },
     "fonts": {

@@ -76,6 +76,276 @@
                     "y_offset": -0.43
                 }
             },
+            "discard-or-play-to-end": {
+                "type": "Image",
+                "data": {
+                    "texture": "discard-or-play-to-end",
+                    "anchor": [
+                        0.5,
+                        0.5
+                    ],
+                    "size": [
+                        600,
+                        100
+                    ],
+                    "angle": 0,
+                    "position": [
+                        348,
+                        601
+                    ],
+                    "visible": false
+                },
+                "layout": {
+                    "x_anchor": "left",
+                    "y_anchor": "top",
+                    "absolute": false,
+                    "x_offset": 0.5,
+                    "y_offset": -0.5
+                }
+            },
+            "discard-to-end": {
+                "type": "Image",
+                "data": {
+                    "texture": "discard-to-end",
+                    "anchor": [
+                        0.5,
+                        0.5
+                    ],
+                    "size": [
+                        600,
+                        100
+                    ],
+                    "angle": 0,
+                    "position": [
+                        348,
+                        601
+                    ],
+                    "visible": false
+                },
+                "layout": {
+                    "x_anchor": "left",
+                    "y_anchor": "top",
+                    "absolute": false,
+                    "x_offset": 0.5,
+                    "y_offset": -0.5
+                }
+            },
+            "invalid": {
+                "type": "Image",
+                "data": {
+                    "texture": "invalid",
+                    "anchor": [
+                        0.5,
+                        0.5
+                    ],
+                    "size": [
+                        450,
+                        75
+                    ],
+                    "angle": 0,
+                    "position": [
+                        348,
+                        601
+                    ],
+                    "visible": false
+                },
+                "layout": {
+                    "x_anchor": "left",
+                    "y_anchor": "top",
+                    "absolute": false,
+                    "x_offset": 0.5,
+                    "y_offset": -0.5
+                }
+            },
+            "valid": {
+                "type": "Image",
+                "data": {
+                    "texture": "valid",
+                    "anchor": [
+                        0.5,
+                        0.5
+                    ],
+                    "size": [
+                        450,
+                        75
+                    ],
+                    "angle": 0,
+                    "position": [
+                        348,
+                        601
+                    ],
+                    "visible": false
+                },
+                "layout": {
+                    "x_anchor": "left",
+                    "y_anchor": "top",
+                    "absolute": false,
+                    "x_offset": 0.5,
+                    "y_offset": -0.5
+                }
+            },
+            "must-discard-play": {
+                "type": "Image",
+                "data": {
+                    "texture": "discard-to-end",
+                    "anchor": [
+                        0.5,
+                        0.5
+                    ],
+                    "size": [
+                        600,
+                        100
+                    ],
+                    "angle": 0,
+                    "position": [
+                        348,
+                        601
+                    ],
+                    "visible": false
+                },
+                "layout": {
+                    "x_anchor": "left",
+                    "y_anchor": "top",
+                    "absolute": false,
+                    "x_offset": 0.5,
+                    "y_offset": -0.5
+                }
+            },
+            "must-draw-discard": {
+                "type": "Image",
+                "data": {
+                    "texture": "discard-to-end",
+                    "anchor": [
+                        0.5,
+                        0.5
+                    ],
+                    "size": [
+                        600,
+                        100
+                    ],
+                    "angle": 0,
+                    "position": [
+                        348,
+                        601
+                    ],
+                    "visible": false
+                },
+                "layout": {
+                    "x_anchor": "left",
+                    "y_anchor": "top",
+                    "absolute": false,
+                    "x_offset": 0.5,
+                    "y_offset": -0.5
+                }
+            },
+            "must-draw-play": {
+                "type": "Image",
+                "data": {
+                    "texture": "discard-to-end",
+                    "anchor": [
+                        0.5,
+                        0.5
+                    ],
+                    "size": [
+                        600,
+                        100
+                    ],
+                    "angle": 0,
+                    "position": [
+                        348,
+                        601
+                    ],
+                    "visible": false
+                },
+                "layout": {
+                    "x_anchor": "left",
+                    "y_anchor": "top",
+                    "absolute": false,
+                    "x_offset": 0.5,
+                    "y_offset": -0.5
+                }
+            },
+            "not-your-turn": {
+                "type": "Image",
+                "data": {
+                    "texture": "discard-to-end",
+                    "anchor": [
+                        0.5,
+                        0.5
+                    ],
+                    "size": [
+                        600,
+                        100
+                    ],
+                    "angle": 0,
+                    "position": [
+                        348,
+                        601
+                    ],
+                    "visible": false
+                },
+                "layout": {
+                    "x_anchor": "left",
+                    "y_anchor": "top",
+                    "absolute": false,
+                    "x_offset": 0.5,
+                    "y_offset": -0.5
+                }
+            },
+            "start-your-turn1": {
+                "type": "Image",
+                "data": {
+                    "texture": "discard-to-end",
+                    "anchor": [
+                        0.5,
+                        0.5
+                    ],
+                    "size": [
+                        600,
+                        100
+                    ],
+                    "angle": 0,
+                    "position": [
+                        348,
+                        601
+                    ],
+                    "visible": false
+                },
+                "layout": {
+                    "x_anchor": "left",
+                    "y_anchor": "top",
+                    "absolute": false,
+                    "x_offset": 0.5,
+                    "y_offset": -0.5
+                }
+            },
+            "start-your-turn2": {
+                "type": "Image",
+                "data": {
+                    "texture": "start-your-turn2",
+                    "anchor": [
+                        0.5,
+                        0.5
+                    ],
+                    "size": [
+                        800,
+                        100
+                    ],
+                    "angle": 0,
+                    "position": [
+                        348,
+                        601
+                    ],
+                    "visible": false
+                },
+                "layout": {
+                    "x_anchor": "left",
+                    "y_anchor": "top",
+                    "absolute": false,
+                    "x_offset": 0.5,
+                    "y_offset": -0.5
+                }
+            },
             "play-area": {
                 "type": "Image",
                 "data": {
@@ -101,96 +371,6 @@
                     "absolute": false,
                     "x_offset": 0.5,
                     "y_offset": -0.43
-                }
-            },
-            "endTurnButton": {
-                "type": "Button",
-                "format": {
-                    "type": "Anchored"
-                },
-                "data": {
-                    "anchor": [
-                        0,
-                        1
-                    ],
-                    "size": [
-                        128,
-                        64
-                    ],
-                    "angle": 0,
-                    "position": [
-                        840,
-                        349
-                    ],
-                    "visible": true,
-                    "upnode": "up"
-                },
-                "children": {
-                    "up": {
-                        "type": "Node",
-                        "format": {
-                            "type": "Anchored"
-                        },
-                        "data": {
-                            "anchor": [
-                                0,
-                                1
-                            ],
-                            "size": [
-                                128,
-                                64
-                            ],
-                            "angle": 0,
-                            "position": [
-                                0,
-                                0
-                            ],
-                            "visible": true
-                        },
-                        "children": {
-                            "discardCanButton": {
-                                "type": "Image",
-                                "data": {
-                                    "texture": "endTurnButton",
-                                    "anchor": [
-                                        0.5,
-                                        0.5
-                                    ],
-                                    "size": [
-                                        128,
-                                        64
-                                    ],
-                                    "angle": 0,
-                                    "position": [
-                                        0,
-                                        0
-                                    ],
-                                    "visible": true
-                                },
-                                "layout": {
-                                    "x_anchor": "left",
-                                    "y_anchor": "top",
-                                    "absolute": false,
-                                    "x_offset": 0.5,
-                                    "y_offset": -0.5
-                                }
-                            }
-                        },
-                        "layout": {
-                            "x_anchor": "left",
-                            "y_anchor": "top",
-                            "absolute": false,
-                            "x_offset": 0,
-                            "y_offset": 0
-                        }
-                    }
-                },
-                "layout": {
-                    "x_anchor": "left",
-                    "y_anchor": "top",
-                    "absolute": false,
-                    "x_offset": 0.88,
-                    "y_offset": -0.16
                 }
             },
             "playSetButton": {

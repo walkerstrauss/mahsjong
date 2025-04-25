@@ -11,6 +11,7 @@
 #include <cugl/cugl.h>
 #include <vector>
 #include <unordered_set>
+#include <unordered_map>
 #include <queue>
 #include <string>
 #include "MJInputController.h"
@@ -193,6 +194,11 @@ protected:
     std::shared_ptr<Button> _playerHandBtn;
     std::shared_ptr<Button> _opponentHandBtn2;
     std::shared_ptr<Button> _playerHandBtn2;
+    
+    std::vector<std::string> playerGuideKeys;
+    std::unordered_map<std::string, std::shared_ptr<SceneNode>> playerGuideNodeMap;
+    int framesOnScreen = 0;
+    int maxFramesOnScreen = 30;
 public:
 #pragma mark -
 #pragma mark Constructors
@@ -446,6 +452,53 @@ public:
                 _playerHandBtn2->deactivate();
             }
             _playerHandBtn2->setVisible(false);
+        }
+    }
+    
+    void initPlayerGuide(){
+        playerGuideKeys = {
+            "discard-or-play-to-hand",
+            "discard-to-end",
+            "invalid",
+            "valid",
+            "must-discard-play",
+            "must-draw-discard",
+            "must-draw-play",
+            "not-your-turn",
+            "start-your-turn1",
+            "start-your-turn2"
+        };
+        
+        for (auto key : playerGuideKeys){
+            playerGuideNodeMap[key] = _assets->get<SceneNode>("matchscene.gameplayscene." + key);
+        }
+    }
+    
+    void updatePlayerGuide(std::string key){
+        auto node = playerGuideNodeMap[key];
+        if (node->isVisible()){
+            framesOnScreen++;
+            if (framesOnScreen > maxFramesOnScreen){
+                node->setVisible(false);
+            }
+        } else {
+            node->setVisible(true);
+            framesOnScreen = 0;
+        }
+    }
+    
+    void displayPlayerSets(){
+        int i = 0;
+        for (auto set : _player->getHand().opponentPlayedSets){
+            set = _player->getHand().getSortedTiles(set);
+            for (auto tile : set){
+                auto node = _opponentHandTiles[i];
+                auto texture = tile->getTileTexture();
+                node->setTexture(tile->getTileTexture());
+                node->setContentSize(30, 38.46f);
+                node->doLayout();
+                i++;
+            }
         }
     }
 };

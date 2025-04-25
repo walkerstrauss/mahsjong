@@ -74,21 +74,9 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::sha
     _pileUINode->setVisible(false);
     
     _tilesetUIBtn = std::dynamic_pointer_cast<scene2::Button>(_assets->get<scene2::SceneNode>("matchscene.gameplayscene.discarded-tile.discard-can"));
-//    _pauseBtn = std::dynamic_pointer_cast<scene2::Button>(_assets->get<scene2::SceneNode>("matchscene.gameplayscene.pauseButton"));
-    _endTurnBtn = std::dynamic_pointer_cast<scene2::Button>(_assets->get<scene2::SceneNode>("matchscene.gameplayscene.endTurnButton"));
     _backBtn = std::dynamic_pointer_cast<scene2::Button>(
         _discardUINode->_root->getChildByName("tilesetscene")->getChildByName("board")->getChildByName("buttonClose"));
     _discardedTileImage = std::dynamic_pointer_cast<scene2::TexturedNode>(_assets->get<scene2::SceneNode>("matchscene.gameplayscene.discarded-tile.discarded-tile-recent.up.discarded-tile-recent"));
-    
-    _endTurnBtn->addListener([this](const std::string& name, bool down){
-        if (!down){
-            _matchController->endTurn();
-            updateTurnIndicators();
-            AudioController::getInstance().playSound("confirm");
-        }
-    });
-    _endTurnBtn->setVisible(false);
-    _endTurnBtn->deactivate();
         
     _tilesetUIBtnKey = _tilesetUIBtn->addListener([this](const std::string& name, bool down){
         if (!down){
@@ -116,13 +104,6 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::sha
             AudioController::getInstance().playSound("confirm",false);
         }
     });
-    
-//    _pauseBtnKey = _pauseBtn->addListener([this](const std::string& name, bool down){
-//        if (!down){
-//            _choice = Choice::PAUSE;
-//            AudioController::getInstance().playSound("confirm");
-//        }
-//    });
     
     _backBtnKey = _backBtn->addListener([this](const std::string& name, bool down) {
         if (!down) {
@@ -325,6 +306,9 @@ void GameScene::update(float timestep) {
     // Constantly updating the position of tiles in hand
     _player->getHand().updateTilePositions(_matchScene->getSize());
     
+    // Constantly updating turn indicators based on player turn
+    updateTurnIndicators();
+    
     // Updating set tabs
     int i = 0;
     for (auto set : _player->getHand()._playedSets){
@@ -347,7 +331,6 @@ void GameScene::update(float timestep) {
         _discardedTileImage->setVisible(true);
         
         _matchController->setChoice(MatchController::NONE);
-
     }
     
     if(_matchController->getChoice() == MatchController::PILEDRAW){
@@ -359,21 +342,10 @@ void GameScene::update(float timestep) {
     
     // If matchController state is SUCCESS_SET, deactivate button
     if(_matchController->getChoice() == MatchController::SUCCESS_SET) {
-        int i = 0;
-        for (auto set : _player->getHand().opponentPlayedSets){
-            set = _player->getHand().getSortedTiles(set);
-            for (auto tile : set){
-                auto node = _opponentHandTiles[i];
-                auto texture = tile->getTileTexture();
-                node->setTexture(tile->getTileTexture());
-                node->setContentSize(30, 38.46f);
-                node->doLayout();
-                i++;
-            }
-        }
-        
+        displayPlayerSets();
         _playSetBtn->setVisible(false);
         _playSetBtn->deactivate();
+        _matchController->endTurn();
     }
     
     // If matchController state is FAILED_SET, deactivate button and make discarded tile visible
@@ -381,6 +353,7 @@ void GameScene::update(float timestep) {
         _discardedTileImage->setVisible(true);
         _playSetBtn->setVisible(false);
         _playSetBtn->deactivate();
+        _matchController->endTurn();
     }
     
     if (_matchController->getChoice() == MatchController::Choice::RATTILE) {
@@ -416,17 +389,6 @@ void GameScene::update(float timestep) {
     if(_network->getCurrentTurn() == _network->getLocalPid()) {
         // If in drawn discard state, disallow any other action other then playing a set
         // Coords of initial click and ending release
-        if (_player->getHand()._size == _player->getHand()._tiles.size() && _matchController->hasDrawn && (_matchController->hasDiscarded || _matchController->hasPlayedCelestial)){
-            if (!_endTurnBtn->isActive()){
-                _endTurnBtn->activate();
-            }
-            _endTurnBtn->setVisible(true);
-        } else {
-            if (_endTurnBtn->isActive()){
-                _endTurnBtn->deactivate();
-            }
-            _endTurnBtn->setVisible(false);
-        }
         cugl::Vec2 initialMousePos = cugl::Scene::screenToWorldCoords(cugl::Vec3(_input->getInitialPosition()));
 
         bool releasedInPile = _input->didRelease() && _pileBox.contains(mousePos);
@@ -503,12 +465,10 @@ void GameScene::setGameActive(bool value){
     if (value){
         _choice = NONE;
         _tilesetUIBtn->activate();
-        _endTurnBtn->activate();
         _settingBtn->activate();
         _infoBtn->activate();
         updateTurnIndicators();
     } else {
-        _endTurnBtn->deactivate();
         _backBtn->deactivate();
         _settingBtn->deactivate();
         _infoBtn->deactivate();
@@ -615,6 +575,9 @@ void GameScene::updateDrag(const cugl::Vec2& mousePos, bool mouseDown, bool mous
             if(_matchController->getChoice() != MatchController::DRAWNDISCARD) {
               if(_draggingTile->_suit == TileSet::Tile::Suit::CELESTIAL && !_draggingTile->debuffed) {
                   _matchController->playCelestial(_draggingTile);
+                  if (_player->getHand()._size - 1 == _player->getHand()._tiles.size()){
+                      _matchController->endTurn();
+                  }
               }
               else {
                   // Monkey tile was played, regular tile chosen to trade
@@ -634,6 +597,7 @@ void GameScene::updateDrag(const cugl::Vec2& mousePos, bool mouseDown, bool mous
                       _discardedTileImage->SceneNode::setContentSize(27, 30);
                       _discardedTileImage->setVisible(true);
                       _discardUINode->incrementLabel(_draggingTile);
+                      _matchController->endTurn();
                   };
               }
            }
