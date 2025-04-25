@@ -87,6 +87,8 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::sha
             AudioController::getInstance().playSound("confirm");
         }
     });
+    _endTurnBtn->setVisible(false);
+    _endTurnBtn->deactivate();
         
     _tilesetUIBtnKey = _tilesetUIBtn->addListener([this](const std::string& name, bool down){
         if (!down){
@@ -414,6 +416,17 @@ void GameScene::update(float timestep) {
     if(_network->getCurrentTurn() == _network->getLocalPid()) {
         // If in drawn discard state, disallow any other action other then playing a set
         // Coords of initial click and ending release
+        if (_player->getHand()._size == _player->getHand()._tiles.size() && _matchController->hasDrawn && (_matchController->hasDiscarded || _matchController->hasPlayedCelestial)){
+            if (!_endTurnBtn->isActive()){
+                _endTurnBtn->activate();
+            }
+            _endTurnBtn->setVisible(true);
+        } else {
+            if (_endTurnBtn->isActive()){
+                _endTurnBtn->deactivate();
+            }
+            _endTurnBtn->setVisible(false);
+        }
         cugl::Vec2 initialMousePos = cugl::Scene::screenToWorldCoords(cugl::Vec3(_input->getInitialPosition()));
 
         bool releasedInPile = _input->didRelease() && _pileBox.contains(mousePos);

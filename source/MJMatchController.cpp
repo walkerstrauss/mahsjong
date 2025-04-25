@@ -113,6 +113,7 @@ void MatchController::drawTile() {
 
     if (player->getHand()._tiles.size() <= player->getHand()._size) {
         player->getHand().drawFromPile(_pile, 1, isHost);
+        hasDrawn = true;
 
         if (player->getHand().isWinningHand()) {
             _choice = Choice::WIN;
@@ -154,7 +155,7 @@ bool MatchController::drawDiscard() {
     // Retrieving the current player
     std::shared_ptr<Player> currPlayer = _network->getHostStatus() ? hostPlayer : clientPlayer;
     // If the player's hand is too big return
-    if(currPlayer->getHand()._tiles.size() > currPlayer->getHand()._size) {
+    if(currPlayer->getHand()._tiles.size() > currPlayer->getHand()._size || hasDrawn) {
         CULog("too many tiles in hand");
         return false;
     }
@@ -198,6 +199,7 @@ bool MatchController::discardTile(std::shared_ptr<TileSet::Tile> tile) {
         tile->inClientHand = false;
         tile->discarded = true;
         
+        hasDiscarded = true;
         //If host
         if(_network->getLocalPid() == 0) {hostPlayer->getHand().discard(tile, true);}
         //If client
@@ -241,8 +243,10 @@ bool MatchController::playSet() {
         
         // Broadcast that a successful set has been played
         currPlayer->getHand().playSet(_network->getHostStatus());
-        opponentPlayer->getHand().opponentPlayedSets.push_back(currPlayer->getHand()._selectedTiles);
+//        opponentPlayer->getHand().opponentPlayedSets.clear();
+       
         _network->broadcastPlaySet(_network->getLocalPid(), true, tilesJson);
+        opponentPlayer->getHand().opponentPlayedSets = currPlayer->getHand()._playedSets;
 
         // Reset choice for match controller
         _choice = NONE;
@@ -341,6 +345,7 @@ bool MatchController::playCelestial(std::shared_ptr<TileSet::Tile>& celestialTil
                     _choice = RATTILE;
                     break;
                     
+                hasPlayedCelestial = true;
                 // Numbered rank
                 default:
                     break;
@@ -710,7 +715,7 @@ void MatchController::endTurn() {
                 _network->endTurn();
             }
         }
-//        resetTurn();
+        resetTurn();
     }
 }
 
