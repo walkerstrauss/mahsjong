@@ -472,6 +472,9 @@ void Player::draw(const std::shared_ptr<cugl::graphics::SpriteBatch>& batch) {
 }
 
 void Player::drawInfo(const std::shared_ptr<TileSet::Tile> tile, const std::shared_ptr<cugl::graphics::SpriteBatch>& batch, Size screenSize) {
+    if(tile->debuffed) {
+        return;
+    }
     std::shared_ptr<Texture> infoTexture = tile->getInfoTexture();
     Vec2 origin(infoTexture->getSize().width/2.0f, infoTexture->getSize().height/2.0f);
     

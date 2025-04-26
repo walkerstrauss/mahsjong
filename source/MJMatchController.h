@@ -40,7 +40,6 @@ public:
     /** If current player has played a celestial tile or not */
     bool hasPlayedCelestial = false;
     
-    bool hasPlayedSet = false; 
 protected:
     /** The network connection */
     std::shared_ptr<NetworkController> _network;
@@ -202,7 +201,6 @@ public:
         hasDrawn = false;
         hasDiscarded = false;
         hasPlayedCelestial = false;
-        hasPlayedSet = false; 
     }
     
     /** Gets the current state of game */
