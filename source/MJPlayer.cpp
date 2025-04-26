@@ -216,8 +216,8 @@ bool Hand::playSet(bool isHost) {
     
     
     //_playedSets.clear();
-    
-    _player->endTurn();
+//    
+//    _player->endTurn();
     return true;
 }
 
@@ -307,7 +307,7 @@ bool Hand::isStraight(const std::vector<std::shared_ptr<TileSet::Tile>>& selecte
             std::shared_ptr<TileSet::Tile> tileC = sortedTiles[i+1];
 
             int gap = static_cast<int>(tileC->getRank()) - static_cast<int>(tileA->getRank());
-            if (gap>1) {
+            if (gap != 1) {
                 return false;
             }
         }
@@ -316,6 +316,7 @@ bool Hand::isStraight(const std::vector<std::shared_ptr<TileSet::Tile>>& selecte
 }
 
 bool Hand::isWinningHand() {
+    
     
     if (_tiles.size() == _size + 1) {
         std::vector<std::shared_ptr<TileSet::Tile>> sortedHand = getSortedTiles(_tiles);

@@ -5,7 +5,7 @@
 //  Created by Patrick Choo on 2/18/25.
 //
 
-#include <cugl/cugl.h>
+#include <cugl/cugl.h> 
 #include <iostream>
 #include <sstream>
 #include "MJGameScene.h"
@@ -34,7 +34,7 @@ using namespace std;
  *
  * @param assets    the asset manager for the game
  */
-bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::shared_ptr<NetworkController> network) {
+bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::shared_ptr<NetworkController> network, std::shared_ptr<InputController> inputController) {
     // Initialize the scene to a locked height
     if (assets == nullptr) {
         return false;
@@ -74,18 +74,9 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::sha
     _pileUINode->setVisible(false);
     
     _tilesetUIBtn = std::dynamic_pointer_cast<scene2::Button>(_assets->get<scene2::SceneNode>("matchscene.gameplayscene.discarded-tile.discard-can"));
-//    _pauseBtn = std::dynamic_pointer_cast<scene2::Button>(_assets->get<scene2::SceneNode>("matchscene.gameplayscene.pauseButton"));
-    _endTurnBtn = std::dynamic_pointer_cast<scene2::Button>(_assets->get<scene2::SceneNode>("matchscene.gameplayscene.endTurnButton"));
     _backBtn = std::dynamic_pointer_cast<scene2::Button>(
         _discardUINode->_root->getChildByName("tilesetscene")->getChildByName("board")->getChildByName("buttonClose"));
     _discardedTileImage = std::dynamic_pointer_cast<scene2::TexturedNode>(_assets->get<scene2::SceneNode>("matchscene.gameplayscene.discarded-tile.discarded-tile-recent.up.discarded-tile-recent"));
-    
-    _endTurnBtn->addListener([this](const std::string& name, bool down){
-        if (!down){
-            _matchController->endTurn();
-            AudioController::getInstance().playSound("confirm");
-        }
-    });
         
     _tilesetUIBtnKey = _tilesetUIBtn->addListener([this](const std::string& name, bool down){
         if (!down){
@@ -102,6 +93,7 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::sha
     _settingBtn->addListener([this](const std::string& name, bool down){
         if (!down){
             _choice = SETTING;
+            AudioController::getInstance().playSound("confirm");
         }
     });
     
@@ -109,15 +101,9 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::sha
     _infoBtn->addListener([this](const std::string& name, bool down){
         if (!down){
             _choice = INFO;
+            AudioController::getInstance().playSound("confirm",false);
         }
     });
-    
-//    _pauseBtnKey = _pauseBtn->addListener([this](const std::string& name, bool down){
-//        if (!down){
-//            _choice = Choice::PAUSE;
-//            AudioController::getInstance().playSound("confirm");
-//        }
-//    });
     
     _backBtnKey = _backBtn->addListener([this](const std::string& name, bool down) {
         if (!down) {
@@ -172,7 +158,7 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::sha
         _discardBox = cugl::Rect(990 - 87.5, 520 - 103.75, 175, 207.5);
     }
     
-    _input.init(); //Initialize the input controller
+    _input = inputController; //Initialize the input controller
     
     _quit = false;
     setActive(false);
@@ -223,24 +209,22 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::sha
     _playSetBtn = std::dynamic_pointer_cast<scene2::Button>(_assets->get<scene2::SceneNode>("matchscene.gameplayscene.playSetButton"));
 
     //AudioController::getInstance().playMusic("match-music");
-    _opponentHandRec = _assets->get<SceneNode>("matchscene.gameplayscene.opponent-hand-rec");
-    _opponentHandBtn = std::dynamic_pointer_cast<Button>(_assets->get<SceneNode>("matchscene.gameplayscene.opponent-hand"));
-    _opponentHandBtn->addListener([this](const std::string& name, bool down){
-        if (!down){
-            _opponentHandRec->setVisible(!_opponentHandRec->isVisible());
-            for (int i = 0; i < _opponentHandTiles.size(); i++){
-                _opponentHandTiles[i]->setVisible(!_opponentHandTiles[i]->isVisible());
-            }
-        }
-    });
+    initTurnIndicators();
+    
     for (int i = 0; i < 14; i++){
-        std::shared_ptr<SceneNode> tile = _assets->get<SceneNode>("matchscene.gameplayscene.opponent-hand-tile.tile-back_" + std::to_string(i));
-        if (tile != nullptr){
+        std::shared_ptr<TexturedNode> tile = std::dynamic_pointer_cast<TexturedNode>(_assets->get<SceneNode>("matchscene.gameplayscene.opponent-hand-tile.tile-back_" + std::to_string(i)));
+        if (tile){
             _opponentHandTiles.push_back(tile);
+            tile->setVisible(false);
         }
     }
-    _opponentHandBtn->activate();
-
+    for (int i = 0; i < 14; i++){
+        std::shared_ptr<TexturedNode> tile = std::dynamic_pointer_cast<TexturedNode>(_assets->get<SceneNode>("matchscene.gameplayscene.player-hand-tile.tile-back_" + std::to_string(i)));
+        if (tile){
+            _playerHandTiles.push_back(tile);
+            tile->setVisible(false);
+        }
+    }
     _dragToDiscardNode = std::dynamic_pointer_cast<cugl::scene2::TexturedNode>(
         _assets->get<cugl::scene2::SceneNode>(
             "matchscene.gameplayscene.drag-to-discard-tile"
@@ -258,27 +242,8 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::sha
 
     cugl::Rect rect(0, 0, 150, 50);
     cugl::Poly2 poly(rect);
-
-    std::shared_ptr<scene2::PolygonNode> upPlaceholder = scene2::PolygonNode::alloc();
-    upPlaceholder->setPolygon(poly);
-    upPlaceholder->setContentSize(cugl::Size(150, 50));
-    upPlaceholder->setColor(cugl::Color4::GRAY);
-    
-    std::shared_ptr<scene2::PolygonNode> downPlaceholder = scene2::PolygonNode::alloc();
-    downPlaceholder->setPolygon(poly);
-    downPlaceholder->setContentSize(cugl::Size(150, 50));
-    cugl::Color4 darkGray(64, 64, 64, 255);
-    downPlaceholder->setColor(darkGray);
-    
-    _playSetBtn = scene2::Button::alloc(upPlaceholder, downPlaceholder);
-    _playSetBtn->setContentSize(cugl::Size(150, 50));
-    _playSetBtn->setAnchor(cugl::Vec2::ANCHOR_CENTER);
-    _playSetBtn->setPosition(cugl::Vec2(200, 560));
-    _playSetBtn->setColor(cugl::Color4::RED);
-    
-    _playSetBtn->deactivate();
+  
     _playSetBtn->setVisible(false);
-    _matchScene->addChild(_playSetBtn);
     
     _playSetBtn->addListener([this](const std::string& name, bool down) {
         if (!down) {
@@ -295,6 +260,12 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::sha
     _turnSheet->setScale(0.12);
     _turnSheet->setFrame(0);
     _turnSheet->setVisible(true);
+    
+    _remainingLabel = std::dynamic_pointer_cast<Label>(_assets->get<SceneNode>("matchscene.gameplayscene.tile-left.tile-left-number"));
+    _remainingTiles = _tileSet->deck.size();
+    _remainingLabel->setText(std::to_string(_remainingTiles));
+    
+    initPlayerGuide();
     
     return true;
 }
@@ -319,7 +290,7 @@ void GameScene::reset() {
     _gameLose = false;
     _gameWin = false;
     dispose();
-    init(_assets, _network);
+    init(_assets, _network, _input);
     return;
 }
 
@@ -329,17 +300,22 @@ void GameScene::reset() {
  * @param timestep The amount of time (in seconds) since the last frame
  */
 void GameScene::update(float timestep) {
-    //Reading input
-    _input.readInput();
-    _input.update();
-    
     _matchController->update(timestep);
     
     // Fetching current mouse position
-    cugl::Vec2 mousePos = cugl::Scene::screenToWorldCoords(cugl::Vec3(_input.getPosition()));
+    cugl::Vec2 mousePos = cugl::Scene::screenToWorldCoords(cugl::Vec3(_input->getPosition()));
     
     // Constantly updating the position of tiles in hand
     _player->getHand().updateTilePositions(_matchScene->getSize());
+    
+    // Constantly updating turn indicators based on player turn
+    updateTurnIndicators();
+    
+    // Updating set tabs
+    displayPlayerSets();
+    
+    // Updating player guide nodes
+    updatePlayerGuide();
         
     // Updating discardUINode if matchController has a discard update
     if(_matchController->getChoice() == MatchController::Choice::DISCARDUIUPDATE) {
@@ -351,10 +327,19 @@ void GameScene::update(float timestep) {
         _matchController->setChoice(MatchController::NONE);
     }
     
+    if(_matchController->getChoice() == MatchController::PILEDRAW){
+        _remainingTiles--;
+        _remainingLabel->setText(std::to_string(_remainingTiles));
+        
+        _matchController->setChoice(MatchController::NONE);
+    }
+    
     // If matchController state is SUCCESS_SET, deactivate button
     if(_matchController->getChoice() == MatchController::SUCCESS_SET) {
+        displayOpponentSets();
         _playSetBtn->setVisible(false);
         _playSetBtn->deactivate();
+        _matchController->endTurn();
     }
     
     // If matchController state is FAILED_SET, deactivate button and make discarded tile visible
@@ -362,6 +347,7 @@ void GameScene::update(float timestep) {
         _discardedTileImage->setVisible(true);
         _playSetBtn->setVisible(false);
         _playSetBtn->deactivate();
+        _matchController->endTurn();
     }
     
     if (_matchController->getChoice() == MatchController::Choice::RATTILE) {
@@ -380,13 +366,13 @@ void GameScene::update(float timestep) {
     }
     
     // Clicking/Tapping and Dragging logic
-    if(_input.didRelease() && !_input.isDown()) {
-        cugl::Vec2 initialMousePos = cugl::Scene::screenToWorldCoords(cugl::Vec3(_input.getInitialPosition()));
+    if(_input->didRelease() && !_input->isDown()) {
+        cugl::Vec2 initialMousePos = cugl::Scene::screenToWorldCoords(cugl::Vec3(_input->getInitialPosition()));
         if(initialMousePos - mousePos == Vec2(0, 0)) {
             clickedTile(mousePos);
         }
     }
-    updateDrag(mousePos, _input.isDown(), _input.didRelease());
+    updateDrag(mousePos, _input->isDown(), _input->didRelease());
     
     // If scene is not active prevent any input from user that changes the state of the game
     if(!isActive()) {
@@ -397,19 +383,29 @@ void GameScene::update(float timestep) {
     if(_network->getCurrentTurn() == _network->getLocalPid()) {
         // If in drawn discard state, disallow any other action other then playing a set
         // Coords of initial click and ending release
-        cugl::Vec2 initialMousePos = cugl::Scene::screenToWorldCoords(cugl::Vec3(_input.getInitialPosition()));
+        cugl::Vec2 initialMousePos = cugl::Scene::screenToWorldCoords(cugl::Vec3(_input->getInitialPosition()));
 
-        bool releasedInPile = _input.didRelease() && _pileBox.contains(mousePos);
+        bool releasedInPile = _input->didRelease() && _pileBox.contains(mousePos);
         // Drawing (from pile) logic
 
         if(_pileBox.contains(initialMousePos) && releasedInPile &&  _matchController->getChoice() != MatchController::Choice::RATTILE) {
-//         if(_pileBox.contains(initialMousePos) && releasedInPile) {
-            AudioController::getInstance().playSound("confirm", false);
-            _matchController->drawTile();
+            if(_pileBox.contains(initialMousePos) && releasedInPile) {
+                if (_matchController->hasDrawn){
+                    if (_matchController->hasPlayedCelestial){
+                        showPlayerGuide("discard-to-end");
+                    } else {
+                        showPlayerGuide("discard-or-play-to-end");
+                    }
+                }
+                _remainingTiles--;
+                _remainingLabel->setText(std::to_string(_remainingTiles));
+                AudioController::getInstance().playSound("confirm", false);
+                _matchController->drawTile();
+            }
         }
         
         //Drawing (from discard) logic
-        bool releasedInDiscard = _input.didRelease() && _discardBox.contains(mousePos);
+        bool releasedInDiscard = _input->didRelease() && _discardBox.contains(mousePos);
         if(_discardBox.contains(initialMousePos) && releasedInDiscard) {
             // If drawing from discard is successful activate play set button
             if(_matchController->drawDiscard()) {
@@ -441,17 +437,16 @@ void GameScene::render() {
     _pile->draw(_batch);
     _player->draw(_batch);
     _discardPile->draw(_batch);
-
-    //if (_actionAnimNode->isVisible()) _batch->draw(_actionAnimNode->getTexture(), Rect(600,400,670,470));
-    if (_network->getCurrentTurn() != _network->getLocalPid()){
-        _turnSheet->render(_batch);
+    
+    for (auto key : playerGuideKeys){
+        auto node = playerGuideNodeMap[key];
+        if (node->isVisible()){
+            node->render(_batch);
+        }
     }
-    //if (_pongSheet->isVisible()) _pongSheet->render(_batch);
-    //if (_chowSheet->isVisible()) _chowSheet->render(_batch);
 
     _discardUINode->_root->render(_batch);
 //    _pileUINode->_root->render(_batch);
-
     
     _batch->setColor(Color4(255, 0, 0, 200));
     _batch->setTexture(nullptr);
@@ -477,24 +472,20 @@ void GameScene::setActive(bool value){
 void GameScene::setGameActive(bool value){
     if (value){
         _choice = NONE;
-//        _pauseBtn->activate();
         _tilesetUIBtn->activate();
-        _endTurnBtn->activate();
-//        _displayIconBtn->activate();
         _settingBtn->activate();
         _infoBtn->activate();
+        updateTurnIndicators();
     } else {
-//        _pauseBtn->deactivate();
-        _endTurnBtn->deactivate();
         _backBtn->deactivate();
-//        _displayIconBtn->deactivate();
         _settingBtn->deactivate();
         _infoBtn->deactivate();
+        updateTurnIndicators();
     }
 }
 
 void GameScene::clickedTile(cugl::Vec2 mousePos){
-    cugl::Vec2 initialMousePos = cugl::Scene::screenToWorldCoords(cugl::Vec3(_input.getInitialPosition()));
+    cugl::Vec2 initialMousePos = cugl::Scene::screenToWorldCoords(cugl::Vec3(_input->getInitialPosition()));
     
     for(const auto& pair : _tileSet->tileMap){
         std::shared_ptr<TileSet::Tile> currTile = pair.second;
@@ -525,7 +516,6 @@ void GameScene::clickedTile(cugl::Vec2 mousePos){
             }
             if(currTile->inPile && _matchController->getChoice() == MatchController::Choice::RATTILE) {
                 _matchController->playRat(currTile);
-                _player = _network->getHostStatus() ? _matchController->hostPlayer : _matchController->clientPlayer;
                 _matchController->setChoice(MatchController::Choice::NONE);
                 _pileUINode->setVisible(false);
             }
@@ -537,7 +527,7 @@ void GameScene::clickedTile(cugl::Vec2 mousePos){
 void GameScene::dragTile(){
     if (!_draggingTile) return;
     
-    cugl::Vec2 screenPos = _input.getPosition();
+    cugl::Vec2 screenPos = _input->getPosition();
     cugl::Vec2 mousePos = cugl::Scene::screenToWorldCoords(cugl::Vec3(screenPos));
     
     cugl::Vec2 newPos = mousePos + _dragOffset;
@@ -589,32 +579,42 @@ void GameScene::updateDrag(const cugl::Vec2& mousePos, bool mouseDown, bool mous
     }
     if (mouseReleased) {
         // Active play area logic. Ensure you only do these actions when it is your turn.
-        if(_draggingTile && _activeRegion.contains(mousePos) && _network->getCurrentTurn() == _network->getLocalPid()) {
-            if(_matchController->getChoice() != MatchController::DRAWNDISCARD) {
-              if(_draggingTile->_suit == TileSet::Tile::Suit::CELESTIAL && !_draggingTile->debuffed) {
-                  _matchController->playCelestial(_draggingTile);
-              }
-              else {
-                  // Monkey tile was played, regular tile chosen to trade
-                  if (_matchController->getChoice() == MatchController::Choice::MONKEYTILE) {
-                      
-                      _matchController->playMonkey(_draggingTile);
-                      // Play the swap sound when the monkey tile is activated.
-                      AudioController::getInstance().playSound("swap");
-
-                      // Rebind _player to prevent null ptr error
-                      _player = _network->getHostStatus() ? _matchController->hostPlayer : _matchController->clientPlayer;
-                      _matchController->setChoice(MatchController::Choice::NONE);
+        if(_draggingTile && _activeRegion.contains(mousePos)) {
+            if (_network->getCurrentTurn() == _network->getLocalPid()) {
+                if(_matchController->getChoice() == MatchController::DRAWNDISCARD) {
+                    showPlayerGuide("drew-try-play");
+                } else {
+                    if(_draggingTile->_suit == TileSet::Tile::Suit::CELESTIAL && !_draggingTile->debuffed) {
+                      _matchController->playCelestial(_draggingTile);
+                          if (_player->getHand()._size - 1 == _player->getHand()._tiles.size()){
+                              _matchController->endTurn();
+                          }
                   }
-                  // Regular tile getting discarded
-                  else if(_matchController->discardTile(_draggingTile)) {
-                      _discardedTileImage->setTexture(_assets->get<Texture>(_draggingTile->toString()));
-                      _discardedTileImage->SceneNode::setContentSize(27, 30);
-                      _discardedTileImage->setVisible(true);
-                      _discardUINode->incrementLabel(_draggingTile);
-                  };
+                  else {
+                      // Monkey tile was played, regular tile chosen to trade
+                      if (_matchController->getChoice() == MatchController::Choice::MONKEYTILE) {
+                          
+                          _matchController->playMonkey(_draggingTile);
+                          // Play the swap sound when the monkey tile is activated.
+                          AudioController::getInstance().playSound("swap");
+                          
+                          // Rebind _player to prevent null ptr error
+                          _player = _network->getHostStatus() ? _matchController->hostPlayer : _matchController->clientPlayer;
+                          _matchController->setChoice(MatchController::Choice::NONE);
+                      }
+                      // Regular tile getting discarded
+                      else if(_matchController->discardTile(_draggingTile)) {
+                          _discardedTileImage->setTexture(_assets->get<Texture>(_draggingTile->toString()));
+                          _discardedTileImage->SceneNode::setContentSize(27, 30);
+                          _discardedTileImage->setVisible(true);
+                          _discardUINode->incrementLabel(_draggingTile);
+                          _matchController->endTurn();
+                      }
+                  }
               }
-           }
+            } else {
+                showPlayerGuide("not-your-turn");
+            }
         }
         if (_dragInitiated && _draggingTile) {
             float distance = (mousePos - _dragStartPos).length();
@@ -624,7 +624,7 @@ void GameScene::updateDrag(const cugl::Vec2& mousePos, bool mouseDown, bool mous
                     _playSetBtn->activate();
                     _playSetBtn->setVisible(true);
                 }
-                else {
+                else if (_matchController->getChoice() != MatchController::DRAWNDISCARD){
                     _discardedTileImage->setVisible(true);
                     _draggingTile->_scale = 0;
                     _draggingTile->pos = Vec2(0,0);

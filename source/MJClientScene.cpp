@@ -87,6 +87,7 @@ bool ClientScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::s
     
     _clientScene2 = _assets->get<scene2::SceneNode>("client3");
     _clientScene2->setContentSize(getSize());
+    _clientScene2->getChild(0)->setContentSize(_clientScene2->getContentSize());
     
     _clientScene1->setPosition(offset, _clientScene1->getPosition().y);
     addChild(_clientScene2);

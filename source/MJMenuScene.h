@@ -34,7 +34,9 @@ public:
         /** User wants to join a game */
         JOIN,
         /** User wants to go to settings */
-        SETTING
+        SETTING,
+        /** User wants to see the tutorial */
+        TUTORIAL
     };
 
 protected:
@@ -46,6 +48,8 @@ protected:
     std::shared_ptr<cugl::scene2::Button> _hostbutton;
     /** The menu button for joining a game */
     std::shared_ptr<cugl::scene2::Button> _joinbutton;
+    /** The button to see the tutorial */
+    std::shared_ptr<cugl::scene2::Button> _tutorialbutton;
     /** The player menu choice */
     Choice _choice;
     /** Reference to the sprite sheet for grandma animation*/

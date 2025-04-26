@@ -342,6 +342,9 @@
         "menuBackground": {
             "file": "textures/menu/menuBackground.png"
         },
+        "tut-btn":{
+            "file": "textures/menu/tut-btn.png"
+        },
         "menuButtonDown": {
             "file": "textures/menu/menuButtonDown.png"
         },
@@ -815,6 +818,141 @@
         },
         "tile-back":{
             "file": "textures/gameplay/tile-back.png"
+        },
+        "opponent-hand-rec":{
+            "file":"textures/gameplay/opponent-hand-rec.png"
+        },
+        "opponent-hand-indicator":{
+            "file":"textures/gameplay/opponent-hand-indicator.png"
+        },
+        "playerhand-indicator":{
+            "file":"textures/gameplay/playerhand-indicator.png"
+        },
+        "contentArea": {
+            "file": "textures/playguide/contentArea.png"
+        },
+        "discardTilecloseIcon":{
+            "file": "textures/playguide/discardTilecloseIcon.png"
+        },
+        "infoBackground":{
+            "file": "textures/playguide/infoBackground.png"
+        },
+        "infoShade":{
+            "file": "textures/playguide/infoShade.png"
+        },
+        "slideDown":{
+            "file": "textures/playguide/slideDown.png"
+        },
+        "specialtileButtonDark":{
+            "file": "textures/playguide/specialtileButtonDark.png"
+        },
+        "specialtileButtonLight":{
+            "file": "textures/playguide/specialtileButtonLight.png"
+        },
+        "infoTile":{
+            "file": "textures/playguide/infoTile.png"
+        },
+        "infoTitle":{
+            "file": "textures/playguide/title.png"
+        },
+        "turnButtonDark":{
+            "file": "textures/playguide/turnButtonDark.png"
+        },
+        "turnButtonLight":{
+            "file": "textures/playguide/turnButtonLight.png"
+        },
+        "infoTurn":{
+            "file": "textures/playguide/infoTurn.png"
+        },
+        "winButtonDark":{
+            "file": "textures/playguide/winButtonDark.png"
+        },
+        "winButtonLight":{
+            "file": "textures/playguide/winButtonLight.png"
+        },
+        "infoWin":{
+            "file": "textures/playguide/infoWin.png"
+        },
+        "tu1": {
+            "file": "textures/tutorial/tu1.png"
+        },
+        "tu2": {
+            "file": "textures/tutorial/tu2.png"
+        },
+        "tu3": {
+            "file": "textures/tutorial/tu3.png"
+        },
+        "tu4": {
+            "file": "textures/tutorial/tu4.png"
+        },
+        "tu5": {
+            "file": "textures/tutorial/tu5.png"
+        },
+        "tu6": {
+            "file": "textures/tutorial/tu6.png"
+        },
+        "tu7": {
+            "file": "textures/tutorial/tu7.png"
+        },
+        "tu8": {
+            "file": "textures/tutorial/tu8.png"
+        },
+        "tu9": {
+            "file": "textures/tutorial/tu9.png"
+        },
+        "tu10": {
+            "file": "textures/tutorial/tu10.png"
+        },
+        "tu11": {
+            "file": "textures/tutorial/tu11.png"
+        },
+        "tu12": {
+            "file": "textures/tutorial/tu12.png"
+        },
+        "button_back":{
+            "file": "textures/tutorial/button_back.png"
+        },
+        "button_exit":{
+            "file": "textures/tutorial/button_exit.png"
+        },
+        "clickText":{
+            "file": "textures/tutorial/clickText.png"
+        },
+        "playset":{
+            "file":"textures/gameplay/playset.png"
+        },
+        "discard-or-play-to-end":{
+            "file":"textures/gameplay/discard-or-play-to-end.png"
+        },
+        "discard-to-end":{
+            "file":"textures/gameplay/discard-to-end.png"
+        },
+        "invalid":{
+            "file":"textures/gameplay/invalid.png"
+        },
+        "must-discard-play":{
+            "file":"textures/gameplay/must-discard-play.png"
+        },
+        "must-draw-discard":{
+            "file":"textures/gameplay/must-draw-discard.png"
+        },
+        "must-draw-play":{
+            "file":"textures/gameplay/must-draw-play.png"
+        },
+        "start-your-turn1":{
+            "file":"textures/gameplay/start-your-turn1.png"
+        },
+        "start-your-turn2":{
+            "file":"textures/gameplay/start-your-turn2.png"
+        },
+        "valid":{
+            "file":"textures/gameplay/valid.png"
+        },
+        "drew-try-play":{
+            "file":"textures/gameplay/drew-try-play.png"
+        },
+        "not-your-turn":{
+            "file":"textures/gameplay/not-your-turn.png"
         }
     },
     "fonts": {
@@ -876,6 +1014,46 @@
             "variables": {
               "size": [ 1280, 720 ]
             }
+          }
+        }
+      }
+    },
+    "info": {
+        "type": "Node",
+        "format": {
+          "type": "Anchored"
+        },
+        "children": {
+          "infoscene": {
+            "type": "Widget",
+            "format": {
+              "type": "Anchored"
+            },
+            "data": {
+              "key": "infoscene",
+              "variables": {
+                "size": [ 1280, 720 ]
+              }
+            }
+          }
+        }
+    },
+    "tutorial": {
+      "type": "Node",
+      "format": {
+        "type": "Anchored"
+      },
+      "children": {
+        "tutorialScene": {
+          "type": "Widget",
+          "format": {
+            "type": "Anchored"
+          },
+          "data": {
+            "variables": {
+              "size": [ 1280, 720 ]
+            },
+            "key": "tutorialScene"
           }
         }
       }
@@ -1114,7 +1292,9 @@
     "gameplay-select": "widgets/scene/gameplay-select.json",
     "host1Scene": "widgets/scene/host1Scene.json",
     "client1Scene": "widgets/scene/client1Scene.json",
-    "client3Scene": "widgets/scene/client3Scene.json"
+    "client3Scene": "widgets/scene/client3Scene.json",
+    "infoscene": "widgets/scene/infoScene1.json",
+    "tutorialScene": "widgets/scene/tutorialScene.json"
   },
   "jsons": {
     "server": "json/server.json",
