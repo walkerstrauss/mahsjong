@@ -628,6 +628,7 @@ void MatchController::playRat(std::shared_ptr<TileSet::Tile>& selectedTile) {
     selectedTile->inClientHand = !_network->getHostStatus();
     selectedTile->inPile = false;
     selectedTile->selected = false;
+    selectedTile->_scale = 0.15;
     
 //    _tileSet->tilesToJson.push_back(selectedTile);
     // Clear tilesToJson vector
@@ -648,9 +649,6 @@ void MatchController::playRat(std::shared_ptr<TileSet::Tile>& selectedTile) {
     // Clear tilesToJson vector
     _tileSet->clearTilesToJson();
     
-    hasPlayedCelestial = true;
-    endTurn();
-    
     return;
 }
 
@@ -669,6 +667,9 @@ void MatchController::playDragon() {
     _network->broadcastCelestialTile(_network->getLocalPid(), _tileSet->toJson(_pile->flattenedPile()), celestialTileJson, "DRAGON");
     // Clear tilesToJson vector
     _tileSet->clearTilesToJson();
+    
+    hasPlayedCelestial = true;
+    endTurn();
     
     return;
 }
