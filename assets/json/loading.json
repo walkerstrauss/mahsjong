@@ -170,7 +170,7 @@
                                         "x_anchor": "center",
                                         "y_anchor": "top",
                                         "absolute": false,
-                                        "x_offset": 0,
+                                        "x_offset": 0.1,
                                         "y_offset": 0
                                     }
                                 }
@@ -179,7 +179,7 @@
                                 "x_anchor": "left",
                                 "y_anchor": "top",
                                 "absolute": false,
-                                "x_offset": 0,
+                                "x_offset": 0.1,
                                 "y_offset": 0
                             }
                         }
@@ -188,7 +188,7 @@
                         "x_anchor": "center",
                         "y_anchor": "top",
                         "absolute": false,
-                        "x_offset": 0,
+                        "x_offset": 0.1,
                         "y_offset": -0.76
                     }
                 },

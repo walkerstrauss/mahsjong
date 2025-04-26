@@ -48,42 +48,11 @@
 
 
 void OurLoadingScene::resizeScene() {
-    
-    //std::shared_ptr<cugl::scene2::SceneNode> loadLayer =
-    //    std::dynamic_pointer_cast<cugl::scene2::SceneNode>(this->getChildByName("load"));
-
-    //loadLayer->setContentSize(cugl::Size(1280, 720));
-    
-    if (_before) {
-        cugl::Vec2 pos = _before->getPosition();
-        //_before->setPosition(cugl::Vec2(offset, pos.y));
-    }
-    if (_after) {
-        _after->setContentSize(cugl::Size(1280, 720));
-
-        _after->setAnchor(cugl::Vec2(0, 0));
-        cugl::Size screenSize = cugl::Application::get()->getDisplaySize();
-        screenSize *= (_after->getContentSize().height / screenSize.height);
-        float offset = (screenSize.width - _after->getWidth()) / 2;
-        
-       cugl::Vec2 pos = _after->getPosition();
-        _after->setPosition(offset, _after->getPosition().y);
-        //_after->setPosition(cugl::Vec2(offset, pos.y));
-    }
-    
-    if (_bar) {
-        cugl::Vec2 pos = _bar->getPosition();
-    }
-    
-    //auto button = _landingScene->getChildByName("load.play");
-    
-    if (_button) {
-        cugl::Vec2 pos = _button->getPosition();
-        //_button->setPosition(cugl::Vec2(pos.x + offset, pos.y));
-    }
-    
-
-    
+    Scene2::initWithHint(0, 720);
+    Size dimen = getSize();
+    _after->setContentSize(dimen);
+    _after->getChild(0)->setContentSize(dimen);
+    _after->doLayout();
     
     /**
     
