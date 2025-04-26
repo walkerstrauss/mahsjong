@@ -85,9 +85,7 @@ protected:
     /** Reference to the discard UI node for the game */
     std::shared_ptr<DiscardUINode> _discardUINode;
     /** Reference to the pile UI node for the game */
-    std::shared_ptr<cugl::scene2::SceneNode> _pileUINode;
-    /** Reference to the pile node */
-    std::shared_ptr<cugl::scene2::SceneNode> _pileNode;
+    std::shared_ptr<PileUINode> _pileUINode;
     /** TileSet for the game */
     std::shared_ptr<TileSet> _tileSet;
     /** Reference to player */
@@ -178,6 +176,8 @@ protected:
     cugl::Rect _playerHandRegion; 
 
     std::shared_ptr<TileSet::Tile> _draggingTile = nullptr;
+    int _dragonRow = -1;
+    
     cugl::Vec2 _dragStartPos;
     bool _dragInitiated = false;
     const float DRAG_THRESHOLD = 0.0f;
@@ -523,6 +523,25 @@ public:
             }
         }
     }
+    
+    std::shared_ptr<TileSet::Tile> getTileAtPosition(const cugl::Vec2& mousePos, std::vector<std::shared_ptr<TileSet::Tile>> tiles) {
+        for (const auto& tile : tiles) {
+            if (tile && tile->tileRect.contains(mousePos)) {
+                return tile;
+            }
+        }
+        return nullptr;
+    }
+    
+    int getIndexAtPosition(const Vec2& mousePos, const std::vector<std::shared_ptr<TileSet::Tile>>& tiles) {
+        for (int i = 0; i < (int)tiles.size(); ++i) {
+            if (tiles[i] && tiles[i]->tileRect.contains(mousePos)) {
+                return i;
+            }
+        }
+        return -1;
+    }
+
 };
 
 

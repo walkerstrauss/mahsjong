@@ -365,6 +365,10 @@ bool MatchController::playCelestial(std::shared_ptr<TileSet::Tile>& celestialTil
                     _ratTile = celestialTile;
                     _choice = RATTILE;
                     break;
+                case(TileSet::Tile::Rank::DRAGON):
+                    _dragonTile = celestialTile;
+                    _choice = DRAGONTILE;
+                    break;
                 // Numbered rank
                 default:
                     break;
@@ -394,17 +398,8 @@ void MatchController::playRooster(std::shared_ptr<TileSet::Tile>& celestialTile)
     // Clear tilesToJson vector
     _tileSet->clearTilesToJson();
     
-    std::vector<std::shared_ptr<TileSet::Tile>> flatPile;
-    for (auto& row : _pile->_pile) {
-        for (auto& tile : row) {
-            if (tile != nullptr) {
-                flatPile.push_back(tile);
-            }
-        }
-    }
-    
     // Broadcast celestial tile
-    _network->broadcastCelestialTile(_network->getLocalPid(), _tileSet->toJson(flatPile), celestialTileJson, "ROOSTER");
+    _network->broadcastCelestialTile(_network->getLocalPid(), _tileSet->toJson(_pile->flattenedPile()), celestialTileJson, "ROOSTER");
     // Clear tilesToJson vector
     _tileSet->clearTilesToJson();
     hasPlayedCelestial = true;
@@ -659,9 +654,30 @@ void MatchController::playRat(std::shared_ptr<TileSet::Tile>& selectedTile) {
     return;
 }
 
+void MatchController::playDragon() {
+    _pile->updateTilePositions();
+    
+    // Clear tilesToJson vector
+    _tileSet->clearTilesToJson();
+    // Transforming celestial tile to JSON
+    _tileSet->tilesToJson.push_back(_dragonTile);
+    const std::shared_ptr<cugl::JsonValue> celestialTileJson = _tileSet->toJson(_tileSet->tilesToJson);
+    // Clear tilesToJson vector
+    _tileSet->clearTilesToJson();
+    
+    // Broadcast celestial tile
+    _network->broadcastCelestialTile(_network->getLocalPid(), _tileSet->toJson(_pile->flattenedPile()), celestialTileJson, "DRAGON");
+    // Clear tilesToJson vector
+    _tileSet->clearTilesToJson();
+    
+    return;
+}
+
 
 void MatchController::celestialEffect(){
-    if (_network->getCelestialUpdateType() == NetworkController::ROOSTER) {
+
+    if (_network->getCelestialUpdateType() == NetworkController::ROOSTER
+        || _network->getCelestialUpdateType() == NetworkController::DRAGON) {
         //Updating tileset
         _tileSet->updateDeck(_network->getTileMapJson());
         _pile->remakePile();

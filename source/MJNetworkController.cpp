@@ -185,6 +185,10 @@ void NetworkController::processData(const std::string source,
                 _tileMapJson = _deserializer->readJson();
                 _celestialTile = _deserializer->readJson();
                 _celestialUpdateType = SNAKE;
+            } else if (celestialType == "DRAGON") {
+                _tileMapJson = _deserializer->readJson();
+                _celestialTile = _deserializer->readJson();
+                _celestialUpdateType = DRAGON;
             }
             _status = PLAYEDCELESTIAL;
         }

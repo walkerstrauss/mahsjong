@@ -27,6 +27,7 @@ public:
         DISCARDUIUPDATE,
         MONKEYTILE,
         RATTILE,
+        DRAGONTILE,
         DRAWNDISCARD,
         SUCCESS_SET,
         FAILED_SET, 
@@ -57,6 +58,8 @@ protected:
     std::shared_ptr<TileSet::Tile> _monkeyTile;
     /** The instance of the rattile that was played */
     std::shared_ptr<TileSet::Tile> _ratTile;
+    /** The instance of the rattile that was played */
+    std::shared_ptr<TileSet::Tile> _dragonTile;
     /** Currnet active state of game */
     bool _active; 
     /** Tiles to display in the opponent played set tab */
@@ -183,6 +186,11 @@ public:
      * Executes the Rat celestial tile effect (draw any tile from pile) given the selected tile by the player. It will remove the tile from the pile and add it to player's hand.
      */
     void playRat(std::shared_ptr<TileSet::Tile>& selectedTile);
+    
+    /**
+     * Executes the Dragon celestial tile effect (rearrange a pile row) .
+     */
+    void playDragon();
     
     /** Applies the effect of the celestial tile played by opponent by using the celestial state of the network. */
     void celestialEffect();

@@ -298,6 +298,17 @@ void Pile::removeNumTiles(int nums) {
     CUAssertLog(nums == 0, "Did not delete correct amount of tiles");
 }
 
+
+void Pile::updateRow(int row, const std::vector<std::shared_ptr<TileSet::Tile>>& tiles) {
+    for (int j = 0; j < _pileSize; j++) {
+        if (_pile[row][j] != nullptr) {
+            _pile[row][j] = tiles[j];
+            _pile[row][j]->pileCoord = cugl::Vec2(row, j);
+        }
+    }
+    updateTilePositions();
+}
+
 ///**
 // * Method to handle pair making for the pile, including removing from pile and returning removed tiles
 // *
@@ -396,4 +407,15 @@ void Pile::removeNumTiles(int nums) {
 //    }
 //}
 
+int Pile::selectedRow(std::shared_ptr<TileSet::Tile> tile) {
+    for (int i = 0; i < _pileSize; i++) {
+        for (int j = 0; j < _pileSize; j++) {
+            if (_pile[i][j] == tile) {
+                return i;
+                break;
+            }
+        }
+    }
+    return -1;
+}
 

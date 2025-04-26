@@ -452,13 +452,12 @@ void Hand::updateTilePositions(cugl::Rect rect){
  */
 void Player::draw(const std::shared_ptr<cugl::graphics::SpriteBatch>& batch) {
     for(const auto& tile : _hand._tiles){
-        Vec2 pos = tile->pos;
-        Vec2 origin = Vec2(tile->getTileTexture()->getSize().width/2, tile->getTileTexture()->getSize().height/2);
-        
-        if(tile->selected){
-            pos.y += 10;
+        // Skip drawing the tile being dragged because it will be drawn above everything.
+        if (tile == _draggingTile) {
+            continue;
         }
         
+        tile->draw(batch);
         Size textureSize(tile->getBackTextureNode()->getTexture()->getSize());
         Vec2 rectOrigin(pos - (textureSize * tile->_scale)/2);
         tile->tileRect = cugl::Rect(rectOrigin, textureSize * tile->_scale);
@@ -524,13 +523,13 @@ void Player::drawInfo(const std::shared_ptr<TileSet::Tile> tile, const std::shar
     batch->draw(infoTexture, origin, trans);
 }
 
-std::shared_ptr<TileSet::Tile> Hand::getTileAtPosition(const cugl::Vec2& mousePos) {
-    for (const auto& tile : _tiles) {
-        if (tile) {
-            if (tile->tileRect.contains(mousePos)) {
-                return tile;
-            }
-        }
-    }
-    return nullptr;
-}
+//std::shared_ptr<TileSet::Tile> Hand::getTileAtPosition(const cugl::Vec2& mousePos) {
+//    for (const auto& tile : _tiles) {
+//        if (tile) {
+//            if (tile->tileRect.contains(mousePos)) {
+//                return tile;
+//            }
+//        }
+//    }
+//    return nullptr;
+//}
