@@ -50,6 +50,8 @@ public:
     cugl::Random rdHand;
     // Keeps track of current hand size
     int _size = 13;
+    // Opponent sets
+    std::vector<std::vector<std::shared_ptr<TileSet::Tile>>> opponentPlayedSets;
         
 #pragma mark -
 #pragma mark Constructors

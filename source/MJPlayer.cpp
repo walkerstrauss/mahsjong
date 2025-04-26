@@ -41,7 +41,7 @@ bool Hand::initHand(std::shared_ptr<TileSet>& tileSet, bool isHost){
             drawnTile->inHostHand = false;
             drawnTile->inClientHand = true;
         }
-        drawnTile->_scale = 0.1;
+        drawnTile->_scale = 0.15;
         drawnTile->inDeck = false;
         _tiles.push_back(drawnTile);
     }
@@ -71,7 +71,7 @@ void Hand::drawFromPile(std::shared_ptr<Pile>& pile, int number, bool isHost){
         tile->inPile = false;
         tile->selected = false;
         tile->discarded = false;
-        tile->_scale = 0.1;
+        tile->_scale = 0.15;
         _tiles.push_back(tile); // Add drawn tiles to hand
     }
  }
@@ -216,8 +216,8 @@ bool Hand::playSet(bool isHost) {
     
     
     //_playedSets.clear();
-    
-    _player->endTurn();
+//    
+//    _player->endTurn();
     return true;
 }
 
@@ -307,7 +307,7 @@ bool Hand::isStraight(const std::vector<std::shared_ptr<TileSet::Tile>>& selecte
             std::shared_ptr<TileSet::Tile> tileC = sortedTiles[i+1];
 
             int gap = static_cast<int>(tileC->getRank()) - static_cast<int>(tileA->getRank());
-            if (gap>1) {
+            if (gap != 1) {
                 return false;
             }
         }
@@ -316,6 +316,7 @@ bool Hand::isStraight(const std::vector<std::shared_ptr<TileSet::Tile>>& selecte
 }
 
 bool Hand::isWinningHand() {
+    
     
     if (_tiles.size() == _size + 1) {
         std::vector<std::shared_ptr<TileSet::Tile>> sortedHand = getSortedTiles(_tiles);
@@ -471,14 +472,14 @@ void Player::drawInfo(const std::shared_ptr<TileSet::Tile> tile, const std::shar
     std::shared_ptr<Texture> infoTexture = tile->getInfoTexture();
     Vec2 origin(infoTexture->getSize().width/2.0f, infoTexture->getSize().height/2.0f);
     
-    Size textureSize = infoTexture->getSize() * 0.5f;
+    Size textureSize = infoTexture->getSize() * 0.9f;
     float textureWidth = textureSize.getIWidth() * 0.5f;
     float textureHeight = textureSize.getIHeight() * 0.5f;
     
     float tileHeight = tile->getBackTextureNode()->getSize().height * tile->_scale;
     float tileWidth = tile->getBackTextureNode()->getSize().width * tile->_scale;
     
-    float totalHeight = tile->pos.y + tileHeight * 0.5f + textureHeight + 2.0f;
+    float totalHeight = tile->pos.y + tileHeight * 0.5f + textureHeight + 2.2f;
     float totalMinWidth = tile->pos.x - textureWidth * 0.5f + 2.0f;
     float totalMaxWidth = tile->pos.x + textureWidth * 0.5f + 2.0f;
 
@@ -488,30 +489,30 @@ void Player::drawInfo(const std::shared_ptr<TileSet::Tile> tile, const std::shar
     if(totalHeight > screenSize.getIHeight()) {
         y = tile->pos.y;
         if(totalMinWidth < 0) {
-            x = tile->pos.x + tileWidth * 0.5f + textureWidth + 2.0f;
+            x = tile->pos.x + tileWidth * 0.5f + textureWidth + 2.2f;
         }
         else {
-            x = tile->pos.x - tileWidth * 0.5f - textureWidth - 2.0f;
+            x = tile->pos.x - tileWidth * 0.5f - textureWidth - 2.2f;
         }
     }
     else{
         if(totalMinWidth < 0) {
-            x = tile->pos.x + tileWidth * 0.5f + textureWidth + 2.0f;
+            x = tile->pos.x + tileWidth * 0.5f + textureWidth + 2.2f;
             y = tile->pos.y;
         }
         else if (totalMaxWidth > screenSize.width){
-            x = tile->pos.x - tileWidth * 0.5f - textureWidth - 2.0f;
+            x = tile->pos.x - tileWidth * 0.5f - textureWidth - 2.2f;
             y = tile->pos.y;
         }
         else {
             x = tile->pos.x;
-            y = tile->pos.y + tileHeight * 0.5f + textureHeight + 2.0f;
+            y = tile->pos.y + tileHeight * 0.5f + textureHeight + 2.2f;
         }
     }
     
     Affine2 trans;
     Vec2 pos(x, y);
-    trans.scale(0.5f);
+    trans.scale(0.9f);
     trans.translate(pos);
     
     batch->draw(infoTexture, origin, trans);

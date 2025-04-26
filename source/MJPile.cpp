@@ -78,7 +78,7 @@ bool Pile::createPile() {
             
             std::shared_ptr<TileSet::Tile> tile = _tileSet->deck[index];
             
-            tile->_scale = 0.1;
+            tile->_scale = 0.125;
             tile->inPile = true;
             tile->pileCoord = cugl::Vec2(i, j);
             tile->inDeck = false; 

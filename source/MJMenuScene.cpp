@@ -76,14 +76,14 @@ bool MenuScene::init(const std::shared_ptr<cugl::AssetManager>& assets) {
 //    // Program the buttons
     _hostbutton->addListener([this](const std::string& name, bool down) {
         if (down) {
-            _choice = Choice::HOST;
+            _choice = HOST;
 //            AudioEngine::get()->play("confirm",_assets->get<Sound>("confirm"),false,1.0f);
             AudioController::getInstance().playSound("confirm");
         }
     });
     _joinbutton->addListener([this](const std::string& name, bool down) {
         if (down) {
-            _choice = Choice::JOIN;
+            _choice = JOIN;
 //            AudioEngine::get()->play("confirm",_assets->get<Sound>("confirm"),false,1.0f);
             AudioController::getInstance().playSound("confirm", false);
         }
@@ -91,9 +91,17 @@ bool MenuScene::init(const std::shared_ptr<cugl::AssetManager>& assets) {
     settingsbutton = std::dynamic_pointer_cast<scene2::Button>(_assets->get<scene2::SceneNode>("home.home.button3"));
     settingsbutton->addListener([this](const std::string& name, bool down){
         if (down){
-            _choice = Choice::SETTING;
+            _choice = SETTING;
 //            AudioEngine::get()->play("confirm",_assets->get<Sound>("confirm"),false,1.0f);
             AudioController::getInstance().playSound("confirm", false);
+        }
+    });
+    
+    _tutorialbutton = std::dynamic_pointer_cast<Button>(_assets->get<SceneNode>("home.home.menu.button4"));
+    _tutorialbutton->addListener([this](const std::string&name, bool down){
+        if (!down){
+            AudioController::getInstance().playSound("confirm", false);
+            _choice = TUTORIAL;
         }
     });
     _grandmaMainSheet = SpriteNode::allocWithSheet(_assets->get<Texture>("grandmaMain"), 2, 3, 5);
@@ -147,10 +155,12 @@ void MenuScene::setActive(bool value) {
             _hostbutton->activate();
             _joinbutton->activate();
             settingsbutton->activate();
+            _tutorialbutton->activate();
         } else {
             _hostbutton->deactivate();
             _joinbutton->deactivate();
             settingsbutton->deactivate();
+            _tutorialbutton->deactivate();
             // If any were pressed, reset them
             settingsbutton->setDown(false);
             _hostbutton->setDown(false);

@@ -23,6 +23,7 @@ public:
     /** Enum for states of the game */
     enum Choice {
         NONE,
+        PILEDRAW,
         DISCARDUIUPDATE,
         MONKEYTILE,
         RATTILE,
@@ -32,7 +33,14 @@ public:
         WIN,
         LOSE
     };
+    /** If current player has already drawn from the pile/discard or not */
+    bool hasDrawn = false;
+    /** If current player has already discarded or not */
+    bool hasDiscarded = false;
+    /** If current player has played a celestial tile or not */
+    bool hasPlayedCelestial = false;
     
+    bool hasPlayedSet = false; 
 protected:
     /** The network connection */
     std::shared_ptr<NetworkController> _network;
@@ -53,13 +61,9 @@ protected:
     /** Currnet active state of game */
     bool _active; 
     
-    /** If current player has already drawn from the pile/discard or not */
-    bool hasDrawn = true;
-    /** If current player has already discarded or not */
-    bool hasDiscarded = true;
-    /** If current player has played a celestial tile or not */
-    bool hasPlayedCelestial = false;
-    
+ 
+    /** Tiles to display in the opponent played set tab */
+    std::vector<std::shared_ptr<TileSet::Tile>> setTiles;
     
 public:
     /** The host player */
@@ -200,6 +204,7 @@ public:
         hasDrawn = false;
         hasDiscarded = false;
         hasPlayedCelestial = false;
+        hasPlayedSet = false; 
     }
     
     /** Gets the current state of game */
@@ -211,6 +216,8 @@ public:
     void setChoice(Choice choice) {
         _choice = choice;
     }
+    
+    std::vector<std::shared_ptr<TileSet::Tile>> getSetTiles() { return setTiles; }
     
     /** Gets the current tileSet representation */
     std::shared_ptr<TileSet> getTileSet() {

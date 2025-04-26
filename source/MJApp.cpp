@@ -58,15 +58,15 @@ void MahsJongApp::onStartup() {
     _loading.init(_assets, "json/assets.json");
     _loading.setSpriteBatch(_batch);
     
-    
-    
     // Get rid of wrong start button
     std::shared_ptr<scene2::Button> wrongStart = std::dynamic_pointer_cast<scene2::Button>(_assets->get<scene2::SceneNode>("load.after.landingscene.button1"));
     wrongStart->setVisible(false);
     
     _loading.start();
     
-
+    _inputController = std::make_shared<InputController>();
+    _inputController->init();
+    
     AudioEngine::start();
     netcode::NetworkLayer::start(netcode::NetworkLayer::Log::INFO);
 //    _network = NetworkController();
@@ -87,6 +87,10 @@ void MahsJongApp::onShutdown() {
     _joingame.dispose();
     _settings.dispose();
     _pause.dispose();
+    _gameover.dispose();
+    _info.dispose();
+    _tutorial.dispose();
+    _inputController->dispose();
 //    _network->dispose();
     _assets = nullptr;
     _batch = nullptr;
@@ -116,6 +120,10 @@ void MahsJongApp::onShutdown() {
  */
 
 void MahsJongApp::update(float timestep) {
+    if(_inputController) {
+        _inputController->readInput();
+        _inputController->update();
+    }
     if (_network) {
         _network->update(timestep);
     }
@@ -145,6 +153,12 @@ void MahsJongApp::update(float timestep) {
             break;
         case OVER:
             updateGameOverScene(timestep);
+            break;
+        case INFO:
+            updateInfoScene(timestep);
+            break;
+        case TUTORIAL:
+            updateTutorialScene(timestep);
             break;
     }
 }
@@ -192,6 +206,12 @@ void MahsJongApp::draw() {
        case OVER:
            _gameover.render(_batch);
            break;
+       case INFO:
+           _info.render();
+           break;
+       case TUTORIAL:
+           _tutorial.render();
+           break;
    }
 }
 
@@ -210,7 +230,6 @@ void MahsJongApp::updateLoadingScene(float timestep) {
    } else {
        _loading.dispose(); // Permanently disables the input listeners in this mode
        
-       
        _network = std::make_shared<NetworkController>();
        _network->init(_assets);
        AnimationController::getInstance().init(_assets);
@@ -228,6 +247,10 @@ void MahsJongApp::updateLoadingScene(float timestep) {
        _gameover.init(_assets);
        _gameover.setSpriteBatch(_batch);
        _mainmenu.setActive(true);
+       _info.init(_assets);
+       _info.setSpriteBatch(_batch);
+       _tutorial.init(_assets, _inputController);
+       _tutorial.setSpriteBatch(_batch);
        _scene = State::MENU;
    }
 }
@@ -260,6 +283,11 @@ void MahsJongApp::updateMenuScene(float timestep) {
            _settings.scene = SettingScene::PrevScene::MAIN;
            _scene = State::SETTINGS;
            break;
+       case MenuScene::Choice::TUTORIAL:
+           _mainmenu.setActive(false);
+           _tutorial.setActive(true);
+           _scene = TUTORIAL;
+           break;
        case MenuScene::Choice::NONE:
            // DO NOTHING
            break;
@@ -281,7 +309,7 @@ void MahsJongApp::updateHostScene(float timestep) {
         _hostgame.setActive(false);
         _mainmenu.setActive(true);
     } else if (_network->getStatus() == NetworkController::Status::START) {
-        _gameplay.init(_assets, _network);
+        _gameplay.init(_assets, _network, _inputController);
         _gameplay.setSpriteBatch(_batch);
         _hostgame.setActive(false);
         _gameplay.setActive(true);
@@ -311,7 +339,7 @@ void MahsJongApp::updateClientScene(float timestep) {
         _joingame.setActive(false);
         _mainmenu.setActive(true);
     } else if (_network->getStatus() == NetworkController::Status::INGAME) {
-        _gameplay.init(_assets, _network);
+        _gameplay.init(_assets, _network, _inputController);
         _gameplay.setSpriteBatch(_batch);
         _joingame.setActive(false);
         _gameplay.setActive(true);
@@ -379,6 +407,9 @@ void MahsJongApp::updateGameScene(float timestep) {
             _gameplay._choice = GameScene::Choice::NONE;
             break;
         case GameScene::Choice::INFO:
+            _gameplay.setGameActive(false);
+            _info.setActive(true);
+            _scene = INFO;
             break;
         case GameScene::Choice::SETTING:
             _gameplay.setGameActive(false);
@@ -402,6 +433,7 @@ void MahsJongApp::updateSettingScene(float timestep){
         case SettingScene::Choice::MENU:
             _settings.setActive(false);
             _mainmenu.setActive(true);
+            _gameplay.dispose();
             _scene = State::MENU;
             break;
         case SettingScene::Choice::PAUSE:
@@ -477,3 +509,37 @@ void MahsJongApp::updateGameOverScene(float timestep) {
         return;
     }
 }
+
+/**
+* Individualzed update method for the info scene
+*
+* @param timestep   The amount of time (in seconds) since the last frame
+*/
+void MahsJongApp::updateInfoScene(float timestep){
+    _info.update(timestep);
+    if (_info.choice == InfoScene::BACK){
+        _info.setActive(false);
+        _info.choice = InfoScene::NONE;
+        _gameplay.setGameActive(true);
+        _scene = GAME;
+    }
+}
+
+/**
+* Individualzed update method for the tutorial scene
+*
+* @param timestep   The amount of time (in seconds) since the last frame
+*/
+void MahsJongApp::updateTutorialScene(float timestep){
+    _tutorial.update(timestep);
+    switch (_tutorial.getChoice()){
+        case TutorialScene::NONE:
+            break;
+        case TutorialScene::BACK:
+            _tutorial.setActive(false);
+            _mainmenu.setActive(true);
+            _scene = MENU;
+            break;
+    }
+}
+
