@@ -271,7 +271,8 @@ bool MatchController::playSet() {
        
         _network->broadcastPlaySet(_network->getLocalPid(), true, tilesJson);
         opponentPlayer->getHand().opponentPlayedSets = currPlayer->getHand()._playedSets;
-
+    
+        currPlayer->getHand()._size -= 3;
         // Reset choice for match controller
         _choice = NONE;
         hasPlayedSet = true;

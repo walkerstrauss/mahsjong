@@ -640,7 +640,7 @@ void GameScene::updateDrag(const cugl::Vec2& mousePos, bool mouseDown, bool mous
                     _dragFromDiscard = true;
                     _discardedTileImage->setVisible(false);
                     _draggingTile = _discardPile->getTopTile();
-                    _draggingTile->_scale = 0.1;
+                    _draggingTile->_scale = 0.135;
                     _draggingTile->pos = mousePos;
                 }
             }
