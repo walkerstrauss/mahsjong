@@ -3,6 +3,93 @@
         "debuffed": {
             "file": "textures/tilesHand/debuffed.png"
         },
+        "blank celestial hand": {
+            "file": "textures/newTiles/blank_celestial_hand.png"
+        },
+        "blank normal hand": {
+            "file": "textures/newTiles/blank_normal_hand.png"
+        },
+        "one of dot new": {
+            "file": "textures/newTiles/one_of_dot_new.png"
+        },
+        "one of bamboo new": {
+            "file": "textures/newTiles/one_of_bamboo_new.png"
+        },
+        "one of crak new": {
+            "file": "textures/newTiles/one_of_crak_new.png"
+        },
+        "two of dot new": {
+            "file": "textures/newTiles/two_of_dot_new.png"
+        },
+        "two of bamboo new": {
+            "file": "textures/newTiles/two_of_bamboo_new.png"
+        },
+        "two of crak new": {
+            "file": "textures/newTiles/two_of_crak_new.png"
+        },
+        "three of dot new": {
+            "file": "textures/newTiles/three_of_dot_new.png"
+        },
+        "three of bamboo new": {
+            "file": "textures/newTiles/three_of_bamboo_new.png"
+        },
+        "three of crak new": {
+            "file": "textures/newTiles/three_of_crak_new.png"
+        },
+        "four of dot new": {
+            "file": "textures/newTiles/four_of_dot_new.png"
+        },
+        "four of bamboo new": {
+            "file": "textures/newTiles/four_of_bamboo_new.png"
+        },
+        "four of crak new": {
+            "file": "textures/newTiles/four_of_crak_new.png"
+        },
+        "five of dot new": {
+            "file": "textures/newTiles/five_of_dot_new.png"
+        },
+        "five of bamboo new": {
+            "file": "textures/newTiles/five_of_bamboo_new.png"
+        },
+        "five of crak new": {
+            "file": "textures/newTiles/five_of_crak_new.png"
+        },
+        "six of dot new": {
+            "file": "textures/newTiles/six_of_dot_new.png"
+        },
+        "six of bamboo new": {
+            "file": "textures/newTiles/six_of_bamboo_new.png"
+        },
+        "six of crak new": {
+            "file": "textures/newTiles/six_of_crak_new.png"
+        },
+        "seven of dot new": {
+            "file": "textures/newTiles/seven_of_dot_new.png"
+        },
+        "seven of bamboo new": {
+            "file": "textures/newTiles/seven_of_bamboo_new.png"
+        },
+        "seven of crak new": {
+            "file": "textures/newTiles/seven_of_crak_new.png"
+        },
+        "eight of dot new": {
+            "file": "textures/newTiles/eight_of_dot_new.png"
+        },
+        "eight of bamboo new": {
+            "file": "textures/newTiles/eight_of_bamboo_new.png"
+        },
+        "eight of crak new": {
+            "file": "textures/newTiles/eight_of_crak_new.png"
+        },
+        "nine of dot new": {
+            "file": "textures/newTiles/nine_of_dot_new.png"
+        },
+        "nine of bamboo new": {
+            "file": "textures/newTiles/nine_of_bamboo_new.png"
+        },
+        "nine of crak new": {
+            "file": "textures/newTiles/nine_of_crak_new.png"
+        },
         "one of dot": {
             "file": "textures/tilesHand/one_of_dot.png"
         },
@@ -84,8 +171,26 @@
         "nine of crak": {
             "file": "textures/tilesHand/nine_of_crak.png"
         },
-        "rooster of celestial": {
-            "file": "textures/celestialHand/rooster_hand.png"
+        "rooster of celestial new": {
+            "file": "textures/newTiles/rooster.png"
+        },
+        "ox of celestial new": {
+            "file": "textures/newTiles/ox.png"
+        },
+        "rabbit of celestial new": {
+            "file": "textures/newTiles/rabbit.png"
+        },
+        "snake of celestial new": {
+            "file": "textures/newTiles/snake.png"
+        },
+        "monkey of celestial new": {
+            "file": "textures/newTiles/monkey.png"
+        },
+        "rat of celestial new": {
+          "file": "textures/newTiles/rat.png"
+        },
+        "rooster of celestial new": {
+            "file": "textures/newTiles/rooster.png"
         },
         "ox of celestial": {
             "file": "textures/celestialHand/ox_hand.png"
@@ -95,6 +200,9 @@
         },
         "snake of celestial": {
             "file": "textures/celestialHand/snake_hand.png"
+        },
+        "rooster of celestial": {
+            "file": "textures/celestialHand/rooster_hand.png"
         },
         "monkey of celestial": {
             "file": "textures/celestialHand/monkey_hand.png"
@@ -107,6 +215,24 @@
         },
         "pig of celestial": {
           "file": "textures/celestialHand/pig_hand.png"
+        },
+        "ox of celestial info": {
+            "file": "textures/hover/ox.png"
+        },
+        "rabbit of celestial info": {
+            "file": "textures/hover/rabbit.png"
+        },
+        "snake of celestial info": {
+            "file": "textures/hover/snake.png"
+        },
+        "rooster of celestial info": {
+            "file": "textures/hover/chicken.png"
+        },
+        "monkey of celestial info": {
+            "file": "textures/hover/monkey.png"
+        },
+        "rat of celestial info": {
+          "file": "textures/hover/rat.png"
         },
         "background": {
             "file": "textures/landing/background.png"
@@ -260,6 +386,9 @@
         },
         "menuBackground": {
             "file": "textures/menu/menuBackground.png"
+        },
+        "tut-btn":{
+            "file": "textures/menu/tut-btn.png"
         },
         "menuButtonDown": {
             "file": "textures/menu/menuButtonDown.png"
@@ -752,6 +881,132 @@
         },
         "playerhand-indicator":{
             "file":"textures/gameplay/playerhand-indicator.png"
+        },
+        "contentArea": {
+            "file": "textures/playguide/contentArea.png"
+        },
+        "discardTilecloseIcon":{
+            "file": "textures/playguide/discardTilecloseIcon.png"
+        },
+        "infoBackground":{
+            "file": "textures/playguide/infoBackground.png"
+        },
+        "infoShade":{
+            "file": "textures/playguide/infoShade.png"
+        },
+        "slideDown":{
+            "file": "textures/playguide/slideDown.png"
+        },
+        "specialtileButtonDark":{
+            "file": "textures/playguide/specialtileButtonDark.png"
+        },
+        "specialtileButtonLight":{
+            "file": "textures/playguide/specialtileButtonLight.png"
+        },
+        "infoTile":{
+            "file": "textures/playguide/infoTile.png"
+        },
+        "infoTitle":{
+            "file": "textures/playguide/title.png"
+        },
+        "turnButtonDark":{
+            "file": "textures/playguide/turnButtonDark.png"
+        },
+        "turnButtonLight":{
+            "file": "textures/playguide/turnButtonLight.png"
+        },
+        "infoTurn":{
+            "file": "textures/playguide/infoTurn.png"
+        },
+        "winButtonDark":{
+            "file": "textures/playguide/winButtonDark.png"
+        },
+        "winButtonLight":{
+            "file": "textures/playguide/winButtonLight.png"
+        },
+        "infoWin":{
+            "file": "textures/playguide/infoWin.png"
+        },
+        "tu1": {
+            "file": "textures/tutorial/tu1.png"
+        },
+        "tu2": {
+            "file": "textures/tutorial/tu2.png"
+        },
+        "tu3": {
+            "file": "textures/tutorial/tu3.png"
+        },
+        "tu4": {
+            "file": "textures/tutorial/tu4.png"
+        },
+        "tu5": {
+            "file": "textures/tutorial/tu5.png"
+        },
+        "tu6": {
+            "file": "textures/tutorial/tu6.png"
+        },
+        "tu7": {
+            "file": "textures/tutorial/tu7.png"
+        },
+        "tu8": {
+            "file": "textures/tutorial/tu8.png"
+        },
+        "tu9": {
+            "file": "textures/tutorial/tu9.png"
+        },
+        "tu10": {
+            "file": "textures/tutorial/tu10.png"
+        },
+        "tu11": {
+            "file": "textures/tutorial/tu11.png"
+        },
+        "tu12": {
+            "file": "textures/tutorial/tu12.png"
+        },
+        "button_back":{
+            "file": "textures/tutorial/button_back.png"
+        },
+        "button_exit":{
+            "file": "textures/tutorial/button_exit.png"
+        },
+        "clickText":{
+            "file": "textures/tutorial/clickText.png"
+        },
+        "playset":{
+            "file":"textures/gameplay/playset.png"
+        },
+        "discard-or-play-to-end":{
+            "file":"textures/gameplay/discard-or-play-to-end.png"
+        },
+        "discard-to-end":{
+            "file":"textures/gameplay/discard-to-end.png"
+        },
+        "invalid":{
+            "file":"textures/gameplay/invalid.png"
+        },
+        "must-discard-play":{
+            "file":"textures/gameplay/must-discard-play.png"
+        },
+        "must-draw-discard":{
+            "file":"textures/gameplay/must-draw-discard.png"
+        },
+        "must-draw-play":{
+            "file":"textures/gameplay/must-draw-play.png"
+        },
+        "start-your-turn1":{
+            "file":"textures/gameplay/start-your-turn1.png"
+        },
+        "start-your-turn2":{
+            "file":"textures/gameplay/start-your-turn2.png"
+        },
+        "valid":{
+            "file":"textures/gameplay/valid.png"
+        },
+        "drew-try-play":{
+            "file":"textures/gameplay/drew-try-play.png"
+        },
+        "not-your-turn":{
+            "file":"textures/gameplay/not-your-turn.png"
         }
     },
     "fonts": {
@@ -813,6 +1068,46 @@
             "variables": {
               "size": [ 1280, 720 ]
             }
+          }
+        }
+      }
+    },
+    "info": {
+        "type": "Node",
+        "format": {
+          "type": "Anchored"
+        },
+        "children": {
+          "infoscene": {
+            "type": "Widget",
+            "format": {
+              "type": "Anchored"
+            },
+            "data": {
+              "key": "infoscene",
+              "variables": {
+                "size": [ 1280, 720 ]
+              }
+            }
+          }
+        }
+    },
+    "tutorial": {
+      "type": "Node",
+      "format": {
+        "type": "Anchored"
+      },
+      "children": {
+        "tutorialScene": {
+          "type": "Widget",
+          "format": {
+            "type": "Anchored"
+          },
+          "data": {
+            "variables": {
+              "size": [ 1280, 720 ]
+            },
+            "key": "tutorialScene"
           }
         }
       }
@@ -1051,7 +1346,9 @@
     "pile-ui": "widgets/scene/pile-ui.json",
     "host1Scene": "widgets/scene/host1Scene.json",
     "client1Scene": "widgets/scene/client1Scene.json",
-    "client3Scene": "widgets/scene/client3Scene.json"
+    "client3Scene": "widgets/scene/client3Scene.json",
+    "infoscene": "widgets/scene/infoScene1.json",
+    "tutorialScene": "widgets/scene/tutorialScene.json"
   },
   "jsons": {
     "server": "json/server.json",

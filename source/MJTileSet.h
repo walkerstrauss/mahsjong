@@ -9,6 +9,7 @@
 #define __MJ_TILESET_H__
 #include <cugl/cugl.h>
 #include <random>
+#include "MJAnimatedNode.h"
 
 /**
  * A class representing all of the tiles in the player's tileset as the game progresses
@@ -20,9 +21,17 @@ public:
      */
     class Tile {
     private:
+        /** The container for the polygon and animated node */
+        std::shared_ptr<cugl::scene2::SceneNode> _container;
+        /** This tile's back texture node*/
+        std::shared_ptr<cugl::scene2::PolygonNode> _backTextureNode;
+        /** This tile's face sprite node*/
+        std::shared_ptr<AnimatedNode> _faceSpriteNode;
         /** This tile's texture */
         std::shared_ptr<cugl::graphics::Texture> _texture;
-        
+        /** This tile's info texture (only for celestial) */
+        std::shared_ptr<cugl::graphics::Texture> _infoTexture;
+
     public:
         virtual ~Tile() = default;
         
@@ -123,6 +132,37 @@ public:
          * @return the associated suit for the tile it was called from.
          */
         Tile::Suit getSuit() const { return _suit; }
+        
+        /**
+         * Getter for accessing the textured node for the back of the tile
+         *
+         * @return the textured node for the back of the tile
+         */
+        std::shared_ptr<cugl::scene2::PolygonNode>& getBackTextureNode() {
+            return _backTextureNode;
+        }
+        
+        /**
+         * Getter for accessing the sprite node for face of the tile
+         *
+         * @return the sprite node for the face of the tile
+         */
+        std::shared_ptr<AnimatedNode>& getFaceSpriteNode() {
+            return _faceSpriteNode;
+        }
+        
+        /**
+         * Getter for acecssing the container node for the back and face texture
+         *
+         * @return the scene node containing the face and back texture
+         */
+        std::shared_ptr<cugl::scene2::SceneNode>& getContainer() {
+            return _container;
+        }
+        
+        std::shared_ptr<graphics::Texture> getInfoTexture() {
+            return _infoTexture; 
+        }
         
         /**
          * Method to update the tiles
@@ -375,21 +415,79 @@ public:
             return this->_id == tile->_id;
         }
         
-        void draw(const std::shared_ptr<cugl::graphics::SpriteBatch>& batch) {
-            cugl::Vec2 origin = cugl::Vec2(getTileTexture()->getSize().width/2, getTileTexture()->getSize().height/2);
-            
-            if(selected){
-                pos.y += 10;
-            }
-            cugl::Affine2 trans;
-            trans.scale(_scale);
-            trans.translate(pos);
-            
-            cugl::Size textureSize(750.0, 1000.0);
-            cugl::Vec2 rectOrigin(pos - (textureSize * _scale)/2);
-            tileRect = cugl::Rect(rectOrigin, textureSize * _scale);
 
-            batch->draw(getTileTexture(), origin, trans);
+//         void draw(const std::shared_ptr<cugl::graphics::SpriteBatch>& batch) {
+//             cugl::Vec2 origin = cugl::Vec2(getTileTexture()->getSize().width/2, getTileTexture()->getSize().height/2);
+            
+//             if(selected){
+//                 pos.y += 10;
+//             }
+//             cugl::Affine2 trans;
+//             trans.scale(_scale);
+//             trans.translate(pos);
+            
+//             cugl::Size textureSize(750.0, 1000.0);
+//             cugl::Vec2 rectOrigin(pos - (textureSize * _scale)/2);
+//             tileRect = cugl::Rect(rectOrigin, textureSize * _scale);
+
+//             batch->draw(getTileTexture(), origin, trans);
+
+        /**
+         * Sets the container of the tile's node
+         *
+         * @param sceneNode the scene node to set this container to
+         */
+        bool setContainer(std::shared_ptr<scene2::SceneNode> sceneNode) {
+            if(sceneNode) {
+                _container = sceneNode;
+                return true;
+            }
+            return false;
+        }
+        
+        /**
+         * Sets the back texture of this tile
+         *
+         * @param value     the texture to assign to the back of the tile
+         */
+        void setBackTexture(const std::shared_ptr<cugl::graphics::Texture>& value) {
+            _backTextureNode->setTexture(value);
+        }
+        
+        /**
+         * Sets the face texture of this tile
+         *
+         * @param value the texture to assign to the face of the tile
+         */
+        void setFaceTexture(const std::shared_ptr<cugl::graphics::Texture>& value) {
+            _faceSpriteNode->setTexture(value);
+        }
+        
+        /**
+         * Sets the polygon node for the back texture
+         *
+         * @param polygonNode       a polygon node
+         */
+        void setBackTextureNode(const std::shared_ptr<scene2::PolygonNode> polygonNode) {
+            _backTextureNode = polygonNode;
+        }
+        
+        /**
+         * Sets the animated node for the back texture
+         *
+         * @param animatedNode      an animated node
+         */
+        void setFrontSpriteNode(const std::shared_ptr<AnimatedNode> animatedNode) {
+            _faceSpriteNode = animatedNode;
+        }
+        
+        /**
+         * Sets the info texture for this tile
+         *
+         * @param texture      the info texture 
+         */
+        void setInfoTexture(const std::shared_ptr<graphics::Texture>& texture) {
+            _infoTexture = texture; 
         }
     };
     
@@ -432,6 +530,11 @@ public:
      * Only call if client
      */
     void initClientDeck(const std::shared_ptr<cugl::JsonValue>& deckJson);
+    
+    /**
+     * Sets the texture for all tiles in deck
+     */
+    void initTileNodes(const std::shared_ptr<cugl::AssetManager>& assets);
     
     void addCelestialTiles(const std::shared_ptr<cugl::AssetManager>& assets);
     

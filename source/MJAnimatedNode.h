@@ -8,7 +8,7 @@
 #ifndef __MJ_ANIMATED_NODE_H__
 #define __MJ_ANIMATED_NODE_H__
 #include <cugl/cugl.h>
-#include <cugl/scene2/CUPolygonNode.h>
+#include <cugl/scene2/CUSpriteNode.h>
 #include <cugl/core/math/CURect.h>
 #include <cugl/graphics/CUTexture.h>
 #include <unordered_map>
@@ -20,7 +20,7 @@ using namespace cugl::graphics;
 /**
  * Class representing an animated scene node in the game – all tiles will be animated nodes by open beta
  */
-class AnimatedNode : public PolygonNode {
+class AnimatedNode : public SpriteNode {
 public:
     enum AnimationType {
         IDLE,
@@ -76,11 +76,7 @@ public:
      * Destructor
      **/
     ~AnimatedNode();
-    
-    bool initWithSheet(const std::shared_ptr<Texture>&, int rows, int cols, int limit);
-    
-    bool initWithData(const AssetManager* assets, const std::shared_ptr<JsonValue>& json, std::string nodeKey, float fps);
-    
+                
     void play(const std::string& key, AnimationType type, const std::shared_ptr<Texture>& texture);
     
     void stop();
@@ -90,9 +86,7 @@ public:
     bool isAnimating() const { return _isPlaying; }
     
     const std::string& getCurrentKey() const { return _currKey; }
-    
-    void setFrame(int frame);
-    
+        
     void setDefaultIdleKey(const std::string& key) { _defaultIdleKey = key; }
 };
 

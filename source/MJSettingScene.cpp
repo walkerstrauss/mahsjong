@@ -55,8 +55,14 @@ bool SettingScene::init(const std::shared_ptr<cugl::AssetManager>& assets){
     // Initialize all buttons
     
     _soundBtn = std::dynamic_pointer_cast<scene2::Button>(_assets->get<scene2::SceneNode>("settings.settingscene.settingSection.menu.button2"));
-    exitBtn = std::dynamic_pointer_cast<scene2::Button>(_assets->get<scene2::SceneNode>("settings.settingscene.settingSection.menu.button1"));
+    _mainBtn = std::dynamic_pointer_cast<scene2::Button>(_assets->get<scene2::SceneNode>("settings.settingscene.settingSection.menu.button1"));
+    exitBtn = std::dynamic_pointer_cast<Button>(_assets->get<SceneNode>("settings.settingscene.settingSection.button3"));
     
+    _mainBtn->addListener([this](const std::string& name, bool down){
+        if (!down){
+            choice = MENU;
+        }
+    });
     // Set button listeners
     _soundKey = _soundBtn->addListener([this](const std::string& name, bool down){
         if (!down){
@@ -67,7 +73,7 @@ bool SettingScene::init(const std::shared_ptr<cugl::AssetManager>& assets){
         }
     });
     exitKey = exitBtn->addListener([this](const std::string& name, bool down){
-        if (down) {
+        if (!down) {
             switch (scene){
                 case PrevScene::PAUSED:
                     choice = Choice::PAUSE;
@@ -122,12 +128,13 @@ void SettingScene::setActive(bool value){
         _settingScene->setVisible(true);
         exitBtn->activate();
         _soundBtn->activate();
+        _mainBtn->activate();
     } else {
         Scene2::setActive(false);
         choice = Choice::NONE;
         _settingScene->setVisible(false);
         exitBtn->deactivate();
-        exitBtn->setDown(false);
         _soundBtn->deactivate();
+        _mainBtn->deactivate();
     }
 }

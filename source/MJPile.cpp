@@ -78,7 +78,7 @@ bool Pile::createPile() {
             
             std::shared_ptr<TileSet::Tile> tile = _tileSet->deck[index];
             
-            tile->_scale = 0.1;
+            tile->_scale = 0.125;
             tile->inPile = true;
             tile->pileCoord = cugl::Vec2(i, j);
             tile->inDeck = false; 
@@ -88,8 +88,6 @@ bool Pile::createPile() {
         }
         _pile.push_back(row); //add tile from deck to pile
     }
-    
-    updateTilePositions();
     
     // Erase tiles put into the pile from deck
     if(_tileSet->deck.size() <= 25){
@@ -103,10 +101,11 @@ bool Pile::createPile() {
 }
 
 void Pile::updateTilePositions() {
-    cugl::Size screenSize(1561, 720); //Temporary pile placement fix
-
     float spacingY = 1.0f;
     float spacingX = 1.0f;
+    
+    float height = pileBox.getMaxY() - pileBox.getMinY();
+    float width = pileBox.getMaxX() - pileBox.getMinX();
     
     _pileMap.clear();
     
@@ -115,13 +114,13 @@ void Pile::updateTilePositions() {
             std::shared_ptr<TileSet::Tile> tile = _pile[i][j];
             if (tile == nullptr) continue;
             
-            cugl::Size _size = tile->getTileTexture()->getSize();
+            cugl::Size _size = tile->getBackTextureNode()->getSize();
             cugl::Vec2 tileSize(_size.width * tile->_scale, _size.height * tile->_scale);
             
             float pileWidth = (_pileSize - 1) * (tileSize.x * spacingX);
             float pileHeight = (_pileSize - 1)* (tileSize.y * spacingY);
-            cugl::Vec2 pileOffset((screenSize.width - pileWidth) / 2, (screenSize.height - pileHeight) / 2);
-            
+            Vec2 pileOffset((pileBox.origin.x + (width - pileWidth) * 0.5f), (pileBox.origin.y + (height - pileHeight) * 0.5f));
+
             float x = j * tileSize.x * spacingX;
             float y = i * tileSize.y * spacingY;
             
@@ -242,17 +241,18 @@ void Pile::draw(const std::shared_ptr<cugl::graphics::SpriteBatch>& batch) {
             if(tile == nullptr){
                 continue;
             }
-            cugl::Vec2 origin = cugl::Vec2(tile->getTileTexture()->getSize().width/2, tile->getTileTexture()->getSize().height/2);
-            
-            cugl::Affine2 trans;
-            trans.scale(tile->_scale);
-            trans.translate(tile->pos);
-            
-            Size textureSize(750.0, 1000.0);
-            cugl::Vec2 rectOrigin(tile->pos - (textureSize * tile->_scale)/2);
+            Vec2 pos = tile->pos;
+            Vec2 origin = Vec2(tile->getTileTexture()->getSize().width/2, tile->getTileTexture()->getSize().height/2);
+                        
+            Size textureSize(tile->getBackTextureNode()->getTexture()->getSize());
+            Vec2 rectOrigin(pos - (textureSize * tile->_scale)/2);
             tile->tileRect = cugl::Rect(rectOrigin, textureSize * tile->_scale);
-
-            batch->draw(tile->getTileTexture(), origin, trans);
+           
+            tile->getContainer()->setAnchor(Vec2::ANCHOR_CENTER);
+            tile->getContainer()->setScale(tile->_scale);
+            tile->getContainer()->setPosition(pos);
+            tile->getContainer()->setVisible(true);
+            tile->getContainer()->render(batch, Affine2::IDENTITY, Color4::WHITE);
         }
     }
 }

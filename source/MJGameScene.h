@@ -11,6 +11,7 @@
 #include <cugl/cugl.h>
 #include <vector>
 #include <unordered_set>
+#include <unordered_map>
 #include <queue>
 #include <string>
 #include "MJInputController.h"
@@ -58,13 +59,21 @@ public:
     std::vector<std::shared_ptr<TileSet::Tile>> discardedTiles;
     Choice _choice;
     std::shared_ptr<TileSet::Tile> discardDrawTile;
+    std::vector<std::shared_ptr<TexturedNode>> _opponentHandTiles;
+    std::vector<std::shared_ptr<TexturedNode>> _playerHandTiles;
+    std::shared_ptr<SceneNode> _opponentHandRec;
+    std::shared_ptr<SceneNode> _playerHandRec;
+    int _remainingTiles;
+    std::shared_ptr<Label> _remainingLabel;
+    int opponentSetIndex = 0;
+    int playerSetIndex = 0;
 protected:
     /** Asset manager for this game mode */
     std::shared_ptr<cugl::AssetManager> _assets;
     /** The network connection (as made by this scene) */
     std::shared_ptr<NetworkController> _network;
     /** Input controller for player input*/
-    InputController _input;
+    std::shared_ptr<InputController> _input;
     /** Match controller for processing game logic */
     std::shared_ptr<MatchController> _matchController;
     /** JSON with all of our constants*/
@@ -87,14 +96,14 @@ protected:
     std::shared_ptr<DiscardPile> _discardPile;
     /** Temporary discard area b/c no asset created for it yet */
     cugl::Rect discardArea;
+    cugl::Rect _pileBox; 
+    /** Rect for pile */
     /** Pointer to the hand */
     Hand* _hand;
-   
     std::shared_ptr<cugl::graphics::TextLayout> _win;
     std::shared_ptr<cugl::graphics::TextLayout> _lose;
     bool _gameWin;
     bool _gameLose;
-    
     /** Whether this player is the host */
     bool _ishost;
     /** Whether we paused the game **/
@@ -107,17 +116,8 @@ protected:
     std::shared_ptr<cugl::scene2::Button> _discardBtn;
     /** Button for transitioning to the tileset UI scene (discarded cards) */
     std::shared_ptr<cugl::scene2::Button> _tilesetUIBtn;
-//    /** Button for pausing */
-//    std::shared_ptr<cugl::scene2::Button> _pauseBtn;
-    /** Button for continuing (in the pause scene) */
-    std::shared_ptr<cugl::scene2::Button> _continueBtn;
-    /** Button to set to win scene (for debugging) */
-    std::shared_ptr<cugl::scene2::Button> _winBtn;
-    /** Button to set to defeat scene (for debugging) */
-    std::shared_ptr<cugl::scene2::Button> _defeatBtn;
     /** Button for ending turn */
     std::shared_ptr<cugl::scene2::Button> _endTurnBtn;
-    
     /**Button to transition to the setting scene**/
     std::shared_ptr<Button> _settingBtn;
     /**Button to transition to the info scene **/
@@ -126,10 +126,6 @@ protected:
     /** Textured node to set the discarded tile image*/
     std::shared_ptr<cugl::scene2::TexturedNode> _discardedTileImage;
 
-    std::shared_ptr<cugl::scene2::Button> _displayIconBtn;
-
-    std::shared_ptr<cugl::scene2::TexturedNode> _expandedIcon;
-    
     std::shared_ptr<cugl::scene2::TexturedNode> _dragToDiscardNode;
 
     std::shared_ptr<cugl::scene2::TexturedNode> _dragToHandNode;
@@ -167,9 +163,6 @@ protected:
     /** The tile currently being dragged */
     cugl::Vec2 _dragOffset;
     
-    /** The rectangle representing the pile's position used for selection handling */
-    cugl::Rect _pileBox;
-    
     /** The rectangle representing the discrad pile's position*/
     cugl::Rect _discardBox;
 
@@ -203,11 +196,10 @@ protected:
     std::shared_ptr<Button> _opponentHandBtn2;
     std::shared_ptr<Button> _playerHandBtn2;
     
-    std::vector<std::shared_ptr<SceneNode>> _opponentHandTiles;
-    std::vector<std::shared_ptr<SceneNode>> _playerSetTiles;
-    std::shared_ptr<SceneNode> _opponentHandRec;
-    std::shared_ptr<SceneNode> _playerSetRec;
-
+    std::vector<std::string> playerGuideKeys;
+    std::unordered_map<std::string, std::shared_ptr<SceneNode>> playerGuideNodeMap;
+    int framesOnScreen = 0;
+    int maxFramesOnScreen = 150;
 public:
 #pragma mark -
 #pragma mark Constructors
@@ -238,7 +230,7 @@ public:
      *
      * @param assets    the asset manager for the game
      */
-    bool init(const std::shared_ptr<cugl::AssetManager>& assets, std::shared_ptr<NetworkController> network);
+    bool init(const std::shared_ptr<cugl::AssetManager>& assets, std::shared_ptr<NetworkController>& network, std::shared_ptr<InputController>& inputController);
     
     /**
      * Sets whether the player is host.
@@ -391,7 +383,6 @@ public:
                 }
             }
         });
-        
         _opponentHandBtn2 = std::dynamic_pointer_cast<Button>(_assets->get<SceneNode>("matchscene.gameplayscene.opponent-hand2"));
         _opponentHandBtn2->addListener([this](const std::string& name, bool down){
             if (!down){
@@ -403,19 +394,25 @@ public:
             }
         });
         
+        _playerHandRec = _assets->get<SceneNode>("matchscene.gameplayscene.player-hand-rec");
         _playerHandBtn = std::dynamic_pointer_cast<Button>(_assets->get<SceneNode>("matchscene.gameplayscene.playerhand-button"));
         _playerHandBtn->addListener([this](const std::string& name, bool down){
             if (!down){
-                CULog("Player hand/set tab button 1 pressed!");
-                // TODO: implement showing made player sets
+                bool visible = !_playerHandRec->isVisible();
+                _playerHandRec->setVisible(visible);
+                for (int i = 0; i < _playerHandTiles.size(); i++){
+                    _playerHandTiles[i]->setVisible(visible);
+                }
             }
         });
-        
         _playerHandBtn2 = std::dynamic_pointer_cast<Button>(_assets->get<SceneNode>("matchscene.gameplayscene.playerhand-button2"));
-        _playerHandBtn->addListener([this](const std::string& name, bool down){
+        _playerHandBtn2->addListener([this](const std::string& name, bool down){
             if (!down){
-                CULog("Player hand/set tab button 2 pressed!");
-                // TODO: implement showing made player sets
+                bool visible = !_playerHandRec->isVisible();
+                _playerHandRec->setVisible(visible);
+                for (int i = 0; i < _playerHandTiles.size(); i++){
+                    _playerHandTiles[i]->setVisible(visible);
+                }
             }
         });
         
@@ -423,7 +420,9 @@ public:
     }
     void updateTurnIndicators(){
         if (_network->getCurrentTurn() == _network->getLocalPid()){
-            _opponentHandBtn->activate();
+            if (!_opponentHandBtn->isActive()){
+                _opponentHandBtn->activate();
+            }
             _opponentHandBtn->setVisible(true);
             if (_opponentHandBtn2->isActive()){
                 _opponentHandBtn2->deactivate();
@@ -433,23 +432,96 @@ public:
                 _playerHandBtn->deactivate();
             }
             _playerHandBtn->setVisible(false);
-            _playerHandBtn2->activate();
+            if (!_playerHandBtn2->isActive()){
+                _playerHandBtn2->activate();
+            }
             _playerHandBtn2->setVisible(true);
         } else {
             if (_opponentHandBtn->isActive()){
                 _opponentHandBtn->deactivate();
-                _opponentHandBtn->setVisible(false);
             }
-            _opponentHandBtn2->activate();
+            _opponentHandBtn->setVisible(false);
+            if (!_opponentHandBtn2->isActive()){
+                _opponentHandBtn2->activate();
+            }
             _opponentHandBtn2->setVisible(true);
-            _playerHandBtn->activate();
+            if (!_playerHandBtn->isActive()){
+                _playerHandBtn->activate();
+            }
             _playerHandBtn->setVisible(true);
             if (_playerHandBtn2->isActive()){
                 _playerHandBtn2->deactivate();
             }
             _playerHandBtn2->setVisible(false);
         }
+    }
+    
+    void initPlayerGuide(){
+        playerGuideKeys = {
+            "discard-or-play-to-end",
+            "discard-to-end",
+            "invalid",
+            "valid",
+            "must-discard-play",
+            "must-draw-discard",
+            "must-draw-play",
+            "not-your-turn",
+            "start-your-turn1",
+            "start-your-turn2",
+            "drew-try-play"
+        };
         
+        for (auto key : playerGuideKeys){
+            playerGuideNodeMap[key] = _assets->get<SceneNode>("matchscene.gameplayscene." + key);
+        }
+    }
+    
+    void updatePlayerGuide(){
+        for (auto key : playerGuideKeys){
+            auto node = playerGuideNodeMap[key];
+            if (node->isVisible()){
+                framesOnScreen++;
+                if (framesOnScreen > maxFramesOnScreen){
+                    node->setVisible(false);
+                }
+            }
+        }
+    }
+    
+    void showPlayerGuide(std::string key){
+        auto node = playerGuideNodeMap[key];
+        node->setVisible(true);
+        framesOnScreen = 0;
+    }
+    
+    void displayOpponentSets(){
+        int i = 0;
+        for (auto set : _player->getHand().opponentPlayedSets){
+            set = _player->getHand().getSortedTiles(set);
+            for (auto tile : set){
+                auto node = _opponentHandTiles[i];
+                auto texture = tile->getTileTexture();
+                node->setTexture(tile->getTileTexture());
+                node->setContentSize(30, 38.46f);
+                node->doLayout();
+                i++;
+            }
+        }
+    }
+    
+    void displayPlayerSets(){
+        int i = 0;
+        for (auto set : _player->getHand()._playedSets){
+            set = _player->getHand().getSortedTiles(set);
+            for (auto tile : set){
+                auto node = _playerHandTiles[i];
+                auto texture = tile->getTileTexture();
+                node->setTexture(tile->getTileTexture());
+                node->setContentSize(30, 38.46f);
+                node->doLayout();
+                i++;
+            }
+        }
     }
     
     std::shared_ptr<TileSet::Tile> getTileAtPosition(const cugl::Vec2& mousePos, std::vector<std::shared_ptr<TileSet::Tile>> tiles) {
@@ -471,5 +543,6 @@ public:
     }
 
 };
+
 
 #endif /* __MJ_GAME_SCENE_H__ */

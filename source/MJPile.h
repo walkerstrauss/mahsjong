@@ -34,6 +34,8 @@ public:
     std::shared_ptr<TileSet> _tileSet;
     /** Stores the location of our pair in the pile */
     std::vector<std::shared_ptr<TileSet::Tile>> _pairs;
+    /** The rect of the pile */
+    cugl::Rect pileBox; 
     
 #pragma mark -
 #pragma mark Constructors
