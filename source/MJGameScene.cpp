@@ -696,6 +696,7 @@ void GameScene::updateDrag(const cugl::Vec2& mousePos, bool mouseDown, bool mous
                     if(_matchController->drawDiscard()) {
                         _playSetBtn->activate();
                         _playSetBtn->setVisible(true);
+                        _draggingTile->_scale = 0.15;
                     }
                     else {
                         _discardedTileImage->setVisible(true);
