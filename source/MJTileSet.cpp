@@ -98,7 +98,7 @@ void TileSet::initTileNodes(const std::shared_ptr<cugl::AssetManager>& assets){
             else {
                 it->setBackTextureNode(scene2::PolygonNode::allocWithTexture(assets->get<Texture>("blank normal hand")));
             }
-            it->setFrontSpriteNode(std::static_pointer_cast<AnimatedNode>(scene2::SpriteNode::allocWithSheet(assets->get<Texture>(it->toString() + " new"), 1, 1)));
+            it->setFrontSpriteNode(std::static_pointer_cast<AnimatedNode>(scene2::SpriteNode::allocWithSheet(assets->get<Texture>(it->toString()), 1, 1)));
             
             std::shared_ptr<scene2::PolygonNode> backTextureNode = it->getBackTextureNode();
             std::shared_ptr<AnimatedNode> faceSpriteNode = it->getFaceSpriteNode();
@@ -126,31 +126,31 @@ void TileSet::initTileNodes(const std::shared_ptr<cugl::AssetManager>& assets){
 
 
 void TileSet::addCelestialTiles(const std::shared_ptr<cugl::AssetManager>& assets) {
-    for (int i = 1; i < 21; ++i) {
-//        std::shared_ptr<Tile> rooster = std::make_shared<Tile>(Tile::Rank::ROOSTER, Tile::Suit::CELESTIAL);
-//        rooster->_id = tileCount++;;
-//        deck.push_back(rooster);
-//        tileMap[std::to_string(rooster->_id)] = rooster;
-//        
-//        std::shared_ptr<Tile> ox = std::make_shared<Tile>(Tile::Rank::OX, Tile::Suit::CELESTIAL);
-//        ox->_id = tileCount++;;
-//        deck.push_back(ox);
-//        tileMap[std::to_string(ox->_id)] = ox;
-//
-//        std::shared_ptr<Tile> rabbit = std::make_shared<Tile>(Tile::Rank::RABBIT, Tile::Suit::CELESTIAL);
-//        rabbit->_id = tileCount++;;
-//        deck.push_back(rabbit);
-//        tileMap[std::to_string(rabbit->_id)] = rabbit;
-//        
-//        std::shared_ptr<Tile> snake = std::make_shared<Tile>(Tile::Rank::SNAKE, Tile::Suit::CELESTIAL);
-//        snake->_id = tileCount++;;
-//        deck.push_back(snake);
-//        tileMap[std::to_string(snake->_id)] = snake;
-//        
-//        std::shared_ptr<Tile> monkey = std::make_shared<Tile>(Tile::Rank::MONKEY, Tile::Suit::CELESTIAL);
-//        monkey->_id = tileCount++;;
-//        deck.push_back(monkey);
-//        tileMap[std::to_string(monkey->_id)] = monkey;
+    for (int i = 1; i < 6; ++i) {
+        std::shared_ptr<Tile> rooster = std::make_shared<Tile>(Tile::Rank::ROOSTER, Tile::Suit::CELESTIAL);
+        rooster->_id = tileCount++;;
+        deck.push_back(rooster);
+        tileMap[std::to_string(rooster->_id)] = rooster;
+        
+        std::shared_ptr<Tile> ox = std::make_shared<Tile>(Tile::Rank::OX, Tile::Suit::CELESTIAL);
+        ox->_id = tileCount++;;
+        deck.push_back(ox);
+        tileMap[std::to_string(ox->_id)] = ox;
+
+        std::shared_ptr<Tile> rabbit = std::make_shared<Tile>(Tile::Rank::RABBIT, Tile::Suit::CELESTIAL);
+        rabbit->_id = tileCount++;;
+        deck.push_back(rabbit);
+        tileMap[std::to_string(rabbit->_id)] = rabbit;
+        
+        std::shared_ptr<Tile> snake = std::make_shared<Tile>(Tile::Rank::SNAKE, Tile::Suit::CELESTIAL);
+        snake->_id = tileCount++;;
+        deck.push_back(snake);
+        tileMap[std::to_string(snake->_id)] = snake;
+        
+        std::shared_ptr<Tile> monkey = std::make_shared<Tile>(Tile::Rank::MONKEY, Tile::Suit::CELESTIAL);
+        monkey->_id = tileCount++;;
+        deck.push_back(monkey);
+        tileMap[std::to_string(monkey->_id)] = monkey;
         
         std::shared_ptr<Tile> rat = std::make_shared<Tile>(Tile::Rank::RAT, Tile::Suit::CELESTIAL);
         rat->_id = tileCount++;;

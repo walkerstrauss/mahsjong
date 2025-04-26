@@ -452,12 +452,17 @@ void Hand::updateTilePositions(cugl::Rect rect){
  */
 void Player::draw(const std::shared_ptr<cugl::graphics::SpriteBatch>& batch) {
     for(const auto& tile : _hand._tiles){
-        // Skip drawing the tile being dragged because it will be drawn above everything.
-        if (tile == _draggingTile) {
-            continue;
-        }
+//        // Skip drawing the tile being dragged because it will be drawn above everything.
+//        if (tile == _draggingTile) {
+//            continue;
+//        }
         
-        tile->draw(batch);
+        Vec2 pos = tile->pos;
+        Vec2 origin = Vec2(tile->getTileTexture()->getSize().width/2, tile->getTileTexture()->getSize().height/2);
+        
+        if(tile->selected){
+            pos.y += 10;
+        }
         Size textureSize(tile->getBackTextureNode()->getTexture()->getSize());
         Vec2 rectOrigin(pos - (textureSize * tile->_scale)/2);
         tile->tileRect = cugl::Rect(rectOrigin, textureSize * tile->_scale);
