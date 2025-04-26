@@ -68,7 +68,7 @@
             },
             "data" : {
                 "color": [141,235,207,100],
-                "size" : [1024,576]
+                "size" : [1560,720]
             },
             "children"  : {
                 "before" : {
@@ -170,7 +170,7 @@
                                         "x_anchor": "center",
                                         "y_anchor": "top",
                                         "absolute": false,
-                                        "x_offset": 0.1,
+                                        "x_offset": 0,
                                         "y_offset": 0
                                     }
                                 }
@@ -179,7 +179,7 @@
                                 "x_anchor": "left",
                                 "y_anchor": "top",
                                 "absolute": false,
-                                "x_offset": 0.1,
+                                "x_offset": 0,
                                 "y_offset": 0
                             }
                         }
@@ -188,7 +188,7 @@
                         "x_anchor": "center",
                         "y_anchor": "top",
                         "absolute": false,
-                        "x_offset": 0.1,
+                        "x_offset": 0,
                         "y_offset": -0.76
                     }
                 },

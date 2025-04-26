@@ -254,6 +254,7 @@ bool MatchController::playSet() {
     // Retrieving the current player
     std::shared_ptr<Player> currPlayer = _network->getHostStatus() ? hostPlayer : clientPlayer;
     std::shared_ptr<Player> opponentPlayer = _network->getHostStatus() ? clientPlayer : hostPlayer;
+    
     std::vector<std::shared_ptr<TileSet::Tile>> tiles;
     // If selected tiles is a valid set
     if(currPlayer->getHand().isSetValid(currPlayer->getHand()._selectedTiles)) {
@@ -270,7 +271,6 @@ bool MatchController::playSet() {
 //        opponentPlayer->getHand().opponentPlayedSets.clear();
        
         _network->broadcastPlaySet(_network->getLocalPid(), true, tilesJson);
-        opponentPlayer->getHand().opponentPlayedSets = currPlayer->getHand()._playedSets;
     
         currPlayer->getHand()._size -= 3;
         // Reset choice for match controller
@@ -853,6 +853,7 @@ void MatchController::update(float timestep) {
     if(_network->getStatus() == NetworkController::SUCCESSFULSET) {
         // Retrieving the opposing player
         std::shared_ptr<Player> opposingPlayer = _network->getHostStatus() ? clientPlayer : hostPlayer;
+        std::shared_ptr<Player> currPlayer = _network->getHostStatus() ? hostPlayer : clientPlayer;
         // Fetching the top tile
         std::shared_ptr<TileSet::Tile> discardTile = _discardPile->drawTopTile();
         // Setting relevant fields
@@ -884,7 +885,6 @@ void MatchController::update(float timestep) {
                     it++;
                 }
             }
-            opposingPlayer->getHand()._playedSets.push_back(tiles);
         }
         
         // Update opposing player's max hand size

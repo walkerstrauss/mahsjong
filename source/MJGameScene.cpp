@@ -344,7 +344,8 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::sha
     _remainingTiles = _tileSet->deck.size();
     _remainingLabel->setText(std::to_string(_remainingTiles));
     
-//    initPlayerGuide();
+    initPlayerGuide();
+    updateTurnIndicators();
     return true;
 }
 
@@ -393,7 +394,7 @@ void GameScene::update(float timestep) {
     displayPlayerSets();
     
     // Updating player guide nodes
-//    updatePlayerGuide();
+    updatePlayerGuide();
         
     // Updating discardUINode if matchController has a discard update
     if(_matchController->getChoice() == MatchController::Choice::DISCARDUIUPDATE) {

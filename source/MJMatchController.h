@@ -60,8 +60,6 @@ protected:
     std::shared_ptr<TileSet::Tile> _ratTile;
     /** Currnet active state of game */
     bool _active; 
-    
- 
     /** Tiles to display in the opponent played set tab */
     std::vector<std::shared_ptr<TileSet::Tile>> setTiles;
     

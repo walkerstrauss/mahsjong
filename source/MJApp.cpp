@@ -51,7 +51,7 @@ void MahsJongApp::onStartup() {
     _assets->attach<Button>(WidgetLoader::alloc()->getHook());
     _assets->attach<scene2::SceneNode>(Scene2Loader::alloc()->getHook());
     _assets->loadDirectory("json/loading.json");
-    
+    Application::get()->setClearColor(Color4::BLACK);
 
     //Create a "loading" screen
     _scene = State::LOAD;
