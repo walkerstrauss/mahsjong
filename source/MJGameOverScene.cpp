@@ -68,11 +68,25 @@ bool GameOverScene::init(const std::shared_ptr<cugl::AssetManager>& assets){
     // Grandma animation
     _grandmaWin = SpriteNode::allocWithSheet(_assets->get<Texture>("grandmaWin"), 2, 3, 6);
     auto winBoard = _assets->get<scene2::SceneNode>("winscene.scorewinscene.win_board");
-    Vec2 boardCenter = winBoard->getContentSize() * 0.5f;
+    
     _grandmaWin->setAnchor(Vec2::ANCHOR_CENTER);
-    _grandmaWin->setPosition(boardCenter);
+    _grandmaWin->setPosition(340, 410);
     _grandmaWin->setVisible(true);
+    _grandmaWin->setScale(0.3);
     _winscene->addChild(_grandmaWin);
+    
+    
+    _grandmaCry = SpriteNode::allocWithSheet(_assets->get<Texture>("grandmaCry"), 1, 3, 3);
+    auto loseBoard = _assets->get<scene2::SceneNode>("losescene.scoredefeatscene.defeated_board");
+
+    _grandmaCry->setAnchor(Vec2::ANCHOR_CENTER);
+    _grandmaCry->setPosition(340, 410);
+    _grandmaCry->setVisible(true);
+    _grandmaCry->setScale(0.3);
+    _losescene->addChild(_grandmaCry);
+    
+    
+
     
 
     if (!Scene2::initWithHint(screenSize)) {
@@ -176,17 +190,26 @@ void GameOverScene::update(float timestep){
     _frameTimer += timestep;
     
     int frame = _grandmaWin->getFrame();
+    int frame2 = _grandmaCry->getFrame();
+    
     if ( _frameTimer >= _frameDelay){
         _frameTimer = 0.0;
         frame++;
+        frame2++;
     } else {
         return;
     }
     
     if (frame >= _grandmaWin->getCount()){
         _grandmaWin->setFrame(0);
-    } else {
+    }else if(frame2 >= _grandmaCry->getCount()){
+        
+        _grandmaCry->setFrame(0);
+    }
+    
+    else {
         _grandmaWin->setFrame(frame);
+        _grandmaCry->setFrame(frame2);
     }
     
 }

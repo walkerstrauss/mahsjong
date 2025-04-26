@@ -80,9 +80,10 @@ protected:
     std::vector<std::shared_ptr<cugl::scene2::TexturedNode>> _winSlots;
     std::vector<std::shared_ptr<cugl::scene2::TexturedNode>> _loseSlots;
     
-    //std::shared_ptr<AnimatedNode>  _grandmaLose;
+
     
     std::shared_ptr<cugl::scene2::SpriteNode> _grandmaWin;
+    std::shared_ptr<cugl::scene2::SpriteNode> _grandmaCry;
     
 public:
     /** Represents the choice for this scene */
