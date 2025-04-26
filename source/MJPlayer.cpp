@@ -563,32 +563,37 @@ void Hand::updateTilePositions(cugl::Size sceneSize){
  */
 void Player::draw(const std::shared_ptr<cugl::graphics::SpriteBatch>& batch) {
     for(const auto& tile : _hand._tiles){
-        Vec2 pos = tile->pos;
-        Vec2 origin = Vec2(tile->getTileTexture()->getSize().width/2, tile->getTileTexture()->getSize().height/2);
-        
-        if(tile->selected){
-            pos.y += 10;
+        // Skip drawing the tile being dragged because it will be drawn above everything.
+        if (tile == _draggingTile) {
+            continue;
         }
-        Affine2 trans;
-        trans.scale(tile->_scale);
-        trans.translate(pos);
         
-        Size textureSize(750.0, 1000.0);
-        Vec2 rectOrigin(tile->pos - (textureSize * tile->_scale)/2);
-        tile->tileRect = cugl::Rect(rectOrigin, textureSize * tile->_scale);
-
-        batch->draw(tile->getTileTexture(), origin, trans);
-        
+        tile->draw(batch);
+//        Vec2 pos = tile->pos;
+//        Vec2 origin = Vec2(tile->getTileTexture()->getSize().width/2, tile->getTileTexture()->getSize().height/2);
+//        
+//        if(tile->selected){
+//            pos.y += 10;
+//        }
+//        Affine2 trans;
+//        trans.scale(tile->_scale);
+//        trans.translate(pos);
+//        
+//        Size textureSize(750.0, 1000.0);
+//        Vec2 rectOrigin(tile->pos - (textureSize * tile->_scale)/2);
+//        tile->tileRect = cugl::Rect(rectOrigin, textureSize * tile->_scale);
+//
+//        batch->draw(tile->getTileTexture(), origin, trans);
     }
 }
 
-std::shared_ptr<TileSet::Tile> Hand::getTileAtPosition(const cugl::Vec2& mousePos) {
-    for (const auto& tile : _tiles) {
-        if (tile) {
-            if (tile->tileRect.contains(mousePos)) {
-                return tile;
-            }
-        }
-    }
-    return nullptr;
-}
+//std::shared_ptr<TileSet::Tile> Hand::getTileAtPosition(const cugl::Vec2& mousePos) {
+//    for (const auto& tile : _tiles) {
+//        if (tile) {
+//            if (tile->tileRect.contains(mousePos)) {
+//                return tile;
+//            }
+//        }
+//    }
+//    return nullptr;
+//}

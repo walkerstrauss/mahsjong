@@ -461,6 +461,11 @@ void GameScene::render() {
     if (_dragToHandNode && _dragToHandNode->isVisible()) {
         _dragToHandNode->render(_batch);
     }
+
+    if (_draggingTile) {
+        _draggingTile->draw(_batch);
+    }
+    
     _batch->end();
 }
 

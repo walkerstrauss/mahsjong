@@ -374,6 +374,23 @@ public:
         bool operator==(std::shared_ptr<Tile>& tile){
             return this->_id == tile->_id;
         }
+        
+        void draw(const std::shared_ptr<cugl::graphics::SpriteBatch>& batch) {
+            cugl::Vec2 origin = cugl::Vec2(getTileTexture()->getSize().width/2, getTileTexture()->getSize().height/2);
+            
+            if(selected){
+                pos.y += 10;
+            }
+            cugl::Affine2 trans;
+            trans.scale(_scale);
+            trans.translate(pos);
+            
+            cugl::Size textureSize(750.0, 1000.0);
+            cugl::Vec2 rectOrigin(pos - (textureSize * _scale)/2);
+            tileRect = cugl::Rect(rectOrigin, textureSize * _scale);
+
+            batch->draw(getTileTexture(), origin, trans);
+        }
     };
     
 public:
