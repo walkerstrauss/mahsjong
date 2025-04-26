@@ -179,7 +179,7 @@ public:
     /**
      * Updates the position of all tiles in the hand for drawing to the screen and selection detection
      */
-    void updateTilePositions(cugl::Size sceneSize);
+    void updateTilePositions(cugl::Rect rect);
     
     /**
      * Method to draw the tiles in our hand to the screen (no longer used)
@@ -203,9 +203,19 @@ public:
     void updateHandTextures(const std::shared_ptr<cugl::AssetManager>& assets) {
         for(auto& tile : _tiles) {
             if (tile->debuffed) {
-                tile->setTexture(assets->get<cugl::graphics::Texture>("debuffed"));
+                tile->getFaceSpriteNode()->setVisible(false);
+                tile->getBackTextureNode()->setVisible(true);
             } else {
+                tile->setFaceTexture(assets->get<cugl::graphics::Texture>(tile->toString() + " new"));
+                if(tile->_suit == TileSet::Tile::Suit::CELESTIAL) {
+                    tile->setBackTexture(assets->get<cugl::graphics::Texture>("blank celestial hand"));
+                }
+                else {
+                    tile->setBackTexture(assets->get<cugl::graphics::Texture>("blank normal hand"));
+                }
                 tile->setTexture(assets->get<cugl::graphics::Texture>(tile->toString()));
+                tile->getBackTextureNode()->setVisible(true);
+                tile->getFaceSpriteNode()->setVisible(true);
             }
         }
     }
