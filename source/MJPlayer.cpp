@@ -316,11 +316,14 @@ bool Hand::isStraight(const std::vector<std::shared_ptr<TileSet::Tile>>& selecte
 }
 
 bool Hand::isWinningHand() {
-    
-    
     if (_tiles.size() == _size + 1) {
         std::vector<std::shared_ptr<TileSet::Tile>> sortedHand = getSortedTiles(_tiles);
-        
+        for (auto set : _playedSets){
+            for (const auto& tile : set){
+                sortedHand.push_back(tile);
+            }
+        }
+        sortedHand = getSortedTiles(sortedHand);
         std::map<std::pair<TileSet::Tile::Rank, TileSet::Tile::Suit>, int> tileCounts;
         for (const auto& tile : sortedHand) {
             tileCounts[{tile->getRank(), tile->getSuit()}]++;
