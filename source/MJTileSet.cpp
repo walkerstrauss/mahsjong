@@ -88,7 +88,7 @@ void TileSet::initTileNodes(const std::shared_ptr<cugl::AssetManager>& assets){
         CULog("Deck is empty");
         return;
     }
-    for(const auto& it : deck){
+    for(auto& it : deck){
         if(it->setContainer(scene2::SceneNode::alloc())) {
             it->getContainer()->setContentSize(750, 1000);
 
@@ -120,7 +120,6 @@ void TileSet::initTileNodes(const std::shared_ptr<cugl::AssetManager>& assets){
             it->getContainer()->addChild(faceSpriteNode);
             
             it->getContainer()->setVisible(false);
-            
         }
     }
 }
@@ -171,6 +170,9 @@ void TileSet::setAllTileTexture(const std::shared_ptr<cugl::AssetManager>& asset
     }
     for(const auto& it : deck){
         it->setTexture(assets->get<Texture>(it->toString()));
+        if(it->getSuit() == TileSet::Tile::Suit::CELESTIAL) {
+            it->setInfoTexture(assets->get<Texture>(it->toString() + " info"));
+        }
     }
 }
 

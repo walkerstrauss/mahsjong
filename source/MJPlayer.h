@@ -269,10 +269,17 @@ public:
     
     
     std::shared_ptr<TileSet::Tile> getDraggingTile() const { return _draggingTile; }
+    
     /**
      * Renders the current tiles in hand
      */
     void draw(const std::shared_ptr<cugl::graphics::SpriteBatch>& batch);
+    
+    /**
+     * Renders the current info texture for this celestial tile
+     */
+    void drawInfo(const std::shared_ptr<TileSet::Tile> tile, const std::shared_ptr<cugl::graphics::SpriteBatch>& batch, Size screenSize);
+
 };
 
 #endif /* __MJ_Player_H__ */

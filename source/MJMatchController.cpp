@@ -63,6 +63,7 @@ void MatchController::initHost() {
     _tileSet->initHostDeck();
     _tileSet->addCelestialTiles(_assets);
     _tileSet->setAllTileTexture(_assets);
+    _tileSet->initTileNodes(_assets);
     _tileSet->shuffle();
     
     //Initializing host and client players
@@ -85,6 +86,7 @@ void MatchController::initClient() {
     //Initialzing the client deck
     _tileSet->initClientDeck(_network->getClientStart());
     _tileSet->setAllTileTexture(_assets);
+    _tileSet->initTileNodes(_assets);
     _tileSet->updateDeck(_network->getClientStart());
     
     // Assigning client and host hands

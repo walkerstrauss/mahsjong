@@ -77,6 +77,8 @@ protected:
     std::shared_ptr<DiscardUINode> _discardUINode;
     /** Reference to the pile UI node for the game */
     std::shared_ptr<cugl::scene2::SceneNode> _pileUINode;
+    /** Reference to the pile node */
+    std::shared_ptr<cugl::scene2::SceneNode> _pileNode;
     /** TileSet for the game */
     std::shared_ptr<TileSet> _tileSet;
     /** Reference to player */
@@ -87,6 +89,8 @@ protected:
     std::shared_ptr<DiscardPile> _discardPile;
     /** Temporary discard area b/c no asset created for it yet */
     cugl::Rect discardArea;
+    cugl::Rect _pileBox; 
+    /** Rect for pile */
     /** Pointer to the hand */
     Hand* _hand;
    
@@ -166,9 +170,6 @@ protected:
     
     /** The tile currently being dragged */
     cugl::Vec2 _dragOffset;
-    
-    /** The rectangle representing the pile's position used for selection handling */
-    cugl::Rect _pileBox;
     
     /** The rectangle representing the discrad pile's position*/
     cugl::Rect _discardBox;

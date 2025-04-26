@@ -454,17 +454,67 @@ void Player::draw(const std::shared_ptr<cugl::graphics::SpriteBatch>& batch) {
         if(tile->selected){
             pos.y += 10;
         }
-        Affine2 trans;
-        trans.scale(tile->_scale);
-        trans.translate(pos);
         
-        Size textureSize(750.0, 1000.0);
-        Vec2 rectOrigin(tile->pos - (textureSize * tile->_scale)/2);
+        Size textureSize(tile->getBackTextureNode()->getTexture()->getSize());
+        Vec2 rectOrigin(pos - (textureSize * tile->_scale)/2);
         tile->tileRect = cugl::Rect(rectOrigin, textureSize * tile->_scale);
-
-        batch->draw(tile->getTileTexture(), origin, trans);
-        
+       
+        tile->getContainer()->setAnchor(Vec2::ANCHOR_CENTER);
+        tile->getContainer()->setScale(tile->_scale);
+        tile->getContainer()->setPosition(pos);
+        tile->getContainer()->setVisible(true);
+        tile->getContainer()->render(batch, Affine2::IDENTITY, Color4::WHITE);
     }
+}
+
+void Player::drawInfo(const std::shared_ptr<TileSet::Tile> tile, const std::shared_ptr<cugl::graphics::SpriteBatch>& batch, Size screenSize) {
+    std::shared_ptr<Texture> infoTexture = tile->getInfoTexture();
+    Vec2 origin(infoTexture->getSize().width/2.0f, infoTexture->getSize().height/2.0f);
+    
+    Size textureSize = infoTexture->getSize() * 0.5f;
+    float textureWidth = textureSize.getIWidth() * 0.5f;
+    float textureHeight = textureSize.getIHeight() * 0.5f;
+    
+    float tileHeight = tile->getBackTextureNode()->getSize().height * tile->_scale;
+    float tileWidth = tile->getBackTextureNode()->getSize().width * tile->_scale;
+    
+    float totalHeight = tile->pos.y + tileHeight * 0.5f + textureHeight + 2.0f;
+    float totalMinWidth = tile->pos.x - textureWidth * 0.5f + 2.0f;
+    float totalMaxWidth = tile->pos.x + textureWidth * 0.5f + 2.0f;
+
+    float x;
+    float y;
+    
+    if(totalHeight > screenSize.getIHeight()) {
+        y = tile->pos.y;
+        if(totalMinWidth < 0) {
+            x = tile->pos.x + tileWidth * 0.5f + textureWidth + 2.0f;
+        }
+        else {
+            x = tile->pos.x - tileWidth * 0.5f - textureWidth - 2.0f;
+        }
+    }
+    else{
+        if(totalMinWidth < 0) {
+            x = tile->pos.x + tileWidth * 0.5f + textureWidth + 2.0f;
+            y = tile->pos.y;
+        }
+        else if (totalMaxWidth > screenSize.width){
+            x = tile->pos.x - tileWidth * 0.5f - textureWidth - 2.0f;
+            y = tile->pos.y;
+        }
+        else {
+            x = tile->pos.x;
+            y = tile->pos.y + tileHeight * 0.5f + textureHeight + 2.0f;
+        }
+    }
+    
+    Affine2 trans;
+    Vec2 pos(x, y);
+    trans.scale(0.5f);
+    trans.translate(pos);
+    
+    batch->draw(infoTexture, origin, trans);
 }
 
 std::shared_ptr<TileSet::Tile> Hand::getTileAtPosition(const cugl::Vec2& mousePos) {

@@ -56,7 +56,6 @@ void OurLoadingScene::resizeScene() {
     
     if (_before) {
         cugl::Vec2 pos = _before->getPosition();
-        CULog("before: x%f, y%f",pos.x, pos.y);
         //_before->setPosition(cugl::Vec2(offset, pos.y));
     }
     if (_after) {
@@ -69,20 +68,17 @@ void OurLoadingScene::resizeScene() {
         
        cugl::Vec2 pos = _after->getPosition();
         _after->setPosition(offset, _after->getPosition().y);
-        CULog("after: x%f, y%f",pos.x, pos.y);
         //_after->setPosition(cugl::Vec2(offset, pos.y));
     }
     
     if (_bar) {
         cugl::Vec2 pos = _bar->getPosition();
-        CULog("bar: x%f, y%f",pos.x, pos.y);
     }
     
     //auto button = _landingScene->getChildByName("load.play");
     
     if (_button) {
         cugl::Vec2 pos = _button->getPosition();
-        CULog("button: x%f, y%f",pos.x, pos.y);
         //_button->setPosition(cugl::Vec2(pos.x + offset, pos.y));
     }
     

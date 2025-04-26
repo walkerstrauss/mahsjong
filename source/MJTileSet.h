@@ -27,10 +27,11 @@ public:
         std::shared_ptr<cugl::scene2::PolygonNode> _backTextureNode;
         /** This tile's face sprite node*/
         std::shared_ptr<AnimatedNode> _faceSpriteNode;
-
         /** This tile's texture */
         std::shared_ptr<cugl::graphics::Texture> _texture;
-        
+        /** This tile's info texture (only for celestial) */
+        std::shared_ptr<cugl::graphics::Texture> _infoTexture;
+
     public:
         virtual ~Tile() = default;
         
@@ -157,6 +158,10 @@ public:
          */
         std::shared_ptr<cugl::scene2::SceneNode>& getContainer() {
             return _container;
+        }
+        
+        std::shared_ptr<graphics::Texture> getInfoTexture() {
+            return _infoTexture; 
         }
         
         /**
@@ -457,6 +462,15 @@ public:
          */
         void setFrontSpriteNode(const std::shared_ptr<AnimatedNode> animatedNode) {
             _faceSpriteNode = animatedNode;
+        }
+        
+        /**
+         * Sets the info texture for this tile
+         *
+         * @param texture      the info texture 
+         */
+        void setInfoTexture(const std::shared_ptr<graphics::Texture>& texture) {
+            _infoTexture = texture; 
         }
     };
     

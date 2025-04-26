@@ -171,8 +171,26 @@
         "nine of crak": {
             "file": "textures/tilesHand/nine_of_crak.png"
         },
-        "rooster of celestial": {
-            "file": "textures/celestialHand/rooster_hand.png"
+        "rooster of celestial new": {
+            "file": "textures/newTiles/rooster.png"
+        },
+        "ox of celestial new": {
+            "file": "textures/newTiles/ox.png"
+        },
+        "rabbit of celestial new": {
+            "file": "textures/newTiles/rabbit.png"
+        },
+        "snake of celestial new": {
+            "file": "textures/newTiles/snake.png"
+        },
+        "monkey of celestial new": {
+            "file": "textures/newTiles/monkey.png"
+        },
+        "rat of celestial new": {
+          "file": "textures/newTiles/rat.png"
+        },
+        "rooster of celestial new": {
+            "file": "textures/newTiles/rooster.png"
         },
         "ox of celestial": {
             "file": "textures/celestialHand/ox_hand.png"
@@ -183,11 +201,32 @@
         "snake of celestial": {
             "file": "textures/celestialHand/snake_hand.png"
         },
+        "rooster of celestial": {
+            "file": "textures/celestialHand/rooster_hand.png"
+        },
         "monkey of celestial": {
             "file": "textures/celestialHand/monkey_hand.png"
         },
         "rat of celestial": {
           "file": "textures/celestialHand/rat_hand.png"
+        },
+        "ox of celestial info": {
+            "file": "textures/hover/ox.png"
+        },
+        "rabbit of celestial info": {
+            "file": "textures/hover/rabbit.png"
+        },
+        "snake of celestial info": {
+            "file": "textures/hover/snake.png"
+        },
+        "rooster of celestial info": {
+            "file": "textures/hover/chicken.png"
+        },
+        "monkey of celestial info": {
+            "file": "textures/hover/monkey.png"
+        },
+        "rat of celestial info": {
+          "file": "textures/hover/rat.png"
         },
         "background": {
             "file": "textures/landing/background.png"
