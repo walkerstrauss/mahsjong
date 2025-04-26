@@ -711,7 +711,8 @@ void GameScene::updateDrag(const cugl::Vec2& mousePos, bool mouseDown, bool mous
     else if (isDragging && !_dragFromDiscard) {
         if(hand_length == 14 && !_playSetBtn->isVisible() && _dragStartPos != mousePos && _draggingTile->getSuit()!=TileSet::Tile::Suit::CELESTIAL){
             _dragToDiscardNode->setVisible(true);
-        } else if (_draggingTile->getSuit()==TileSet::Tile::Suit::CELESTIAL && _dragStartPos != mousePos && !_playSetBtn->isVisible()){
+        } else if (_draggingTile->getSuit()==TileSet::Tile::Suit::CELESTIAL && _dragStartPos != mousePos && !_playSetBtn->isVisible()
+                   && _matchController->getChoice() == MatchController::Choice::NONE){
             _playArea->setVisible(true);
         }
         _dragToHandNode->setVisible(false);
