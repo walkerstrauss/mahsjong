@@ -80,8 +80,10 @@ public:
         RAT,
         /** Ox played */
         OX,
-        /** Rabbit played*/
+        /** Rabbit played */
         RABBIT,
+        /** Dragon played */
+        DRAGON,
         /** Snake played */
         SNAKE,
         /** Monkey played */

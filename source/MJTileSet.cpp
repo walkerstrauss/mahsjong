@@ -112,7 +112,7 @@ void TileSet::addCelestialTiles(const std::shared_ptr<cugl::AssetManager>& asset
         std::shared_ptr<Tile> dragon = std::make_shared<Tile>(Tile::Rank::DRAGON, Tile::Suit::CELESTIAL);
         dragon->_id = tileCount++;;
         deck.push_back(dragon);
-        tileMap[std::to_string(rat->_id)] = dragon;
+        tileMap[std::to_string(dragon->_id)] = dragon;
     }
 }
 

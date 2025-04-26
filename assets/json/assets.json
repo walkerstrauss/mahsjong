@@ -441,6 +441,9 @@
         "rearrange2": {
             "file": "textures/pileui/rearrange2.png"
         },
+        "finish": {
+            "file": "textures/pileui/finish-button.png"
+        },
         "settingBoard": {
             "file": "textures/setting/settingBoard.png"
         },

@@ -183,6 +183,8 @@ protected:
     cugl::Rect _playerHandRegion; 
 
     std::shared_ptr<TileSet::Tile> _draggingTile = nullptr;
+    int _dragonRow = -1;
+    
     cugl::Vec2 _dragStartPos;
     bool _dragInitiated = false;
     const float DRAG_THRESHOLD = 0.0f;
@@ -449,6 +451,25 @@ public:
         }
         
     }
+    
+    std::shared_ptr<TileSet::Tile> getTileAtPosition(const cugl::Vec2& mousePos, std::vector<std::shared_ptr<TileSet::Tile>> tiles) {
+        for (const auto& tile : tiles) {
+            if (tile && tile->tileRect.contains(mousePos)) {
+                return tile;
+            }
+        }
+        return nullptr;
+    }
+    
+    int getIndexAtPosition(const Vec2& mousePos, const std::vector<std::shared_ptr<TileSet::Tile>>& tiles) {
+        for (int i = 0; i < (int)tiles.size(); ++i) {
+            if (tiles[i] && tiles[i]->tileRect.contains(mousePos)) {
+                return i;
+            }
+        }
+        return -1;
+    }
+
 };
 
 #endif /* __MJ_GAME_SCENE_H__ */

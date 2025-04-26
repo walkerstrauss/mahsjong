@@ -9,6 +9,9 @@
 #define __MJ_PILE_UI_NODE_H__
 
 #include <cugl/cugl.h>
+#include "MJTileSet.h"
+#include "MJPlayer.h"
+
 
 using namespace cugl;
 using namespace cugl::scene2;
@@ -28,7 +31,9 @@ public:
         /** Prompting player to rearrange row */
         DRAGONREARRANGE,
         /** Prompting player to select any tile from pile */
-        RATSELECT
+        RATSELECT,
+        /** Player finished rearranging, remove UI*/
+        FINISH
     };
     
 protected:
@@ -38,11 +43,17 @@ protected:
     State _state;
     
 public:
+    /** Input controller */
+    InputController input;
+    
     /** The root scene node */
     std::shared_ptr<SceneNode> _root;
     std::shared_ptr<scene2::SceneNode> _select;
     std::shared_ptr<scene2::SceneNode> _rearrange1;
     std::shared_ptr<scene2::SceneNode> _rearrange2;
+    std::shared_ptr<cugl::scene2::Button> _finish;
+    Uint32 _finishKey;
+    
     
 #pragma mark -
 #pragma mark Constructors
@@ -83,9 +94,9 @@ public:
     void setState(State state) {
         _state = state;
         _root->setVisible(_state != NONE);
-
         _rearrange1->setVisible(state == DRAGONROW);
         _rearrange2->setVisible(state == DRAGONREARRANGE);
+        _finish->setVisible(state == DRAGONREARRANGE);
         _select->setVisible(state == RATSELECT);
 
     }

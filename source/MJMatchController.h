@@ -187,9 +187,9 @@ public:
     void playRat(std::shared_ptr<TileSet::Tile>& selectedTile);
     
     /**
-     * Executes the Rat celestial tile effect (draw any tile from pile) given the selected tile by the player. It will remove the tile from the pile and add it to player's hand.
+     * Executes the Dragon celestial tile effect (rearrange a pile row) .
      */
-    void playDragon(std::shared_ptr<TileSet::Tile>& selectedTile);
+    void playDragon();
     
     /** Applies the effect of the celestial tile played by opponent by using the celestial state of the network. */
     void celestialEffect();
