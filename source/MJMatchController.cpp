@@ -886,11 +886,12 @@ void MatchController::update(float timestep) {
             const std::string key = rank + " of " + suit + " " + id;
             
             for(auto it = opposingPlayer->getHand()._tiles.begin(); it != opposingPlayer->getHand()._tiles.end();) {
+                std::string asString = (*it)->toString() + std::to_string((*it)->getId());
                 if((*it)->toString() == discardTile->toString()) {
                     tiles.push_back(*it);
                     break;
                 }
-                if((*it)->toString() == key) {
+                if(asString == key) {
                     tiles.push_back(*it);
                     opposingPlayer->getHand()._tiles.erase(it);
                     break;
