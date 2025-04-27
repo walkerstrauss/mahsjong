@@ -514,15 +514,11 @@ void GameScene::render() {
     _batch->draw(temp, Color4(0,0,0,255), Rect(Vec2::ZERO, cugl::Application().get()->getDisplaySize()));
         
     _matchScene->render(_batch);
-    _discardPile->draw(_batch);
+    _discardPile->draw(_batch, _draggingTile);
     
     _pileUINode->_root->render(_batch);
     _pile->draw(_batch);
     _player->draw(_batch);
-
-    if(_dragInitiated && _draggingTile) {
-        _discardPile->draw(_batch);
-    }
 //    for (auto key : playerGuideKeys){
 //        auto node = playerGuideNodeMap[key];
 //        if (node->isVisible()){
@@ -674,7 +670,6 @@ void GameScene::updateDrag(const cugl::Vec2& mousePos, bool mouseDown, bool mous
                     _dragFromDiscard = true;
                     _discardedTileImage->setVisible(false);
                     _draggingTile = _discardPile->getTopTile();
-                    _draggingTile->_scale = 0.135;
                     _draggingTile->pos = mousePos;
                 }
             }
@@ -753,18 +748,13 @@ void GameScene::updateDrag(const cugl::Vec2& mousePos, bool mouseDown, bool mous
                     if(_matchController->drawDiscard()) {
                         _playSetBtn->activate();
                         _playSetBtn->setVisible(true);
-                        _draggingTile->_scale = 0.15;
                     }
                     else {
                         _discardedTileImage->setVisible(true);
-                        _draggingTile->_scale = 0;
-                        _draggingTile->pos = Vec2(0,0);
                     }
                 }
                 else if (_matchController->getChoice() != MatchController::DRAWNDISCARD){
                     _discardedTileImage->setVisible(true);
-                    _draggingTile->_scale = 0;
-                    _draggingTile->pos = Vec2(0,0);
                 }
             }
             else if (distance > DRAG_THRESHOLD) {

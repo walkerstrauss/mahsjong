@@ -10,6 +10,7 @@
 #include <sstream>
 #include "MJMatchController.h"
 #include "MJAudioController.h"
+#include "MJAnimationController.h"
 
 using namespace cugl;
 using namespace cugl::graphics;
@@ -306,6 +307,8 @@ bool MatchController::playSet() {
         std::shared_ptr<JsonValue> emptyJson = _tileSet->toJson(_tileSet->tilesToJson);
         _network->broadcastPlaySet(_network->getLocalPid(), false, emptyJson);
         
+        
+        hasDrawn = false;
         // Reset match controller choice
         _choice = NONE;
         return false;
@@ -484,7 +487,6 @@ void MatchController::playRabbit(std::shared_ptr<TileSet::Tile>& celestialTile){
             // Clear tilesToJson vector
             _tileSet->clearTilesToJson();
             break;
-
         }
     }
     
@@ -509,7 +511,6 @@ void MatchController::playRabbit(std::shared_ptr<TileSet::Tile>& celestialTile){
 /**
  * Executes the Snake celestial tile effect  (change suit of random tile) in current game scene. It then broadcasts the change
  * to opposing player.
- *
  */
 void MatchController::playSnake(std::shared_ptr<TileSet::Tile>& celestialTile){
     auto& opponent = _network->getHostStatus()
@@ -702,9 +703,7 @@ void MatchController::celestialEffect(){
         
         // Reset network status
         _network->setStatus(NetworkController::INGAME);
-    } else if (_network->getCelestialUpdateType() == NetworkController::OX // these alter your hand, so must update textures
-               || _network->getCelestialUpdateType() == NetworkController::RABBIT
-               || _network->getCelestialUpdateType() == NetworkController::SNAKE) {
+    } else if (_network->getCelestialUpdateType() == NetworkController::OX) { // these alter your hand, so must update textures
         _tileSet->updateDeck(_network->getTileMapJson());
         
         // Update the tile textures in hand to have debuffed tiles be facedown (for now)
@@ -713,7 +712,18 @@ void MatchController::celestialEffect(){
                             : clientPlayer->getHand();
         
         hand.updateHandTextures(_assets);
-    } else if (_network->getCelestialUpdateType() == NetworkController::MONKEY) {
+    } else if (_network->getCelestialUpdateType() == NetworkController::RABBIT ||
+               _network->getCelestialUpdateType() == NetworkController::SNAKE) {
+        
+        std::vector<std::shared_ptr<TileSet::Tile>> tilesToAnimate = _tileSet->processTileJson(_network->getTileMapJson());
+        
+        for(auto& it : tilesToAnimate) {
+            std::shared_ptr<TileSet::Tile> tile = _tileSet->tileMap[std::to_string(it->_id)];
+            std::shared_ptr<graphics::Texture> fromTexture = _assets->get<graphics::Texture>(tile->toString() + " sheet");
+            std::shared_ptr<graphics::Texture> toTexture = _assets->get<graphics::Texture>(it->toString() + " sheet");
+            AnimationController::getInstance().animateTileMorph(tile, fromTexture, toTexture, 16);
+        }
+    }else if (_network->getCelestialUpdateType() == NetworkController::MONKEY) {
         _tileSet->updateDeck(_network->getTileMapJson());
         std::vector<std::shared_ptr<TileSet::Tile>> changedTiles = _tileSet->processTileJson(_network->getTileMapJson());
         for (auto& change : changedTiles) {
@@ -815,17 +825,17 @@ void MatchController::update(float timestep) {
     //Discard pile update
     if(_network->getStatus() == NetworkController::DISCARDUPDATE) {
         // Fetching discarded tile
-        std::shared_ptr<TileSet::Tile> tile = _tileSet->processTileJson(_network->getDiscardTile())[0];
-        std::string key = std::to_string(tile->_id);
+        std::shared_ptr<TileSet::Tile> tempTile = _tileSet->processTileJson(_network->getDiscardTile())[0];
+        std::string key = std::to_string(tempTile->_id);
         
         // Actual reference to tile from tileMap
-        tile = _tileSet->tileMap[key];
-        tile->inHostHand = false;
-        tile->inClientHand = false;
-        tile->discarded = true;
+        std::shared_ptr<TileSet::Tile> tile = _tileSet->tileMap[key];
+        tile->inHostHand = tempTile->inHostHand;
+        tile->inClientHand = tempTile->inClientHand;
+        tile->discarded = tempTile->discarded;
+        tile->_scale = tempTile->_scale;
+        tile->pos = tempTile->pos;
         
-        tile->_scale = 0;
-        tile->pos = Vec2::ZERO;
         
         //If host
         if(_network->getLocalPid() == 0) {clientPlayer->getHand().discard(tile, true);}
