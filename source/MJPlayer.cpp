@@ -470,7 +470,7 @@ void Player::draw(const std::shared_ptr<cugl::graphics::SpriteBatch>& batch) {
         tile->getContainer()->setAnchor(Vec2::ANCHOR_CENTER);
         tile->getContainer()->setScale(tile->_scale);
         tile->getContainer()->setPosition(pos);
-        tile->getContainer()->setVisible(true);
+        tile->getContainer()->setVisible(tile != _draggingTile);
         tile->getContainer()->render(batch, Affine2::IDENTITY, Color4::WHITE);
     }
 }
