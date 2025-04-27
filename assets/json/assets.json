@@ -9,110 +9,215 @@
         "blank normal hand": {
             "file": "textures/newTiles/blank_normal_hand.png"
         },
-        "one of dot": {
+        "one of dot new": {
             "file": "textures/newTiles/one_of_dot_new.png"
         },
-        "one of bamboo": {
+        "one of bamboo new": {
             "file": "textures/newTiles/one_of_bamboo_new.png"
         },
-        "one of crak": {
+        "one of crak new": {
             "file": "textures/newTiles/one_of_crak_new.png"
         },
-        "two of dot": {
+        "two of dot new": {
             "file": "textures/newTiles/two_of_dot_new.png"
         },
-        "two of bamboo": {
+        "two of bamboo new": {
             "file": "textures/newTiles/two_of_bamboo_new.png"
         },
-        "two of crak": {
+        "two of crak new": {
             "file": "textures/newTiles/two_of_crak_new.png"
         },
-        "three of dot": {
+        "three of dot new": {
             "file": "textures/newTiles/three_of_dot_new.png"
         },
-        "three of bamboo": {
+        "three of bamboo new": {
             "file": "textures/newTiles/three_of_bamboo_new.png"
         },
-        "three of crak": {
+        "three of crak new": {
             "file": "textures/newTiles/three_of_crak_new.png"
         },
-        "four of dot": {
+        "four of dot new": {
             "file": "textures/newTiles/four_of_dot_new.png"
         },
-        "four of bamboo": {
+        "four of bamboo new": {
             "file": "textures/newTiles/four_of_bamboo_new.png"
         },
-        "four of crak": {
+        "four of crak new": {
             "file": "textures/newTiles/four_of_crak_new.png"
         },
-        "five of dot": {
+        "five of dot new": {
             "file": "textures/newTiles/five_of_dot_new.png"
         },
-        "five of bamboo": {
+        "five of bamboo new": {
             "file": "textures/newTiles/five_of_bamboo_new.png"
         },
-        "five of crak": {
+        "five of crak new": {
             "file": "textures/newTiles/five_of_crak_new.png"
         },
-        "six of dot": {
+        "six of dot new": {
             "file": "textures/newTiles/six_of_dot_new.png"
         },
-        "six of bamboo": {
+        "six of bamboo new": {
             "file": "textures/newTiles/six_of_bamboo_new.png"
         },
-        "six of crak": {
+        "six of crak new": {
             "file": "textures/newTiles/six_of_crak_new.png"
         },
-        "seven of dot": {
+        "seven of dot new": {
             "file": "textures/newTiles/seven_of_dot_new.png"
         },
-        "seven of bamboo": {
+        "seven of bamboo new": {
             "file": "textures/newTiles/seven_of_bamboo_new.png"
         },
-        "seven of crak": {
+        "seven of crak new": {
             "file": "textures/newTiles/seven_of_crak_new.png"
         },
-        "eight of dot": {
+        "eight of dot new": {
             "file": "textures/newTiles/eight_of_dot_new.png"
         },
-        "eight of bamboo": {
+        "eight of bamboo new": {
             "file": "textures/newTiles/eight_of_bamboo_new.png"
         },
-        "eight of crak": {
+        "eight of crak new": {
             "file": "textures/newTiles/eight_of_crak_new.png"
         },
-        "nine of dot": {
+        "nine of dot new": {
             "file": "textures/newTiles/nine_of_dot_new.png"
         },
-        "nine of bamboo": {
+        "nine of bamboo new": {
             "file": "textures/newTiles/nine_of_bamboo_new.png"
         },
-        "nine of crak": {
+        "nine of crak new": {
             "file": "textures/newTiles/nine_of_crak_new.png"
         },
-        "rooster of celestial": {
+        "one of dot": {
+            "file": "textures/tilesHand/one_of_dot.png"
+        },
+        "one of bamboo": {
+            "file": "textures/tilesHand/one_of_bamboo.png"
+        },
+        "one of crak": {
+            "file": "textures/tilesHand/one_of_crak.png"
+        },
+        "two of dot": {
+            "file": "textures/tilesHand/two_of_dot.png"
+        },
+        "two of bamboo": {
+            "file": "textures/tilesHand/two_of_bamboo.png"
+        },
+        "two of crak": {
+            "file": "textures/tilesHand/two_of_crak.png"
+        },
+        "three of dot": {
+            "file": "textures/tilesHand/three_of_dot.png"
+        },
+        "three of bamboo": {
+            "file": "textures/tilesHand/three_of_bamboo.png"
+        },
+        "three of crak": {
+            "file": "textures/tilesHand/three_of_crak.png"
+        },
+        "four of dot": {
+            "file": "textures/tilesHand/four_of_dot.png"
+        },
+        "four of bamboo": {
+            "file": "textures/tilesHand/four_of_bamboo.png"
+        },
+        "four of crak": {
+            "file": "textures/tilesHand/four_of_crak.png"
+        },
+        "five of dot": {
+            "file": "textures/tilesHand/five_of_dot.png"
+        },
+        "five of bamboo": {
+            "file": "textures/tilesHand/five_of_bamboo.png"
+        },
+        "five of crak": {
+            "file": "textures/tilesHand/five_of_crak.png"
+        },
+        "six of dot": {
+            "file": "textures/tilesHand/six_of_dot.png"
+        },
+        "six of bamboo": {
+            "file": "textures/tilesHand/six_of_bamboo.png"
+        },
+        "six of crak": {
+            "file": "textures/tilesHand/six_of_crak.png"
+        },
+        "seven of dot": {
+            "file": "textures/tilesHand/seven_of_dot.png"
+        },
+        "seven of bamboo": {
+            "file": "textures/tilesHand/seven_of_bamboo.png"
+        },
+        "seven of crak": {
+            "file": "textures/tilesHand/seven_of_crak.png"
+        },
+        "eight of dot": {
+            "file": "textures/tilesHand/eight_of_dot.png"
+        },
+        "eight of bamboo": {
+            "file": "textures/tilesHand/eight_of_bamboo.png"
+        },
+        "eight of crak": {
+            "file": "textures/tilesHand/eight_of_crak.png"
+        },
+        "nine of dot": {
+            "file": "textures/tilesHand/nine_of_dot.png"
+        },
+        "nine of bamboo": {
+            "file": "textures/tilesHand/nine_of_bamboo.png"
+        },
+        "nine of crak": {
+            "file": "textures/tilesHand/nine_of_crak.png"
+        },
+        "rooster of celestial new": {
             "file": "textures/newTiles/rooster.png"
         },
-        "ox of celestial": {
+        "ox of celestial new": {
             "file": "textures/newTiles/ox.png"
         },
-        "rabbit of celestial": {
+        "rabbit of celestial new": {
             "file": "textures/newTiles/rabbit.png"
         },
-        "snake of celestial": {
+        "snake of celestial new": {
             "file": "textures/newTiles/snake.png"
         },
-        "monkey of celestial": {
+        "monkey of celestial new": {
             "file": "textures/newTiles/monkey.png"
         },
-        "rat of celestial": {
+        "rat of celestial new": {
           "file": "textures/newTiles/rat.png"
         },
-        "rooster of celestial": {
+        "rooster of celestial new": {
             "file": "textures/newTiles/rooster.png"
         },
-        "dragon of celestial": {
+        "dragon of celestial new": {
             "file": "textures/newTiles/dragon.png"
+        },
+        "ox of celestial": {
+            "file": "textures/celestialHand/ox_hand.png"
+        },
+        "rabbit of celestial": {
+            "file": "textures/celestialHand/rabbit_hand.png"
+        },
+        "snake of celestial": {
+            "file": "textures/celestialHand/snake_hand.png"
+        },
+        "rooster of celestial": {
+            "file": "textures/celestialHand/rooster_hand.png"
+        },
+        "monkey of celestial": {
+            "file": "textures/celestialHand/monkey_hand.png"
+        },
+        "rat of celestial": {
+          "file": "textures/celestialHand/rat_hand.png"
+        },
+        "dragon of celestial": {
+          "file": "textures/celestialHand/dragon_hand.png"
+        },
+        "pig of celestial": {
+          "file": "textures/celestialHand/pig_hand.png"
         },
         "ox of celestial info": {
             "file": "textures/hover/ox.png"

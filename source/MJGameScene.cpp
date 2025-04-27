@@ -395,7 +395,7 @@ void GameScene::update(float timestep) {
     
     // Updating player guide nodes
     updatePlayerGuide();
-        
+    
     // Updating discardUINode if matchController has a discard update
     if(_matchController->getChoice() == MatchController::Choice::DISCARDUIUPDATE) {
         _discardUINode->incrementLabel(_discardPile->getTopTile());
@@ -471,45 +471,33 @@ void GameScene::update(float timestep) {
     if(!isActive()) {
         return;
     }
-        
+    
     // If it is your turn, allow turn-based actions
     if(_network->getCurrentTurn() == _network->getLocalPid()) {
         // If in drawn discard state, disallow any other action other then playing a set
         // Coords of initial click and ending release
         cugl::Vec2 initialMousePos = cugl::Scene::screenToWorldCoords(cugl::Vec3(_input->getInitialPosition()));
-
+        
         bool releasedInPile = _input->didRelease() && _pileBox.contains(mousePos);
         // Drawing (from pile) logic
-
+        
         if(_pileBox.contains(initialMousePos) && releasedInPile &&  _matchController->getChoice() != MatchController::Choice::RATTILE) {
-//            if(_pileBox.contains(initialMousePos) && releasedInPile) {
-                if (_matchController->hasDrawn){
-                    if (_matchController->hasPlayedCelestial){
-                        //                        showPlayerGuide("discard-to-end");
-                    } else {
-                        //                        showPlayerGuide("discard-or-play-to-end");
-                    }
+            //            if(_pileBox.contains(initialMousePos) && releasedInPile) {
+            if (_matchController->hasDrawn){
+                if (_matchController->hasPlayedCelestial){
+                    //                        showPlayerGuide("discard-to-end");
+                } else {
+                    //                        showPlayerGuide("discard-or-play-to-end");
                 }
-                _remainingTiles--;
-                _remainingLabel->setText(std::to_string(_remainingTiles));
-                AudioController::getInstance().playSound("confirm", false);
-                _matchController->drawTile();
             }
-        
-        
-        //Drawing (from discard) logic
-        bool releasedInDiscard = _input->didRelease() && _discardBox.contains(mousePos);
-        if(_discardBox.contains(initialMousePos) && releasedInDiscard) {
-            // If drawing from discard is successful activate play set button
-            if(_matchController->drawDiscard()) {
-                _discardedTileImage->setVisible(false);
-                _player->getHand().updateTilePositions(_playerHandRegion);
-                _playSetBtn->setVisible(true);
-                _playSetBtn->activate();
-            };
+            _remainingTiles--;
+            _remainingLabel->setText(std::to_string(_remainingTiles));
+            AudioController::getInstance().playSound("confirm", false);
+            _matchController->drawTile();
         }
+        
+        updateSpriteNodes(timestep);
     }
-    updateSpriteNodes(timestep);
 }
 
 /**

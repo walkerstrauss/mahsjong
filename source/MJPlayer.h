@@ -206,7 +206,7 @@ public:
                 tile->getFaceSpriteNode()->setVisible(false);
                 tile->getBackTextureNode()->setVisible(true);
             } else {
-                tile->setFaceTexture(assets->get<cugl::graphics::Texture>(tile->toString()));
+                tile->setFaceTexture(assets->get<cugl::graphics::Texture>(tile->toString() + " new"));
                 if(tile->_suit == TileSet::Tile::Suit::CELESTIAL) {
                     tile->setBackTexture(assets->get<cugl::graphics::Texture>("blank celestial hand"));
                 }
