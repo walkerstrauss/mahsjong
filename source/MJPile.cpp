@@ -89,6 +89,8 @@ bool Pile::createPile() {
         _pile.push_back(row); //add tile from deck to pile
     }
     
+    updateTilePositions();
+    
     // Erase tiles put into the pile from deck
     if(_tileSet->deck.size() <= 25){
         _tileSet->deck.clear();

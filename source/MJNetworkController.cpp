@@ -534,7 +534,3 @@ void NetworkController::broadcastEnd(int isHost) {
 /** ** END OF MATCHCONTROLLER BROADCASTS** */
 
                                                                                                  
-//
-//void NetworkController::notifyObservers(std::vector<std::string>& msg){
-//    observer.processData(msg);
-//}

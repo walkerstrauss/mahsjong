@@ -192,6 +192,9 @@
         "rooster of celestial new": {
             "file": "textures/newTiles/rooster.png"
         },
+        "dragon of celestial new": {
+            "file": "textures/newTiles/dragon.png"
+        },
         "ox of celestial": {
             "file": "textures/celestialHand/ox_hand.png"
         },
@@ -233,6 +236,9 @@
         },
         "rat of celestial info": {
           "file": "textures/hover/rat.png"
+        },
+        "dragon of celestial info": {
+          "file": "textures/hover/dragon.png"
         },
         "background": {
             "file": "textures/landing/background.png"

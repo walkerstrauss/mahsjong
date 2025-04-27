@@ -628,6 +628,7 @@ void MatchController::playRat(std::shared_ptr<TileSet::Tile>& selectedTile) {
     selectedTile->inClientHand = !_network->getHostStatus();
     selectedTile->inPile = false;
     selectedTile->selected = false;
+    selectedTile->_scale = 0.15;
     
 //    _tileSet->tilesToJson.push_back(selectedTile);
     // Clear tilesToJson vector
@@ -648,9 +649,6 @@ void MatchController::playRat(std::shared_ptr<TileSet::Tile>& selectedTile) {
     // Clear tilesToJson vector
     _tileSet->clearTilesToJson();
     
-    hasPlayedCelestial = true;
-    endTurn();
-    
     return;
 }
 
@@ -669,6 +667,9 @@ void MatchController::playDragon() {
     _network->broadcastCelestialTile(_network->getLocalPid(), _tileSet->toJson(_pile->flattenedPile()), celestialTileJson, "DRAGON");
     // Clear tilesToJson vector
     _tileSet->clearTilesToJson();
+    
+    hasPlayedCelestial = true;
+    endTurn();
     
     return;
 }
@@ -875,20 +876,22 @@ void MatchController::update(float timestep) {
         
         // Erasing tiles from opponent hand that were played (if tile is discard tile then break since it is not in their hand in
         // this opposing matchController model)
+        std::vector<std::shared_ptr<TileSet::Tile>> tiles;
+        
         for(auto const& tileKey : _network->getPlayedTiles()->children()) {
             std::string suit = tileKey->getString("suit");
             std::string rank = tileKey->getString("rank");
             std::string id = tileKey->getString("id");
             
             const std::string key = rank + " of " + suit + " " + id;
-            std::vector<std::shared_ptr<TileSet::Tile>> tiles;
             
             for(auto it = opposingPlayer->getHand()._tiles.begin(); it != opposingPlayer->getHand()._tiles.end();) {
+                std::string asString = (*it)->toString() + std::to_string((*it)->getId());
                 if((*it)->toString() == discardTile->toString()) {
                     tiles.push_back(*it);
                     break;
                 }
-                if((*it)->toString() == key) {
+                if(asString == key) {
                     tiles.push_back(*it);
                     opposingPlayer->getHand()._tiles.erase(it);
                     break;
@@ -901,6 +904,7 @@ void MatchController::update(float timestep) {
         
         // Update opposing player's max hand size
         opposingPlayer->getHand()._size -= 3;
+        currPlayer->getHand().opponentPlayedSets.push_back(tiles);
         
         // Reset network state
         _network->setStatus(NetworkController::INGAME);
