@@ -485,13 +485,14 @@ void GameScene::update(float timestep) {
             //            if(_pileBox.contains(initialMousePos) && releasedInPile) {
             if (_matchController->hasDrawn){
                 if (_matchController->hasPlayedCelestial){
-                    //                        showPlayerGuide("discard-to-end");
+                    // showPlayerGuide("discard-to-end");
                 } else {
-                    //                        showPlayerGuide("discard-or-play-to-end");
+                    // showPlayerGuide("discard-or-play-to-end");
                 }
+            } else {
+                _remainingTiles--;
+                _remainingLabel->setText(std::to_string(_remainingTiles));
             }
-            _remainingTiles--;
-            _remainingLabel->setText(std::to_string(_remainingTiles));
             AudioController::getInstance().playSound("confirm", false);
             _matchController->drawTile();
         }
