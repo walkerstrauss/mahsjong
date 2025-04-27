@@ -886,11 +886,11 @@ void MatchController::update(float timestep) {
             const std::string key = rank + " of " + suit + " " + id;
             
             for(auto it = opposingPlayer->getHand()._tiles.begin(); it != opposingPlayer->getHand()._tiles.end();) {
-                std::string asString = (*it)->toString() + std::to_string((*it)->getId());
+                std::string asString = (*it)->toString() + " " + std::to_string((*it)->getId());
                 if((*it)->toString() == discardTile->toString()) {
-                    tiles.push_back(*it);
                     break;
                 }
+
                 if(asString == key) {
                     tiles.push_back(*it);
                     opposingPlayer->getHand()._tiles.erase(it);
@@ -901,6 +901,9 @@ void MatchController::update(float timestep) {
                 }
             }
         }
+        
+        // For updating opponent sets
+        tiles.push_back(discardTile);
         
         // Update opposing player's max hand size
         opposingPlayer->getHand()._size -= 3;

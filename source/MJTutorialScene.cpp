@@ -32,6 +32,8 @@ bool TutorialScene::init(const std::shared_ptr<AssetManager>& assets, std::share
                 _presentation->setTexture(_assets->get<cugl::graphics::Texture>(_slides[_slide]));
                 _presentation->setContentSize(_tutorialScene->getContentSize());
                 _presentation->setPosition(_tutorialScene->getWidth() / 2, _tutorialScene->getHeight() / 2);
+            } else {
+                _choice = TutorialScene::BACK;
             }
         }
     });
