@@ -723,7 +723,7 @@ void MatchController::celestialEffect(){
             std::shared_ptr<graphics::Texture> fromTexture = _assets->get<graphics::Texture>(tile->toString() + " sheet");
             std::shared_ptr<graphics::Texture> toTexture = _assets->get<graphics::Texture>(it->toString() + " sheet");
             std::shared_ptr<graphics::Texture> idle = _assets->get<graphics::Texture>(it->toString() + " new");
-            AnimationController::getInstance().animateTileMorph(tile, fromTexture, toTexture, idle, 8);
+//            AnimationController::getInstance().animateTileMorph(tile, fromTexture, toTexture, idle, 8);
             }
         
         _tileSet->updateDeck(_network->getTileMapJson());
@@ -785,7 +785,7 @@ void MatchController::endTurn() {
  * @param timestep The amount of time (in seconds) since the last frame
  */
 void MatchController::update(float timestep) {
-    AnimationController::getInstance().update(timestep);
+//    AnimationController::getInstance().update(timestep);
     // If we receieve end game status, current player loses
     if(_network->getStatus() == NetworkController::ENDGAME) {
         _choice = LOSE;
