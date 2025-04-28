@@ -1485,6 +1485,114 @@
         "win": {
             "type": "sample",
             "file": "sounds/action/win/win.wav"
+        },
+        "ExitDiscard": {
+            "type": "sample",
+            "file": "sounds/ExitDiscard.wav"
+        },
+        "SelectDiscard": {
+            "type": "sample",
+            "file": "sounds/SelectDiscard.wav"
+
+        },
+        "PlayerJoined": {
+            "type": "sample",
+            "file": "sounds/PlayerJoined.wav"
+
+        },
+        "WrongAction": {
+            "type": "sample",
+            "file": "sounds/WrongAction.wav"
+
+        },
+        "OpponentTile": {
+            "type": "sample",
+            "file": "sounds/OpponentTile.wav"
+
+        },
+        "PlayedSet": {
+            "type": "sample",
+            "file": "sounds/PlayedSet.wav"
+
+        },
+        "Pig": {
+            "type": "sample",
+            "file": "sounds/Pig.wav"
+
+        },
+        "Rat": {
+            "type": "sample",
+            "file": "sounds/Rat.wav"
+
+        },
+        "Monkey": {
+            "type": "sample",
+            "file": "sounds/Monkey.wav"
+
+        },
+        "Dragon": {
+            "type": "sample",
+            "file": "sounds/Dragon.wav"
+
+        },
+        "Snake": {
+            "type": "sample",
+            "file": "sounds/Snake.wav"
+
+        },
+        "Rooster": {
+            "type": "sample",
+            "file": "sounds/Rooster.wav"
+
+        },
+        "Ox": {
+            "type": "sample",
+            "file": "sounds/Ox.wav"
+
+        },
+        "Rabbit": {
+            "type": "sample",
+            "file": "sounds/Rabbit.wav"
+
+        },
+        "Pile": {
+            "type": "sample",
+            "file": "sounds/Pile.wav"
+
+        },
+        "Confirm": {
+            "type": "sample",
+            "file": "sounds/Confirm.wav"
+
+        },
+        "Clear": {
+            "type": "sample",
+            "file": "sounds/Clear.wav"
+
+        },
+        "Click": {
+            "type": "sample",
+            "file": "sounds/Click.wav"
+
+        },
+        "Unclick": {
+            "type": "sample",
+            "file": "sounds/Unclick.wav"
+
+        },
+        "Exit": {
+            "type": "sample",
+            "file": "sounds/Exit.wav"
+
+        },
+        "Select": {
+            "type": "sample",
+            "file": "sounds/Select.wav"
+
+        },
+        "Done": {
+            "type": "sample",
+            "file": "sounds/Done.wav"
         }
 
     }
