@@ -719,7 +719,7 @@ void MatchController::celestialEffect(){
             std::shared_ptr<graphics::Texture> fromTexture = _assets->get<graphics::Texture>(tile->toString() + " sheet");
             std::shared_ptr<graphics::Texture> toTexture = _assets->get<graphics::Texture>(it->toString() + " sheet");
             std::shared_ptr<graphics::Texture> idle = _assets->get<graphics::Texture>(it->toString() + " new");
-//            AnimationController::getInstance().animateTileMorph(tile, fromTexture, toTexture, idle, 8);
+            AnimationController::getInstance().animateTileMorph(tile, fromTexture, toTexture, idle, 12.0f);
             }
         
         _tileSet->updateDeck(_network->getTileMapJson());
@@ -781,7 +781,7 @@ void MatchController::endTurn() {
  * @param timestep The amount of time (in seconds) since the last frame
  */
 void MatchController::update(float timestep) {
-//    AnimationController::getInstance().update(timestep);
+    AnimationController::getInstance().update(timestep);
     // If we receieve end game status, current player loses
     if(_network->getStatus() == NetworkController::ENDGAME) {
         _choice = LOSE;
@@ -826,6 +826,19 @@ void MatchController::update(float timestep) {
     //Discard pile update
     if(_network->getStatus() == NetworkController::DISCARDUPDATE) {
         // Fetching discarded tile
+//<<<<<<< morph-beta-3.0
+//         std::shared_ptr<TileSet::Tile> tempTile = _tileSet->processTileJson(_network->getDiscardTile())[0];
+//         std::string key = std::to_string(tempTile->_id);
+        
+//         // Actual reference to tile from tileMap
+//         std::shared_ptr<TileSet::Tile> tile = _tileSet->tileMap[key];
+//         tile->inHostHand = tempTile->inHostHand;
+//         tile->inClientHand = tempTile->inClientHand;
+//         tile->discarded = tempTile->discarded;
+//         tile->_scale = tempTile->_scale;
+//         tile->pos = tempTile->pos;
+        
+//=======
         std::shared_ptr<TileSet::Tile> tile = _tileSet->processTileJson(_network->getDiscardTile())[0];
         _tileSet->updateDeck(_network->getDiscardTile());
         std::string key = std::to_string(tile->_id);
@@ -834,6 +847,7 @@ void MatchController::update(float timestep) {
         tile = _tileSet->tileMap[key];
 //         std::shared_ptr<TileSet::Tile> tempTile = _tileSet->processTileJson(_network->getDiscardTile())[0];
 //         std::string key = std::to_string(tempTile->_id);
+//>>>>>>> morph
         
 //         // Actual reference to tile from tileMap
 //         std::shared_ptr<TileSet::Tile> tile = _tileSet->tileMap[key];
@@ -883,12 +897,53 @@ void MatchController::update(float timestep) {
         std::shared_ptr<Player> opposingPlayer = _network->getHostStatus() ? clientPlayer : hostPlayer;
         std::shared_ptr<Player> currPlayer = _network->getHostStatus() ? hostPlayer : clientPlayer;
         // Fetching the top tile
-//        std::shared_ptr<TileSet::Tile> discardTile = _discardPile->drawTopTile();
+// <<<<<<< merge_morph
+// //        std::shared_ptr<TileSet::Tile> discardTile = _discardPile->drawTopTile();
+// =======
+//         std::shared_ptr<TileSet::Tile> discardTile = _discardPile->drawTopTile();
+//         // Setting relevant fields
+//         discardTile->inHostHand = false;
+//         discardTile->inClientHand = false;
+//         discardTile->discarded = false;
         
-        _tileSet->updateDeck(_network->getPlayedTiles());
+//         // Erasing tiles from opponent hand that were played (if tile is discard tile then break since it is not in their hand in
+//         // this opposing matchController model)
+//         std::vector<std::shared_ptr<TileSet::Tile>> tiles;
+        
+//         for(auto const& tileKey : _network->getPlayedTiles()->children()) {
+//             std::string suit = tileKey->getString("suit");
+//             std::string rank = tileKey->getString("rank");
+//             std::string id = tileKey->getString("id");
+            
+//             const std::string key = rank + " of " + suit + " " + id;
+            
+//             for(auto it = opposingPlayer->getHand()._tiles.begin(); it != opposingPlayer->getHand()._tiles.end();) {
+//                 std::string asString = (*it)->toString() + " " + std::to_string((*it)->getId());
+//                 if((*it)->toString() == discardTile->toString()) {
+//                     break;
+//                 }
+                
+//                 // Logging for debug
+//                 CULog(asString.c_str());
+//                 CULog(key.c_str());
+                
+//                 if(asString == key) {
+//                     tiles.push_back(*it);
+//                     opposingPlayer->getHand()._tiles.erase(it);
+//                     break;
+//                 }
+//                 else {
+//                     it++;
+//                 }
+//             }
+// // =======
+// >>>>>>> morph
+        
+//         _tileSet->updateDeck(_network->getPlayedTiles());
 
-        std::vector<std::shared_ptr<TileSet::Tile>> tiles = _tileSet->processTileJson(_network->getPlayedTiles());
+//         std::vector<std::shared_ptr<TileSet::Tile>> tiles = _tileSet->processTileJson(_network->getPlayedTiles());
        
+
         for(auto const& tile : tiles) {
             std::string id = std::to_string(tile->_id);
             tile->setTexture(_assets->get<Texture>(tile->toString()));

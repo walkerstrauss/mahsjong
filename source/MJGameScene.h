@@ -203,7 +203,7 @@ protected:
     std::vector<std::string> playerGuideKeys;
     std::unordered_map<std::string, std::shared_ptr<SceneNode>> playerGuideNodeMap;
     int framesOnScreen = 0;
-    int maxFramesOnScreen = 150;
+    int maxFramesOnScreen = 180;
 public:
 #pragma mark -
 #pragma mark Constructors
@@ -466,7 +466,8 @@ public:
             "not-your-turn",
             "start-your-turn1",
             "start-your-turn2",
-            "drew-try-play"
+            "drew-try-play",
+            "drew-try-discard"
         };
         
         for (auto key : playerGuideKeys){
@@ -487,6 +488,12 @@ public:
     }
     
     void showPlayerGuide(std::string key){
+        for (auto key : playerGuideKeys){
+            auto node = playerGuideNodeMap[key];
+            if (node->isVisible()){
+                node->setVisible(false);
+            }
+        }
         auto node = playerGuideNodeMap[key];
         node->setVisible(true);
         framesOnScreen = 0;
