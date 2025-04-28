@@ -890,7 +890,11 @@ void MatchController::update(float timestep) {
                 if((*it)->toString() == discardTile->toString()) {
                     break;
                 }
-
+                
+                // Logging for debug
+                CULog(asString.c_str());
+                CULog(key.c_str());
+                
                 if(asString == key) {
                     tiles.push_back(*it);
                     opposingPlayer->getHand()._tiles.erase(it);
