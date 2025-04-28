@@ -481,7 +481,7 @@ void GameScene::update(float timestep) {
             if (_matchController->hasDrawn){
                 if (_matchController->hasPlayedCelestial){
                      showPlayerGuide("discard-to-end");
-                } else {
+                } else if (_matchController->getChoice() != MatchController::DRAGONTILE){
                      showPlayerGuide("discard-or-play-to-end");
                 }
             } else {
@@ -511,7 +511,7 @@ void GameScene::render() {
         
     _matchScene->render(_batch);
 
-    _discardPile->draw(_batch, _draggingTile);
+    _discardPile->draw(_batch);
     
     _pileUINode->_root->render(_batch);
     _pile->draw(_batch);
@@ -712,7 +712,7 @@ void GameScene::updateDrag(const cugl::Vec2& mousePos, bool mouseDown, bool mous
                     showPlayerGuide("drew-try-play");
                 } else {
                     if(_draggingTile->_suit == TileSet::Tile::Suit::CELESTIAL && !_draggingTile->debuffed) {
-                        if (!_matchController->playCelestial(_draggingTile)) {
+                        if (!_matchController->playCelestial(_draggingTile) && _matchController->getChoice() != MatchController::DRAGONTILE) {
                             showPlayerGuide("must-draw-play");
                         }
                   }
