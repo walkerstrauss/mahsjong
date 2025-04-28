@@ -378,6 +378,7 @@ void GameScene::update(float timestep) {
     
     // Updating set tabs
     displayPlayerSets();
+    displayOpponentSets();
     
     // Updating player guide nodes
     updatePlayerGuide();
@@ -406,7 +407,6 @@ void GameScene::update(float timestep) {
     
     // If matchController state is SUCCESS_SET, deactivate button
     if(_matchController->getChoice() == MatchController::SUCCESS_SET) {
-        displayOpponentSets();
         playerTabVisible = true;
         opponentTabVisible = true;
         _playSetBtn->setVisible(false);

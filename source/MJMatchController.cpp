@@ -268,7 +268,6 @@ bool MatchController::playSet() {
         
         // Broadcast that a successful set has been played
         currPlayer->getHand().playSet(_network->getHostStatus());
-//        opponentPlayer->getHand().opponentPlayedSets.clear();
        
         _network->broadcastPlaySet(_network->getLocalPid(), true, tilesJson);
     
@@ -898,61 +897,63 @@ void MatchController::update(float timestep) {
         std::shared_ptr<Player> opposingPlayer = _network->getHostStatus() ? clientPlayer : hostPlayer;
         std::shared_ptr<Player> currPlayer = _network->getHostStatus() ? hostPlayer : clientPlayer;
         // Fetching the top tile
-        std::shared_ptr<TileSet::Tile> discardTile = _discardPile->drawTopTile();
-        // Setting relevant fields
-        discardTile->inHostHand = false;
-        discardTile->inClientHand = false;
-        discardTile->discarded = false;
-        
-        // Erasing tiles from opponent hand that were played (if tile is discard tile then break since it is not in their hand in
-        // this opposing matchController model)
-        std::vector<std::shared_ptr<TileSet::Tile>> tiles;
-        
-        for(auto const& tileKey : _network->getPlayedTiles()->children()) {
-            std::string suit = tileKey->getString("suit");
-            std::string rank = tileKey->getString("rank");
-            std::string id = tileKey->getString("id");
-            
-            const std::string key = rank + " of " + suit + " " + id;
-            
-            for(auto it = opposingPlayer->getHand()._tiles.begin(); it != opposingPlayer->getHand()._tiles.end();) {
-                std::string asString = (*it)->toString() + " " + std::to_string((*it)->getId());
-                if((*it)->toString() == discardTile->toString()) {
-                    break;
-                }
-                
-                // Logging for debug
-                CULog(asString.c_str());
-                CULog(key.c_str());
-                
-                if(asString == key) {
-                    tiles.push_back(*it);
-                    opposingPlayer->getHand()._tiles.erase(it);
-                    break;
-                }
-                else {
-                    it++;
-                }
-            }
+// <<<<<<< merge_morph
+// //        std::shared_ptr<TileSet::Tile> discardTile = _discardPile->drawTopTile();
 // =======
+//         std::shared_ptr<TileSet::Tile> discardTile = _discardPile->drawTopTile();
+//         // Setting relevant fields
+//         discardTile->inHostHand = false;
+//         discardTile->inClientHand = false;
+//         discardTile->discarded = false;
+        
+//         // Erasing tiles from opponent hand that were played (if tile is discard tile then break since it is not in their hand in
+//         // this opposing matchController model)
+//         std::vector<std::shared_ptr<TileSet::Tile>> tiles;
+        
+//         for(auto const& tileKey : _network->getPlayedTiles()->children()) {
+//             std::string suit = tileKey->getString("suit");
+//             std::string rank = tileKey->getString("rank");
+//             std::string id = tileKey->getString("id");
+            
+//             const std::string key = rank + " of " + suit + " " + id;
+            
+//             for(auto it = opposingPlayer->getHand()._tiles.begin(); it != opposingPlayer->getHand()._tiles.end();) {
+//                 std::string asString = (*it)->toString() + " " + std::to_string((*it)->getId());
+//                 if((*it)->toString() == discardTile->toString()) {
+//                     break;
+//                 }
+                
+//                 // Logging for debug
+//                 CULog(asString.c_str());
+//                 CULog(key.c_str());
+                
+//                 if(asString == key) {
+//                     tiles.push_back(*it);
+//                     opposingPlayer->getHand()._tiles.erase(it);
+//                     break;
+//                 }
+//                 else {
+//                     it++;
+//                 }
+//             }
+// // =======
+// >>>>>>> morph
         
 //         _tileSet->updateDeck(_network->getPlayedTiles());
 
 //         std::vector<std::shared_ptr<TileSet::Tile>> tiles = _tileSet->processTileJson(_network->getPlayedTiles());
        
-//         for(auto const& tile : tiles) {
-//             std::string id = std::to_string(tile->_id);
-//             opposingPlayer->getHand().removeTile(tile, _network->getHostStatus());
-// >>>>>>> morph
+
+        for(auto const& tile : tiles) {
+            std::string id = std::to_string(tile->_id);
+            tile->setTexture(_assets->get<Texture>(tile->toString()));
+            opposingPlayer->getHand().removeTile(tile, _network->getHostStatus());
         }
         
-        // For updating opponent sets
-        tiles.push_back(discardTile);
-        
         // Update opposing player's max hand size
-        opposingPlayer->getHand()._size -= 3;
-        opposingPlayer->getHand()._playedSets.push_back(tiles);
+        opposingPlayer->getHand().playSet(!_network->getHostStatus());
         currPlayer->getHand().opponentPlayedSets.push_back(tiles);
+        
         
         // Reset network state
         _network->setStatus(NetworkController::INGAME);
