@@ -1097,6 +1097,9 @@
         },
         "not-your-turn":{
             "file":"textures/gameplay/not-your-turn.png"
+        },
+        "drew-try-discard":{
+            "file":"textures/gameplay/drew-try-discard.png"
         }
     },
     "fonts": {

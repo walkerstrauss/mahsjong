@@ -466,7 +466,8 @@ public:
             "not-your-turn",
             "start-your-turn1",
             "start-your-turn2",
-            "drew-try-play"
+            "drew-try-play",
+            "drew-try-discard"
         };
         
         for (auto key : playerGuideKeys){
