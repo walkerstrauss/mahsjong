@@ -26,21 +26,30 @@ bool AudioController::init(const std::shared_ptr<cugl::AssetManager>& assets){
     _assets = assets;
     
     _keys = {
-        "set",
-        "set1",
-        "win",
-        "winning-hand",
-        "match-background",
-        "match-background1",
-        "back",
-        "confirm",
-        "deselect",
-        "select",
-        "select2",
-        "shuffle",
-        "swap",
-        "bgm",
-        "menuMusic"
+        "ExitDiscard",
+        "SelectDiscard",
+        "PlayerJoined",
+        "WrongAction",
+        "OpponentTile",
+        "PlayedSet",
+        "Pig",
+        "Rat",
+        "Monkey",
+        "Dragon",
+        "Snake",
+        "Rooster",
+        "Ox",
+        "Rabbit",
+        "Pile",
+        "Confirm",
+        "Clear",
+        "Click",
+        "Unclick",
+        "Exit",
+        "Select",
+        "Done",
+        "Discard",
+        "DrawDiscard"
     };
     
     for (const std::string& key  : _keys){

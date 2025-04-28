@@ -68,7 +68,7 @@ bool SettingScene::init(const std::shared_ptr<cugl::AssetManager>& assets){
         if (!down){
             // TODO: handle turning sound on
             CULog("Turning sound on");
-            AudioController::getInstance().playSound("confirm");
+            AudioController::getInstance().playSound("Select");
             AudioController::getInstance().toggleSound();
         }
     });
@@ -78,12 +78,12 @@ bool SettingScene::init(const std::shared_ptr<cugl::AssetManager>& assets){
                 case PrevScene::PAUSED:
                     choice = Choice::PAUSE;
 //                    AudioEngine::get()->play("back", _assets->get<Sound>("back"), false, 1.0f);
-                    AudioController::getInstance().playSound("back");
+                    AudioController::getInstance().playSound("Done");
                     break;
                 case PrevScene::MAIN:
                     choice = Choice::MENU;
 //                    AudioEngine::get()->play("back", _assets->get<Sound>("back"), false, 1.0f);
-                    AudioController::getInstance().playSound("back");
+                    AudioController::getInstance().playSound("Exit");
                     break;
                 case PrevScene::NEITHER:
                     // Do nothing

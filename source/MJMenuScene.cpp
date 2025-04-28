@@ -78,14 +78,14 @@ bool MenuScene::init(const std::shared_ptr<cugl::AssetManager>& assets) {
         if (down) {
             _choice = HOST;
 //            AudioEngine::get()->play("confirm",_assets->get<Sound>("confirm"),false,1.0f);
-            AudioController::getInstance().playSound("confirm");
+            AudioController::getInstance().playSound("Confirm");
         }
     });
     _joinbutton->addListener([this](const std::string& name, bool down) {
         if (down) {
             _choice = JOIN;
 //            AudioEngine::get()->play("confirm",_assets->get<Sound>("confirm"),false,1.0f);
-            AudioController::getInstance().playSound("confirm", false);
+            AudioController::getInstance().playSound("Confirm", false);
         }
     });
     settingsbutton = std::dynamic_pointer_cast<scene2::Button>(_assets->get<scene2::SceneNode>("home.home.button3"));
@@ -93,14 +93,14 @@ bool MenuScene::init(const std::shared_ptr<cugl::AssetManager>& assets) {
         if (down){
             _choice = SETTING;
 //            AudioEngine::get()->play("confirm",_assets->get<Sound>("confirm"),false,1.0f);
-            AudioController::getInstance().playSound("confirm", false);
+            AudioController::getInstance().playSound("Confirm", false);
         }
     });
     
     _tutorialbutton = std::dynamic_pointer_cast<Button>(_assets->get<SceneNode>("home.home.menu.button4"));
     _tutorialbutton->addListener([this](const std::string&name, bool down){
         if (down){
-            AudioController::getInstance().playSound("confirm", false);
+            AudioController::getInstance().playSound("Confirm", false);
             _choice = TUTORIAL;
         }
     });

@@ -106,7 +106,7 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::sha
             _backBtn->activate();
             _discardUINode->_root->setVisible(true);
             AnimationController::getInstance().pause();
-            AudioController::getInstance().playSound("confirm");
+            AudioController::getInstance().playSound("Select");
         }
     });
     
@@ -118,7 +118,7 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::sha
             setActive(true);
             setGameActive(true);
             _discardUINode->_root->setVisible(false);
-            AudioController::getInstance().playSound("back");
+            AudioController::getInstance().playSound("Done");
         }
     });
     
@@ -126,7 +126,7 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::sha
     _settingBtn->addListener([this](const std::string& name, bool down){
         if (!down){
             _choice = SETTING;
-            AudioController::getInstance().playSound("confirm");
+            AudioController::getInstance().playSound("Select");
         }
     });
     
@@ -135,7 +135,7 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::sha
     _infoBtn->addListener([this](const std::string& name, bool down){
         if (!down){
             _choice = INFO;
-            AudioController::getInstance().playSound("confirm",false);
+            AudioController::getInstance().playSound("Select",false);
         }
     });
     
@@ -160,6 +160,7 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::sha
     _opponentHandBtn = std::dynamic_pointer_cast<Button>(_assets->get<SceneNode>("matchscene.gameplayscene.opponent-hand"));
     _opponentHandBtn->addListener([this](const std::string& name, bool down){
         if (!down){
+            AudioController::getInstance().playSound("Select");
             _opponentHandRec->setVisible(!_opponentHandRec->isVisible());
             for (int i = 0; i < _opponentHandTiles.size(); i++){
                 _opponentHandTiles[i]->setVisible(!_opponentHandTiles[i]->isVisible());
@@ -310,7 +311,7 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::sha
     
     _playSetBtn->addListener([this](const std::string& name, bool down) {
         if (!down) {
-            AudioController::getInstance().playSound("confirm");
+            AudioController::getInstance().playSound("Select");
             if(!_matchController->playSet()) {
                 _matchController->hasDrawn = true;
                 _matchController->hasDiscarded = true;
@@ -488,7 +489,7 @@ void GameScene::update(float timestep) {
                 _remainingTiles--;
                 _remainingLabel->setText(std::to_string(_remainingTiles));
             }
-            AudioController::getInstance().playSound("confirm", false);
+            AudioController::getInstance().playSound("Pile", false);
             _matchController->drawTile();
         }
         
@@ -594,7 +595,7 @@ void GameScene::clickedTile(cugl::Vec2 mousePos){
 
                 if(currTile->selectable) {
                     if(currTile->selected) {
-                        AudioController::getInstance().playSound("deselect");
+                        AudioController::getInstance().playSound("Unclick");
 //                        AnimationController::getInstance().animateTileDeselect(currTile, 30);
                         auto it = std::find(_player->getHand()._selectedTiles.begin(), _player->getHand()._selectedTiles.end(), currTile);
                         if (it != _player->getHand()._selectedTiles.end()) {
@@ -603,7 +604,7 @@ void GameScene::clickedTile(cugl::Vec2 mousePos){
                         }
                     }
                     else {
-                        AudioController::getInstance().playSound("select");
+                        AudioController::getInstance().playSound("Click");
 //                        AnimationController::getInstance().animateTileSelect(currTile, 30);
                         _player->getHand()._selectedTiles.push_back(currTile);
                         currTile->selected = true;
@@ -727,7 +728,7 @@ void GameScene::updateDrag(const cugl::Vec2& mousePos, bool mouseDown, bool mous
                           
                           _matchController->playMonkey(_draggingTile);
                           // Play the swap sound when the monkey tile is activated.
-                          AudioController::getInstance().playSound("swap");
+                          //AudioController::getInstance().playSound("swap");
                           
                           _tradeArea->setVisible(false);
                           // Rebind _player to prevent null ptr error
