@@ -54,6 +54,49 @@ bool GameOverScene::init(const std::shared_ptr<cugl::AssetManager>& assets){
     
     offset = (screenSize.width -_losescene->getWidth())/2;
     _losescene->setPosition(offset, _losescene->getPosition().y);
+    
+    _grandmaWin = SpriteNode::allocWithSheet(_assets->get<Texture>("grandmaWin"), 2, 3, 6);
+    auto winBoard = _assets->get<scene2::SceneNode>("winscene.scorewinscene.win_board");
+    
+    _grandmaWin->setAnchor(Vec2::ANCHOR_CENTER);
+    _grandmaWin->setPosition(340, 410);
+    _grandmaWin->setVisible(true);
+    _grandmaWin->setScale(2);
+    _winscene->addChild(_grandmaWin);
+    
+    AnimationController::getInstance().addSpriteSheetAnimation(_grandmaWin, 0, 5, true, 5.0f);
+    
+    _grandmaCry = SpriteNode::allocWithSheet(_assets->get<Texture>("grandmaCry"), 1, 3, 3);
+    auto loseBoard = _assets->get<scene2::SceneNode>("losescene.scoredefeatscene.defeated_board");
+
+    _grandmaCry->setAnchor(Vec2::ANCHOR_CENTER);
+    _grandmaCry->setPosition(340, 410);
+    _grandmaCry->setVisible(true);
+    _grandmaCry->setScale(2);
+    _losescene->addChild(_grandmaCry);
+    
+    AnimationController::getInstance().addSpriteSheetAnimation(_grandmaCry, 0, 2, true, 5.0f);
+    
+    
+    _rabbit = SpriteNode::allocWithSheet(_assets->get<Texture>("background_rabbit"), 3, 2, 5);
+    _rabbit->setAnchor(Vec2::ANCHOR_CENTER);
+    _rabbit->setPosition(715, 15);
+    _rabbit->setVisible(true);
+    _rabbit->setFrame(1);
+    _rabbit->setScale(3.6);
+    _winscene->addChild(_rabbit);
+    AnimationController::getInstance().addSpriteSheetAnimation(_rabbit, 1, 4, true, 5.0f);
+    
+    
+    _rat = SpriteNode::allocWithSheet(_assets->get<Texture>("background_rat"), 2, 2, 4);
+    _rat ->setAnchor(Vec2::ANCHOR_CENTER);
+    _rat ->setPosition(725, 120);
+    _rat ->setVisible(true);
+    _rat ->setFrame(0);
+    _rat->setScale(3.5);
+    _winscene->addChild(_rat);
+    AnimationController::getInstance().addSpriteSheetAnimation(_rat, 0, 3, true, 5.0f);
+    
 
     if (!Scene2::initWithHint(screenSize)) {
         std::cerr << "Scene2 initialization failed!" << std::endl;
@@ -98,6 +141,8 @@ void GameOverScene::reset(){
 
 void GameOverScene::update(float timestep){
     if (!isActive()) return;
+    
+    AnimationController::getInstance().update(timestep);
 }
 
 void GameOverScene::setActive(bool value){

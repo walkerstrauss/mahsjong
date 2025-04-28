@@ -109,7 +109,28 @@ bool MenuScene::init(const std::shared_ptr<cugl::AssetManager>& assets) {
     _grandmaMainSheet->setPosition(340, 410);
     _grandmaMainSheet->setVisible(true);
     _grandmaMainSheet->setFrame(0);
-    _grandmaMainSheet->setScale(0.13);
+    _grandmaMainSheet->setScale(2);
+    AnimationController::getInstance().addSpriteSheetAnimation(_grandmaMainSheet, 0, 4, true, 5.0f);
+
+    _rabbit = SpriteNode::allocWithSheet(_assets->get<Texture>("background_rabbit"), 3, 2, 5);
+    _rabbit->setAnchor(Vec2::ANCHOR_CENTER);
+    _rabbit->setPosition(715, 15);
+    _rabbit->setVisible(true);
+    _rabbit->setFrame(1);
+    _rabbit->setScale(3.6);
+    _homescene->addChild(_rabbit);
+    AnimationController::getInstance().addSpriteSheetAnimation(_rabbit, 1, 4, true, 5.0f);
+    
+    
+    _rat = SpriteNode::allocWithSheet(_assets->get<Texture>("background_rat"), 2, 2, 4);
+    _rat ->setAnchor(Vec2::ANCHOR_CENTER);
+    _rat ->setPosition(725, 120);
+    _rat ->setVisible(true);
+    _rat ->setFrame(0);
+    _rat->setScale(3.5);
+    _homescene->addChild(_rat);
+    AnimationController::getInstance().addSpriteSheetAnimation(_rat, 0, 3, true, 5.0f);
+    
     
     _homescene->setVisible(true);
     addChild(_homescene);
@@ -176,23 +197,28 @@ void MenuScene::render(){
     _batch->draw(temp, Color4(0,0,0,255), Rect(Vec2::ZERO,Application::get()->getDisplaySize()));
     _homescene->render(_batch);
     _grandmaMainSheet->render(_batch);
+    _rabbit->render(_batch);
+    _rat->render(_batch);
     _batch->end();
 }
 
 void MenuScene::update(float timestep){
-    frameTimer += timestep;
+    //frameTimer += timestep;
     
-    int frame = _grandmaMainSheet->getFrame();
-    if (frameTimer >= frameDelay){
-        frameTimer = 0.0;
-        frame++;
-    } else {
-        return;
-    }
+    //int frame = _grandmaMainSheet->getFrame();
+    //if (frameTimer >= frameDelay){
+    //    frameTimer = 0.0;
+    //    frame++;
+    //} else {
+    //    return;
+    //}
     
-    if (frame >= _grandmaMainSheet->getCount()){
-        _grandmaMainSheet->setFrame(0);
-    } else {
-        _grandmaMainSheet->setFrame(frame);
-    }
+    //if (frame >= _grandmaMainSheet->getCount()){
+    //    _grandmaMainSheet->setFrame(0);
+    //} else {
+    //    _grandmaMainSheet->setFrame(frame);
+    //}
+    
+    AnimationController::getInstance().update(timestep);
+    
 }

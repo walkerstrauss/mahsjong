@@ -486,6 +486,12 @@
         "menuGrandma": {
             "file": "textures/menu/menuGrandma.png"
         },
+        "grandmaWin":{
+            "file": "textures/animations/grandmaWin.png"
+        },
+        "grandmaCry":{
+            "file": "textures/animations/grandmaCry.png"
+        },
         "setting_button": {
             "file": "textures/menu/setting_button.png"
         },
@@ -947,6 +953,12 @@
         },
         "grandmaMain":{
             "file": "textures/animations/grandmaMain.png"
+        },
+        "background_rabbit":{
+            "file": "textures/animations/background_rabbit.png"
+        },
+        "background_rat":{
+            "file": "textures/animations/background_rat.png"
         },
         "setting-icon":{
             "file":"textures/gameplay/setting-icon.png"

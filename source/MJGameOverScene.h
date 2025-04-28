@@ -11,6 +11,8 @@
 #include <cugl/cugl.h>
 #include "MJAudioController.h"
 
+#include "MJAnimationController.h"
+
 using namespace cugl;
 using namespace cugl::scene2;
 
@@ -63,6 +65,13 @@ protected:
     std::shared_ptr<cugl::scene2::SpriteNode> _sheetNode;
     float _frameTimer = 0.0f;  // Track time between frames
     float _frameDelay = 0.2f;  // Time in seconds before switching frames
+    
+    
+    std::shared_ptr<cugl::scene2::SpriteNode> _grandmaWin;
+    std::shared_ptr<cugl::scene2::SpriteNode> _grandmaCry;
+
+    std::shared_ptr<cugl::scene2::SpriteNode> _rabbit;
+    std::shared_ptr<cugl::scene2::SpriteNode> _rat;
     
 public:
     /** Represents the choice for this scene */

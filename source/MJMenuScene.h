@@ -10,6 +10,7 @@
 #include <cugl/cugl.h>
 #include <vector>
 #include "MJAudioController.h"
+#include "MJAnimationController.h"
 
 /**
  * This class presents the menu to the player.
@@ -54,6 +55,10 @@ protected:
     Choice _choice;
     /** Reference to the sprite sheet for grandma animation*/
     std::shared_ptr<cugl::scene2::SpriteNode> _grandmaMainSheet;
+    
+    std::shared_ptr<cugl::scene2::SpriteNode> _rabbit;
+    std::shared_ptr<cugl::scene2::SpriteNode> _rat;
+    
 
     float frameTimer = 0.0f;
     float frameDelay = 0.2f;
