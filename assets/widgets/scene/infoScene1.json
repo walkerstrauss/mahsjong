@@ -560,7 +560,7 @@
                     "y_anchor": "top",
                     "absolute": false,
                     "x_offset": 0,
-                    "y_offset": -0.6
+                    "y_offset": -0.61
                 }
             },
             "menu2": {
@@ -1074,7 +1074,7 @@
                     "y_anchor": "top",
                     "absolute": false,
                     "x_offset": 0,
-                    "y_offset": -0.6
+                    "y_offset": -0.61
                 }
             },
             "menu3": {
@@ -1588,7 +1588,7 @@
                     "y_anchor": "top",
                     "absolute": false,
                     "x_offset": 0,
-                    "y_offset": -0.6
+                    "y_offset": -0.61
                 }
             }
         }
