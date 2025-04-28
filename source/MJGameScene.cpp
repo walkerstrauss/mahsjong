@@ -744,7 +744,7 @@ void GameScene::updateDrag(const cugl::Vec2& mousePos, bool mouseDown, bool mous
                           _discardedTileImage->SceneNode::setContentSize(32.88, 45);
                           _discardedTileImage->setVisible(true);
                           _discardUINode->incrementLabel(_draggingTile);
-                          _draggingTile->_scale = 0;
+//                          _draggingTile->_scale = 0;
                       } else if (_matchController->getChoice() != MatchController::DRAGONTILE){
                           showPlayerGuide("must-draw-discard");
                       }
