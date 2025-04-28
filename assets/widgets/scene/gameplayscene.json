@@ -76,6 +76,33 @@
                     "y_offset": -0.43
                 }
             },
+            "drag-to-trade": {
+                "type": "Image",
+                "data": {
+                    "texture": "drag-to-trade",
+                    "anchor": [
+                        0.5,
+                        0.5
+                    ],
+                    "size": [
+                        1186.51,
+                        350
+                    ],
+                    "angle": 0,
+                    "position": [
+                        348,
+                        601
+                    ],
+                    "visible": false
+                },
+                "layout": {
+                    "x_anchor": "left",
+                    "y_anchor": "top",
+                    "absolute": false,
+                    "x_offset": 0.5,
+                    "y_offset": -0.43
+                }
+            },
             "discard-or-play-to-end": {
                 "type": "Image",
                 "data": {
@@ -350,6 +377,33 @@
                 "type": "Image",
                 "data": {
                     "texture": "drew-try-play",
+                    "anchor": [
+                        0.5,
+                        0.5
+                    ],
+                    "size": [
+                        800,
+                        100
+                    ],
+                    "angle": 0,
+                    "position": [
+                        348,
+                        601
+                    ],
+                    "visible": false
+                },
+                "layout": {
+                    "x_anchor": "left",
+                    "y_anchor": "top",
+                    "absolute": false,
+                    "x_offset": 0.5,
+                    "y_offset": -0.5
+                }
+            },
+            "drew-try-discard": {
+                "type": "Image",
+                "data": {
+                    "texture": "drew-try-discard",
                     "anchor": [
                         0.5,
                         0.5

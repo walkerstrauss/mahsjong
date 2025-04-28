@@ -14,6 +14,7 @@
 #include "MJDiscardPile.h"
 #include "MJDiscardUIScene.h"
 #include "MJNetworkController.h"
+#include "MJAudioController.h"
 
 /**
  * A managing the current state of the game. This includes the pile, deck, and the tiles.

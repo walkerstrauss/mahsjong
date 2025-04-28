@@ -91,7 +91,7 @@ void MahsJongApp::onShutdown() {
     _info.dispose();
     _tutorial.dispose();
     _inputController->dispose();
-//    _network->dispose();
+    _network->dispose();
     _assets = nullptr;
     _batch = nullptr;
     
@@ -229,11 +229,12 @@ void MahsJongApp::updateLoadingScene(float timestep) {
        _loading.resizeScene();
    } else {
        _loading.dispose(); // Permanently disables the input listeners in this mode
+       AudioController::getInstance().init(_assets);
+       AudioController::getInstance().playSound("Confirm");
        
        _network = std::make_shared<NetworkController>();
        _network->init(_assets);
        AnimationController::getInstance().init(_assets);
-       AudioController::getInstance().init(_assets);
        _mainmenu.init(_assets);
        _mainmenu.setSpriteBatch(_batch);
        _hostgame.init(_assets, _network);

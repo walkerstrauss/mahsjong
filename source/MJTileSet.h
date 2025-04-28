@@ -26,7 +26,7 @@ public:
         /** This tile's back texture node*/
         std::shared_ptr<cugl::scene2::PolygonNode> _backTextureNode;
         /** This tile's face sprite node*/
-        std::shared_ptr<AnimatedNode> _faceSpriteNode;
+        std::shared_ptr<cugl::scene2::SpriteNode> _faceSpriteNode;
         /** This tile's texture */
         std::shared_ptr<cugl::graphics::Texture> _texture;
         /** This tile's info texture (only for celestial) */
@@ -102,8 +102,6 @@ public:
         bool debuffed = false;
         /** Whether or not the tile can be selected */
         bool selectable = true;
-        /** Whether or not the tile can be unselectable */
-        bool unselectable = false; 
         
 #pragma mark -
 #pragma mark Tile Constructors
@@ -154,7 +152,7 @@ public:
          *
          * @return the sprite node for the face of the tile
          */
-        std::shared_ptr<AnimatedNode>& getFaceSpriteNode() {
+        std::shared_ptr<scene2::SpriteNode>& getFaceSpriteNode() {
             return _faceSpriteNode;
         }
         
@@ -484,7 +482,7 @@ public:
          *
          * @param animatedNode      an animated node
          */
-        void setFrontSpriteNode(const std::shared_ptr<AnimatedNode> animatedNode) {
+        void setFrontSpriteNode(const std::shared_ptr<scene2::SpriteNode> animatedNode) {
             _faceSpriteNode = animatedNode;
         }
         

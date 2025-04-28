@@ -116,14 +116,14 @@ bool HostScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::sha
     _backout->addListener([this](const std::string& name, bool down) {
         if (down) {
             _backClicked = true;
-            AudioController::getInstance().playSound("back");
+            AudioController::getInstance().playSound("Exit");
             _network->disconnect();
         }
     });
 
     _startgame->addListener([this](const std::string& name, bool down) {
         if (down) {
-            AudioController::getInstance().playSound("confirm");
+            AudioController::getInstance().playSound("Confirm");
             startGame();
         }
     });
@@ -274,6 +274,10 @@ void HostScene::update(float timestep) {
             networkHex = _network->getRoomID();
         }
         if (_network->getNumPlayers() > 1) {
+            if(!_playedSound){
+                _playedSound = true;
+                AudioController::getInstance().playSound("PlayerJoined");
+            }
             _playerMulti->setVisible(true);
             _playerSingle->setVisible(false);
             _waitOrStart->setTexture(_assets->get<cugl::graphics::Texture>("hoststart"));
