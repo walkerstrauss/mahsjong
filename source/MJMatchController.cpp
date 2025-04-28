@@ -855,11 +855,14 @@ void MatchController::update(float timestep) {
         _tileSet->updateDeck(_network->getPlayedTiles());
 
         std::vector<std::shared_ptr<TileSet::Tile>> tiles = _tileSet->processTileJson(_network->getPlayedTiles());
-        
+       
         for(auto const& tile : tiles) {
             std::string id = std::to_string(tile->_id);
             opposingPlayer->getHand().removeTile(tile, _network->getHostStatus());
         }
+        
+        // For updating opponent sets
+        tiles.push_back(discardTile);
         
         // Update opposing player's max hand size
         opposingPlayer->getHand()._size -= 3;
