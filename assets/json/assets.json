@@ -1484,6 +1484,18 @@
         },
         "Rat": {
             "type": "sample",
+            "file": "sounds/action/win/win.wav"
+        },
+        "bgm": {
+            "type": "sample",
+            "file": "sounds/music/match.mp3",
+            "stream": true
+        },
+        "menuMusic": {
+            "type": "sample",
+            "file": "sounds/music/menu.mp3",
+            "stream": true
+
             "file": "sounds/Rat.wav"
 
         },
@@ -1565,6 +1577,7 @@
         "Done": {
             "type": "sample",
             "file": "sounds/Done.wav"
+
         }
     }
 }
