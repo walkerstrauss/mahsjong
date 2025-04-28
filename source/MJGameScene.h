@@ -130,6 +130,7 @@ protected:
 
     std::shared_ptr<cugl::scene2::TexturedNode> _dragToHandNode;
     std::shared_ptr<SceneNode> _playArea;
+    std::shared_ptr<SceneNode> _tradeArea;
     bool _dragFromDiscard = false;
     bool _dragToHandVisible = false;
 

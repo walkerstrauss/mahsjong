@@ -150,7 +150,6 @@ void MatchController::drawTile() {
  */
 bool MatchController::drawDiscard() {
     // If not this player's turn then return
-    
     if(hasDrawn) {
         return false;
     }
@@ -174,7 +173,7 @@ bool MatchController::drawDiscard() {
     // Getting top tile from dicsard and setting fields after drawing 
     std::shared_ptr<TileSet::Tile> drawnDiscardTile = _discardPile->drawTopTile();
     // Making tile unselectable
-    drawnDiscardTile->unselectable = true;
+    drawnDiscardTile->selectable = false;
     // Automatically select
     drawnDiscardTile->selected = true;
     // Setting tile state
@@ -185,11 +184,15 @@ bool MatchController::drawDiscard() {
     currPlayer->getHand()._tiles.push_back(drawnDiscardTile);
     currPlayer->getHand()._selectedTiles.push_back(drawnDiscardTile);
     
+    if (currPlayer->getHand().isWinningHand()) {
+        _choice = Choice::WIN;
+        _network->broadcastEnd(_network->getLocalPid());
+        return true;
+    }
+    
     _network->broadcastDrawnDiscard(_network->getLocalPid());
     
     _choice = DRAWNDISCARD;
-    
-    hasDrawn = true;
     
     return true; 
 }
@@ -217,14 +220,13 @@ bool MatchController::discardTile(std::shared_ptr<TileSet::Tile> tile) {
         
         hasDiscarded = true;
         //If host
-        if(_network->getLocalPid() == 0) {hostPlayer->getHand().discard(tile, true);}
+        if(isHost) {hostPlayer->getHand().discard(tile, true);}
         //If client
         else{clientPlayer->getHand().discard(tile, false);}
         
         // If not a special tile add it to the discard pile
         if (!(tile->_suit == TileSet::Tile::Suit::CELESTIAL)){
             _discardPile->addTile(tile);
-//            _discardPile->updateTilePositions();
             
             // Converting to JSON and broadcasting discarded tile
             _tileSet->tilesToJson.push_back(tile);
@@ -276,27 +278,22 @@ bool MatchController::playSet() {
     }
     else {
         // Unselect all selected tiles from hand
-        for(auto& selectedTile : currPlayer->getHand()._selectedTiles) {
-            for(auto it = currPlayer->getHand()._tiles.begin(); it != currPlayer->getHand()._tiles.end();) {
-                if(selectedTile == (*it)) {
-                    selectedTile->selected = false;
-                    
-                    // If the tile was a discarded tile reset to discarded status and discard from hand
-                    if(selectedTile->discarded) {
-                        selectedTile->inHostHand= false;
-                        selectedTile->inClientHand= false;
-                        selectedTile->unselectable = false;
-                        
-                        selectedTile->pos = Vec2::ZERO;
-                        
-                        _discardPile->addTile(selectedTile);
-                        it = currPlayer->getHand()._tiles.erase(it);
-                    }
-                    break;
-                }
-                else {
-                    it++;
-                }
+        for(auto it = currPlayer->getHand()._tiles.begin(); it != currPlayer->getHand()._tiles.end();) {
+            (*it)->selected = false;
+            
+            // If the tile was a discarded tile reset to discarded status and discard from hand
+            if((*it)->discarded) {
+                (*it)->inHostHand = false;
+                (*it)->inClientHand = false;
+                (*it)->selectable = false;
+                
+                (*it)->_scale = 0;
+                (*it)->pos = Vec2::ZERO;
+                
+                _discardPile->addTile(*it);
+                currPlayer->getHand().removeTile((*it), _network->getHostStatus());
+            } else {
+                it++;
             }
         }
         // Clear selected tiles from current player
@@ -830,25 +827,43 @@ void MatchController::update(float timestep) {
     //Discard pile update
     if(_network->getStatus() == NetworkController::DISCARDUPDATE) {
         // Fetching discarded tile
-        std::shared_ptr<TileSet::Tile> tempTile = _tileSet->processTileJson(_network->getDiscardTile())[0];
-        std::string key = std::to_string(tempTile->_id);
+//<<<<<<< morph-beta-3.0
+//         std::shared_ptr<TileSet::Tile> tempTile = _tileSet->processTileJson(_network->getDiscardTile())[0];
+//         std::string key = std::to_string(tempTile->_id);
+        
+//         // Actual reference to tile from tileMap
+//         std::shared_ptr<TileSet::Tile> tile = _tileSet->tileMap[key];
+//         tile->inHostHand = tempTile->inHostHand;
+//         tile->inClientHand = tempTile->inClientHand;
+//         tile->discarded = tempTile->discarded;
+//         tile->_scale = tempTile->_scale;
+//         tile->pos = tempTile->pos;
+        
+//=======
+        std::shared_ptr<TileSet::Tile> tile = _tileSet->processTileJson(_network->getDiscardTile())[0];
+        _tileSet->updateDeck(_network->getDiscardTile());
+        std::string key = std::to_string(tile->_id);
         
         // Actual reference to tile from tileMap
-        std::shared_ptr<TileSet::Tile> tile = _tileSet->tileMap[key];
-        tile->inHostHand = tempTile->inHostHand;
-        tile->inClientHand = tempTile->inClientHand;
-        tile->discarded = tempTile->discarded;
-        tile->_scale = tempTile->_scale;
-        tile->pos = tempTile->pos;
+        tile = _tileSet->tileMap[key];
+//         std::shared_ptr<TileSet::Tile> tempTile = _tileSet->processTileJson(_network->getDiscardTile())[0];
+//         std::string key = std::to_string(tempTile->_id);
+//>>>>>>> morph
         
-        
+//         // Actual reference to tile from tileMap
+//         std::shared_ptr<TileSet::Tile> tile = _tileSet->tileMap[key];
+//         tile->inHostHand = tempTile->inHostHand;
+//         tile->inClientHand = tempTile->inClientHand;
+//         tile->discarded = tempTile->discarded;
+//         tile->_scale = tempTile->_scale;
+//         tile->pos = tempTile->pos;
+                
         //If host
-        if(_network->getLocalPid() == 0) {clientPlayer->getHand().discard(tile, true);}
+        if(_network->getHostStatus()) {clientPlayer->getHand().discard(tile, true);}
         //If client
         else{hostPlayer->getHand().discard(tile, false);}
         
         _discardPile->addTile(tile);
-//        _discardPile->updateTilePositions();
         
         // Change state so gamescene can update discardUI scene
         _choice = DISCARDUIUPDATE;
@@ -919,6 +934,16 @@ void MatchController::update(float timestep) {
                     it++;
                 }
             }
+// =======
+        
+//         _tileSet->updateDeck(_network->getPlayedTiles());
+
+//         std::vector<std::shared_ptr<TileSet::Tile>> tiles = _tileSet->processTileJson(_network->getPlayedTiles());
+       
+//         for(auto const& tile : tiles) {
+//             std::string id = std::to_string(tile->_id);
+//             opposingPlayer->getHand().removeTile(tile, _network->getHostStatus());
+// >>>>>>> morph
         }
         
         // For updating opponent sets
@@ -926,6 +951,7 @@ void MatchController::update(float timestep) {
         
         // Update opposing player's max hand size
         opposingPlayer->getHand()._size -= 3;
+        opposingPlayer->getHand()._playedSets.push_back(tiles);
         currPlayer->getHand().opponentPlayedSets.push_back(tiles);
         
         // Reset network state
