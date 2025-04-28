@@ -677,28 +677,34 @@ void GameScene::updateDrag(const cugl::Vec2& mousePos, bool mouseDown, bool mous
                 cugl::Vec2 newPos = mousePos + _dragOffset;
                 _draggingTile->pos = newPos;
                 _draggingTile->tileRect.origin = newPos;
-            }
-        }
-        if (_draggingTile && !_dragFromDiscard) {
-            int newIndex = getIndexAtPosition(mousePos, dragContainer);
-            auto& tiles  = dragContainer;
+                
+                if (_draggingTile && !_dragFromDiscard) {
+                    auto& tiles = dragContainer;
 
-            if (newIndex != -1) {
-                // Current position of the tile in the vector
-                auto it = std::find(tiles.begin(), tiles.end(), _draggingTile);
-                if (it != tiles.end()) {
-                    int oldIndex = static_cast<int>(std::distance(tiles.begin(), it));
+                     auto it = std::find(tiles.begin(), tiles.end(), _draggingTile);
+                     if (it != tiles.end()) {
+                         int oldIndex = static_cast<int>(std::distance(tiles.begin(), it));
 
-                    // Only reshuffle if we actually crossed to a new slot
-                    if (newIndex != oldIndex) {
-                        tiles.erase(it);
-                        newIndex = std::min(newIndex, (int)tiles.size());
-                        tiles.insert(tiles.begin() + newIndex, _draggingTile);
-
-                        (_pileUINode->getState() == PileUINode::DRAGONREARRANGE)
-                                    ? _pile->updateTilePositions()
-                                    :_player->getHand().updateTilePositions(_playerHandRegion);
-                    }
+                         if (oldIndex < tiles.size() - 1) {
+                             // check right neighbor
+                             auto rightTile = tiles[oldIndex + 1];
+                             if (_draggingTile->pos.x > rightTile->pos.x) {
+                                 std::swap(tiles[oldIndex], tiles[oldIndex + 1]);
+                                 (_pileUINode->getState() == PileUINode::DRAGONREARRANGE)
+                                     ? _pile->updateTilePositions()
+                                     : _player->getHand().updateTilePositions(_playerHandRegion);
+                             }
+                         }
+                         if (oldIndex > 0) {
+                             auto leftTile = tiles[oldIndex - 1];
+                             if (_draggingTile->pos.x < leftTile->pos.x) {
+                                 std::swap(tiles[oldIndex], tiles[oldIndex - 1]);
+                                 (_pileUINode->getState() == PileUINode::DRAGONREARRANGE)
+                                     ? _pile->updateTilePositions()
+                                     : _player->getHand().updateTilePositions(_playerHandRegion);
+                             }
+                         }
+                     }
                 }
             }
         }
