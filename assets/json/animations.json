@@ -37,6 +37,20 @@
               "count": 6,
               "repeat": 10
           },
+          "background_rabbit":{
+              "texture": "background_rabbit",
+              "rows": 3,
+              "cols": 2,
+              "count": 5,
+              "repeat": 10
+          },
+          "background_rat":{
+              "texture": "background_rat",
+              "rows": 2,
+              "cols": 2,
+              "count": 4,
+              "repeat": 10
+          },
           "grandmaWin":{
               "texture": "grandmaWin",
               "rows":2,
@@ -49,6 +63,13 @@
               "rows":1,
               "cols":3,
               "count":3,
+              "repeat":10
+          },
+          "grandmaMain":{
+              "texture": "grandmaMain",
+              "rows":2,
+              "cols":3,
+              "count":5,
               "repeat":10
           }
       }
