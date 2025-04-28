@@ -134,6 +134,13 @@ public:
         Tile::Suit getSuit() const { return _suit; }
         
         /**
+         * Getter for the id of the tile
+         *
+         * @return the id of this tile in integer form
+         */
+        int getId() const { return _id; }
+        
+        /**
          * Getter for accessing the textured node for the back of the tile
          *
          * @return the textured node for the back of the tile

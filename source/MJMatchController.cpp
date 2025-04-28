@@ -891,20 +891,26 @@ void MatchController::update(float timestep) {
         
         // Erasing tiles from opponent hand that were played (if tile is discard tile then break since it is not in their hand in
         // this opposing matchController model)
+        std::vector<std::shared_ptr<TileSet::Tile>> tiles;
+        
         for(auto const& tileKey : _network->getPlayedTiles()->children()) {
             std::string suit = tileKey->getString("suit");
             std::string rank = tileKey->getString("rank");
             std::string id = tileKey->getString("id");
             
             const std::string key = rank + " of " + suit + " " + id;
-            std::vector<std::shared_ptr<TileSet::Tile>> tiles;
             
             for(auto it = opposingPlayer->getHand()._tiles.begin(); it != opposingPlayer->getHand()._tiles.end();) {
+                std::string asString = (*it)->toString() + " " + std::to_string((*it)->getId());
                 if((*it)->toString() == discardTile->toString()) {
-                    tiles.push_back(*it);
                     break;
                 }
-                if((*it)->toString() == key) {
+                
+                // Logging for debug
+                CULog(asString.c_str());
+                CULog(key.c_str());
+                
+                if(asString == key) {
                     tiles.push_back(*it);
                     opposingPlayer->getHand()._tiles.erase(it);
                     break;
@@ -915,8 +921,12 @@ void MatchController::update(float timestep) {
             }
         }
         
+        // For updating opponent sets
+        tiles.push_back(discardTile);
+        
         // Update opposing player's max hand size
         opposingPlayer->getHand()._size -= 3;
+        currPlayer->getHand().opponentPlayedSets.push_back(tiles);
         
         // Reset network state
         _network->setStatus(NetworkController::INGAME);
