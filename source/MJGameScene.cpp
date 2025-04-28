@@ -510,8 +510,6 @@ void GameScene::render() {
     _batch->draw(temp, Color4(0,0,0,255), Rect(Vec2::ZERO, cugl::Application().get()->getDisplaySize()));
         
     _matchScene->render(_batch);
-
-    _discardPile->draw(_batch);
     
     _pileUINode->_root->render(_batch);
     _pile->draw(_batch);

@@ -228,6 +228,7 @@ bool MatchController::discardTile(std::shared_ptr<TileSet::Tile> tile) {
         if (!(tile->_suit == TileSet::Tile::Suit::CELESTIAL)){
             _discardPile->addTile(tile);
             
+            _tileSet->clearTilesToJson();
             // Converting to JSON and broadcasting discarded tile
             _tileSet->tilesToJson.push_back(tile);
             _network->broadcastDiscard(_network->getLocalPid(), _tileSet->toJson(_tileSet->tilesToJson));
@@ -256,6 +257,8 @@ bool MatchController::playSet() {
     std::shared_ptr<Player> opponentPlayer = _network->getHostStatus() ? clientPlayer : hostPlayer;
     
     std::vector<std::shared_ptr<TileSet::Tile>> tiles;
+    _tileSet->clearTilesToJson();
+
     // If selected tiles is a valid set
     if(currPlayer->getHand().isSetValid(currPlayer->getHand()._selectedTiles)) {
         // Accumulate tiles from selected set to transform into JSON
@@ -298,6 +301,8 @@ bool MatchController::playSet() {
         // Clear selected tiles from current player
         currPlayer->getHand()._selectedTiles.clear();
         
+        _tileSet->clearTilesToJson();
+
         // Make empty JSON for broadcasting
         std::shared_ptr<JsonValue> emptyJson = _tileSet->toJson(_tileSet->tilesToJson);
         _network->broadcastPlaySet(_network->getLocalPid(), false, emptyJson);
@@ -420,6 +425,8 @@ void MatchController::playOx(std::shared_ptr<TileSet::Tile>& celestialTile) {
     
     // Makes sure that effect is applied on tiles that aren't already debuffed or discarded
     int debuffed = 0;
+    _tileSet->clearTilesToJson();
+
     std::shared_ptr<cugl::JsonValue> changedTilesJson;
     for (auto& tile : opponent._tiles) {
         if (!tile->debuffed && !tile->discarded) {
@@ -628,7 +635,6 @@ void MatchController::playRat(std::shared_ptr<TileSet::Tile>& selectedTile) {
     selectedTile->selected = false;
     selectedTile->_scale = 0.15;
     
-//    _tileSet->tilesToJson.push_back(selectedTile);
     // Clear tilesToJson vector
     _tileSet->clearTilesToJson();
     // Transforming celestial tile to JSON
