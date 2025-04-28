@@ -669,6 +669,7 @@ void GameScene::updateDrag(const cugl::Vec2& mousePos, bool mouseDown, bool mous
                     _discardedTileImage->setVisible(false);
                     _draggingTile = _discardPile->getTopTile();
                     _draggingTile->pos = mousePos;
+                    _draggingTile->_scale = 0.15;
                 }
             }
         }
@@ -744,7 +745,7 @@ void GameScene::updateDrag(const cugl::Vec2& mousePos, bool mouseDown, bool mous
                           _discardedTileImage->SceneNode::setContentSize(32.88, 45);
                           _discardedTileImage->setVisible(true);
                           _discardUINode->incrementLabel(_draggingTile);
-//                          _draggingTile->_scale = 0;
+                          _draggingTile->_scale = 0;
                       } else if (_matchController->getChoice() != MatchController::DRAGONTILE){
                           showPlayerGuide("must-draw-discard");
                       }
@@ -765,12 +766,15 @@ void GameScene::updateDrag(const cugl::Vec2& mousePos, bool mouseDown, bool mous
                         _matchController->hasDrawn = true;
 
                     }
+                    
                     else {
                         _discardedTileImage->setVisible(true);
+                        _draggingTile->_scale = 0;
                     }
                 }
                 else if (_matchController->getChoice() != MatchController::DRAWNDISCARD){
                     _discardedTileImage->setVisible(true);
+                    _draggingTile->_scale = 0;
                 }
             }
             else if (distance > DRAG_THRESHOLD) {

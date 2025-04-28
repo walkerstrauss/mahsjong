@@ -827,24 +827,24 @@ void MatchController::update(float timestep) {
     if(_network->getStatus() == NetworkController::DISCARDUPDATE) {
         // Fetching discarded tile
 //<<<<<<< morph-beta-3.0
-//         std::shared_ptr<TileSet::Tile> tempTile = _tileSet->processTileJson(_network->getDiscardTile())[0];
-//         std::string key = std::to_string(tempTile->_id);
+         std::shared_ptr<TileSet::Tile> tempTile = _tileSet->processTileJson(_network->getDiscardTile())[0];
+         std::string key = std::to_string(tempTile->_id);
         
-//         // Actual reference to tile from tileMap
-//         std::shared_ptr<TileSet::Tile> tile = _tileSet->tileMap[key];
-//         tile->inHostHand = tempTile->inHostHand;
-//         tile->inClientHand = tempTile->inClientHand;
-//         tile->discarded = tempTile->discarded;
-//         tile->_scale = tempTile->_scale;
-//         tile->pos = tempTile->pos;
+         // Actual reference to tile from tileMap
+         std::shared_ptr<TileSet::Tile> tile = _tileSet->tileMap[key];
+         tile->inHostHand = tempTile->inHostHand;
+         tile->inClientHand = tempTile->inClientHand;
+         tile->discarded = tempTile->discarded;
+         tile->_scale = tempTile->_scale;
+         tile->pos = tempTile->pos;
         
 //=======
-        std::shared_ptr<TileSet::Tile> tile = _tileSet->processTileJson(_network->getDiscardTile())[0];
-        _tileSet->updateDeck(_network->getDiscardTile());
-        std::string key = std::to_string(tile->_id);
+//        std::shared_ptr<TileSet::Tile> tile = _tileSet->processTileJson(_network->getDiscardTile())[0];
+//        _tileSet->updateDeck(_network->getDiscardTile());
+//        std::string key = std::to_string(tile->_id);
         
         // Actual reference to tile from tileMap
-        tile = _tileSet->tileMap[key];
+//        tile = _tileSet->tileMap[key];
 //         std::shared_ptr<TileSet::Tile> tempTile = _tileSet->processTileJson(_network->getDiscardTile())[0];
 //         std::string key = std::to_string(tempTile->_id);
 //>>>>>>> morph
@@ -939,9 +939,9 @@ void MatchController::update(float timestep) {
 // // =======
 // >>>>>>> morph
         
-//         _tileSet->updateDeck(_network->getPlayedTiles());
+         _tileSet->updateDeck(_network->getPlayedTiles());
 
-//         std::vector<std::shared_ptr<TileSet::Tile>> tiles = _tileSet->processTileJson(_network->getPlayedTiles());
+         std::vector<std::shared_ptr<TileSet::Tile>> tiles = _tileSet->processTileJson(_network->getPlayedTiles());
        
 
         for(auto const& tile : tiles) {
