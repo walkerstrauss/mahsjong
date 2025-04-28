@@ -1484,7 +1484,7 @@
         },
         "Rat": {
             "type": "sample",
-            "file": "sounds/action/win/win.wav"
+            "file": "sounds/Rat.wav"
         },
         "bgm": {
             "type": "sample",
@@ -1495,9 +1495,6 @@
             "type": "sample",
             "file": "sounds/music/menu.mp3",
             "stream": true
-
-            "file": "sounds/Rat.wav"
-
         },
         "Monkey": {
             "type": "sample",

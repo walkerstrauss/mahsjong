@@ -79,6 +79,7 @@ bool MenuScene::init(const std::shared_ptr<cugl::AssetManager>& assets) {
             _choice = HOST;
 //            AudioEngine::get()->play("confirm",_assets->get<Sound>("confirm"),false,1.0f);
             AudioController::getInstance().playSound("Confirm");
+            
         }
     });
     _joinbutton->addListener([this](const std::string& name, bool down) {
