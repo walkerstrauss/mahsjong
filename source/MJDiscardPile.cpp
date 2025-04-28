@@ -98,7 +98,7 @@ std::shared_ptr<TileSet::Tile> DiscardPile::drawTopTile(){
     }
     std::shared_ptr<TileSet::Tile> topTile = _topTile;
     
-    _discardMap.erase(_topTile->toString() + " " + std::to_string(_topTile->_id));
+    _discardMap.erase(std::to_string(_topTile->_id));
     _topTile = nullptr; // Set top tile to null
 
     _size = static_cast<int>(_discardPile.size()) + (_topTile ? 1 : 0);

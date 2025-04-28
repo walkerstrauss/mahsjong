@@ -42,8 +42,6 @@ public:
     std::vector<std::shared_ptr<TileSet::Tile>> _drawnPile;
     // The sets we have made from our hand this turn
     std::vector<std::vector<std::shared_ptr<TileSet::Tile>>> _playedSets;
-    // Contains all sets we have made from our hand this turn
-    std::vector<std::vector<std::shared_ptr<TileSet::Tile>>> _selectedSets;
     // Holds all tiles that are selected in our hand
     std::vector<std::shared_ptr<TileSet::Tile>> _selectedTiles;
     // Randomizer

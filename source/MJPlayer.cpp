@@ -76,22 +76,22 @@ void Hand::drawFromPile(std::shared_ptr<Pile>& pile, int number, bool isHost){
     }
  }
 
-void Hand::drawFromDiscard(std::shared_ptr<TileSet::Tile> tile, bool isHost) {
-    if (!tile) {
-        return;
-    }
-    
-    if (isHost) {
-        tile->inHostHand = true;
-    } else {
-        tile->inClientHand = true;
-
-    }
-    tile->discarded = false;
-    tile->inPile = false;
-    tile->selected = false; 
-    _tiles.push_back(tile);
-}
+//void Hand::drawFromDiscard(std::shared_ptr<TileSet::Tile> tile, bool isHost) {
+//    if (!tile) {
+//        return;
+//    }
+//    
+//    if (isHost) {
+//        tile->inHostHand = true;
+//    } else {
+//        tile->inClientHand = true;
+//
+//    }
+//    tile->discarded = false;
+//    tile->inPile = false;
+//    tile->selected = false; 
+//    _tiles.push_back(tile);
+//}
 
 /**
  * Discards a single specified tile from our hand
@@ -132,38 +132,6 @@ bool Hand::removeTile(std::shared_ptr<TileSet::Tile> tile, bool isHost) {
 }
 
 /**
- * Counts the total number of selected tiles.
- */
-int Hand::countSelectedTiles() {
-    int totalTiles = 0;
-    for (const auto& set : _selectedSets) {
-        totalTiles += set.size();
-    }
-    return totalTiles;
-}
-
-/**
- * Method to make a set from your hand and add it to selected sets
- *
- * @returns true if successfully made VALID set, and false otherwise
- */
-bool Hand::makeSet(){
-    if(!isSetValid(_selectedTiles)){
-        return false;
-    }
-    
-    for (auto& tile : _selectedTiles) {
-        tile->selected = true;
-        tile->selectedInSet = true;
-    }
-    
-    _selectedSets.push_back(_selectedTiles);
-    _selectedTiles.clear();
-    
-    return true;
-}
-
-/**
  * Method to play a set from your hand (of 2 to 4 cards)
  *
  * @return true if a set was played sucessfully and false otherwise.
@@ -189,7 +157,7 @@ bool Hand::playSet(bool isHost) {
                 (*it)->inClientHand = false;
             }
             // Since the tile is played (and not being discarded), update its status.
-            (*it)->discarded = false;
+//            (*it)->discarded = false;
             
             // Add tile to the played set
             playedSet.push_back(*it);
@@ -430,21 +398,6 @@ void Hand::updateTilePositions(cugl::Rect rect){
     }
 }
 
-///**
-// * Method to check if selected tiles contain a wild card (jack)
-// *
-// * @param selectedTiles     the tiles to be checked for a wild card
-// */
-//bool Hand::hasJack(std::vector<std::shared_ptr<TileSet::Tile>> selectedTiles){
-//    for(std::shared_ptr<TileSet::Tile>& tile : selectedTiles){
-//        
-//        if(tile->getRank()==TileSet::Tile::Rank::WILD_RANK){
-//            return true;
-//        }
-//    }
-//    return false;
-//}
-
 /**
  * Function to draw the player's currently held tiles
  *
@@ -452,10 +405,6 @@ void Hand::updateTilePositions(cugl::Rect rect){
  */
 void Player::draw(const std::shared_ptr<cugl::graphics::SpriteBatch>& batch) {
     for(const auto& tile : _hand._tiles){
-//        // Skip drawing the tile being dragged because it will be drawn above everything.
-//        if (tile == _draggingTile) {
-//            continue;
-//        }
         
         Vec2 pos = tile->pos;
         Vec2 origin = Vec2(tile->getTileTexture()->getSize().width/2, tile->getTileTexture()->getSize().height/2);
@@ -527,14 +476,3 @@ void Player::drawInfo(const std::shared_ptr<TileSet::Tile> tile, const std::shar
     
     batch->draw(infoTexture, origin, trans);
 }
-
-//std::shared_ptr<TileSet::Tile> Hand::getTileAtPosition(const cugl::Vec2& mousePos) {
-//    for (const auto& tile : _tiles) {
-//        if (tile) {
-//            if (tile->tileRect.contains(mousePos)) {
-//                return tile;
-//            }
-//        }
-//    }
-//    return nullptr;
-//}
