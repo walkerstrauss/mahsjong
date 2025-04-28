@@ -83,6 +83,9 @@ protected:
     std::shared_ptr<cugl::scene2::SpriteNode> _rat;
 
     
+    std::shared_ptr<cugl::scene2::SpriteNode> _rabbitLose;
+    std::shared_ptr<cugl::scene2::SpriteNode> _ratLose;
+    
 public:
     /** Represents the choice for this scene */
     Choice choice;

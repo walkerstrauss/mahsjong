@@ -97,16 +97,39 @@ bool GameOverScene::init(const std::shared_ptr<cugl::AssetManager>& assets){
     _rabbit->setFrame(1);
     _rabbit->setScale(2.8);
     _winscene->addChild(_rabbit);
+    
     AnimationController::getInstance().addSpriteSheetAnimation(_rabbit, 1, 4, true, 5.0f);
+    
+    _rabbitLose = SpriteNode::allocWithSheet(_assets->get<Texture>("background_rabbit"), 3, 2, 5);
+    _rabbitLose->setAnchor(Vec2::ANCHOR_CENTER);
+    _rabbitLose->setPosition(580, 150);
+    _rabbitLose->setVisible(true);
+    _rabbitLose->setFrame(1);
+    _rabbitLose->setScale(2.8);
+    _losescene->addChild(_rabbitLose);
+    
+    AnimationController::getInstance().addSpriteSheetAnimation(_rabbitLose, 1, 4, true, 5.0f);
     
     _rat = SpriteNode::allocWithSheet(_assets->get<Texture>("background_rat"), 2, 2, 4);
     _rat ->setAnchor(Vec2::ANCHOR_CENTER);
-    _rat ->setPosition(725, 120);
+    _rat ->setPosition(650, 195);
     _rat ->setVisible(true);
     _rat ->setFrame(0);
-    _rat->setScale(3.5);
+    _rat->setScale(2.8);
     _winscene->addChild(_rat);
+
     AnimationController::getInstance().addSpriteSheetAnimation(_rat, 0, 3, true, 5.0f);
+    
+    _ratLose = SpriteNode::allocWithSheet(_assets->get<Texture>("background_rat"), 2, 2, 4);
+    _ratLose ->setAnchor(Vec2::ANCHOR_CENTER);
+    _ratLose ->setPosition(650, 195);
+    _ratLose ->setVisible(true);
+    _ratLose ->setFrame(0);
+    _ratLose->setScale(2.8);
+    _losescene->addChild(_ratLose);
+
+    AnimationController::getInstance().addSpriteSheetAnimation(_ratLose, 0, 3, true, 5.0f);
+    
 
     if (!Scene2::initWithHint(screenSize)) {
         std::cerr << "Scene2 initialization failed!" << std::endl;

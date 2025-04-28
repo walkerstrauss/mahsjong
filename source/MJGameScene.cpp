@@ -370,10 +370,11 @@ void GameScene::update(float timestep) {
     if (_input->getKeyPressed() == cugl::KeyCode::A && _input->getPrevKeyPressed() != cugl::KeyCode::A) {
 
         // there are multiple _choice. One is from MatchController, and the other is from GameScene.
-        _choice = Choice::WIN;
 
-        _matchController->setChoice(MatchController::Choice::WIN);
-
+        _choice = Choice::LOSE;
+        
+        _matchController->setChoice(MatchController::Choice::LOSE);
+        
         _network->broadcastEnd(_network->getLocalPid());
     }
     
