@@ -400,7 +400,7 @@ void GameScene::update(float timestep) {
     if(_matchController->getChoice() == MatchController::Choice::DISCARDUIUPDATE) {
         _discardUINode->incrementLabel(_discardPile->getTopTile());
         if(_discardPile->getTopTile()->debuffed) {
-            _discardedTileImage->setTexture(_assets->get<Texture>("debuffed"));
+            _discardedTileImage->setTexture(_assets->get<Texture>("de   `buffed"));
         }
         else {
             _discardedTileImage->setTexture(_assets->get<Texture>(_discardPile->getTopTile()->toString()));
