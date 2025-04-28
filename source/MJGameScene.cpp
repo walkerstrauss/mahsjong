@@ -407,6 +407,8 @@ void GameScene::update(float timestep) {
     // If matchController state is SUCCESS_SET, deactivate button
     if(_matchController->getChoice() == MatchController::SUCCESS_SET) {
         displayOpponentSets();
+        playerTabVisible = true;
+        opponentTabVisible = true;
         _playSetBtn->setVisible(false);
         _playSetBtn->deactivate();
         _matchController->setChoice(MatchController::Choice::NONE);
@@ -478,9 +480,9 @@ void GameScene::update(float timestep) {
             //            if(_pileBox.contains(initialMousePos) && releasedInPile) {
             if (_matchController->hasDrawn){
                 if (_matchController->hasPlayedCelestial){
-                    // showPlayerGuide("discard-to-end");
+                     showPlayerGuide("discard-to-end");
                 } else {
-                    // showPlayerGuide("discard-or-play-to-end");
+                     showPlayerGuide("discard-or-play-to-end");
                 }
             } else {
                 _remainingTiles--;
@@ -508,10 +510,19 @@ void GameScene::render() {
     _batch->draw(temp, Color4(0,0,0,255), Rect(Vec2::ZERO, cugl::Application().get()->getDisplaySize()));
         
     _matchScene->render(_batch);
+
+    _discardPile->draw(_batch, _draggingTile);
     
     _pileUINode->_root->render(_batch);
     _pile->draw(_batch);
     _player->draw(_batch);
+
+    for (auto key : playerGuideKeys){
+        auto node = playerGuideNodeMap[key];
+        if (framesOnScreen > 0 && framesOnScreen < maxFramesOnScreen && node->isVisible()){
+            node->render(_batch);
+        }
+    }
     
     if (_dragToDiscardNode && _dragToDiscardNode->isVisible()) {
         _dragToDiscardNode->render(_batch);
@@ -523,13 +534,6 @@ void GameScene::render() {
     if (_dragToHandNode && _dragToHandNode->isVisible()) {
         _dragToHandNode->render(_batch);
     }
-
-//    for (auto key : playerGuideKeys){
-//        auto node = playerGuideNodeMap[key];
-//        if (node->isVisible()){
-//            node->render(_batch);
-//        }
-//    }
 
     _discardUINode->_root->render(_batch);
     
@@ -587,6 +591,7 @@ void GameScene::clickedTile(cugl::Vec2 mousePos){
         // If you cannot select or deselect the tile return
         if(currTile->tileRect.contains(mousePos) && currTile->tileRect.contains(initialMousePos)){
             if((_network->getHostStatus() && currTile->inHostHand) || (!_network->getHostStatus() && currTile->inClientHand)) {
+
                 if(currTile->selectable) {
                     if(currTile->selected) {
                         AudioController::getInstance().playSound("deselect");
@@ -704,10 +709,12 @@ void GameScene::updateDrag(const cugl::Vec2& mousePos, bool mouseDown, bool mous
         if(_draggingTile && _activeRegion.contains(mousePos)) {
             if (_network->getCurrentTurn() == _network->getLocalPid()) {
                 if(_matchController->getChoice() == MatchController::DRAWNDISCARD) {
-//                    showPlayerGuide("drew-try-play");
+                    showPlayerGuide("drew-try-play");
                 } else {
                     if(_draggingTile->_suit == TileSet::Tile::Suit::CELESTIAL && !_draggingTile->debuffed) {
-                      _matchController->playCelestial(_draggingTile);
+                        if (!_matchController->playCelestial(_draggingTile)) {
+                            showPlayerGuide("must-draw-play");
+                        }
                   }
                   else {
                       // Monkey tile was played, regular tile chosen to trade
@@ -733,11 +740,13 @@ void GameScene::updateDrag(const cugl::Vec2& mousePos, bool mouseDown, bool mous
                           _discardedTileImage->SceneNode::setContentSize(32.88, 45);
                           _discardedTileImage->setVisible(true);
                           _discardUINode->incrementLabel(_draggingTile);
-                      };
+                      } else {
+                          showPlayerGuide("must-draw-discard");
+                      }
                     }
                 }
             } else {
-//                showPlayerGuide("not-your-turn");
+                showPlayerGuide("not-your-turn");
             }
         }
         if (_dragInitiated && _draggingTile) {
@@ -749,6 +758,7 @@ void GameScene::updateDrag(const cugl::Vec2& mousePos, bool mouseDown, bool mous
                         _playSetBtn->setVisible(true);
                         _draggingTile->_scale = 0.15;
                         _matchController->hasDrawn = true;
+
                     }
                     else {
                         _discardedTileImage->setVisible(true);
