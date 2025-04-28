@@ -176,6 +176,14 @@ void MenuScene::render(){
     _batch->draw(temp, Color4(0,0,0,255), Rect(Vec2::ZERO,Application::get()->getDisplaySize()));
     _homescene->render(_batch);
     _grandmaMainSheet->render(_batch);
+    
+    _batch->setTexture(nullptr);
+    
+    Affine2 trans(_joinbutton->getParent()->getNodeToWorldTransform());
+    _batch->setColor(Color4(255, 0, 0, 100));
+    _batch->fill(trans.transform(_joinbutton->getBoundingBox()));
+    _batch->setColor(Color4(0, 0, 255, 100));
+    _batch->fill(trans.transform(_hostbutton->getBoundingBox()));
     _batch->end();
 }
 
