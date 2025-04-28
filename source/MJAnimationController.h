@@ -102,20 +102,37 @@ private:
     /** Struct for sprite node animations */
     struct SpriteNodeAnim {
         std::shared_ptr<TileSet::Tile> tile;
-        std::shared_ptr<scene2::SpriteNode> faceSpriteNode;
+        std::shared_ptr<scene2::TexturedNode> backTextureNode;
+        std::shared_ptr<scene2::SceneNode> container;
         std::shared_ptr<graphics::Texture> convergeSheet;
         std::shared_ptr<graphics::Texture> divergeSheet;
+        std::shared_ptr<graphics::Texture> idle;
         
         int frames;
-        int time;
+        int currFrame;
+        float time;
         
         bool converging;
         bool diverging;
         bool done;
-
-        SpriteNodeAnim(std::shared_ptr<TileSet::Tile>& tile, std::shared_ptr<cugl::graphics::Texture> convergeSheet, std::shared_ptr<cugl::graphics::Texture> divergeSheet, int fps) : tile(tile), convergeSheet(convergeSheet), divergeSheet(divergeSheet), frames(fps), converging(true), diverging(false), done(false) {
-            faceSpriteNode = tile->getFaceSpriteNode();
+        
+        SpriteNodeAnim(std::shared_ptr<TileSet::Tile>& tile, std::shared_ptr<cugl::graphics::Texture> convergeSheet, std::shared_ptr<cugl::graphics::Texture> divergeSheet, std::shared_ptr<cugl::graphics::Texture> idle, int fps) : tile(tile), convergeSheet(convergeSheet), divergeSheet(divergeSheet), frames(fps), converging(true), diverging(false), done(false), currFrame(0), idle(idle){
+            backTextureNode = tile->getBackTextureNode();
+            container = tile->getContainer();
             time = 0;
+            
+            tile->getContainer()->removeChild(tile->getFaceSpriteNode());
+            
+            tile->setFrontSpriteNode(scene2::SpriteNode::allocWithSheet(convergeSheet, 4, 4));
+            tile->getFaceSpriteNode()->setFrame(currFrame);
+            
+            float width_origin = tile->getContainer()->getContentSize().width/2;
+            float height_origin = tile->getContainer()->getContentSize().height/2;
+            
+            tile->getFaceSpriteNode()->setAnchor(Vec2::ANCHOR_CENTER);
+            tile->getFaceSpriteNode()->setPosition(width_origin, height_origin);
+            
+            tile->getContainer()->addChild(tile->getFaceSpriteNode());
         };
         
         void update(float dt) {
@@ -123,35 +140,55 @@ private:
                 return;
             }
             
-            if(converging && !diverging && faceSpriteNode->getTexture() != convergeSheet) {
-                faceSpriteNode->initWithSheet(convergeSheet, 4, 4);
-                faceSpriteNode->setFrame(0);
-            }
-            
-            CULog("HERHIUEHPIRHEIHUIPRHEEIPOHR");
-            
             time += dt;
             
             if(time > 1.0f / frames) {
-                if(converging) {
-                    faceSpriteNode->setFrame(faceSpriteNode->getFrame() + 1);
-                    if(faceSpriteNode->getFrame() > 15) {
+                currFrame = converging ? currFrame + 1 : currFrame - 1;
+                time = 0.0f;
+                
+                if(converging && !diverging) {
+                    if(currFrame > 15) {
+                        currFrame = 15;
+                        tile->getContainer()->removeChild(tile->getFaceSpriteNode());
+                        
+                        tile->setFrontSpriteNode(scene2::SpriteNode::allocWithSheet(divergeSheet, 4, 4));
+                        tile->getFaceSpriteNode()->setFrame(currFrame);
+                        
+                        float width_origin = tile->getContainer()->getContentSize().width/2;
+                        float height_origin = tile->getContainer()->getContentSize().height/2;
+                        
+                        tile->getFaceSpriteNode()->setAnchor(Vec2::ANCHOR_CENTER);
+                        tile->getFaceSpriteNode()->setPosition(width_origin, height_origin);
+                        
+                        tile->getContainer()->addChild(tile->getFaceSpriteNode());
+                        
                         converging = false;
                         diverging = true;
-                        faceSpriteNode->initWithSheet(divergeSheet, 4, 4);
-                        faceSpriteNode->setFrame(15);
                     }
                 }
-                else if(diverging) {
-                    faceSpriteNode->setFrame(faceSpriteNode->getFrame() - 1);
-                    if(faceSpriteNode->getFrame() < 0) {
-                        faceSpriteNode->setTexture(tile->toString() + " new");
+                else if (diverging && !converging) {
+                    if(currFrame < 0) {
+                        tile->getContainer()->removeChild(tile->getFaceSpriteNode());
+                        
+                        tile->setFrontSpriteNode(scene2::SpriteNode::allocWithSheet(idle, 1, 1));
+                        
+                        float width_origin = tile->getContainer()->getContentSize().width/2;
+                        float height_origin = tile->getContainer()->getContentSize().height/2;
+                        
+                        tile->getFaceSpriteNode()->setAnchor(Vec2::ANCHOR_CENTER);
+                        tile->getFaceSpriteNode()->setPosition(width_origin, height_origin);
+                        
+                        tile->getContainer()->addChild(tile->getFaceSpriteNode());
+                        
                         diverging = false;
                         done = true;
                     }
                 }
             }
-            CULog("here");
+            
+            if(diverging || converging) {
+                tile->getFaceSpriteNode()->setFrame(currFrame);
+            }
         }
     };
     
@@ -206,8 +243,8 @@ public:
     /**
      * Method to add a sprite node animation
      */
-    void addSpriteNodeAnim(std::shared_ptr<TileSet::Tile>& tile, std::shared_ptr<graphics::Texture> fromTexture,  std::shared_ptr<graphics::Texture> toTexture, int fps) {
-        _spriteNodeAnims.emplace_back(tile, fromTexture, toTexture, fps);
+    void addSpriteNodeAnim(std::shared_ptr<TileSet::Tile>& tile, std::shared_ptr<graphics::Texture> fromTexture, std::shared_ptr<graphics::Texture> toTexture, std::shared_ptr<graphics::Texture> idle, int fps) {
+        _spriteNodeAnims.emplace_back(tile, fromTexture, toTexture, idle, fps);
     }
     
     bool isTileAnimated(const std::shared_ptr<TileSet::Tile>& tile){
@@ -264,8 +301,8 @@ public:
         addTileAnim(tile, tile->pos, tile->pos - Vec2(0, 10.0f), tile->_scale, tile->_scale, f);
     }
     
-    void animateTileMorph(std::shared_ptr<TileSet::Tile>& tile, std::shared_ptr<graphics::Texture> fromTexture,  std::shared_ptr<graphics::Texture> toTexture, float f) {
-        addSpriteNodeAnim(tile, fromTexture, toTexture, f);
+    void animateTileMorph(std::shared_ptr<TileSet::Tile>& tile, std::shared_ptr<graphics::Texture> fromTexture, std::shared_ptr<graphics::Texture> toTexture, std::shared_ptr<graphics::Texture> idle, float f) {
+        addSpriteNodeAnim(tile, fromTexture, toTexture, idle, f);
     }
 };
 

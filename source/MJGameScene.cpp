@@ -399,7 +399,12 @@ void GameScene::update(float timestep) {
     // Updating discardUINode if matchController has a discard update
     if(_matchController->getChoice() == MatchController::Choice::DISCARDUIUPDATE) {
         _discardUINode->incrementLabel(_discardPile->getTopTile());
-        _discardedTileImage->setTexture(_assets->get<Texture>(_discardPile->getTopTile()->toString()));
+        if(_discardPile->getTopTile()->debuffed) {
+            _discardedTileImage->setTexture(_assets->get<Texture>("debuffed"));
+        }
+        else {
+            _discardedTileImage->setTexture(_assets->get<Texture>(_discardPile->getTopTile()->toString()));
+        }
         _discardedTileImage->SceneNode::setContentSize(32.88, 45);
         _discardedTileImage->setVisible(true);
         
@@ -595,7 +600,7 @@ void GameScene::clickedTile(cugl::Vec2 mousePos){
                         return;
                     }
                     AudioController::getInstance().playSound("deselect");
-                    AnimationController::getInstance().animateTileDeselect(currTile, 30);
+//                    AnimationController::getInstance().animateTileDeselect(currTile, 30);
                     auto it = std::find(_player->getHand()._selectedTiles.begin(), _player->getHand()._selectedTiles.end(), currTile);
                     if (it != _player->getHand()._selectedTiles.end()) {
                         _player->getHand()._selectedTiles.erase(it);
@@ -607,7 +612,7 @@ void GameScene::clickedTile(cugl::Vec2 mousePos){
                         return;
                     }
                     AudioController::getInstance().playSound("select");
-                    AnimationController::getInstance().animateTileSelect(currTile, 30);
+//                    AnimationController::getInstance().animateTileSelect(currTile, 30);
                     _player->getHand()._selectedTiles.push_back(currTile);
                     currTile->selected = true;
                 }
@@ -730,7 +735,12 @@ void GameScene::updateDrag(const cugl::Vec2& mousePos, bool mouseDown, bool mous
                       }
                       // Regular tile getting discarded
                       else if(_matchController->discardTile(_draggingTile)) {
-                          _discardedTileImage->setTexture(_assets->get<Texture>(_draggingTile->toString()));
+                          if(_draggingTile->debuffed) {
+                              _discardedTileImage->setTexture(_assets->get<Texture>("debuffed"));
+                          }
+                          else {
+                              _discardedTileImage->setTexture(_assets->get<Texture>(_draggingTile->toString()));
+                          }
                           _discardedTileImage->SceneNode::setContentSize(32.88, 45);
                           _discardedTileImage->setVisible(true);
                           _discardUINode->incrementLabel(_draggingTile);

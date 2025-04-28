@@ -126,9 +126,9 @@ void Pile::updateTilePositions() {
             float x = j * tileSize.x * spacingX;
             float y = i * tileSize.y * spacingY;
             
-            if (!AnimationController::getInstance().isTileAnimated(tile)) {
-                AnimationController::getInstance().addTileAnim(tile, tile->pos, (Vec2(x, y) + pileOffset), tile->_scale, tile->_scale, 20, false);
-            }
+//            if (!AnimationController::getInstance().isTileAnimated(tile)) {
+//                AnimationController::getInstance().addTileAnim(tile, tile->pos, (Vec2(x, y) + pileOffset), tile->_scale, tile->_scale, 20, false);
+//            }
             
             tile->pos = cugl::Vec2(x, y) + pileOffset;
 
