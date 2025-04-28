@@ -80,23 +80,6 @@ void Hand::drawFromPile(std::shared_ptr<Pile>& pile, int number, bool isHost){
     }
  }
 
-//void Hand::drawFromDiscard(std::shared_ptr<TileSet::Tile> tile, bool isHost) {
-//    if (!tile) {
-//        return;
-//    }
-//    
-//    if (isHost) {
-//        tile->inHostHand = true;
-//    } else {
-//        tile->inClientHand = true;
-//
-//    }
-//    tile->discarded = false;
-//    tile->inPile = false;
-//    tile->selected = false; 
-//    _tiles.push_back(tile);
-//}
-
 /**
  * Discards a single specified tile from our hand
  *
@@ -396,7 +379,7 @@ void Hand::updateTilePositions(cugl::Rect rect){
         if (_tiles[i] == _player->getDraggingTile()) {
           continue;
         }
-      
+        
         cugl::Vec2 newPos(startX + i * tileSpacing + (_tiles[i]->getBackTextureNode()->getTexture()->getWidth()/2 * _tiles[i]->_scale), yPos);
         _tiles[i]->pos = newPos;
     }
@@ -430,6 +413,7 @@ void Player::draw(const std::shared_ptr<cugl::graphics::SpriteBatch>& batch) {
         tile->getContainer()->setAngle(rotationAngle);
         tile->getContainer()->setScale(tile->_scale);
         tile->getContainer()->setPosition(lerpPos);
+        
         tile->getContainer()->setVisible(tile != _draggingTile);
         tile->getContainer()->render(batch, Affine2::IDENTITY, Color4::WHITE);
     }

@@ -216,7 +216,15 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::sha
     _discardPile = _matchController->getDiscardPile();
         
     // Premature repositioning so it tiles don't render in the corner of the screen
-    _player->getHand().updateTilePositions(playerHandRegionNode->getBoundingBox());
+    _player->getHand().updateTilePositions(_playerHandRegion);
+    
+//     Setting texture location
+    for(auto& tile : _player->getHand()._tiles) {
+        tile->getContainer()->setAnchor(Vec2::ANCHOR_CENTER);
+        tile->getContainer()->setScale(tile->_scale);
+        tile->getContainer()->setPosition(tile->pos);
+    }
+    
     _pile->pileBox = pileRegionNode->getBoundingBox();
     _pile->updateTilePositions();
     
@@ -270,8 +278,6 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::sha
     
     _activeRegion = cugl::Rect(activeRegionWorldOrigin, activeRegionNode->getContentSize());
     _discardedTileRegion = cugl::Rect(discardedTileRegionWorldOrigin, discardedTileRegionNode->getContentSize());
-    _playerHandRegion = cugl::Rect(playerHandRegionWorldOrigin.x, playerHandRegionWorldOrigin.y - 300, playerHandRegionNode->getContentSize().width, playerHandRegionNode->getContentSize().height);
-    
     // Init the button for playing sets.
     _playSetBtn = std::dynamic_pointer_cast<scene2::Button>(_assets->get<scene2::SceneNode>("matchscene.gameplayscene.playSetButton"));
 
