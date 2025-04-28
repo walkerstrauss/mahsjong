@@ -91,7 +91,7 @@ void MahsJongApp::onShutdown() {
     _info.dispose();
     _tutorial.dispose();
     _inputController->dispose();
-//    _network->dispose();
+    _network->dispose();
     _assets = nullptr;
     _batch = nullptr;
     

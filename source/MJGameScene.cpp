@@ -385,7 +385,12 @@ void GameScene::update(float timestep) {
     // Updating discardUINode if matchController has a discard update
     if(_matchController->getChoice() == MatchController::Choice::DISCARDUIUPDATE) {
         _discardUINode->incrementLabel(_discardPile->getTopTile());
-        _discardedTileImage->setTexture(_assets->get<Texture>(_discardPile->getTopTile()->toString()));
+        if(_discardPile->getTopTile()->debuffed) {
+            _discardedTileImage->setTexture(_assets->get<Texture>("debuffed"));
+        }
+        else {
+            _discardedTileImage->setTexture(_assets->get<Texture>(_discardPile->getTopTile()->toString()));
+        }
         _discardedTileImage->SceneNode::setContentSize(32.88, 45);
         _discardedTileImage->setVisible(true);
         
@@ -657,7 +662,6 @@ void GameScene::updateDrag(const cugl::Vec2& mousePos, bool mouseDown, bool mous
                     _dragFromDiscard = true;
                     _discardedTileImage->setVisible(false);
                     _draggingTile = _discardPile->getTopTile();
-                    _draggingTile->_scale = 0.135;
                     _draggingTile->pos = mousePos;
                 }
             }
@@ -719,7 +723,12 @@ void GameScene::updateDrag(const cugl::Vec2& mousePos, bool mouseDown, bool mous
                       }
                       // Regular tile getting discarded
                       else if(_matchController->discardTile(_draggingTile)) {
-                          _discardedTileImage->setTexture(_assets->get<Texture>(_draggingTile->toString()));
+                          if(_draggingTile->debuffed) {
+                              _discardedTileImage->setTexture(_assets->get<Texture>("debuffed"));
+                          }
+                          else {
+                              _discardedTileImage->setTexture(_assets->get<Texture>(_draggingTile->toString()));
+                          }
                           _discardedTileImage->SceneNode::setContentSize(32.88, 45);
                           _discardedTileImage->setVisible(true);
                           _discardUINode->incrementLabel(_draggingTile);
@@ -742,14 +751,10 @@ void GameScene::updateDrag(const cugl::Vec2& mousePos, bool mouseDown, bool mous
                     }
                     else {
                         _discardedTileImage->setVisible(true);
-                        _draggingTile->_scale = 0;
-                        _draggingTile->pos = Vec2(0,0);
                     }
                 }
                 else if (_matchController->getChoice() != MatchController::DRAWNDISCARD){
                     _discardedTileImage->setVisible(true);
-                    _draggingTile->_scale = 0;
-                    _draggingTile->pos = Vec2(0,0);
                 }
             }
             else if (distance > DRAG_THRESHOLD) {

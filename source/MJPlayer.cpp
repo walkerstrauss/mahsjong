@@ -405,7 +405,6 @@ void Hand::updateTilePositions(cugl::Rect rect){
  */
 void Player::draw(const std::shared_ptr<cugl::graphics::SpriteBatch>& batch) {
     for(const auto& tile : _hand._tiles){
-        
         Vec2 pos = tile->pos;
         Vec2 origin = Vec2(tile->getTileTexture()->getSize().width/2, tile->getTileTexture()->getSize().height/2);
         

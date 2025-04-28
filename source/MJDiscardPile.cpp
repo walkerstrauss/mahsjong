@@ -33,42 +33,12 @@ bool DiscardPile::init(const std::shared_ptr<cugl::AssetManager>& assets){
     return true;
 }
 
-/**
- * Method to update the position of the discard pile tiles
- */
-//void DiscardPile::updateTilePositions(){
-//    // TODO: implement positioning logic for if the pile is size one or two (if it is one keep location if it is two then start x, end x, spacing x, -
-//    // TODO: replace this with better logic - should be based on the position specified in a Json file
-//    
-//    // Set top tile position for rendering to game scene
-//    _topTile->pos = cugl::Vec2(990,520);
-//    Size textureSize(350.0, 415.0);
-//    Vec2 rectOrigin(_topTile->pos - (textureSize * getTopTile()->_scale)/2);
-//    getTopTile()->tileRect = cugl::Rect(rectOrigin, textureSize * getTopTile()->_scale);
-//    return;
-//}
-
 bool DiscardPile::isTileSelected(const cugl::Vec2& mousePos){
     // Tile position (matches render)
     std::shared_ptr<TileSet::Tile> currTile = getTopTile();
     if (currTile == nullptr){
         return false;
     }
-//    if(it->selected){
-//        pos.y = curr.pos.y + 10;
-//    }
-//    Vec2 origin = Vec2(curr.getTileTexture()->getSize().width/2, curr.getTileTexture()->getSize().height/2);
-//    
-//    Affine2 trans;
-//    trans.scale(curr._scale);
-//    trans.translate(pos);
-//    
-//    Size textureSize(350.0, 415.0);
-//    Vec2 rectOrigin(pos - (textureSize * curr._scale)/2);
-//    it->tileRect = cugl::Rect(rectOrigin, textureSize * curr._scale);
-//    
-//    batch->draw(curr.getTileTexture(), origin, trans);
-        // Get tile size with scaling applied
     else if(currTile->tileRect.contains(mousePos)){
         if(currTile->selected){
             currTile->_scale = 0.2;
@@ -106,20 +76,21 @@ std::shared_ptr<TileSet::Tile> DiscardPile::drawTopTile(){
     return topTile;
 }
 
-/**
+/*
  * Method to render the top card of the discard pile
  */
-void DiscardPile::draw(const std::shared_ptr<cugl::graphics::SpriteBatch>& batch){
-    if (_topTile){
-        std::shared_ptr<TileSet::Tile> tile = getTopTile();
+void DiscardPile::draw(const std::shared_ptr<cugl::graphics::SpriteBatch>& batch, const std::shared_ptr<TileSet::Tile> draggingTile){
+    if(_topTile && _topTile == draggingTile) {
+        Vec2 pos = _topTile->pos;
+        Vec2 origin = Vec2(_topTile->getBackTextureNode()->getTexture()->getSize().width/2, _topTile->getBackTextureNode()->getTexture()->getSize().height/2);
         
-        cugl::Vec2 origin = cugl::Vec2(tile->getTileTexture()->getSize().width/2, tile->getTileTexture()->getSize().height/2);
-        cugl::Affine2 trans;
-        trans.scale(tile->_scale);
-        trans.translate(tile->pos);
+        Size textureSize(_topTile->getBackTextureNode()->getTexture()->getSize());
+        Vec2 rectOrigin(pos - (textureSize * _topTile->_scale)/2);
+        _topTile->tileRect = cugl::Rect(rectOrigin, textureSize * _topTile->_scale);
         
-        batch->draw(tile->getTileTexture(), origin, trans);
+        _topTile->getContainer()->setAnchor(Vec2::ANCHOR_CENTER);
+        _topTile->getContainer()->setScale(_topTile->_scale);
+        _topTile->getContainer()->setPosition(pos);
+        _topTile->getContainer()->render(batch, Affine2::IDENTITY, Color4::WHITE);
     }
 }
-
-

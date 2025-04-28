@@ -10,6 +10,7 @@
 #include <sstream>
 #include "MJMatchController.h"
 #include "MJAudioController.h"
+#include "MJAnimationController.h"
 
 using namespace cugl;
 using namespace cugl::graphics;
@@ -302,6 +303,8 @@ bool MatchController::playSet() {
         std::shared_ptr<JsonValue> emptyJson = _tileSet->toJson(_tileSet->tilesToJson);
         _network->broadcastPlaySet(_network->getLocalPid(), false, emptyJson);
         
+        
+        hasDrawn = false;
         // Reset match controller choice
         _choice = NONE;
         return false;
@@ -407,7 +410,7 @@ void MatchController::playRooster(std::shared_ptr<TileSet::Tile>& celestialTile)
  * Executes Ox celestial tile effect in current game scene. It then broadcasts the change
  * to opposing player.
  */
-void MatchController::playOx(std::shared_ptr<TileSet::Tile>& celestialTile){
+void MatchController::playOx(std::shared_ptr<TileSet::Tile>& celestialTile) {
     auto& opponent = _network->getHostStatus()
                          ? clientPlayer->getHand()
                          : hostPlayer->getHand();
@@ -423,7 +426,7 @@ void MatchController::playOx(std::shared_ptr<TileSet::Tile>& celestialTile){
         if (!tile->debuffed && !tile->discarded) {
             tile->_scale = 0.15;
             tile->debuffed = true;
-            tile->setTexture(_assets->get<cugl::graphics::Texture>("debuffed"));
+            tile->getFaceSpriteNode()->setVisible(false);
             _tileSet->tilesToJson.push_back(tile);
             debuffed++;
         }
@@ -475,12 +478,12 @@ void MatchController::playRabbit(std::shared_ptr<TileSet::Tile>& celestialTile){
             }
             tile->_scale = 0.15;
             tile->_rank = static_cast<TileSet::Tile::Rank>(newRank);
+            tile->setFaceTexture(_assets->get<Texture>(tile->toString() + " new"));
             _tileSet->tilesToJson.push_back(tile);
             changedTileJson = _tileSet->toJson(_tileSet->tilesToJson);
             // Clear tilesToJson vector
             _tileSet->clearTilesToJson();
             break;
-
         }
     }
     
@@ -505,7 +508,6 @@ void MatchController::playRabbit(std::shared_ptr<TileSet::Tile>& celestialTile){
 /**
  * Executes the Snake celestial tile effect  (change suit of random tile) in current game scene. It then broadcasts the change
  * to opposing player.
- *
  */
 void MatchController::playSnake(std::shared_ptr<TileSet::Tile>& celestialTile){
     auto& opponent = _network->getHostStatus()
@@ -527,6 +529,7 @@ void MatchController::playSnake(std::shared_ptr<TileSet::Tile>& celestialTile){
             }
             tile->_scale = 0.15; 
             tile->_suit = static_cast<TileSet::Tile::Suit>(newSuit);
+            tile->setFaceTexture(_assets->get<Texture>(tile->toString() + " new"));
             _tileSet->tilesToJson.push_back(tile);
             changedTileJson = _tileSet->toJson(_tileSet->tilesToJson);
             // Clear tilesToJson vector
@@ -698,9 +701,7 @@ void MatchController::celestialEffect(){
         
         // Reset network status
         _network->setStatus(NetworkController::INGAME);
-    } else if (_network->getCelestialUpdateType() == NetworkController::OX // these alter your hand, so must update textures
-               || _network->getCelestialUpdateType() == NetworkController::RABBIT
-               || _network->getCelestialUpdateType() == NetworkController::SNAKE) {
+    } else if (_network->getCelestialUpdateType() == NetworkController::OX) { // these alter your hand, so must update textures
         _tileSet->updateDeck(_network->getTileMapJson());
         
         // Update the tile textures in hand to have debuffed tiles be facedown (for now)
@@ -709,6 +710,20 @@ void MatchController::celestialEffect(){
                             : clientPlayer->getHand();
         
         hand.updateHandTextures(_assets);
+    } else if (_network->getCelestialUpdateType() == NetworkController::RABBIT ||
+               _network->getCelestialUpdateType() == NetworkController::SNAKE) {
+        
+        std::vector<std::shared_ptr<TileSet::Tile>> tilesToAnimate = _tileSet->processTileJson(_network->getTileMapJson());
+        
+        for(auto& it : tilesToAnimate) {
+            std::shared_ptr<TileSet::Tile> tile = _tileSet->tileMap[std::to_string(it->_id)];
+            std::shared_ptr<graphics::Texture> fromTexture = _assets->get<graphics::Texture>(tile->toString() + " sheet");
+            std::shared_ptr<graphics::Texture> toTexture = _assets->get<graphics::Texture>(it->toString() + " sheet");
+            std::shared_ptr<graphics::Texture> idle = _assets->get<graphics::Texture>(it->toString() + " new");
+//            AnimationController::getInstance().animateTileMorph(tile, fromTexture, toTexture, idle, 8);
+            }
+        
+        _tileSet->updateDeck(_network->getTileMapJson());
     } else if (_network->getCelestialUpdateType() == NetworkController::MONKEY) {
         _tileSet->updateDeck(_network->getTileMapJson());
         std::vector<std::shared_ptr<TileSet::Tile>> changedTiles = _tileSet->processTileJson(_network->getTileMapJson());
@@ -767,6 +782,7 @@ void MatchController::endTurn() {
  * @param timestep The amount of time (in seconds) since the last frame
  */
 void MatchController::update(float timestep) {
+//    AnimationController::getInstance().update(timestep);
     // If we receieve end game status, current player loses
     if(_network->getStatus() == NetworkController::ENDGAME) {
         _choice = LOSE;
@@ -817,7 +833,17 @@ void MatchController::update(float timestep) {
         
         // Actual reference to tile from tileMap
         tile = _tileSet->tileMap[key];
+//         std::shared_ptr<TileSet::Tile> tempTile = _tileSet->processTileJson(_network->getDiscardTile())[0];
+//         std::string key = std::to_string(tempTile->_id);
         
+//         // Actual reference to tile from tileMap
+//         std::shared_ptr<TileSet::Tile> tile = _tileSet->tileMap[key];
+//         tile->inHostHand = tempTile->inHostHand;
+//         tile->inClientHand = tempTile->inClientHand;
+//         tile->discarded = tempTile->discarded;
+//         tile->_scale = tempTile->_scale;
+//         tile->pos = tempTile->pos;
+                
         //If host
         if(_network->getHostStatus()) {clientPlayer->getHand().discard(tile, true);}
         //If client
