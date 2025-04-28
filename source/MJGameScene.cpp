@@ -507,9 +507,6 @@ void GameScene::render() {
         _dragToHandNode->render(_batch);
     }
 
-    if(_dragInitiated && _draggingTile) {
-        _discardPile->draw(_batch);
-    }
 //    for (auto key : playerGuideKeys){
 //        auto node = playerGuideNodeMap[key];
 //        if (node->isVisible()){
@@ -523,9 +520,13 @@ void GameScene::render() {
     _batch->setTexture(nullptr);
 
 
-    if (_draggingTile && _draggingTile->discarded == false) {
-        _draggingTile->getContainer()->setVisible(true);
-        _draggingTile->getContainer()->render(_batch, Affine2::IDENTITY, Color4::WHITE);
+    if (_draggingTile) {
+        if (!_draggingTile->discarded){
+            _draggingTile->getContainer()->setVisible(true);
+            _draggingTile->getContainer()->render(_batch, Affine2::IDENTITY, Color4::WHITE);
+        } else {
+            _discardPile->draw(_batch);
+        }
     }
     
     
