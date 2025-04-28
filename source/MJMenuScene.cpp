@@ -99,7 +99,7 @@ bool MenuScene::init(const std::shared_ptr<cugl::AssetManager>& assets) {
     
     _tutorialbutton = std::dynamic_pointer_cast<Button>(_assets->get<SceneNode>("home.home.menu.button4"));
     _tutorialbutton->addListener([this](const std::string&name, bool down){
-        if (!down){
+        if (down){
             AudioController::getInstance().playSound("confirm", false);
             _choice = TUTORIAL;
         }
@@ -165,6 +165,7 @@ void MenuScene::setActive(bool value) {
             settingsbutton->setDown(false);
             _hostbutton->setDown(false);
             _joinbutton->setDown(false);
+            _tutorialbutton->setDown(false);
         }
     }
 }

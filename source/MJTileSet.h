@@ -102,8 +102,6 @@ public:
         bool debuffed = false;
         /** Whether or not the tile can be selected */
         bool selectable = true;
-        /** Whether or not the tile can be unselectable */
-        bool unselectable = false; 
         
 #pragma mark -
 #pragma mark Tile Constructors
@@ -132,6 +130,13 @@ public:
          * @return the associated suit for the tile it was called from.
          */
         Tile::Suit getSuit() const { return _suit; }
+        
+        /**
+         * Getter for the id of the tile
+         *
+         * @return the id of this tile in integer form
+         */
+        int getId() const { return _id; }
         
         /**
          * Getter for accessing the textured node for the back of the tile

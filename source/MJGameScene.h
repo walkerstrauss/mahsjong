@@ -130,6 +130,7 @@ protected:
 
     std::shared_ptr<cugl::scene2::TexturedNode> _dragToHandNode;
     std::shared_ptr<SceneNode> _playArea;
+    std::shared_ptr<SceneNode> _tradeArea;
     bool _dragFromDiscard = false;
     bool _dragToHandVisible = false;
 
@@ -195,6 +196,9 @@ protected:
     std::shared_ptr<Button> _playerHandBtn;
     std::shared_ptr<Button> _opponentHandBtn2;
     std::shared_ptr<Button> _playerHandBtn2;
+
+    bool opponentTabVisible = false;
+    bool playerTabVisible = false;
     
     std::vector<std::string> playerGuideKeys;
     std::unordered_map<std::string, std::shared_ptr<SceneNode>> playerGuideNodeMap;
@@ -376,21 +380,13 @@ public:
         _opponentHandBtn = std::dynamic_pointer_cast<Button>(_assets->get<SceneNode>("matchscene.gameplayscene.opponent-hand"));
         _opponentHandBtn->addListener([this](const std::string& name, bool down){
             if (!down){
-                bool visible = !_opponentHandRec->isVisible();
-                _opponentHandRec->setVisible(visible);
-                for (int i = 0; i < _opponentHandTiles.size(); i++){
-                    _opponentHandTiles[i]->setVisible(visible);
-                }
+                opponentTabVisible = !opponentTabVisible;
             }
         });
         _opponentHandBtn2 = std::dynamic_pointer_cast<Button>(_assets->get<SceneNode>("matchscene.gameplayscene.opponent-hand2"));
         _opponentHandBtn2->addListener([this](const std::string& name, bool down){
             if (!down){
-                bool visible = !_opponentHandRec->isVisible();
-                _opponentHandRec->setVisible(visible);
-                for (int i = 0; i < _opponentHandTiles.size(); i++){
-                    _opponentHandTiles[i]->setVisible(visible);
-                }
+                opponentTabVisible = !opponentTabVisible;
             }
         });
         
@@ -398,21 +394,13 @@ public:
         _playerHandBtn = std::dynamic_pointer_cast<Button>(_assets->get<SceneNode>("matchscene.gameplayscene.playerhand-button"));
         _playerHandBtn->addListener([this](const std::string& name, bool down){
             if (!down){
-                bool visible = !_playerHandRec->isVisible();
-                _playerHandRec->setVisible(visible);
-                for (int i = 0; i < _playerHandTiles.size(); i++){
-                    _playerHandTiles[i]->setVisible(visible);
-                }
+                playerTabVisible = !playerTabVisible;
             }
         });
         _playerHandBtn2 = std::dynamic_pointer_cast<Button>(_assets->get<SceneNode>("matchscene.gameplayscene.playerhand-button2"));
         _playerHandBtn2->addListener([this](const std::string& name, bool down){
             if (!down){
-                bool visible = !_playerHandRec->isVisible();
-                _playerHandRec->setVisible(visible);
-                for (int i = 0; i < _playerHandTiles.size(); i++){
-                    _playerHandTiles[i]->setVisible(visible);
-                }
+                playerTabVisible = !playerTabVisible;
             }
         });
         
@@ -453,6 +441,16 @@ public:
                 _playerHandBtn2->deactivate();
             }
             _playerHandBtn2->setVisible(false);
+        }
+        
+        _opponentHandRec->setVisible(opponentTabVisible);
+        for (int i = 0; i < _opponentHandTiles.size(); i++){
+            _opponentHandTiles[i]->setVisible(opponentTabVisible);
+        }
+        
+        _playerHandRec->setVisible(playerTabVisible);
+        for (int i = 0; i < _playerHandTiles.size(); i++){
+            _playerHandTiles[i]->setVisible(playerTabVisible);
         }
     }
     

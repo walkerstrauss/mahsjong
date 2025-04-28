@@ -831,6 +831,9 @@
         "drag-to-hand-area": {
             "file": "textures/gameplay/drag-to-hand-area.png"
         },
+        "drag-to-trade": {
+            "file": "textures/gameplay/drag-to-trade.png"
+        },
         "discard-can": {
             "file": "textures/gameplay/discard-can.png"
         },

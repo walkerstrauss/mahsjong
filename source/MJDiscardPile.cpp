@@ -68,7 +68,7 @@ std::shared_ptr<TileSet::Tile> DiscardPile::drawTopTile(){
     }
     std::shared_ptr<TileSet::Tile> topTile = _topTile;
     
-    _discardMap.erase(_topTile->toString() + " " + std::to_string(_topTile->_id));
+    _discardMap.erase(std::to_string(_topTile->_id));
     _topTile = nullptr; // Set top tile to null
 
     _size = static_cast<int>(_discardPile.size()) + (_topTile ? 1 : 0);
@@ -79,8 +79,8 @@ std::shared_ptr<TileSet::Tile> DiscardPile::drawTopTile(){
 /*
  * Method to render the top card of the discard pile
  */
-void DiscardPile::draw(const std::shared_ptr<cugl::graphics::SpriteBatch>& batch, const std::shared_ptr<TileSet::Tile> draggingTile){
-    if(_topTile && _topTile == draggingTile) {
+void DiscardPile::draw(const std::shared_ptr<cugl::graphics::SpriteBatch>& batch){
+    if(_topTile) {
         Vec2 pos = _topTile->pos;
         Vec2 origin = Vec2(_topTile->getBackTextureNode()->getTexture()->getSize().width/2, _topTile->getBackTextureNode()->getTexture()->getSize().height/2);
         

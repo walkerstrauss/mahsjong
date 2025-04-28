@@ -95,7 +95,7 @@ public:
             getTopTile()->topTile = false;
         }
         tile->topTile = true;
-        _discardMap.insert({tile->toString() + " " + std::to_string(tile->_id), tile});
+        _discardMap.insert({std::to_string(tile->_id), tile});
         _topTile = tile;
         _size = static_cast<int>(_discardPile.size()) + 1;
         return true;
@@ -103,7 +103,7 @@ public:
     
     /**
      * Method to take a tile from the discard pile.
-     * Returns a tile for the player to add to hand and updates the dicard pile
+     * Returns a tile for the player to add to hand and updates the discard pile
      *
      * @return a tile to add to the player hand
      */
@@ -124,7 +124,7 @@ public:
     /**
      * Method to render the top card of the discard pile
      */
-    void draw(const std::shared_ptr<cugl::graphics::SpriteBatch>& batch, const std::shared_ptr<TileSet::Tile> draggingTile);
+    void draw(const std::shared_ptr<cugl::graphics::SpriteBatch>& batch);
     
     /**
      * Removes top tile in discard pile
