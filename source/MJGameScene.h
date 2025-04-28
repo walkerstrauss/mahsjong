@@ -498,7 +498,6 @@ public:
             set = _player->getHand().getSortedTiles(set);
             for (auto tile : set){
                 auto node = _opponentHandTiles[i];
-                auto texture = tile->getTileTexture();
                 node->setTexture(tile->getTileTexture());
                 node->setContentSize(30, 38.46f);
                 node->doLayout();
@@ -513,7 +512,6 @@ public:
             set = _player->getHand().getSortedTiles(set);
             for (auto tile : set){
                 auto node = _playerHandTiles[i];
-                auto texture = tile->getTileTexture();
                 node->setTexture(tile->getTileTexture());
                 node->setContentSize(30, 38.46f);
                 node->doLayout();
