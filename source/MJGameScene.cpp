@@ -79,6 +79,9 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::sha
     _playArea = _assets->get<SceneNode>("matchscene.gameplayscene.play-area");
     _playArea->setVisible(false);
     
+    _tradeArea = _assets->get<SceneNode>("matchscene.gameplayscene.drag-to-trade");
+    _tradeArea->setVisible(false);
+
     std::shared_ptr<scene2::SceneNode> activeRegionNode = _assets->get<scene2::SceneNode>("matchscene.gameplayscene.drag-to-discard-tile");
     std::shared_ptr<scene2::SceneNode> discardedTileRegionNode = _assets->get<scene2::SceneNode>("matchscene.gameplayscene.discarded-tile.discarded-rec");
     std::shared_ptr<scene2::SceneNode> playerHandRegionNode = _assets->get<scene2::SceneNode>("matchscene.gameplayscene.playerhand");
@@ -412,6 +415,11 @@ void GameScene::update(float timestep) {
         _matchController->setChoice(MatchController::Choice::NONE);
     }
     
+    // UI Handling for Celestial Tiles
+    if (_matchController->getChoice() == MatchController::Choice::MONKEYTILE) {
+        _tradeArea->setVisible(true);
+    }
+    
     if (_matchController->getChoice() == MatchController::Choice::RATTILE
         && _pileUINode->getState() == PileUINode::NONE) {
         _pileUINode->setState(PileUINode::RATSELECT);
@@ -504,6 +512,8 @@ void GameScene::render() {
         _dragToDiscardNode->render(_batch);
     } else if (_playArea && _playArea->isVisible()){
         _playArea->render(_batch);
+    } else if (_tradeArea && _tradeArea->isVisible()){
+        _tradeArea->render(_batch);
     }
     if (_dragToHandNode && _dragToHandNode->isVisible()) {
         _dragToHandNode->render(_batch);
@@ -702,6 +712,7 @@ void GameScene::updateDrag(const cugl::Vec2& mousePos, bool mouseDown, bool mous
                           // Play the swap sound when the monkey tile is activated.
                           AudioController::getInstance().playSound("swap");
                           
+                          _tradeArea->setVisible(false);
                           // Rebind _player to prevent null ptr error
                           _player = _network->getHostStatus() ? _matchController->hostPlayer : _matchController->clientPlayer;
                           _matchController->setChoice(MatchController::Choice::NONE);
