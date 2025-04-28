@@ -124,7 +124,7 @@ public:
     /**
      * Method to render the top card of the discard pile
      */
-    void draw(const std::shared_ptr<cugl::graphics::SpriteBatch>& batch, const std::shared_ptr<TileSet::Tile> draggingTile);
+    void draw(const std::shared_ptr<cugl::graphics::SpriteBatch>& batch);
     
     /**
      * Removes top tile in discard pile

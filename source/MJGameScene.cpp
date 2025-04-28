@@ -542,6 +542,7 @@ void GameScene::render() {
             _draggingTile->getContainer()->setVisible(true);
             _draggingTile->getContainer()->render(_batch, Affine2::IDENTITY, Color4::WHITE);
         } else {
+            _draggingTile->getContainer()->setVisible(true);
             _discardPile->draw(_batch);
         }
     }
