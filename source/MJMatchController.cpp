@@ -266,12 +266,12 @@ bool MatchController::playSet() {
         _network->broadcastPlaySet(_network->getLocalPid(), true, tilesJson);
     
         // Reset choice for match controller
-        _choice = SUCCESS_SET;
+        _choice = NONE;
         return true;
     }
     else {
         // Unselect all selected tiles from hand
-    for(auto it = currPlayer->getHand()._tiles.begin(); it != currPlayer->getHand()._tiles.end();) {
+        for(auto it = currPlayer->getHand()._tiles.begin(); it != currPlayer->getHand()._tiles.end();) {
             (*it)->selected = false;
             
             // If the tile was a discarded tile reset to discarded status and discard from hand
@@ -284,7 +284,9 @@ bool MatchController::playSet() {
                 (*it)->pos = Vec2::ZERO;
                 
                 _discardPile->addTile(*it);
-                it = currPlayer->getHand()._tiles.erase(it);
+                currPlayer->getHand().removeTile((*it), _network->getHostStatus());
+            } else {
+                it++;
             }
         }
         // Clear selected tiles from current player
@@ -295,7 +297,7 @@ bool MatchController::playSet() {
         _network->broadcastPlaySet(_network->getLocalPid(), false, emptyJson);
         
         // Reset match controller choice
-        _choice = FAILED_SET;
+        _choice = NONE;
         return false;
     }
     

@@ -309,7 +309,9 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::sha
         if (!down) {
             AudioController::getInstance().playSound("confirm");
             if(!_matchController->playSet()) {
-                _discardedTileImage->setVisible(true);
+                _matchController->hasDrawn = true;
+                _matchController->hasDiscarded = true;
+                _matchController->endTurn();
             }
         }
     });
@@ -430,11 +432,11 @@ void GameScene::update(float timestep) {
         _discardedTileImage->setVisible(false);
     }
     
-//    // If play set button is active and visible and match controller state is NONE, deactivate and set visible to false
-//    if((_playSetBtn->isVisible() || _playSetBtn->isActive()) && _matchController->getChoice() == MatchController::NONE) {
-//        _playSetBtn->deactivate();
-//        _playSetBtn->setVisible(false);
-//    }
+    // If play set button is active and visible and match controller state is NONE, deactivate and set visible to false
+    if((_playSetBtn->isVisible() || _playSetBtn->isActive()) && _matchController->getChoice() == MatchController::NONE) {
+        _playSetBtn->deactivate();
+        _playSetBtn->setVisible(false);
+    }
     
     // Clicking/Tapping and Dragging logic
     if(_input->didRelease() && !_input->isDown()) {
