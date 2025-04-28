@@ -399,7 +399,12 @@ void GameScene::update(float timestep) {
     // Updating discardUINode if matchController has a discard update
     if(_matchController->getChoice() == MatchController::Choice::DISCARDUIUPDATE) {
         _discardUINode->incrementLabel(_discardPile->getTopTile());
-        _discardedTileImage->setTexture(_assets->get<Texture>(_discardPile->getTopTile()->toString()));
+        if(_discardPile->getTopTile()->debuffed) {
+            _discardedTileImage->setTexture(_assets->get<Texture>("debuffed"));
+        }
+        else {
+            _discardedTileImage->setTexture(_assets->get<Texture>(_discardPile->getTopTile()->toString()));
+        }
         _discardedTileImage->SceneNode::setContentSize(32.88, 45);
         _discardedTileImage->setVisible(true);
         
@@ -517,16 +522,12 @@ void GameScene::render() {
     _batch->draw(temp, Color4(0,0,0,255), Rect(Vec2::ZERO, cugl::Application().get()->getDisplaySize()));
         
     _matchScene->render(_batch);
-    _discardPile->draw(_batch);
+    _discardPile->draw(_batch, _draggingTile);
     
     _pileUINode->_root->render(_batch);
     _pile->draw(_batch);
     _player->draw(_batch);
 
-    if(_dragInitiated && _draggingTile) {
-        _discardPile->draw(_batch);
-    }
-    
     for (auto key : playerGuideKeys){
         auto node = playerGuideNodeMap[key];
         if (framesOnScreen > 0 && framesOnScreen < maxFramesOnScreen && node->isVisible()){
@@ -603,7 +604,7 @@ void GameScene::clickedTile(cugl::Vec2 mousePos){
                         return;
                     }
                     AudioController::getInstance().playSound("deselect");
-                    AnimationController::getInstance().animateTileDeselect(currTile, 30);
+//                    AnimationController::getInstance().animateTileDeselect(currTile, 30);
                     auto it = std::find(_player->getHand()._selectedTiles.begin(), _player->getHand()._selectedTiles.end(), currTile);
                     if (it != _player->getHand()._selectedTiles.end()) {
                         _player->getHand()._selectedTiles.erase(it);
@@ -615,7 +616,7 @@ void GameScene::clickedTile(cugl::Vec2 mousePos){
                         return;
                     }
                     AudioController::getInstance().playSound("select");
-                    AnimationController::getInstance().animateTileSelect(currTile, 30);
+//                    AnimationController::getInstance().animateTileSelect(currTile, 30);
                     _player->getHand()._selectedTiles.push_back(currTile);
                     currTile->selected = true;
                 }
@@ -678,7 +679,6 @@ void GameScene::updateDrag(const cugl::Vec2& mousePos, bool mouseDown, bool mous
                     _dragFromDiscard = true;
                     _discardedTileImage->setVisible(false);
                     _draggingTile = _discardPile->getTopTile();
-                    _draggingTile->_scale = 0.135;
                     _draggingTile->pos = mousePos;
                 }
             }
@@ -741,7 +741,12 @@ void GameScene::updateDrag(const cugl::Vec2& mousePos, bool mouseDown, bool mous
                       }
                       // Regular tile getting discarded
                       else if(_matchController->discardTile(_draggingTile)) {
-                          _discardedTileImage->setTexture(_assets->get<Texture>(_draggingTile->toString()));
+                          if(_draggingTile->debuffed) {
+                              _discardedTileImage->setTexture(_assets->get<Texture>("debuffed"));
+                          }
+                          else {
+                              _discardedTileImage->setTexture(_assets->get<Texture>(_draggingTile->toString()));
+                          }
                           _discardedTileImage->SceneNode::setContentSize(32.88, 45);
                           _discardedTileImage->setVisible(true);
                           _discardUINode->incrementLabel(_draggingTile);
@@ -761,18 +766,13 @@ void GameScene::updateDrag(const cugl::Vec2& mousePos, bool mouseDown, bool mous
                     if(_matchController->drawDiscard()) {
                         _playSetBtn->activate();
                         _playSetBtn->setVisible(true);
-                        _draggingTile->_scale = 0.15;
                     }
                     else {
                         _discardedTileImage->setVisible(true);
-                        _draggingTile->_scale = 0;
-                        _draggingTile->pos = Vec2(0,0);
                     }
                 }
                 else if (_matchController->getChoice() != MatchController::DRAWNDISCARD){
                     _discardedTileImage->setVisible(true);
-                    _draggingTile->_scale = 0;
-                    _draggingTile->pos = Vec2(0,0);
                 }
             }
             else if (distance > DRAG_THRESHOLD) {

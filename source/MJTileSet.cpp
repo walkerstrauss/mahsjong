@@ -98,10 +98,10 @@ void TileSet::initTileNodes(const std::shared_ptr<cugl::AssetManager>& assets){
             else {
                 it->setBackTextureNode(scene2::PolygonNode::allocWithTexture(assets->get<Texture>("blank normal hand")));
             }
-            it->setFrontSpriteNode(std::static_pointer_cast<AnimatedNode>(scene2::SpriteNode::allocWithSheet(assets->get<Texture>(it->toString() + " new"), 1, 1)));
+            it->setFrontSpriteNode(scene2::SpriteNode::allocWithSheet(assets->get<Texture>(it->toString() + " new"), 1, 1));
             
             std::shared_ptr<scene2::PolygonNode> backTextureNode = it->getBackTextureNode();
-            std::shared_ptr<AnimatedNode> faceSpriteNode = it->getFaceSpriteNode();
+            std::shared_ptr<scene2::SpriteNode> faceSpriteNode = it->getFaceSpriteNode();
             
             // Setting anchor
             backTextureNode->setAnchor(Vec2::ANCHOR_CENTER);
