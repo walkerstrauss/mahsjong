@@ -183,6 +183,12 @@ bool MatchController::drawDiscard() {
     currPlayer->getHand()._tiles.push_back(drawnDiscardTile);
     currPlayer->getHand()._selectedTiles.push_back(drawnDiscardTile);
     
+    if (currPlayer->getHand().isWinningHand()) {
+        _choice = Choice::WIN;
+        _network->broadcastEnd(_network->getLocalPid());
+        return true;
+    }
+    
     _network->broadcastDrawnDiscard(_network->getLocalPid());
     
     _choice = DRAWNDISCARD;
