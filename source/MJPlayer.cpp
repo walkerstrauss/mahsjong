@@ -45,7 +45,7 @@ bool Hand::initHand(std::shared_ptr<TileSet>& tileSet, bool isHost){
             drawnTile->inHostHand = false;
             drawnTile->inClientHand = true;
         }
-        drawnTile->_scale = 0.15;
+        drawnTile->_scale = 0.325;
         drawnTile->inDeck = false;
         _tiles.push_back(drawnTile);
     }
@@ -75,7 +75,7 @@ void Hand::drawFromPile(std::shared_ptr<Pile>& pile, int number, bool isHost){
         tile->inPile = false;
         tile->selected = false;
         tile->discarded = false;
-        tile->_scale = 0.15;
+        tile->_scale = 0.325;
         _tiles.push_back(tile); // Add drawn tiles to hand
     }
  }

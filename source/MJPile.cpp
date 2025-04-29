@@ -10,6 +10,9 @@
 #include "MJPlayer.h"
 #include "MJAnimationController.h"
 
+#define ROTATION_CONST 0.1f
+#define MAX_ROTATION 0.1f
+
 /**
  * This is the class intializing and handling the pile.
  */
@@ -78,7 +81,7 @@ bool Pile::createPile() {
             
             std::shared_ptr<TileSet::Tile> tile = _tileSet->deck[index];
             
-            tile->_scale = 0.125;
+            tile->_scale = 0.275;
             tile->inPile = true;
             tile->pileCoord = cugl::Vec2(i, j);
             tile->inDeck = false; 
@@ -125,10 +128,6 @@ void Pile::updateTilePositions() {
 
             float x = j * tileSize.x * spacingX;
             float y = i * tileSize.y * spacingY;
-            
-//            if (!AnimationController::getInstance().isTileAnimated(tile)) {
-//                AnimationController::getInstance().addTileAnim(tile, tile->pos, (Vec2(x, y) + pileOffset), tile->_scale, tile->_scale, 20, false);
-//            }
             
             tile->pos = cugl::Vec2(x, y) + pileOffset;
 
@@ -249,10 +248,18 @@ void Pile::draw(const std::shared_ptr<cugl::graphics::SpriteBatch>& batch) {
             Size textureSize(tile->getBackTextureNode()->getTexture()->getSize());
             Vec2 rectOrigin(pos - (textureSize * tile->_scale)/2);
             tile->tileRect = cugl::Rect(rectOrigin, textureSize * tile->_scale);
+            
+            float velocity = tile->pos.x - tile->getContainer()->getPosition().x;
+            float rotationAngle = ROTATION_CONST * velocity;
+            rotationAngle = std::clamp(rotationAngle, -MAX_ROTATION, MAX_ROTATION);
+            
+            Vec2 lerpPos = tile->getContainer()->getPosition();
+            lerpPos.lerp(pos, 0.5);
            
             tile->getContainer()->setAnchor(Vec2::ANCHOR_CENTER);
+            tile->getContainer()->setAngle(rotationAngle);
             tile->getContainer()->setScale(tile->_scale);
-            tile->getContainer()->setPosition(pos);
+            tile->getContainer()->setPosition(lerpPos);
             tile->getContainer()->setVisible(true);
             tile->getContainer()->render(batch, Affine2::IDENTITY, Color4::WHITE);
         }

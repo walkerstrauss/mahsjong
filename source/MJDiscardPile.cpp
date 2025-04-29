@@ -33,28 +33,6 @@ bool DiscardPile::init(const std::shared_ptr<cugl::AssetManager>& assets){
     return true;
 }
 
-bool DiscardPile::isTileSelected(const cugl::Vec2& mousePos){
-    // Tile position (matches render)
-    std::shared_ptr<TileSet::Tile> currTile = getTopTile();
-    if (currTile == nullptr){
-        return false;
-    }
-    else if(currTile->tileRect.contains(mousePos)){
-        if(currTile->selected){
-            currTile->_scale = 0.2;
-            currTile->selected = false;
-            _selectedTopTile -= 1;
-        }
-        else{
-            currTile->_scale = 0.25;
-            currTile->selected = true;
-            _selectedTopTile += 1;
-        }
-        return true;
-    }
-    return false;
-}
-
 /**
  * Method to take a tile from the discard pile.
  * Returns a tile for the player to add to hand and updates the dicard pile
