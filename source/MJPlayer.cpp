@@ -438,34 +438,34 @@ void Player::drawInfo(const std::shared_ptr<TileSet::Tile> tile, const std::shar
     float tileHeight = tile->getBackTextureNode()->getSize().height * tile->_scale;
     float tileWidth = tile->getBackTextureNode()->getSize().width * tile->_scale;
     
-    float totalHeight = tile->pos.y + tileHeight * 0.5f + textureHeight + 2.2f;
-    float totalMinWidth = tile->pos.x - textureWidth * 0.5f + 2.0f;
-    float totalMaxWidth = tile->pos.x + textureWidth * 0.5f + 2.0f;
+    float totalHeight = tile->getContainer()->getPosition().y + tileHeight * 0.5f + textureHeight + 2.2f;
+    float totalMinWidth = tile->getContainer()->getPosition().x - textureWidth * 0.5f + 2.0f;
+    float totalMaxWidth = tile->getContainer()->getPosition().x + textureWidth * 0.5f + 2.0f;
 
     float x;
     float y;
     
     if(totalHeight > screenSize.getIHeight()) {
-        y = tile->pos.y;
+        y = tile->getContainer()->getPosition().y;
         if(totalMinWidth < 0) {
-            x = tile->pos.x + tileWidth * 0.5f + textureWidth + 2.2f;
+            x = tile->getContainer()->getPosition().x + tileWidth * 0.5f + textureWidth + 2.2f;
         }
         else {
-            x = tile->pos.x - tileWidth * 0.5f - textureWidth - 2.2f;
+            x = tile->getContainer()->getPosition().x - tileWidth * 0.5f - textureWidth - 2.2f;
         }
     }
     else{
         if(totalMinWidth < 0) {
-            x = tile->pos.x + tileWidth * 0.5f + textureWidth + 2.2f;
-            y = tile->pos.y;
+            x = tile->getContainer()->getPosition().x + tileWidth * 0.5f + textureWidth + 2.2f;
+            y = tile->getContainer()->getPosition().y;
         }
         else if (totalMaxWidth > screenSize.width){
-            x = tile->pos.x - tileWidth * 0.5f - textureWidth - 2.2f;
-            y = tile->pos.y;
+            x = tile->getContainer()->getPosition().x - tileWidth * 0.5f - textureWidth - 2.2f;
+            y = tile->getContainer()->getPosition().y;
         }
         else {
-            x = tile->pos.x;
-            y = tile->pos.y + tileHeight * 0.5f + textureHeight + 2.2f;
+            x = tile->getContainer()->getPosition().x;
+            y = tile->getContainer()->getPosition().y + tileHeight * 0.5f + textureHeight + 2.2f;
         }
     }
     

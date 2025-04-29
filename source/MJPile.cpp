@@ -259,7 +259,7 @@ void Pile::draw(const std::shared_ptr<cugl::graphics::SpriteBatch>& batch) {
             rotationAngle = (rotationAngle - tile->getContainer()->getAngle()) * ROTATION_SMOOTH_CONST;
             
             Vec2 lerpPos = tile->getContainer()->getPosition();
-            lerpPos.lerp(pos, 0.5);
+            lerpPos.lerp(pos, 0.7);
            
             tile->getContainer()->setAnchor(Vec2::ANCHOR_CENTER);
             tile->getContainer()->setAngle(rotationAngle);
