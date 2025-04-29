@@ -194,6 +194,8 @@ bool MatchController::drawDiscard() {
     
     _choice = DRAWNDISCARD;
     
+    hasDrawn = true; 
+    
     return true; 
 }
 
@@ -228,6 +230,7 @@ bool MatchController::discardTile(std::shared_ptr<TileSet::Tile> tile) {
         if (!(tile->_suit == TileSet::Tile::Suit::CELESTIAL)){
             _discardPile->addTile(tile);
             
+            _tileSet->clearTilesToJson();
             // Converting to JSON and broadcasting discarded tile
             _tileSet->tilesToJson.push_back(tile);
             _network->broadcastDiscard(_network->getLocalPid(), _tileSet->toJson(_tileSet->tilesToJson));
@@ -256,6 +259,8 @@ bool MatchController::playSet() {
     std::shared_ptr<Player> opponentPlayer = _network->getHostStatus() ? clientPlayer : hostPlayer;
     
     std::vector<std::shared_ptr<TileSet::Tile>> tiles;
+    _tileSet->clearTilesToJson();
+
     // If selected tiles is a valid set
     if(currPlayer->getHand().isSetValid(currPlayer->getHand()._selectedTiles)) {
         // Accumulate tiles from selected set to transform into JSON
@@ -268,7 +273,6 @@ bool MatchController::playSet() {
         
         // Broadcast that a successful set has been played
         currPlayer->getHand().playSet(_network->getHostStatus());
-//        opponentPlayer->getHand().opponentPlayedSets.clear();
        
         _network->broadcastPlaySet(_network->getLocalPid(), true, tilesJson);
     
@@ -299,6 +303,8 @@ bool MatchController::playSet() {
         // Clear selected tiles from current player
         currPlayer->getHand()._selectedTiles.clear();
         
+        _tileSet->clearTilesToJson();
+
         // Make empty JSON for broadcasting
         std::shared_ptr<JsonValue> emptyJson = _tileSet->toJson(_tileSet->tilesToJson);
         _network->broadcastPlaySet(_network->getLocalPid(), false, emptyJson);
@@ -421,10 +427,12 @@ void MatchController::playOx(std::shared_ptr<TileSet::Tile>& celestialTile) {
     
     // Makes sure that effect is applied on tiles that aren't already debuffed or discarded
     int debuffed = 0;
+    _tileSet->clearTilesToJson();
+
     std::shared_ptr<cugl::JsonValue> changedTilesJson;
     for (auto& tile : opponent._tiles) {
         if (!tile->debuffed && !tile->discarded) {
-            tile->_scale = 0.15;
+            tile->_scale = 0.325;
             tile->debuffed = true;
             tile->getFaceSpriteNode()->setVisible(false);
             _tileSet->tilesToJson.push_back(tile);
@@ -476,7 +484,7 @@ void MatchController::playRabbit(std::shared_ptr<TileSet::Tile>& celestialTile){
             while (newRank == oldRank) {
                 newRank = 1 + rand() % 9;
             }
-            tile->_scale = 0.15;
+            tile->_scale = 0.325;
             tile->_rank = static_cast<TileSet::Tile::Rank>(newRank);
             tile->setFaceTexture(_assets->get<Texture>(tile->toString() + " new"));
             _tileSet->tilesToJson.push_back(tile);
@@ -527,7 +535,7 @@ void MatchController::playSnake(std::shared_ptr<TileSet::Tile>& celestialTile){
             while (newSuit == oldSuit) {
                 newSuit = 1 + rand() % 3;
             }
-            tile->_scale = 0.15; 
+            tile->_scale = 0.325;
             tile->_suit = static_cast<TileSet::Tile::Suit>(newSuit);
             tile->setFaceTexture(_assets->get<Texture>(tile->toString() + " new"));
             _tileSet->tilesToJson.push_back(tile);
@@ -627,9 +635,8 @@ void MatchController::playRat(std::shared_ptr<TileSet::Tile>& selectedTile) {
     selectedTile->inClientHand = !_network->getHostStatus();
     selectedTile->inPile = false;
     selectedTile->selected = false;
-    selectedTile->_scale = 0.15;
+    selectedTile->_scale = 0.325;
     
-//    _tileSet->tilesToJson.push_back(selectedTile);
     // Clear tilesToJson vector
     _tileSet->clearTilesToJson();
     // Transforming celestial tile to JSON
@@ -692,7 +699,7 @@ void MatchController::celestialEffect(){
         
         _pile->removeTile(_tileSet->tileMap[key]);
         _pile->updateTilePositions();
-        _tileSet->tileMap[key]->_scale = 0.15;
+        _tileSet->tileMap[key]->_scale = 0.325;
         
         // If this match controller is host's
         if(isHost) {clientPlayer->getHand()._tiles.push_back(_tileSet->tileMap[key]);}
@@ -720,7 +727,7 @@ void MatchController::celestialEffect(){
             std::shared_ptr<graphics::Texture> fromTexture = _assets->get<graphics::Texture>(tile->toString() + " sheet");
             std::shared_ptr<graphics::Texture> toTexture = _assets->get<graphics::Texture>(it->toString() + " sheet");
             std::shared_ptr<graphics::Texture> idle = _assets->get<graphics::Texture>(it->toString() + " new");
-//            AnimationController::getInstance().animateTileMorph(tile, fromTexture, toTexture, idle, 8);
+            AnimationController::getInstance().animateTileMorph(tile, fromTexture, toTexture, idle, 12.0f);
             }
         
         _tileSet->updateDeck(_network->getTileMapJson());
@@ -782,7 +789,7 @@ void MatchController::endTurn() {
  * @param timestep The amount of time (in seconds) since the last frame
  */
 void MatchController::update(float timestep) {
-//    AnimationController::getInstance().update(timestep);
+    AnimationController::getInstance().update(timestep);
     // If we receieve end game status, current player loses
     if(_network->getStatus() == NetworkController::ENDGAME) {
         _choice = LOSE;
@@ -799,7 +806,7 @@ void MatchController::update(float timestep) {
         std::shared_ptr<TileSet::Tile> tileDrawn= _tileSet->processTileJson(_network->getTileDrawn())[0];
         std::string key = std::to_string(tileDrawn->_id);
         
-        _tileSet->tileMap[key]->_scale = 0.15;
+        _tileSet->tileMap[key]->_scale = 0.325;
         // If this match controller is host's
         if(isHost) {clientPlayer->getHand()._tiles.push_back(_tileSet->tileMap[key]);}
         // Else is client's
@@ -830,20 +837,9 @@ void MatchController::update(float timestep) {
         std::shared_ptr<TileSet::Tile> tile = _tileSet->processTileJson(_network->getDiscardTile())[0];
         _tileSet->updateDeck(_network->getDiscardTile());
         std::string key = std::to_string(tile->_id);
-        
-        // Actual reference to tile from tileMap
-        tile = _tileSet->tileMap[key];
-//         std::shared_ptr<TileSet::Tile> tempTile = _tileSet->processTileJson(_network->getDiscardTile())[0];
-//         std::string key = std::to_string(tempTile->_id);
-        
-//         // Actual reference to tile from tileMap
-//         std::shared_ptr<TileSet::Tile> tile = _tileSet->tileMap[key];
-//         tile->inHostHand = tempTile->inHostHand;
-//         tile->inClientHand = tempTile->inClientHand;
-//         tile->discarded = tempTile->discarded;
-//         tile->_scale = tempTile->_scale;
-//         tile->pos = tempTile->pos;
                 
+        tile = _tileSet->tileMap[key];
+        
         //If host
         if(_network->getHostStatus()) {clientPlayer->getHand().discard(tile, true);}
         //If client
@@ -886,22 +882,21 @@ void MatchController::update(float timestep) {
         // Fetching the top tile
         std::shared_ptr<TileSet::Tile> discardTile = _discardPile->drawTopTile();
         
-        _tileSet->updateDeck(_network->getPlayedTiles());
+         _tileSet->updateDeck(_network->getPlayedTiles());
 
-        std::vector<std::shared_ptr<TileSet::Tile>> tiles = _tileSet->processTileJson(_network->getPlayedTiles());
+         std::vector<std::shared_ptr<TileSet::Tile>> tiles = _tileSet->processTileJson(_network->getPlayedTiles());
        
+
         for(auto const& tile : tiles) {
             std::string id = std::to_string(tile->_id);
+            tile->setTexture(_assets->get<Texture>(tile->toString()));
             opposingPlayer->getHand().removeTile(tile, _network->getHostStatus());
         }
         
-        // For updating opponent sets
-        tiles.push_back(discardTile);
-        
         // Update opposing player's max hand size
-        opposingPlayer->getHand()._size -= 3;
-        opposingPlayer->getHand()._playedSets.push_back(tiles);
+        opposingPlayer->getHand().playSet(!_network->getHostStatus());
         currPlayer->getHand().opponentPlayedSets.push_back(tiles);
+        
         
         // Reset network state
         _network->setStatus(NetworkController::INGAME);

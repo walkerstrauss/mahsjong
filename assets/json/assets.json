@@ -171,6 +171,87 @@
         "nine of crak": {
             "file": "textures/tilesHand/nine_of_crak.png"
         },
+        "one of dot sheet": {
+            "file": "textures/animations/one-dot-sheet.png"
+        },
+        "one of bamboo sheet": {
+            "file": "textures/animations/one-bamboo-sheet.png"
+        },
+        "one of crak sheet": {
+            "file": "textures/animations/one-crak-sheet.png"
+        },
+        "two of dot sheet": {
+            "file": "textures/animations/two-dot-sheet.png"
+        },
+        "two of bamboo sheet": {
+            "file": "textures/animations/two-bamboo-sheet.png"
+        },
+        "two of crak sheet": {
+            "file": "textures/animations/two-crak-sheet.png"
+        },
+        "three of dot sheet": {
+            "file": "textures/animations/three-dot-sheet.png"
+        },
+        "three of bamboo sheet": {
+            "file": "textures/animations/three-bamboo-sheet.png"
+        },
+        "three of crak sheet": {
+            "file": "textures/animations/three-crak-sheet.png"
+        },
+        "four of dot sheet": {
+            "file": "textures/animations/four-dot-sheet.png"
+        },
+        "four of bamboo sheet": {
+            "file": "textures/animations/four-bamboo-sheet.png"
+        },
+        "four of crak sheet": {
+            "file": "textures/animations/four-crak-sheet.png"
+        },
+        "five of dot sheet": {
+            "file": "textures/animations/five-dot-sheet.png"
+        },
+        "five of bamboo sheet": {
+            "file": "textures/animations/five-bamboo-sheet.png"
+        },
+        "five of crak sheet": {
+            "file": "textures/animations/five-crak-sheet.png"
+        },
+        "six of dot sheet": {
+            "file": "textures/animations/six-dot-sheet.png"
+        },
+        "six of bamboo sheet": {
+            "file": "textures/animations/six-bamboo-sheet.png"
+        },
+        "six of crak sheet": {
+            "file": "textures/animations/six-crak-sheet.png"
+        },
+        "seven of dot sheet": {
+            "file": "textures/animations/seven-dot-sheet.png"
+        },
+        "seven of bamboo sheet": {
+            "file": "textures/animations/seven-bamboo-sheet.png"
+        },
+        "seven of crak sheet": {
+            "file": "textures/animations/seven-crak-sheet.png"
+        },
+        "eight of dot sheet": {
+            "file": "textures/animations/eight-dot-sheet.png"
+        },
+        "eight of bamboo sheet": {
+            "file": "textures/animations/eight-bamboo-sheet.png"
+        },
+        "eight of crak sheet": {
+            "file": "textures/animations/eight-crak-sheet.png"
+        },
+        "nine of dot sheet": {
+            "file": "textures/animations/nine-dot-sheet.png"
+        },
+        "nine of bamboo sheet": {
+            "file": "textures/animations/nine-bamboo-sheet.png"
+        },
+        "nine of crak sheet": {
+            "file": "textures/animations/nine-crak-sheet.png"
+        },
         "rooster of celestial new": {
             "file": "textures/newTiles/rooster.png"
         },
@@ -252,14 +333,8 @@
         "transparentBackImage": {
             "file": "textures/landing/rect_transparent.png"
         },
-        "background_gameplay": {
-            "file": "textures/gameplay/background_gameplay.png"
-        },
         "pause": {
             "file": "textures/gameplay/pause.png"
-        },
-        "backgroundTable": {
-            "file": "textures/gameplay/backgroundTable.png"
         },
         "opponent": {
             "file": "textures/gameplay/opponent.png"
@@ -267,17 +342,11 @@
         "player": {
             "file": "textures/gameplay/player.png"
         },
-        "box_discard": {
-            "file": "textures/gameplay/box_discard.png"
-        },
         "tilesample": {
             "file": "textures/gameplay/tilesample.png"
         },
         "tilesample 2": {
             "file": "textures/gameplay/tilesample.png"
-        },
-        "button_tileset": {
-            "file": "textures/gameplay/button_tileset.png"
         },
         "displayed-set-icon": {
             "file": "textures/gameplay/displayed-set-icon.png"
@@ -314,9 +383,6 @@
         },
         "button": {
             "file": "textures/button.png"
-        },
-        "frame": {
-            "file": "textures/frame.png"
         },
         "left": {
             "file": "textures/left_arrow.png"
@@ -452,9 +518,6 @@
         },
         "titleBackground": {
             "file": "textures/setting/titleBackground.png"
-        },
-        "actionTileSection": {
-            "file": "textures/gameplay/actionTileSection.png"
         },
         "discardCanButton": {
             "file": "textures/gameplay/discardCanButton.png"
@@ -632,9 +695,6 @@
         },
         "win_main": {
             "file": "textures/score_win/main.png"
-        },
-        "actionTileSection": {
-            "file": "textures/gameplay/actionTileSection.png"
         },
         "discardCanButton": {
             "file": "textures/gameplay/discardCanButton.png"
@@ -1016,6 +1076,9 @@
         },
         "not-your-turn":{
             "file":"textures/gameplay/not-your-turn.png"
+        },
+        "drew-try-discard":{
+            "file":"textures/gameplay/drew-try-discard.png"
         }
     },
     "fonts": {
