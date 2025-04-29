@@ -194,6 +194,8 @@ bool MatchController::drawDiscard() {
     
     _choice = DRAWNDISCARD;
     
+    hasDrawn = true; 
+    
     return true; 
 }
 
@@ -391,7 +393,6 @@ void MatchController::playRooster(std::shared_ptr<TileSet::Tile>& celestialTile)
     // play the shuffle sound.
     AudioController::getInstance().playSound("shuffle");
     _pile->reshufflePile();
-    _pile->updateTilePositions();
     
     // Clear tilesToJson vector
     _tileSet->clearTilesToJson();
@@ -430,7 +431,7 @@ void MatchController::playOx(std::shared_ptr<TileSet::Tile>& celestialTile) {
     std::shared_ptr<cugl::JsonValue> changedTilesJson;
     for (auto& tile : opponent._tiles) {
         if (!tile->debuffed && !tile->discarded) {
-            tile->_scale = 0.15;
+            tile->_scale = 0.325;
             tile->debuffed = true;
             tile->getFaceSpriteNode()->setVisible(false);
             _tileSet->tilesToJson.push_back(tile);
@@ -482,7 +483,7 @@ void MatchController::playRabbit(std::shared_ptr<TileSet::Tile>& celestialTile){
             while (newRank == oldRank) {
                 newRank = 1 + rand() % 9;
             }
-            tile->_scale = 0.15;
+            tile->_scale = 0.325;
             tile->_rank = static_cast<TileSet::Tile::Rank>(newRank);
             tile->setFaceTexture(_assets->get<Texture>(tile->toString() + " new"));
             _tileSet->tilesToJson.push_back(tile);
@@ -533,7 +534,7 @@ void MatchController::playSnake(std::shared_ptr<TileSet::Tile>& celestialTile){
             while (newSuit == oldSuit) {
                 newSuit = 1 + rand() % 3;
             }
-            tile->_scale = 0.15; 
+            tile->_scale = 0.325;
             tile->_suit = static_cast<TileSet::Tile::Suit>(newSuit);
             tile->setFaceTexture(_assets->get<Texture>(tile->toString() + " new"));
             _tileSet->tilesToJson.push_back(tile);
@@ -626,14 +627,13 @@ void MatchController::playRat(std::shared_ptr<TileSet::Tile>& selectedTile) {
                          : clientPlayer->getHand();
     
     _pile->removeTile(selectedTile);
-    _pile->updateTilePositions();
 
     self._tiles.push_back(selectedTile);
     selectedTile->inHostHand = _network->getHostStatus();
     selectedTile->inClientHand = !_network->getHostStatus();
     selectedTile->inPile = false;
     selectedTile->selected = false;
-    selectedTile->_scale = 0.15;
+    selectedTile->_scale = 0.325;
     
     // Clear tilesToJson vector
     _tileSet->clearTilesToJson();
@@ -657,8 +657,6 @@ void MatchController::playRat(std::shared_ptr<TileSet::Tile>& selectedTile) {
 }
 
 void MatchController::playDragon() {
-    _pile->updateTilePositions();
-    
     // Clear tilesToJson vector
     _tileSet->clearTilesToJson();
     // Transforming celestial tile to JSON
@@ -686,8 +684,6 @@ void MatchController::celestialEffect(){
         //Updating tileset
         _tileSet->updateDeck(_network->getTileMapJson());
         _pile->remakePile();
-        //Updating tile positions
-        _pile->updateTilePositions();
     } else if (_network->getCelestialUpdateType() == NetworkController::RAT) {
         bool isHost = _network->getHostStatus();
         
@@ -696,8 +692,7 @@ void MatchController::celestialEffect(){
         std::string key = std::to_string(tileDrawn->_id);
         
         _pile->removeTile(_tileSet->tileMap[key]);
-        _pile->updateTilePositions();
-        _tileSet->tileMap[key]->_scale = 0.15;
+        _tileSet->tileMap[key]->_scale = 0.325;
         
         // If this match controller is host's
         if(isHost) {clientPlayer->getHand()._tiles.push_back(_tileSet->tileMap[key]);}
@@ -804,7 +799,7 @@ void MatchController::update(float timestep) {
         std::shared_ptr<TileSet::Tile> tileDrawn= _tileSet->processTileJson(_network->getTileDrawn())[0];
         std::string key = std::to_string(tileDrawn->_id);
         
-        _tileSet->tileMap[key]->_scale = 0.15;
+        _tileSet->tileMap[key]->_scale = 0.325;
         // If this match controller is host's
         if(isHost) {clientPlayer->getHand()._tiles.push_back(_tileSet->tileMap[key]);}
         // Else is client's

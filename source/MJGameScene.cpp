@@ -181,13 +181,15 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::sha
             "matchscene.gameplayscene.drag-to-discard-tile"
         )
     );
-    _dragToDiscardNode->setVisible(true);
+    _dragToDiscardNode->setVisible(false);
     
     _dragToHandNode = std::dynamic_pointer_cast<cugl::scene2::TexturedNode>(
         _assets->get<cugl::scene2::SceneNode>(
             "matchscene.gameplayscene.drag-to-hand-area"
         )
     );
+    
+    _dragToHandNode->setVisible(false);
         
     addChild(_matchScene);
     addChild(_discardUINode->_root);
@@ -216,17 +218,28 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::sha
     _discardPile = _matchController->getDiscardPile();
         
     // Premature repositioning so it tiles don't render in the corner of the screen
-    _player->getHand().updateTilePositions(_playerHandRegion);
+    _player->getHand().updateTilePositions(_playerHandRegion, 0);
+    _pile->pileBox = pileRegionNode->getBoundingBox();
+    _pile->updateTilePositions(0);
     
-//     Setting texture location
+    // Setting texture location in hand
     for(auto& tile : _player->getHand()._tiles) {
         tile->getContainer()->setAnchor(Vec2::ANCHOR_CENTER);
         tile->getContainer()->setScale(tile->_scale);
         tile->getContainer()->setPosition(tile->pos);
     }
     
-    _pile->pileBox = pileRegionNode->getBoundingBox();
-    _pile->updateTilePositions();
+    // Setting texture location in pile
+    for(auto& row: _pile->_pile) {
+        for(auto& tile: row) {
+            if(tile == nullptr) {
+                continue;
+            }
+            tile->getContainer()->setAnchor(Vec2::ANCHOR_CENTER);
+            tile->getContainer()->setScale(tile->_scale);
+            tile->getContainer()->setPosition(tile->pos);
+        }
+    }
     
     // Init the Rect of the discard pile.
     if (_discardPile->getTopTile()) {
@@ -278,6 +291,7 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::sha
     
     _activeRegion = cugl::Rect(activeRegionWorldOrigin, activeRegionNode->getContentSize());
     _discardedTileRegion = cugl::Rect(discardedTileRegionWorldOrigin, discardedTileRegionNode->getContentSize());
+    
     // Init the button for playing sets.
     _playSetBtn = std::dynamic_pointer_cast<scene2::Button>(_assets->get<scene2::SceneNode>("matchscene.gameplayscene.playSetButton"));
 
@@ -318,10 +332,8 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::sha
         if (!down) {
             AudioController::getInstance().playSound("confirm");
             if(!_matchController->playSet()) {
-                _matchController->hasDrawn = true;
-                _matchController->hasDiscarded = true;
-                _matchController->endTurn();
-            }
+                _discardedTileImage->setVisible(true);
+            };
         }
     });
 
@@ -379,7 +391,11 @@ void GameScene::update(float timestep) {
     cugl::Vec2 mousePos = cugl::Scene::screenToWorldCoords(cugl::Vec3(_input->getPosition()));
     
     // Constantly updating the position of tiles in hand
-    _player->getHand().updateTilePositions(_playerHandRegion);
+    _player->getHand().updateTilePositions(_playerHandRegion, timestep);
+    //Constantly update pile tile positions
+    _pile->updateTilePositions(timestep);
+    // Constantly update discard pile tile
+    _discardPile->updateTilePositions(timestep);
     
     // Constantly updating turn indicators based on player turn
     updateTurnIndicators();
@@ -505,7 +521,7 @@ void GameScene::update(float timestep) {
             clickedTile(mousePos);
         }
     }
-    updateDrag(mousePos, _input->isDown(), _input->didRelease());
+    updateDrag(mousePos, _input->isDown(), _input->didRelease(), timestep);
     
     // If scene is not active prevent any input from user that changes the state of the game
     if(!isActive()) {
@@ -537,6 +553,33 @@ void GameScene::update(float timestep) {
         }
         
         updateSpriteNodes(timestep);
+    }
+    
+    bool isDragging = (_dragInitiated && _draggingTile != nullptr);
+    int hand_length = static_cast<int>(_player->getHand()._tiles.size());
+
+    if (isDragging && _dragFromDiscard) {
+        _dragToHandNode->setVisible(true);
+        _dragToDiscardNode->setVisible(false);
+        _playArea->setVisible(false);
+    }
+    else if (isDragging && !_dragFromDiscard) {
+        if(hand_length == 14 && !_playSetBtn->isVisible() && _dragStartPos != mousePos && _draggingTile->getSuit()!=TileSet::Tile::Suit::CELESTIAL){
+            _dragToDiscardNode->setVisible(true);
+        } else if (_draggingTile->getSuit()==TileSet::Tile::Suit::CELESTIAL && _dragStartPos != mousePos && !_playSetBtn->isVisible()
+                   && _matchController->getChoice() == MatchController::Choice::NONE){
+            if (_network->getCurrentTurn() == _network->getLocalPid()){
+                _playArea->setVisible(true);
+            }
+        }
+        _dragToHandNode->setVisible(false);
+        _dragToHandVisible = false;
+    }
+    else {
+        // not dragging
+        _dragToDiscardNode->setVisible(false);
+        _dragToHandNode->setVisible(false);
+        _playArea->setVisible(false);
     }
 }
 
@@ -686,7 +729,7 @@ void GameScene::releaseTile() {
     }
 }
         
-void GameScene::updateDrag(const cugl::Vec2& mousePos, bool mouseDown, bool mouseReleased) {
+void GameScene::updateDrag(const cugl::Vec2& mousePos, bool mouseDown, bool mouseReleased, float timestep) {
     auto& dragContainer = (_pileUINode->getState() == PileUINode::DRAGONREARRANGE)
                           ? _pile->_pile[_dragonRow]
                           : _player->getHand().getTiles();
@@ -711,7 +754,7 @@ void GameScene::updateDrag(const cugl::Vec2& mousePos, bool mouseDown, bool mous
                     _discardedTileImage->setVisible(false);
                     _draggingTile = _discardPile->getTopTile();
                     _draggingTile->pos = mousePos;
-                    _draggingTile->_scale = 0.15;
+                    _draggingTile->_scale = 0.325;
                 }
             }
         }
@@ -735,17 +778,17 @@ void GameScene::updateDrag(const cugl::Vec2& mousePos, bool mouseDown, bool mous
                              if (_draggingTile->pos.x > rightTile->pos.x) {
                                  std::swap(tiles[oldIndex], tiles[oldIndex + 1]);
                                  (_pileUINode->getState() == PileUINode::DRAGONREARRANGE)
-                                     ? _pile->updateTilePositions()
-                                     : _player->getHand().updateTilePositions(_playerHandRegion);
+                                     ? _pile->updateTilePositions(0)
+                                     : _player->getHand().updateTilePositions(_playerHandRegion, timestep);
                              }
                          }
                          if (oldIndex > 0) {
                              auto leftTile = tiles[oldIndex - 1];
-                             if (_draggingTile->pos.x < leftTile->pos.x) {
+                             if (leftTile && _draggingTile->pos.x < leftTile->pos.x) {
                                  std::swap(tiles[oldIndex], tiles[oldIndex - 1]);
                                  (_pileUINode->getState() == PileUINode::DRAGONREARRANGE)
-                                     ? _pile->updateTilePositions()
-                                     : _player->getHand().updateTilePositions(_playerHandRegion);
+                                     ? _pile->updateTilePositions(0)
+                                     : _player->getHand().updateTilePositions(_playerHandRegion, timestep);
                              }
                          }
                      }
@@ -784,6 +827,7 @@ void GameScene::updateDrag(const cugl::Vec2& mousePos, bool mouseDown, bool mous
                       }
                       // Regular tile getting discarded
                       else if(_matchController->discardTile(_draggingTile)) {
+                          _draggingTile->pos = _discardedTileImage->getWorldPosition();
                           if(_draggingTile->debuffed) {
                               _discardedTileImage->setTexture(_assets->get<Texture>("debuffed"));
                           }
@@ -810,12 +854,11 @@ void GameScene::updateDrag(const cugl::Vec2& mousePos, bool mouseDown, bool mous
                     if(_matchController->drawDiscard()) {
                         _playSetBtn->activate();
                         _playSetBtn->setVisible(true);
-                        _draggingTile->_scale = 0.15;
+                        _draggingTile->_scale = 0.325;
                         _matchController->hasDrawn = true;
-
                     }
-                    
                     else {
+                        _draggingTile->pos = _discardedTileImage->getWorldPosition();
                         _discardedTileImage->setVisible(true);
                         _draggingTile->_scale = 0;
                     }
@@ -869,39 +912,11 @@ void GameScene::updateDrag(const cugl::Vec2& mousePos, bool mouseDown, bool mous
             _player->_draggingTile = nullptr;
         
         (_pileUINode->getState() == PileUINode::DRAGONREARRANGE)
-                    ? _pile->updateRow(_dragonRow, dragContainer)
-                    :_player->getHand().updateTilePositions(_playerHandRegion);
+                    ? _pile->updateRow(_dragonRow, dragContainer, timestep)
+                    :_player->getHand().updateTilePositions(_playerHandRegion, timestep);
 
             releaseTile();
      }
-    
-    bool isDragging = (_dragInitiated && _draggingTile != nullptr);
-    int hand_length = static_cast<int>(_player->getHand()._tiles.size());
-
-    if (isDragging && _dragFromDiscard) {
-        _dragToHandNode->setVisible(true);
-        _dragToDiscardNode->setVisible(false);
-        _playArea->setVisible(false);
-    }
-    else if (isDragging && !_dragFromDiscard) {
-        if(hand_length == 14 && !_playSetBtn->isVisible() && _dragStartPos != mousePos && _draggingTile->getSuit()!=TileSet::Tile::Suit::CELESTIAL){
-            _dragToDiscardNode->setVisible(true);
-        } else if (_draggingTile->getSuit()==TileSet::Tile::Suit::CELESTIAL && _dragStartPos != mousePos && !_playSetBtn->isVisible()
-                   && _matchController->getChoice() == MatchController::Choice::NONE){
-            if (_network->getCurrentTurn() == _network->getLocalPid()){
-                _playArea->setVisible(true);
-            }
-        }
-        _dragToHandNode->setVisible(false);
-        _dragToHandVisible = false;
-    }
-    else {
-        // not dragging
-        _dragToDiscardNode->setVisible(false);
-        _dragToHandNode->setVisible(false);
-        _playArea->setVisible(false);
-    }
-
 }
 
 void GameScene::playSetAnim(const std::vector<std::shared_ptr<TileSet::Tile>>& tiles){

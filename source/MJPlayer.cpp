@@ -15,9 +15,11 @@ using namespace cugl;
 #pragma mark -
 #pragma mark Constructors
 
-#define ROTATION_CONST 0.1f
-#define MAX_ROTATION 0.1f
+#define VELOCITY_THRESHOLD 2.0f
+#define ROTATE_MAX 0.3f
 
+#define SPRING 0.05f
+#define DAMP 0.05f
 
 /**
  * Creates a new hand for the player
@@ -45,7 +47,7 @@ bool Hand::initHand(std::shared_ptr<TileSet>& tileSet, bool isHost){
             drawnTile->inHostHand = false;
             drawnTile->inClientHand = true;
         }
-        drawnTile->_scale = 0.15;
+        drawnTile->_scale = 0.325;
         drawnTile->inDeck = false;
         _tiles.push_back(drawnTile);
     }
@@ -75,7 +77,7 @@ void Hand::drawFromPile(std::shared_ptr<Pile>& pile, int number, bool isHost){
         tile->inPile = false;
         tile->selected = false;
         tile->discarded = false;
-        tile->_scale = 0.15;
+        tile->_scale = 0.325;
         _tiles.push_back(tile); // Add drawn tiles to hand
     }
  }
@@ -169,10 +171,6 @@ bool Hand::playSet(bool isHost) {
     
     _size-=3;
     
-    
-    //_playedSets.clear();
-//    
-//    _player->endTurn();
     return true;
 }
 
@@ -368,7 +366,7 @@ std::vector<std::shared_ptr<TileSet::Tile>> Hand::getSortedTiles(const std::vect
 }
 
 
-void Hand::updateTilePositions(cugl::Rect rect){
+void Hand::updateTilePositions(cugl::Rect rect, float dt){
     float startX = rect.getMinX(); // Starting x position for hand tile positioning
     float endX = rect.getMaxX(); // Ending x position for hand tile positioning
     float tileSpacing = (endX-startX) / getTileCount() ; // Spacing in x direction between tiles
@@ -377,11 +375,41 @@ void Hand::updateTilePositions(cugl::Rect rect){
 
     for (size_t i = 0; i < _tiles.size(); i++){
         if (_tiles[i] == _player->getDraggingTile()) {
-          continue;
+            continue;
         }
         
         cugl::Vec2 newPos(startX + i * tileSpacing + (_tiles[i]->getBackTextureNode()->getTexture()->getWidth()/2 * _tiles[i]->_scale), yPos);
+        
+        if(_tiles[i]->selected) {
+            newPos.y += 10.0f;
+        }
+        
         _tiles[i]->pos = newPos;
+    }
+    
+    for(const auto& tile : _tiles){
+        Vec2 pos = tile->pos;
+        Vec2 origin = Vec2(tile->getTileTexture()->getSize().width/2, tile->getTileTexture()->getSize().height/2);
+        
+        Size textureSize(tile->getBackTextureNode()->getTexture()->getSize());
+        Vec2 rectOrigin(pos - (textureSize * tile->_scale)/2);
+        tile->tileRect = cugl::Rect(rectOrigin, textureSize * tile->_scale);
+       
+        float velocity = tile->getContainer()->getPosition().x - tile->pos.x;
+        float displacement = tile->getContainer()->getAngle();
+        float force = -SPRING * displacement - DAMP * velocity;
+        
+        Vec2 lerpPos = tile->getContainer()->getPosition();
+        lerpPos.lerp(pos, 0.5);
+        
+        velocity += force * dt;
+        displacement = std::clamp(velocity * dt, -ROTATE_MAX, ROTATE_MAX);
+        
+        tile->getContainer()->setAnchor(Vec2::ANCHOR_CENTER);
+        tile->getContainer()->setAngle(displacement);
+        tile->getContainer()->setScale(tile->_scale);
+        tile->getContainer()->setPosition(lerpPos);
+        tile->getContainer()->setVisible(tile != _player->_draggingTile);
     }
 }
 
@@ -392,29 +420,6 @@ void Hand::updateTilePositions(cugl::Rect rect){
  */
 void Player::draw(const std::shared_ptr<cugl::graphics::SpriteBatch>& batch) {
     for(const auto& tile : _hand._tiles){
-        Vec2 pos = tile->pos;
-        Vec2 origin = Vec2(tile->getTileTexture()->getSize().width/2, tile->getTileTexture()->getSize().height/2);
-        
-        if(tile->selected){
-            pos.y += 10;
-        }
-        Size textureSize(tile->getBackTextureNode()->getTexture()->getSize());
-        Vec2 rectOrigin(pos - (textureSize * tile->_scale)/2);
-        tile->tileRect = cugl::Rect(rectOrigin, textureSize * tile->_scale);
-       
-        float velocity = tile->pos.x - tile->getContainer()->getPosition().x;
-        float rotationAngle = ROTATION_CONST * velocity;
-        rotationAngle = std::clamp(rotationAngle, -MAX_ROTATION, MAX_ROTATION);
-        
-        Vec2 lerpPos = tile->getContainer()->getPosition();
-        lerpPos.lerp(pos, 0.5);
-        
-        tile->getContainer()->setAnchor(Vec2::ANCHOR_CENTER);
-        tile->getContainer()->setAngle(rotationAngle);
-        tile->getContainer()->setScale(tile->_scale);
-        tile->getContainer()->setPosition(lerpPos);
-        
-        tile->getContainer()->setVisible(tile != _draggingTile);
         tile->getContainer()->render(batch, Affine2::IDENTITY, Color4::WHITE);
     }
 }
@@ -433,34 +438,34 @@ void Player::drawInfo(const std::shared_ptr<TileSet::Tile> tile, const std::shar
     float tileHeight = tile->getBackTextureNode()->getSize().height * tile->_scale;
     float tileWidth = tile->getBackTextureNode()->getSize().width * tile->_scale;
     
-    float totalHeight = tile->pos.y + tileHeight * 0.5f + textureHeight + 2.2f;
-    float totalMinWidth = tile->pos.x - textureWidth * 0.5f + 2.0f;
-    float totalMaxWidth = tile->pos.x + textureWidth * 0.5f + 2.0f;
+    float totalHeight = tile->getContainer()->getPosition().y + tileHeight * 0.5f + textureHeight + 2.2f;
+    float totalMinWidth = tile->getContainer()->getPosition().x - textureWidth * 0.5f + 2.0f;
+    float totalMaxWidth = tile->getContainer()->getPosition().x + textureWidth * 0.5f + 2.0f;
 
     float x;
     float y;
     
     if(totalHeight > screenSize.getIHeight()) {
-        y = tile->pos.y;
+        y = tile->getContainer()->getPosition().y;
         if(totalMinWidth < 0) {
-            x = tile->pos.x + tileWidth * 0.5f + textureWidth + 2.2f;
+            x = tile->getContainer()->getPosition().x + tileWidth * 0.5f + textureWidth + 2.2f;
         }
         else {
-            x = tile->pos.x - tileWidth * 0.5f - textureWidth - 2.2f;
+            x = tile->getContainer()->getPosition().x - tileWidth * 0.5f - textureWidth - 2.2f;
         }
     }
     else{
         if(totalMinWidth < 0) {
-            x = tile->pos.x + tileWidth * 0.5f + textureWidth + 2.2f;
-            y = tile->pos.y;
+            x = tile->getContainer()->getPosition().x + tileWidth * 0.5f + textureWidth + 2.2f;
+            y = tile->getContainer()->getPosition().y;
         }
         else if (totalMaxWidth > screenSize.width){
-            x = tile->pos.x - tileWidth * 0.5f - textureWidth - 2.2f;
-            y = tile->pos.y;
+            x = tile->getContainer()->getPosition().x - tileWidth * 0.5f - textureWidth - 2.2f;
+            y = tile->getContainer()->getPosition().y;
         }
         else {
-            x = tile->pos.x;
-            y = tile->pos.y + tileHeight * 0.5f + textureHeight + 2.2f;
+            x = tile->getContainer()->getPosition().x;
+            y = tile->getContainer()->getPosition().y + tileHeight * 0.5f + textureHeight + 2.2f;
         }
     }
     

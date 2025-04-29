@@ -112,7 +112,7 @@ public:
     /**
      * Method to update the position of the discard pile tile
      */
-    void updateTilePositions();
+    void updateTilePositions(float dt);
     
     /**
      * Method to update the discard pile model

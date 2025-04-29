@@ -66,7 +66,7 @@ public:
     /**
      * Method to update the positions of the tiles in pile
      */
-    void updateTilePositions();
+    void updateTilePositions(float dt);
     
     void animTilePositions(int frames = 1);
     
@@ -191,7 +191,7 @@ public:
     void removeNumTiles(int nums);
     
     /** Updates the pile indexes of tiles in the given row to the new order. */
-    void updateRow(int row, const std::vector<std::shared_ptr<TileSet::Tile>>& tiles);
+    void updateRow(int row, const std::vector<std::shared_ptr<TileSet::Tile>>& tiles, float dt);
 
     
 };
