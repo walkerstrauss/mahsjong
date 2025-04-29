@@ -15,8 +15,10 @@ using namespace cugl;
 #pragma mark -
 #pragma mark Constructors
 
-#define ROTATION_CONST 0.1f
-#define MAX_ROTATION 0.1f
+#define VELOCITY_THRESHOLD 2.0f
+#define ROTATION_CONST 0.3f
+#define MAX_ROTATION 0.4f
+#define ROTATION_SMOOTH_CONST 0.2f
 
 
 /**
@@ -403,8 +405,11 @@ void Player::draw(const std::shared_ptr<cugl::graphics::SpriteBatch>& batch) {
         tile->tileRect = cugl::Rect(rectOrigin, textureSize * tile->_scale);
        
         float velocity = tile->pos.x - tile->getContainer()->getPosition().x;
+        velocity = velocity >= VELOCITY_THRESHOLD || velocity <= -VELOCITY_THRESHOLD ? velocity : 0;
+        
         float rotationAngle = ROTATION_CONST * velocity;
         rotationAngle = std::clamp(rotationAngle, -MAX_ROTATION, MAX_ROTATION);
+        rotationAngle = (rotationAngle - tile->getContainer()->getAngle()) * ROTATION_SMOOTH_CONST;
         
         Vec2 lerpPos = tile->getContainer()->getPosition();
         lerpPos.lerp(pos, 0.5);
