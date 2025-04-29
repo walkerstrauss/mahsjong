@@ -742,7 +742,7 @@ void GameScene::updateDrag(const cugl::Vec2& mousePos, bool mouseDown, bool mous
                          }
                          if (oldIndex > 0) {
                              auto leftTile = tiles[oldIndex - 1];
-                             if (_draggingTile->pos.x < leftTile->pos.x) {
+                             if (leftTile && _draggingTile->pos.x < leftTile->pos.x) {
                                  std::swap(tiles[oldIndex], tiles[oldIndex - 1]);
                                  (_pileUINode->getState() == PileUINode::DRAGONREARRANGE)
                                      ? _pile->updateTilePositions()
