@@ -72,9 +72,16 @@ bool AudioController::init(const std::shared_ptr<cugl::AssetManager>& assets){
 #pragma mark Gameplay Handling
 
 void AudioController::playSound(const std::string& key, bool loop){
+    std::string instance = key+std::to_string(0);
+    int i = 0;
     if (_sounds.find(key) != _sounds.end()){
         if (soundOn){
-            AudioEngine::get()->play(key, _sounds[key], loop, 1.0f);
+            auto sound = _sounds[key];
+            while (AudioEngine::get()->isActive(instance)) {
+                i++;
+                instance = instance + std::to_string(i);
+            }
+            AudioEngine::get()->play(instance, sound, loop, 1.0f);
         }
     }
 }

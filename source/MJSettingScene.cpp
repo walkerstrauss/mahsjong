@@ -28,6 +28,7 @@ bool SettingScene::init(const std::shared_ptr<cugl::AssetManager>& assets){
     if (assets == nullptr) {
         return false;
     } else if (!Scene2::initWithHint(0,SCENE_HEIGHT)) {
+        std::cerr << "Scene2 initialization failed!" << std::endl;
         return false;
     }
     _assets = assets;
@@ -44,10 +45,6 @@ bool SettingScene::init(const std::shared_ptr<cugl::AssetManager>& assets){
 
     AudioController::getInstance().init(_assets);
     
-    if (!Scene2::initWithHint(screenSize)) {
-        std::cerr << "Scene2 initialization failed!" << std::endl;
-        return false;
-    }
     
     choice = Choice::NONE;
     scene = PrevScene::NEITHER;
@@ -60,6 +57,7 @@ bool SettingScene::init(const std::shared_ptr<cugl::AssetManager>& assets){
     
     _mainBtn->addListener([this](const std::string& name, bool down){
         if (!down){
+            AudioController::getInstance().playSound("Exit");
             choice = MENU;
         }
     });
@@ -74,16 +72,16 @@ bool SettingScene::init(const std::shared_ptr<cugl::AssetManager>& assets){
     });
     exitKey = exitBtn->addListener([this](const std::string& name, bool down){
         if (!down) {
+            AudioController::getInstance().playSound("Done");
             switch (scene){
                 case PrevScene::PAUSED:
                     choice = Choice::PAUSE;
 //                    AudioEngine::get()->play("back", _assets->get<Sound>("back"), false, 1.0f);
-                    AudioController::getInstance().playSound("Done");
+
                     break;
                 case PrevScene::MAIN:
                     choice = Choice::MENU;
 //                    AudioEngine::get()->play("back", _assets->get<Sound>("back"), false, 1.0f);
-                    AudioController::getInstance().playSound("Exit");
                     break;
                 case PrevScene::NEITHER:
                     // Do nothing

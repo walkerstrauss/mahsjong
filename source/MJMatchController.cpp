@@ -111,16 +111,16 @@ void MatchController::initClient() {
  * the state of the pile and updates any tiles associated with the action performed
  */
 void MatchController::drawTile() {
-    AudioController::getInstance().playSound("Pile");
     bool isHost = _network->getHostStatus();
     auto& player = isHost ? hostPlayer : clientPlayer;
     
-    if(hasDrawn) {
+    if (hasDrawn) {
         return;
     }
 
     if (player->getHand()._tiles.size() <= player->getHand()._size) {
         player->getHand().drawFromPile(_pile, 1, isHost);
+        AudioController::getInstance().playSound("Pile");
         hasDrawn = true;
 
         if (player->getHand().isWinningHand()) {
@@ -154,6 +154,7 @@ bool MatchController::drawDiscard() {
     if(hasDrawn) {
         return false;
     }
+
     
     if(_network->getCurrentTurn() != _network->getLocalPid()) {
         return false;
@@ -163,6 +164,7 @@ bool MatchController::drawDiscard() {
     if(!_discardPile->getTopTile()) {
         return false;
     }
+
     
     // Retrieving the current player
     std::shared_ptr<Player> currPlayer = _network->getHostStatus() ? hostPlayer : clientPlayer;
@@ -181,6 +183,8 @@ bool MatchController::drawDiscard() {
     drawnDiscardTile->inHostHand = _network->getHostStatus();
     drawnDiscardTile->inClientHand = _network->getHostStatus();
     
+    AudioController::getInstance().playSound("Pile");
+
     // Putting tile in hand and automatically selecting it
     currPlayer->getHand()._tiles.push_back(drawnDiscardTile);
     currPlayer->getHand()._selectedTiles.push_back(drawnDiscardTile);
@@ -227,7 +231,10 @@ bool MatchController::discardTile(std::shared_ptr<TileSet::Tile> tile) {
         
         // If not a special tile add it to the discard pile
         if (!(tile->_suit == TileSet::Tile::Suit::CELESTIAL)){
+            AudioController::getInstance().playSound("Discard");
+
             _discardPile->addTile(tile);
+
             
             // Converting to JSON and broadcasting discarded tile
             _tileSet->tilesToJson.push_back(tile);

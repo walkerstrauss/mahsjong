@@ -394,12 +394,14 @@ public:
         _playerHandBtn = std::dynamic_pointer_cast<Button>(_assets->get<SceneNode>("matchscene.gameplayscene.playerhand-button"));
         _playerHandBtn->addListener([this](const std::string& name, bool down){
             if (!down){
+                AudioController::getInstance().playSound("Select");
                 playerTabVisible = !playerTabVisible;
             }
         });
         _playerHandBtn2 = std::dynamic_pointer_cast<Button>(_assets->get<SceneNode>("matchscene.gameplayscene.playerhand-button2"));
         _playerHandBtn2->addListener([this](const std::string& name, bool down){
             if (!down){
+                AudioController::getInstance().playSound("Select");
                 playerTabVisible = !playerTabVisible;
             }
         });

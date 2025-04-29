@@ -408,6 +408,7 @@ void GameScene::update(float timestep) {
     
     // If matchController state is SUCCESS_SET, deactivate button
     if(_matchController->getChoice() == MatchController::SUCCESS_SET) {
+        AudioController::getInstance().playSound("PlayedSet");
         playerTabVisible = true;
         opponentTabVisible = true;
         _playSetBtn->setVisible(false);
@@ -417,6 +418,7 @@ void GameScene::update(float timestep) {
     
     // If matchController state is FAILED_SET, deactivate button and make discarded tile visible
     if(_matchController->getChoice() == MatchController::FAILED_SET) {
+        AudioController::getInstance().playSound("WrongAction");
         _discardedTileImage->setVisible(true);
         _playSetBtn->setVisible(false);
         _playSetBtn->deactivate();
@@ -481,15 +483,16 @@ void GameScene::update(float timestep) {
             //            if(_pileBox.contains(initialMousePos) && releasedInPile) {
             if (_matchController->hasDrawn){
                 if (_matchController->hasPlayedCelestial){
+                     AudioController::getInstance().playSound("WrongAction", false);
                      showPlayerGuide("discard-to-end");
                 } else if (_matchController->getChoice() != MatchController::DRAGONTILE){
+                     AudioController::getInstance().playSound("WrongAction", false);
                      showPlayerGuide("discard-or-play-to-end");
                 }
             } else {
                 _remainingTiles--;
                 _remainingLabel->setText(std::to_string(_remainingTiles));
             }
-            AudioController::getInstance().playSound("Pile", false);
             _matchController->drawTile();
         }
         
@@ -668,9 +671,13 @@ void GameScene::updateDrag(const cugl::Vec2& mousePos, bool mouseDown, bool mous
                 if(_discardPile->getTopTile()) {
                     _dragFromDiscard = true;
                     _discardedTileImage->setVisible(false);
+                    AudioController::getInstance().playSound("DrawDiscard");
                     _draggingTile = _discardPile->getTopTile();
                     _draggingTile->pos = mousePos;
                     _draggingTile->_scale = 0.15;
+                }
+                else {
+                    AudioController::getInstance().playSound("WrongAction");
                 }
             }
         }
@@ -712,13 +719,16 @@ void GameScene::updateDrag(const cugl::Vec2& mousePos, bool mouseDown, bool mous
             if (_network->getCurrentTurn() == _network->getLocalPid()) {
                 if(_matchController->getChoice() == MatchController::DRAWNDISCARD) {
                     if(_draggingTile->_suit == TileSet::Tile::Suit::CELESTIAL) {
+                        AudioController::getInstance().playSound("WrongAction", false);
                         showPlayerGuide("drew-try-play");
                     } else {
+                        AudioController::getInstance().playSound("WrongAction", false);
                         showPlayerGuide("drew-try-discard");
                     }
                 } else {
                     if(_draggingTile->_suit == TileSet::Tile::Suit::CELESTIAL && !_draggingTile->debuffed) {
                         if (!_matchController->playCelestial(_draggingTile) && _matchController->getChoice() != MatchController::DRAGONTILE) {
+                            AudioController::getInstance().playSound("WrongAction", false);
                             showPlayerGuide("must-draw-play");
                         }
                   }
@@ -748,11 +758,13 @@ void GameScene::updateDrag(const cugl::Vec2& mousePos, bool mouseDown, bool mous
                           _discardUINode->incrementLabel(_draggingTile);
                           _draggingTile->_scale = 0;
                       } else if (_matchController->getChoice() != MatchController::DRAGONTILE){
-                          showPlayerGuide("must-draw-discard");
+                          AudioController::getInstance().playSound("WrongAction", false);
+                          showPlayerGuide("must-draw-discard");;
                       }
                     }
                 }
             } else {
+                AudioController::getInstance().playSound("WrongAction", false);
                 showPlayerGuide("not-your-turn");
             }
         }
