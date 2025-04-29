@@ -11,9 +11,10 @@
 #include "MJAnimationController.h"
 
 #define VELOCITY_THRESHOLD 2.0f
-#define ROTATION_CONST 0.3f
-#define MAX_ROTATION 0.4f
-#define ROTATION_SMOOTH_CONST 0.2f
+#define ROTATE_MAX 0.3f
+
+#define SPRING 0.05f
+#define DAMP 0.05f
 
 /**
  * This is the class intializing and handling the pile.
@@ -94,7 +95,7 @@ bool Pile::createPile() {
         _pile.push_back(row); //add tile from deck to pile
     }
     
-    updateTilePositions();
+    updateTilePositions(0);
     
     // Erase tiles put into the pile from deck
     if(_tileSet->deck.size() <= 25){
@@ -107,7 +108,7 @@ bool Pile::createPile() {
     return true;
 }
 
-void Pile::updateTilePositions() {
+void Pile::updateTilePositions(float dt) {
     float spacingY = 1.0f;
     float spacingX = 1.0f;
     
@@ -135,6 +136,36 @@ void Pile::updateTilePositions() {
 
             std::string key = std::to_string(tile->_id);
             _pileMap.insert({key, tile->pileCoord});
+        }
+    }
+    
+    for(const auto& row : _pile) {
+        for (const auto& tile : row) {
+            if(tile == nullptr){
+                continue;
+            }
+            Vec2 pos = tile->pos;
+            Vec2 origin = Vec2(tile->getTileTexture()->getSize().width/2, tile->getTileTexture()->getSize().height/2);
+            
+            Size textureSize(tile->getBackTextureNode()->getTexture()->getSize());
+            Vec2 rectOrigin(pos - (textureSize * tile->_scale)/2);
+            tile->tileRect = cugl::Rect(rectOrigin, textureSize * tile->_scale);
+           
+            float velocity = tile->getContainer()->getPosition().x - tile->pos.x;
+            float displacement = tile->getContainer()->getAngle();
+            float force = -SPRING * displacement - DAMP * velocity;
+            
+            Vec2 lerpPos = tile->getContainer()->getPosition();
+            lerpPos.lerp(pos, 0.5);
+            
+            velocity += force * dt;
+            displacement = std::clamp(velocity * dt, -ROTATE_MAX, ROTATE_MAX);
+            
+            tile->getContainer()->setAnchor(Vec2::ANCHOR_CENTER);
+            tile->getContainer()->setAngle(displacement);
+            tile->getContainer()->setScale(tile->_scale);
+            tile->getContainer()->setPosition(lerpPos);
+            tile->getContainer()->setVisible(true);
         }
     }
 }
@@ -244,28 +275,6 @@ void Pile::draw(const std::shared_ptr<cugl::graphics::SpriteBatch>& batch) {
             if(tile == nullptr){
                 continue;
             }
-            Vec2 pos = tile->pos;
-            Vec2 origin = Vec2(tile->getTileTexture()->getSize().width/2, tile->getTileTexture()->getSize().height/2);
-                        
-            Size textureSize(tile->getBackTextureNode()->getTexture()->getSize());
-            Vec2 rectOrigin(pos - (textureSize * tile->_scale)/2);
-            tile->tileRect = cugl::Rect(rectOrigin, textureSize * tile->_scale);
-            
-            float velocity = tile->pos.x - tile->getContainer()->getPosition().x;
-            velocity = velocity >= VELOCITY_THRESHOLD || velocity <= -VELOCITY_THRESHOLD ? velocity : 0;
-            
-            float rotationAngle = ROTATION_CONST * velocity;
-            rotationAngle = std::clamp(rotationAngle, -MAX_ROTATION, MAX_ROTATION);
-            rotationAngle = (rotationAngle - tile->getContainer()->getAngle()) * ROTATION_SMOOTH_CONST;
-            
-            Vec2 lerpPos = tile->getContainer()->getPosition();
-            lerpPos.lerp(pos, 0.7);
-           
-            tile->getContainer()->setAnchor(Vec2::ANCHOR_CENTER);
-            tile->getContainer()->setAngle(rotationAngle);
-            tile->getContainer()->setScale(tile->_scale);
-            tile->getContainer()->setPosition(lerpPos);
-            tile->getContainer()->setVisible(true);
             tile->getContainer()->render(batch, Affine2::IDENTITY, Color4::WHITE);
         }
     }
@@ -313,14 +322,14 @@ void Pile::removeNumTiles(int nums) {
 }
 
 
-void Pile::updateRow(int row, const std::vector<std::shared_ptr<TileSet::Tile>>& tiles) {
+void Pile::updateRow(int row, const std::vector<std::shared_ptr<TileSet::Tile>>& tiles, float dt) {
     for (int j = 0; j < _pileSize; j++) {
         if (_pile[row][j] != nullptr) {
             _pile[row][j] = tiles[j];
             _pile[row][j]->pileCoord = cugl::Vec2(row, j);
         }
     }
-    updateTilePositions();
+    updateTilePositions(0);
 }
 
 int Pile::selectedRow(std::shared_ptr<TileSet::Tile> tile) {

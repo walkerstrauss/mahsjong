@@ -16,10 +16,10 @@ using namespace cugl;
 #pragma mark Constructors
 
 #define VELOCITY_THRESHOLD 2.0f
-#define ROTATION_CONST 0.3f
-#define MAX_ROTATION 0.4f
-#define ROTATION_SMOOTH_CONST 0.2f
+#define ROTATE_MAX 0.3f
 
+#define SPRING 0.05f
+#define DAMP 0.05f
 
 /**
  * Creates a new hand for the player
@@ -370,7 +370,7 @@ std::vector<std::shared_ptr<TileSet::Tile>> Hand::getSortedTiles(const std::vect
 }
 
 
-void Hand::updateTilePositions(cugl::Rect rect){
+void Hand::updateTilePositions(cugl::Rect rect, float dt){
     float startX = rect.getMinX(); // Starting x position for hand tile positioning
     float endX = rect.getMaxX(); // Ending x position for hand tile positioning
     float tileSpacing = (endX-startX) / getTileCount() ; // Spacing in x direction between tiles
@@ -379,11 +379,41 @@ void Hand::updateTilePositions(cugl::Rect rect){
 
     for (size_t i = 0; i < _tiles.size(); i++){
         if (_tiles[i] == _player->getDraggingTile()) {
-          continue;
+            continue;
         }
         
         cugl::Vec2 newPos(startX + i * tileSpacing + (_tiles[i]->getBackTextureNode()->getTexture()->getWidth()/2 * _tiles[i]->_scale), yPos);
+        
+        if(_tiles[i]->selected) {
+            newPos.y += 10.0f;
+        }
+        
         _tiles[i]->pos = newPos;
+    }
+    
+    for(const auto& tile : _tiles){
+        Vec2 pos = tile->pos;
+        Vec2 origin = Vec2(tile->getTileTexture()->getSize().width/2, tile->getTileTexture()->getSize().height/2);
+        
+        Size textureSize(tile->getBackTextureNode()->getTexture()->getSize());
+        Vec2 rectOrigin(pos - (textureSize * tile->_scale)/2);
+        tile->tileRect = cugl::Rect(rectOrigin, textureSize * tile->_scale);
+       
+        float velocity = tile->getContainer()->getPosition().x - tile->pos.x;
+        float displacement = tile->getContainer()->getAngle();
+        float force = -SPRING * displacement - DAMP * velocity;
+        
+        Vec2 lerpPos = tile->getContainer()->getPosition();
+        lerpPos.lerp(pos, 0.5);
+        
+        velocity += force * dt;
+        displacement = std::clamp(velocity * dt, -ROTATE_MAX, ROTATE_MAX);
+        
+        tile->getContainer()->setAnchor(Vec2::ANCHOR_CENTER);
+        tile->getContainer()->setAngle(displacement);
+        tile->getContainer()->setScale(tile->_scale);
+        tile->getContainer()->setPosition(lerpPos);
+        tile->getContainer()->setVisible(tile != _player->_draggingTile);
     }
 }
 
@@ -394,32 +424,6 @@ void Hand::updateTilePositions(cugl::Rect rect){
  */
 void Player::draw(const std::shared_ptr<cugl::graphics::SpriteBatch>& batch) {
     for(const auto& tile : _hand._tiles){
-        Vec2 pos = tile->pos;
-        Vec2 origin = Vec2(tile->getTileTexture()->getSize().width/2, tile->getTileTexture()->getSize().height/2);
-        
-        if(tile->selected){
-            pos.y += 10;
-        }
-        Size textureSize(tile->getBackTextureNode()->getTexture()->getSize());
-        Vec2 rectOrigin(pos - (textureSize * tile->_scale)/2);
-        tile->tileRect = cugl::Rect(rectOrigin, textureSize * tile->_scale);
-       
-        float velocity = tile->pos.x - tile->getContainer()->getPosition().x;
-        velocity = velocity >= VELOCITY_THRESHOLD || velocity <= -VELOCITY_THRESHOLD ? velocity : 0;
-        
-        float rotationAngle = ROTATION_CONST * velocity;
-        rotationAngle = std::clamp(rotationAngle, -MAX_ROTATION, MAX_ROTATION);
-        rotationAngle = (rotationAngle - tile->getContainer()->getAngle()) * ROTATION_SMOOTH_CONST;
-        
-        Vec2 lerpPos = tile->getContainer()->getPosition();
-        lerpPos.lerp(pos, 0.5);
-        
-        tile->getContainer()->setAnchor(Vec2::ANCHOR_CENTER);
-        tile->getContainer()->setAngle(rotationAngle);
-        tile->getContainer()->setScale(tile->_scale);
-        tile->getContainer()->setPosition(lerpPos);
-        
-        tile->getContainer()->setVisible(tile != _draggingTile);
         tile->getContainer()->render(batch, Affine2::IDENTITY, Color4::WHITE);
     }
 }

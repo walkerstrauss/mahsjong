@@ -393,7 +393,6 @@ void MatchController::playRooster(std::shared_ptr<TileSet::Tile>& celestialTile)
     // play the shuffle sound.
     AudioController::getInstance().playSound("shuffle");
     _pile->reshufflePile();
-    _pile->updateTilePositions();
     
     // Clear tilesToJson vector
     _tileSet->clearTilesToJson();
@@ -628,7 +627,6 @@ void MatchController::playRat(std::shared_ptr<TileSet::Tile>& selectedTile) {
                          : clientPlayer->getHand();
     
     _pile->removeTile(selectedTile);
-    _pile->updateTilePositions();
 
     self._tiles.push_back(selectedTile);
     selectedTile->inHostHand = _network->getHostStatus();
@@ -659,8 +657,6 @@ void MatchController::playRat(std::shared_ptr<TileSet::Tile>& selectedTile) {
 }
 
 void MatchController::playDragon() {
-    _pile->updateTilePositions();
-    
     // Clear tilesToJson vector
     _tileSet->clearTilesToJson();
     // Transforming celestial tile to JSON
@@ -688,8 +684,6 @@ void MatchController::celestialEffect(){
         //Updating tileset
         _tileSet->updateDeck(_network->getTileMapJson());
         _pile->remakePile();
-        //Updating tile positions
-        _pile->updateTilePositions();
     } else if (_network->getCelestialUpdateType() == NetworkController::RAT) {
         bool isHost = _network->getHostStatus();
         
@@ -698,7 +692,6 @@ void MatchController::celestialEffect(){
         std::string key = std::to_string(tileDrawn->_id);
         
         _pile->removeTile(_tileSet->tileMap[key]);
-        _pile->updateTilePositions();
         _tileSet->tileMap[key]->_scale = 0.325;
         
         // If this match controller is host's

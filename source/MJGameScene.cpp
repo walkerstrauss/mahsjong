@@ -218,9 +218,9 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::sha
     _discardPile = _matchController->getDiscardPile();
         
     // Premature repositioning so it tiles don't render in the corner of the screen
-    _player->getHand().updateTilePositions(_playerHandRegion);
+    _player->getHand().updateTilePositions(_playerHandRegion, 0);
     _pile->pileBox = pileRegionNode->getBoundingBox();
-    _pile->updateTilePositions();
+    _pile->updateTilePositions(0);
     
     // Setting texture location in hand
     for(auto& tile : _player->getHand()._tiles) {
@@ -389,7 +389,9 @@ void GameScene::update(float timestep) {
     cugl::Vec2 mousePos = cugl::Scene::screenToWorldCoords(cugl::Vec3(_input->getPosition()));
     
     // Constantly updating the position of tiles in hand
-    _player->getHand().updateTilePositions(_playerHandRegion);
+    _player->getHand().updateTilePositions(_playerHandRegion, timestep);
+    //Constantlu update pile tile positions
+    _pile->updateTilePositions(timestep);
     
     // Constantly updating turn indicators based on player turn
     updateTurnIndicators();
@@ -478,7 +480,7 @@ void GameScene::update(float timestep) {
             clickedTile(mousePos);
         }
     }
-    updateDrag(mousePos, _input->isDown(), _input->didRelease());
+    updateDrag(mousePos, _input->isDown(), _input->didRelease(), timestep);
     
     // If scene is not active prevent any input from user that changes the state of the game
     if(!isActive()) {
@@ -687,7 +689,7 @@ void GameScene::releaseTile() {
     }
 }
         
-void GameScene::updateDrag(const cugl::Vec2& mousePos, bool mouseDown, bool mouseReleased) {
+void GameScene::updateDrag(const cugl::Vec2& mousePos, bool mouseDown, bool mouseReleased, float timestep) {
     auto& dragContainer = (_pileUINode->getState() == PileUINode::DRAGONREARRANGE)
                           ? _pile->_pile[_dragonRow]
                           : _player->getHand().getTiles();
@@ -736,17 +738,17 @@ void GameScene::updateDrag(const cugl::Vec2& mousePos, bool mouseDown, bool mous
                              if (_draggingTile->pos.x > rightTile->pos.x) {
                                  std::swap(tiles[oldIndex], tiles[oldIndex + 1]);
                                  (_pileUINode->getState() == PileUINode::DRAGONREARRANGE)
-                                     ? _pile->updateTilePositions()
-                                     : _player->getHand().updateTilePositions(_playerHandRegion);
+                                     ? _pile->updateTilePositions(0)
+                                     : _player->getHand().updateTilePositions(_playerHandRegion, timestep);
                              }
                          }
                          if (oldIndex > 0) {
                              auto leftTile = tiles[oldIndex - 1];
-                             if (_draggingTile->pos.x < leftTile->pos.x) {
+                             if (leftTile && _draggingTile->pos.x < leftTile->pos.x) {
                                  std::swap(tiles[oldIndex], tiles[oldIndex - 1]);
                                  (_pileUINode->getState() == PileUINode::DRAGONREARRANGE)
-                                     ? _pile->updateTilePositions()
-                                     : _player->getHand().updateTilePositions(_playerHandRegion);
+                                     ? _pile->updateTilePositions(0)
+                                     : _player->getHand().updateTilePositions(_playerHandRegion, timestep);
                              }
                          }
                      }
@@ -868,8 +870,8 @@ void GameScene::updateDrag(const cugl::Vec2& mousePos, bool mouseDown, bool mous
             _player->_draggingTile = nullptr;
         
         (_pileUINode->getState() == PileUINode::DRAGONREARRANGE)
-                    ? _pile->updateRow(_dragonRow, dragContainer)
-                    :_player->getHand().updateTilePositions(_playerHandRegion);
+                    ? _pile->updateRow(_dragonRow, dragContainer, timestep)
+                    :_player->getHand().updateTilePositions(_playerHandRegion, timestep);
 
             releaseTile();
      }

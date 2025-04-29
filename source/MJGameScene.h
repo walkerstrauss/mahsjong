@@ -343,7 +343,7 @@ public:
     
     void releaseTile();
 
-    void updateDrag(const cugl::Vec2& mousePos, bool mouseDown, bool mouseReleased);
+    void updateDrag(const cugl::Vec2& mousePos, bool mouseDown, bool mouseReleased, float timestep);
     
     void discardTile(std::shared_ptr<TileSet::Tile> tile);
     
