@@ -1032,6 +1032,9 @@
         "tu12": {
             "file": "textures/tutorial/tu12.png"
         },
+        "tu13": {
+            "file": "textures/tutorial/tu13.png"
+        },
         "button_back":{
             "file": "textures/tutorial/button_back.png"
         },
