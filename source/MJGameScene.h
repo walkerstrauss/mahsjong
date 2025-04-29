@@ -207,7 +207,7 @@ protected:
     
     // Field to track the time left in the active turn
     float _turnTimeRemaining;
-    const float TURN_DURATION = 15.0f;
+    const float TURN_DURATION = 45.0f;
     bool turnTimerActive = false;
     int prevTurnId = -99;
     std::shared_ptr<Label> _timer;
