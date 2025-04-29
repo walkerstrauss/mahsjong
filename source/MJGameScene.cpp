@@ -390,8 +390,10 @@ void GameScene::update(float timestep) {
     
     // Constantly updating the position of tiles in hand
     _player->getHand().updateTilePositions(_playerHandRegion, timestep);
-    //Constantlu update pile tile positions
+    //Constantly update pile tile positions
     _pile->updateTilePositions(timestep);
+    // Constantly update discard pile tile
+    _discardPile->updateTilePositions(timestep);
     
     // Constantly updating turn indicators based on player turn
     updateTurnIndicators();
@@ -787,6 +789,7 @@ void GameScene::updateDrag(const cugl::Vec2& mousePos, bool mouseDown, bool mous
                       }
                       // Regular tile getting discarded
                       else if(_matchController->discardTile(_draggingTile)) {
+                          _draggingTile->pos = _discardedTileImage->getWorldPosition();
                           if(_draggingTile->debuffed) {
                               _discardedTileImage->setTexture(_assets->get<Texture>("debuffed"));
                           }
@@ -817,6 +820,7 @@ void GameScene::updateDrag(const cugl::Vec2& mousePos, bool mouseDown, bool mous
                         _matchController->hasDrawn = true;
                     }
                     else {
+                        _draggingTile->pos = _discardedTileImage->getWorldPosition();
                         _discardedTileImage->setVisible(true);
                         _draggingTile->_scale = 0;
                     }
