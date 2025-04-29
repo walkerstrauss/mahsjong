@@ -1100,9 +1100,9 @@
                             14
                         ],
                         "angle": 0,
-                        "visible": false,
+                        "visible": true,
                         "font": "podkovaBold36",
-                        "text": "00:00",
+                        "text": "30:00",
                         "foreground": "#ffffffff",
                         "background": "#00000000",
                         "padding": [

@@ -767,7 +767,7 @@ void MatchController::endTurn() {
     // If it is this player's turn
     if(_network->getCurrentTurn() == _network->getLocalPid()) {
         // If satisfied turn requirements n 
-        if(hasDrawn && (hasPlayedCelestial || hasDiscarded)) {
+        if((hasDrawn || hasTimedOut) && (hasPlayedCelestial || hasDiscarded || hasTimedOut)) {
             // If host
             if(_network->getHostStatus() && hostPlayer->getHand()._tiles.size() == hostPlayer->getHand()._size) {
                 _network->endTurn();

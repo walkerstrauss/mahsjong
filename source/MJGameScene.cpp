@@ -336,6 +336,8 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::sha
     _remainingTiles = _tileSet->deck.size();
     _remainingLabel->setText(std::to_string(_remainingTiles));
     
+    _timer = std::dynamic_pointer_cast<Label>(_assets->get<SceneNode>("matchscene.gameplayscene.timer"));
+    _timer->setText("00:30");
     initPlayerGuide();
     updateTurnIndicators();
     return true;
@@ -381,13 +383,50 @@ void GameScene::update(float timestep) {
     
     // Constantly updating turn indicators based on player turn
     updateTurnIndicators();
-    
-    // Updating set tabs
     displayPlayerSets();
     displayOpponentSets();
-    
-    // Updating player guide nodes
     updatePlayerGuide();
+    
+    // Update turn timer
+    int currTurn = _network->getCurrentTurn();
+    if (currTurn != prevTurnId){
+        prevTurnId = currTurn;
+        
+        if (currTurn == _network->getLocalPid()){
+            _turnTimeRemaining = TURN_DURATION;
+            turnTimerActive = true;
+        } else {
+            turnTimerActive = false;
+        }
+        
+    }
+    
+    if (turnTimerActive) {
+        _turnTimeRemaining -= timestep;
+        if (_turnTimeRemaining <= 0.0f){
+            _turnTimeRemaining = 0.0f;
+            turnTimerActive = false;
+            endTurnFromTimeout();
+        }
+        
+        int sec = static_cast<int>(_turnTimeRemaining);
+  
+// TODO: re-add this code if we have timer over a minute
+//        int minutes = sec / 60;
+//        int secs = sec % 60;
+//
+//        char buffer[6];
+//        std::snprintf(buffer, sizeof(buffer), "%02d:%02d", minutes, secs);
+//
+//        std::string timeStr(buffer);
+        
+        std::string timeAsStr = "00:";
+        if (sec < 10){
+            timeAsStr += "0";
+        }
+        timeAsStr += std::to_string(sec);
+        _timer->setText(timeAsStr);
+    }
     
     // Updating discardUINode if matchController has a discard update
     if(_matchController->getChoice() == MatchController::Choice::DISCARDUIUPDATE) {
@@ -475,7 +514,6 @@ void GameScene::update(float timestep) {
     
     // If it is your turn, allow turn-based actions
     if(_network->getCurrentTurn() == _network->getLocalPid()) {
-        // If in drawn discard state, disallow any other action other then playing a set
         // Coords of initial click and ending release
         cugl::Vec2 initialMousePos = cugl::Scene::screenToWorldCoords(cugl::Vec3(_input->getInitialPosition()));
         
