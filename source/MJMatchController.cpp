@@ -776,6 +776,15 @@ void MatchController::endTurn() {
     }
 }
 
+/** Handles game win by broadcasting to opponent that they have a full mahjong hand  */
+void MatchController::handleGameWin(){
+    if (_network->getCurrentTurn() == _network->getLocalPid()){
+        _network->broadcastEnd(_network->getHostStatus());
+        _choice = WIN;
+    }
+}
+
+
 /**
  * The method called to update the game mode
  *

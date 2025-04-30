@@ -214,6 +214,9 @@ public:
         hasTimedOut = false;
     }
     
+    /** Handles game win by broadcasting to opponent that they have a full mahjong hand  */
+    void handleGameWin();
+    
     /** Gets the current state of game */
     Choice getChoice() {
         return _choice; 

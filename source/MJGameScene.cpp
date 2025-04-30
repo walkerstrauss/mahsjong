@@ -403,7 +403,14 @@ void GameScene::update(float timestep) {
     displayOpponentSets();
     updatePlayerGuide();
     
-    // Update turn timer
+    if (_player->getHand().isWinningHand()){
+        _matchController->handleGameWin();
+    }
+    
+    if (_matchController->getChoice() == MatchController::WIN){
+        _choice = WIN;
+    }
+    
     int currTurn = _network->getCurrentTurn();
     if (currTurn != prevTurnId){
         prevTurnId = currTurn;
@@ -413,6 +420,8 @@ void GameScene::update(float timestep) {
             turnTimerActive = true;
         } else {
             turnTimerActive = false;
+            _turnTimeRemaining = 0.0f;
+            _timer->setText("00:00");
         }
         
     }
@@ -426,20 +435,12 @@ void GameScene::update(float timestep) {
         }
         
         int sec = static_cast<int>(_turnTimeRemaining);
-  
-// TODO: re-add this code if we have timer over a minute
-//        int minutes = sec / 60;
-//        int secs = sec % 60;
-//
-//        char buffer[6];
-//        std::snprintf(buffer, sizeof(buffer), "%02d:%02d", minutes, secs);
-//
-//        std::string timeStr(buffer);
         
         std::string timeAsStr = "00:";
         if (sec < 10){
             timeAsStr += "0";
         }
+        
         timeAsStr += std::to_string(sec);
         _timer->setText(timeAsStr);
     }
