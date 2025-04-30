@@ -89,7 +89,9 @@ public:
         /** Monkey played */
         MONKEY,
         /** Rooster played */
-        ROOSTER
+        ROOSTER,
+        /** Pig played */
+        PIG
         
     };
     

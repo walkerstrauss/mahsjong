@@ -28,6 +28,7 @@ public:
         MONKEYTILE,
         RATTILE,
         DRAGONTILE,
+        PIGTILE,
         DRAWNDISCARD,
         SUCCESS_SET,
         FAILED_SET, 
@@ -56,10 +57,12 @@ protected:
     Choice _choice;
     /** The instance of the monkey tile that was played */
     std::shared_ptr<TileSet::Tile> _monkeyTile;
-    /** The instance of the rattile that was played */
+    /** The instance of the rat tile that was played */
     std::shared_ptr<TileSet::Tile> _ratTile;
-    /** The instance of the rattile that was played */
+    /** The instance of the dragon tile that was played */
     std::shared_ptr<TileSet::Tile> _dragonTile;
+    /** The instance of the pig tile that was played */
+    std::shared_ptr<TileSet::Tile> _pigTile;
     /** Currnet active state of game */
     bool _active; 
     /** Tiles to display in the opponent played set tab */
@@ -191,6 +194,11 @@ public:
      * Executes the Dragon celestial tile effect (rearrange a pile row) .
      */
     void playDragon();
+    
+    /**
+     * Executes the Pig celestial tile effect (draw any tile from discard) .
+     */
+    void playPig(std::pair<TileSet::Tile::Suit, TileSet::Tile::Rank> tile);
     
     /** Applies the effect of the celestial tile played by opponent by using the celestial state of the network. */
     void celestialEffect();
