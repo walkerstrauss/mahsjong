@@ -41,6 +41,8 @@ public:
     bool hasDiscarded = false;
     /** If current player has played a celestial tile or not */
     bool hasPlayedCelestial = false;
+    /** If the current player has timed out */
+    bool hasTimedOut = false;
     
 protected:
     /** The network connection */
@@ -207,7 +209,7 @@ public:
      * Call back for ending the turn for the current player. Must have drawn from the pile and dicsarded/played
      * a tile in order to end turn successfully. Resets the current turn requirements with a sucessful end.
      */
-    void endTurn(); 
+    void endTurn();
     
     /**
      * Resets the state of the current turn. Called after the turn ends to allow the next player to draw,
@@ -217,7 +219,11 @@ public:
         hasDrawn = false;
         hasDiscarded = false;
         hasPlayedCelestial = false;
+        hasTimedOut = false;
     }
+    
+    /** Handles game win by broadcasting to opponent that they have a full mahjong hand  */
+    void handleGameWin();
     
     /** Gets the current state of game */
     Choice getChoice() {

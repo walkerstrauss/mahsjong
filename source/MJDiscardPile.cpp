@@ -9,6 +9,12 @@
 #include "MJPlayer.h"
 #include "MJTileSet.h"
 
+#define VELOCITY_THRESHOLD 2.0f
+#define ROTATE_MAX 0.3f
+
+#define SPRING 0.05f
+#define DAMP 0.05f
+
 using namespace cugl;
 using namespace cugl::scene2;
 using namespace cugl::graphics;
@@ -96,18 +102,37 @@ void DiscardPile::removeTile(std::shared_ptr<TileSet::Tile> tile) {
 /*
  * Method to render the top card of the discard pile
  */
-void DiscardPile::draw(const std::shared_ptr<cugl::graphics::SpriteBatch>& batch){
+void DiscardPile::updateTilePositions(float dt) {
     if(_topTile) {
         Vec2 pos = _topTile->pos;
-        Vec2 origin = Vec2(_topTile->getBackTextureNode()->getTexture()->getSize().width/2, _topTile->getBackTextureNode()->getTexture()->getSize().height/2);
+        Vec2 origin = Vec2(_topTile->getTileTexture()->getSize().width/2, _topTile->getTileTexture()->getSize().height/2);
         
         Size textureSize(_topTile->getBackTextureNode()->getTexture()->getSize());
         Vec2 rectOrigin(pos - (textureSize * _topTile->_scale)/2);
         _topTile->tileRect = cugl::Rect(rectOrigin, textureSize * _topTile->_scale);
+       
+        float velocity = _topTile->getContainer()->getPosition().x - _topTile->pos.x;
+        float displacement = _topTile->getContainer()->getAngle();
+        float force = -SPRING * displacement - DAMP * velocity;
+        
+        Vec2 lerpPos = _topTile->getContainer()->getPosition();
+        lerpPos.lerp(pos, 0.5);
+        
+        velocity += force * dt;
+        displacement = std::clamp(velocity * dt, -ROTATE_MAX, ROTATE_MAX);
         
         _topTile->getContainer()->setAnchor(Vec2::ANCHOR_CENTER);
+        _topTile->getContainer()->setAngle(displacement);
         _topTile->getContainer()->setScale(_topTile->_scale);
-        _topTile->getContainer()->setPosition(pos);
+        _topTile->getContainer()->setPosition(lerpPos);
+    }
+}
+
+/*
+ * Method to render the top card of the discard pile
+ */
+void DiscardPile::draw(const std::shared_ptr<cugl::graphics::SpriteBatch>& batch){
+    if(_topTile) {
         _topTile->getContainer()->render(batch, Affine2::IDENTITY, Color4::WHITE);
     }
 }

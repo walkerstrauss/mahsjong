@@ -123,10 +123,14 @@ public:
      *
      * @return a tile with the matching suit and rank
      */
+
     std::shared_ptr<TileSet::Tile> findTile(std::pair<TileSet::Tile::Suit, TileSet::Tile::Rank> info);
     
     /** Method that removes the given instance of tile from the discard pile */
     void removeTile(std::shared_ptr<TileSet::Tile> tile);
+
+    void updateTilePositions(float dt);
+
     
     /**
      * Method to update the discard pile model

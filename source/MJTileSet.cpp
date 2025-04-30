@@ -152,10 +152,11 @@ void TileSet::addCelestialTiles(const std::shared_ptr<cugl::AssetManager>& asset
         deck.push_back(monkey);
         tileMap[std::to_string(monkey->_id)] = monkey;
         
-        std::shared_ptr<Tile> rat = std::make_shared<Tile>(Tile::Rank::RAT, Tile::Suit::CELESTIAL);
-        rat->_id = tileCount++;;
-        deck.push_back(rat);
-        tileMap[std::to_string(rat->_id)] = rat;
+        // TODO: re-add rat tiles when they don't break the game
+//        std::shared_ptr<Tile> rat = std::make_shared<Tile>(Tile::Rank::RAT, Tile::Suit::CELESTIAL);
+//        rat->_id = tileCount++;;
+//        deck.push_back(rat);
+//        tileMap[std::to_string(rat->_id)] = rat;
         
         std::shared_ptr<Tile> dragon = std::make_shared<Tile>(Tile::Rank::DRAGON, Tile::Suit::CELESTIAL);
         dragon->_id = tileCount++;;
