@@ -431,11 +431,14 @@ void MahsJongApp::updateGameScene(float timestep) {
  */
 void MahsJongApp::updateSettingScene(float timestep){
     _settings.update(timestep);
+    SettingScene::PrevScene last_scene = _settings.scene;
     switch (_settings.choice){
         case SettingScene::Choice::MENU:
             _settings.setActive(false);
             _mainmenu.setActive(true);
-            AudioController::getInstance().playMusic("menuMusic", true);
+            if (last_scene == SettingScene::PrevScene::PAUSED) {
+                AudioController::getInstance().playMusic("menuMusic", true);
+            }
             _gameplay.dispose();
             _scene = State::MENU;
             break;
