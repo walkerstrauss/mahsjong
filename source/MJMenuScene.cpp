@@ -148,7 +148,7 @@ void MenuScene::dispose() {
  */
 void MenuScene::setActive(bool value) {
     if (isActive() != value) {
-        AudioController::getInstance().playMusic("menuMusic", true);
+        //AudioController::getInstance().playMusic("menuMusic", true);
         Scene2::setActive(value);
         if (value) {
             _choice = NONE;

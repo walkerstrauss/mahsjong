@@ -224,12 +224,13 @@ void MahsJongApp::draw() {
 * @param timestep  The amount of time (in seconds) since the last frame
 */
 void MahsJongApp::updateLoadingScene(float timestep) {
+   AudioController::getInstance().init(_assets);
    if (_loading.isActive()) {
+       AudioController::getInstance().playMusic("menuMusic", true);
        _loading.update(timestep);
        _loading.resizeScene();
    } else {
-       _loading.dispose(); // Permanently disables the input listeners in this mode
-       AudioController::getInstance().init(_assets);
+       _loading.dispose(); // Permanently disables the input listeners in this mod
        AudioController::getInstance().playSound("Confirm");
        
        _network = std::make_shared<NetworkController>();
@@ -434,6 +435,7 @@ void MahsJongApp::updateSettingScene(float timestep){
         case SettingScene::Choice::MENU:
             _settings.setActive(false);
             _mainmenu.setActive(true);
+            AudioController::getInstance().playMusic("menuMusic", true);
             _gameplay.dispose();
             _scene = State::MENU;
             break;

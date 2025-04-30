@@ -29,6 +29,10 @@ private:
     std::vector<std::string> _keys;
     
     std::shared_ptr<cugl::audio::AudioQueue>  _musicQueue;
+
+    /** The handle returned by the queue when we first play the bgm */
+    long _musicHandle = -1;
+
     
 public:
     /** Whether the game sound is currently on */
@@ -74,6 +78,10 @@ public:
      * Stops the music currently being played
      */
     void stopMusic();
+
+    void pauseMusic();
+
+    void resumeMusic();
     
     /**
      * Adjusts volume

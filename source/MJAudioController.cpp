@@ -125,7 +125,18 @@ void AudioController::playMusic(const std::string& key, bool loop) {
   if (soundOn){
     _musicQueue->play(it->second, loop, 1.0f, 0.0f);
   }
-  _musicQueue->play(it->second, loop, 1.0f, 0.0f);
+}
+
+void AudioController::pauseMusic() {
+    if (_musicHandle >= 0) {
+        _musicQueue->pause(_musicHandle);
+    }
+}
+
+void AudioController::resumeMusic() {
+    if (_musicHandle >= 0) {
+        _musicQueue->resume();
+    }
 }
 
 
