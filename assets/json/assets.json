@@ -1485,7 +1485,16 @@
         "Rat": {
             "type": "sample",
             "file": "sounds/Rat.wav"
-
+        },
+        "bgm": {
+            "type": "sample",
+            "file": "sounds/music/match.mp3",
+            "stream": true
+        },
+        "menuMusic": {
+            "type": "sample",
+            "file": "sounds/music/menu.mp3",
+            "stream": true
         },
         "Monkey": {
             "type": "sample",
@@ -1565,6 +1574,7 @@
         "Done": {
             "type": "sample",
             "file": "sounds/Done.wav"
+
         }
     }
 }
