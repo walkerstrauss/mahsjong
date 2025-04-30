@@ -126,7 +126,7 @@ void TileSet::initTileNodes(const std::shared_ptr<cugl::AssetManager>& assets){
 
 
 void TileSet::addCelestialTiles(const std::shared_ptr<cugl::AssetManager>& assets) {
-    for (int i = 1; i < 4; ++i) {
+    for (int i = 1; i < 3; ++i) {
         std::shared_ptr<Tile> rooster = std::make_shared<Tile>(Tile::Rank::ROOSTER, Tile::Suit::CELESTIAL);
         rooster->_id = tileCount++;;
         deck.push_back(rooster);
@@ -162,6 +162,11 @@ void TileSet::addCelestialTiles(const std::shared_ptr<cugl::AssetManager>& asset
         dragon->_id = tileCount++;;
         deck.push_back(dragon);
         tileMap[std::to_string(dragon->_id)] = dragon;
+        
+        std::shared_ptr<Tile> pig = std::make_shared<Tile>(Tile::Rank::PIG, Tile::Suit::CELESTIAL);
+        pig->_id = tileCount++;;
+        deck.push_back(pig);
+        tileMap[std::to_string(pig->_id)] = pig;
     }
 }
 

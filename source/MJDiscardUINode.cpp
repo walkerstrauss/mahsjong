@@ -22,12 +22,13 @@ bool DiscardUINode::init(const std::shared_ptr<cugl::AssetManager>& assets) {
     _assets = assets;
     _root = _assets->get<SceneNode>("tilesetui");
     
+    _tilesNode = _root->getChildByName("tilesetscene")->getChildByName("board")->getChildByName("tiles");
+    
     cugl::Size screenSize = cugl::Application::get()->getDisplaySize();
     screenSize *= getContentSize().height/screenSize.height;
     
     float offset = (screenSize.width -getWidth())/2;
     setPosition(offset, getPosition().y);
-
 
     _labels.resize(27);
     std::shared_ptr<SceneNode> labelParent = _root->getChildByName("tilesetscene")->getChildByName("board")->getChildByName("number");
@@ -93,30 +94,48 @@ int DiscardUINode::getLabelIndex(std::shared_ptr<TileSet::Tile> tile) {
     return rowIndex + (int)tile->getRank() - 1;
 }
 
-bool DiscardUINode::incrementLabel(std::shared_ptr<TileSet::Tile> tile) {
-    int i = getLabelIndex(tile);
-    int count = std::stoi(_labels[i]->getText());
+bool DiscardUINode::incrementLabel(int index) {
+    int count = std::stoi(_labels[index]->getText());
 
     if (count > 3) {
         CULog("already discarded all copies of this tile");
         return false;
     }
 
-    _labels[i]->setText(std::to_string(count + 1));
+    _labels[index]->setText(std::to_string(count + 1));
     return true;
 }
 
-bool DiscardUINode::decrementLabel(std::shared_ptr<TileSet::Tile> tile) {
-    int i = getLabelIndex(tile);
-    int count = std::stoi(_labels[i]->getText());
+bool DiscardUINode::decrementLabel(int index) {
+    int count = std::stoi(_labels[index]->getText());
 
     if (count <= 0) {
         CULog("All copies of this tile are in play");
         return false;
     }
 
-    _labels[i]->setText(std::to_string(count - 1));
+    _labels[index]->setText(std::to_string(count - 1));
     return true;
+}
+
+void DiscardUINode::updateLabels(std::vector<std::shared_ptr<TileSet::Tile>> discardPile) {
+    std::vector<int> counts(27, 0);
+
+    for (const auto& tile : discardPile) {
+        if (tile) {
+            int index = getLabelIndex(tile);
+            if (0 <= index && index < 27) counts[index]++;
+        }
+    }
+
+    for (int i = 0; i < 27; ++i) {
+        if (_labels[i]) {
+            int current = std::stoi(_labels[i]->getText());
+            if (current != counts[i]) {
+                _labels[i]->setText(std::to_string(counts[i]));
+            }
+        }
+    }
 }
 
 /** Sets this scene node as active */
