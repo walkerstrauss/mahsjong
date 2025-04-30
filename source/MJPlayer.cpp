@@ -409,7 +409,7 @@ void Hand::updateTilePositions(cugl::Rect rect, float dt){
         tile->getContainer()->setAngle(displacement);
         tile->getContainer()->setScale(tile->_scale);
         tile->getContainer()->setPosition(lerpPos);
-        tile->getContainer()->setVisible(tile != _player->_draggingTile);
+        tile->getContainer()->setVisible(true);
     }
 }
 

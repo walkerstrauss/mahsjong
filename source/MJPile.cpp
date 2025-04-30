@@ -95,7 +95,7 @@ bool Pile::createPile() {
         _pile.push_back(row); //add tile from deck to pile
     }
     
-    updateTilePositions(0);
+    setTilePositions();
     
     // Erase tiles put into the pile from deck
     if(_tileSet->deck.size() <= 25){
@@ -108,7 +108,7 @@ bool Pile::createPile() {
     return true;
 }
 
-void Pile::updateTilePositions(float dt) {
+void Pile::setTilePositions() {
     float spacingY = 1.0f;
     float spacingX = 1.0f;
     
@@ -138,7 +138,9 @@ void Pile::updateTilePositions(float dt) {
             _pileMap.insert({key, tile->pileCoord});
         }
     }
-    
+}
+
+void Pile::updateTilePositions(float dt) {
     for(const auto& row : _pile) {
         for (const auto& tile : row) {
             if(tile == nullptr){
@@ -150,7 +152,7 @@ void Pile::updateTilePositions(float dt) {
             Size textureSize(tile->getBackTextureNode()->getTexture()->getSize());
             Vec2 rectOrigin(pos - (textureSize * tile->_scale)/2);
             tile->tileRect = cugl::Rect(rectOrigin, textureSize * tile->_scale);
-           
+            
             float velocity = tile->getContainer()->getPosition().x - tile->pos.x;
             float displacement = tile->getContainer()->getAngle();
             float force = -SPRING * displacement - DAMP * velocity;
@@ -169,6 +171,7 @@ void Pile::updateTilePositions(float dt) {
         }
     }
 }
+
 
 #pragma mark -
 #pragma mark Gameplay Handling
@@ -262,6 +265,8 @@ void Pile::remakePile(){
             _pileMap.insert({key, currTile->pileCoord});
         }
     }
+    
+    setTilePositions();
 }
 
 /**
@@ -329,7 +334,7 @@ void Pile::updateRow(int row, const std::vector<std::shared_ptr<TileSet::Tile>>&
             _pile[row][j]->pileCoord = cugl::Vec2(row, j);
         }
     }
-    updateTilePositions(0);
+    setTilePositions();
 }
 
 int Pile::selectedRow(std::shared_ptr<TileSet::Tile> tile) {
@@ -343,4 +348,33 @@ int Pile::selectedRow(std::shared_ptr<TileSet::Tile> tile) {
     }
     return -1;
 }
+
+void Pile::pileJump(float dt) {
+    time += dt;
+    if (time < 5.0f) return;
+    time = 0.0f;
+    
+    int stagger = 0;
+    
+    Application* app = Application::get();
+    for (int i = _pileSize - 1; i >= 0; --i) {
+      for (int j = 0; j < _pileSize; ++j) {
+          std::shared_ptr<TileSet::Tile> tile = _pile[i][j];
+            if(!tile) {
+                continue;
+            }
+            app->schedule([tile](){
+              tile->pos.y += 3.0f;
+              return false;
+            }, stagger + 0.05);
+            
+            app->schedule([tile](){
+              tile->pos.y -= 3.0f;
+              return false;
+            }, stagger += 100);
+        }
+    }
+}
+
+
 

@@ -103,6 +103,8 @@ void MatchController::initClient() {
     
     //Initializing the pile
     _pile->initPile(4, _tileSet, false);
+    _pile->setTilePositions();
+    
     _pile->remakePile();
 }
 

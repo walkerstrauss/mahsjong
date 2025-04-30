@@ -202,7 +202,7 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::sha
     // Init the match controller for the game
     _matchController = std::make_shared<MatchController>();
     _matchController->init(_assets, _network);
-  
+    
     // Host and Client specific initializations
     if(_network->getHostStatus()){
         _matchController->initHost();
@@ -216,12 +216,13 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::sha
     _tileSet = _matchController->getTileSet();
     _pile = _matchController->getPile();
     _discardPile = _matchController->getDiscardPile();
-        
+    
     // Premature repositioning so it tiles don't render in the corner of the screen
     _player->getHand().updateTilePositions(_playerHandRegion, 0);
-    _pile->pileBox = pileRegionNode->getBoundingBox();
-    _pile->updateTilePositions(0);
     
+    _pile->pileBox = pileRegionNode->getBoundingBox();
+    _pile->setTilePositions();
+
     // Setting texture location in hand
     for(auto& tile : _player->getHand()._tiles) {
         tile->getContainer()->setAnchor(Vec2::ANCHOR_CENTER);
@@ -390,6 +391,7 @@ void GameScene::update(float timestep) {
     
     // Constantly updating the position of tiles in hand
     _player->getHand().updateTilePositions(_playerHandRegion, timestep);
+    _pile->pileJump(timestep);
     //Constantly update pile tile positions
     _pile->updateTilePositions(timestep);
     // Constantly update discard pile tile
@@ -740,7 +742,7 @@ void GameScene::updateDrag(const cugl::Vec2& mousePos, bool mouseDown, bool mous
                              if (_draggingTile->pos.x > rightTile->pos.x) {
                                  std::swap(tiles[oldIndex], tiles[oldIndex + 1]);
                                  (_pileUINode->getState() == PileUINode::DRAGONREARRANGE)
-                                     ? _pile->updateTilePositions(0)
+                                 ? _pile->setTilePositions()
                                      : _player->getHand().updateTilePositions(_playerHandRegion, timestep);
                              }
                          }
@@ -749,7 +751,7 @@ void GameScene::updateDrag(const cugl::Vec2& mousePos, bool mouseDown, bool mous
                              if (leftTile && _draggingTile->pos.x < leftTile->pos.x) {
                                  std::swap(tiles[oldIndex], tiles[oldIndex - 1]);
                                  (_pileUINode->getState() == PileUINode::DRAGONREARRANGE)
-                                     ? _pile->updateTilePositions(0)
+                                 ? _pile->setTilePositions()
                                      : _player->getHand().updateTilePositions(_playerHandRegion, timestep);
                              }
                          }

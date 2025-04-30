@@ -98,7 +98,6 @@ public:
         _rearrange2->setVisible(state == DRAGONREARRANGE);
         _finish->setVisible(state == DRAGONREARRANGE);
         _select->setVisible(state == RATSELECT);
-
     }
   
 };
