@@ -127,46 +127,45 @@ void TileSet::initTileNodes(const std::shared_ptr<cugl::AssetManager>& assets){
 
 void TileSet::addCelestialTiles(const std::shared_ptr<cugl::AssetManager>& assets) {
     for (int i = 1; i < 3; ++i) {
-//        std::shared_ptr<Tile> rooster = std::make_shared<Tile>(Tile::Rank::ROOSTER, Tile::Suit::CELESTIAL);
-//        rooster->_id = tileCount++;;
-//        deck.push_back(rooster);
-//        tileMap[std::to_string(rooster->_id)] = rooster;
-//        
-//        std::shared_ptr<Tile> ox = std::make_shared<Tile>(Tile::Rank::OX, Tile::Suit::CELESTIAL);
-//        ox->_id = tileCount++;;
-//        deck.push_back(ox);
-//        tileMap[std::to_string(ox->_id)] = ox;
-//
-//        std::shared_ptr<Tile> rabbit = std::make_shared<Tile>(Tile::Rank::RABBIT, Tile::Suit::CELESTIAL);
-//        rabbit->_id = tileCount++;;
-//        deck.push_back(rabbit);
-//        tileMap[std::to_string(rabbit->_id)] = rabbit;
-//        
-//        std::shared_ptr<Tile> snake = std::make_shared<Tile>(Tile::Rank::SNAKE, Tile::Suit::CELESTIAL);
-//        snake->_id = tileCount++;;
-//        deck.push_back(snake);
-//        tileMap[std::to_string(snake->_id)] = snake;
-//        
-//        std::shared_ptr<Tile> monkey = std::make_shared<Tile>(Tile::Rank::MONKEY, Tile::Suit::CELESTIAL);
-//        monkey->_id = tileCount++;;
-//        deck.push_back(monkey);
-//        tileMap[std::to_string(monkey->_id)] = monkey;
-//        
-//        // TODO: re-add rat tiles when they don't break the game
-////        std::shared_ptr<Tile> rat = std::make_shared<Tile>(Tile::Rank::RAT, Tile::Suit::CELESTIAL);
-////        rat->_id = tileCount++;;
-////        deck.push_back(rat);
-////        tileMap[std::to_string(rat->_id)] = rat;
-//        
-//        std::shared_ptr<Tile> dragon = std::make_shared<Tile>(Tile::Rank::DRAGON, Tile::Suit::CELESTIAL);
-//        dragon->_id = tileCount++;;
-//        deck.push_back(dragon);
-//        tileMap[std::to_string(dragon->_id)] = dragon;
-//        
-//        std::shared_ptr<Tile> pig = std::make_shared<Tile>(Tile::Rank::PIG, Tile::Suit::CELESTIAL);
-//        pig->_id = tileCount++;;
-//        deck.push_back(pig);
-//        tileMap[std::to_string(pig->_id)] = pig;
+        std::shared_ptr<Tile> rooster = std::make_shared<Tile>(Tile::Rank::ROOSTER, Tile::Suit::CELESTIAL);
+        rooster->_id = tileCount++;;
+        deck.push_back(rooster);
+        tileMap[std::to_string(rooster->_id)] = rooster;
+        
+        std::shared_ptr<Tile> ox = std::make_shared<Tile>(Tile::Rank::OX, Tile::Suit::CELESTIAL);
+        ox->_id = tileCount++;;
+        deck.push_back(ox);
+        tileMap[std::to_string(ox->_id)] = ox;
+
+        std::shared_ptr<Tile> rabbit = std::make_shared<Tile>(Tile::Rank::RABBIT, Tile::Suit::CELESTIAL);
+        rabbit->_id = tileCount++;;
+        deck.push_back(rabbit);
+        tileMap[std::to_string(rabbit->_id)] = rabbit;
+        
+        std::shared_ptr<Tile> snake = std::make_shared<Tile>(Tile::Rank::SNAKE, Tile::Suit::CELESTIAL);
+        snake->_id = tileCount++;;
+        deck.push_back(snake);
+        tileMap[std::to_string(snake->_id)] = snake;
+        
+        std::shared_ptr<Tile> monkey = std::make_shared<Tile>(Tile::Rank::MONKEY, Tile::Suit::CELESTIAL);
+        monkey->_id = tileCount++;;
+        deck.push_back(monkey);
+        tileMap[std::to_string(monkey->_id)] = monkey;
+        
+        std::shared_ptr<Tile> rat = std::make_shared<Tile>(Tile::Rank::RAT, Tile::Suit::CELESTIAL);
+        rat->_id = tileCount++;;
+        deck.push_back(rat);
+        tileMap[std::to_string(rat->_id)] = rat;
+        
+        std::shared_ptr<Tile> dragon = std::make_shared<Tile>(Tile::Rank::DRAGON, Tile::Suit::CELESTIAL);
+        dragon->_id = tileCount++;;
+        deck.push_back(dragon);
+        tileMap[std::to_string(dragon->_id)] = dragon;
+        
+        std::shared_ptr<Tile> pig = std::make_shared<Tile>(Tile::Rank::PIG, Tile::Suit::CELESTIAL);
+        pig->_id = tileCount++;;
+        deck.push_back(pig);
+        tileMap[std::to_string(pig->_id)] = pig;
     }
 }
 

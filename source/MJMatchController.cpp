@@ -659,6 +659,11 @@ void MatchController::playRat(std::shared_ptr<TileSet::Tile>& selectedTile) {
     // Clear tilesToJson vector
     _tileSet->clearTilesToJson();
     
+    if (_pile->getVisibleSize() == 0) {
+        _pile->createPile();
+        _network->broadcastTileMap(_network->getLocalPid(), _tileSet->mapToJson(), "remake pile");
+    }
+    
     return;
 }
 
@@ -699,6 +704,7 @@ void MatchController::playPig(std::pair<TileSet::Tile::Suit, TileSet::Tile::Rank
     selectedTile->inPile = false;
     selectedTile->selected = false;
     selectedTile->discarded = false;
+    selectedTile->selectable = true;
     selectedTile->_scale = 0.325;
     
     // Clear tilesToJson vector

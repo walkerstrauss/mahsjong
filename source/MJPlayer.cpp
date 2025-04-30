@@ -52,6 +52,8 @@ bool Hand::initHand(std::shared_ptr<TileSet>& tileSet, bool isHost){
         _tiles.push_back(drawnTile);
     }
     
+    _tiles = getSortedTiles(_tiles);
+    
     tileSet->deck.erase(tileSet->deck.begin(), tileSet->deck.begin() + 13);
     return true;
 }
