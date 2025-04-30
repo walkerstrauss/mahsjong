@@ -405,11 +405,12 @@ void GameScene::update(float timestep) {
     if(_matchController->getChoice() == MatchController::Choice::DISCARDUIUPDATE) {
         _discardUINode->updateLabels(_discardPile->getTiles());
         
-        if(_discardPile->getTopTile()->debuffed) {
-            _discardedTileImage->setTexture(_assets->get<Texture>("debuffed"));
-        }
-        else {
-            _discardedTileImage->setTexture(_assets->get<Texture>(_discardPile->getTopTile()->toString()));
+        if(_discardPile->getTopTile()) {
+            if (_discardPile->getTopTile()->debuffed) {
+                _discardedTileImage->setTexture(_assets->get<Texture>("debuffed"));
+            } else {
+                _discardedTileImage->setTexture(_assets->get<Texture>(_discardPile->getTopTile()->toString()));
+            }
         }
         _discardedTileImage->SceneNode::setContentSize(32.88, 45);
         _discardedTileImage->setVisible(true);
