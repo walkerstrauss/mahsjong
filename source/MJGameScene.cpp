@@ -411,6 +411,10 @@ void GameScene::update(float timestep) {
         _choice = WIN;
     }
     
+    if (_matchController->getChoice() == MatchController::LOSE){
+        _choice = LOSE;
+    }
+    
     int currTurn = _network->getCurrentTurn();
     if (currTurn != prevTurnId){
         prevTurnId = currTurn;
