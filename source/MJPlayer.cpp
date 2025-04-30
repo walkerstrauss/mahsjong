@@ -268,29 +268,9 @@ bool Hand::isStraight(const std::vector<std::shared_ptr<TileSet::Tile>>& selecte
     return true;
 }
 
-//bool Hand::isWinningHand() {
-//    if (_tiles.size() != _size + 1 || _tiles.size() != 2) {
-//        return false;
-//    } else {
-//        auto& first = _tiles[0];
-//        auto& second = _tiles[1];
-//        if (first->getSuit() == TileSet::Tile::Suit::CELESTIAL || second->getSuit() == TileSet::Tile::Suit::CELESTIAL){
-//            return false;
-//        }
-//        return first->getSuit() == second->getSuit() && first->getRank() == second->getRank();
-//    }
-//}
-
-
 bool Hand::isWinningHand() {
     if (_tiles.size() == _size + 1) {
         std::vector<std::shared_ptr<TileSet::Tile>> sortedHand = getSortedTiles(_tiles);
-        for (auto set : _playedSets){
-            for (const auto& tile : set){
-                sortedHand.push_back(tile);
-            }
-        }
-        sortedHand = getSortedTiles(sortedHand);
         std::map<std::pair<TileSet::Tile::Rank, TileSet::Tile::Suit>, int> tileCounts;
         for (const auto& tile : sortedHand) {
             if (tile->getSuit() == TileSet::Tile::Suit::CELESTIAL || tile->debuffed) {
@@ -299,14 +279,13 @@ bool Hand::isWinningHand() {
             tileCounts[{tile->getRank(), tile->getSuit()}]++;
         }
         
-        return onePairFourSets(tileCounts, 0, 0);
+    return onePairFourSets(tileCounts, 0, (int)_playedSets.size());
     }
     return false;
 }
 
 bool Hand::onePairFourSets(std::map<std::pair<TileSet::Tile::Rank, TileSet::Tile::Suit>, int>& tileCounts, int pair, int sets) {
-    
-    if (pair == 1 && sets == _size / 3) {
+    if (pair == 1 && sets == 4) {
         return true;
     }
     
