@@ -366,6 +366,15 @@ void GameScene::reset() {
  * @param timestep The amount of time (in seconds) since the last frame
  */
 void GameScene::update(float timestep) {
+    if (_input->getKeyPressed() == cugl::KeyCode::A && _input->getPrevKeyPressed() != cugl::KeyCode::A) {
+
+        // there are multiple _choice. One is from MatchController, and the other is from GameScene.
+        _choice = Choice::LOSE;
+
+        _matchController->setChoice(MatchController::Choice::LOSE);
+
+        _network->broadcastEnd(_network->getLocalPid());
+    }
     _matchController->update(timestep);
     
     // Fetching current mouse position

@@ -156,6 +156,7 @@ void MenuScene::setActive(bool value) {
             _joinbutton->activate();
             settingsbutton->activate();
             _tutorialbutton->activate();
+
         } else {
             _hostbutton->deactivate();
             _joinbutton->deactivate();

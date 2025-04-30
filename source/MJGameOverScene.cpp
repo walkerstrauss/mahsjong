@@ -46,7 +46,6 @@ bool GameOverScene::init(const std::shared_ptr<cugl::AssetManager>& assets){
     _winscene->setPosition(offset, _winscene->getPosition().y);
 
     AudioController::getInstance().init(_assets);
-    AudioController::getInstance().playMusic("menuMusic", true);
     
     // init the lose scene
     _losescene = _assets->get<scene2::SceneNode>("losescene");
@@ -103,6 +102,7 @@ void GameOverScene::update(float timestep){
 
 void GameOverScene::setActive(bool value){
     if (isActive() != value){
+        //AudioController::getInstance().playMusic("menuMusic", true);
         Scene2::setActive(value);
         switch (type){
             case Type::WIN:

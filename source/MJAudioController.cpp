@@ -111,6 +111,7 @@ void AudioController::playSound(const std::string& key, bool loop){
 void AudioController::stopMusic() {
     // clear the queue
   _musicQueue->clear(0.0f);
+  _bgmPlaying = false;
 }
 
 void AudioController::playMusic(const std::string& key, bool loop) {
@@ -125,6 +126,7 @@ void AudioController::playMusic(const std::string& key, bool loop) {
   if (soundOn){
     _musicQueue->play(it->second, loop, 1.0f, 0.0f);
   }
+  _bgmPlaying = true;
 }
 
 void AudioController::pauseMusic() {

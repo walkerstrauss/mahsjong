@@ -224,7 +224,7 @@ void MahsJongApp::draw() {
 * @param timestep  The amount of time (in seconds) since the last frame
 */
 void MahsJongApp::updateLoadingScene(float timestep) {
-   AudioController::getInstance().init(_assets);
+    AudioController::getInstance().init(_assets);
    if (_loading.isActive()) {
        AudioController::getInstance().playMusic("menuMusic", true);
        _loading.update(timestep);
@@ -387,12 +387,14 @@ void MahsJongApp::updateGameScene(float timestep) {
             _gameplay.setGameActive(false);
             _gameover.type = GameOverScene::Type::WIN;
             _gameover.setActive(true);
+            AudioController::getInstance().playMusic("menuMusic", true);
             _scene = State::OVER;
             break;
         case GameScene::Choice::LOSE:
             _gameplay.setGameActive(false);
             _gameover.type = GameOverScene::Type::LOSE;
             _gameover.setActive(true);
+            AudioController::getInstance().playMusic("menuMusic", true);
             _scene = State::OVER;
             break;
         case GameScene::Choice::DISCARDED:
