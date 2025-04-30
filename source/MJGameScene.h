@@ -566,7 +566,8 @@ public:
                     _discardedTileImage->setTexture(_assets->get<Texture>(discardTile->toString()));
                     _discardedTileImage->setContentSize(32.88, 45);
                     _discardedTileImage->setVisible(true);
-                    _discardUINode->incrementLabel(discardTile);
+                    int index = _discardUINode->getLabelIndex(discardTile);
+                    _discardUINode->incrementLabel(index);
                 } else {
                     CULog("hand already at required size for ending turn");
                 }
