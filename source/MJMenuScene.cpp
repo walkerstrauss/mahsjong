@@ -118,8 +118,6 @@ bool MenuScene::init(const std::shared_ptr<cugl::AssetManager>& assets) {
     
     // Play the background music for the menu scene.
     AudioController::getInstance().init(_assets);
-    AudioEngine::start();
-    AudioController::getInstance().playMusic("menuMusic", true);
     
     
     return true;
@@ -150,6 +148,7 @@ void MenuScene::dispose() {
  */
 void MenuScene::setActive(bool value) {
     if (isActive() != value) {
+        AudioController::getInstance().playMusic("menuMusic", true);
         Scene2::setActive(value);
         if (value) {
             _choice = NONE;
