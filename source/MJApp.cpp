@@ -503,6 +503,7 @@ void MahsJongApp::updateGameOverScene(float timestep) {
     _gameover.update(timestep);
     if (_gameover.choice == GameOverScene::Choice::MENU){
         _gameover.setActive(false);
+        AudioController::getInstance().playMusic("menuMusic", true);
         _mainmenu.setActive(true);
         _network->disconnect();
         _scene = State::MENU;
