@@ -403,10 +403,6 @@ void GameScene::update(float timestep) {
     displayOpponentSets();
     updatePlayerGuide();
     
-    if (_player->getHand().isWinningHand()){
-        _matchController->handleGameWin();
-    }
-    
     if (_matchController->getChoice() == MatchController::WIN){
         _choice = WIN;
     }

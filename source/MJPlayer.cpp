@@ -293,7 +293,7 @@ bool Hand::isWinningHand() {
         sortedHand = getSortedTiles(sortedHand);
         std::map<std::pair<TileSet::Tile::Rank, TileSet::Tile::Suit>, int> tileCounts;
         for (const auto& tile : sortedHand) {
-            if (tile->getSuit() == TileSet::Tile::Suit::CELESTIAL) {
+            if (tile->getSuit() == TileSet::Tile::Suit::CELESTIAL || tile->debuffed) {
                 return false;
             }
             tileCounts[{tile->getRank(), tile->getSuit()}]++;
