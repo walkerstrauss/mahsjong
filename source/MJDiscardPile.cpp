@@ -60,6 +60,48 @@ std::shared_ptr<TileSet::Tile> DiscardPile::drawTopTile(){
     return topTile;
 }
 
+/** Method that finds tile that matches the suit and rank provided
+ *
+ * @return a tile with the matching suit and rank
+ */
+std::shared_ptr<TileSet::Tile> DiscardPile::findTile(std::pair<TileSet::Tile::Suit, TileSet::Tile::Rank> info) {
+    if (_topTile && _topTile->getSuit() == info.first && _topTile->getRank() == info.second) {
+        return _topTile;
+    }
+    for(auto& tile : _discardPile){
+        if (!tile) continue; // skip null tiles
+        CULog("Checking tile: Suit=%d, Rank=%d vs Target: Suit=%d, Rank=%d",
+            (int)tile->getSuit(), (int)tile->getRank(),
+            (int)info.first, (int)info.second);
+        
+        if (tile->getSuit() == info.first && tile->getRank() == info.second) {
+            return tile;
+        }
+    }
+    return nullptr;
+}
+
+/** Method that removes the given instance of tile from the discard pile */
+void DiscardPile::removeTile(std::shared_ptr<TileSet::Tile> tile) {
+    if (tile == _topTile) {
+        removeTopTile();
+        return;
+    }
+    auto it = _discardPile.begin();
+    while(it != _discardPile.end()){
+        if ((*it)->_id == tile->_id) {
+            _discardMap.erase(std::to_string((*it)->_id));
+            _discardPile.erase(it);
+            break;
+        } else {
+            it++;
+        }
+    }
+}
+
+/*
+ * Method to render the top card of the discard pile
+ */
 void DiscardPile::updateTilePositions(float dt) {
     if(_topTile) {
         Vec2 pos = _topTile->pos;

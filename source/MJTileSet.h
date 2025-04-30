@@ -38,8 +38,8 @@ public:
         /** An enum to represent tile suits */
         enum class Suit : int {
             CELESTIAL,
-            CRAK,
             BAMBOO,
+            CRAK,
             DOT
         };
         

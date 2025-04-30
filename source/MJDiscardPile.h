@@ -102,6 +102,16 @@ public:
     }
     
     /**
+     * Returns all tiles in the discard pile (includes top tile)
+     */
+    std::vector<std::shared_ptr<TileSet::Tile>> getTiles() {
+        std::vector<std::shared_ptr<TileSet::Tile>> tiles = _discardPile;
+        tiles.push_back(_topTile);
+        
+        return tiles;
+    }
+    
+    /**
      * Method to take a tile from the discard pile.
      * Returns a tile for the player to add to hand and updates the discard pile
      *
@@ -109,10 +119,18 @@ public:
      */
     std::shared_ptr<TileSet::Tile> drawTopTile();
     
-    /**
-     * Method to update the position of the discard pile tile
+    /** Method that finds the first tile that matches the suit and rank provided
+     *
+     * @return a tile with the matching suit and rank
      */
+
+    std::shared_ptr<TileSet::Tile> findTile(std::pair<TileSet::Tile::Suit, TileSet::Tile::Rank> info);
+    
+    /** Method that removes the given instance of tile from the discard pile */
+    void removeTile(std::shared_ptr<TileSet::Tile> tile);
+
     void updateTilePositions(float dt);
+
     
     /**
      * Method to update the discard pile model

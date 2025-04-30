@@ -349,6 +349,8 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::sha
     _remainingTiles = _tileSet->deck.size();
     _remainingLabel->setText(std::to_string(_remainingTiles));
     
+    _timer = std::dynamic_pointer_cast<Label>(_assets->get<SceneNode>("matchscene.gameplayscene.timer"));
+    _timer->setText("00:30");
     initPlayerGuide();
     updateTurnIndicators();
     return true;
@@ -399,22 +401,62 @@ void GameScene::update(float timestep) {
     
     // Constantly updating turn indicators based on player turn
     updateTurnIndicators();
-    
-    // Updating set tabs
     displayPlayerSets();
     displayOpponentSets();
-    
-    // Updating player guide nodes
     updatePlayerGuide();
+    
+    if (_matchController->getChoice() == MatchController::WIN){
+        _choice = WIN;
+    }
+    
+    if (_matchController->getChoice() == MatchController::LOSE){
+        _choice = LOSE;
+    }
+    
+    int currTurn = _network->getCurrentTurn();
+    if (currTurn != prevTurnId){
+        prevTurnId = currTurn;
+        
+        if (currTurn == _network->getLocalPid()){
+            _turnTimeRemaining = TURN_DURATION;
+            turnTimerActive = true;
+        } else {
+            turnTimerActive = false;
+            _turnTimeRemaining = 0.0f;
+            _timer->setText("00:00");
+        }
+        
+    }
+    
+    if (turnTimerActive) {
+        _turnTimeRemaining -= timestep;
+        if (_turnTimeRemaining <= 0.0f){
+            _turnTimeRemaining = 0.0f;
+            turnTimerActive = false;
+            endTurnFromTimeout();
+        }
+        
+        int sec = static_cast<int>(_turnTimeRemaining);
+        
+        std::string timeAsStr = "00:";
+        if (sec < 10){
+            timeAsStr += "0";
+        }
+        
+        timeAsStr += std::to_string(sec);
+        _timer->setText(timeAsStr);
+    }
     
     // Updating discardUINode if matchController has a discard update
     if(_matchController->getChoice() == MatchController::Choice::DISCARDUIUPDATE) {
-        _discardUINode->incrementLabel(_discardPile->getTopTile());
-        if(_discardPile->getTopTile()->debuffed) {
-            _discardedTileImage->setTexture(_assets->get<Texture>("debuffed"));
-        }
-        else {
-            _discardedTileImage->setTexture(_assets->get<Texture>(_discardPile->getTopTile()->toString()));
+        _discardUINode->updateLabels(_discardPile->getTiles());
+        
+        if(_discardPile->getTopTile()) {
+            if (_discardPile->getTopTile()->debuffed) {
+                _discardedTileImage->setTexture(_assets->get<Texture>("debuffed"));
+            } else {
+                _discardedTileImage->setTexture(_assets->get<Texture>(_discardPile->getTopTile()->toString()));
+            }
         }
         _discardedTileImage->SceneNode::setContentSize(32.88, 45);
         _discardedTileImage->setVisible(true);
@@ -456,6 +498,11 @@ void GameScene::update(float timestep) {
         _pileUINode->setState(PileUINode::RATSELECT);
     }
     
+    if (_matchController->getChoice() == MatchController::Choice::PIGTILE) {
+        _discardUINode->_root->setVisible(true);
+        _backBtn->setVisible(false);
+    }
+    
     if (_matchController->getChoice() == MatchController::Choice::DRAGONTILE) {
         if (_pileUINode->getState() == PileUINode::NONE) {
             _pileUINode->setState(PileUINode::DRAGONROW);
@@ -481,7 +528,18 @@ void GameScene::update(float timestep) {
     if(_input->didRelease() && !_input->isDown()) {
         cugl::Vec2 initialMousePos = cugl::Scene::screenToWorldCoords(cugl::Vec3(_input->getInitialPosition()));
         if(initialMousePos - mousePos == Vec2(0, 0)) {
-            clickedTile(mousePos);
+            if (_matchController->getChoice() == MatchController::Choice::PIGTILE) {
+                int tileIndex = _discardUINode->getClickedTile(mousePos);
+                if (tileIndex != -1) {
+                    _matchController->playPig(_discardUINode->tileFromIndex(tileIndex));
+                    _discardUINode->_root->setVisible(false);
+                    _backBtn->setVisible(true);
+                    _discardUINode->decrementLabel(tileIndex);
+                    _matchController->setChoice(MatchController::Choice::NONE);
+                }
+            } else {
+                clickedTile(mousePos);
+            }
         }
     }
     updateDrag(mousePos, _input->isDown(), _input->didRelease(), timestep);
@@ -493,7 +551,6 @@ void GameScene::update(float timestep) {
     
     // If it is your turn, allow turn-based actions
     if(_network->getCurrentTurn() == _network->getLocalPid()) {
-        // If in drawn discard state, disallow any other action other then playing a set
         // Coords of initial click and ending release
         cugl::Vec2 initialMousePos = cugl::Scene::screenToWorldCoords(cugl::Vec3(_input->getInitialPosition()));
         
@@ -800,7 +857,8 @@ void GameScene::updateDrag(const cugl::Vec2& mousePos, bool mouseDown, bool mous
                           }
                           _discardedTileImage->SceneNode::setContentSize(32.88, 45);
                           _discardedTileImage->setVisible(true);
-                          _discardUINode->incrementLabel(_draggingTile);
+                          int index = _discardUINode->getLabelIndex(_draggingTile);
+                          _discardUINode->incrementLabel(index);
                           _draggingTile->_scale = 0;
                       } else if (_matchController->getChoice() != MatchController::DRAGONTILE){
                           showPlayerGuide("must-draw-discard");

@@ -204,6 +204,14 @@ protected:
     std::unordered_map<std::string, std::shared_ptr<SceneNode>> playerGuideNodeMap;
     int framesOnScreen = 0;
     int maxFramesOnScreen = 180;
+    
+    // Field to track the time left in the active turn
+    float _turnTimeRemaining;
+    const float TURN_DURATION = 45.0f;
+    bool turnTimerActive = false;
+    int prevTurnId = -99;
+    std::shared_ptr<Label> _timer;
+    
 public:
 #pragma mark -
 #pragma mark Constructors
@@ -545,6 +553,31 @@ public:
         return -1;
     }
 
+    void endTurnFromTimeout(){
+        if (_network->getCurrentTurn() != _network->getLocalPid()) return;
+        
+        _matchController->hasTimedOut = true;
+        
+        const auto& hand = _player->getHand();
+        if (hand._tiles.size() > hand._size) {
+            if (!hand._tiles.empty()){
+                auto discardTile = hand._tiles.back();
+                if (_matchController->discardTile(discardTile)){
+                    _discardedTileImage->setTexture(_assets->get<Texture>(discardTile->toString()));
+                    _discardedTileImage->setContentSize(32.88, 45);
+                    _discardedTileImage->setVisible(true);
+                    int index = _discardUINode->getLabelIndex(discardTile);
+                    _discardUINode->incrementLabel(index);
+                } else {
+                    CULog("hand already at required size for ending turn");
+                }
+            }
+        }
+        
+        _matchController->endTurn();
+//      TODO: add sound effect for turn timeouts
+//      AudioController::getInstance().playSound("timeout");
+    }
 };
 
 

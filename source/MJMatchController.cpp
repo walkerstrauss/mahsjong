@@ -340,7 +340,10 @@ bool MatchController::playCelestial(std::shared_ptr<TileSet::Tile>& celestialTil
     if(!hasPlayedCelestial) {
         // Checking if tile is valid celestial
         TileSet::Tile::Suit suit = celestialTile->_suit;
+        TileSet::Tile::Rank rank = celestialTile->_rank;
         if(suit != TileSet::Tile::Suit::CELESTIAL || celestialTile->debuffed) { // Do not allow debuffed celestial tiles to be played
+            return false;
+        } else if (rank == TileSet::Tile::Rank::PIG && _discardPile->getSize() < 1) { // Do not allow pig tile to be played if no discarded tiles
             return false;
         }
         // Execute appropriate callback
@@ -349,7 +352,6 @@ bool MatchController::playCelestial(std::shared_ptr<TileSet::Tile>& celestialTil
             if(_network->getHostStatus()) {hostPlayer->getHand().discard(celestialTile, true);}
             else{clientPlayer->getHand().discard(celestialTile, false);}
             
-            TileSet::Tile::Rank rank = celestialTile->_rank;
             switch(rank) {
                 // Rooster celestial tile
                 case(TileSet::Tile::Rank::ROOSTER):
@@ -375,6 +377,10 @@ bool MatchController::playCelestial(std::shared_ptr<TileSet::Tile>& celestialTil
                 case(TileSet::Tile::Rank::DRAGON):
                     _dragonTile = celestialTile;
                     _choice = DRAGONTILE;
+                    break;
+                case(TileSet::Tile::Rank::PIG):
+                    _pigTile = celestialTile;
+                    _choice = PIGTILE;
                     break;
                 // Numbered rank
                 default:
@@ -655,6 +661,11 @@ void MatchController::playRat(std::shared_ptr<TileSet::Tile>& selectedTile) {
     // Clear tilesToJson vector
     _tileSet->clearTilesToJson();
     
+    if (_pile->getVisibleSize() == 0) {
+        _pile->createPile();
+        _network->broadcastTileMap(_network->getLocalPid(), _tileSet->mapToJson(), "remake pile");
+    }
+    
     return;
 }
 
@@ -674,6 +685,47 @@ void MatchController::playDragon() {
     
     hasPlayedCelestial = true;
     endTurn();
+    
+    return;
+}
+
+void MatchController::playPig(std::pair<TileSet::Tile::Suit, TileSet::Tile::Rank> info) {
+    auto& self = _network->getHostStatus()
+                         ? hostPlayer->getHand()
+                         : clientPlayer->getHand();
+    // Find the tile that the player clicked on
+    std::shared_ptr<TileSet::Tile> selectedTile = _discardPile->findTile(info);
+    // Remove it from discard pile
+    _discardPile->removeTile(selectedTile);
+    // Add it to hand
+    self._tiles.push_back(selectedTile);
+    
+    // Update information
+    selectedTile->inHostHand = _network->getHostStatus();
+    selectedTile->inClientHand = !_network->getHostStatus();
+    selectedTile->inPile = false;
+    selectedTile->selected = false;
+    selectedTile->discarded = false;
+    selectedTile->selectable = true;
+    selectedTile->_scale = 0.325;
+    
+    // Clear tilesToJson vector
+    _tileSet->clearTilesToJson();
+    // Transforming celestial tile to JSON
+    _tileSet->tilesToJson.push_back(_pigTile);
+    const std::shared_ptr<cugl::JsonValue> celestialTileJson = _tileSet->toJson(_tileSet->tilesToJson);
+    // Clear tilesToJson vector
+    _tileSet->clearTilesToJson();
+    
+    _tileSet->tilesToJson.push_back(selectedTile);
+    const std::shared_ptr<cugl::JsonValue> selectedTileJson = _tileSet->toJson(_tileSet->tilesToJson);
+    // Clear tilesToJson vector
+    _tileSet->clearTilesToJson();
+    
+    // Broadcast celestial tile
+    _network->broadcastCelestialTile(_network->getLocalPid(), selectedTileJson, celestialTileJson, "PIG");
+    // Clear tilesToJson vector
+    _tileSet->clearTilesToJson();
     
     return;
 }
@@ -701,8 +753,6 @@ void MatchController::celestialEffect(){
         // Else is client's
         else {hostPlayer->getHand()._tiles.push_back(_tileSet->tileMap[key]);}
         
-        // Reset network status
-        _network->setStatus(NetworkController::INGAME);
     } else if (_network->getCelestialUpdateType() == NetworkController::OX) { // these alter your hand, so must update textures
         _tileSet->updateDeck(_network->getTileMapJson());
         
@@ -750,6 +800,23 @@ void MatchController::celestialEffect(){
             hand.updateHandTextures(_assets);
             
         }
+    } else if (_network->getCelestialUpdateType() == NetworkController::PIG) {
+        bool isHost = _network->getHostStatus();
+        
+        // Add tile that was drawn into this match controller
+        std::shared_ptr<TileSet::Tile> tileDrawn= _tileSet->processTileJson(_network->getTileDrawn())[0];
+        std::string key = std::to_string(tileDrawn->_id);
+        
+        _discardPile->removeTile(_tileSet->tileMap[key]);
+        _tileSet->tileMap[key]->_scale = 0.325;
+        
+        // If this match controller is host's
+        if(isHost) {clientPlayer->getHand()._tiles.push_back(_tileSet->tileMap[key]);}
+        // Else is client's
+        else {hostPlayer->getHand()._tiles.push_back(_tileSet->tileMap[key]);}
+        
+        _choice = DISCARDUIUPDATE;
+        
     }
     _network->setCelestialUpdateType(NetworkController::NONE);
 }
@@ -764,7 +831,7 @@ void MatchController::endTurn() {
     // If it is this player's turn
     if(_network->getCurrentTurn() == _network->getLocalPid()) {
         // If satisfied turn requirements n 
-        if(hasDrawn && (hasPlayedCelestial || hasDiscarded)) {
+        if((hasDrawn || hasTimedOut) && (hasPlayedCelestial || hasDiscarded || hasTimedOut)) {
             // If host
             if(_network->getHostStatus() && hostPlayer->getHand()._tiles.size() == hostPlayer->getHand()._size) {
                 _network->endTurn();
@@ -777,6 +844,15 @@ void MatchController::endTurn() {
         resetTurn();
     }
 }
+
+/** Handles game win by broadcasting to opponent that they have a full mahjong hand  */
+void MatchController::handleGameWin(){
+    if (_network->getCurrentTurn() == _network->getLocalPid()){
+        _network->broadcastEnd(_network->getHostStatus());
+        _choice = WIN;
+    }
+}
+
 
 /**
  * The method called to update the game mode

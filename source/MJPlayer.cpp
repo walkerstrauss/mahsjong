@@ -52,6 +52,8 @@ bool Hand::initHand(std::shared_ptr<TileSet>& tileSet, bool isHost){
         _tiles.push_back(drawnTile);
     }
     
+    _tiles = getSortedTiles(_tiles);
+    
     tileSet->deck.erase(tileSet->deck.begin(), tileSet->deck.begin() + 13);
     return true;
 }
@@ -271,25 +273,21 @@ bool Hand::isStraight(const std::vector<std::shared_ptr<TileSet::Tile>>& selecte
 bool Hand::isWinningHand() {
     if (_tiles.size() == _size + 1) {
         std::vector<std::shared_ptr<TileSet::Tile>> sortedHand = getSortedTiles(_tiles);
-        for (auto set : _playedSets){
-            for (const auto& tile : set){
-                sortedHand.push_back(tile);
-            }
-        }
-        sortedHand = getSortedTiles(sortedHand);
         std::map<std::pair<TileSet::Tile::Rank, TileSet::Tile::Suit>, int> tileCounts;
         for (const auto& tile : sortedHand) {
+            if (tile->getSuit() == TileSet::Tile::Suit::CELESTIAL || tile->debuffed) {
+                return false;
+            }
             tileCounts[{tile->getRank(), tile->getSuit()}]++;
         }
         
-        return onePairFourSets(tileCounts, 0, 0);
+    return onePairFourSets(tileCounts, 0, (int)_playedSets.size());
     }
     return false;
 }
 
 bool Hand::onePairFourSets(std::map<std::pair<TileSet::Tile::Rank, TileSet::Tile::Suit>, int>& tileCounts, int pair, int sets) {
-    
-    if (pair == 1 && sets == _size / 3) {
+    if (pair == 1 && sets == 4) {
         return true;
     }
     
@@ -319,7 +317,7 @@ bool Hand::onePairFourSets(std::map<std::pair<TileSet::Tile::Rank, TileSet::Tile
         TileSet::Tile::Rank rank = tile.first;
         TileSet::Tile::Suit suit = tile.second;
         
-        if (rank <= TileSet::Tile::Rank::SEVEN) {
+        if (rank <= TileSet::Tile::Rank::SEVEN && suit != TileSet::Tile::Suit::CELESTIAL) {
             auto nextTile1 = std::make_pair(static_cast<TileSet::Tile::Rank>(static_cast<int>(rank) + 1), suit);
             auto nextTile2 = std::make_pair(static_cast<TileSet::Tile::Rank>(static_cast<int>(rank) + 2), suit);
             
