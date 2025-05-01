@@ -82,9 +82,6 @@ public:
      */
     void stopMusic();
 
-    void pauseMusic();
-
-    void resumeMusic();
     
     /**
      * Adjusts volume

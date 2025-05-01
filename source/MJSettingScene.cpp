@@ -68,6 +68,17 @@ bool SettingScene::init(const std::shared_ptr<cugl::AssetManager>& assets){
             CULog("Turning sound on");
             AudioController::getInstance().playSound("Select");
             AudioController::getInstance().toggleSound();
+            if (AudioController::getInstance().soundOn) {
+                if (scene == PrevScene::MAIN) {
+                    AudioController::getInstance().playMusic("menuMusic", true);
+                }
+                else {
+                    AudioController::getInstance().playMusic("bgm", true);
+                }
+            }
+            else {
+                AudioController::getInstance().stopMusic();
+            }
         }
     });
     exitKey = exitBtn->addListener([this](const std::string& name, bool down){

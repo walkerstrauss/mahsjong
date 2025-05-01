@@ -129,17 +129,6 @@ void AudioController::playMusic(const std::string& key, bool loop) {
   _bgmPlaying = true;
 }
 
-void AudioController::pauseMusic() {
-    if (_musicHandle >= 0) {
-        _musicQueue->pause(_musicHandle);
-    }
-}
-
-void AudioController::resumeMusic() {
-    if (_musicHandle >= 0) {
-        _musicQueue->resume();
-    }
-}
 
 
 
