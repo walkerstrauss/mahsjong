@@ -24,6 +24,33 @@ using namespace std;
 #define SCENE_HEIGHT 720 // Change to 874 for resizing from iPhone 16 Pro aspect ratio
 
 #pragma mark -
+#pragma mark Graphics Handling
+
+/**
+ * Default fragment shader
+ *
+ * This trick uses C++11 raw string literals to put the shader in a separate
+ * file without having to guarantee its presence in the asset directory.
+ * However, to work properly, the #include statement below MUST be on its
+ * own separate line.
+ */
+const std::string oglShaderFrag =
+#include "shaders/moveTile.frag"
+;
+
+/**
+ * Default vertex shader
+ *
+ * This trick uses C++11 raw string literals to put the shader in a separate
+ * file without having to guarantee its presence in the asset directory.
+ * However, to work properly, the #include statement below MUST be on its
+ * own separate line.
+ */
+const std::string oglShaderVert =
+#include "shaders/moveTile.vert"
+;
+
+#pragma mark -
 #pragma mark Constructors
 /**
  * Initializes the controller contents, and starts the game
@@ -287,7 +314,8 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::sha
     _turnSheet->setScale(0.12);
     _turnSheet->setFrame(0);
     _turnSheet->setVisible(true);
-    
+
+    buildPipeline();
     return true;
 }
 
@@ -431,7 +459,7 @@ void GameScene::render() {
     _matchScene->render(_batch);
     _pileUINode->render(_batch);
     _pile->draw(_batch);
-    _player->draw(_batch);
+    _player->draw(_batch, _vertbuff, _dragShader);
     _discardPile->draw(_batch);
 
     _discardUINode->_root->render(_batch);
@@ -717,4 +745,58 @@ bool GameScene::isChow(const std::vector<std::shared_ptr<TileSet::Tile>>& tiles)
             sorted[1]->getSuit() == sorted[2]->getSuit() &&
             TileSet::Tile::toIntRank(sorted[1]->getRank()) - 1 == TileSet::Tile::toIntRank(sorted[0]->getRank()) &&
             TileSet::Tile::toIntRank(sorted[2]->getRank()) - 1 == TileSet::Tile::toIntRank(sorted[1]->getRank()));
+}
+
+void GameScene::buildPipeline() {
+    Size size = _matchScene->getSize();
+
+    // Create the camera
+    _camera = OrthographicCamera::alloc(size);
+
+    // Allocate the shader (this binds as well)
+    _dragShader = Shader::alloc(SHADER(oglShaderVert), SHADER(oglShaderFrag));
+
+    auto test = _camera->getCombined();
+    // Attach the camera to the shader
+    _dragShader->setUniformMat4("uPerspective", getCamera()->getCombined());
+
+    // Create a generic mesh of our tiles
+    if (_tileSet->deck.empty()) { 
+        CULog("THE DECK IS EMPTY DUMMY!");
+        return;
+    }
+    float width = _tileSet->deck.at(0)->getTileTexture()->getWidth() / 2.0;
+    float height = _tileSet->deck.at(0)->getTileTexture()->getHeight() / 2.0;
+    SpriteVertex verts[4];
+    verts[0].position = Vec2(-width, -height);
+    verts[1].position = Vec2(width, -height);
+    verts[2].position = Vec2(width, height);
+    verts[3].position = Vec2(-width, height);
+    CULog("I'm here! 10");
+    for (int i = 0; i < 4; ++i) {
+        verts[i].texcoord = (verts[i].position / Vec2(width, height)) * 0.5f + Vec2(0.5f, 0.5f);
+        verts[i].color = Color4::WHITE.getPacked();
+        //_mesh.vertices.push_back(verts);
+    }
+    _mesh.vertices.assign(verts, verts + 4);
+    _mesh.indices = { 0, 1, 2, 2, 3, 0 };
+    _mesh.command = GL_TRIANGLES;
+
+    // Allocate the vertex buffer (this binds as well)
+    _vertbuff = VertexBuffer::alloc(6, sizeof(SpriteVertex));
+    _vertbuff->setupAttribute("aPosition", 2, GL_FLOAT, GL_FALSE,
+        offsetof(SpriteVertex, position));
+    //_vertbuff->setupAttribute("aColor", 4, GL_UNSIGNED_BYTE, GL_TRUE,
+    //    offsetof(SpriteVertex, color));
+    _vertbuff->setupAttribute("aTexCoord", 2, GL_FLOAT, GL_FALSE,
+        offsetof(SpriteVertex, texcoord));
+
+    // Attach the shader
+    _vertbuff->attach(_dragShader);
+    CULog("I'm here!");
+    // IMPORTANT LAST STEP: Load the mesh into the vertex buffer
+    // We only need to reload it if the vertex data changes (which is never)
+    _vertbuff->loadVertexData(_mesh.vertices.data(), (int)_mesh.vertices.size());
+    _vertbuff->loadIndexData(_mesh.indices.data(), (int)_mesh.indices.size());
+    CULog("I'm here! 2");
 }

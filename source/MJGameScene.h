@@ -39,6 +39,15 @@ using namespace std;
  * including any and all objects and classes that will build our game */
 class GameScene: public cugl::scene2::Scene2{
 public:
+    /** Shader for Tile dragging */
+    std::shared_ptr<cugl::graphics::Shader> _dragShader;
+    /** The OpenGL camera */
+    std::shared_ptr<cugl::OrthographicCamera> _camera;
+    /** A vertex buffer to receive our triangle */
+    std::shared_ptr<cugl::graphics::VertexBuffer> _vertbuff;
+    /** The mesh for storing the drawing data */
+    cugl::graphics::Mesh<cugl::graphics::SpriteVertex> _mesh;
+
     /**
      * Enum representing the player's choice when in the
      * game scene for app transitioning scenes logic
@@ -265,6 +274,10 @@ public:
     
 #pragma mark -
 #pragma mark Gameplay Handling
+    /** 
+    * Creates the graphics pipeline (shader involved)
+    */
+    void buildPipeline();
     /**
      * Returns choice of this game scene
      */

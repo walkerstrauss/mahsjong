@@ -262,7 +262,7 @@ public:
     /**
      * Renders the current tiles in hand
      */
-    void draw(const std::shared_ptr<cugl::graphics::SpriteBatch>& batch);
+    void draw(const std::shared_ptr<cugl::graphics::SpriteBatch>& batch, const std::shared_ptr<cugl::graphics::VertexBuffer>& _vertbuff, const std::shared_ptr<cugl::graphics::Shader>& _dragShader);
 };
 
 #endif /* __MJ_Player_H__ */

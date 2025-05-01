@@ -564,7 +564,11 @@ void Hand::updateTilePositions(cugl::Size sceneSize){
  *
  * @param batch     the SpriteBatch to draw the tiles to screen
  */
-void Player::draw(const std::shared_ptr<cugl::graphics::SpriteBatch>& batch) {
+void Player::draw(const std::shared_ptr<cugl::graphics::SpriteBatch>& batch, const std::shared_ptr<cugl::graphics::VertexBuffer>& _vertbuff, const std::shared_ptr<cugl::graphics::Shader>& _dragShader) {
+    _vertbuff->bind();
+    _dragShader->bind();
+    glActiveTexture(GL_TEXTURE0);
+    glDisable(GL_CULL_FACE);
     for(const auto& tile : _hand._tiles){
         Vec2 pos = tile->pos;
         Vec2 origin = Vec2(tile->getTileTexture()->getSize().width/2, tile->getTileTexture()->getSize().height/2);
@@ -580,7 +584,20 @@ void Player::draw(const std::shared_ptr<cugl::graphics::SpriteBatch>& batch) {
         Vec2 rectOrigin(tile->pos - (textureSize * tile->_scale)/2);
         tile->tileRect = cugl::Rect(rectOrigin, textureSize * tile->_scale);
 
-        batch->draw(tile->getTileTexture(), origin, trans);
+        Mat4 modelMat;
+        modelMat.set(trans);  // Convert Affine2 to Mat4 (if needed)
+        _dragShader->setUniformMat4("uModel", modelMat);
+
+        Vec2 dragDirection = Vec2(1, 1);
+        _dragShader->setUniform2f("u_drag", dragDirection.x, dragDirection.y);
+
+        _dragShader->setUniform1i("u_texture", 0); // Tells shader to sample from GL_TEXTURE0
+
+
+        if (tile->getTileTexture() != nullptr) { tile->getTileTexture()->bind(); }
+        _vertbuff->draw(GL_TRIANGLES, 6, 0);
+        if (tile->getTileTexture() != nullptr) { tile->getTileTexture()->unbind(); }
+        //batch->draw(tile->getTileTexture(), origin, trans);
         
     }
 }
