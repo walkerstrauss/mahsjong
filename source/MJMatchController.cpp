@@ -636,6 +636,7 @@ void MatchController::playRat(std::shared_ptr<TileSet::Tile>& selectedTile) {
                          : clientPlayer->getHand();
     
     _pile->removeTile(selectedTile);
+    _pile->setTilePositions();
 
     self._tiles.push_back(selectedTile);
     selectedTile->inHostHand = _network->getHostStatus();
@@ -747,6 +748,7 @@ void MatchController::celestialEffect(){
         std::string key = std::to_string(tileDrawn->_id);
         
         _pile->removeTile(_tileSet->tileMap[key]);
+        _pile->setTilePositions();
         _tileSet->tileMap[key]->_scale = 0.325;
         
         // If this match controller is host's
@@ -765,7 +767,7 @@ void MatchController::celestialEffect(){
         hand.updateHandTextures(_assets);
     } else if (_network->getCelestialUpdateType() == NetworkController::RABBIT ||
                _network->getCelestialUpdateType() == NetworkController::SNAKE) {
-        
+
         std::vector<std::shared_ptr<TileSet::Tile>> tilesToAnimate = _tileSet->processTileJson(_network->getTileMapJson());
         
         for(auto& it : tilesToAnimate) {
@@ -774,11 +776,13 @@ void MatchController::celestialEffect(){
             std::shared_ptr<graphics::Texture> toTexture = _assets->get<graphics::Texture>(it->toString() + " sheet");
             std::shared_ptr<graphics::Texture> idle = _assets->get<graphics::Texture>(it->toString() + " new");
             AnimationController::getInstance().animateTileMorph(tile, fromTexture, toTexture, idle, 12.0f);
+            tile->setTexture(_assets->get<graphics::Texture>(it->toString()));
             }
         
         _tileSet->updateDeck(_network->getTileMapJson());
     } else if (_network->getCelestialUpdateType() == NetworkController::MONKEY) {
         _tileSet->updateDeck(_network->getTileMapJson());
+        
         std::vector<std::shared_ptr<TileSet::Tile>> changedTiles = _tileSet->processTileJson(_network->getTileMapJson());
         for (auto& change : changedTiles) {
             auto tile = _tileSet->tileMap[std::to_string(change->_id)];

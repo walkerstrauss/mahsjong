@@ -141,8 +141,9 @@ void Pile::setTilePositions() {
 }
 
 void Pile::updateTilePositions(float dt) {
-    for(const auto& row : _pile) {
-        for (const auto& tile : row) {
+    for (int i = 0; i < _pileSize; i++) {
+        for (int j = 0; j < _pileSize; j++) {
+            std::shared_ptr<TileSet::Tile> tile = _pile[i][j];
             if(tile == nullptr){
                 continue;
             }
