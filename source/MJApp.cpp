@@ -29,7 +29,6 @@ void MahsJongApp::onStartup() {
     // get the actual size of the screen.
     cugl::Size screenSize = cugl::Application::get()->getDisplaySize();
     
-    //auto cam = OrthographicCamera::alloc(getDisplaySize());
     auto cam = OrthographicCamera::alloc(screenSize);
     
     

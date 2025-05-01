@@ -401,6 +401,7 @@ void MatchController::playRooster(std::shared_ptr<TileSet::Tile>& celestialTile)
     // play the shuffle sound.
     AudioController::getInstance().playSound("shuffle");
     _pile->reshufflePile();
+    _pile->setTilePositions();
     
     // Clear tilesToJson vector
     _tileSet->clearTilesToJson();
