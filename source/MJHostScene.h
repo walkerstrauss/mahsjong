@@ -75,6 +75,8 @@ protected:
     bool _startGameClicked = false;
     /** Whether the back button had been pressed. */
     bool _backClicked = false;
+
+    bool _playedSound = false;
     
     /** The network configuration */
     cugl::netcode::NetcodeConfig _config;

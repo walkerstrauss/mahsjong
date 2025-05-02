@@ -116,12 +116,13 @@ void MatchController::drawTile() {
     bool isHost = _network->getHostStatus();
     auto& player = isHost ? hostPlayer : clientPlayer;
     
-    if(hasDrawn) {
+    if (hasDrawn) {
         return;
     }
 
     if (player->getHand()._tiles.size() <= player->getHand()._size) {
         player->getHand().drawFromPile(_pile, 1, isHost);
+        AudioController::getInstance().playSound("Pile");
         hasDrawn = true;
 
         if (player->getHand().isWinningHand()) {
@@ -155,6 +156,7 @@ bool MatchController::drawDiscard() {
     if(hasDrawn) {
         return false;
     }
+
     
     if(_network->getCurrentTurn() != _network->getLocalPid()) {
         return false;
@@ -164,6 +166,7 @@ bool MatchController::drawDiscard() {
     if(!_discardPile->getTopTile()) {
         return false;
     }
+
     
     // Retrieving the current player
     std::shared_ptr<Player> currPlayer = _network->getHostStatus() ? hostPlayer : clientPlayer;
@@ -182,6 +185,8 @@ bool MatchController::drawDiscard() {
     drawnDiscardTile->inHostHand = _network->getHostStatus();
     drawnDiscardTile->inClientHand = _network->getHostStatus();
     
+    AudioController::getInstance().playSound("Pile");
+
     // Putting tile in hand and automatically selecting it
     currPlayer->getHand()._tiles.push_back(drawnDiscardTile);
     currPlayer->getHand()._selectedTiles.push_back(drawnDiscardTile);
@@ -230,7 +235,10 @@ bool MatchController::discardTile(std::shared_ptr<TileSet::Tile> tile) {
         
         // If not a special tile add it to the discard pile
         if (!(tile->_suit == TileSet::Tile::Suit::CELESTIAL)){
+            AudioController::getInstance().playSound("Discard");
+
             _discardPile->addTile(tile);
+
             
             _tileSet->clearTilesToJson();
             // Converting to JSON and broadcasting discarded tile
@@ -266,6 +274,7 @@ bool MatchController::playSet() {
     // If selected tiles is a valid set
     if(currPlayer->getHand().isSetValid(currPlayer->getHand()._selectedTiles)) {
         // Accumulate tiles from selected set to transform into JSON
+        AudioController::getInstance().playSound("PlayedSet");
         for(auto const& tile : currPlayer->getHand()._selectedTiles) {
             _tileSet->tilesToJson.push_back(tile);
         }
@@ -283,6 +292,7 @@ bool MatchController::playSet() {
         return true;
     }
     else {
+        AudioController::getInstance().playSound("WrongAction");
         // Unselect all selected tiles from hand
         for(auto it = currPlayer->getHand()._tiles.begin(); it != currPlayer->getHand()._tiles.end();) {
             (*it)->selected = false;
@@ -355,26 +365,33 @@ bool MatchController::playCelestial(std::shared_ptr<TileSet::Tile>& celestialTil
             switch(rank) {
                 // Rooster celestial tile
                 case(TileSet::Tile::Rank::ROOSTER):
+                    AudioController::getInstance().playSound("Rooster", false);
                     playRooster(celestialTile);
                     break;
                 case(TileSet::Tile::Rank::OX):
+                    AudioController::getInstance().playSound("Ox", false);
                     playOx(celestialTile);
                     break;
                 case(TileSet::Tile::Rank::RABBIT):
+                    AudioController::getInstance().playSound("Rabbit", false);
                     playRabbit(celestialTile);
                     break;
                 case(TileSet::Tile::Rank::SNAKE):
+                    AudioController::getInstance().playSound("Snake", false);
                     playSnake(celestialTile);
                     break;
                 case(TileSet::Tile::Rank::MONKEY):
+                    AudioController::getInstance().playSound("Monkey", false);
                     _monkeyTile = celestialTile;
                     _choice = MONKEYTILE;
                     break;
                 case(TileSet::Tile::Rank::RAT):
+                    AudioController::getInstance().playSound("Rat", false);
                     _ratTile = celestialTile;
                     _choice = RATTILE;
                     break;
                 case(TileSet::Tile::Rank::DRAGON):
+                    AudioController::getInstance().playSound("Dragon", false);
                     _dragonTile = celestialTile;
                     _choice = DRAGONTILE;
                     break;
@@ -737,10 +754,19 @@ void MatchController::celestialEffect(){
 
     if (_network->getCelestialUpdateType() == NetworkController::ROOSTER
         || _network->getCelestialUpdateType() == NetworkController::DRAGON) {
+
+        if (_network->getCelestialUpdateType() == NetworkController::ROOSTER) {
+            AudioController::getInstance().playSound("Rooster");
+        }
+        else if (_network->getCelestialUpdateType() == NetworkController::DRAGON) {
+            AudioController::getInstance().playSound("Dragon");
+        }
+
         //Updating tileset
         _tileSet->updateDeck(_network->getTileMapJson());
         _pile->remakePile();
     } else if (_network->getCelestialUpdateType() == NetworkController::RAT) {
+        AudioController::getInstance().playSound("Rat");
         bool isHost = _network->getHostStatus();
         
         // Add tile that was drawn into this match controller
@@ -757,7 +783,9 @@ void MatchController::celestialEffect(){
         else {hostPlayer->getHand()._tiles.push_back(_tileSet->tileMap[key]);}
         
     } else if (_network->getCelestialUpdateType() == NetworkController::OX) { // these alter your hand, so must update textures
+        AudioController::getInstance().playSound("Ox");
         _tileSet->updateDeck(_network->getTileMapJson());
+
         
         // Update the tile textures in hand to have debuffed tiles be facedown (for now)
         auto& hand = _network->getHostStatus()
@@ -767,6 +795,12 @@ void MatchController::celestialEffect(){
         hand.updateHandTextures(_assets);
     } else if (_network->getCelestialUpdateType() == NetworkController::RABBIT ||
                _network->getCelestialUpdateType() == NetworkController::SNAKE) {
+        if (_network->getCelestialUpdateType() == NetworkController::RABBIT) {
+            AudioController::getInstance().playSound("Rabbit");
+        }
+        else if (_network->getCelestialUpdateType() == NetworkController::SNAKE) {
+            AudioController::getInstance().playSound("Snake");
+        }
 
         std::vector<std::shared_ptr<TileSet::Tile>> tilesToAnimate = _tileSet->processTileJson(_network->getTileMapJson());
         
@@ -781,6 +815,7 @@ void MatchController::celestialEffect(){
         
         _tileSet->updateDeck(_network->getTileMapJson());
     } else if (_network->getCelestialUpdateType() == NetworkController::MONKEY) {
+        AudioController::getInstance().playSound("Monkey");
         _tileSet->updateDeck(_network->getTileMapJson());
         
         std::vector<std::shared_ptr<TileSet::Tile>> changedTiles = _tileSet->processTileJson(_network->getTileMapJson());

@@ -78,14 +78,15 @@ bool MenuScene::init(const std::shared_ptr<cugl::AssetManager>& assets) {
         if (down) {
             _choice = HOST;
 //            AudioEngine::get()->play("confirm",_assets->get<Sound>("confirm"),false,1.0f);
-            AudioController::getInstance().playSound("confirm");
+            AudioController::getInstance().playSound("Confirm");
+            
         }
     });
     _joinbutton->addListener([this](const std::string& name, bool down) {
         if (down) {
             _choice = JOIN;
 //            AudioEngine::get()->play("confirm",_assets->get<Sound>("confirm"),false,1.0f);
-            AudioController::getInstance().playSound("confirm", false);
+            AudioController::getInstance().playSound("Confirm", false);
         }
     });
     settingsbutton = std::dynamic_pointer_cast<scene2::Button>(_assets->get<scene2::SceneNode>("home.home.button3"));
@@ -93,14 +94,14 @@ bool MenuScene::init(const std::shared_ptr<cugl::AssetManager>& assets) {
         if (down){
             _choice = SETTING;
 //            AudioEngine::get()->play("confirm",_assets->get<Sound>("confirm"),false,1.0f);
-            AudioController::getInstance().playSound("confirm", false);
+            AudioController::getInstance().playSound("Confirm", false);
         }
     });
     
     _tutorialbutton = std::dynamic_pointer_cast<Button>(_assets->get<SceneNode>("home.home.menu.button4"));
     _tutorialbutton->addListener([this](const std::string&name, bool down){
         if (down){
-            AudioController::getInstance().playSound("confirm", false);
+            AudioController::getInstance().playSound("Confirm", false);
             _choice = TUTORIAL;
         }
     });
@@ -117,8 +118,6 @@ bool MenuScene::init(const std::shared_ptr<cugl::AssetManager>& assets) {
     
     // Play the background music for the menu scene.
     AudioController::getInstance().init(_assets);
-    AudioEngine::start();
-    AudioController::getInstance().playMusic("menuMusic", true);
     
     
     return true;
@@ -149,6 +148,7 @@ void MenuScene::dispose() {
  */
 void MenuScene::setActive(bool value) {
     if (isActive() != value) {
+        //AudioController::getInstance().playMusic("menuMusic", true);
         Scene2::setActive(value);
         if (value) {
             _choice = NONE;
@@ -156,6 +156,7 @@ void MenuScene::setActive(bool value) {
             _joinbutton->activate();
             settingsbutton->activate();
             _tutorialbutton->activate();
+
         } else {
             _hostbutton->deactivate();
             _joinbutton->deactivate();
