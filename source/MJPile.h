@@ -35,7 +35,9 @@ public:
     /** Stores the location of our pair in the pile */
     std::vector<std::shared_ptr<TileSet::Tile>> _pairs;
     /** The rect of the pile */
-    cugl::Rect pileBox; 
+    cugl::Rect pileBox;
+    /** Time for pile jump effect */
+    float time; 
     
 #pragma mark -
 #pragma mark Constructors
@@ -66,7 +68,12 @@ public:
     /**
      * Method to update the positions of the tiles in pile
      */
-    void updateTilePositions();
+    void setTilePositions();
+    
+    /**
+     * Updates the positions of each tile and their textures
+     */
+    void updateTilePositions(float dt);
     
     void animTilePositions(int frames = 1);
     
@@ -191,7 +198,10 @@ public:
     void removeNumTiles(int nums);
     
     /** Updates the pile indexes of tiles in the given row to the new order. */
-    void updateRow(int row, const std::vector<std::shared_ptr<TileSet::Tile>>& tiles);
+    void updateRow(int row, const std::vector<std::shared_ptr<TileSet::Tile>>& tiles, float dt);
+    
+    /** Pile jump effect */
+    void pileJump(float dt);
 
     
 };

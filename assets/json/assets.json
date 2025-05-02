@@ -276,6 +276,9 @@
         "dragon of celestial new": {
             "file": "textures/newTiles/dragon.png"
         },
+        "pig of celestial new": {
+            "file": "textures/newTiles/pig.png"
+        },
         "ox of celestial": {
             "file": "textures/celestialHand/ox_hand.png"
         },
@@ -321,6 +324,9 @@
         "dragon of celestial info": {
             "file": "textures/hover/dragon.png"
         },
+        "pig of celestial info": {
+          "file": "textures/hover/pig.png"
+        },
         "background": {
             "file": "textures/landing/background.png"
         },
@@ -333,14 +339,8 @@
         "transparentBackImage": {
             "file": "textures/landing/rect_transparent.png"
         },
-        "background_gameplay": {
-            "file": "textures/gameplay/background_gameplay.png"
-        },
         "pause": {
             "file": "textures/gameplay/pause.png"
-        },
-        "backgroundTable": {
-            "file": "textures/gameplay/backgroundTable.png"
         },
         "opponent": {
             "file": "textures/gameplay/opponent.png"
@@ -348,17 +348,11 @@
         "player": {
             "file": "textures/gameplay/player.png"
         },
-        "box_discard": {
-            "file": "textures/gameplay/box_discard.png"
-        },
         "tilesample": {
             "file": "textures/gameplay/tilesample.png"
         },
         "tilesample 2": {
             "file": "textures/gameplay/tilesample.png"
-        },
-        "button_tileset": {
-            "file": "textures/gameplay/button_tileset.png"
         },
         "displayed-set-icon": {
             "file": "textures/gameplay/displayed-set-icon.png"
@@ -395,9 +389,6 @@
         },
         "button": {
             "file": "textures/button.png"
-        },
-        "frame": {
-            "file": "textures/frame.png"
         },
         "left": {
             "file": "textures/left_arrow.png"
@@ -533,9 +524,6 @@
         },
         "titleBackground": {
             "file": "textures/setting/titleBackground.png"
-        },
-        "actionTileSection": {
-            "file": "textures/gameplay/actionTileSection.png"
         },
         "discardCanButton": {
             "file": "textures/gameplay/discardCanButton.png"
@@ -713,9 +701,6 @@
         },
         "win_main": {
             "file": "textures/score_win/main.png"
-        },
-        "actionTileSection": {
-            "file": "textures/gameplay/actionTileSection.png"
         },
         "discardCanButton": {
             "file": "textures/gameplay/discardCanButton.png"
@@ -1053,7 +1038,10 @@
         "tu12": {
             "file": "textures/tutorial/tu12.png"
         },
-        "button_back": {
+        "tu13": {
+            "file": "textures/tutorial/tu13.png"
+        },
+        "button_back":{
             "file": "textures/tutorial/button_back.png"
         },
         "button_exit": {

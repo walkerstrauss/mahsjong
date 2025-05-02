@@ -103,6 +103,8 @@ void MatchController::initClient() {
     
     //Initializing the pile
     _pile->initPile(4, _tileSet, false);
+    _pile->setTilePositions();
+    
     _pile->remakePile();
 }
 
@@ -199,6 +201,8 @@ bool MatchController::drawDiscard() {
     
     _choice = DRAWNDISCARD;
     
+    hasDrawn = true; 
+    
     return true; 
 }
 
@@ -236,6 +240,7 @@ bool MatchController::discardTile(std::shared_ptr<TileSet::Tile> tile) {
             _discardPile->addTile(tile);
 
             
+            _tileSet->clearTilesToJson();
             // Converting to JSON and broadcasting discarded tile
             _tileSet->tilesToJson.push_back(tile);
             _network->broadcastDiscard(_network->getLocalPid(), _tileSet->toJson(_tileSet->tilesToJson));
@@ -264,6 +269,8 @@ bool MatchController::playSet() {
     std::shared_ptr<Player> opponentPlayer = _network->getHostStatus() ? clientPlayer : hostPlayer;
     
     std::vector<std::shared_ptr<TileSet::Tile>> tiles;
+    _tileSet->clearTilesToJson();
+
     // If selected tiles is a valid set
     if(currPlayer->getHand().isSetValid(currPlayer->getHand()._selectedTiles)) {
         // Accumulate tiles from selected set to transform into JSON
@@ -308,6 +315,8 @@ bool MatchController::playSet() {
         // Clear selected tiles from current player
         currPlayer->getHand()._selectedTiles.clear();
         
+        _tileSet->clearTilesToJson();
+
         // Make empty JSON for broadcasting
         std::shared_ptr<JsonValue> emptyJson = _tileSet->toJson(_tileSet->tilesToJson);
         _network->broadcastPlaySet(_network->getLocalPid(), false, emptyJson);
@@ -341,7 +350,10 @@ bool MatchController::playCelestial(std::shared_ptr<TileSet::Tile>& celestialTil
     if(!hasPlayedCelestial) {
         // Checking if tile is valid celestial
         TileSet::Tile::Suit suit = celestialTile->_suit;
+        TileSet::Tile::Rank rank = celestialTile->_rank;
         if(suit != TileSet::Tile::Suit::CELESTIAL || celestialTile->debuffed) { // Do not allow debuffed celestial tiles to be played
+            return false;
+        } else if (rank == TileSet::Tile::Rank::PIG && _discardPile->getSize() < 1) { // Do not allow pig tile to be played if no discarded tiles
             return false;
         }
         // Execute appropriate callback
@@ -350,7 +362,6 @@ bool MatchController::playCelestial(std::shared_ptr<TileSet::Tile>& celestialTil
             if(_network->getHostStatus()) {hostPlayer->getHand().discard(celestialTile, true);}
             else{clientPlayer->getHand().discard(celestialTile, false);}
             
-            TileSet::Tile::Rank rank = celestialTile->_rank;
             switch(rank) {
                 // Rooster celestial tile
                 case(TileSet::Tile::Rank::ROOSTER):
@@ -384,6 +395,10 @@ bool MatchController::playCelestial(std::shared_ptr<TileSet::Tile>& celestialTil
                     _dragonTile = celestialTile;
                     _choice = DRAGONTILE;
                     break;
+                case(TileSet::Tile::Rank::PIG):
+                    _pigTile = celestialTile;
+                    _choice = PIGTILE;
+                    break;
                 // Numbered rank
                 default:
                     break;
@@ -403,7 +418,7 @@ void MatchController::playRooster(std::shared_ptr<TileSet::Tile>& celestialTile)
     // play the shuffle sound.
     AudioController::getInstance().playSound("shuffle");
     _pile->reshufflePile();
-    _pile->updateTilePositions();
+    _pile->setTilePositions();
     
     // Clear tilesToJson vector
     _tileSet->clearTilesToJson();
@@ -437,10 +452,12 @@ void MatchController::playOx(std::shared_ptr<TileSet::Tile>& celestialTile) {
     
     // Makes sure that effect is applied on tiles that aren't already debuffed or discarded
     int debuffed = 0;
+    _tileSet->clearTilesToJson();
+
     std::shared_ptr<cugl::JsonValue> changedTilesJson;
     for (auto& tile : opponent._tiles) {
         if (!tile->debuffed && !tile->discarded) {
-            tile->_scale = 0.15;
+            tile->_scale = 0.325;
             tile->debuffed = true;
             tile->getFaceSpriteNode()->setVisible(false);
             _tileSet->tilesToJson.push_back(tile);
@@ -492,7 +509,7 @@ void MatchController::playRabbit(std::shared_ptr<TileSet::Tile>& celestialTile){
             while (newRank == oldRank) {
                 newRank = 1 + rand() % 9;
             }
-            tile->_scale = 0.15;
+            tile->_scale = 0.325;
             tile->_rank = static_cast<TileSet::Tile::Rank>(newRank);
             tile->setFaceTexture(_assets->get<Texture>(tile->toString() + " new"));
             _tileSet->tilesToJson.push_back(tile);
@@ -543,7 +560,7 @@ void MatchController::playSnake(std::shared_ptr<TileSet::Tile>& celestialTile){
             while (newSuit == oldSuit) {
                 newSuit = 1 + rand() % 3;
             }
-            tile->_scale = 0.15; 
+            tile->_scale = 0.325;
             tile->_suit = static_cast<TileSet::Tile::Suit>(newSuit);
             tile->setFaceTexture(_assets->get<Texture>(tile->toString() + " new"));
             _tileSet->tilesToJson.push_back(tile);
@@ -636,16 +653,15 @@ void MatchController::playRat(std::shared_ptr<TileSet::Tile>& selectedTile) {
                          : clientPlayer->getHand();
     
     _pile->removeTile(selectedTile);
-    _pile->updateTilePositions();
+    _pile->setTilePositions();
 
     self._tiles.push_back(selectedTile);
     selectedTile->inHostHand = _network->getHostStatus();
     selectedTile->inClientHand = !_network->getHostStatus();
     selectedTile->inPile = false;
     selectedTile->selected = false;
-    selectedTile->_scale = 0.15;
+    selectedTile->_scale = 0.325;
     
-//    _tileSet->tilesToJson.push_back(selectedTile);
     // Clear tilesToJson vector
     _tileSet->clearTilesToJson();
     // Transforming celestial tile to JSON
@@ -664,12 +680,15 @@ void MatchController::playRat(std::shared_ptr<TileSet::Tile>& selectedTile) {
     // Clear tilesToJson vector
     _tileSet->clearTilesToJson();
     
+    if (_pile->getVisibleSize() == 0) {
+        _pile->createPile();
+        _network->broadcastTileMap(_network->getLocalPid(), _tileSet->mapToJson(), "remake pile");
+    }
+    
     return;
 }
 
 void MatchController::playDragon() {
-    _pile->updateTilePositions();
-    
     // Clear tilesToJson vector
     _tileSet->clearTilesToJson();
     // Transforming celestial tile to JSON
@@ -685,6 +704,47 @@ void MatchController::playDragon() {
     
     hasPlayedCelestial = true;
     endTurn();
+    
+    return;
+}
+
+void MatchController::playPig(std::pair<TileSet::Tile::Suit, TileSet::Tile::Rank> info) {
+    auto& self = _network->getHostStatus()
+                         ? hostPlayer->getHand()
+                         : clientPlayer->getHand();
+    // Find the tile that the player clicked on
+    std::shared_ptr<TileSet::Tile> selectedTile = _discardPile->findTile(info);
+    // Remove it from discard pile
+    _discardPile->removeTile(selectedTile);
+    // Add it to hand
+    self._tiles.push_back(selectedTile);
+    
+    // Update information
+    selectedTile->inHostHand = _network->getHostStatus();
+    selectedTile->inClientHand = !_network->getHostStatus();
+    selectedTile->inPile = false;
+    selectedTile->selected = false;
+    selectedTile->discarded = false;
+    selectedTile->selectable = true;
+    selectedTile->_scale = 0.325;
+    
+    // Clear tilesToJson vector
+    _tileSet->clearTilesToJson();
+    // Transforming celestial tile to JSON
+    _tileSet->tilesToJson.push_back(_pigTile);
+    const std::shared_ptr<cugl::JsonValue> celestialTileJson = _tileSet->toJson(_tileSet->tilesToJson);
+    // Clear tilesToJson vector
+    _tileSet->clearTilesToJson();
+    
+    _tileSet->tilesToJson.push_back(selectedTile);
+    const std::shared_ptr<cugl::JsonValue> selectedTileJson = _tileSet->toJson(_tileSet->tilesToJson);
+    // Clear tilesToJson vector
+    _tileSet->clearTilesToJson();
+    
+    // Broadcast celestial tile
+    _network->broadcastCelestialTile(_network->getLocalPid(), selectedTileJson, celestialTileJson, "PIG");
+    // Clear tilesToJson vector
+    _tileSet->clearTilesToJson();
     
     return;
 }
@@ -705,8 +765,6 @@ void MatchController::celestialEffect(){
         //Updating tileset
         _tileSet->updateDeck(_network->getTileMapJson());
         _pile->remakePile();
-        //Updating tile positions
-        _pile->updateTilePositions();
     } else if (_network->getCelestialUpdateType() == NetworkController::RAT) {
         AudioController::getInstance().playSound("Rat");
         bool isHost = _network->getHostStatus();
@@ -716,16 +774,14 @@ void MatchController::celestialEffect(){
         std::string key = std::to_string(tileDrawn->_id);
         
         _pile->removeTile(_tileSet->tileMap[key]);
-        _pile->updateTilePositions();
-        _tileSet->tileMap[key]->_scale = 0.15;
+        _pile->setTilePositions();
+        _tileSet->tileMap[key]->_scale = 0.325;
         
         // If this match controller is host's
         if(isHost) {clientPlayer->getHand()._tiles.push_back(_tileSet->tileMap[key]);}
         // Else is client's
         else {hostPlayer->getHand()._tiles.push_back(_tileSet->tileMap[key]);}
         
-        // Reset network status
-        _network->setStatus(NetworkController::INGAME);
     } else if (_network->getCelestialUpdateType() == NetworkController::OX) { // these alter your hand, so must update textures
         AudioController::getInstance().playSound("Ox");
         _tileSet->updateDeck(_network->getTileMapJson());
@@ -739,14 +795,13 @@ void MatchController::celestialEffect(){
         hand.updateHandTextures(_assets);
     } else if (_network->getCelestialUpdateType() == NetworkController::RABBIT ||
                _network->getCelestialUpdateType() == NetworkController::SNAKE) {
-
         if (_network->getCelestialUpdateType() == NetworkController::RABBIT) {
             AudioController::getInstance().playSound("Rabbit");
         }
         else if (_network->getCelestialUpdateType() == NetworkController::SNAKE) {
             AudioController::getInstance().playSound("Snake");
         }
-        
+
         std::vector<std::shared_ptr<TileSet::Tile>> tilesToAnimate = _tileSet->processTileJson(_network->getTileMapJson());
         
         for(auto& it : tilesToAnimate) {
@@ -755,12 +810,14 @@ void MatchController::celestialEffect(){
             std::shared_ptr<graphics::Texture> toTexture = _assets->get<graphics::Texture>(it->toString() + " sheet");
             std::shared_ptr<graphics::Texture> idle = _assets->get<graphics::Texture>(it->toString() + " new");
             AnimationController::getInstance().animateTileMorph(tile, fromTexture, toTexture, idle, 12.0f);
+            tile->setTexture(_assets->get<graphics::Texture>(it->toString()));
             }
         
         _tileSet->updateDeck(_network->getTileMapJson());
     } else if (_network->getCelestialUpdateType() == NetworkController::MONKEY) {
         AudioController::getInstance().playSound("Monkey");
         _tileSet->updateDeck(_network->getTileMapJson());
+        
         std::vector<std::shared_ptr<TileSet::Tile>> changedTiles = _tileSet->processTileJson(_network->getTileMapJson());
         for (auto& change : changedTiles) {
             auto tile = _tileSet->tileMap[std::to_string(change->_id)];
@@ -783,6 +840,23 @@ void MatchController::celestialEffect(){
             hand.updateHandTextures(_assets);
             
         }
+    } else if (_network->getCelestialUpdateType() == NetworkController::PIG) {
+        bool isHost = _network->getHostStatus();
+        
+        // Add tile that was drawn into this match controller
+        std::shared_ptr<TileSet::Tile> tileDrawn= _tileSet->processTileJson(_network->getTileDrawn())[0];
+        std::string key = std::to_string(tileDrawn->_id);
+        
+        _discardPile->removeTile(_tileSet->tileMap[key]);
+        _tileSet->tileMap[key]->_scale = 0.325;
+        
+        // If this match controller is host's
+        if(isHost) {clientPlayer->getHand()._tiles.push_back(_tileSet->tileMap[key]);}
+        // Else is client's
+        else {hostPlayer->getHand()._tiles.push_back(_tileSet->tileMap[key]);}
+        
+        _choice = DISCARDUIUPDATE;
+        
     }
     _network->setCelestialUpdateType(NetworkController::NONE);
 }
@@ -797,7 +871,7 @@ void MatchController::endTurn() {
     // If it is this player's turn
     if(_network->getCurrentTurn() == _network->getLocalPid()) {
         // If satisfied turn requirements n 
-        if(hasDrawn && (hasPlayedCelestial || hasDiscarded)) {
+        if((hasDrawn || hasTimedOut) && (hasPlayedCelestial || hasDiscarded || hasTimedOut)) {
             // If host
             if(_network->getHostStatus() && hostPlayer->getHand()._tiles.size() == hostPlayer->getHand()._size) {
                 _network->endTurn();
@@ -810,6 +884,15 @@ void MatchController::endTurn() {
         resetTurn();
     }
 }
+
+/** Handles game win by broadcasting to opponent that they have a full mahjong hand  */
+void MatchController::handleGameWin(){
+    if (_network->getCurrentTurn() == _network->getLocalPid()){
+        _network->broadcastEnd(_network->getHostStatus());
+        _choice = WIN;
+    }
+}
+
 
 /**
  * The method called to update the game mode
@@ -834,7 +917,7 @@ void MatchController::update(float timestep) {
         std::shared_ptr<TileSet::Tile> tileDrawn= _tileSet->processTileJson(_network->getTileDrawn())[0];
         std::string key = std::to_string(tileDrawn->_id);
         
-        _tileSet->tileMap[key]->_scale = 0.15;
+        _tileSet->tileMap[key]->_scale = 0.325;
         // If this match controller is host's
         if(isHost) {clientPlayer->getHand()._tiles.push_back(_tileSet->tileMap[key]);}
         // Else is client's

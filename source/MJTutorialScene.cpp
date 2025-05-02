@@ -45,7 +45,7 @@ bool TutorialScene::init(const std::shared_ptr<AssetManager>& assets, std::share
         }
     });
     _presentation = std::dynamic_pointer_cast<scene2::PolygonNode>(_assets->get<cugl::scene2::SceneNode>("tutorial.tutorialScene.tu1"));
-    _slides = {"tu1", "tu2", "tu3", "tu4", "tu5", "tu6", "tu7", "tu8", "tu9", "tu10", "tu11", "tu12"};
+    _slides = {"tu1", "tu2", "tu3", "tu4", "tu5", "tu6", "tu7", "tu8", "tu9", "tu10", "tu11", "tu12", "tu13"};
     _slide = 0;
     _presentation->setTexture(_assets->get<cugl::graphics::Texture>(_slides[_slide]));
     _presentation->setContentSize(_tutorialScene->getContentSize());
@@ -62,8 +62,8 @@ void TutorialScene::update(float timestep) {
 //    _input.readInput();
 //    _input.update();
 
-    if (_input->didPress() && !_back->isDown() && _slide < 12 && !_exit->isDown()) {
-        if (_slide == 11){
+    if (_input->didPress() && !_back->isDown() && _slide < 13 && !_exit->isDown()) {
+        if (_slide == 12){
             _slide = 0;
             _choice = BACK;
             return;
