@@ -267,6 +267,7 @@ bool MatchController::playSet() {
     // If selected tiles is a valid set
     if(currPlayer->getHand().isSetValid(currPlayer->getHand()._selectedTiles)) {
         // Accumulate tiles from selected set to transform into JSON
+        AudioController::getInstance().playSound("PlayedSet");
         for(auto const& tile : currPlayer->getHand()._selectedTiles) {
             _tileSet->tilesToJson.push_back(tile);
         }
@@ -284,6 +285,7 @@ bool MatchController::playSet() {
         return true;
     }
     else {
+        AudioController::getInstance().playSound("WrongAction");
         // Unselect all selected tiles from hand
         for(auto it = currPlayer->getHand()._tiles.begin(); it != currPlayer->getHand()._tiles.end();) {
             (*it)->selected = false;

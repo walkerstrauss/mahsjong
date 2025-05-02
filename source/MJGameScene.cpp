@@ -417,7 +417,7 @@ void GameScene::update(float timestep) {
     
     // If matchController state is SUCCESS_SET, deactivate button
     if(_matchController->getChoice() == MatchController::SUCCESS_SET) {
-        AudioController::getInstance().playSound("PlayedSet");
+        //AudioController::getInstance().playSound("PlayedSet");
         playerTabVisible = true;
         opponentTabVisible = true;
         _playSetBtn->setVisible(false);
@@ -427,7 +427,7 @@ void GameScene::update(float timestep) {
     
     // If matchController state is FAILED_SET, deactivate button and make discarded tile visible
     if(_matchController->getChoice() == MatchController::FAILED_SET) {
-        AudioController::getInstance().playSound("WrongAction");
+        //AudioController::getInstance().playSound("WrongAction");
         _discardedTileImage->setVisible(true);
         _playSetBtn->setVisible(false);
         _playSetBtn->deactivate();
