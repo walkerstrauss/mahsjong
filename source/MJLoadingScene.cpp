@@ -53,7 +53,7 @@ void OurLoadingScene::resizeScene() {
     _after->setContentSize(dimen);
     _after->getChild(0)->setContentSize(dimen);
     _after->doLayout();
-    
+}
     /**
     
     // Set the content size on the root loading node.
