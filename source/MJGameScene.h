@@ -96,7 +96,7 @@ protected:
     std::shared_ptr<DiscardPile> _discardPile;
     /** Temporary discard area b/c no asset created for it yet */
     cugl::Rect discardArea;
-    cugl::Rect _pileBox; 
+    cugl::Rect _pileBox;
     /** Rect for pile */
     /** Pointer to the hand */
     Hand* _hand;
@@ -125,15 +125,15 @@ protected:
     
     /** Textured node to set the discarded tile image*/
     std::shared_ptr<cugl::scene2::TexturedNode> _discardedTileImage;
-
+    
     std::shared_ptr<cugl::scene2::TexturedNode> _dragToDiscardNode;
-
+    
     std::shared_ptr<cugl::scene2::TexturedNode> _dragToHandNode;
     std::shared_ptr<SceneNode> _playArea;
     std::shared_ptr<SceneNode> _tradeArea;
     bool _dragFromDiscard = false;
     bool _dragToHandVisible = false;
-
+    
     /** Button for playing a set */
     std::shared_ptr<cugl::scene2::Button> _playSetBtn;
     /** Key for discard button listener */
@@ -166,7 +166,7 @@ protected:
     
     /** The rectangle representing the discrad pile's position*/
     cugl::Rect _discardBox;
-
+    
     /** The rectangle representing the active play/discard area for all tiles*/
     cugl::Rect _activeRegion;
     
@@ -174,20 +174,20 @@ protected:
     cugl::Rect _discardedTileRegion;
     
     /** The rectangle reprsenting the player hand region */
-    cugl::Rect _playerHandRegion; 
-
+    cugl::Rect _playerHandRegion;
+    
     std::shared_ptr<TileSet::Tile> _draggingTile = nullptr;
     int _dragonRow = -1;
     
     cugl::Vec2 _dragStartPos;
     bool _dragInitiated = false;
     const float DRAG_THRESHOLD = 0.0f;
-
+    
     cugl::Vec2 _originalTilePos = cugl::Vec2::ZERO;
     bool shouldReturn = true;
- 
+    
     std::shared_ptr<AnimatedNode> _actionAnimNode;
-
+    
     bool _waitingForTileSelection = false;
     std::shared_ptr<TileSet::Tile> discardedTileSaved;
     bool _selectedThree = false;
@@ -196,7 +196,7 @@ protected:
     std::shared_ptr<Button> _playerHandBtn;
     std::shared_ptr<Button> _opponentHandBtn2;
     std::shared_ptr<Button> _playerHandBtn2;
-
+    
     bool opponentTabVisible = false;
     bool playerTabVisible = false;
     
@@ -212,6 +212,10 @@ protected:
     int prevTurnId = -99;
     std::shared_ptr<Label> _timer;
     
+    bool _wasPlayAreaVisible = false;
+    bool _wasDragToHandVisible = false;
+    bool _wasDragToDiscardVisible = false;
+    bool _wasTradeTileVisible = false;
 public:
 #pragma mark -
 #pragma mark Constructors
@@ -288,7 +292,7 @@ public:
      * @param timestep The amount of time (in seconds) since the last frame
      */
     void update(float timestep) override;
-
+    
     /**
      * Draws all this scene to the scene's SpriteBatch.
      */
@@ -316,31 +320,31 @@ public:
      *
      * @return true if initialization of sprite sheets was successful, and false otherwise
      */
-     bool initSheets();
-     
-     /**
-      * Method to get the index of this tile's associated label in the discard UI vector of labels
-      *
-      * @param tile  the tile whose label we need in _labels
-      * @return an int representing the index of this tile's discard UI label
-      */
-     int getLabelIndex(std::shared_ptr<TileSet::Tile> tile);
-     
-     /**
-      * Method to increment discard UI label corresponding to tile passed as argument
-      *
-      * @param tile  the tile to increment in the discard UI
-      * @return true if update was successful, and false otherwise
-      */
-     void incrementLabel(std::shared_ptr<TileSet::Tile> tile);
-     
-     /**
-      * Method to decrement discard UI label corresponding to tile passed as argument
-      *
-      * @param tile  the tile to increment in the discard UI
-      * @return true if update was successful, and false otherwise
-      */
-     bool decrementLabel(std::shared_ptr<TileSet::Tile> tile);
+    bool initSheets();
+    
+    /**
+     * Method to get the index of this tile's associated label in the discard UI vector of labels
+     *
+     * @param tile  the tile whose label we need in _labels
+     * @return an int representing the index of this tile's discard UI label
+     */
+    int getLabelIndex(std::shared_ptr<TileSet::Tile> tile);
+    
+    /**
+     * Method to increment discard UI label corresponding to tile passed as argument
+     *
+     * @param tile  the tile to increment in the discard UI
+     * @return true if update was successful, and false otherwise
+     */
+    void incrementLabel(std::shared_ptr<TileSet::Tile> tile);
+    
+    /**
+     * Method to decrement discard UI label corresponding to tile passed as argument
+     *
+     * @param tile  the tile to increment in the discard UI
+     * @return true if update was successful, and false otherwise
+     */
+    bool decrementLabel(std::shared_ptr<TileSet::Tile> tile);
     
     /**
      * Method to detect the tiles which are being pressed by a user in a mobile version of the game.
@@ -350,12 +354,12 @@ public:
     void dragTile();
     
     void releaseTile();
-
+    
     void updateDrag(const cugl::Vec2& mousePos, bool mouseDown, bool mouseReleased, float timestep);
     
     void discardTile(std::shared_ptr<TileSet::Tile> tile);
     
-
+    
     void playSetAnim(const std::vector<std::shared_ptr<TileSet::Tile>>& tiles);
     
     bool isPong(const std::vector<std::shared_ptr<TileSet::Tile>>& tiles);
@@ -375,8 +379,8 @@ public:
         _frameTimer += timestep;  // Accumulate time
         if (_frameTimer >= _frameDelay) {
             _frameTimer = 0; // Reset timer
-//            updateSpriteNode(_pongSheet);
-//            updateSpriteNode(_chowSheet);
+            //            updateSpriteNode(_pongSheet);
+            //            updateSpriteNode(_chowSheet);
             updateSpriteNode(_turnSheet);
         }
     }
@@ -554,33 +558,47 @@ public:
         }
         return -1;
     }
-
-    void endTurnFromTimeout(){
-        if (_network->getCurrentTurn() != _network->getLocalPid()) return;
-        
-        _matchController->hasTimedOut = true;
-        
-        const auto& hand = _player->getHand();
-        if (hand._tiles.size() > hand._size) {
-            if (!hand._tiles.empty()){
-                auto discardTile = hand._tiles.back();
-                if (_matchController->discardTile(discardTile)){
-                    _discardedTileImage->setTexture(_assets->get<Texture>(discardTile->toString()));
-                    _discardedTileImage->setContentSize(32.88, 45);
-                    _discardedTileImage->setVisible(true);
-                    int index = _discardUINode->getLabelIndex(discardTile);
-                    _discardUINode->incrementLabel(index);
-                } else {
-                    CULog("hand already at required size for ending turn");
-                }
+    
+    void endTurnFromTimeout();
+    
+    void updateAreaVisibility(Vec2 mousePos, float timestep);
+    
+    void updateTurnTimer(float timestep){
+        int currTurn = _network->getCurrentTurn();
+        if (currTurn != prevTurnId){
+            prevTurnId = currTurn;
+            
+            if (currTurn == _network->getLocalPid()){
+                _turnTimeRemaining = TURN_DURATION;
+                turnTimerActive = true;
+            } else {
+                turnTimerActive = false;
+                _turnTimeRemaining = 0.0f;
+                _timer->setText("00:00");
             }
+            
         }
         
-        _matchController->endTurn();
-//      TODO: add sound effect for turn timeouts
-//      AudioController::getInstance().playSound("timeout");
+        if (turnTimerActive) {
+            _turnTimeRemaining -= timestep;
+            if (_turnTimeRemaining <= 0.0f){
+                _turnTimeRemaining = 0.0f;
+                turnTimerActive = false;
+                endTurnFromTimeout();
+            }
+            
+            int sec = static_cast<int>(_turnTimeRemaining);
+            
+            std::string timeAsStr = "00:";
+            if (sec < 10){
+                timeAsStr += "0";
+            }
+            
+            timeAsStr += std::to_string(sec);
+            _timer->setText(timeAsStr);
+        }
     }
+    
 };
-
 
 #endif /* __MJ_GAME_SCENE_H__ */
