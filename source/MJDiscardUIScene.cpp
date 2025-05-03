@@ -34,7 +34,7 @@ bool DiscardUIScene::init(const std::shared_ptr<cugl::AssetManager>& assets){
     
     screenSize *= _tilesetui->getContentSize().height/screenSize.height;
 
-    AudioController::getInstance().init(_assets);
+    //AudioController::getInstance().init(_assets);
     
     float offset = (screenSize.width -_tilesetui->getWidth())/2;
     _tilesetui->setPosition(offset, _tilesetui->getPosition().y);

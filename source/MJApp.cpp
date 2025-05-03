@@ -225,11 +225,12 @@ void MahsJongApp::draw() {
 void MahsJongApp::updateLoadingScene(float timestep) {
     AudioController::getInstance().init(_assets);
    if (_loading.isActive()) {
-       AudioController::getInstance().playMusic("menuMusic", true);
+       //AudioController::getInstance().playMusic("menuMusic", true);
        _loading.update(timestep);
        _loading.resizeScene();
    } else {
        _loading.dispose(); // Permanently disables the input listeners in this mod
+       AudioController::getInstance().playMusic("menuMusic", true);
        AudioController::getInstance().playSound("Confirm");
        
        _network = std::make_shared<NetworkController>();
@@ -437,10 +438,10 @@ void MahsJongApp::updateSettingScene(float timestep){
         case SettingScene::Choice::MENU:
             _settings.setActive(false);
             _mainmenu.setActive(true);
+            _gameplay.dispose();
             if (last_scene == SettingScene::PrevScene::PAUSED) {
                 AudioController::getInstance().playMusic("menuMusic", true);
             }
-            _gameplay.dispose();
             _scene = State::MENU;
             break;
         case SettingScene::Choice::PAUSE:

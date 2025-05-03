@@ -47,8 +47,8 @@ bool MatchController::init(const std::shared_ptr<cugl::AssetManager>& assets, st
     _active = true;
     
     // play the background music for the match scene.
-    AudioController::getInstance().init(_assets);
-    AudioEngine::start();
+    //AudioController::getInstance().init(_assets);
+    //AudioEngine::start();
     AudioController::getInstance().playMusic("bgm", true);
     
     return true; 
