@@ -85,7 +85,7 @@ void AudioController::playSound(const std::string& key, bool loop){
                 i++;
                 instance = instance + std::to_string(i);
             }
-            AudioEngine::get()->play(instance, sound, loop, 1.0f);
+            AudioEngine::get()->play(instance, sound, loop, 0.1f);
         }
     }
 }

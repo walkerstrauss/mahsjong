@@ -390,9 +390,9 @@ void GameScene::update(float timestep) {
     if (_input->getKeyPressed() == cugl::KeyCode::A && _input->getPrevKeyPressed() != cugl::KeyCode::A) {
 
         // there are multiple _choice. One is from MatchController, and the other is from GameScene.
-        _choice = Choice::WIN;
+        _choice = Choice::LOSE;
 
-        _matchController->setChoice(MatchController::Choice::WIN);
+        _matchController->setChoice(MatchController::Choice::LOSE);
 
         _network->broadcastEnd(_network->getLocalPid());
     }
@@ -859,7 +859,7 @@ void GameScene::updateDrag(const cugl::Vec2& mousePos, bool mouseDown, bool mous
                           
                           _matchController->playMonkey(_draggingTile);
                           // Play the swap sound when the monkey tile is activated.
-                          //AudioController::getInstance().playSound("swap");
+                          AudioController::getInstance().playSound("Discard");
                           
                           _tradeArea->setVisible(false);
                           // Rebind _player to prevent null ptr error

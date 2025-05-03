@@ -396,6 +396,7 @@ bool MatchController::playCelestial(std::shared_ptr<TileSet::Tile>& celestialTil
                     _choice = DRAGONTILE;
                     break;
                 case(TileSet::Tile::Rank::PIG):
+                    AudioController::getInstance().playSound("Pig", false);
                     _pigTile = celestialTile;
                     _choice = PIGTILE;
                     break;
@@ -416,7 +417,7 @@ bool MatchController::playCelestial(std::shared_ptr<TileSet::Tile>& celestialTil
 void MatchController::playRooster(std::shared_ptr<TileSet::Tile>& celestialTile){
     // Reshuffle current player's pile
     // play the shuffle sound.
-    AudioController::getInstance().playSound("shuffle");
+    //AudioController::getInstance().playSound("shuffle");
     _pile->reshufflePile();
     _pile->setTilePositions();
     
@@ -842,6 +843,7 @@ void MatchController::celestialEffect(){
         }
     } else if (_network->getCelestialUpdateType() == NetworkController::PIG) {
         bool isHost = _network->getHostStatus();
+        AudioController::getInstance().playSound("Pig");
         
         // Add tile that was drawn into this match controller
         std::shared_ptr<TileSet::Tile> tileDrawn= _tileSet->processTileJson(_network->getTileDrawn())[0];
