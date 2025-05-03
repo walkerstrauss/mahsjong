@@ -15,6 +15,12 @@ using namespace cugl;
 #pragma mark -
 #pragma mark Constructors
 
+#define VELOCITY_THRESHOLD 2.0f
+#define ROTATE_MAX 0.3f
+
+#define SPRING 0.05f
+#define DAMP 0.05f
+
 /**
  * Creates a new hand for the player
  *
@@ -41,10 +47,12 @@ bool Hand::initHand(std::shared_ptr<TileSet>& tileSet, bool isHost){
             drawnTile->inHostHand = false;
             drawnTile->inClientHand = true;
         }
-        drawnTile->_scale = 0.1;
+        drawnTile->_scale = 0.325;
         drawnTile->inDeck = false;
         _tiles.push_back(drawnTile);
     }
+    
+    _tiles = getSortedTiles(_tiles);
     
     tileSet->deck.erase(tileSet->deck.begin(), tileSet->deck.begin() + 13);
     return true;
@@ -71,27 +79,10 @@ void Hand::drawFromPile(std::shared_ptr<Pile>& pile, int number, bool isHost){
         tile->inPile = false;
         tile->selected = false;
         tile->discarded = false;
-        tile->_scale = 0.1;
+        tile->_scale = 0.325;
         _tiles.push_back(tile); // Add drawn tiles to hand
     }
  }
-
-void Hand::drawFromDiscard(std::shared_ptr<TileSet::Tile> tile, bool isHost) {
-    if (!tile) {
-        return;
-    }
-    
-    if (isHost) {
-        tile->inHostHand = true;
-    } else {
-        tile->inClientHand = true;
-
-    }
-    tile->discarded = false;
-    tile->inPile = false;
-    tile->selected = false; 
-    _tiles.push_back(tile);
-}
 
 /**
  * Discards a single specified tile from our hand
@@ -132,38 +123,6 @@ bool Hand::removeTile(std::shared_ptr<TileSet::Tile> tile, bool isHost) {
 }
 
 /**
- * Counts the total number of selected tiles.
- */
-int Hand::countSelectedTiles() {
-    int totalTiles = 0;
-    for (const auto& set : _selectedSets) {
-        totalTiles += set.size();
-    }
-    return totalTiles;
-}
-
-/**
- * Method to make a set from your hand and add it to selected sets
- *
- * @returns true if successfully made VALID set, and false otherwise
- */
-bool Hand::makeSet(){
-    if(!isSetValid(_selectedTiles)){
-        return false;
-    }
-    
-    for (auto& tile : _selectedTiles) {
-        tile->selected = true;
-        tile->selectedInSet = true;
-    }
-    
-    _selectedSets.push_back(_selectedTiles);
-    _selectedTiles.clear();
-    
-    return true;
-}
-
-/**
  * Method to play a set from your hand (of 2 to 4 cards)
  *
  * @return true if a set was played sucessfully and false otherwise.
@@ -189,7 +148,7 @@ bool Hand::playSet(bool isHost) {
                 (*it)->inClientHand = false;
             }
             // Since the tile is played (and not being discarded), update its status.
-            (*it)->discarded = false;
+//            (*it)->discarded = false;
             
             // Add tile to the played set
             playedSet.push_back(*it);
@@ -214,10 +173,6 @@ bool Hand::playSet(bool isHost) {
     
     _size-=3;
     
-    
-    //_playedSets.clear();
-    
-    _player->endTurn();
     return true;
 }
 
@@ -250,113 +205,6 @@ bool Hand::isSetValid(const std::vector<std::shared_ptr<TileSet::Tile>>& selecte
     
     return true;
 }
-
-/**
- * Confirms if a set isStraight.
- *
- * @param selectedTiles     the tiles to be checked for a straight
- */
-//bool Hand::isStraight(const std::vector<std::shared_ptr<TileSet::Tile>>& selectedTiles){
-//    
-//    int wildTiles = 0; // only jacks.
-//    
-//    std::vector<std::shared_ptr<TileSet::Tile>> sortedTiles = getSortedTiles(selectedTiles);
-//    
-//    // the base tile.
-//    std::shared_ptr<TileSet::Tile> tileA = sortedTiles[0];
-//    
-////    // check if the base tile wild RANK. (jacks)
-////    if(tileA->getRank()==TileSet::Tile::Rank::WILD_RANK){
-////        wildTiles++;
-////    }
-//    
-//    // check if the sorted selectedTiles are of the same SUIT.
-//    for(int i = 1; i<sortedTiles.size(); ++i){
-//        
-//        std::shared_ptr<TileSet::Tile> tileB = sortedTiles[i];
-//        
-//        // Not the same SUIT.
-//        if(tileA->getSuit() != tileB->getSuit()){
-//            
-//            // Both of them is NOT wild SUIT.
-//            if(tileA->getSuit() != TileSet::Tile::Suit::WILD_SUIT &&
-//               tileB->getSuit() != TileSet::Tile::Suit::WILD_SUIT){
-//                
-//                return false;
-//            }
-//            
-//        }
-//        
-//        // check if there any wild tiles.
-//        if(tileB->getRank()==TileSet::Tile::Rank::WILD_RANK){
-//            wildTiles++;
-//        }
-//    }
-//    
-//    
-//    // check if the selectedTiles are consequitive.
-//        for(int i = 0; i<sortedTiles.size() - 1; ++i){
-//            std::shared_ptr<TileSet::Tile> tileA = sortedTiles[i];
-//            std::shared_ptr<TileSet::Tile> tileC = sortedTiles[i+1];
-//            // should not count the wild tiles.
-//            if (tileC->getRank() == TileSet::Tile::Rank::WILD_RANK) {
-//                break;
-//                }
-//            int gap = static_cast<int>(tileC->getRank()) - static_cast<int>(tileA->getRank());
-//            if (gap != 1) {
-//                return false;
-//            }
-//        }
-//
-//    return true;
-//}
-
-///**
-// * Confirms if a set if of a kind.
-// *
-// * @param selectedTiles     the tiles to be checked for a three/four of a kind
-// */
-//bool Hand::isOfaKind(const std::vector<std::shared_ptr<TileSet::Tile>>& selectedTiles){
-//    std::shared_ptr<TileSet::Tile> tileA = selectedTiles[0];
-//    
-//    // iterate over all tiles besides the first tile.
-//    for(int j=1; j<selectedTiles.size(); ++j){
-//        
-//        std::shared_ptr<TileSet::Tile> tileB = selectedTiles[j];
-//        
-//        // Not the same SUIT.
-//        if(tileA->getSuit() != tileB->getSuit()){
-//            // Neither is wild SUIT.
-//            if(tileA->getSuit() != TileSet::Tile::Suit::WILD_SUIT &&
-//               tileB->getSuit() != TileSet::Tile::Suit::WILD_SUIT){
-//                return false;
-//                    
-//            // One is wild SUIT.
-//            }else if(tileA->getRank() != tileB->getRank() &&
-//                     tileA->getRank() != TileSet::Tile::Rank::WILD_RANK &&
-//                     tileB->getRank() != TileSet::Tile::Rank::WILD_RANK){
-//                    return false;
-//                }
-//                
-//        }
-//        // Not the same RANK.
-//        if(tileA->getRank() != tileB->getRank()){
-//            // Neither is wild RANK.
-//            if(tileA->getRank() != TileSet::Tile::Rank::WILD_RANK &&
-//               tileB->getRank() != TileSet::Tile::Rank::WILD_RANK){
-//                return false;
-//                
-//            // One is wild RANK.
-//            }else if(tileA->getSuit() != tileB->getSuit() &&
-//                     tileA->getSuit() != TileSet::Tile::Suit::WILD_SUIT &&
-//                     tileB->getSuit() != TileSet::Tile::Suit::WILD_SUIT){
-//                return false;
-//            }
-//        }
-//    }
-//    return true;
-//}
-
 
 ///**
 // * Confirms if a set if of a kind.
@@ -414,7 +262,7 @@ bool Hand::isStraight(const std::vector<std::shared_ptr<TileSet::Tile>>& selecte
             std::shared_ptr<TileSet::Tile> tileC = sortedTiles[i+1];
 
             int gap = static_cast<int>(tileC->getRank()) - static_cast<int>(tileA->getRank());
-            if (gap>1) {
+            if (gap != 1) {
                 return false;
             }
         }
@@ -422,29 +270,24 @@ bool Hand::isStraight(const std::vector<std::shared_ptr<TileSet::Tile>>& selecte
     return true;
 }
 
-
-
-
-
 bool Hand::isWinningHand() {
-    
-    
     if (_tiles.size() == _size + 1) {
         std::vector<std::shared_ptr<TileSet::Tile>> sortedHand = getSortedTiles(_tiles);
-        
         std::map<std::pair<TileSet::Tile::Rank, TileSet::Tile::Suit>, int> tileCounts;
         for (const auto& tile : sortedHand) {
+            if (tile->getSuit() == TileSet::Tile::Suit::CELESTIAL || tile->debuffed) {
+                return false;
+            }
             tileCounts[{tile->getRank(), tile->getSuit()}]++;
         }
         
-        return onePairFourSets(tileCounts, 0, 0);
+    return onePairFourSets(tileCounts, 0, (int)_playedSets.size());
     }
     return false;
 }
 
 bool Hand::onePairFourSets(std::map<std::pair<TileSet::Tile::Rank, TileSet::Tile::Suit>, int>& tileCounts, int pair, int sets) {
-    
-    if (pair == 1 && sets == _size / 3) {
+    if (pair == 1 && sets == 4) {
         return true;
     }
     
@@ -474,7 +317,7 @@ bool Hand::onePairFourSets(std::map<std::pair<TileSet::Tile::Rank, TileSet::Tile
         TileSet::Tile::Rank rank = tile.first;
         TileSet::Tile::Suit suit = tile.second;
         
-        if (rank <= TileSet::Tile::Rank::SEVEN) {
+        if (rank <= TileSet::Tile::Rank::SEVEN && suit != TileSet::Tile::Suit::CELESTIAL) {
             auto nextTile1 = std::make_pair(static_cast<TileSet::Tile::Rank>(static_cast<int>(rank) + 1), suit);
             auto nextTile2 = std::make_pair(static_cast<TileSet::Tile::Rank>(static_cast<int>(rank) + 2), suit);
             
@@ -521,43 +364,52 @@ std::vector<std::shared_ptr<TileSet::Tile>> Hand::getSortedTiles(const std::vect
 }
 
 
-void Hand::updateTilePositions(cugl::Size sceneSize){
-    cugl::Size screenSize = cugl::Application::get()->getDisplaySize();
-    
-    screenSize *= sceneSize.height/screenSize.height;
-    
-    
-    float offsetWidth = (screenSize.width - sceneSize.width)/2.0f;
-    float startX = offsetWidth + 50; // Starting x position for hand tile positioning
-    float endX = screenSize.width - offsetWidth - 50; // Ending x position for hand tile positioning
+void Hand::updateTilePositions(cugl::Rect rect, float dt){
+    float startX = rect.getMinX(); // Starting x position for hand tile positioning
+    float endX = rect.getMaxX(); // Ending x position for hand tile positioning
     float tileSpacing = (endX-startX) / getTileCount() ; // Spacing in x direction between tiles
-    float yPos = 80.0f; // Height of hand tiles on the screen
+    float yPos = (rect.getMaxY() + rect.getMinY()) / 2.0f; // Height of hand tiles on the screen
 
 
     for (size_t i = 0; i < _tiles.size(); i++){
         if (_tiles[i] == _player->getDraggingTile()) {
-          continue;
+            continue;
         }
-      
-    cugl::Vec2 newPos(startX + i * tileSpacing + (_tiles[i]->getTileTexture()->getWidth()/2 * _tiles[i]->_scale), yPos);
-    _tiles[i]->pos = newPos;
-  }
+        
+        cugl::Vec2 newPos(startX + i * tileSpacing + (_tiles[i]->getBackTextureNode()->getTexture()->getWidth()/2 * _tiles[i]->_scale), yPos);
+        
+        if(_tiles[i]->selected) {
+            newPos.y += 10.0f;
+        }
+        
+        _tiles[i]->pos = newPos;
+    }
+    
+    for(const auto& tile : _tiles){
+        Vec2 pos = tile->pos;
+        Vec2 origin = Vec2(tile->getTileTexture()->getSize().width/2, tile->getTileTexture()->getSize().height/2);
+        
+        Size textureSize(tile->getBackTextureNode()->getTexture()->getSize());
+        Vec2 rectOrigin(pos - (textureSize * tile->_scale)/2);
+        tile->tileRect = cugl::Rect(rectOrigin, textureSize * tile->_scale);
+       
+        float velocity = tile->getContainer()->getPosition().x - tile->pos.x;
+        float displacement = tile->getContainer()->getAngle();
+        float force = -SPRING * displacement - DAMP * velocity;
+        
+        Vec2 lerpPos = tile->getContainer()->getPosition();
+        lerpPos.lerp(pos, 0.5);
+        
+        velocity += force * dt;
+        displacement = std::clamp(velocity * dt, -ROTATE_MAX, ROTATE_MAX);
+        
+        tile->getContainer()->setAnchor(Vec2::ANCHOR_CENTER);
+        tile->getContainer()->setAngle(displacement);
+        tile->getContainer()->setScale(tile->_scale);
+        tile->getContainer()->setPosition(lerpPos);
+        tile->getContainer()->setVisible(true);
+    }
 }
-
-///**
-// * Method to check if selected tiles contain a wild card (jack)
-// *
-// * @param selectedTiles     the tiles to be checked for a wild card
-// */
-//bool Hand::hasJack(std::vector<std::shared_ptr<TileSet::Tile>> selectedTiles){
-//    for(std::shared_ptr<TileSet::Tile>& tile : selectedTiles){
-//        
-//        if(tile->getRank()==TileSet::Tile::Rank::WILD_RANK){
-//            return true;
-//        }
-//    }
-//    return false;
-//}
 
 /**
  * Function to draw the player's currently held tiles
@@ -566,32 +418,59 @@ void Hand::updateTilePositions(cugl::Size sceneSize){
  */
 void Player::draw(const std::shared_ptr<cugl::graphics::SpriteBatch>& batch) {
     for(const auto& tile : _hand._tiles){
-        Vec2 pos = tile->pos;
-        Vec2 origin = Vec2(tile->getTileTexture()->getSize().width/2, tile->getTileTexture()->getSize().height/2);
-        
-        if(tile->selected){
-            pos.y += 10;
-        }
-        Affine2 trans;
-        trans.scale(tile->_scale);
-        trans.translate(pos);
-        
-        Size textureSize(750.0, 1000.0);
-        Vec2 rectOrigin(tile->pos - (textureSize * tile->_scale)/2);
-        tile->tileRect = cugl::Rect(rectOrigin, textureSize * tile->_scale);
-
-        batch->draw(tile->getTileTexture(), origin, trans);
-        
+        tile->getContainer()->render(batch, Affine2::IDENTITY, Color4::WHITE);
     }
 }
 
-std::shared_ptr<TileSet::Tile> Hand::getTileAtPosition(const cugl::Vec2& mousePos) {
-    for (const auto& tile : _tiles) {
-        if (tile) {
-            if (tile->tileRect.contains(mousePos)) {
-                return tile;
-            }
+void Player::drawInfo(const std::shared_ptr<TileSet::Tile> tile, const std::shared_ptr<cugl::graphics::SpriteBatch>& batch, Size screenSize) {
+    if(tile->debuffed) {
+        return;
+    }
+    std::shared_ptr<Texture> infoTexture = tile->getInfoTexture();
+    Vec2 origin(infoTexture->getSize().width/2.0f, infoTexture->getSize().height/2.0f);
+    
+    Size textureSize = infoTexture->getSize() * 0.9f;
+    float textureWidth = textureSize.getIWidth() * 0.5f;
+    float textureHeight = textureSize.getIHeight() * 0.5f;
+    
+    float tileHeight = tile->getBackTextureNode()->getSize().height * tile->_scale;
+    float tileWidth = tile->getBackTextureNode()->getSize().width * tile->_scale;
+    
+    float totalHeight = tile->getContainer()->getPosition().y + tileHeight * 0.5f + textureHeight + 2.2f;
+    float totalMinWidth = tile->getContainer()->getPosition().x - textureWidth * 0.5f + 2.0f;
+    float totalMaxWidth = tile->getContainer()->getPosition().x + textureWidth * 0.5f + 2.0f;
+
+    float x;
+    float y;
+    
+    if(totalHeight > screenSize.getIHeight()) {
+        y = tile->getContainer()->getPosition().y;
+        if(totalMinWidth < 0) {
+            x = tile->getContainer()->getPosition().x + tileWidth * 0.5f + textureWidth + 2.2f;
+        }
+        else {
+            x = tile->getContainer()->getPosition().x - tileWidth * 0.5f - textureWidth - 2.2f;
         }
     }
-    return nullptr;
+    else{
+        if(totalMinWidth < 0) {
+            x = tile->getContainer()->getPosition().x + tileWidth * 0.5f + textureWidth + 2.2f;
+            y = tile->getContainer()->getPosition().y;
+        }
+        else if (totalMaxWidth > screenSize.width){
+            x = tile->getContainer()->getPosition().x - tileWidth * 0.5f - textureWidth - 2.2f;
+            y = tile->getContainer()->getPosition().y;
+        }
+        else {
+            x = tile->getContainer()->getPosition().x;
+            y = tile->getContainer()->getPosition().y + tileHeight * 0.5f + textureHeight + 2.2f;
+        }
+    }
+    
+    Affine2 trans;
+    Vec2 pos(x, y);
+    trans.scale(0.9f);
+    trans.translate(pos);
+    
+    batch->draw(infoTexture, origin, trans);
 }

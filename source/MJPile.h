@@ -34,6 +34,10 @@ public:
     std::shared_ptr<TileSet> _tileSet;
     /** Stores the location of our pair in the pile */
     std::vector<std::shared_ptr<TileSet::Tile>> _pairs;
+    /** The rect of the pile */
+    cugl::Rect pileBox;
+    /** Time for pile jump effect */
+    float time; 
     
 #pragma mark -
 #pragma mark Constructors
@@ -64,7 +68,12 @@ public:
     /**
      * Method to update the positions of the tiles in pile
      */
-    void updateTilePositions();
+    void setTilePositions();
+    
+    /**
+     * Updates the positions of each tile and their textures
+     */
+    void updateTilePositions(float dt);
     
     void animTilePositions(int frames = 1);
     
@@ -115,6 +124,24 @@ public:
      * @return a vector of tiles in the pair
      */
     std::vector<std::shared_ptr<TileSet::Tile>> pairTile(const std::shared_ptr<Player>& player);
+    
+    /** Returns the flattened 1D representation of the 2D pile. */
+    std::vector<std::shared_ptr<TileSet::Tile>> flattenedPile() {
+        std::vector<std::shared_ptr<TileSet::Tile>> flattenedPile;
+        for (auto& row : _pile) {
+            for (auto& tile : row) {
+                if (tile != nullptr) {
+                    flattenedPile.push_back(tile);
+                }
+            }
+        }
+        return flattenedPile;
+    }
+        
+    /**
+     *  Returns the index of the row that the given tile is in.
+     */
+    int selectedRow(std::shared_ptr<TileSet::Tile> tile);
     
     /**
      * Remakes pile according to the player who drew the last tile in the pile
@@ -169,6 +196,14 @@ public:
      * Remove inputted number of tiles iteratively
      */
     void removeNumTiles(int nums);
+    
+    /** Updates the pile indexes of tiles in the given row to the new order. */
+    void updateRow(int row, const std::vector<std::shared_ptr<TileSet::Tile>>& tiles, float dt);
+    
+    /** Pile jump effect */
+    void pileJump(float dt);
+
+    
 };
 #endif /* __MJ_PILE_H__ */
 

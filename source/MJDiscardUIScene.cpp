@@ -34,7 +34,7 @@ bool DiscardUIScene::init(const std::shared_ptr<cugl::AssetManager>& assets){
     
     screenSize *= _tilesetui->getContentSize().height/screenSize.height;
 
-    AudioController::getInstance().init(_assets);
+    //AudioController::getInstance().init(_assets);
     
     float offset = (screenSize.width -_tilesetui->getWidth())/2;
     _tilesetui->setPosition(offset, _tilesetui->getPosition().y);
@@ -63,7 +63,7 @@ bool DiscardUIScene::init(const std::shared_ptr<cugl::AssetManager>& assets){
     backBtn = std::dynamic_pointer_cast<scene2::Button>(_assets->get<scene2::SceneNode>("tilesetui.tilesetscene.board.buttonClose"));
     backBtnKey = backBtn->addListener([this](const std::string& name, bool down) {
         if (!down) {
-            AudioController::getInstance().playSound("confirm");
+            AudioController::getInstance().playSound("Done");
             setActive(false);
         }
     });

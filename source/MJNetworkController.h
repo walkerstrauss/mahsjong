@@ -80,14 +80,18 @@ public:
         RAT,
         /** Ox played */
         OX,
-        /** Rabbit played*/
+        /** Rabbit played */
         RABBIT,
+        /** Dragon played */
+        DRAGON,
         /** Snake played */
         SNAKE,
         /** Monkey played */
         MONKEY,
         /** Rooster played */
-        ROOSTER
+        ROOSTER,
+        /** Pig played */
+        PIG
         
     };
     
@@ -114,15 +118,9 @@ protected:
     bool _isHost;
     
     Uint32 _localPid;
-    
-    Uint32 _localReady;
-    
+        
     Uint32 _currentTurn;
-    
-    Uint32 _pileIndex;
-    
-    std::shared_ptr<cugl::JsonValue> _deckJson;
-    
+            
     std::shared_ptr<cugl::JsonValue> _startingDeckJson;
     
     std::shared_ptr<cugl::JsonValue> _nextTileJson;
@@ -176,32 +174,69 @@ public:
      */
     void dispose();
     
+    /**
+     * Initializes the network controller
+     *
+     * @param assets       the asset manager
+     */
     bool init(const std::shared_ptr<cugl::AssetManager>& assets);
     
+    /**
+     * Returns the number of players on the current network
+     */
     int getNumPlayers() const {
         if (_network) {
             return (int)(_network->getNumPlayers());
         }
         return 1;
     }
+    
+    /**
+     * Updates the current network controller
+     *
+     * @param timestep      time that has passed (in seconds)
+     */
     void update(float timestep);
     
+    /**
+     * Connects to the networkControllera as the host. Returns true if
+     * the connection was successful; otherwise, false. Sets up the roomID
+     * as well.
+     */
     bool connectAsHost();
     
+    /**
+     * Connecst to the networkController as the client. Returns true if
+     * the connection was successful; otherwise, false. Uses the
+     * param "room" (in hex) to connec to the network.
+     *
+     * @param room      string representing the room code in hex
+     */
     bool connectAsClient(std::string room);
     
+    /**
+     * Returns the roomID as created by this network.
+     *
+     * @returns _roomID     string representing the roomID
+     */
     std::string getRoomID() const {
         return _roomid;
     }
     
+    /**
+     * Disconnects the networkController from the current network.
+     */
     void disconnect();
-    
-    void notifyEndTurn();
-    
+        
+    /**
+     * Broadcasts the turn has ended for the current player. Toggles the
+     * current turn field.
+     */
     void endTurn();
-    
-    void transmitSingleTile(TileSet::Tile& tile);
-    
+        
+    /**
+     * Checks the current connection for the game.
+     */
     bool checkConnection();
     
     void broadcast(const std::vector<std::byte>& data);
@@ -255,13 +290,6 @@ public:
         _celestialUpdateType = celestialUpdateType;
     }
     
-    std::shared_ptr<cugl::JsonValue> getDeckJson(){
-        return _deckJson;
-    }
-    
-    bool loadedDeck(){
-        return _deckJson != nullptr;
-    }
     bool getHostStatus(){
         return _isHost;
     }
@@ -276,10 +304,6 @@ public:
     
     std::shared_ptr<cugl::JsonValue> getPileTile() {
         return _pileTileJson;
-    }
-    
-    std::shared_ptr<cugl::JsonValue> getStartingDeck() {
-        return _startingDeckJson;
     }
     
     std::tuple<int, bool> getNumDiscard() {
@@ -412,6 +436,12 @@ public:
      * @param isHost    If current network is the host network or not
      */
     void broadcastEnd(int isHost);
+    
+    /**
+     * Resets all values stored from last game scene after game has been disconnected
+     */
+    void reset() {
+    }
     
     /** ** START OF MATCH CONTROLLER BRANCH FUNCTIONS**  */
 

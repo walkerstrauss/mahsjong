@@ -76,6 +76,384 @@
                     "y_offset": -0.43
                 }
             },
+            "drag-to-trade": {
+                "type": "Image",
+                "data": {
+                    "texture": "drag-to-trade",
+                    "anchor": [
+                        0.5,
+                        0.5
+                    ],
+                    "size": [
+                        1186.51,
+                        350
+                    ],
+                    "angle": 0,
+                    "position": [
+                        348,
+                        601
+                    ],
+                    "visible": false
+                },
+                "layout": {
+                    "x_anchor": "left",
+                    "y_anchor": "top",
+                    "absolute": false,
+                    "x_offset": 0.5,
+                    "y_offset": -0.43
+                }
+            },
+            "discard-or-play-to-end": {
+                "type": "Image",
+                "data": {
+                    "texture": "discard-or-play-to-end",
+                    "anchor": [
+                        0.5,
+                        0.5
+                    ],
+                    "size": [
+                        600,
+                        100
+                    ],
+                    "angle": 0,
+                    "position": [
+                        348,
+                        601
+                    ],
+                    "visible": false
+                },
+                "layout": {
+                    "x_anchor": "left",
+                    "y_anchor": "top",
+                    "absolute": false,
+                    "x_offset": 0.5,
+                    "y_offset": -0.5
+                }
+            },
+            "discard-to-end": {
+                "type": "Image",
+                "data": {
+                    "texture": "discard-to-end",
+                    "anchor": [
+                        0.5,
+                        0.5
+                    ],
+                    "size": [
+                        600,
+                        100
+                    ],
+                    "angle": 0,
+                    "position": [
+                        348,
+                        601
+                    ],
+                    "visible": false
+                },
+                "layout": {
+                    "x_anchor": "left",
+                    "y_anchor": "top",
+                    "absolute": false,
+                    "x_offset": 0.5,
+                    "y_offset": -0.5
+                }
+            },
+            "pig-fail": {
+                "type": "Image",
+                "data": {
+                    "texture": "pig-fail",
+                    "anchor": [
+                        0.5,
+                        0.5
+                    ],
+                    "size": [
+                        600,
+                        100
+                    ],
+                    "angle": 0,
+                    "position": [
+                        348,
+                        601
+                    ],
+                    "visible": false
+                },
+                "layout": {
+                    "x_anchor": "left",
+                    "y_anchor": "top",
+                    "absolute": false,
+                    "x_offset": 0.5,
+                    "y_offset": -0.5
+                }
+            },
+            "invalid": {
+                "type": "Image",
+                "data": {
+                    "texture": "invalid",
+                    "anchor": [
+                        0.5,
+                        0.5
+                    ],
+                    "size": [
+                        450,
+                        75
+                    ],
+                    "angle": 0,
+                    "position": [
+                        348,
+                        601
+                    ],
+                    "visible": false
+                },
+                "layout": {
+                    "x_anchor": "left",
+                    "y_anchor": "top",
+                    "absolute": false,
+                    "x_offset": 0.5,
+                    "y_offset": -0.5
+                }
+            },
+            "valid": {
+                "type": "Image",
+                "data": {
+                    "texture": "valid",
+                    "anchor": [
+                        0.5,
+                        0.5
+                    ],
+                    "size": [
+                        450,
+                        75
+                    ],
+                    "angle": 0,
+                    "position": [
+                        348,
+                        601
+                    ],
+                    "visible": false
+                },
+                "layout": {
+                    "x_anchor": "left",
+                    "y_anchor": "top",
+                    "absolute": false,
+                    "x_offset": 0.5,
+                    "y_offset": -0.5
+                }
+            },
+            "must-discard-play": {
+                "type": "Image",
+                "data": {
+                    "texture": "must-discard-play",
+                    "anchor": [
+                        0.5,
+                        0.5
+                    ],
+                    "size": [
+                        600,
+                        100
+                    ],
+                    "angle": 0,
+                    "position": [
+                        348,
+                        601
+                    ],
+                    "visible": false
+                },
+                "layout": {
+                    "x_anchor": "left",
+                    "y_anchor": "top",
+                    "absolute": false,
+                    "x_offset": 0.5,
+                    "y_offset": -0.5
+                }
+            },
+            "must-draw-discard": {
+                "type": "Image",
+                "data": {
+                    "texture": "must-draw-discard",
+                    "anchor": [
+                        0.5,
+                        0.5
+                    ],
+                    "size": [
+                        600,
+                        100
+                    ],
+                    "angle": 0,
+                    "position": [
+                        348,
+                        601
+                    ],
+                    "visible": false
+                },
+                "layout": {
+                    "x_anchor": "left",
+                    "y_anchor": "top",
+                    "absolute": false,
+                    "x_offset": 0.5,
+                    "y_offset": -0.5
+                }
+            },
+            "must-draw-play": {
+                "type": "Image",
+                "data": {
+                    "texture": "must-draw-play",
+                    "anchor": [
+                        0.5,
+                        0.5
+                    ],
+                    "size": [
+                        600,
+                        100
+                    ],
+                    "angle": 0,
+                    "position": [
+                        348,
+                        601
+                    ],
+                    "visible": false
+                },
+                "layout": {
+                    "x_anchor": "left",
+                    "y_anchor": "top",
+                    "absolute": false,
+                    "x_offset": 0.5,
+                    "y_offset": -0.5
+                }
+            },
+            "not-your-turn": {
+                "type": "Image",
+                "data": {
+                    "texture": "not-your-turn",
+                    "anchor": [
+                        0.5,
+                        0.5
+                    ],
+                    "size": [
+                        600,
+                        100
+                    ],
+                    "angle": 0,
+                    "position": [
+                        348,
+                        601
+                    ],
+                    "visible": false
+                },
+                "layout": {
+                    "x_anchor": "left",
+                    "y_anchor": "top",
+                    "absolute": false,
+                    "x_offset": 0.5,
+                    "y_offset": -0.5
+                }
+            },
+            "start-your-turn1": {
+                "type": "Image",
+                "data": {
+                    "texture": "start-your-turn1",
+                    "anchor": [
+                        0.5,
+                        0.5
+                    ],
+                    "size": [
+                        600,
+                        100
+                    ],
+                    "angle": 0,
+                    "position": [
+                        348,
+                        601
+                    ],
+                    "visible": false
+                },
+                "layout": {
+                    "x_anchor": "left",
+                    "y_anchor": "top",
+                    "absolute": false,
+                    "x_offset": 0.5,
+                    "y_offset": -0.5
+                }
+            },
+            "start-your-turn2": {
+                "type": "Image",
+                "data": {
+                    "texture": "start-your-turn2",
+                    "anchor": [
+                        0.5,
+                        0.5
+                    ],
+                    "size": [
+                        800,
+                        100
+                    ],
+                    "angle": 0,
+                    "position": [
+                        348,
+                        601
+                    ],
+                    "visible": false
+                },
+                "layout": {
+                    "x_anchor": "left",
+                    "y_anchor": "top",
+                    "absolute": false,
+                    "x_offset": 0.5,
+                    "y_offset": -0.5
+                }
+            },
+            "drew-try-play": {
+                "type": "Image",
+                "data": {
+                    "texture": "drew-try-play",
+                    "anchor": [
+                        0.5,
+                        0.5
+                    ],
+                    "size": [
+                        800,
+                        100
+                    ],
+                    "angle": 0,
+                    "position": [
+                        348,
+                        601
+                    ],
+                    "visible": false
+                },
+                "layout": {
+                    "x_anchor": "left",
+                    "y_anchor": "top",
+                    "absolute": false,
+                    "x_offset": 0.5,
+                    "y_offset": -0.5
+                }
+            },
+            "drew-try-discard": {
+                "type": "Image",
+                "data": {
+                    "texture": "drew-try-discard",
+                    "anchor": [
+                        0.5,
+                        0.5
+                    ],
+                    "size": [
+                        800,
+                        100
+                    ],
+                    "angle": 0,
+                    "position": [
+                        348,
+                        601
+                    ],
+                    "visible": false
+                },
+                "layout": {
+                    "x_anchor": "left",
+                    "y_anchor": "top",
+                    "absolute": false,
+                    "x_offset": 0.5,
+                    "y_offset": -0.5
+                }
+            },
             "play-area": {
                 "type": "Image",
                 "data": {
@@ -103,7 +481,7 @@
                     "y_offset": -0.43
                 }
             },
-            "endTurnButton": {
+            "playSetButton": {
                 "type": "Button",
                 "format": {
                     "type": "Anchored"
@@ -151,7 +529,7 @@
                             "discardCanButton": {
                                 "type": "Image",
                                 "data": {
-                                    "texture": "endTurnButton",
+                                    "texture": "playset",
                                     "anchor": [
                                         0.5,
                                         0.5
@@ -190,7 +568,7 @@
                     "y_anchor": "top",
                     "absolute": false,
                     "x_offset": 0.88,
-                    "y_offset": -0.16
+                    "y_offset": -0.26
                 }
             },
             "setting-icon": {
@@ -276,11 +654,44 @@
                     }
                 },
                 "layout": {
-                    "x_anchor": "left",
-                    "y_anchor": "top",
-                    "absolute": false,
                     "x_offset": 0.05,
                     "y_offset": -0.07
+                }
+            },
+            "playerhand": {
+                "type": "Node",
+                "format": {
+                    "type": "Float",
+                    "x_alignment": "left",
+                    "y_alignment": "middle",
+                    "orientation": "horizontal"
+                },
+                "data": {
+                    "anchor": [
+                        0.5,
+                        0.5
+                    ],
+                    "size": [
+                        853,
+                        80
+                    ],
+                    "angle": 0,
+                    "position": [
+                        92,
+                        784
+                    ],
+                    "visible": true
+                },
+                "children": []
+                ,
+                "layout": {
+                    "priority": 0,
+                    "padding": [
+                        0,
+                        0,
+                        1,
+                        0
+                    ]
                 }
             },
             "information-icon": {
@@ -749,9 +1160,9 @@
                             14
                         ],
                         "angle": 0,
-                        "visible": false,
+                        "visible": true,
                         "font": "podkovaBold36",
-                        "text": "00:00",
+                        "text": "45:00",
                         "foreground": "#ffffffff",
                         "background": "#00000000",
                         "padding": [
@@ -783,8 +1194,8 @@
                         1
                     ],
                     "size": [
-                        218,
-                        266
+                        450,
+                        420
                     ],
                     "angle": 0,
                     "position": [
@@ -793,22 +1204,18 @@
                     ],
                     "visible": true
                 },
-                "children": [],
                 "layout": {
                     "x_anchor": "left",
                     "y_anchor": "top",
                     "absolute": false,
-                    "x_offset": 0.41,
-                    "y_offset": -0.3
+                    "x_offset": 0.355,
+                    "y_offset": -0.135
                 }
             },
             "playerhand": {
                 "type": "Node",
                 "format": {
-                    "type": "Float",
-                    "x_alignment": "left",
-                    "y_alignment": "middle",
-                    "orientation": "horizontal"
+                    "type": "Anchored"
                 },
                 "data": {
                     "anchor": [
@@ -816,8 +1223,8 @@
                         0.5
                     ],
                     "size": [
-                        853,
-                        80
+                        1300,
+                        150
                     ],
                     "angle": 0,
                     "position": [
@@ -826,16 +1233,12 @@
                     ],
                     "visible": true
                 },
-                "children": []
-                ,
                 "layout": {
-                    "priority": 0,
-                    "padding": [
-                        0,
-                        0,
-                        1,
-                        0
-                    ]
+                    "x_anchor": "center",
+                    "y_anchor": "top",
+                    "absolute": true,
+                    "x_offset": 0,
+                    "y_offset": -330
                 }
             },
             "tile-left": {
@@ -1122,7 +1525,7 @@
                                     "discarded-tile-recent": {
                                         "type": "Image",
                                         "data": {
-                                            "texture": "7-tong",
+                                            "texture": "one of dot",
                                             "anchor": [
                                                 0.5,
                                                 0.5
@@ -1228,6 +1631,445 @@
                 }
             },
             "opponent-hand-tile": {
+                "type": "Node",
+                "format": {
+                    "type": "Float",
+                    "x_alignment": "left",
+                    "y_alignment": "top",
+                    "orientation": "vertical"
+                },
+                "data": {
+                    "anchor": [
+                        0,
+                        1
+                    ],
+                    "size": [
+                        650,
+                        50
+                    ],
+                    "angle": 0,
+                    "position": [
+                        306,
+                        532
+                    ],
+                    "visible": true
+                },
+                "children": {
+                    "tile-back_0": {
+                        "type": "Image",
+                        "data": {
+                            "texture": "tile-back",
+                            "anchor": [
+                                0.5,
+                                0.5
+                            ],
+                            "size": [
+                                30,
+                                38.46
+                            ],
+                            "angle": 0,
+                            "position": [
+                                0,
+                                0
+                            ],
+                            "visible": true
+                        },
+                        "layout": {
+                            "x_anchor": "left",
+                            "y_anchor": "top",
+                            "absolute": false,
+                            "x_offset": 0,
+                            "y_offset": 0
+                        }
+                    },
+                    "tile-back_1": {
+                        "type": "Image",
+                        "data": {
+                            "texture": "tile-back",
+                            "anchor": [
+                                0.5,
+                                0.5
+                            ],
+                            "size": [
+                                30,
+                                38.46
+                            ],
+                            "angle": 0,
+                            "position": [
+                                40,
+                                0
+                            ],
+                            "visible":true
+                        },
+                        "layout": {
+                            "x_anchor": "left",
+                            "y_anchor": "top",
+                            "absolute": false,
+                            "x_offset": 0,
+                            "y_offset": 0
+                        }
+                    },
+                    "tile-back_2": {
+                        "type": "Image",
+                        "data": {
+                            "texture": "tile-back",
+                            "anchor": [
+                                0.5,
+                                0.5
+                            ],
+                            "size": [
+                                30,
+                                38.46
+                            ],
+                            "angle": 0,
+                            "position": [
+                                80,
+                                0
+                            ],
+                            "visible":true
+                        },
+                        "layout": {
+                            "x_anchor": "left",
+                            "y_anchor": "top",
+                            "absolute": false,
+                            "x_offset": 0,
+                            "y_offset": 0
+                        }
+                    },
+                    "tile-back_3": {
+                        "type": "Image",
+                        "data": {
+                            "texture": "tile-back",
+                            "anchor": [
+                                0.5,
+                                0.5
+                            ],
+                            "size": [
+                                30,
+                                38.46
+                            ],
+                            "angle": 0,
+                            "position": [
+                                120,
+                                0
+                            ],
+                            "visible":true
+                        },
+                        "layout": {
+                            "x_anchor": "left",
+                            "y_anchor": "top",
+                            "absolute": false,
+                            "x_offset": 0,
+                            "y_offset": 0
+                        }
+                    },
+                    "tile-back_4": {
+                        "type": "Image",
+                        "data": {
+                            "texture": "tile-back",
+                            "anchor": [
+                                0.5,
+                                0.5
+                            ],
+                            "size": [
+                                30,
+                                38.46
+                            ],
+                            "angle": 0,
+                            "position": [
+                                160,
+                                0
+                            ],
+                            "visible":true
+                        },
+                        "layout": {
+                            "x_anchor": "left",
+                            "y_anchor": "top",
+                            "absolute": false,
+                            "x_offset": 0,
+                            "y_offset": 0
+                        }
+                    },
+                    "tile-back_5": {
+                        "type": "Image",
+                        "data": {
+                            "texture": "tile-back",
+                            "anchor": [
+                                0.5,
+                                0.5
+                            ],
+                            "size": [
+                                30,
+                                38.46
+                            ],
+                            "angle": 0,
+                            "position": [
+                                200,
+                                0
+                            ],
+                            "visible":true
+                        },
+                        "layout": {
+                            "x_anchor": "left",
+                            "y_anchor": "top",
+                            "absolute": false,
+                            "x_offset": 0,
+                            "y_offset": 0
+                        }
+                    },
+                    "tile-back_6": {
+                        "type": "Image",
+                        "data": {
+                            "texture": "tile-back",
+                            "anchor": [
+                                0.5,
+                                0.5
+                            ],
+                            "size": [
+                                30,
+                                38.46
+                            ],
+                            "angle": 0,
+                            "position": [
+                                240,
+                                0
+                            ],
+                            "visible":true
+                        },
+                        "layout": {
+                            "x_anchor": "left",
+                            "y_anchor": "top",
+                            "absolute": false,
+                            "x_offset": 0,
+                            "y_offset": 0
+                        }
+                    },
+                    "tile-back_7": {
+                        "type": "Image",
+                        "data": {
+                            "texture": "tile-back",
+                            "anchor": [
+                                0.5,
+                                0.5
+                            ],
+                            "size": [
+                                30,
+                                38.46
+                            ],
+                            "angle": 0,
+                            "position": [
+                                280,
+                                0
+                            ],
+                            "visible":true
+                        },
+                        "layout": {
+                            "x_anchor": "left",
+                            "y_anchor": "top",
+                            "absolute": false,
+                            "x_offset": 0,
+                            "y_offset": 0
+                        }
+                    },
+                    "tile-back_8": {
+                        "type": "Image",
+                        "data": {
+                            "texture": "tile-back",
+                            "anchor": [
+                                0.5,
+                                0.5
+                            ],
+                            "size": [
+                                30,
+                                38.46
+                            ],
+                            "angle": 0,
+                            "position": [
+                                320,
+                                0
+                            ],
+                            "visible":true
+                        },
+                        "layout": {
+                            "x_anchor": "left",
+                            "y_anchor": "top",
+                            "absolute": false,
+                            "x_offset": 0,
+                            "y_offset": 0
+                        }
+                    },
+                    "tile-back_9": {
+                        "type": "Image",
+                        "data": {
+                            "texture": "tile-back",
+                            "anchor": [
+                                0.5,
+                                0.5
+                            ],
+                            "size": [
+                                30,
+                                38.46
+                            ],
+                            "angle": 0,
+                            "position": [
+                                360,
+                                0
+                            ],
+                            "visible":true
+                        },
+                        "layout": {
+                            "x_anchor": "left",
+                            "y_anchor": "top",
+                            "absolute": false,
+                            "x_offset": 0,
+                            "y_offset": 0
+                        }
+                    },
+                    "tile-back_10": {
+                        "type": "Image",
+                        "data": {
+                            "texture": "tile-back",
+                            "anchor": [
+                                0.5,
+                                0.5
+                            ],
+                            "size": [
+                                30,
+                                38.46
+                            ],
+                            "angle": 0,
+                            "position": [
+                                400,
+                                0
+                            ],
+                            "visible": true
+                        },
+                        "layout": {
+                            "x_anchor": "left",
+                            "y_anchor": "top",
+                            "absolute": false,
+                            "x_offset": 0,
+                            "y_offset": 0
+                        }
+                    },
+                    "tile-back_11": {
+                        "type": "Image",
+                        "data": {
+                            "texture": "tile-back",
+                            "anchor": [
+                                0.5,
+                                0.5
+                            ],
+                            "size": [
+                                30,
+                                38.46
+                            ],
+                            "angle": 0,
+                            "position": [
+                                440,
+                                0
+                            ],
+                            "visible":true
+                        },
+                        "layout": {
+                            "x_anchor": "left",
+                            "y_anchor": "top",
+                            "absolute": false,
+                            "x_offset": 0,
+                            "y_offset": 0
+                        }
+                    },
+                    "tile-back_12": {
+                        "type": "Image",
+                        "data": {
+                            "texture": "tile-back",
+                            "anchor": [
+                                0.5,
+                                0.5
+                            ],
+                            "size": [
+                                30,
+                                38.46
+                            ],
+                            "angle": 0,
+                            "position": [
+                                480,
+                                0
+                            ],
+                            "visible":true
+                        },
+                        "layout": {
+                            "x_anchor": "left",
+                            "y_anchor": "top",
+                            "absolute": false,
+                            "x_offset": 0,
+                            "y_offset": 0
+                        }
+                    },
+                    "tile-back_13": {
+                        "type": "Image",
+                        "data": {
+                            "texture": "tile-back",
+                            "anchor": [
+                                0.5,
+                                0.5
+                            ],
+                            "size": [
+                                30,
+                                38.46
+                            ],
+                            "angle": 0,
+                            "position": [
+                                520,
+                                0
+                            ],
+                            "visible":true
+                        },
+                        "layout": {
+                            "x_anchor": "left",
+                            "y_anchor": "top",
+                            "absolute": false,
+                            "x_offset": 0,
+                            "y_offset": 0
+                        }
+                    }
+                },
+                "layout": {
+                    "x_anchor": "left",
+                    "y_anchor": "top",
+                    "absolute": false,
+                    "x_offset": 0.06,
+                    "y_offset": -0.175
+                }
+            },
+            "player-hand-rec": {
+                "type": "Image",
+                "data": {
+                    "texture": "opponent-hand-rec",
+                    "anchor": [
+                        0.5,
+                        0.5
+                    ],
+                    "size": [
+                        449.04,
+                        63
+                    ],
+                    "angle": 0,
+                    "position": [
+                        346,
+                        818
+                    ],
+                    "visible": false
+                },
+                "layout": {
+                    "x_anchor": "left",
+                    "y_anchor": "top",
+                    "absolute": false,
+                    "x_offset": 0.79,
+                    "y_offset": -0.2
+                }
+            },
+            "player-hand-tile": {
                 "type": "Node",
                 "format": {
                     "type": "Float",
@@ -1635,7 +2477,7 @@
                     "x_anchor": "left",
                     "y_anchor": "top",
                     "absolute": false,
-                    "x_offset": 0.03,
+                    "x_offset": 0.655,
                     "y_offset": -0.175
                 }
             }

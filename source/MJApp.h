@@ -20,6 +20,9 @@
 #include "MJAnimationController.h"
 #include "MJMatchController.h"
 #include "MJLoadingScene.h"
+#include "MJInfoScene.h"
+#include "MJTutorialScene.h"
+#include "MJInputController.h"
 
 /**
  * This class represents the application root for the Mah's Jong game
@@ -32,6 +35,8 @@ protected:
     enum State {
         LOAD,
         MENU,
+        INFO,
+        TUTORIAL,
         HOST,
         CLIENT,
         GAME,
@@ -67,8 +72,14 @@ protected:
     PauseScene _pause;
     /** The scene for when the match ends/ is over */
     GameOverScene _gameover;
+    /** The information scene for player onboarding and in-game information */
+    InfoScene _info;
+    /** The tutorial scene for player onboarding outside of the game */
+    TutorialScene _tutorial;
     /** The match controller for the game*/
     std::shared_ptr<MatchController> _matchController;
+    /** The input controller for the game */
+    std::shared_ptr<InputController> _inputController;
     /** Whether or not we finished loading all assets*/
     bool _loaded;
     /** Scene loader reference */
@@ -81,6 +92,7 @@ protected:
     std::shared_ptr<NetworkController> _network;
     /** Reference to audio controller for game sounds */
 //    std::shared_ptr<AudioController> _audio;
+
 public:
     /**
      * Creates, but does not initialized a new application. Remember,
@@ -201,6 +213,20 @@ private:
      * @param timestep   The amount of time (in seconds) since the last frame 
      */
     void updateMatchController(float timestep);
+    
+    /**
+    * Individualzed update method for the info scene
+    *
+    * @param timestep   The amount of time (in seconds) since the last frame
+    */
+    void updateInfoScene(float timestep);
+    
+    /**
+    * Individualzed update method for the tutorial scene
+    *
+    * @param timestep   The amount of time (in seconds) since the last frame
+    */
+    void updateTutorialScene(float timestep);
 };
 
 #endif

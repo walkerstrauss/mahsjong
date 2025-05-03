@@ -48,18 +48,11 @@
 
 
 void OurLoadingScene::resizeScene() {
-    std::shared_ptr<SceneNode> node = _assets->get<SceneNode>("load.after");
-    node->setContentSize(getSize());
-    node->doLayout();
-    //std::shared_ptr<cugl::scene2::SceneNode> loadLayer =
-    //    std::dynamic_pointer_cast<cugl::scene2::SceneNode>(this->getChildByName("load"));
-
-    //loadLayer->setContentSize(cugl::Size(1280, 720));
-    
-    }
-    
-
-    
+    Scene2::initWithHint(0, 720);
+    Size dimen = getSize();
+    _after->setContentSize(dimen);
+    _after->getChild(0)->setContentSize(dimen);
+    _after->doLayout();
     
     /**
     

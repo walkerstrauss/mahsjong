@@ -10,6 +10,12 @@
 #include "MJPlayer.h"
 #include "MJAnimationController.h"
 
+#define VELOCITY_THRESHOLD 2.0f
+#define ROTATE_MAX 0.3f
+
+#define SPRING 0.05f
+#define DAMP 0.05f
+
 /**
  * This is the class intializing and handling the pile.
  */
@@ -78,7 +84,7 @@ bool Pile::createPile() {
             
             std::shared_ptr<TileSet::Tile> tile = _tileSet->deck[index];
             
-            tile->_scale = 0.1;
+            tile->_scale = 0.275;
             tile->inPile = true;
             tile->pileCoord = cugl::Vec2(i, j);
             tile->inDeck = false; 
@@ -89,7 +95,7 @@ bool Pile::createPile() {
         _pile.push_back(row); //add tile from deck to pile
     }
     
-    updateTilePositions();
+    setTilePositions();
     
     // Erase tiles put into the pile from deck
     if(_tileSet->deck.size() <= 25){
@@ -102,11 +108,12 @@ bool Pile::createPile() {
     return true;
 }
 
-void Pile::updateTilePositions() {
-    cugl::Size screenSize(1561, 720); //Temporary pile placement fix
-
+void Pile::setTilePositions() {
     float spacingY = 1.0f;
     float spacingX = 1.0f;
+    
+    float height = pileBox.getMaxY() - pileBox.getMinY();
+    float width = pileBox.getMaxX() - pileBox.getMinX();
     
     _pileMap.clear();
     
@@ -115,19 +122,15 @@ void Pile::updateTilePositions() {
             std::shared_ptr<TileSet::Tile> tile = _pile[i][j];
             if (tile == nullptr) continue;
             
-            cugl::Size _size = tile->getTileTexture()->getSize();
+            cugl::Size _size = tile->getBackTextureNode()->getSize();
             cugl::Vec2 tileSize(_size.width * tile->_scale, _size.height * tile->_scale);
             
             float pileWidth = (_pileSize - 1) * (tileSize.x * spacingX);
             float pileHeight = (_pileSize - 1)* (tileSize.y * spacingY);
-            cugl::Vec2 pileOffset((screenSize.width - pileWidth) / 2, (screenSize.height - pileHeight) / 2);
-            
+            Vec2 pileOffset((pileBox.origin.x + (width - pileWidth) * 0.5f), (pileBox.origin.y + (height - pileHeight) * 0.5f));
+
             float x = j * tileSize.x * spacingX;
             float y = i * tileSize.y * spacingY;
-            
-            if (!AnimationController::getInstance().isTileAnimated(tile)) {
-                AnimationController::getInstance().addTileAnim(tile, tile->pos, (Vec2(x, y) + pileOffset), tile->_scale, tile->_scale, 20, false);
-            }
             
             tile->pos = cugl::Vec2(x, y) + pileOffset;
 
@@ -136,6 +139,40 @@ void Pile::updateTilePositions() {
         }
     }
 }
+
+void Pile::updateTilePositions(float dt) {
+    for (int i = 0; i < _pileSize; i++) {
+        for (int j = 0; j < _pileSize; j++) {
+            std::shared_ptr<TileSet::Tile> tile = _pile[i][j];
+            if(tile == nullptr){
+                continue;
+            }
+            Vec2 pos = tile->pos;
+            Vec2 origin = Vec2(tile->getTileTexture()->getSize().width/2, tile->getTileTexture()->getSize().height/2);
+            
+            Size textureSize(tile->getBackTextureNode()->getTexture()->getSize());
+            Vec2 rectOrigin(pos - (textureSize * tile->_scale)/2);
+            tile->tileRect = cugl::Rect(rectOrigin, textureSize * tile->_scale);
+            
+            float velocity = tile->getContainer()->getPosition().x - tile->pos.x;
+            float displacement = tile->getContainer()->getAngle();
+            float force = -SPRING * displacement - DAMP * velocity;
+            
+            Vec2 lerpPos = tile->getContainer()->getPosition();
+            lerpPos.lerp(pos, 0.5);
+            
+            velocity += force * dt;
+            displacement = std::clamp(velocity * dt, -ROTATE_MAX, ROTATE_MAX);
+            
+            tile->getContainer()->setAnchor(Vec2::ANCHOR_CENTER);
+            tile->getContainer()->setAngle(displacement);
+            tile->getContainer()->setScale(tile->_scale);
+            tile->getContainer()->setPosition(lerpPos);
+            tile->getContainer()->setVisible(true);
+        }
+    }
+}
+
 
 #pragma mark -
 #pragma mark Gameplay Handling
@@ -229,6 +266,8 @@ void Pile::remakePile(){
             _pileMap.insert({key, currTile->pileCoord});
         }
     }
+    
+    setTilePositions();
 }
 
 /**
@@ -242,17 +281,7 @@ void Pile::draw(const std::shared_ptr<cugl::graphics::SpriteBatch>& batch) {
             if(tile == nullptr){
                 continue;
             }
-            cugl::Vec2 origin = cugl::Vec2(tile->getTileTexture()->getSize().width/2, tile->getTileTexture()->getSize().height/2);
-            
-            cugl::Affine2 trans;
-            trans.scale(tile->_scale);
-            trans.translate(tile->pos);
-            
-            Size textureSize(750.0, 1000.0);
-            cugl::Vec2 rectOrigin(tile->pos - (textureSize * tile->_scale)/2);
-            tile->tileRect = cugl::Rect(rectOrigin, textureSize * tile->_scale);
-
-            batch->draw(tile->getTileTexture(), origin, trans);
+            tile->getContainer()->render(batch, Affine2::IDENTITY, Color4::WHITE);
         }
     }
 }
@@ -298,102 +327,55 @@ void Pile::removeNumTiles(int nums) {
     CUAssertLog(nums == 0, "Did not delete correct amount of tiles");
 }
 
-///**
-// * Method to handle pair making for the pile, including removing from pile and returning removed tiles
-// *
-// * @param player    the player whose hand the tiles in the pair are being drawn to
-// * @return a vector of tiles in the pair
-// */
-//std::vector<std::shared_ptr<TileSet::Tile>> Pile::pairTile(const std::shared_ptr<Player>& player) {
-//    int x = _pairs[0]->pileCoord.x; //Get the pairs posistion in the pile
-//    int y = _pairs[0]->pileCoord.y;
-//    int X = _pairs[1]->pileCoord.x;
-//    int Y = _pairs[1]->pileCoord.y;
-//
-//    std::shared_ptr<TileSet::Tile> _tile1 = _pile[x][y];
-//    std::shared_ptr<TileSet::Tile> _tile2 = _pile[X][Y];
-//    
-//    if (_tile1->getRank() == _tile2->getRank() && _tile1->getSuit() == _tile2->getSuit()) { //Valid pair?
-//        CULog("VALID!\n");
-//        if (!player->discarding){
-//            player->discarding = true;
-//            for (auto& tile : player->getHand()._selectedTiles){
-//                player->getHand().discard(tile);
-//                tile->selected = false;
-//                tile->inHand = false;
-//                tile->inPile = false;
-//            }
-//            player->getHand()._selectedTiles.clear();
-//            player->discarding = false;
-//            
-//            player->getHand()._tiles.push_back(_tile1);
-//            player->getHand()._tiles.push_back(_tile2);
-//            
-//            _tile1->inHand = true;
-//            _tile2->inHand = true;
-//    
-//            _tile1->inPile = false;
-//            _tile2->inPile = false;
-//            
-//            _tile1->selected = false;
-//            _tile2->selected = false;
-//
-//            //Remove tiles from pile
-//            _pile[x][y] = nullptr;
-//            _pile[X][Y] = nullptr;
-//        }
-//    }
-//    else {
-//        for (auto& tile : player->getHand()._selectedTiles){
-//            tile->selected = false;
-//        }
-//        player->getHand()._selectedTiles.clear();
-//        _tile1->selected = false;
-//        _tile2->selected = false;
-//        CULog("NAW!\n");
-//    }
-//    return _draw;
-//}
 
-///**
-// * Method to check if the player has selected two tiles that form a pair and handle pairs
-// *
-// * @param player    the player for the game
-// */
-//void Pile::pairs(const cugl::Vec2 mousePos, const std::shared_ptr<Player>& player) {
-//    for (int i = 0; i < getPileSize(); i++) {//Loop through our pile
-//        for (int j = 0; j < getPileSize(); j++) {
-//            if (_pile[i][j] == nullptr) { //If no longer in pile
-//                continue;
-//            }
-//            std::shared_ptr<TileSet::Tile> _tile = _pile[i][j]; //Collect tile
-//        
-//            if (_tile->tileRect.contains(mousePos)) {
-//                int index = 0;
-//                for (const auto& it : _pairs) { //Checks whether the tile we selected is already selected. if it is deselect
-//                    if (_tile->toString() == it->toString() && _tile->_id == it->_id) {
-//                        _tile->pileCoord = cugl::Vec2();
-//                        _pairs.erase(_pairs.begin() + index);
-//                        return; //If it is already in the pairs, remove it
-//                    }
-//                    index += 1;
-//                }
-//                if (_pairs.size() < 2) { //Do we have a pair selected?
-//                    _tile->pileCoord = cugl::Vec2(i, j);
-//                    _pairs.push_back(_tile);
-//                }
-//            }
-//        }
-//    }
-//    // Handle pair selection
-//    if(_pairs.size() == 2){
-//        if(player->getHand()._selectedTiles.size() == 2){
-//            pairTile(player);
-//            _pairs[0]->pileCoord = cugl::Vec2();
-//            _pairs[1]->pileCoord = cugl::Vec2();
-//            _pairs.clear();
-//        }
-//    }
-//}
+void Pile::updateRow(int row, const std::vector<std::shared_ptr<TileSet::Tile>>& tiles, float dt) {
+    for (int j = 0; j < _pileSize; j++) {
+        if (_pile[row][j] != nullptr) {
+            _pile[row][j] = tiles[j];
+            _pile[row][j]->pileCoord = cugl::Vec2(row, j);
+        }
+    }
+    setTilePositions();
+}
+
+int Pile::selectedRow(std::shared_ptr<TileSet::Tile> tile) {
+    for (int i = 0; i < _pileSize; i++) {
+        for (int j = 0; j < _pileSize; j++) {
+            if (_pile[i][j] == tile) {
+                return i;
+                break;
+            }
+        }
+    }
+    return -1;
+}
+
+void Pile::pileJump(float dt) {
+    time += dt;
+    if (time < 5.0f) return;
+    time = 0.0f;
+    
+    int stagger = 0;
+    
+    Application* app = Application::get();
+    for (int i = _pileSize - 1; i >= 0; --i) {
+      for (int j = 0; j < _pileSize; ++j) {
+          std::shared_ptr<TileSet::Tile> tile = _pile[i][j];
+            if(!tile) {
+                continue;
+            }
+            app->schedule([tile](){
+              tile->pos.y += 3.0f;
+              return false;
+            }, stagger + 0.05);
+            
+            app->schedule([tile](){
+              tile->pos.y -= 3.0f;
+              return false;
+            }, stagger += 100);
+        }
+    }
+}
+
 
 

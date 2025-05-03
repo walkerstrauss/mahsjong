@@ -94,6 +94,25 @@ void NetworkController::disconnect() {
     if(_network && _network->isOpen()) {
         _network->close();
     }
+    
+    // Resetting the states
+    _status = IDLE;
+    _mapUpdateType = NOUPDATE;
+    _celestialUpdateType = NONE;
+    
+    // Resetting fields
+    _isHost = false;
+    _roomid = "";
+    _currentTurn = 0;
+    _localPid = -1;
+    
+    // Resetting networked JSON and values
+    _tileDrawn = nullptr;
+    _tileMapJson = nullptr;
+    _discardTile = nullptr;
+    _playedTiles = nullptr;
+    _celestialTile = nullptr;
+    
     _network = nullptr;
     _status = Status::IDLE;
     
@@ -185,6 +204,14 @@ void NetworkController::processData(const std::string source,
                 _tileMapJson = _deserializer->readJson();
                 _celestialTile = _deserializer->readJson();
                 _celestialUpdateType = SNAKE;
+            } else if (celestialType == "DRAGON") {
+                _tileMapJson = _deserializer->readJson();
+                _celestialTile = _deserializer->readJson();
+                _celestialUpdateType = DRAGON;
+            } else if (celestialType == "PIG") {
+                _tileDrawn = _deserializer->readJson();
+                _celestialTile = _deserializer->readJson();
+                _celestialUpdateType = PIG;
             }
             _status = PLAYEDCELESTIAL;
         }
@@ -192,43 +219,7 @@ void NetworkController::processData(const std::string source,
         if(msgType == "game concluded") {
             _status = ENDGAME;
         }
-        //
     }
-//    else if (msgType == "initialize game") {
-//        _startingDeckJson = _deserializer->readJson();
-//    }
-//    else if (msgType == "starting client deck") {
-//        _deckJson = _deserializer->readJson();
-//        _status = INGAME;
-//    }
-//    else if (msgType == "update deck") {
-//        _deckJson = _deserializer->readJson();
-//        _status = DECK;
-//    }
-//    else if (msgType == "pile tile update") {
-//        _pileTileJson = _deserializer->readJson();
-//        _isHostDraw = _isHost;
-//        _status = PILETILEUPDATE;
-//    }
-//    else if (msgType == "update layer") {
-//        _status = LAYER;
-//    }
-//    else if (msgType == "remove discard tile"){
-//        _status = REMOVEDISCARD;
-//    }
-//    else if (msgType == "new discard tile") {
-//        _discardTile = _deserializer->readJson();   
-//        _status = NEWDISCARD;
-//    }
-//    else if (msgType == "tile map update") {
-//        _tileMapJson = _deserializer->readJson();
-//    }
-//    else if (msgType == "preemptive draw") {
-//        int numToDraw = _deserializer->readUint32();
-//        bool isHost = _deserializer->readBool();
-//        _numDiscard = std::tuple<int, bool>(numToDraw, isHost);
-//        _status = PREEMPTIVEDISCARD;
-//    }
 }
 
 void NetworkController::endTurn() {
@@ -238,22 +229,6 @@ void NetworkController::endTurn() {
     _serializer->writeString("end turn");
     _serializer->writeUint32(_currentTurn);
     broadcast(_serializer->serialize());
-}
-
-void NetworkController::transmitSingleTile(TileSet::Tile& tile){
-    
-    //Process tile name and id
-    _serializer->writeString(tile.toString());
-    _serializer->writeString(std::to_string(tile._id));
-    if(tile.selected){
-        _serializer->writeString("true");
-    }
-    else{
-        _serializer->writeString("false");
-    }
-
-    broadcast(_serializer->serialize());
-    
 }
 
 bool NetworkController::checkConnection() {
@@ -530,7 +505,3 @@ void NetworkController::broadcastEnd(int isHost) {
 /** ** END OF MATCHCONTROLLER BROADCASTS** */
 
                                                                                                  
-//
-//void NetworkController::notifyObservers(std::vector<std::string>& msg){
-//    observer.processData(msg);
-//}

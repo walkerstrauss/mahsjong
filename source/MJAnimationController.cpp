@@ -47,4 +47,21 @@ void AnimationController::update(float dt) {
             }
         }
     }
+    
+    for (auto& anim: _spriteNodeAnims) {
+        if(!anim.done) {
+            anim.update(dt);
+        } else {
+            _spriteNodeAnims.erase(std::remove_if(_spriteNodeAnims.begin(), _spriteNodeAnims.end(), [&anim](const SpriteNodeAnim& a) {
+                return a.tile == anim.tile;}), _spriteNodeAnims.end());
+        }
+    }
+    
+    for (auto& anim: _fadeAnims){
+        if(anim.active){
+            anim.update(dt);
+        } else {
+            _fadeAnims.erase(std::remove_if(_fadeAnims.begin(), _fadeAnims.end(), [&anim](const FadeAnim& a) {return !anim.active;}), _fadeAnims.end());
+        }
+    }
 }
