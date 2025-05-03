@@ -654,6 +654,9 @@
                     }
                 },
                 "layout": {
+                    "x_anchor": "left",
+                    "y_anchor": "top",
+                    "absolute": false,
                     "x_offset": 0.05,
                     "y_offset": -0.07
                 }
