@@ -132,7 +132,7 @@ void MahsJongApp::update(float timestep) {
             updateLoadingScene(timestep);
             break;
         case MENU:
-            //_assets->loadDirectory("json/assets.json");
+            _assets->loadDirectory("json/assets.json");
             updateMenuScene(timestep);
             break;
         case HOST:
@@ -387,14 +387,14 @@ void MahsJongApp::updateGameScene(float timestep) {
             _gameplay.setGameActive(false);
             _gameover.type = GameOverScene::Type::WIN;
             _gameover.setActive(true);
-            AudioController::getInstance().playMusic("menuMusic", true);
+            AudioController::getInstance().playMusic("win", true);
             _scene = State::OVER;
             break;
         case GameScene::Choice::LOSE:
             _gameplay.setGameActive(false);
             _gameover.type = GameOverScene::Type::LOSE;
             _gameover.setActive(true);
-            AudioController::getInstance().playMusic("menuMusic", true);
+            AudioController::getInstance().playMusic("lose", true);
             _scene = State::OVER;
             break;
         case GameScene::Choice::DISCARDED:
@@ -508,11 +508,12 @@ void MahsJongApp::updateGameOverScene(float timestep) {
     _gameover.update(timestep);
     if (_gameover.choice == GameOverScene::Choice::MENU){
         _gameover.setActive(false);
-        AudioController::getInstance().playMusic("menuMusic", true);
+        //AudioController::getInstance().stopMusic();
         _mainmenu.setActive(true);
         _network->disconnect();
         _scene = State::MENU;
         _gameplay.dispose();
+        AudioController::getInstance().playMusic("menuMusic", true);
     } else if (_gameover.choice == GameOverScene::Choice::NONE){
         // Do nothing
         return;

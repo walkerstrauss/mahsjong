@@ -1493,7 +1493,17 @@
         },
         "menuMusic": {
             "type": "sample",
-            "file": "sounds/music/menu.mp3",
+            "file": "sounds/music/menu.wav",
+            "stream": true
+        },
+        "win": {
+            "type": "sample",
+            "file": "sounds/music/win.mp3",
+            "stream": true
+        },
+        "lose": {
+            "type": "sample",
+            "file": "sounds/music/lose.mp3",
             "stream": true
         },
         "Monkey": {
