@@ -58,7 +58,7 @@ void MahsJongApp::onStartup() {
     _loading.setSpriteBatch(_batch);
     
     // Get rid of wrong start button
-    std::shared_ptr<scene2::Button> wrongStart = std::dynamic_pointer_cast<scene2::Button>(_assets->get<scene2::SceneNode>("load.after.landingscene.button1"));
+    std::shared_ptr<scene2::Button> wrongStart = std::dynamic_pointer_cast<scene2::Button>(_assets->get<scene2::SceneNode>("load.play"));
     wrongStart->setVisible(false);
     
     _loading.start();

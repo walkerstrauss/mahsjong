@@ -82,25 +82,16 @@
                     }
                 },
                 "after" : {
-                    "type"   : "Node",
-                    "format"    : {
-                        "type" : "Anchored"
-                    },
-                    "children"  : {
-                        "landingscene"  : {
-                            "type"   : "Widget",
-                            "format"    : {
-                                "type" : "Anchored"
-                            },
-                            "data"   : {
-                                "key": "landingscene"
-                                }
-                        }
-                    },
-                    "layout" : {
-                        "x_anchor" : "fill",
-                        "y_anchor" : "fill"
-                    }
+                      "type"  : "Widget",
+                      "format"  : {
+                          "type" : "Anchored"
+                        },
+                      "data": {
+                          "variables":{
+                            "size": [1280,720]
+                          },
+                        "key": "landingscene"
+                      }
                 },
                 "play"  : {
                     "type": "Button",
