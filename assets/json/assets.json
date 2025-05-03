@@ -1486,7 +1486,7 @@
         },
         "win": {
             "type": "sample",
-            "file": "sounds/music/win.mp3",
+            "file": "sounds/music/win.wav",
             "stream": true
         },
         "lose": {
