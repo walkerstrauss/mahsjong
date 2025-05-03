@@ -43,7 +43,7 @@ bool SettingScene::init(const std::shared_ptr<cugl::AssetManager>& assets){
     float offset = (screenSize.width -_settingScene->getWidth())/2;
     _settingScene->setPosition(offset, _settingScene->getPosition().y);
 
-    AudioController::getInstance().init(_assets);
+    //AudioController::getInstance().init(_assets);
     
     
     choice = Choice::NONE;

@@ -51,7 +51,9 @@ bool AudioController::init(const std::shared_ptr<cugl::AssetManager>& assets){
         "Discard",
         "DrawDiscard",
         "bgm",
-        "menuMusic"
+        "menuMusic",
+        "win",
+        "lose"
     };
     
     for (const std::string& key  : _keys){

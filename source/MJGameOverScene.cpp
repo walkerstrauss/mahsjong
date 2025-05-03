@@ -45,7 +45,7 @@ bool GameOverScene::init(const std::shared_ptr<cugl::AssetManager>& assets){
     float offset = (screenSize.width -_winscene->getWidth())/2;
     _winscene->setPosition(offset, _winscene->getPosition().y);
 
-    AudioController::getInstance().init(_assets);
+    //AudioController::getInstance().init(_assets);
     
     // init the lose scene
     _losescene = _assets->get<scene2::SceneNode>("losescene");

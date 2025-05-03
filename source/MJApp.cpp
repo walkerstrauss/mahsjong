@@ -131,7 +131,7 @@ void MahsJongApp::update(float timestep) {
             updateLoadingScene(timestep);
             break;
         case MENU:
-            //_assets->loadDirectory("json/assets.json");
+            _assets->loadDirectory("json/assets.json");
             updateMenuScene(timestep);
             break;
         case HOST:
@@ -225,11 +225,12 @@ void MahsJongApp::draw() {
 void MahsJongApp::updateLoadingScene(float timestep) {
     AudioController::getInstance().init(_assets);
    if (_loading.isActive()) {
-       AudioController::getInstance().playMusic("menuMusic", true);
+       //AudioController::getInstance().playMusic("menuMusic", true);
        _loading.update(timestep);
        _loading.resizeScene();
    } else {
        _loading.dispose(); // Permanently disables the input listeners in this mod
+       AudioController::getInstance().playMusic("menuMusic", true);
        AudioController::getInstance().playSound("Confirm");
        
        _network = std::make_shared<NetworkController>();
@@ -386,14 +387,14 @@ void MahsJongApp::updateGameScene(float timestep) {
             _gameplay.setGameActive(false);
             _gameover.type = GameOverScene::Type::WIN;
             _gameover.setActive(true);
-            AudioController::getInstance().playMusic("menuMusic", true);
+            AudioController::getInstance().playMusic("win", true);
             _scene = State::OVER;
             break;
         case GameScene::Choice::LOSE:
             _gameplay.setGameActive(false);
             _gameover.type = GameOverScene::Type::LOSE;
             _gameover.setActive(true);
-            AudioController::getInstance().playMusic("menuMusic", true);
+            AudioController::getInstance().playMusic("lose", true);
             _scene = State::OVER;
             break;
         case GameScene::Choice::DISCARDED:
@@ -437,10 +438,10 @@ void MahsJongApp::updateSettingScene(float timestep){
         case SettingScene::Choice::MENU:
             _settings.setActive(false);
             _mainmenu.setActive(true);
+            _gameplay.dispose();
             if (last_scene == SettingScene::PrevScene::PAUSED) {
                 AudioController::getInstance().playMusic("menuMusic", true);
             }
-            _gameplay.dispose();
             _scene = State::MENU;
             break;
         case SettingScene::Choice::PAUSE:
@@ -507,11 +508,12 @@ void MahsJongApp::updateGameOverScene(float timestep) {
     _gameover.update(timestep);
     if (_gameover.choice == GameOverScene::Choice::MENU){
         _gameover.setActive(false);
-        AudioController::getInstance().playMusic("menuMusic", true);
+        //AudioController::getInstance().stopMusic();
         _mainmenu.setActive(true);
         _network->disconnect();
         _scene = State::MENU;
         _gameplay.dispose();
+        AudioController::getInstance().playMusic("menuMusic", true);
     } else if (_gameover.choice == GameOverScene::Choice::NONE){
         // Do nothing
         return;

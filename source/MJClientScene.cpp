@@ -100,7 +100,7 @@ bool ClientScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::s
     _backout = std::dynamic_pointer_cast<scene2::Button>(_assets->get<scene2::SceneNode>("client.clientscene.cancel-box"));
     _prepareOrStart = std::dynamic_pointer_cast<scene2::PolygonNode>(_assets->get<scene2::SceneNode>("client3.client3Scene.menu.button1.up.start"));
 
-    AudioController::getInstance().init(_assets);
+    //AudioController::getInstance().init(_assets);
 
     _backout->addListener([this](const std::string& name, bool down) {
         if (down) {

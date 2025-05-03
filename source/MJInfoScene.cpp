@@ -23,7 +23,7 @@ bool InfoScene::init(const std::shared_ptr<AssetManager>& assets){
     }
     
     _assets = assets;
-    AudioController::getInstance().init(_assets);
+    //AudioController::getInstance().init(_assets);
     
     _infoscene = _assets->get<SceneNode>("info");
     Size dimen = getSize();
