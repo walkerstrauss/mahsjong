@@ -29,6 +29,7 @@ public:
         MONKEYTILE,
         RATTILE,
         DRAGONTILE,
+        PIGTILE,
         DRAWNDISCARD,
         SUCCESS_SET,
         FAILED_SET, 
@@ -41,6 +42,8 @@ public:
     bool hasDiscarded = false;
     /** If current player has played a celestial tile or not */
     bool hasPlayedCelestial = false;
+    /** If the current player has timed out */
+    bool hasTimedOut = false;
     
 protected:
     /** The network connection */
@@ -57,10 +60,12 @@ protected:
     Choice _choice;
     /** The instance of the monkey tile that was played */
     std::shared_ptr<TileSet::Tile> _monkeyTile;
-    /** The instance of the rattile that was played */
+    /** The instance of the rat tile that was played */
     std::shared_ptr<TileSet::Tile> _ratTile;
-    /** The instance of the rattile that was played */
+    /** The instance of the dragon tile that was played */
     std::shared_ptr<TileSet::Tile> _dragonTile;
+    /** The instance of the pig tile that was played */
+    std::shared_ptr<TileSet::Tile> _pigTile;
     /** Currnet active state of game */
     bool _active; 
     /** Tiles to display in the opponent played set tab */
@@ -193,6 +198,11 @@ public:
      */
     void playDragon();
     
+    /**
+     * Executes the Pig celestial tile effect (draw any tile from discard) .
+     */
+    void playPig(std::pair<TileSet::Tile::Suit, TileSet::Tile::Rank> tile);
+    
     /** Applies the effect of the celestial tile played by opponent by using the celestial state of the network. */
     void celestialEffect();
     
@@ -200,7 +210,7 @@ public:
      * Call back for ending the turn for the current player. Must have drawn from the pile and dicsarded/played
      * a tile in order to end turn successfully. Resets the current turn requirements with a sucessful end.
      */
-    void endTurn(); 
+    void endTurn();
     
     /**
      * Resets the state of the current turn. Called after the turn ends to allow the next player to draw,
@@ -210,7 +220,11 @@ public:
         hasDrawn = false;
         hasDiscarded = false;
         hasPlayedCelestial = false;
+        hasTimedOut = false;
     }
+    
+    /** Handles game win by broadcasting to opponent that they have a full mahjong hand  */
+    void handleGameWin();
     
     /** Gets the current state of game */
     Choice getChoice() {

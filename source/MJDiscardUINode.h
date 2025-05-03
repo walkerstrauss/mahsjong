@@ -35,6 +35,8 @@ protected:
     std::shared_ptr<cugl::AssetManager> _assets;
     /** Vector of scene nodes representing labels for each tile type */
     std::vector<std::shared_ptr<cugl::scene2::Label>> _labels;
+    /** Scene node for the tile images */
+    std::shared_ptr<SceneNode> _tilesNode;
     /** The current state of DiscardUINode */
     State _state;
 
@@ -88,6 +90,13 @@ public:
      * @return The index in the _labels vector
      */
     int getLabelIndex(std::shared_ptr<TileSet::Tile> tile);
+    
+    /** Returns the suit and rank of the tile at the given index */
+    std::pair<TileSet::Tile::Suit, TileSet::Tile::Rank> tileFromIndex(int index) {
+        TileSet::Tile::Suit suit = static_cast<TileSet::Tile::Suit>(index / 9 + 1);
+        TileSet::Tile::Rank rank = static_cast<TileSet::Tile::Rank>(index % 9 + 1);
+        return std::make_pair(suit, rank);
+    }
 
     /**
      * Increments the label corresponding to the given tile.
@@ -95,7 +104,7 @@ public:
      * @param tile The tile to increment
      * @return true if successful
      */
-    bool incrementLabel(std::shared_ptr<TileSet::Tile> tile);
+    bool incrementLabel(int index);
 
     /**
      * Decrements the label corresponding to the given tile.
@@ -103,15 +112,14 @@ public:
      * @param tile The tile to decrement
      * @return true if successful
      */
-    bool decrementLabel(std::shared_ptr<TileSet::Tile> tile);
-
+    bool decrementLabel(int index);
+    
     /**
-     * Selects a tile from the discard UI by position.
-     *
-     * @param currPos The current input position
-     * @return A vector with one tile if selected, or empty if none
+     * Updates the label with the given discard pile
      */
-    std::vector<std::shared_ptr<TileSet::Tile>> selectTile(cugl::Vec2& currPos);
+    void updateLabels(std::vector<std::shared_ptr<TileSet::Tile>> discardPile);
+
+
     
     /** Gets the current state of this scene node */
     State getState() {
@@ -125,6 +133,25 @@ public:
     
     /** Sets this scene node as active */
     void setDiscardUIActive(bool active);
+    
+    /** Returns the index of the tile at the given mouse position in the discard ui*/
+    int getClickedTile(const Vec2& mousePos) const {
+        Vec2 localPos = _tilesNode->worldToNodeCoords(mousePos);
+
+        for (int i = 1; i <= 27; ++i) {
+            auto tileNode = _tilesNode->getChildByName(std::to_string(i));
+            int count = std::stoi(_labels[i - 1]->getText());
+            Rect bounds = tileNode->getBoundingBox();
+            CULog("localPos: %s", localPos.toString().c_str());
+            CULog("bounds: %s", bounds.toString().c_str());
+
+            if (bounds.contains(localPos) && count > 0) {
+                return i - 1;
+            }
+        }
+        return -1;
+    }
+
 };
 
 #endif /* __MJ_DISCARD_UI_NODE_H__ */

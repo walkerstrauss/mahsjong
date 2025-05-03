@@ -177,7 +177,7 @@ public:
     /**
      * Updates the position of all tiles in the hand for drawing to the screen and selection detection
      */
-    void updateTilePositions(cugl::Rect rect);
+    void updateTilePositions(cugl::Rect rect, float dt);
     
     /**
      * Method to draw the tiles in our hand to the screen (no longer used)

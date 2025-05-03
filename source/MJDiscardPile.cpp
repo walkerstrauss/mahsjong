@@ -9,6 +9,12 @@
 #include "MJPlayer.h"
 #include "MJTileSet.h"
 
+#define VELOCITY_THRESHOLD 2.0f
+#define ROTATE_MAX 0.3f
+
+#define SPRING 0.05f
+#define DAMP 0.05f
+
 using namespace cugl;
 using namespace cugl::scene2;
 using namespace cugl::graphics;
@@ -33,28 +39,6 @@ bool DiscardPile::init(const std::shared_ptr<cugl::AssetManager>& assets){
     return true;
 }
 
-bool DiscardPile::isTileSelected(const cugl::Vec2& mousePos){
-    // Tile position (matches render)
-    std::shared_ptr<TileSet::Tile> currTile = getTopTile();
-    if (currTile == nullptr){
-        return false;
-    }
-    else if(currTile->tileRect.contains(mousePos)){
-        if(currTile->selected){
-            currTile->_scale = 0.2;
-            currTile->selected = false;
-            _selectedTopTile -= 1;
-        }
-        else{
-            currTile->_scale = 0.25;
-            currTile->selected = true;
-            _selectedTopTile += 1;
-        }
-        return true;
-    }
-    return false;
-}
-
 /**
  * Method to take a tile from the discard pile.
  * Returns a tile for the player to add to hand and updates the dicard pile
@@ -76,21 +60,79 @@ std::shared_ptr<TileSet::Tile> DiscardPile::drawTopTile(){
     return topTile;
 }
 
+/** Method that finds tile that matches the suit and rank provided
+ *
+ * @return a tile with the matching suit and rank
+ */
+std::shared_ptr<TileSet::Tile> DiscardPile::findTile(std::pair<TileSet::Tile::Suit, TileSet::Tile::Rank> info) {
+    if (_topTile && _topTile->getSuit() == info.first && _topTile->getRank() == info.second) {
+        return _topTile;
+    }
+    for(auto& tile : _discardPile){
+        if (!tile) continue; // skip null tiles
+        CULog("Checking tile: Suit=%d, Rank=%d vs Target: Suit=%d, Rank=%d",
+            (int)tile->getSuit(), (int)tile->getRank(),
+            (int)info.first, (int)info.second);
+        
+        if (tile->getSuit() == info.first && tile->getRank() == info.second) {
+            return tile;
+        }
+    }
+    return nullptr;
+}
+
+/** Method that removes the given instance of tile from the discard pile */
+void DiscardPile::removeTile(std::shared_ptr<TileSet::Tile> tile) {
+    if (tile == _topTile) {
+        removeTopTile();
+        return;
+    }
+    auto it = _discardPile.begin();
+    while(it != _discardPile.end()){
+        if ((*it)->_id == tile->_id) {
+            _discardMap.erase(std::to_string((*it)->_id));
+            _discardPile.erase(it);
+            break;
+        } else {
+            it++;
+        }
+    }
+}
+
+/*
+ * Method to render the top card of the discard pile
+ */
+void DiscardPile::updateTilePositions(float dt) {
+    if(_topTile) {
+        Vec2 pos = _topTile->pos;
+        Vec2 origin = Vec2(_topTile->getTileTexture()->getSize().width/2, _topTile->getTileTexture()->getSize().height/2);
+        
+        Size textureSize(_topTile->getBackTextureNode()->getTexture()->getSize());
+        Vec2 rectOrigin(pos - (textureSize * _topTile->_scale)/2);
+        _topTile->tileRect = cugl::Rect(rectOrigin, textureSize * _topTile->_scale);
+       
+        float velocity = _topTile->getContainer()->getPosition().x - _topTile->pos.x;
+        float displacement = _topTile->getContainer()->getAngle();
+        float force = -SPRING * displacement - DAMP * velocity;
+        
+        Vec2 lerpPos = _topTile->getContainer()->getPosition();
+        lerpPos.lerp(pos, 0.5);
+        
+        velocity += force * dt;
+        displacement = std::clamp(velocity * dt, -ROTATE_MAX, ROTATE_MAX);
+        
+        _topTile->getContainer()->setAnchor(Vec2::ANCHOR_CENTER);
+        _topTile->getContainer()->setAngle(displacement);
+        _topTile->getContainer()->setScale(_topTile->_scale);
+        _topTile->getContainer()->setPosition(lerpPos);
+    }
+}
+
 /*
  * Method to render the top card of the discard pile
  */
 void DiscardPile::draw(const std::shared_ptr<cugl::graphics::SpriteBatch>& batch){
     if(_topTile) {
-        Vec2 pos = _topTile->pos;
-        Vec2 origin = Vec2(_topTile->getBackTextureNode()->getTexture()->getSize().width/2, _topTile->getBackTextureNode()->getTexture()->getSize().height/2);
-        
-        Size textureSize(_topTile->getBackTextureNode()->getTexture()->getSize());
-        Vec2 rectOrigin(pos - (textureSize * _topTile->_scale)/2);
-        _topTile->tileRect = cugl::Rect(rectOrigin, textureSize * _topTile->_scale);
-        
-        _topTile->getContainer()->setAnchor(Vec2::ANCHOR_CENTER);
-        _topTile->getContainer()->setScale(_topTile->_scale);
-        _topTile->getContainer()->setPosition(pos);
         _topTile->getContainer()->render(batch, Affine2::IDENTITY, Color4::WHITE);
     }
 }
