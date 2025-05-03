@@ -192,6 +192,37 @@ private:
         }
     };
     
+    struct FadeAnim {
+        std::shared_ptr<SceneNode> node;
+        float duration;
+        float timeElapsed;
+        bool fadeIn;
+        bool active = false;
+        
+        FadeAnim(std::shared_ptr<SceneNode> n, float d, bool f) : node(n), duration(d), timeElapsed(0.0f), fadeIn(f){
+            active = true;
+        }
+        
+        void update(float timestep){
+            if (!active){
+                return;
+            }
+            
+            timeElapsed += timestep;
+            float progress = std::min(timeElapsed / duration, 1.0f);
+            int alpha = fadeIn ? (int)(255 * progress) : (int)(255 * (1 - progress));
+
+            Color4 color = node->getColor();
+            color.a = alpha;
+            node->setColor(color);
+            
+            if (progress == 1.0f) {
+                active = false;
+                node->setVisible(fadeIn);
+            }
+        }
+    };
+    
     /** Reference to asset manager for getting sprite sheets */
     std::shared_ptr<cugl::AssetManager> _assets;
     /** Vector holding sprites for controller animating */
@@ -200,6 +231,8 @@ private:
     std::vector<TileAnim> _TileAnims;
     /** Vector holding sprite node animations */
     std::vector<SpriteNodeAnim> _spriteNodeAnims;
+    /** Vector holding fade animations */
+    std::vector<FadeAnim> _fadeAnims;
     /** Whether the animation controller is currently paused */
     bool _paused;
     
@@ -245,6 +278,35 @@ public:
      */
     void addSpriteNodeAnim(std::shared_ptr<TileSet::Tile>& tile, std::shared_ptr<graphics::Texture> fromTexture, std::shared_ptr<graphics::Texture> toTexture, std::shared_ptr<graphics::Texture> idle, int fps) {
         _spriteNodeAnims.emplace_back(tile, fromTexture, toTexture, idle, fps);
+    }
+    
+    void fadeIn(std::shared_ptr<SceneNode> node, float duration){
+        for (auto& anim: _fadeAnims){
+            if (anim.node == node && anim.fadeIn && anim.active){
+                return;
+            }
+        }
+        node->setVisible(true);
+        _fadeAnims.emplace_back(node, duration, true);
+    }
+    
+    void fadeOut(std::shared_ptr<SceneNode> node, float duration){
+        for (auto& anim: _fadeAnims){
+            if (anim.node == node && !anim.fadeIn && anim.active){
+                return;
+            }
+        }
+        _fadeAnims.emplace_back(node, duration, false);
+    }
+    
+    void tryAddFade(std::shared_ptr<SceneNode> node, bool shouldShow, float duration, bool& wasVisible){
+        if (shouldShow && !wasVisible){
+            fadeIn(node, duration);
+            wasVisible = true;
+        } else if (!shouldShow && wasVisible){
+            fadeOut(node, duration);
+            wasVisible = false;
+        }
     }
     
     bool isTileAnimated(const std::shared_ptr<TileSet::Tile>& tile){

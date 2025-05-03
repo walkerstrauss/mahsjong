@@ -23,6 +23,7 @@ bool InfoScene::init(const std::shared_ptr<AssetManager>& assets){
     }
     
     _assets = assets;
+    //AudioController::getInstance().init(_assets);
     
     _infoscene = _assets->get<SceneNode>("info");
     Size dimen = getSize();
@@ -89,28 +90,28 @@ void InfoScene::addListeners(){
         if (!down){
             nextPage = WIN;
             _pageChanged = true;
-            AudioController::getInstance().playSound("confirm", false);
+            AudioController::getInstance().playSound("Select", false);
         }
     });
     _celestial1->addListener([this](const std::string&name, bool down){
         if (!down){
             nextPage = TILE;
             _pageChanged = true;
-            AudioController::getInstance().playSound("confirm", false);
+            AudioController::getInstance().playSound("Select", false);
             
         }
     });
     _close1->addListener([this](const std::string&name, bool down){
         if (!down){
             choice = BACK;
-            AudioController::getInstance().playSound("back", false);
+            AudioController::getInstance().playSound("Done", false);
         }
     });
     _eachTurn2->addListener([this](const std::string&name, bool down){
         if (!down){
             nextPage = TURN;
             _pageChanged = true;
-            AudioController::getInstance().playSound("confirm", false);
+            AudioController::getInstance().playSound("Select", false);
         }
     });
     _eachTurn2->setVisible(false);
@@ -118,13 +119,13 @@ void InfoScene::addListeners(){
         if (!down){
             nextPage = TILE;
             _pageChanged = true;
-            AudioController::getInstance().playSound("confirm", false);
+            AudioController::getInstance().playSound("Select", false);
         }
     });
     _close2->addListener([this](const std::string&name, bool down){
         if (!down){
             choice = BACK;
-            AudioController::getInstance().playSound("back", false);
+            AudioController::getInstance().playSound("Done", false);
         }
     });
     _close2->setVisible(false);
@@ -132,7 +133,7 @@ void InfoScene::addListeners(){
         if (!down){
             nextPage = TURN;
             _pageChanged = true;
-            AudioController::getInstance().playSound("confirm", false);
+            AudioController::getInstance().playSound("Select", false);
         }
     });
     _eachTurn3->setVisible(false);
@@ -140,14 +141,14 @@ void InfoScene::addListeners(){
         if (!down){
             nextPage = WIN;
             _pageChanged = true;
-            AudioController::getInstance().playSound("confirm", false);
+            AudioController::getInstance().playSound("Select", false);
         }
     });
     _howWin3->setVisible(false);
     _close3->addListener([this](const std::string&name, bool down){
         if (!down){
             choice = BACK;
-            AudioController::getInstance().playSound("back", false);
+            AudioController::getInstance().playSound("Done", false);
         }
     });
     _close3->setVisible(false);

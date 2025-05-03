@@ -56,4 +56,12 @@ void AnimationController::update(float dt) {
                 return a.tile == anim.tile;}), _spriteNodeAnims.end());
         }
     }
+    
+    for (auto& anim: _fadeAnims){
+        if(anim.active){
+            anim.update(dt);
+        } else {
+            _fadeAnims.erase(std::remove_if(_fadeAnims.begin(), _fadeAnims.end(), [&anim](const FadeAnim& a) {return !anim.active;}), _fadeAnims.end());
+        }
+    }
 }

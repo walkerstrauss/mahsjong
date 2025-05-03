@@ -106,7 +106,7 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::sha
             _backBtn->activate();
             _discardUINode->_root->setVisible(true);
             AnimationController::getInstance().pause();
-            AudioController::getInstance().playSound("confirm");
+            AudioController::getInstance().playSound("Select");
         }
     });
     
@@ -118,7 +118,7 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::sha
             setActive(true);
             setGameActive(true);
             _discardUINode->_root->setVisible(false);
-            AudioController::getInstance().playSound("back");
+            AudioController::getInstance().playSound("Done");
         }
     });
     
@@ -126,7 +126,7 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::sha
     _settingBtn->addListener([this](const std::string& name, bool down){
         if (!down){
             _choice = SETTING;
-            AudioController::getInstance().playSound("confirm");
+            AudioController::getInstance().playSound("Select");
         }
     });
     
@@ -135,7 +135,7 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::sha
     _infoBtn->addListener([this](const std::string& name, bool down){
         if (!down){
             _choice = INFO;
-            AudioController::getInstance().playSound("confirm",false);
+            AudioController::getInstance().playSound("Select",false);
         }
     });
     
@@ -160,6 +160,7 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::sha
     _opponentHandBtn = std::dynamic_pointer_cast<Button>(_assets->get<SceneNode>("matchscene.gameplayscene.opponent-hand"));
     _opponentHandBtn->addListener([this](const std::string& name, bool down){
         if (!down){
+            AudioController::getInstance().playSound("Select");
             _opponentHandRec->setVisible(!_opponentHandRec->isVisible());
             for (int i = 0; i < _opponentHandTiles.size(); i++){
                 _opponentHandTiles[i]->setVisible(!_opponentHandTiles[i]->isVisible());
@@ -319,7 +320,7 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::sha
         )
     );
 
-    _dragToDiscardNode->setVisible(true);
+    _dragToDiscardNode->setVisible(false);
 
     _dragToHandNode = std::dynamic_pointer_cast<cugl::scene2::TexturedNode>(
         _assets->get<cugl::scene2::SceneNode>(
@@ -331,7 +332,7 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::sha
     
     _playSetBtn->addListener([this](const std::string& name, bool down) {
         if (!down) {
-            AudioController::getInstance().playSound("confirm");
+            AudioController::getInstance().playSound("Select");
             if(!_matchController->playSet()) {
                 _discardedTileImage->setVisible(true);
             };
@@ -386,6 +387,15 @@ void GameScene::reset() {
  * @param timestep The amount of time (in seconds) since the last frame
  */
 void GameScene::update(float timestep) {
+    if (_input->getKeyPressed() == cugl::KeyCode::A && _input->getPrevKeyPressed() != cugl::KeyCode::A) {
+
+        // there are multiple _choice. One is from MatchController, and the other is from GameScene.
+        _choice = Choice::WIN;
+
+        _matchController->setChoice(MatchController::Choice::WIN);
+
+        _network->broadcastEnd(_network->getLocalPid());
+    }
     _matchController->update(timestep);
     
     // Fetching current mouse position
@@ -413,39 +423,8 @@ void GameScene::update(float timestep) {
         _choice = LOSE;
     }
     
-    int currTurn = _network->getCurrentTurn();
-    if (currTurn != prevTurnId){
-        prevTurnId = currTurn;
-        
-        if (currTurn == _network->getLocalPid()){
-            _turnTimeRemaining = TURN_DURATION;
-            turnTimerActive = true;
-        } else {
-            turnTimerActive = false;
-            _turnTimeRemaining = 0.0f;
-            _timer->setText("00:00");
-        }
-        
-    }
-    
-    if (turnTimerActive) {
-        _turnTimeRemaining -= timestep;
-        if (_turnTimeRemaining <= 0.0f){
-            _turnTimeRemaining = 0.0f;
-            turnTimerActive = false;
-            endTurnFromTimeout();
-        }
-        
-        int sec = static_cast<int>(_turnTimeRemaining);
-        
-        std::string timeAsStr = "00:";
-        if (sec < 10){
-            timeAsStr += "0";
-        }
-        
-        timeAsStr += std::to_string(sec);
-        _timer->setText(timeAsStr);
-    }
+    // Update timer display based on remaining time in turn
+    updateTurnTimer(timestep);
     
     // Updating discardUINode if matchController has a discard update
     if(_matchController->getChoice() == MatchController::Choice::DISCARDUIUPDATE) {
@@ -473,6 +452,7 @@ void GameScene::update(float timestep) {
     
     // If matchController state is SUCCESS_SET, deactivate button
     if(_matchController->getChoice() == MatchController::SUCCESS_SET) {
+        //AudioController::getInstance().playSound("PlayedSet");
         playerTabVisible = true;
         opponentTabVisible = true;
         _playSetBtn->setVisible(false);
@@ -482,6 +462,7 @@ void GameScene::update(float timestep) {
     
     // If matchController state is FAILED_SET, deactivate button and make discarded tile visible
     if(_matchController->getChoice() == MatchController::FAILED_SET) {
+        //AudioController::getInstance().playSound("WrongAction");
         _discardedTileImage->setVisible(true);
         _playSetBtn->setVisible(false);
         _playSetBtn->deactivate();
@@ -490,7 +471,7 @@ void GameScene::update(float timestep) {
     
     // UI Handling for Celestial Tiles
     if (_matchController->getChoice() == MatchController::Choice::MONKEYTILE) {
-        _tradeArea->setVisible(true);
+        AnimationController::getInstance().tryAddFade(_tradeArea, true, 0.2f, _wasTradeTileVisible);
     }
     
     if (_matchController->getChoice() == MatchController::Choice::RATTILE
@@ -557,51 +538,35 @@ void GameScene::update(float timestep) {
         bool releasedInPile = _input->didRelease() && _pileBox.contains(mousePos);
         // Drawing (from pile) logic
         
-        if(_pileBox.contains(initialMousePos) && releasedInPile &&  _matchController->getChoice() != MatchController::Choice::RATTILE) {
+        if(_pileBox.contains(initialMousePos) && releasedInPile &&  _matchController->getChoice() != MatchController::Choice::RATTILE && _matchController->getChoice() != MatchController::MONKEYTILE) {
             //            if(_pileBox.contains(initialMousePos) && releasedInPile) {
             if (_matchController->hasDrawn){
                 if (_matchController->hasPlayedCelestial){
+                     AudioController::getInstance().playSound("WrongAction", false);
                      showPlayerGuide("discard-to-end");
-                } else if (_matchController->getChoice() != MatchController::DRAGONTILE){
+                } else if (_matchController->getChoice() != MatchController::DRAGONTILE && _matchController->getChoice() != MatchController::PIGTILE){
+                     AudioController::getInstance().playSound("WrongAction", false);
                      showPlayerGuide("discard-or-play-to-end");
                 }
-            } else {
-                _remainingTiles--;
-                _remainingLabel->setText(std::to_string(_remainingTiles));
             }
-            AudioController::getInstance().playSound("confirm", false);
+            
             _matchController->drawTile();
         }
         
         updateSpriteNodes(timestep);
+    } else {
+        _tradeArea->setVisible(false);
+        _wasTradeTileVisible = false;
+        _dragToDiscardNode->setVisible(false);
+        _wasDragToDiscardVisible = false;
+        _dragToHandNode->setVisible(false);
+        _wasDragToHandVisible = false;
+        _playArea->setVisible(false);
+        _wasPlayAreaVisible = false;
     }
     
-    bool isDragging = (_dragInitiated && _draggingTile != nullptr);
-    int hand_length = static_cast<int>(_player->getHand()._tiles.size());
-
-    if (isDragging && _dragFromDiscard) {
-        _dragToHandNode->setVisible(true);
-        _dragToDiscardNode->setVisible(false);
-        _playArea->setVisible(false);
-    }
-    else if (isDragging && !_dragFromDiscard) {
-        if(hand_length == 14 && !_playSetBtn->isVisible() && _dragStartPos != mousePos && _draggingTile->getSuit()!=TileSet::Tile::Suit::CELESTIAL){
-            _dragToDiscardNode->setVisible(true);
-        } else if (_draggingTile->getSuit()==TileSet::Tile::Suit::CELESTIAL && _dragStartPos != mousePos && !_playSetBtn->isVisible()
-                   && _matchController->getChoice() == MatchController::Choice::NONE){
-            if (_network->getCurrentTurn() == _network->getLocalPid()){
-                _playArea->setVisible(true);
-            }
-        }
-        _dragToHandNode->setVisible(false);
-        _dragToHandVisible = false;
-    }
-    else {
-        // not dragging
-        _dragToDiscardNode->setVisible(false);
-        _dragToHandNode->setVisible(false);
-        _playArea->setVisible(false);
-    }
+    // Fade areas in or out depending on input
+    updateAreaVisibility(mousePos, timestep);
 }
 
 /**
@@ -657,13 +622,11 @@ void GameScene::render() {
         }
     }
     
-    
     if(_draggingTile && _draggingTile->_suit == TileSet::Tile::Suit::CELESTIAL) {
         if(_input->isDown() && _input->getInitialPosition() != _input->getPosition()) {
             _player->drawInfo(_draggingTile, _batch, _matchScene->getSize());
         }
     }
-    
 
     _batch->end();
 }
@@ -700,7 +663,7 @@ void GameScene::clickedTile(cugl::Vec2 mousePos){
 
                 if(currTile->selectable) {
                     if(currTile->selected) {
-                        AudioController::getInstance().playSound("deselect");
+                        AudioController::getInstance().playSound("Unclick");
 //                        AnimationController::getInstance().animateTileDeselect(currTile, 30);
                         auto it = std::find(_player->getHand()._selectedTiles.begin(), _player->getHand()._selectedTiles.end(), currTile);
                         if (it != _player->getHand()._selectedTiles.end()) {
@@ -709,7 +672,7 @@ void GameScene::clickedTile(cugl::Vec2 mousePos){
                         }
                     }
                     else {
-                        AudioController::getInstance().playSound("select");
+                        AudioController::getInstance().playSound("Click");
 //                        AnimationController::getInstance().animateTileSelect(currTile, 30);
                         _player->getHand()._selectedTiles.push_back(currTile);
                         currTile->selected = true;
@@ -729,7 +692,6 @@ void GameScene::clickedTile(cugl::Vec2 mousePos){
         }
     }
 }
-
 
 void GameScene::dragTile(){
     if (!_draggingTile) return;
@@ -773,9 +735,13 @@ void GameScene::updateDrag(const cugl::Vec2& mousePos, bool mouseDown, bool mous
                 if(_discardPile->getTopTile()) {
                     _dragFromDiscard = true;
                     _discardedTileImage->setVisible(false);
+                    AudioController::getInstance().playSound("DrawDiscard");
                     _draggingTile = _discardPile->getTopTile();
                     _draggingTile->pos = mousePos;
                     _draggingTile->_scale = 0.325;
+                }
+                else {
+                    AudioController::getInstance().playSound("WrongAction");
                 }
             }
         }
@@ -823,14 +789,23 @@ void GameScene::updateDrag(const cugl::Vec2& mousePos, bool mouseDown, bool mous
             if (_network->getCurrentTurn() == _network->getLocalPid()) {
                 if(_matchController->getChoice() == MatchController::DRAWNDISCARD) {
                     if(_draggingTile->_suit == TileSet::Tile::Suit::CELESTIAL) {
+                        AudioController::getInstance().playSound("WrongAction", false);
                         showPlayerGuide("drew-try-play");
                     } else {
-                        showPlayerGuide("drew-try-discard");
+                        if (_matchController->getChoice() != MatchController::PIGTILE && _matchController->getChoice() != MatchController::RATTILE) {
+                            AudioController::getInstance().playSound("WrongAction", false);
+                            showPlayerGuide("drew-try-discard");
+                        }
                     }
                 } else {
                     if(_draggingTile->_suit == TileSet::Tile::Suit::CELESTIAL && !_draggingTile->debuffed) {
                         if (!_matchController->playCelestial(_draggingTile) && _matchController->getChoice() != MatchController::DRAGONTILE) {
-                            showPlayerGuide("must-draw-play");
+                            AudioController::getInstance().playSound("WrongAction", false);
+                            if (_discardPile->getSize() < 1){
+                                showPlayerGuide("pig-fail");
+                            } else {
+                                showPlayerGuide("must-draw-play");
+                            }
                         }
                   }
                   else {
@@ -839,9 +814,9 @@ void GameScene::updateDrag(const cugl::Vec2& mousePos, bool mouseDown, bool mous
                           
                           _matchController->playMonkey(_draggingTile);
                           // Play the swap sound when the monkey tile is activated.
-                          AudioController::getInstance().playSound("swap");
+                          //AudioController::getInstance().playSound("swap");
                           
-                          _tradeArea->setVisible(false);
+                          AnimationController::getInstance().tryAddFade(_tradeArea, false, 0.2f, _wasTradeTileVisible);
                           // Rebind _player to prevent null ptr error
                           _player = _network->getHostStatus() ? _matchController->hostPlayer : _matchController->clientPlayer;
                           _matchController->setChoice(MatchController::Choice::NONE);
@@ -861,11 +836,13 @@ void GameScene::updateDrag(const cugl::Vec2& mousePos, bool mouseDown, bool mous
                           _discardUINode->incrementLabel(index);
                           _draggingTile->_scale = 0;
                       } else if (_matchController->getChoice() != MatchController::DRAGONTILE){
-                          showPlayerGuide("must-draw-discard");
+                          AudioController::getInstance().playSound("WrongAction", false);
+                          showPlayerGuide("must-draw-discard");;
                       }
                     }
                 }
             } else {
+                AudioController::getInstance().playSound("WrongAction", false);
                 showPlayerGuide("not-your-turn");
             }
         }
@@ -979,4 +956,42 @@ bool GameScene::isChow(const std::vector<std::shared_ptr<TileSet::Tile>>& tiles)
             sorted[1]->getSuit() == sorted[2]->getSuit() &&
             TileSet::Tile::toIntRank(sorted[1]->getRank()) - 1 == TileSet::Tile::toIntRank(sorted[0]->getRank()) &&
             TileSet::Tile::toIntRank(sorted[2]->getRank()) - 1 == TileSet::Tile::toIntRank(sorted[1]->getRank()));
+}
+
+void GameScene::updateAreaVisibility(Vec2 mousePos, float timestep){
+    bool isDragging = (_dragInitiated && _draggingTile != nullptr);
+    int hand_length = static_cast<int>(_player->getHand()._tiles.size());
+    
+    bool shouldShowToHand = isDragging && _dragFromDiscard;
+    bool shouldShow = isDragging && !_dragFromDiscard && _matchController->getChoice() != MatchController::DRAGONTILE && hand_length > _player->getHand()._size;
+    bool shouldShowDiscard = shouldShow && !_playSetBtn->isVisible() && _dragStartPos != mousePos && _draggingTile->getSuit() != TileSet::Tile::Suit::CELESTIAL;
+    bool shouldShowPlay = shouldShow && _draggingTile->getSuit() == TileSet::Tile::Suit::CELESTIAL && _dragStartPos != mousePos && !_playSetBtn->isVisible() && _matchController->getChoice() != MatchController::MONKEYTILE;
+    
+    AnimationController::getInstance().tryAddFade(_dragToHandNode, shouldShowToHand, 0.2f, _wasDragToHandVisible);
+    AnimationController::getInstance().tryAddFade(_dragToDiscardNode, shouldShowDiscard, 0.2f, _wasDragToDiscardVisible);
+    AnimationController::getInstance().tryAddFade(_playArea, shouldShowPlay, 0.2f, _wasPlayAreaVisible);
+}
+
+void GameScene::endTurnFromTimeout(){
+    if (_network->getCurrentTurn() != _network->getLocalPid()) return;
+    
+    _matchController->hasTimedOut = true;
+    
+    const auto& hand = _player->getHand();
+    if (hand._tiles.size() > hand._size) {
+        if (!hand._tiles.empty()){
+            auto discardTile = hand._tiles.back();
+            if (_matchController->discardTile(discardTile)){
+                _discardedTileImage->setTexture(_assets->get<Texture>(discardTile->toString()));
+                _discardedTileImage->setContentSize(32.88, 45);
+                _discardedTileImage->setVisible(true);
+                int index = _discardUINode->getLabelIndex(discardTile);
+                _discardUINode->incrementLabel(index);
+            } else {
+                CULog("hand already at required size for ending turn");
+            }
+        }
+    }
+    
+    _matchController->endTurn();
 }

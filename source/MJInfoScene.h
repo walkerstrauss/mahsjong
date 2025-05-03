@@ -62,12 +62,12 @@ public:
     InfoPage currPage;
     InfoPage nextPage;
 #pragma mark Constructors
-#pragma mark –
+#pragma mark -
     InfoScene() : Scene2 (){}
     
     bool init(const std::shared_ptr<AssetManager>& assets);
 #pragma mark Gameplay Handling
-#pragma mark –
+#pragma mark -
     virtual void setActive(bool value) override;
     void update(float timestep) override{
         if (_pageChanged){
