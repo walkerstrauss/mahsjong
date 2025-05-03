@@ -481,7 +481,8 @@ public:
             "start-your-turn1",
             "start-your-turn2",
             "drew-try-play",
-            "drew-try-discard"
+            "drew-try-discard",
+            "pig-fail"
         };
         
         for (auto key : playerGuideKeys){

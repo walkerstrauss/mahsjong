@@ -548,14 +548,21 @@ void GameScene::update(float timestep) {
                      AudioController::getInstance().playSound("WrongAction", false);
                      showPlayerGuide("discard-or-play-to-end");
                 }
-            } else {
-                _remainingTiles--;
-                _remainingLabel->setText(std::to_string(_remainingTiles));
             }
+            
             _matchController->drawTile();
         }
         
         updateSpriteNodes(timestep);
+    } else {
+        _tradeArea->setVisible(false);
+        _wasTradeTileVisible = false;
+        _dragToDiscardNode->setVisible(false);
+        _wasDragToDiscardVisible = false;
+        _dragToHandNode->setVisible(false);
+        _wasDragToHandVisible = false;
+        _playArea->setVisible(false);
+        _wasPlayAreaVisible = false;
     }
     
     // Fade areas in or out depending on input
@@ -794,7 +801,11 @@ void GameScene::updateDrag(const cugl::Vec2& mousePos, bool mouseDown, bool mous
                     if(_draggingTile->_suit == TileSet::Tile::Suit::CELESTIAL && !_draggingTile->debuffed) {
                         if (!_matchController->playCelestial(_draggingTile) && _matchController->getChoice() != MatchController::DRAGONTILE) {
                             AudioController::getInstance().playSound("WrongAction", false);
-                            showPlayerGuide("must-draw-play");
+                            if (_discardPile->getSize() < 1){
+                                showPlayerGuide("pig-fail");
+                            } else {
+                                showPlayerGuide("must-draw-play");
+                            }
                         }
                   }
                   else {
@@ -982,7 +993,5 @@ void GameScene::endTurnFromTimeout(){
         }
     }
     
-    _tradeArea->setVisible(false);
-    _wasTradeTileVisible = false;
     _matchController->endTurn();
 }

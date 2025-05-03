@@ -1088,6 +1088,9 @@
         },
         "drew-try-discard": {
             "file": "textures/gameplay/drew-try-discard.png"
+        },
+        "pig-fail":{
+            "file": "textures/gameplay/pig-fail.png"
         }
     },
     "fonts": {
