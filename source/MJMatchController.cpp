@@ -72,7 +72,7 @@ void MatchController::initHost() {
     clientPlayer->getHand().initHand(_tileSet, false);
     
     //Initializing pile
-    _pile->initPile(4, _tileSet, true);
+    _pile->initPile(4, _tileSet, true, _assets);
     
     //Broadcast initial state
     _network->broadcastClientStart(_tileSet->mapToJson());
@@ -102,10 +102,10 @@ void MatchController::initClient() {
     }
     
     //Initializing the pile
-    _pile->initPile(4, _tileSet, false);
-    _pile->setTilePositions();
+    _pile->initPile(4, _tileSet, false, _assets);
+    _pile->setTilePositions(false);
     
-    _pile->remakePile();
+    _pile->remakePile(false);
 }
 
 /**
@@ -401,7 +401,7 @@ void MatchController::playRooster(std::shared_ptr<TileSet::Tile>& celestialTile)
     // play the shuffle sound.
     AudioController::getInstance().playSound("shuffle");
     _pile->reshufflePile();
-    _pile->setTilePositions();
+    _pile->setTilePositions(true);
     
     // Clear tilesToJson vector
     _tileSet->clearTilesToJson();
@@ -636,7 +636,7 @@ void MatchController::playRat(std::shared_ptr<TileSet::Tile>& selectedTile) {
                          : clientPlayer->getHand();
     
     _pile->removeTile(selectedTile);
-    _pile->setTilePositions();
+    _pile->setTilePositions(false);
 
     self._tiles.push_back(selectedTile);
     selectedTile->inHostHand = _network->getHostStatus();
@@ -739,7 +739,8 @@ void MatchController::celestialEffect(){
         || _network->getCelestialUpdateType() == NetworkController::DRAGON) {
         //Updating tileset
         _tileSet->updateDeck(_network->getTileMapJson());
-        _pile->remakePile();
+        bool reshuffle = _network->getCelestialUpdateType() == NetworkController::ROOSTER ? true : false;
+        _pile->remakePile(reshuffle);
     } else if (_network->getCelestialUpdateType() == NetworkController::RAT) {
         bool isHost = _network->getHostStatus();
         
@@ -748,7 +749,7 @@ void MatchController::celestialEffect(){
         std::string key = std::to_string(tileDrawn->_id);
         
         _pile->removeTile(_tileSet->tileMap[key]);
-        _pile->setTilePositions();
+        _pile->setTilePositions(false);
         _tileSet->tileMap[key]->_scale = 0.325;
         
         // If this match controller is host's
@@ -900,7 +901,7 @@ void MatchController::update(float timestep) {
         NetworkController::MapUpdateType mapUpdateType = _network->getMapUpdateType();
         // Remake pile
         if(mapUpdateType == NetworkController::REMAKEPILE) {
-            _pile->remakePile();
+            _pile->remakePile(false);
             _network->setMapUpdateType(NetworkController::NOUPDATE);
         }
         // Reset to default

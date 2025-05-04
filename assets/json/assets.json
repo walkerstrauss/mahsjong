@@ -9,6 +9,12 @@
         "blank normal hand": {
             "file": "textures/newTiles/blank_normal_hand.png"
         },
+        "back normal": {
+            "file": "textures/newTiles/back_normal.png"
+        },
+        "back celestial": {
+            "file": "textures/newTiles/back_celestial.png"
+        },
         "one of dot new": {
             "file": "textures/newTiles/one_of_dot_new.png"
         },

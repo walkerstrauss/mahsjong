@@ -48,12 +48,17 @@ void AnimationController::update(float dt) {
         }
     }
     
-    for (auto& anim: _spriteNodeAnims) {
+    for (auto& anim: _spriteNodeMorphAnims) {
         if(!anim.done) {
             anim.update(dt);
         } else {
-            _spriteNodeAnims.erase(std::remove_if(_spriteNodeAnims.begin(), _spriteNodeAnims.end(), [&anim](const SpriteNodeAnim& a) {
-                return a.tile == anim.tile;}), _spriteNodeAnims.end());
+            _spriteNodeMorphAnims.erase(std::remove_if(_spriteNodeMorphAnims.begin(), _spriteNodeMorphAnims.end(), [&anim](const SpriteNodeMorphAnim& a) {
+                return a.tile == anim.tile;}), _spriteNodeMorphAnims.end());
         }
     }
+    
+    for (auto& anim : _spriteNodeFlipAnims) {
+      anim.update(dt);
+    }
+    _spriteNodeFlipAnims.erase(std::remove_if(_spriteNodeFlipAnims.begin(), _spriteNodeFlipAnims.end(), [](const SpriteNodeFlipAnim& a){ return a.done; }), _spriteNodeFlipAnims.end());
 }

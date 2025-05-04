@@ -259,7 +259,6 @@ void TileSet::updateDeck(const std::shared_ptr<cugl::JsonValue>& deckJson) {
         const bool selectedInSet = tileKey->getBool("selectedInSet");
         const bool played = tileKey->getBool("played");
         const bool inDeck = tileKey->getBool("inDeck");
-        const cugl::Vec2 pos = Tile::toVector(tileKey->getString("pos"));
         const float scale = tileKey->getFloat("scale");
         const bool debuffed = tileKey->getBool("debuffed");
         
@@ -272,7 +271,6 @@ void TileSet::updateDeck(const std::shared_ptr<cugl::JsonValue>& deckJson) {
         tileMap[id]->selected = selected;
         tileMap[id]->selectedInSet = selectedInSet;
         tileMap[id]->played = played;
-        tileMap[id]->pos = pos;
         tileMap[id]->_scale = scale;
         tileMap[id]->debuffed = debuffed;
         tileMap[id]->pileCoord = pileCoord;
