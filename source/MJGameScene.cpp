@@ -139,22 +139,6 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::sha
         }
     });
     
-    
-    // Init the button for playing sets.
-    cugl::Rect rect(0, 0, 150, 50);
-    cugl::Poly2 poly(rect);
-
-    std::shared_ptr<scene2::PolygonNode> upPlaceholder = scene2::PolygonNode::alloc();
-    upPlaceholder->setPolygon(poly);
-    upPlaceholder->setContentSize(cugl::Size(150, 50));
-    upPlaceholder->setColor(cugl::Color4::GRAY);
-    
-    std::shared_ptr<scene2::PolygonNode> downPlaceholder = scene2::PolygonNode::alloc();
-    downPlaceholder->setPolygon(poly);
-    downPlaceholder->setContentSize(cugl::Size(150, 50));
-    cugl::Color4 darkGray(64, 64, 64, 255);
-    downPlaceholder->setColor(darkGray);
-    
 //     Initializing opponent hand
     _opponentHandRec = _assets->get<SceneNode>("matchscene.gameplayscene.opponent-hand-rec");
     _opponentHandBtn = std::dynamic_pointer_cast<Button>(_assets->get<SceneNode>("matchscene.gameplayscene.opponent-hand"));

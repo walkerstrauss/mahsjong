@@ -10,6 +10,12 @@
 #include <cugl/cugl.h>
 #include "MJInputController.h"
 #include "MJAudioController.h"
+#include "MJTileSet.h"
+#include "MJPlayer.h"
+#include "MJPile.h"
+#include "MJDiscardPile.h"
+#include "MJDiscardUINode.h"
+#include "MJAnimationController.h"
 
 using namespace cugl;
 using namespace cugl::scene2;
@@ -17,35 +23,145 @@ using namespace cugl::graphics;
 
 /** Class representing the tutorial scene for the game */
 class TutorialScene : public Scene2 {
+public:
+    enum Choice {
+        NONE,
+        INFO,
+        SETS,
+        SETTING,
+        DISCARD_UI,
+        DISCARDED,
+        DRAW_DISCARD
+    };
+    
+    std::vector<std::shared_ptr<TileSet::Tile>> discardedTiles;
+    std::shared_ptr<TileSet::Tile> discardDrawTile;
+    std::vector<std::shared_ptr<TexturedNode>> _opponentHandTiles;
+    std::vector<std::shared_ptr<TexturedNode>> _playerHandTiles;
+    std::shared_ptr<SceneNode> _opponentHandRec;
+    std::shared_ptr<SceneNode> _playerHandRec;
+    int _remainingTiles;
+    std::shared_ptr<Label> _remainingLabel;
+    int opponentSetIndex = 0;
+    int playerSetIndex = 0;
 protected:
     std::shared_ptr<AssetManager> _assets;
-    std::shared_ptr<cugl::scene2::SceneNode> _tutorialScene;
-    std::shared_ptr<cugl::scene2::Button> _exit;
-    std::shared_ptr<cugl::scene2::Button> _back;
-
-    std::shared_ptr<cugl::scene2::PolygonNode> _presentation;
-    std::vector<std::string> _slides;
-    int _slide;
-
+    std::shared_ptr<SceneNode> _tutorialScene;
+    std::shared_ptr<DiscardUINode> _discardUINode;
     std::shared_ptr<InputController> _input;
+    Choice _choice;
+    /** TileSet for the game */
+    std::shared_ptr<TileSet> _tileSet;
+    /** Reference to the player */
+    std::shared_ptr<Player> _player1;
+    /** Reference to the bot player*/
+    std::shared_ptr<Player> _player2;
+    /** Reference to tile pile */
+    std::shared_ptr<Pile> _pile;
+    /** Reference to the discard pile */
+    std::shared_ptr<DiscardPile> _discardPile;
+    /** Temporary discard area b/c no asset created for it yet */
+    cugl::Rect discardArea;
+    cugl::Rect _pileBox;
+    /**Button to transition to the setting scene**/
+    std::shared_ptr<Button> _settingBtn;
+    /**Button to transition to the info scene **/
+    std::shared_ptr<Button> _infoBtn;
+    /** Button for transitioning to the tileset UI scene (discarded cards) */
+    std::shared_ptr<cugl::scene2::Button> _tilesetUIBtn;
     
+    /** Textured node to set the discarded tile image*/
+    std::shared_ptr<cugl::scene2::TexturedNode> _discardedTileImage;
+    
+    std::shared_ptr<cugl::scene2::TexturedNode> _dragToDiscardNode;
+    
+    std::shared_ptr<cugl::scene2::TexturedNode> _dragToHandNode;
+    std::shared_ptr<SceneNode> _playArea;
+    std::shared_ptr<SceneNode> _tradeArea;
+    bool _dragFromDiscard = false;
+    bool _dragToHandVisible = false;
+    
+    /** Button for playing a set */
+    std::shared_ptr<cugl::scene2::Button> _playSetBtn;
+    
+    /** Vector of scene nodes representing labels in the tileset UI table */
+    std::vector<std::shared_ptr<cugl::scene2::Label>> _labels;
+    /** Reference to scene node for UI scene */
+    std::shared_ptr<scene2::SceneNode> _tilesetui;
+    /** Button to exit the discard UI */
+    std::shared_ptr<scene2::Button> _backBtn;
+    
+    float _frameTimer = 0.0f;
+    float _frameDelay = 0.2f;
+    
+    /** The tile currently being dragged */
+    cugl::Vec2 _dragOffset;
+    
+    /** The rectangle representing the discrad pile's position*/
+    cugl::Rect _discardBox;
+    
+    /** The rectangle representing the active play/discard area for all tiles*/
+    cugl::Rect _activeRegion;
+    
+    /** The rectangle representing the discarded tile widget */
+    cugl::Rect _discardedTileRegion;
+    
+    /** The rectangle reprsenting the player hand region */
+    cugl::Rect _playerHandRegion;
+    
+    std::shared_ptr<TileSet::Tile> _draggingTile = nullptr;
+    int _dragonRow = -1;
+    
+    cugl::Vec2 _dragStartPos;
+    bool _dragInitiated = false;
+    const float DRAG_THRESHOLD = 0.0f;
+    
+    cugl::Vec2 _originalTilePos = cugl::Vec2::ZERO;
+    bool shouldReturn = true;
+    
+    std::shared_ptr<AnimatedNode> _actionAnimNode;
+    
+    bool _waitingForTileSelection = false;
+    std::shared_ptr<TileSet::Tile> discardedTileSaved;
+    bool _selectedThree = false;
+    
+    std::shared_ptr<Button> _opponentHandBtn;
+    std::shared_ptr<Button> _playerHandBtn;
+    std::shared_ptr<Button> _opponentHandBtn2;
+    std::shared_ptr<Button> _playerHandBtn2;
+    
+    bool opponentTabVisible = false;
+    bool playerTabVisible = false;
+    
+    std::vector<std::string> playerGuideKeys;
+    std::unordered_map<std::string, std::shared_ptr<SceneNode>> playerGuideNodeMap;
+    int framesOnScreen = 0;
+    int maxFramesOnScreen = 180;
+    
+    // Field to track the time left in the active turn
+    float _turnTimeRemaining;
+    const float TURN_DURATION = 45.0f;
+    bool turnTimerActive = false;
+    int prevTurnId = -99;
+    std::shared_ptr<Label> _timer;
+    
+    bool _wasPlayAreaVisible = false;
+    bool _wasDragToHandVisible = false;
+    bool _wasDragToDiscardVisible = false;
+    bool _wasTradeTileVisible = false;
 public:
 #pragma mark Constructors
     TutorialScene() : Scene2(){}
     
-    bool init(const std::shared_ptr<AssetManager>& assets, std::shared_ptr<InputController> inputController);
+    bool init(const std::shared_ptr<AssetManager>& assets, std::shared_ptr<InputController>& inputController);
 
-    enum Choice {
-        NONE,
-        BACK
-    };
-    Choice _choice;
     Choice getChoice() const { return _choice; }
     
 #pragma mark Gameplay Handling
     void update(float timestep) override;
     
     virtual void setActive(bool value) override;
+    
     void dispose() override;
 };
     

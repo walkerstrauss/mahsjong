@@ -21,7 +21,7 @@
 #include "MJMatchController.h"
 #include "MJLoadingScene.h"
 #include "MJInfoScene.h"
-#include "MJTutorialScene.h"
+#include "MJHelpScene.h"
 #include "MJInputController.h"
 
 /**
@@ -36,7 +36,7 @@ protected:
         LOAD,
         MENU,
         INFO,
-        TUTORIAL,
+        HELP,
         HOST,
         CLIENT,
         GAME,
@@ -75,7 +75,7 @@ protected:
     /** The information scene for player onboarding and in-game information */
     InfoScene _info;
     /** The tutorial scene for player onboarding outside of the game */
-    TutorialScene _tutorial;
+    HelpScene _help;
     /** The match controller for the game*/
     std::shared_ptr<MatchController> _matchController;
     /** The input controller for the game */
@@ -220,6 +220,13 @@ private:
     * @param timestep   The amount of time (in seconds) since the last frame
     */
     void updateInfoScene(float timestep);
+    
+    /**
+    * Individualzed update method for the help scene
+    *
+    * @param timestep   The amount of time (in seconds) since the last frame
+    */
+    void updateHelpScene(float timestep);
     
     /**
     * Individualzed update method for the tutorial scene
