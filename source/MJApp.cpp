@@ -89,6 +89,7 @@ void MahsJongApp::onShutdown() {
     _gameover.dispose();
     _info.dispose();
     _help.dispose();
+    _tutorial.dispose();
     _inputController->dispose();
     _network->dispose();
     _assets = nullptr;
@@ -159,6 +160,9 @@ void MahsJongApp::update(float timestep) {
         case HELP:
             updateHelpScene(timestep);
             break;
+        case TUTORIAL:
+            updateTutorialScene(timestep);
+            break;
     }
 }
 
@@ -211,6 +215,9 @@ void MahsJongApp::draw() {
        case HELP:
            _help.render();
            break;
+       case TUTORIAL:
+           _tutorial.render();
+           break;
    }
 }
 
@@ -253,6 +260,8 @@ void MahsJongApp::updateLoadingScene(float timestep) {
        _info.setSpriteBatch(_batch);
        _help.init(_assets, _inputController);
        _help.setSpriteBatch(_batch);
+       _tutorial.init(_assets, _inputController);
+       _tutorial.setSpriteBatch(_batch);
        _scene = State::MENU;
    }
 }
@@ -287,8 +296,9 @@ void MahsJongApp::updateMenuScene(float timestep) {
            break;
        case MenuScene::Choice::TUTORIAL:
            _mainmenu.setActive(false);
-           _help.setActive(true);
-           _scene = HELP;
+           _tutorial.setActive(true);
+           _tutorial.setTutorialActive(true);
+           _scene = TUTORIAL;
            break;
        case MenuScene::Choice::NONE:
            // DO NOTHING
@@ -547,7 +557,8 @@ void MahsJongApp::updateHelpScene(float timestep){
             break;
         case HelpScene::BACK:
             _help.setActive(false);
-            _mainmenu.setActive(true);
+            _gameplay.setActive(true);
+            _gameplay.setGameActive(true);
             _scene = MENU;
             break;
     }
@@ -559,5 +570,27 @@ void MahsJongApp::updateHelpScene(float timestep){
 * @param timestep   The amount of time (in seconds) since the last frame
 */
 void MahsJongApp::updateTutorialScene(float timestep){
-    return;
+    _tutorial.update(timestep);
+    switch (_tutorial.getChoice()){
+        case TutorialScene::NONE:
+            break;
+        case TutorialScene::INFO:
+            break;
+        case TutorialScene::SETTING:
+            break;
+        case TutorialScene::DISCARD_UI:
+            break;
+        case TutorialScene::DISCARDED:
+            break;
+        case TutorialScene::DRAWNDISCARD:
+            break;
+        case TutorialScene::DONE:
+            break;
+        case TutorialScene::BACK:
+            _tutorial.setActive(false);
+            _tutorial.setTutorialActive(false);
+            _mainmenu.setActive(true);
+            break;
+    }
 }
+

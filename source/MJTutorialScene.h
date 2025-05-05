@@ -27,11 +27,12 @@ public:
     enum Choice {
         NONE,
         INFO,
-        SETS,
         SETTING,
         DISCARD_UI,
         DISCARDED,
-        DRAW_DISCARD
+        DRAWNDISCARD,
+        DONE,
+        BACK
     };
     
     std::vector<std::shared_ptr<TileSet::Tile>> discardedTiles;
@@ -45,6 +46,7 @@ public:
     int opponentSetIndex = 0;
     int playerSetIndex = 0;
 protected:
+    int _currentTurn = 0;
     std::shared_ptr<AssetManager> _assets;
     std::shared_ptr<SceneNode> _tutorialScene;
     std::shared_ptr<DiscardUINode> _discardUINode;
@@ -149,6 +151,12 @@ protected:
     bool _wasDragToHandVisible = false;
     bool _wasDragToDiscardVisible = false;
     bool _wasTradeTileVisible = false;
+    
+    float _botDelay = 2.0f;
+    
+    bool hasDrawn;
+    bool hasDiscarded;
+    bool hasPlayedCelestial;
 public:
 #pragma mark Constructors
     TutorialScene() : Scene2(){}
@@ -156,13 +164,154 @@ public:
     bool init(const std::shared_ptr<AssetManager>& assets, std::shared_ptr<InputController>& inputController);
 
     Choice getChoice() const { return _choice; }
-    
+        
 #pragma mark Gameplay Handling
     void update(float timestep) override;
     
+    void updateDrag(const cugl::Vec2& mousePos, bool mouseDown, bool mouseReleased, float timestep);
+    
+    void clickedTile(Vec2 mousePos);
+    
+    void dragTile();
+    
+    void releaseTile();
+    
+    void endTurn();
+    
+    void resetTurn();
+    
     virtual void setActive(bool value) override;
     
+    void setTutorialActive(bool value);
+    
     void dispose() override;
+    
+    void render() override;
+    
+    void initTurnIndicators();
+    
+    void updateTurnIndicators();
+    
+    std::shared_ptr<TileSet::Tile> getTileAtPosition(const cugl::Vec2& mousePos, std::vector<std::shared_ptr<TileSet::Tile>> tiles) {
+        for (const auto& tile : tiles) {
+            if (tile && tile->tileRect.contains(mousePos)) {
+                return tile;
+            }
+        }
+        return nullptr;
+    }
+    
+    int getIndexAtPosition(const Vec2& mousePos, const std::vector<std::shared_ptr<TileSet::Tile>>& tiles) {
+        for (int i = 0; i < (int)tiles.size(); ++i) {
+            if (tiles[i] && tiles[i]->tileRect.contains(mousePos)) {
+                return i;
+            }
+        }
+        return -1;
+    }
+    
+    bool discardTile(std::shared_ptr<TileSet::Tile>);
+    
+    bool drawDiscard();
+    
+    bool playCelestial(std::shared_ptr<TileSet::Tile>);
+    
+    bool drawTile();
+    
+    bool playSet();
+    
+    void initTileData(){
+        _tileSet->deck.clear();
+        
+        // Init p1 tiles
+        _tileSet->deck.push_back(std::make_shared<TileSet::Tile>(TileSet::Tile::Rank::ONE, TileSet::Tile::Suit::BAMBOO));
+        _tileSet->deck.push_back(std::make_shared<TileSet::Tile>(TileSet::Tile::Rank::ONE, TileSet::Tile::Suit::BAMBOO));
+         _tileSet->deck.push_back(std::make_shared<TileSet::Tile>(TileSet::Tile::Rank::TWO, TileSet::Tile::Suit::BAMBOO));
+        _tileSet->deck.push_back(std::make_shared<TileSet::Tile>(TileSet::Tile::Rank::TWO, TileSet::Tile::Suit::BAMBOO));
+        _tileSet->deck.push_back(std::make_shared<TileSet::Tile>(TileSet::Tile::Rank::FIVE, TileSet::Tile::Suit::CRAK));
+        _tileSet->deck.push_back(std::make_shared<TileSet::Tile>(TileSet::Tile::Rank::FIVE, TileSet::Tile::Suit::CRAK));
+        _tileSet->deck.push_back(std::make_shared<TileSet::Tile>(TileSet::Tile::Rank::SIX, TileSet::Tile::Suit::CRAK));
+        _tileSet->deck.push_back(std::make_shared<TileSet::Tile>(TileSet::Tile::Rank::SIX, TileSet::Tile::Suit::CRAK));
+        _tileSet->deck.push_back(std::make_shared<TileSet::Tile>(TileSet::Tile::Rank::EIGHT, TileSet::Tile::Suit::DOT));
+         _tileSet->deck.push_back(std::make_shared<TileSet::Tile>(TileSet::Tile::Rank::EIGHT,TileSet::Tile::Suit::DOT));
+        _tileSet->deck.push_back(std::make_shared<TileSet::Tile>(TileSet::Tile::Rank::NINE, TileSet::Tile::Suit::DOT));
+        _tileSet->deck.push_back(std::make_shared<TileSet::Tile>(TileSet::Tile::Rank::NINE, TileSet::Tile::Suit::DOT));
+        _tileSet->deck.push_back(std::make_shared<TileSet::Tile>(TileSet::Tile::Rank::ONE, TileSet::Tile::Suit::DOT));
+        
+        // Init p2 tiles
+        _tileSet->deck.push_back(std::make_shared<TileSet::Tile>(TileSet::Tile::Rank::ONE, TileSet::Tile::Suit::BAMBOO));
+        _tileSet->deck.push_back(std::make_shared<TileSet::Tile>(TileSet::Tile::Rank::TWO, TileSet::Tile::Suit::BAMBOO));
+        _tileSet->deck.push_back(std::make_shared<TileSet::Tile>(TileSet::Tile::Rank::THREE, TileSet::Tile::Suit::BAMBOO));
+        _tileSet->deck.push_back(std::make_shared<TileSet::Tile>(TileSet::Tile::Rank::THREE, TileSet::Tile::Suit::BAMBOO));
+        _tileSet->deck.push_back(std::make_shared<TileSet::Tile>(TileSet::Tile::Rank::THREE, TileSet::Tile::Suit::BAMBOO));
+        _tileSet->deck.push_back(std::make_shared<TileSet::Tile>(TileSet::Tile::Rank::FIVE, TileSet::Tile::Suit::CRAK));
+        _tileSet->deck.push_back(std::make_shared<TileSet::Tile>(TileSet::Tile::Rank::SIX, TileSet::Tile::Suit::CRAK));
+        _tileSet->deck.push_back(std::make_shared<TileSet::Tile>(TileSet::Tile::Rank::SEVEN, TileSet::Tile::Suit::CRAK));
+        _tileSet->deck.push_back(std::make_shared<TileSet::Tile>(TileSet::Tile::Rank::SEVEN, TileSet::Tile::Suit::CRAK));
+        _tileSet->deck.push_back(std::make_shared<TileSet::Tile>(TileSet::Tile::Rank::NINE, TileSet::Tile::Suit::DOT));
+        _tileSet->deck.push_back(std::make_shared<TileSet::Tile>(TileSet::Tile::Rank::SEVEN, TileSet::Tile::Suit::DOT));
+        _tileSet->deck.push_back(std::make_shared<TileSet::Tile>(TileSet::Tile::Rank::EIGHT, TileSet::Tile::Suit::DOT));
+        _tileSet->deck.push_back(std::make_shared<TileSet::Tile>(TileSet::Tile::Rank::TWO, TileSet::Tile::Suit::DOT));
+        
+        // Init pile tiles
+        _tileSet->deck.push_back(std::make_shared<TileSet::Tile>(TileSet::Tile::Rank::TWO, TileSet::Tile::Suit::DOT));
+        _tileSet->deck.push_back(std::make_shared<TileSet::Tile>(TileSet::Tile::Rank::TWO, TileSet::Tile::Suit::DOT));
+        _tileSet->deck.push_back(std::make_shared<TileSet::Tile>(TileSet::Tile::Rank::ROOSTER, TileSet::Tile::Suit::CELESTIAL));
+        _tileSet->deck.push_back(std::make_shared<TileSet::Tile>(TileSet::Tile::Rank::TWO, TileSet::Tile::Suit::DOT));
+        _tileSet->deck.push_back(std::make_shared<TileSet::Tile>(TileSet::Tile::Rank::TWO, TileSet::Tile::Suit::DOT));
+        _tileSet->deck.push_back(std::make_shared<TileSet::Tile>(TileSet::Tile::Rank::TWO, TileSet::Tile::Suit::DOT));
+        _tileSet->deck.push_back(std::make_shared<TileSet::Tile>(TileSet::Tile::Rank::TWO, TileSet::Tile::Suit::DOT));
+         _tileSet->deck.push_back(std::make_shared<TileSet::Tile>(TileSet::Tile::Rank::TWO, TileSet::Tile::Suit::DOT));
+        _tileSet->deck.push_back(std::make_shared<TileSet::Tile>(TileSet::Tile::Rank::TWO, TileSet::Tile::Suit::DOT));
+        _tileSet->deck.push_back(std::make_shared<TileSet::Tile>(TileSet::Tile::Rank::TWO, TileSet::Tile::Suit::DOT));
+        _tileSet->deck.push_back(std::make_shared<TileSet::Tile>(TileSet::Tile::Rank::TWO, TileSet::Tile::Suit::DOT));
+        _tileSet->deck.push_back(std::make_shared<TileSet::Tile>(TileSet::Tile::Rank::TWO, TileSet::Tile::Suit::DOT));
+        _tileSet->deck.push_back(std::make_shared<TileSet::Tile>(TileSet::Tile::Rank::TWO, TileSet::Tile::Suit::DOT));
+        _tileSet->deck.push_back(std::make_shared<TileSet::Tile>(TileSet::Tile::Rank::TWO, TileSet::Tile::Suit::DOT));
+        _tileSet->deck.push_back(std::make_shared<TileSet::Tile>(TileSet::Tile::Rank::TWO, TileSet::Tile::Suit::DOT));
+        _tileSet->deck.push_back(std::make_shared<TileSet::Tile>(TileSet::Tile::Rank::TWO, TileSet::Tile::Suit::DOT));
+        
+        _tileSet->initTileNodes(_assets);
+        _tileSet->setAllTileTexture(_assets);
+        
+        _player1->getHand().initHand(_tileSet, true);
+        _player2->getHand().initHand(_tileSet, false);
+        _pile->createPile();
+        
+        for(auto& tile : _player1->getHand()._tiles) {
+            tile->getContainer()->setAnchor(Vec2::ANCHOR_CENTER);
+            tile->getContainer()->setScale(tile->_scale);
+            tile->getContainer()->setPosition(tile->pos);
+        }
+        
+        // Setting texture location in pile
+        for(auto& row: _pile->_pile) {
+            for(auto& tile: row) {
+                if(tile == nullptr) {
+                    continue;
+                }
+                tile->getContainer()->setAnchor(Vec2::ANCHOR_CENTER);
+                tile->getContainer()->setScale(tile->_scale);
+                tile->getContainer()->setPosition(tile->pos);
+            }
+        }
+        
+        initTurnIndicators();
+        
+        _dragToDiscardNode = std::dynamic_pointer_cast<cugl::scene2::TexturedNode>(
+            _assets->get<cugl::scene2::SceneNode>(
+                "matchscene.gameplayscene.drag-to-discard-tile"
+            )
+        );
+
+        _dragToDiscardNode->setVisible(false);
+
+        _dragToHandNode = std::dynamic_pointer_cast<cugl::scene2::TexturedNode>(
+            _assets->get<cugl::scene2::SceneNode>(
+                "matchscene.gameplayscene.drag-to-hand-area"
+            )
+        );
+    }
 };
     
 #endif
