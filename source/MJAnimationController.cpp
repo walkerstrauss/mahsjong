@@ -48,5 +48,5 @@ void AnimationController::update(float dt) {
     }
     
     _spriteNodeAnims.erase(std::remove_if(_spriteNodeAnims.begin(), _spriteNodeAnims.end(), [](const SpriteNodeAnim& a) {return a.done;}), _spriteNodeAnims.end());
-    _fadeAnims.erase(std::remove_if(_fadeAnims.begin(), _fadeAnims.end(), [](const FadeAnim& a) {return a.active;}), _fadeAnims.end());
+    _fadeAnims.erase(std::remove_if(_fadeAnims.begin(), _fadeAnims.end(), [](const FadeAnim& a) {return !a.active;}), _fadeAnims.end());
 }
