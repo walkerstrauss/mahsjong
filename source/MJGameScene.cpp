@@ -22,6 +22,7 @@ using namespace std;
 // Lock the screen size to a fixed height regardless of aspect ratio
 // PLEASE ADJUST AS SEEN FIT
 #define SCENE_HEIGHT 720 // Change to 874 for resizing from iPhone 16 Pro aspect ratio
+#define TAP_ACTIVE_LENGTH 10.0f
 
 #pragma mark -
 #pragma mark Constructors
@@ -424,7 +425,7 @@ void GameScene::update(float timestep) {
     }
     
     // Update timer display based on remaining time in turn
-    updateTurnTimer(timestep);
+//    updateTurnTimer(timestep);
     
     // Updating discardUINode if matchController has a discard update
     if(_matchController->getChoice() == MatchController::Choice::DISCARDUIUPDATE) {
@@ -508,7 +509,7 @@ void GameScene::update(float timestep) {
     // Clicking/Tapping and Dragging logic
     if(_input->didRelease() && !_input->isDown()) {
         cugl::Vec2 initialMousePos = cugl::Scene::screenToWorldCoords(cugl::Vec3(_input->getInitialPosition()));
-        if(initialMousePos - mousePos == Vec2(0, 0)) {
+        if(-TAP_ACTIVE_LENGTH <= (initialMousePos - mousePos).length() <= TAP_ACTIVE_LENGTH) {
             if (_matchController->getChoice() == MatchController::Choice::PIGTILE) {
                 int tileIndex = _discardUINode->getClickedTile(mousePos);
                 if (tileIndex != -1) {
@@ -659,8 +660,8 @@ void GameScene::clickedTile(cugl::Vec2 mousePos){
         std::shared_ptr<TileSet::Tile> currTile = pair.second;
         // If you cannot select or deselect the tile return
         if(currTile->tileRect.contains(mousePos) && currTile->tileRect.contains(initialMousePos)){
+            
             if((_network->getHostStatus() && currTile->inHostHand) || (!_network->getHostStatus() && currTile->inClientHand)) {
-
                 if(currTile->selectable) {
                     if(currTile->selected) {
                         AudioController::getInstance().playSound("Unclick");

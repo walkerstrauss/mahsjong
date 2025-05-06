@@ -130,7 +130,10 @@ void MatchController::drawTile() {
             _network->broadcastEnd(_network->getLocalPid());
             return;
         }
-
+        
+        CULog("Drew tile... ishost? %d, inHosthand? %d, which tile? %s", _network->getHostStatus(),
+              _tileSet->tilesToJson[0]->inHostHand, _tileSet->tilesToJson[0]->toString().c_str());
+        
         // Broadcast the draw
         _network->broadcastTileDrawn(_network->getLocalPid(), _tileSet->toJson(_tileSet->tilesToJson));
         _tileSet->clearTilesToJson();
@@ -459,6 +462,9 @@ void MatchController::playOx(std::shared_ptr<TileSet::Tile>& celestialTile) {
         if (!tile->debuffed && !tile->discarded) {
             tile->_scale = 0.325;
             tile->debuffed = true;
+            if((_network->getHostStatus() && tile->inHostHand) || (!_network->getHostStatus() && tile->inClientHand)) {
+                CULog("HERERERERREE: %s, %d", tile->toString().c_str(), tile->_id);
+            }
             tile->getFaceSpriteNode()->setVisible(false);
             _tileSet->tilesToJson.push_back(tile);
             debuffed++;
@@ -785,9 +791,6 @@ void MatchController::celestialEffect(){
     } else if (_network->getCelestialUpdateType() == NetworkController::OX) { // these alter your hand, so must update textures
         AudioController::getInstance().playSound("Ox");
         _tileSet->updateDeck(_network->getTileMapJson());
-
-        
-        // Update the tile textures in hand to have debuffed tiles be facedown (for now)
         auto& hand = _network->getHostStatus()
                             ? hostPlayer->getHand()
                             : clientPlayer->getHand();
@@ -911,13 +914,19 @@ void MatchController::update(float timestep) {
         setChoice(PILEDRAW);
         bool isHost = _network->getHostStatus();
         
-        _pile->removePileTile(_network->getTileDrawn(), isHost);
+        _pile->removePileTile(_network->getTileDrawn(), !isHost);
         
         // Add tile that was drawn into this match controller
         std::shared_ptr<TileSet::Tile> tileDrawn= _tileSet->processTileJson(_network->getTileDrawn())[0];
         std::string key = std::to_string(tileDrawn->_id);
         
         _tileSet->tileMap[key]->_scale = 0.325;
+        
+        if((isHost && _tileSet->tileMap[key]->inHostHand) || (!isHost &&  _tileSet->tileMap[key]->inClientHand)) {
+        
+            CULog("isHost %d, inhosthand %d, inclienthand %d, %s", _network->getHostStatus(), _tileSet->tileMap[key]->inHostHand, _tileSet->tileMap[key]->inClientHand, _tileSet->tileMap[key]->toString().c_str() );
+        }
+        
         // If this match controller is host's
         if(isHost) {clientPlayer->getHand()._tiles.push_back(_tileSet->tileMap[key]);}
         // Else is client's
