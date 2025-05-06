@@ -152,11 +152,12 @@ bool TutorialScene::init(const std::shared_ptr<AssetManager>& assets, std::share
     _tileSet->initTutorialDeck();
     
     _pile = std::make_shared<Pile>();
-    _pile->_tileSet = _tileSet;
     _discardPile = std::make_shared<DiscardPile>();
     _discardPile->init(_assets);
     
     initTileData();
+    _pile->pileBox = pileRegionNode->getBoundingBox();
+    _pile->setTilePositions();
     
     if (_discardPile->getTopTile()) {
         std::shared_ptr<TileSet::Tile> tile = _discardPile->getTopTile();
@@ -216,8 +217,6 @@ bool TutorialScene::init(const std::shared_ptr<AssetManager>& assets, std::share
 }
 
 void TutorialScene::update(float timestep){
-    // Update input
-    _input->update();
     cugl::Vec2 mousePos = Scene::screenToWorldCoords(cugl::Vec3(_input->getPosition()));
     bool mouseDown = _input->isDown();
     bool mouseReleased = _input->didRelease();
@@ -231,9 +230,8 @@ void TutorialScene::update(float timestep){
     _discardPile->updateTilePositions(timestep);
     updateTurnIndicators();
     
-    
+    // Clicking/Tapping and Dragging logic
     updateDrag(mousePos, mouseDown, mouseReleased, timestep);
-    
     
     // Handle player turn
     if (_currentTurn == 0){

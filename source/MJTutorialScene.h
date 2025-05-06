@@ -276,7 +276,7 @@ public:
         
         _player1->getHand().initHand(_tileSet, true);
         _player2->getHand().initHand(_tileSet, false);
-        _pile->createPile();
+        _pile->initPile(4, _tileSet, true);
         
         for(auto& tile : _player1->getHand()._tiles) {
             tile->getContainer()->setAnchor(Vec2::ANCHOR_CENTER);
