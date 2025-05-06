@@ -916,8 +916,6 @@ void MatchController::update(float timestep) {
         
         _tileSet->tileMap[key]->_scale = 0.325;
         
-        if((isHost && _tileSet->tileMap[key]->inHostHand) || (!isHost &&  _tileSet->tileMap[key]->inClientHand)) {
-        
         // If this match controller is host's
         if(isHost) {clientPlayer->getHand()._tiles.push_back(_tileSet->tileMap[key]);}
         // Else is client's
