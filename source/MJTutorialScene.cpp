@@ -142,6 +142,7 @@ bool TutorialScene::init(const std::shared_ptr<AssetManager>& assets, std::share
         )
     );
     _dragToHandNode->setVisible(false);
+    _discardedTileImage->setVisible(false);
     addChild(_tutorialScene);
     addChild(_discardUINode->_root);
     
@@ -239,18 +240,6 @@ void TutorialScene::update(float timestep){
             cugl::Vec2 start = Scene::screenToWorldCoords(cugl::Vec3(_input->getInitialPosition()));
             if (start == mousePos) {
                 clickedTile(mousePos);  // Select tile
-            }
-
-            // Handle discarding from hand
-            if (_draggingTile && _activeRegion.contains(mousePos)) {
-                _player1->getHand().removeTile(_draggingTile, true);
-                _discardPile->addTile(_draggingTile);
-                _draggingTile = nullptr;
-                _dragInitiated = false;
-
-                AudioController::getInstance().playSound("Discard");
-                endTurn();
-                _botDelay = 2.0f;
             }
         }
     }
@@ -718,6 +707,7 @@ void TutorialScene::endTurn(){
             _currentTurn = 1;
         } else {
             _currentTurn = 0;
+            _botDelay = 2.0f;
         }
         resetTurn();
     }

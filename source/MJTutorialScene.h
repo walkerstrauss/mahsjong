@@ -271,6 +271,10 @@ public:
         _tileSet->deck.push_back(std::make_shared<TileSet::Tile>(TileSet::Tile::Rank::TWO, TileSet::Tile::Suit::DOT));
         _tileSet->deck.push_back(std::make_shared<TileSet::Tile>(TileSet::Tile::Rank::TWO, TileSet::Tile::Suit::DOT));
         
+        for (auto& tile : _tileSet->deck){
+            _tileSet->tileMap[std::to_string(tile->_id)] = tile;
+        }
+        
         _tileSet->initTileNodes(_assets);
         _tileSet->setAllTileTexture(_assets);
         
