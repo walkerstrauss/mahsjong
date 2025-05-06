@@ -131,9 +131,6 @@ void MatchController::drawTile() {
             return;
         }
         
-        CULog("Drew tile... ishost? %d, inHosthand? %d, which tile? %s", _network->getHostStatus(),
-              _tileSet->tilesToJson[0]->inHostHand, _tileSet->tilesToJson[0]->toString().c_str());
-        
         // Broadcast the draw
         _network->broadcastTileDrawn(_network->getLocalPid(), _tileSet->toJson(_tileSet->tilesToJson));
         _tileSet->clearTilesToJson();
@@ -462,9 +459,6 @@ void MatchController::playOx(std::shared_ptr<TileSet::Tile>& celestialTile) {
         if (!tile->debuffed && !tile->discarded) {
             tile->_scale = 0.325;
             tile->debuffed = true;
-            if((_network->getHostStatus() && tile->inHostHand) || (!_network->getHostStatus() && tile->inClientHand)) {
-                CULog("HERERERERREE: %s, %d", tile->toString().c_str(), tile->_id);
-            }
             tile->getFaceSpriteNode()->setVisible(false);
             _tileSet->tilesToJson.push_back(tile);
             debuffed++;
@@ -923,9 +917,6 @@ void MatchController::update(float timestep) {
         _tileSet->tileMap[key]->_scale = 0.325;
         
         if((isHost && _tileSet->tileMap[key]->inHostHand) || (!isHost &&  _tileSet->tileMap[key]->inClientHand)) {
-        
-            CULog("isHost %d, inhosthand %d, inclienthand %d, %s", _network->getHostStatus(), _tileSet->tileMap[key]->inHostHand, _tileSet->tileMap[key]->inClientHand, _tileSet->tileMap[key]->toString().c_str() );
-        }
         
         // If this match controller is host's
         if(isHost) {clientPlayer->getHand()._tiles.push_back(_tileSet->tileMap[key]);}
