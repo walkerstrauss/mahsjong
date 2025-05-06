@@ -212,7 +212,7 @@ bool TutorialScene::init(const std::shared_ptr<AssetManager>& assets, std::share
             playSet();
         }
     });
-    
+    setActive(false);
     return true;
 }
 
