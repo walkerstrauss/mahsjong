@@ -105,6 +105,8 @@ bool HostScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::sha
     _tileTwo = std::dynamic_pointer_cast<scene2::PolygonNode>(_assets->get<scene2::SceneNode>("host.hostscene.waitingRoom.roomid-tile.host1-roomid-tile_1"));
     _tileThree = std::dynamic_pointer_cast<scene2::PolygonNode>(_assets->get<scene2::SceneNode>("host.hostscene.waitingRoom.roomid-tile.host1-roomid-tile_2"));
     _tileFour = std::dynamic_pointer_cast<scene2::PolygonNode>(_assets->get<scene2::SceneNode>("host.hostscene.waitingRoom.roomid-tile.host1-roomid-tile_3"));
+    _tileFive = std::dynamic_pointer_cast<scene2::PolygonNode>(_assets->get<scene2::SceneNode>("host.hostscene.waitingRoom.roomid-tile.host1-roomid-tile_4"));
+
     
     _playerSingle = _assets->get<scene2::SceneNode>("host.hostscene.waitingRoom.playerBoard");
     _playerMulti = _assets->get<scene2::SceneNode>("host.hostscene.waitingRoom.playerBoard2");
@@ -288,11 +290,14 @@ void HostScene::update(float timestep) {
             _waitOrStart->setTexture(_assets->get<cugl::graphics::Texture>("host1-waiting-button"));
         }
         _waitOrStart->setContentSize(200, 181);
+
+        std::string dec = hex2dec(networkHex);
         
-        idSetup(_tileOne, networkHex[0]);
-        idSetup(_tileTwo, networkHex[1]);
-        idSetup(_tileThree, networkHex[2]);
-        idSetup(_tileFour, networkHex[3]);
+        idSetup(_tileOne, dec[0]);
+        idSetup(_tileTwo, dec[1]);
+        idSetup(_tileThree, dec[2]);
+        idSetup(_tileFour, dec[3]);
+        idSetup(_tileFive, dec[4]);
     }
 }
 

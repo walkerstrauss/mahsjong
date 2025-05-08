@@ -70,6 +70,7 @@ protected:
     std::shared_ptr<cugl::scene2::PolygonNode> _tileTwo;
     std::shared_ptr<cugl::scene2::PolygonNode> _tileThree;
     std::shared_ptr<cugl::scene2::PolygonNode> _tileFour;
+    std::shared_ptr<cugl::scene2::PolygonNode> _tileFive;
     
     /** Whether the startGame button had been pressed. */
     bool _startGameClicked = false;

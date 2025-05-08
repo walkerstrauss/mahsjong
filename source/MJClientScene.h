@@ -90,7 +90,7 @@ protected:
     //std::shared_ptr<cugl::scene2::PolygonNode> _tileID4;
 
     /** GameID list */
-    std::shared_ptr<cugl::scene2::PolygonNode> _gameIDNew[4];
+    std::shared_ptr<scene2::PolygonNode> _gameIDNew[5];
     int _idPos;
     
     /** Whether the back button had been clicked. */
