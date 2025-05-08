@@ -405,7 +405,7 @@ void Hand::updateTilePositions(cugl::Rect rect, float dt){
         
         tile->getContainer()->setAnchor(Vec2::ANCHOR_CENTER);
         tile->getContainer()->setAngle(displacement);
-        tile->getContainer()->setScale(tile->_scale);
+        if(!tile->animating) tile->getContainer()->setScale(tile->_scale);
         tile->getContainer()->setPosition(lerpPos);
         tile->getContainer()->setVisible(true);
     }

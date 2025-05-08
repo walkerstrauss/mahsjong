@@ -35,18 +35,19 @@ void AnimationController::update(float dt) {
         }
     }
     
-    for (auto& anim: _spriteNodeAnims) {
-        if(!anim.done) {
-            anim.update(dt);
-        }
+    for (auto& anim: _spriteNodeMorphAnims) {
+      anim.update(dt);
     }
     
+    for (auto& anim : _spriteNodeFlipAnims) {
+      anim.update(dt);
+    }
     for (auto& anim: _fadeAnims){
         if(anim.active){
             anim.update(dt);
         }
     }
-    
-    _spriteNodeAnims.erase(std::remove_if(_spriteNodeAnims.begin(), _spriteNodeAnims.end(), [](const SpriteNodeAnim& a) {return a.done;}), _spriteNodeAnims.end());
+    _spriteNodeFlipAnims.erase(std::remove_if(_spriteNodeFlipAnims.begin(), _spriteNodeFlipAnims.end(), [](const SpriteNodeFlipAnim& a){ return a.done; }), _spriteNodeFlipAnims.end());
+    _spriteNodeMorphAnims.erase(std::remove_if(_spriteNodeAnims.begin(), _spriteNodeAnims.end(), [](const SpriteNodeAnim& a) {return a.done;}), _spriteNodeAnims.end());
     _fadeAnims.erase(std::remove_if(_fadeAnims.begin(), _fadeAnims.end(), [](const FadeAnim& a) {return !a.active;}), _fadeAnims.end());
 }
