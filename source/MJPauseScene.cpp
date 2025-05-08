@@ -57,7 +57,7 @@ bool PauseScene::init(const std::shared_ptr<cugl::AssetManager>& assets){
     _menuPauseBtn->setPosition(_menuPauseBtn->getPositionX(), _menuPauseBtn->getPositionY() + 50);
     _settingPauseBtn->setPosition(_settingPauseBtn->getPositionX(), _settingPauseBtn->getPositionY() + 50);
 
-    AudioController::getInstance().init(_assets);
+    //AudioController::getInstance().init(_assets);
     
     _sound = _assets->get<audio::Sound>("confirm");
     

@@ -28,6 +28,7 @@ bool SettingScene::init(const std::shared_ptr<cugl::AssetManager>& assets){
     if (assets == nullptr) {
         return false;
     } else if (!Scene2::initWithHint(0,SCENE_HEIGHT)) {
+        std::cerr << "Scene2 initialization failed!" << std::endl;
         return false;
     }
     _assets = assets;
@@ -42,12 +43,8 @@ bool SettingScene::init(const std::shared_ptr<cugl::AssetManager>& assets){
     float offset = (screenSize.width -_settingScene->getWidth())/2;
     _settingScene->setPosition(offset, _settingScene->getPosition().y);
 
-    AudioController::getInstance().init(_assets);
+    //AudioController::getInstance().init(_assets);
     
-    if (!Scene2::initWithHint(screenSize)) {
-        std::cerr << "Scene2 initialization failed!" << std::endl;
-        return false;
-    }
     
     choice = Choice::NONE;
     scene = PrevScene::NEITHER;
@@ -60,6 +57,7 @@ bool SettingScene::init(const std::shared_ptr<cugl::AssetManager>& assets){
     
     _mainBtn->addListener([this](const std::string& name, bool down){
         if (!down){
+            AudioController::getInstance().playSound("Exit");
             choice = MENU;
         }
     });
@@ -68,22 +66,33 @@ bool SettingScene::init(const std::shared_ptr<cugl::AssetManager>& assets){
         if (!down){
             // TODO: handle turning sound on
             CULog("Turning sound on");
-            AudioController::getInstance().playSound("confirm");
+            AudioController::getInstance().playSound("Select");
             AudioController::getInstance().toggleSound();
+            if (AudioController::getInstance().soundOn) {
+                if (scene == PrevScene::MAIN) {
+                    AudioController::getInstance().playMusic("menuMusic", true);
+                }
+                else {
+                    AudioController::getInstance().playMusic("bgm", true);
+                }
+            }
+            else {
+                AudioController::getInstance().stopMusic();
+            }
         }
     });
     exitKey = exitBtn->addListener([this](const std::string& name, bool down){
         if (!down) {
+            AudioController::getInstance().playSound("Done");
             switch (scene){
                 case PrevScene::PAUSED:
                     choice = Choice::PAUSE;
 //                    AudioEngine::get()->play("back", _assets->get<Sound>("back"), false, 1.0f);
-                    AudioController::getInstance().playSound("back");
+
                     break;
                 case PrevScene::MAIN:
                     choice = Choice::MENU;
 //                    AudioEngine::get()->play("back", _assets->get<Sound>("back"), false, 1.0f);
-                    AudioController::getInstance().playSound("back");
                     break;
                 case PrevScene::NEITHER:
                     // Do nothing

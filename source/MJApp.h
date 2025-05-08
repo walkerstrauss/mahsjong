@@ -92,6 +92,7 @@ protected:
     std::shared_ptr<NetworkController> _network;
     /** Reference to audio controller for game sounds */
 //    std::shared_ptr<AudioController> _audio;
+
 public:
     /**
      * Creates, but does not initialized a new application. Remember,

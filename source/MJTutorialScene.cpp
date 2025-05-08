@@ -19,6 +19,8 @@ bool TutorialScene::init(const std::shared_ptr<AssetManager>& assets, std::share
     _assets = assets;
     _tutorialScene = _assets->get<cugl::scene2::SceneNode>("tutorial");
 
+    AudioController::getInstance().init(_assets);
+
     Size dimen = getSize();
     _tutorialScene->setContentSize(dimen);
     _tutorialScene->getChild(0)->setContentSize(dimen);
@@ -70,6 +72,8 @@ void TutorialScene::update(float timestep) {
         _presentation->setTexture(_assets->get<cugl::graphics::Texture>(_slides[_slide]));
         _presentation->setContentSize(_tutorialScene->getContentSize());
         _presentation->setPosition(_tutorialScene->getWidth()/2, _tutorialScene->getHeight()/2);
+
+        AudioController::getInstance().playSound("Confirm");
     }
 }
 

@@ -26,21 +26,34 @@ bool AudioController::init(const std::shared_ptr<cugl::AssetManager>& assets){
     _assets = assets;
     
     _keys = {
-        "set",
-        "set1",
-        "win",
-        "winning-hand",
-        "match-background",
-        "match-background1",
-        "back",
-        "confirm",
-        "deselect",
-        "select",
-        "select2",
-        "shuffle",
-        "swap",
+        "ExitDiscard",
+        "SelectDiscard",
+        "PlayerJoined",
+        "WrongAction",
+        "OpponentTile",
+        "PlayedSet",
+        "Pig",
+        "Rat",
+        "Monkey",
+        "Dragon",
+        "Snake",
+        "Rooster",
+        "Ox",
+        "Rabbit",
+        "Pile",
+        "Confirm",
+        "Clear",
+        "Click",
+        "Unclick",
+        "Exit",
+        "Select",
+        "Done",
+        "Discard",
+        "DrawDiscard",
         "bgm",
-        "menuMusic"
+        "menuMusic",
+        "win",
+        "lose"
     };
     
     for (const std::string& key  : _keys){
@@ -63,9 +76,16 @@ bool AudioController::init(const std::shared_ptr<cugl::AssetManager>& assets){
 #pragma mark Gameplay Handling
 
 void AudioController::playSound(const std::string& key, bool loop){
+    std::string instance = key+std::to_string(0);
+    int i = 0;
     if (_sounds.find(key) != _sounds.end()){
         if (soundOn){
-            AudioEngine::get()->play(key, _sounds[key], loop, 1.0f);
+            auto sound = _sounds[key];
+            while (AudioEngine::get()->isActive(instance)) {
+                i++;
+                instance = instance + std::to_string(i);
+            }
+            AudioEngine::get()->play(instance, sound, loop, 1.0f);
         }
     }
 }
@@ -93,6 +113,7 @@ void AudioController::playSound(const std::string& key, bool loop){
 void AudioController::stopMusic() {
     // clear the queue
   _musicQueue->clear(0.0f);
+  _bgmPlaying = false;
 }
 
 void AudioController::playMusic(const std::string& key, bool loop) {
@@ -107,8 +128,9 @@ void AudioController::playMusic(const std::string& key, bool loop) {
   if (soundOn){
     _musicQueue->play(it->second, loop, 1.0f, 0.0f);
   }
-  _musicQueue->play(it->second, loop, 1.0f, 0.0f);
+  _bgmPlaying = true;
 }
+
 
 
 

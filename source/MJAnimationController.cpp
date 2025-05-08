@@ -35,30 +35,19 @@ void AnimationController::update(float dt) {
         }
     }
     
-    for (auto& anim: _TileAnims) {
-        if (!anim.done){
-            anim.update(dt);
-        } else {
-            if (anim.growing) {
-                _TileAnims.erase(std::remove_if(_TileAnims.begin(), _TileAnims.end(), [&anim](const TileAnim& a) {return a.tile == anim.tile;}), _TileAnims.end());
-                addTileAnim(anim.tile, anim.tile->pos, anim.tile->pos + Vec2(0, 5.0f), anim.tile->_scale, anim.origScale, anim.frames, false);
-            } else {
-                _TileAnims.erase(std::remove_if(_TileAnims.begin(), _TileAnims.end(), [&anim](const TileAnim& a) {return a.tile == anim.tile;}), _TileAnims.end());
-            }
-        }
-    }
-    
     for (auto& anim: _spriteNodeMorphAnims) {
-        if(!anim.done) {
-            anim.update(dt);
-        } else {
-            _spriteNodeMorphAnims.erase(std::remove_if(_spriteNodeMorphAnims.begin(), _spriteNodeMorphAnims.end(), [&anim](const SpriteNodeMorphAnim& a) {
-                return a.tile == anim.tile;}), _spriteNodeMorphAnims.end());
-        }
+      anim.update(dt);
     }
     
     for (auto& anim : _spriteNodeFlipAnims) {
       anim.update(dt);
     }
+    for (auto& anim: _fadeAnims){
+        if(anim.active){
+            anim.update(dt);
+        }
+    }
     _spriteNodeFlipAnims.erase(std::remove_if(_spriteNodeFlipAnims.begin(), _spriteNodeFlipAnims.end(), [](const SpriteNodeFlipAnim& a){ return a.done; }), _spriteNodeFlipAnims.end());
+    _spriteNodeMorphAnims.erase(std::remove_if(_spriteNodeAnims.begin(), _spriteNodeAnims.end(), [](const SpriteNodeAnim& a) {return a.done;}), _spriteNodeAnims.end());
+    _fadeAnims.erase(std::remove_if(_fadeAnims.begin(), _fadeAnims.end(), [](const FadeAnim& a) {return !a.active;}), _fadeAnims.end());
 }

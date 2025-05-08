@@ -58,7 +58,7 @@ void MahsJongApp::onStartup() {
     _loading.setSpriteBatch(_batch);
     
     // Get rid of wrong start button
-    std::shared_ptr<scene2::Button> wrongStart = std::dynamic_pointer_cast<scene2::Button>(_assets->get<scene2::SceneNode>("load.after.landingscene.button1"));
+    std::shared_ptr<scene2::Button> wrongStart = std::dynamic_pointer_cast<scene2::Button>(_assets->get<scene2::SceneNode>("load.play"));
     wrongStart->setVisible(false);
     
     _loading.start();
@@ -223,16 +223,19 @@ void MahsJongApp::draw() {
 * @param timestep  The amount of time (in seconds) since the last frame
 */
 void MahsJongApp::updateLoadingScene(float timestep) {
+    AudioController::getInstance().init(_assets);
    if (_loading.isActive()) {
+       //AudioController::getInstance().playMusic("menuMusic", true);
        _loading.update(timestep);
        _loading.resizeScene();
    } else {
-       _loading.dispose(); // Permanently disables the input listeners in this mode
+       _loading.dispose(); // Permanently disables the input listeners in this mod
+       AudioController::getInstance().playMusic("menuMusic", true);
+       AudioController::getInstance().playSound("Confirm");
        
        _network = std::make_shared<NetworkController>();
        _network->init(_assets);
        AnimationController::getInstance().init(_assets);
-       AudioController::getInstance().init(_assets);
        _mainmenu.init(_assets);
        _mainmenu.setSpriteBatch(_batch);
        _hostgame.init(_assets, _network);
@@ -384,12 +387,14 @@ void MahsJongApp::updateGameScene(float timestep) {
             _gameplay.setGameActive(false);
             _gameover.type = GameOverScene::Type::WIN;
             _gameover.setActive(true);
+            AudioController::getInstance().playMusic("win", true);
             _scene = State::OVER;
             break;
         case GameScene::Choice::LOSE:
             _gameplay.setGameActive(false);
             _gameover.type = GameOverScene::Type::LOSE;
             _gameover.setActive(true);
+            AudioController::getInstance().playMusic("lose", true);
             _scene = State::OVER;
             break;
         case GameScene::Choice::DISCARDED:
@@ -428,11 +433,15 @@ void MahsJongApp::updateGameScene(float timestep) {
  */
 void MahsJongApp::updateSettingScene(float timestep){
     _settings.update(timestep);
+    SettingScene::PrevScene last_scene = _settings.scene;
     switch (_settings.choice){
         case SettingScene::Choice::MENU:
             _settings.setActive(false);
             _mainmenu.setActive(true);
             _gameplay.dispose();
+            if (last_scene == SettingScene::PrevScene::PAUSED) {
+                AudioController::getInstance().playMusic("menuMusic", true);
+            }
             _scene = State::MENU;
             break;
         case SettingScene::Choice::PAUSE:
@@ -499,10 +508,12 @@ void MahsJongApp::updateGameOverScene(float timestep) {
     _gameover.update(timestep);
     if (_gameover.choice == GameOverScene::Choice::MENU){
         _gameover.setActive(false);
+        //AudioController::getInstance().stopMusic();
         _mainmenu.setActive(true);
         _network->disconnect();
         _scene = State::MENU;
         _gameplay.dispose();
+        AudioController::getInstance().playMusic("menuMusic", true);
     } else if (_gameover.choice == GameOverScene::Choice::NONE){
         // Do nothing
         return;

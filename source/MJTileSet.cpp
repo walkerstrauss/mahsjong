@@ -224,7 +224,6 @@ const std::shared_ptr<cugl::JsonValue> TileSet::toJson(std::vector<std::shared_p
         currTile->appendValue("selectedInSet", tile->selectedInSet);
         currTile->appendValue("played", tile->played);
         currTile->appendValue("inDeck", tile->inDeck);
-        currTile->appendValue("pos", tile->pos);
         currTile->appendValue("scale", tile->_scale);
         currTile->appendValue("debuffed", tile->debuffed);
 
@@ -298,7 +297,6 @@ std::vector<std::shared_ptr<TileSet::Tile>> TileSet::processTileJson(const std::
         const bool selectedInSet = tileKey->getBool("selectedInSet");
         const bool played = tileKey->getBool("played");
         const bool inDeck = tileKey->getBool("inDeck");
-        const cugl::Vec2 pos = Tile::toVector(tileKey->getString("pos"));
         const float scale = tileKey->getFloat("scale");
         const bool debuffed = tileKey->getBool("debuffed");
         
@@ -311,7 +309,6 @@ std::vector<std::shared_ptr<TileSet::Tile>> TileSet::processTileJson(const std::
         newTile->selected = selected;
         newTile->selectedInSet = selectedInSet;
         newTile->played = played;
-        newTile->pos = pos;
         newTile->_scale = scale;
         newTile->inHostHand = inHostHand;
         newTile->inClientHand = inClientHand;

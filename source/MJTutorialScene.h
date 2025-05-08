@@ -9,6 +9,7 @@
 #define __MJ_TUTORIAL_SCENE_H__
 #include <cugl/cugl.h>
 #include "MJInputController.h"
+#include "MJAudioController.h"
 
 using namespace cugl;
 using namespace cugl::scene2;
