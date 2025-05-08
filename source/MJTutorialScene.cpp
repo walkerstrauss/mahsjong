@@ -157,8 +157,43 @@ bool TutorialScene::init(const std::shared_ptr<AssetManager>& assets, std::share
     _discardPile->init(_assets);
     
     initTileData();
+    
     _pile->pileBox = pileRegionNode->getBoundingBox();
     _pile->setTilePositions();
+    
+    for(auto& tile : _player1->getHand()._tiles) {
+        tile->getContainer()->setAnchor(Vec2::ANCHOR_CENTER);
+        tile->getContainer()->setScale(tile->_scale);
+        tile->getContainer()->setPosition(tile->pos);
+    }
+    
+    // Setting texture location in pile
+    for(auto& row: _pile->_pile) {
+        for(auto& tile: row) {
+            if(tile == nullptr) {
+                continue;
+            }
+            tile->getContainer()->setAnchor(Vec2::ANCHOR_CENTER);
+            tile->getContainer()->setScale(tile->_scale);
+            tile->getContainer()->setPosition(tile->pos);
+        }
+    }
+    
+    initTurnIndicators();
+    
+    _dragToDiscardNode = std::dynamic_pointer_cast<cugl::scene2::TexturedNode>(
+        _assets->get<cugl::scene2::SceneNode>(
+            "matchscene.gameplayscene.drag-to-discard-tile"
+        )
+    );
+
+    _dragToDiscardNode->setVisible(false);
+
+    _dragToHandNode = std::dynamic_pointer_cast<cugl::scene2::TexturedNode>(
+        _assets->get<cugl::scene2::SceneNode>(
+            "matchscene.gameplayscene.drag-to-hand-area"
+        )
+    );
     
     if (_discardPile->getTopTile()) {
         std::shared_ptr<TileSet::Tile> tile = _discardPile->getTopTile();
@@ -217,49 +252,44 @@ bool TutorialScene::init(const std::shared_ptr<AssetManager>& assets, std::share
     return true;
 }
 
-void TutorialScene::update(float timestep){
+void TutorialScene::update(float timestep) {
     cugl::Vec2 mousePos = Scene::screenToWorldCoords(cugl::Vec3(_input->getPosition()));
-    bool mouseDown = _input->isDown();
-    bool mouseReleased = _input->didRelease();
     
     // Update tile animations and positions
     _player1->getHand().updateTilePositions(_playerHandRegion, timestep);
     _pile->pileJump(timestep);
-    //Constantly update pile tile positions
     _pile->updateTilePositions(timestep);
-    // Constantly update discard pile tile
     _discardPile->updateTilePositions(timestep);
     updateTurnIndicators();
     
-    // Clicking/Tapping and Dragging logic
-    updateDrag(mousePos, mouseDown, mouseReleased, timestep);
-    
-    // Handle player turn
-    if (_currentTurn == 0){
-        if (mouseReleased) {
-            cugl::Vec2 start = Scene::screenToWorldCoords(cugl::Vec3(_input->getInitialPosition()));
-            if (start == mousePos) {
-                clickedTile(mousePos);  // Select tile
-            }
+    if (_input->didRelease() && !_input->isDown()){
+        cugl::Vec2 initialMousePos =
+            cugl::Scene::screenToWorldCoords(cugl::Vec3(_input->getInitialPosition()));
+        if (initialMousePos - mousePos == Vec2(0,0)){
+            clickedTile(mousePos);
         }
     }
     
+    updateDrag(mousePos, _input->isDown(), _input->didRelease(), timestep);
+    
+    // Check for pile click - add this to handle drawing from pile
+    if (_currentTurn == 0 && _input->didRelease()) {
+        cugl::Vec2 start = Scene::screenToWorldCoords(cugl::Vec3(_input->getInitialPosition()));
+        if (start == mousePos) {  // This checks if it was a click and not a drag
+            // Check if player clicked the pile and hasn't drawn yet
+            if (_pileBox.contains(mousePos)) {
+                drawTile();  // Draw from pile
+            }
+        }
+    }
+
     // Handle bot turn
-    else if (_currentTurn == 1){
+    if (_currentTurn == 1) {
         _botDelay -= timestep;
         if (_botDelay <= 0.0f) {
-            if (!hasDrawn){
+            if (getChoice() == NONE){
                 _player2->getHand().drawFromPile(_pile, 1, false);
                 AudioController::getInstance().playSound("Pile");
-                hasDrawn = true;
-            }
-            if (hasDrawn && !hasDiscarded){
-                if (hasPlayedCelestial){
-                    return;
-                }
-                discardTile(_player2->getHand()._tiles[0]);
-                hasDiscarded = true;
-                endTurn();
             }
         }
     }
@@ -267,11 +297,11 @@ void TutorialScene::update(float timestep){
 
 void TutorialScene::updateDrag(const cugl::Vec2& mousePos, bool mouseDown, bool mouseReleased, float timestep){
     auto& dragContainer = _player1->getHand().getTiles();
-    
     if (mouseDown) {
         if (!_dragInitiated) {
             _dragStartPos = mousePos;
             _draggingTile = getTileAtPosition(mousePos, dragContainer);
+            std::cout << "Drag started for tile: " << (_draggingTile ? "Tile exists" : "No tile found") << std::endl;
             _dragFromDiscard = false;
             if(_draggingTile && !_draggingTile->selectable) {
                 return;
@@ -304,7 +334,7 @@ void TutorialScene::updateDrag(const cugl::Vec2& mousePos, bool mouseDown, bool 
                 _draggingTile->tileRect.origin = newPos;
                 
                 if (_draggingTile && !_dragFromDiscard) {
-                    auto& tiles = _player1->getHand().getTiles();
+                    auto& tiles = dragContainer;
 
                      auto it = std::find(tiles.begin(), tiles.end(), _draggingTile);
                      if (it != tiles.end()) {
@@ -332,35 +362,32 @@ void TutorialScene::updateDrag(const cugl::Vec2& mousePos, bool mouseDown, bool 
     }
     if (mouseReleased) {
         // Active play area logic. Ensure you only do these actions when it is your turn.
-        if(_draggingTile && _activeRegion.contains(mousePos)) {
-                if(getChoice() == DRAWNDISCARD) {
+        if(_draggingTile && _activeRegion.contains(mousePos) && getChoice() == DISCARDED) {
+        
+                if(_draggingTile->_suit == TileSet::Tile::Suit::CELESTIAL && !_draggingTile->debuffed) {
+                    if (playCelestial(_draggingTile)) {
                         AudioController::getInstance().playSound("WrongAction", false);
-                } else {
-                    if(_draggingTile->_suit == TileSet::Tile::Suit::CELESTIAL && !_draggingTile->debuffed) {
-                        if (playCelestial(_draggingTile)) {
-                            AudioController::getInstance().playSound("WrongAction", false);
-                            if (_discardPile->getSize() < 1){
-                            } else {
-                            }
+                        if (_discardPile->getSize() < 1){
+                        } else {
                         }
-                  }
-                    else {
-                      // Regular tile getting discarded
-                    if(discardTile(_draggingTile)) {
-                          _draggingTile->pos = _discardedTileImage->getWorldPosition();
-                          if(_draggingTile->debuffed) {
-                              _discardedTileImage->setTexture(_assets->get<Texture>("debuffed"));
-                          }
-                          else {
-                              _discardedTileImage->setTexture(_assets->get<Texture>(_draggingTile->toString()));
-                          }
-                          _discardedTileImage->SceneNode::setContentSize(32.88, 45);
-                          _discardedTileImage->setVisible(true);
-                          int index = _discardUINode->getLabelIndex(_draggingTile);
-                          _discardUINode->incrementLabel(index);
-                          _draggingTile->_scale = 0;
-                      }
                     }
+                }
+                else {
+                  // Regular tile getting discarded
+                if(discardTile(_draggingTile)) {
+                      _draggingTile->pos = _discardedTileImage->getWorldPosition();
+                      if(_draggingTile->debuffed) {
+                          _discardedTileImage->setTexture(_assets->get<Texture>("debuffed"));
+                      }
+                      else {
+                          _discardedTileImage->setTexture(_assets->get<Texture>(_draggingTile->toString()));
+                      }
+                      _discardedTileImage->SceneNode::setContentSize(32.88, 45);
+                      _discardedTileImage->setVisible(true);
+                      int index = _discardUINode->getLabelIndex(_draggingTile);
+                      _discardUINode->incrementLabel(index);
+                      _draggingTile->_scale = 0;
+                  }
                 }
             } else {
                 AudioController::getInstance().playSound("WrongAction", false);
@@ -374,7 +401,6 @@ void TutorialScene::updateDrag(const cugl::Vec2& mousePos, bool mouseDown, bool 
                         _playSetBtn->activate();
                         _playSetBtn->setVisible(true);
                         _draggingTile->_scale = 0.325;
-                        hasDrawn = true;
                     }
                     else {
                         _draggingTile->pos = _discardedTileImage->getWorldPosition();
@@ -414,7 +440,7 @@ void TutorialScene::updateDrag(const cugl::Vec2& mousePos, bool mouseDown, bool 
 
             auto& tiles = dragContainer;
 
-            if((_draggingTile->discarded && hasDrawn) || _currentTurn == 1) {
+            if(_draggingTile->discarded || _currentTurn == 1) {
                 _player1->_draggingTile = nullptr;
                 releaseTile();
                 return;
@@ -541,7 +567,7 @@ void TutorialScene::render(){
 }
 
 bool TutorialScene::drawTile(){
-    if (hasDrawn || _pile->getVisibleSize() == 0) return false;
+    if (_pile->getVisibleSize() == 0 || getChoice() != NONE) return false;
     
     int currPlayerId = _currentTurn; // 0 = player1 (human), 1 = player2 (bot)
     std::shared_ptr<Player> currPlayer = (currPlayerId == 0) ? _player1 : _player2;
@@ -554,7 +580,7 @@ bool TutorialScene::drawTile(){
     tile->inDeck = false;
     tile->inHostHand = (currPlayerId == 0);
     tile->inClientHand =(currPlayerId == 1);
-    tile->selectable =(currPlayerId == 0);
+    tile->selectable = (currPlayerId == 0);
     
     currPlayer->getHand()._tiles.push_back(tile);
     if (currPlayerId == 0){
@@ -562,13 +588,12 @@ bool TutorialScene::drawTile(){
     }
     
     AudioController::getInstance().playSound("Pile");
-    hasDrawn = true;
-    
+    _choice = DREW;
     return true;
 }
 
 bool TutorialScene::drawDiscard(){
-    if (hasDrawn || !_discardPile->getTopTile()) return false;
+    if (!_discardPile->getTopTile()) return false;
 
     int currPlayerId = _currentTurn;
     std::shared_ptr<Player> currPlayer = (currPlayerId == 0) ? _player1 : _player2;
@@ -590,14 +615,13 @@ bool TutorialScene::drawDiscard(){
     }
 
     AudioController::getInstance().playSound("Pile");
-    hasDrawn = true;
     _choice = DRAWNDISCARD;
 
     return true;
 }
 
 bool TutorialScene::discardTile(std::shared_ptr<TileSet::Tile> tile){
-    if (!tile || hasPlayedCelestial) return false;
+    if (!tile) return false;
 
     int currPlayerId = _currentTurn;
     std::shared_ptr<Player> currPlayer = (currPlayerId == 0) ? _player1 : _player2;
@@ -618,17 +642,15 @@ bool TutorialScene::discardTile(std::shared_ptr<TileSet::Tile> tile){
         _discardedTileImage->setVisible(true);
     }
 
-    hasDiscarded = true;
-    hasDrawn = false;
-    endTurn();
+    _choice = DISCARDED;
 
     AudioController::getInstance().playSound("Discard");
-
+    endTurn();
     return true;
     }
 
 bool TutorialScene::playCelestial(std::shared_ptr<TileSet::Tile> tile){
-    if (!tile || hasDiscarded) return false;
+    if (!tile) return false;
     
     int currPlayerId = _currentTurn;
     std::shared_ptr<Player> currPlayer = (currPlayerId == 0) ? _player1 : _player2;
@@ -643,7 +665,6 @@ bool TutorialScene::playCelestial(std::shared_ptr<TileSet::Tile> tile){
     _pile->reshufflePile();
     _pile->setTilePositions();
     
-    hasPlayedCelestial = true;
     endTurn();
     
     AudioController::getInstance().playSound("Rooster");
@@ -655,21 +676,12 @@ bool TutorialScene::playSet() {
     int currPlayerId = _currentTurn;
     std::shared_ptr<Player> currPlayer = (currPlayerId == 0) ? _player1 : _player2;
 
-    if (!hasDrawn) {
-        AudioController::getInstance().playSound("WrongAction");
-        return false;
-    }
-
-    // Check if selected tiles are valid
     if (currPlayer->getHand().isSetValid(currPlayer->getHand()._selectedTiles)) {
         AudioController::getInstance().playSound("PlayedSet");
 
-        // Play the set (moves them to set area)
         currPlayer->getHand().playSet(currPlayerId == 0);
         currPlayer->getHand()._selectedTiles.clear();
 
-        hasDrawn = false;
-        hasDiscarded = false;
         _choice = NONE;
         return true;
     } else {
@@ -695,29 +707,18 @@ bool TutorialScene::playSet() {
         }
 
         currPlayer->getHand()._selectedTiles.clear();
-        hasDrawn = false;
-        _choice = NONE;
+        _choice = DONE;
         return false;
     }
 }
 
 void TutorialScene::endTurn(){
-    if (hasDrawn && (hasDiscarded || hasPlayedCelestial)){
         if (_currentTurn == 0){
             _currentTurn = 1;
         } else {
             _currentTurn = 0;
             _botDelay = 2.0f;
         }
-        resetTurn();
-    }
-   
-}
-
-void TutorialScene::resetTurn(){
-    hasDrawn = false;
-    hasDiscarded = false;
-    hasPlayedCelestial = false;
 }
 
 void TutorialScene::initTurnIndicators(){

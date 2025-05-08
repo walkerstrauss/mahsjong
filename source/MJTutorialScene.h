@@ -29,6 +29,7 @@ public:
         INFO,
         SETTING,
         DISCARD_UI,
+        DREW,
         DISCARDED,
         DRAWNDISCARD,
         DONE,
@@ -153,10 +154,6 @@ protected:
     bool _wasTradeTileVisible = false;
     
     float _botDelay = 2.0f;
-    
-    bool hasDrawn;
-    bool hasDiscarded;
-    bool hasPlayedCelestial;
 public:
 #pragma mark Constructors
     TutorialScene() : Scene2(){}
@@ -281,40 +278,6 @@ public:
         _player1->getHand().initHand(_tileSet, true);
         _player2->getHand().initHand(_tileSet, false);
         _pile->initPile(4, _tileSet, true);
-        
-        for(auto& tile : _player1->getHand()._tiles) {
-            tile->getContainer()->setAnchor(Vec2::ANCHOR_CENTER);
-            tile->getContainer()->setScale(tile->_scale);
-            tile->getContainer()->setPosition(tile->pos);
-        }
-        
-        // Setting texture location in pile
-        for(auto& row: _pile->_pile) {
-            for(auto& tile: row) {
-                if(tile == nullptr) {
-                    continue;
-                }
-                tile->getContainer()->setAnchor(Vec2::ANCHOR_CENTER);
-                tile->getContainer()->setScale(tile->_scale);
-                tile->getContainer()->setPosition(tile->pos);
-            }
-        }
-        
-        initTurnIndicators();
-        
-        _dragToDiscardNode = std::dynamic_pointer_cast<cugl::scene2::TexturedNode>(
-            _assets->get<cugl::scene2::SceneNode>(
-                "matchscene.gameplayscene.drag-to-discard-tile"
-            )
-        );
-
-        _dragToDiscardNode->setVisible(false);
-
-        _dragToHandNode = std::dynamic_pointer_cast<cugl::scene2::TexturedNode>(
-            _assets->get<cugl::scene2::SceneNode>(
-                "matchscene.gameplayscene.drag-to-hand-area"
-            )
-        );
     }
 };
     

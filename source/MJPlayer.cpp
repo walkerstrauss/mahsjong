@@ -383,6 +383,7 @@ void Hand::updateTilePositions(cugl::Rect rect, float dt){
         }
         
         _tiles[i]->pos = newPos;
+        _tiles[i]->_scale = 0.325;
     }
     
     for(const auto& tile : _tiles){
