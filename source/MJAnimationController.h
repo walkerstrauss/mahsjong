@@ -323,7 +323,7 @@ private:
 
         BounceAnim(std::shared_ptr<TileSet::Tile>& tile, float offset, float angularFreq, float dampingRatio) :
         tile(tile), done(false), velocity(0.0f), rotVelocity(0.0f) {
-            angle = tile->getContainer()->getAngle() + 20.0f * M_PI/180.0f;
+            angle = tile->getContainer()->getAngle() + 30.0f * M_PI/180.0f;
             scale = tile->getContainer()->getScale().x - offset;
             AnimationController::getInstance().CalcDampedSpringMotionParams(&scaleParams, 0.16f , angularFreq, dampingRatio);
             AnimationController::getInstance().CalcDampedSpringMotionParams(&rotParams, 0.16f , angularFreq, dampingRatio);
