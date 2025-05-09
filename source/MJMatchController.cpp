@@ -807,7 +807,8 @@ void MatchController::celestialEffect(){
             std::shared_ptr<graphics::Texture> fromTexture = _assets->get<graphics::Texture>(tile->toString() + " sheet");
             std::shared_ptr<graphics::Texture> toTexture = _assets->get<graphics::Texture>(it->toString() + " sheet");
             std::shared_ptr<graphics::Texture> idle = _assets->get<graphics::Texture>(it->toString() + " new");
-            AnimationController::getInstance().animateTileMorph(tile, fromTexture, toTexture, idle, 12.0f);
+            AnimationController::getInstance().animateTileMorph(tile, fromTexture, toTexture, idle, 20.0f);
+            AnimationController::getInstance().animateBounceEffect(tile, 0.1f);  
             tile->setTexture(_assets->get<graphics::Texture>(it->toString()));
             }
         

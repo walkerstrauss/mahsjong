@@ -105,7 +105,7 @@ public:
         /** Whether or not this tile is being animated (for scaling) */
         bool animating = false;
         /** Whether or not this tile is being moved (pile shuffling) */
-        bool moveToCenter = false; 
+        bool moveToCenter = false;
         
 #pragma mark -
 #pragma mark Tile Constructors
