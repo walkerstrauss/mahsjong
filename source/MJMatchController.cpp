@@ -109,6 +109,32 @@ void MatchController::initClient() {
 }
 
 /**
+ * Initializes the game in tutorial mode. Initializes the tileset based on a preset deck JSON
+ * and instantiates only one player.
+ */
+void MatchController::initTutorial() {
+    _network->connectAsTutorial();
+    
+    std::shared_ptr<JsonValue> tutorialDeck = _assets->get<JsonValue>("constants");
+    _tileSet->deck = _tileSet->processDeckJson(tutorialDeck->get(0));
+    for (auto& tile : _tileSet->deck) {
+        _tileSet->tileMap[std::to_string(tile->_id)] = tile;
+    }
+    
+    _tileSet->setAllTileTexture(_assets);
+    _tileSet->initTileNodes(_assets);
+    
+    //Initializing tutorial player
+    hostPlayer->getHand().initHand(_tileSet, true);
+    
+    //Initializing pile
+    _pile->initPile(4, _tileSet, true);
+
+    
+    inTutorial = true; 
+}
+
+/**
  * Draws a tile from the pile to the player that called the method. After drawing, it broadcasts
  * the state of the pile and updates any tiles associated with the action performed
  */
@@ -201,7 +227,7 @@ bool MatchController::drawDiscard() {
     
     _choice = DRAWNDISCARD;
     
-    hasDrawn = true; 
+    hasDrawn = true;
     
     return true; 
 }
@@ -869,8 +895,8 @@ void MatchController::celestialEffect(){
  */
 void MatchController::endTurn() {
     // If it is this player's turn
-    if(_network->getCurrentTurn() == _network->getLocalPid()) {
-        // If satisfied turn requirements n 
+    if(_network->getCurrentTurn() == _network->getLocalPid() && !inTutorial) {
+        // If satisfied turn requirements n
         if((hasDrawn || hasTimedOut) && (hasPlayedCelestial || hasDiscarded || hasTimedOut)) {
             // If host
             if(_network->getHostStatus() && hostPlayer->getHand()._tiles.size() == hostPlayer->getHand()._size) {
@@ -1029,6 +1055,11 @@ void MatchController::update(float timestep) {
  */
 void MatchController::dispose() {
     if(_active) {
+        _tileSet = nullptr;
+        _pile = nullptr;
+        _discardPile = nullptr;
+        hostPlayer = nullptr;
+        clientPlayer = nullptr; 
         // end the background music for the matchscene.
         AudioController::getInstance().stopMusic();
         if(_network) {

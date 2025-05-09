@@ -21,183 +21,222 @@ using namespace cugl;
 using namespace cugl::scene2;
 using namespace cugl::graphics;
 
-/** Class representing the tutorial scene for the game */
-class TutorialScene : public Scene2 {
+/** Class representing the tutorial scene */
+class TutorialScene : public cugl::scene2::Scene2 {
 public:
+    /**
+     * Enum representing the player's choice when in the tutorial scene
+     * for app transition scenes logic
+     */
     enum Choice {
         NONE,
-        INFO,
+        PAUSE,
         SETTING,
-        DISCARD_UI,
-        DREW,
+        INFO,
+        SETS,
         DISCARDED,
-        DRAWNDISCARD,
+        DRAW_DISCARD,
         DONE,
-        BACK
+        BACK,
+        DISCARD_UI
     };
     
-    std::vector<std::shared_ptr<TileSet::Tile>> discardedTiles;
-    std::shared_ptr<TileSet::Tile> discardDrawTile;
-    std::vector<std::shared_ptr<TexturedNode>> _opponentHandTiles;
-    std::vector<std::shared_ptr<TexturedNode>> _playerHandTiles;
-    std::shared_ptr<SceneNode> _opponentHandRec;
-    std::shared_ptr<SceneNode> _playerHandRec;
-    int _remainingTiles;
-    std::shared_ptr<Label> _remainingLabel;
-    int opponentSetIndex = 0;
-    int playerSetIndex = 0;
-protected:
-    int _currentTurn = 0;
-    std::shared_ptr<AssetManager> _assets;
-    std::shared_ptr<SceneNode> _tutorialScene;
-    std::shared_ptr<DiscardUINode> _discardUINode;
-    std::shared_ptr<InputController> _input;
+    /**
+     * Enum representing the current choice the player must make
+     */
+    enum TutorialPhase {
+        START,
+        ONE_DRAW,
+        DISCARD,
+        ONE_OPP,
+        TWO_DRAW,
+        CELESTIAL,
+        TWO_OPP,
+        DRAW_DIS,
+        PLAY_SET,
+        SET_DISCARD,
+        FINISHED
+    };
+    
+    /** Current scene choice */
     Choice _choice;
-    /** TileSet for the game */
-    std::shared_ptr<TileSet> _tileSet;
-    /** Reference to the player */
-    std::shared_ptr<Player> _player1;
-    /** Reference to the bot player*/
-    std::shared_ptr<Player> _player2;
-    /** Reference to tile pile */
-    std::shared_ptr<Pile> _pile;
-    /** Reference to the discard pile */
-    std::shared_ptr<DiscardPile> _discardPile;
-    /** Temporary discard area b/c no asset created for it yet */
-    cugl::Rect discardArea;
-    cugl::Rect _pileBox;
-    /**Button to transition to the setting scene**/
-    std::shared_ptr<Button> _settingBtn;
-    /**Button to transition to the info scene **/
-    std::shared_ptr<Button> _infoBtn;
-    /** Button for transitioning to the tileset UI scene (discarded cards) */
-    std::shared_ptr<cugl::scene2::Button> _tilesetUIBtn;
     
-    /** Textured node to set the discarded tile image*/
-    std::shared_ptr<cugl::scene2::TexturedNode> _discardedTileImage;
+    /** The current tutorial phase */
+    TutorialPhase _phase;
     
-    std::shared_ptr<cugl::scene2::TexturedNode> _dragToDiscardNode;
+    /** Returns choice of this game scene */
+    Choice getChoice() { return _choice; }
     
-    std::shared_ptr<cugl::scene2::TexturedNode> _dragToHandNode;
+private:
+#pragma mark App objects
+    /** Asset manager for this game mode */
+    std::shared_ptr<AssetManager> _assets;
+    /** Input controller for player input */
+    std::shared_ptr<InputController> _input;
+    /** Network controller */
+    std::shared_ptr<NetworkController> _network; 
+#pragma mark Scene Objects
+    /** JSON with all of our constants */
+    std::shared_ptr<JsonValue> _constants;
+    /** Reference to the discardUI node for the game */
+    std::shared_ptr<DiscardUINode> _discardUINode;
+    /** Reference to the pileUI node for the game */
+    std::shared_ptr<PileUINode> _pileUINode;
+    /** Scene2 object for the match scene */
+    std::shared_ptr<SceneNode> _matchScene;
+    /** Scene2 object for the pause scene */
+    std::shared_ptr<SceneNode> _pauseScene;
+    /** Reference to the play area */
     std::shared_ptr<SceneNode> _playArea;
+    /** Reference to the trade area */
     std::shared_ptr<SceneNode> _tradeArea;
-    bool _dragFromDiscard = false;
-    bool _dragToHandVisible = false;
+    /** Reference to opponent hand tab node */
+    std::shared_ptr<SceneNode> _opponentHandRec;
+    /** Reference to the player hand tab node */
+    std::shared_ptr<SceneNode> _playerHandRec;
+    /** TexturedNodes for gameplay options */
+    std::shared_ptr<TexturedNode> _discardedTileImage;
+    std::shared_ptr<TexturedNode> _dragToDiscardNode;
+    std::shared_ptr<TexturedNode> _dragToHandNode;
     
-    /** Button for playing a set */
-    std::shared_ptr<cugl::scene2::Button> _playSetBtn;
     
-    /** Vector of scene nodes representing labels in the tileset UI table */
-    std::vector<std::shared_ptr<cugl::scene2::Label>> _labels;
-    /** Reference to scene node for UI scene */
-    std::shared_ptr<scene2::SceneNode> _tilesetui;
-    /** Button to exit the discard UI */
-    std::shared_ptr<scene2::Button> _backBtn;
-    
-    float _frameTimer = 0.0f;
-    float _frameDelay = 0.2f;
-    
-    /** The tile currently being dragged */
-    cugl::Vec2 _dragOffset;
-    
-    /** The rectangle representing the discrad pile's position*/
-    cugl::Rect _discardBox;
-    
-    /** The rectangle representing the active play/discard area for all tiles*/
-    cugl::Rect _activeRegion;
-    
-    /** The rectangle representing the discarded tile widget */
-    cugl::Rect _discardedTileRegion;
-    
-    /** The rectangle reprsenting the player hand region */
-    cugl::Rect _playerHandRegion;
-    
-    std::shared_ptr<TileSet::Tile> _draggingTile = nullptr;
-    int _dragonRow = -1;
-    
-    cugl::Vec2 _dragStartPos;
-    bool _dragInitiated = false;
-    const float DRAG_THRESHOLD = 0.0f;
-    
-    cugl::Vec2 _originalTilePos = cugl::Vec2::ZERO;
-    bool shouldReturn = true;
-    
-    std::shared_ptr<AnimatedNode> _actionAnimNode;
-    
-    bool _waitingForTileSelection = false;
-    std::shared_ptr<TileSet::Tile> discardedTileSaved;
-    bool _selectedThree = false;
-    
+#pragma mark SceneNode Objects
+    /** Buttons */
+    std::shared_ptr<Button> _backBtn;
+    std::shared_ptr<Button> _playSetBtn; 
+    std::shared_ptr<Button> _tilesetUIBtn;
+    std::shared_ptr<Button> _settingBtn;
+    std::shared_ptr<Button> _infoBtn;
     std::shared_ptr<Button> _opponentHandBtn;
     std::shared_ptr<Button> _playerHandBtn;
     std::shared_ptr<Button> _opponentHandBtn2;
     std::shared_ptr<Button> _playerHandBtn2;
-    
     bool opponentTabVisible = false;
     bool playerTabVisible = false;
     
-    std::vector<std::string> playerGuideKeys;
-    std::unordered_map<std::string, std::shared_ptr<SceneNode>> playerGuideNodeMap;
-    int framesOnScreen = 0;
-    int maxFramesOnScreen = 180;
+    /** Rect areas */
+    Rect _activeRegion;
+    Rect _discardedTileRegion;
+    Rect _playerHandRegion;
+    Rect _pileBox; 
     
-    // Field to track the time left in the active turn
-    float _turnTimeRemaining;
-    const float TURN_DURATION = 45.0f;
-    bool turnTimerActive = false;
-    int prevTurnId = -99;
-    std::shared_ptr<Label> _timer;
+    /** Tile vectors */
+    std::vector<std::shared_ptr<TexturedNode>> _opponentHandTiles;
+    std::vector<std::shared_ptr<TexturedNode>> _playerHandTiles;
     
-    bool _wasPlayAreaVisible = false;
+#pragma mark SceneNode button keys
+    Uint32 _tilesetUIBtnKey;
+    Uint32 _pauseBtnKey;
+    Uint32 _backBtnKey;
+    
+#pragma mark Gameplay Objects
+    /** TileSet for the game */
+    std::shared_ptr<TileSet> _tileSet;
+    /** Reference to the player */
+    std::shared_ptr<Player> _player;
+    /** Reference to the pile */
+    std::shared_ptr<Pile> _pile;
+    /** Reference to the discard pile */
+    std::shared_ptr<DiscardPile> _discardPile;
+    /** Reference to the match controller */
+    std::shared_ptr<MatchController> _matchController;
+    
+    /** Drag objects */
+    std::shared_ptr<TileSet::Tile> _draggingTile = nullptr;
+    
+    Vec2 _dragOffset;
+    Vec2 _dragStartPos;
+    Vec2 _originalTilePos = Vec2::ZERO;
+    
+    bool _dragInitiated = false;
+    bool _dragFromDiscard = false;
     bool _wasDragToHandVisible = false;
     bool _wasDragToDiscardVisible = false;
-    bool _wasTradeTileVisible = false;
+    bool _wasPlayAreaVisible = false;
+    bool shouldReturn = false; 
     
-    float _botDelay = 2.0f;
+    const float DRAG_THRESHOLD = 0.0f;
+    
+#pragma mark Celestial Tiles
+    int _dragonRow = -1;
+    
 public:
-#pragma mark Constructors
-    TutorialScene() : Scene2(){}
-    
-    bool init(const std::shared_ptr<AssetManager>& assets, std::shared_ptr<InputController>& inputController);
-
-    Choice getChoice() const { return _choice; }
-        
+#pragma mark -
 #pragma mark Gameplay Handling
-    void update(float timestep) override;
+    /**
+     * Creates a new game mode with the default values
+     *
+     * This constructor does not allocate any objects or start the game.
+     * This allows us to use the object without a heap pointer.
+     */
+    TutorialScene() : cugl::scene2::Scene2() {}
     
-    void updateDrag(const cugl::Vec2& mousePos, bool mouseDown, bool mouseReleased, float timestep);
+    /**
+     * Initializes the controller contents, and starts the game
+     *
+     * The constructor does not allocate any objects or memory. This allows
+     * us to have a non-pointer reference to this controller, reducing our memory
+     * allocation. Instead, allocation happens in this method
+     *
+     * @param assets    the asset manager for the game
+     */
+    bool init(const std::shared_ptr<cugl::AssetManager>& assets, std::shared_ptr<NetworkController>& network, std::shared_ptr<InputController>& inputController);
     
-    void clickedTile(Vec2 mousePos);
-    
-    void dragTile();
-    
-    void releaseTile();
-    
-    void endTurn();
-    
-    void resetTurn();
-    
-    virtual void setActive(bool value) override;
-    
-    void setTutorialActive(bool value);
-    
+    /**
+     * Disposes of all (non-static) resources allocated to this node.
+     */
     void dispose() override;
     
+    /**
+     * Rests the status of the game so we can play again.
+     */
+    void reset() override { return; }
+    
+    /**
+      * The method called to update the game mode
+      *
+      * @param timestep The amount of time (in seconds) since the last frame
+      */
+     void update(float timestep) override;
+    
+    /**
+     * Draws all this scene to the scene's SpriteBatch
+     */
     void render() override;
     
-    void initTurnIndicators();
+    /**
+     * Sets the current active scene as active or not active
+     */
+    virtual void setActive(bool value) override;
     
-    void updateTurnIndicators();
+    /**
+     * Sets if the current gameplay is active or not.
+     */
+    void setTutorialActive(bool value);
     
-    std::shared_ptr<TileSet::Tile> getTileAtPosition(const cugl::Vec2& mousePos, std::vector<std::shared_ptr<TileSet::Tile>> tiles) {
-        for (const auto& tile : tiles) {
-            if (tile && tile->tileRect.contains(mousePos)) {
-                return tile;
-            }
+    /**
+     * The main dragging function for this scene. Checks if the dragging tile
+     * if a celestial or normal and, on release, executes the appropriate action. Also handles
+     * rearranging hand and pile tiles.
+     */
+    void updateDrag(const cugl::Vec2& mousePos, bool mouseDown, bool mouseReleased, float timestep);
+    
+    /**
+     * Updates the visibility of regions
+     */
+    void updateAreaVisibility(Vec2 mousePos, float timestep);
+    
+    /** Releases the current dragging tile */
+    void releaseTile() {
+        if (_draggingTile) {
+            _draggingTile->pressed = false;
+            _draggingTile = nullptr;
         }
-        return nullptr;
     }
     
+    /**
+     * Fetches the inde of the tile at the current mouse position 
+     */
     int getIndexAtPosition(const Vec2& mousePos, const std::vector<std::shared_ptr<TileSet::Tile>>& tiles) {
         for (int i = 0; i < (int)tiles.size(); ++i) {
             if (tiles[i] && tiles[i]->tileRect.contains(mousePos)) {
@@ -207,78 +246,135 @@ public:
         return -1;
     }
     
-    bool discardTile(std::shared_ptr<TileSet::Tile>);
+    /**
+     * Fetches tile at the current mouse position within the player hand
+     */
+    std::shared_ptr<TileSet::Tile> getTileAtPosition(const cugl::Vec2& mousePos, std::vector<std::shared_ptr<TileSet::Tile>> tiles) {
+        for (const auto& tile : tiles) {
+            if (tile && tile->tileRect.contains(mousePos)) {
+                return tile;
+            }
+        }
+        return nullptr;
+    }
     
-    bool drawDiscard();
+    /** Shows the opponent sets */
+    void displayOpponentSets(){
+        int i = 0;
+        for (auto set : _player->getHand().opponentPlayedSets){
+            set = _player->getHand().getSortedTiles(set);
+            for (auto tile : set){
+                auto node = _opponentHandTiles[i];
+                node->setTexture(tile->getTileTexture());
+                node->setContentSize(30, 38.46f);
+                node->doLayout();
+                i++;
+            }
+        }
+    }
     
-    bool playCelestial(std::shared_ptr<TileSet::Tile>);
+    /** Shows player sets */
+    void displayPlayerSets(){
+        int i = 0;
+        for (auto set : _player->getHand()._playedSets){
+            set = _player->getHand().getSortedTiles(set);
+            for (auto tile : set){
+                auto node = _playerHandTiles[i];
+                node->setTexture(tile->getTileTexture());
+                node->setContentSize(30, 38.46f);
+                node->doLayout();
+                i++;
+            }
+        }
+    }
     
-    bool drawTile();
+    /**
+     * Checks whether or not a tile has been clicked and sets selected status accordingly
+     */
+    void clickedTile(cugl::Vec2 mousePos);
     
-    bool playSet();
-    
-    void initTileData(){
-        _tileSet->deck.clear();
+    void initTurnIndicators(){
+        _opponentHandRec = _assets->get<SceneNode>("matchscene.gameplayscene.opponent-hand-rec");
+        _opponentHandBtn = std::dynamic_pointer_cast<Button>(_assets->get<SceneNode>("matchscene.gameplayscene.opponent-hand"));
+        _opponentHandBtn->addListener([this](const std::string& name, bool down){
+            if (!down){
+                opponentTabVisible = !opponentTabVisible;
+            }
+        });
+        _opponentHandBtn2 = std::dynamic_pointer_cast<Button>(_assets->get<SceneNode>("matchscene.gameplayscene.opponent-hand2"));
+        _opponentHandBtn2->addListener([this](const std::string& name, bool down){
+            if (!down){
+                opponentTabVisible = !opponentTabVisible;
+            }
+        });
         
-        // Init p1 tiles
-        _tileSet->deck.push_back(std::make_shared<TileSet::Tile>(TileSet::Tile::Rank::ONE, TileSet::Tile::Suit::BAMBOO));
-        _tileSet->deck.push_back(std::make_shared<TileSet::Tile>(TileSet::Tile::Rank::ONE, TileSet::Tile::Suit::BAMBOO));
-         _tileSet->deck.push_back(std::make_shared<TileSet::Tile>(TileSet::Tile::Rank::TWO, TileSet::Tile::Suit::BAMBOO));
-        _tileSet->deck.push_back(std::make_shared<TileSet::Tile>(TileSet::Tile::Rank::TWO, TileSet::Tile::Suit::BAMBOO));
-        _tileSet->deck.push_back(std::make_shared<TileSet::Tile>(TileSet::Tile::Rank::FIVE, TileSet::Tile::Suit::CRAK));
-        _tileSet->deck.push_back(std::make_shared<TileSet::Tile>(TileSet::Tile::Rank::FIVE, TileSet::Tile::Suit::CRAK));
-        _tileSet->deck.push_back(std::make_shared<TileSet::Tile>(TileSet::Tile::Rank::SIX, TileSet::Tile::Suit::CRAK));
-        _tileSet->deck.push_back(std::make_shared<TileSet::Tile>(TileSet::Tile::Rank::SIX, TileSet::Tile::Suit::CRAK));
-        _tileSet->deck.push_back(std::make_shared<TileSet::Tile>(TileSet::Tile::Rank::EIGHT, TileSet::Tile::Suit::DOT));
-         _tileSet->deck.push_back(std::make_shared<TileSet::Tile>(TileSet::Tile::Rank::EIGHT,TileSet::Tile::Suit::DOT));
-        _tileSet->deck.push_back(std::make_shared<TileSet::Tile>(TileSet::Tile::Rank::NINE, TileSet::Tile::Suit::DOT));
-        _tileSet->deck.push_back(std::make_shared<TileSet::Tile>(TileSet::Tile::Rank::NINE, TileSet::Tile::Suit::DOT));
-        _tileSet->deck.push_back(std::make_shared<TileSet::Tile>(TileSet::Tile::Rank::ONE, TileSet::Tile::Suit::DOT));
+        _playerHandRec = _assets->get<SceneNode>("matchscene.gameplayscene.player-hand-rec");
+        _playerHandBtn = std::dynamic_pointer_cast<Button>(_assets->get<SceneNode>("matchscene.gameplayscene.playerhand-button"));
+        _playerHandBtn->addListener([this](const std::string& name, bool down){
+            if (!down){
+                AudioController::getInstance().playSound("Select");
+                playerTabVisible = !playerTabVisible;
+            }
+        });
+        _playerHandBtn2 = std::dynamic_pointer_cast<Button>(_assets->get<SceneNode>("matchscene.gameplayscene.playerhand-button2"));
+        _playerHandBtn2->addListener([this](const std::string& name, bool down){
+            if (!down){
+                AudioController::getInstance().playSound("Select");
+                playerTabVisible = !playerTabVisible;
+            }
+        });
         
-        // Init p2 tiles
-        _tileSet->deck.push_back(std::make_shared<TileSet::Tile>(TileSet::Tile::Rank::ONE, TileSet::Tile::Suit::BAMBOO));
-        _tileSet->deck.push_back(std::make_shared<TileSet::Tile>(TileSet::Tile::Rank::TWO, TileSet::Tile::Suit::BAMBOO));
-        _tileSet->deck.push_back(std::make_shared<TileSet::Tile>(TileSet::Tile::Rank::THREE, TileSet::Tile::Suit::BAMBOO));
-        _tileSet->deck.push_back(std::make_shared<TileSet::Tile>(TileSet::Tile::Rank::THREE, TileSet::Tile::Suit::BAMBOO));
-        _tileSet->deck.push_back(std::make_shared<TileSet::Tile>(TileSet::Tile::Rank::THREE, TileSet::Tile::Suit::BAMBOO));
-        _tileSet->deck.push_back(std::make_shared<TileSet::Tile>(TileSet::Tile::Rank::FIVE, TileSet::Tile::Suit::CRAK));
-        _tileSet->deck.push_back(std::make_shared<TileSet::Tile>(TileSet::Tile::Rank::SIX, TileSet::Tile::Suit::CRAK));
-        _tileSet->deck.push_back(std::make_shared<TileSet::Tile>(TileSet::Tile::Rank::SEVEN, TileSet::Tile::Suit::CRAK));
-        _tileSet->deck.push_back(std::make_shared<TileSet::Tile>(TileSet::Tile::Rank::SEVEN, TileSet::Tile::Suit::CRAK));
-        _tileSet->deck.push_back(std::make_shared<TileSet::Tile>(TileSet::Tile::Rank::NINE, TileSet::Tile::Suit::DOT));
-        _tileSet->deck.push_back(std::make_shared<TileSet::Tile>(TileSet::Tile::Rank::SEVEN, TileSet::Tile::Suit::DOT));
-        _tileSet->deck.push_back(std::make_shared<TileSet::Tile>(TileSet::Tile::Rank::EIGHT, TileSet::Tile::Suit::DOT));
-        _tileSet->deck.push_back(std::make_shared<TileSet::Tile>(TileSet::Tile::Rank::TWO, TileSet::Tile::Suit::DOT));
-        
-        // Init pile tiles
-        _tileSet->deck.push_back(std::make_shared<TileSet::Tile>(TileSet::Tile::Rank::TWO, TileSet::Tile::Suit::DOT));
-        _tileSet->deck.push_back(std::make_shared<TileSet::Tile>(TileSet::Tile::Rank::TWO, TileSet::Tile::Suit::DOT));
-        _tileSet->deck.push_back(std::make_shared<TileSet::Tile>(TileSet::Tile::Rank::ROOSTER, TileSet::Tile::Suit::CELESTIAL));
-        _tileSet->deck.push_back(std::make_shared<TileSet::Tile>(TileSet::Tile::Rank::TWO, TileSet::Tile::Suit::DOT));
-        _tileSet->deck.push_back(std::make_shared<TileSet::Tile>(TileSet::Tile::Rank::TWO, TileSet::Tile::Suit::DOT));
-        _tileSet->deck.push_back(std::make_shared<TileSet::Tile>(TileSet::Tile::Rank::TWO, TileSet::Tile::Suit::DOT));
-        _tileSet->deck.push_back(std::make_shared<TileSet::Tile>(TileSet::Tile::Rank::TWO, TileSet::Tile::Suit::DOT));
-         _tileSet->deck.push_back(std::make_shared<TileSet::Tile>(TileSet::Tile::Rank::TWO, TileSet::Tile::Suit::DOT));
-        _tileSet->deck.push_back(std::make_shared<TileSet::Tile>(TileSet::Tile::Rank::TWO, TileSet::Tile::Suit::DOT));
-        _tileSet->deck.push_back(std::make_shared<TileSet::Tile>(TileSet::Tile::Rank::TWO, TileSet::Tile::Suit::DOT));
-        _tileSet->deck.push_back(std::make_shared<TileSet::Tile>(TileSet::Tile::Rank::TWO, TileSet::Tile::Suit::DOT));
-        _tileSet->deck.push_back(std::make_shared<TileSet::Tile>(TileSet::Tile::Rank::TWO, TileSet::Tile::Suit::DOT));
-        _tileSet->deck.push_back(std::make_shared<TileSet::Tile>(TileSet::Tile::Rank::TWO, TileSet::Tile::Suit::DOT));
-        _tileSet->deck.push_back(std::make_shared<TileSet::Tile>(TileSet::Tile::Rank::TWO, TileSet::Tile::Suit::DOT));
-        _tileSet->deck.push_back(std::make_shared<TileSet::Tile>(TileSet::Tile::Rank::TWO, TileSet::Tile::Suit::DOT));
-        _tileSet->deck.push_back(std::make_shared<TileSet::Tile>(TileSet::Tile::Rank::TWO, TileSet::Tile::Suit::DOT));
-        
-        for (auto& tile : _tileSet->deck){
-            _tileSet->tileMap[std::to_string(tile->_id)] = tile;
+        updateTurnIndicators();
+    }
+    
+    void updateTurnIndicators(){
+        if (_network->getCurrentTurn() == _network->getLocalPid()){
+            if (!_opponentHandBtn->isActive()){
+                _opponentHandBtn->activate();
+            }
+            _opponentHandBtn->setVisible(true);
+            if (_opponentHandBtn2->isActive()){
+                _opponentHandBtn2->deactivate();
+            }
+            _opponentHandBtn2->setVisible(false);
+            if (_playerHandBtn->isActive()){
+                _playerHandBtn->deactivate();
+            }
+            _playerHandBtn->setVisible(false);
+            if (!_playerHandBtn2->isActive()){
+                _playerHandBtn2->activate();
+            }
+            _playerHandBtn2->setVisible(true);
+        } else {
+            if (_opponentHandBtn->isActive()){
+                _opponentHandBtn->deactivate();
+            }
+            _opponentHandBtn->setVisible(false);
+            if (!_opponentHandBtn2->isActive()){
+                _opponentHandBtn2->activate();
+            }
+            _opponentHandBtn2->setVisible(true);
+            if (!_playerHandBtn->isActive()){
+                _playerHandBtn->activate();
+            }
+            _playerHandBtn->setVisible(true);
+            if (_playerHandBtn2->isActive()){
+                _playerHandBtn2->deactivate();
+            }
+            _playerHandBtn2->setVisible(false);
         }
         
-        _tileSet->initTileNodes(_assets);
-        _tileSet->setAllTileTexture(_assets);
+        _opponentHandRec->setVisible(opponentTabVisible);
+        for (int i = 0; i < _opponentHandTiles.size(); i++){
+            _opponentHandTiles[i]->setVisible(opponentTabVisible);
+        }
         
-        _player1->getHand().initHand(_tileSet, true);
-        _player2->getHand().initHand(_tileSet, false);
-        _pile->initPile(4, _tileSet, true);
+        _playerHandRec->setVisible(playerTabVisible);
+        for (int i = 0; i < _playerHandTiles.size(); i++){
+            _playerHandTiles[i]->setVisible(playerTabVisible);
+        }
     }
+    
 };
     
 #endif

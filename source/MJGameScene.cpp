@@ -347,6 +347,60 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::sha
 void GameScene::dispose() {
     if (_active) {
         _matchController->dispose();
+        
+        _tileSet = nullptr;
+        _pile = nullptr;
+        _discardPile = nullptr;
+        _player = nullptr;
+        _matchController->dispose();
+        
+        if (_playSetBtn) {
+            _playSetBtn->clearListeners();
+            _playSetBtn->deactivate();
+        }
+        _playSetBtn = nullptr;
+        if (_backBtn) {
+            _backBtn->clearListeners();
+            _backBtn->deactivate();
+        }
+        _backBtn = nullptr;
+        if (_infoBtn) {
+            _infoBtn->clearListeners();
+            _infoBtn->deactivate();
+        }
+        _infoBtn = nullptr;
+        if (_settingBtn) {
+            _settingBtn->clearListeners();
+            _settingBtn->deactivate();
+        }
+        _settingBtn = nullptr;
+        if (_tilesetUIBtn) {
+            _tilesetUIBtn->clearListeners();
+            _tilesetUIBtn->deactivate();
+        }
+        _tilesetUIBtn = nullptr;
+        if (_playerHandBtn) {
+            _playerHandBtn->clearListeners();
+            _playerHandBtn->deactivate();
+        }
+        _playerHandBtn = nullptr;
+        if (_playerHandBtn2) {
+            _playerHandBtn2->clearListeners();
+            _playerHandBtn2->deactivate();
+        }
+        _playerHandBtn2 = nullptr;
+        if (_opponentHandBtn) {
+            _opponentHandBtn->clearListeners();
+            _opponentHandBtn->deactivate();
+        }
+        _opponentHandBtn = nullptr;
+        if (_opponentHandBtn2) {
+            _opponentHandBtn2->clearListeners();
+            _opponentHandBtn2->deactivate();
+        }
+        _opponentHandBtn2 = nullptr;
+        
+        
         removeAllChildren();
         _active = false;
     }
