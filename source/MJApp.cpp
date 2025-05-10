@@ -587,6 +587,12 @@ void MahsJongApp::updateTutorialScene(float timestep){
     _tutorial.update(timestep);
     switch (_tutorial.getChoice()){
         case TutorialScene::NONE:
+            if (_tutorial._phase == TutorialScene::FINISHED){
+                _tutorial.setActive(false);
+                _tutorial.setTutorialActive(false);
+                _mainmenu.setActive(true);
+                _scene = State::MENU;
+            }
             break;
         case TutorialScene::INFO:
             _tutorial.setTutorialActive(false);
@@ -603,12 +609,13 @@ void MahsJongApp::updateTutorialScene(float timestep){
             _tutorial.setActive(false);
             _tutorial.setTutorialActive(false);
             _mainmenu.setActive(true);
+            _scene = State::MENU;
             break;
         case TutorialScene::BACK:
             _tutorial.setActive(false);
             _tutorial.setTutorialActive(false);
             _mainmenu.setActive(true);
+            _scene = State::MENU;
             break;
     }
 }
-

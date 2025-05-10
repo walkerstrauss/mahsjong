@@ -49,9 +49,11 @@ public:
         ONE_DRAW,
         DISCARD,
         ONE_OPP,
+        ONE_END,
         TWO_DRAW,
         CELESTIAL,
         TWO_OPP,
+        TWO_END,
         DRAW_DIS,
         PLAY_SET,
         SET_DISCARD,
@@ -156,6 +158,12 @@ private:
     bool shouldReturn = false; 
     
     const float DRAG_THRESHOLD = 0.0f;
+    float _opponentDelay = 2.0f;
+    float _turnTimer = 0.0f;
+    float _discardDelay = 2.0f;
+    float _discardTimer = 0.0f;
+    std::shared_ptr<TileSet::Tile> _opponentTile1;
+    std::shared_ptr<TileSet::Tile> _opponentTile2;
     
 #pragma mark Celestial Tiles
     int _dragonRow = -1;

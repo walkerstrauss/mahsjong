@@ -306,21 +306,60 @@ void TutorialScene::update(float timestep) {
     }
     
     if(_phase == ONE_OPP || _phase == TWO_OPP) {
-        std::shared_ptr<TileSet::Tile> tile = _pile->tilesDrawn(1)[0];
-        tile->_scale = 0; 
-        tile->selected = false;
-        tile->inHostHand = false;
-        tile->inClientHand = false;
-        tile->discarded = true;
+        if (_turnTimer < _opponentDelay){
+            _turnTimer += timestep;
+            return;
+        }
         
-        _discardPile->addTile(tile);
-        _discardUINode->incrementLabel(_discardUINode->getLabelIndex(tile));
-        _discardedTileImage->setTexture(_assets->get<Texture>(tile->toString()));
-        _discardedTileImage->SceneNode::setContentSize(32.88, 45);
-        _discardedTileImage->setVisible(true);
-        _matchController->resetTurn();
+        _turnTimer = 0.0f;
         
-        _phase = (_phase == ONE_OPP) ? DRAW_DIS : TWO_DRAW;
+        if (_phase == ONE_OPP){
+            _opponentTile1 = _pile->tilesDrawn(1)[0];
+            _opponentTile1->_scale = 0;
+            _opponentTile1->selected = false;
+            _opponentTile1->inHostHand = false;
+            _opponentTile1->inClientHand = false;
+            _opponentTile1->discarded = true;
+        }
+        
+        if (_phase == TWO_OPP){
+            _opponentTile2 = _pile->tilesDrawn(1)[0];
+            _opponentTile2->_scale = 0;
+            _opponentTile2->selected = false;
+            _opponentTile2->inHostHand = false;
+            _opponentTile2->inClientHand = false;
+            _opponentTile2->discarded = true;
+        }
+        _phase = (_phase == ONE_OPP) ? ONE_END : TWO_END;
+    }
+    
+    if (_phase == ONE_END || _phase == TWO_END){
+        if (_discardTimer < _discardDelay){
+            _discardTimer += timestep;
+            return;
+        }
+        
+        _discardTimer = 0.0f;
+        
+        if (_phase == ONE_END){
+            _discardPile->addTile(_opponentTile1);
+            _discardUINode->incrementLabel(_discardUINode->getLabelIndex(_opponentTile1));
+            _discardedTileImage->setTexture(_assets->get<Texture>(_opponentTile1->toString()));
+            _discardedTileImage->SceneNode::setContentSize(32.88, 45);
+            _discardedTileImage->setVisible(true);
+            _matchController->resetTurn();
+        }
+        
+        if (_phase == TWO_END){
+            _discardPile->addTile(_opponentTile2);
+            _discardUINode->incrementLabel(_discardUINode->getLabelIndex(_opponentTile2));
+            _discardedTileImage->setTexture(_assets->get<Texture>(_opponentTile2->toString()));
+            _discardedTileImage->SceneNode::setContentSize(32.88, 45);
+            _discardedTileImage->setVisible(true);
+            _matchController->resetTurn();
+        }
+        
+        _phase = (_phase == ONE_END) ? DRAW_DIS : TWO_DRAW;
     }
     
     if(_phase == DRAW_DIS) {
