@@ -94,12 +94,15 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::sha
     cugl::Vec2 pileRegionNodeOrigin = pileRegionNode->nodeToWorldCoords(Vec2::ZERO);
     
     _activeRegion = cugl::Rect(activeRegionWorldOrigin, activeRegionNode->getContentSize());
-    _discardedTileRegion = cugl::Rect(discardedTileRegionWorldOrigin, discardedTileRegionNode->getContentSize());
+    //_discardedTileRegion = cugl::Rect(discardedTileRegionWorldOrigin, discardedTileRegionNode->getContentSize());
     _playerHandRegion = cugl::Rect(playerHandRegionWorldOrigin.x, playerHandRegionWorldOrigin.y - 300, playerHandRegionNode->getContentSize().width, playerHandRegionNode->getContentSize().height);
     _pileBox = cugl::Rect(pileRegionNodeOrigin, pileRegionNode->getContentSize());
 
     // Initializing tileset UI button
     _tilesetUIBtn = std::dynamic_pointer_cast<scene2::Button>(_assets->get<scene2::SceneNode>("matchscene.gameplayscene.discarded-tile.discard-can"));
+    //Size sizeOfTileSetBtn = _tilesetUIBtn->getContentSize();
+    //sizeOfTileSetBtn.width = sizeOfTileSetBtn.width*2;
+    //_tilesetUIBtn->setContentSize(sizeOfTileSetBtn);
     _tilesetUIBtnKey = _tilesetUIBtn->addListener([this](const std::string& name, bool down){
         if (!down){
             setActive(false);
@@ -244,21 +247,6 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::sha
         }
     }
     
-    // Init the Rect of the discard pile.
-    if (_discardPile->getTopTile()) {
-        std::shared_ptr<TileSet::Tile> tile = _discardPile->getTopTile();
-        
-        cugl::Size textureSize(350.0f, 415.0f);
-        cugl::Vec2 pos(990, 520); // same pos as in discardPile
-        cugl::Vec2 origin = (textureSize * tile->_scale) / 2;
-        cugl::Vec2 rectOrigin = pos - origin;
-        
-        _discardBox = cugl::Rect(rectOrigin, textureSize * tile->_scale);
-    }
-    else{
-        _discardBox = cugl::Rect(990 - 87.5, 520 - 103.75, 175, 207.5);
-    }
-    
     _input = inputController; //Initialize the input controller
     
     _quit = false;
@@ -293,7 +281,11 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::sha
     _playArea->setVisible(false);
     
     _activeRegion = cugl::Rect(activeRegionWorldOrigin, activeRegionNode->getContentSize());
-    _discardedTileRegion = cugl::Rect(discardedTileRegionWorldOrigin, discardedTileRegionNode->getContentSize());
+    
+    Size discardPileSize = discardedTileRegionNode->getContentSize();
+    discardPileSize.width = discardPileSize.width / 2.0f;
+    discardedTileRegionWorldOrigin.x = discardedTileRegionWorldOrigin.x + discardPileSize.width;
+    _discardedTileRegion = cugl::Rect(discardedTileRegionWorldOrigin, discardPileSize);
     
     // Init the button for playing sets.
     _playSetBtn = std::dynamic_pointer_cast<scene2::Button>(_assets->get<scene2::SceneNode>("matchscene.gameplayscene.playSetButton"));
@@ -629,6 +621,13 @@ void GameScene::render() {
         }
     }
 
+    
+    Rect trashCan = _tilesetUIBtn->getBoundingBox();
+    CULog("size of the transhCan: %f, %f ",trashCan.size.width, trashCan.size.height);
+    CULog("origin of the transhCan: %f, %f" ,trashCan.origin.x, trashCan.origin.y);
+    //_batch->fill(trashCan);
+    //_batch->fill(_discardedTileRegion);
+    
     _batch->end();
 }
 

@@ -522,6 +522,9 @@
         "soundButton": {
             "file": "textures/setting/soundButton.png"
         },
+        "helpButton": {
+            "file": "textures/setting/helpButton.png"
+        },
         "titleBackground": {
             "file": "textures/setting/titleBackground.png"
         },
@@ -1034,12 +1037,6 @@
         },
         "tu11": {
             "file": "textures/tutorial/tu11.png"
-        },
-        "tu12": {
-            "file": "textures/tutorial/tu12.png"
-        },
-        "tu13": {
-            "file": "textures/tutorial/tu13.png"
         },
         "button_back":{
             "file": "textures/tutorial/button_back.png"

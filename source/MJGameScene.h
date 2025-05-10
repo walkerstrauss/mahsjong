@@ -164,9 +164,6 @@ protected:
     /** The tile currently being dragged */
     cugl::Vec2 _dragOffset;
     
-    /** The rectangle representing the discrad pile's position*/
-    cugl::Rect _discardBox;
-    
     /** The rectangle representing the active play/discard area for all tiles*/
     cugl::Rect _activeRegion;
     

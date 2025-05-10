@@ -1394,8 +1394,8 @@
                                 1
                             ],
                             "size": [
-                                18,
-                                18
+                                80,
+                                40
                             ],
                             "angle": 0,
                             "position": [
@@ -1417,8 +1417,8 @@
                                         1
                                     ],
                                     "size": [
-                                        18,
-                                        18
+                                        80,
+                                        40
                                     ],
                                     "angle": 0,
                                     "position": [
@@ -1442,7 +1442,7 @@
                                             ],
                                             "angle": 0,
                                             "position": [
-                                                18,
+                                                0,
                                                 0
                                             ],
                                             "visible": true
@@ -1451,8 +1451,8 @@
                                             "x_anchor": "left",
                                             "y_anchor": "top",
                                             "absolute": false,
-                                            "x_offset": -0.4,
-                                            "y_offset": -0.5
+                                            "x_offset": 0.8,
+                                            "y_offset": -0.2
                                         }
                                     }
                                 },
@@ -1460,7 +1460,7 @@
                                     "x_anchor": "left",
                                     "y_anchor": "top",
                                     "absolute": false,
-                                    "x_offset": 0,
+                                    "x_offset": -0.7,
                                     "y_offset": 0
                                 }
                             }
@@ -1469,7 +1469,7 @@
                             "x_anchor": "left",
                             "y_anchor": "top",
                             "absolute": false,
-                            "x_offset": 0,
+                            "x_offset": -0.5,
                             "y_offset": -0.35
                         }
                     },
@@ -1568,8 +1568,8 @@
                     "x_anchor": "left",
                     "y_anchor": "top",
                     "absolute": false,
-                    "x_offset": 0.8,
-                    "y_offset": -0.03
+                    "x_offset": 0.91,
+                    "y_offset": -0.15
                 }
             },
             "drag-to-hand-area": {

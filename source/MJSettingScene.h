@@ -33,7 +33,9 @@ public:
         /** We chose sound on */
         SOUNDON,
         /** We chose sound off */
-        SOUNDOFF
+        SOUNDOFF,
+        
+        TUTORIAL
     };
     
     enum PrevScene {
@@ -49,10 +51,14 @@ protected:
     std::shared_ptr<cugl::scene2::SceneNode> _settingScene;
     /** The button to turn on and off sound */
     std::shared_ptr<cugl::scene2::Button> _soundBtn;
+    /** The button to go to the tutorial scene (the one with slides only)*/
+    std::shared_ptr<cugl::scene2::Button> _tutorialBtn;
     /** The button to go back to main menu (if we are in the gamescene) */
     std::shared_ptr<cugl::scene2::Button> _mainBtn;
     /** The listener for the notificiations on button*/
     Uint32 _soundKey;
+    /** The listener for the notificiations on the tutorial button*/
+    Uint32 _tutorialKey;
 
 public:
     /** The button to exit the scene */

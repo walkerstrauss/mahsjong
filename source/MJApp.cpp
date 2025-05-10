@@ -461,6 +461,11 @@ void MahsJongApp::updateSettingScene(float timestep){
         case SettingScene::Choice::SOUNDOFF:
             // TODO: Handling turning game sound off
             break;
+        case SettingScene::Choice::TUTORIAL:
+            _settings.setActive(false);
+            _tutorial.setActive(true);
+            _scene = State::TUTORIAL;
+            break;
         case SettingScene::Choice::NONE:
             // Do nothing
             break;
