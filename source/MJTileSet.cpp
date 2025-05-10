@@ -76,6 +76,10 @@ void TileSet::initClientDeck(const std::shared_ptr<cugl::JsonValue>& deckJson){
     }
 }
 
+void TileSet::initTutorialDeck(){
+    
+}
+
 /**
  * Sets the container scene node for this tile. Attatches a texture to the polygon node (back texture)
  * and a sprite sheet for the animated node (face texture). This allows us to animate the face of the

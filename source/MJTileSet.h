@@ -530,6 +530,8 @@ public:
     
     void addCelestialTiles(const std::shared_ptr<cugl::AssetManager>& assets);
     
+    void initTutorialDeck();
+    
 #pragma mark -
 #pragma mark Tileset Gameplay Handling
     

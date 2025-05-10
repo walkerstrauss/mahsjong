@@ -88,6 +88,7 @@ void MahsJongApp::onShutdown() {
     _pause.dispose();
     _gameover.dispose();
     _info.dispose();
+    _help.dispose();
     _tutorial.dispose();
     _inputController->dispose();
     _network->dispose();
@@ -156,6 +157,9 @@ void MahsJongApp::update(float timestep) {
         case INFO:
             updateInfoScene(timestep);
             break;
+        case HELP:
+            updateHelpScene(timestep);
+            break;
         case TUTORIAL:
             updateTutorialScene(timestep);
             break;
@@ -192,7 +196,12 @@ void MahsJongApp::draw() {
            break;
        case SETTINGS:
            if (_settings.scene == SettingScene::PrevScene::PAUSED){
-               _gameplay.render();
+               if(_gameplay.isActive()) {
+                   _gameplay.render();
+               }
+               else if (_tutorial.isActive()) {
+                   _tutorial.render();
+               }
            } else if (_settings.scene == SettingScene::PrevScene::MAIN){
                _mainmenu.render();
            }
@@ -208,8 +217,13 @@ void MahsJongApp::draw() {
        case INFO:
            _info.render();
            break;
+       case HELP:
+           _help.render();
+           break;
        case TUTORIAL:
-           _tutorial.render();
+           if(_tutorial.isActive()) {
+               _tutorial.render();
+           }
            break;
    }
 }
@@ -251,8 +265,8 @@ void MahsJongApp::updateLoadingScene(float timestep) {
        _mainmenu.setActive(true);
        _info.init(_assets);
        _info.setSpriteBatch(_batch);
-       _tutorial.init(_assets, _inputController);
-       _tutorial.setSpriteBatch(_batch);
+       _help.init(_assets, _inputController);
+       _help.setSpriteBatch(_batch);
        _scene = State::MENU;
    }
 }
@@ -287,7 +301,10 @@ void MahsJongApp::updateMenuScene(float timestep) {
            break;
        case MenuScene::Choice::TUTORIAL:
            _mainmenu.setActive(false);
+           _tutorial.init(_assets, _network, _inputController);
+           _tutorial.setSpriteBatch(_batch);
            _tutorial.setActive(true);
+           _tutorial.setTutorialActive(true);
            _scene = TUTORIAL;
            break;
        case MenuScene::Choice::NONE:
@@ -439,6 +456,7 @@ void MahsJongApp::updateSettingScene(float timestep){
             _settings.setActive(false);
             _mainmenu.setActive(true);
             _gameplay.dispose();
+            _tutorial.dispose(); 
             if (last_scene == SettingScene::PrevScene::PAUSED) {
                 AudioController::getInstance().playMusic("menuMusic", true);
             }
@@ -530,8 +548,33 @@ void MahsJongApp::updateInfoScene(float timestep){
     if (_info.choice == InfoScene::BACK){
         _info.setActive(false);
         _info.choice = InfoScene::NONE;
-        _gameplay.setGameActive(true);
-        _scene = GAME;
+        if(_gameplay.isActive()) {
+            _gameplay.setGameActive(true);
+            _scene = GAME;
+        }
+        else if (_tutorial.isActive()) {
+            _tutorial.setTutorialActive(true);
+            _scene = TUTORIAL;
+        }
+    }
+}
+
+/**
+* Individualzed update method for the help scene
+*
+* @param timestep   The amount of time (in seconds) since the last frame
+*/
+void MahsJongApp::updateHelpScene(float timestep){
+    _help.update(timestep);
+    switch (_help.getChoice()){
+        case HelpScene::NONE:
+            break;
+        case HelpScene::BACK:
+            _help.setActive(false);
+            _gameplay.setActive(true);
+            _gameplay.setGameActive(true);
+            _scene = MENU;
+            break;
     }
 }
 
@@ -544,12 +587,35 @@ void MahsJongApp::updateTutorialScene(float timestep){
     _tutorial.update(timestep);
     switch (_tutorial.getChoice()){
         case TutorialScene::NONE:
+            if (_tutorial._phase == TutorialScene::FINISHED){
+                _tutorial.setActive(false);
+                _tutorial.setTutorialActive(false);
+                _mainmenu.setActive(true);
+                _scene = State::MENU;
+            }
+            break;
+        case TutorialScene::INFO:
+            _tutorial.setTutorialActive(false);
+            _info.setActive(true);
+            _scene = INFO;
+            break;
+        case TutorialScene::SETTING:
+            _tutorial.setTutorialActive(false);
+            _settings.setActive(true);
+            _settings.scene = SettingScene::PrevScene::PAUSED;
+            _scene = State::SETTINGS;
+            break;
+        case TutorialScene::DONE:
+            _tutorial.setActive(false);
+            _tutorial.setTutorialActive(false);
+            _mainmenu.setActive(true);
+            _scene = State::MENU;
             break;
         case TutorialScene::BACK:
             _tutorial.setActive(false);
+            _tutorial.setTutorialActive(false);
             _mainmenu.setActive(true);
-            _scene = MENU;
+            _scene = State::MENU;
             break;
     }
 }
-
