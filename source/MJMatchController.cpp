@@ -72,7 +72,7 @@ void MatchController::initHost() {
     clientPlayer->getHand().initHand(_tileSet, false);
     
     //Initializing pile
-    _pile->initPile(4, _tileSet, true);
+    _pile->initPile(4, _tileSet, true, _assets);
     
     //Broadcast initial state
     _network->broadcastClientStart(_tileSet->mapToJson());
@@ -102,10 +102,10 @@ void MatchController::initClient() {
     }
     
     //Initializing the pile
-    _pile->initPile(4, _tileSet, false);
-    _pile->setTilePositions();
+    _pile->initPile(4, _tileSet, false, _assets);
+    _pile->setTilePositions(false);
     
-    _pile->remakePile();
+    _pile->remakePile(false);
 }
 
 /**
@@ -156,7 +156,7 @@ void MatchController::drawTile() {
             _network->broadcastEnd(_network->getLocalPid());
             return;
         }
-
+        
         // Broadcast the draw
         _network->broadcastTileDrawn(_network->getLocalPid(), _tileSet->toJson(_tileSet->tilesToJson));
         _tileSet->clearTilesToJson();
@@ -444,7 +444,7 @@ void MatchController::playRooster(std::shared_ptr<TileSet::Tile>& celestialTile)
     // play the shuffle sound.
     AudioController::getInstance().playSound("shuffle");
     _pile->reshufflePile();
-    _pile->setTilePositions();
+    _pile->setTilePositions(true);
     
     // Clear tilesToJson vector
     _tileSet->clearTilesToJson();
@@ -679,7 +679,7 @@ void MatchController::playRat(std::shared_ptr<TileSet::Tile>& selectedTile) {
                          : clientPlayer->getHand();
     
     _pile->removeTile(selectedTile);
-    _pile->setTilePositions();
+    _pile->setTilePositions(false);
 
     self._tiles.push_back(selectedTile);
     selectedTile->inHostHand = _network->getHostStatus();
@@ -790,7 +790,8 @@ void MatchController::celestialEffect(){
 
         //Updating tileset
         _tileSet->updateDeck(_network->getTileMapJson());
-        _pile->remakePile();
+        bool reshuffle = _network->getCelestialUpdateType() == NetworkController::ROOSTER ? true : false;
+        _pile->remakePile(reshuffle);
     } else if (_network->getCelestialUpdateType() == NetworkController::RAT) {
         AudioController::getInstance().playSound("Rat");
         bool isHost = _network->getHostStatus();
@@ -800,7 +801,7 @@ void MatchController::celestialEffect(){
         std::string key = std::to_string(tileDrawn->_id);
         
         _pile->removeTile(_tileSet->tileMap[key]);
-        _pile->setTilePositions();
+        _pile->setTilePositions(false);
         _tileSet->tileMap[key]->_scale = 0.325;
         
         // If this match controller is host's
@@ -811,9 +812,6 @@ void MatchController::celestialEffect(){
     } else if (_network->getCelestialUpdateType() == NetworkController::OX) { // these alter your hand, so must update textures
         AudioController::getInstance().playSound("Ox");
         _tileSet->updateDeck(_network->getTileMapJson());
-
-        
-        // Update the tile textures in hand to have debuffed tiles be facedown (for now)
         auto& hand = _network->getHostStatus()
                             ? hostPlayer->getHand()
                             : clientPlayer->getHand();
@@ -835,7 +833,8 @@ void MatchController::celestialEffect(){
             std::shared_ptr<graphics::Texture> fromTexture = _assets->get<graphics::Texture>(tile->toString() + " sheet");
             std::shared_ptr<graphics::Texture> toTexture = _assets->get<graphics::Texture>(it->toString() + " sheet");
             std::shared_ptr<graphics::Texture> idle = _assets->get<graphics::Texture>(it->toString() + " new");
-            AnimationController::getInstance().animateTileMorph(tile, fromTexture, toTexture, idle, 12.0f);
+            AnimationController::getInstance().animateTileMorph(tile, fromTexture, toTexture, idle, 20.0f);
+            AnimationController::getInstance().animateBounceEffect(tile, 0.2f);  
             tile->setTexture(_assets->get<graphics::Texture>(it->toString()));
             }
         
@@ -937,13 +936,14 @@ void MatchController::update(float timestep) {
         setChoice(PILEDRAW);
         bool isHost = _network->getHostStatus();
         
-        _pile->removePileTile(_network->getTileDrawn(), isHost);
+        _pile->removePileTile(_network->getTileDrawn(), !isHost);
         
         // Add tile that was drawn into this match controller
         std::shared_ptr<TileSet::Tile> tileDrawn= _tileSet->processTileJson(_network->getTileDrawn())[0];
         std::string key = std::to_string(tileDrawn->_id);
         
         _tileSet->tileMap[key]->_scale = 0.325;
+        
         // If this match controller is host's
         if(isHost) {clientPlayer->getHand()._tiles.push_back(_tileSet->tileMap[key]);}
         // Else is client's
@@ -961,7 +961,7 @@ void MatchController::update(float timestep) {
         NetworkController::MapUpdateType mapUpdateType = _network->getMapUpdateType();
         // Remake pile
         if(mapUpdateType == NetworkController::REMAKEPILE) {
-            _pile->remakePile();
+            _pile->remakePile(false);
             _network->setMapUpdateType(NetworkController::NOUPDATE);
         }
         // Reset to default

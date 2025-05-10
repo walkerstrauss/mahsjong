@@ -17,11 +17,17 @@
  */
 class Player;
 class Pile {
+public:
+    enum Choice {
+        NONE,
+        SHUFFLE
+    };
 private:
     /** Number of possible tiles in pile */
     int _pileSize;
     
 public:
+    std::shared_ptr<AssetManager> _assets;
     /** Two dimensional vector representing pile tiles */
     std::vector<std::vector<std::shared_ptr<TileSet::Tile>>> _pile;
     /** Random Generator */
@@ -37,8 +43,9 @@ public:
     /** The rect of the pile */
     cugl::Rect pileBox;
     /** Time for pile jump effect */
-    float time; 
-    
+    float time;
+    /** Choice */
+    Choice choice;
 #pragma mark -
 #pragma mark Constructors
     
@@ -48,7 +55,7 @@ public:
      * @param size             the size the pile should be
      * @param tileSet      the tileset to draw from to build the pile
      */
-    bool initPile(int size, std::shared_ptr<TileSet> tileSet, bool isHost);
+    bool initPile(int size, std::shared_ptr<TileSet> tileSet, bool isHost, std::shared_ptr<AssetManager>& _assets);
     
     void initPileTutorialMode();
     /**
@@ -68,7 +75,7 @@ public:
     /**
      * Method to update the positions of the tiles in pile
      */
-    void setTilePositions();
+    void setTilePositions(bool shuffling);
     
     /**
      * Updates the positions of each tile and their textures
@@ -146,7 +153,7 @@ public:
     /**
      * Remakes pile according to the player who drew the last tile in the pile
      */
-    void remakePile();
+    void remakePile(bool shuffling);
     
     /**
      * Method to draw the tiles in the pile
@@ -202,6 +209,12 @@ public:
     
     /** Pile jump effect */
     void pileJump(float dt);
+    
+    /** Pile flip and move to position*/
+    void pileFlipMoveAway(std::unordered_map<std::shared_ptr<TileSet::Tile>, Vec2> tilePos);
+    
+    /** Pile flip effect  and move to center*/
+    void pileFlipMoveCenter();
 
     
 };

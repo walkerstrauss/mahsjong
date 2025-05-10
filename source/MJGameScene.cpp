@@ -22,6 +22,7 @@ using namespace std;
 // Lock the screen size to a fixed height regardless of aspect ratio
 // PLEASE ADJUST AS SEEN FIT
 #define SCENE_HEIGHT 720 // Change to 874 for resizing from iPhone 16 Pro aspect ratio
+#define TAP_ACTIVE_LENGTH 10.0f
 
 #pragma mark -
 #pragma mark Constructors
@@ -206,7 +207,7 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::sha
     _player->getHand().updateTilePositions(_playerHandRegion, 0);
     
     _pile->pileBox = pileRegionNode->getBoundingBox();
-    _pile->setTilePositions();
+    _pile->setTilePositions(false);
 
     // Setting texture location in hand
     for(auto& tile : _player->getHand()._tiles) {
@@ -432,7 +433,9 @@ void GameScene::update(float timestep) {
     
     // Constantly updating the position of tiles in hand
     _player->getHand().updateTilePositions(_playerHandRegion, timestep);
-    _pile->pileJump(timestep);
+    if(!(_pile->choice == Pile::Choice::SHUFFLE)) {
+        _pile->pileJump(timestep);
+    }
     //Constantly update pile tile positions
     _pile->updateTilePositions(timestep);
     // Constantly update discard pile tile
@@ -453,7 +456,7 @@ void GameScene::update(float timestep) {
     }
     
     // Update timer display based on remaining time in turn
-    updateTurnTimer(timestep);
+//    updateTurnTimer(timestep);
     
     // Updating discardUINode if matchController has a discard update
     if(_matchController->getChoice() == MatchController::Choice::DISCARDUIUPDATE) {
@@ -537,7 +540,7 @@ void GameScene::update(float timestep) {
     // Clicking/Tapping and Dragging logic
     if(_input->didRelease() && !_input->isDown()) {
         cugl::Vec2 initialMousePos = cugl::Scene::screenToWorldCoords(cugl::Vec3(_input->getInitialPosition()));
-        if(initialMousePos - mousePos == Vec2(0, 0)) {
+        if(-TAP_ACTIVE_LENGTH <= (initialMousePos - mousePos).length() <= TAP_ACTIVE_LENGTH) {
             if (_matchController->getChoice() == MatchController::Choice::PIGTILE) {
                 int tileIndex = _discardUINode->getClickedTile(mousePos);
                 if (tileIndex != -1) {
@@ -689,7 +692,6 @@ void GameScene::clickedTile(cugl::Vec2 mousePos){
         // If you cannot select or deselect the tile return
         if(currTile->tileRect.contains(mousePos) && currTile->tileRect.contains(initialMousePos)){
             if((_network->getHostStatus() && currTile->inHostHand) || (!_network->getHostStatus() && currTile->inClientHand)) {
-
                 if(currTile->selectable) {
                     if(currTile->selected) {
                         AudioController::getInstance().playSound("Unclick");
@@ -794,7 +796,7 @@ void GameScene::updateDrag(const cugl::Vec2& mousePos, bool mouseDown, bool mous
                              if (_draggingTile->pos.x > rightTile->pos.x) {
                                  std::swap(tiles[oldIndex], tiles[oldIndex + 1]);
                                  (_pileUINode->getState() == PileUINode::DRAGONREARRANGE)
-                                 ? _pile->setTilePositions()
+                                 ? _pile->setTilePositions(false)
                                      : _player->getHand().updateTilePositions(_playerHandRegion, timestep);
                              }
                          }
@@ -803,7 +805,7 @@ void GameScene::updateDrag(const cugl::Vec2& mousePos, bool mouseDown, bool mous
                              if (leftTile && _draggingTile->pos.x < leftTile->pos.x) {
                                  std::swap(tiles[oldIndex], tiles[oldIndex - 1]);
                                  (_pileUINode->getState() == PileUINode::DRAGONREARRANGE)
-                                 ? _pile->setTilePositions()
+                                 ? _pile->setTilePositions(false)
                                      : _player->getHand().updateTilePositions(_playerHandRegion, timestep);
                              }
                          }
