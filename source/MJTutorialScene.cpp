@@ -265,8 +265,8 @@ void TutorialScene::update(float timestep) {
     _matchController->update(timestep);
     // Updating discard pile positions
     _discardPile->updateTilePositions(timestep);
-
     
+    updateAreaVisibility(mousePos, timestep);
     updateTurnIndicators();
     displayPlayerSets();
     displayOpponentSets();
@@ -387,7 +387,16 @@ void TutorialScene::update(float timestep) {
     }
     
     if(_phase == SET_DISCARD) {
-        
+        _playSetBtn->setVisible(false);
+    }
+    
+    if (_phase == SHUFFLE){
+        if (_shuffleTimer < _shuffleDelay){
+            _shuffleTimer += timestep;
+            return;
+        }
+        _shuffleTimer = 0.0f;
+        _phase = FINISHED;
     }
     
     if(_phase == FINISHED) {
@@ -568,7 +577,7 @@ void TutorialScene::updateDrag(const cugl::Vec2& mousePos, bool mouseDown, bool 
                             AudioController::getInstance().playSound("WrongAction", false);
                         }
                         else {
-                            _phase = FINISHED;
+                            _phase = SHUFFLE;
                         }
                   }
                   else {

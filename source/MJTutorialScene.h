@@ -57,6 +57,7 @@ public:
         DRAW_DIS,
         PLAY_SET,
         SET_DISCARD,
+        SHUFFLE,
         FINISHED
     };
     
@@ -162,6 +163,9 @@ private:
     float _turnTimer = 0.0f;
     float _discardDelay = 2.0f;
     float _discardTimer = 0.0f;
+    float _shuffleDelay = 5.0f;
+    float _shuffleTimer = 0.0f;
+    
     std::shared_ptr<TileSet::Tile> _opponentTile1;
     std::shared_ptr<TileSet::Tile> _opponentTile2;
     
