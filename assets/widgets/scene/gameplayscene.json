@@ -2626,7 +2626,7 @@
                     ],
                     "size": [
                         60,
-                        64
+                        125
                     ],
                     "angle": 0,
                     "position": [
@@ -2639,8 +2639,8 @@
                     "x_anchor": "left",
                     "y_anchor": "top",
                     "absolute": false,
-                    "x_offset": 0.76,
-                    "y_offset": -0.78
+                    "x_offset": 0.77,
+                    "y_offset": -0.68
                 }
             },
             "dragToDiscardText": {
@@ -2652,8 +2652,8 @@
                         0.5
                     ],
                     "size": [
-                        286,
-                        30
+                        400,
+                        60
                     ],
                     "angle": 0,
                     "position": [
@@ -2667,7 +2667,7 @@
                     "y_anchor": "top",
                     "absolute": false,
                     "x_offset": 0.76,
-                    "y_offset": -0.68
+                    "y_offset": -0.53
                 }
             },
             "waitOpponentArrow": {
@@ -2841,7 +2841,7 @@
                         0.5
                     ],
                     "size": [
-                        210,
+                        380,
                         30
                     ],
                     "angle": 0,
@@ -2856,7 +2856,7 @@
                     "y_anchor": "top",
                     "absolute": false,
                     "x_offset": 0.31,
-                    "y_offset": -0.73
+                    "y_offset": -0.7
                 }
             },
             "pressArrow": {
