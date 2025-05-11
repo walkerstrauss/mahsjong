@@ -46,7 +46,9 @@ bool TutorialScene::init(const std::shared_ptr<cugl::AssetManager> &assets, std:
 #pragma mark Initializing app objects
     _assets = assets;
     _choice = NONE;
-    _phase = START;
+    _prevPhase = NOT;
+    _phase = NOT;
+    setPhase(START);
     _input = inputController;
     _network = network;
     
@@ -168,10 +170,9 @@ bool TutorialScene::init(const std::shared_ptr<cugl::AssetManager> &assets, std:
             AudioController::getInstance().playSound("Select");
             if(!_matchController->playSet()) {
                 _discardedTileImage->setVisible(true);
-                _phase = DRAW_DIS;
-            }
-            else {
-                _phase = SET_DISCARD;
+                setPhase(DRAW_DIS);
+            } else {
+                setPhase(SET_DISCARD);
             }
         }
     });
@@ -244,9 +245,10 @@ bool TutorialScene::init(const std::shared_ptr<cugl::AssetManager> &assets, std:
     
 #pragma mark Initializing UI Nodes
     // Start with shade visible
-    _shade = _assets->get<SceneNode>("matchscene.gameplayscene.shade");
-    _shade->setVisible(true);
-    _uiElements.push_back(_shade);
+//    _shade = _assets->get<SceneNode>("matchscene.gameplayscene.shade");
+//    _shade->setVisible(true);
+//    _uiElements.push_back(_shade);
+    initTutorialUINodes();
     
     addChild(_matchScene);
     addChild(_discardUINode->_root);
@@ -293,7 +295,7 @@ void TutorialScene::update(float timestep) {
     updateDrag(mousePos, _input->isDown(), _input->didRelease(), timestep);
     
     if(_phase == START) {
-        _phase = ONE_DRAW;
+        setPhase(ONE_DRAW);
     }
     
     if(_phase == ONE_DRAW) {
@@ -304,7 +306,7 @@ void TutorialScene::update(float timestep) {
                 // Whatever you want to put here for tutorial like ("CAN'T DRAW AGAIN")
             }
             _matchController->drawTile();
-            _phase = DISCARD;
+            setPhase(DISCARD);
         }
     }
     
@@ -337,7 +339,7 @@ void TutorialScene::update(float timestep) {
             _opponentTile2->inClientHand = false;
             _opponentTile2->discarded = true;
         }
-        _phase = (_phase == ONE_OPP) ? ONE_END : TWO_END;
+        setPhase((_phase == ONE_OPP) ? ONE_END : TWO_END);
     }
     
     if (_phase == ONE_END || _phase == TWO_END){
@@ -366,11 +368,17 @@ void TutorialScene::update(float timestep) {
             _matchController->resetTurn();
         }
         
-        _phase = (_phase == ONE_END) ? DRAW_DIS : TWO_DRAW;
+        setPhase((_phase == ONE_END) ? DRAW_DIS : TWO_DRAW);
     }
     
     if(_phase == DRAW_DIS) {
         
+    }
+    
+    if (_phase == PRESS){
+        if (_player->getHand()._selectedTiles.size() == 3) {
+            setPhase(PLAY_SET);
+        }
     }
     
     if(_phase == PLAY_SET) {
@@ -385,7 +393,7 @@ void TutorialScene::update(float timestep) {
                 // Whatever you want to put here for tutorial like ("CAN'T DRAW AGAIN")
             }
             _matchController->drawTile();
-            _phase = CELESTIAL;
+            setPhase(CELESTIAL);
         }
     }
     
@@ -403,7 +411,7 @@ void TutorialScene::update(float timestep) {
             return;
         }
         _shuffleTimer = 0.0f;
-        _phase = FINISHED;
+        setPhase(FINISHED);
     }
     
     if(_phase == FINISHED) {
@@ -452,10 +460,6 @@ void TutorialScene::render() {
         if(_input->isDown() && _input->getInitialPosition() != _input->getPosition()) {
             _player->drawInfo(_draggingTile, _batch, _matchScene->getSize());
         }
-    }
-    
-    for (auto& element : _uiElements){
-        element->render(_batch);
     }
     
     _batch->end();
@@ -588,7 +592,7 @@ void TutorialScene::updateDrag(const cugl::Vec2& mousePos, bool mouseDown, bool 
                             AudioController::getInstance().playSound("WrongAction", false);
                         }
                         else {
-                            _phase = SHUFFLE;
+                            setPhase(SHUFFLE);
                         }
                   }
                   else {
@@ -614,7 +618,7 @@ void TutorialScene::updateDrag(const cugl::Vec2& mousePos, bool mouseDown, bool 
                           _discardUINode->incrementLabel(index);
                           _draggingTile->_scale = 0;
                           
-                          _phase = (_phase == DISCARD) ? ONE_OPP : TWO_OPP;
+                          setPhase((_phase == DISCARD) ? ONE_OPP : TWO_OPP);
                       } else if (_matchController->getChoice() != MatchController::DRAGONTILE){
                           AudioController::getInstance().playSound("WrongAction", false);
                       }
@@ -633,7 +637,7 @@ void TutorialScene::updateDrag(const cugl::Vec2& mousePos, bool mouseDown, bool 
                         _playSetBtn->setVisible(true);
                         _draggingTile->_scale = 0.325;
                         _matchController->hasDrawn = true;
-                        _phase = PLAY_SET;
+                        setPhase(PRESS);
                     }
                     else {
                         _draggingTile->pos = _discardedTileImage->getWorldPosition();
@@ -782,7 +786,7 @@ void TutorialScene::setActive(bool value) {
 void TutorialScene::setTutorialActive(bool value) {
     if(value) {
         _choice = NONE;
-        _phase = START;
+        setPhase(START);
         _tilesetUIBtn->activate();
         _settingBtn->activate();
         _infoBtn->activate();

@@ -16,6 +16,7 @@
 #include "MJDiscardPile.h"
 #include "MJDiscardUINode.h"
 #include "MJAnimationController.h"
+#include "unordered_map"
 
 using namespace cugl;
 using namespace cugl::scene2;
@@ -45,6 +46,7 @@ public:
      * Enum representing the current choice the player must make
      */
     enum TutorialPhase {
+        NOT,
         START,
         ONE_DRAW,
         DISCARD,
@@ -58,7 +60,8 @@ public:
         PLAY_SET,
         SET_DISCARD,
         SHUFFLE,
-        FINISHED
+        FINISHED,
+        PRESS
     };
     
     /** Current scene choice */
@@ -66,6 +69,9 @@ public:
     
     /** The current tutorial phase */
     TutorialPhase _phase;
+    
+    /** The prev phase*/
+    TutorialPhase _prevPhase;
     
     /** Returns choice of this game scene */
     Choice getChoice() { return _choice; }
@@ -175,6 +181,49 @@ private:
     
 #pragma mark Celestial Tiles
     int _dragonRow = -1;
+    
+#pragma mark Tutorial UI Nodes
+    // Map to hold lists of scene nodes for each phase of the tutorial
+    std::unordered_map<std::string, std::vector<std::shared_ptr<SceneNode>>> _uiMap;
+    
+    // Vectors to hold nodes for each phase
+    std::vector<std::shared_ptr<SceneNode>> _pileDrawPhaseNodes;
+    std::vector<std::shared_ptr<SceneNode>> _discardPhaseNodes;
+    std::vector<std::shared_ptr<SceneNode>> _waitPhaseNodes;
+    std::vector<std::shared_ptr<SceneNode>> _drawDiscardPhaseNodes;
+    std::vector<std::shared_ptr<SceneNode>> _pressPhaseNodes;
+    std::vector<std::shared_ptr<SceneNode>> _playSetPhaseNodes;
+    std::vector<std::shared_ptr<SceneNode>> _playCelestialNodes;
+    
+    // Nodes for pile draw phase
+    std::shared_ptr<SceneNode> _box;
+    std::shared_ptr<SceneNode> _drawPileArrow;
+    std::shared_ptr<SceneNode> _drawPileText;
+    
+    // Nodes for discard phase
+    std::shared_ptr<SceneNode> _discardArrow;
+    std::shared_ptr<SceneNode> _discardText;
+    
+    // Nodes for wait for opponent phase
+    std::shared_ptr<SceneNode> _waitArrow;
+    std::shared_ptr<SceneNode> _waitText;
+    
+    // Nodes for draw discard phase
+    std::shared_ptr<SceneNode> _drawDiscardArrow;
+    std::shared_ptr<SceneNode> _drawDiscardText;
+    
+    // Nodes for select two tiles for playing set phase
+    std::shared_ptr<SceneNode> _pressArrow1;
+    std::shared_ptr<SceneNode> _pressArrow2;
+    std::shared_ptr<SceneNode> _pressText;
+    
+    // Nodes for play set phase
+    std::shared_ptr<SceneNode> _playSetArrow;
+    std::shared_ptr<SceneNode> _playSetText;
+    
+    // Nodes for play celestial phase
+    std::shared_ptr<SceneNode> _playCelestialArrow;
+    std::shared_ptr<SceneNode> _playCelestialText;
     
 public:
 #pragma mark -
@@ -388,6 +437,111 @@ public:
         _playerHandRec->setVisible(playerTabVisible);
         for (int i = 0; i < _playerHandTiles.size(); i++){
             _playerHandTiles[i]->setVisible(playerTabVisible);
+        }
+    }
+    
+    void initTutorialUINodes(){
+        _box = _assets->get<SceneNode>("matchscene.gameplayscene.box");
+        _drawPileArrow = _assets->get<SceneNode>("matchscene.gameplayscene.drawFromPileArrow");
+        _drawPileText = _assets->get<SceneNode>("matchscene.gameplayscene.drawFromPileText");
+        _pileDrawPhaseNodes.push_back(_box);
+        _pileDrawPhaseNodes.push_back(_drawPileArrow);
+        _pileDrawPhaseNodes.push_back(_drawPileText);
+        _uiMap["pile"] = _pileDrawPhaseNodes;
+        
+        _discardArrow = _assets->get<SceneNode>("matchscene.gameplayscene.dragToDiscardArrow");
+        _discardText = _assets->get<SceneNode>("matchscene.gameplayscene.dragToDiscardText");
+        _discardPhaseNodes.push_back(_discardArrow);
+        _discardPhaseNodes.push_back(_discardText);
+        _uiMap["discard"] = _discardPhaseNodes;
+        
+        _waitArrow = _assets->get<SceneNode>("matchscene.gameplayscene.waitOpponentArrow");
+        _waitText = _assets->get<SceneNode>("matchscene.gameplayscene.waitOpponentText");
+        _waitPhaseNodes.push_back(_waitArrow);
+        _waitPhaseNodes.push_back(_waitText);
+        _uiMap["wait"] = _waitPhaseNodes;
+        
+        _drawDiscardArrow = _assets->get<SceneNode>("matchscene.gameplayscene.drawDiscardedArrow");
+        _drawDiscardText = _assets->get<SceneNode>("matchscene.gameplayscene.drawDiscardedText");
+        _drawDiscardPhaseNodes.push_back(_drawDiscardArrow);
+        _drawDiscardPhaseNodes.push_back(_drawDiscardText);
+        _uiMap["draw discard"] = _drawDiscardPhaseNodes;
+        
+        _pressArrow1 = _assets->get<SceneNode>("matchscene.gameplayscene.pressArrow");
+        _pressArrow2 = _assets->get<SceneNode>("matchscene.gameplayscene.pressArrow2");
+        _pressText = _assets->get<SceneNode>("matchscene.gameplayscene.pressText");
+        _pressPhaseNodes.push_back(_pressArrow1);
+        _pressPhaseNodes.push_back(_pressArrow2);
+        _pressPhaseNodes.push_back(_pressText);
+        _uiMap["press"] = _pressPhaseNodes;
+        
+        _playSetArrow = _assets->get<SceneNode>("matchscene.gameplayscene.playsetArrow");
+        _playSetText = _assets->get<SceneNode>("matchscene.gameplayscene.playsetText");
+        _playSetPhaseNodes.push_back(_playSetArrow);
+        _playSetPhaseNodes.push_back(_playSetText);
+        _uiMap["play set"] = _playSetPhaseNodes;
+        
+        _playCelestialArrow = _assets->get<SceneNode>("matchscene.gameplayscene.playCelestialTileArrow");
+        _playCelestialText = _assets->get<SceneNode>("matchscene.gameplayscene.playCelestialTileText");
+        _playCelestialNodes.push_back(_playCelestialArrow);
+        _playCelestialNodes.push_back(_playCelestialText);
+        _uiMap["celestial"] = _playCelestialNodes;
+        
+        std::vector<std::shared_ptr<SceneNode>> none;
+        _uiMap["none"] = none;
+    }
+    
+    const std::string getPhaseUIMapKey(TutorialPhase phase){
+        std::string s;
+        switch (phase){
+            case START:
+                s = "welcome";
+                break;
+            case ONE_DRAW:
+            case TWO_DRAW:
+                s = "pile";
+                break;
+            case SET_DISCARD:
+            case DISCARD:
+                s = "discard";
+                break;
+            case ONE_OPP:
+            case TWO_OPP:
+            case ONE_END:
+            case TWO_END:
+                s = "wait";
+                break;
+            case DRAW_DIS:
+                s = "draw discard";
+                break;
+            case PLAY_SET:
+                s = "play set";
+                break;
+            case CELESTIAL:
+                s = "celestial";
+                break;
+            case PRESS:
+                s = "press";
+                break;
+            default:
+                s = "none";
+                break;
+        }
+        return s;
+    }
+    
+    void setPhase(TutorialPhase phase){
+        if (_phase == phase) return;
+        
+        for (auto& node : _uiMap[getPhaseUIMapKey(_phase)]){
+            node->setVisible(false);
+        }
+        
+        _prevPhase = _phase;
+        _phase = phase;
+        
+        for (auto& node : _uiMap[getPhaseUIMapKey(phase)]){
+            node->setVisible(true);
         }
     }
     

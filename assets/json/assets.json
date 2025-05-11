@@ -522,9 +522,6 @@
         "settingGrandma": {
             "file": "textures/setting/settingGrandma.png"
         },
-        "shade": {
-            "file": "textures/setting/shade.png"
-        },
         "soundButton": {
             "file": "textures/setting/soundButton.png"
         },
@@ -1097,6 +1094,54 @@
         },
         "pig-fail":{
             "file": "textures/gameplay/pig-fail.png"
+        },
+        "shade": {
+            "file": "textures/tutorial/shade.png"
+        },
+        "drawFromPileArrow": {
+            "file": "textures/tutorial/drawFromPileArrow.png"
+        },
+        "box": {
+            "file": "textures/tutorial/box.png"
+        },
+        "drawFromPileText": {
+            "file": "textures/tutorial/drawFromPileText.png"
+        },
+        "dragToDiscardArrow": {
+            "file": "textures/tutorial/dragToDiscardArrow.png"
+        },
+        "dragToDiscardText": {
+            "file": "textures/tutorial/dragToDiscardText.png"
+        },
+        "waitOpponentArrow": {
+            "file": "textures/tutorial/waitOpponentArrow.png"
+        },
+        "waitOpponentText": {
+            "file": "textures/tutorial/waitOpponentText.png"
+        },
+        "playCelestialTileText": {
+            "file": "textures/tutorial/playCelestialTileText.png"
+        },
+        "drawDiscardedArrow": {
+            "file": "textures/tutorial/drawDiscardedArrow.png"
+        },
+        "drawDiscardedText": {
+            "file": "textures/tutorial/drawDiscardedText.png"
+        },
+        "playsetText": {
+            "file": "textures/tutorial/playsetText.png"
+        },
+        "playsetArrow": {
+            "file": "textures/tutorial/playsetArrow.png"
+        },
+        "pressText": {
+            "file": "textures/tutorial/pressText.png"
+        },
+        "pressArrow": {
+            "file": "textures/tutorial/pressArrow.png"
+        },
+        "welcome": {
+            "file": "textures/tutorial/welcome.png"
         }
     },
     "fonts": {
