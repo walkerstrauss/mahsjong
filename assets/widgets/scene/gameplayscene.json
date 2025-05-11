@@ -535,8 +535,8 @@
                                         0.5
                                     ],
                                     "size": [
-                                        128,
-                                        64
+                                        179.2,
+                                        89.6
                                     ],
                                     "angle": 0,
                                     "position": [
@@ -568,7 +568,7 @@
                     "y_anchor": "top",
                     "absolute": false,
                     "x_offset": 0.88,
-                    "y_offset": -0.26
+                    "y_offset": -0.6
                 }
             },
             "setting-icon": {
@@ -625,8 +625,8 @@
                                         0.5
                                     ],
                                     "size": [
-                                        60,
-                                        60
+                                        70,
+                                        70
                                     ],
                                     "angle": 0,
                                     "position": [
@@ -744,8 +744,8 @@
                                         0.5
                                     ],
                                     "size": [
-                                        60,
-                                        60
+                                        70,
+                                        70
                                     ],
                                     "angle": 0,
                                     "position": [
@@ -834,8 +834,8 @@
                                         0.5
                                     ],
                                     "size": [
-                                        118.28,
-                                        60
+                                        147.264,
+                                        78
                                     ],
                                     "angle": 0,
                                     "position": [
@@ -848,7 +848,7 @@
                                     "x_anchor": "left",
                                     "y_anchor": "top",
                                     "absolute": false,
-                                    "x_offset": 0.3,
+                                    "x_offset": 0.5,
                                     "y_offset": -0.05
                                 }
                             }
@@ -924,8 +924,8 @@
                                         0.5
                                     ],
                                     "size": [
-                                        118.28,
-                                        60
+                                        153.764,
+                                        78
                                     ],
                                     "angle": 0,
                                     "position": [
@@ -938,7 +938,7 @@
                                     "x_anchor": "left",
                                     "y_anchor": "top",
                                     "absolute": false,
-                                    "x_offset": 0.3,
+                                    "x_offset": 0.5,
                                     "y_offset": -0.05
                                 }
                             }
@@ -1014,8 +1014,8 @@
                                         0.5
                                     ],
                                     "size": [
-                                        118.28,
-                                        60
+                                        153.764,
+                                        78
                                     ],
                                     "angle": 0,
                                     "position": [
@@ -1028,7 +1028,7 @@
                                     "x_anchor": "left",
                                     "y_anchor": "top",
                                     "absolute": false,
-                                    "x_offset": 0.3,
+                                    "x_offset": 0.1,
                                     "y_offset": -0.05
                                 }
                             }
@@ -1104,8 +1104,8 @@
                                         0.5
                                     ],
                                     "size": [
-                                        118.28,
-                                        60
+                                        153.764,
+                                        78
                                     ],
                                     "angle": 0,
                                     "position": [
@@ -1118,7 +1118,7 @@
                                     "x_anchor": "left",
                                     "y_anchor": "top",
                                     "absolute": false,
-                                    "x_offset": 0.3,
+                                    "x_offset": 0.1,
                                     "y_offset": -0.05
                                 }
                             }
@@ -1253,7 +1253,7 @@
                     ],
                     "angle": 0,
                     "position": [
-                        355,
+                        310,
                         25
                     ],
                     "visible": true
@@ -1268,8 +1268,8 @@
                                 0.5
                             ],
                             "size": [
-                                130,
-                                60
+                                169,
+                                78
                             ],
                             "angle": 0,
                             "position": [
@@ -1294,8 +1294,8 @@
                             0.5
                         ],
                         "size": [
-                            60,
-                            60
+                            78,
+                            78
                         ],
                         "position": [
                             25,
@@ -1365,8 +1365,8 @@
                                 0.5
                             ],
                             "size": [
-                                130,
-                                60
+                                169,
+                                78
                             ],
                             "angle": 0,
                             "position": [
@@ -1380,7 +1380,7 @@
                             "y_anchor": "top",
                             "absolute": false,
                             "x_offset": 0.5,
-                            "y_offset": -0.5
+                            "y_offset": -0.8
                         }
                     },
                     "discard-can": {
@@ -1394,8 +1394,8 @@
                                 1
                             ],
                             "size": [
-                                80,
-                                40
+                                104,
+                                52
                             ],
                             "angle": 0,
                             "position": [
@@ -1417,8 +1417,8 @@
                                         1
                                     ],
                                     "size": [
-                                        80,
-                                        40
+                                        104,
+                                        52
                                     ],
                                     "angle": 0,
                                     "position": [
@@ -1437,8 +1437,8 @@
                                                 0.5
                                             ],
                                             "size": [
-                                                40,
-                                                40
+                                                52,
+                                                52
                                             ],
                                             "angle": 0,
                                             "position": [
@@ -1469,8 +1469,8 @@
                             "x_anchor": "left",
                             "y_anchor": "top",
                             "absolute": false,
-                            "x_offset": -0.5,
-                            "y_offset": -0.35
+                            "x_offset": -0.8,
+                            "y_offset": -0.6
                         }
                     },
                     "discarded-tile-recent": {
@@ -1542,7 +1542,7 @@
                                             "y_anchor": "top",
                                             "absolute": false,
                                             "x_offset": 0.9,
-                                            "y_offset": -0.5
+                                            "y_offset": -1.5
                                         }
                                     }
                                 },
@@ -1560,7 +1560,7 @@
                             "y_anchor": "top",
                             "absolute": false,
                             "x_offset": 0.39,
-                            "y_offset": -0.33
+                            "y_offset": -0.42
                         }
                     }
                 },

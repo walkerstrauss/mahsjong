@@ -100,6 +100,8 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::sha
 
     // Initializing tileset UI button
     _tilesetUIBtn = std::dynamic_pointer_cast<scene2::Button>(_assets->get<scene2::SceneNode>("matchscene.gameplayscene.discarded-tile.discard-can"));
+    //_tilesetUIBtn->setPosition(_tilesetUIBtn->getPositionX(), _tilesetUIBtn->getPositionY());
+    
     //Size sizeOfTileSetBtn = _tilesetUIBtn->getContentSize();
     //sizeOfTileSetBtn.width = sizeOfTileSetBtn.width*2;
     //_tilesetUIBtn->setContentSize(sizeOfTileSetBtn);
@@ -142,22 +144,6 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::sha
             AudioController::getInstance().playSound("Select",false);
         }
     });
-    
-    
-    // Init the button for playing sets.
-    cugl::Rect rect(0, 0, 150, 50);
-    cugl::Poly2 poly(rect);
-
-    std::shared_ptr<scene2::PolygonNode> upPlaceholder = scene2::PolygonNode::alloc();
-    upPlaceholder->setPolygon(poly);
-    upPlaceholder->setContentSize(cugl::Size(150, 50));
-    upPlaceholder->setColor(cugl::Color4::GRAY);
-    
-    std::shared_ptr<scene2::PolygonNode> downPlaceholder = scene2::PolygonNode::alloc();
-    downPlaceholder->setPolygon(poly);
-    downPlaceholder->setContentSize(cugl::Size(150, 50));
-    cugl::Color4 darkGray(64, 64, 64, 255);
-    downPlaceholder->setColor(darkGray);
     
 //     Initializing opponent hand
     _opponentHandRec = _assets->get<SceneNode>("matchscene.gameplayscene.opponent-hand-rec");
@@ -430,7 +416,7 @@ void GameScene::update(float timestep) {
                 _discardedTileImage->setTexture(_assets->get<Texture>(_discardPile->getTopTile()->toString()));
             }
         }
-        _discardedTileImage->SceneNode::setContentSize(32.88, 45);
+        _discardedTileImage->SceneNode::setContentSize(42.744, 58.5);
         _discardedTileImage->setVisible(true);
         
         _matchController->setChoice(MatchController::NONE);
@@ -621,10 +607,12 @@ void GameScene::render() {
         }
     }
 
+    std::shared_ptr<scene2::SceneNode> tilesetUIBtnUp =  _assets->get<scene2::SceneNode>("matchscene.gameplayscene.discarded-tile.discard-can.up");
     
-    Rect trashCan = _tilesetUIBtn->getBoundingBox();
-    CULog("size of the transhCan: %f, %f ",trashCan.size.width, trashCan.size.height);
-    CULog("origin of the transhCan: %f, %f" ,trashCan.origin.x, trashCan.origin.y);
+    cugl::Vec2 trashCanWorldOrigin = _tilesetUIBtn->nodeToWorldCoords(Vec2::ZERO);
+    
+    Rect trashCan = cugl::Rect(trashCanWorldOrigin, _tilesetUIBtn->getContentSize());
+    
     //_batch->fill(trashCan);
     //_batch->fill(_discardedTileRegion);
     
@@ -830,7 +818,9 @@ void GameScene::updateDrag(const cugl::Vec2& mousePos, bool mouseDown, bool mous
                           else {
                               _discardedTileImage->setTexture(_assets->get<Texture>(_draggingTile->toString()));
                           }
-                          _discardedTileImage->SceneNode::setContentSize(32.88, 45);
+                          _discardedTileImage->SceneNode::setContentSize(42.744, 58.5);
+                          
+    
                           _discardedTileImage->setVisible(true);
                           int index = _discardUINode->getLabelIndex(_draggingTile);
                           _discardUINode->incrementLabel(index);
@@ -983,7 +973,7 @@ void GameScene::endTurnFromTimeout(){
             auto discardTile = hand._tiles.back();
             if (_matchController->discardTile(discardTile)){
                 _discardedTileImage->setTexture(_assets->get<Texture>(discardTile->toString()));
-                _discardedTileImage->setContentSize(32.88, 45);
+                _discardedTileImage->SceneNode::setContentSize(42.744, 58.5);
                 _discardedTileImage->setVisible(true);
                 int index = _discardUINode->getLabelIndex(discardTile);
                 _discardUINode->incrementLabel(index);

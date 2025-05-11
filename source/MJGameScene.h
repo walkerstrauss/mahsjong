@@ -94,10 +94,8 @@ protected:
     std::shared_ptr<Pile> _pile;
     /** Reference to the discard pile */
     std::shared_ptr<DiscardPile> _discardPile;
-    /** Temporary discard area b/c no asset created for it yet */
-    cugl::Rect discardArea;
-    cugl::Rect _pileBox;
     /** Rect for pile */
+    cugl::Rect _pileBox;
     /** Pointer to the hand */
     Hand* _hand;
     std::shared_ptr<cugl::graphics::TextLayout> _win;
