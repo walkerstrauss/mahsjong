@@ -377,6 +377,14 @@ void GameScene::update(float timestep) {
     }
     _matchController->update(timestep);
     
+    // if there is no tiles left in the pile - it is a tie
+    if(_remainingTiles == 0){
+        _choice = Choice::TIE;
+        _matchController->setChoice(MatchController::Choice::TIE);
+        _network->broadcastTie(_network->getLocalPid());
+        return;
+    }
+    
     // Fetching current mouse position
     cugl::Vec2 mousePos = cugl::Scene::screenToWorldCoords(cugl::Vec3(_input->getPosition()));
     
@@ -401,6 +409,11 @@ void GameScene::update(float timestep) {
     if (_matchController->getChoice() == MatchController::LOSE){
         _choice = LOSE;
     }
+    
+    if (_matchController->getChoice() == MatchController::TIE){
+        _choice = TIE;
+    }
+    
     
     // Update timer display based on remaining time in turn
 //    updateTurnTimer(timestep);

@@ -377,5 +377,14 @@ void Pile::pileJump(float dt) {
     }
 }
 
+bool Pile::isEmpty() {
+    for (const auto& row : _pile) {
+        if (!row.empty()) {
+            return false;
+        }
+    }
+        return true;
+}
+
 
 

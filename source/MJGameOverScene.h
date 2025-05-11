@@ -31,7 +31,8 @@ public:
     enum Type {
         NEITHER,
         WIN,
-        LOSE
+        LOSE,
+        TIE
     };
     
 protected:
@@ -41,6 +42,8 @@ protected:
     std::shared_ptr<cugl::scene2::SceneNode> _winscene;
     /** Reference to lose scene node */
     std::shared_ptr<cugl::scene2::SceneNode> _losescene;
+    /** Reference to tie scene node */
+    std::shared_ptr<cugl::scene2::SceneNode> _tiescene;
     /** Reference to main button in win scene */
     std::shared_ptr<cugl::scene2::Button> _mainWinBtn;
     /** Reference to quit button in win scene*/
@@ -49,8 +52,12 @@ protected:
     std::shared_ptr<cugl::scene2::Button> _mainLoseBtn;
     /** Reference to quit button in lose scene*/
     std::shared_ptr<cugl::scene2::Button> _quitLoseBtn;
+    /** Reference to main button in tie scene*/
+    std::shared_ptr<cugl::scene2::Button> _mainTieBtn;
     /** Reference to key for main button in win scene */
     Uint32 _mainWinKey;
+    /**Reference to key for main button in tie scene **/
+    Uint32 _mainTieKey;
     /** Reference to key for quit button in win scene */
     Uint32 _quitWinKey;
     /** Reference to key for main button in lose scene */

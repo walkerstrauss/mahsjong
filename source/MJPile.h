@@ -77,6 +77,9 @@ public:
     
     void animTilePositions(int frames = 1);
     
+    /** Returns false if pile has at least one tile left*/
+    bool isEmpty();
+    
 #pragma mark -
 #pragma mark Gameplay Handling
     /**
@@ -202,6 +205,8 @@ public:
     
     /** Pile jump effect */
     void pileJump(float dt);
+    
+    
 
     
 };

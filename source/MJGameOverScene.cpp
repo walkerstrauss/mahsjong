@@ -47,6 +47,16 @@ bool GameOverScene::init(const std::shared_ptr<cugl::AssetManager>& assets){
 
     //AudioController::getInstance().init(_assets);
     
+    
+    // init the tie scene
+    _tiescene = _assets->get<scene2::SceneNode>("tiescene");
+    _tiescene->setContentSize(getSize());
+    _tiescene->getChild(0)->setContentSize(_tiescene->getContentSize());
+    _tiescene->doLayout();
+    offset = (screenSize.width -_tiescene->getWidth())/2;
+    _tiescene->setPosition(offset, _winscene->getPosition().y);
+    
+    
     // init the lose scene
     _losescene = _assets->get<scene2::SceneNode>("losescene");
     _losescene->setContentSize(getSize());
@@ -63,6 +73,7 @@ bool GameOverScene::init(const std::shared_ptr<cugl::AssetManager>& assets){
     // init buttons
     _mainWinBtn = std::dynamic_pointer_cast<scene2::Button>(_assets->get<scene2::SceneNode>("winscene.scorewinscene.win_board.button_main"));
     _mainLoseBtn = std::dynamic_pointer_cast<scene2::Button>(_assets->get<scene2::SceneNode>("losescene.scoredefeatscene.defeated_board.button_main"));
+    _mainTieBtn = std::dynamic_pointer_cast<scene2::Button>(_assets->get<scene2::SceneNode>("tiescene.scoretiescene.win_board.button_main"));
     
     // add button listeners
     _mainWinKey = _mainWinBtn->addListener([this](const std::string& name, bool down){
@@ -78,7 +89,14 @@ bool GameOverScene::init(const std::shared_ptr<cugl::AssetManager>& assets){
             AudioController::getInstance().playSound("Confirm");
         }
     });
+    _mainTieKey = _mainTieBtn->addListener([this](const std::string& name, bool down){
+        if (!down){
+            choice = Choice::MENU;
+            AudioController::getInstance().playSound("Confirm");
+        }
+    });
     
+    addChild(_tiescene);
     addChild(_winscene);
     addChild(_losescene);
     setActive(false);
@@ -112,6 +130,15 @@ void GameOverScene::setActive(bool value){
                 } else {
                     _winscene->setVisible(false);
                     _mainWinBtn->deactivate();
+                }
+                break;
+            case Type::TIE:
+                if (value){
+                    _tiescene->setVisible(true);
+                    _mainTieBtn->activate();
+                } else {
+                    _tiescene->setVisible(false);
+                    _mainTieBtn->deactivate();
                 }
                 break;
             case Type::LOSE:
@@ -153,6 +180,9 @@ void GameOverScene::render(const std::shared_ptr<graphics::SpriteBatch>& batch){
             break;
         case Type::LOSE:
             _losescene->render(batch);
+            break;
+        case Type::TIE:
+            _tiescene->render(batch);
             break;
         case Type::NEITHER:
             CULog("no render for neither");

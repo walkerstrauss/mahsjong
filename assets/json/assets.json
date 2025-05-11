@@ -696,6 +696,15 @@
         "tilesample": {
             "file": "textures/score_defeat/tilesample.png"
         },
+        "Tie": {
+            "file": "textures/score_tie/Tie.png"
+        },
+        "tie_board": {
+            "file": "textures/score_tie/win_board.png"
+        },
+        "tie_main":{
+            "file": "textures/score_tie/main.png"
+        },
         "Victory_logo": {
             "file": "textures/score_win/Victory_logo.png"
         },
@@ -1374,6 +1383,26 @@
                 }
             }
         },
+        "tiescene": {
+            "type": "Node",
+            "format": {
+                "type": "Anchored"
+            },
+            "children": {
+                "scoretiescene": {
+                    "type": "Widget",
+                    "format": {
+                        "type": "Anchored"
+                    },
+                    "data": {
+                        "variables": {
+                            "size": [ 1280, 720 ]
+                        },
+                        "key": "scoretiescene"
+                    }
+                }
+            }
+        },
         "client3": {
             "type": "Node",
             "format": {
@@ -1429,7 +1458,8 @@
         "client1Scene": "widgets/scene/client1Scene.json",
         "client3Scene": "widgets/scene/client3Scene.json",
         "infoscene": "widgets/scene/infoScene1.json",
-        "tutorialScene": "widgets/scene/tutorialScene.json"
+        "tutorialScene": "widgets/scene/tutorialScene.json",
+        "scoretiescene":"widgets/scene/scoretiescene.json"
     },
     "jsons": {
         "server": "json/server.json",

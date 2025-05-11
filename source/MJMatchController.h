@@ -34,7 +34,8 @@ public:
         SUCCESS_SET,
         FAILED_SET, 
         WIN,
-        LOSE
+        LOSE,
+        TIE
     };
     /** If current player has already drawn from the pile/discard or not */
     bool hasDrawn = false;

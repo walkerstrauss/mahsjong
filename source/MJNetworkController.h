@@ -61,7 +61,8 @@ public:
         /** Celestial tile has been played */
         PLAYEDCELESTIAL,
         /** Game has concluded  */
-        ENDGAME
+        ENDGAME,
+        TIE
         /** **END OF MATCHMODEL STATES ** */
         
     };
@@ -436,6 +437,9 @@ public:
      * @param isHost    If current network is the host network or not
      */
     void broadcastEnd(int isHost);
+    
+    
+    void broadcastTie(int isHost);
     
     /**
      * Resets all values stored from last game scene after game has been disconnected

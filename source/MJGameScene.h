@@ -53,7 +53,8 @@ public:
         DISCARDED,
         DRAW_DISCARD,
         WIN,
-        LOSE
+        LOSE,
+        TIE
     };
     /** Vector of tiles to add to discardUI*/
     std::vector<std::shared_ptr<TileSet::Tile>> discardedTiles;

@@ -397,6 +397,13 @@ void MahsJongApp::updateGameScene(float timestep) {
             AudioController::getInstance().playMusic("lose", true);
             _scene = State::OVER;
             break;
+        case GameScene::Choice::TIE:
+            _gameplay.setGameActive(false);
+            _gameover.type = GameOverScene::Type::TIE;
+            _gameover.setActive(true);
+            AudioController::getInstance().playMusic("lose", true);
+            _scene = State::OVER;
+            break;
         case GameScene::Choice::DISCARDED:
             if (_gameplay.discardedTiles.empty()){
                 CULog("Discarded tiles is empty");

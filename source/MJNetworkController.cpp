@@ -219,6 +219,9 @@ void NetworkController::processData(const std::string source,
         if(msgType == "game concluded") {
             _status = ENDGAME;
         }
+        else if (msgType == "game concluded - tie") {
+            _status = TIE;
+        }
     }
 }
 
@@ -499,6 +502,13 @@ void NetworkController::broadcastEnd(int isHost) {
     _serializer->writeString("game concluded");
     _serializer->writeUint32(isHost);
 
+    broadcast(_serializer->serialize());
+}
+
+void NetworkController::broadcastTie(int isHost) {
+    _serializer->reset();
+    _serializer->writeString("game concluded - tie");
+    _serializer->writeUint32(isHost);
     broadcast(_serializer->serialize());
 }
 
