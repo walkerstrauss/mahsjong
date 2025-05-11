@@ -128,8 +128,7 @@ void MatchController::initTutorial() {
     hostPlayer->getHand().initHand(_tileSet, true);
     
     //Initializing pile
-    _pile->initPile(4, _tileSet, true);
-
+    _pile->initPile(4, _tileSet, true, _assets);
     
     inTutorial = true; 
 }

@@ -228,7 +228,7 @@ bool TutorialScene::init(const std::shared_ptr<cugl::AssetManager> &assets, std:
     
     //Setting pile location
     _pile->pileBox = pileRegionNode->getBoundingBox();
-    _pile->setTilePositions();
+    _pile->setTilePositions(false);
     for(auto& row: _pile->_pile) {
         for(auto& tile: row) {
             if(tile == nullptr) {
@@ -241,6 +241,13 @@ bool TutorialScene::init(const std::shared_ptr<cugl::AssetManager> &assets, std:
     }
 
     updateTurnIndicators();
+    
+#pragma mark Initializing UI Nodes
+    // Start with shade visible
+    _shade = _assets->get<SceneNode>("matchscene.gameplayscene.shade");
+    _shade->setVisible(true);
+    _uiElements.push_back(_shade);
+    
     addChild(_matchScene);
     addChild(_discardUINode->_root);
     addChild(_pileUINode->_root);
@@ -447,6 +454,10 @@ void TutorialScene::render() {
         }
     }
     
+    for (auto& element : _uiElements){
+        element->render(_batch);
+    }
+    
     _batch->end();
 }
 
@@ -541,7 +552,7 @@ void TutorialScene::updateDrag(const cugl::Vec2& mousePos, bool mouseDown, bool 
                              if (_draggingTile->pos.x > rightTile->pos.x) {
                                  std::swap(tiles[oldIndex], tiles[oldIndex + 1]);
                                  (_pileUINode->getState() == PileUINode::DRAGONREARRANGE)
-                                 ? _pile->setTilePositions()
+                                 ? _pile->setTilePositions(false)
                                      : _player->getHand().updateTilePositions(_playerHandRegion, timestep);
                              }
                          }
@@ -550,7 +561,7 @@ void TutorialScene::updateDrag(const cugl::Vec2& mousePos, bool mouseDown, bool 
                              if (leftTile && _draggingTile->pos.x < leftTile->pos.x) {
                                  std::swap(tiles[oldIndex], tiles[oldIndex - 1]);
                                  (_pileUINode->getState() == PileUINode::DRAGONREARRANGE)
-                                 ? _pile->setTilePositions()
+                                 ? _pile->setTilePositions(false)
                                      : _player->getHand().updateTilePositions(_playerHandRegion, timestep);
                              }
                          }
@@ -771,6 +782,7 @@ void TutorialScene::setActive(bool value) {
 void TutorialScene::setTutorialActive(bool value) {
     if(value) {
         _choice = NONE;
+        _phase = START;
         _tilesetUIBtn->activate();
         _settingBtn->activate();
         _infoBtn->activate();
@@ -781,6 +793,7 @@ void TutorialScene::setTutorialActive(bool value) {
         _settingBtn->deactivate();
         _infoBtn->deactivate();
         updateTurnIndicators();
+        dispose();
     }
 }
 

@@ -573,6 +573,7 @@ void MahsJongApp::updateHelpScene(float timestep){
             _help.setActive(false);
             _gameplay.setActive(true);
             _gameplay.setGameActive(true);
+            _help._choice = HelpScene::NONE;
             _scene = MENU;
             break;
     }
@@ -606,14 +607,14 @@ void MahsJongApp::updateTutorialScene(float timestep){
             _scene = State::SETTINGS;
             break;
         case TutorialScene::DONE:
-            _tutorial.setActive(false);
             _tutorial.setTutorialActive(false);
+            _tutorial.setActive(false);
             _mainmenu.setActive(true);
             _scene = State::MENU;
             break;
         case TutorialScene::BACK:
-            _tutorial.setActive(false);
             _tutorial.setTutorialActive(false);
+            _tutorial.setActive(false);
             _mainmenu.setActive(true);
             _scene = State::MENU;
             break;

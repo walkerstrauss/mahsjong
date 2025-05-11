@@ -1438,7 +1438,8 @@
         "client1Scene": "widgets/scene/client1Scene.json",
         "client3Scene": "widgets/scene/client3Scene.json",
         "infoscene": "widgets/scene/infoScene1.json",
-        "tutorialScene": "widgets/scene/tutorialScene.json"
+        "tutorialScene": "widgets/scene/tutorialScene.json",
+        "tutScene":"widgets/scene/tutScene.json"
     },
     "jsons": {
         "server": "json/server.json",

@@ -127,6 +127,10 @@ private:
     std::vector<std::shared_ptr<TexturedNode>> _opponentHandTiles;
     std::vector<std::shared_ptr<TexturedNode>> _playerHandTiles;
     
+    /** UI elements */
+    std::vector<std::shared_ptr<SceneNode>> _uiElements;
+    std::shared_ptr<SceneNode> _shade;
+    
 #pragma mark SceneNode button keys
     Uint32 _tilesetUIBtnKey;
     Uint32 _pauseBtnKey;
