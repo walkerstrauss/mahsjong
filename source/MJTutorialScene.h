@@ -179,7 +179,7 @@ private:
     float _turnTimer = 0.0f;
     float _discardDelay = 2.0f;
     float _discardTimer = 0.0f;
-    float _shuffleDelay = 5.0f;
+    float _shuffleDelay = 4.0f;
     float _shuffleTimer = 0.0f;
     float _welcomeTimer = 0.0f;
     float _welcomeDelay = 1.0f;

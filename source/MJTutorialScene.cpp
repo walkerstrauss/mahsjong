@@ -391,6 +391,23 @@ void TutorialScene::update(float timestep) {
     }
     
     if (_phase == PRESS){
+        std::vector<std::shared_ptr<TileSet::Tile>> tiles;
+        for (auto& tile: _player->getHand()._selectedTiles){
+            if (tile->getRank() == TileSet::Tile::Rank::TWO && tile->getSuit() == TileSet::Tile::Suit::BAMBOO){
+                tiles.push_back(tile);
+            } else {
+                tile->selected = false;
+            }
+        }
+        _player->getHand()._selectedTiles = tiles;
+
+        
+        for (auto& tile: _player->getHand()._tiles){
+            if (tile->getRank() != TileSet::Tile::Rank::TWO || tile->getSuit() != TileSet::Tile::Suit::BAMBOO){
+                tile->selectable = false;
+            }
+        }
+        
         if (_player->getHand()._selectedTiles.size() == 3) {
             setPhase(PLAY_SET);
             return;
@@ -429,10 +446,17 @@ void TutorialScene::update(float timestep) {
     }
     
     if(_phase == CELESTIAL) {
-        
+        for (auto& tile: _player->getHand()._tiles){
+            if (tile->getSuit() == TileSet::Tile::Suit::CELESTIAL){
+                _playCelestialArrow->setPositionX(tile->pos.x);
+            }
+        }
     }
     
     if(_phase == SET_DISCARD) {
+        for (auto& tile: _player->getHand()._tiles){
+            tile->selectable = true;
+        }
         _playSetBtn->setVisible(false);
     }
     
