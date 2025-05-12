@@ -57,6 +57,35 @@ bool GameOverScene::init(const std::shared_ptr<cugl::AssetManager>& assets){
     _tiescene->setPosition(offset, _winscene->getPosition().y);
     
     
+    _grandmaTie = SpriteNode::allocWithSheet(_assets->get<Texture>("grandmaMain"), 2, 3, 5);
+    _grandmaTie->setAnchor(Vec2::ANCHOR_CENTER);
+    _grandmaTie->setPosition(340, 410);
+    _grandmaTie->setVisible(true);
+    _grandmaTie->setFrame(0);
+    _grandmaTie->setScale(2);
+    _tiescene->addChild(_grandmaTie);
+    AnimationController::getInstance().addSpriteSheetAnimation(_grandmaTie, 0, 4, true, 5.0f);
+    
+    _rabbitTie = SpriteNode::allocWithSheet(_assets->get<Texture>("background_rabbit"), 3, 2, 5);
+    _rabbitTie->setAnchor(Vec2::ANCHOR_CENTER);
+    _rabbitTie->setPosition(580, 150);
+    _rabbitTie->setVisible(true);
+    _rabbitTie->setFrame(1);
+    _rabbitTie->setScale(2.8);
+    _tiescene->addChild(_rabbitTie);
+    AnimationController::getInstance().addSpriteSheetAnimation(_rabbitTie, 1, 4, true, 5.0f);
+    
+    
+    _ratTie = SpriteNode::allocWithSheet(_assets->get<Texture>("background_rat"), 2, 2, 4);
+    _ratTie ->setAnchor(Vec2::ANCHOR_CENTER);
+    _ratTie ->setPosition(650, 195);
+    _ratTie ->setVisible(true);
+    _ratTie ->setFrame(0);
+    _ratTie->setScale(2.8);
+    _tiescene->addChild(_ratTie);
+    AnimationController::getInstance().addSpriteSheetAnimation(_ratTie, 0, 3, true, 5.0f);
+    
+    
     // init the lose scene
     _losescene = _assets->get<scene2::SceneNode>("losescene");
     _losescene->setContentSize(getSize());
@@ -191,24 +220,45 @@ bool GameOverScene::init(const std::shared_ptr<cugl::AssetManager>& assets){
     
     // Winning tiles for the display at the loosing side.
     auto handNodelose  = _assets->get<scene2::SceneNode>("losescene.scoredefeatscene.defeated_board.hand");
+    auto handNodetie = _assets->get<scene2::SceneNode>("tiescene.scoretiescene.win_board.hand");
 
     _loseSlots.clear();
     _loseSlots.reserve(14);
+    _tieSlots.clear();
+    _tieSlots.reserve(14);
+    
     for (int i = 1; i <= 14; ++i) {
         auto tileBtn = handNodelose->getChildByName("tile" + std::to_string(i));
+        auto tileBtnTie = handNodetie->getChildByName("tile" + std::to_string(i));
         
         if (!tileBtn) {
             _loseSlots.push_back(nullptr);
             continue;
         }
+        if (!tileBtnTie) {
+            _tieSlots.push_back(nullptr);
+            continue;
+        }
+        
         auto upNode = tileBtn->getChildByName("up");
+        auto upNodeTie = tileBtnTie->getChildByName("up");
+        
+        if (!upNodeTie) {
+            _tieSlots.push_back(nullptr);
+            continue;
+        }
         if (!upNode) {
             _loseSlots.push_back(nullptr);
             continue;
         }
+        
         auto sample = std::dynamic_pointer_cast<cugl::scene2::TexturedNode>(
                           upNode->getChildByName("tilesample"));
+        auto sampleTie = std::dynamic_pointer_cast<cugl::scene2::TexturedNode>(
+                          upNodeTie->getChildByName("tilesample"));
+        
         _loseSlots.push_back(sample);
+        _tieSlots.push_back(sampleTie);
     }
     
     
@@ -309,26 +359,26 @@ void GameOverScene::render(const std::shared_ptr<graphics::SpriteBatch>& batch){
 void GameOverScene::setWinningHand(const std::vector<std::shared_ptr<TileSet::Tile>>& hand) {
     
     size_t count = std::min(hand.size(), _winSlots.size());
+    
     for (size_t i = 0; i < count; ++i) {
         auto slot = _winSlots[i];
+        auto slotTie = _tieSlots[i];
         
         if (!slot) continue;
+        if (!slotTie) continue;
         auto tex = _assets->get<cugl::graphics::Texture>(hand[i]->toString());
+        auto texTie = _assets->get<cugl::graphics::Texture>(hand[i]->toString());
         slot->setTexture(tex);
+        slotTie->setTexture(texTie);
         slot->setContentSize(40, 53);
-        
-        //auto natural = tex->getSize();
-        //slot->setContentSize(natural);
-        //float sx = 40.0f / natural.width;
-        //float sy = 53.0f / natural.height;
-        //float s  = std::min(sx,sy);
-        //slot->setScale(s);
-        //slot->doLayout();
-        slot->setVisible(true);   // reveal it
+        slotTie->setContentSize(40, 53);
+        slot->setVisible(true);
+        slotTie->setVisible(true);
 
     }
     
     _winscene->doLayout();
+    _tiescene->doLayout();
 }
 
 
@@ -342,15 +392,7 @@ void GameOverScene::setLosingHand(const std::vector<std::shared_ptr<TileSet::Til
         auto tex = _assets->get<cugl::graphics::Texture>(hand[i]->toString());
         slot->setTexture(tex);
         slot->setContentSize(40, 53);
-        
-        //auto natural = tex->getSize();
-        //slot->setContentSize(natural);
-        //float sx = 40.0f / natural.width;
-        //float sy = 53.0f / natural.height;
-        //float s  = std::min(sx,sy);
-        //slot->setScale(s);
-        //slot->doLayout();
-        slot->setVisible(true);   // reveal it
+        slot->setVisible(true);
 
     }
     

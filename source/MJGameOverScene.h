@@ -77,14 +77,16 @@ protected:
     std::vector<std::shared_ptr<TileSet::Tile>> _winningHand;
     std::vector<std::shared_ptr<cugl::scene2::TexturedNode>> _winSlots;
     std::vector<std::shared_ptr<cugl::scene2::TexturedNode>> _loseSlots;
+    std::vector<std::shared_ptr<cugl::scene2::TexturedNode>> _tieSlots;
     std::shared_ptr<cugl::scene2::SpriteNode> _grandmaWin;
     std::shared_ptr<cugl::scene2::SpriteNode> _grandmaCry;
+    std::shared_ptr<cugl::scene2::SpriteNode> _grandmaTie;
     std::shared_ptr<cugl::scene2::SpriteNode> _rabbit;
     std::shared_ptr<cugl::scene2::SpriteNode> _rat;
-
-    
     std::shared_ptr<cugl::scene2::SpriteNode> _rabbitLose;
     std::shared_ptr<cugl::scene2::SpriteNode> _ratLose;
+    std::shared_ptr<cugl::scene2::SpriteNode> _rabbitTie;
+    std::shared_ptr<cugl::scene2::SpriteNode> _ratTie;
     
 public:
     /** Represents the choice for this scene */

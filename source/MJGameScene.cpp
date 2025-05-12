@@ -371,11 +371,11 @@ void GameScene::update(float timestep) {
 
         // there are multiple _choice. One is from MatchController, and the other is from GameScene.
 
-        _choice = Choice::LOSE;
+        _choice = Choice::TIE;
         
-        _matchController->setChoice(MatchController::Choice::LOSE);
+        _matchController->setChoice(MatchController::Choice::TIE);
         
-        _network->broadcastEnd(_network->getLocalPid());
+        _network->broadcastTie(_network->getLocalPid());
     }
     
     _matchController->update(timestep);
@@ -494,7 +494,7 @@ void GameScene::update(float timestep) {
         _discardedTileImage->setVisible(false);
     }
     
-    if (_matchController->getChoice() == MatchController::WIN && !_gameWin) {
+    if ((_matchController->getChoice() == MatchController::WIN  || _matchController->getChoice() == MatchController::TIE) && !_gameWin) {
         
         _winningHand.clear();
 
