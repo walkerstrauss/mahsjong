@@ -117,6 +117,16 @@ bool HostScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::sha
 
     
     _playerSingle = _assets->get<scene2::SceneNode>("host.host1Scene.waitingRoom.playerBoard");
+
+    _hostScene3 = _assets->get<scene2::SceneNode>("host3");
+    _hostScene3->setContentSize(getSize());
+    _hostScene3->getChild(0)->setContentSize(_hostScene3->getContentSize());
+    _hostScene3->setPosition(offset, _hostScene3->getPosition().y);
+    _hostScene3->doLayout();
+
+    addChild(_hostScene3);
+    _hostScene3->setVisible(false);
+
     _playerMulti = _assets->get<scene2::SceneNode>("host3.host3Scene.waitingRoom.playerBoard");
     _playerMulti->setVisible(false);
 

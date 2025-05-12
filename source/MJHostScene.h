@@ -61,6 +61,8 @@ protected:
     /** Reference to init host scene*/
     std::shared_ptr<cugl::scene2::SceneNode> _hostScene1;
 
+    std::shared_ptr<cugl::scene2::SceneNode> _hostScene3;
+
     /** Reference to Gameboard when players are connecting or alone */
     std::shared_ptr<cugl::scene2::SceneNode> _playerSingle;
     std::shared_ptr<cugl::scene2::SceneNode> _playerMulti;
