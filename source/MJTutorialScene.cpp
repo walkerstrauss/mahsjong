@@ -378,6 +378,22 @@ void TutorialScene::update(float timestep) {
     if (_phase == PRESS){
         if (_player->getHand()._selectedTiles.size() == 3) {
             setPhase(PLAY_SET);
+            return;
+        }
+        
+        int i = 0;
+        for (auto& tile : _player->getHand()._tiles){
+            if (tile->getSuit() == TileSet::Tile::Suit::BAMBOO && tile->getRank() == TileSet::Tile::Rank::TWO && tile != _player->getHand()._tiles[_player->getHand()._tiles.size()-1]) {
+                if (i < 2){
+                    if (i == 0){
+                        _pressArrow1->setPositionX(tile->pos.x);
+                        i++;
+                    } else {
+                        _pressArrow2->setPositionX(tile->pos.x);
+                        i++;
+                    }
+                }
+            }
         }
     }
     
@@ -460,6 +476,10 @@ void TutorialScene::render() {
         if(_input->isDown() && _input->getInitialPosition() != _input->getPosition()) {
             _player->drawInfo(_draggingTile, _batch, _matchScene->getSize());
         }
+    }
+    
+    for (auto& node : _uiMap[getPhaseUIMapKey(_phase)]){
+        node->render(_batch);
     }
     
     _batch->end();
