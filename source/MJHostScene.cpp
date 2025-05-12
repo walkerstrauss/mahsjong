@@ -97,19 +97,27 @@ bool HostScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::sha
 
     _hostScene1->doLayout(); // Repositions the HUD
     
-    _startgame = std::dynamic_pointer_cast<scene2::Button>(_assets->get<scene2::SceneNode>("host.hostscene.menu.button1"));
-    _backout = std::dynamic_pointer_cast<scene2::Button>(_assets->get<scene2::SceneNode>("host.hostscene.menu.button2"));
-    _waitOrStart = std::dynamic_pointer_cast<scene2::PolygonNode>(_assets->get<scene2::SceneNode>("host.hostscene.menu.button1.up.start"));
+    _startgame = std::dynamic_pointer_cast<scene2::Button>(
+        _assets->get<scene2::SceneNode>("host.host1Scene.waitingRoom.menu.start")
+    );
+
+    _backout = std::dynamic_pointer_cast<scene2::Button>(
+        _assets->get<scene2::SceneNode>("host.host1Scene.waitingRoom.menu.exit")
+    );
+
+    _waitOrStart = std::dynamic_pointer_cast<scene2::PolygonNode>(
+        _assets->get<scene2::SceneNode>("host.host1Scene.menu.start.up.host1-waiting-button")
+    );
     
-    _tileOne = std::dynamic_pointer_cast<scene2::PolygonNode>(_assets->get<scene2::SceneNode>("host.hostscene.waitingRoom.roomid-tile.host1-roomid-tile"));
-    _tileTwo = std::dynamic_pointer_cast<scene2::PolygonNode>(_assets->get<scene2::SceneNode>("host.hostscene.waitingRoom.roomid-tile.host1-roomid-tile_1"));
-    _tileThree = std::dynamic_pointer_cast<scene2::PolygonNode>(_assets->get<scene2::SceneNode>("host.hostscene.waitingRoom.roomid-tile.host1-roomid-tile_2"));
-    _tileFour = std::dynamic_pointer_cast<scene2::PolygonNode>(_assets->get<scene2::SceneNode>("host.hostscene.waitingRoom.roomid-tile.host1-roomid-tile_3"));
-    _tileFive = std::dynamic_pointer_cast<scene2::PolygonNode>(_assets->get<scene2::SceneNode>("host.hostscene.waitingRoom.roomid-tile.host1-roomid-tile_4"));
+    _tileOne = std::dynamic_pointer_cast<scene2::PolygonNode>(_assets->get<scene2::SceneNode>("host.host1Scene.waitingRoom.roomid-tile.host1-roomid-tile"));
+    _tileTwo = std::dynamic_pointer_cast<scene2::PolygonNode>(_assets->get<scene2::SceneNode>("host.host1Scene.waitingRoom.roomid-tile.host1-roomid-tile_1"));
+    _tileThree = std::dynamic_pointer_cast<scene2::PolygonNode>(_assets->get<scene2::SceneNode>("host.host1Scene.waitingRoom.roomid-tile.host1-roomid-tile_2"));
+    _tileFour = std::dynamic_pointer_cast<scene2::PolygonNode>(_assets->get<scene2::SceneNode>("host.host1Scene.waitingRoom.roomid-tile.host1-roomid-tile_3"));
+    _tileFive = std::dynamic_pointer_cast<scene2::PolygonNode>(_assets->get<scene2::SceneNode>("host.host1Scene.waitingRoom.roomid-tile.host1-roomid-tile_4"));
 
     
-    _playerSingle = _assets->get<scene2::SceneNode>("host.hostscene.waitingRoom.playerBoard");
-    _playerMulti = _assets->get<scene2::SceneNode>("host.hostscene.waitingRoom.playerBoard2");
+    _playerSingle = _assets->get<scene2::SceneNode>("host.host1Scene.waitingRoom.playerBoard");
+    _playerMulti = _assets->get<scene2::SceneNode>("host3.host3Scene.waitingRoom.playerBoard");
     _playerMulti->setVisible(false);
 
     //AudioController::getInstance().init(_assets);
