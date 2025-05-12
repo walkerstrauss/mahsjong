@@ -381,7 +381,13 @@ void GameScene::update(float timestep) {
     _matchController->update(timestep);
     
     // if there is no tiles left in the pile - it is a tie
-    if(_remainingTiles == 0){
+    
+    CULog("IS pile empty? %s\n", _pile->isEmpty() ? "yes" : "no");
+    CULog("Number of remaining tiles %i", _remainingTiles);
+    
+    CULog("the size of the pile is: %i" ,_pile->getPileSize());
+    
+    if(_remainingTiles == 0 || _pile->isEmpty()){
         _choice = Choice::TIE;
         _matchController->setChoice(MatchController::Choice::TIE);
         _network->broadcastTie(_network->getLocalPid());
