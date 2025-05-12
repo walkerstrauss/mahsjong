@@ -188,7 +188,7 @@ void HostScene::idSetup(const std::shared_ptr<cugl::scene2::PolygonNode>& tile, 
         default:
             tile->setTexture(_assets->get<cugl::graphics::Texture>("client1-gameid-blank"));
     }
-        tile->setContentSize(80, 90);
+        tile->setContentSize(62, 57);
 }
 
 /**
@@ -279,7 +279,7 @@ void HostScene::update(float timestep) {
             _playerSingle->setVisible(true);
             _waitOrStart->setTexture(_assets->get<cugl::graphics::Texture>("host1-waiting-button"));
         }
-        _waitOrStart->setContentSize(200, 181);
+        _waitOrStart->setContentSize(150, 150);
 
         std::string dec = hex2dec(networkHex);
         
