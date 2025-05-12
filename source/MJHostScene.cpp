@@ -280,11 +280,15 @@ void HostScene::update(float timestep) {
                 _playedSound = true;
                 AudioController::getInstance().playSound("PlayerJoined");
             }
+            _hostScene3->setVisible(true);
+            _hostScene1->setVisible(false);
             _playerMulti->setVisible(true);
             _playerSingle->setVisible(false);
             _waitOrStart->setTexture(_assets->get<cugl::graphics::Texture>("hoststart"));
         }
         else {
+            _hostScene3->setVisible(false);
+            _hostScene1->setVisible(true);
             _playerMulti->setVisible(false);
             _playerSingle->setVisible(true);
             _waitOrStart->setTexture(_assets->get<cugl::graphics::Texture>("host1-waiting-button"));
