@@ -48,6 +48,7 @@ public:
     enum TutorialPhase {
         NOT,
         START,
+        WELCOME,
         ONE_DRAW,
         DISCARD,
         ONE_OPP,
@@ -166,18 +167,24 @@ private:
     bool _wasDragToHandVisible = false;
     bool _wasDragToDiscardVisible = false;
     bool _wasPlayAreaVisible = false;
-    bool shouldReturn = false; 
+    bool shouldReturn = false;
+    
+    std::shared_ptr<TileSet::Tile> _opponentTile1;
+    std::shared_ptr<TileSet::Tile> _opponentTile2;
     
     const float DRAG_THRESHOLD = 0.0f;
+    
+#pragma mark Delay Timers
     float _opponentDelay = 2.0f;
     float _turnTimer = 0.0f;
     float _discardDelay = 2.0f;
     float _discardTimer = 0.0f;
     float _shuffleDelay = 5.0f;
     float _shuffleTimer = 0.0f;
-    
-    std::shared_ptr<TileSet::Tile> _opponentTile1;
-    std::shared_ptr<TileSet::Tile> _opponentTile2;
+    float _welcomeTimer = 0.0f;
+    float _welcomeDelay = 1.0f;
+    float _finishedTimer = 0.0f;
+    float _finishedDelay = 1.0f;
     
 #pragma mark Celestial Tiles
     int _dragonRow = -1;
@@ -224,7 +231,7 @@ private:
     // Nodes for play celestial phase
     std::shared_ptr<SceneNode> _playCelestialArrow;
     std::shared_ptr<SceneNode> _playCelestialText;
-    
+        
 public:
 #pragma mark -
 #pragma mark Gameplay Handling
@@ -441,6 +448,14 @@ public:
     }
     
     void initTutorialUINodes(){
+        std::shared_ptr<SceneNode> shade = _assets->get<SceneNode>("matchscene.gameplayscene.welcome-shade");
+        std::shared_ptr<SceneNode> section = _assets->get<SceneNode>("matchscene.gameplayscene.welcome-section");
+//        section->setContentSize(1008,400);
+//        section->setPosition(185,56);
+//        std::shared_ptr<Label> label = std::dynamic_pointer_cast<Label>(_assets->get<SceneNode>("matchscene.gameplayscene.welcome-text"));
+        std::vector<std::shared_ptr<SceneNode>> nodes = {shade, section /**, label*/};
+        _uiMap["welcome"] = nodes;
+        
         _box = _assets->get<SceneNode>("matchscene.gameplayscene.box");
         _drawPileArrow = _assets->get<SceneNode>("matchscene.gameplayscene.drawFromPileArrow");
         _drawPileText = _assets->get<SceneNode>("matchscene.gameplayscene.drawFromPileText");
@@ -487,6 +502,14 @@ public:
         _playCelestialNodes.push_back(_playCelestialText);
         _uiMap["celestial"] = _playCelestialNodes;
         
+        std::shared_ptr<SceneNode> shade2 = _assets->get<SceneNode>("matchscene.gameplayscene.finished-shade");
+        std::shared_ptr<SceneNode> section2 = _assets->get<SceneNode>("matchscene.gameplayscene.finished-section");
+//        section2->setContentSize(1008,400);
+//        section2->setPosition(185,56);
+        
+        std::vector<std::shared_ptr<SceneNode>> nodes2 = {shade2,section2};
+        _uiMap["finished"] = nodes2;
+        
         std::vector<std::shared_ptr<SceneNode>> none;
         _uiMap["none"] = none;
     }
@@ -494,7 +517,7 @@ public:
     const std::string getPhaseUIMapKey(TutorialPhase phase){
         std::string s;
         switch (phase){
-            case START:
+            case WELCOME:
                 s = "welcome";
                 break;
             case ONE_DRAW:
@@ -522,6 +545,9 @@ public:
                 break;
             case PRESS:
                 s = "press";
+                break;
+            case FINISHED:
+                s = "finished";
                 break;
             default:
                 s = "none";

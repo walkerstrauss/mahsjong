@@ -1142,6 +1142,12 @@
         },
         "welcome": {
             "file": "textures/tutorial/welcome.png"
+        },
+        "shade-tut":{
+            "file": "textures/tutorial/shade-tut.png"
+        },
+        "finished":{
+            "file":"textures/tutorial/finished.png"
         }
     },
     "fonts": {

@@ -295,7 +295,22 @@ void TutorialScene::update(float timestep) {
     updateDrag(mousePos, _input->isDown(), _input->didRelease(), timestep);
     
     if(_phase == START) {
-        setPhase(ONE_DRAW);
+        if (_input->didRelease() && !_input->isDown()){
+            setPhase(WELCOME);
+        }
+    }
+    
+    if(_phase == WELCOME){
+        if (_welcomeTimer < _welcomeDelay){
+            _welcomeTimer += timestep;
+            return;
+        }
+        
+        if (_input->didRelease() && !_input->isDown()){
+            setPhase(ONE_DRAW);
+            _welcomeTimer = 0.0f;
+            return;
+        }
     }
     
     if(_phase == ONE_DRAW) {
@@ -406,7 +421,7 @@ void TutorialScene::update(float timestep) {
         bool releasedInPile = _input->didRelease() && _pileBox.contains(mousePos);
         if(_pileBox.contains(initialMousePos) && releasedInPile) {
             if(_matchController->hasDrawn) {
-                // Whatever you want to put here for tutorial like ("CAN'T DRAW AGAIN")
+                    // Whatever you want to put here for tutorial like ("CAN'T DRAW AGAIN")
             }
             _matchController->drawTile();
             setPhase(CELESTIAL);
@@ -431,10 +446,19 @@ void TutorialScene::update(float timestep) {
     }
     
     if(_phase == FINISHED) {
-        _choice = DONE;
+        if (_finishedTimer < _finishedDelay){
+            _finishedTimer += timestep;
+            return;
+        }
         
-        _matchController->inTutorial = false;
-        _network->reset();
+        if (_input->didRelease() && !_input->isDown()){
+            // Transition back to main menu
+            _choice = DONE;
+            _finishedTimer = 0.0f;
+            // Prepare game controllers for a match
+            _matchController->inTutorial = false;
+            _network->reset();
+        }
     }
 }
 

@@ -49,64 +49,6 @@
                     "y_offset": 0
                 }
             },
-            "shade": {
-                "type": "Node",
-                "format": {
-                    "type": "Anchored"
-                },
-                "data": {
-                    "anchor": [
-                        0,
-                        1
-                    ],
-                    "size": [
-                        1024,
-                        576
-                    ],
-                    "angle": 0,
-                    "position": [
-                        0,
-                        0
-                    ],
-                    "visible": false
-                },
-                "children": {
-                    "settingShade": {
-                        "type": "Image",
-                        "data": {
-                            "texture": "settingShade",
-                            "anchor": [
-                                0.5,
-                                0.5
-                            ],
-                            "size": [
-                                1024,
-                                576
-                            ],
-                            "angle":0,
-                            "position": [
-                                0,
-                                0
-                            ],
-                            "visible": true
-                        },
-                        "layout": {
-                            "x_anchor": "fill",
-                            "y_anchor": "fill",
-                            "absolute": false,
-                            "x_offset": 0,
-                            "y_offset": 0
-                        }
-                    }
-                },
-                "layout": {
-                    "x_anchor": "fill",
-                    "y_anchor": "fill",
-                    "absolute": false,
-                    "x_offset": 0,
-                    "y_offset": 0
-                }
-            },
             "drag-to-discard-tile": {
                 "type": "Image",
                 "data": {
@@ -2801,7 +2743,7 @@
                     "x_anchor": "left",
                     "y_anchor": "top",
                     "absolute": false,
-                    "x_offset": 0.7,
+                    "x_offset": 0.77,
                     "y_offset": -0.46
                 }
             },
@@ -2965,6 +2907,176 @@
                     "absolute": false,
                     "x_offset": 0.82,
                     "y_offset": -0.35
+                }
+            },
+            "welcome-section": {
+                "type": "Image",
+                "data": {
+                    "texture": "welcome",
+                    "anchor": [
+                        0.5,
+                        0.5
+                    ],
+                    "size": [
+                        1008,
+                        597
+                    ],
+                    "angle": 0,
+                    "position": [
+                        0,
+                        0
+                    ],
+                    "visible": false
+                },
+                "layout": {
+                    "x_anchor": "center",
+                    "y_anchor": "center",
+                    "absolute": false,
+                    "x_offset": 0.0,
+                    "y_offset": -0.0
+                }
+            },
+            "welcome-shade": {
+                "type": "Node",
+                "format": {
+                    "type": "Anchored"
+                },
+                "data": {
+                    "anchor": [
+                        0,
+                        1
+                    ],
+                    "size": [
+                        1024,
+                        576
+                    ],
+                    "angle": 0,
+                    "position": [
+                        0,
+                        0
+                    ],
+                    "visible": false
+                },
+                "children": {
+                    "settingShade": {
+                        "type": "Image",
+                        "data": {
+                            "texture": "shade",
+                            "anchor": [
+                                0.5,
+                                0.5
+                            ],
+                            "size": [
+                                1024,
+                                576
+                            ],
+                            "angle":0,
+                            "position": [
+                                0,
+                                0
+                            ],
+                            "visible": true
+                        },
+                        "layout": {
+                            "x_anchor": "fill",
+                            "y_anchor": "fill",
+                            "absolute": false,
+                            "x_offset": 0,
+                            "y_offset": 0
+                        }
+                    }
+                },
+                "layout": {
+                    "x_anchor": "fill",
+                    "y_anchor": "fill",
+                    "absolute": false,
+                    "x_offset": 0,
+                    "y_offset": 0
+                }
+            },
+            "finished-section": {
+                "type": "Image",
+                "data": {
+                    "texture": "finished",
+                    "anchor": [
+                        0.5,
+                        0.5
+                    ],
+                    "size": [
+                        1008,
+                        597
+                    ],
+                    "angle": 0,
+                    "position": [
+                        0,
+                        0
+                    ],
+                    "visible": false
+                },
+                "layout": {
+                    "x_anchor": "center",
+                    "y_anchor": "center",
+                    "absolute": false,
+                    "x_offset": 0.0,
+                    "y_offset": -0.0
+                }
+            },
+            "finished-shade": {
+                "type": "Node",
+                "format": {
+                    "type": "Anchored"
+                },
+                "data": {
+                    "anchor": [
+                        0,
+                        1
+                    ],
+                    "size": [
+                        1024,
+                        576
+                    ],
+                    "angle": 0,
+                    "position": [
+                        0,
+                        0
+                    ],
+                    "visible": false
+                },
+                "children": {
+                    "settingShade": {
+                        "type": "Image",
+                        "data": {
+                            "texture": "shade",
+                            "anchor": [
+                                0.5,
+                                0.5
+                            ],
+                            "size": [
+                                1024,
+                                576
+                            ],
+                            "angle":0,
+                            "position": [
+                                0,
+                                0
+                            ],
+                            "visible": true
+                        },
+                        "layout": {
+                            "x_anchor": "fill",
+                            "y_anchor": "fill",
+                            "absolute": false,
+                            "x_offset": 0,
+                            "y_offset": 0
+                        }
+                    }
+                },
+                "layout": {
+                    "x_anchor": "fill",
+                    "y_anchor": "fill",
+                    "absolute": false,
+                    "x_offset": 0,
+                    "y_offset": 0
                 }
             }
         }
