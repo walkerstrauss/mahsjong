@@ -188,10 +188,8 @@ bool ClientScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::s
 
     _tile2->addListener([this](const std::string& name, bool down) {
         if (down && _idPos < 5) {
-            //Size orig = _gameIDNew[_idPos]->getContentSize();
-            _gameIDNew[_idPos]->setTexture(_assets->get<cugl::graphics::Texture>("client1-gameid-tile1"));
-            CULog("Texture width: %d height: %d", _gameIDNew[_idPos]->getTexture()->getWidth(), _gameIDNew[_idPos]->getTexture()->getHeight());
-            //_gameIDNew[_idPos]->setContentSize(orig);
+            auto tex = _assets->get<Texture>("client1-gameid-tile1");
+            _gameIDNew[_idPos]->setTexture(tex);
             _gameIDNew[_idPos]->setContentSize(58, 58);
             _idPos++;
             AudioController::getInstance().playSound("Click", false);
