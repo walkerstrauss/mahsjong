@@ -330,7 +330,7 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::sha
     _remainingLabel->setText(std::to_string(_remainingTiles));
     
     _timer = std::dynamic_pointer_cast<Label>(_assets->get<SceneNode>("matchscene.gameplayscene.timer"));
-    _timer->setText("00:30");
+    _timer->setText("30");
     initPlayerGuide();
     updateTurnIndicators();
     return true;
@@ -419,7 +419,7 @@ void GameScene::update(float timestep) {
     
     
     // Update timer display based on remaining time in turn
-//    updateTurnTimer(timestep);
+    updateTurnTimer(timestep);
     
     // Updating discardUINode if matchController has a discard update
     if(_matchController->getChoice() == MatchController::Choice::DISCARDUIUPDATE) {

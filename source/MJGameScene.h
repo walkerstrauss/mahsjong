@@ -580,7 +580,7 @@ public:
             } else {
                 turnTimerActive = false;
                 _turnTimeRemaining = 0.0f;
-                _timer->setText("00:00");
+                _timer->setText("0");
             }
             
         }
@@ -593,15 +593,8 @@ public:
                 endTurnFromTimeout();
             }
             
-            int sec = static_cast<int>(_turnTimeRemaining);
-            
-            std::string timeAsStr = "00:";
-            if (sec < 10){
-                timeAsStr += "0";
-            }
-            
-            timeAsStr += std::to_string(sec);
-            _timer->setText(timeAsStr);
+            int sec = static_cast<int>(_turnTimeRemaining + 0.999f); // round up
+            _timer->setText(std::to_string(sec));
         }
     }
     
