@@ -106,7 +106,7 @@ bool HostScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::sha
     );
 
     _waitOrStart = std::dynamic_pointer_cast<scene2::PolygonNode>(
-        _assets->get<scene2::SceneNode>("host.host1Scene.menu.start.up.host1-waiting-button")
+        _assets->get<scene2::SceneNode>("host.host1Scene.waitingRoom.menu.start.up.host1-waiting-button")
     );
     
     _tileOne = std::dynamic_pointer_cast<scene2::PolygonNode>(_assets->get<scene2::SceneNode>("host.host1Scene.waitingRoom.roomid-tile.host1-roomid-tile"));
@@ -184,24 +184,6 @@ void HostScene::idSetup(const std::shared_ptr<cugl::scene2::PolygonNode>& tile, 
             break;
         case '0':
             tile->setTexture(_assets->get<cugl::graphics::Texture>("client1-gameid-tile10"));
-            break;
-        case 'A':
-            tile->setTexture(_assets->get<cugl::graphics::Texture>("client1-gameid-tile11"));
-            break;
-        case 'B':
-            tile->setTexture(_assets->get<cugl::graphics::Texture>("client1-gameid-tile12"));
-            break;
-        case 'C':
-            tile->setTexture(_assets->get<cugl::graphics::Texture>("client1-gameid-tile13"));
-            break;
-        case 'D':
-            tile->setTexture(_assets->get<cugl::graphics::Texture>("client1-gameid-tile14"));
-            break;
-        case 'E':
-            tile->setTexture(_assets->get<cugl::graphics::Texture>("client1-gameid-tile15"));
-            break;
-        case 'F':
-            tile->setTexture(_assets->get<cugl::graphics::Texture>("client1-gameid-tile16"));
             break;
         default:
             tile->setTexture(_assets->get<cugl::graphics::Texture>("client1-gameid-blank"));
