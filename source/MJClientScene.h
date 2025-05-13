@@ -235,6 +235,8 @@ private:
      * networking.
      */
     void configureStartButton();
+
+    void resetClientTiles();
     
     
     

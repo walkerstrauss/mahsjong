@@ -1238,8 +1238,8 @@
                                         0.5
                                     ],
                                     "size": [
-                                        45,
-                                        60
+                                        50,
+                                        67
                                     ],
                                     "angle": 0,
                                     "position": [
@@ -1267,8 +1267,8 @@
                                         0.5
                                     ],
                                     "size": [
-                                        45,
-                                        60
+                                        50,
+                                        67
                                     ],
                                     "angle": 0,
                                     "position": [
@@ -1296,8 +1296,8 @@
                                         0.5
                                     ],
                                     "size": [
-                                        45,
-                                        60
+                                        50,
+                                        67
                                     ],
                                     "angle": 0,
                                     "position": [
@@ -1325,8 +1325,8 @@
                                         0.5
                                     ],
                                     "size": [
-                                        45,
-                                        60
+                                        50,
+                                        67
                                     ],
                                     "angle": 0,
                                     "position": [
@@ -1354,8 +1354,8 @@
                                         0.5
                                     ],
                                     "size": [
-                                        45,
-                                        60
+                                        50,
+                                        67
                                     ],
                                     "angle": 0,
                                     "position": [
@@ -1611,7 +1611,7 @@
                                     "client1-cancel-button": {
                                         "type": "Image",
                                         "data": {
-                                            "texture": "client1-cancel-button",
+                                            "texture": "client1-clear-button",
                                             "anchor": [
                                                 0,
                                                 1

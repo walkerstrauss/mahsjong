@@ -219,7 +219,7 @@ void HostScene::idSetup(const std::shared_ptr<cugl::scene2::PolygonNode>& tile, 
         default:
             tile->setTexture(_assets->get<cugl::graphics::Texture>("client1-gameid-blank"));
     }
-        tile->setContentSize(45, 60);
+        tile->setContentSize(50, 67);
 }
 
 /**
