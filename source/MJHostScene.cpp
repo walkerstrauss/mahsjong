@@ -303,22 +303,15 @@ void HostScene::update(float timestep) {
             }
             _hostScene3->setVisible(true);
             _hostScene1->setVisible(false);
-            //_playerMulti->setVisible(true);
-            //_playerSingle->setVisible(false);
-            // _waitOrStart1->setVisible(false);
-            //_waitOrStart3->setTexture(_assets->get<cugl::graphics::Texture>("hoststart"));
+
             CULog("Testing");
         }
         else {
             _hostScene3->setVisible(false);
             _hostScene1->setVisible(true);
-            //_playerMulti->setVisible(false);
-            //_playerSingle->setVisible(true);
-            // _waitOrStart3->setVisible(false);
-            //_waitOrStart1->setTexture(_assets->get<cugl::graphics::Texture>("host1-waiting-button"));
         }
-        //_waitOrStart1->setContentSize(150, 150);
-        //_waitOrStart3->setContentSize(150, 150);
+        _assets->get<scene2::SceneNode>("host.host1Scene.waitingRoom.menu.start.up.host1-waiting-button")->setContentSize(150, 150);
+        _assets->get<scene2::SceneNode>("host3.host3Scene.waitingRoom.menu.start.up.start")->setContentSize(150, 150);
 
         std::string dec = hex2dec(networkHex);
         
