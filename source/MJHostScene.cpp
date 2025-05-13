@@ -140,18 +140,18 @@ bool HostScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::sha
     _hostScene3->setPosition(offset, _hostScene3->getPosition().y);
     _hostScene3->doLayout();
 
-    //_waitOrStart3 = std::dynamic_pointer_cast<scene2::PolygonNode>(
-    //    _assets->get<scene2::SceneNode>("host3.host3Scene.waitingRoom.menu.start.up.start")
-    //);
 
     addChild(_hostScene3);
     _hostScene3->setVisible(false);
-    // _waitOrStart3->setVisible(false);
 
-    //_playerMulti = _assets->get<scene2::SceneNode>("host3.host3Scene.waitingRoom.playerBoard");
-    //_playerMulti->setVisible(false);
+    _startgame2 = std::dynamic_pointer_cast<scene2::Button>(
+        _assets->get<scene2::SceneNode>("host3.host3Scene.waitingRoom.menu.start")
+    );
 
-    //AudioController::getInstance().init(_assets);
+    _backout2 = std::dynamic_pointer_cast<scene2::Button>(
+        _assets->get<scene2::SceneNode>("host3.host3Scene.waitingRoom.menu.exit")
+    );
+
 
     // Program the buttons
     _backout->addListener([this](const std::string& name, bool down) {
@@ -168,6 +168,21 @@ bool HostScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::sha
             startGame();
         }
     });
+
+    _backout2->addListener([this](const std::string& name, bool down) {
+        if (down) {
+            _backClicked = true;
+            AudioController::getInstance().playSound("Exit");
+            _network->disconnect();
+        }
+        });
+
+    _startgame2->addListener([this](const std::string& name, bool down) {
+        if (down) {
+            AudioController::getInstance().playSound("Confirm");
+            startGame();
+        }
+        });
 
     //_gameid = std::dynamic_pointer_cast<scene2::Label>(_assets->get<scene2::SceneNode>("host.hostscene.menu.gameid.gameid_textfield.gameid"));
     //_player = std::dynamic_pointer_cast<scene2::Label>(_assets->get<scene2::SceneNode>("host.hostscene.menu.player.player_textfield.label"));  
@@ -251,10 +266,14 @@ void HostScene::setActive(bool value) {
             _backClicked = false;
         } else {
             _startgame->deactivate();
+            _startgame2->deactivate();
             //updateText(_startgame, "INACTIVE");
             _backout->deactivate();
+            _backout2->deactivate();
             _startgame->setDown(false);
             _backout->setDown(false);
+            _startgame2->setDown(false);
+            _backout2->setDown(false);
             _startGameClicked = false;
         }
     }
@@ -302,6 +321,8 @@ void HostScene::update(float timestep) {
                 AudioController::getInstance().playSound("PlayerJoined");
             }
             _hostScene3->setVisible(true);
+            _backout2->activate();
+            _startgame->activate();
             _hostScene1->setVisible(false);
 
             CULog("Testing");
