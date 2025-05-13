@@ -110,7 +110,7 @@ bool ClientScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::s
                 //Size orig = _gameIDNew[_idPos]->getContentSize();
                 _gameIDNew[i]->setTexture(_assets->get<Texture>("client1-gameid-blank"));
                 //_gameIDNew[i]->setContentSize(orig);
-                _gameIDNew[i]->setContentSize(58, 58);
+                _gameIDNew[i]->setContentSize(45, 60);
             }
             _idPos = 0;
             AudioController::getInstance().playSound("Exit", false);
@@ -127,7 +127,7 @@ bool ClientScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::s
             //Size orig = _gameIDNew[_idPos]->getContentSize();
             _gameIDNew[i]->setTexture(blank);
             //_gameIDNew[i]->setContentSize(orig);
-            _gameIDNew[i]->setContentSize(58, 58);
+            _gameIDNew[i]->setContentSize(45, 60);
         }
         _idPos = 0;
         });
@@ -143,7 +143,7 @@ bool ClientScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::s
                     //Size orig = _gameIDNew[_idPos]->getContentSize();
                     _gameIDNew[i]->setTexture(blankTex);
                     //_gameIDNew[i]->setContentSize(orig);
-                    _gameIDNew[i]->setContentSize(58, 58);
+                    _gameIDNew[i]->setContentSize(45, 60);
                 }
                 _idPos = 0;
             }
@@ -180,7 +180,7 @@ bool ClientScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::s
             auto tex = _assets->get<Texture>("client1-gameid-tile");
             _gameIDNew[_idPos]->setTexture(tex);
             //_gameIDNew[_idPos]->setContentSize(orig);
-            _gameIDNew[_idPos]->setContentSize(58, 58);
+            _gameIDNew[_idPos]->setContentSize(45, 60);
             _idPos++;
             AudioController::getInstance().playSound("Click", false);
         }
@@ -190,7 +190,7 @@ bool ClientScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::s
         if (down && _idPos < 5) {
             auto tex = _assets->get<Texture>("client1-gameid-tile1");
             _gameIDNew[_idPos]->setTexture(tex);
-            _gameIDNew[_idPos]->setContentSize(58, 58);
+            _gameIDNew[_idPos]->setContentSize(45, 60);
             _idPos++;
             AudioController::getInstance().playSound("Click", false);
         }
@@ -200,7 +200,7 @@ bool ClientScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::s
             //Size orig = _gameIDNew[_idPos]->getContentSize();
             _gameIDNew[_idPos]->setTexture(_assets->get<cugl::graphics::Texture>("client1-gameid-tile2"));
             //_gameIDNew[_idPos]->setContentSize(orig);
-            _gameIDNew[_idPos]->setContentSize(58, 58);
+            _gameIDNew[_idPos]->setContentSize(45, 60);
             _idPos++;
             AudioController::getInstance().playSound("Click", false);
         }
@@ -211,7 +211,7 @@ bool ClientScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::s
             //Size orig = _gameIDNew[_idPos]->getContentSize();
             _gameIDNew[_idPos]->setTexture(_assets->get<cugl::graphics::Texture>("client1-gameid-tile3"));
             //_gameIDNew[_idPos]->setContentSize(orig);
-            _gameIDNew[_idPos]->setContentSize(58, 58);
+            _gameIDNew[_idPos]->setContentSize(45, 60);
             _idPos++;
             AudioController::getInstance().playSound("Click", false);
         }
@@ -221,7 +221,7 @@ bool ClientScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::s
             //Size orig = _gameIDNew[_idPos]->getContentSize();
             _gameIDNew[_idPos]->setTexture(_assets->get<cugl::graphics::Texture>("client1-gameid-tile4"));
             //_gameIDNew[_idPos]->setContentSize(orig);
-            _gameIDNew[_idPos]->setContentSize(58, 58);
+            _gameIDNew[_idPos]->setContentSize(45, 60);
             _idPos++;
             AudioController::getInstance().playSound("Click", false);
         }
@@ -231,7 +231,7 @@ bool ClientScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::s
             //Size orig = _gameIDNew[_idPos]->getContentSize();
             _gameIDNew[_idPos]->setTexture(_assets->get<cugl::graphics::Texture>("client1-gameid-tile5"));
             //_gameIDNew[_idPos]->setContentSize(orig);
-            _gameIDNew[_idPos]->setContentSize(58, 58);
+            _gameIDNew[_idPos]->setContentSize(45, 60);
             _idPos++;
             AudioController::getInstance().playSound("Click", false);
         }
@@ -241,7 +241,7 @@ bool ClientScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::s
             //Size orig = _gameIDNew[_idPos]->getContentSize();
             _gameIDNew[_idPos]->setTexture(_assets->get<cugl::graphics::Texture>("client1-gameid-tile6"));
             //_gameIDNew[_idPos]->setContentSize(orig);
-            _gameIDNew[_idPos]->setContentSize(58, 58);
+            _gameIDNew[_idPos]->setContentSize(45, 60);
             _idPos++;
             AudioController::getInstance().playSound("Click", false);
         }
@@ -251,7 +251,7 @@ bool ClientScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::s
             //Size orig = _gameIDNew[_idPos]->getContentSize();
             _gameIDNew[_idPos]->setTexture(_assets->get<cugl::graphics::Texture>("client1-gameid-tile7"));
             //_gameIDNew[_idPos]->setContentSize(orig);
-            _gameIDNew[_idPos]->setContentSize(58, 58);
+            _gameIDNew[_idPos]->setContentSize(45, 60);
             _idPos++;
             AudioController::getInstance().playSound("Click", false);
         }
@@ -261,7 +261,7 @@ bool ClientScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::s
             //Size orig = _gameIDNew[_idPos]->getContentSize();
             _gameIDNew[_idPos]->setTexture(_assets->get<cugl::graphics::Texture>("client1-gameid-tile8"));
             //_gameIDNew[_idPos]->setContentSize(orig);
-            _gameIDNew[_idPos]->setContentSize(58, 58);
+            _gameIDNew[_idPos]->setContentSize(45, 60);
             _idPos++;
             AudioController::getInstance().playSound("Click");
         }
@@ -271,7 +271,7 @@ bool ClientScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::s
             //Size orig = _gameIDNew[_idPos]->getContentSize();
             _gameIDNew[_idPos]->setTexture(_assets->get<cugl::graphics::Texture>("client1-gameid-tile9"));
             //_gameIDNew[_idPos]->setContentSize(orig);
-            _gameIDNew[_idPos]->setContentSize(58, 58);
+            _gameIDNew[_idPos]->setContentSize(45, 60);
             _idPos++;
             AudioController::getInstance().playSound("Click", false);
         }
@@ -297,7 +297,7 @@ std::string ClientScene::tile2hex() {
             //Size orig = _gameIDNew[_idPos]->getContentSize();
             _gameIDNew[i]->setTexture(blank);
             //_gameIDNew[i]->setContentSize(orig);
-            _gameIDNew[i]->setContentSize(58, 58);
+            _gameIDNew[i]->setContentSize(45, 60);
         }
         _idPos = 0;
         return "";

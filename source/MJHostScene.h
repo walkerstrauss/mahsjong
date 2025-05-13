@@ -56,7 +56,8 @@ protected:
     /** The players label (for updating) */
     std::shared_ptr<cugl::scene2::Label> _player;
     /** texture for waiting or start button */
-    std::shared_ptr<cugl::scene2::PolygonNode> _waitOrStart;
+    std::shared_ptr<cugl::scene2::PolygonNode> _waitOrStart1;
+    std::shared_ptr<cugl::scene2::PolygonNode> _waitOrStart3;
 
     /** Reference to init host scene*/
     std::shared_ptr<cugl::scene2::SceneNode> _hostScene1;
