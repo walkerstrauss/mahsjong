@@ -355,7 +355,7 @@ std::string ClientScene::idCreation(const std::shared_ptr<scene2::PolygonNode>& 
     else if (texture == _assets->get<Texture>("client1-gameid-tile7"))  return "7";
     else if (texture == _assets->get<Texture>("client1-gameid-tile8"))  return "8";
     else if (texture == _assets->get<Texture>("client1-gameid-tile9"))  return "9";
-    else if (texture == _assets->get<Texture>("client1-gameid-tile10")) return "0";
+    else if (texture == _assets->get<Texture>("client1-gameid-tile")) return "0";
 
     // If we ever hit this, something went wrong in the listener setup
     CUAssertLog(false, "Unexpected tile texture in idCreation");

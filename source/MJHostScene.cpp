@@ -146,6 +146,7 @@ bool HostScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::sha
 
     addChild(_hostScene3);
     _hostScene3->setVisible(false);
+    _waitOrStart3->setVisible(false);
 
     _playerMulti = _assets->get<scene2::SceneNode>("host3.host3Scene.waitingRoom.playerBoard");
     _playerMulti->setVisible(false);
@@ -213,7 +214,7 @@ void HostScene::idSetup(const std::shared_ptr<cugl::scene2::PolygonNode>& tile, 
             tile->setTexture(_assets->get<cugl::graphics::Texture>("client1-gameid-tile9"));
             break;
         case '0':
-            tile->setTexture(_assets->get<cugl::graphics::Texture>("client1-gameid-tile10"));
+            tile->setTexture(_assets->get<cugl::graphics::Texture>("client1-gameid-tile"));
             break;
         default:
             tile->setTexture(_assets->get<cugl::graphics::Texture>("client1-gameid-blank"));
@@ -304,6 +305,7 @@ void HostScene::update(float timestep) {
             _hostScene1->setVisible(false);
             _playerMulti->setVisible(true);
             _playerSingle->setVisible(false);
+            _waitOrStart1->setVisible(false);
             _waitOrStart3->setTexture(_assets->get<cugl::graphics::Texture>("hoststart"));
         }
         else {
@@ -311,6 +313,7 @@ void HostScene::update(float timestep) {
             _hostScene1->setVisible(true);
             _playerMulti->setVisible(false);
             _playerSingle->setVisible(true);
+            _waitOrStart3->setVisible(false);
             _waitOrStart1->setTexture(_assets->get<cugl::graphics::Texture>("host1-waiting-button"));
         }
         _waitOrStart1->setContentSize(150, 150);
