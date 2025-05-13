@@ -68,7 +68,6 @@ public:
     bool init(const std::shared_ptr<AssetManager>& assets);
 #pragma mark Gameplay Handling
 #pragma mark -
-    virtual void setActive(bool value) override;
     void update(float timestep) override{
         if (_pageChanged){
             switchPage();

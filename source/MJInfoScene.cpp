@@ -41,10 +41,6 @@ bool InfoScene::init(const std::shared_ptr<AssetManager>& assets){
     return true;
 }
 
-void InfoScene::setActive(bool value){
-    return;
-}
-
 void InfoScene::setButtonActive(std::shared_ptr<Button> button, bool value){
     if (button == nullptr){
         return;
