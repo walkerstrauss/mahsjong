@@ -92,7 +92,7 @@ protected:
     /** GameID list */
     std::shared_ptr<scene2::PolygonNode> _gameIDNew[5];
     std::vector<std::shared_ptr<cugl::graphics::Texture>> textures;
-    textures.reserve(5);
+    
 
     int _idPos;
     

@@ -129,6 +129,10 @@ bool ClientScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::s
 
     //AudioController::getInstance().init(_assets);
     textures.reserve(5);
+    for (int i = 0; i < 5; i++){
+        textures.push_back(nullptr);
+    }
+    
 
     _backout->addListener([this](const std::string& name, bool down) {
         if (down) {
