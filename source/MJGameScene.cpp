@@ -140,22 +140,6 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::sha
         }
     });
     
-    
-    // Init the button for playing sets.
-    cugl::Rect rect(0, 0, 150, 50);
-    cugl::Poly2 poly(rect);
-
-    std::shared_ptr<scene2::PolygonNode> upPlaceholder = scene2::PolygonNode::alloc();
-    upPlaceholder->setPolygon(poly);
-    upPlaceholder->setContentSize(cugl::Size(150, 50));
-    upPlaceholder->setColor(cugl::Color4::GRAY);
-    
-    std::shared_ptr<scene2::PolygonNode> downPlaceholder = scene2::PolygonNode::alloc();
-    downPlaceholder->setPolygon(poly);
-    downPlaceholder->setContentSize(cugl::Size(150, 50));
-    cugl::Color4 darkGray(64, 64, 64, 255);
-    downPlaceholder->setColor(darkGray);
-    
 //     Initializing opponent hand
     _opponentHandRec = _assets->get<SceneNode>("matchscene.gameplayscene.opponent-hand-rec");
     _opponentHandBtn = std::dynamic_pointer_cast<Button>(_assets->get<SceneNode>("matchscene.gameplayscene.opponent-hand"));
@@ -364,6 +348,60 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::sha
 void GameScene::dispose() {
     if (_active) {
         _matchController->dispose();
+        
+        _tileSet = nullptr;
+        _pile = nullptr;
+        _discardPile = nullptr;
+        _player = nullptr;
+        _matchController->dispose();
+        
+        if (_playSetBtn) {
+            _playSetBtn->clearListeners();
+            _playSetBtn->deactivate();
+        }
+        _playSetBtn = nullptr;
+        if (_backBtn) {
+            _backBtn->clearListeners();
+            _backBtn->deactivate();
+        }
+        _backBtn = nullptr;
+        if (_infoBtn) {
+            _infoBtn->clearListeners();
+            _infoBtn->deactivate();
+        }
+        _infoBtn = nullptr;
+        if (_settingBtn) {
+            _settingBtn->clearListeners();
+            _settingBtn->deactivate();
+        }
+        _settingBtn = nullptr;
+        if (_tilesetUIBtn) {
+            _tilesetUIBtn->clearListeners();
+            _tilesetUIBtn->deactivate();
+        }
+        _tilesetUIBtn = nullptr;
+        if (_playerHandBtn) {
+            _playerHandBtn->clearListeners();
+            _playerHandBtn->deactivate();
+        }
+        _playerHandBtn = nullptr;
+        if (_playerHandBtn2) {
+            _playerHandBtn2->clearListeners();
+            _playerHandBtn2->deactivate();
+        }
+        _playerHandBtn2 = nullptr;
+        if (_opponentHandBtn) {
+            _opponentHandBtn->clearListeners();
+            _opponentHandBtn->deactivate();
+        }
+        _opponentHandBtn = nullptr;
+        if (_opponentHandBtn2) {
+            _opponentHandBtn2->clearListeners();
+            _opponentHandBtn2->deactivate();
+        }
+        _opponentHandBtn2 = nullptr;
+        
+        
         removeAllChildren();
         _active = false;
     }
@@ -388,15 +426,6 @@ void GameScene::reset() {
  * @param timestep The amount of time (in seconds) since the last frame
  */
 void GameScene::update(float timestep) {
-    if (_input->getKeyPressed() == cugl::KeyCode::A && _input->getPrevKeyPressed() != cugl::KeyCode::A) {
-
-        // there are multiple _choice. One is from MatchController, and the other is from GameScene.
-        _choice = Choice::WIN;
-
-        _matchController->setChoice(MatchController::Choice::WIN);
-
-        _network->broadcastEnd(_network->getLocalPid());
-    }
     _matchController->update(timestep);
     
     // Fetching current mouse position
@@ -426,8 +455,8 @@ void GameScene::update(float timestep) {
         _choice = LOSE;
     }
     
-    // Update timer display based on remaining time in turn
-//    updateTurnTimer(timestep);
+//     Update timer display based on remaining time in turn
+    updateTurnTimer(timestep);
     
     // Updating discardUINode if matchController has a discard update
     if(_matchController->getChoice() == MatchController::Choice::DISCARDUIUPDATE) {

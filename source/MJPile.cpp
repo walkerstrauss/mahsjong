@@ -110,6 +110,15 @@ bool Pile::createPile() {
     return true;
 }
 
+void Pile::initPileTutorialMode(){
+    for (auto row: _pile){
+        for (auto& tile: row){
+            tile->inPile = true;
+            tile->inDeck = false;
+        }
+    }
+}
+
 void Pile::setTilePositions(bool shuffling) {
     float spacingY = 1.0f;
     float spacingX = 1.0f;
