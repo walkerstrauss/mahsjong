@@ -128,6 +128,7 @@ bool ClientScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::s
     _prepareOrStart = std::dynamic_pointer_cast<scene2::PolygonNode>(_assets->get<scene2::SceneNode>("client3.client3Scene.waitingRoom.menu.start.up.start"));
 
     //AudioController::getInstance().init(_assets);
+    textures.reserve(5);
 
     _backout->addListener([this](const std::string& name, bool down) {
         if (down) {
@@ -168,6 +169,7 @@ bool ClientScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::s
                 // Reset all five blanks
                 for (int i = 0; i < 5; ++i) {
                     auto blankTex = _assets->get<cugl::graphics::Texture>("client1-gameid-blank");
+                    textures[i] = _gameIDNew[i]->getTexture();
                     //Size orig = _gameIDNew[_idPos]->getContentSize();
                     _gameIDNew[i]->setTexture(blankTex);
                     //_gameIDNew[i]->setContentSize(orig);
@@ -458,11 +460,11 @@ void ClientScene::update(float timestep) {
         _clientScene1->setVisible(false);
         _clientScene2->setVisible(true);
 
-        _id1->setTexture(_gameIDNew[0]->getTexture());
-        _id2->setTexture(_gameIDNew[1]->getTexture());
-        _id3->setTexture(_gameIDNew[2]->getTexture());
-        _id4->setTexture(_gameIDNew[3]->getTexture());
-        _id5->setTexture(_gameIDNew[4]->getTexture());
+        _id1->setTexture(textures[0]);
+        _id2->setTexture(textures[1]);
+        _id3->setTexture(textures[2]);
+        _id4->setTexture(textures[3]);
+        _id5->setTexture(textures[4]);
 
         if (status == NetworkController::Status::CONNECTING) {
             // Still waiting on the host to start
