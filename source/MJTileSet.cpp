@@ -60,6 +60,9 @@ void TileSet::initHostDeck(){
             }
         }
     }
+    
+    initCelestialTiles();
+    shuffle();
 }
 
 /**
@@ -69,10 +72,10 @@ void TileSet::initHostDeck(){
  */
 void TileSet::initClientDeck(const std::shared_ptr<cugl::JsonValue>& deckJson){
     std::vector<std::shared_ptr<TileSet::Tile>> allTiles = processTileJson(deckJson);
-    deck = allTiles;
     
-    for (auto& tile : deck) {
+    for (auto& tile : allTiles) {
         tileMap[std::to_string(tile->_id)] = tile;
+        deck.push_back(tile);
     }
 }
 
@@ -125,48 +128,71 @@ void TileSet::initTileNodes(const std::shared_ptr<cugl::AssetManager>& assets){
 }
 
 
-void TileSet::addCelestialTiles(const std::shared_ptr<cugl::AssetManager>& assets) {
+void TileSet::initCelestialTiles() {
+    // ROOSTER 3
     for (int i = 1; i < 4; ++i) {
         std::shared_ptr<Tile> rooster = std::make_shared<Tile>(Tile::Rank::ROOSTER, Tile::Suit::CELESTIAL);
-        rooster->_id = tileCount++;;
+        tileCount++;
+        rooster->_id = tileCount;
         deck.push_back(rooster);
         tileMap[std::to_string(rooster->_id)] = rooster;
-        
+    }
+    // OX 1
         std::shared_ptr<Tile> ox = std::make_shared<Tile>(Tile::Rank::OX, Tile::Suit::CELESTIAL);
-        ox->_id = tileCount++;;
+        tileCount++;
+        ox->_id = tileCount;
         deck.push_back(ox);
         tileMap[std::to_string(ox->_id)] = ox;
-
+    // RABBIT 2
+    for (int i = 1; i < 3; ++i) {
         std::shared_ptr<Tile> rabbit = std::make_shared<Tile>(Tile::Rank::RABBIT, Tile::Suit::CELESTIAL);
-        rabbit->_id = tileCount++;;
+        tileCount++;
+        rabbit->_id = tileCount;
         deck.push_back(rabbit);
         tileMap[std::to_string(rabbit->_id)] = rabbit;
-        
+    }
+    // SNAKE 2
+    for (int i = 1; i < 3; ++i) {
         std::shared_ptr<Tile> snake = std::make_shared<Tile>(Tile::Rank::SNAKE, Tile::Suit::CELESTIAL);
-        snake->_id = tileCount++;;
+        tileCount++;
+        snake->_id = tileCount;
         deck.push_back(snake);
         tileMap[std::to_string(snake->_id)] = snake;
-        
+    }
+    // MONKEY 2
+    for (int i = 1; i < 3; ++i) {
         std::shared_ptr<Tile> monkey = std::make_shared<Tile>(Tile::Rank::MONKEY, Tile::Suit::CELESTIAL);
-        monkey->_id = tileCount++;;
+        tileCount++;
+        monkey->_id = tileCount;
         deck.push_back(monkey);
         tileMap[std::to_string(monkey->_id)] = monkey;
-        
+    }
+    // RAT 7
+    for (int i = 1; i < 8; ++i) {
         std::shared_ptr<Tile> rat = std::make_shared<Tile>(Tile::Rank::RAT, Tile::Suit::CELESTIAL);
-        rat->_id = tileCount++;;
+        tileCount++;
+        rat->_id = tileCount;
         deck.push_back(rat);
         tileMap[std::to_string(rat->_id)] = rat;
-        
+    }
+    // DRAGON 3
+    for (int i = 1; i < 4; ++i) {
         std::shared_ptr<Tile> dragon = std::make_shared<Tile>(Tile::Rank::DRAGON, Tile::Suit::CELESTIAL);
-        dragon->_id = tileCount++;;
+        tileCount++;
+        dragon->_id = tileCount;
         deck.push_back(dragon);
         tileMap[std::to_string(dragon->_id)] = dragon;
-        
+    }
+    // PIG 6
+    for (int i = 1; i < 7; ++i) {
         std::shared_ptr<Tile> pig = std::make_shared<Tile>(Tile::Rank::PIG, Tile::Suit::CELESTIAL);
-        pig->_id = tileCount++;;
+        tileCount++;
+        pig->_id = tileCount;
         deck.push_back(pig);
         tileMap[std::to_string(pig->_id)] = pig;
     }
+    
+    shuffle();
 }
 
 #pragma mark -

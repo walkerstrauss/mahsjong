@@ -486,8 +486,8 @@ public:
 public:
     /** Deck with all of the tiles */
     std::vector<std::shared_ptr<Tile>> deck;
-    /** Vector with starting representation of deck */
-    std::vector<std::shared_ptr<Tile>> startingDeck;
+    /** Celestial tiles to add into the pile/hand */
+    std::vector<std::shared_ptr<Tile>> celestialTiles;
     /** Unsorted set containing tiles in the deck */
     std::map<std::string, std::shared_ptr<Tile>> tileMap;
     /** Random Generator */
@@ -528,7 +528,7 @@ public:
      */
     void initTileNodes(const std::shared_ptr<cugl::AssetManager>& assets);
     
-    void addCelestialTiles(const std::shared_ptr<cugl::AssetManager>& assets);
+    void initCelestialTiles();
     
 #pragma mark -
 #pragma mark Tileset Gameplay Handling
@@ -541,6 +541,7 @@ public:
     void shuffle() {
         rdTileSet.init();
         rdTileSet.shuffle(deck);
+
     }
     
     /**
