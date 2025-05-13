@@ -105,9 +105,9 @@ bool HostScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::sha
         _assets->get<scene2::SceneNode>("host.host1Scene.waitingRoom.menu.exit")
     );
 
-    _waitOrStart1 = std::dynamic_pointer_cast<scene2::PolygonNode>(
-        _assets->get<scene2::SceneNode>("host.host1Scene.waitingRoom.menu.start.up.host1-waiting-button")
-    );
+    //_waitOrStart1 = std::dynamic_pointer_cast<scene2::PolygonNode>(
+    //    _assets->get<scene2::SceneNode>("host.host1Scene.waitingRoom.menu.start.up.host1-waiting-button")
+    //);
     
     _tileOne = std::dynamic_pointer_cast<scene2::PolygonNode>(_assets->get<scene2::SceneNode>("host.host1Scene.waitingRoom.roomid-tile.host1-roomid-tile"));
     _tileTwo = std::dynamic_pointer_cast<scene2::PolygonNode>(_assets->get<scene2::SceneNode>("host.host1Scene.waitingRoom.roomid-tile.host1-roomid-tile_1"));
@@ -132,7 +132,7 @@ bool HostScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::sha
     );
 
     
-    _playerSingle = _assets->get<scene2::SceneNode>("host.host1Scene.waitingRoom.playerBoard");
+    //_playerSingle = _assets->get<scene2::SceneNode>("host.host1Scene.waitingRoom.playerBoard");
 
     _hostScene3 = _assets->get<scene2::SceneNode>("host3");
     _hostScene3->setContentSize(getSize());
@@ -140,16 +140,16 @@ bool HostScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::sha
     _hostScene3->setPosition(offset, _hostScene3->getPosition().y);
     _hostScene3->doLayout();
 
-    _waitOrStart3 = std::dynamic_pointer_cast<scene2::PolygonNode>(
-        _assets->get<scene2::SceneNode>("host3.host3Scene.waitingRoom.menu.start.up.start")
-    );
+    //_waitOrStart3 = std::dynamic_pointer_cast<scene2::PolygonNode>(
+    //    _assets->get<scene2::SceneNode>("host3.host3Scene.waitingRoom.menu.start.up.start")
+    //);
 
     addChild(_hostScene3);
     _hostScene3->setVisible(false);
-    _waitOrStart3->setVisible(false);
+    // _waitOrStart3->setVisible(false);
 
-    _playerMulti = _assets->get<scene2::SceneNode>("host3.host3Scene.waitingRoom.playerBoard");
-    _playerMulti->setVisible(false);
+    //_playerMulti = _assets->get<scene2::SceneNode>("host3.host3Scene.waitingRoom.playerBoard");
+    //_playerMulti->setVisible(false);
 
     //AudioController::getInstance().init(_assets);
 
@@ -303,21 +303,22 @@ void HostScene::update(float timestep) {
             }
             _hostScene3->setVisible(true);
             _hostScene1->setVisible(false);
-            _playerMulti->setVisible(true);
-            _playerSingle->setVisible(false);
-            _waitOrStart1->setVisible(false);
-            _waitOrStart3->setTexture(_assets->get<cugl::graphics::Texture>("hoststart"));
+            //_playerMulti->setVisible(true);
+            //_playerSingle->setVisible(false);
+            // _waitOrStart1->setVisible(false);
+            //_waitOrStart3->setTexture(_assets->get<cugl::graphics::Texture>("hoststart"));
+            CULog("Testing");
         }
         else {
             _hostScene3->setVisible(false);
             _hostScene1->setVisible(true);
-            _playerMulti->setVisible(false);
-            _playerSingle->setVisible(true);
-            _waitOrStart3->setVisible(false);
-            _waitOrStart1->setTexture(_assets->get<cugl::graphics::Texture>("host1-waiting-button"));
+            //_playerMulti->setVisible(false);
+            //_playerSingle->setVisible(true);
+            // _waitOrStart3->setVisible(false);
+            //_waitOrStart1->setTexture(_assets->get<cugl::graphics::Texture>("host1-waiting-button"));
         }
-        _waitOrStart1->setContentSize(150, 150);
-        _waitOrStart3->setContentSize(150, 150);
+        //_waitOrStart1->setContentSize(150, 150);
+        //_waitOrStart3->setContentSize(150, 150);
 
         std::string dec = hex2dec(networkHex);
         

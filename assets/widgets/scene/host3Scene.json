@@ -774,7 +774,7 @@
                                             "start": {
                                                 "type": "Image",
                                                 "data": {
-                                                    "texture": "start",
+                                                    "texture": "hoststart",
                                                     "anchor": [
                                                         0,
                                                         1
