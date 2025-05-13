@@ -96,6 +96,9 @@ protected:
     /** Whether the back button had been clicked. */
     bool _backClicked = false;
 
+    std::string _joinHex = "";
+
+    std::shared_ptr<cugl::scene2::PolygonNode> _id1, _id2, _id3, _id4, _id5;
     /** Whether we are using the second page of the keypad for client/host */
     //bool _keySecPage = false;
 //    /** The current status */

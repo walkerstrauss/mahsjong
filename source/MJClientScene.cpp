@@ -95,6 +95,33 @@ bool ClientScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::s
     _clientCheckbox = _assets->get<scene2::SceneNode>("client3.client3Scene.waitingRoom.playerBoard.player2.host1-checkbox");
     _clientCheckbox->setVisible(false);
 
+    _id1 = std::dynamic_pointer_cast<scene2::PolygonNode>(
+        _assets->get<scene2::SceneNode>(
+            "client3.client3Scene.waitingRoom.roomid-tile.host1-roomid-tile"
+        )
+    );
+    _id2 = std::dynamic_pointer_cast<scene2::PolygonNode>(
+        _assets->get<scene2::SceneNode>(
+            "client3.client3Scene.waitingRoom.roomid-tile.host1-roomid-tile_1"
+        )
+    );
+    _id3 = std::dynamic_pointer_cast<scene2::PolygonNode>(
+        _assets->get<scene2::SceneNode>(
+            "client3.client3Scene.waitingRoom.roomid-tile.host1-roomid-tile_2"
+        )
+    );
+    _id4 = std::dynamic_pointer_cast<scene2::PolygonNode>(
+        _assets->get<scene2::SceneNode>(
+            "client3.client3Scene.waitingRoom.roomid-tile.host1-roomid-tile_3"
+        )
+    );
+    _id5 = std::dynamic_pointer_cast<scene2::PolygonNode>(
+        _assets->get<scene2::SceneNode>(
+            "client3.client3Scene.waitingRoom.roomid-tile.host1-roomid-tile_4"
+        )
+    );
+
+
     _startgame = std::dynamic_pointer_cast<scene2::Button>(_assets->get<scene2::SceneNode>("client.client1Scene.buttons.confirm-button"));
     _resetGameID = std::dynamic_pointer_cast<scene2::Button>(_assets->get<scene2::SceneNode>("client.client1Scene.buttons.cancel-button"));
     _backout = std::dynamic_pointer_cast<scene2::Button>(_assets->get<scene2::SceneNode>("client.client1Scene.board.cancel-box"));
@@ -136,7 +163,8 @@ bool ClientScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::s
     _startgame->addListener([=, this](const std::string& name, bool down) {
         if (down) {
             if (_network->getStatus() == NetworkController::Status::IDLE) {
-                _network->connectAsClient(tile2hex());
+                _joinHex = tile2hex();
+                _network->connectAsClient(_joinHex);
                 // Reset all five blanks
                 for (int i = 0; i < 5; ++i) {
                     auto blankTex = _assets->get<cugl::graphics::Texture>("client1-gameid-blank");
@@ -424,35 +452,31 @@ void ClientScene::updateText(const std::shared_ptr<scene2::Button>& button, cons
  * @param timestep  The amount of time (in seconds) since the last frame
  */
 void ClientScene::update(float timestep) {
-//    if (_network) {
-//        _network->receive([this](const std::string source,
-//                                 const std::vector<std::byte>& data) {
-//            processData(source,data);
-//        });
-//        checkConnection();
-    
     configureStartButton();
-    if(_network->getStatus() == NetworkController::Status::CONNECTING){
+    auto status = _network->getStatus();
+    if (_network->getStatus() == NetworkController::Status::CONNECTING || status == NetworkController::Status::CONNECTED) {
         _clientScene1->setVisible(false);
         _clientScene2->setVisible(true);
 
-        std::shared_ptr<cugl::scene2::PolygonNode> id1 = std::dynamic_pointer_cast<scene2::PolygonNode>(_assets->get<scene2::SceneNode>("client3.client3Scene.waitingRoom.roomid-tile.host1-roomid-tile"));
-        std::shared_ptr<cugl::scene2::PolygonNode> id2 = std::dynamic_pointer_cast<scene2::PolygonNode>(_assets->get<scene2::SceneNode>("client3.client3Scene.waitingRoom.roomid-tile.host1-roomid-tile_1"));
-        std::shared_ptr<cugl::scene2::PolygonNode> id3 = std::dynamic_pointer_cast<scene2::PolygonNode>(_assets->get<scene2::SceneNode>("client3.client3Scene.waitingRoom.roomid-tile.host1-roomid-tile_2"));
-        std::shared_ptr<cugl::scene2::PolygonNode> id4 = std::dynamic_pointer_cast<scene2::PolygonNode>(_assets->get<scene2::SceneNode>("client3.client3Scene.waitingRoom.roomid-tile.host1-roomid-tile_3"));
-        std::shared_ptr<cugl::scene2::PolygonNode> id5 = std::dynamic_pointer_cast<scene2::PolygonNode>(_assets->get<scene2::SceneNode>("client3.client3Scene.waitingRoom.roomid-tile.host1-roomid-tile_4"));
+        _id1->setTexture(_gameIDNew[0]->getTexture());
+        _id2->setTexture(_gameIDNew[1]->getTexture());
+        _id3->setTexture(_gameIDNew[2]->getTexture());
+        _id4->setTexture(_gameIDNew[3]->getTexture());
+        _id5->setTexture(_gameIDNew[4]->getTexture());
 
-        id1->setTexture(_gameIDNew[0]->getTexture());
-        id2->setTexture(_gameIDNew[1]->getTexture());
-        id3->setTexture(_gameIDNew[2]->getTexture());
-        id4->setTexture(_gameIDNew[3]->getTexture());
-        id5->setTexture(_gameIDNew[4]->getTexture());
-
-        _prepareOrStart->setTexture(_assets->get<cugl::graphics::Texture>("prepareButton"));
-
-    } else if (_network->getStatus() == NetworkController::Status::CONNECTED){
-        _clientCheckbox->setVisible(true);
-        _prepareOrStart->setTexture(_assets->get<cugl::graphics::Texture>("host1-start-button"));
+        if (status == NetworkController::Status::CONNECTING) {
+            // Still waiting on the host to start
+            _clientCheckbox->setVisible(false);
+            _prepareOrStart->setTexture(
+                _assets->get<Texture>("prepareButton")
+            );
+        }
+        else {
+            _clientCheckbox->setVisible(true);
+            _prepareOrStart->setTexture(
+                _assets->get<Texture>("host1-start-button")
+            );
+        }
     }
     else {
         _clientScene1->setVisible(true);

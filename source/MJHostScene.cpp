@@ -115,6 +115,22 @@ bool HostScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::sha
     _tileFour = std::dynamic_pointer_cast<scene2::PolygonNode>(_assets->get<scene2::SceneNode>("host.host1Scene.waitingRoom.roomid-tile.host1-roomid-tile_3"));
     _tileFive = std::dynamic_pointer_cast<scene2::PolygonNode>(_assets->get<scene2::SceneNode>("host.host1Scene.waitingRoom.roomid-tile.host1-roomid-tile_4"));
 
+    _tileOne3 = std::dynamic_pointer_cast<PolygonNode>(
+        _assets->get<SceneNode>("host3.host3Scene.waitingRoom.roomid-tile.host1-roomid-tile")
+    );
+    _tileTwo3 = std::dynamic_pointer_cast<PolygonNode>(
+        _assets->get<SceneNode>("host3.host3Scene.waitingRoom.roomid-tile.host1-roomid-tile_1")
+    );
+    _tileThree3 = std::dynamic_pointer_cast<PolygonNode>(
+        _assets->get<SceneNode>("host3.host3Scene.waitingRoom.roomid-tile.host1-roomid-tile_2")
+    );
+    _tileFour3 = std::dynamic_pointer_cast<PolygonNode>(
+        _assets->get<SceneNode>("host3.host3Scene.waitingRoom.roomid-tile.host1-roomid-tile_3")
+    );
+    _tileFive3 = std::dynamic_pointer_cast<PolygonNode>(
+        _assets->get<SceneNode>("host3.host3Scene.waitingRoom.roomid-tile.host1-roomid-tile_4")
+    );
+
     
     _playerSingle = _assets->get<scene2::SceneNode>("host.host1Scene.waitingRoom.playerBoard");
 
@@ -307,6 +323,12 @@ void HostScene::update(float timestep) {
         idSetup(_tileThree, dec[2]);
         idSetup(_tileFour, dec[3]);
         idSetup(_tileFive, dec[4]);
+
+        idSetup(_tileOne3, dec[0]);
+        idSetup(_tileTwo3, dec[1]);
+        idSetup(_tileThree3, dec[2]);
+        idSetup(_tileFour3, dec[3]);
+        idSetup(_tileFive3, dec[4]);
     }
 }
 
