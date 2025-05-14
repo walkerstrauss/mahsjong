@@ -75,6 +75,7 @@ protected:
     float _frameTimer = 0.0f;  // Track time between frames
     float _frameDelay = 0.2f;  // Time in seconds before switching frames
     std::vector<std::shared_ptr<TileSet::Tile>> _winningHand;
+    
     std::vector<std::shared_ptr<cugl::scene2::TexturedNode>> _winSlots;
     std::vector<std::shared_ptr<cugl::scene2::TexturedNode>> _loseSlots;
     std::vector<std::shared_ptr<cugl::scene2::TexturedNode>> _tieSlots;

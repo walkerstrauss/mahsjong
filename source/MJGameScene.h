@@ -214,6 +214,7 @@ protected:
     bool _wasTradeTileVisible = false;
     
     std::vector<std::shared_ptr<TileSet::Tile>> _winningHand;
+    std::vector<std::shared_ptr<TileSet::Tile>> _myHand;
 
 public:
 #pragma mark -
@@ -597,6 +598,21 @@ public:
             _timer->setText(std::to_string(sec));
         }
     }
+    
+    
+    
+    std::vector<std::shared_ptr<TileSet::Tile>> getLocalHand() const {
+        return _network->getHostStatus()
+          ? _matchController->getHostHand()
+          : _matchController->getClientHand();
+    }
+
+    std::vector<std::shared_ptr<TileSet::Tile>> getRemoteHand() const {
+        return _network->getHostStatus()
+          ? _matchController->getClientHand()
+          : _matchController->getHostHand();
+    }
+    
     
 };
 

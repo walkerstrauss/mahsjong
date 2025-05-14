@@ -271,6 +271,20 @@ public:
         bool isHost = _network->getHostStatus();
         return isHost ? hostPlayer->getHand()._tiles : clientPlayer->getHand()._tiles;
     }
+    
+    std::vector<std::shared_ptr<TileSet::Tile>> getHostHand() const {
+        return hostPlayer->getHand()._tiles;
+    }
+    
+    std::vector<std::shared_ptr<TileSet::Tile>> getClientHand() const {
+        return clientPlayer->getHand()._tiles;
+    }
+
+    
+    
+    
+    
+    
 };
 
 #endif /* __MJ_MATCH_CONTROLLER__ */

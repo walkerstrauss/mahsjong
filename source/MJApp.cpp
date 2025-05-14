@@ -420,7 +420,9 @@ void MahsJongApp::updateGameScene(float timestep) {
         case GameScene::Choice::TIE:
             _gameplay.setGameActive(false);
             _gameover.type = GameOverScene::Type::TIE;
-            _gameover.setWinningHand(_gameplay.getWinningHand()); 
+            _gameover.setWinningHand(_gameplay.getLocalHand());
+            _gameover.setLosingHand (_gameplay.getRemoteHand());
+
             _gameover.setActive(true);
             AudioController::getInstance().playMusic("lose", true);
             _scene = State::OVER;

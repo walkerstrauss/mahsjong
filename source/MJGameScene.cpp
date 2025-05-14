@@ -387,7 +387,7 @@ void GameScene::update(float timestep) {
     
     CULog("the size of the pile is: %i" ,_pile->getPileSize());
     
-    if(_remainingTiles == 0 || _pile->isEmpty()){
+    if(_pile->_tileSet->deck.size() == 0){
         _choice = Choice::TIE;
         _matchController->setChoice(MatchController::Choice::TIE);
         _network->broadcastTie(_network->getLocalPid());
@@ -500,8 +500,7 @@ void GameScene::update(float timestep) {
         _discardedTileImage->setVisible(false);
     }
     
-    if ((_matchController->getChoice() == MatchController::WIN  || _matchController->getChoice() == MatchController::TIE) && !_gameWin) {
-        
+    if (_matchController->getChoice() == MatchController::WIN && !_gameWin) {
         _winningHand.clear();
 
         // Flatten played sets into individual tiles.
@@ -527,6 +526,22 @@ void GameScene::update(float timestep) {
         _winningHand = winner->getHand()._tiles;
         
         _choice = Choice::LOSE;
+    }
+    
+    if(_matchController->getChoice()==MatchController::Choice::TIE){
+        
+        _myHand.clear();
+        
+        // Flatten played sets into individual tiles.
+        for (auto const& set : _player->getHand()._playedSets) {
+            _myHand.insert(_winningHand.end(), set.begin(), set.end());
+        }
+        
+        // The rest is filled with the tiles from the hand.
+        auto remaining = _matchController->getWinningHand();
+        _myHand.insert(_winningHand.end(), remaining.begin(), remaining.end());
+        
+        
     }
     
     
