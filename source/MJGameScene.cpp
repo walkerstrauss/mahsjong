@@ -332,6 +332,7 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::sha
     _timer->setText("00:30");
     initPlayerGuide();
     updateTurnIndicators();
+    initOpponentSpriteNodes();
     return true;
 }
 
@@ -531,7 +532,8 @@ void GameScene::update(float timestep) {
     }
     
     if(_matchController->getOpponentAnimType() != MatchController::INACTIVE){
-        
+        CULog("animate");
+        animateOpponentNode();
     }
     
     // Clicking/Tapping and Dragging logic
@@ -1043,7 +1045,7 @@ void GameScene::initOpponentSpriteNodes(){
     _rabbitSheet->setVisible(false);
     addChild(_rabbitSheet);
 
-    _ratSheet = SpriteNode::allocWithSheet(_assets->get<Texture>("rat-opponent"), 3, 4, 13);
+    _ratSheet = SpriteNode::allocWithSheet(_assets->get<Texture>("rat-opponent"), 4, 4, 13);
     _ratSheet->setAnchor(Vec2::ANCHOR_CENTER);
     _ratSheet->setPosition(pos);
     _ratSheet->setVisible(false);

@@ -46,7 +46,8 @@ private:
         bool done;
         float fps;
         
-        SpriteSheetAnimation(std::shared_ptr<SpriteNode> animNode, int first, int last, bool l, float framesPerSecond = 12.0f) : node(animNode), begin(first), end(last), loop(l), currFrame(first), time(0.0f), done(false), fps(framesPerSecond) {
+        SpriteSheetAnimation(std::shared_ptr<SpriteNode> animNode, int first, int last, bool l, float framesPerSecond = 12.0f) : node(animNode), begin(first), end(last - 1), loop(l), currFrame(first), time(0.0f), done(false), fps(framesPerSecond) {
+            node->setVisible(true);
             node->setFrame(currFrame);
         }
         
