@@ -1148,6 +1148,27 @@
         },
         "finished":{
             "file":"textures/tutorial/finished.png"
+        },
+        "ox-opponent":{
+            "file":"textures/animation/ox-opponent.png"
+        },
+        "dragon-opponent":{
+            "file":"textures/animation/dragon-opponent.png"
+        },
+        "monkey-opponent":{
+            "file":"textures/animation/monkey-opponent.png"
+        },
+        "pig-opponent":{
+            "file":"textures/animation/pig-opponent.png"
+        },
+        "rabbit-opponent":{
+            "file":"textures/animation/rabbit-opponent"
+        },
+        "rat-opponent":{
+            "file":"textures/animation/rat-opponent.png"
+        },
+        "rooster-opponent":{
+            "file":"textures/animation/snake-opponent.png"
         }
     },
     "fonts": {

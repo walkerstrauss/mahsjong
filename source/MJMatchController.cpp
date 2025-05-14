@@ -44,6 +44,7 @@ bool MatchController::init(const std::shared_ptr<cugl::AssetManager>& assets, st
     _discardPile->init(_assets);
     
     _choice = Choice::NONE;
+    _celestialAnim = OpponentAnimType::INACTIVE;
     _active = true;
     
     // play the background music for the match scene.
@@ -791,6 +792,7 @@ void MatchController::celestialEffect(){
         _tileSet->updateDeck(_network->getTileMapJson());
         bool reshuffle = _network->getCelestialUpdateType() == NetworkController::ROOSTER ? true : false;
         _pile->remakePile(reshuffle);
+        _celestialAnim = ROOSTER;
     } else if (_network->getCelestialUpdateType() == NetworkController::RAT) {
         AudioController::getInstance().playSound("Rat");
         bool isHost = _network->getHostStatus();
@@ -807,7 +809,7 @@ void MatchController::celestialEffect(){
         if(isHost) {clientPlayer->getHand()._tiles.push_back(_tileSet->tileMap[key]);}
         // Else is client's
         else {hostPlayer->getHand()._tiles.push_back(_tileSet->tileMap[key]);}
-        
+        _celestialAnim = RAT;
     } else if (_network->getCelestialUpdateType() == NetworkController::OX) { // these alter your hand, so must update textures
         AudioController::getInstance().playSound("Ox");
         _tileSet->updateDeck(_network->getTileMapJson());
@@ -816,13 +818,16 @@ void MatchController::celestialEffect(){
                             : clientPlayer->getHand();
         
         hand.updateHandTextures(_assets);
+        _celestialAnim = OX;
     } else if (_network->getCelestialUpdateType() == NetworkController::RABBIT ||
                _network->getCelestialUpdateType() == NetworkController::SNAKE) {
         if (_network->getCelestialUpdateType() == NetworkController::RABBIT) {
             AudioController::getInstance().playSound("Rabbit");
+            _celestialAnim = RABBIT;
         }
         else if (_network->getCelestialUpdateType() == NetworkController::SNAKE) {
             AudioController::getInstance().playSound("Snake");
+            _celestialAnim = SNAKE;
         }
 
         std::vector<std::shared_ptr<TileSet::Tile>> tilesToAnimate = _tileSet->processTileJson(_network->getTileMapJson());
@@ -838,6 +843,7 @@ void MatchController::celestialEffect(){
             }
         
         _tileSet->updateDeck(_network->getTileMapJson());
+        
     } else if (_network->getCelestialUpdateType() == NetworkController::MONKEY) {
         AudioController::getInstance().playSound("Monkey");
         _tileSet->updateDeck(_network->getTileMapJson());
@@ -864,6 +870,7 @@ void MatchController::celestialEffect(){
             hand.updateHandTextures(_assets);
             
         }
+        _celestialAnim = MONKEY;
     } else if (_network->getCelestialUpdateType() == NetworkController::PIG) {
         bool isHost = _network->getHostStatus();
         
@@ -880,7 +887,7 @@ void MatchController::celestialEffect(){
         else {hostPlayer->getHand()._tiles.push_back(_tileSet->tileMap[key]);}
         
         _choice = DISCARDUIUPDATE;
-        
+        _celestialAnim = PIG;
     }
     _network->setCelestialUpdateType(NetworkController::NONE);
 }

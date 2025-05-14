@@ -158,6 +158,16 @@ protected:
     std::shared_ptr<cugl::scene2::SpriteNode> _pongSheet;
     /** Holds reference to turn sprite node */
     std::shared_ptr<cugl::scene2::SpriteNode> _turnSheet;
+    
+    std::shared_ptr<cugl::scene2::SpriteNode> _oxSheet;
+    std::shared_ptr<cugl::scene2::SpriteNode> _snakeSheet;
+    std::shared_ptr<cugl::scene2::SpriteNode> _rabbitSheet;
+    std::shared_ptr<cugl::scene2::SpriteNode> _ratSheet;
+    std::shared_ptr<cugl::scene2::SpriteNode> _monkeySheet;
+    std::shared_ptr<cugl::scene2::SpriteNode> _dragonSheet;
+    std::shared_ptr<cugl::scene2::SpriteNode> _roosterSheet;
+    std::shared_ptr<cugl::scene2::SpriteNode> _pigSheet;
+    
     float _frameTimer = 0.0f;
     float _frameDelay = 0.2f;
     
@@ -600,6 +610,11 @@ public:
         }
     }
     
+    void initOpponentSpriteNodes();
+    
+    void animateOpponentNode();
 };
+
+
 
 #endif /* __MJ_GAME_SCENE_H__ */
