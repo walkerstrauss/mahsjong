@@ -564,41 +564,28 @@ public:
     
     void updateAreaVisibility(Vec2 mousePos, float timestep);
     
-    void updateTurnTimer(float timestep){
+    void updateTurnTimer(float timestep) {
         int currTurn = _network->getCurrentTurn();
-        if (currTurn != prevTurnId){
+        if (currTurn != prevTurnId) {
             prevTurnId = currTurn;
-            
-            if (currTurn == _network->getLocalPid()){
-                _turnTimeRemaining = TURN_DURATION;
-                turnTimerActive = true;
-            } else {
-                turnTimerActive = false;
-                _turnTimeRemaining = 0.0f;
-                _timer->setText("00:00");
-            }
-            
+            _turnTimeRemaining = TURN_DURATION;
+            turnTimerActive = true;
         }
-        
+
         if (turnTimerActive) {
             _turnTimeRemaining -= timestep;
-            if (_turnTimeRemaining <= 0.0f){
+            if (_turnTimeRemaining <= 0.0f) {
                 _turnTimeRemaining = 0.0f;
                 turnTimerActive = false;
-                endTurnFromTimeout();
+                if (currTurn == _network->getLocalPid()) {
+                    endTurnFromTimeout();
+                }
             }
-            
-            int sec = static_cast<int>(_turnTimeRemaining);
-            
-            std::string timeAsStr = "00:";
-            if (sec < 10){
-                timeAsStr += "0";
-            }
-            
-            timeAsStr += std::to_string(sec);
-            _timer->setText(timeAsStr);
+            int sec = static_cast<int>(std::round(_turnTimeRemaining));
+            _timer->setText(std::to_string(sec));
         }
     }
+
     
 };
 

@@ -335,8 +335,12 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::sha
     _remainingTiles = _tileSet->deck.size();
     _remainingLabel->setText(std::to_string(_remainingTiles));
     
-    _timer = std::dynamic_pointer_cast<Label>(_assets->get<SceneNode>("matchscene.gameplayscene.timer"));
-    _timer->setText("00:30");
+    auto timerNode = _assets->get<SceneNode>("matchscene.gameplayscene.timer");
+    // Then get the Label child of that node
+    _timer = std::dynamic_pointer_cast<Label>(
+        timerNode->getChildByName("time")
+    );
+    _timer->setText(std::to_string(static_cast<int>(TURN_DURATION)));
     initPlayerGuide();
     updateTurnIndicators();
     return true;

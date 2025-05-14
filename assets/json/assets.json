@@ -331,7 +331,7 @@
             "file": "textures/hover/dragon.png"
         },
         "pig of celestial info": {
-          "file": "textures/hover/pig.png"
+            "file": "textures/hover/pig.png"
         },
         "background": {
             "file": "textures/landing/background.png"
@@ -966,6 +966,9 @@
         "discardTilecloseIcon": {
             "file": "textures/playguide/discardTilecloseIcon.png"
         },
+        "timerShade": {
+            "file": "textures/gameplay/timerShade.png"
+        },
         "infoBackground": {
             "file": "textures/playguide/infoBackground.png"
         },
@@ -1044,7 +1047,7 @@
         "tu13": {
             "file": "textures/tutorial/tu13.png"
         },
-        "button_back":{
+        "button_back": {
             "file": "textures/tutorial/button_back.png"
         },
         "button_exit": {
@@ -1092,7 +1095,7 @@
         "drew-try-discard": {
             "file": "textures/gameplay/drew-try-discard.png"
         },
-        "pig-fail":{
+        "pig-fail": {
             "file": "textures/gameplay/pig-fail.png"
         },
         "shade": {
@@ -1143,11 +1146,11 @@
         "welcome": {
             "file": "textures/tutorial/welcome.png"
         },
-        "shade-tut":{
+        "shade-tut": {
             "file": "textures/tutorial/shade-tut.png"
         },
-        "finished":{
-            "file":"textures/tutorial/finished.png"
+        "finished": {
+            "file": "textures/tutorial/finished.png"
         }
     },
     "fonts": {
