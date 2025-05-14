@@ -376,25 +376,6 @@ public:
     
     bool isChow(const std::vector<std::shared_ptr<TileSet::Tile>>& tiles);
     
-    void updateSpriteNode(std::shared_ptr<SpriteNode>& sheetNode){
-        if (sheetNode->getFrame() >= sheetNode->getCount() - 1){
-            sheetNode->setFrame(0);
-        } else {
-            sheetNode->setFrame(sheetNode->getFrame() + 1);
-        }
-        return;
-    }
-    
-    void updateSpriteNodes(float timestep){
-        _frameTimer += timestep;  // Accumulate time
-        if (_frameTimer >= _frameDelay) {
-            _frameTimer = 0; // Reset timer
-            //            updateSpriteNode(_pongSheet);
-            //            updateSpriteNode(_chowSheet);
-            updateSpriteNode(_turnSheet);
-        }
-    }
-    
     void revertDiscardedTile();
     
     void initTurnIndicators(){

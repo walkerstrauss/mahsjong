@@ -581,8 +581,6 @@ void GameScene::update(float timestep) {
             
             _matchController->drawTile();
         }
-        
-        updateSpriteNodes(timestep);
     } else {
         _tradeArea->setVisible(false);
         _wasTradeTileVisible = false;
