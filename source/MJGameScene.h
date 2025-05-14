@@ -211,6 +211,7 @@ protected:
     bool turnTimerActive = false;
     int prevTurnId = -99;
     std::shared_ptr<Label> _timer;
+    std::shared_ptr<Label> _timer2;
     
     bool _wasPlayAreaVisible = false;
     bool _wasDragToHandVisible = false;
@@ -572,17 +573,27 @@ public:
             turnTimerActive = true;
         }
 
-        if (turnTimerActive) {
-            _turnTimeRemaining -= timestep;
-            if (_turnTimeRemaining <= 0.0f) {
-                _turnTimeRemaining = 0.0f;
-                turnTimerActive = false;
-                if (currTurn == _network->getLocalPid()) {
-                    endTurnFromTimeout();
-                }
+        if (!turnTimerActive) return;
+
+        _turnTimeRemaining -= timestep;
+        if (_turnTimeRemaining <= 0.0f) {
+            _turnTimeRemaining = 0.0f;
+            turnTimerActive = false;
+            if (currTurn == _network->getLocalPid()) {
+                endTurnFromTimeout();
             }
-            int sec = static_cast<int>(std::round(_turnTimeRemaining));
-            _timer->setText(std::to_string(sec));
+        }
+
+        int seconds = static_cast<int>(std::round(_turnTimeRemaining));
+        if (currTurn == _network->getLocalPid()) {
+            _timer->setVisible(true);
+            _timer2->setVisible(false);
+            _timer->setText(std::to_string(seconds));
+        }
+        else {
+            _timer2->setVisible(true);
+            _timer->setVisible(false);
+            _timer2->setText(std::to_string(seconds));
         }
     }
 

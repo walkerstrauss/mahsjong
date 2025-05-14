@@ -1156,6 +1156,103 @@
                     ],
                     "angle": 0,
                     "position": [
+                        63,
+                        113
+                    ],
+                    "visible": true
+                },
+                "children": {
+                    "timerShade": {
+                        "type": "Image",
+                        "data": {
+                            "texture": "timerShade",
+                            "anchor": [
+                                0,
+                                1
+                            ],
+                            "size": [
+                                41,
+                                41
+                            ],
+                            "angle": 0,
+                            "position": [
+                                0,
+                                0
+                            ],
+                            "visible": true
+                        },
+                        "layout": {
+                            "x_anchor": "left",
+                            "y_anchor": "top",
+                            "absolute": false,
+                            "x_offset": 0,
+                            "y_offset": 0
+                        }
+                    },
+                    "time": {
+                        "type": "Label",
+                        "data": {
+                            "anchor": [
+                                0.5,
+                                0.5
+                            ],
+                            "size": [
+                                26,
+                                27
+                            ],
+                            "position": [
+                                8,
+                                7
+                            ],
+                            "angle": 0,
+                            "visible": true,
+                            "font": "podkovaBold24",
+                            "text": "45",
+                            "foreground": "#ffffffff",
+                            "background": "#00000000",
+                            "padding": [
+                                0,
+                                0,
+                                0,
+                                0
+                            ],
+                            "valign": "middle",
+                            "halign": "center"
+                        },
+                        "children": {},
+                        "layout": {
+                            "x_anchor": "center",
+                            "y_anchor": "middle",
+                            "absolute": false,
+                            "x_offset": 0,
+                            "y_offset": 0
+                        }
+                    }
+                },
+                "layout": {
+                    "x_anchor": "left",
+                    "y_anchor": "bottom",
+                    "absolute": false,
+                    "x_offset": 0.05,
+                    "y_offset": 0.25
+                }
+            },
+            "timer_2": {
+                "type": "Node",
+                "format": {
+                    "type": "Anchored"
+                },
+                "data": {
+                    "anchor": [
+                        0,
+                        1
+                    ],
+                    "size": [
+                        41,
+                        41
+                    ],
+                    "angle": 0,
+                    "position": [
                         213,
                         346
                     ],

@@ -341,6 +341,17 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::sha
         timerNode->getChildByName("time")
     );
     _timer->setText(std::to_string(static_cast<int>(TURN_DURATION)));
+
+    auto timerNode2 = _assets->get<SceneNode>("matchscene.gameplayscene.timer_2");
+    // Then get the Label child of that node
+    _timer2 = std::dynamic_pointer_cast<Label>(
+        timerNode2->getChildByName("time")
+    );
+    _timer2->setText(std::to_string(static_cast<int>(TURN_DURATION)));
+
+    _timer->setVisible(false);
+    _timer2->setVisible(false);
+
     initPlayerGuide();
     updateTurnIndicators();
     return true;
