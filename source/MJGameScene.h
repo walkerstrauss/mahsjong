@@ -159,6 +159,7 @@ protected:
     /** Holds reference to turn sprite node */
     std::shared_ptr<cugl::scene2::SpriteNode> _turnSheet;
     
+    std::vector<std::shared_ptr<cugl::scene2::SpriteNode>> _sheets;
     std::shared_ptr<cugl::scene2::SpriteNode> _oxSheet;
     std::shared_ptr<cugl::scene2::SpriteNode> _snakeSheet;
     std::shared_ptr<cugl::scene2::SpriteNode> _rabbitSheet;

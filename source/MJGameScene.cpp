@@ -656,6 +656,12 @@ void GameScene::render() {
             _player->drawInfo(_draggingTile, _batch, _matchScene->getSize());
         }
     }
+    
+    for(auto& sheet: _sheets){
+        if(sheet->isVisible()){
+            sheet->render(_batch);
+        }
+    }
 
     _batch->end();
 }
@@ -1031,76 +1037,84 @@ void GameScene::initOpponentSpriteNodes(){
     _oxSheet->setAnchor(Vec2::ANCHOR_CENTER);
     _oxSheet->setPosition(pos);
     _oxSheet->setVisible(false);
-    addChild(_oxSheet);
+    _matchScene->addChild(_oxSheet);
+    _sheets.push_back(_oxSheet);
 
     _snakeSheet = SpriteNode::allocWithSheet(_assets->get<Texture>("snake-opponent"), 4, 5, 18);
     _snakeSheet->setAnchor(Vec2::ANCHOR_CENTER);
     _snakeSheet->setPosition(pos);
     _snakeSheet->setVisible(false);
-    addChild(_snakeSheet);
+    _matchScene->addChild(_snakeSheet);
+    _sheets.push_back(_snakeSheet);
 
     _rabbitSheet = SpriteNode::allocWithSheet(_assets->get<Texture>("rabbit-opponent"), 3, 3, 7);
     _rabbitSheet->setAnchor(Vec2::ANCHOR_CENTER);
     _rabbitSheet->setPosition(pos);
     _rabbitSheet->setVisible(false);
-    addChild(_rabbitSheet);
+    _matchScene->addChild(_rabbitSheet);
+    _sheets.push_back(_rabbitSheet);
 
     _ratSheet = SpriteNode::allocWithSheet(_assets->get<Texture>("rat-opponent"), 4, 4, 13);
     _ratSheet->setAnchor(Vec2::ANCHOR_CENTER);
     _ratSheet->setPosition(pos);
     _ratSheet->setVisible(false);
-    addChild(_ratSheet);
+    _matchScene->addChild(_ratSheet);
+    _sheets.push_back(_ratSheet);
 
     _monkeySheet = SpriteNode::allocWithSheet(_assets->get<Texture>("monkey-opponent"), 3, 3, 9);
     _monkeySheet->setAnchor(Vec2::ANCHOR_CENTER);
     _monkeySheet->setPosition(pos);
     _monkeySheet->setVisible(false);
-    addChild(_monkeySheet);
+    _matchScene->addChild(_monkeySheet);
+    _sheets.push_back(_monkeySheet);
 
     _dragonSheet = SpriteNode::allocWithSheet(_assets->get<Texture>("dragon-opponent"), 4, 5, 16);
     _dragonSheet->setAnchor(Vec2::ANCHOR_CENTER);
     _dragonSheet->setPosition(pos);
     _dragonSheet->setVisible(false);
-    addChild(_dragonSheet);
+    _matchScene->addChild(_dragonSheet);
+    _sheets.push_back(_dragonSheet);
 
     _roosterSheet = SpriteNode::allocWithSheet(_assets->get<Texture>("rooster-opponent"), 3, 4, 12);
     _roosterSheet->setAnchor(Vec2::ANCHOR_CENTER);
     _roosterSheet->setPosition(pos);
     _roosterSheet->setVisible(false);
-    addChild(_roosterSheet);
+    _matchScene->addChild(_roosterSheet);
+    _sheets.push_back(_roosterSheet);
 
     _pigSheet = SpriteNode::allocWithSheet(_assets->get<Texture>("pig-opponent"), 4, 4, 14);
     _pigSheet->setAnchor(Vec2::ANCHOR_CENTER);
     _pigSheet->setPosition(pos);
     _pigSheet->setVisible(false);
-    addChild(_pigSheet);
+    _matchScene->addChild(_pigSheet);
+    _sheets.push_back(_pigSheet);
 }
 
 void GameScene::animateOpponentNode(){
     switch(_matchController->getOpponentAnimType()){
         case MatchController::OX:
-            AnimationController::getInstance().addSpriteSheetAnimation(_oxSheet, 0, 7, false);
+            AnimationController::getInstance().addSpriteSheetAnimation(_oxSheet, 0, 7, true, 4);
             break;
         case MatchController::SNAKE:
-            AnimationController::getInstance().addSpriteSheetAnimation(_snakeSheet, 0, 18, false);
+            AnimationController::getInstance().addSpriteSheetAnimation(_snakeSheet, 0, 18, true, 3);
             break;
         case MatchController::RABBIT:
-            AnimationController::getInstance().addSpriteSheetAnimation(_rabbitSheet, 0, 7, false);
+            AnimationController::getInstance().addSpriteSheetAnimation(_rabbitSheet, 0, 7, true,4);
             break;
         case MatchController::RAT:
-            AnimationController::getInstance().addSpriteSheetAnimation(_ratSheet, 0, 13, false);
+            AnimationController::getInstance().addSpriteSheetAnimation(_ratSheet, 0, 13, true,3 );
             break;
         case MatchController::MONKEY:
-            AnimationController::getInstance().addSpriteSheetAnimation(_monkeySheet, 0, 9, false);
+            AnimationController::getInstance().addSpriteSheetAnimation(_monkeySheet, 0, 9, true,4 );
             break;
         case MatchController::DRAGON:
-            AnimationController::getInstance().addSpriteSheetAnimation(_dragonSheet, 0, 16, false);
+            AnimationController::getInstance().addSpriteSheetAnimation(_dragonSheet, 0, 16, true, 3);
             break;
         case MatchController::ROOSTER:
-            AnimationController::getInstance().addSpriteSheetAnimation(_roosterSheet, 0, 12, false);
+            AnimationController::getInstance().addSpriteSheetAnimation(_roosterSheet, 0, 12, true,4);
             break;
         case MatchController::PIG:
-            AnimationController::getInstance().addSpriteSheetAnimation(_pigSheet, 0, 14, false);
+            AnimationController::getInstance().addSpriteSheetAnimation(_pigSheet, 0, 14, true,4);
         default:
             break;
     }
