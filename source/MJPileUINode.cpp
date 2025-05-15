@@ -29,7 +29,6 @@ bool PileUINode::init(const std::shared_ptr<cugl::AssetManager>& assets) {
     _finishKey = _finish->addListener([this](const std::string& name, bool down){
         if (!down){
             setState(FINISH);
-            _root->setVisible(false);
         }
     });
     
@@ -41,8 +40,10 @@ bool PileUINode::init(const std::shared_ptr<cugl::AssetManager>& assets) {
 }
 
 void PileUINode::dispose() {
+    _finish->clearListeners();
     _root = nullptr;
     _assets = nullptr;
+    _finish = nullptr;
 }
 
 void PileUINode::reset() {

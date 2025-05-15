@@ -363,6 +363,8 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::sha
  */
 void GameScene::dispose() {
     if (_active) {
+        _pileUINode->dispose();
+        _pileUINode = nullptr;
         _matchController->dispose();
         removeAllChildren();
         _active = false;
@@ -490,10 +492,12 @@ void GameScene::update(float timestep) {
     if (_matchController->getChoice() == MatchController::Choice::DRAGONTILE) {
         if (_pileUINode->getState() == PileUINode::NONE) {
             _pileUINode->setState(PileUINode::DRAGONROW);
+            _pileUINode->_finish->activate();
         } else if (_pileUINode->getState() == PileUINode::FINISH) {
             _matchController->playDragon();
             _matchController->setChoice(MatchController::Choice::NONE);
             _pileUINode->setState(PileUINode::NONE);
+            _pileUINode->_finish->deactivate();
         }
     }
         

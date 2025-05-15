@@ -1,5 +1,8 @@
 {
     "textures": {
+        "team logo": {
+            "file": "textures/team_logo.png"
+        },
         "debuffed": {
             "file": "textures/tilesHand/debuffed.png"
         },
