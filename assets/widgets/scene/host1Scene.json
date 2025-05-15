@@ -503,7 +503,7 @@
                             "x_anchor": "left",
                             "y_anchor": "top",
                             "absolute": false,
-                            "x_offset": 0.01,
+                            "x_offset": 0.02,
                             "y_offset": -0.5
                         }
                     },
@@ -728,7 +728,7 @@
                                     "y_anchor": "top",
                                     "absolute": false,
                                     "x_offset": 0,
-                                    "y_offset": 0
+                                    "y_offset": -0.03
                                 }
                             },
                             "exit": {
