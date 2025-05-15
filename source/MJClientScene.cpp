@@ -163,10 +163,16 @@ bool ClientScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::s
     _startgame->addListener([=, this](const std::string& name, bool down) {
         if (down) {
             if (_network->getStatus() == NetworkController::Status::IDLE) {
+
                 for (int i = 0; i < 5; i++) {
                     textures[i] = _gameIDNew[i]->getTexture();
                 }
                 _joinHex = tile2hex();
+                if (_joinHex.empty()) {
+                    // not enough tiles, bail
+                    AudioController::getInstance().playSound("WrongAction", false);
+                    return;
+                }
                 _network->connectAsClient(_joinHex);
                 // Reset all five blanks
                 for (int i = 0; i < 5; ++i) {

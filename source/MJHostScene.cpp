@@ -97,9 +97,9 @@ bool HostScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::sha
 
     _hostScene1->doLayout(); // Repositions the HUD
     
-    _startgame = std::dynamic_pointer_cast<scene2::Button>(
-        _assets->get<scene2::SceneNode>("host.host1Scene.waitingRoom.menu.start")
-    );
+    //_startgame = std::dynamic_pointer_cast<scene2::Button>(
+    //    _assets->get<scene2::SceneNode>("host.host1Scene.waitingRoom.menu.start")
+    //);
 
     _backout = std::dynamic_pointer_cast<scene2::Button>(
         _assets->get<scene2::SceneNode>("host.host1Scene.waitingRoom.menu.exit")
@@ -162,12 +162,12 @@ bool HostScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::sha
         }
     });
 
-    _startgame->addListener([this](const std::string& name, bool down) {
-        if (down) {
-            AudioController::getInstance().playSound("Confirm");
-            startGame();
-        }
-    });
+    //_startgame->addListener([this](const std::string& name, bool down) {
+    //    if (down) {
+    //        AudioController::getInstance().playSound("Confirm");
+    //        startGame();
+    //    }
+    //});
 
     _backout2->addListener([this](const std::string& name, bool down) {
         if (down) {
@@ -265,12 +265,12 @@ void HostScene::setActive(bool value) {
             _network->connectAsHost();
             _backClicked = false;
         } else {
-            _startgame->deactivate();
+            //_startgame->deactivate();
             _startgame2->deactivate();
             //updateText(_startgame, "INACTIVE");
             _backout->deactivate();
             _backout2->deactivate();
-            _startgame->setDown(false);
+            //_startgame->setDown(false);
             _backout->setDown(false);
             _startgame2->setDown(false);
             _backout2->setDown(false);
@@ -310,7 +310,7 @@ void HostScene::update(float timestep) {
     if(_network->getStatus() == NetworkController::Status::CONNECTED){
         if (!_startGameClicked) {
             //updateText(_startgame, "Start Game");
-            _startgame->activate();
+            _startgame2->activate();
         }  
         if (_network != nullptr) {
             networkHex = _network->getRoomID();
@@ -322,12 +322,13 @@ void HostScene::update(float timestep) {
             }
             _hostScene3->setVisible(true);
             _backout2->activate();
-            _startgame->activate();
+            //_startgame->activate();
             _hostScene1->setVisible(false);
 
             CULog("Testing");
         }
         else {
+            _startgame2->deactivate();
             _hostScene3->setVisible(false);
             _hostScene1->setVisible(true);
         }
