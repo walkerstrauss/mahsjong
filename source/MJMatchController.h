@@ -37,6 +37,18 @@ public:
         LOSE
     };
     
+    enum OpponentAnimType {
+        INACTIVE,
+        OX,
+        SNAKE,
+        RABBIT,
+        MONKEY,
+        RAT,
+        DRAGON,
+        ROOSTER,
+        PIG
+    };
+    
     /** If current player has already drawn from the pile/discard or not */
     bool hasDrawn = false;
     /** If current player has already discarded or not */
@@ -61,6 +73,8 @@ protected:
     std::shared_ptr<DiscardPile> _discardPile; 
     /** The current state of the game */
     Choice _choice;
+    /** Opponent anim enum*/
+    OpponentAnimType _celestialAnim;
     /** The instance of the monkey tile that was played */
     std::shared_ptr<TileSet::Tile> _monkeyTile;
     /** The instance of the rat tile that was played */
@@ -273,6 +287,14 @@ public:
      * Disposes of all (non-static) resources allocated to this mode.
      */
     void dispose();
+    
+    void setOpponentAnimType(OpponentAnimType type){
+        _celestialAnim = type;
+    }
+    
+    OpponentAnimType getOpponentAnimType(){
+        return _celestialAnim;
+    }
 };
 
 #endif /* __MJ_MATCH_CONTROLLER__ */

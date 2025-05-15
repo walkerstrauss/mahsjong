@@ -54,7 +54,7 @@ bool TutorialScene::init(const std::shared_ptr<cugl::AssetManager> &assets, std:
     
 #pragma mark Initializing scene nodes
     // MatchScene Node
-    _matchScene = _assets->get<SceneNode>("matchscene");
+    _matchScene = _assets->get<SceneNode>("tutorialscene");
     _matchScene->setContentSize(getSize());
     _matchScene->getChild(0)->setContentSize(_matchScene->getContentSize());
     _matchScene->doLayout();
@@ -63,20 +63,20 @@ bool TutorialScene::init(const std::shared_ptr<cugl::AssetManager> &assets, std:
     _matchScene->setPosition(offset, _matchScene->getPosition().y);
     
     // PlayArea node
-    _playArea = _assets->get<SceneNode>("matchscene.gameplayscene.play-area");
+    _playArea = _assets->get<SceneNode>("tutorialscene.gameplayscene.play-area");
     _playArea->setVisible(false);
     
     // TradeArea node
-    _tradeArea = _assets->get<SceneNode>("matchscene.gameplayscene.drag-to-trade");
+    _tradeArea = _assets->get<SceneNode>("tutorialscene.gameplayscene.drag-to-trade");
     _tradeArea->setVisible(false);
     
-    _opponentHandRec = _assets->get<SceneNode>("matchscene.gameplayscene.opponent-hand-rec");
+    _opponentHandRec = _assets->get<SceneNode>("tutorialscene.gameplayscene.opponent-hand-rec");
     
 #pragma mark Initializing scene regions
-    std::shared_ptr<scene2::SceneNode> activeRegionNode = _assets->get<scene2::SceneNode>("matchscene.gameplayscene.drag-to-discard-tile");
-    std::shared_ptr<scene2::SceneNode> discardedTileRegionNode = _assets->get<scene2::SceneNode>("matchscene.gameplayscene.discarded-tile.discarded-rec");
-    std::shared_ptr<scene2::SceneNode> playerHandRegionNode = _assets->get<scene2::SceneNode>("matchscene.gameplayscene.playerhand");
-    std::shared_ptr<scene2::SceneNode> pileRegionNode = _assets->get<scene2::SceneNode>("matchscene.gameplayscene.pile");
+    std::shared_ptr<scene2::SceneNode> activeRegionNode = _assets->get<scene2::SceneNode>("tutorialscene.gameplayscene.drag-to-discard-tile");
+    std::shared_ptr<scene2::SceneNode> discardedTileRegionNode = _assets->get<scene2::SceneNode>("tutorialscene.gameplayscene.discarded-tile.discarded-rec");
+    std::shared_ptr<scene2::SceneNode> playerHandRegionNode = _assets->get<scene2::SceneNode>("tutorialscene.gameplayscene.playerhand");
+    std::shared_ptr<scene2::SceneNode> pileRegionNode = _assets->get<scene2::SceneNode>("tutorialscene.gameplayscene.pile");
     
     cugl::Vec2 activeRegionWorldOrigin = activeRegionNode->nodeToWorldCoords(Vec2::ZERO);
     cugl::Vec2 discardedTileRegionWorldOrigin = discardedTileRegionNode->nodeToWorldCoords(Vec2::ZERO);
@@ -90,16 +90,16 @@ bool TutorialScene::init(const std::shared_ptr<cugl::AssetManager> &assets, std:
 
 #pragma mark Initializing textured nodes
     // Discarded tile image node
-    _discardedTileImage = std::dynamic_pointer_cast<scene2::TexturedNode>(_assets->get<scene2::SceneNode>("matchscene.gameplayscene.discarded-tile.discarded-tile-recent.up.discarded-tile-recent"));
+    _discardedTileImage = std::dynamic_pointer_cast<scene2::TexturedNode>(_assets->get<scene2::SceneNode>("tutorialscene.gameplayscene.discarded-tile.discarded-tile-recent.up.discarded-tile-recent"));
     
     // Drag to discard node
     _dragToDiscardNode = std::dynamic_pointer_cast<cugl::scene2::TexturedNode>(_assets->get<cugl::scene2::SceneNode>(
-            "matchscene.gameplayscene.drag-to-discard-tile"));
+            "tutorialscene.gameplayscene.drag-to-discard-tile"));
     _dragToDiscardNode->setVisible(false);
     
     // Drag to hand node
     _dragToHandNode = std::dynamic_pointer_cast<cugl::scene2::TexturedNode>(_assets->get<cugl::scene2::SceneNode>(
-            "matchscene.gameplayscene.drag-to-hand-area"));
+            "tutorialscene.gameplayscene.drag-to-hand-area"));
     _dragToHandNode->setVisible(false);
     
 #pragma mark Initializing custom scene nodes
@@ -120,7 +120,7 @@ bool TutorialScene::init(const std::shared_ptr<cugl::AssetManager> &assets, std:
     
 #pragma mark Intializing buttons
     // Tileset UI Button
-    _tilesetUIBtn = std::dynamic_pointer_cast<scene2::Button>(_assets->get<scene2::SceneNode>("matchscene.gameplayscene.discarded-tile.discard-can"));
+    _tilesetUIBtn = std::dynamic_pointer_cast<scene2::Button>(_assets->get<scene2::SceneNode>("tutorialscene.gameplayscene.discarded-tile.discard-can"));
     _tilesetUIBtnKey = _tilesetUIBtn->addListener([this](const std::string& name, bool down){
         if (!down){
             setActive(false);
@@ -145,7 +145,7 @@ bool TutorialScene::init(const std::shared_ptr<cugl::AssetManager> &assets, std:
     });
 
     // Settings button
-    _settingBtn = std::dynamic_pointer_cast<Button>(_assets->get<SceneNode>("matchscene.gameplayscene.setting-icon"));
+    _settingBtn = std::dynamic_pointer_cast<Button>(_assets->get<SceneNode>("tutorialscene.gameplayscene.setting-icon"));
     _settingBtn->addListener([this](const std::string& name, bool down){
         if (!down){
             _choice = SETTING;
@@ -154,7 +154,7 @@ bool TutorialScene::init(const std::shared_ptr<cugl::AssetManager> &assets, std:
     });
     
     // Info button
-    _infoBtn = std::dynamic_pointer_cast<Button>(_assets->get<SceneNode>("matchscene.gameplayscene.information-icon"));
+    _infoBtn = std::dynamic_pointer_cast<Button>(_assets->get<SceneNode>("tutorialscene.gameplayscene.information-icon"));
     _infoBtn->addListener([this](const std::string& name, bool down){
         if (!down){
             _choice = INFO;
@@ -163,7 +163,7 @@ bool TutorialScene::init(const std::shared_ptr<cugl::AssetManager> &assets, std:
     });
     
     // Playset button
-    _playSetBtn = std::dynamic_pointer_cast<scene2::Button>(_assets->get<scene2::SceneNode>("matchscene.gameplayscene.playSetButton"));
+    _playSetBtn = std::dynamic_pointer_cast<scene2::Button>(_assets->get<scene2::SceneNode>("tutorialscene.gameplayscene.playSetButton"));
     _playSetBtn->setVisible(false);
     _playSetBtn->addListener([this](const std::string& name, bool down) {
         if (!down) {
@@ -178,7 +178,7 @@ bool TutorialScene::init(const std::shared_ptr<cugl::AssetManager> &assets, std:
     });
     
     // Opponent hand tab button
-    _opponentHandBtn = std::dynamic_pointer_cast<Button>(_assets->get<SceneNode>("matchscene.gameplayscene.opponent-hand"));
+    _opponentHandBtn = std::dynamic_pointer_cast<Button>(_assets->get<SceneNode>("tutorialscene.gameplayscene.opponent-hand"));
     _opponentHandBtn->addListener([this](const std::string& name, bool down){
         if (!down){
             AudioController::getInstance().playSound("Select");
@@ -191,14 +191,14 @@ bool TutorialScene::init(const std::shared_ptr<cugl::AssetManager> &assets, std:
     
     //Initializing textures for tabs
     for (int i = 0; i < 14; i++){
-        std::shared_ptr<TexturedNode> tile = std::dynamic_pointer_cast<TexturedNode>(_assets->get<SceneNode>("matchscene.gameplayscene.opponent-hand-tile.tile-back_" + std::to_string(i)));
+        std::shared_ptr<TexturedNode> tile = std::dynamic_pointer_cast<TexturedNode>(_assets->get<SceneNode>("tutorialscene.gameplayscene.opponent-hand-tile.tile-back_" + std::to_string(i)));
         if (tile){
             _opponentHandTiles.push_back(tile);
             tile->setVisible(false);
         }
     }
     for (int i = 0; i < 14; i++){
-        std::shared_ptr<TexturedNode> tile = std::dynamic_pointer_cast<TexturedNode>(_assets->get<SceneNode>("matchscene.gameplayscene.player-hand-tile.tile-back_" + std::to_string(i)));
+        std::shared_ptr<TexturedNode> tile = std::dynamic_pointer_cast<TexturedNode>(_assets->get<SceneNode>("tutorialscene.gameplayscene.player-hand-tile.tile-back_" + std::to_string(i)));
         if (tile){
             _playerHandTiles.push_back(tile);
             tile->setVisible(false);
@@ -245,7 +245,7 @@ bool TutorialScene::init(const std::shared_ptr<cugl::AssetManager> &assets, std:
     
 #pragma mark Initializing UI Nodes
     // Start with shade visible
-//    _shade = _assets->get<SceneNode>("matchscene.gameplayscene.shade");
+//    _shade = _assets->get<SceneNode>("tutorialscene.gameplayscene.shade");
 //    _shade->setVisible(true);
 //    _uiElements.push_back(_shade);
     initTutorialUINodes();

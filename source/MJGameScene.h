@@ -158,6 +158,17 @@ protected:
     std::shared_ptr<cugl::scene2::SpriteNode> _pongSheet;
     /** Holds reference to turn sprite node */
     std::shared_ptr<cugl::scene2::SpriteNode> _turnSheet;
+    
+    std::vector<std::shared_ptr<cugl::scene2::SpriteNode>> _sheets;
+    std::shared_ptr<cugl::scene2::SpriteNode> _oxSheet;
+    std::shared_ptr<cugl::scene2::SpriteNode> _snakeSheet;
+    std::shared_ptr<cugl::scene2::SpriteNode> _rabbitSheet;
+    std::shared_ptr<cugl::scene2::SpriteNode> _ratSheet;
+    std::shared_ptr<cugl::scene2::SpriteNode> _monkeySheet;
+    std::shared_ptr<cugl::scene2::SpriteNode> _dragonSheet;
+    std::shared_ptr<cugl::scene2::SpriteNode> _roosterSheet;
+    std::shared_ptr<cugl::scene2::SpriteNode> _pigSheet;
+    
     float _frameTimer = 0.0f;
     float _frameDelay = 0.2f;
     
@@ -365,25 +376,6 @@ public:
     bool isPong(const std::vector<std::shared_ptr<TileSet::Tile>>& tiles);
     
     bool isChow(const std::vector<std::shared_ptr<TileSet::Tile>>& tiles);
-    
-    void updateSpriteNode(std::shared_ptr<SpriteNode>& sheetNode){
-        if (sheetNode->getFrame() >= sheetNode->getCount() - 1){
-            sheetNode->setFrame(0);
-        } else {
-            sheetNode->setFrame(sheetNode->getFrame() + 1);
-        }
-        return;
-    }
-    
-    void updateSpriteNodes(float timestep){
-        _frameTimer += timestep;  // Accumulate time
-        if (_frameTimer >= _frameDelay) {
-            _frameTimer = 0; // Reset timer
-            //            updateSpriteNode(_pongSheet);
-            //            updateSpriteNode(_chowSheet);
-            updateSpriteNode(_turnSheet);
-        }
-    }
     
     void revertDiscardedTile();
     
@@ -600,6 +592,11 @@ public:
         }
     }
     
+    void initOpponentSpriteNodes();
+    
+    void animateOpponentNode();
 };
+
+
 
 #endif /* __MJ_GAME_SCENE_H__ */

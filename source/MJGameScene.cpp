@@ -323,13 +323,6 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::sha
             };
         }
     });
-
-    _turnSheet = SpriteNode::allocWithSheet(_assets->get<Texture>("turn-sheet"), 2, 3, 3);
-    _turnSheet->setAnchor(Vec2::ANCHOR_CENTER);
-    _turnSheet->setPosition(1085,screenSize.height/2);
-    _turnSheet->setScale(0.12);
-    _turnSheet->setFrame(0);
-    _turnSheet->setVisible(true);
     
     _remainingLabel = std::dynamic_pointer_cast<Label>(_assets->get<SceneNode>("matchscene.gameplayscene.tile-left.tile-left-number"));
     _remainingTiles = _tileSet->deck.size();
@@ -339,6 +332,7 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::sha
     _timer->setText("00:30");
     initPlayerGuide();
     updateTurnIndicators();
+    initOpponentSpriteNodes();
     return true;
 }
 
@@ -537,6 +531,11 @@ void GameScene::update(float timestep) {
         _playSetBtn->setVisible(false);
     }
     
+    if(_matchController->getOpponentAnimType() != MatchController::INACTIVE){
+        CULog("animate");
+        animateOpponentNode();
+    }
+    
     // Clicking/Tapping and Dragging logic
     if(_input->didRelease() && !_input->isDown()) {
         cugl::Vec2 initialMousePos = cugl::Scene::screenToWorldCoords(cugl::Vec3(_input->getInitialPosition()));
@@ -584,8 +583,6 @@ void GameScene::update(float timestep) {
             
             _matchController->drawTile();
         }
-        
-        updateSpriteNodes(timestep);
     } else {
         _tradeArea->setVisible(false);
         _wasTradeTileVisible = false;
@@ -657,6 +654,12 @@ void GameScene::render() {
     if(_draggingTile && _draggingTile->_suit == TileSet::Tile::Suit::CELESTIAL) {
         if(_input->isDown() && _input->getInitialPosition() != _input->getPosition()) {
             _player->drawInfo(_draggingTile, _batch, _matchScene->getSize());
+        }
+    }
+    
+    for(auto& sheet: _sheets){
+        if(sheet->isVisible()){
+            sheet->render(_batch);
         }
     }
 
@@ -1025,4 +1028,100 @@ void GameScene::endTurnFromTimeout(){
     }
     
     _matchController->endTurn();
+}
+
+void GameScene::initOpponentSpriteNodes(){
+    Vec2 pos = _matchScene->getSize()/2;
+    
+    _oxSheet = SpriteNode::allocWithSheet(_assets->get<Texture>("ox-opponent"), 3, 3, 7);
+    _oxSheet->setAnchor(Vec2::ANCHOR_CENTER);
+    _oxSheet->setPosition(pos);
+    _oxSheet->setVisible(false);
+    _matchScene->addChild(_oxSheet);
+    _sheets.push_back(_oxSheet);
+
+    _snakeSheet = SpriteNode::allocWithSheet(_assets->get<Texture>("snake-opponent"), 4, 5, 18);
+    _snakeSheet->setAnchor(Vec2::ANCHOR_CENTER);
+    _snakeSheet->setPosition(pos);
+    _snakeSheet->setVisible(false);
+    _matchScene->addChild(_snakeSheet);
+    _sheets.push_back(_snakeSheet);
+
+    _rabbitSheet = SpriteNode::allocWithSheet(_assets->get<Texture>("rabbit-opponent"), 3, 3, 7);
+    _rabbitSheet->setAnchor(Vec2::ANCHOR_CENTER);
+    _rabbitSheet->setPosition(pos);
+    _rabbitSheet->setVisible(false);
+    _matchScene->addChild(_rabbitSheet);
+    _sheets.push_back(_rabbitSheet);
+
+    _ratSheet = SpriteNode::allocWithSheet(_assets->get<Texture>("rat-opponent"), 4, 4, 13);
+    _ratSheet->setAnchor(Vec2::ANCHOR_CENTER);
+    _ratSheet->setPosition(pos);
+    _ratSheet->setVisible(false);
+    _matchScene->addChild(_ratSheet);
+    _sheets.push_back(_ratSheet);
+
+    _monkeySheet = SpriteNode::allocWithSheet(_assets->get<Texture>("monkey-opponent"), 3, 3, 9);
+    _monkeySheet->setAnchor(Vec2::ANCHOR_CENTER);
+    _monkeySheet->setPosition(pos);
+    _monkeySheet->setVisible(false);
+    _matchScene->addChild(_monkeySheet);
+    _sheets.push_back(_monkeySheet);
+
+    _dragonSheet = SpriteNode::allocWithSheet(_assets->get<Texture>("dragon-opponent"), 4, 5, 16);
+    _dragonSheet->setAnchor(Vec2::ANCHOR_CENTER);
+    _dragonSheet->setPosition(pos);
+    _dragonSheet->setVisible(false);
+    _matchScene->addChild(_dragonSheet);
+    _sheets.push_back(_dragonSheet);
+
+    _roosterSheet = SpriteNode::allocWithSheet(_assets->get<Texture>("rooster-opponent"), 3, 4, 12);
+    _roosterSheet->setAnchor(Vec2::ANCHOR_CENTER);
+    _roosterSheet->setPosition(pos);
+    _roosterSheet->setVisible(false);
+    _matchScene->addChild(_roosterSheet);
+    _sheets.push_back(_roosterSheet);
+
+    _pigSheet = SpriteNode::allocWithSheet(_assets->get<Texture>("pig-opponent"), 4, 4, 14);
+    _pigSheet->setAnchor(Vec2::ANCHOR_CENTER);
+    _pigSheet->setPosition(pos);
+    _pigSheet->setVisible(false);
+    _matchScene->addChild(_pigSheet);
+    _sheets.push_back(_pigSheet);
+    
+    for (auto& sheet: _sheets){
+        sheet->setScale(0.6);
+    }
+}
+
+void GameScene::animateOpponentNode(){
+    switch(_matchController->getOpponentAnimType()){
+        case MatchController::OX:
+            AnimationController::getInstance().addSpriteSheetAnimation(_oxSheet, 0, 7, true, 4);
+            break;
+        case MatchController::SNAKE:
+            AnimationController::getInstance().addSpriteSheetAnimation(_snakeSheet, 0, 18, true, 3);
+            break;
+        case MatchController::RABBIT:
+            AnimationController::getInstance().addSpriteSheetAnimation(_rabbitSheet, 0, 7, true,4);
+            break;
+        case MatchController::RAT:
+            AnimationController::getInstance().addSpriteSheetAnimation(_ratSheet, 0, 13, true,3 );
+            break;
+        case MatchController::MONKEY:
+            AnimationController::getInstance().addSpriteSheetAnimation(_monkeySheet, 0, 9, true,4 );
+            break;
+        case MatchController::DRAGON:
+            AnimationController::getInstance().addSpriteSheetAnimation(_dragonSheet, 0, 16, true, 3);
+            break;
+        case MatchController::ROOSTER:
+            AnimationController::getInstance().addSpriteSheetAnimation(_roosterSheet, 0, 12, true,4);
+            break;
+        case MatchController::PIG:
+            AnimationController::getInstance().addSpriteSheetAnimation(_pigSheet, 0, 14, true,4);
+        default:
+            break;
+    }
+    
+    _matchController->setOpponentAnimType(MatchController::INACTIVE);
 }
