@@ -1031,7 +1031,7 @@ void GameScene::endTurnFromTimeout(){
 }
 
 void GameScene::initOpponentSpriteNodes(){
-    Vec2 pos = getSize()/2;
+    Vec2 pos = _matchScene->getSize()/2;
     
     _oxSheet = SpriteNode::allocWithSheet(_assets->get<Texture>("ox-opponent"), 3, 3, 7);
     _oxSheet->setAnchor(Vec2::ANCHOR_CENTER);
@@ -1088,6 +1088,10 @@ void GameScene::initOpponentSpriteNodes(){
     _pigSheet->setVisible(false);
     _matchScene->addChild(_pigSheet);
     _sheets.push_back(_pigSheet);
+    
+    for (auto& sheet: _sheets){
+        sheet->setScale(0.6);
+    }
 }
 
 void GameScene::animateOpponentNode(){

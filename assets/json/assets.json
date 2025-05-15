@@ -360,12 +360,6 @@
         "tilesample 2": {
             "file": "textures/gameplay/tilesample.png"
         },
-        "displayed-set-icon": {
-            "file": "textures/gameplay/displayed-set-icon.png"
-        },
-        "displayed-set-icon-expanded": {
-            "file": "textures/gameplay/displayed-set-icon-expanded.png"
-        },
         "background_pause": {
             "file": "textures/pause/background_pause.png"
         },
@@ -530,9 +524,6 @@
         },
         "discardCanButton": {
             "file": "textures/gameplay/discardCanButton.png"
-        },
-        "displaytileSample": {
-            "file": "textures/gameplay/displaytileSample.png"
         },
         "drag-to-discard-tile": {
             "file": "textures/gameplay/drag-to-discard-tile.png"
@@ -707,9 +698,6 @@
         },
         "discardCanButton": {
             "file": "textures/gameplay/discardCanButton.png"
-        },
-        "displaytileSample": {
-            "file": "textures/gameplay/displaytileSample.png"
         },
         "infoIconButton": {
             "file": "textures/gameplay/infoIcon.png"
@@ -1218,6 +1206,26 @@
     },
     "scene2s": {
         "matchscene": {
+            "type": "Node",
+            "format": {
+                "type": "Anchored"
+            },
+            "children": {
+                "gameplayscene": {
+                    "type": "Widget",
+                    "format": {
+                        "type": "Anchored"
+                    },
+                    "data": {
+                        "key": "gameplayscene",
+                        "variables": {
+                            "size": [ 1280, 720 ]
+                        }
+                    }
+                }
+            }
+        },
+        "tutorialscene": {
             "type": "Node",
             "format": {
                 "type": "Anchored"

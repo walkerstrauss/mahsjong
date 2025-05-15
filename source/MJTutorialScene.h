@@ -366,29 +366,29 @@ public:
     void clickedTile(cugl::Vec2 mousePos);
     
     void initTurnIndicators(){
-        _opponentHandRec = _assets->get<SceneNode>("matchscene.gameplayscene.opponent-hand-rec");
-        _opponentHandBtn = std::dynamic_pointer_cast<Button>(_assets->get<SceneNode>("matchscene.gameplayscene.opponent-hand"));
+        _opponentHandRec = _assets->get<SceneNode>("tutorialscene.gameplayscene.opponent-hand-rec");
+        _opponentHandBtn = std::dynamic_pointer_cast<Button>(_assets->get<SceneNode>("tutorialscene.gameplayscene.opponent-hand"));
         _opponentHandBtn->addListener([this](const std::string& name, bool down){
             if (!down){
                 opponentTabVisible = !opponentTabVisible;
             }
         });
-        _opponentHandBtn2 = std::dynamic_pointer_cast<Button>(_assets->get<SceneNode>("matchscene.gameplayscene.opponent-hand2"));
+        _opponentHandBtn2 = std::dynamic_pointer_cast<Button>(_assets->get<SceneNode>("tutorialscene.gameplayscene.opponent-hand2"));
         _opponentHandBtn2->addListener([this](const std::string& name, bool down){
             if (!down){
                 opponentTabVisible = !opponentTabVisible;
             }
         });
         
-        _playerHandRec = _assets->get<SceneNode>("matchscene.gameplayscene.player-hand-rec");
-        _playerHandBtn = std::dynamic_pointer_cast<Button>(_assets->get<SceneNode>("matchscene.gameplayscene.playerhand-button"));
+        _playerHandRec = _assets->get<SceneNode>("tutorialscene.gameplayscene.player-hand-rec");
+        _playerHandBtn = std::dynamic_pointer_cast<Button>(_assets->get<SceneNode>("tutorialscene.gameplayscene.playerhand-button"));
         _playerHandBtn->addListener([this](const std::string& name, bool down){
             if (!down){
                 AudioController::getInstance().playSound("Select");
                 playerTabVisible = !playerTabVisible;
             }
         });
-        _playerHandBtn2 = std::dynamic_pointer_cast<Button>(_assets->get<SceneNode>("matchscene.gameplayscene.playerhand-button2"));
+        _playerHandBtn2 = std::dynamic_pointer_cast<Button>(_assets->get<SceneNode>("tutorialscene.gameplayscene.playerhand-button2"));
         _playerHandBtn2->addListener([this](const std::string& name, bool down){
             if (!down){
                 AudioController::getInstance().playSound("Select");
@@ -448,62 +448,62 @@ public:
     }
     
     void initTutorialUINodes(){
-        std::shared_ptr<SceneNode> shade = _assets->get<SceneNode>("matchscene.gameplayscene.welcome-shade");
-        std::shared_ptr<SceneNode> section = _assets->get<SceneNode>("matchscene.gameplayscene.welcome-section");
+        std::shared_ptr<SceneNode> shade = _assets->get<SceneNode>("tutorialscene.gameplayscene.welcome-shade");
+        std::shared_ptr<SceneNode> section = _assets->get<SceneNode>("tutorialscene.gameplayscene.welcome-section");
 //        section->setContentSize(1008,400);
 //        section->setPosition(185,56);
-//        std::shared_ptr<Label> label = std::dynamic_pointer_cast<Label>(_assets->get<SceneNode>("matchscene.gameplayscene.welcome-text"));
+//        std::shared_ptr<Label> label = std::dynamic_pointer_cast<Label>(_assets->get<SceneNode>("tutorialscene.gameplayscene.welcome-text"));
         std::vector<std::shared_ptr<SceneNode>> nodes = {shade, section /**, label*/};
         _uiMap["welcome"] = nodes;
         
-        _box = _assets->get<SceneNode>("matchscene.gameplayscene.box");
-        _drawPileArrow = _assets->get<SceneNode>("matchscene.gameplayscene.drawFromPileArrow");
-        _drawPileText = _assets->get<SceneNode>("matchscene.gameplayscene.drawFromPileText");
+        _box = _assets->get<SceneNode>("tutorialscene.gameplayscene.box");
+        _drawPileArrow = _assets->get<SceneNode>("tutorialscene.gameplayscene.drawFromPileArrow");
+        _drawPileText = _assets->get<SceneNode>("tutorialscene.gameplayscene.drawFromPileText");
         _pileDrawPhaseNodes.push_back(_box);
         _pileDrawPhaseNodes.push_back(_drawPileArrow);
         _pileDrawPhaseNodes.push_back(_drawPileText);
         _uiMap["pile"] = _pileDrawPhaseNodes;
         
-        _discardArrow = _assets->get<SceneNode>("matchscene.gameplayscene.dragToDiscardArrow");
-        _discardText = _assets->get<SceneNode>("matchscene.gameplayscene.dragToDiscardText");
+        _discardArrow = _assets->get<SceneNode>("tutorialscene.gameplayscene.dragToDiscardArrow");
+        _discardText = _assets->get<SceneNode>("tutorialscene.gameplayscene.dragToDiscardText");
         _discardPhaseNodes.push_back(_discardArrow);
         _discardPhaseNodes.push_back(_discardText);
         _uiMap["discard"] = _discardPhaseNodes;
         
-        _waitArrow = _assets->get<SceneNode>("matchscene.gameplayscene.waitOpponentArrow");
-        _waitText = _assets->get<SceneNode>("matchscene.gameplayscene.waitOpponentText");
+        _waitArrow = _assets->get<SceneNode>("tutorialscene.gameplayscene.waitOpponentArrow");
+        _waitText = _assets->get<SceneNode>("tutorialscene.gameplayscene.waitOpponentText");
         _waitPhaseNodes.push_back(_waitArrow);
         _waitPhaseNodes.push_back(_waitText);
         _uiMap["wait"] = _waitPhaseNodes;
         
-        _drawDiscardArrow = _assets->get<SceneNode>("matchscene.gameplayscene.drawDiscardedArrow");
-        _drawDiscardText = _assets->get<SceneNode>("matchscene.gameplayscene.drawDiscardedText");
+        _drawDiscardArrow = _assets->get<SceneNode>("tutorialscene.gameplayscene.drawDiscardedArrow");
+        _drawDiscardText = _assets->get<SceneNode>("tutorialscene.gameplayscene.drawDiscardedText");
         _drawDiscardPhaseNodes.push_back(_drawDiscardArrow);
         _drawDiscardPhaseNodes.push_back(_drawDiscardText);
         _uiMap["draw discard"] = _drawDiscardPhaseNodes;
         
-        _pressArrow1 = _assets->get<SceneNode>("matchscene.gameplayscene.pressArrow");
-        _pressArrow2 = _assets->get<SceneNode>("matchscene.gameplayscene.pressArrow2");
-        _pressText = _assets->get<SceneNode>("matchscene.gameplayscene.pressText");
+        _pressArrow1 = _assets->get<SceneNode>("tutorialscene.gameplayscene.pressArrow");
+        _pressArrow2 = _assets->get<SceneNode>("tutorialscene.gameplayscene.pressArrow2");
+        _pressText = _assets->get<SceneNode>("tutorialscene.gameplayscene.pressText");
         _pressPhaseNodes.push_back(_pressArrow1);
         _pressPhaseNodes.push_back(_pressArrow2);
         _pressPhaseNodes.push_back(_pressText);
         _uiMap["press"] = _pressPhaseNodes;
         
-        _playSetArrow = _assets->get<SceneNode>("matchscene.gameplayscene.playsetArrow");
-        _playSetText = _assets->get<SceneNode>("matchscene.gameplayscene.playsetText");
+        _playSetArrow = _assets->get<SceneNode>("tutorialscene.gameplayscene.playsetArrow");
+        _playSetText = _assets->get<SceneNode>("tutorialscene.gameplayscene.playsetText");
         _playSetPhaseNodes.push_back(_playSetArrow);
         _playSetPhaseNodes.push_back(_playSetText);
         _uiMap["play set"] = _playSetPhaseNodes;
         
-        _playCelestialArrow = _assets->get<SceneNode>("matchscene.gameplayscene.playCelestialTileArrow");
-        _playCelestialText = _assets->get<SceneNode>("matchscene.gameplayscene.playCelestialTileText");
+        _playCelestialArrow = _assets->get<SceneNode>("tutorialscene.gameplayscene.playCelestialTileArrow");
+        _playCelestialText = _assets->get<SceneNode>("tutorialscene.gameplayscene.playCelestialTileText");
         _playCelestialNodes.push_back(_playCelestialArrow);
         _playCelestialNodes.push_back(_playCelestialText);
         _uiMap["celestial"] = _playCelestialNodes;
         
-        std::shared_ptr<SceneNode> shade2 = _assets->get<SceneNode>("matchscene.gameplayscene.finished-shade");
-        std::shared_ptr<SceneNode> section2 = _assets->get<SceneNode>("matchscene.gameplayscene.finished-section");
+        std::shared_ptr<SceneNode> shade2 = _assets->get<SceneNode>("tutorialscene.gameplayscene.finished-shade");
+        std::shared_ptr<SceneNode> section2 = _assets->get<SceneNode>("tutorialscene.gameplayscene.finished-section");
 //        section2->setContentSize(1008,400);
 //        section2->setPosition(185,56);
         
