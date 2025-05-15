@@ -1151,110 +1151,13 @@
                         1
                     ],
                     "size": [
-                        41,
-                        41
+                        50,
+                        50
                     ],
                     "angle": 0,
                     "position": [
-                        63,
-                        113
-                    ],
-                    "visible": true
-                },
-                "children": {
-                    "timerShade": {
-                        "type": "Image",
-                        "data": {
-                            "texture": "timerShade",
-                            "anchor": [
-                                0,
-                                1
-                            ],
-                            "size": [
-                                41,
-                                41
-                            ],
-                            "angle": 0,
-                            "position": [
-                                0,
-                                0
-                            ],
-                            "visible": true
-                        },
-                        "layout": {
-                            "x_anchor": "left",
-                            "y_anchor": "top",
-                            "absolute": false,
-                            "x_offset": 0,
-                            "y_offset": 0
-                        }
-                    },
-                    "time": {
-                        "type": "Label",
-                        "data": {
-                            "anchor": [
-                                0.5,
-                                0.5
-                            ],
-                            "size": [
-                                26,
-                                27
-                            ],
-                            "position": [
-                                8,
-                                7
-                            ],
-                            "angle": 0,
-                            "visible": true,
-                            "font": "podkovaBold24",
-                            "text": "45",
-                            "foreground": "#ffffffff",
-                            "background": "#00000000",
-                            "padding": [
-                                0,
-                                0,
-                                0,
-                                0
-                            ],
-                            "valign": "middle",
-                            "halign": "center"
-                        },
-                        "children": {},
-                        "layout": {
-                            "x_anchor": "center",
-                            "y_anchor": "middle",
-                            "absolute": false,
-                            "x_offset": 0,
-                            "y_offset": 0
-                        }
-                    }
-                },
-                "layout": {
-                    "x_anchor": "left",
-                    "y_anchor": "bottom",
-                    "absolute": false,
-                    "x_offset": 0.05,
-                    "y_offset": 0.25
-                }
-            },
-            "timer_2": {
-                "type": "Node",
-                "format": {
-                    "type": "Anchored"
-                },
-                "data": {
-                    "anchor": [
                         0,
-                        1
-                    ],
-                    "size": [
-                        41,
-                        41
-                    ],
-                    "angle": 0,
-                    "position": [
-                        213,
-                        346
+                        0
                     ],
                     "visible": true
                 },
@@ -1268,8 +1171,8 @@
                                 1
                             ],
                             "size": [
-                                41,
-                                41
+                                50,
+                                50
                             ],
                             "angle": 0,
                             "position": [
@@ -1294,8 +1197,8 @@
                                 0.5
                             ],
                             "size": [
-                                26,
-                                27
+                                50,
+                                50
                             ],
                             "position": [
                                 8,
@@ -1303,7 +1206,7 @@
                             ],
                             "angle": 0,
                             "visible": true,
-                            "font": "podkovaBold24",
+                            "font": "podkovaBold32",
                             "text": "45",
                             "foreground": "#ffffffff",
                             "background": "#00000000",
@@ -1330,8 +1233,105 @@
                     "x_anchor": "center",
                     "y_anchor": "top",
                     "absolute": false,
-                    "x_offset": -0.25,
-                    "y_offset": -0.05
+                    "x_offset": 0.21,
+                    "y_offset": -0.045
+                }
+            },
+            "timer_2": {
+                "type": "Node",
+                "format": {
+                    "type": "Anchored"
+                },
+                "data": {
+                    "anchor": [
+                        0,
+                        1
+                    ],
+                    "size": [
+                        50,
+                        50
+                    ],
+                    "angle": 0,
+                    "position": [
+                        0,
+                        0
+                    ],
+                    "visible": true
+                },
+                "children": {
+                    "timerShade": {
+                        "type": "Image",
+                        "data": {
+                            "texture": "timerShade",
+                            "anchor": [
+                                0,
+                                1
+                            ],
+                            "size": [
+                                50,
+                                50
+                            ],
+                            "angle": 0,
+                            "position": [
+                                0,
+                                0
+                            ],
+                            "visible": true
+                        },
+                        "layout": {
+                            "x_anchor": "left",
+                            "y_anchor": "top",
+                            "absolute": false,
+                            "x_offset": 0,
+                            "y_offset": 0
+                        }
+                    },
+                    "time": {
+                        "type": "Label",
+                        "data": {
+                            "anchor": [
+                                0.5,
+                                0.5
+                            ],
+                            "size": [
+                                50,
+                                50
+                            ],
+                            "position": [
+                                8,
+                                7
+                            ],
+                            "angle": 0,
+                            "visible": true,
+                            "font": "podkovaBold32",
+                            "text": "45",
+                            "foreground": "#ffffffff",
+                            "background": "#00000000",
+                            "padding": [
+                                0,
+                                0,
+                                0,
+                                0
+                            ],
+                            "valign": "middle",
+                            "halign": "center"
+                        },
+                        "children": {},
+                        "layout": {
+                            "x_anchor": "center",
+                            "y_anchor": "middle",
+                            "absolute": false,
+                            "x_offset": 0,
+                            "y_offset": 0
+                        }
+                    }
+                },
+                "layout": {
+                    "x_anchor": "center",
+                    "y_anchor": "top",
+                    "absolute": false,
+                    "x_offset": -0.27,
+                    "y_offset": -0.045
                 }
             },
             "pile": {
@@ -1500,13 +1500,13 @@
                         1
                     ],
                     "size": [
-                        35,
-                        66
+                        101,
+                        54.5
                     ],
                     "angle": 0,
                     "position": [
-                        355,
-                        102
+                        675,
+                        286
                     ],
                     "visible": true
                 },
@@ -1520,8 +1520,8 @@
                                 0.5
                             ],
                             "size": [
-                                130,
-                                60
+                                99,
+                                52.5
                             ],
                             "angle": 0,
                             "position": [
@@ -1549,8 +1549,8 @@
                                 1
                             ],
                             "size": [
-                                18,
-                                18
+                                27,
+                                27
                             ],
                             "angle": 0,
                             "position": [
@@ -1558,74 +1558,43 @@
                                 36
                             ],
                             "visible": true,
-                            "upnode": "up"
+                            "upnode": "discardCanButton"
                         },
                         "children": {
-                            "up": {
-                                "type": "Node",
-                                "format": {
-                                    "type": "Anchored"
-                                },
+                            "discardCanButton": {
+                                "type": "Image",
                                 "data": {
+                                    "texture": "discard-can",
                                     "anchor": [
-                                        0,
-                                        1
+                                        0.5,
+                                        0.5
                                     ],
                                     "size": [
-                                        18,
-                                        18
+                                        27,
+                                        27
                                     ],
                                     "angle": 0,
                                     "position": [
-                                        0,
+                                        18,
                                         0
                                     ],
                                     "visible": true
-                                },
-                                "children": {
-                                    "discard-can": {
-                                        "type": "Image",
-                                        "data": {
-                                            "texture": "discard-can",
-                                            "anchor": [
-                                                0.5,
-                                                0.5
-                                            ],
-                                            "size": [
-                                                40,
-                                                40
-                                            ],
-                                            "angle": 0,
-                                            "position": [
-                                                18,
-                                                0
-                                            ],
-                                            "visible": true
-                                        },
-                                        "layout": {
-                                            "x_anchor": "left",
-                                            "y_anchor": "top",
-                                            "absolute": false,
-                                            "x_offset": -0.4,
-                                            "y_offset": -0.5
-                                        }
-                                    }
                                 },
                                 "layout": {
                                     "x_anchor": "left",
                                     "y_anchor": "top",
                                     "absolute": false,
-                                    "x_offset": 0,
-                                    "y_offset": 0
+                                    "x_offset": 0.5,
+                                    "y_offset": -0.5
                                 }
                             }
                         },
                         "layout": {
                             "x_anchor": "left",
-                            "y_anchor": "top",
+                            "y_anchor": "center",
                             "absolute": false,
-                            "x_offset": 0,
-                            "y_offset": -0.35
+                            "x_offset": 0.20,
+                            "y_offset": 0
                         }
                     },
                     "discarded-tile-recent": {
@@ -1639,8 +1608,8 @@
                                 1
                             ],
                             "size": [
-                                27.37,
-                                20
+                                30,
+                                40
                             ],
                             "angle": 0,
                             "position": [
@@ -1648,83 +1617,52 @@
                                 11
                             ],
                             "visible": true,
-                            "upnode": "up"
+                            "upnode": "playerSampleTile"
                         },
                         "children": {
-                            "up": {
-                                "type": "Node",
-                                "format": {
-                                    "type": "Anchored"
-                                },
+                            "playerSampleTile": {
+                                "type": "Image",
                                 "data": {
+                                    "texture": "one of dot",
                                     "anchor": [
-                                        0,
-                                        1
+                                        0.5,
+                                        0.5
                                     ],
                                     "size": [
-                                        27.37,
-                                        20
+                                        30,
+                                        40
                                     ],
                                     "angle": 0,
                                     "position": [
-                                        0,
-                                        0
+                                        27.37,
+                                        -7.37
                                     ],
                                     "visible": true
-                                },
-                                "children": {
-                                    "discarded-tile-recent": {
-                                        "type": "Image",
-                                        "data": {
-                                            "texture": "one of dot",
-                                            "anchor": [
-                                                0.5,
-                                                0.5
-                                            ],
-                                            "size": [
-                                                32.88,
-                                                45
-                                            ],
-                                            "angle": 0,
-                                            "position": [
-                                                27.37,
-                                                -7.37
-                                            ],
-                                            "visible": true
-                                        },
-                                        "layout": {
-                                            "x_anchor": "left",
-                                            "y_anchor": "top",
-                                            "absolute": false,
-                                            "x_offset": 0.9,
-                                            "y_offset": -0.5
-                                        }
-                                    }
                                 },
                                 "layout": {
                                     "x_anchor": "left",
                                     "y_anchor": "top",
                                     "absolute": false,
-                                    "x_offset": 0,
-                                    "y_offset": 0
+                                    "x_offset": 0.5,
+                                    "y_offset": -0.5
                                 }
                             }
                         },
                         "layout": {
                             "x_anchor": "left",
-                            "y_anchor": "top",
+                            "y_anchor": "center",
                             "absolute": false,
-                            "x_offset": 0.39,
-                            "y_offset": -0.33
+                            "x_offset": 0.51,
+                            "y_offset": 0
                         }
                     }
                 },
                 "layout": {
-                    "x_anchor": "left",
+                    "x_anchor": "center",
                     "y_anchor": "top",
                     "absolute": false,
-                    "x_offset": 0.8,
-                    "y_offset": -0.03
+                    "x_offset": 0.35,
+                    "y_offset": -0.15
                 }
             },
             "drag-to-hand-area": {
