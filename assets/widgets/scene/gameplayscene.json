@@ -1520,8 +1520,8 @@
                                 0.5
                             ],
                             "size": [
-                                99,
-                                52.5
+                                130,
+                                60
                             ],
                             "angle": 0,
                             "position": [
@@ -1549,8 +1549,8 @@
                                 1
                             ],
                             "size": [
-                                27,
-                                27
+                                58,
+                                58
                             ],
                             "angle": 0,
                             "position": [
@@ -1570,8 +1570,8 @@
                                         0.5
                                     ],
                                     "size": [
-                                        27,
-                                        27
+                                        58,
+                                        58
                                     ],
                                     "angle": 0,
                                     "position": [
@@ -1593,7 +1593,7 @@
                             "x_anchor": "left",
                             "y_anchor": "center",
                             "absolute": false,
-                            "x_offset": 0.20,
+                            "x_offset": 0,
                             "y_offset": 0
                         }
                     },
@@ -1661,7 +1661,7 @@
                     "x_anchor": "center",
                     "y_anchor": "top",
                     "absolute": false,
-                    "x_offset": 0.35,
+                    "x_offset": 0.385,
                     "y_offset": -0.15
                 }
             },
