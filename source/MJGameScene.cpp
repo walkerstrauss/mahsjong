@@ -337,12 +337,7 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::sha
 
     initPlayerGuide();
     updateTurnIndicators();
-<<<<<<< HEAD
     initOpponentSpriteNodes();
-=======
-    
-    
->>>>>>> 127450907bf350d22bf8125e6b4018675c93b5a6
     return true;
 }
 
@@ -443,21 +438,10 @@ void GameScene::update(float timestep) {
         
         _network->broadcastTie(_network->getLocalPid());
     }
-<<<<<<< HEAD
-    
-=======
->>>>>>> origin/main-2.0
-=======
-
->>>>>>> 127450907bf350d22bf8125e6b4018675c93b5a6
     _matchController->update(timestep);
     
-    
-    
     if(_player->getHand()._size < _player->getHand()._tiles.size()){
-        
         showPlayerGuide("hand_overfull");
-        
     }
     
     // if there is no tiles left in the pile - it is a tie
@@ -501,11 +485,7 @@ void GameScene::update(float timestep) {
     if (_matchController->getChoice() == MatchController::LOSE){
         _choice = LOSE;
     }
-<<<<<<< HEAD
-  
-=======
-    
->>>>>>> 127450907bf350d22bf8125e6b4018675c93b5a6
+
     if (_matchController->getChoice() == MatchController::TIE){
         _choice = TIE;
     }
@@ -588,7 +568,7 @@ void GameScene::update(float timestep) {
         _discardedTileImage->setVisible(false);
     }
     
-    if (_matchController->getChoice() == MatchController::WIN && !_gameWin) {
+    if (_matchController->getChoice() == MatchController::WIN) {
         _winningHand.clear();
 
         // Flatten played sets into individual tiles.
@@ -599,13 +579,9 @@ void GameScene::update(float timestep) {
         // The rest is filled with the tiles from the hand.
         auto remaining = _matchController->getWinningHand();
         _winningHand.insert(_winningHand.end(), remaining.begin(), remaining.end());
-
-        _gameWin = true;
-        
     }
     
-    if (_matchController->getChoice()==MatchController::Choice::LOSE && !_gameLose) {
-        _gameLose = true;
+    if (_matchController->getChoice()==MatchController::Choice::LOSE) {
         
         bool amHost = _network->getHostStatus();
         auto winner = amHost
