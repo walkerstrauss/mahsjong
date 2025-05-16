@@ -71,10 +71,7 @@ bool Pile::createEmptyPile(){
  */
 bool Pile::createPile() {
     _pile.clear();
-    
-    // Variable to keep track of what index we are on for pile creation
-    int index = 0;
-    
+        
     // Iterate through the pile
     for (int i = 0; i < _pileSize; i++) {
         std::vector<std::shared_ptr<TileSet::Tile>> row;
@@ -84,28 +81,20 @@ bool Pile::createPile() {
                 continue;
             }
             
-            std::shared_ptr<TileSet::Tile> tile = _tileSet->deck[index];
+            std::shared_ptr<TileSet::Tile> tile = _tileSet->deck.back();
             
             tile->_scale = 0.275;
             tile->inPile = true;
             tile->pileCoord = cugl::Vec2(i, j);
             tile->inDeck = false; 
 
-            row.push_back(_tileSet->deck[index]);
-            index += 1;
+            row.push_back(tile);
+            _tileSet->deck.pop_back();
         }
         _pile.push_back(row); //add tile from deck to pile
     }
     
     setTilePositions(false);
-    
-    // Erase tiles put into the pile from deck
-    if(_tileSet->deck.size() <= 25){
-        _tileSet->deck.clear();
-    }
-    else{
-        _tileSet->deck.erase(_tileSet->deck.begin(), _tileSet->deck.begin() + index + 1);
-    }
     
     return true;
 }

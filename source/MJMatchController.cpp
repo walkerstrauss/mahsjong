@@ -64,14 +64,15 @@ void MatchController::initHost() {
     _tileSet->initHostDeck();
     _tileSet->setAllTileTexture(_assets);
     _tileSet->initTileNodes(_assets);
-    
+
     //Initializing host and client players
     hostPlayer->getHand().initHand(_tileSet, true);
+
     clientPlayer->getHand().initHand(_tileSet, false);
     
     //Initializing pile
     _pile->initPile(4, _tileSet, true, _assets);
-    
+        
     //Broadcast initial state
     _network->broadcastClientStart(_tileSet->mapToJson());
 

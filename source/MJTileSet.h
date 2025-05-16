@@ -486,10 +486,12 @@ public:
 public:
     /** Deck with all of the tiles */
     std::vector<std::shared_ptr<Tile>> deck;
+    /** Normal tiles in the deck */
+    std::vector<std::shared_ptr<Tile>> normalTiles;
     /** Celestial tiles to add into the pile/hand */
     std::vector<std::shared_ptr<Tile>> celestialTiles;
     /** Unsorted set containing tiles in the deck */
-    std::map<std::string, std::shared_ptr<Tile>> tileMap;
+    std::unordered_map<std::string, std::shared_ptr<Tile>> tileMap;
     /** Random Generator */
     cugl::Random rdTileSet;
     /** Number of tiles we have initialized */
@@ -538,12 +540,17 @@ public:
      *
      * **ALWAYS SHUFFLE BEFORE READING FROM DECK**
      */
-    void shuffle() {
+    void shuffle(std::vector<std::shared_ptr<Tile>> tiles) {
         rdTileSet.init();
-        rdTileSet.shuffle(deck);
-
+        rdTileSet.shuffle(tiles);
     }
     
+    /**
+     * Combines normal and celestial tiles, ensuring even distribution
+     */
+    void createDeck();
+    
+
     /**
      * Prints the current deck
      */
