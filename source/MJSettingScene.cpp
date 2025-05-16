@@ -116,6 +116,7 @@ bool SettingScene::init(const std::shared_ptr<cugl::AssetManager>& assets){
     });
 
     addChild(_settingScene);
+    _settingScene->doLayout();
     return true;
 }
 

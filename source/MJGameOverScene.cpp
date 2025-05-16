@@ -62,7 +62,7 @@ bool GameOverScene::init(const std::shared_ptr<cugl::AssetManager>& assets){
     _grandmaTie->setPosition(340, 410);
     _grandmaTie->setVisible(true);
     _grandmaTie->setFrame(0);
-    _grandmaTie->setScale(2);
+    _grandmaTie->setScale(1.9);
     _tiescene->addChild(_grandmaTie);
     AnimationController::getInstance().addSpriteSheetAnimation(_grandmaTie, 0, 4, true, 5.0f);
     
@@ -368,13 +368,36 @@ void GameOverScene::setWinningHand(const std::vector<std::shared_ptr<TileSet::Ti
         if (!slotTie) continue;
         auto tex = _assets->get<cugl::graphics::Texture>(hand[i]->toString());
         auto texTie = _assets->get<cugl::graphics::Texture>(hand[i]->toString());
+          
+        if(hand[i]->debuffed && !(hand[i]->getSuit() == TileSet::Tile::Suit::CELESTIAL)){
+            tex = _assets->get<cugl::graphics::Texture>("blank normal hand");
+            texTie = _assets->get<cugl::graphics::Texture>("blank normal hand");
+            slot->setContentSize(40, 53);
+            slotTie->setContentSize(40, 53);
+            //slot->setScale(4.0f);
+            //slotTie->setScale(4.0f);
+        }else if(hand[i]->debuffed && (hand[i]->getSuit() == TileSet::Tile::Suit::CELESTIAL)){
+            tex = _assets->get<cugl::graphics::Texture>("blank celestial hand");
+            texTie = _assets->get<cugl::graphics::Texture>("blank celestial hand");
+            slot->setContentSize(40, 53);
+            slotTie->setContentSize(40, 53);
+            
+            //slotTie->setScale(4.0f);
+            //slot->setScale(4.0f);
+
+        }else{
+            
+            slot->setContentSize(40, 53);
+            slotTie->setContentSize(40, 53);
+
+        }
+        
         slot->setTexture(tex);
         slotTie->setTexture(texTie);
-        slot->setContentSize(40, 53);
-        slotTie->setContentSize(40, 53);
+
         slot->setVisible(true);
         slotTie->setVisible(true);
-
+    
     }
     
     _winscene->doLayout();
@@ -390,8 +413,23 @@ void GameOverScene::setLosingHand(const std::vector<std::shared_ptr<TileSet::Til
         
         if (!slot) continue;
         auto tex = _assets->get<cugl::graphics::Texture>(hand[i]->toString());
-        slot->setTexture(tex);
+        
+        if(hand[i]->debuffed && !(hand[i]->getSuit() == TileSet::Tile::Suit::CELESTIAL)){
+            tex = _assets->get<cugl::graphics::Texture>("blank normal hand");
+            slot->setContentSize(40, 53);
+            //slot->setScale(4.0f);
+            
+        }else if(hand[i]->debuffed && (hand[i]->getSuit() == TileSet::Tile::Suit::CELESTIAL)){
+            tex = _assets->get<cugl::graphics::Texture>("blank celestial hand");
+            slot->setContentSize(40, 53);
+            //slot->setScale(4.0f);
+          
+        }else{
+            slot->setContentSize(40, 53);
+
+        }
         slot->setContentSize(40, 53);
+        slot->setTexture(tex);
         slot->setVisible(true);
 
     }

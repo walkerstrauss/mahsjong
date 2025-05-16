@@ -165,7 +165,7 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::sha
     }
     _opponentHandBtn->activate();
     
-    _discardedTileImage = std::dynamic_pointer_cast<scene2::TexturedNode>(_assets->get<scene2::SceneNode>("matchscene.gameplayscene.discarded-tile.discarded-tile-recent.up.discarded-tile-recent"));
+    _discardedTileImage = std::dynamic_pointer_cast<scene2::TexturedNode>(_assets->get<scene2::SceneNode>("matchscene.gameplayscene.discarded-tile.discarded-tile-recent.playerSampleTile"));
     
     _dragToDiscardNode = std::dynamic_pointer_cast<cugl::scene2::TexturedNode>(
         _assets->get<cugl::scene2::SceneNode>(
@@ -318,11 +318,31 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::sha
     _remainingTiles = _tileSet->deck.size();
     _remainingLabel->setText(std::to_string(_remainingTiles));
     
-    _timer = std::dynamic_pointer_cast<Label>(_assets->get<SceneNode>("matchscene.gameplayscene.timer"));
-    _timer->setText("30");
+    auto timerNode = _assets->get<SceneNode>("matchscene.gameplayscene.timer");
+    // Then get the Label child of that node
+    _timer = std::dynamic_pointer_cast<Label>(
+        timerNode->getChildByName("time")
+    );
+    _timer->setText(std::to_string(static_cast<int>(TURN_DURATION)));
+
+    auto timerNode2 = _assets->get<SceneNode>("matchscene.gameplayscene.timer_2");
+    // Then get the Label child of that node
+    _timer2 = std::dynamic_pointer_cast<Label>(
+        timerNode2->getChildByName("time")
+    );
+    _timer2->setText(std::to_string(static_cast<int>(TURN_DURATION)));
+
+    _timer->setVisible(false);
+    _timer2->setVisible(false);
+
     initPlayerGuide();
     updateTurnIndicators();
+<<<<<<< HEAD
     initOpponentSpriteNodes();
+=======
+    
+    
+>>>>>>> 127450907bf350d22bf8125e6b4018675c93b5a6
     return true;
 }
 
@@ -409,6 +429,9 @@ void GameScene::reset() {
  */
 void GameScene::update(float timestep) {
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 127450907bf350d22bf8125e6b4018675c93b5a6
     
     if (_input->getKeyPressed() == cugl::KeyCode::A && _input->getPrevKeyPressed() != cugl::KeyCode::A) {
 
@@ -420,10 +443,22 @@ void GameScene::update(float timestep) {
         
         _network->broadcastTie(_network->getLocalPid());
     }
+<<<<<<< HEAD
     
 =======
 >>>>>>> origin/main-2.0
+=======
+
+>>>>>>> 127450907bf350d22bf8125e6b4018675c93b5a6
     _matchController->update(timestep);
+    
+    
+    
+    if(_player->getHand()._size < _player->getHand()._tiles.size()){
+        
+        showPlayerGuide("hand_overfull");
+        
+    }
     
     // if there is no tiles left in the pile - it is a tie
     
@@ -457,6 +492,7 @@ void GameScene::update(float timestep) {
     displayPlayerSets();
     displayOpponentSets();
     updatePlayerGuide();
+    updatePlayerGuide2(1);
     
     if (_matchController->getChoice() == MatchController::WIN){
         _choice = WIN;
@@ -465,10 +501,15 @@ void GameScene::update(float timestep) {
     if (_matchController->getChoice() == MatchController::LOSE){
         _choice = LOSE;
     }
+<<<<<<< HEAD
   
+=======
+    
+>>>>>>> 127450907bf350d22bf8125e6b4018675c93b5a6
     if (_matchController->getChoice() == MatchController::TIE){
         _choice = TIE;
     }
+
     
     updateTurnTimer(timestep);
     
@@ -483,8 +524,10 @@ void GameScene::update(float timestep) {
                 _discardedTileImage->setTexture(_assets->get<Texture>(_discardPile->getTopTile()->toString()));
             }
         }
-        _discardedTileImage->SceneNode::setContentSize(42.744, 58.5);
+        _discardedTileImage->SceneNode::setContentSize(40, 60);
         _discardedTileImage->setVisible(true);
+        
+        
         
         _matchController->setChoice(MatchController::NONE);
     }
@@ -579,12 +622,12 @@ void GameScene::update(float timestep) {
         
         // Flatten played sets into individual tiles.
         for (auto const& set : _player->getHand()._playedSets) {
-            _myHand.insert(_winningHand.end(), set.begin(), set.end());
+            _myHand.insert(_myHand.end(), set.begin(), set.end());
         }
         
         // The rest is filled with the tiles from the hand.
         auto remaining = _matchController->getWinningHand();
-        _myHand.insert(_winningHand.end(), remaining.begin(), remaining.end());
+        _myHand.insert(_myHand.end(), remaining.begin(), remaining.end());
         
         
     }
@@ -747,6 +790,7 @@ void GameScene::render() {
 void GameScene::setActive(bool value){
     if (isActive() != value){
         Scene2::setActive(value);
+        
     }
 }
     

@@ -110,7 +110,7 @@ bool MenuScene::init(const std::shared_ptr<cugl::AssetManager>& assets) {
     _grandmaMainSheet->setPosition(340, 410);
     _grandmaMainSheet->setVisible(true);
     _grandmaMainSheet->setFrame(0);
-    _grandmaMainSheet->setScale(2);
+    _grandmaMainSheet->setScale(1.9);
     AnimationController::getInstance().addSpriteSheetAnimation(_grandmaMainSheet, 0, 4, true, 5.0f);
 
     _rabbit = SpriteNode::allocWithSheet(_assets->get<Texture>("background_rabbit"), 3, 2, 5);

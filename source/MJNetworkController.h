@@ -62,11 +62,16 @@ public:
         PLAYEDCELESTIAL,
         /** Game has concluded  */
         ENDGAME,
+<<<<<<< HEAD
         /** Game has resulted in a tie*/
         TIE,
         /** Game is in tutorial mode */
         TUTORIAL
 
+=======
+        TIE,
+        TUTORIAL
+>>>>>>> 127450907bf350d22bf8125e6b4018675c93b5a6
         /** **END OF MATCHMODEL STATES ** */
         
     };

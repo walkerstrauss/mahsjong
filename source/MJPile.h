@@ -218,6 +218,10 @@ public:
     
     /** Pile flip effect  and move to center*/
     void pileFlipMoveCenter();
+<<<<<<< HEAD
+=======
+
+>>>>>>> 127450907bf350d22bf8125e6b4018675c93b5a6
     
 };
 #endif /* __MJ_PILE_H__ */
