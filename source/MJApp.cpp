@@ -70,6 +70,24 @@ void MahsJongApp::onStartup() {
     netcode::NetworkLayer::start(netcode::NetworkLayer::Log::INFO);
 //    _network = NetworkController();
     Application::onStartup(); //YOU MUST END with call to parent
+    
+    bool DEBUG_GAMEOVER = false;
+
+    if (DEBUG_GAMEOVER) {
+        _scene = State::OVER;
+
+        _assets->loadDirectory("json/assets.json");
+        _batch = SpriteBatch::alloc();
+
+        _gameover.init(_assets);
+        _gameover.setSpriteBatch(_batch);
+        _gameover.type = GameOverScene::Type::LOSE;
+        _gameover.setActive(true);
+        
+        return;
+    }
+    
+    
 };
 
 /**
@@ -388,6 +406,7 @@ void MahsJongApp::updateGameScene(float timestep) {
         case GameScene::Choice::WIN:
             _gameplay.setGameActive(false);
             _gameover.type = GameOverScene::Type::WIN;
+            _gameover.setWinningHand(_gameplay.getWinningHand()); 
             _gameover.setActive(true);
             AudioController::getInstance().playMusic("win", true);
             _scene = State::OVER;
@@ -395,6 +414,17 @@ void MahsJongApp::updateGameScene(float timestep) {
         case GameScene::Choice::LOSE:
             _gameplay.setGameActive(false);
             _gameover.type = GameOverScene::Type::LOSE;
+            _gameover.setLosingHand(_gameplay.getWinningHand());
+            _gameover.setActive(true);
+            AudioController::getInstance().playMusic("lose", true);
+            _scene = State::OVER;
+            break;
+        case GameScene::Choice::TIE:
+            _gameplay.setGameActive(false);
+            _gameover.type = GameOverScene::Type::TIE;
+            _gameover.setWinningHand(_gameplay._myHand);
+            _gameover.setLosingHand (_gameplay.getRemoteHand());
+
             _gameover.setActive(true);
             AudioController::getInstance().playMusic("lose", true);
             _scene = State::OVER;
@@ -452,17 +482,10 @@ void MahsJongApp::updateSettingScene(float timestep){
             _gameplay.setGameActive(true);
             _scene = State::GAME;
             break;
-        case SettingScene::Choice::MUSICON:
-            // TODO: Handle turning game music on
-            break;
-        case SettingScene::Choice::MUSICOFF:
-            // TODO: Handle turning game music off
-            break;
-        case SettingScene::Choice::SOUNDON:
-            // TODO: Handle turning game sound on
-            break;
-        case SettingScene::Choice::SOUNDOFF:
-            // TODO: Handling turning game sound off
+        case SettingScene::Choice::TUTORIAL:
+            _settings.setActive(false);
+            _help.setActive(true);
+            _scene = State::HELP;
             break;
         case SettingScene::Choice::NONE:
             // Do nothing

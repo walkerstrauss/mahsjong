@@ -1984,8 +1984,8 @@
                                 1
                             ],
                             "size": [
-                                34,
-                                34
+                                50,
+                                50
                             ],
                             "angle": 0,
                             "position": [
@@ -2007,8 +2007,8 @@
                                         1
                                     ],
                                     "size": [
-                                        34,
-                                        34
+                                        50,
+                                        50
                                     ],
                                     "angle": 0,
                                     "position": [
@@ -2027,8 +2027,8 @@
                                                 0.5
                                             ],
                                             "size": [
-                                                34,
-                                                34
+                                                50,
+                                                50
                                             ],
                                             "angle": 0,
                                             "position": [
@@ -2059,7 +2059,7 @@
                             "x_anchor": "left",
                             "y_anchor": "top",
                             "absolute": false,
-                            "x_offset": 0.93,
+                            "x_offset": 0.9,
                             "y_offset": -0.04
                         }
                     },

@@ -477,6 +477,12 @@
         "menuGrandma": {
             "file": "textures/menu/menuGrandma.png"
         },
+        "grandmaWin":{
+            "file": "textures/animations/grandmaWin.png"
+        },
+        "grandmaCry":{
+            "file": "textures/animations/grandmaCry.png"
+        },
         "setting_button": {
             "file": "textures/menu/setting_button.png"
         },
@@ -518,6 +524,9 @@
         },
         "soundButton": {
             "file": "textures/setting/soundButton.png"
+        },
+        "helpButton": {
+            "file": "textures/setting/helpButton.png"
         },
         "titleBackground": {
             "file": "textures/setting/titleBackground.png"
@@ -686,6 +695,15 @@
         },
         "tilesample": {
             "file": "textures/score_defeat/tilesample.png"
+        },
+        "Tie": {
+            "file": "textures/score_tie/Tie.png"
+        },
+        "tie_board": {
+            "file": "textures/score_tie/win_board.png"
+        },
+        "tie_main":{
+            "file": "textures/score_tie/main.png"
         },
         "Victory_logo": {
             "file": "textures/score_win/Victory_logo.png"
@@ -927,6 +945,18 @@
         "setting-icon": {
             "file": "textures/gameplay/setting-icon.png"
         },
+        "background_rabbit":{
+            "file": "textures/animations/background_rabbit.png"
+        },
+        "background_rat":{
+            "file": "textures/animations/background_rat.png"
+        },
+        "grandmaWin":{
+            "file": "textures/animations/grandmaWin.png"
+        },
+        "grandmaCry":{
+            "file": "textures/animations/grandmaCry.png"
+        },
         "information-icon": {
             "file": "textures/gameplay/information-icon.png"
         },
@@ -953,6 +983,9 @@
         },
         "discardTilecloseIcon": {
             "file": "textures/playguide/discardTilecloseIcon.png"
+        },
+        "timerShade": {
+            "file": "textures/gameplay/timerShade.png"
         },
         "infoBackground": {
             "file": "textures/playguide/infoBackground.png"
@@ -1026,12 +1059,15 @@
         "tu11": {
             "file": "textures/tutorial/tu11.png"
         },
+<<<<<<< HEAD
         "tu12": {
             "file": "textures/tutorial/tu12.png"
         },
         "tu13": {
             "file": "textures/tutorial/tu13.png"
         },
+=======
+>>>>>>> 127450907bf350d22bf8125e6b4018675c93b5a6
         "button_back": {
             "file": "textures/tutorial/button_back.png"
         },
@@ -1080,6 +1116,12 @@
         "drew-try-discard": {
             "file": "textures/gameplay/drew-try-discard.png"
         },
+<<<<<<< HEAD
+=======
+        "hand_overfull": {
+            "file": "textures/gameplay/hand_overfull.png"
+        },
+>>>>>>> 127450907bf350d22bf8125e6b4018675c93b5a6
         "pig-fail": {
             "file": "textures/gameplay/pig-fail.png"
         },
@@ -1131,9 +1173,10 @@
         "welcome": {
             "file": "textures/tutorial/welcome.png"
         },
-        "shade-tut":{
+        "shade-tut": {
             "file": "textures/tutorial/shade-tut.png"
         },
+<<<<<<< HEAD
         "finished":{
             "file":"textures/tutorial/finished.png"
         },
@@ -1160,6 +1203,10 @@
         },
         "snake-opponent":{
             "file":"textures/animations/snake-opponent.png"
+=======
+        "finished": {
+            "file": "textures/tutorial/finished.png"
+>>>>>>> 127450907bf350d22bf8125e6b4018675c93b5a6
         }
     },
     "fonts": {
@@ -1487,6 +1534,26 @@
                 }
             }
         },
+        "tiescene": {
+            "type": "Node",
+            "format": {
+                "type": "Anchored"
+            },
+            "children": {
+                "scoretiescene": {
+                    "type": "Widget",
+                    "format": {
+                        "type": "Anchored"
+                    },
+                    "data": {
+                        "variables": {
+                            "size": [ 1280, 720 ]
+                        },
+                        "key": "scoretiescene"
+                    }
+                }
+            }
+        },
         "client3": {
             "type": "Node",
             "format": {
@@ -1543,7 +1610,14 @@
         "client3Scene": "widgets/scene/client3Scene.json",
         "infoscene": "widgets/scene/infoScene1.json",
         "tutorialScene": "widgets/scene/tutorialScene.json",
+<<<<<<< HEAD
+        "scoretiescene":"widgets/scene/scoretiescene.json"
         "tutScene":"widgets/scene/tutScene.json"
+=======
+        "scoretiescene":"widgets/scene/scoretiescene.json",
+        "tutScene":"widgets/scene/tutScene.json"
+
+>>>>>>> 127450907bf350d22bf8125e6b4018675c93b5a6
     },
     "jsons": {
         "server": "json/server.json",

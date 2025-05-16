@@ -954,6 +954,10 @@ void MatchController::handleGameWin(){
  */
 void MatchController::update(float timestep) {
     AnimationController::getInstance().update(timestep);
+    
+    if (_network->getStatus() == NetworkController::TIE) {
+        _choice = MatchController::Choice::TIE;
+    }
     // If we receieve end game status, current player loses
     if(_network->getStatus() == NetworkController::ENDGAME) {
         _choice = LOSE;

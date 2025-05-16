@@ -52,7 +52,8 @@ public:
         DISCARDED,
         DRAW_DISCARD,
         WIN,
-        LOSE
+        LOSE,
+        TIE
     };
     /** Vector of tiles to add to discardUI*/
     std::vector<std::shared_ptr<TileSet::Tile>> discardedTiles;
@@ -66,6 +67,10 @@ public:
     std::shared_ptr<Label> _remainingLabel;
     int opponentSetIndex = 0;
     int playerSetIndex = 0;
+    
+    std::vector<std::shared_ptr<TileSet::Tile>> _myHand;
+    
+    
 protected:
     /** Asset manager for this game mode */
     std::shared_ptr<cugl::AssetManager> _assets;
@@ -97,7 +102,6 @@ protected:
     cugl::Rect discardArea;
     /** Rect for pile */
     cugl::Rect _pileBox;
-    
     /** Whether this player is the host */
     bool _ishost;
     /** Whether we paused the game **/
@@ -170,9 +174,6 @@ protected:
     /** The tile currently being dragged */
     cugl::Vec2 _dragOffset;
     
-    /** The rectangle representing the discrad pile's position*/
-    cugl::Rect _discardBox;
-    
     /** The rectangle representing the active play/discard area for all tiles*/
     cugl::Rect _activeRegion;
     
@@ -209,7 +210,7 @@ protected:
     std::vector<std::string> playerGuideKeys;
     std::unordered_map<std::string, std::shared_ptr<SceneNode>> playerGuideNodeMap;
     int framesOnScreen = 0;
-    int maxFramesOnScreen = 180;
+    int maxFramesOnScreen = 50;
     
     // Field to track the time left in the active turn
     float _turnTimeRemaining;
@@ -217,13 +218,21 @@ protected:
     bool turnTimerActive = false;
     int prevTurnId = -99;
     std::shared_ptr<Label> _timer;
+    std::shared_ptr<Label> _timer2;
     
     bool _wasPlayAreaVisible = false;
     bool _wasDragToHandVisible = false;
     bool _wasDragToDiscardVisible = false;
     bool _wasTradeTileVisible = false;
     
+    std::vector<std::shared_ptr<TileSet::Tile>> _winningHand;
+<<<<<<< HEAD
+    std::vector<std::shared_ptr<TileSet::Tile>> _myHand;
     std::shared_ptr<TexturedNode> blankTile;
+=======
+
+>>>>>>> 127450907bf350d22bf8125e6b4018675c93b5a6
+
 public:
 #pragma mark -
 #pragma mark Constructors
@@ -369,6 +378,7 @@ public:
     
     void revertDiscardedTile();
     
+
     void initTurnIndicators(){
         _opponentHandRec = _assets->get<SceneNode>("matchscene.gameplayscene.opponent-hand-rec");
         _opponentHandBtn = std::dynamic_pointer_cast<Button>(_assets->get<SceneNode>("matchscene.gameplayscene.opponent-hand"));
@@ -464,22 +474,35 @@ public:
             "start-your-turn2",
             "drew-try-play",
             "drew-try-discard",
-            "pig-fail"
+            "pig-fail",
+            "hand_overfull"
         };
         
         for (auto key : playerGuideKeys){
             playerGuideNodeMap[key] = _assets->get<SceneNode>("matchscene.gameplayscene." + key);
         }
     }
-    
-    void updatePlayerGuide(){
-        for (auto key : playerGuideKeys){
+
+    void updatePlayerGuide() {
+        for (const auto& key : playerGuideKeys) {
+            if (key == "hand_overfull") continue;  // Skip this guide
+
             auto node = playerGuideNodeMap[key];
-            if (node->isVisible()){
+            if (node->isVisible()) {
                 framesOnScreen++;
-                if (framesOnScreen > maxFramesOnScreen){
+                if (framesOnScreen > maxFramesOnScreen) {
                     node->setVisible(false);
                 }
+            }
+        }
+    }
+    
+    void updatePlayerGuide2(int maxFrames) {
+        auto node = playerGuideNodeMap["hand_overfull"];
+        if (node && node->isVisible()) {
+            framesOnScreen++;
+            if (framesOnScreen > maxFrames) {
+                node->setVisible(false);
             }
         }
     }
@@ -546,42 +569,56 @@ public:
     
     void updateAreaVisibility(Vec2 mousePos, float timestep);
     
-    void updateTurnTimer(float timestep){
-        int currTurn = _network->getCurrentTurn();
-        if (currTurn != prevTurnId){
-            prevTurnId = currTurn;
-            
-            if (currTurn == _network->getLocalPid()){
-                _turnTimeRemaining = TURN_DURATION;
-                turnTimerActive = true;
-            } else {
-                turnTimerActive = false;
-                _turnTimeRemaining = 0.0f;
-                _timer->setText("00:00");
-            }
-            
-        }
-        
-        if (turnTimerActive) {
-            _turnTimeRemaining -= timestep;
-            if (_turnTimeRemaining <= 0.0f){
-                _turnTimeRemaining = 0.0f;
-                turnTimerActive = false;
-                endTurnFromTimeout();
-            }
-            
-            int sec = static_cast<int>(_turnTimeRemaining);
-            
-            std::string timeAsStr = "00:";
-            if (sec < 10){
-                timeAsStr += "0";
-            }
-            
-            timeAsStr += std::to_string(sec);
-            _timer->setText(timeAsStr);
-        }
+    std::vector<std::shared_ptr<TileSet::Tile>> getWinningHand() const {
+        return _winningHand;
     }
     
+    void updateTurnTimer(float timestep) {
+            int currTurn = _network->getCurrentTurn();
+            if (currTurn != prevTurnId) {
+                prevTurnId = currTurn;
+                _turnTimeRemaining = TURN_DURATION;
+                turnTimerActive = true;
+            }
+
+            if (!turnTimerActive) return;
+
+            _turnTimeRemaining -= timestep;
+            if (_turnTimeRemaining <= 0.0f) {
+                _turnTimeRemaining = 0.0f;
+                turnTimerActive = false;
+                if (currTurn == _network->getLocalPid()) {
+                    endTurnFromTimeout();
+                }
+            }
+
+            int seconds = static_cast<int>(std::round(_turnTimeRemaining));
+            if (currTurn == _network->getLocalPid()) {
+                _timer->setVisible(true);
+                _timer2->setVisible(false);
+                _timer->setText(std::to_string(seconds));
+            }
+            else {
+                _timer2->setVisible(true);
+                _timer->setVisible(false);
+                _timer2->setText(std::to_string(seconds));
+            }
+        }
+
+    
+    std::vector<std::shared_ptr<TileSet::Tile>> getLocalHand() const {
+        return _network->getHostStatus()
+          ? _matchController->getHostHand()
+          : _matchController->getClientHand();
+    }
+
+    std::vector<std::shared_ptr<TileSet::Tile>> getRemoteHand() const {
+        return _network->getHostStatus()
+          ? _matchController->getClientHand()
+          : _matchController->getHostHand();
+    }
+    
+
     void initOpponentSpriteNodes();
     
     void animateOpponentNode();

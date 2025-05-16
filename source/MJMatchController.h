@@ -34,7 +34,8 @@ public:
         SUCCESS_SET,
         FAILED_SET, 
         WIN,
-        LOSE
+        LOSE,
+        TIE
     };
     
     enum OpponentAnimType {
@@ -288,6 +289,20 @@ public:
      */
     void dispose();
     
+    std::vector<std::shared_ptr<TileSet::Tile>> getWinningHand() const {
+        bool isHost = _network->getHostStatus();
+        return isHost ? hostPlayer->getHand()._tiles : clientPlayer->getHand()._tiles;
+    }
+    
+    std::vector<std::shared_ptr<TileSet::Tile>> getHostHand() const {
+        return hostPlayer->getHand()._tiles;
+    }
+    
+    std::vector<std::shared_ptr<TileSet::Tile>> getClientHand() const {
+        return clientPlayer->getHand()._tiles;
+    }
+
+ 
     void setOpponentAnimType(OpponentAnimType type){
         _celestialAnim = type;
     }
