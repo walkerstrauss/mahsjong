@@ -352,8 +352,41 @@ private:
             }
         };
     };
-
-
+    
+    struct PoofAnim {
+        std::shared_ptr<SpriteNode> node;
+        Vec2 pos;
+        float scale;
+        
+        float time;
+        float fps;
+        int currFrame;
+        bool done;
+        
+        PoofAnim(std::shared_ptr<SpriteNode> node, Vec2 pos, float scale, int fps) : node(node), pos(pos), scale(scale), currFrame(0), done(false), fps(fps) {
+            node->setVisible(true);
+            node->setScale(scale);
+            node->setPosition(pos);
+        };
+        
+        void update(float dt) {
+            if(done) return;
+            
+            time += dt;
+            if(time > 1.0f / fps) {
+                time = 0.0f; 
+                currFrame += 1;
+                if(currFrame > 14) {
+                    node->setVisible(false);
+                    node->setFrame(0);
+                    done = true;
+                    return;
+                }
+            }
+            
+            node->setFrame(currFrame);
+        }
+    };
     
     /** Reference to asset manager for getting sprite sheets */
     std::shared_ptr<cugl::AssetManager> _assets;
@@ -367,6 +400,7 @@ private:
     /** Vector holding fade animations */
     std::vector<FadeAnim> _fadeAnims;
     std::vector<BounceAnim> _bounceAnims;
+    std::vector<PoofAnim> _poofAnims;
     /** Whether the animation controller is currently paused */
     bool _paused;
     
@@ -420,6 +454,10 @@ public:
     
     void addBounceEffect(std::shared_ptr<TileSet::Tile>& tile, float offset, float freq, float damping) {
         _bounceAnims.emplace_back(tile, offset, freq, damping);
+    }
+    
+    void addPoofEffect(std::shared_ptr<SpriteNode> node, Vec2 pos, float scale, int fps) {
+        _poofAnims.emplace_back(node, pos, scale, fps);
     }
     
     void fadeIn(std::shared_ptr<SceneNode> node, float duration){
@@ -517,6 +555,10 @@ public:
         float freq = 8.0f;
         float damping = 0.25f;
         addBounceEffect(tile, offset, freq, damping);
+    }
+    
+    void animatePoofEffect(std::shared_ptr<SpriteNode> node, Vec2 pos, float scale, int fps) {
+        addPoofEffect(node, pos, scale, fps);
     }
     
     void CalcDampedSpringMotionParams(tDampedSpringMotionParams* pOutParams, float deltaTime, float angularFrequency, float dampingRatio);

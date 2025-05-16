@@ -339,6 +339,9 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::sha
             };
         }
     });
+    
+    _poofNode = SpriteNode::allocWithSheet(_assets->get<Texture>("poof"), 4, 4);
+    _poofNode->setVisible(false);
 
     _turnSheet = SpriteNode::allocWithSheet(_assets->get<Texture>("turn-sheet"), 2, 3, 3);
     _turnSheet->setAnchor(Vec2::ANCHOR_CENTER);
@@ -634,6 +637,10 @@ void GameScene::render() {
             _player->drawInfo(_draggingTile, _batch, _matchScene->getSize());
         }
     }
+    
+    if(_poofNode->isVisible()) {
+        _poofNode->render(_batch);
+    }
 
     _batch->end();
 }
@@ -812,6 +819,9 @@ void GameScene::updateDrag(const cugl::Vec2& mousePos, bool mouseDown, bool mous
                             } else {
                                 showPlayerGuide("must-draw-play");
                             }
+                        }
+                        else {
+                            AnimationController::getInstance().animatePoofEffect(_poofNode, _draggingTile->pos, 0.2, 14);
                         }
                   }
                   else {

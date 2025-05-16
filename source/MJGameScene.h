@@ -67,6 +67,8 @@ public:
     std::shared_ptr<Label> _remainingLabel;
     int opponentSetIndex = 0;
     int playerSetIndex = 0;
+    /** Holds reference to poof node */
+    std::shared_ptr<SpriteNode> _poofNode;
 protected:
     /** Asset manager for this game mode */
     std::shared_ptr<cugl::AssetManager> _assets;

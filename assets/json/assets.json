@@ -1100,6 +1100,9 @@
         },
         "pig-fail":{
             "file": "textures/gameplay/pig-fail.png"
+        },
+        "poof": {
+            "file": "textures/animations/poof.png"
         }
     },
     "fonts": {
