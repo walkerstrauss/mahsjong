@@ -50,6 +50,12 @@ public:
         NONE,
         BACK
     };
+
+    enum PrevScene {
+        GAMER,
+        TUTORIALER,
+        NEITHER
+    };
     
     enum InfoPage {
         NO_PAGE,
@@ -59,6 +65,7 @@ public:
     };
     
     Choice choice;
+    PrevScene scene;
     InfoPage currPage;
     InfoPage nextPage;
 #pragma mark Constructors

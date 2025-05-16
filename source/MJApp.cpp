@@ -461,6 +461,7 @@ void MahsJongApp::updateGameScene(float timestep) {
             _gameplay.setGameActive(false);
             _info.setActive(true);
             _scene = INFO;
+            _info.scene = InfoScene::PrevScene::GAMER;
             break;
         case GameScene::Choice::SETTING:
             _gameplay.setGameActive(false);
@@ -571,14 +572,15 @@ void MahsJongApp::updateInfoScene(float timestep){
     if (_info.choice == InfoScene::BACK){
         _info.setActive(false);
         _info.choice = InfoScene::NONE;
-        if(_gameplay.isActive()) {
+        if(_info.scene == InfoScene::PrevScene::GAMER) {
             _gameplay.setGameActive(true);
             _scene = GAME;
         }
-        else if (_tutorial.isActive()) {
+        else if (_info.scene == InfoScene::PrevScene::TUTORIALER) {
             _tutorial.setTutorialActive(true);
             _scene = TUTORIAL;
         }
+        _info.scene = InfoScene::PrevScene::NEITHER;
     }
 }
 
@@ -616,6 +618,7 @@ void MahsJongApp::updateTutorialScene(float timestep){
             _tutorial.setTutorialActive(false);
             _info.setActive(true);
             _scene = INFO;
+            _info.scene = InfoScene::PrevScene::TUTORIALER;
             break;
         case TutorialScene::SETTING:
             _tutorial.setTutorialActive(false);
