@@ -331,7 +331,7 @@
             "file": "textures/hover/dragon.png"
         },
         "pig of celestial info": {
-          "file": "textures/hover/pig.png"
+            "file": "textures/hover/pig.png"
         },
         "background": {
             "file": "textures/landing/background.png"
@@ -1032,7 +1032,7 @@
         "tu13": {
             "file": "textures/tutorial/tu13.png"
         },
-        "button_back":{
+        "button_back": {
             "file": "textures/tutorial/button_back.png"
         },
         "button_exit": {
@@ -1080,7 +1080,7 @@
         "drew-try-discard": {
             "file": "textures/gameplay/drew-try-discard.png"
         },
-        "pig-fail":{
+        "pig-fail": {
             "file": "textures/gameplay/pig-fail.png"
         },
         "shade": {
@@ -1392,7 +1392,7 @@
                 "type": "Anchored"
             },
             "children": {
-                "hostscene": {
+                "host1Scene": {
                     "type": "Widget",
                     "format": {
                         "type": "Anchored"
@@ -1406,13 +1406,34 @@
                 }
             }
         },
+        "host3": {
+            "type": "Node",
+            "format": {
+                "type": "Anchored"
+            },
+            "children": {
+                "host3Scene": {
+                    "type": "Widget",
+                    "format": {
+                        "type": "Anchored"
+                    },
+                    "data": {
+                        "variables": {
+                            "size": [ 1280, 720 ]
+                        },
+                        "key": "host3Scene"
+                    }
+                }
+            }
+        },
+
         "client": {
             "type": "Node",
             "format": {
                 "type": "Anchored"
             },
             "children": {
-                "clientscene": {
+                "client1Scene": {
                     "type": "Widget",
                     "format": {
                         "type": "Anchored"
@@ -1495,7 +1516,8 @@
         "landingscene": "widgets/scene/landingscene.json",
         "landingTextbutton": "widgets/button/landingTextbutton.json",
         "home": "widgets/scene/home.json",
-        "hostscene": "widgets/scene/hostscene.json",
+        "host1Scene": "widgets/scene/host1Scene.json",
+        "host3Scene": "widgets/scene/host3Scene.json",
         "clientscene": "widgets/scene/clientscene.json",
         "menubutton": "widgets/button/menubutton.json",
         "settingbutton": "widgets/icon/settingicon.json",
@@ -1517,7 +1539,6 @@
         "settingbutton_onoff": "widgets/button/settingbutton_onoff.json",
         "tilesetscene": "widgets/scene/tilesetscene.json",
         "pile-ui": "widgets/scene/pile-ui.json",
-        "host1Scene": "widgets/scene/host1Scene.json",
         "client1Scene": "widgets/scene/client1Scene.json",
         "client3Scene": "widgets/scene/client3Scene.json",
         "infoscene": "widgets/scene/infoScene1.json",
