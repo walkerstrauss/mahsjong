@@ -363,33 +363,6 @@
         "tilesample 2": {
             "file": "textures/gameplay/tilesample.png"
         },
-        "background_pause": {
-            "file": "textures/pause/background_pause.png"
-        },
-        "button_w_icon1": {
-            "file": "textures/pause/button_w_icon1.png"
-        },
-        "cancel": {
-            "file": "textures/pause/cancel.png"
-        },
-        "continue_pause": {
-            "file": "textures/pause/continue_pause.png"
-        },
-        "main_pause": {
-            "file": "textures/pause/main_pause.png"
-        },
-        "notification_box1": {
-            "file": "textures/pause/notification_box1.png"
-        },
-        "pause_logo_image": {
-            "file": "textures/pause/pause_logo_image.png"
-        },
-        "replay_pause": {
-            "file": "textures/pause/replay_pause.png"
-        },
-        "setting_pause": {
-            "file": "textures/pause/setting_pause.png"
-        },
         "button": {
             "file": "textures/button.png"
         },
@@ -1088,7 +1061,7 @@
         },
         "poof": {
             "file": "textures/animations/poof.png"
-        }
+        },
         "shade": {
             "file": "textures/tutorial/shade.png"
         },
@@ -1312,26 +1285,6 @@
                 }
             }
         },
-        "pause": {
-            "type": "Node",
-            "format": {
-                "type": "Anchored"
-            },
-            "children": {
-                "pausescene": {
-                    "type": "Widget",
-                    "format": {
-                        "type": "Anchored"
-                    },
-                    "data": {
-                        "key": "pausescene",
-                        "variables": {
-                            "size": [ 1280, 720 ]
-                        }
-                    }
-                }
-            }
-        },
         "settings": {
             "type": "Node",
             "format": {
@@ -1527,7 +1480,6 @@
         "clientscene": "widgets/scene/clientscene.json",
         "menubutton": "widgets/button/menubutton.json",
         "settingbutton": "widgets/icon/settingicon.json",
-        "pausescene": "widgets/scene/pausescene.json",
         "pausebutton": "widgets/button/pausebutton.json",
         "gameplayscene": "widgets/scene/gameplayscene.json",
         "technical_gamescene": "widgets/scene/technical_gamescene.json",
