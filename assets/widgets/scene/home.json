@@ -1,5 +1,5 @@
 {
-    "variables": {"size":["data","size"]},
+    "variables": {},
     "contents": {
         "type": "Node",
         "format": {
@@ -11,8 +11,8 @@
                 0
             ],
             "size": [
-                1024,
-                576
+                874,
+                402
             ],
             "angle": 0,
             "position": [
@@ -139,6 +139,33 @@
                     "y_offset": -0.02
                 }
             },
+            "menuGrandma": {
+                "type": "Image",
+                "data": {
+                    "texture": "menuGrandma",
+                    "anchor": [
+                        0,
+                        1
+                    ],
+                    "size": [
+                        231,
+                        231
+                    ],
+                    "angle": 0,
+                    "position": [
+                        148,
+                        184
+                    ],
+                    "visible": true
+                },
+                "layout": {
+                    "x_anchor": "left",
+                    "y_anchor": "top",
+                    "absolute": false,
+                    "x_offset": 0.18,
+                    "y_offset": -0.33
+                }
+            },
             "menu": {
                 "type": "Node",
                 "format": {
@@ -150,18 +177,18 @@
                         0
                     ],
                     "size": [
-                        238,
-                        377
+                        240,
+                        435
                     ],
                     "angle": 0,
                     "position": [
-                        759,
+                        0,
                         0
                     ],
                     "visible": true
                 },
                 "children": {
-                    "button2": {
+                    "join": {
                         "type": "Button",
                         "format": {
                             "type": "Anchored"
@@ -172,8 +199,8 @@
                                 1
                             ],
                             "size": [
-                                238,
-                                137
+                                240,
+                                171
                             ],
                             "angle": 0,
                             "position": [
@@ -195,8 +222,8 @@
                                         1
                                     ],
                                     "size": [
-                                        238,
-                                        200
+                                        240,
+                                        171
                                     ],
                                     "angle": 0,
                                     "position": [
@@ -206,7 +233,7 @@
                                     "visible": true
                                 },
                                 "children": {
-                                    "menuButtonDown": {
+                                    "menuJoinButton": {
                                         "type": "Image",
                                         "data": {
                                             "texture": "menuButtonDown",
@@ -215,8 +242,8 @@
                                                 1
                                             ],
                                             "size": [
-                                                238,
-                                                200
+                                                240,
+                                                171
                                             ],
                                             "angle": 0,
                                             "position": [
@@ -248,10 +275,10 @@
                             "y_anchor": "top",
                             "absolute": false,
                             "x_offset": 0,
-                            "y_offset": -0.37
+                            "y_offset": -0.61
                         }
                     },
-                    "button1": {
+                    "start": {
                         "type": "Button",
                         "format": {
                             "type": "Anchored"
@@ -262,13 +289,13 @@
                                 1
                             ],
                             "size": [
-                                238,
-                                115
+                                240,
+                                114
                             ],
                             "angle": 0,
                             "position": [
                                 0,
-                                212
+                                114
                             ],
                             "visible": true,
                             "upnode": "up"
@@ -285,8 +312,8 @@
                                         1
                                     ],
                                     "size": [
-                                        238,
-                                        165
+                                        240,
+                                        114
                                     ],
                                     "angle": 0,
                                     "position": [
@@ -296,7 +323,7 @@
                                     "visible": true
                                 },
                                 "children": {
-                                    "menuButtonUp": {
+                                    "menuStartButton": {
                                         "type": "Image",
                                         "data": {
                                             "texture": "menuButtonUp",
@@ -305,8 +332,8 @@
                                                 1
                                             ],
                                             "size": [
-                                                238,
-                                                120
+                                                240,
+                                                114
                                             ],
                                             "angle": 0,
                                             "position": [
@@ -338,10 +365,10 @@
                             "y_anchor": "top",
                             "absolute": false,
                             "x_offset": 0,
-                            "y_offset": -0.095
+                            "y_offset": -0.38
                         }
                     },
-                    "button4": {
+                    "tu": {
                         "type": "Button",
                         "format": {
                             "type": "Anchored"
@@ -352,8 +379,8 @@
                                 1
                             ],
                             "size": [
-                                238,
-                                165
+                                240,
+                                150
                             ],
                             "angle": 0,
                             "position": [
@@ -375,8 +402,8 @@
                                         1
                                     ],
                                     "size": [
-                                        238,
-                                        165
+                                        240,
+                                        150
                                     ],
                                     "angle": 0,
                                     "position": [
@@ -386,7 +413,7 @@
                                     "visible": true
                                 },
                                 "children": {
-                                    "menuButtonUp": {
+                                    "menuTutorialButton": {
                                         "type": "Image",
                                         "data": {
                                             "texture": "tut-btn",
@@ -395,8 +422,8 @@
                                                 1
                                             ],
                                             "size": [
-                                                238,
-                                                165
+                                                240,
+                                                150
                                             ],
                                             "angle": 0,
                                             "position": [
@@ -428,7 +455,7 @@
                             "y_anchor": "top",
                             "absolute": false,
                             "x_offset": 0,
-                            "y_offset": 0.3
+                            "y_offset": -0.07
                         }
                     }
                 },
@@ -436,8 +463,8 @@
                     "x_anchor": "right",
                     "y_anchor": "bottom",
                     "absolute": false,
-                    "x_offset": -0.03,
-                    "y_offset": -0.1
+                    "x_offset": -0.1,
+                    "y_offset":0
                 }
             }
         }
