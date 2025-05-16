@@ -181,10 +181,6 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::sha
     addChild(_discardUINode->_root);
     addChild(_pileUINode->_root);
     
-    // Game Win and Lose bool
-    _gameWin = false;
-    _gameLose = false;
-    
     // Init the match controller for the game
     _matchController = std::make_shared<MatchController>();
     _matchController->init(_assets, _network);
@@ -407,8 +403,6 @@ void GameScene::dispose() {
  * Resets the status of the game so that we can play again
  */
 void GameScene::reset() {
-    _gameLose = false;
-    _gameWin = false;
     dispose();
     init(_assets, _network, _input);
     return;
@@ -658,12 +652,13 @@ void GameScene::render() {
     }
     
     for(auto& sheet: _sheets){
-        if(sheet->isVisible()){
-            _opponentCelestialTile->getContainer()->setVisible(true);
-            _opponentCelestialTile->getContainer()->render(_batch, Affine2::IDENTITY, Color4::WHITE);
-        } else {
-            _opponentCelestialTile->getContainer()->setVisible(false);
-        }
+        sheet->render(_batch);
+//        if(sheet->isVisible()){
+//            _opponentCelestialTile->getContainer()->setVisible(true);
+//            _opponentCelestialTile->getContainer()->render(_batch, Affine2::IDENTITY, Color4::WHITE);
+//        } else {
+//            _opponentCelestialTile->getContainer()->setVisible(false);
+//        }
     }
 
     _batch->end();
@@ -955,46 +950,6 @@ void GameScene::updateDrag(const cugl::Vec2& mousePos, bool mouseDown, bool mous
      }
 }
 
-void GameScene::playSetAnim(const std::vector<std::shared_ptr<TileSet::Tile>>& tiles){
-    if (tiles.size() != 3 || !_actionAnimNode){
-        std::string animKey;
-        if (isPong(tiles)){
-            animKey = "pong";
-        } else if (isChow(tiles)){
-            animKey = "chow";
-        } else {
-            return;
-        }
-//        _actionAnimNode->play(animKey, AnimatedNode::AnimationType::INTERRUPT);
-    }
-    
-    
-}
-
-bool GameScene::isPong(const std::vector<std::shared_ptr<TileSet::Tile>>& tiles){
-    for (auto& tile : tiles){
-        if (tile->getSuit() == TileSet::Tile::Suit::CELESTIAL){
-            return false;
-        }
-    }
-    
-    return (tiles[0]->toString() == tiles[1]->toString() &&
-            tiles[1]->toString() == tiles[2]->toString());
-}
-
-bool GameScene::isChow(const std::vector<std::shared_ptr<TileSet::Tile>>& tiles){
-    for (auto& tile : tiles){
-        if (tile->getSuit() == TileSet::Tile::Suit::CELESTIAL){
-            return false;
-        }
-    }
-    auto sorted = _hand->getSortedTiles(tiles);
-    return (sorted[0]->getSuit() == sorted[1]->getSuit() &&
-            sorted[1]->getSuit() == sorted[2]->getSuit() &&
-            TileSet::Tile::toIntRank(sorted[1]->getRank()) - 1 == TileSet::Tile::toIntRank(sorted[0]->getRank()) &&
-            TileSet::Tile::toIntRank(sorted[2]->getRank()) - 1 == TileSet::Tile::toIntRank(sorted[1]->getRank()));
-}
-
 void GameScene::updateAreaVisibility(Vec2 mousePos, float timestep){
     bool isDragging = (_dragInitiated && _draggingTile != nullptr);
     int hand_length = static_cast<int>(_player->getHand()._tiles.size());
@@ -1090,7 +1045,7 @@ void GameScene::initOpponentSpriteNodes(){
     _sheets.push_back(_pigSheet);
     
     for (auto& sheet: _sheets){
-        sheet->setScale(0.6);
+        sheet->setScale(0.45);
     }
 }
 
@@ -1100,35 +1055,35 @@ void GameScene::animateOpponentNode(){
     std::shared_ptr<Texture> toTexture;
     switch(_matchController->getOpponentAnimType()){
         case MatchController::OX:
-            addCelestialAnim("ox");
+//            addCelestialAnim("ox");
             AnimationController::getInstance().addSpriteSheetAnimation(_oxSheet, 0, 7, true, 2);
             break;
         case MatchController::SNAKE:
-            addCelestialAnim("snake");
+//            addCelestialAnim("snake");
             AnimationController::getInstance().addSpriteSheetAnimation(_snakeSheet, 0, 18, true, 2);
             break;
         case MatchController::RABBIT:
-            addCelestialAnim("rabbit");
+//            addCelestialAnim("rabbit");
             AnimationController::getInstance().addSpriteSheetAnimation(_rabbitSheet, 0, 7, true,2);
             break;
         case MatchController::RAT:
-            addCelestialAnim("rat");
+//            addCelestialAnim("rat");
             AnimationController::getInstance().addSpriteSheetAnimation(_ratSheet, 0, 13, true,2);
             break;
         case MatchController::MONKEY:
-            addCelestialAnim("monkey");
+//            addCelestialAnim("monkey");
             AnimationController::getInstance().addSpriteSheetAnimation(_monkeySheet, 0, 9, true,2);
             break;
         case MatchController::DRAGON:
-            addCelestialAnim("dragon");
+//            addCelestialAnim("dragon");
             AnimationController::getInstance().addSpriteSheetAnimation(_dragonSheet, 0, 16, true,2);
             break;
         case MatchController::ROOSTER:
-            addCelestialAnim("rooster");
+//            addCelestialAnim("rooster");
             AnimationController::getInstance().addSpriteSheetAnimation(_roosterSheet, 0, 12, true,2);
             break;
         case MatchController::PIG:
-            addCelestialAnim("pig");
+//            addCelestialAnim("pig");
             AnimationController::getInstance().addSpriteSheetAnimation(_pigSheet, 0, 14, true,2);
             break;
         default:

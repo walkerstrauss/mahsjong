@@ -46,7 +46,6 @@ public:
      */
     enum Choice {
         NONE,
-        PAUSE,
         SETTING,
         INFO,
         SETS,
@@ -96,14 +95,9 @@ protected:
     std::shared_ptr<DiscardPile> _discardPile;
     /** Temporary discard area b/c no asset created for it yet */
     cugl::Rect discardArea;
-    cugl::Rect _pileBox;
     /** Rect for pile */
-    /** Pointer to the hand */
-    Hand* _hand;
-    std::shared_ptr<cugl::graphics::TextLayout> _win;
-    std::shared_ptr<cugl::graphics::TextLayout> _lose;
-    bool _gameWin;
-    bool _gameLose;
+    cugl::Rect _pileBox;
+    
     /** Whether this player is the host */
     bool _ishost;
     /** Whether we paused the game **/
@@ -372,13 +366,6 @@ public:
     void updateDrag(const cugl::Vec2& mousePos, bool mouseDown, bool mouseReleased, float timestep);
     
     void discardTile(std::shared_ptr<TileSet::Tile> tile);
-    
-    
-    void playSetAnim(const std::vector<std::shared_ptr<TileSet::Tile>>& tiles);
-    
-    bool isPong(const std::vector<std::shared_ptr<TileSet::Tile>>& tiles);
-    
-    bool isChow(const std::vector<std::shared_ptr<TileSet::Tile>>& tiles);
     
     void revertDiscardedTile();
     

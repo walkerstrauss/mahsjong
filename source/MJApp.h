@@ -13,7 +13,6 @@
 #include "MJHostScene.h"
 #include "MJClientScene.h"
 #include "MJSettingScene.h"
-#include "MJPauseScene.h"
 #include "MJGameOverScene.h"
 #include "MJNetworkController.h"
 #include "MJAudioController.h"
@@ -43,7 +42,6 @@ protected:
         GAME,
         SETTINGS,
         TUTORIAL,
-        PAUSE,
         OVER,
     };
     
@@ -63,8 +61,6 @@ protected:
     GameScene _gameplay;
     /** The scene for settings */  
     SettingScene _settings;
-    /** The scene for pausing the game */
-    PauseScene _pause;
     /** The scene for when the match ends/ is over */
     GameOverScene _gameover;
     /** The information scene for player onboarding and in-game information */
@@ -187,13 +183,6 @@ private:
      * @param timestep  The amount of time (in seconds) since the last frame
      */
     void updateSettingScene(float timestep);
-    
-    /**
-     * Individualized update method for the pause scene
-     *
-     * @param timestep  The amount of time (in seconds) since the last frame
-     */
-    void updatePauseScene(float timestep);
     
     /**
      * Individualized update method for the game over scene

@@ -85,7 +85,6 @@ void MahsJongApp::onShutdown() {
     _hostgame.dispose();
     _joingame.dispose();
     _settings.dispose();
-    _pause.dispose();
     _gameover.dispose();
     _info.dispose();
     _help.dispose();
@@ -148,9 +147,6 @@ void MahsJongApp::update(float timestep) {
         case SETTINGS:
             updateSettingScene(timestep);
             break;
-        case PAUSE:
-            updatePauseScene(timestep);
-            break;
         case OVER:
             updateGameOverScene(timestep);
             break;
@@ -207,10 +203,6 @@ void MahsJongApp::draw() {
            }
            _settings.render();
            break;
-       case PAUSE:
-           _gameplay.render();
-           _pause.render();
-           break;
        case OVER:
            _gameover.render(_batch);
            break;
@@ -258,8 +250,6 @@ void MahsJongApp::updateLoadingScene(float timestep) {
        _joingame.setSpriteBatch(_batch);
        _settings.init(_assets);
        _settings.setSpriteBatch(_batch);
-       _pause.init(_assets);
-       _pause.setSpriteBatch(_batch);
        _gameover.init(_assets);
        _gameover.setSpriteBatch(_batch);
        _mainmenu.setActive(true);
@@ -392,11 +382,6 @@ void MahsJongApp::updateGameScene(float timestep) {
         return;
     }
     switch (_gameplay.getChoice()){
-        case GameScene::Choice::PAUSE:
-            _gameplay.setGameActive(false);
-            _pause.setActive(true);
-            _scene = State::PAUSE;
-            break;
         case GameScene::Choice::SETS:
             // Add logic for transitioning to sets scene
             break;
@@ -480,38 +465,6 @@ void MahsJongApp::updateSettingScene(float timestep){
             // TODO: Handling turning game sound off
             break;
         case SettingScene::Choice::NONE:
-            // Do nothing
-            break;
-    }
-}
-
-/**
- * Individualized update method for the pause scene
- *
- * @param timestep  The amount of time (in seconds) since the last frame
- */
-void MahsJongApp::updatePauseScene(float timestep) {
-    _pause.update(timestep);
-    switch (_pause.choice){
-        case PauseScene::Choice::MENU:
-            _pause.setActive(false);
-            _mainmenu.setActive(true);
-            _network->disconnect();
-            _gameplay.dispose();
-            _scene = State::MENU;
-            break;
-        case PauseScene::Choice::SETTINGS:
-            _pause.setActive(false);
-            _settings.setActive(true);
-            _settings.scene = SettingScene::PrevScene::PAUSED;
-            _scene = State::SETTINGS;
-            break;
-        case PauseScene::Choice::CONTINUE:
-            _pause.setActive(false);
-            _gameplay.setGameActive(true);
-            _scene = State::GAME;
-            break;
-        case PauseScene::Choice::NONE:
             // Do nothing
             break;
     }
