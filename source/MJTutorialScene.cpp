@@ -188,18 +188,6 @@ bool TutorialScene::init(const std::shared_ptr<cugl::AssetManager> &assets, std:
             }
         }
     });
-<<<<<<< HEAD
-=======
-
-    //_presentation = std::dynamic_pointer_cast<scene2::PolygonNode>(_assets->get<cugl::scene2::SceneNode>("tutorial.tutorialScene.tu1"));
-    //_slides = {"tu1", "tu2", "tu3", "tu4", "tu5", "tu6", "tu7", "tu8", "tu9", "tu10", "tu11"};
-    //_slide = 0;
-    //_presentation->setTexture(_assets->get<cugl::graphics::Texture>(_slides[_slide]));
-    //_presentation->setContentSize(_tutorialScene->getContentSize());
-    //_presentation->setPosition(_tutorialScene->getWidth() / 2, _tutorialScene->getHeight() / 2);
-
->>>>>>> 127450907bf350d22bf8125e6b4018675c93b5a6
-    
     //Initializing textures for tabs
     for (int i = 0; i < 14; i++){
         std::shared_ptr<TexturedNode> tile = std::dynamic_pointer_cast<TexturedNode>(_assets->get<SceneNode>("tutorialscene.gameplayscene.opponent-hand-tile.tile-back_" + std::to_string(i)));
@@ -275,18 +263,6 @@ bool TutorialScene::init(const std::shared_ptr<cugl::AssetManager> &assets, std:
 #pragma mark -
 #pragma mark Gameplay Handling
 void TutorialScene::update(float timestep) {
-<<<<<<< HEAD
-=======
-
-//    _input.readInput();
-//    _input.update();
-
-    //if (_input->didPress() && !_back->isDown() && _slide < 11 && !_exit->isDown()) {
-    //    if (_slide == 10){
-    //        _slide = 0;
-    //        _choice = BACK;
-
->>>>>>> 127450907bf350d22bf8125e6b4018675c93b5a6
     // Retrieve mouse position
     Vec2 mousePos = Scene::screenToWorldCoords(Vec3(_input->getPosition()));
     // Update player hand tile positions
@@ -326,10 +302,6 @@ void TutorialScene::update(float timestep) {
     if(_phase == WELCOME){
         if (_welcomeTimer < _welcomeDelay){
             _welcomeTimer += timestep;
-<<<<<<< HEAD
->>>>>>> origin/main-2.0
-=======
->>>>>>> 127450907bf350d22bf8125e6b4018675c93b5a6
             return;
         }
         

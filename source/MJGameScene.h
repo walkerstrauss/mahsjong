@@ -224,14 +224,8 @@ protected:
     bool _wasDragToHandVisible = false;
     bool _wasDragToDiscardVisible = false;
     bool _wasTradeTileVisible = false;
-    
-    std::vector<std::shared_ptr<TileSet::Tile>> _winningHand;
-<<<<<<< HEAD
-    std::vector<std::shared_ptr<TileSet::Tile>> _myHand;
+   
     std::shared_ptr<TexturedNode> blankTile;
-=======
-
->>>>>>> 127450907bf350d22bf8125e6b4018675c93b5a6
 
 public:
 #pragma mark -
