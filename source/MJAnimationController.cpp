@@ -63,6 +63,10 @@ void AnimationController::update(float dt) {
     for (auto& anim: _bounceAnims) {
         anim.update(dt);
     }
+    
+    for(auto& anim: _poofAnims) {
+        anim.update(dt);
+    }
 
     _spriteNodeFlipAnims.erase(std::remove_if(_spriteNodeFlipAnims.begin(), _spriteNodeFlipAnims.end(),[](const SpriteNodeFlipAnim& a) {
                 return a.done;}),_spriteNodeFlipAnims.end());
@@ -75,6 +79,9 @@ void AnimationController::update(float dt) {
     
     _bounceAnims.erase(std::remove_if(_bounceAnims.begin(), _bounceAnims.end(),[](const BounceAnim& a) {
                 return a.done;}),_bounceAnims.end());
+    
+    _poofAnims.erase(std::remove_if(_poofAnims.begin(), _poofAnims.end(),[](const PoofAnim& a) {
+                return a.done;}),_poofAnims.end());
 }
 
 

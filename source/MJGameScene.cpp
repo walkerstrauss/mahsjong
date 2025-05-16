@@ -320,6 +320,16 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::sha
         }
     });
     
+    _poofNode = SpriteNode::allocWithSheet(_assets->get<Texture>("poof"), 4, 4);
+    _poofNode->setVisible(false);
+
+    _turnSheet = SpriteNode::allocWithSheet(_assets->get<Texture>("turn-sheet"), 2, 3, 3);
+    _turnSheet->setAnchor(Vec2::ANCHOR_CENTER);
+    _turnSheet->setPosition(1085,screenSize.height/2);
+    _turnSheet->setScale(0.12);
+    _turnSheet->setFrame(0);
+    _turnSheet->setVisible(true);
+    
     _remainingLabel = std::dynamic_pointer_cast<Label>(_assets->get<SceneNode>("matchscene.gameplayscene.tile-left.tile-left-number"));
     _remainingTiles = _tileSet->deck.size();
     _remainingLabel->setText(std::to_string(_remainingTiles));
@@ -337,6 +347,8 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::sha
  */
 void GameScene::dispose() {
     if (_active) {
+        _pileUINode->dispose();
+        _pileUINode = nullptr;
         _matchController->dispose();
         
         _tileSet = nullptr;
@@ -507,10 +519,12 @@ void GameScene::update(float timestep) {
     if (_matchController->getChoice() == MatchController::Choice::DRAGONTILE) {
         if (_pileUINode->getState() == PileUINode::NONE) {
             _pileUINode->setState(PileUINode::DRAGONROW);
+            _pileUINode->_finish->activate();
         } else if (_pileUINode->getState() == PileUINode::FINISH) {
             _matchController->playDragon();
             _matchController->setChoice(MatchController::Choice::NONE);
             _pileUINode->setState(PileUINode::NONE);
+            _pileUINode->_finish->deactivate();
         }
     }
         
@@ -651,6 +665,9 @@ void GameScene::render() {
         }
     }
     
+    if(_poofNode->isVisible()) {
+        _poofNode->render(_batch);
+    }    
     for(auto& sheet: _sheets){
         sheet->render(_batch);
 //        if(sheet->isVisible()){
@@ -838,6 +855,9 @@ void GameScene::updateDrag(const cugl::Vec2& mousePos, bool mouseDown, bool mous
                             } else {
                                 showPlayerGuide("must-draw-play");
                             }
+                        }
+                        else {
+                            AnimationController::getInstance().animatePoofEffect(_poofNode, _draggingTile->pos, 0.2, 14);
                         }
                   }
                   else {

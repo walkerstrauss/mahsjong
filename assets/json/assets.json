@@ -1,5 +1,8 @@
 {
     "textures": {
+        "team logo": {
+            "file": "textures/team_logo.png"
+        },
         "debuffed": {
             "file": "textures/tilesHand/debuffed.png"
         },
@@ -1083,6 +1086,9 @@
         "pig-fail": {
             "file": "textures/gameplay/pig-fail.png"
         },
+        "poof": {
+            "file": "textures/animations/poof.png"
+        }
         "shade": {
             "file": "textures/tutorial/shade.png"
         },
