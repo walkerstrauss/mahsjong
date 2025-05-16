@@ -47,6 +47,7 @@ TileSet::Tile::Tile(const TileSet::Tile::Rank r, const TileSet::Tile::Suit s){
  * Only call if host
  */
 void TileSet::initHostDeck(){
+    
     for(int i = 1; i < 4; i++){
         Tile::Suit currSuit = static_cast<Tile::Suit>(i);
         for(int j = 1; j < 10; j++){
@@ -54,12 +55,15 @@ void TileSet::initHostDeck(){
             for(int k = 0; k < 4; k++){
                 std::shared_ptr<Tile> newTile = std::make_shared<Tile>(currRank, currSuit);
                 newTile->_id = tileCount;
-                deck.emplace_back(newTile);
-                tileMap[std::to_string(newTile->_id)] = newTile;
+                normalTiles.emplace_back(newTile);
                 tileCount += 1;
             }
         }
     }
+    
+    initCelestialTiles();
+    createDeck();
+    
 }
 
 /**
@@ -69,10 +73,10 @@ void TileSet::initHostDeck(){
  */
 void TileSet::initClientDeck(const std::shared_ptr<cugl::JsonValue>& deckJson){
     std::vector<std::shared_ptr<TileSet::Tile>> allTiles = processTileJson(deckJson);
-    deck = allTiles;
     
-    for (auto& tile : deck) {
+    for (auto& tile : allTiles) {
         tileMap[std::to_string(tile->_id)] = tile;
+        deck.push_back(tile);
     }
 }
 
@@ -129,52 +133,99 @@ void TileSet::initTileNodes(const std::shared_ptr<cugl::AssetManager>& assets){
 }
 
 
-void TileSet::addCelestialTiles(const std::shared_ptr<cugl::AssetManager>& assets) {
+void TileSet::initCelestialTiles() {
+    // ROOSTER 3
     for (int i = 1; i < 4; ++i) {
         std::shared_ptr<Tile> rooster = std::make_shared<Tile>(Tile::Rank::ROOSTER, Tile::Suit::CELESTIAL);
-        rooster->_id = tileCount++;;
-        deck.push_back(rooster);
-        tileMap[std::to_string(rooster->_id)] = rooster;
-        
-        std::shared_ptr<Tile> ox = std::make_shared<Tile>(Tile::Rank::OX, Tile::Suit::CELESTIAL);
-        ox->_id = tileCount++;;
-        deck.push_back(ox);
-        tileMap[std::to_string(ox->_id)] = ox;
-
-        std::shared_ptr<Tile> rabbit = std::make_shared<Tile>(Tile::Rank::RABBIT, Tile::Suit::CELESTIAL);
-        rabbit->_id = tileCount++;;
-        deck.push_back(rabbit);
-        tileMap[std::to_string(rabbit->_id)] = rabbit;
-        
-        std::shared_ptr<Tile> snake = std::make_shared<Tile>(Tile::Rank::SNAKE, Tile::Suit::CELESTIAL);
-        snake->_id = tileCount++;;
-        deck.push_back(snake);
-        tileMap[std::to_string(snake->_id)] = snake;
-        
-        std::shared_ptr<Tile> monkey = std::make_shared<Tile>(Tile::Rank::MONKEY, Tile::Suit::CELESTIAL);
-        monkey->_id = tileCount++;;
-        deck.push_back(monkey);
-        tileMap[std::to_string(monkey->_id)] = monkey;
-        
-        std::shared_ptr<Tile> rat = std::make_shared<Tile>(Tile::Rank::RAT, Tile::Suit::CELESTIAL);
-        rat->_id = tileCount++;;
-        deck.push_back(rat);
-        tileMap[std::to_string(rat->_id)] = rat;
-        
-        std::shared_ptr<Tile> dragon = std::make_shared<Tile>(Tile::Rank::DRAGON, Tile::Suit::CELESTIAL);
-        dragon->_id = tileCount++;;
-        deck.push_back(dragon);
-        tileMap[std::to_string(dragon->_id)] = dragon;
-        
-        std::shared_ptr<Tile> pig = std::make_shared<Tile>(Tile::Rank::PIG, Tile::Suit::CELESTIAL);
-        pig->_id = tileCount++;;
-        deck.push_back(pig);
-        tileMap[std::to_string(pig->_id)] = pig;
+        tileCount++;
+        rooster->_id = tileCount;
+        celestialTiles.push_back(rooster);
     }
+    // OX 1
+        std::shared_ptr<Tile> ox = std::make_shared<Tile>(Tile::Rank::OX, Tile::Suit::CELESTIAL);
+        tileCount++;
+        ox->_id = tileCount;
+        celestialTiles.push_back(ox);
+    // RABBIT 2
+    for (int i = 1; i < 3; ++i) {
+        std::shared_ptr<Tile> rabbit = std::make_shared<Tile>(Tile::Rank::RABBIT, Tile::Suit::CELESTIAL);
+        tileCount++;
+        rabbit->_id = tileCount;
+        celestialTiles.push_back(rabbit);
+    }
+    // SNAKE 2
+    for (int i = 1; i < 3; ++i) {
+        std::shared_ptr<Tile> snake = std::make_shared<Tile>(Tile::Rank::SNAKE, Tile::Suit::CELESTIAL);
+        tileCount++;
+        snake->_id = tileCount;
+        celestialTiles.push_back(snake);
+    }
+    // MONKEY 2
+    for (int i = 1; i < 3; ++i) {
+        std::shared_ptr<Tile> monkey = std::make_shared<Tile>(Tile::Rank::MONKEY, Tile::Suit::CELESTIAL);
+        tileCount++;
+        monkey->_id = tileCount;
+        celestialTiles.push_back(monkey);
+    }
+    // RAT 7
+    for (int i = 1; i < 8; ++i) {
+        std::shared_ptr<Tile> rat = std::make_shared<Tile>(Tile::Rank::RAT, Tile::Suit::CELESTIAL);
+        tileCount++;
+        rat->_id = tileCount;
+        celestialTiles.push_back(rat);
+    }
+    // DRAGON 3
+    for (int i = 1; i < 4; ++i) {
+        std::shared_ptr<Tile> dragon = std::make_shared<Tile>(Tile::Rank::DRAGON, Tile::Suit::CELESTIAL);
+        tileCount++;
+        dragon->_id = tileCount;
+        celestialTiles.push_back(dragon);
+    }
+    // PIG 6
+    for (int i = 1; i < 7; ++i) {
+        std::shared_ptr<Tile> pig = std::make_shared<Tile>(Tile::Rank::PIG, Tile::Suit::CELESTIAL);
+        tileCount++;
+        pig->_id = tileCount;
+        celestialTiles.push_back(pig);
+    }
+    
 }
 
 #pragma mark -
 #pragma mark Tileset Gameplay Handling
+/**
+ * Combines normal and celestial tiles, ensuring even distribution
+ */
+void TileSet::createDeck() {
+    rdTileSet.init();
+    rdTileSet.shuffle(normalTiles);
+    rdTileSet.shuffle(celestialTiles);
+
+    std::size_t nIdx = 0, cIdx = 0;
+    
+    while (cIdx < celestialTiles.size()) {
+        std::shared_ptr<TileSet::Tile> celestial = celestialTiles[cIdx];
+        int gap = (std::rand() % 3) + 3;
+        for (int i = 0; i < gap && nIdx < normalTiles.size(); ++i) {
+            std::shared_ptr<TileSet::Tile> normal = normalTiles[nIdx];
+            deck.push_back(normal);
+            tileMap[std::to_string(normal->_id)] = normal;
+            nIdx++;
+        }
+        
+        deck.push_back(celestial);
+        tileMap[std::to_string(celestial->_id)] = celestial;
+        cIdx++;
+
+    }
+    
+    while (nIdx < normalTiles.size()) {
+        std::shared_ptr<TileSet::Tile> normal = normalTiles[nIdx];
+        deck.push_back(normalTiles[nIdx]);
+        tileMap[std::to_string(normal->_id)] = normal;
+        nIdx++;
+    }
+}
 /**
  * Sets the texture for all tiles in deck
  */
@@ -354,4 +405,3 @@ std::shared_ptr<cugl::JsonValue> TileSet::mapToJson() {
     
     return tileJson;
 }
-
