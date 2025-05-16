@@ -38,7 +38,7 @@ Hand::Hand(Player* player) {
 bool Hand::initHand(std::shared_ptr<TileSet>& tileSet, bool isHost){
     // draw from the deck
     for(int i = 0; i < _size; i++){
-        std::shared_ptr<TileSet::Tile> drawnTile = tileSet->deck[i];
+        std::shared_ptr<TileSet::Tile> drawnTile = tileSet->deck.back();
         if(isHost) {
             drawnTile->inHostHand = true;
             drawnTile->inClientHand = false;
@@ -50,11 +50,10 @@ bool Hand::initHand(std::shared_ptr<TileSet>& tileSet, bool isHost){
         drawnTile->_scale = 0.325;
         drawnTile->inDeck = false;
         _tiles.push_back(drawnTile);
+        tileSet->deck.pop_back();
     }
-    
     _tiles = getSortedTiles(_tiles);
     
-    tileSet->deck.erase(tileSet->deck.begin(), tileSet->deck.begin() + 13);
     return true;
 }
 
@@ -383,6 +382,7 @@ void Hand::updateTilePositions(cugl::Rect rect, float dt){
         }
         
         _tiles[i]->pos = newPos;
+        _tiles[i]->_scale = 0.325;
     }
     
     for(const auto& tile : _tiles){
@@ -404,8 +404,8 @@ void Hand::updateTilePositions(cugl::Rect rect, float dt){
         displacement = std::clamp(velocity * dt, -ROTATE_MAX, ROTATE_MAX);
         
         tile->getContainer()->setAnchor(Vec2::ANCHOR_CENTER);
-        tile->getContainer()->setAngle(displacement);
-        tile->getContainer()->setScale(tile->_scale);
+        if(!tile->animating) tile->getContainer()->setAngle(displacement);
+        if(!tile->animating) tile->getContainer()->setScale(tile->_scale);
         tile->getContainer()->setPosition(lerpPos);
         tile->getContainer()->setVisible(true);
     }

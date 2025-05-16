@@ -186,10 +186,6 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::sha
     addChild(_discardUINode->_root);
     addChild(_pileUINode->_root);
     
-    // Game Win and Lose bool
-    _gameWin = false;
-    _gameLose = false;
-    
     // Init the match controller for the game
     _matchController = std::make_shared<MatchController>();
     _matchController->init(_assets, _network);
@@ -212,7 +208,7 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::sha
     _player->getHand().updateTilePositions(_playerHandRegion, 0);
     
     _pile->pileBox = pileRegionNode->getBoundingBox();
-    _pile->setTilePositions();
+    _pile->setTilePositions(false);
 
     // Setting texture location in hand
     for(auto& tile : _player->getHand()._tiles) {
@@ -317,13 +313,6 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::sha
             };
         }
     });
-
-    _turnSheet = SpriteNode::allocWithSheet(_assets->get<Texture>("turn-sheet"), 2, 3, 3);
-    _turnSheet->setAnchor(Vec2::ANCHOR_CENTER);
-    _turnSheet->setPosition(1085,screenSize.height/2);
-    _turnSheet->setScale(0.12);
-    _turnSheet->setFrame(0);
-    _turnSheet->setVisible(true);
     
     _remainingLabel = std::dynamic_pointer_cast<Label>(_assets->get<SceneNode>("matchscene.gameplayscene.tile-left.tile-left-number"));
     _remainingTiles = _tileSet->deck.size();
@@ -333,6 +322,7 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::sha
     _timer->setText("30");
     initPlayerGuide();
     updateTurnIndicators();
+    initOpponentSpriteNodes();
     return true;
 }
 
@@ -342,6 +332,60 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::sha
 void GameScene::dispose() {
     if (_active) {
         _matchController->dispose();
+        
+        _tileSet = nullptr;
+        _pile = nullptr;
+        _discardPile = nullptr;
+        _player = nullptr;
+        _matchController->dispose();
+        
+        if (_playSetBtn) {
+            _playSetBtn->clearListeners();
+            _playSetBtn->deactivate();
+        }
+        _playSetBtn = nullptr;
+        if (_backBtn) {
+            _backBtn->clearListeners();
+            _backBtn->deactivate();
+        }
+        _backBtn = nullptr;
+        if (_infoBtn) {
+            _infoBtn->clearListeners();
+            _infoBtn->deactivate();
+        }
+        _infoBtn = nullptr;
+        if (_settingBtn) {
+            _settingBtn->clearListeners();
+            _settingBtn->deactivate();
+        }
+        _settingBtn = nullptr;
+        if (_tilesetUIBtn) {
+            _tilesetUIBtn->clearListeners();
+            _tilesetUIBtn->deactivate();
+        }
+        _tilesetUIBtn = nullptr;
+        if (_playerHandBtn) {
+            _playerHandBtn->clearListeners();
+            _playerHandBtn->deactivate();
+        }
+        _playerHandBtn = nullptr;
+        if (_playerHandBtn2) {
+            _playerHandBtn2->clearListeners();
+            _playerHandBtn2->deactivate();
+        }
+        _playerHandBtn2 = nullptr;
+        if (_opponentHandBtn) {
+            _opponentHandBtn->clearListeners();
+            _opponentHandBtn->deactivate();
+        }
+        _opponentHandBtn = nullptr;
+        if (_opponentHandBtn2) {
+            _opponentHandBtn2->clearListeners();
+            _opponentHandBtn2->deactivate();
+        }
+        _opponentHandBtn2 = nullptr;
+        
+        
         removeAllChildren();
         _active = false;
     }
@@ -353,8 +397,6 @@ void GameScene::dispose() {
  * Resets the status of the game so that we can play again
  */
 void GameScene::reset() {
-    _gameLose = false;
-    _gameWin = false;
     dispose();
     init(_assets, _network, _input);
     return;
@@ -366,6 +408,7 @@ void GameScene::reset() {
  * @param timestep The amount of time (in seconds) since the last frame
  */
 void GameScene::update(float timestep) {
+<<<<<<< HEAD
     
     if (_input->getKeyPressed() == cugl::KeyCode::A && _input->getPrevKeyPressed() != cugl::KeyCode::A) {
 
@@ -378,6 +421,8 @@ void GameScene::update(float timestep) {
         _network->broadcastTie(_network->getLocalPid());
     }
     
+=======
+>>>>>>> origin/main-2.0
     _matchController->update(timestep);
     
     // if there is no tiles left in the pile - it is a tie
@@ -399,7 +444,9 @@ void GameScene::update(float timestep) {
     
     // Constantly updating the position of tiles in hand
     _player->getHand().updateTilePositions(_playerHandRegion, timestep);
-    _pile->pileJump(timestep);
+    if(!(_pile->choice == Pile::Choice::SHUFFLE)) {
+        _pile->pileJump(timestep);
+    }
     //Constantly update pile tile positions
     _pile->updateTilePositions(timestep);
     // Constantly update discard pile tile
@@ -419,12 +466,16 @@ void GameScene::update(float timestep) {
         _choice = LOSE;
     }
     
+<<<<<<< HEAD
     if (_matchController->getChoice() == MatchController::TIE){
         _choice = TIE;
     }
     
     
     // Update timer display based on remaining time in turn
+=======
+//     Update timer display based on remaining time in turn
+>>>>>>> origin/main-2.0
     updateTurnTimer(timestep);
     
     // Updating discardUINode if matchController has a discard update
@@ -551,6 +602,11 @@ void GameScene::update(float timestep) {
         _playSetBtn->setVisible(false);
     }
     
+    if(_matchController->getOpponentAnimType() != MatchController::INACTIVE){
+        CULog("animate");
+        animateOpponentNode();
+    }
+    
     // Clicking/Tapping and Dragging logic
     if(_input->didRelease() && !_input->isDown()) {
         cugl::Vec2 initialMousePos = cugl::Scene::screenToWorldCoords(cugl::Vec3(_input->getInitialPosition()));
@@ -598,8 +654,6 @@ void GameScene::update(float timestep) {
             
             _matchController->drawTile();
         }
-        
-        updateSpriteNodes(timestep);
     } else {
         _tradeArea->setVisible(false);
         _wasTradeTileVisible = false;
@@ -673,6 +727,16 @@ void GameScene::render() {
             _player->drawInfo(_draggingTile, _batch, _matchScene->getSize());
         }
     }
+    
+    for(auto& sheet: _sheets){
+        sheet->render(_batch);
+//        if(sheet->isVisible()){
+//            _opponentCelestialTile->getContainer()->setVisible(true);
+//            _opponentCelestialTile->getContainer()->render(_batch, Affine2::IDENTITY, Color4::WHITE);
+//        } else {
+//            _opponentCelestialTile->getContainer()->setVisible(false);
+//        }
+    }
 
     std::shared_ptr<scene2::SceneNode> tilesetUIBtnUp =  _assets->get<scene2::SceneNode>("matchscene.gameplayscene.discarded-tile.discard-can.up");
     
@@ -714,7 +778,6 @@ void GameScene::clickedTile(cugl::Vec2 mousePos){
         std::shared_ptr<TileSet::Tile> currTile = pair.second;
         // If you cannot select or deselect the tile return
         if(currTile->tileRect.contains(mousePos) && currTile->tileRect.contains(initialMousePos)){
-            
             if((_network->getHostStatus() && currTile->inHostHand) || (!_network->getHostStatus() && currTile->inClientHand)) {
                 if(currTile->selectable) {
                     if(currTile->selected) {
@@ -820,7 +883,7 @@ void GameScene::updateDrag(const cugl::Vec2& mousePos, bool mouseDown, bool mous
                              if (_draggingTile->pos.x > rightTile->pos.x) {
                                  std::swap(tiles[oldIndex], tiles[oldIndex + 1]);
                                  (_pileUINode->getState() == PileUINode::DRAGONREARRANGE)
-                                 ? _pile->setTilePositions()
+                                 ? _pile->setTilePositions(false)
                                      : _player->getHand().updateTilePositions(_playerHandRegion, timestep);
                              }
                          }
@@ -829,7 +892,7 @@ void GameScene::updateDrag(const cugl::Vec2& mousePos, bool mouseDown, bool mous
                              if (leftTile && _draggingTile->pos.x < leftTile->pos.x) {
                                  std::swap(tiles[oldIndex], tiles[oldIndex - 1]);
                                  (_pileUINode->getState() == PileUINode::DRAGONREARRANGE)
-                                 ? _pile->setTilePositions()
+                                 ? _pile->setTilePositions(false)
                                      : _player->getHand().updateTilePositions(_playerHandRegion, timestep);
                              }
                          }
@@ -975,46 +1038,6 @@ void GameScene::updateDrag(const cugl::Vec2& mousePos, bool mouseDown, bool mous
      }
 }
 
-void GameScene::playSetAnim(const std::vector<std::shared_ptr<TileSet::Tile>>& tiles){
-    if (tiles.size() != 3 || !_actionAnimNode){
-        std::string animKey;
-        if (isPong(tiles)){
-            animKey = "pong";
-        } else if (isChow(tiles)){
-            animKey = "chow";
-        } else {
-            return;
-        }
-//        _actionAnimNode->play(animKey, AnimatedNode::AnimationType::INTERRUPT);
-    }
-    
-    
-}
-
-bool GameScene::isPong(const std::vector<std::shared_ptr<TileSet::Tile>>& tiles){
-    for (auto& tile : tiles){
-        if (tile->getSuit() == TileSet::Tile::Suit::CELESTIAL){
-            return false;
-        }
-    }
-    
-    return (tiles[0]->toString() == tiles[1]->toString() &&
-            tiles[1]->toString() == tiles[2]->toString());
-}
-
-bool GameScene::isChow(const std::vector<std::shared_ptr<TileSet::Tile>>& tiles){
-    for (auto& tile : tiles){
-        if (tile->getSuit() == TileSet::Tile::Suit::CELESTIAL){
-            return false;
-        }
-    }
-    auto sorted = _hand->getSortedTiles(tiles);
-    return (sorted[0]->getSuit() == sorted[1]->getSuit() &&
-            sorted[1]->getSuit() == sorted[2]->getSuit() &&
-            TileSet::Tile::toIntRank(sorted[1]->getRank()) - 1 == TileSet::Tile::toIntRank(sorted[0]->getRank()) &&
-            TileSet::Tile::toIntRank(sorted[2]->getRank()) - 1 == TileSet::Tile::toIntRank(sorted[1]->getRank()));
-}
-
 void GameScene::updateAreaVisibility(Vec2 mousePos, float timestep){
     bool isDragging = (_dragInitiated && _draggingTile != nullptr);
     int hand_length = static_cast<int>(_player->getHand()._tiles.size());
@@ -1051,4 +1074,117 @@ void GameScene::endTurnFromTimeout(){
     }
     
     _matchController->endTurn();
+}
+
+void GameScene::initOpponentSpriteNodes(){
+    Vec2 pos = _matchScene->getSize()/2;
+    
+    _opponentCelestialTile = std::make_shared<TileSet::Tile>(TileSet::Tile::Rank::OX,TileSet::Tile::Suit::CELESTIAL);
+    _tileSet->initTileNode(_opponentCelestialTile, _assets);
+    _opponentCelestialTile->pos = _matchScene->getSize() / 2;
+    _opponentCelestialTile->_scale = 0.325;
+    
+    _oxSheet = SpriteNode::allocWithSheet(_assets->get<Texture>("ox-opponent"), 3, 3, 7);
+    _oxSheet->setAnchor(Vec2::ANCHOR_CENTER);
+    _oxSheet->setPosition(pos);
+    _oxSheet->setVisible(false);
+    _sheets.push_back(_oxSheet);
+
+    _snakeSheet = SpriteNode::allocWithSheet(_assets->get<Texture>("snake-opponent"), 4, 5, 18);
+    _snakeSheet->setAnchor(Vec2::ANCHOR_CENTER);
+    _snakeSheet->setPosition(pos);
+    _snakeSheet->setVisible(false);
+    _sheets.push_back(_snakeSheet);
+
+    _rabbitSheet = SpriteNode::allocWithSheet(_assets->get<Texture>("rabbit-opponent"), 3, 3, 7);
+    _rabbitSheet->setAnchor(Vec2::ANCHOR_CENTER);
+    _rabbitSheet->setPosition(pos);
+    _rabbitSheet->setVisible(false);
+    _sheets.push_back(_rabbitSheet);
+
+    _ratSheet = SpriteNode::allocWithSheet(_assets->get<Texture>("rat-opponent"), 4, 4, 13);
+    _ratSheet->setAnchor(Vec2::ANCHOR_CENTER);
+    _ratSheet->setPosition(pos);
+    _ratSheet->setVisible(false);
+    _sheets.push_back(_ratSheet);
+
+    _monkeySheet = SpriteNode::allocWithSheet(_assets->get<Texture>("monkey-opponent"), 3, 3, 9);
+    _monkeySheet->setAnchor(Vec2::ANCHOR_CENTER);
+    _monkeySheet->setPosition(pos);
+    _monkeySheet->setVisible(false);
+    _sheets.push_back(_monkeySheet);
+
+    _dragonSheet = SpriteNode::allocWithSheet(_assets->get<Texture>("dragon-opponent"), 4, 5, 16);
+    _dragonSheet->setAnchor(Vec2::ANCHOR_CENTER);
+    _dragonSheet->setPosition(pos);
+    _dragonSheet->setVisible(false);
+    _sheets.push_back(_dragonSheet);
+
+    _roosterSheet = SpriteNode::allocWithSheet(_assets->get<Texture>("rooster-opponent"), 3, 4, 12);
+    _roosterSheet->setAnchor(Vec2::ANCHOR_CENTER);
+    _roosterSheet->setPosition(pos);
+    _roosterSheet->setVisible(false);
+    _sheets.push_back(_roosterSheet);
+
+    _pigSheet = SpriteNode::allocWithSheet(_assets->get<Texture>("pig-opponent"), 4, 4, 14);
+    _pigSheet->setAnchor(Vec2::ANCHOR_CENTER);
+    _pigSheet->setPosition(pos);
+    _pigSheet->setVisible(false);
+    _sheets.push_back(_pigSheet);
+    
+    for (auto& sheet: _sheets){
+        sheet->setScale(0.45);
+    }
+}
+
+void GameScene::animateOpponentNode(){
+    std::shared_ptr<Texture> t;
+    std::shared_ptr<Texture> fromTexture;
+    std::shared_ptr<Texture> toTexture;
+    switch(_matchController->getOpponentAnimType()){
+        case MatchController::OX:
+//            addCelestialAnim("ox");
+            AnimationController::getInstance().addSpriteSheetAnimation(_oxSheet, 0, 7, true, 2);
+            break;
+        case MatchController::SNAKE:
+//            addCelestialAnim("snake");
+            AnimationController::getInstance().addSpriteSheetAnimation(_snakeSheet, 0, 18, true, 2);
+            break;
+        case MatchController::RABBIT:
+//            addCelestialAnim("rabbit");
+            AnimationController::getInstance().addSpriteSheetAnimation(_rabbitSheet, 0, 7, true,2);
+            break;
+        case MatchController::RAT:
+//            addCelestialAnim("rat");
+            AnimationController::getInstance().addSpriteSheetAnimation(_ratSheet, 0, 13, true,2);
+            break;
+        case MatchController::MONKEY:
+//            addCelestialAnim("monkey");
+            AnimationController::getInstance().addSpriteSheetAnimation(_monkeySheet, 0, 9, true,2);
+            break;
+        case MatchController::DRAGON:
+//            addCelestialAnim("dragon");
+            AnimationController::getInstance().addSpriteSheetAnimation(_dragonSheet, 0, 16, true,2);
+            break;
+        case MatchController::ROOSTER:
+//            addCelestialAnim("rooster");
+            AnimationController::getInstance().addSpriteSheetAnimation(_roosterSheet, 0, 12, true,2);
+            break;
+        case MatchController::PIG:
+//            addCelestialAnim("pig");
+            AnimationController::getInstance().addSpriteSheetAnimation(_pigSheet, 0, 14, true,2);
+            break;
+        default:
+            break;
+    }
+    
+    _matchController->setOpponentAnimType(MatchController::INACTIVE);
+}
+
+void GameScene::addCelestialAnim(std::string type){
+    std::shared_ptr<Texture> t = _assets->get<Texture>(type + " of celestial new");
+    _opponentCelestialTile->setTexture(t);
+    std::shared_ptr<Texture> fromTexture = _assets->get<Texture>(type + "-opponent");
+    AnimationController::getInstance().animateTileMorph(_opponentCelestialTile, fromTexture, fromTexture, t, 20.0f);
+    _opponentCelestialTile->setTexture(t);
 }

@@ -102,6 +102,10 @@ public:
         bool debuffed = false;
         /** Whether or not the tile can be selected */
         bool selectable = true;
+        /** Whether or not this tile is being animated (for scaling) */
+        bool animating = false;
+        /** Whether or not this tile is being moved (pile shuffling) */
+        bool moveToCenter = false;
         
 #pragma mark -
 #pragma mark Tile Constructors
@@ -419,23 +423,6 @@ public:
         bool operator==(std::shared_ptr<Tile>& tile){
             return this->_id == tile->_id;
         }
-        
-
-//         void draw(const std::shared_ptr<cugl::graphics::SpriteBatch>& batch) {
-//             cugl::Vec2 origin = cugl::Vec2(getTileTexture()->getSize().width/2, getTileTexture()->getSize().height/2);
-            
-//             if(selected){
-//                 pos.y += 10;
-//             }
-//             cugl::Affine2 trans;
-//             trans.scale(_scale);
-//             trans.translate(pos);
-            
-//             cugl::Size textureSize(750.0, 1000.0);
-//             cugl::Vec2 rectOrigin(pos - (textureSize * _scale)/2);
-//             tileRect = cugl::Rect(rectOrigin, textureSize * _scale);
-
-//             batch->draw(getTileTexture(), origin, trans);
 
         /**
          * Sets the container of the tile's node
@@ -499,10 +486,12 @@ public:
 public:
     /** Deck with all of the tiles */
     std::vector<std::shared_ptr<Tile>> deck;
-    /** Vector with starting representation of deck */
-    std::vector<std::shared_ptr<Tile>> startingDeck;
+    /** Normal tiles in the deck */
+    std::vector<std::shared_ptr<Tile>> normalTiles;
+    /** Celestial tiles to add into the pile/hand */
+    std::vector<std::shared_ptr<Tile>> celestialTiles;
     /** Unsorted set containing tiles in the deck */
-    std::map<std::string, std::shared_ptr<Tile>> tileMap;
+    std::unordered_map<std::string, std::shared_ptr<Tile>> tileMap;
     /** Random Generator */
     cugl::Random rdTileSet;
     /** Number of tiles we have initialized */
@@ -541,7 +530,9 @@ public:
      */
     void initTileNodes(const std::shared_ptr<cugl::AssetManager>& assets);
     
-    void addCelestialTiles(const std::shared_ptr<cugl::AssetManager>& assets);
+    void initCelestialTiles();
+    
+    void initTutorialDeck();
     
 #pragma mark -
 #pragma mark Tileset Gameplay Handling
@@ -551,11 +542,17 @@ public:
      *
      * **ALWAYS SHUFFLE BEFORE READING FROM DECK**
      */
-    void shuffle() {
+    void shuffle(std::vector<std::shared_ptr<Tile>> tiles) {
         rdTileSet.init();
-        rdTileSet.shuffle(deck);
+        rdTileSet.shuffle(tiles);
     }
     
+    /**
+     * Combines normal and celestial tiles, ensuring even distribution
+     */
+    void createDeck();
+    
+
     /**
      * Prints the current deck
      */
@@ -622,6 +619,45 @@ public:
     std::vector<std::shared_ptr<Tile>> processDeckJson(const std::shared_ptr<cugl::JsonValue>& deckJson);
     
     std::shared_ptr<cugl::JsonValue> mapToJson();
+    
+    void initTileNode(std::shared_ptr<TileSet::Tile> it, std::shared_ptr<AssetManager> assets){
+        if(it->setContainer(scene2::SceneNode::alloc())) {
+            it->getContainer()->setContentSize(750, 1000);
+
+            if(it->_suit == TileSet::Tile::Suit::CELESTIAL) {
+                it->setBackTextureNode(scene2::PolygonNode::allocWithTexture(assets->get<Texture>("blank celestial hand")));
+            }
+            else {
+                it->setBackTextureNode(scene2::PolygonNode::allocWithTexture(assets->get<Texture>("blank normal hand")));
+            }
+            it->setFrontSpriteNode(scene2::SpriteNode::allocWithSheet(assets->get<Texture>(it->toString() + " new"), 1, 1));
+            
+            std::shared_ptr<scene2::PolygonNode> backTextureNode = it->getBackTextureNode();
+            std::shared_ptr<scene2::SpriteNode> faceSpriteNode = it->getFaceSpriteNode();
+            
+            // Setting anchor
+            backTextureNode->setAnchor(Vec2::ANCHOR_CENTER);
+            faceSpriteNode->setAnchor(Vec2::ANCHOR_CENTER);
+            
+            // Getting the origin
+            float width_origin = it->getContainer()->getContentSize().width/2;
+            float height_origin = it->getContainer()->getContentSize().height/2;
+            
+            // Setting position
+            backTextureNode->setPosition(width_origin, height_origin);
+            faceSpriteNode->setPosition(width_origin, height_origin);
+            
+            // Adding two textures as children
+            it->getContainer()->addChild(backTextureNode);
+            it->getContainer()->addChild(faceSpriteNode);
+            
+            it->getContainer()->setVisible(false);
+        }
+    }
+    
+    void initOpponentCelestial(std::shared_ptr<TileSet::Tile> tile, std::shared_ptr<AssetManager> assets){
+        initTileNode(tile, assets);
+    }
     
 };
 

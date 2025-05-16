@@ -2476,6 +2476,608 @@
                     "x_offset": 0.655,
                     "y_offset": -0.175
                 }
+            },
+            "drawFromPileArrow": {
+                "type": "Image",
+                "data": {
+                    "texture": "drawFromPileArrow",
+                    "anchor": [
+                        0.5,
+                        0.5
+                    ],
+                    "size": [
+                        122,
+                        103
+                    ],
+                    "angle": 0,
+                    "position": [
+                        169,
+                        251.5
+                    ],
+                    "visible": false
+                },
+                "layout": {
+                    "x_anchor": "center",
+                    "y_anchor": "top",
+                    "absolute": false,
+                    "x_offset": 0.18,
+                    "y_offset": -0.59
+                }
+            },
+            "box": {
+                "type": "Image",
+                "data": {
+                    "texture": "box",
+                    "anchor": [
+                        0.5,
+                        0.5
+                    ],
+                    "size": [
+                        368,
+                        478
+                    ],
+                    "angle": 0,
+                    "position": [
+                        368,
+                        260
+                    ],
+                    "visible": false
+                },
+                "layout": {
+                    "x_anchor": "center",
+                    "y_anchor": "top",
+                    "absolute": false,
+                    "x_offset": -0.001,
+                    "y_offset": -0.435
+                }
+            },
+            "drawFromPileText": {
+                "type": "Image",
+                "data": {
+                    "texture": "drawFromPileText",
+                    "anchor": [
+                        0.5,
+                        0.5
+                    ],
+                    "size": [
+                        300,
+                        90
+                    ],
+                    "angle": 0,
+                    "position": [
+                        192,
+                        288.5
+                    ],
+                    "visible": false
+                },
+                "layout": {
+                    "x_anchor": "center",
+                    "y_anchor": "top",
+                    "absolute": false,
+                    "x_offset": 0.25,
+                    "y_offset": -0.45
+                }
+            },
+            "dragToDiscardArrow": {
+                "type": "Image",
+                "data": {
+                    "texture": "dragToDiscardArrow",
+                    "anchor": [
+                        0.5,
+                        0.5
+                    ],
+                    "size": [
+                        60,
+                        125
+                    ],
+                    "angle": 0,
+                    "position": [
+                        120,
+                        265
+                    ],
+                    "visible": false
+                },
+                "layout": {
+                    "x_anchor": "left",
+                    "y_anchor": "top",
+                    "absolute": false,
+                    "x_offset": 0.77,
+                    "y_offset": -0.68
+                }
+            },
+            "dragToDiscardText": {
+                "type": "Image",
+                "data": {
+                    "texture": "dragToDiscardText",
+                    "anchor": [
+                        0.5,
+                        0.5
+                    ],
+                    "size": [
+                        400,
+                        60
+                    ],
+                    "angle": 0,
+                    "position": [
+                        118,
+                        225
+                    ],
+                    "visible": false
+                },
+                "layout": {
+                    "x_anchor": "left",
+                    "y_anchor": "top",
+                    "absolute": false,
+                    "x_offset": 0.76,
+                    "y_offset": -0.53
+                }
+            },
+            "waitOpponentArrow": {
+                "type": "Image",
+                "data": {
+                    "texture": "waitOpponentArrow",
+                    "anchor": [
+                        0.5,
+                        0.5
+                    ],
+                    "size": [
+                        118,
+                        106
+                    ],
+                    "angle": 0,
+                    "position": [
+                        349,
+                        587
+                    ],
+                    "visible": false
+                },
+                "layout": {
+                    "x_anchor": "left",
+                    "y_anchor": "top",
+                    "absolute": false,
+                    "x_offset": 0.25,
+                    "y_offset": -0.31
+                }
+            },
+            "waitOpponentText": {
+                "type": "Image",
+                "data": {
+                    "texture": "waitOpponentText",
+                    "anchor": [
+                        0.5,
+                        0.5
+                    ],
+                    "size": [
+                        351,
+                        59
+                    ],
+                    "angle": 0,
+                    "position": [
+                        311,
+                        807.5
+                    ],
+                    "visible": false
+                },
+                "layout": {
+                    "x_anchor": "left",
+                    "y_anchor": "top",
+                    "absolute": false,
+                    "x_offset": 0.25,
+                    "y_offset": -0.17
+                }
+            },
+            "playCelestialTileText": {
+                "type": "Image",
+                "data": {
+                    "texture": "playCelestialTileText",
+                    "anchor": [
+                        0.5,
+                        0.5
+                    ],
+                    "size": [
+                        374,
+                        60
+                    ],
+                    "angle": 0,
+                    "position": [
+                        118,
+                        249
+                    ],
+                    "visible": false
+                },
+                "layout": {
+                    "x_anchor": "left",
+                    "y_anchor": "top",
+                    "absolute": false,
+                    "x_offset": 0.75,
+                    "y_offset": -0.73
+                }
+            },
+            "playCelestialTileArrow": {
+                "type": "Image",
+                "data": {
+                    "texture": "dragToDiscardArrow",
+                    "anchor": [
+                        0.5,
+                        0.5
+                    ],
+                    "size": [
+                        60,
+                        125
+                    ],
+                    "angle": 0,
+                    "position": [
+                        126,
+                        21
+                    ],
+                    "visible": false
+                },
+                "layout": {
+                    "x_anchor": "left",
+                    "y_anchor": "top",
+                    "absolute": false,
+                    "x_offset": 0.9,
+                    "y_offset": -0.72
+                }
+            },
+            "drawDiscardedArrow": {
+                "type": "Image",
+                "data": {
+                    "texture": "drawDiscardedArrow",
+                    "anchor": [
+                        0.5,
+                        0.5
+                    ],
+                    "size": [
+                        175,
+                        493
+                    ],
+                    "angle": 0,
+                    "position": [
+                        346,
+                        -36.5
+                    ],
+                    "visible": false
+                },
+                "layout": {
+                    "x_anchor": "left",
+                    "y_anchor": "top",
+                    "absolute": false,
+                    "x_offset": 0.77,
+                    "y_offset": -0.46
+                }
+            },
+            "drawDiscardedText": {
+                "type": "Image",
+                "data": {
+                    "texture": "drawDiscardedText",
+                    "anchor": [
+                        0.5,
+                        0.5
+                    ],
+                    "size": [
+                        326,
+                        59
+                    ],
+                    "angle": 0,
+                    "position": [
+                        333,
+                        274.5
+                    ],
+                    "visible": false
+                },
+                "layout": {
+                    "x_anchor": "left",
+                    "y_anchor": "top",
+                    "absolute": false,
+                    "x_offset": 0.8,
+                    "y_offset": -0.23
+                }
+            },
+            "pressText": {
+                "type": "Image",
+                "data": {
+                    "texture": "pressText",
+                    "anchor": [
+                        0.5,
+                        0.5
+                    ],
+                    "size": [
+                        380,
+                        30
+                    ],
+                    "angle": 0,
+                    "position": [
+                        155,
+                        221.5
+                    ],
+                    "visible": false
+                },
+                "layout": {
+                    "x_anchor": "left",
+                    "y_anchor": "top",
+                    "absolute": false,
+                    "x_offset": 0.31,
+                    "y_offset": -0.7
+                }
+            },
+            "pressArrow": {
+                "type": "Image",
+                "data": {
+                    "texture": "pressArrow",
+                    "anchor": [
+                        0.5,
+                        0.5
+                    ],
+                    "size": [
+                        30,
+                        32
+                    ],
+                    "angle": 0,
+                    "position": [
+                        123,
+                        204
+                    ],
+                    "visible": false
+                },
+                "layout": {
+                    "x_anchor": "left",
+                    "y_anchor": "top",
+                    "absolute": false,
+                    "x_offset": 0.18,
+                    "y_offset": -0.75
+                }
+            },
+            "pressArrow2": {
+                "type": "Image",
+                "data": {
+                    "texture": "pressArrow",
+                    "anchor": [
+                        0.5,
+                        0.5
+                    ],
+                    "size": [
+                        30,
+                        32
+                    ],
+                    "angle": 0,
+                    "position": [
+                        123,
+                        143
+                    ],
+                    "visible": false
+                },
+                "layout": {
+                    "x_anchor": "left",
+                    "y_anchor": "top",
+                    "absolute": false,
+                    "x_offset": 0.25,
+                    "y_offset": -0.75
+                }
+            },
+            "playsetText": {
+                "type": "Image",
+                "data": {
+                    "texture": "playsetText",
+                    "anchor": [
+                        0.5,
+                        0.5
+                    ],
+                    "size": [
+                        244,
+                        66
+                    ],
+                    "angle": 0,
+                    "position": [
+                        257,
+                        219
+                    ],
+                    "visible": false
+                },
+                "layout": {
+                    "x_anchor": "left",
+                    "y_anchor": "top",
+                    "absolute": false,
+                    "x_offset": 0.8,
+                    "y_offset": -0.5
+                }
+            },
+            "playsetArrow": {
+                "type": "Image",
+                "data": {
+                    "texture": "playsetArrow",
+                    "anchor": [
+                        0.5,
+                        0.5
+                    ],
+                    "size": [
+                        145,
+                        110
+                    ],
+                    "angle": 0,
+                    "position": [
+                        325,
+                        141
+                    ],
+                    "visible": false
+                },
+                "layout": {
+                    "x_anchor": "left",
+                    "y_anchor": "top",
+                    "absolute": false,
+                    "x_offset": 0.82,
+                    "y_offset": -0.35
+                }
+            },
+            "welcome-section": {
+                "type": "Image",
+                "data": {
+                    "texture": "welcome",
+                    "anchor": [
+                        0.5,
+                        0.5
+                    ],
+                    "size": [
+                        1008,
+                        597
+                    ],
+                    "angle": 0,
+                    "position": [
+                        0,
+                        0
+                    ],
+                    "visible": false
+                },
+                "layout": {
+                    "x_anchor": "center",
+                    "y_anchor": "center",
+                    "absolute": false,
+                    "x_offset": 0.0,
+                    "y_offset": -0.0
+                }
+            },
+            "welcome-shade": {
+                "type": "Node",
+                "format": {
+                    "type": "Anchored"
+                },
+                "data": {
+                    "anchor": [
+                        0,
+                        1
+                    ],
+                    "size": [
+                        1024,
+                        576
+                    ],
+                    "angle": 0,
+                    "position": [
+                        0,
+                        0
+                    ],
+                    "visible": false
+                },
+                "children": {
+                    "settingShade": {
+                        "type": "Image",
+                        "data": {
+                            "texture": "shade",
+                            "anchor": [
+                                0.5,
+                                0.5
+                            ],
+                            "size": [
+                                1024,
+                                576
+                            ],
+                            "angle":0,
+                            "position": [
+                                0,
+                                0
+                            ],
+                            "visible": true
+                        },
+                        "layout": {
+                            "x_anchor": "fill",
+                            "y_anchor": "fill",
+                            "absolute": false,
+                            "x_offset": 0,
+                            "y_offset": 0
+                        }
+                    }
+                },
+                "layout": {
+                    "x_anchor": "fill",
+                    "y_anchor": "fill",
+                    "absolute": false,
+                    "x_offset": 0,
+                    "y_offset": 0
+                }
+            },
+            "finished-section": {
+                "type": "Image",
+                "data": {
+                    "texture": "finished",
+                    "anchor": [
+                        0.5,
+                        0.5
+                    ],
+                    "size": [
+                        1008,
+                        597
+                    ],
+                    "angle": 0,
+                    "position": [
+                        0,
+                        0
+                    ],
+                    "visible": false
+                },
+                "layout": {
+                    "x_anchor": "center",
+                    "y_anchor": "center",
+                    "absolute": false,
+                    "x_offset": 0.0,
+                    "y_offset": -0.0
+                }
+            },
+            "finished-shade": {
+                "type": "Node",
+                "format": {
+                    "type": "Anchored"
+                },
+                "data": {
+                    "anchor": [
+                        0,
+                        1
+                    ],
+                    "size": [
+                        1024,
+                        576
+                    ],
+                    "angle": 0,
+                    "position": [
+                        0,
+                        0
+                    ],
+                    "visible": false
+                },
+                "children": {
+                    "settingShade": {
+                        "type": "Image",
+                        "data": {
+                            "texture": "shade",
+                            "anchor": [
+                                0.5,
+                                0.5
+                            ],
+                            "size": [
+                                1024,
+                                576
+                            ],
+                            "angle":0,
+                            "position": [
+                                0,
+                                0
+                            ],
+                            "visible": true
+                        },
+                        "layout": {
+                            "x_anchor": "fill",
+                            "y_anchor": "fill",
+                            "absolute": false,
+                            "x_offset": 0,
+                            "y_offset": 0
+                        }
+                    }
+                },
+                "layout": {
+                    "x_anchor": "fill",
+                    "y_anchor": "fill",
+                    "absolute": false,
+                    "x_offset": 0,
+                    "y_offset": 0
+                }
             }
         }
     }

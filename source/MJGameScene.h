@@ -46,7 +46,6 @@ public:
      */
     enum Choice {
         NONE,
-        PAUSE,
         SETTING,
         INFO,
         SETS,
@@ -95,14 +94,10 @@ protected:
     std::shared_ptr<Pile> _pile;
     /** Reference to the discard pile */
     std::shared_ptr<DiscardPile> _discardPile;
+    /** Temporary discard area b/c no asset created for it yet */
+    cugl::Rect discardArea;
     /** Rect for pile */
     cugl::Rect _pileBox;
-    /** Pointer to the hand */
-    Hand* _hand;
-    std::shared_ptr<cugl::graphics::TextLayout> _win;
-    std::shared_ptr<cugl::graphics::TextLayout> _lose;
-    bool _gameWin;
-    bool _gameLose;
     /** Whether this player is the host */
     bool _ishost;
     /** Whether we paused the game **/
@@ -157,6 +152,18 @@ protected:
     std::shared_ptr<cugl::scene2::SpriteNode> _pongSheet;
     /** Holds reference to turn sprite node */
     std::shared_ptr<cugl::scene2::SpriteNode> _turnSheet;
+    
+    std::vector<std::shared_ptr<cugl::scene2::SpriteNode>> _sheets;
+    std::shared_ptr<cugl::scene2::SpriteNode> _oxSheet;
+    std::shared_ptr<cugl::scene2::SpriteNode> _snakeSheet;
+    std::shared_ptr<cugl::scene2::SpriteNode> _rabbitSheet;
+    std::shared_ptr<cugl::scene2::SpriteNode> _ratSheet;
+    std::shared_ptr<cugl::scene2::SpriteNode> _monkeySheet;
+    std::shared_ptr<cugl::scene2::SpriteNode> _dragonSheet;
+    std::shared_ptr<cugl::scene2::SpriteNode> _roosterSheet;
+    std::shared_ptr<cugl::scene2::SpriteNode> _pigSheet;
+    std::shared_ptr<TileSet::Tile> _opponentCelestialTile;
+    
     float _frameTimer = 0.0f;
     float _frameDelay = 0.2f;
     
@@ -215,6 +222,7 @@ protected:
     
     std::vector<std::shared_ptr<TileSet::Tile>> _winningHand;
     std::vector<std::shared_ptr<TileSet::Tile>> _myHand;
+    std::shared_ptr<TexturedNode> blankTile;
 
 public:
 #pragma mark -
@@ -358,32 +366,6 @@ public:
     void updateDrag(const cugl::Vec2& mousePos, bool mouseDown, bool mouseReleased, float timestep);
     
     void discardTile(std::shared_ptr<TileSet::Tile> tile);
-    
-    
-    void playSetAnim(const std::vector<std::shared_ptr<TileSet::Tile>>& tiles);
-    
-    bool isPong(const std::vector<std::shared_ptr<TileSet::Tile>>& tiles);
-    
-    bool isChow(const std::vector<std::shared_ptr<TileSet::Tile>>& tiles);
-    
-    void updateSpriteNode(std::shared_ptr<SpriteNode>& sheetNode){
-        if (sheetNode->getFrame() >= sheetNode->getCount() - 1){
-            sheetNode->setFrame(0);
-        } else {
-            sheetNode->setFrame(sheetNode->getFrame() + 1);
-        }
-        return;
-    }
-    
-    void updateSpriteNodes(float timestep){
-        _frameTimer += timestep;  // Accumulate time
-        if (_frameTimer >= _frameDelay) {
-            _frameTimer = 0; // Reset timer
-            //            updateSpriteNode(_pongSheet);
-            //            updateSpriteNode(_chowSheet);
-            updateSpriteNode(_turnSheet);
-        }
-    }
     
     void revertDiscardedTile();
     
@@ -599,6 +581,7 @@ public:
         }
     }
     
+<<<<<<< HEAD
     
     
     std::vector<std::shared_ptr<TileSet::Tile>> getLocalHand() const {
@@ -614,6 +597,15 @@ public:
     }
     
     
+=======
+    void initOpponentSpriteNodes();
+    
+    void animateOpponentNode();
+    
+    void addCelestialAnim(std::string type);
+>>>>>>> origin/main-2.0
 };
+
+
 
 #endif /* __MJ_GAME_SCENE_H__ */

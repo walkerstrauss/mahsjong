@@ -97,20 +97,61 @@ bool HostScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::sha
 
     _hostScene1->doLayout(); // Repositions the HUD
     
-    _startgame = std::dynamic_pointer_cast<scene2::Button>(_assets->get<scene2::SceneNode>("host.hostscene.menu.button1"));
-    _backout = std::dynamic_pointer_cast<scene2::Button>(_assets->get<scene2::SceneNode>("host.hostscene.menu.button2"));
-    _waitOrStart = std::dynamic_pointer_cast<scene2::PolygonNode>(_assets->get<scene2::SceneNode>("host.hostscene.menu.button1.up.start"));
-    
-    _tileOne = std::dynamic_pointer_cast<scene2::PolygonNode>(_assets->get<scene2::SceneNode>("host.hostscene.waitingRoom.roomid-tile.host1-roomid-tile"));
-    _tileTwo = std::dynamic_pointer_cast<scene2::PolygonNode>(_assets->get<scene2::SceneNode>("host.hostscene.waitingRoom.roomid-tile.host1-roomid-tile_1"));
-    _tileThree = std::dynamic_pointer_cast<scene2::PolygonNode>(_assets->get<scene2::SceneNode>("host.hostscene.waitingRoom.roomid-tile.host1-roomid-tile_2"));
-    _tileFour = std::dynamic_pointer_cast<scene2::PolygonNode>(_assets->get<scene2::SceneNode>("host.hostscene.waitingRoom.roomid-tile.host1-roomid-tile_3"));
-    
-    _playerSingle = _assets->get<scene2::SceneNode>("host.hostscene.waitingRoom.playerBoard");
-    _playerMulti = _assets->get<scene2::SceneNode>("host.hostscene.waitingRoom.playerBoard2");
-    _playerMulti->setVisible(false);
+    //_startgame = std::dynamic_pointer_cast<scene2::Button>(
+    //    _assets->get<scene2::SceneNode>("host.host1Scene.waitingRoom.menu.start")
+    //);
 
-    //AudioController::getInstance().init(_assets);
+    _backout = std::dynamic_pointer_cast<scene2::Button>(
+        _assets->get<scene2::SceneNode>("host.host1Scene.waitingRoom.menu.exit")
+    );
+
+    //_waitOrStart1 = std::dynamic_pointer_cast<scene2::PolygonNode>(
+    //    _assets->get<scene2::SceneNode>("host.host1Scene.waitingRoom.menu.start.up.host1-waiting-button")
+    //);
+    
+    _tileOne = std::dynamic_pointer_cast<scene2::PolygonNode>(_assets->get<scene2::SceneNode>("host.host1Scene.waitingRoom.roomid-tile.host1-roomid-tile"));
+    _tileTwo = std::dynamic_pointer_cast<scene2::PolygonNode>(_assets->get<scene2::SceneNode>("host.host1Scene.waitingRoom.roomid-tile.host1-roomid-tile_1"));
+    _tileThree = std::dynamic_pointer_cast<scene2::PolygonNode>(_assets->get<scene2::SceneNode>("host.host1Scene.waitingRoom.roomid-tile.host1-roomid-tile_2"));
+    _tileFour = std::dynamic_pointer_cast<scene2::PolygonNode>(_assets->get<scene2::SceneNode>("host.host1Scene.waitingRoom.roomid-tile.host1-roomid-tile_3"));
+    _tileFive = std::dynamic_pointer_cast<scene2::PolygonNode>(_assets->get<scene2::SceneNode>("host.host1Scene.waitingRoom.roomid-tile.host1-roomid-tile_4"));
+
+    _tileOne3 = std::dynamic_pointer_cast<PolygonNode>(
+        _assets->get<SceneNode>("host3.host3Scene.waitingRoom.roomid-tile.host1-roomid-tile")
+    );
+    _tileTwo3 = std::dynamic_pointer_cast<PolygonNode>(
+        _assets->get<SceneNode>("host3.host3Scene.waitingRoom.roomid-tile.host1-roomid-tile_1")
+    );
+    _tileThree3 = std::dynamic_pointer_cast<PolygonNode>(
+        _assets->get<SceneNode>("host3.host3Scene.waitingRoom.roomid-tile.host1-roomid-tile_2")
+    );
+    _tileFour3 = std::dynamic_pointer_cast<PolygonNode>(
+        _assets->get<SceneNode>("host3.host3Scene.waitingRoom.roomid-tile.host1-roomid-tile_3")
+    );
+    _tileFive3 = std::dynamic_pointer_cast<PolygonNode>(
+        _assets->get<SceneNode>("host3.host3Scene.waitingRoom.roomid-tile.host1-roomid-tile_4")
+    );
+
+    
+    //_playerSingle = _assets->get<scene2::SceneNode>("host.host1Scene.waitingRoom.playerBoard");
+
+    _hostScene3 = _assets->get<scene2::SceneNode>("host3");
+    _hostScene3->setContentSize(getSize());
+    _hostScene3->getChild(0)->setContentSize(_hostScene3->getContentSize());
+    _hostScene3->setPosition(offset, _hostScene3->getPosition().y);
+    _hostScene3->doLayout();
+
+
+    addChild(_hostScene3);
+    _hostScene3->setVisible(false);
+
+    _startgame2 = std::dynamic_pointer_cast<scene2::Button>(
+        _assets->get<scene2::SceneNode>("host3.host3Scene.waitingRoom.menu.start")
+    );
+
+    _backout2 = std::dynamic_pointer_cast<scene2::Button>(
+        _assets->get<scene2::SceneNode>("host3.host3Scene.waitingRoom.menu.exit")
+    );
+
 
     // Program the buttons
     _backout->addListener([this](const std::string& name, bool down) {
@@ -121,12 +162,27 @@ bool HostScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::sha
         }
     });
 
-    _startgame->addListener([this](const std::string& name, bool down) {
+    //_startgame->addListener([this](const std::string& name, bool down) {
+    //    if (down) {
+    //        AudioController::getInstance().playSound("Confirm");
+    //        startGame();
+    //    }
+    //});
+
+    _backout2->addListener([this](const std::string& name, bool down) {
+        if (down) {
+            _backClicked = true;
+            AudioController::getInstance().playSound("Exit");
+            _network->disconnect();
+        }
+        });
+
+    _startgame2->addListener([this](const std::string& name, bool down) {
         if (down) {
             AudioController::getInstance().playSound("Confirm");
             startGame();
         }
-    });
+        });
 
     //_gameid = std::dynamic_pointer_cast<scene2::Label>(_assets->get<scene2::SceneNode>("host.hostscene.menu.gameid.gameid_textfield.gameid"));
     //_player = std::dynamic_pointer_cast<scene2::Label>(_assets->get<scene2::SceneNode>("host.hostscene.menu.player.player_textfield.label"));  
@@ -173,30 +229,12 @@ void HostScene::idSetup(const std::shared_ptr<cugl::scene2::PolygonNode>& tile, 
             tile->setTexture(_assets->get<cugl::graphics::Texture>("client1-gameid-tile9"));
             break;
         case '0':
-            tile->setTexture(_assets->get<cugl::graphics::Texture>("client1-gameid-tile10"));
-            break;
-        case 'A':
-            tile->setTexture(_assets->get<cugl::graphics::Texture>("client1-gameid-tile11"));
-            break;
-        case 'B':
-            tile->setTexture(_assets->get<cugl::graphics::Texture>("client1-gameid-tile12"));
-            break;
-        case 'C':
-            tile->setTexture(_assets->get<cugl::graphics::Texture>("client1-gameid-tile13"));
-            break;
-        case 'D':
-            tile->setTexture(_assets->get<cugl::graphics::Texture>("client1-gameid-tile14"));
-            break;
-        case 'E':
-            tile->setTexture(_assets->get<cugl::graphics::Texture>("client1-gameid-tile15"));
-            break;
-        case 'F':
-            tile->setTexture(_assets->get<cugl::graphics::Texture>("client1-gameid-tile16"));
+            tile->setTexture(_assets->get<cugl::graphics::Texture>("client1-gameid-tile"));
             break;
         default:
             tile->setTexture(_assets->get<cugl::graphics::Texture>("client1-gameid-blank"));
     }
-        tile->setContentSize(80, 90);
+        tile->setContentSize(50, 67);
 }
 
 /**
@@ -227,11 +265,15 @@ void HostScene::setActive(bool value) {
             _network->connectAsHost();
             _backClicked = false;
         } else {
-            _startgame->deactivate();
+            //_startgame->deactivate();
+            _startgame2->deactivate();
             //updateText(_startgame, "INACTIVE");
             _backout->deactivate();
-            _startgame->setDown(false);
+            _backout2->deactivate();
+            //_startgame->setDown(false);
             _backout->setDown(false);
+            _startgame2->setDown(false);
+            _backout2->setDown(false);
             _startGameClicked = false;
         }
     }
@@ -268,7 +310,7 @@ void HostScene::update(float timestep) {
     if(_network->getStatus() == NetworkController::Status::CONNECTED){
         if (!_startGameClicked) {
             //updateText(_startgame, "Start Game");
-            _startgame->activate();
+            _startgame2->activate();
         }  
         if (_network != nullptr) {
             networkHex = _network->getRoomID();
@@ -278,21 +320,34 @@ void HostScene::update(float timestep) {
                 _playedSound = true;
                 AudioController::getInstance().playSound("PlayerJoined");
             }
-            _playerMulti->setVisible(true);
-            _playerSingle->setVisible(false);
-            _waitOrStart->setTexture(_assets->get<cugl::graphics::Texture>("hoststart"));
+            _hostScene3->setVisible(true);
+            _backout2->activate();
+            //_startgame->activate();
+            _hostScene1->setVisible(false);
+
+            CULog("Testing");
         }
         else {
-            _playerMulti->setVisible(false);
-            _playerSingle->setVisible(true);
-            _waitOrStart->setTexture(_assets->get<cugl::graphics::Texture>("host1-waiting-button"));
+            _startgame2->deactivate();
+            _hostScene3->setVisible(false);
+            _hostScene1->setVisible(true);
         }
-        _waitOrStart->setContentSize(200, 181);
+        _assets->get<scene2::SceneNode>("host.host1Scene.waitingRoom.menu.start.up.host1-waiting-button")->setContentSize(150, 150);
+        _assets->get<scene2::SceneNode>("host3.host3Scene.waitingRoom.menu.start.up.start")->setContentSize(150, 150);
+
+        std::string dec = hex2dec(networkHex);
         
-        idSetup(_tileOne, networkHex[0]);
-        idSetup(_tileTwo, networkHex[1]);
-        idSetup(_tileThree, networkHex[2]);
-        idSetup(_tileFour, networkHex[3]);
+        idSetup(_tileOne, dec[0]);
+        idSetup(_tileTwo, dec[1]);
+        idSetup(_tileThree, dec[2]);
+        idSetup(_tileFour, dec[3]);
+        idSetup(_tileFive, dec[4]);
+
+        idSetup(_tileOne3, dec[0]);
+        idSetup(_tileTwo3, dec[1]);
+        idSetup(_tileThree3, dec[2]);
+        idSetup(_tileFour3, dec[3]);
+        idSetup(_tileFive3, dec[4]);
     }
 }
 

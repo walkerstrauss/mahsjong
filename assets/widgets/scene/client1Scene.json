@@ -1,5 +1,5 @@
 {
-  "variables": { "size": [ "data", "size" ] },
+    "variables": {},
     "contents": {
         "type": "Node",
         "format": {
@@ -49,57 +49,1104 @@
                     "y_offset": 0
                 }
             },
-            "client1-board": {
-                "type": "Image",
-                "data": {
-                    "texture": "client1-board",
-                    "anchor": [
-                        0,
-                        1
-                    ],
-                    "size": [
-                        970,
-                        550
-                    ],
-                    "angle": 0,
-                    "position": [
-                        0,
-                        48
-                    ],
-                    "visible": true
-                },
-                "layout": {
-                    "x_anchor": "left",
-                    "y_anchor": "top",
-                    "absolute": false,
-                    "x_offset": 0.18,
-                    "y_offset": -0.15
-                }
-            },
-            "cancel-box": {
-                "type": "Button",
+            "board": {
+                "type": "Node",
                 "format": {
                     "type": "Anchored"
                 },
                 "data": {
                     "anchor": [
-                        0,
-                        1
+                        0.5,
+                        0.5
                     ],
                     "size": [
-                        80,
-                        80
+                        782,
+                        455
                     ],
                     "angle": 0,
                     "position": [
-                        815,
-                        439
+                        121,
+                        48
                     ],
-                    "visible": true,
-                    "upnode": "up"
+                    "scale": [
+                        1.2,
+                        1.2
+                    ],
+                    "visible": true
                 },
                 "children": {
-                    "up": {
+                    "client1-board": {
+                        "type": "Image",
+                        "data": {
+                            "texture": "client1-board",
+                            "anchor": [
+                                0,
+                                1
+                            ],
+                            "size": [
+                                782,
+                                440
+                            ],
+                            "angle": 0,
+                            "position": [
+                                0,
+                                0
+                            ],
+                            "visible": true
+                        },
+                        "layout": {
+                            "x_anchor": "left",
+                            "y_anchor": "top",
+                            "absolute": false,
+                            "x_offset": 0,
+                            "y_offset": -0.03
+                        }
+                    },
+                    "cancel-box": {
+                        "type": "Button",
+                        "format": {
+                            "type": "Anchored"
+                        },
+                        "data": {
+                            "anchor": [
+                                0,
+                                1
+                            ],
+                            "size": [
+                                64,
+                                64
+                            ],
+                            "angle": 0,
+                            "position": [
+                                694,
+                                391
+                            ],
+                            "visible": true,
+                            "upnode": "up"
+                        },
+                        "children": {
+                            "up": {
+                                "type": "Node",
+                                "format": {
+                                    "type": "Anchored"
+                                },
+                                "data": {
+                                    "anchor": [
+                                        0,
+                                        1
+                                    ],
+                                    "size": [
+                                        64,
+                                        64
+                                    ],
+                                    "angle": 0,
+                                    "position": [
+                                        0,
+                                        0
+                                    ],
+                                    "visible": true
+                                },
+                                "children": {
+                                    "client1-cancel-box": {
+                                        "type": "Image",
+                                        "data": {
+                                            "texture": "client1-cancel-box",
+                                            "anchor": [
+                                                0,
+                                                1
+                                            ],
+                                            "size": [
+                                                64,
+                                                64
+                                            ],
+                                            "angle": 0,
+                                            "position": [
+                                                0,
+                                                0
+                                            ],
+                                            "visible": true
+                                        },
+                                        "layout": {
+                                            "x_anchor": "left",
+                                            "y_anchor": "top",
+                                            "absolute": false,
+                                            "x_offset": 0,
+                                            "y_offset": 0
+                                        }
+                                    }
+                                },
+                                "layout": {
+                                    "x_anchor": "left",
+                                    "y_anchor": "top",
+                                    "absolute": false,
+                                    "x_offset": 0,
+                                    "y_offset": 0
+                                }
+                            }
+                        },
+                        "layout": {
+                            "x_anchor": "left",
+                            "y_anchor": "top",
+                            "absolute": false,
+                            "x_offset": 0.89,
+                            "y_offset": 0
+                        }
+                    },
+                    "gameid-pad": {
+                        "type": "Node",
+                        "format": {
+                            "type": "Float",
+                            "x_alignment": "left",
+                            "y_alignment": "top",
+                            "orientation": "horizontal"
+                        },
+                        "data": {
+                            "anchor": [
+                                0,
+                                1
+                            ],
+                            "size": [
+                                460,
+                                195
+                            ],
+                            "angle": 0,
+                            "position": [
+                                161,
+                                103
+                            ],
+                            "visible": true
+                        },
+                        "children": {
+                            "pad-tile": {
+                                "type": "Button",
+                                "format": {
+                                    "type": "Anchored"
+                                },
+                                "data": {
+                                    "anchor": [
+                                        0.5,
+                                        0.5
+                                    ],
+                                    "size": [
+                                        92,
+                                        92
+                                    ],
+                                    "angle": 0,
+                                    "position": [
+                                        46,
+                                        46
+                                    ],
+                                    "visible": true,
+                                    "upnode": "up"
+                                },
+                                "children": {
+                                    "up": {
+                                        "type": "Node",
+                                        "format": {
+                                            "type": "Anchored"
+                                        },
+                                        "data": {
+                                            "anchor": [
+                                                0,
+                                                1
+                                            ],
+                                            "size": [
+                                                92,
+                                                92
+                                            ],
+                                            "angle": 0,
+                                            "position": [
+                                                0,
+                                                0
+                                            ],
+                                            "visible": true
+                                        },
+                                        "children": {
+                                            "client1-gameid-tile": {
+                                                "type": "Image",
+                                                "data": {
+                                                    "texture": "client1-gameid-tile",
+                                                    "anchor": [
+                                                        0,
+                                                        1
+                                                    ],
+                                                    "size": [
+                                                        92,
+                                                        92
+                                                    ],
+                                                    "angle": 0,
+                                                    "position": [
+                                                        0,
+                                                        0
+                                                    ],
+                                                    "visible": true
+                                                },
+                                                "layout": {
+                                                    "x_anchor": "left",
+                                                    "y_anchor": "top",
+                                                    "absolute": false,
+                                                    "x_offset": 0,
+                                                    "y_offset": 0
+                                                }
+                                            }
+                                        },
+                                        "layout": {
+                                            "x_anchor": "left",
+                                            "y_anchor": "top",
+                                            "absolute": false,
+                                            "x_offset": 0,
+                                            "y_offset": 0
+                                        }
+                                    }
+                                },
+                                "layout": {
+                                    "priority": 0,
+                                    "padding": [
+                                        0,
+                                        0,
+                                        0,
+                                        0
+                                    ]
+                                }
+                            },
+                            "pad-tile1": {
+                                "type": "Button",
+                                "format": {
+                                    "type": "Anchored"
+                                },
+                                "data": {
+                                    "anchor": [
+                                        0.5,
+                                        0.5
+                                    ],
+                                    "size": [
+                                        92,
+                                        92
+                                    ],
+                                    "angle": 0,
+                                    "position": [
+                                        138,
+                                        46
+                                    ],
+                                    "visible": true,
+                                    "upnode": "up"
+                                },
+                                "children": {
+                                    "up": {
+                                        "type": "Node",
+                                        "format": {
+                                            "type": "Anchored"
+                                        },
+                                        "data": {
+                                            "anchor": [
+                                                0,
+                                                1
+                                            ],
+                                            "size": [
+                                                92,
+                                                92
+                                            ],
+                                            "angle": 0,
+                                            "position": [
+                                                0,
+                                                0
+                                            ],
+                                            "visible": true
+                                        },
+                                        "children": {
+                                            "client1-gameid-tile1": {
+                                                "type": "Image",
+                                                "data": {
+                                                    "texture": "client1-gameid-tile1",
+                                                    "anchor": [
+                                                        0,
+                                                        1
+                                                    ],
+                                                    "size": [
+                                                        92,
+                                                        92
+                                                    ],
+                                                    "angle": 0,
+                                                    "position": [
+                                                        0,
+                                                        0
+                                                    ],
+                                                    "visible": true
+                                                },
+                                                "layout": {
+                                                    "x_anchor": "left",
+                                                    "y_anchor": "top",
+                                                    "absolute": false,
+                                                    "x_offset": 0,
+                                                    "y_offset": 0
+                                                }
+                                            }
+                                        },
+                                        "layout": {
+                                            "x_anchor": "left",
+                                            "y_anchor": "top",
+                                            "absolute": false,
+                                            "x_offset": 0,
+                                            "y_offset": 0
+                                        }
+                                    }
+                                },
+                                "layout": {
+                                    "priority": 1,
+                                    "padding": [
+                                        0,
+                                        0,
+                                        0,
+                                        0
+                                    ]
+                                }
+                            },
+                            "pad-tile2": {
+                                "type": "Button",
+                                "format": {
+                                    "type": "Anchored"
+                                },
+                                "data": {
+                                    "anchor": [
+                                        0.5,
+                                        0.5
+                                    ],
+                                    "size": [
+                                        92,
+                                        92
+                                    ],
+                                    "angle": 0,
+                                    "position": [
+                                        230,
+                                        46
+                                    ],
+                                    "visible": true,
+                                    "upnode": "up"
+                                },
+                                "children": {
+                                    "up": {
+                                        "type": "Node",
+                                        "format": {
+                                            "type": "Anchored"
+                                        },
+                                        "data": {
+                                            "anchor": [
+                                                0,
+                                                1
+                                            ],
+                                            "size": [
+                                                92,
+                                                92
+                                            ],
+                                            "angle": 0,
+                                            "position": [
+                                                0,
+                                                0
+                                            ],
+                                            "visible": true
+                                        },
+                                        "children": {
+                                            "client1-gameid-tile2": {
+                                                "type": "Image",
+                                                "data": {
+                                                    "texture": "client1-gameid-tile2",
+                                                    "anchor": [
+                                                        0,
+                                                        1
+                                                    ],
+                                                    "size": [
+                                                        92,
+                                                        92
+                                                    ],
+                                                    "angle": 0,
+                                                    "position": [
+                                                        0,
+                                                        0
+                                                    ],
+                                                    "visible": true
+                                                },
+                                                "layout": {
+                                                    "x_anchor": "left",
+                                                    "y_anchor": "top",
+                                                    "absolute": false,
+                                                    "x_offset": 0,
+                                                    "y_offset": 0
+                                                }
+                                            }
+                                        },
+                                        "layout": {
+                                            "x_anchor": "left",
+                                            "y_anchor": "top",
+                                            "absolute": false,
+                                            "x_offset": 0,
+                                            "y_offset": 0
+                                        }
+                                    }
+                                },
+                                "layout": {
+                                    "priority": 2,
+                                    "padding": [
+                                        0,
+                                        0,
+                                        0,
+                                        0
+                                    ]
+                                }
+                            },
+                            "pad-tile3": {
+                                "type": "Button",
+                                "format": {
+                                    "type": "Anchored"
+                                },
+                                "data": {
+                                    "anchor": [
+                                        0.5,
+                                        0.5
+                                    ],
+                                    "size": [
+                                        92,
+                                        92
+                                    ],
+                                    "angle": 0,
+                                    "position": [
+                                        322,
+                                        46
+                                    ],
+                                    "visible": true,
+                                    "upnode": "up"
+                                },
+                                "children": {
+                                    "up": {
+                                        "type": "Node",
+                                        "format": {
+                                            "type": "Anchored"
+                                        },
+                                        "data": {
+                                            "anchor": [
+                                                0,
+                                                1
+                                            ],
+                                            "size": [
+                                                92,
+                                                92
+                                            ],
+                                            "angle": 0,
+                                            "position": [
+                                                0,
+                                                0
+                                            ],
+                                            "visible": true
+                                        },
+                                        "children": {
+                                            "client1-gameid-tile3": {
+                                                "type": "Image",
+                                                "data": {
+                                                    "texture": "client1-gameid-tile3",
+                                                    "anchor": [
+                                                        0,
+                                                        1
+                                                    ],
+                                                    "size": [
+                                                        92,
+                                                        92
+                                                    ],
+                                                    "angle": 0,
+                                                    "position": [
+                                                        0,
+                                                        0
+                                                    ],
+                                                    "visible": true
+                                                },
+                                                "layout": {
+                                                    "x_anchor": "left",
+                                                    "y_anchor": "top",
+                                                    "absolute": false,
+                                                    "x_offset": 0,
+                                                    "y_offset": 0
+                                                }
+                                            }
+                                        },
+                                        "layout": {
+                                            "x_anchor": "left",
+                                            "y_anchor": "top",
+                                            "absolute": false,
+                                            "x_offset": 0,
+                                            "y_offset": 0
+                                        }
+                                    }
+                                },
+                                "layout": {
+                                    "priority": 3,
+                                    "padding": [
+                                        0,
+                                        0,
+                                        0,
+                                        0
+                                    ]
+                                }
+                            },
+                            "pad-tile4": {
+                                "type": "Button",
+                                "format": {
+                                    "type": "Anchored"
+                                },
+                                "data": {
+                                    "anchor": [
+                                        0.5,
+                                        0.5
+                                    ],
+                                    "size": [
+                                        92,
+                                        92
+                                    ],
+                                    "angle": 0,
+                                    "position": [
+                                        414,
+                                        46
+                                    ],
+                                    "visible": true,
+                                    "upnode": "up"
+                                },
+                                "children": {
+                                    "up": {
+                                        "type": "Node",
+                                        "format": {
+                                            "type": "Anchored"
+                                        },
+                                        "data": {
+                                            "anchor": [
+                                                0,
+                                                1
+                                            ],
+                                            "size": [
+                                                92,
+                                                92
+                                            ],
+                                            "angle": 0,
+                                            "position": [
+                                                0,
+                                                0
+                                            ],
+                                            "visible": true
+                                        },
+                                        "children": {
+                                            "client1-gameid-tile4": {
+                                                "type": "Image",
+                                                "data": {
+                                                    "texture": "client1-gameid-tile4",
+                                                    "anchor": [
+                                                        0,
+                                                        1
+                                                    ],
+                                                    "size": [
+                                                        92,
+                                                        92
+                                                    ],
+                                                    "angle": 0,
+                                                    "position": [
+                                                        0,
+                                                        0
+                                                    ],
+                                                    "visible": true
+                                                },
+                                                "layout": {
+                                                    "x_anchor": "left",
+                                                    "y_anchor": "top",
+                                                    "absolute": false,
+                                                    "x_offset": 0,
+                                                    "y_offset": 0
+                                                }
+                                            }
+                                        },
+                                        "layout": {
+                                            "x_anchor": "left",
+                                            "y_anchor": "top",
+                                            "absolute": false,
+                                            "x_offset": 0,
+                                            "y_offset": 0
+                                        }
+                                    }
+                                },
+                                "layout": {
+                                    "priority": 4,
+                                    "padding": [
+                                        0,
+                                        0,
+                                        0,
+                                        0
+                                    ]
+                                }
+                            },
+                            "pad-tile5": {
+                                "type": "Button",
+                                "format": {
+                                    "type": "Anchored"
+                                },
+                                "data": {
+                                    "anchor": [
+                                        0.5,
+                                        0.5
+                                    ],
+                                    "size": [
+                                        92,
+                                        92
+                                    ],
+                                    "angle": 0,
+                                    "position": [
+                                        46,
+                                        149
+                                    ],
+                                    "visible": true,
+                                    "upnode": "up"
+                                },
+                                "children": {
+                                    "up": {
+                                        "type": "Node",
+                                        "format": {
+                                            "type": "Anchored"
+                                        },
+                                        "data": {
+                                            "anchor": [
+                                                0,
+                                                1
+                                            ],
+                                            "size": [
+                                                92,
+                                                92
+                                            ],
+                                            "angle": 0,
+                                            "position": [
+                                                0,
+                                                0
+                                            ],
+                                            "visible": true
+                                        },
+                                        "children": {
+                                            "client1-gameid-tile5": {
+                                                "type": "Image",
+                                                "data": {
+                                                    "texture": "client1-gameid-tile5",
+                                                    "anchor": [
+                                                        0,
+                                                        1
+                                                    ],
+                                                    "size": [
+                                                        92,
+                                                        92
+                                                    ],
+                                                    "angle": 0,
+                                                    "position": [
+                                                        0,
+                                                        0
+                                                    ],
+                                                    "visible": true
+                                                },
+                                                "layout": {
+                                                    "x_anchor": "left",
+                                                    "y_anchor": "top",
+                                                    "absolute": false,
+                                                    "x_offset": 0,
+                                                    "y_offset": 0
+                                                }
+                                            }
+                                        },
+                                        "layout": {
+                                            "x_anchor": "left",
+                                            "y_anchor": "top",
+                                            "absolute": false,
+                                            "x_offset": 0,
+                                            "y_offset": 0
+                                        }
+                                    }
+                                },
+                                "layout": {
+                                    "priority": 5,
+                                    "padding": [
+                                        0,
+                                        0,
+                                        0,
+                                        0
+                                    ]
+                                }
+                            },
+                            "pad-tile6": {
+                                "type": "Button",
+                                "format": {
+                                    "type": "Anchored"
+                                },
+                                "data": {
+                                    "anchor": [
+                                        0.5,
+                                        0.5
+                                    ],
+                                    "size": [
+                                        92,
+                                        92
+                                    ],
+                                    "angle": 0,
+                                    "position": [
+                                        138,
+                                        149
+                                    ],
+                                    "visible": true,
+                                    "upnode": "up"
+                                },
+                                "children": {
+                                    "up": {
+                                        "type": "Node",
+                                        "format": {
+                                            "type": "Anchored"
+                                        },
+                                        "data": {
+                                            "anchor": [
+                                                0,
+                                                1
+                                            ],
+                                            "size": [
+                                                92,
+                                                92
+                                            ],
+                                            "angle": 0,
+                                            "position": [
+                                                0,
+                                                0
+                                            ],
+                                            "visible": true
+                                        },
+                                        "children": {
+                                            "client1-gameid-tile6": {
+                                                "type": "Image",
+                                                "data": {
+                                                    "texture": "client1-gameid-tile6",
+                                                    "anchor": [
+                                                        0,
+                                                        1
+                                                    ],
+                                                    "size": [
+                                                        92,
+                                                        92
+                                                    ],
+                                                    "angle": 0,
+                                                    "position": [
+                                                        0,
+                                                        0
+                                                    ],
+                                                    "visible": true
+                                                },
+                                                "layout": {
+                                                    "x_anchor": "left",
+                                                    "y_anchor": "top",
+                                                    "absolute": false,
+                                                    "x_offset": 0,
+                                                    "y_offset": 0
+                                                }
+                                            }
+                                        },
+                                        "layout": {
+                                            "x_anchor": "left",
+                                            "y_anchor": "top",
+                                            "absolute": false,
+                                            "x_offset": 0,
+                                            "y_offset": 0
+                                        }
+                                    }
+                                },
+                                "layout": {
+                                    "priority": 6,
+                                    "padding": [
+                                        0,
+                                        0,
+                                        0,
+                                        0
+                                    ]
+                                }
+                            },
+                            "pad-tile7": {
+                                "type": "Button",
+                                "format": {
+                                    "type": "Anchored"
+                                },
+                                "data": {
+                                    "anchor": [
+                                        0.5,
+                                        0.5
+                                    ],
+                                    "size": [
+                                        92,
+                                        92
+                                    ],
+                                    "angle": 0,
+                                    "position": [
+                                        230,
+                                        149
+                                    ],
+                                    "visible": true,
+                                    "upnode": "up"
+                                },
+                                "children": {
+                                    "up": {
+                                        "type": "Node",
+                                        "format": {
+                                            "type": "Anchored"
+                                        },
+                                        "data": {
+                                            "anchor": [
+                                                0,
+                                                1
+                                            ],
+                                            "size": [
+                                                92,
+                                                92
+                                            ],
+                                            "angle": 0,
+                                            "position": [
+                                                0,
+                                                0
+                                            ],
+                                            "visible": true
+                                        },
+                                        "children": {
+                                            "client1-gameid-tile7": {
+                                                "type": "Image",
+                                                "data": {
+                                                    "texture": "client1-gameid-tile7",
+                                                    "anchor": [
+                                                        0,
+                                                        1
+                                                    ],
+                                                    "size": [
+                                                        92,
+                                                        92
+                                                    ],
+                                                    "angle": 0,
+                                                    "position": [
+                                                        0,
+                                                        0
+                                                    ],
+                                                    "visible": true
+                                                },
+                                                "layout": {
+                                                    "x_anchor": "left",
+                                                    "y_anchor": "top",
+                                                    "absolute": false,
+                                                    "x_offset": 0,
+                                                    "y_offset": 0
+                                                }
+                                            }
+                                        },
+                                        "layout": {
+                                            "x_anchor": "left",
+                                            "y_anchor": "top",
+                                            "absolute": false,
+                                            "x_offset": 0,
+                                            "y_offset": 0
+                                        }
+                                    }
+                                },
+                                "layout": {
+                                    "priority": 7,
+                                    "padding": [
+                                        0,
+                                        0,
+                                        0,
+                                        0
+                                    ]
+                                }
+                            },
+                            "pad-tile8": {
+                                "type": "Button",
+                                "format": {
+                                    "type": "Anchored"
+                                },
+                                "data": {
+                                    "anchor": [
+                                        0.5,
+                                        0.5
+                                    ],
+                                    "size": [
+                                        92,
+                                        92
+                                    ],
+                                    "angle": 0,
+                                    "position": [
+                                        322,
+                                        149
+                                    ],
+                                    "visible": true,
+                                    "upnode": "up"
+                                },
+                                "children": {
+                                    "up": {
+                                        "type": "Node",
+                                        "format": {
+                                            "type": "Anchored"
+                                        },
+                                        "data": {
+                                            "anchor": [
+                                                0,
+                                                1
+                                            ],
+                                            "size": [
+                                                92,
+                                                92
+                                            ],
+                                            "angle": 0,
+                                            "position": [
+                                                0,
+                                                0
+                                            ],
+                                            "visible": true
+                                        },
+                                        "children": {
+                                            "client1-gameid-tile8": {
+                                                "type": "Image",
+                                                "data": {
+                                                    "texture": "client1-gameid-tile8",
+                                                    "anchor": [
+                                                        0,
+                                                        1
+                                                    ],
+                                                    "size": [
+                                                        92,
+                                                        92
+                                                    ],
+                                                    "angle": 0,
+                                                    "position": [
+                                                        0,
+                                                        0
+                                                    ],
+                                                    "visible": true
+                                                },
+                                                "layout": {
+                                                    "x_anchor": "left",
+                                                    "y_anchor": "top",
+                                                    "absolute": false,
+                                                    "x_offset": 0,
+                                                    "y_offset": 0
+                                                }
+                                            }
+                                        },
+                                        "layout": {
+                                            "x_anchor": "left",
+                                            "y_anchor": "top",
+                                            "absolute": false,
+                                            "x_offset": 0,
+                                            "y_offset": 0
+                                        }
+                                    }
+                                },
+                                "layout": {
+                                    "priority": 8,
+                                    "padding": [
+                                        0,
+                                        0,
+                                        0,
+                                        0
+                                    ]
+                                }
+                            },
+                            "pad-tile9": {
+                                "type": "Button",
+                                "format": {
+                                    "type": "Anchored"
+                                },
+                                "data": {
+                                    "anchor": [
+                                        0.5,
+                                        0.5
+                                    ],
+                                    "size": [
+                                        92,
+                                        92
+                                    ],
+                                    "angle": 0,
+                                    "position": [
+                                        414,
+                                        149
+                                    ],
+                                    "visible": true,
+                                    "upnode": "up"
+                                },
+                                "children": {
+                                    "up": {
+                                        "type": "Node",
+                                        "format": {
+                                            "type": "Anchored"
+                                        },
+                                        "data": {
+                                            "anchor": [
+                                                0,
+                                                1
+                                            ],
+                                            "size": [
+                                                92,
+                                                92
+                                            ],
+                                            "angle": 0,
+                                            "position": [
+                                                0,
+                                                0
+                                            ],
+                                            "visible": true
+                                        },
+                                        "children": {
+                                            "client1-gameid-tile9": {
+                                                "type": "Image",
+                                                "data": {
+                                                    "texture": "client1-gameid-tile9",
+                                                    "anchor": [
+                                                        0,
+                                                        1
+                                                    ],
+                                                    "size": [
+                                                        92,
+                                                        92
+                                                    ],
+                                                    "angle": 0,
+                                                    "position": [
+                                                        0,
+                                                        0
+                                                    ],
+                                                    "visible": true
+                                                },
+                                                "layout": {
+                                                    "x_anchor": "left",
+                                                    "y_anchor": "top",
+                                                    "absolute": false,
+                                                    "x_offset": 0,
+                                                    "y_offset": 0
+                                                }
+                                            }
+                                        },
+                                        "layout": {
+                                            "x_anchor": "left",
+                                            "y_anchor": "top",
+                                            "absolute": false,
+                                            "x_offset": 0,
+                                            "y_offset": 0
+                                        }
+                                    }
+                                },
+                                "layout": {
+                                    "priority": 9,
+                                    "padding": [
+                                        0,
+                                        0,
+                                        0,
+                                        0
+                                    ]
+                                }
+                            }
+                        },
+                        "layout": {
+                            "x_anchor": "left",
+                            "y_anchor": "top",
+                            "absolute": false,
+                            "x_offset": 0.21,
+                            "y_offset": -0.35
+                        }
+                    },
+                    "gameid": {
                         "type": "Node",
                         "format": {
                             "type": "Anchored"
@@ -110,28 +1157,28 @@
                                 1
                             ],
                             "size": [
-                                80,
-                                80
+                                161,
+                                58
                             ],
                             "angle": 0,
                             "position": [
-                                0,
-                                0
+                                172,
+                                333
                             ],
                             "visible": true
                         },
                         "children": {
-                            "client1-cancel-box": {
+                            "client1-gameid": {
                                 "type": "Image",
                                 "data": {
-                                    "texture": "client1-cancel-box",
+                                    "texture": "client1-gameid",
                                     "anchor": [
                                         0,
                                         1
                                     ],
                                     "size": [
-                                        80,
-                                        80
+                                        161,
+                                        58
                                     ],
                                     "angle": 0,
                                     "position": [
@@ -153,1089 +1200,257 @@
                             "x_anchor": "left",
                             "y_anchor": "top",
                             "absolute": false,
-                            "x_offset": 0,
-                            "y_offset": 0
+                            "x_offset": 0.22,
+                            "y_offset": -0.14
                         }
-                    }
-                },
-                "layout": {
-                    "x_anchor": "left",
-                    "y_anchor": "top",
-                    "absolute": false,
-                    "x_offset": 0.72,
-                    "y_offset": -0.13
-                }
-            },
-            "gameid": {
-                "type": "Node",
-                "format": {
-                    "type": "Anchored"
-                },
-                "data": {
-                    "anchor": [
-                        0,
-                        1
-                    ],
-                    "size": [
-                        161,
-                        58
-                    ],
-                    "angle": 0,
-                    "position": [
-                        293,
-                        381
-                    ],
-                    "visible": true
-                },
-                "children": {
-                    "client1-gameid": {
-                        "type": "Image",
+                    },
+                    "client1-gameid-blank": {
+                        "type": "Node",
+                        "format": {
+                            "type": "Float",
+                            "x_alignment": "left",
+                            "y_alignment": "bottom",
+                            "orientation": "horizontal"
+                        },
                         "data": {
-                            "texture": "client1-gameid",
                             "anchor": [
                                 0,
                                 1
                             ],
                             "size": [
-                                208,
-                                75
+                                304,
+                                58
                             ],
                             "angle": 0,
                             "position": [
-                                0,
-                                0
+                                360,
+                                333
                             ],
                             "visible": true
+                        },
+                        "children": {
+                            "client1-gameid-blank": {
+                                "type": "Image",
+                                "data": {
+                                    "texture": "client1-gameid-blank",
+                                    "anchor": [
+                                        0.5,
+                                        0.5
+                                    ],
+                                    "size": [
+                                        50,
+                                        67
+                                    ],
+                                    "angle": 0,
+                                    "position": [
+                                        31,
+                                        29.5
+                                    ],
+                                    "visible": true
+                                },
+                                "layout": {
+                                    "priority": 0,
+                                    "padding": [
+                                        0,
+                                        0,
+                                        0,
+                                        0
+                                    ]
+                                }
+                            },
+                            "client1-gameid-blank_1": {
+                                "type": "Image",
+                                "data": {
+                                    "texture": "client1-gameid-blank",
+                                    "anchor": [
+                                        0.5,
+                                        0.5
+                                    ],
+                                    "size": [
+                                        50,
+                                        67
+                                    ],
+                                    "angle": 0,
+                                    "position": [
+                                        91,
+                                        29
+                                    ],
+                                    "visible": true
+                                },
+                                "layout": {
+                                    "priority": 1,
+                                    "padding": [
+                                        0,
+                                        0,
+                                        0,
+                                        0
+                                    ]
+                                }
+                            },
+                            "client1-gameid-blank_2": {
+                                "type": "Image",
+                                "data": {
+                                    "texture": "client1-gameid-blank",
+                                    "anchor": [
+                                        0.5,
+                                        0.5
+                                    ],
+                                    "size": [
+                                        50,
+                                        67
+                                    ],
+                                    "angle": 0,
+                                    "position": [
+                                        149,
+                                        29
+                                    ],
+                                    "visible": true
+                                },
+                                "layout": {
+                                    "priority": 2,
+                                    "padding": [
+                                        0,
+                                        0,
+                                        0,
+                                        0
+                                    ]
+                                }
+                            },
+                            "client1-gameid-blank_3": {
+                                "type": "Image",
+                                "data": {
+                                    "texture": "client1-gameid-blank",
+                                    "anchor": [
+                                        0.5,
+                                        0.5
+                                    ],
+                                    "size": [
+                                        50,
+                                        67
+                                    ],
+                                    "angle": 0,
+                                    "position": [
+                                        207,
+                                        29
+                                    ],
+                                    "visible": true
+                                },
+                                "layout": {
+                                    "priority": 3,
+                                    "padding": [
+                                        0,
+                                        0,
+                                        0,
+                                        0
+                                    ]
+                                }
+                            },
+                            "client1-gameid-blank_4": {
+                                "type": "Image",
+                                "data": {
+                                    "texture": "client1-gameid-blank",
+                                    "anchor": [
+                                        0.5,
+                                        0.5
+                                    ],
+                                    "size": [
+                                        50,
+                                        67
+                                    ],
+                                    "angle": 0,
+                                    "position": [
+                                        265,
+                                        29
+                                    ],
+                                    "visible": true
+                                },
+                                "layout": {
+                                    "priority": 4,
+                                    "padding": [
+                                        0,
+                                        0,
+                                        0,
+                                        0
+                                    ]
+                                }
+                            }
                         },
                         "layout": {
                             "x_anchor": "left",
                             "y_anchor": "top",
                             "absolute": false,
-                            "x_offset": 0,
-                            "y_offset": 0
+                            "x_offset": 0.46,
+                            "y_offset": -0.14
                         }
-                    }
-                },
-                "layout": {
-                    "x_anchor": "left",
-                    "y_anchor": "top",
-                    "absolute": false,
-                    "x_offset": 0.29,
-                    "y_offset": -0.24
-                }
-            },
-            "rabbit": {
-                "type": "Node",
-                "format": {
-                    "type": "Anchored"
-                },
-                "data": {
-                    "anchor": [
-                        0,
-                        1
-                    ],
-                    "size": [
-                        350,
-                        350
-                    ],
-                    "angle": 0,
-                    "position": [
-                        30,
-                        34
-                    ],
-                    "visible": true
-                },
-                "children": {
-                    "client1-rabbit": {
-                        "type": "Image",
+                    },
+                    "rabbit": {
+                        "type": "Node",
+                        "format": {
+                            "type": "Anchored"
+                        },
                         "data": {
-                            "texture": "client1-rabbit",
                             "anchor": [
                                 0,
                                 1
                             ],
                             "size": [
-                                350,
-                                350
+                                270,
+                                270
                             ],
                             "angle": 0,
                             "position": [
-                                0,
-                                0
+                                30,
+                                34
                             ],
                             "visible": true
                         },
+                        "children": {
+                            "client1-rabbit": {
+                                "type": "Image",
+                                "data": {
+                                    "texture": "client1-rabbit",
+                                    "anchor": [
+                                        0,
+                                        1
+                                    ],
+                                    "size": [
+                                        270,
+                                        270
+                                    ],
+                                    "angle": 0,
+                                    "position": [
+                                        0,
+                                        0
+                                    ],
+                                    "visible": true
+                                },
+                                "layout": {
+                                    "x_anchor": "left",
+                                    "y_anchor": "top",
+                                    "absolute": false,
+                                    "x_offset": 0,
+                                    "y_offset": 0
+                                }
+                            }
+                        },
                         "layout": {
                             "x_anchor": "left",
-                            "y_anchor": "top",
+                            "y_anchor": "bottom",
                             "absolute": false,
-                            "x_offset": 0,
-                            "y_offset": 0
+                            "x_offset": -0.1,
+                            "y_offset": 0.5
                         }
                     }
                 },
                 "layout": {
-                    "x_anchor": "left",
-                    "y_anchor": "top",
+                    "x_anchor": "center",
+                    "y_anchor": "middle",
                     "absolute": false,
-                    "x_offset": 0.08,
-                    "y_offset": -0.48
+                    "x_offset": 0,
+                    "y_offset": -0.02
                 }
             },
-            "gameid-pad": {
-                "type": "Node",
-                "format": {
-                    "type": "Float",
-                    "x_alignment": "left",
-                    "y_alignment": "top",
-                    "orientation": "horizontal"
-                },
-                "data": {
-                    "anchor": [
-                        0,
-                        1
-                    ],
-                    "size": [
-                        615,
-                        240
-                    ],
-                    "angle": 0,
-                    "position": [
-                        282,
-                        151
-                    ],
-                    "visible": true
-                },
-                "children": {
-                    "pad-tile": {
-                        "type": "Button",
-                        "format": {
-                            "type": "Anchored"
-                        },
-                        "data": {
-                            "anchor": [
-                                0.5,
-                                0.5
-                            ],
-                            "size": [
-                                120,
-                                120
-                            ],
-                            "angle": 0,
-                            "position": [
-                                46,
-                                46
-                            ],
-                            "visible": true,
-                            "upnode": "up"
-                        },
-                        "children": {
-                            "up": {
-                                "type": "Node",
-                                "format": {
-                                    "type": "Anchored"
-                                },
-                                "data": {
-                                    "anchor": [
-                                        0,
-                                        1
-                                    ],
-                                    "size": [
-                                        120,
-                                        120
-                                    ],
-                                    "angle": 0,
-                                    "position": [
-                                        0,
-                                        0
-                                    ],
-                                    "visible": true
-                                },
-                                "children": {
-                                    "client1-gameid-tile": {
-                                        "type": "Image",
-                                        "data": {
-                                            "texture": "client1-gameid-tile",
-                                            "anchor": [
-                                                0,
-                                                1
-                                            ],
-                                            "size": [
-                                                120,
-                                                120
-                                            ],
-                                            "angle": 0,
-                                            "position": [
-                                                0,
-                                                0
-                                            ],
-                                            "visible": true
-                                        },
-                                        "layout": {
-                                            "x_anchor": "left",
-                                            "y_anchor": "top",
-                                            "absolute": false,
-                                            "x_offset": 0,
-                                            "y_offset": 0
-                                        }
-                                    }
-                                },
-                                "layout": {
-                                    "x_anchor": "left",
-                                    "y_anchor": "top",
-                                    "absolute": false,
-                                    "x_offset": 0,
-                                    "y_offset": 0
-                                }
-                            }
-                        },
-                        "layout": {
-                            "priority": 0,
-                            "padding": [
-                                0,
-                                0,
-                                0,
-                                0
-                            ]
-                        }
-                    },
-                    "pad-tile1": {
-                        "type": "Button",
-                        "format": {
-                            "type": "Anchored"
-                        },
-                        "data": {
-                            "anchor": [
-                                0.5,
-                                0.5
-                            ],
-                            "size": [
-                                120,
-                                120
-                            ],
-                            "angle": 0,
-                            "position": [
-                                138,
-                                48
-                            ],
-                            "visible": true,
-                            "upnode": "up"
-                        },
-                        "children": {
-                            "up": {
-                                "type": "Node",
-                                "format": {
-                                    "type": "Anchored"
-                                },
-                                "data": {
-                                    "anchor": [
-                                        0,
-                                        1
-                                    ],
-                                    "size": [
-                                        120,
-                                        120
-                                    ],
-                                    "angle": 0,
-                                    "position": [
-                                        0,
-                                        0
-                                    ],
-                                    "visible": true
-                                },
-                                "children": {
-                                    "client1-gameid-tile1": {
-                                        "type": "Image",
-                                        "data": {
-                                            "texture": "client1-gameid-tile1",
-                                            "anchor": [
-                                                0,
-                                                1
-                                            ],
-                                            "size": [
-                                                120,
-                                                120
-                                            ],
-                                            "angle": 0,
-                                            "position": [
-                                                0,
-                                                0
-                                            ],
-                                            "visible": true
-                                        },
-                                        "layout": {
-                                            "x_anchor": "left",
-                                            "y_anchor": "top",
-                                            "absolute": false,
-                                            "x_offset": 0,
-                                            "y_offset": 0
-                                        }
-                                    }
-                                },
-                                "layout": {
-                                    "x_anchor": "left",
-                                    "y_anchor": "top",
-                                    "absolute": false,
-                                    "x_offset": 0,
-                                    "y_offset": 0
-                                }
-                            }
-                        },
-                        "layout": {
-                            "priority": 1,
-                            "padding": [
-                                0,
-                                0,
-                                0,
-                                0
-                            ]
-                        }
-                    },
-                    "pad-tile2": {
-                        "type": "Button",
-                        "format": {
-                            "type": "Anchored"
-                        },
-                        "data": {
-                            "anchor": [
-                                0.5,
-                                0.5
-                            ],
-                            "size": [
-                                120,
-                                120
-                            ],
-                            "angle": 0,
-                            "position": [
-                                230,
-                                46
-                            ],
-                            "visible": true,
-                            "upnode": "up"
-                        },
-                        "children": {
-                            "up": {
-                                "type": "Node",
-                                "format": {
-                                    "type": "Anchored"
-                                },
-                                "data": {
-                                    "anchor": [
-                                        0,
-                                        1
-                                    ],
-                                    "size": [
-                                        120,
-                                        120
-                                    ],
-                                    "angle": 0,
-                                    "position": [
-                                        0,
-                                        0
-                                    ],
-                                    "visible": true
-                                },
-                                "children": {
-                                    "client1-gameid-tile2": {
-                                        "type": "Image",
-                                        "data": {
-                                            "texture": "client1-gameid-tile2",
-                                            "anchor": [
-                                                0,
-                                                1
-                                            ],
-                                            "size": [
-                                                120,
-                                                120
-                                            ],
-                                            "angle": 0,
-                                            "position": [
-                                                0,
-                                                0
-                                            ],
-                                            "visible": true
-                                        },
-                                        "layout": {
-                                            "x_anchor": "left",
-                                            "y_anchor": "top",
-                                            "absolute": false,
-                                            "x_offset": 0,
-                                            "y_offset": 0
-                                        }
-                                    }
-                                },
-                                "layout": {
-                                    "x_anchor": "left",
-                                    "y_anchor": "top",
-                                    "absolute": false,
-                                    "x_offset": 0,
-                                    "y_offset": 0
-                                }
-                            }
-                        },
-                        "layout": {
-                            "priority": 2,
-                            "padding": [
-                                0,
-                                0,
-                                0,
-                                0
-                            ]
-                        }
-                    },
-                    "pad-tile3": {
-                        "type": "Button",
-                        "format": {
-                            "type": "Anchored"
-                        },
-                        "data": {
-                            "anchor": [
-                                0.5,
-                                0.5
-                            ],
-                            "size": [
-                                120,
-                                120
-                            ],
-                            "angle": 0,
-                            "position": [
-                                322,
-                                46
-                            ],
-                            "visible": true,
-                            "upnode": "up"
-                        },
-                        "children": {
-                            "up": {
-                                "type": "Node",
-                                "format": {
-                                    "type": "Anchored"
-                                },
-                                "data": {
-                                    "anchor": [
-                                        0,
-                                        1
-                                    ],
-                                    "size": [
-                                        120,
-                                        120
-                                    ],
-                                    "angle": 0,
-                                    "position": [
-                                        0,
-                                        0
-                                    ],
-                                    "visible": true
-                                },
-                                "children": {
-                                    "client1-gameid-tile3": {
-                                        "type": "Image",
-                                        "data": {
-                                            "texture": "client1-gameid-tile3",
-                                            "anchor": [
-                                                0,
-                                                1
-                                            ],
-                                            "size": [
-                                                120,
-                                                120
-                                            ],
-                                            "angle": 0,
-                                            "position": [
-                                                0,
-                                                0
-                                            ],
-                                            "visible": true
-                                        },
-                                        "layout": {
-                                            "x_anchor": "left",
-                                            "y_anchor": "top",
-                                            "absolute": false,
-                                            "x_offset": 0,
-                                            "y_offset": 0
-                                        }
-                                    }
-                                },
-                                "layout": {
-                                    "x_anchor": "left",
-                                    "y_anchor": "top",
-                                    "absolute": false,
-                                    "x_offset": 0,
-                                    "y_offset": 0
-                                }
-                            }
-                        },
-                        "layout": {
-                            "priority": 3,
-                            "padding": [
-                                0,
-                                0,
-                                0,
-                                0
-                            ]
-                        }
-                    },
-                    "pad-tile4": {
-                        "type": "Button",
-                        "format": {
-                            "type": "Anchored"
-                        },
-                        "data": {
-                            "anchor": [
-                                0.5,
-                                0.5
-                            ],
-                            "size": [
-                                120,
-                                120
-                            ],
-                            "angle": 0,
-                            "position": [
-                                414,
-                                46
-                            ],
-                            "visible": true,
-                            "upnode": "up"
-                        },
-                        "children": {
-                            "up": {
-                                "type": "Node",
-                                "format": {
-                                    "type": "Anchored"
-                                },
-                                "data": {
-                                    "anchor": [
-                                        0,
-                                        1
-                                    ],
-                                    "size": [
-                                        120,
-                                        120
-                                    ],
-                                    "angle": 0,
-                                    "position": [
-                                        0,
-                                        0
-                                    ],
-                                    "visible": true
-                                },
-                                "children": {
-                                    "client1-gameid-tile4": {
-                                        "type": "Image",
-                                        "data": {
-                                            "texture": "client1-gameid-tile4",
-                                            "anchor": [
-                                                0,
-                                                1
-                                            ],
-                                            "size": [
-                                                120,
-                                                120
-                                            ],
-                                            "angle": 0,
-                                            "position": [
-                                                0,
-                                                0
-                                            ],
-                                            "visible": true
-                                        },
-                                        "layout": {
-                                            "x_anchor": "left",
-                                            "y_anchor": "top",
-                                            "absolute": false,
-                                            "x_offset": 0,
-                                            "y_offset": 0
-                                        }
-                                    }
-                                },
-                                "layout": {
-                                    "x_anchor": "left",
-                                    "y_anchor": "top",
-                                    "absolute": false,
-                                    "x_offset": 0,
-                                    "y_offset": 0
-                                }
-                            }
-                        },
-                        "layout": {
-                            "priority": 4,
-                            "padding": [
-                                0,
-                                0,
-                                0,
-                                0
-                            ]
-                        }
-                    },
-                    "pad-tile5": {
-                        "type": "Button",
-                        "format": {
-                            "type": "Anchored"
-                        },
-                        "data": {
-                            "anchor": [
-                                0.5,
-                                0.5
-                            ],
-                            "size": [
-                                120,
-                                120
-                            ],
-                            "angle": 0,
-                            "position": [
-                                46,
-                                149
-                            ],
-                            "visible": true,
-                            "upnode": "up"
-                        },
-                        "children": {
-                            "up": {
-                                "type": "Node",
-                                "format": {
-                                    "type": "Anchored"
-                                },
-                                "data": {
-                                    "anchor": [
-                                        0,
-                                        1
-                                    ],
-                                    "size": [
-                                        120,
-                                        120
-                                    ],
-                                    "angle": 0,
-                                    "position": [
-                                        0,
-                                        0
-                                    ],
-                                    "visible": true
-                                },
-                                "children": {
-                                    "client1-gameid-tile5": {
-                                        "type": "Image",
-                                        "data": {
-                                            "texture": "client1-gameid-tile5",
-                                            "anchor": [
-                                                0,
-                                                1
-                                            ],
-                                            "size": [
-                                                120,
-                                                120
-                                            ],
-                                            "angle": 0,
-                                            "position": [
-                                                0,
-                                                0
-                                            ],
-                                            "visible": true
-                                        },
-                                        "layout": {
-                                            "x_anchor": "left",
-                                            "y_anchor": "top",
-                                            "absolute": false,
-                                            "x_offset": 0,
-                                            "y_offset": 0
-                                        }
-                                    }
-                                },
-                                "layout": {
-                                    "x_anchor": "left",
-                                    "y_anchor": "top",
-                                    "absolute": false,
-                                    "x_offset": 0,
-                                    "y_offset": 0
-                                }
-                            }
-                        },
-                        "layout": {
-                            "priority": 5,
-                            "padding": [
-                                0,
-                                0,
-                                0,
-                                0
-                            ]
-                        }
-                    },
-                    "pad-tile6": {
-                        "type": "Button",
-                        "format": {
-                            "type": "Anchored"
-                        },
-                        "data": {
-                            "anchor": [
-                                0.5,
-                                0.5
-                            ],
-                            "size": [
-                                120,
-                                120
-                            ],
-                            "angle": 0,
-                            "position": [
-                                138,
-                                149
-                            ],
-                            "visible": true,
-                            "upnode": "up"
-                        },
-                        "children": {
-                            "up": {
-                                "type": "Node",
-                                "format": {
-                                    "type": "Anchored"
-                                },
-                                "data": {
-                                    "anchor": [
-                                        0,
-                                        1
-                                    ],
-                                    "size": [
-                                        120,
-                                        120
-                                    ],
-                                    "angle": 0,
-                                    "position": [
-                                        0,
-                                        0
-                                    ],
-                                    "visible": true
-                                },
-                                "children": {
-                                    "client1-gameid-tile6": {
-                                        "type": "Image",
-                                        "data": {
-                                            "texture": "client1-gameid-tile6",
-                                            "anchor": [
-                                                0,
-                                                1
-                                            ],
-                                            "size": [
-                                                120,
-                                                120
-                                            ],
-                                            "angle": 0,
-                                            "position": [
-                                                0,
-                                                0
-                                            ],
-                                            "visible": true
-                                        },
-                                        "layout": {
-                                            "x_anchor": "left",
-                                            "y_anchor": "top",
-                                            "absolute": false,
-                                            "x_offset": 0,
-                                            "y_offset": 0
-                                        }
-                                    }
-                                },
-                                "layout": {
-                                    "x_anchor": "left",
-                                    "y_anchor": "top",
-                                    "absolute": false,
-                                    "x_offset": 0,
-                                    "y_offset": 0
-                                }
-                            }
-                        },
-                        "layout": {
-                            "priority": 6,
-                            "padding": [
-                                0,
-                                0,
-                                0,
-                                0
-                            ]
-                        }
-                    },
-                    "pad-tile7": {
-                        "type": "Button",
-                        "format": {
-                            "type": "Anchored"
-                        },
-                        "data": {
-                            "anchor": [
-                                0.5,
-                                0.5
-                            ],
-                            "size": [
-                                120,
-                                120
-                            ],
-                            "angle": 0,
-                            "position": [
-                                230,
-                                149
-                            ],
-                            "visible": true,
-                            "upnode": "up"
-                        },
-                        "children": {
-                            "up": {
-                                "type": "Node",
-                                "format": {
-                                    "type": "Anchored"
-                                },
-                                "data": {
-                                    "anchor": [
-                                        0,
-                                        1
-                                    ],
-                                    "size": [
-                                        120,
-                                        120
-                                    ],
-                                    "angle": 0,
-                                    "position": [
-                                        0,
-                                        0
-                                    ],
-                                    "visible": true
-                                },
-                                "children": {
-                                    "client1-gameid-tile7": {
-                                        "type": "Image",
-                                        "data": {
-                                            "texture": "client1-gameid-tile7",
-                                            "anchor": [
-                                                0,
-                                                1
-                                            ],
-                                            "size": [
-                                                120,
-                                                120
-                                            ],
-                                            "angle": 0,
-                                            "position": [
-                                                0,
-                                                0
-                                            ],
-                                            "visible": true
-                                        },
-                                        "layout": {
-                                            "x_anchor": "left",
-                                            "y_anchor": "top",
-                                            "absolute": false,
-                                            "x_offset": 0,
-                                            "y_offset": 0
-                                        }
-                                    }
-                                },
-                                "layout": {
-                                    "x_anchor": "left",
-                                    "y_anchor": "top",
-                                    "absolute": false,
-                                    "x_offset": 0,
-                                    "y_offset": 0
-                                }
-                            }
-                        },
-                        "layout": {
-                            "priority": 7,
-                            "padding": [
-                                0,
-                                0,
-                                0,
-                                0
-                            ]
-                        }
-                    },
-                    "pad-tile8": {
-                        "type": "Button",
-                        "format": {
-                            "type": "Anchored"
-                        },
-                        "data": {
-                            "anchor": [
-                                0.5,
-                                0.5
-                            ],
-                            "size": [
-                                120,
-                                120
-                            ],
-                            "angle": 0,
-                            "position": [
-                                322,
-                                149
-                            ],
-                            "visible": true,
-                            "upnode": "up"
-                        },
-                        "children": {
-                            "up": {
-                                "type": "Node",
-                                "format": {
-                                    "type": "Anchored"
-                                },
-                                "data": {
-                                    "anchor": [
-                                        0,
-                                        1
-                                    ],
-                                    "size": [
-                                        120,
-                                        120
-                                    ],
-                                    "angle": 0,
-                                    "position": [
-                                        0,
-                                        0
-                                    ],
-                                    "visible": true
-                                },
-                                "children": {
-                                    "client1-gameid-tile8": {
-                                        "type": "Image",
-                                        "data": {
-                                            "texture": "client1-gameid-tile8",
-                                            "anchor": [
-                                                0,
-                                                1
-                                            ],
-                                            "size": [
-                                                120,
-                                                120
-                                            ],
-                                            "angle": 0,
-                                            "position": [
-                                                0,
-                                                0
-                                            ],
-                                            "visible": true
-                                        },
-                                        "layout": {
-                                            "x_anchor": "left",
-                                            "y_anchor": "top",
-                                            "absolute": false,
-                                            "x_offset": 0,
-                                            "y_offset": 0
-                                        }
-                                    }
-                                },
-                                "layout": {
-                                    "x_anchor": "left",
-                                    "y_anchor": "top",
-                                    "absolute": false,
-                                    "x_offset": 0,
-                                    "y_offset": 0
-                                }
-                            }
-                        },
-                        "layout": {
-                            "priority": 8,
-                            "padding": [
-                                0,
-                                0,
-                                0,
-                                0
-                            ]
-                        }
-                    },
-                    "pad-tile9": {
-                        "type": "Button",
-                        "format": {
-                            "type": "Anchored"
-                        },
-                        "data": {
-                            "anchor": [
-                                0.5,
-                                0.5
-                            ],
-                            "size": [
-                                120,
-                                120
-                            ],
-                            "angle": 0,
-                            "position": [
-                                414,
-                                149
-                            ],
-                            "visible": true,
-                            "upnode": "up"
-                        },
-                        "children": {
-                            "up": {
-                                "type": "Node",
-                                "format": {
-                                    "type": "Anchored"
-                                },
-                                "data": {
-                                    "anchor": [
-                                        0,
-                                        1
-                                    ],
-                                    "size": [
-                                        120,
-                                        120
-                                    ],
-                                    "angle": 0,
-                                    "position": [
-                                        0,
-                                        0
-                                    ],
-                                    "visible": true
-                                },
-                                "children": {
-                                    "client1-gameid-tile9": {
-                                        "type": "Image",
-                                        "data": {
-                                            "texture": "client1-gameid-tile9",
-                                            "anchor": [
-                                                0,
-                                                1
-                                            ],
-                                            "size": [
-                                                120,
-                                                120
-                                            ],
-                                            "angle": 0,
-                                            "position": [
-                                                0,
-                                                0
-                                            ],
-                                            "visible": true
-                                        },
-                                        "layout": {
-                                            "x_anchor": "left",
-                                            "y_anchor": "top",
-                                            "absolute": false,
-                                            "x_offset": 0,
-                                            "y_offset": 0
-                                        }
-                                    }
-                                },
-                                "layout": {
-                                    "x_anchor": "left",
-                                    "y_anchor": "top",
-                                    "absolute": false,
-                                    "x_offset": 0,
-                                    "y_offset": 0
-                                }
-                            }
-                        },
-                        "layout": {
-                            "priority": 9,
-                            "padding": [
-                                0,
-                                0,
-                                0,
-                                0
-                            ]
-                        }
-                    }
-                },
-                "layout": {
-                    "x_anchor": "left",
-                    "y_anchor": "top",
-                    "absolute": false,
-                    "x_offset": 0.3,
-                    "y_offset": -0.4
-                }
-            },
+
             "buttons": {
                 "type": "Node",
                 "format": {
@@ -1348,7 +1563,7 @@
                             "y_offset": 0.2
                         }
                     },
-                    "clear-button": {
+                    "cancel-button": {
                         "type": "Button",
                         "format": {
                             "type": "Anchored"
@@ -1393,7 +1608,7 @@
                                     "visible": true
                                 },
                                 "children": {
-                                    "client1-clear-button": {
+                                    "client1-cancel-button": {
                                         "type": "Image",
                                         "data": {
                                             "texture": "client1-clear-button",
@@ -1443,149 +1658,11 @@
                     "x_anchor": "left",
                     "y_anchor": "top",
                     "absolute": false,
-                    "x_offset": 0.75,
+                    "x_offset": 0.74,
                     "y_offset": -0.63
                 }
-            },
-            "client1-gameid-blank": {
-                "type": "Node",
-                "format": {
-                    "type": "Anchored"
-                },
-                "data": {
-                    "anchor": [
-                        0,
-                        1
-                    ],
-                    "size": [
-                        305,
-                        75
-                    ],
-                    "angle": 0,
-                    "position": [
-                        499,
-                        381
-                    ],
-                    "visible": true
-                },
-                "children": {
-                    "client1-gameid-blank": {
-                        "type": "Image",
-                        "data": {
-                            "texture": "client1-gameid-tile19",
-                            "anchor": [
-                                0,
-                                1
-                            ],
-                            "size": [
-                                75,
-                                75
-                            ],
-                            "angle": 0,
-                            "position": [
-                                0,
-                                0
-                            ],
-                            "visible": true
-                        },
-                        "layout": {
-                            "x_anchor": "left",
-                            "y_anchor": "top",
-                            "absolute": false,
-                            "x_offset": 0,
-                            "y_offset": 0
-                        }
-                    },
-                    "client1-gameid-blank_1": {
-                        "type": "Image",
-                        "data": {
-                            "texture": "client1-gameid-tile19",
-                            "anchor": [
-                                0,
-                                1
-                            ],
-                            "size": [
-                                75,
-                                75
-                            ],
-                            "angle": 0,
-                            "position": [
-                                60,
-                                0
-                            ],
-                            "visible": true
-                        },
-                        "layout": {
-                            "x_anchor": "left",
-                            "y_anchor": "top",
-                            "absolute": false,
-                            "x_offset": 0.26,
-                            "y_offset": 0
-                        }
-                    },
-                    "client1-gameid-blank_2": {
-                        "type": "Image",
-                        "data": {
-                            "texture": "client1-gameid-tile19",
-                            "anchor": [
-                                0,
-                                1
-                            ],
-                            "size": [
-                                75,
-                                75
-                            ],
-                            "angle": 0,
-                            "position": [
-                                120,
-                                0
-                            ],
-                            "visible": true
-                        },
-                        "layout": {
-                            "x_anchor": "left",
-                            "y_anchor": "top",
-                            "absolute": false,
-                            "x_offset": 0.52,
-                            "y_offset": 0
-                        }
-                    },
-                    "client1-gameid-blank_3": {
-                        "type": "Image",
-                        "data": {
-                            "texture": "client1-gameid-tile19",
-                            "anchor": [
-                                0,
-                                1
-                            ],
-                            "size": [
-                                75,
-                                75
-                            ],
-                            "angle": 0,
-                            "position": [
-                                180,
-                                0
-                            ],
-                            "visible": true
-                        },
-                        "layout": {
-                            "x_anchor": "left",
-                            "y_anchor": "top",
-                            "absolute": false,
-                            "x_offset": 0.78,
-                            "y_offset": 0
-                        }
-                    }
-                },
-                "layout": {
-                    "x_anchor": "left",
-                    "y_anchor": "top",
-                    "absolute": false,
-                    "x_offset": 0.47,
-                    "y_offset": -0.24
-                }
             }
+
         }
     }
 }

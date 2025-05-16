@@ -48,28 +48,43 @@ protected:
     /** The network connection for this scene **/
 //    std::shared_ptr<cugl::netcode::NetcodeConnection> _hostNetwork;
     /** The menu button for starting a game */
-    std::shared_ptr<cugl::scene2::Button> _startgame;
+    //std::shared_ptr<cugl::scene2::Button> _startgame;
     /** The back button for the menu scene */
     std::shared_ptr<cugl::scene2::Button> _backout;
+
+    std::shared_ptr<cugl::scene2::Button> _startgame2;
+    /** The back button for the menu scene */
+    std::shared_ptr<cugl::scene2::Button> _backout2;
+
     /** The game id label (for updating) */
     std::shared_ptr<cugl::scene2::Label> _gameid;
     /** The players label (for updating) */
     std::shared_ptr<cugl::scene2::Label> _player;
     /** texture for waiting or start button */
-    std::shared_ptr<cugl::scene2::PolygonNode> _waitOrStart;
+    //std::shared_ptr<cugl::scene2::PolygonNode> _waitOrStart1;
+    //std::shared_ptr<cugl::scene2::PolygonNode> _waitOrStart3;
 
     /** Reference to init host scene*/
     std::shared_ptr<cugl::scene2::SceneNode> _hostScene1;
 
+    std::shared_ptr<cugl::scene2::SceneNode> _hostScene3;
+
     /** Reference to Gameboard when players are connecting or alone */
-    std::shared_ptr<cugl::scene2::SceneNode> _playerSingle;
-    std::shared_ptr<cugl::scene2::SceneNode> _playerMulti;
+    //std::shared_ptr<cugl::scene2::SceneNode> _playerSingle;
+    //std::shared_ptr<cugl::scene2::SceneNode> _playerMulti;
     
     /** Tiles for gameID */
     std::shared_ptr<cugl::scene2::PolygonNode> _tileOne;
     std::shared_ptr<cugl::scene2::PolygonNode> _tileTwo;
     std::shared_ptr<cugl::scene2::PolygonNode> _tileThree;
     std::shared_ptr<cugl::scene2::PolygonNode> _tileFour;
+    std::shared_ptr<cugl::scene2::PolygonNode> _tileFive;
+
+    std::shared_ptr<cugl::scene2::PolygonNode> _tileOne3;
+    std::shared_ptr<cugl::scene2::PolygonNode> _tileTwo3;
+    std::shared_ptr<cugl::scene2::PolygonNode> _tileThree3;
+    std::shared_ptr<cugl::scene2::PolygonNode> _tileFour3;
+    std::shared_ptr<cugl::scene2::PolygonNode> _tileFive3;
     
     /** Whether the startGame button had been pressed. */
     bool _startGameClicked = false;
