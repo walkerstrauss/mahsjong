@@ -44,12 +44,15 @@ bool DiscardUINode::init(const std::shared_ptr<cugl::AssetManager>& assets) {
     backBtn = std::dynamic_pointer_cast<scene2::Button>(
         _root->getChildByName("tilesetscene")->getChildByName("board")->getChildByName("buttonClose"));
     
-    backBtnKey = backBtn->addListener([this](const std::string& name, bool down) {
-        if (!down) {
-            _root->setVisible(false);
-            _state = OFF;
-        }
-    });
+    //backBtnKey = backBtn->addListener([this](const std::string& name, bool down) {
+    //    CULog("Button pressed. Down: %d", (int)down);
+    //    if (!down) {
+    //        _root->setVisible(false);
+    //        _state = OFF;
+    //    }
+    //});
+
+    _root->doLayout();
     
     _state = OFF;
     _root->setVisible(false);
@@ -74,6 +77,14 @@ void DiscardUINode::reset() {
 }
 
 void DiscardUINode::update(float timestep) {
+    if (_root->isVisible()) {
+        auto position = backBtn->getWorldPosition();
+        CULog("%f %f Width %f Height %f", position.x, position.y, backBtn->getWidth(), backBtn->getHeight());
+        bool active = backBtn->isActive();
+        CULog("Active: %d", (int)active);
+
+    }
+
     return;
 }
 
@@ -147,7 +158,8 @@ void DiscardUINode::setDiscardUIActive(bool active) {
     }
     else {
         _root->setVisible(false);
-//        backBtn->deactivate();
+        backBtn->deactivate();
+        backBtn->setDown(false);
         _state = OFF;
     }
 }

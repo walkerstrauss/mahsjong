@@ -33,8 +33,6 @@ bool DiscardUIScene::init(const std::shared_ptr<cugl::AssetManager>& assets){
     //cugl::Size screenSize = Size(0,SCENE_HEIGHT);
     
     screenSize *= _tilesetui->getContentSize().height/screenSize.height;
-
-    //AudioController::getInstance().init(_assets);
     
     float offset = (screenSize.width -_tilesetui->getWidth())/2;
     _tilesetui->setPosition(offset, _tilesetui->getPosition().y);
@@ -44,9 +42,9 @@ bool DiscardUIScene::init(const std::shared_ptr<cugl::AssetManager>& assets){
         std::cerr << "Scene2 initialization failed!" << std::endl;
         return false;
     }
-//    _tilesetui->setContentSize(getSize());
-//    _tilesetui->doLayout();
-//    _tilesetui->setPosition((Application::get()->getDisplayWidth() - _tilesetui->getWidth()) / 8, _tilesetui->getPosition().y);
+    _tilesetui->setContentSize(getSize());
+    _tilesetui->doLayout();
+    _tilesetui->setPosition((Application::get()->getDisplayWidth() - _tilesetui->getWidth()) / 8, _tilesetui->getPosition().y);
     _labels.resize(27);
     std::shared_ptr<scene2::SceneNode> node = _assets->get<scene2::SceneNode>("tilesetui.tilesetscene.board.number");
     
@@ -102,6 +100,7 @@ void DiscardUIScene::setActive(bool value){
         } else {
             _tilesetui->setVisible(false);
             backBtn->deactivate();
+            backBtn->setDown(false);
         }
     }
 }

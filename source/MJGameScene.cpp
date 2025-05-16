@@ -75,7 +75,7 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::sha
     _discardUINode->doLayout();
 
     _discardUINode->_root->setPosition(offset, _discardUINode->getPosition().y);
-    
+
     // Initializing scene nodes
     _playArea = _assets->get<SceneNode>("matchscene.gameplayscene.play-area");
     _playArea->setVisible(false);
@@ -115,6 +115,7 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::sha
     _backBtn = std::dynamic_pointer_cast<scene2::Button>(
         _discardUINode->_root->getChildByName("tilesetscene")->getChildByName("board")->getChildByName("buttonClose"));
     _backBtnKey = _backBtn->addListener([this](const std::string& name, bool down) {
+        CULog("Back button pressed in game scene");
         if (!down) {
             setActive(true);
             setGameActive(true);
@@ -122,6 +123,7 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::sha
             AudioController::getInstance().playSound("Done");
         }
     });
+
     
     _settingBtn = std::dynamic_pointer_cast<Button>(_assets->get<SceneNode>("matchscene.gameplayscene.setting-icon"));
     _settingBtn->addListener([this](const std::string& name, bool down){
@@ -177,8 +179,8 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::sha
     
     _dragToHandNode->setVisible(false);
         
-    addChild(_matchScene);
     addChild(_discardUINode->_root);
+    addChild(_matchScene);
     addChild(_pileUINode->_root);
     
     // Game Win and Lose bool
@@ -442,9 +444,12 @@ void GameScene::reset() {
  */
 void GameScene::update(float timestep) {
     _matchController->update(timestep);
+    _discardUINode->update(timestep);
     
     // Fetching current mouse position
     cugl::Vec2 mousePos = cugl::Scene::screenToWorldCoords(cugl::Vec3(_input->getPosition()));
+
+    CULog("Mouse pos: %f %f", mousePos.x, mousePos.y);
     
     // Constantly updating the position of tiles in hand
     _player->getHand().updateTilePositions(_playerHandRegion, timestep);
