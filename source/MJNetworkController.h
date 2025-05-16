@@ -62,7 +62,8 @@ public:
         PLAYEDCELESTIAL,
         /** Game has concluded  */
         ENDGAME,
-        TIE
+        TIE,
+        TUTORIAL
         /** **END OF MATCHMODEL STATES ** */
         
     };
@@ -207,13 +208,23 @@ public:
     bool connectAsHost();
     
     /**
-     * Connecst to the networkController as the client. Returns true if
+     * Connects to the networkController as the client. Returns true if
      * the connection was successful; otherwise, false. Uses the
      * param "room" (in hex) to connec to the network.
      *
      * @param room      string representing the room code in hex
      */
     bool connectAsClient(std::string room);
+    
+    /**
+     * Connects to the networkController in tutorial mode. Returns true
+     * if the conncetion was successful; otherwise, false.
+     */
+    bool connectAsTutorial() {
+        _isHost = true;
+        _localPid = 0;
+        return true;
+    }
     
     /**
      * Returns the roomID as created by this network.

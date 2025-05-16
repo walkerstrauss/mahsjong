@@ -62,7 +62,7 @@ bool GameOverScene::init(const std::shared_ptr<cugl::AssetManager>& assets){
     _grandmaTie->setPosition(340, 410);
     _grandmaTie->setVisible(true);
     _grandmaTie->setFrame(0);
-    _grandmaTie->setScale(2);
+    _grandmaTie->setScale(1.9);
     _tiescene->addChild(_grandmaTie);
     AnimationController::getInstance().addSpriteSheetAnimation(_grandmaTie, 0, 4, true, 5.0f);
     

@@ -267,6 +267,9 @@ void NetworkController::broadcast(const std::vector<std::byte>& data) {
 }
 
 void NetworkController::startGame() {
+    if(_status == TUTORIAL) {
+        return;
+    }
     _serializer->reset();
     
     _status = Status::START;
@@ -275,6 +278,9 @@ void NetworkController::startGame() {
 }
 
 void NetworkController::initGame(const std::shared_ptr<cugl::JsonValue>& deckJson) {
+    if(_status == TUTORIAL) {
+        return;
+    }
     _serializer->reset();
     
     _serializer->writeString("initialize game");
@@ -284,6 +290,9 @@ void NetworkController::initGame(const std::shared_ptr<cugl::JsonValue>& deckJso
 }
 
 void NetworkController::broadcastDeck(const std::shared_ptr<cugl::JsonValue>& deckJson) {
+    if(_status == TUTORIAL) {
+        return;
+    }
     _serializer->reset();
     
     _serializer->writeString("update deck");
@@ -293,6 +302,9 @@ void NetworkController::broadcastDeck(const std::shared_ptr<cugl::JsonValue>& de
 }
 
 void NetworkController::broadcastNextTile(const std::shared_ptr<cugl::JsonValue>& tileJson) {
+    if(_status == TUTORIAL) {
+        return;
+    }
     _serializer->reset();
     
     _serializer->writeString("next tile update");
@@ -302,6 +314,9 @@ void NetworkController::broadcastNextTile(const std::shared_ptr<cugl::JsonValue>
 }
 
 void NetworkController::broadcastPileIndex(const int index){
+    if(_status == TUTORIAL) {
+        return;
+    }
     _serializer->reset();
     
     _serializer->writeString("pile index update");
@@ -311,6 +326,9 @@ void NetworkController::broadcastPileIndex(const int index){
 }
 
 void NetworkController::broadcastDeckMap(const std::shared_ptr<cugl::JsonValue>& tileMapJson) {
+    if(_status == TUTORIAL) {
+        return;
+    }
     _serializer->reset();
     
     _serializer->writeString("tile map update");
@@ -320,6 +338,9 @@ void NetworkController::broadcastDeckMap(const std::shared_ptr<cugl::JsonValue>&
 }
 
 void NetworkController::broadcastPileLayer() {
+    if(_status == TUTORIAL) {
+        return;
+    }
     _serializer->reset();
     
     _serializer->writeString("update layer");
@@ -328,6 +349,9 @@ void NetworkController::broadcastPileLayer() {
 }
 
 void NetworkController::broadcastUpdating(){
+    if(_status == TUTORIAL) {
+        return;
+    }
     _serializer->reset();
     
     _serializer->writeString("updating");
@@ -336,6 +360,9 @@ void NetworkController::broadcastUpdating(){
 }
 
 void NetworkController::broadcastRemoveDiscard(){
+    if(_status == TUTORIAL) {
+        return;
+    }
     _serializer->reset();
     
     _serializer->writeString("remove discard tile");
@@ -344,6 +371,9 @@ void NetworkController::broadcastRemoveDiscard(){
 }
 
 void NetworkController::broadcastNewDiscard(const std::shared_ptr<cugl::JsonValue>& tileJson){
+    if(_status == TUTORIAL) {
+        return;
+    }
     _serializer->reset();
     
     _serializer->writeString("new discard tile");
@@ -353,6 +383,9 @@ void NetworkController::broadcastNewDiscard(const std::shared_ptr<cugl::JsonValu
 }
 
 void NetworkController::broadcastStartingDeck(const std::shared_ptr<cugl::JsonValue>& deckJson){
+    if(_status == TUTORIAL) {
+        return;
+    }
     _serializer->reset();
     
     _serializer->writeString("starting client deck");
@@ -362,6 +395,9 @@ void NetworkController::broadcastStartingDeck(const std::shared_ptr<cugl::JsonVa
 }
 
 void NetworkController::broadcastPreDraw(int numDraw, bool isHost) {
+    if(_status == TUTORIAL) {
+        return;
+    }
     _serializer->reset();
     
     _serializer->writeString("preemptive draw");
@@ -381,6 +417,9 @@ void NetworkController::broadcastPreDraw(int numDraw, bool isHost) {
  * @param clientStart   The JsonValue representing the initial representation of all tiles
  */
 void NetworkController::broadcastClientStart(const std::shared_ptr<cugl::JsonValue>& clientStart) {
+    if(_status == TUTORIAL) {
+        return;
+    }
     _serializer->reset();
     
     _serializer->writeString("client start");
@@ -396,6 +435,9 @@ void NetworkController::broadcastClientStart(const std::shared_ptr<cugl::JsonVal
  * @param drawnTileJson     The JsonValue representing the drawn tile
  */
 void NetworkController::broadcastTileDrawn(int isHost, const std::shared_ptr<cugl::JsonValue>& drawnTileJson) {
+    if(_status == TUTORIAL) {
+        return;
+    }
     _serializer->reset();
     
     _serializer->writeString("tile drawn");
@@ -412,6 +454,9 @@ void NetworkController::broadcastTileDrawn(int isHost, const std::shared_ptr<cug
  * @param tileMapJson       The JsonValue of the tileMap 
  */
 void NetworkController::broadcastTileMap(int isHost, const std::shared_ptr<cugl::JsonValue>& tileMapJson, std::string mapUpdateType) {
+    if(_status == TUTORIAL) {
+        return;
+    }
     _serializer->reset();
     
     _serializer->writeString("tile map update");
@@ -428,6 +473,9 @@ void NetworkController::broadcastTileMap(int isHost, const std::shared_ptr<cugl:
  * @param discardedTileJson     The JsonValue of the discarded tile
  */
 void NetworkController::broadcastDiscard(int isHost, const std::shared_ptr<cugl::JsonValue>& discardedTileJson) {
+    if(_status == TUTORIAL) {
+        return;
+    }
     _serializer->reset();
     
     _serializer->writeString("discard update");
@@ -443,6 +491,9 @@ void NetworkController::broadcastDiscard(int isHost, const std::shared_ptr<cugl:
  * @param isHost If current network is the host network or not
  */
 void NetworkController::broadcastDrawnDiscard(int isHost) {
+    if(_status == TUTORIAL) {
+        return;
+    }
     _serializer->reset();
     
     _serializer->writeString("drawn discard");
@@ -459,6 +510,9 @@ void NetworkController::broadcastDrawnDiscard(int isHost) {
  * @param playedTiles   JSON representing the set of tiles that have been played (empty if invalid set)
  */
 void NetworkController::broadcastPlaySet(int isHost, bool isValid, std::shared_ptr<cugl::JsonValue>& playedTiles) {
+    if(_status == TUTORIAL) {
+        return;
+    }
     _serializer->reset();
     
     _serializer->writeString("played set");
@@ -478,6 +532,9 @@ void NetworkController::broadcastPlaySet(int isHost, bool isValid, std::shared_p
  * @param celestialType     The type of celestial tile that was played
  */
 void NetworkController::broadcastCelestialTile(int isHost, const std::shared_ptr<cugl::JsonValue>& changedTilesJson, const std::shared_ptr<cugl::JsonValue>& celestialTile, std::string celestialType) {
+    if(_status == TUTORIAL) {
+        return;
+    }
 
     _serializer->reset();
     
@@ -497,6 +554,9 @@ void NetworkController::broadcastCelestialTile(int isHost, const std::shared_ptr
            
 /** Broadcasts a message that the game has concluded */
 void NetworkController::broadcastEnd(int isHost) {
+    if(_status == TUTORIAL) {
+        return;
+    }
     _serializer->reset();
     
     _serializer->writeString("game concluded");

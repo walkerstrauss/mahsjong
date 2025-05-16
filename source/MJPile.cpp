@@ -11,6 +11,7 @@
 #include "MJAnimationController.h"
 
 #define VELOCITY_THRESHOLD 2.0f
+#define SHUFFLE_VELOCITY 800.f
 #define ROTATE_MAX 0.3f
 
 #define SPRING 0.05f
@@ -27,7 +28,8 @@
  * @param size             the size the pile should be
  * @param tileSet      the tileset to draw from to build the pile
  */
-bool Pile::initPile(int size, std::shared_ptr<TileSet> tileSet, bool isHost) {
+bool Pile::initPile(int size, std::shared_ptr<TileSet> tileSet, bool isHost, std::shared_ptr<AssetManager>& assets) {
+    _assets = assets;
     _tileSet = tileSet;
     _pileSize = size;
     _pile.clear();
@@ -95,7 +97,7 @@ bool Pile::createPile() {
         _pile.push_back(row); //add tile from deck to pile
     }
     
-    setTilePositions();
+    setTilePositions(false);
     
     // Erase tiles put into the pile from deck
     if(_tileSet->deck.size() <= 25){
@@ -108,12 +110,23 @@ bool Pile::createPile() {
     return true;
 }
 
-void Pile::setTilePositions() {
+void Pile::initPileTutorialMode(){
+    for (auto row: _pile){
+        for (auto& tile: row){
+            tile->inPile = true;
+            tile->inDeck = false;
+        }
+    }
+}
+
+void Pile::setTilePositions(bool shuffling) {
     float spacingY = 1.0f;
     float spacingX = 1.0f;
     
     float height = pileBox.getMaxY() - pileBox.getMinY();
     float width = pileBox.getMaxX() - pileBox.getMinX();
+    
+    std::unordered_map<std::shared_ptr<TileSet::Tile>, Vec2> tilePos;
     
     _pileMap.clear();
     
@@ -132,11 +145,16 @@ void Pile::setTilePositions() {
             float x = j * tileSize.x * spacingX;
             float y = i * tileSize.y * spacingY;
             
-            tile->pos = cugl::Vec2(x, y) + pileOffset;
+            if(shuffling) tilePos.insert({tile, Vec2(x, y) + pileOffset});
+            else tile->pos = cugl::Vec2(x, y) + pileOffset;
 
             std::string key = std::to_string(tile->_id);
             _pileMap.insert({key, tile->pileCoord});
         }
+    }
+    
+    if(shuffling) {
+        pileFlipMoveAway(tilePos);
     }
 }
 
@@ -158,16 +176,35 @@ void Pile::updateTilePositions(float dt) {
             float displacement = tile->getContainer()->getAngle();
             float force = -SPRING * displacement - DAMP * velocity;
             
-            Vec2 lerpPos = tile->getContainer()->getPosition();
-            lerpPos.lerp(pos, 0.5);
-            
             velocity += force * dt;
             displacement = std::clamp(velocity * dt, -ROTATE_MAX, ROTATE_MAX);
             
+            Vec2 movePos;
+            if(tile->moveToCenter) {
+                Vec2 delta = tile->pos - tile->getContainer()->getPosition();
+                float dist = delta.length();
+                if(dist < 1e-3f) {
+                    movePos = tile->pos;
+                    tile->moveToCenter = false;
+                }
+                else {
+                    Vec2 dir = delta/ dist;
+                    float step = SHUFFLE_VELOCITY * dt;
+                    movePos = tile->getContainer()->getPosition() + dir * std::min(step, dist);
+                }
+            }
+            else {
+                Vec2 lerpPos = tile->getContainer()->getPosition();
+                lerpPos.lerp(pos, 0.5);
+                movePos = lerpPos;
+            }
+            
             tile->getContainer()->setAnchor(Vec2::ANCHOR_CENTER);
             tile->getContainer()->setAngle(displacement);
-            tile->getContainer()->setScale(tile->_scale);
-            tile->getContainer()->setPosition(lerpPos);
+            if(!tile->animating) {
+                tile->getContainer()->setScale(tile->_scale);
+            }
+            tile->getContainer()->setPosition(movePos);
             tile->getContainer()->setVisible(true);
         }
     }
@@ -254,7 +291,11 @@ void Pile::removeTile(std::shared_ptr<TileSet::Tile> tile) {
     }
 }
 
-void Pile::remakePile(){
+void Pile::remakePile(bool shuffling){
+    if(shuffling) {
+        pileFlipMoveCenter();
+    }
+    
     _pileMap.clear();
     for(auto const& pairs : _tileSet->tileMap) {
         std::shared_ptr<TileSet::Tile> currTile = pairs.second;
@@ -267,7 +308,7 @@ void Pile::remakePile(){
         }
     }
     
-    setTilePositions();
+    setTilePositions(shuffling);
 }
 
 /**
@@ -287,6 +328,7 @@ void Pile::draw(const std::shared_ptr<cugl::graphics::SpriteBatch>& batch) {
 }
 
 void Pile::reshufflePile(){
+    pileFlipMoveCenter();
     std::vector<std::shared_ptr<TileSet::Tile>> tiles;
     for (int i = 0; i < _pileSize; i++) {
         for (int j = 0; j < _pileSize; j++) {
@@ -305,6 +347,7 @@ void Pile::reshufflePile(){
             if (_pile[i][j] != nullptr) {
                 _pile[i][j] = tiles[index];
                 _pile[i][j]->pileCoord = cugl::Vec2(i, j);
+                _pile[i][j]->animating = true; 
                 index++;
             }
         }
@@ -335,7 +378,7 @@ void Pile::updateRow(int row, const std::vector<std::shared_ptr<TileSet::Tile>>&
             _pile[row][j]->pileCoord = cugl::Vec2(row, j);
         }
     }
-    setTilePositions();
+    setTilePositions(false);
 }
 
 int Pile::selectedRow(std::shared_ptr<TileSet::Tile> tile) {
@@ -377,6 +420,7 @@ void Pile::pileJump(float dt) {
     }
 }
 
+
 bool Pile::isEmpty() {
     for (const auto& row : _pile) {
         if (!row.empty()) {
@@ -386,5 +430,100 @@ bool Pile::isEmpty() {
         return true;
 }
 
+/** Pile flip effect */
+void Pile::pileFlipMoveCenter() {
+    choice = SHUFFLE;
+    int counter = 0;
+    float flipDelay = 50.0f;
+    
+    Vec2 pileCenter = pileBox.origin + Vec2(pileBox.size.width / 2.0f, pileBox.size.height / 2.0f);
+    
+    Application* app = Application::get();
+    for(int i = _pileSize - 1; i >= 0; --i) {
+        for(int j = 0; j < _pileSize; ++j) {
+            std::shared_ptr<TileSet::Tile> tile = _pile[i][j];
+            if(!tile) {
+                continue;
+            }
+            
+            counter += 1;
+            std::shared_ptr<Texture> frontTexture = tile->getSuit() == TileSet::Tile::Suit::CELESTIAL ?
+            _assets->get<Texture>("blank celestial hand") : _assets->get<Texture>("blank normal hand");
+            std::shared_ptr<Texture> backTexture = tile->getSuit() == TileSet::Tile::Suit::CELESTIAL ?
+            _assets->get<Texture>("back celestial") : _assets->get<Texture>("back normal");
+            
+            app->schedule([tile, backTexture, frontTexture, pileCenter] () mutable {
+                AnimationController::getInstance().animateTileFlip(tile, frontTexture, backTexture, tile->_scale, 12.0f, false);
+                return false;
+            }, flipDelay * counter);
+        }
+    }
+    
+    counter = 0;
+    
+    for(int i = _pileSize - 1; i >= 0; --i) {
+        for(int j = 0; j < _pileSize; ++j) {
+            std::shared_ptr<TileSet::Tile> tile = _pile[i][j];
+            if(!tile) {
+                continue;
+            }
+            
+            counter += 1;
+            app->schedule([tile, pileCenter] () mutable {
+                tile->pos = pileCenter;
+                tile->moveToCenter = true; 
+                return false;
+            }, flipDelay * counter + 100.0f);
+        }
+    }
+}
 
-
+void Pile::pileFlipMoveAway(std::unordered_map<std::shared_ptr<TileSet::Tile>, Vec2> tilePos) {
+    float flipDelay = 50.0f;
+    float flipMoveCenterEnd = flipDelay * getVisibleSize() + 1000.0f;
+    float moveAway = 50.0f;
+    float moveAwayEnd = flipMoveCenterEnd + moveAway * getVisibleSize();
+    
+    int counter = 0;
+        
+    Application* app = Application::get();
+    for(int i = _pileSize - 1; i >= 0; --i) {
+        for(int j = 0; j < _pileSize; ++j) {
+            std::shared_ptr<TileSet::Tile> tile = _pile[i][j];
+            if(!tile) {
+                continue;
+            }
+            
+            counter += 1;
+            
+            app->schedule([tile, tilePos] () mutable {
+                tile->moveToCenter = true;
+                tile->pos = tilePos[tile];
+                return false;
+            }, flipMoveCenterEnd + counter * moveAway);
+        }
+    }
+    
+    counter = 0;
+    
+    for(int i = _pileSize - 1; i >= 0; --i) {
+        for(int j = 0; j < _pileSize; ++j) {
+            std::shared_ptr<TileSet::Tile> tile = _pile[i][j];
+            if(!tile) {
+                continue;
+            }
+            
+            counter += 1;
+            std::shared_ptr<Texture> frontTexture = tile->getSuit() == TileSet::Tile::Suit::CELESTIAL ?
+            _assets->get<Texture>("blank celestial hand") : _assets->get<Texture>("blank normal hand");
+            std::shared_ptr<Texture> backTexture = tile->getSuit() == TileSet::Tile::Suit::CELESTIAL ?
+            _assets->get<Texture>("back celestial") : _assets->get<Texture>("back normal");
+            
+            app->schedule([tile, backTexture, frontTexture] () mutable {
+                AnimationController::getInstance().animateTileFlip(tile, backTexture, frontTexture, tile->_scale, 12.0f, true);
+                return false;
+            }, flipMoveCenterEnd + counter * flipDelay);
+        }
+    }
+    choice = NONE; 
+}

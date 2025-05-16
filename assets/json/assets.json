@@ -9,6 +9,12 @@
         "blank normal hand": {
             "file": "textures/newTiles/blank_normal_hand.png"
         },
+        "back normal": {
+            "file": "textures/newTiles/back_normal.png"
+        },
+        "back celestial": {
+            "file": "textures/newTiles/back_celestial.png"
+        },
         "one of dot new": {
             "file": "textures/newTiles/one_of_dot_new.png"
         },
@@ -325,7 +331,7 @@
             "file": "textures/hover/dragon.png"
         },
         "pig of celestial info": {
-          "file": "textures/hover/pig.png"
+            "file": "textures/hover/pig.png"
         },
         "background": {
             "file": "textures/landing/background.png"
@@ -521,9 +527,6 @@
         },
         "settingGrandma": {
             "file": "textures/setting/settingGrandma.png"
-        },
-        "shade": {
-            "file": "textures/setting/shade.png"
         },
         "soundButton": {
             "file": "textures/setting/soundButton.png"
@@ -993,6 +996,9 @@
         "discardTilecloseIcon": {
             "file": "textures/playguide/discardTilecloseIcon.png"
         },
+        "timerShade": {
+            "file": "textures/gameplay/timerShade.png"
+        },
         "infoBackground": {
             "file": "textures/playguide/infoBackground.png"
         },
@@ -1065,7 +1071,7 @@
         "tu11": {
             "file": "textures/tutorial/tu11.png"
         },
-        "button_back":{
+        "button_back": {
             "file": "textures/tutorial/button_back.png"
         },
         "button_exit": {
@@ -1113,8 +1119,65 @@
         "drew-try-discard": {
             "file": "textures/gameplay/drew-try-discard.png"
         },
-        "pig-fail":{
+        "hand_overfull": {
+            "file": "textures/gameplay/hand_overfull.png"
+        },
+        "pig-fail": {
             "file": "textures/gameplay/pig-fail.png"
+        },
+        "shade": {
+            "file": "textures/tutorial/shade.png"
+        },
+        "drawFromPileArrow": {
+            "file": "textures/tutorial/drawFromPileArrow.png"
+        },
+        "box": {
+            "file": "textures/tutorial/box.png"
+        },
+        "drawFromPileText": {
+            "file": "textures/tutorial/drawFromPileText.png"
+        },
+        "dragToDiscardArrow": {
+            "file": "textures/tutorial/dragToDiscardArrow.png"
+        },
+        "dragToDiscardText": {
+            "file": "textures/tutorial/dragToDiscardText.png"
+        },
+        "waitOpponentArrow": {
+            "file": "textures/tutorial/waitOpponentArrow.png"
+        },
+        "waitOpponentText": {
+            "file": "textures/tutorial/waitOpponentText.png"
+        },
+        "playCelestialTileText": {
+            "file": "textures/tutorial/playCelestialTileText.png"
+        },
+        "drawDiscardedArrow": {
+            "file": "textures/tutorial/drawDiscardedArrow.png"
+        },
+        "drawDiscardedText": {
+            "file": "textures/tutorial/drawDiscardedText.png"
+        },
+        "playsetText": {
+            "file": "textures/tutorial/playsetText.png"
+        },
+        "playsetArrow": {
+            "file": "textures/tutorial/playsetArrow.png"
+        },
+        "pressText": {
+            "file": "textures/tutorial/pressText.png"
+        },
+        "pressArrow": {
+            "file": "textures/tutorial/pressArrow.png"
+        },
+        "welcome": {
+            "file": "textures/tutorial/welcome.png"
+        },
+        "shade-tut": {
+            "file": "textures/tutorial/shade-tut.png"
+        },
+        "finished": {
+            "file": "textures/tutorial/finished.png"
         }
     },
     "fonts": {
@@ -1477,7 +1540,9 @@
         "client3Scene": "widgets/scene/client3Scene.json",
         "infoscene": "widgets/scene/infoScene1.json",
         "tutorialScene": "widgets/scene/tutorialScene.json",
-        "scoretiescene":"widgets/scene/scoretiescene.json"
+        "scoretiescene":"widgets/scene/scoretiescene.json",
+        "tutScene":"widgets/scene/tutScene.json"
+
     },
     "jsons": {
         "server": "json/server.json",

@@ -21,8 +21,9 @@
 #include "MJMatchController.h"
 #include "MJLoadingScene.h"
 #include "MJInfoScene.h"
-#include "MJTutorialScene.h"
+#include "MJHelpScene.h"
 #include "MJInputController.h"
+#include "MJTutorialScene.h"
 
 /**
  * This class represents the application root for the Mah's Jong game
@@ -36,11 +37,12 @@ protected:
         LOAD,
         MENU,
         INFO,
-        TUTORIAL,
+        HELP,
         HOST,
         CLIENT,
         GAME,
         SETTINGS,
+        TUTORIAL,
         PAUSE,
         OVER,
     };
@@ -49,15 +51,8 @@ protected:
     std::shared_ptr<cugl::AssetManager> _assets;
     /** Global sprite batch for drawing */
     std::shared_ptr<cugl::graphics::SpriteBatch> _batch;
-    /** The network interface */
-//    std::shared_ptr<cugl::netcode::NetcodeConnection> _network;
-    /** Controller for loading scene */
-    
-    //
-    //cugl::scene2::LoadingScene _loading;
-    
+    /** The loading scene for our game */
     OurLoadingScene _loading;
-    
     /** The menu scene to choose what to do */
     MenuScene _mainmenu;
     /** The scene to host a game*/
@@ -74,7 +69,9 @@ protected:
     GameOverScene _gameover;
     /** The information scene for player onboarding and in-game information */
     InfoScene _info;
-    /** The tutorial scene for player onboarding outside of the game */
+    /** The help scene for player onboarding for the game */
+    HelpScene _help;
+    /** The single-player tutorial scene */
     TutorialScene _tutorial;
     /** The match controller for the game*/
     std::shared_ptr<MatchController> _matchController;
@@ -90,8 +87,6 @@ protected:
     State _scene;
     /** The network controller */
     std::shared_ptr<NetworkController> _network;
-    /** Reference to audio controller for game sounds */
-//    std::shared_ptr<AudioController> _audio;
 
 public:
     /**
@@ -220,6 +215,13 @@ private:
     * @param timestep   The amount of time (in seconds) since the last frame
     */
     void updateInfoScene(float timestep);
+    
+    /**
+    * Individualzed update method for the help scene
+    *
+    * @param timestep   The amount of time (in seconds) since the last frame
+    */
+    void updateHelpScene(float timestep);
     
     /**
     * Individualzed update method for the tutorial scene
