@@ -226,6 +226,9 @@ protected:
     bool _wasTradeTileVisible = false;
    
     std::shared_ptr<TexturedNode> blankTile;
+    
+    
+    std::vector<std::shared_ptr<TileSet::Tile>> _winningHand;
 
 public:
 #pragma mark -

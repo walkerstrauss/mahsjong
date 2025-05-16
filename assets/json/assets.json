@@ -1059,12 +1059,6 @@
         "tu11": {
             "file": "textures/tutorial/tu11.png"
         },
-        "tu12": {
-            "file": "textures/tutorial/tu12.png"
-        },
-        "tu13": {
-            "file": "textures/tutorial/tu13.png"
-        },
         "button_back": {
             "file": "textures/tutorial/button_back.png"
         },
@@ -1113,12 +1107,9 @@
         "drew-try-discard": {
             "file": "textures/gameplay/drew-try-discard.png"
         },
-<<<<<<< HEAD
-=======
         "hand_overfull": {
             "file": "textures/gameplay/hand_overfull.png"
         },
->>>>>>> 127450907bf350d22bf8125e6b4018675c93b5a6
         "pig-fail": {
             "file": "textures/gameplay/pig-fail.png"
         },
@@ -1173,7 +1164,6 @@
         "shade-tut": {
             "file": "textures/tutorial/shade-tut.png"
         },
-<<<<<<< HEAD
         "finished":{
             "file":"textures/tutorial/finished.png"
         },
@@ -1200,10 +1190,6 @@
         },
         "snake-opponent":{
             "file":"textures/animations/snake-opponent.png"
-=======
-        "finished": {
-            "file": "textures/tutorial/finished.png"
->>>>>>> 127450907bf350d22bf8125e6b4018675c93b5a6
         }
     },
     "fonts": {
@@ -1607,7 +1593,7 @@
         "client3Scene": "widgets/scene/client3Scene.json",
         "infoscene": "widgets/scene/infoScene1.json",
         "tutorialScene": "widgets/scene/tutorialScene.json",
-        "scoretiescene":"widgets/scene/scoretiescene.json"
+        "scoretiescene":"widgets/scene/scoretiescene.json",
         "tutScene":"widgets/scene/tutScene.json"
     },
     "jsons": {

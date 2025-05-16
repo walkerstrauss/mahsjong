@@ -423,10 +423,6 @@ void GameScene::reset() {
  * @param timestep The amount of time (in seconds) since the last frame
  */
 void GameScene::update(float timestep) {
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 127450907bf350d22bf8125e6b4018675c93b5a6
     
     if (_input->getKeyPressed() == cugl::KeyCode::A && _input->getPrevKeyPressed() != cugl::KeyCode::A) {
 
@@ -590,6 +586,7 @@ void GameScene::update(float timestep) {
         _winningHand = winner->getHand()._tiles;
         
         _choice = Choice::LOSE;
+        
     }
     
     if(_matchController->getChoice()==MatchController::Choice::TIE){
