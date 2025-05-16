@@ -36,6 +36,19 @@ public:
         WIN,
         LOSE
     };
+    
+    enum OpponentAnimType {
+        INACTIVE,
+        OX,
+        SNAKE,
+        RABBIT,
+        MONKEY,
+        RAT,
+        DRAGON,
+        ROOSTER,
+        PIG
+    };
+    
     /** If current player has already drawn from the pile/discard or not */
     bool hasDrawn = false;
     /** If current player has already discarded or not */
@@ -44,6 +57,8 @@ public:
     bool hasPlayedCelestial = false;
     /** If the current player has timed out */
     bool hasTimedOut = false;
+    /** If we are in tutorial mode */
+    bool inTutorial = false; 
     
 protected:
     /** The network connection */
@@ -58,6 +73,8 @@ protected:
     std::shared_ptr<DiscardPile> _discardPile; 
     /** The current state of the game */
     Choice _choice;
+    /** Opponent anim enum*/
+    OpponentAnimType _celestialAnim;
     /** The instance of the monkey tile that was played */
     std::shared_ptr<TileSet::Tile> _monkeyTile;
     /** The instance of the rat tile that was played */
@@ -115,6 +132,12 @@ public:
      * map JSON, instantiating the tilset, deck, players, and pile as specificed by the JSON. 
      */
     void initClient();
+    
+    /**
+     * Initializes the game in tutorial mode. Initializes the tileset based on a preset deck JSON
+     * and instantiates only one player.
+     */
+    void initTutorial(); 
     
     /**
      * Draws a tile from the pile to the player that called the method. After drawing, it broadcasts
@@ -264,6 +287,14 @@ public:
      * Disposes of all (non-static) resources allocated to this mode.
      */
     void dispose();
+    
+    void setOpponentAnimType(OpponentAnimType type){
+        _celestialAnim = type;
+    }
+    
+    OpponentAnimType getOpponentAnimType(){
+        return _celestialAnim;
+    }
 };
 
 #endif /* __MJ_MATCH_CONTROLLER__ */

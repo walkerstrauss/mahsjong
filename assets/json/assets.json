@@ -334,7 +334,7 @@
             "file": "textures/hover/dragon.png"
         },
         "pig of celestial info": {
-          "file": "textures/hover/pig.png"
+            "file": "textures/hover/pig.png"
         },
         "background": {
             "file": "textures/landing/background.png"
@@ -362,12 +362,6 @@
         },
         "tilesample 2": {
             "file": "textures/gameplay/tilesample.png"
-        },
-        "displayed-set-icon": {
-            "file": "textures/gameplay/displayed-set-icon.png"
-        },
-        "displayed-set-icon-expanded": {
-            "file": "textures/gameplay/displayed-set-icon-expanded.png"
         },
         "background_pause": {
             "file": "textures/pause/background_pause.png"
@@ -525,9 +519,6 @@
         "settingGrandma": {
             "file": "textures/setting/settingGrandma.png"
         },
-        "shade": {
-            "file": "textures/setting/shade.png"
-        },
         "soundButton": {
             "file": "textures/setting/soundButton.png"
         },
@@ -536,9 +527,6 @@
         },
         "discardCanButton": {
             "file": "textures/gameplay/discardCanButton.png"
-        },
-        "displaytileSample": {
-            "file": "textures/gameplay/displaytileSample.png"
         },
         "drag-to-discard-tile": {
             "file": "textures/gameplay/drag-to-discard-tile.png"
@@ -713,9 +701,6 @@
         },
         "discardCanButton": {
             "file": "textures/gameplay/discardCanButton.png"
-        },
-        "displaytileSample": {
-            "file": "textures/gameplay/displaytileSample.png"
         },
         "infoIconButton": {
             "file": "textures/gameplay/infoIcon.png"
@@ -1050,7 +1035,7 @@
         "tu13": {
             "file": "textures/tutorial/tu13.png"
         },
-        "button_back":{
+        "button_back": {
             "file": "textures/tutorial/button_back.png"
         },
         "button_exit": {
@@ -1098,11 +1083,89 @@
         "drew-try-discard": {
             "file": "textures/gameplay/drew-try-discard.png"
         },
-        "pig-fail":{
+        "pig-fail": {
             "file": "textures/gameplay/pig-fail.png"
         },
         "poof": {
             "file": "textures/animations/poof.png"
+        }
+        "shade": {
+            "file": "textures/tutorial/shade.png"
+        },
+        "drawFromPileArrow": {
+            "file": "textures/tutorial/drawFromPileArrow.png"
+        },
+        "box": {
+            "file": "textures/tutorial/box.png"
+        },
+        "drawFromPileText": {
+            "file": "textures/tutorial/drawFromPileText.png"
+        },
+        "dragToDiscardArrow": {
+            "file": "textures/tutorial/dragToDiscardArrow.png"
+        },
+        "dragToDiscardText": {
+            "file": "textures/tutorial/dragToDiscardText.png"
+        },
+        "waitOpponentArrow": {
+            "file": "textures/tutorial/waitOpponentArrow.png"
+        },
+        "waitOpponentText": {
+            "file": "textures/tutorial/waitOpponentText.png"
+        },
+        "playCelestialTileText": {
+            "file": "textures/tutorial/playCelestialTileText.png"
+        },
+        "drawDiscardedArrow": {
+            "file": "textures/tutorial/drawDiscardedArrow.png"
+        },
+        "drawDiscardedText": {
+            "file": "textures/tutorial/drawDiscardedText.png"
+        },
+        "playsetText": {
+            "file": "textures/tutorial/playsetText.png"
+        },
+        "playsetArrow": {
+            "file": "textures/tutorial/playsetArrow.png"
+        },
+        "pressText": {
+            "file": "textures/tutorial/pressText.png"
+        },
+        "pressArrow": {
+            "file": "textures/tutorial/pressArrow.png"
+        },
+        "welcome": {
+            "file": "textures/tutorial/welcome.png"
+        },
+        "shade-tut":{
+            "file": "textures/tutorial/shade-tut.png"
+        },
+        "finished":{
+            "file":"textures/tutorial/finished.png"
+        },
+        "ox-opponent":{
+            "file":"textures/animations/ox-opponent.png"
+        },
+        "dragon-opponent":{
+            "file":"textures/animations/dragon-opponent.png"
+        },
+        "monkey-opponent":{
+            "file":"textures/animations/monkey-opponent.png"
+        },
+        "pig-opponent":{
+            "file":"textures/animations/pig-opponent.png"
+        },
+        "rabbit-opponent":{
+            "file":"textures/animations/rabbit-opponent.png"
+        },
+        "rat-opponent":{
+            "file":"textures/animations/rat-opponent.png"
+        },
+        "rooster-opponent":{
+            "file":"textures/animations/rooster-opponent.png"
+        },
+        "snake-opponent":{
+            "file":"textures/animations/snake-opponent.png"
         }
     },
     "fonts": {
@@ -1149,6 +1212,26 @@
     },
     "scene2s": {
         "matchscene": {
+            "type": "Node",
+            "format": {
+                "type": "Anchored"
+            },
+            "children": {
+                "gameplayscene": {
+                    "type": "Widget",
+                    "format": {
+                        "type": "Anchored"
+                    },
+                    "data": {
+                        "key": "gameplayscene",
+                        "variables": {
+                            "size": [ 1280, 720 ]
+                        }
+                    }
+                }
+            }
+        },
+        "tutorialscene": {
             "type": "Node",
             "format": {
                 "type": "Anchored"
@@ -1315,7 +1398,7 @@
                 "type": "Anchored"
             },
             "children": {
-                "hostscene": {
+                "host1Scene": {
                     "type": "Widget",
                     "format": {
                         "type": "Anchored"
@@ -1329,13 +1412,34 @@
                 }
             }
         },
+        "host3": {
+            "type": "Node",
+            "format": {
+                "type": "Anchored"
+            },
+            "children": {
+                "host3Scene": {
+                    "type": "Widget",
+                    "format": {
+                        "type": "Anchored"
+                    },
+                    "data": {
+                        "variables": {
+                            "size": [ 1280, 720 ]
+                        },
+                        "key": "host3Scene"
+                    }
+                }
+            }
+        },
+
         "client": {
             "type": "Node",
             "format": {
                 "type": "Anchored"
             },
             "children": {
-                "clientscene": {
+                "client1Scene": {
                     "type": "Widget",
                     "format": {
                         "type": "Anchored"
@@ -1418,7 +1522,8 @@
         "landingscene": "widgets/scene/landingscene.json",
         "landingTextbutton": "widgets/button/landingTextbutton.json",
         "home": "widgets/scene/home.json",
-        "hostscene": "widgets/scene/hostscene.json",
+        "host1Scene": "widgets/scene/host1Scene.json",
+        "host3Scene": "widgets/scene/host3Scene.json",
         "clientscene": "widgets/scene/clientscene.json",
         "menubutton": "widgets/button/menubutton.json",
         "settingbutton": "widgets/icon/settingicon.json",
@@ -1440,11 +1545,11 @@
         "settingbutton_onoff": "widgets/button/settingbutton_onoff.json",
         "tilesetscene": "widgets/scene/tilesetscene.json",
         "pile-ui": "widgets/scene/pile-ui.json",
-        "host1Scene": "widgets/scene/host1Scene.json",
         "client1Scene": "widgets/scene/client1Scene.json",
         "client3Scene": "widgets/scene/client3Scene.json",
         "infoscene": "widgets/scene/infoScene1.json",
-        "tutorialScene": "widgets/scene/tutorialScene.json"
+        "tutorialScene": "widgets/scene/tutorialScene.json",
+        "tutScene":"widgets/scene/tutScene.json"
     },
     "jsons": {
         "server": "json/server.json",

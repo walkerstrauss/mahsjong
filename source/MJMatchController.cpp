@@ -44,6 +44,7 @@ bool MatchController::init(const std::shared_ptr<cugl::AssetManager>& assets, st
     _discardPile->init(_assets);
     
     _choice = Choice::NONE;
+    _celestialAnim = OpponentAnimType::INACTIVE;
     _active = true;
     
     // play the background music for the match scene.
@@ -62,18 +63,17 @@ bool MatchController::init(const std::shared_ptr<cugl::AssetManager>& assets, st
 void MatchController::initHost() {
     //Initializing the host deck
     _tileSet->initHostDeck();
-    _tileSet->addCelestialTiles(_assets);
     _tileSet->setAllTileTexture(_assets);
     _tileSet->initTileNodes(_assets);
-    _tileSet->shuffle();
-    
+
     //Initializing host and client players
     hostPlayer->getHand().initHand(_tileSet, true);
+
     clientPlayer->getHand().initHand(_tileSet, false);
     
     //Initializing pile
     _pile->initPile(4, _tileSet, true, _assets);
-    
+        
     //Broadcast initial state
     _network->broadcastClientStart(_tileSet->mapToJson());
 
@@ -90,22 +90,52 @@ void MatchController::initClient() {
     _tileSet->initTileNodes(_assets);
     _tileSet->updateDeck(_network->getClientStart());
     
+    std::vector<std::shared_ptr<TileSet::Tile>> host;
+    std::vector<std::shared_ptr<TileSet::Tile>> client;
     // Assigning client and host hands
     for(auto& pairs : _tileSet->tileMap) {
         std::shared_ptr<TileSet::Tile> currTile = pairs.second;
         if(currTile->inHostHand) {
-            hostPlayer->getHand()._tiles.push_back(currTile);
+            host.push_back(currTile);
         }
         else if(currTile->inClientHand) {
-            clientPlayer->getHand()._tiles.push_back(currTile);
+            client.push_back(currTile);
         }
     }
     
+    hostPlayer->getHand()._tiles = hostPlayer->getHand().getSortedTiles(host);
+    clientPlayer->getHand()._tiles = clientPlayer->getHand().getSortedTiles(client);
+
     //Initializing the pile
     _pile->initPile(4, _tileSet, false, _assets);
     _pile->setTilePositions(false);
     
     _pile->remakePile(false);
+}
+
+/**
+ * Initializes the game in tutorial mode. Initializes the tileset based on a preset deck JSON
+ * and instantiates only one player.
+ */
+void MatchController::initTutorial() {
+    _network->connectAsTutorial();
+    
+    std::shared_ptr<JsonValue> tutorialDeck = _assets->get<JsonValue>("constants");
+    _tileSet->deck = _tileSet->processDeckJson(tutorialDeck->get(0));
+    for (auto& tile : _tileSet->deck) {
+        _tileSet->tileMap[std::to_string(tile->_id)] = tile;
+    }
+    
+    _tileSet->setAllTileTexture(_assets);
+    _tileSet->initTileNodes(_assets);
+    
+    //Initializing tutorial player
+    hostPlayer->getHand().initHand(_tileSet, true);
+    
+    //Initializing pile
+    _pile->initPile(4, _tileSet, true, _assets);
+    
+    inTutorial = true; 
 }
 
 /**
@@ -201,7 +231,7 @@ bool MatchController::drawDiscard() {
     
     _choice = DRAWNDISCARD;
     
-    hasDrawn = true; 
+    hasDrawn = true;
     
     return true; 
 }
@@ -619,6 +649,12 @@ void MatchController::playMonkey(std::shared_ptr<TileSet::Tile>& selectedTile) {
     self._tiles.push_back(oppTile);
     oppTile->inHostHand = _network->getHostStatus();
     oppTile->inClientHand = !_network->getHostStatus();
+    
+    if (self.isWinningHand()) {
+        _choice = Choice::WIN;
+        _network->broadcastEnd(_network->getLocalPid());
+        return;
+    }
 
     // Add the swapped tiles to tileSet and turn into JSON
     _tileSet->tilesToJson.push_back(selectedTile);
@@ -661,6 +697,12 @@ void MatchController::playRat(std::shared_ptr<TileSet::Tile>& selectedTile) {
     selectedTile->inPile = false;
     selectedTile->selected = false;
     selectedTile->_scale = 0.325;
+    
+    if (self.isWinningHand()) {
+        _choice = Choice::WIN;
+        _network->broadcastEnd(_network->getLocalPid());
+        return;
+    }
     
     // Clear tilesToJson vector
     _tileSet->clearTilesToJson();
@@ -728,6 +770,12 @@ void MatchController::playPig(std::pair<TileSet::Tile::Suit, TileSet::Tile::Rank
     selectedTile->selectable = true;
     selectedTile->_scale = 0.325;
     
+    if (self.isWinningHand()) {
+        _choice = Choice::WIN;
+        _network->broadcastEnd(_network->getLocalPid());
+        return;
+    }
+    
     // Clear tilesToJson vector
     _tileSet->clearTilesToJson();
     // Transforming celestial tile to JSON
@@ -766,6 +814,7 @@ void MatchController::celestialEffect(){
         _tileSet->updateDeck(_network->getTileMapJson());
         bool reshuffle = _network->getCelestialUpdateType() == NetworkController::ROOSTER ? true : false;
         _pile->remakePile(reshuffle);
+        _celestialAnim = ROOSTER;
     } else if (_network->getCelestialUpdateType() == NetworkController::RAT) {
         AudioController::getInstance().playSound("Rat");
         bool isHost = _network->getHostStatus();
@@ -782,7 +831,7 @@ void MatchController::celestialEffect(){
         if(isHost) {clientPlayer->getHand()._tiles.push_back(_tileSet->tileMap[key]);}
         // Else is client's
         else {hostPlayer->getHand()._tiles.push_back(_tileSet->tileMap[key]);}
-        
+        _celestialAnim = RAT;
     } else if (_network->getCelestialUpdateType() == NetworkController::OX) { // these alter your hand, so must update textures
         AudioController::getInstance().playSound("Ox");
         _tileSet->updateDeck(_network->getTileMapJson());
@@ -791,13 +840,16 @@ void MatchController::celestialEffect(){
                             : clientPlayer->getHand();
         
         hand.updateHandTextures(_assets);
+        _celestialAnim = OX;
     } else if (_network->getCelestialUpdateType() == NetworkController::RABBIT ||
                _network->getCelestialUpdateType() == NetworkController::SNAKE) {
         if (_network->getCelestialUpdateType() == NetworkController::RABBIT) {
             AudioController::getInstance().playSound("Rabbit");
+            _celestialAnim = RABBIT;
         }
         else if (_network->getCelestialUpdateType() == NetworkController::SNAKE) {
             AudioController::getInstance().playSound("Snake");
+            _celestialAnim = SNAKE;
         }
 
         std::vector<std::shared_ptr<TileSet::Tile>> tilesToAnimate = _tileSet->processTileJson(_network->getTileMapJson());
@@ -813,6 +865,7 @@ void MatchController::celestialEffect(){
             }
         
         _tileSet->updateDeck(_network->getTileMapJson());
+        
     } else if (_network->getCelestialUpdateType() == NetworkController::MONKEY) {
         AudioController::getInstance().playSound("Monkey");
         _tileSet->updateDeck(_network->getTileMapJson());
@@ -839,6 +892,7 @@ void MatchController::celestialEffect(){
             hand.updateHandTextures(_assets);
             
         }
+        _celestialAnim = MONKEY;
     } else if (_network->getCelestialUpdateType() == NetworkController::PIG) {
         bool isHost = _network->getHostStatus();
         
@@ -855,7 +909,7 @@ void MatchController::celestialEffect(){
         else {hostPlayer->getHand()._tiles.push_back(_tileSet->tileMap[key]);}
         
         _choice = DISCARDUIUPDATE;
-        
+        _celestialAnim = PIG;
     }
     _network->setCelestialUpdateType(NetworkController::NONE);
 }
@@ -868,8 +922,8 @@ void MatchController::celestialEffect(){
  */
 void MatchController::endTurn() {
     // If it is this player's turn
-    if(_network->getCurrentTurn() == _network->getLocalPid()) {
-        // If satisfied turn requirements n 
+    if(_network->getCurrentTurn() == _network->getLocalPid() && !inTutorial) {
+        // If satisfied turn requirements n
         if((hasDrawn || hasTimedOut) && (hasPlayedCelestial || hasDiscarded || hasTimedOut)) {
             // If host
             if(_network->getHostStatus() && hostPlayer->getHand()._tiles.size() == hostPlayer->getHand()._size) {
@@ -1029,6 +1083,11 @@ void MatchController::update(float timestep) {
  */
 void MatchController::dispose() {
     if(_active) {
+        _tileSet = nullptr;
+        _pile = nullptr;
+        _discardPile = nullptr;
+        hostPlayer = nullptr;
+        clientPlayer = nullptr; 
         // end the background music for the matchscene.
         AudioController::getInstance().stopMusic();
         if(_network) {

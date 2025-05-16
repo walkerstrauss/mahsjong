@@ -57,7 +57,7 @@ public:
      */
     bool initPile(int size, std::shared_ptr<TileSet> tileSet, bool isHost, std::shared_ptr<AssetManager>& _assets);
     
-    
+    void initPileTutorialMode();
     /**
      * Creates a new pile according to size. Initializes all pile elements to 0
      *

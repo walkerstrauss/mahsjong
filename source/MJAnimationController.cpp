@@ -32,6 +32,7 @@ void AnimationController::update(float dt) {
     for (auto& anim : _spriteSheetAnimations) {
         anim.update(dt);
         if (anim.done) {
+            anim.node->setVisible(false);
             _spriteSheetAnimations.erase(
                 std::remove_if(_spriteSheetAnimations.begin(), _spriteSheetAnimations.end(),
                     [&anim](const SpriteSheetAnimation& a) {

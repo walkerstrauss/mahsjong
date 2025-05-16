@@ -90,14 +90,21 @@ protected:
     //std::shared_ptr<cugl::scene2::PolygonNode> _tileID4;
 
     /** GameID list */
-    std::shared_ptr<cugl::scene2::PolygonNode> _gameIDNew[4];
+    std::shared_ptr<scene2::PolygonNode> _gameIDNew[5];
+    std::vector<std::shared_ptr<cugl::graphics::Texture>> textures;
+    
+
     int _idPos;
     
     /** Whether the back button had been clicked. */
     bool _backClicked = false;
 
+    std::string _joinHex = "";
+    std::string  _joinDec = "";
+
+    std::shared_ptr<cugl::scene2::PolygonNode> _id1, _id2, _id3, _id4, _id5;
     /** Whether we are using the second page of the keypad for client/host */
-    bool _keySecPage = false;
+    //bool _keySecPage = false;
 //    /** The current status */
 //    Status _status;
 
@@ -228,6 +235,8 @@ private:
      * networking.
      */
     void configureStartButton();
+
+    void resetClientTiles();
     
     
     
