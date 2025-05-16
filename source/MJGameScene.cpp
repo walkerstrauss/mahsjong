@@ -1039,7 +1039,7 @@ void GameScene::initOpponentSpriteNodes(){
     _opponentCelestialTile = std::make_shared<TileSet::Tile>(TileSet::Tile::Rank::OX,TileSet::Tile::Suit::CELESTIAL);
     _tileSet->initTileNode(_opponentCelestialTile, _assets);
     _opponentCelestialTile->pos = _matchScene->getSize() / 2;
-    _opponentCelestialTile->_scale = 0.325;
+    _opponentCelestialTile->getContainer()->setScale(0.325f);
     
     _oxSheet = SpriteNode::allocWithSheet(_assets->get<Texture>("ox-opponent"), 3, 3, 7);
     _oxSheet->setAnchor(Vec2::ANCHOR_CENTER);
@@ -1047,7 +1047,7 @@ void GameScene::initOpponentSpriteNodes(){
     _oxSheet->setVisible(false);
     _sheets.push_back(_oxSheet);
 
-    _snakeSheet = SpriteNode::allocWithSheet(_assets->get<Texture>("snake-opponent"), 4, 5, 18);
+    _snakeSheet = SpriteNode::allocWithSheet(_assets->get<Texture>("snake-opponent"), 6, 3, 18);
     _snakeSheet->setAnchor(Vec2::ANCHOR_CENTER);
     _snakeSheet->setPosition(pos);
     _snakeSheet->setVisible(false);
