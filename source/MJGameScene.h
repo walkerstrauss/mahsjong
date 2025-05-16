@@ -168,6 +168,7 @@ protected:
     std::shared_ptr<cugl::scene2::SpriteNode> _dragonSheet;
     std::shared_ptr<cugl::scene2::SpriteNode> _roosterSheet;
     std::shared_ptr<cugl::scene2::SpriteNode> _pigSheet;
+    std::shared_ptr<TileSet::Tile> _opponentCelestialTile;
     
     float _frameTimer = 0.0f;
     float _frameDelay = 0.2f;
@@ -227,6 +228,8 @@ protected:
     bool _wasDragToHandVisible = false;
     bool _wasDragToDiscardVisible = false;
     bool _wasTradeTileVisible = false;
+    
+    std::shared_ptr<TexturedNode> blankTile;
 public:
 #pragma mark -
 #pragma mark Constructors
@@ -595,6 +598,8 @@ public:
     void initOpponentSpriteNodes();
     
     void animateOpponentNode();
+    
+    void addCelestialAnim(std::string type);
 };
 
 
