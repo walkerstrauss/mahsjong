@@ -669,7 +669,10 @@ void GameScene::render() {
         _poofNode->render(_batch);
     }    
     for(auto& sheet: _sheets){
-        sheet->render(_batch);
+        if(sheet->isVisible()){
+            _batch->draw(temp, Color4(0,0,0,150), Rect(Vec2::ZERO, _matchScene->getSize()));
+            sheet->render(_batch);
+        }
 //        if(sheet->isVisible()){
 //            _opponentCelestialTile->getContainer()->setVisible(true);
 //            _opponentCelestialTile->getContainer()->render(_batch, Affine2::IDENTITY, Color4::WHITE);

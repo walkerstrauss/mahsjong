@@ -805,16 +805,18 @@ void MatchController::celestialEffect(){
 
         if (_network->getCelestialUpdateType() == NetworkController::ROOSTER) {
             AudioController::getInstance().playSound("Rooster");
+            _celestialAnim = ROOSTER;
+
         }
         else if (_network->getCelestialUpdateType() == NetworkController::DRAGON) {
             AudioController::getInstance().playSound("Dragon");
+            _celestialAnim = DRAGON;
         }
 
         //Updating tileset
         _tileSet->updateDeck(_network->getTileMapJson());
         bool reshuffle = _network->getCelestialUpdateType() == NetworkController::ROOSTER ? true : false;
         _pile->remakePile(reshuffle);
-        _celestialAnim = ROOSTER;
     } else if (_network->getCelestialUpdateType() == NetworkController::RAT) {
         AudioController::getInstance().playSound("Rat");
         bool isHost = _network->getHostStatus();
