@@ -63,8 +63,8 @@ void HelpScene::update(float timestep) {
 //    _input.readInput();
 //    _input.update();
 
-    if (_input->didPress() && !_back->isDown() && _slide < 13 && !_exit->isDown()) {
-        if (_slide == 12){
+    if (_input->didPress() && !_back->isDown() && _slide < 11 && !_exit->isDown()) {
+        if (_slide == 10){
             _slide = 0;
             _choice = BACK;
             return;

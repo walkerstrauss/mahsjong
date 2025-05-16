@@ -429,7 +429,7 @@ void MahsJongApp::updateGameScene(float timestep) {
         case GameScene::Choice::LOSE:
             _gameplay.setGameActive(false);
             _gameover.type = GameOverScene::Type::LOSE;
-            _gameover.setLosingHand(_gameplay.getWinningHand());
+            _gameover.setLosingHand(_gameplay.getWinningHandTwo());
             _gameover.setActive(true);
             AudioController::getInstance().playMusic("lose", true);
             _scene = State::OVER;

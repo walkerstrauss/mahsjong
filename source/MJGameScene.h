@@ -219,6 +219,9 @@ protected:
     bool _wasTradeTileVisible = false;
     
     std::vector<std::shared_ptr<TileSet::Tile>> _winningHand;
+    
+    std::vector<std::shared_ptr<TileSet::Tile>> _winningHandTwo;
+
 
 
 public:
@@ -585,6 +588,10 @@ public:
     
     std::vector<std::shared_ptr<TileSet::Tile>> getWinningHand() const {
         return _winningHand;
+    }
+    
+    std::vector<std::shared_ptr<TileSet::Tile>> getWinningHandTwo() const {
+        return _winningHandTwo;
     }
     
     void updateTurnTimer(float timestep) {

@@ -100,6 +100,9 @@ bool GameScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::sha
 
     // Initializing tileset UI button
     _tilesetUIBtn = std::dynamic_pointer_cast<scene2::Button>(_assets->get<scene2::SceneNode>("matchscene.gameplayscene.discarded-tile.discard-can"));
+    
+    
+    
     //_tilesetUIBtn->setPosition(_tilesetUIBtn->getPositionX(), _tilesetUIBtn->getPositionY());
     
     //Size sizeOfTileSetBtn = _tilesetUIBtn->getContentSize();
@@ -442,11 +445,11 @@ void GameScene::update(float timestep) {
 
         // there are multiple _choice. One is from MatchController, and the other is from GameScene.
 
-        _choice = Choice::TIE;
+        _choice = Choice::WIN;
         
-        _matchController->setChoice(MatchController::Choice::TIE);
+        _matchController->setChoice(MatchController::Choice::WIN);
         
-        _network->broadcastTie(_network->getLocalPid());
+        _network->broadcastEnd(_network->getLocalPid());
     }
 
     _matchController->update(timestep);
@@ -600,16 +603,30 @@ void GameScene::update(float timestep) {
     }
     
     if (_matchController->getChoice()==MatchController::Choice::LOSE && !_gameLose) {
+        
+        _winningHandTwo.clear();
         _gameLose = true;
         
-        bool amHost = _network->getHostStatus();
-        auto winner = amHost
-          ? _matchController->clientPlayer
-          : _matchController->hostPlayer;
-        _winningHand = winner->getHand()._tiles;
+        auto host   = _matchController->hostPlayer;
+        auto client = _matchController->clientPlayer;
+        
+        auto opponent = (_player == host) ? client : host;
+
+        
+        for (auto const& set : _player->getHand().opponentPlayedSets) {
+            _winningHandTwo.insert(_winningHandTwo.end(), set.begin(), set.end());
+        }
+        
+        //auto remaining = _matchController->getWinningHand();
+        auto remaining =  opponent->getHand()._tiles;
+        _winningHandTwo.insert(_winningHandTwo.end(), remaining.begin(), remaining.end());
         
         _choice = Choice::LOSE;
+        
     }
+    
+    
+    
     
     if(_matchController->getChoice()==MatchController::Choice::TIE){
         
