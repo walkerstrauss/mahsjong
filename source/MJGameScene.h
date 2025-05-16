@@ -581,9 +581,6 @@ public:
         }
     }
     
-<<<<<<< HEAD
-    
-    
     std::vector<std::shared_ptr<TileSet::Tile>> getLocalHand() const {
         return _network->getHostStatus()
           ? _matchController->getHostHand()
@@ -596,14 +593,12 @@ public:
           : _matchController->getHostHand();
     }
     
-    
-=======
+
     void initOpponentSpriteNodes();
     
     void animateOpponentNode();
     
     void addCelestialAnim(std::string type);
->>>>>>> origin/main-2.0
 };
 
 

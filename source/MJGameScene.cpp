@@ -465,17 +465,11 @@ void GameScene::update(float timestep) {
     if (_matchController->getChoice() == MatchController::LOSE){
         _choice = LOSE;
     }
-    
-<<<<<<< HEAD
+  
     if (_matchController->getChoice() == MatchController::TIE){
         _choice = TIE;
     }
     
-    
-    // Update timer display based on remaining time in turn
-=======
-//     Update timer display based on remaining time in turn
->>>>>>> origin/main-2.0
     updateTurnTimer(timestep);
     
     // Updating discardUINode if matchController has a discard update

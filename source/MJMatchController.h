@@ -289,8 +289,6 @@ public:
      */
     void dispose();
     
-<<<<<<< HEAD
-    
     std::vector<std::shared_ptr<TileSet::Tile>> getWinningHand() const {
         bool isHost = _network->getHostStatus();
         return isHost ? hostPlayer->getHand()._tiles : clientPlayer->getHand()._tiles;
@@ -304,12 +302,7 @@ public:
         return clientPlayer->getHand()._tiles;
     }
 
-    
-    
-    
-    
-    
-=======
+ 
     void setOpponentAnimType(OpponentAnimType type){
         _celestialAnim = type;
     }
@@ -317,7 +310,6 @@ public:
     OpponentAnimType getOpponentAnimType(){
         return _celestialAnim;
     }
->>>>>>> origin/main-2.0
 };
 
 #endif /* __MJ_MATCH_CONTROLLER__ */

@@ -409,7 +409,7 @@ void Pile::pileJump(float dt) {
     }
 }
 
-<<<<<<< HEAD
+
 bool Pile::isEmpty() {
     for (const auto& row : _pile) {
         if (!row.empty()) {
@@ -419,7 +419,6 @@ bool Pile::isEmpty() {
         return true;
 }
 
-=======
 /** Pile flip effect */
 void Pile::pileFlipMoveCenter() {
     choice = SHUFFLE;
@@ -467,7 +466,6 @@ void Pile::pileFlipMoveCenter() {
         }
     }
 }
->>>>>>> origin/main-2.0
 
 void Pile::pileFlipMoveAway(std::unordered_map<std::shared_ptr<TileSet::Tile>, Vec2> tilePos) {
     float flipDelay = 50.0f;
