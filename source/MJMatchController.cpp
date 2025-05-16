@@ -623,6 +623,12 @@ void MatchController::playMonkey(std::shared_ptr<TileSet::Tile>& selectedTile) {
     self._tiles.push_back(oppTile);
     oppTile->inHostHand = _network->getHostStatus();
     oppTile->inClientHand = !_network->getHostStatus();
+    
+    if (self.isWinningHand()) {
+        _choice = Choice::WIN;
+        _network->broadcastEnd(_network->getLocalPid());
+        return;
+    }
 
     // Add the swapped tiles to tileSet and turn into JSON
     _tileSet->tilesToJson.push_back(selectedTile);
@@ -665,6 +671,12 @@ void MatchController::playRat(std::shared_ptr<TileSet::Tile>& selectedTile) {
     selectedTile->inPile = false;
     selectedTile->selected = false;
     selectedTile->_scale = 0.325;
+    
+    if (self.isWinningHand()) {
+        _choice = Choice::WIN;
+        _network->broadcastEnd(_network->getLocalPid());
+        return;
+    }
     
     // Clear tilesToJson vector
     _tileSet->clearTilesToJson();
@@ -731,6 +743,12 @@ void MatchController::playPig(std::pair<TileSet::Tile::Suit, TileSet::Tile::Rank
     selectedTile->discarded = false;
     selectedTile->selectable = true;
     selectedTile->_scale = 0.325;
+    
+    if (self.isWinningHand()) {
+        _choice = Choice::WIN;
+        _network->broadcastEnd(_network->getLocalPid());
+        return;
+    }
     
     // Clear tilesToJson vector
     _tileSet->clearTilesToJson();
