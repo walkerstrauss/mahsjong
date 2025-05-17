@@ -69,8 +69,8 @@ public:
     int playerSetIndex = 0;
     
     std::vector<std::shared_ptr<TileSet::Tile>> _myHand;
-    
-    
+    /** Holds reference to poof node */
+    std::shared_ptr<SpriteNode> _poofNode;
 protected:
     /** Asset manager for this game mode */
     std::shared_ptr<cugl::AssetManager> _assets;

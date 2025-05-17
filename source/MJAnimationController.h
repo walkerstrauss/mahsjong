@@ -12,7 +12,6 @@
 #include "MJHostScene.h"
 #include "MJClientScene.h"
 #include "MJSettingScene.h"
-#include "MJPauseScene.h"
 #include "MJGameOverScene.h"
 #include "MJTileSet.h"
 #include "MJPile.h"
@@ -40,6 +39,7 @@ private:
         int begin;
         int end;
         bool loop;
+        bool limit;
         int loops;
         int completedLoops;
         int currFrame;
@@ -48,7 +48,11 @@ private:
         float fps;
         bool endless;
         
+<<<<<<< HEAD
         SpriteSheetAnimation(std::shared_ptr<SpriteNode> animNode, int first, int last, bool l, int ls, float framesPerSecond = 12.0f, bool endlessLoop=false) : node(animNode), begin(first), end(last - 1), loop(l), loops(l ? ls : 1), completedLoops(0), currFrame(first), time(0.0f), done(false), fps(framesPerSecond), endless(endlessLoop) {
+=======
+        SpriteSheetAnimation(std::shared_ptr<SpriteNode> animNode, int first, int last, bool l, int ls, float framesPerSecond = 13.0f) : node(animNode), begin(first), end(last - 1), loop(l), loops(l ? ls : -1), completedLoops(0), currFrame(first), time(0.0f), done(false), fps(framesPerSecond) {
+>>>>>>> origin/main-3.0
             node->setVisible(true);
             node->setFrame(currFrame);
         }
@@ -68,12 +72,25 @@ private:
             
             if (currFrame > end) {
                 if (loop) {
+<<<<<<< HEAD
                     completedLoops++;
                     if (completedLoops >= loops && !endless) {
                         currFrame = end;
                         done = true;
                     } else {
+=======
+                    if (loops == -1){
+>>>>>>> origin/main-3.0
                         currFrame = begin;
+                        CULog(".");
+                    } else {
+                        completedLoops++;
+                        if (completedLoops >= loops) {
+                            currFrame = end;
+                            done = true;
+                        } else {
+                            currFrame = begin;
+                        }
                     }
                 } else {
                     currFrame = end;
@@ -376,6 +393,40 @@ private:
         };
     };
 
+    struct PoofAnim {
+        std::shared_ptr<SpriteNode> node;
+        Vec2 pos;
+        float scale;
+        
+        float time;
+        float fps;
+        int currFrame;
+        bool done;
+        
+        PoofAnim(std::shared_ptr<SpriteNode> node, Vec2 pos, float scale, int fps) : node(node), pos(pos), scale(scale), currFrame(0), done(false), fps(fps) {
+            node->setVisible(true);
+            node->setScale(scale);
+            node->setPosition(pos);
+        };
+        
+        void update(float dt) {
+            if(done) return;
+            
+            time += dt;
+            if(time > 1.0f / fps) {
+                time = 0.0f;
+                currFrame += 1;
+                if(currFrame > 14) {
+                    node->setVisible(false);
+                    node->setFrame(0);
+                    done = true;
+                    return;
+                }
+            }
+            
+            node->setFrame(currFrame);
+        }
+    };
 
     
     /** Reference to asset manager for getting sprite sheets */
@@ -390,6 +441,7 @@ private:
     /** Vector holding fade animations */
     std::vector<FadeAnim> _fadeAnims;
     std::vector<BounceAnim> _bounceAnims;
+    std::vector<PoofAnim> _poofAnims;
     /** Whether the animation controller is currently paused */
     bool _paused;
     
@@ -419,8 +471,13 @@ public:
     /**
      * Method to add an animation to the vector of animations for this controller
      */
+<<<<<<< HEAD
     void addSpriteSheetAnimation(const std::shared_ptr<scene2::SpriteNode>& node, int first, int last, bool loop, int loops, float fps = 12.0f, bool endless = false){
         _spriteSheetAnimations.emplace_back(node, first, last, loop, loops, fps, endless);
+=======
+    void addSpriteSheetAnimation(const std::shared_ptr<scene2::SpriteNode>& node, int first, int last, bool loop, float fps = 12.0f){
+        _spriteSheetAnimations.emplace_back(node, first, last, loop, fps);
+>>>>>>> origin/main-3.0
     }
     
     /**
@@ -443,6 +500,10 @@ public:
     
     void addBounceEffect(std::shared_ptr<TileSet::Tile>& tile, float offset, float freq, float damping) {
         _bounceAnims.emplace_back(tile, offset, freq, damping);
+    }
+    
+    void addPoofEffect(std::shared_ptr<SpriteNode> node, Vec2 pos, float scale, int fps) {
+        _poofAnims.emplace_back(node, pos, scale, fps);
     }
     
     void fadeIn(std::shared_ptr<SceneNode> node, float duration){
@@ -540,6 +601,10 @@ public:
         float freq = 8.0f;
         float damping = 0.25f;
         addBounceEffect(tile, offset, freq, damping);
+    }
+    
+    void animatePoofEffect(std::shared_ptr<SpriteNode> node, Vec2 pos, float scale, int fps) {
+        addPoofEffect(node, pos, scale, fps);
     }
     
     void CalcDampedSpringMotionParams(tDampedSpringMotionParams* pOutParams, float deltaTime, float angularFrequency, float dampingRatio);
