@@ -185,7 +185,7 @@ bool HostScene::init(const std::shared_ptr<cugl::AssetManager>& assets, std::sha
         });
 
     //_gameid = std::dynamic_pointer_cast<scene2::Label>(_assets->get<scene2::SceneNode>("host.hostscene.menu.gameid.gameid_textfield.gameid"));
-    //_player = std::dynamic_pointer_cast<scene2::Label>(_assets->get<scene2::SceneNode>("host.hostscene.menu.player.player_textfield.label"));  
+    //_player = std::dynamic_pointer_cast<scene2::Label>(_assets->get<scene2::SceneNode>("host.hostscene.menu.player.player_textfield.label"));
     
     // Create the server configuration
     auto json = _assets->get<JsonValue>("server");
@@ -311,7 +311,7 @@ void HostScene::update(float timestep) {
         if (!_startGameClicked) {
             //updateText(_startgame, "Start Game");
             _startgame2->activate();
-        }  
+        }
         if (_network != nullptr) {
             networkHex = _network->getRoomID();
         }
@@ -332,7 +332,7 @@ void HostScene::update(float timestep) {
             _hostScene3->setVisible(false);
             _hostScene1->setVisible(true);
         }
-        _assets->get<scene2::SceneNode>("host.host1Scene.waitingRoom.menu.start.up.host1-waiting-button")->setContentSize(150, 150);
+        _assets->get<scene2::SceneNode>("host.host1Scene.waitingRoom.menu.start.up.host1-waiting-button")->setContentSize(150, 120);
         _assets->get<scene2::SceneNode>("host3.host3Scene.waitingRoom.menu.start.up.start")->setContentSize(150, 150);
 
         std::string dec = hex2dec(networkHex);
@@ -358,10 +358,7 @@ void HostScene::update(float timestep) {
  * It locks down the room and sends a "start game" message to all other
  * players.
  */
-void HostScene::startGame() {    
+void HostScene::startGame() {
     _network->startGame();
     _startGameClicked = true;
 }
-
-
-

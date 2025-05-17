@@ -46,14 +46,16 @@ private:
         float time;
         bool done;
         float fps;
+        bool endless;
         
-        SpriteSheetAnimation(std::shared_ptr<SpriteNode> animNode, int first, int last, bool l, int ls, float framesPerSecond = 12.0f) : node(animNode), begin(first), end(last - 1), loop(l), loops(l ? ls : 1), completedLoops(0), currFrame(first), time(0.0f), done(false), fps(framesPerSecond) {
+        SpriteSheetAnimation(std::shared_ptr<SpriteNode> animNode, int first, int last, bool l, int ls, float framesPerSecond = 12.0f, bool endlessLoop=false) : node(animNode), begin(first), end(last - 1), loop(l), loops(l ? ls : 1), completedLoops(0), currFrame(first), time(0.0f), done(false), fps(framesPerSecond), endless(endlessLoop) {
             node->setVisible(true);
             node->setFrame(currFrame);
         }
         
         void update(float dt) {
             if (done){
+                node->removeFromParent();
                 return;
             }
             
@@ -67,7 +69,7 @@ private:
             if (currFrame > end) {
                 if (loop) {
                     completedLoops++;
-                    if (completedLoops >= loops) {
+                    if (completedLoops >= loops && !endless) {
                         currFrame = end;
                         done = true;
                     } else {
@@ -80,6 +82,11 @@ private:
             }
             
             node->setFrame(currFrame);
+            
+            
+            if(done){
+                node->removeFromParent();}
+            
         }
         
         void reset() {
@@ -412,8 +419,8 @@ public:
     /**
      * Method to add an animation to the vector of animations for this controller
      */
-    void addSpriteSheetAnimation(const std::shared_ptr<scene2::SpriteNode>& node, int first, int last, bool loop, int loops, float fps = 12.0f){
-        _spriteSheetAnimations.emplace_back(node, first, last, loop, loops, fps);
+    void addSpriteSheetAnimation(const std::shared_ptr<scene2::SpriteNode>& node, int first, int last, bool loop, int loops, float fps = 12.0f, bool endless = false){
+        _spriteSheetAnimations.emplace_back(node, first, last, loop, loops, fps, endless);
     }
     
     /**

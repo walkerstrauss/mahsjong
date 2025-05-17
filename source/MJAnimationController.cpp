@@ -29,17 +29,22 @@ void AnimationController::update(float dt) {
     if (_paused) return;
 
     // Update and prune sprite sheet animations
-    for (auto& anim : _spriteSheetAnimations) {
-        anim.update(dt);
-        if (anim.done) {
-            anim.node->setVisible(false);
-            _spriteSheetAnimations.erase(
+    auto it = _spriteSheetAnimations.begin();
+    while (it != _spriteSheetAnimations.end()) {
+        it->update(dt);
+        //++it;
+        
+        if (it->done) {
+            it = _spriteSheetAnimations.erase(it);
+            /* it = _spriteSheetAnimations.erase(
                 std::remove_if(_spriteSheetAnimations.begin(), _spriteSheetAnimations.end(),
-                    [&anim](const SpriteSheetAnimation& a) {
-                        return a.node == anim.node;
+                    [&it](const SpriteSheetAnimation& a) {
+                        return a.node == it->node;
                     }),
                 _spriteSheetAnimations.end()
-            );
+            ); */
+        } else {
+            ++it;
         }
     }
 

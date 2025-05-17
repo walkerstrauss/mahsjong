@@ -111,7 +111,7 @@ bool MenuScene::init(const std::shared_ptr<cugl::AssetManager>& assets) {
     _grandmaMainSheet->setVisible(true);
     _grandmaMainSheet->setFrame(0);
     _grandmaMainSheet->setScale(1.9);
-    AnimationController::getInstance().addSpriteSheetAnimation(_grandmaMainSheet, 0, 4, true, 5.0f);
+    AnimationController::getInstance().addSpriteSheetAnimation(_grandmaMainSheet, 0, 4, true, 5, 5.0f, true);
 
     _rabbit = SpriteNode::allocWithSheet(_assets->get<Texture>("background_rabbit"), 3, 2, 5);
     _rabbit->setAnchor(Vec2::ANCHOR_CENTER);
@@ -120,7 +120,7 @@ bool MenuScene::init(const std::shared_ptr<cugl::AssetManager>& assets) {
     _rabbit->setFrame(1);
     _rabbit->setScale(3.6);
     _homescene->addChild(_rabbit);
-    AnimationController::getInstance().addSpriteSheetAnimation(_rabbit, 1, 4, true, 5.0f);
+    AnimationController::getInstance().addSpriteSheetAnimation(_rabbit, 1, 4, true, 1, 5.0f, true);
     
     
     _rat = SpriteNode::allocWithSheet(_assets->get<Texture>("background_rat"), 2, 2, 4);
@@ -130,7 +130,7 @@ bool MenuScene::init(const std::shared_ptr<cugl::AssetManager>& assets) {
     _rat ->setFrame(0);
     _rat->setScale(3.5);
     _homescene->addChild(_rat);
-    AnimationController::getInstance().addSpriteSheetAnimation(_rat, 0, 3, true, 5.0f);
+    AnimationController::getInstance().addSpriteSheetAnimation(_rat, 0, 3, true, 1, 5.0f, true);
     
     
     _homescene->setVisible(true);
@@ -153,7 +153,7 @@ void MenuScene::dispose() {
         removeAllChildren();
         _active = false;
         _hostbutton = nullptr;
-        _joinbutton  = nullptr; 
+        _joinbutton  = nullptr;
     }
 }
 

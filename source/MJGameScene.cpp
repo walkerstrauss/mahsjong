@@ -1155,35 +1155,35 @@ void GameScene::animateOpponentNode(){
     switch(_matchController->getOpponentAnimType()){
         case MatchController::OX:
 //            addCelestialAnim("ox");
-            AnimationController::getInstance().addSpriteSheetAnimation(_oxSheet, 0, 7, true, 2);
+            AnimationController::getInstance().addSpriteSheetAnimation(_oxSheet, 0, 7, true, 2, 5.0f, false);
             break;
         case MatchController::SNAKE:
 //            addCelestialAnim("snake");
-            AnimationController::getInstance().addSpriteSheetAnimation(_snakeSheet, 0, 18, true, 2);
+            AnimationController::getInstance().addSpriteSheetAnimation(_snakeSheet, 0, 18, true, 2, 5.0f, false);
             break;
         case MatchController::RABBIT:
 //            addCelestialAnim("rabbit");
-            AnimationController::getInstance().addSpriteSheetAnimation(_rabbitSheet, 0, 7, true,2);
+            AnimationController::getInstance().addSpriteSheetAnimation(_rabbitSheet, 0, 7, true,2, 5.0f, false);
             break;
         case MatchController::RAT:
 //            addCelestialAnim("rat");
-            AnimationController::getInstance().addSpriteSheetAnimation(_ratSheet, 0, 13, true,2);
+            AnimationController::getInstance().addSpriteSheetAnimation(_ratSheet, 0, 13, true,2, 5.0f, false);
             break;
         case MatchController::MONKEY:
 //            addCelestialAnim("monkey");
-            AnimationController::getInstance().addSpriteSheetAnimation(_monkeySheet, 0, 9, true,2);
+            AnimationController::getInstance().addSpriteSheetAnimation(_monkeySheet, 0, 9, true,2, 5.0f, false);
             break;
         case MatchController::DRAGON:
 //            addCelestialAnim("dragon");
-            AnimationController::getInstance().addSpriteSheetAnimation(_dragonSheet, 0, 16, true,2);
+            AnimationController::getInstance().addSpriteSheetAnimation(_dragonSheet, 0, 16, true,2, 5.0f, false);
             break;
         case MatchController::ROOSTER:
 //            addCelestialAnim("rooster");
-            AnimationController::getInstance().addSpriteSheetAnimation(_roosterSheet, 0, 12, true,2);
+            AnimationController::getInstance().addSpriteSheetAnimation(_roosterSheet, 0, 12, true,2, 5.0f, false);
             break;
         case MatchController::PIG:
 //            addCelestialAnim("pig");
-            AnimationController::getInstance().addSpriteSheetAnimation(_pigSheet, 0, 14, true,2);
+            AnimationController::getInstance().addSpriteSheetAnimation(_pigSheet, 0, 14, true,2, 5.0f, false);
             break;
         default:
             break;

@@ -227,7 +227,7 @@ private:
 //     * networking.
 //     */
 //    void configureStartButton();
-//    
+//
 //    /**
 //     * Connects to the game server as specified in the assets file
 //     *

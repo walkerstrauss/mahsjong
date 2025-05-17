@@ -64,7 +64,9 @@ bool GameOverScene::init(const std::shared_ptr<cugl::AssetManager>& assets){
     _grandmaTie->setFrame(0);
     _grandmaTie->setScale(1.9);
     _tiescene->addChild(_grandmaTie);
-    AnimationController::getInstance().addSpriteSheetAnimation(_grandmaTie, 0, 4, true, 5.0f);
+    
+
+    AnimationController::getInstance().addSpriteSheetAnimation(_grandmaTie, 0, 4, true, 1, 5.0f, true);
     
     _rabbitTie = SpriteNode::allocWithSheet(_assets->get<Texture>("background_rabbit"), 3, 2, 5);
     _rabbitTie->setAnchor(Vec2::ANCHOR_CENTER);
@@ -73,7 +75,7 @@ bool GameOverScene::init(const std::shared_ptr<cugl::AssetManager>& assets){
     _rabbitTie->setFrame(1);
     _rabbitTie->setScale(2.8);
     _tiescene->addChild(_rabbitTie);
-    AnimationController::getInstance().addSpriteSheetAnimation(_rabbitTie, 1, 4, true, 5.0f);
+    AnimationController::getInstance().addSpriteSheetAnimation(_rabbitTie, 1, 4, true, 1, 5.0f, true);
     
     
     _ratTie = SpriteNode::allocWithSheet(_assets->get<Texture>("background_rat"), 2, 2, 4);
@@ -83,7 +85,7 @@ bool GameOverScene::init(const std::shared_ptr<cugl::AssetManager>& assets){
     _ratTie ->setFrame(0);
     _ratTie->setScale(2.8);
     _tiescene->addChild(_ratTie);
-    AnimationController::getInstance().addSpriteSheetAnimation(_ratTie, 0, 3, true, 5.0f);
+    AnimationController::getInstance().addSpriteSheetAnimation(_ratTie, 0, 3, true, 1, 5.0f, true);
     
     
     // init the lose scene
@@ -106,7 +108,7 @@ bool GameOverScene::init(const std::shared_ptr<cugl::AssetManager>& assets){
     _winscene->addChild(_grandmaWin);
     
     
-    AnimationController::getInstance().addSpriteSheetAnimation(_grandmaWin, 0, 5, true, 5.0f);
+    AnimationController::getInstance().addSpriteSheetAnimation(_grandmaWin, 0, 5, true, 1, 5.0f, true);
     
     _grandmaCry = SpriteNode::allocWithSheet(_assets->get<Texture>("grandmaCry"), 1, 3, 3);
     auto loseBoard = _assets->get<scene2::SceneNode>("losescene.scoredefeatscene.defeated_board");
@@ -117,7 +119,7 @@ bool GameOverScene::init(const std::shared_ptr<cugl::AssetManager>& assets){
     _grandmaCry->setScale(1.4);
     _losescene->addChild(_grandmaCry);
     
-    AnimationController::getInstance().addSpriteSheetAnimation(_grandmaCry, 0, 2, true, 5.0f);
+    AnimationController::getInstance().addSpriteSheetAnimation(_grandmaCry, 0, 2, true, 1, 5.0f, true);
     
     _rabbit = SpriteNode::allocWithSheet(_assets->get<Texture>("background_rabbit"), 3, 2, 5);
     _rabbit->setAnchor(Vec2::ANCHOR_CENTER);
@@ -127,7 +129,7 @@ bool GameOverScene::init(const std::shared_ptr<cugl::AssetManager>& assets){
     _rabbit->setScale(2.8);
     _winscene->addChild(_rabbit);
     
-    AnimationController::getInstance().addSpriteSheetAnimation(_rabbit, 1, 4, true, 5.0f);
+    AnimationController::getInstance().addSpriteSheetAnimation(_rabbit, 1, 4, true, 1, 5.0f, true);
     
     _rabbitLose = SpriteNode::allocWithSheet(_assets->get<Texture>("background_rabbit"), 3, 2, 5);
     _rabbitLose->setAnchor(Vec2::ANCHOR_CENTER);
@@ -137,7 +139,7 @@ bool GameOverScene::init(const std::shared_ptr<cugl::AssetManager>& assets){
     _rabbitLose->setScale(2.8);
     _losescene->addChild(_rabbitLose);
     
-    AnimationController::getInstance().addSpriteSheetAnimation(_rabbitLose, 1, 4, true, 5.0f);
+    AnimationController::getInstance().addSpriteSheetAnimation(_rabbitLose, 1, 4, true, 1, 5.0f, true);
     
     _rat = SpriteNode::allocWithSheet(_assets->get<Texture>("background_rat"), 2, 2, 4);
     _rat ->setAnchor(Vec2::ANCHOR_CENTER);
@@ -147,7 +149,7 @@ bool GameOverScene::init(const std::shared_ptr<cugl::AssetManager>& assets){
     _rat->setScale(2.8);
     _winscene->addChild(_rat);
 
-    AnimationController::getInstance().addSpriteSheetAnimation(_rat, 0, 3, true, 5.0f);
+    AnimationController::getInstance().addSpriteSheetAnimation(_rat, 0, 3, true, 1, 5.0f, true);
     
     _ratLose = SpriteNode::allocWithSheet(_assets->get<Texture>("background_rat"), 2, 2, 4);
     _ratLose ->setAnchor(Vec2::ANCHOR_CENTER);
@@ -157,7 +159,7 @@ bool GameOverScene::init(const std::shared_ptr<cugl::AssetManager>& assets){
     _ratLose->setScale(2.8);
     _losescene->addChild(_ratLose);
 
-    AnimationController::getInstance().addSpriteSheetAnimation(_ratLose, 0, 3, true, 5.0f);
+    AnimationController::getInstance().addSpriteSheetAnimation(_ratLose, 0, 3, true, 1, 5.0f, true);
     
 
     if (!Scene2::initWithHint(screenSize)) {
