@@ -12,7 +12,6 @@
 #include "MJHostScene.h"
 #include "MJClientScene.h"
 #include "MJSettingScene.h"
-#include "MJPauseScene.h"
 #include "MJGameOverScene.h"
 #include "MJTileSet.h"
 #include "MJPile.h"
@@ -40,6 +39,7 @@ private:
         int begin;
         int end;
         bool loop;
+        bool limit;
         int loops;
         int completedLoops;
         int currFrame;
@@ -47,7 +47,7 @@ private:
         bool done;
         float fps;
         
-        SpriteSheetAnimation(std::shared_ptr<SpriteNode> animNode, int first, int last, bool l, int ls, float framesPerSecond = 12.0f) : node(animNode), begin(first), end(last - 1), loop(l), loops(l ? ls : 1), completedLoops(0), currFrame(first), time(0.0f), done(false), fps(framesPerSecond) {
+        SpriteSheetAnimation(std::shared_ptr<SpriteNode> animNode, int first, int last, bool l, int ls, float framesPerSecond = 13.0f) : node(animNode), begin(first), end(last - 1), loop(l), loops(l ? ls : -1), completedLoops(0), currFrame(first), time(0.0f), done(false), fps(framesPerSecond) {
             node->setVisible(true);
             node->setFrame(currFrame);
         }
@@ -66,12 +66,17 @@ private:
             
             if (currFrame > end) {
                 if (loop) {
-                    completedLoops++;
-                    if (completedLoops >= loops) {
-                        currFrame = end;
-                        done = true;
-                    } else {
+                    if (loops == -1){
                         currFrame = begin;
+                        CULog(".");
+                    } else {
+                        completedLoops++;
+                        if (completedLoops >= loops) {
+                            currFrame = end;
+                            done = true;
+                        } else {
+                            currFrame = begin;
+                        }
                     }
                 } else {
                     currFrame = end;
@@ -368,7 +373,7 @@ private:
             }
         };
     };
-    
+
     struct PoofAnim {
         std::shared_ptr<SpriteNode> node;
         Vec2 pos;
@@ -390,7 +395,7 @@ private:
             
             time += dt;
             if(time > 1.0f / fps) {
-                time = 0.0f; 
+                time = 0.0f;
                 currFrame += 1;
                 if(currFrame > 14) {
                     node->setVisible(false);
@@ -403,6 +408,7 @@ private:
             node->setFrame(currFrame);
         }
     };
+
     
     /** Reference to asset manager for getting sprite sheets */
     std::shared_ptr<cugl::AssetManager> _assets;
@@ -446,8 +452,8 @@ public:
     /**
      * Method to add an animation to the vector of animations for this controller
      */
-    void addSpriteSheetAnimation(const std::shared_ptr<scene2::SpriteNode>& node, int first, int last, bool loop, int loops, float fps = 12.0f){
-        _spriteSheetAnimations.emplace_back(node, first, last, loop, loops, fps);
+    void addSpriteSheetAnimation(const std::shared_ptr<scene2::SpriteNode>& node, int first, int last, bool loop, float fps = 12.0f){
+        _spriteSheetAnimations.emplace_back(node, first, last, loop, fps);
     }
     
     /**

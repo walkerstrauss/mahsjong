@@ -13,7 +13,6 @@
 #include <iostream>
 #include "MJTileSet.h"
 #include "MJPile.h"
-#include "MJScoreManager.h"
 
 /**
  * This class represents a player in the game

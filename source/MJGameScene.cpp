@@ -673,12 +673,6 @@ void GameScene::render() {
             _batch->draw(temp, Color4(0,0,0,150), Rect(Vec2::ZERO, _matchScene->getSize()));
             sheet->render(_batch);
         }
-//        if(sheet->isVisible()){
-//            _opponentCelestialTile->getContainer()->setVisible(true);
-//            _opponentCelestialTile->getContainer()->render(_batch, Affine2::IDENTITY, Color4::WHITE);
-//        } else {
-//            _opponentCelestialTile->getContainer()->setVisible(false);
-//        }
     }
 
     _batch->end();
@@ -1014,10 +1008,10 @@ void GameScene::endTurnFromTimeout(){
 void GameScene::initOpponentSpriteNodes(){
     Vec2 pos = _matchScene->getSize()/2;
     
-    _opponentCelestialTile = std::make_shared<TileSet::Tile>(TileSet::Tile::Rank::OX,TileSet::Tile::Suit::CELESTIAL);
-    _tileSet->initTileNode(_opponentCelestialTile, _assets);
-    _opponentCelestialTile->pos = _matchScene->getSize() / 2;
-    _opponentCelestialTile->_scale = 0.325;
+//    _opponentCelestialTile = std::make_shared<TileSet::Tile>(TileSet::Tile::Rank::OX,TileSet::Tile::Suit::CELESTIAL);
+//    _tileSet->initTileNode(_opponentCelestialTile, _assets);
+//    _opponentCelestialTile->getContainer()->setPosition(_matchScene->getSize()/2);
+//    _opponentCelestialTile->getContainer()->setScale(0.325);
     
     _oxSheet = SpriteNode::allocWithSheet(_assets->get<Texture>("ox-opponent"), 3, 3, 7);
     _oxSheet->setAnchor(Vec2::ANCHOR_CENTER);
@@ -1068,7 +1062,7 @@ void GameScene::initOpponentSpriteNodes(){
     _sheets.push_back(_pigSheet);
     
     for (auto& sheet: _sheets){
-        sheet->setScale(0.45);
+        sheet->setScale(0.335);
     }
 }
 
@@ -1079,35 +1073,35 @@ void GameScene::animateOpponentNode(){
     switch(_matchController->getOpponentAnimType()){
         case MatchController::OX:
 //            addCelestialAnim("ox");
-            AnimationController::getInstance().addSpriteSheetAnimation(_oxSheet, 0, 7, true, 2);
+            AnimationController::getInstance().addSpriteSheetAnimation(_oxSheet, 0, 6, true, 3);
             break;
         case MatchController::SNAKE:
 //            addCelestialAnim("snake");
-            AnimationController::getInstance().addSpriteSheetAnimation(_snakeSheet, 0, 18, true, 2);
+            AnimationController::getInstance().addSpriteSheetAnimation(_snakeSheet, 0, 17, true, 3);
             break;
         case MatchController::RABBIT:
 //            addCelestialAnim("rabbit");
-            AnimationController::getInstance().addSpriteSheetAnimation(_rabbitSheet, 0, 7, true,2);
+            AnimationController::getInstance().addSpriteSheetAnimation(_rabbitSheet, 0, 6, true, 3);
             break;
         case MatchController::RAT:
 //            addCelestialAnim("rat");
-            AnimationController::getInstance().addSpriteSheetAnimation(_ratSheet, 0, 13, true,2);
+            AnimationController::getInstance().addSpriteSheetAnimation(_ratSheet, 0, 12, true, 3);
             break;
         case MatchController::MONKEY:
 //            addCelestialAnim("monkey");
-            AnimationController::getInstance().addSpriteSheetAnimation(_monkeySheet, 0, 9, true,2);
+            AnimationController::getInstance().addSpriteSheetAnimation(_monkeySheet, 0, 8, true, 3);
             break;
         case MatchController::DRAGON:
 //            addCelestialAnim("dragon");
-            AnimationController::getInstance().addSpriteSheetAnimation(_dragonSheet, 0, 16, true,2);
+            AnimationController::getInstance().addSpriteSheetAnimation(_dragonSheet, 0, 15, true, 3);
             break;
         case MatchController::ROOSTER:
 //            addCelestialAnim("rooster");
-            AnimationController::getInstance().addSpriteSheetAnimation(_roosterSheet, 0, 12, true,2);
+            AnimationController::getInstance().addSpriteSheetAnimation(_roosterSheet, 0, 11, true,3 );
             break;
         case MatchController::PIG:
 //            addCelestialAnim("pig");
-            AnimationController::getInstance().addSpriteSheetAnimation(_pigSheet, 0, 14, true,2);
+            AnimationController::getInstance().addSpriteSheetAnimation(_pigSheet, 0, 13, true, 3);
             break;
         default:
             break;
@@ -1120,6 +1114,6 @@ void GameScene::addCelestialAnim(std::string type){
     std::shared_ptr<Texture> t = _assets->get<Texture>(type + " of celestial new");
     _opponentCelestialTile->setTexture(t);
     std::shared_ptr<Texture> fromTexture = _assets->get<Texture>(type + "-opponent");
-    AnimationController::getInstance().animateTileMorph(_opponentCelestialTile, fromTexture, fromTexture, t, 20.0f);
+    AnimationController::getInstance().animateTileMorph(_opponentCelestialTile, fromTexture, fromTexture, t, 10.0f);
     _opponentCelestialTile->setTexture(t);
 }
