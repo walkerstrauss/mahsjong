@@ -229,7 +229,6 @@
 		BABC7A0EBCF7DAAD153B22ED /* MJGameController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJGameController.h; sourceTree = "<group>"; };
 		BABCCAA0D3BF676EB2A8BF63 /* MJInfoScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJInfoScene.h; sourceTree = "<group>"; };
 		BABCE3F6DE4739B763B0AD40 /* MJClientScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJClientScene.h; sourceTree = "<group>"; };
-		BABCE6D9CDBDC5EFC5C36DFB /* MJPauseScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJPauseScene.h; sourceTree = "<group>"; };
 		BABDBD4C7C0D3D22E119A1F4 /* MJPileUINode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MJPileUINode.cpp; sourceTree = "<group>"; };
 		BAC57E74F37CA4FFCAC16BB3 /* MJDiscardPile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJDiscardPile.h; sourceTree = "<group>"; };
 		BACA3E795FDBD0D1AA5FE1D6 /* MJDiscardPile.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MJDiscardPile.cpp; sourceTree = "<group>"; };
@@ -244,7 +243,6 @@
 		BADB4E7EF078B6C6475AABC6 /* MJGameOverScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJGameOverScene.h; sourceTree = "<group>"; };
 		BAE186DEEA14BBEEAC7A41C1 /* MJAnimatedNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJAnimatedNode.h; sourceTree = "<group>"; };
 		BAE8B4856B5143DE3E2E63E8 /* MJGameScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJGameScene.h; sourceTree = "<group>"; };
-		BAEA1CFCE37EBB84BD5DABAC /* MJScoreManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJScoreManager.h; sourceTree = "<group>"; };
 		BAEDAFB8ADEDF28C0D4AB7CC /* MJAnimatedNode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MJAnimatedNode.cpp; sourceTree = "<group>"; };
 		BAF50B1B9DC41DFBAD98FE02 /* MJInputController.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MJInputController.cpp; sourceTree = "<group>"; };
 		BAFBBED62482C8E93FE0DAAE /* MJPile.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MJPile.cpp; sourceTree = "<group>"; };
@@ -413,9 +411,7 @@
 				BAD04DCEAA4CADB90BA8D7DC /* MJDiscardUIScene.h */,
 				BAD4CFA59E4FA5ABEEAEE2AE /* MJAnimationController.h */,
 				BA38F6C91CAD089C388F0441 /* MJDiscardUINode.h */,
-				BABCE6D9CDBDC5EFC5C36DFB /* MJPauseScene.h */,
 				BAD0E821EFE36B663367FD22 /* MJNetworkController.h */,
-				BAEA1CFCE37EBB84BD5DABAC /* MJScoreManager.h */,
 				BAFCB3FB56C6AD5AACE65D92 /* MJLoadingScene.h */,
 				BA84024F36D07DDF056DDE4E /* MJInputController.h */,
 				BADB4E7EF078B6C6475AABC6 /* MJGameOverScene.h */,
@@ -1036,7 +1032,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = games.cornell607.ios.mahsjong;
+				PRODUCT_BUNDLE_IDENTIFIER = games.cornell607game.ios.mahsjong;
 				PRODUCT_NAME = "Mahs Jong";
 				SDKROOT = iphoneos;
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -1079,7 +1075,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = games.cornell607.ios.mahsjong;
+				PRODUCT_BUNDLE_IDENTIFIER = games.cornell607game.ios.mahsjong;
 				PRODUCT_NAME = "Mahs Jong";
 				SDKROOT = iphoneos;
 				SWIFT_EMIT_LOC_STRINGS = YES;

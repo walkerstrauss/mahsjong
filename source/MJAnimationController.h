@@ -57,7 +57,8 @@ private:
         void update(float dt) {
             if (done){
                 //node->removeFromParent();
-//                node->dispose();
+                node->dispose();
+                node->setVisible(false);
                 return;
             }
             
@@ -85,10 +86,8 @@ private:
             
             node->setFrame(currFrame);
             
-            
             if(done){
                 node->removeFromParent();}
-            
         }
         
         void reset() {
