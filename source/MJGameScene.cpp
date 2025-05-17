@@ -988,7 +988,7 @@ void GameScene::updateDrag(const cugl::Vec2& mousePos, bool mouseDown, bool mous
                           
                           _matchController->playMonkey(_draggingTile);
                           // Play the swap sound when the monkey tile is activated.
-                          //AudioController::getInstance().playSound("swap");
+                          AudioController::getInstance().playSound("Discard");
                           
                           AnimationController::getInstance().tryAddFade(_tradeArea, false, 0.2f, _wasTradeTileVisible);
                           // Rebind _player to prevent null ptr error

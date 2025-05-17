@@ -355,8 +355,8 @@
                         0.5
                     ],
                     "size": [
-                        500,
-                        200
+                        250,
+                        100
                     ],
                     "angle": 0,
                     "position": [
@@ -595,7 +595,7 @@
                     "y_anchor": "top",
                     "absolute": false,
                     "x_offset": 0.88,
-                    "y_offset": -0.6
+                    "y_offset": -0.3
                 }
             },
             "setting-icon": {
@@ -2855,8 +2855,8 @@
                         0.5
                     ],
                     "size": [
-                        175,
-                        493
+                        325,
+                        420
                     ],
                     "angle": 0,
                     "position": [
@@ -2869,8 +2869,8 @@
                     "x_anchor": "left",
                     "y_anchor": "top",
                     "absolute": false,
-                    "x_offset": 0.77,
-                    "y_offset": -0.46
+                    "x_offset": 0.83,
+                    "y_offset": -0.52
                 }
             },
             "drawDiscardedText": {

@@ -90,7 +90,7 @@ bool TutorialScene::init(const std::shared_ptr<cugl::AssetManager> &assets, std:
 
 #pragma mark Initializing textured nodes
     // Discarded tile image node
-    _discardedTileImage = std::dynamic_pointer_cast<scene2::TexturedNode>(_assets->get<scene2::SceneNode>("tutorialscene.gameplayscene.discarded-tile.discarded-tile-recent.up.discarded-tile-recent"));
+    _discardedTileImage = std::dynamic_pointer_cast<scene2::TexturedNode>(_assets->get<scene2::SceneNode>("tutorialscene.gameplayscene.discarded-tile.discarded-tile-recent.playerSampleTile"));
     
     // Drag to discard node
     _dragToDiscardNode = std::dynamic_pointer_cast<cugl::scene2::TexturedNode>(_assets->get<cugl::scene2::SceneNode>(
