@@ -70,8 +70,8 @@ bool MenuScene::init(const std::shared_ptr<cugl::AssetManager>& assets) {
 //    _homescene->doLayout();
 //    _homescene->setPosition((Application::get()->getDisplayWidth() - _homescene->getContentWidth()) / 8, _homescene->getPosition().y);
     _choice = Choice::NONE;
-    _hostbutton = std::dynamic_pointer_cast<scene2::Button>(_assets->get<scene2::SceneNode>("home.home.menu.button1"));
-    _joinbutton = std::dynamic_pointer_cast<scene2::Button>(_assets->get<scene2::SceneNode>("home.home.menu.button2"));
+    _hostbutton = std::dynamic_pointer_cast<scene2::Button>(_assets->get<scene2::SceneNode>("home.home.menu.start"));
+    _joinbutton = std::dynamic_pointer_cast<scene2::Button>(_assets->get<scene2::SceneNode>("home.home.menu.join"));
 
 //    // Program the buttons
     _hostbutton->addListener([this](const std::string& name, bool down) {
@@ -98,7 +98,7 @@ bool MenuScene::init(const std::shared_ptr<cugl::AssetManager>& assets) {
         }
     });
     
-    _tutorialbutton = std::dynamic_pointer_cast<Button>(_assets->get<SceneNode>("home.home.menu.button4"));
+    _tutorialbutton = std::dynamic_pointer_cast<Button>(_assets->get<SceneNode>("home.home.menu.tu"));
     _tutorialbutton->addListener([this](const std::string&name, bool down){
         if (down){
             AudioController::getInstance().playSound("Confirm", false);

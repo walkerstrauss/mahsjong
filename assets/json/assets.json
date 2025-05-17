@@ -1605,12 +1605,12 @@
         },
         "menuMusic": {
             "type": "sample",
-            "file": "sounds/music/menu.wav",
+            "file": "sounds/music/menu.mp3",
             "stream": true
         },
         "win": {
             "type": "sample",
-            "file": "sounds/music/win.wav",
+            "file": "sounds/music/win.mp3",
             "stream": true
         },
         "lose": {

@@ -52,7 +52,7 @@ bool SettingScene::init(const std::shared_ptr<cugl::AssetManager>& assets){
     // Initialize all buttons
     
     _soundBtn = std::dynamic_pointer_cast<scene2::Button>(_assets->get<scene2::SceneNode>("settings.settingscene.settingSection.menu.button2"));
-    _tutorialBtn = std::dynamic_pointer_cast<scene2::Button>(_assets->get<scene2::SceneNode>("settings.settingscene.settingSection.menu.buttonHelp"));
+    _tutorialBtn = std::dynamic_pointer_cast<scene2::Button>(_assets->get<scene2::SceneNode>("settings.settingscene.settingSection.menu.button3"));
     _mainBtn = std::dynamic_pointer_cast<scene2::Button>(_assets->get<scene2::SceneNode>("settings.settingscene.settingSection.menu.button1"));
     exitBtn = std::dynamic_pointer_cast<Button>(_assets->get<SceneNode>("settings.settingscene.settingSection.button3"));
     
