@@ -62,7 +62,7 @@ public:
         PLAYEDCELESTIAL,
         /** Game has concluded  */
         ENDGAME,
-        /** Game is in tutorial mode */
+        TIE,
         TUTORIAL
         /** **END OF MATCHMODEL STATES ** */
         
@@ -448,6 +448,9 @@ public:
      * @param isHost    If current network is the host network or not
      */
     void broadcastEnd(int isHost);
+    
+    
+    void broadcastTie(int isHost);
     
     /**
      * Resets all values stored from last game scene after game has been disconnected

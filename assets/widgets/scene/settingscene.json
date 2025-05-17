@@ -355,7 +355,97 @@
                                     "y_anchor": "top",
                                     "absolute": false,
                                     "x_offset": 0,
-                                    "y_offset": 0
+                                    "y_offset": 0.2
+                                }
+                            },
+                            "buttonHelp":{
+                                "type": "Button",
+                                "format": {
+                                    "type": "Anchored"
+                                },
+                                "data": {
+                                    "anchor": [
+                                        0,
+                                        1
+                                    ],
+                                    "size": [
+                                        207,
+                                        66
+                                    ],
+                                    "angle": 0,
+                                    "position": [
+                                        0,
+                                        10
+                                    ],
+                                    "visible": true,
+                                    "upnode": "up"
+                                },
+                                "children": {
+                                    "up": {
+                                        "type": "Node",
+                                        "format": {
+                                            "type": "Anchored"
+                                        },
+                                        "data": {
+                                            "anchor": [
+                                                0,
+                                                1
+                                            ],
+                                            "size": [
+                                                207,
+                                                66
+                                            ],
+                                            "angle": 0,
+                                            "position": [
+                                                0,
+                                                0
+                                            ],
+                                            "visible": true
+                                        },
+                                        "children": {
+                                            "helpButton": {
+                                                "type": "Image",
+                                                "data": {
+                                                    "texture": "helpButton",
+                                                    "anchor": [
+                                                        0.5,
+                                                        0.5
+                                                    ],
+                                                    "size": [
+                                                        207,
+                                                        66
+                                                    ],
+                                                    "angle":0,
+                                                    "position": [
+                                                        0,
+                                                        0
+                                                    ],
+                                                    "visible": true
+                                                },
+                                                "layout": {
+                                                    "x_anchor": "left",
+                                                    "y_anchor": "top",
+                                                    "absolute": false,
+                                                    "x_offset": 0.5,
+                                                    "y_offset": -0.5
+                                                }
+                                            }
+                                        },
+                                        "layout": {
+                                            "x_anchor": "left",
+                                            "y_anchor": "top",
+                                            "absolute": false,
+                                            "x_offset": 0,
+                                            "y_offset": 0
+                                        }
+                                    }
+                                },
+                                "layout": {
+                                    "x_anchor": "left",
+                                    "y_anchor": "top",
+                                    "absolute": false,
+                                    "x_offset": 0,
+                                    "y_offset": -0.9
                                 }
                             },
                             "button2": {
@@ -445,7 +535,7 @@
                                     "y_anchor": "top",
                                     "absolute": false,
                                     "x_offset": 0,
-                                    "y_offset": -0.62
+                                    "y_offset": -0.36
                                 }
                             }
                         },

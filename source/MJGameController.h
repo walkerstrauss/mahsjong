@@ -24,7 +24,8 @@ public:
     enum Choice {
         NONE,
         WIN,
-        LOSE
+        LOSE,
+        TIE
     };
     
 protected:
