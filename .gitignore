@@ -24,7 +24,6 @@
 *.out
 *.app
 
-/build/
 .DS_Store
 ._*
 .idea

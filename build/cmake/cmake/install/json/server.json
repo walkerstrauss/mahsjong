@@ -1,0 +1,23 @@
+{
+    "lobby" : {
+        "address" : "159.89.35.203",
+        "port": 8080
+    },
+    "ice servers" : [
+        {
+            "turn" : false,
+            "address" : "159.89.35.203",
+            "port" : 3478
+        },
+        {
+            "turn" : true,
+            "address" : "159.89.35.203",
+            "port" : 3478,
+            "username": "MAHS",
+            "password": "JONG"
+        }
+    ],
+    "max players" : 2,
+    "API version" : 0
+}
+
