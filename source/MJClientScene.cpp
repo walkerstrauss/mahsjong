@@ -430,7 +430,7 @@ void ClientScene::setActive(bool value) {
             _startgame->activate();
             // Don't reset the room id
         } else {
-            //_gameid->deactivate();
+            //_gameid->deactivate();u
             resetClientTiles();
             _startgame->deactivate();
             _backout->deactivate();

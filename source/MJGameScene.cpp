@@ -814,6 +814,7 @@ void GameScene::setGameActive(bool value){
         _tilesetUIBtn->activate();
         _settingBtn->activate();
         _infoBtn->activate();
+        _discardUINode->_root->setVisible(false);
         updateTurnIndicators();
     } else {
         _backBtn->deactivate();

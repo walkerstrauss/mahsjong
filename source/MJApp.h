@@ -81,6 +81,8 @@ protected:
     std::shared_ptr<cugl::scene2::Button> _discardBtn;
     /** The current active scene */
     State _scene;
+    /** The previous scene */
+    State _prev;
     /** The network controller */
     std::shared_ptr<NetworkController> _network;
 
