@@ -463,7 +463,7 @@
                     "x_anchor": "right",
                     "y_anchor": "bottom",
                     "absolute": false,
-                    "x_offset": -0.1,
+                    "x_offset": -0.03,
                     "y_offset":0
                 }
             }
