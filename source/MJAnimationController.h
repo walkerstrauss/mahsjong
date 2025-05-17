@@ -57,7 +57,7 @@ private:
         void update(float dt) {
             if (done){
                 //node->removeFromParent();
-                node->dispose();
+//                node->dispose();
                 return;
             }
             
