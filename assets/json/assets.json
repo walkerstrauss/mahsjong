@@ -450,9 +450,6 @@
         "menuButtonUp": {
             "file": "textures/menu/menuButtonUp.png"
         },
-        "menuGrandma": {
-            "file": "textures/menu/menuGrandma.png"
-        },
         "grandmaWin":{
             "file": "textures/animations/grandmaWin.png"
         },

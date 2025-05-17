@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1E9806A92DD8FA2E00E5E753 /* MJHelpScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1E9806A82DD8FA2E00E5E753 /* MJHelpScene.cpp */; };
+		1E9806AA2DD8FA2E00E5E753 /* MJHelpScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1E9806A82DD8FA2E00E5E753 /* MJHelpScene.cpp */; };
 		23EA10792DCFD43D00A0C309 /* MJTransition.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 23EA10782DCFD43B00A0C309 /* MJTransition.cpp */; };
 		23EA107A2DCFD43D00A0C309 /* MJTransition.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 23EA10782DCFD43B00A0C309 /* MJTransition.cpp */; };
 		AB06F65AB0B4F10FCCCC8D2F /* widgets in Resources */ = {isa = PBXBuildFile; fileRef = AA8A42C73B2A17DA1163F4BD /* widgets */; };
@@ -188,6 +190,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1E9806A82DD8FA2E00E5E753 /* MJHelpScene.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = MJHelpScene.cpp; sourceTree = "<group>"; };
+		1E9806AB2DD8FA3A00E5E753 /* MJHelpScene.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MJHelpScene.h; sourceTree = "<group>"; };
 		23EA10772DCFD43000A0C309 /* MJTransition.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MJTransition.h; sourceTree = "<group>"; };
 		23EA10782DCFD43B00A0C309 /* MJTransition.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = MJTransition.cpp; sourceTree = "<group>"; };
 		AA1BA6EDE03659A8C6BB7FDA /* json */ = {isa = PBXFileReference; lastKnownFileType = folder; path = json; sourceTree = "<group>"; };
@@ -369,6 +373,8 @@
 		EB0F3C9827FB9DCB0037CC66 /* Source */ = {
 			isa = PBXGroup;
 			children = (
+				1E9806AB2DD8FA3A00E5E753 /* MJHelpScene.h */,
+				1E9806A82DD8FA2E00E5E753 /* MJHelpScene.cpp */,
 				23EA10782DCFD43B00A0C309 /* MJTransition.cpp */,
 				23EA10772DCFD43000A0C309 /* MJTransition.h */,
 				BACA3E795FDBD0D1AA5FE1D6 /* MJDiscardPile.cpp */,
@@ -738,6 +744,7 @@
 				BBECE1EDBDF5EF8F9710EEE2 /* MJTileSet.cpp in Sources */,
 				BB2BE51AD4F42D4784265005 /* MJNetworkController.cpp in Sources */,
 				BB0C5A5D28A65554CEF76EE4 /* main.cpp in Sources */,
+				1E9806A92DD8FA2E00E5E753 /* MJHelpScene.cpp in Sources */,
 				BB5C8CA112190EFFEFC9965B /* MJApp.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -770,6 +777,7 @@
 				BCE5A43FB2CB064A03FD48BF /* MJTileSet.cpp in Sources */,
 				BCADDCF7C3D6CCCD5BA17604 /* MJNetworkController.cpp in Sources */,
 				BCFAAB022CD9CD93B6D5BD01 /* main.cpp in Sources */,
+				1E9806AA2DD8FA2E00E5E753 /* MJHelpScene.cpp in Sources */,
 				BCC826CF5B7E93B69AA61EC6 /* MJApp.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
