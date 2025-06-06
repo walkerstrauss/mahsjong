@@ -142,8 +142,8 @@ public:
             auto tileNode = _tilesNode->getChildByName(std::to_string(i));
             int count = std::stoi(_labels[i - 1]->getText());
             Rect bounds = tileNode->getBoundingBox();
-            CULog("localPos: %s", localPos.toString().c_str());
-            CULog("bounds: %s", bounds.toString().c_str());
+//            CULog("localPos: %s", localPos.toString().c_str());
+//            CULog("bounds: %s", bounds.toString().c_str());
 
             if (bounds.contains(localPos) && count > 0) {
                 return i - 1;

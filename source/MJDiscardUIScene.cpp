@@ -140,7 +140,7 @@ bool DiscardUIScene::incrementLabel(std::shared_ptr<TileSet::Tile> tile){
     
     // Check if we already discarded 4 (or more) of this tile
     if (std::stoi(_labels[i]->getText()) > 3){
-        CULog("already discarded all copies of this tile");
+//        CULog("already discarded all copies of this tile");
         return false;
     }
     
@@ -162,7 +162,7 @@ bool DiscardUIScene::decrementLabel(std::shared_ptr<TileSet::Tile> tile){
     
     // Check if we already discarded 4 (or more) of this tile
     if (std::stoi(_labels[i]->getText()) < 0){
-        CULog("All copies of this tile are in play");
+//        CULog("All copies of this tile are in play");
         return false;
     }
     

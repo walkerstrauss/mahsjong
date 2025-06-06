@@ -358,7 +358,7 @@ public:
             } else if (rank == 9){
                 return Rank::NINE;
             } else {
-                CULog("Invalid rank (should be int 1-9) – setting to 1 (default)");
+//                CULog("Invalid rank (should be int 1-9) – setting to 1 (default)");
                 return Rank::ONE;
             }
         }
@@ -558,7 +558,7 @@ public:
      */
     void printDeck(){
         for(const auto& it : deck){
-            CULog("%s", it->toString().c_str());
+//            CULog("%s", it->toString().c_str());
         }
     }
     

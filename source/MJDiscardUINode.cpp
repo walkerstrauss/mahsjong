@@ -98,7 +98,7 @@ bool DiscardUINode::incrementLabel(int index) {
     int count = std::stoi(_labels[index]->getText());
 
     if (count > 3) {
-        CULog("already discarded all copies of this tile");
+//        CULog("already discarded all copies of this tile");
         return false;
     }
 
@@ -110,7 +110,7 @@ bool DiscardUINode::decrementLabel(int index) {
     int count = std::stoi(_labels[index]->getText());
 
     if (count <= 0) {
-        CULog("All copies of this tile are in play");
+//        CULog("All copies of this tile are in play");
         return false;
     }
 

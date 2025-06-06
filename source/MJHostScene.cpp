@@ -325,7 +325,7 @@ void HostScene::update(float timestep) {
             //_startgame->activate();
             _hostScene1->setVisible(false);
 
-            CULog("Testing");
+//            CULog("Testing");
         }
         else {
             _startgame2->deactivate();

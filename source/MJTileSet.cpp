@@ -93,7 +93,7 @@ void TileSet::initTutorialDeck(){
  */
 void TileSet::initTileNodes(const std::shared_ptr<cugl::AssetManager>& assets){
     if(deck.size() == 0){
-        CULog("Deck is empty");
+//        CULog("Deck is empty");
         return;
     }
     for(auto& it : deck){
@@ -200,7 +200,7 @@ void TileSet::createDeck() {
  */
 void TileSet::setAllTileTexture(const std::shared_ptr<cugl::AssetManager>& assets){
     if(deck.size() == 0){
-        CULog("Deck is empty");
+//        CULog("Deck is empty");
     }
     for(const auto& it : deck){
         it->setTexture(assets->get<Texture>(it->toString()));
@@ -259,7 +259,7 @@ const std::shared_ptr<cugl::JsonValue> TileSet::toJson(std::vector<std::shared_p
 
 void TileSet::setNextTile(std::shared_ptr<cugl::JsonValue>& nextTileJson) {
     if(nextTileJson->children().size() > 1){
-        CULog("Invalid set next tile size");
+//        CULog("Invalid set next tile size");
         return;
     }
     for(auto const& tileKey : nextTileJson->children()){

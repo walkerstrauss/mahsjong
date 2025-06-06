@@ -119,7 +119,7 @@ void AudioController::stopMusic() {
 void AudioController::playMusic(const std::string& key, bool loop) {
   auto it = _sounds.find(key);
   if (it == _sounds.end()) {
-    CULog("No music with key: %s", key.c_str());
+//    CULog("No music with key: %s", key.c_str());
     return;
   }
   // Clear whatever is playing. Instant cut for now, but can cahnage it later.

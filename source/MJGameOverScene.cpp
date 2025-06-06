@@ -319,7 +319,7 @@ void GameOverScene::setActive(bool value){
             case Type::NEITHER:
                 // Do nothing
                 if (value){
-                    CULog("should not be active if no type");
+//                    CULog("should not be active if no type");
                     _winscene->setVisible(true);
                     _losescene->setVisible(true);
                     _mainWinBtn->activate();
@@ -351,7 +351,7 @@ void GameOverScene::render(const std::shared_ptr<graphics::SpriteBatch>& batch){
             _tiescene->render(batch);
             break;
         case Type::NEITHER:
-            CULog("no render for neither");
+//            CULog("no render for neither");
             break;
     }
     batch->end();

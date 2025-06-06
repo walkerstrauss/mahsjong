@@ -464,10 +464,10 @@ void GameScene::update(float timestep) {
     
     // if there is no tiles left in the pile - it is a tie
     
-    CULog("IS pile empty? %s\n", _pile->isEmpty() ? "yes" : "no");
-    CULog("Number of remaining tiles %i", _remainingTiles);
-    
-    CULog("the size of the pile is: %i" ,_pile->getPileSize());
+//    CULog("IS pile empty? %s\n", _pile->isEmpty() ? "yes" : "no");
+//    CULog("Number of remaining tiles %i", _remainingTiles);
+//    
+//    CULog("the size of the pile is: %i" ,_pile->getPileSize());
     
     if(_pile->_tileSet->deck.size() == 0){
         _choice = Choice::TIE;
@@ -654,7 +654,7 @@ void GameScene::update(float timestep) {
     }
     
     if(_matchController->getOpponentAnimType() != MatchController::INACTIVE){
-        CULog("animate");
+//        CULog("animate");
         animateOpponentNode();
     }
     
@@ -1125,7 +1125,7 @@ void GameScene::endTurnFromTimeout(){
                 int index = _discardUINode->getLabelIndex(discardTile);
                 _discardUINode->incrementLabel(index);
             } else {
-                CULog("hand already at required size for ending turn");
+//                CULog("hand already at required size for ending turn");
             }
         }
     }

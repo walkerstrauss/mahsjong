@@ -66,7 +66,7 @@ bool SettingScene::init(const std::shared_ptr<cugl::AssetManager>& assets){
     _soundKey = _soundBtn->addListener([this](const std::string& name, bool down){
         if (!down){
             // TODO: handle turning sound on
-            CULog("Turning sound on");
+//            CULog("Turning sound on");
             AudioController::getInstance().playSound("Select");
             AudioController::getInstance().toggleSound();
             if (AudioController::getInstance().soundOn) {
@@ -85,7 +85,7 @@ bool SettingScene::init(const std::shared_ptr<cugl::AssetManager>& assets){
     
     _tutorialKey = _tutorialBtn->addListener([this](const std::string& name, bool down){
         if (!down){
-            CULog("Going to the tutorial scene");
+//            CULog("Going to the tutorial scene");
             AudioController::getInstance().playSound("Select");
             
             choice = TUTORIAL;

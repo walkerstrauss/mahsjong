@@ -431,7 +431,7 @@ void MahsJongApp::updateGameScene(float timestep) {
             break;
         case GameScene::Choice::DISCARDED:
             if (_gameplay.discardedTiles.empty()){
-                CULog("Discarded tiles is empty");
+//                CULog("Discarded tiles is empty");
                 break;
             }
             _gameplay.discardedTiles.clear();
