@@ -71,8 +71,8 @@ std::shared_ptr<TileSet::Tile> DiscardPile::findTile(std::pair<TileSet::Tile::Su
     for(auto& tile : _discardPile){
         if (!tile) continue; // skip null tiles
 //        CULog("Checking tile: Suit=%d, Rank=%d vs Target: Suit=%d, Rank=%d",
-            (int)tile->getSuit(), (int)tile->getRank(),
-            (int)info.first, (int)info.second);
+//            (int)tile->getSuit(), (int)tile->getRank(),
+//            (int)info.first, (int)info.second);
         
         if (tile->getSuit() == info.first && tile->getRank() == info.second) {
             return tile;

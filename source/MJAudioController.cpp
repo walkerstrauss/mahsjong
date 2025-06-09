@@ -126,7 +126,7 @@ void AudioController::playMusic(const std::string& key, bool loop) {
   _musicQueue->clear(0.0f);
   // play next song.
   if (soundOn){
-    _musicQueue->play(it->second, loop, 1.0f, 0.0f);
+//    _musicQueue->play(it->second, loop, 1.0f, 0.0f);
   }
   _bgmPlaying = true;
 }
